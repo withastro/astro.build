@@ -35,6 +35,11 @@ const meta = {
 		}
 	</script>
 	<BaseHead {...meta} />
+	<style>
+		[astro-icon="logos/stackblitz"] {
+			transform: translateX(-0.5em);
+		}
+	</style>
 </head>
 
 <body>
@@ -95,7 +100,7 @@ const meta = {
 
 		<Quote>
 			<Fragment slot="logo">
-				StackBlitz
+				<Sprite width="9em" height="2em" name="logos/stackblitz" title="StackBlitz" />
 			</Fragment>
 			<Fragment slot="quote">Increasingly convinced of Astro VS framework specific SSR/SSGs. Huge opportunity to unify the web ecosystem's efforts.</Fragment>
 			<Fragment slot="cite">Eric Simons, StackBlitz CEO</Fragment>
