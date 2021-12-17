@@ -1,0 +1,40 @@
+---
+const { background = 'color-tan', offset = 0 } = Astro.props;
+---
+
+<div class="container" style={offset !== 0 ? `--offset: ${offset};` : ''}>
+    <article class="panel elevation-xl" style={`--background: var(--${background});`}>
+        <div class="title">
+            <slot name="title" />
+        </div>
+        <slot />
+    </article>
+</div>
+
+<style>
+    .container {
+        position: relative;
+        z-index: 1;
+        margin-top: calc(var(--offset, 0) * 1rem);
+    }
+    .panel {
+        background: var(--background);
+        border-radius: var(--corner-md);
+        padding: 3.25rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: var(--color-dusk);
+    }
+
+    .panel > :nth-child(2) {
+        margin-top: 3rem;
+    }
+</style>

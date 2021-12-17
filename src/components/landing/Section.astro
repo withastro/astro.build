@@ -1,0 +1,13 @@
+---
+const { class: className, ...props } = Astro.props;
+---
+<section class={className} {...props}>
+    <slot />
+</section>
+
+<style>
+    section {
+        background: var(--background, var(--color-tan));
+        padding: 8rem 0;
+    }
+</style>

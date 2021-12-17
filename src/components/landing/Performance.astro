@@ -1,0 +1,44 @@
+---
+import Section from './Section.astro';
+import Panel from '../Panel.astro';
+---
+
+<Section class="performance" style="--background: var(--gradient-pop-4);">
+    <div class="container">
+        <div class="content">
+            <h3 class="head-md"><slot name="title" /></h3>
+            <div class="body">
+                <slot />
+            </div>
+        </div>
+        <aside class="data">
+            <Panel class="data">
+                <slot name="data" />
+            </Panel>
+        </aside>
+    </div>
+</Section>
+
+<style>
+    .content {
+        color: white;
+    }
+    .container {
+        display: grid;
+        gap: 4rem;
+    }
+    h3 {
+        margin-bottom: 1rem;
+    }
+    .data {
+        order: -1;
+    }
+    @media (min-width: 52rem) {
+        .data {
+            order: initial;
+        }
+        .container {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>

@@ -1,0 +1,107 @@
+---
+import Section from './Section.astro';
+---
+
+<Section class="quote">
+    <div class="glow" />
+
+    <div class="logo">
+        <slot name="logo" />
+    </div>
+    <blockquote class="container">
+        <p class="head-md"><slot name="quote" /></p>
+        <cite class="head-md"><slot name="cite" /></cite>
+    </blockquote>
+</Section>
+
+<style>
+.quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--color-dusk);
+}
+blockquote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    padding: 4rem 1rem;
+    font-size: inherit;
+}
+cite {
+    margin-top: 2rem;
+    font-style: normal;
+    font-size: 1.75rem;
+}
+.glow {
+    pointer-events: none;
+    --time: 15s;
+    position: absolute;
+    --size: 256px;
+    width: calc(var(--size) * 3);
+    border-radius: 50%;
+    opacity: 0.15;
+    mix-blend-mode: hard-light;
+    height: var(--size);
+    background: var(--gradient-pop-4);
+    animation: glow var(--time) ease-in-out infinite;
+    filter: blur(64px);
+}
+.glow::before,
+.glow::after {
+    content: "";
+    display: block;
+    position: absolute;
+    --size: 12rem;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--gradient-pop-4);
+}
+
+.glow::before {
+    opacity: 1;
+    animation: glow-before calc(var(--time) * 1.5) ease-in-out infinite;
+}
+
+.glow::after {
+    animation: glow-after calc(var(--time) * 5) ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        transform: scale(0.9) translateX(0) rotate(5deg);
+    }
+    50% {
+        transform: scale(1) translateX(10%);
+    }
+}
+
+@keyframes glow-before {
+    0%, 100% {
+        transform: scale(0.9) translate(100%, 0) rotate(-10deg);
+    }
+    50% {
+        transform: scale(1.3) translate(120%, 50%);
+    }
+}
+
+@keyframes glow-after {
+    0%, 100% {
+        transform: scale(0.67) translate(-50%, 150%) rotate(-180deg);
+    }
+    50% {
+        transform: scale(2) translate(50%, 50%) rotate(-180deg);
+    }
+}
+@media (min-width: 64rem) {
+    blockquote {
+        padding: 0 8rem;
+    }
+}
+</style>

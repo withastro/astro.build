@@ -1,0 +1,21 @@
+---
+const { href } = Astro.props;
+---
+
+<a {href}>
+    <slot />
+</a>
+
+<style>
+    a {
+        display: flex;
+        padding: 0.67rem 2.5rem;
+        color: white;
+        text-decoration: none;
+        font-family: var(--font-display);
+        background: var(--gradient-pop-1);
+        font-size: 1.5rem;
+        border-radius: var(--corner-md);
+        width: max-content;
+    }
+</style>

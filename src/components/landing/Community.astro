@@ -1,0 +1,70 @@
+---
+import { Sprite } from 'astro-icon';
+import Section from './Section.astro';
+import Panel from '../Panel.astro';
+import { social } from '../../config.ts';
+---
+
+<Section class="community">
+    <Panel background="color-dawn">
+        <Fragment slot="title">
+            <h3 class="head-sm"><slot name="title" /></h3>
+            <slot name="description" />
+        </Fragment>
+
+        <ul class="links">
+            {social.map(item => (
+                <li class="social">
+                    <a href={item.href} title={item.title}>
+                        <Sprite name={item.icon} size="1.5em" />
+                        <span>{item.title}</span>
+                    </a>
+                </li>
+            ))}
+            <li class="social">
+                <a href="/docs" title="Documentation">
+                    <Sprite name={"mdi:book"} size="1.5em" />
+                    <span>Documentation</span>
+                </a>
+            </li>
+        </ul>
+    </Panel>
+</Section>
+
+<style>
+.community {
+    background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);
+    padding-bottom: 12rem;
+}
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+a > span {
+    margin-left: 0.5rem;
+}
+.links {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+@media (min-width: 52rem) {
+    .links {
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+}
+.links > :global(li) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+</style>

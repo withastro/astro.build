@@ -1,0 +1,145 @@
+---
+import { Sprite } from 'astro-icon';
+import { social } from '../config.ts';
+
+const { offset = 0 } = Astro.props;
+---
+
+<script type="module" hoist src={Astro.resolve('../scripts/nav.ts')} />
+
+{offset > 0 && <div class="background" style={`--offset: ${offset};`} />}
+
+<nav class="main" style={`--offset: ${offset};`}>
+    <ul class="container">
+        <li class="logo">
+            <a href="/" title="Astro">
+                <h1 class="visually-hidden">Astro</h1>
+                <Sprite name="logo" size="3em" />
+                <Sprite name="wordmark" height="3.5em" width="6em" />
+            </a>
+        </li>
+
+        <li>
+            <a href="/docs">
+                Docs
+            </a>
+        </li>
+
+        {social.map(item => (
+            <li class="icon">
+                <a href={item.href} title={item.title}>
+                    <Sprite name={item.icon} size="1.5em" />
+                </a>
+            </li>
+        ))}
+    </ul>
+</nav>
+
+<style>
+.background {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(calc(var(--offset) * 1rem) + 1px);
+    background-color: var(--color-tan);
+}
+.sentinel {
+    --size: 1px;
+    height: var(--size);
+    width: var(--size);
+    background: transparent;
+    pointer-events: none;
+}
+nav {
+    width: 100%;
+    position: sticky;
+    top: -2px;
+    padding: 0.5rem 0;
+    background: linear-gradient(0deg, rgba(var(--color-tan-rgb), 0.5), rgba(var(--color-tan-rgb), 1));
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    height: calc(2px + 4.5rem);
+    margin-top: calc(var(--offset) * 1rem);
+    margin-bottom: -4.5rem;
+}
+
+nav::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 200ms;
+    transition-delay: 50ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+    z-index: -1;
+}
+
+nav[stuck]::before {
+    opacity: 1;
+    transition-duration: 600ms;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    font-size: 1.33rem;
+    padding: 0 0.5rem;
+}
+li {
+    color: var(--color-dusk);
+    font-family: var(--font-display);
+    font-weight: 700;
+}
+li + li {
+    margin-left: 0.33em;
+}
+.logo {
+    font-size: 1rem;
+    margin-right: auto;
+}
+.logo a {
+    display: flex;
+    text-transform: lowercase;
+}
+li:not(.icon) + .icon {
+    margin-left: 0.75em;
+    padding-left: 0.75em;
+    border-left: 1px solid var(--color-dusk);
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    text-transform: lowercase;
+    transition: initial 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-property: transform, color;
+}
+a:focus,
+a:hover {
+    color: var(--color-purple);
+}
+a:active {
+    color: var(--color-blue);
+}
+
+.icon a svg {
+    transform: scale(0.9);
+}
+
+.icon a:focus svg,
+.icon a:hover svg {
+    transform: scale(1);
+}
+
+[astro-icon="logo"] {
+    margin-right: 0.25em;
+    transform: translateY(0.5em);
+}
+</style>

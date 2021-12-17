@@ -6,6 +6,11 @@ const config: AstroUserConfig = {
     sitemap: true,
   },
   renderers: [],
+  vite: {
+    ssr: { 
+      external: ['svgo']
+    }
+  }
 }
 
 export default config;

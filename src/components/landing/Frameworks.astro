@@ -1,0 +1,41 @@
+---
+import Section from './Section.astro';
+---
+
+<Section>
+    <div class="container content">
+        <h3 class="head-md"><slot name="title" /></h3>
+        <div class="body">
+            <slot />
+        </div>
+    </div>
+    <ul class="integrations">
+    </ul>
+</Section>
+
+<style>
+    .content {
+        display: grid;
+        color: var(--color-dusk);
+    }
+    h3 {
+        margin-bottom: 1rem;
+    }
+    .body > :global(* + *) {
+        margin-top: 1rem;
+    }
+
+    @media (min-width: 64rem) {
+        .content {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        h3 {
+            transform: translateY(-1ex);
+            grid-column: 1 / 3;
+        }
+        .body {
+            grid-column: 3 / 5;
+        }
+    }
+</style>

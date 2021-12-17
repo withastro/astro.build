@@ -1,0 +1,44 @@
+---
+import Panel from '../Panel.astro'
+---
+
+<section>
+    <Panel background="color-dawn" offset={-4}>
+        <Fragment slot="title">
+            <h3 class="head-sm"><slot name="title" /></h3>
+        </Fragment>
+
+        <ul class="logos">
+            <slot />
+        </ul>
+    </Panel>
+</section>
+
+<style>
+section {
+    background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);
+    padding-bottom: 20rem;
+}
+.logos {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+@media (min-width: 52rem) {
+    .logos {
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+}
+.logos > :global(li) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+</style>

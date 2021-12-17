@@ -1,0 +1,44 @@
+---
+const { reverse } = Astro.props;
+---
+<section>
+    <div class="container">
+        <div class="content">
+            <h3 class="head-md"><slot name="title" /></h3>
+            <slot />
+        </div>
+
+        <div class="illo" style={reverse ? 'order: -1;' : undefined}>
+            <slot name="illustration" />
+        </div>
+    </div>
+</section>
+
+<style>
+section {
+    background: var(--color-tan);
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+}
+.container {
+    display: grid;
+    gap: 2rem;
+}
+.content > :global(p) {
+    margin-top: 0.5rem;
+    max-width: 52ch;
+}
+.illo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width: 64rem) {
+    .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .content {
+        padding: 2rem 4rem;
+    }
+}
+</style>
