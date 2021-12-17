@@ -1,9 +1,4 @@
-/// <reference no-default-lib="true"/>
-/// <reference lib="ES2020" />
-/// <reference lib="webworker" />
-
-declare function registerPaint(name: string, Class: any): void;
-
+// @ts-nocheck
 class Pixel {
   static get inputProperties() {
     return ["--border-radius", '--pixel-size'];
