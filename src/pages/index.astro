@@ -26,6 +26,14 @@ const meta = {
 <html lang="en">
 
 <head>
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			document.body.classList.add('js');
+		});
+		if ('paintWorklet' in CSS) {
+			CSS.paintWorklet.addModule('/src/scripts/pixel.worklet.ts');
+		}
+	</script>
 	<BaseHead {...meta} />
 </head>
 

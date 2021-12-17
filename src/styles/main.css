@@ -23,6 +23,12 @@
   src: local(''), url('/fonts/RTAliasMedium-RegularOblique.woff2') format('woff2');
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 :root {
   --color-tan: #f4efed;
   --color-tan-rgb: 244, 239, 237;
@@ -84,8 +90,76 @@
   --corner-md: 12px;
 }
 
-* {
-  margin: 0;
+@property --border-radius {
+    syntax: '<integer>';
+    inherits: true;
+    initial-value: 4;
+}
+@property --pixel-size {
+    syntax: '<integer>';
+    inherits: true;
+    initial-value: 4;
+}
+@property --link-color-stop-a {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #205eff;
+}
+@property --link-color-stop-b {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #c238bd;
+}
+.pixel {
+  --border-radius: 8;
+  --pixel-size: 4;
+  --background: var(--gradient-pop-1);
+  position: relative;
+  border-radius: calc(var(--border-radius) * 1px);
+}
+.pixel::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--pixel-size) * 1px);
+  right: 0;
+  bottom: calc(var(--pixel-size) * 1px);
+  left: 0;
+  background: var(--background);
+  z-index: -1;
+}
+.pixel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: calc(var(--pixel-size) * 1px);
+  bottom: 0;
+  left: calc(var(--pixel-size) * 1px);
+  background: var(--background);
+  z-index: -1;
+}
+
+@supports (mask-image: paint(pixel)) or (-webkit-mask-image: paint(pixel)) {
+    .js .pixel {
+        background: none !important;
+    }
+    .js .pixel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        z-index: -1;
+        overflow: hidden;
+        border-radius: 0;
+        background: var(--background);
+        -webkit-mask-image: paint(pixel);
+        mask-image: paint(pixel);
+    }
+    .js .pixel::after {
+      content: none;
+    }
 }
 
 html {
