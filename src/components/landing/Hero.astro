@@ -1,6 +1,8 @@
 <section class="hero">
-    <div class="gradient">
-        <div class="blob" />
+    <div class="background">
+        <div class="blob-a" />
+        <div class="blob-b" />
+        <div class="blob-c" />
         <div class="grid" />
     </div>
     <div class="container content">
@@ -51,9 +53,10 @@
         gap: 1em;
     }
 
-    .gradient {
+    .background {
         --time: 25s;
         --blur: blur(128px);
+        --aspect-ratio: 16 / 9;
         position: absolute;
         top: 0;
         right: 0;
@@ -62,28 +65,32 @@
         overflow: hidden;
         pointer-events: none;
         z-index: -1;
+        backface-visibility: hidden;
+        transform: translate3d(0,0,0);
     }
 
     .grid {
         --time: 7s;
         --grid-size: 4em;
-        --grid-color: rgba(255, 255, 255, 0.5);
-        --grid-blur: 1px;
+        --grid-color: #000;
+        --grid-stroke: 1px;
+        opacity: 0.5;
         mix-blend-mode: hard-light;
-        position:absolute;
+        position: absolute;
         bottom: -30%;
-        left:0;
+        left: 0;
         margin-left: -50%;
         width: 200%;
         height: 100%;
         background-position-y: 0px;
-        background-image: repeating-linear-gradient(90deg, var(--grid-color, black) 0%, transparent calc(1px + var(--grid-blur, 0px)), transparent var(--grid-size), var(--grid-color, black) calc(var(--grid-size) + 1px + var(--grid-blur, 0px))), repeating-linear-gradient(180deg,var(--grid-color,black) 0%,transparent calc(1px + var(--grid-blur,0px)), transparent var(--grid-size),var(--grid-color,black) calc(var(--grid-size) + 1px + var(--grid-blur,0px)));
+        background-image: repeating-linear-gradient(90deg, var(--grid-color, white) 0%, transparent calc(1px + var(--grid-stroke, 0px)), transparent var(--grid-size), var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px))), repeating-linear-gradient(180deg,var(--grid-color, white) 0%,transparent calc(1px + var(--grid-stroke,0px)), transparent var(--grid-size),var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
         transform: perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-1px);
         animation: moving-grid var(--time) infinite linear;
-        z-index: 0;
+        z-index: 1;
+        filter: invert(1);
     }
 
-    @keyframes moving-grid{
+    @keyframes moving-grid {
         0%{
             transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-var(--grid-size));
         }
@@ -92,8 +99,7 @@
         }
     }
 
-
-    .blob {
+    .blob-a {
         display: block;
         position: absolute;
         top: 67%;
@@ -101,16 +107,16 @@
         margin-left: -50%;
         min-width: 1280px;
         width: 200%;
-        aspect-ratio: 16/9;
+        aspect-ratio: var(--aspect-ratio);
         border-radius: 50%;
         transform-origin: center center;
         filter: var(--blur);
         background: linear-gradient(-170deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         z-index: 0;
-        animation: blob calc(var(--time) * 3.5) ease-in-out infinite;
+        animation: blob-a calc(var(--time) * 3.5) ease-in-out infinite;
     }
 
-    .gradient::before {
+    .blob-b {
         content: '';
         display: block;
         position: absolute;
@@ -119,17 +125,17 @@
         margin-left: -50%;
         min-width: 1280px;
         width: 200%;
-        aspect-ratio: 16/9;
+        aspect-ratio: var(--aspect-ratio);
         border-radius: 50%;
         background: red;
         transform-origin: center center;
         background: linear-gradient(259deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         filter: var(--blur);
         z-index: -1;
-        animation: gradient-before calc(var(--time) * 2.5) ease-in-out infinite;
+        animation: blob-b calc(var(--time) * 2.5) ease-in-out infinite;
     }
 
-    .gradient::after {
+    .blob-c {
         content: '';
         display: block;
         position: absolute;
@@ -138,17 +144,17 @@
         margin-left: -50%;
         min-width: 1280px;
         width: 200%;
-        aspect-ratio: 16/9;
+        aspect-ratio: var(--aspect-ratio);
         border-radius: 50%;
         background: red;
         transform-origin: center center;
         background: linear-gradient(-180deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         filter: var(--blur);
         z-index: 1;
-        animation: gradient-after var(--time) ease-in-out alternate infinite;
+        animation: gradient-c var(--time) ease-in-out alternate infinite;
     }
 
-    @keyframes blob {
+    @keyframes blob-a {
         0% {
             transform: rotate(5deg) translate(33%, -10%) scale(0.6);
         }
@@ -160,7 +166,7 @@
         }
     }
 
-    @keyframes gradient-before {
+    @keyframes blob-b {
         0% {
             opacity: 0;
             transform: rotate(-12deg) translate(-33%, -5%) scale(1);
@@ -174,12 +180,30 @@
         }
     }
 
-    @keyframes gradient-after {
+    @keyframes blob-c {
         0% {
             transform: rotate(5deg) translate(0, 0) scale(0.8);
         }
         100% {
             transform: rotate(-15deg) translate(15%, 7%) scale(0.8);
+        }
+    }
+
+    @supports not (aspect-ratio: 1 / 1) {
+        .blob-a::before,
+        .blob-b::before,
+        .blob-c::before {
+            float: left;
+            padding-top: calc(100% * var(--aspect-ratio));
+            content: "";
+        }
+
+        .blob-a::after,
+        .blob-b::after,
+        .blob-c::after {
+            display: block;
+            content: "";
+            clear: both;
         }
     }
 </style>
