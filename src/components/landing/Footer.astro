@@ -19,43 +19,41 @@ const { quote = true } = Astro.props;
     )}
     
     <div class="background">
+        <div class="blob" />
         <Grid class="footer-grid" />
-        <div class="blob"></div>
     </div>
 </footer>
 
 <style>
     footer {
+        overflow: hidden;
+        min-height: max(175vh, 1280px);
+        --offset: 50vh;
+        margin-top: calc(var(--offset) * -1);
+        padding-top: var(--offset);
         position: relative;
-        background: var(--color-tan);
-        padding-bottom: 440px;
+        background: var(--color-tan) linear-gradient(180deg, var(--color-tan) 0%, #E8ADB7 25%, #C776BE 50%, #7D32DE 75%, #6732FC 100%);
     }
     footer > :global(.quote) {
         z-index: 1;
         background: none;
+        margin-bottom: 25vh;
     }
     .footer-grid {
         position: absolute;
         bottom: -10% !important;
         height: 40% !important;
+        z-index: 1 !important;
     }
     .background {
         --height: 1350px;
         pointer-events: none;
         position: absolute;
         width: 100vw;
+        bottom: 0;
         margin-top: calc(var(--height) * -0.9);
         height: calc(var(--height) * 1.25);
         z-index: 0;
         overflow: hidden;
-    }
-    .blob {
-        top: 800px;
-        position: absolute;
-        width: 3160px;
-        height: 1600px;
-        left: -359px;
-        background: linear-gradient(180deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
-        filter: blur(647.071px);
     }
 </style>

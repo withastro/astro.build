@@ -23,6 +23,7 @@ const { background = true, color } = Astro.props;
     justify-content: center;
     position: relative;
     color: var(--color, var(--color-dusk));
+    z-index: 0;
 }
 blockquote {
     display: flex;
@@ -51,9 +52,10 @@ cite {
     opacity: 0.25;
     mix-blend-mode: hard-light;
     height: var(--size);
-    background: var(--gradient-pop-4);
+    background: var(--blob-color, var(--gradient-pop-4));
     animation: glow var(--time) ease-in-out infinite;
     filter: blur(64px);
+    z-index: -1;
 }
 .glow::before,
 .glow::after {
@@ -64,7 +66,7 @@ cite {
     width: var(--size);
     height: var(--size);
     border-radius: 50%;
-    background: var(--gradient-pop-4);
+    background: var(--blob-color, var(--gradient-pop-4));
 }
 
 .glow::before {
