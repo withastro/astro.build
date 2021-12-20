@@ -1,9 +1,11 @@
 ---
 const { class: className = '', href } = Astro.props;
 // Wrap in <span> because Houdini is disabled for a[href] for security
+
+const { variant = 'primary' } = Astro.props;
 ---
 
-<span class={`link pixel ${className}`.trim()}>
+<span class={`link pixel variant-${variant} ${className}`.trim()}>
     <a {href}>
         <slot />
     </a>
@@ -27,13 +29,9 @@ const { class: className = '', href } = Astro.props;
     }
     .link:hover,
     .link:focus-within {
-        --link-color-stop-a: #6D39FF;
-        --link-color-stop-b: #AF43FF;
         transform: translateY(calc(var(--pixel-size) * -0.5px));
     }
     .link:active {
-        --link-color-stop-a: #5F31E1;
-        --link-color-stop-b: #A740F3;
         transform: translateY(0);
     }
     a {
@@ -43,5 +41,46 @@ const { class: className = '', href } = Astro.props;
         height: 100%;
         text-decoration: none;
         color: inherit;
+    }
+
+    .variant-primary {
+        --variant: primary;
+        --background: linear-gradient(180deg, var(--link-color-stop-a), var(--link-color-stop-b));
+    }
+    .variant-primary:hover,
+    .variant-primary:focus-within {
+        --link-color-stop-a: #6D39FF;
+        --link-color-stop-b: #AF43FF;
+    }
+    .variant-primary:active {
+        --link-color-stop-a: #5F31E1;
+        --link-color-stop-b: #A740F3;
+    }
+
+    .variant-outline {
+        --variant: outline;
+        --background: white;
+    }
+    .variant-outline > a::before {
+        position: absolute;
+        top: 0;
+        right: calc(var(--pixel-size) * 1px);
+        bottom: 0;
+        left: calc(var(--pixel-size) * 1px);
+        content: "";
+        display: block;
+        transform-origin: bottom center;
+        background: linear-gradient(to top, var(--background), rgba(255, 255, 255, 0));
+        opacity: 0.4;
+        transform: scaleY(0);
+        transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .variant-outline:hover > a::before,
+    .variant-outline:focus-within > a::before {
+        transform: scaleY(1);
+    }
+    .variant-outline:active > a::before {
+        opacity: 0.6;
+        transform: scaleY(1);
     }
 </style>

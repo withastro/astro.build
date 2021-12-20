@@ -154,6 +154,22 @@
   background: var(--background);
   z-index: -1;
 }
+.pixel.variant-outline {
+  background: transparent;
+  border-radius: 0;
+}
+.pixel.variant-outline::before {
+  background: transparent;
+  border: calc(var(--pixel-size) * 1px) solid var(--background);
+  border-top: 0;
+  border-bottom: 0;
+}
+.pixel.variant-outline::after {
+  background: transparent;
+  border: calc(var(--pixel-size) * 1px) solid var(--background);
+  border-right: 0;
+  border-left: 0;
+}
 
 @supports (background: paint(pixel)) {
     .js .pixel {
