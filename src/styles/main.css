@@ -97,7 +97,14 @@
   --size-800: clamp(2.14rem, 1.74rem + 1.99vw, 3.16rem);
   --size-900: clamp(2.67rem, 2.07rem + 3vw, 4.21rem);
   --size-1000: clamp(3.34rem, 2.45rem + 4.43vw, 5.61rem);
+
+  /* @property fallbacks */
+  --border-radius: 4;
+  --pixel-size: 4;
+  --link-color-stop-a: #205eff;
+  --link-color-stop-b: #c238bd;
 }
+
 
 @property --border-radius {
     syntax: '<integer>';
@@ -119,6 +126,7 @@
     inherits: false;
     initial-value: #c238bd;
 }
+
 .pixel {
   --border-radius: 8;
   --pixel-size: 4;
@@ -147,7 +155,7 @@
   z-index: -1;
 }
 
-@supports (mask-image: paint(pixel)) or (-webkit-mask-image: paint(pixel)) {
+@supports (background: paint(pixel)) {
     .js .pixel {
         background: none !important;
     }
@@ -175,6 +183,8 @@ html {
   font-family: var(--font-body);
   color: var(--color-midnight);
   min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 ::selection {

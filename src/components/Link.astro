@@ -36,31 +36,6 @@ const { class: className = '', href } = Astro.props;
         --link-color-stop-b: #A740F3;
         transform: translateY(0);
     }
-    .link:hover a::after,
-    .link:focus-within a::after {
-        opacity: 1;
-        transform: scaleX(1);
-    }
-    .link:active a::after {
-        transform: scaleX(0);
-    }
-    .link a::after {
-        content: '';
-        opacity: 0;
-        display: block;
-        position: absolute;
-        height: calc(var(--pixel-size) * 1px);
-        bottom: calc(var(--border-radius) * -1px);
-        left: calc(var(--pixel-size) * 1px);
-        right: calc(var(--pixel-size) * 1px);
-        background: white;
-        mix-blend-mode: overlay;
-        transform-origin: center;
-        transform: scaleX(0);
-        transition-property: transform, opacity;
-        transition-duration: var(--duration);
-        transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    }
     a {
         display: flex;
         padding: 0.67rem 2.5rem;

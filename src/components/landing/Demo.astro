@@ -4,11 +4,11 @@ const { reverse } = Astro.props;
 <section>
     <div class="container">
         <div class="content">
-            <h3 class="head-md"><slot name="title" /></h3>
+            <h3 class="head-md title"><slot name="title" /></h3>
             <slot />
         </div>
 
-        <div class="illo" style={reverse ? 'order: -1;' : undefined}>
+        <div class={['illo', reverse ? 'reverse' : ''].filter(x => x).join(' ')}>
             <slot name="illustration" />
         </div>
     </div>
@@ -17,12 +17,12 @@ const { reverse } = Astro.props;
 <style>
 section {
     background: var(--color-tan);
-    padding-top: 4rem;
-    padding-bottom: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
 }
 .container {
     display: grid;
-    gap: 2rem;
+    gap: 4rem;
 }
 .content > :global(p) {
     margin-top: 0.5rem;
@@ -33,12 +33,27 @@ section {
     align-items: center;
     justify-content: center;
 }
+.illo :global(svg) {
+    transform: scale(1.25);
+    width: 100%;
+}
 @media (min-width: 64rem) {
+    .reverse {
+        order: -1;
+    }
+    .title {
+        margin-top: 2.5ex;
+    }
     .container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .content {
         padding: 2rem 4rem;
+    }
+}
+@media (min-width: 82rem) {
+    .illo :global(svg) {
+        transform: scale(1);
     }
 }
 </style>

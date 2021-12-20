@@ -1,15 +1,26 @@
 ---
-const { background = 'color-tan', offset = 0 } = Astro.props;
+const { background = 'color-tan', offset = 0, size = "lg" } = Astro.props;
+let style = '';
+if (offset !== 0) {
+    style += `--offset: ${offset};`
+}
 ---
 
-<div class="container" style={offset !== 0 ? `--offset: ${offset};` : ''}>
-    <article class="panel elevation-xl" style={`--background: var(--${background});`}>
+<div class="container" style={style}>
+    <article class={`panel elevation-xl size-${size}`} style={`--background: var(--${background});`}>
         <div class="title">
             <slot name="title" />
         </div>
         <slot />
     </article>
 </div>
+
+<script type="module" hoist>
+    function setup(el) {
+    
+    }
+    document.querySelectorAll('.panel').forEach(panel => setup(panel));
+</script>
 
 <style>
     .container {
@@ -18,12 +29,26 @@ const { background = 'color-tan', offset = 0 } = Astro.props;
         margin-top: calc(var(--offset, 0) * 1rem);
     }
     .panel {
+        --offset: 0.5rem;
         background: var(--background);
         border-radius: var(--corner-md);
         padding: 3.25rem 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-left: calc(var(--offset) * -1);
+        margin-right: calc(var(--offset) * -1);
+    }
+    .panel.size-md {
+        max-width: 64rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (min-width: 45rem) {
+        .panel {
+            --offset: 1.625rem;
+        }
     }
 
     .title {

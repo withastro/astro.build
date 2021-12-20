@@ -1,0 +1,57 @@
+---
+import Section from './Section.astro';
+import Quote from './Quote.astro';
+import { Sprite } from 'astro-icon';
+import Grid from './Grid.astro';
+---
+
+<footer>
+    <Quote color="white" background={false}>
+        <Fragment slot="logo">
+            <Sprite width="9em" height="3em" name="logos/devtoolsfm" title="DevTools FM" />
+        </Fragment>
+        <Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
+        <Fragment slot="cite">Justin Bennett, DevToolsFM Host</Fragment>
+    </Quote>
+    
+    <div class="background">
+        <Grid class="footer-grid" />
+        <div class="blob"></div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        position: relative;
+        background: var(--color-tan);
+        padding-bottom: 440px;
+    }
+    footer > :global(.quote) {
+        z-index: 1;
+        background: none;
+    }
+    .footer-grid {
+        position: absolute;
+        bottom: -10% !important;
+        height: 40% !important;
+    }
+    .background {
+        --height: 1350px;
+        pointer-events: none;
+        position: absolute;
+        width: 100vw;
+        margin-top: calc(var(--height) * -0.9);
+        height: calc(var(--height) * 1.25);
+        z-index: 0;
+        overflow: hidden;
+    }
+    .blob {
+        top: 800px;
+        position: absolute;
+        width: 3160px;
+        height: 1600px;
+        left: -359px;
+        background: linear-gradient(180deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
+        filter: blur(647.071px);
+    }
+</style>

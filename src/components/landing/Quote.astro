@@ -1,9 +1,10 @@
 ---
 import Section from './Section.astro';
+const { background = true, color } = Astro.props;
 ---
 
-<Section class="quote">
-    <div class="glow" />
+<Section class="quote" style={color ? `--color: ${color};` : ''}>
+    {background && <div class="glow" />}
 
     <div class="logo">
         <slot name="logo" />
@@ -21,7 +22,7 @@ import Section from './Section.astro';
     align-items: center;
     justify-content: center;
     position: relative;
-    color: var(--color-dusk);
+    color: var(--color, var(--color-dusk));
 }
 blockquote {
     display: flex;
@@ -42,12 +43,12 @@ cite {
 }
 .glow {
     pointer-events: none;
-    --time: 15s;
+    --time: 10s;
     position: absolute;
     --size: 256px;
     width: calc(var(--size) * 3);
     border-radius: 50%;
-    opacity: 0.15;
+    opacity: 0.25;
     mix-blend-mode: hard-light;
     height: var(--size);
     background: var(--gradient-pop-4);
@@ -77,10 +78,10 @@ cite {
 
 @keyframes glow {
     0%, 100% {
-        transform: scale(0.9) translateX(0) rotate(5deg);
+        transform: scale(1.2) translateX(0) rotate(5deg);
     }
     50% {
-        transform: scale(1) translateX(10%);
+        transform: scale(1.4) translateX(10%);
     }
 }
 
@@ -95,10 +96,10 @@ cite {
 
 @keyframes glow-after {
     0%, 100% {
-        transform: scale(0.67) translate(-50%, 150%) rotate(-180deg);
+        transform: scale(0.67) translate(-50%, 0%) rotate(-180deg);
     }
     50% {
-        transform: scale(2) translate(50%, 50%) rotate(-180deg);
+        transform: scale(2) translate(50%, 25%) rotate(-180deg);
     }
 }
 @media (min-width: 64rem) {

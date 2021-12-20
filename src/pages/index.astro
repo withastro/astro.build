@@ -1,5 +1,5 @@
 ---
-import { Sprite } from 'astro-icon';
+import { Icon, Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
 import Banner from '../components/Banner.astro';
 import Nav from '../components/Nav.astro';
@@ -15,7 +15,12 @@ import Quote from '../components/landing/Quote.astro';
 import Frameworks from '../components/landing/Frameworks.astro';
 import Performance from '../components/landing/Performance.astro';
 import Community from '../components/landing/Community.astro';
+import Sponsors from '../components/landing/Sponsors.astro';
+import Footer from '../components/landing/Footer.astro';
 
+import { getStars } from '../utils.ts';
+
+const stars = await getStars();
 const meta = {
 	title: 'Astro',
 	description: 'Build faster websites with less client-side JavaScript',
@@ -36,6 +41,10 @@ const meta = {
 	</script>
 	<BaseHead {...meta} />
 	<style>
+		main {
+			max-width: 100vw;
+			overflow: hidden;
+		}
 		[astro-icon="logos/stackblitz"] {
 			transform: translateX(-0.5em);
 		}
@@ -45,91 +54,111 @@ const meta = {
 <body>
 	<Sprite.Provider>
 		<Banner items={['Astro v1.0.0 is now live!', 'Read the documentation to get started!']} />
-		
 		<Nav offset={2} />
-		
-		<Hero>
-			<Fragment slot="title">Static sites, solved.</Fragment>
-			<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
-			<Link href="/docs/getting-started">Get Started</Link>
-		</Hero>
 
-		<Trusted>
-			<Fragment slot="title">Developers around the world rely on Astro</Fragment>
-			<Fragment>
-				<li>Google</li>
-				<li>Netlify</li>
-				<li>DivRIOTs</li>
-				<li>Navillus</li>
-			</Fragment>
-		</Trusted>
-
-		<Demo>
-			<Fragment slot="title">Ship less Javascript</Fragment>
-			<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
-
-			<div slot="illustration">Hello Demo A</div>
-		</Demo>
-
-		<Demo reverse>
-			<Fragment slot="title">Built-in Partial Hydration</Fragment>
-			<p>Interactive websites require JS—with Astro's selective hydration primitives, you're in full control over when your components are loaded.</p>
-
-			<div slot="illustration">Hello Demo B</div>
-		</Demo>
-
-		<Section>
-			<Panel background="gradient-pop-3">
-				<Fragment slot="title">
-					<h3 class="head-md">Batteries Included.</h3>
-					<p>Astro does the heavy lifting in the background&mdash;no plugins required.</p>
+		<main>
+			<Hero>
+				<Fragment slot="title">Static sites, solved.</Fragment>
+				<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
+				<Link href="/docs/getting-started">Get Started</Link>
+				<Link href="https://github.com/withastro/astro"><Sprite pack="mdi" name="star" size="1em"/>{stars}</Link>
+			</Hero>
+			
+			<Trusted>
+				<Fragment slot="title">Developers around the world rely on Astro</Fragment>
+				<Fragment>
+					<li>
+						<Icon name="logos/google" height="2.25rem" />
+					</li>
+					<li>
+						<Icon name="logos/netlify" height="2.25rem" />
+					</li>
+					<li>
+						<Icon name="logos/divriots" height="1.75rem" />
+					</li>
+					<li>
+						<Icon name="logos/navillus" height="2.5rem" />
+					</li>
 				</Fragment>
+			</Trusted>
 
-				<Checklist>
-					<li>Markdown Support</li>
-					<li>TypeScript</li>
-					<li>CSS Modules</li>
-					<li>PostCSS, Sass, Less, Stylus</li>
-					<li>Built-in SEO</li>
-					<li>Sitemaps</li>
-					<li>RSS Feeds</li>
-					<li>Pagination</li>
-				</Checklist>
-			</Panel>
-		</Section>
+			<Demo>
+				<Fragment slot="title">Ship less Javascript</Fragment>
+				<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
 
-		<Quote>
-			<Fragment slot="logo">
-				<Sprite width="9em" height="2em" name="logos/stackblitz" title="StackBlitz" />
-			</Fragment>
-			<Fragment slot="quote">Increasingly convinced of Astro VS framework specific SSR/SSGs. Huge opportunity to unify the web ecosystem's efforts.</Fragment>
-			<Fragment slot="cite">Eric Simons, StackBlitz CEO</Fragment>
-		</Quote>
+				<div slot="illustration">
+					<Icon name="demo-a" width="631" height="530" />
+				</div>
+			</Demo>
 
-		<Frameworks>
-			<Fragment slot="title">
-				Framework Friendly
-			</Fragment>
-			<Fragment>
-				<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
-				<p>If you don't need a framework, Astro can just as easily use HTML with progressively enhanced vanilla JS.</p>
-			</Fragment>
-		</Frameworks>
-		
-		<Performance>
-			<Fragment slot="title">Peak Performance</Fragment>
-			<Fragment>
-				<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
-			</Fragment>
-			<Fragment slot="data">
-				<p>Rebuilt my next.js blog using Astro out of curiosity...holy shit the difference in bundle size.</p>
-			</Fragment>
-		</Performance>
+			<Demo reverse>
+				<Fragment slot="title">Built-in Partial Hydration</Fragment>
+				<p>Interactive websites require JS—with Astro's selective hydration primitives, you're in full control over when your components are loaded.</p>
 
-		<Community>
-			<Fragment slot="title">Join our community</Fragment>
-			<p>Learn more about Astro, get support and meet other devs in our discord community.</p>
-		</Community>
+				<div slot="illustration">
+					<Icon name="demo-b" width="631" height="530" />
+				</div>
+			</Demo>
+
+			<Section>
+				<Panel background="gradient-pop-3">
+					<Fragment slot="title">
+						<h3 class="head-md">Batteries Included.</h3>
+						<p>Astro does the heavy lifting in the background&mdash;no plugins required.</p>
+					</Fragment>
+
+					<Checklist>
+						<li>Markdown Support</li>
+						<li>TypeScript</li>
+						<li>CSS Modules</li>
+						<li>PostCSS, Sass, Less, Stylus</li>
+						<li>Built-in SEO</li>
+						<li>Sitemaps</li>
+						<li>RSS Feeds</li>
+						<li>Pagination</li>
+					</Checklist>
+				</Panel>
+			</Section>
+
+			<Quote>
+				<Fragment slot="logo">
+					<Sprite width="9em" height="2em" name="logos/stackblitz" title="StackBlitz" />
+				</Fragment>
+				<Fragment slot="quote">Increasingly convinced of Astro VS framework specific SSR/SSGs. Huge opportunity to unify the web ecosystem's efforts.</Fragment>
+				<Fragment slot="cite">Eric Simons, StackBlitz CEO</Fragment>
+			</Quote>
+
+			<Frameworks>
+				<Fragment slot="title">
+					Integration Ready
+				</Fragment>
+				<Fragment>
+					<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
+					<p>If you don't need a framework, Astro can just as easily use HTML with progressively enhanced vanilla JS.</p>
+				</Fragment>
+			</Frameworks>
+			
+			<Performance>
+				<Fragment slot="title">Peak Performance</Fragment>
+				<Fragment>
+					<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
+				</Fragment>
+				<Fragment slot="data">
+					<p>Rebuilt my next.js blog using Astro out of curiosity&hellip; holy shit the difference in bundle size.</p>
+				</Fragment>
+			</Performance>
+
+			<Community>
+				<Fragment slot="title">Join our community</Fragment>
+				<p>Learn more about Astro, get support and meet other devs in our discord community.</p>
+			</Community>
+
+			<Sponsors>
+				<Fragment slot="title">Sponsored by</Fragment>
+			</Sponsors>
+
+			<Footer />
+		</main>
 	</Sprite.Provider>
 </body>
 

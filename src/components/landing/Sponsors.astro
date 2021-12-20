@@ -1,0 +1,161 @@
+---
+import { Icon } from 'astro-icon';
+import Section from './Section.astro';
+
+const platinum = [
+    { name: 'netlify', title: 'Netlify', href: 'https://netlify.com', width: '15rem', height: '4rem' },
+    { name: 'vercel', title: 'Vercel', href: 'https://vercel.com', width: '15rem', height: '4rem' },
+]
+const gold = [
+    { name: 'divriots', title: '‹div›RIOTS', href: 'https://divriots.com', width: '12rem', height: '3rem' }
+]
+const users = await fetch(`https://opencollective.com/astrodotbuild/members.json`).then(res => res.json());
+
+const skipTier = new Set(['Platinum Sponsor', 'Gold Sponsor']);
+function isUser(user) {
+    return user.role === 'BACKER' && !skipTier.has(user.tier);
+}
+function getUser(user) {
+    return {
+        name: user.name,
+        image: user.image,
+        initials: user.name.split(' ').slice(0, 2).map(word => word[0].toUpperCase()).join(''),
+        href: user.website ?? user.twitter ?? user.github
+    };
+};
+
+const individuals = users.filter(user => isUser(user)).map(user => getUser(user)).sort(() => 0.5 - Math.random());
+---
+
+<Section id="sponsors">
+    <div class="container">
+        <h3 class="head-sm title"><slot name="title" /></h3>
+        <ul class="sponsors platinum">
+            {platinum.map(sponsor => (
+                <li><a href={sponsor.href} rel="sponsor"><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} title={sponsor.title} /></span></a></li>
+            ))}
+        </ul>
+        <ul class="sponsors gold">
+            {gold.map(sponsor => (
+                <li><a href={sponsor.href} rel="sponsor"><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} title={sponsor.title} /></span></a></li>
+            ))}
+        </ul>
+        <ul class="sponsors individual">
+            {individuals.map(user => (
+                <li>
+                    <a class="individual" href={user.href} rel="sponsor">
+                        <span>
+                            <img loading="lazy" src={user.image} width="64" height="64" alt={user.name} data-initials={user.initials} />
+                        </span>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+</Section>
+
+<style>
+#sponsors {
+    padding-top: 2rem;
+}
+.title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.sponsors a {
+    display: inline-block;
+    position: relative; 
+    z-index: 1;
+    color: black;
+}
+.sponsors a > span {
+    display: inline-block;
+}
+.sponsors a > span > svg {
+    pointer-events: none;
+}
+.sponsors + .sponsors {
+    margin-top: 2.5rem;
+}
+.cta {
+    font-family: var(--font-display);
+    text-align: center;
+    color: var(--color-dusk);
+}
+ul.individual {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 40rem;
+}
+.individual {
+    display: flex;
+    flex-direction: column;
+}
+.individual img {
+    position: relative;
+    --size: 3rem;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.individual img:not([src])::before {
+    content: attr(data-initials);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: var(--color-midnight);
+    color: white;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sponsors {
+    margin: 0 auto;
+    padding: 0;
+    max-width: max-content;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 1.5rem;
+    color: var(--color-dusk);
+}
+
+@media (min-width: 52rem) {
+    .sponsors {
+        grid-auto-flow: column;
+        max-width: max-content;
+        margin: 0 auto;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+}
+@media (min-width: 64rem) {
+    .sponsors {
+        gap: 4rem;
+    }
+}
+.sponsors > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+</style>

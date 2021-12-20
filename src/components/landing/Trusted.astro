@@ -25,13 +25,22 @@ section {
     width: 100%;
     list-style: none;
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    color: var(--color-dusk);
 }
 @media (min-width: 52rem) {
     .logos {
         grid-auto-flow: column;
+        max-width: max-content;
+        margin: 0 auto;
+        gap: 2rem;
         grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+}
+@media (min-width: 64rem) {
+    .logos {
+        gap: 4rem;
     }
 }
 .logos > :global(li) {

@@ -6,10 +6,10 @@ import { social } from '../../config.ts';
 ---
 
 <Section class="community">
-    <Panel background="color-dawn">
+    <Panel size="md" background="color-dawn">
         <Fragment slot="title">
-            <h3 class="head-sm"><slot name="title" /></h3>
-            <slot name="description" />
+            <h3 class="head-md"><slot name="title" /></h3>
+            <div class="description"><slot /></div>
         </Fragment>
 
         <ul class="links">
@@ -44,6 +44,12 @@ a {
 }
 a > span {
     margin-left: 0.5rem;
+    font-family: var(--font-display);
+    font-size: var(--size-500);
+}
+.description {
+    margin-top: 1rem;
+    max-width: 48ch;
 }
 .links {
     margin: 0;

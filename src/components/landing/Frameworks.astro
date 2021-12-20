@@ -1,28 +1,126 @@
 ---
 import Section from './Section.astro';
+import { Icon } from 'astro-icon';
+
+const rows = [
+    ['react', 'vue', 'svelte', 'preact', 'solidjs'],
+    ['lit', 'tailwindcss', 'sass', 'markdown'],
+    ['wordpress', 'strapi', 'contentful', 'prismic'],
+    ['shopify']
+]
 ---
 
-<Section>
+<Section id="frameworks">
     <div class="container content">
-        <h3 class="head-md"><slot name="title" /></h3>
+        <h3 class="head-md title"><slot name="title" /></h3>
         <div class="body">
             <slot />
         </div>
     </div>
     <ul class="integrations">
+        {rows.map(row => (
+            <li class="row" style={`--n: ${row.length};`}>
+                <ul class="logos">
+                    {row.map(icon => <li><Icon name={`logos/${icon}`} height="4rem" /></li>)}
+                </ul>
+            </li>
+        ))}
     </ul>
 </Section>
 
+<script type="module" hoist>
+    const section = document.querySelector('#frameworks');
+    const length = 256;
+    const threshold = [0, ...Array.from({ length }, (_, i) => i / length)];
+    let prevY = 0;
+    let prevRatio = 0;
+    let prevTimestamp = 0;
+    let prevDirection = 'forwards';
+    const round = (n) => Math.floor(n * 1000) / 1000;
+    const io = new IntersectionObserver(([entry]) => {
+        const y = entry.boundingClientRect.y
+        const ratio = entry.intersectionRatio;
+        const dir = y > prevY ? 1 : -1;
+        let value = 0
+        let direction = 'forwards';
+        if (dir === 1) {
+            if (ratio > prevRatio) {
+                value = round(1 - entry.intersectionRatio);
+                direction = 'reverse';
+            } else {
+                value = round(entry.intersectionRatio);
+                direction = 'forward';
+            }
+        } else {
+            if (ratio > prevRatio) {
+                value = round(entry.intersectionRatio);
+                direction = 'forward';
+            } else {
+                value = round(1 - entry.intersectionRatio);
+                direction = 'reverse';
+            }
+        }
+        requestAnimationFrame((timestamp) => {
+            if (prevTimestamp === timestamp) return;
+            console.log(value);
+            if (value !== prevRatio) {
+                entry.target.style.setProperty('--ratio', value);
+            }
+            if (direction !== prevDirection) {
+                entry.target.style.setProperty('--direction', direction);
+            }
+            prevTimestamp = timestamp;
+            prevY = y;
+            prevRatio = ratio;
+            prevDirection = direction;
+        })
+    }, { rootMargin: '15% 0px 0px 5%', threshold });
+    io.observe(section);
+</script>
+
 <style>
+    #frameworks {
+        min-height: 100vh;
+    }
     .content {
         display: grid;
         color: var(--color-dusk);
     }
-    h3 {
+    .title {
         margin-bottom: 1rem;
     }
     .body > :global(* + *) {
         margin-top: 1rem;
+    }
+    ul {
+        list-style: none;
+    }
+    .integrations {
+        margin-top: 2rem;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 0.5rem 2rem;
+        padding: 4rem var(--size-500);
+        opacity: 0.4;
+        width: 100vw;
+    }
+    .row, .logos {
+        display: contents;
+    }
+    .logos > li {
+        max-width: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .logos svg {
+        height: var(--size-900);
+    }
+    .logos > li[aria-hidden] {
+        display: none;
     }
 
     @media (min-width: 64rem) {
@@ -30,12 +128,78 @@ import Section from './Section.astro';
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 1rem;
         }
-        h3 {
-            transform: translateY(-1ex);
+        .title {
             grid-column: 1 / 3;
         }
         .body {
             grid-column: 3 / 5;
+        }
+    }
+
+    @media (min-width: 80rem) {
+        .logos > li[aria-hidden] {
+            display: flex;
+        }
+        .logos svg {
+            height: 4rem;
+        }
+        .integrations {
+            margin-top: 4rem;
+            display: flex;
+            grid-template-rows: repeat(3, 4.5rem);
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+        .row {
+            display: flex;
+            perspective: 1px;
+            height: 100%;
+        }
+        .row:nth-child(even) {
+            --offset: -33%;
+            --tz: -1px;
+            --scale: 1.45;
+            --gap: 12rem;
+        }
+        .logos {
+            transform-origin: center center;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(var(--n), auto);
+            gap: var(--gap, 4rem);
+            padding: 0 2rem;
+            height: 100%;
+            align-items: center;
+            
+            animation-name: scroll;
+            animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            /* Bind animation to progress of `var(--ratio)` */
+            animation-play-state: paused;
+            animation-duration: 1s;
+            animation-delay: calc(var(--ratio) * -1s);
+            animation-direction: var(--direction);
+
+            /* These clean up some weirdness with the horizontal animation */
+            animation-iteration-count: 1;
+            animation-fill-mode: both;
+        }
+        .logos > li {
+            max-width: max-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            transform: scale(calc(1 + calc(var(--scale, 1) - 1)));
+        }
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateZ(var(--tz, 0)) scale(var(--scale, 1)) translateX(-100%);
+        }
+        to {
+            transform: translateZ(var(--tz, 0)) scale(var(--scale, 1)) translateX(0%);
         }
     }
 </style>

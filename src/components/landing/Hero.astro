@@ -1,9 +1,12 @@
+---
+import Grid from './Grid.astro';
+---
 <section class="hero">
     <div class="background">
         <div class="blob-a" />
         <div class="blob-b" />
         <div class="blob-c" />
-        <div class="grid" />
+        <Grid />
     </div>
     <div class="container content">
         <h2 class="text-gradient"><slot name="title" /></h2>
@@ -67,36 +70,6 @@
         z-index: -1;
         backface-visibility: hidden;
         transform: translate3d(0,0,0);
-    }
-
-    .grid {
-        --time: 7s;
-        --grid-size: 4em;
-        --grid-color: #000;
-        --grid-stroke: 1px;
-        opacity: 0.5;
-        mix-blend-mode: hard-light;
-        position: absolute;
-        bottom: -30%;
-        left: 0;
-        margin-left: -50%;
-        width: 200%;
-        height: 100%;
-        background-position-y: 0px;
-        background-image: repeating-linear-gradient(90deg, var(--grid-color, white) 0%, transparent calc(1px + var(--grid-stroke, 0px)), transparent var(--grid-size), var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px))), repeating-linear-gradient(180deg,var(--grid-color, white) 0%,transparent calc(1px + var(--grid-stroke,0px)), transparent var(--grid-size),var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
-        transform: perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-1px);
-        animation: moving-grid var(--time) infinite linear;
-        z-index: 1;
-        filter: invert(1);
-    }
-
-    @keyframes moving-grid {
-        0%{
-            transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-var(--grid-size));
-        }
-        100%{
-            transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(var(--grid-size));
-        }
     }
 
     .blob-a {
