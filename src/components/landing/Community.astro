@@ -1,6 +1,6 @@
 ---
-import { Sprite } from 'astro-icon';
 import Section from './Section.astro';
+import ArrowLink from '../ArrowLink.astro';
 import Panel from '../Panel.astro';
 import { social } from '../../config.ts';
 ---
@@ -13,20 +13,18 @@ import { social } from '../../config.ts';
         </Fragment>
 
         <ul class="links">
+            <li class="social">
+                <ArrowLink icon="mdi:book" href="/docs">
+                    Documentation
+                </ArrowLink>
+            </li>
             {social.map(item => (
                 <li class="social">
-                    <a href={item.href} title={item.title}>
-                        <Sprite name={item.icon} size="1.5em" />
-                        <span>{item.title}</span>
-                    </a>
+                    <ArrowLink icon={item.icon} href={item.href}>
+                        {item.title}
+                    </ArrowLink>
                 </li>
             ))}
-            <li class="social">
-                <a href="/docs" title="Documentation">
-                    <Sprite name={"mdi:book"} size="1.5em" />
-                    <span>Documentation</span>
-                </a>
-            </li>
         </ul>
     </Panel>
 </Section>
@@ -35,17 +33,6 @@ import { social } from '../../config.ts';
 .community {
     background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);
     padding-bottom: 12rem;
-}
-a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-a > span {
-    margin-left: 0.5rem;
-    font-family: var(--font-display);
-    font-size: var(--size-500);
 }
 .description {
     margin-top: 1rem;
@@ -56,15 +43,11 @@ a > span {
     padding: 0;
     width: 100%;
     list-style: none;
-    display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
     gap: 0.5rem;
-}
-@media (min-width: 52rem) {
-    .links {
-        grid-auto-flow: column;
-        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    }
 }
 .links > :global(li) {
     display: flex;
@@ -72,5 +55,10 @@ a > span {
     justify-content: center;
     text-align: center;
     width: 100%;
+}
+@media (min-width: 52rem) {
+    .links > :global(li) {
+        width: auto;
+    }
 }
 </style>

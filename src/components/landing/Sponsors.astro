@@ -1,4 +1,5 @@
 ---
+// SEE https://developers.google.com/search/docs/advanced/guidelines/qualify-outbound-links for rel="sponsored" info
 import { Icon } from 'astro-icon';
 import Section from './Section.astro';
 
@@ -32,25 +33,26 @@ const individuals = users.filter(user => isUser(user)).map(user => getUser(user)
         <h3 class="head-sm title"><slot name="title" /></h3>
         <ul class="sponsors platinum">
             {platinum.map(sponsor => (
-                <li><a href={sponsor.href} rel="sponsor"><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} title={sponsor.title} /></span></a></li>
+                <li><a href={sponsor.href} title={sponsor.title}><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} aria-hidden="true" /></span></a></li>
             ))}
         </ul>
         <ul class="sponsors gold">
             {gold.map(sponsor => (
-                <li><a href={sponsor.href} rel="sponsor"><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} title={sponsor.title} /></span></a></li>
+                <li><a href={sponsor.href} title={sponsor.title} rel="sponsored"><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} aria-hidden="true" /></span></a></li>
             ))}
         </ul>
         <ul class="sponsors individual">
             {individuals.map(user => (
                 <li>
-                    <a class="individual" href={user.href} rel="sponsor">
+                    <a class="individual" title={user.name} href={user.href} rel="sponsored">
                         <span>
-                            <img loading="lazy" src={user.image} width="64" height="64" alt={user.name} data-initials={user.initials} />
+                            <img aria-hidden="true" loading="lazy" src={user.image} width="64" height="64" alt={user.name} data-initials={user.initials} />
                         </span>
                     </a>
                 </li>
             ))}
         </ul>
+        <div class="cta"><slot name="cta" /></div>
     </div>
 </Section>
 
@@ -96,6 +98,7 @@ ul.individual {
     flex-direction: column;
 }
 .individual img {
+    pointer-events: none;
     position: relative;
     --size: 3rem;
     width: var(--size);
@@ -115,7 +118,7 @@ ul.individual {
     bottom: 0;
     left: 0;
     z-index: 1;
-    background: var(--color-midnight);
+    background: var(--color-dusk);
     color: white;
     font-family: var(--font-display);
     font-size: 1.25rem;

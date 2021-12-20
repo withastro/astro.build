@@ -3,16 +3,20 @@ import Section from './Section.astro';
 import Quote from './Quote.astro';
 import { Sprite } from 'astro-icon';
 import Grid from './Grid.astro';
+
+const { quote = true } = Astro.props;
 ---
 
 <footer>
-    <Quote color="white" background={false}>
-        <Fragment slot="logo">
-            <Sprite width="9em" height="3em" name="logos/devtoolsfm" title="DevTools FM" />
-        </Fragment>
-        <Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
-        <Fragment slot="cite">Justin Bennett, DevToolsFM Host</Fragment>
-    </Quote>
+    {quote && (
+        <Quote color="white" background={false}>
+            <Fragment slot="logo">
+                <slot name="logo" />
+            </Fragment>
+            <Fragment slot="quote"><slot name="quote" /></Fragment>
+            <Fragment slot="cite"><slot name="cite" /></Fragment>
+        </Quote>
+    )}
     
     <div class="background">
         <Grid class="footer-grid" />

@@ -4,9 +4,9 @@ import { Icon } from 'astro-icon';
 
 const rows = [
     ['react', 'vue', 'svelte', 'preact', 'solidjs'],
-    ['lit', 'tailwindcss', 'sass', 'markdown'],
-    ['wordpress', 'strapi', 'contentful', 'prismic'],
-    ['shopify']
+    ['javascript', 'lit', 'alpinejs', 'typescript'],
+    ['tailwindcss', 'sass', 'markdown'],
+    ['wordpress', 'strapi', 'contentful', 'prismic', 'shopify'],
 ]
 ---
 
@@ -31,7 +31,7 @@ const rows = [
 <script type="module" hoist>
     const section = document.querySelector('#frameworks');
     const length = 256;
-    const threshold = [0, ...Array.from({ length }, (_, i) => i / length)];
+    const threshold = [0, ...Array.from({ length }, (_, i) => i / length), 1];
     let prevY = 0;
     let prevRatio = 0;
     let prevTimestamp = 0;
@@ -45,8 +45,8 @@ const rows = [
         let direction = 'forwards';
         if (dir === 1) {
             if (ratio > prevRatio) {
-                value = round(1 - entry.intersectionRatio);
-                direction = 'reverse';
+                value = 1;
+                direction = 'forward';
             } else {
                 value = round(entry.intersectionRatio);
                 direction = 'forward';
@@ -56,13 +56,12 @@ const rows = [
                 value = round(entry.intersectionRatio);
                 direction = 'forward';
             } else {
-                value = round(1 - entry.intersectionRatio);
-                direction = 'reverse';
+                value = 1;
+                direction = 'forward';
             }
         }
         requestAnimationFrame((timestamp) => {
             if (prevTimestamp === timestamp) return;
-            console.log(value);
             if (value !== prevRatio) {
                 entry.target.style.setProperty('--ratio', value);
             }
@@ -105,6 +104,7 @@ const rows = [
         padding: 4rem var(--size-500);
         opacity: 0.4;
         width: 100vw;
+        color: var(--color-midnight);
     }
     .row, .logos {
         display: contents;
@@ -161,6 +161,12 @@ const rows = [
             --scale: 1.45;
             --gap: 12rem;
         }
+        .row:nth-child(n + 4) {
+            --offset: -50%;
+            --tz: -4px;
+            --scale: 1.75;
+            --gap: 16rem;
+        }
         .logos {
             transform-origin: center center;
             margin: 0 auto;
@@ -196,9 +202,14 @@ const rows = [
 
     @keyframes scroll {
         from {
-            transform: translateZ(var(--tz, 0)) scale(var(--scale, 1)) translateX(-100%);
+            opacity: 0;
+            transform: translateZ(var(--tz, 0)) scale(var(--scale, 1)) translateX(-50%);
+        }
+        50% {
+            opacity: 0;
         }
         to {
+            opacity: 1;
             transform: translateZ(var(--tz, 0)) scale(var(--scale, 1)) translateX(0%);
         }
     }

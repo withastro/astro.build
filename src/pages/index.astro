@@ -3,7 +3,7 @@ import { Icon, Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
 import Banner from '../components/Banner.astro';
 import Nav from '../components/Nav.astro';
-import Link from '../components/Link.astro';
+import PixelLink from '../components/PixelLink.astro';
 import Panel from '../components/Panel.astro';
 import Checklist from '../components/Checklist.astro';
 
@@ -12,15 +12,15 @@ import Trusted from '../components/landing/Trusted.astro';
 import Demo from '../components/landing/Demo.astro';
 import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
-import Frameworks from '../components/landing/Frameworks.astro';
+import Integrations from '../components/landing/Integrations.astro';
 import Performance from '../components/landing/Performance.astro';
 import Community from '../components/landing/Community.astro';
 import Sponsors from '../components/landing/Sponsors.astro';
 import Footer from '../components/landing/Footer.astro';
 
-import { getStars } from '../utils.ts';
+// import { getStars } from '../utils.ts';
+// const stars = await getStars();
 
-const stars = await getStars();
 const meta = {
 	title: 'Astro',
 	description: 'Build faster websites with less client-side JavaScript',
@@ -60,8 +60,7 @@ const meta = {
 			<Hero>
 				<Fragment slot="title">Static sites, solved.</Fragment>
 				<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
-				<Link href="/docs/getting-started">Get Started</Link>
-				<Link href="https://github.com/withastro/astro"><Sprite pack="mdi" name="star" size="1em"/>{stars}</Link>
+				<PixelLink href="/docs/getting-started">Get Started</PixelLink>
 			</Hero>
 			
 			<Trusted>
@@ -128,7 +127,7 @@ const meta = {
 				<Fragment slot="cite">Eric Simons, StackBlitz CEO</Fragment>
 			</Quote>
 
-			<Frameworks>
+			<Integrations>
 				<Fragment slot="title">
 					Integration Ready
 				</Fragment>
@@ -136,7 +135,7 @@ const meta = {
 					<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
 					<p>If you don't need a framework, Astro can just as easily use HTML with progressively enhanced vanilla JS.</p>
 				</Fragment>
-			</Frameworks>
+			</Integrations>
 			
 			<Performance>
 				<Fragment slot="title">Peak Performance</Fragment>
@@ -150,14 +149,24 @@ const meta = {
 
 			<Community>
 				<Fragment slot="title">Join our community</Fragment>
-				<p>Learn more about Astro, get support and meet other devs in our discord community.</p>
+				<p>Learn more about Astro, get support, and meet thousands of other devs in our Discord community!</p>
 			</Community>
 
 			<Sponsors>
 				<Fragment slot="title">Sponsored by</Fragment>
 			</Sponsors>
 
-			<Footer />
+			<Footer>
+				<Fragment slot="logo">
+					<a href="https://devtools.fm/episode/14">
+						<span>
+							<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
+						</span>
+					</a>
+				</Fragment>
+				<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
+				<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
+			</Footer>
 		</main>
 	</Sprite.Provider>
 </body>
