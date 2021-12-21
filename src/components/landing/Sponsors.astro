@@ -41,12 +41,12 @@ const individuals = users.filter(user => isUser(user)).map(user => getUser(user)
                 <li><a href={sponsor.href} title={sponsor.title} rel="sponsored"><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} aria-hidden="true" /></span></a></li>
             ))}
         </ul>
-        <ul class="sponsors individual">
+        <ul class="sponsors individuals">
             {individuals.map(user => (
                 <li>
                     <a class="individual" title={user.name} href={user.href} rel="sponsored">
-                        <span>
-                            <img aria-hidden="true" loading="lazy" src={user.image} width="64" height="64" alt={user.name} data-initials={user.initials} />
+                        <span data-initials={user.initials}>
+                            <img aria-hidden="true" loading="lazy" src={user.image} width="64" height="64" alt={user.name} />
                         </span>
                     </a>
                 </li>
@@ -85,7 +85,7 @@ const individuals = users.filter(user => isUser(user)).map(user => getUser(user)
     text-align: center;
     color: var(--color-dusk);
 }
-ul.individual {
+ul.individuals {
     list-style: none;
     display: flex;
     flex-flow: row wrap;
@@ -95,30 +95,35 @@ ul.individual {
     max-width: 40rem;
 }
 .individual {
+    --size: 3rem;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 .individual img {
     pointer-events: none;
     position: relative;
-    --size: 3rem;
     width: var(--size);
     height: var(--size);
-    border-radius: 50%;
+    aspect-ratio: 1 / 1;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
-.individual img:not([src])::before {
+.individual span::before {
+    content: "";
     content: attr(data-initials);
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 0;
     background: var(--color-dusk);
     color: white;
     font-family: var(--font-display);
@@ -127,6 +132,9 @@ ul.individual {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+.individual img:not([src]) {
+    display: none;
 }
 
 .sponsors {
