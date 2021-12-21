@@ -1,15 +1,21 @@
 ---
-import Section from './Section.astro';
 import Quote from './Quote.astro';
 import { Sprite } from 'astro-icon';
 import Grid from './Grid.astro';
+import { social } from '../../config.ts';
 
 const { quote = true } = Astro.props;
+const YYYY = new Date().getFullYear();
 ---
 
 <footer>
+    <div class="background">
+        <div class="blob" />
+        <Grid class="footer-grid" />
+    </div>
+
     {quote && (
-        <Quote color="white" background={false}>
+        <Quote color="white" blobs={false}>
             <Fragment slot="logo">
                 <slot name="logo" />
             </Fragment>
@@ -18,26 +24,60 @@ const { quote = true } = Astro.props;
         </Quote>
     )}
     
-    <div class="background">
-        <div class="blob" />
-        <Grid class="footer-grid" />
+    <div class="container content">
+        <ul class="main">
+            <li class="logo">
+                <Sprite class="logomark" name="logo-single-color" size="4.5rem" fill="white" title="Astro" />
+                <Sprite class="wordmark" name="wordmark-single-color" width="10rem" height="4rem" fill="white" title="Astro" />
+            </li>
+            {social.map(item => (
+                <li class="icon">
+                    <a href={item.href} title={item.title}>
+                        <Sprite name={item.icon} size="3em" fill="white" />
+                    </a>
+                </li>
+            ))}
+        </ul>
+        <ul class="links">
+            <li>&copy; {YYYY} Astro Technology Co.</li>
+            <li><a href="/terms">Legal</a></li>
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="mark">
+            <li><Sprite class="wordmark" name="wordmark-single-color" width="10rem" height="4rem" fill="white" title="Astro" /></li>
+            <li>
+                <address>
+                    <p>123 Main Street</p>
+                    <p>Oakland CA 12345</p>
+                </address>
+            </li>
+        </ul>
     </div>
 </footer>
 
 <style>
     footer {
         overflow: hidden;
-        min-height: max(175vh, 1280px);
-        --offset: 50vh;
-        margin-top: calc(var(--offset) * -1);
-        padding-top: var(--offset);
+        --height: max(75vh, 1080px);
+        min-height: var(--height);
         position: relative;
-        background: var(--color-tan) linear-gradient(180deg, var(--color-tan) 0%, #E8ADB7 25%, #C776BE 50%, #7D32DE 75%, #6732FC 100%);
+        background: var(--color-tan) linear-gradient(180deg, #E8ADB7, #C776BE, #9039CF, #7D32DE);
+    }
+    footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: radial-gradient(200% 100% at 50% 100%, #0029FF 0%, #6D39FF 30%, rgba(255, 153, 0, 0) 100%);
     }
     footer > :global(.quote) {
         z-index: 1;
         background: none;
-        margin-bottom: 25vh;
+        margin-top: 10vh;
+        margin-bottom: 20vh;
     }
     .footer-grid {
         position: absolute;
@@ -53,7 +93,126 @@ const { quote = true } = Astro.props;
         bottom: 0;
         margin-top: calc(var(--height) * -0.9);
         height: calc(var(--height) * 1.25);
-        z-index: 0;
         overflow: hidden;
+    }
+    .content {
+        position: relative;
+        z-index: 1;
+        color: white;
+        margin-bottom: 6.5rem;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .content ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+    .content a {
+        color: white;
+        text-decoration: none;
+    }
+    .content a:hover,
+    .content a:focus,
+    .content a:active {
+        color: var(--color-red) !important;
+    }
+    ul > li + li {
+        margin-left: 1rem;
+    }
+    ul.main > li:nth-child(2) {
+        margin-left: auto !important;
+    }
+    .logo .logomark {
+        display: none;
+    }
+    .logo .wordmark {
+        display: block;
+        margin-left: 1rem;
+    }
+    .links {
+        order: 9;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        font-size: var(--size-400);
+    }
+    .links > li + li {
+        margin-left: 1rem;
+        padding-left: 1rem;
+        border-left: 1px solid rgba(255, 255, 255, 0.6);
+    }
+     .content ul.mark {
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: max-content;
+        margin-left: 1rem;
+    }
+    .mark li:first-child {
+        display: none;
+    }
+    .mark > li:nth-child(2) {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    .mark address {
+        font-style: normal;
+        display: flex;
+    }
+    .mark address p {
+        font-size: var(--size-400);
+        opacity: 0.75;
+    }
+    .mark address p + p {
+        margin-left: 1rem;
+    }
+
+    @media (min-width: 52rem) {
+        .logo {
+            padding: 0;
+        }
+        .logo .logomark {
+            display: block;
+        }
+        .logo .wordmark {
+            display: none;
+        }
+        .content {
+            grid-template-columns: 1fr max-content;
+        }
+        .content ul.mark {
+            grid-row: 1 / 3;
+            margin-top: 0;
+            margin-left: auto;
+            padding-right: 2rem;
+        }
+        ul.main {
+            height: 6rem;
+        }
+        ul.main > li:nth-child(2) {
+            margin-left: 2rem !important;
+        }
+        .links {
+            order: initial;
+            grid-row: 2;
+        }
+        .mark {
+            margin-top: 3rem;
+        }
+        .mark li:first-child {
+            display: block;
+        }
+        .mark address {
+            flex-direction: column;
+        }
+        .mark address p + p {
+            margin-left: 0;
+            margin-top: 1rem;
+        }
+    }
+
+    @media (min-width: 64rem) {
+        .content ul.mark {
+            padding-right: 6rem;
+        }
     }
 </style>

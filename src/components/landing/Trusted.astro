@@ -3,7 +3,7 @@ import Panel from '../Panel.astro'
 ---
 
 <section>
-    <Panel background="color-dawn" offset={-4}>
+    <Panel background="var(--color-dawn)" offset={-4}>
         <Fragment slot="title">
             <h3 class="head-sm"><slot name="title" /></h3>
         </Fragment>
@@ -41,6 +41,11 @@ section {
 @media (min-width: 64rem) {
     .logos {
         gap: 4rem;
+    }
+}
+@media (min-width: 80rem) {
+    .logos :global(svg) {
+        height: 3rem;
     }
 }
 .logos > :global(li) {

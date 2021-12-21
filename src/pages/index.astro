@@ -18,8 +18,8 @@ import Community from '../components/landing/Community.astro';
 import Sponsors from '../components/landing/Sponsors.astro';
 import Footer from '../components/landing/Footer.astro';
 
-// import { getStars } from '../utils.ts';
-// const stars = await getStars();
+import { getStars } from '../utils.ts';
+const stars = await getStars();
 
 const meta = {
 	title: 'Astro',
@@ -60,9 +60,8 @@ const meta = {
 			<Hero>
 				<Fragment slot="title">Static sites, solved.</Fragment>
 				<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
-				<PixelLink href="/docs/getting-started">Get Started</PixelLink>
-				<PixelLink variant="outline" href="/docs/getting-started">GitHub</PixelLink>
-
+				<PixelLink href="/docs/getting-started">Read the docs</PixelLink>
+				<PixelLink variant="outline" href="https://astro.new">Try it now</PixelLink>
 			</Hero>
 			
 			<Trusted>
@@ -102,7 +101,7 @@ const meta = {
 			</Demo>
 
 			<Section>
-				<Panel background="gradient-pop-3">
+				<Panel background="var(--gradient-pop-3)">
 					<Fragment slot="title">
 						<h3 class="head-md">Batteries Included.</h3>
 						<p>Astro does the heavy lifting in the background&mdash;no plugins required.</p>
@@ -143,9 +142,9 @@ const meta = {
 				<Fragment slot="title">Peak Performance</Fragment>
 				<Fragment>
 					<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
-				</Fragment>
-				<Fragment slot="data">
-					<p>Rebuilt my next.js blog using Astro out of curiosity&hellip; holy shit the difference in bundle size.</p>
+					<p style="opacity: 0.75; margin-top: 1rem;">
+						<small>Did you know? 87% of websites currently fail Google's Core Web Vitals (CWV) benchmark. Astro is on a mission to change that.</small>
+					</p>
 				</Fragment>
 			</Performance>
 

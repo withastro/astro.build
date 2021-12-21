@@ -1,10 +1,10 @@
 ---
 import Section from './Section.astro';
-const { background = true, color } = Astro.props;
+const { background, blobs = true, color } = Astro.props;
 ---
 
-<Section class="quote" style={color ? `--color: ${color};` : ''}>
-    {background && <div class="glow" />}
+<Section class="quote" background={background} style={color ? `--color: ${color};` : ''}>
+    {blobs && <div class="glow" />}
 
     <div class="logo">
         <slot name="logo" />
@@ -32,7 +32,7 @@ blockquote {
     justify-content: center;
     text-align: center;
     font-weight: bold;
-    padding: 4rem 1rem;
+    padding: 4rem 2rem;
     font-size: inherit;
     margin: 0 auto;
     max-width: 85ch;

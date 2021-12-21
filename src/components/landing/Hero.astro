@@ -6,8 +6,8 @@ import Grid from './Grid.astro';
         <div class="blob-a" />
         <div class="blob-b" />
         <div class="blob-c" />
-        <Grid />
     </div>
+    <Grid />
     <div class="container content">
         <h2 class="text-gradient"><slot name="title" /></h2>
         <p><slot name="tagline" /></p>
@@ -20,10 +20,18 @@ import Grid from './Grid.astro';
 <style>
     .hero {
         position: relative;
-        background: var(--color-tan) linear-gradient(180deg, var(--color-tan), var(--color-tan) 10rem, #D8C5EF, rgba(225,213,238,0) 100%);
-        padding: 3rem 0;
-        padding-bottom: 256px;
+        background: var(--color-tan) linear-gradient(180deg, var(--color-tan), var(--color-tan) 10rem, #E8ADB7 100%);
+        padding: var(--padding, 4rem) 0;
+        padding-bottom: var(--padding-bottom, 16rem);
         z-index: 0;
+        max-height: 90vh;
+        overflow: hidden;
+    }
+    @supports (padding: clamp(0px, 1vw, 1px)) {
+        .hero {
+            --padding: clamp(4rem, 6vw, 8rem);
+            --padding-bottom: max(calc(var(--padding) * 1.5), 24rem);
+        }
     }
 
     .content {
@@ -53,16 +61,19 @@ import Grid from './Grid.astro';
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1em;
+        gap: 0.5em;
         z-index: 1;
     }
     .cta > :global(* + *) {
-        margin-left: 1em;
+        margin-left: 0.5em;
     }
 
     .background {
         --time: 25s;
-        --blur: blur(128px);
+        --blur: 128px;
+        --scale-x: 1.125;
+        --opacity: 0.8;
+        --ty: 0;
         --aspect-ratio: 16 / 9;
         position: absolute;
         top: 0;
@@ -73,7 +84,22 @@ import Grid from './Grid.astro';
         pointer-events: none;
         z-index: -1;
         backface-visibility: hidden;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0) scaleX(var(--scale-x, 1));
+        opacity: var(--opacity, 1);
+        filter: blur(10px);
+    }
+
+    @media (min-width: 64rem) {
+        .background {
+            --blur: 180px;
+            --ty: -5%;
+            --opacity: 0.9;
+            --scale-x: 1.25;
+        }
+    }
+
+    .blob-a, .blob-b, .blob-c {
+        mix-blend-mode: soft-light;
     }
 
     .blob-a {
@@ -87,7 +113,7 @@ import Grid from './Grid.astro';
         aspect-ratio: var(--aspect-ratio);
         border-radius: 50%;
         transform-origin: center center;
-        filter: var(--blur);
+        filter: blur(var(--blur));
         background: linear-gradient(-170deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         z-index: 0;
         animation: blob-a calc(var(--time) * 3.5) ease-in-out infinite;
@@ -107,7 +133,7 @@ import Grid from './Grid.astro';
         background: red;
         transform-origin: center center;
         background: linear-gradient(259deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
-        filter: var(--blur);
+        filter: blur(var(--blur));
         z-index: -1;
         animation: blob-b calc(var(--time) * 2.5) ease-in-out infinite;
     }
@@ -126,43 +152,43 @@ import Grid from './Grid.astro';
         background: red;
         transform-origin: center center;
         background: linear-gradient(-180deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
-        filter: var(--blur);
+        filter: blur(var(--blur));
         z-index: 1;
-        animation: gradient-c var(--time) ease-in-out alternate infinite;
+        animation: blob-c var(--time) ease-in-out alternate infinite;
     }
 
     @keyframes blob-a {
         0% {
-            transform: rotate(5deg) translate(33%, -10%) scale(0.6);
+            transform: translateY(var(--ty)) rotate(5deg) translate(20%, -10%) scale(0.7);
         }
         67% {
-            transform: rotate(5deg) translate(12.5%, -6.7%) scale(0.9);
+            transform: translateY(var(--ty)) rotate(5deg) translate(12.5%, -6.7%) scale(0.9);
         }
         100% {
-            transform: rotate(0deg) translate(-2%, 4%) scale(0.8);
+            transform: translateY(var(--ty)) rotate(0deg) translate(-2%, 4%) scale(0.8);
         }
     }
 
     @keyframes blob-b {
         0% {
             opacity: 0;
-            transform: rotate(-12deg) translate(-33%, -5%) scale(1);
+            transform: translateY(var(--ty)) rotate(-12deg) translate(-33%, -5%) scale(1);
         }
         50% {
             opacity: 1;
         }
         100% {
             opacity: 0;
-            transform: rotate(0deg) translate(50%, 5%) scale(0.9);
+            transform: translateY(var(--ty)) rotate(0deg) translate(50%, 5%) scale(0.9);
         }
     }
 
     @keyframes blob-c {
         0% {
-            transform: rotate(5deg) translate(0, 0) scale(0.8);
+            transform: translateY(var(--ty)) rotate(5deg) translate(0, 0) scale(0.8);
         }
         100% {
-            transform: rotate(-15deg) translate(15%, 7%) scale(0.8);
+            transform: translateY(var(--ty)) rotate(-15deg) translate(15%, 7%) scale(0.8);
         }
     }
 

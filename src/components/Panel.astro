@@ -7,10 +7,10 @@ if (offset !== 0) {
 ---
 
 <div class="container" style={style}>
-    <article class={`panel elevation-xl size-${size}`} style={`--background: var(--${background});`}>
-        <div class="title">
+    <article class={`panel elevation-xl size-${size}`} style={`--background: ${background};`}>
+        {Astro.slots.title && <div class="title">
             <slot name="title" />
-        </div>
+        </div>}
         <slot />
     </article>
 </div>
