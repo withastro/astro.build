@@ -72,7 +72,7 @@ import Grid from './Grid.astro';
         --time: 25s;
         --blur: 128px;
         --scale-x: 1.125;
-        --opacity: 0.8;
+        --opacity: 0.9;
         --ty: 0;
         --aspect-ratio: 16 / 9;
         position: absolute;
@@ -86,20 +86,20 @@ import Grid from './Grid.astro';
         backface-visibility: hidden;
         transform: translate3d(0,0,0) scaleX(var(--scale-x, 1));
         opacity: var(--opacity, 1);
-        filter: blur(10px);
+        filter: blur(var(--blur)) saturate(1.1);
     }
 
     @media (min-width: 64rem) {
         .background {
             --blur: 180px;
             --ty: -5%;
-            --opacity: 0.9;
+            /* --opacity: 1; */
             --scale-x: 1.25;
         }
     }
 
     .blob-a, .blob-b, .blob-c {
-        mix-blend-mode: soft-light;
+        will-change: transform;
     }
 
     .blob-a {
@@ -113,7 +113,6 @@ import Grid from './Grid.astro';
         aspect-ratio: var(--aspect-ratio);
         border-radius: 50%;
         transform-origin: center center;
-        filter: blur(var(--blur));
         background: linear-gradient(-170deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         z-index: 0;
         animation: blob-a calc(var(--time) * 3.5) ease-in-out infinite;
@@ -133,7 +132,6 @@ import Grid from './Grid.astro';
         background: red;
         transform-origin: center center;
         background: linear-gradient(259deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
-        filter: blur(var(--blur));
         z-index: -1;
         animation: blob-b calc(var(--time) * 2.5) ease-in-out infinite;
     }
@@ -152,7 +150,6 @@ import Grid from './Grid.astro';
         background: red;
         transform-origin: center center;
         background: linear-gradient(-180deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
-        filter: blur(var(--blur));
         z-index: 1;
         animation: blob-c var(--time) ease-in-out alternate infinite;
     }
