@@ -16,6 +16,14 @@ const { title, description, image = 'https://astro.build/social.jpg', canonicalU
 <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap.xml"/>
 
+<!-- Preload -->
+<link rel="preload" as="style" href="/sanitize.css">
+<link rel="preload" as="style" href={Astro.resolve('../styles/main.css')}>
+<link rel="preload" as="font" href="/fonts/RTAliasMedium-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" as="font" href="/fonts/RTAliasMedium-RegularOblique.woff2" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" as="font" href="/fonts/RTAliasMedium-Bold.woff2" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" as="font" href="/fonts/RTAliasMedium-BoldOblique.woff2" type="font/woff2" crossorigin="anonymous" />
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
@@ -39,8 +47,3 @@ const { title, description, image = 'https://astro.build/social.jpg', canonicalU
 <!-- Assets -->
 <link rel="stylesheet" href="/sanitize.css" />
 <link rel="stylesheet" href={Astro.resolve('../styles/main.css')} />
-
-<link rel="preload" as="font" href="/fonts/RTAliasMedium-Regular.woff2" type="font/woff2" crossorigin="anonymous" />
-<link rel="preload" as="font" href="/fonts/RTAliasMedium-RegularOblique.woff2" type="font/woff2" crossorigin="anonymous" />
-<link rel="preload" as="font" href="/fonts/RTAliasMedium-Bold.woff2" type="font/woff2" crossorigin="anonymous" />
-<link rel="preload" as="font" href="/fonts/RTAliasMedium-BoldOblique.woff2" type="font/woff2" crossorigin="anonymous" />
