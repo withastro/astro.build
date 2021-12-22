@@ -26,6 +26,12 @@ import Grid from './Grid.astro';
         z-index: 0;
         overflow: hidden;
         max-height: 100vh;
+        max-height: 100svh;
+    }
+    @supports (-webkit-touch-callout: none) {
+        .hero {
+            height: -webkit-fill-available;
+        }
     }
     @supports (padding: clamp(0px, 1vw, 1px)) {
         .hero {
@@ -105,10 +111,28 @@ import Grid from './Grid.astro';
 
     @media (min-width: 64rem) {
         .background {
-            --blur: 180px;
             --ty: -5%;
             /* --opacity: 1; */
             --scale-x: 1.25;
+        }
+    }
+
+    /* Firefox tweaks */
+    @supports (-moz-appearance: none) {
+        .background {
+            --blur: 600px;
+            --opacity: 0.7;
+        }
+        .blob-a, .blob-b, .blob-c {
+            mix-blend-mode: soft-light;
+        }
+    }
+
+    /* Safari tweaks */
+    @supports (-webkit-appearance: none) {
+        .background {
+            --blur: 80px;
+            --opacity: 0.8;
         }
     }
 

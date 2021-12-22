@@ -78,6 +78,12 @@ cite {
     animation: glow-after calc(var(--time) * 5) ease-in-out infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .glow, .glow::before, .glow::after {
+        animation-play-state: paused;
+    }
+}
+
 @keyframes glow {
     0%, 100% {
         transform: scale(1.2) translateX(0) rotate(5deg);
