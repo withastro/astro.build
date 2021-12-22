@@ -17,65 +17,10 @@ const rows = [
             <slot />
         </div>
     </div>
-    <ul class="integrations">
-        {rows.map(row => (
-            <li class="row" style={`--n: ${row.length};`}>
-                <ul class="logos">
-                    {row.map(icon => <li><Icon name={`logos/${icon}`} height="4rem" /></li>)}
-                </ul>
-            </li>
-        ))}
+    <ul class="container integrations">
+        {rows.map(row => row.map(icon => <li><Icon name={`logos/${icon}`} height="4rem" /></li>))}
     </ul>
 </Section>
-
-<script type="module" hoist>
-    const section = document.querySelector('#frameworks');
-    const length = 256;
-    const threshold = [0, ...Array.from({ length }, (_, i) => i / length), 1];
-    let prevY = 0;
-    let prevRatio = 0;
-    let prevTimestamp = 0;
-    let prevDirection = 'forwards';
-    const round = (n) => Math.floor(n * 1000) / 1000;
-    const io = new IntersectionObserver(([entry]) => {
-        const y = entry.boundingClientRect.y
-        const ratio = entry.intersectionRatio;
-        const dir = y > prevY ? 1 : -1;
-        let value = 0
-        let direction = 'forwards';
-        if (dir === 1) {
-            if (ratio > prevRatio) {
-                value = 1;
-                direction = 'forward';
-            } else {
-                value = round(entry.intersectionRatio);
-                direction = 'forward';
-            }
-        } else {
-            if (ratio > prevRatio) {
-                value = round(entry.intersectionRatio);
-                direction = 'forward';
-            } else {
-                value = 1;
-                direction = 'forward';
-            }
-        }
-        requestAnimationFrame((timestamp) => {
-            if (prevTimestamp === timestamp) return;
-            if (value !== prevRatio) {
-                entry.target.style.setProperty('--ratio', value);
-            }
-            if (direction !== prevDirection) {
-                entry.target.style.setProperty('--direction', direction);
-            }
-            prevTimestamp = timestamp;
-            prevY = y;
-            prevRatio = ratio;
-            prevDirection = direction;
-        })
-    }, { rootMargin: '15% 0px 0px 5%', threshold });
-    io.observe(section);
-</script>
 
 <style>
     .content {
@@ -100,28 +45,16 @@ const rows = [
         gap: 0.5rem 2rem;
         padding: 4rem var(--size-500);
         opacity: 0.4;
-        width: 100vw;
-        max-width: 100rem;
         color: var(--color-midnight);
     }
-    .row, .logos {
-        display: contents;
-    }
-    .logos > li {
-        max-width: max-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-    }
-    .logos svg {
-        height: var(--size-900);
-    }
-    .logos > li[aria-hidden] {
-        display: none;
+    .integrations svg {
+        height: var(--size-800);
     }
 
     @media (min-width: 64rem) {
+        .integrations svg {
+            height: var(--size-900);
+        }
         .content {
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 1rem;
@@ -131,84 +64,6 @@ const rows = [
         }
         .body {
             grid-column: 3 / 5;
-        }
-    }
-
-    @media (min-width: 80rem) {
-        .logos > li[aria-hidden] {
-            display: flex;
-        }
-        .logos svg {
-            height: 4rem;
-        }
-        .integrations {
-            margin-top: 4rem;
-            display: flex;
-            grid-template-rows: repeat(3, 4.5rem);
-            overflow: hidden;
-            padding: 4rem 0;
-        }
-        .row {
-            display: flex;
-            perspective: 1px;
-            height: 100%;
-        }
-        .row:nth-child(even) {
-            --offset: -33%;
-            --tz: -1px;
-            --scale: 1.45;
-            --gap: 12rem;
-        }
-        .row:nth-child(n + 4) {
-            --offset: -50%;
-            --tz: -4px;
-            --scale: 1.75;
-            --gap: 16rem;
-        }
-        .logos {
-            transform-origin: center center;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(var(--n), auto);
-            gap: var(--gap, 4rem);
-            padding: 0 2rem;
-            height: 100%;
-            align-items: center;
-            
-            animation-name: scroll;
-            animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            
-            /* Bind animation to progress of `var(--ratio)` */
-            animation-play-state: paused;
-            animation-duration: 1s;
-            animation-delay: calc(var(--ratio) * -1s);
-            animation-direction: var(--direction);
-
-            /* These clean up some weirdness with the horizontal animation */
-            animation-iteration-count: 1;
-            animation-fill-mode: both;
-        }
-        .logos > li {
-            max-width: max-content;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            transform: scale(calc(1 + calc(var(--scale, 1) - 1)));
-        }
-    }
-
-    @keyframes scroll {
-        from {
-            opacity: 0;
-            transform: translateZ(var(--tz, 0)) scale(var(--scale, 1)) translateX(-50%);
-        }
-        50% {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-            transform: translateZ(var(--tz, 0)) scale(var(--scale, 1)) translateX(0%);
         }
     }
 </style>
