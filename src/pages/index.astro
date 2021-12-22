@@ -1,6 +1,7 @@
 ---
 import { Icon, Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
+import SkipLink from '../components/SkipLink.astro';
 import Banner from '../components/Banner.astro';
 import Nav from '../components/Nav.astro';
 import PixelLink from '../components/PixelLink.astro';
@@ -53,10 +54,11 @@ const meta = {
 
 <body>
 	<Sprite.Provider>
+		<SkipLink />
 		<Banner items={['Astro v1.0.0 is now live!', 'Read the documentation to get started!']} />
 		<Nav offset={2} />
 
-		<main>
+		<main id="content">
 			<Hero>
 				<Fragment slot="title">Static sites, solved.</Fragment>
 				<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
