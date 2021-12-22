@@ -59,7 +59,7 @@ const YYYY = new Date().getFullYear();
 <style>
     footer {
         overflow: hidden;
-        --height: max(75vh, 1080px);
+        --height: clamp(min-content, 75vh, 56rem);
         min-height: var(--height);
         position: relative;
         background: var(--color-tan) linear-gradient(180deg, #E8ADB7, #C776BE, #9039CF, #7D32DE);
@@ -76,8 +76,7 @@ const YYYY = new Date().getFullYear();
     footer > :global(.quote) {
         z-index: 1;
         background: none;
-        margin-top: 10vh;
-        margin-bottom: 20vh;
+        margin-bottom: 10vh;
     }
     .footer-grid {
         position: absolute;

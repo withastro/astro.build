@@ -1,8 +1,9 @@
 ---
 import Panel from '../Panel.astro'
+import Section from './Section.astro'
 ---
 
-<section>
+<Section id="trusted">
     <Panel background="var(--color-dawn)" offset={-4}>
         <Fragment slot="title">
             <h3 class="head-sm"><slot name="title" /></h3>
@@ -12,12 +13,12 @@ import Panel from '../Panel.astro'
             <slot />
         </ul>
     </Panel>
-</section>
+</Section>
 
 <style>
-section {
+#trusted {
     background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);
-    padding-bottom: 12rem;
+    padding-top: 0;
 }
 .logos {
     margin: 0;
@@ -25,9 +26,14 @@ section {
     width: 100%;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1.5rem;
     color: var(--color-dusk);
+}
+@media (min-width: 32rem) {
+    .logos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 @media (min-width: 52rem) {
     .logos {
@@ -42,8 +48,11 @@ section {
     .logos {
         gap: 4rem;
     }
+    .logos :global(svg) {
+        height: 2.5rem;
+    }
 }
-@media (min-width: 80rem) {
+@media (min-width: 82rem) {
     .logos :global(svg) {
         height: 3rem;
     }

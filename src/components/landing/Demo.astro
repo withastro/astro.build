@@ -1,7 +1,8 @@
 ---
+import Section from './Section.astro';
 const { reverse } = Astro.props;
 ---
-<section>
+<Section class="demo">
     <div class="container">
         <div class="content">
             <h3 class="head-md title"><slot name="title" /></h3>
@@ -12,13 +13,11 @@ const { reverse } = Astro.props;
             <slot name="illustration" />
         </div>
     </div>
-</section>
+</Section>
 
 <style>
-section {
-    background: var(--color-tan);
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+.demo {
+    padding-top: 0;
 }
 .container {
     display: grid;
@@ -36,6 +35,14 @@ section {
 .illo :global(svg) {
     transform: scale(1.25);
     width: 100%;
+    margin-top: -4rem;
+    margin-bottom: -4rem;
+}
+@media (min-width: 40rem) {
+    .illo :global(svg) {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 @media (min-width: 64rem) {
     .reverse {
@@ -48,7 +55,7 @@ section {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .content {
-        padding: 2rem 4rem;
+        padding: 2rem;
     }
 }
 @media (min-width: 82rem) {
