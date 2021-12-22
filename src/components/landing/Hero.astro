@@ -28,11 +28,6 @@ import Grid from './Grid.astro';
         max-height: 100vh;
         max-height: 100svh;
     }
-    @supports (-webkit-touch-callout: none) {
-        .hero {
-            height: -webkit-fill-available;
-        }
-    }
     @supports (padding: clamp(0px, 1vw, 1px)) {
         .hero {
             --padding: clamp(4rem, 6vw, 8rem);
@@ -40,7 +35,7 @@ import Grid from './Grid.astro';
         }
     }
 
-    @media (min-width: 52rem) {
+    @media (min-width: 52rem) and (min-height: 40rem) {
         .hero {
             max-height: 80vh;
         }
@@ -55,13 +50,18 @@ import Grid from './Grid.astro';
     h2 {
         --fill: var(--gradient-pop-1);
         font-size: 4rem;
-        font-size: clamp(2.5rem, calc(3vw + 3rem), 6.5rem);
+        font-size: var(--size-900);
         font-family: var(--font-display);
         line-height: 1.1;
         margin-bottom: 1.25rem;
     }
+    @media (min-width: 52rem) {
+        h2 {
+            font-size: var(--size-1000);
+        }
+    }
     p {
-        font-size: min(calc(1vw + 1rem), 1.5rem);
+        font-size: var(--size-500);
         max-width: min(64ch, calc(100% - 1rem));
         margin-left: auto;
         margin-right: auto;
