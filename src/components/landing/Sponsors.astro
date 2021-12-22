@@ -42,15 +42,19 @@ const individuals = users.filter(user => isUser(user)).map(user => getUser(user)
             ))}
         </ul>
         <ul class="sponsors individuals">
-            {individuals.map(user => (
-                <li>
-                    <a class="individual" title={user.name} href={user.href} rel="sponsored">
-                        <span data-initials={user.initials}>
-                            <img aria-hidden="true" loading="lazy" src={user.image} width="64" height="64" alt={user.name} />
-                        </span>
-                    </a>
-                </li>
-            ))}
+            {individuals.map(user => {
+                const Tag = user.href ? 'a' : 'span';
+                const tagProps = user.href ? { href: user.href, rel: 'sponsored' } : {};
+                return (
+                    <li>
+                        <Tag class="individual" title={user.name} {...tagProps}>
+                            <span data-initials={user.initials}>
+                                <img aria-hidden="true" loading="lazy" src={user.image} width="64" height="64" alt={user.name} />
+                            </span>
+                        </Tag>
+                    </li>
+                )
+            })}
         </ul>
         <div class="cta"><slot name="cta" /></div>
     </div>
@@ -99,6 +103,7 @@ ul.individuals {
     border: 0.25rem solid transparent;
 }
 .individual {
+    position: relative;
     --size: 3rem;
     width: var(--size);
     height: var(--size);
