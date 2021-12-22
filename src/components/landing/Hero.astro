@@ -24,13 +24,19 @@ import Grid from './Grid.astro';
         padding: var(--padding, 4rem) 0;
         padding-bottom: var(--padding-bottom, 16rem);
         z-index: 0;
-        max-height: 90vh;
         overflow: hidden;
+        max-height: 100vh;
     }
     @supports (padding: clamp(0px, 1vw, 1px)) {
         .hero {
             --padding: clamp(4rem, 6vw, 8rem);
             --padding-bottom: max(calc(var(--padding) * 1.5), 24rem);
+        }
+    }
+
+    @media (min-width: 52rem) {
+        .hero {
+            max-height: 80vh;
         }
     }
 
@@ -42,7 +48,8 @@ import Grid from './Grid.astro';
     
     h2 {
         --fill: var(--gradient-pop-1);
-        font-size: min(calc(5vw + 3rem), 6.5rem);
+        font-size: 4rem;
+        font-size: clamp(2.5rem, calc(3vw + 3rem), 6.5rem);
         font-family: var(--font-display);
         line-height: 1.1;
         margin-bottom: 1.25rem;
@@ -55,18 +62,25 @@ import Grid from './Grid.astro';
         margin-bottom: 1.5em;
     }
     .cta {
-        position: absolute;
+        position: relative;
         left: 0;
         right: 0;
         display: flex;
+        flex-flow: row wrap;
         align-items: center;
         justify-content: center;
         gap: 0.5em;
         z-index: 1;
     }
-    .cta > :global(* + *) {
-        margin-left: 0.5em;
+
+    @media (min-width: 52rem) {
+        .cta {
+            position: absolute;
+        }
     }
+    /* .cta > :global(* + *) {
+        margin-top: 0.5em;
+    } */
 
     .background {
         --time: 25s;

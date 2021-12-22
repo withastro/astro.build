@@ -106,6 +106,7 @@ const YYYY = new Date().getFullYear();
     .content ul {
         list-style: none;
         display: flex;
+        flex-flow: row wrap;
         align-items: center;
     }
     .content a {
@@ -130,16 +131,29 @@ const YYYY = new Date().getFullYear();
         display: block;
         margin-left: 1rem;
     }
+    .icon {
+        transform: scale(0.8);
+    }
     .links {
         order: 9;
         margin-top: 1rem;
         margin-left: 1rem;
         font-size: var(--size-400);
+        justify-content: center;
     }
     .links > li + li {
         margin-left: 1rem;
         padding-left: 1rem;
         border-left: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .links > li:first-child {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .links > li + li:nth-child(2) {
+        margin-left: 0;
+        padding-left: 0;
+        border: none;
     }
      .content ul.mark {
         flex-direction: column;
@@ -167,6 +181,9 @@ const YYYY = new Date().getFullYear();
     }
 
     @media (min-width: 52rem) {
+        .icon {
+            transform: scale(1);
+        }
         .logo {
             padding: 0;
         }
@@ -194,6 +211,16 @@ const YYYY = new Date().getFullYear();
         .links {
             order: initial;
             grid-row: 2;
+            justify-content: flex-start;
+        }
+        .links > li:first-child {
+            width: initial;
+            margin-bottom: 0;
+        }
+        .links > li + li:nth-child(2) {
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.6);
         }
         .mark {
             margin-top: 3rem;

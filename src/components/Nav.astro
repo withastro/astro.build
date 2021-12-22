@@ -15,7 +15,7 @@ const { offset = 0 } = Astro.props;
             <a href="/" title="Astro">
                 <h1 class="visually-hidden">Astro</h1>
                 <Sprite name="logo" size="3em" />
-                <Sprite name="wordmark" height="3.5em" width="6em" />
+                <Sprite class="wordmark" name="wordmark" height="3.5em" width="6em" />
             </a>
         </li>
 
@@ -45,13 +45,6 @@ const { offset = 0 } = Astro.props;
     height: calc(calc(var(--offset) * 1rem) + 1px);
     background-color: var(--color-tan);
 }
-.sentinel {
-    --size: 1px;
-    height: var(--size);
-    width: var(--size);
-    background: transparent;
-    pointer-events: none;
-}
 nav {
     width: 100%;
     position: sticky;
@@ -61,7 +54,6 @@ nav {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 2;
-    height: calc(2px + 4.5rem);
     margin-top: calc(var(--offset) * 1rem);
     margin-bottom: -4.5rem;
 }
@@ -90,6 +82,7 @@ nav[stuck]::before {
 ul {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 1.33rem;
     padding: 0 0.5rem;
 }
@@ -108,6 +101,25 @@ li + li {
 .logo a {
     display: flex;
     text-transform: lowercase;
+    align-items: center;
+}
+.logo svg {
+    transform: scale(0.8);
+}
+.wordmark {
+    display: none;
+}
+
+@media (min-width: 52rem) {
+    nav {
+        height: calc(2px + 4.5rem);
+    }
+    .logo svg {
+        transform: scale(1);
+    }
+    .wordmark {
+        display: block;
+    }
 }
 li:not(.icon) + .icon {
     margin-left: 0.75em;
