@@ -1,15 +1,9 @@
 ---
 import { Sprite } from 'astro-icon';
 import { social } from '../config.ts';
-
-const { offset = 0 } = Astro.props;
 ---
 
-<script type="module" hoist src={Astro.resolve('../scripts/nav.ts')} />
-
-{offset > 0 && <div class="background" style={`--offset: ${offset};`} />}
-
-<nav class="main" style={`--offset: ${offset};`}>
+<nav class="main" style={`--offset: 2.5;`}>
     <ul class="container">
         <li class="logo">
             <a href="/" title="Astro">
@@ -35,33 +29,35 @@ const { offset = 0 } = Astro.props;
     </ul>
 </nav>
 
+<script type="module" hoist src={Astro.resolve('../scripts/nav.ts')}></script>
+
 <style>
-.background {
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: calc(calc(var(--offset) * 1rem) + 1px);
-    background-color: var(--color-tan);
-}
 nav {
+    --offset-height: calc(var(--offset) * 1rem);
     width: 100%;
     position: sticky;
-    top: -2px;
+    top: calc(((var(--offset-height) * -1) - 1px));
     padding: 0.5rem 0;
     background: linear-gradient(0deg, rgba(var(--color-tan-rgb), 0.7), rgba(var(--color-tan-rgb), 1));
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 2;
-    margin-top: calc(var(--offset) * 1rem);
+    margin-top: 0;
     margin-bottom: -4.5rem;
 }
 
 nav::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: var(--offset-height);
+    z-index: -2;
+}
+
+nav::after {
     position: absolute;
     content: '';
-    top: 0;
+    top: var(--offset-height);
     right: 0;
     bottom: 0;
     left: 0;
@@ -74,7 +70,7 @@ nav::before {
     z-index: -1;
 }
 
-nav[stuck]::before {
+nav[stuck]::after {
     opacity: 0.5;
     transition-duration: 600ms;
 }
@@ -112,7 +108,7 @@ li + li {
 
 @media (min-width: 52rem) {
     nav {
-        height: calc(2px + 4.5rem);
+        /* height: calc(2px + 4.5rem); */
     }
     .logo svg {
         transform: scale(1);

@@ -75,7 +75,8 @@ const { before, after } = Astro.slots;
 
     .variant-outline {
         --variant: outline;
-        --background: white;
+        --background: var(--color-purple);
+        color: var(--background);
     }
     .variant-outline > a::before {
         position: absolute;
@@ -87,7 +88,7 @@ const { before, after } = Astro.slots;
         display: block;
         transform-origin: bottom center;
         background: linear-gradient(to top, var(--background), rgba(255, 255, 255, 0));
-        opacity: 0.5;
+        opacity: 0.3;
         transform: scaleY(0);
         transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
     }
