@@ -1,14 +1,16 @@
 ---
 import { Sprite } from 'astro-icon';
 import { social } from '../config.ts';
+
+const { invert = false, offset } = Astro.props;
 ---
 
-<nav class="main" style={`--offset: 2.5;`}>
+<nav class={`main ${invert ? 'invert' : ''}`.trim()} style={`--offset: 2.5;`}>
     <ul class="container">
         <li class="logo">
             <a href="/" title="Astro">
                 <h1 class="visually-hidden">Astro</h1>
-                <Sprite name="logo" size="3em" />
+                <Sprite class="logomark" name="logo" size="3em" />
                 <Sprite class="wordmark" name="wordmark" height="3.5em" width="6em" />
             </a>
         </li>
@@ -36,7 +38,7 @@ nav {
     --offset-height: calc(var(--offset) * 1rem);
     width: 100%;
     position: sticky;
-    top: calc(((var(--offset-height) * -1) - 1px));
+    top: calc(((var(--offset-height) * -1) - 1px) - 0.5rem);
     padding: 0.5rem 0;
     background: linear-gradient(0deg, rgba(var(--color-tan-rgb), 0.7), rgba(var(--color-tan-rgb), 1));
     -webkit-backdrop-filter: blur(10px);
@@ -45,6 +47,12 @@ nav {
     margin-top: 0;
     margin-bottom: -4.5rem;
 }
+nav.invert {
+    background: transparent;
+    color: white;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
 
 nav::before {
     content: '';
@@ -52,6 +60,10 @@ nav::before {
     width: 100%;
     height: var(--offset-height);
     z-index: -2;
+}
+nav.invert::before {
+    background: #1f1638;
+    margin-top: -0.5rem;
 }
 
 nav::after {
@@ -87,6 +99,9 @@ li {
     font-family: var(--font-display);
     font-weight: 700;
 }
+nav.invert li {
+    color: white;
+}
 li + li {
     margin-left: 0;
 }
@@ -98,12 +113,21 @@ li + li {
     display: flex;
     text-transform: lowercase;
     align-items: center;
+    color: var(--color-midnight);
 }
 .logo svg {
     transform: scale(0.8);
 }
+.logomark {
+    color: inherit;
+}
+nav.invert .logo svg {
+    color: white;
+    fill: white;
+}
 .wordmark {
     display: none;
+    color: inherit;
 }
 
 @media (min-width: 52rem) {

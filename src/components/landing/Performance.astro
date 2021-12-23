@@ -1,6 +1,7 @@
 ---
 import Section from './Section.astro';
 import Panel from '../Panel.astro';
+import Starfield from '../Starfield.astro';
 
 const tweet = {
     content: 'Rebuilt my Next.js blog using Astro out of curiosity&hellip; holy shit the difference in bundle size.',
@@ -9,7 +10,7 @@ const tweet = {
 ---
 
 <Section class="performance" style="--background: var(--gradient-pop-4);">
-    <div class="stars" />
+    <Starfield height={48} />
     <div class="container">
         <div class="content">
             <h3 class="head-md"><slot name="title" /></h3>
@@ -44,21 +45,6 @@ const tweet = {
         padding-top: calc(var(--size-1000) * 1.5);
         padding-left: 1rem;
         padding-right: 1rem;
-    }
-    .stars {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 62%;
-        left: 0;
-        background-image: url(/stars.png);
-        background-repeat: repeat;
-        -webkit-mask-image: url(/stars-mask.png);
-        -webkit-mask-repeat: repeat;
-        mask-image: url(/stars-mask.png);
-        mask-repeat: repeat;
-        animation: sparkle 10s linear infinite alternate-reverse;
-        pointer-events: none;
     }
     .content {
         color: white;
@@ -146,16 +132,6 @@ const tweet = {
         }
         .container {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
-    @keyframes sparkle {
-        from {
-            -webkit-mask-position: top right;
-            mask-position: top right;
-        }
-        to {
-            -webkit-mask-position: bottom left;
-            mask-position: bottom left;
         }
     }
 </style>

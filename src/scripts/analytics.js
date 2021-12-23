@@ -84,7 +84,7 @@ class MouseHistory {
   }
 }
 
-class MouseEffect {
+export class MouseEffect {
   timeouts = [];
   stopped = false;
   count = 0;
@@ -154,7 +154,12 @@ class MouseEffect {
   }
 }
 
-function run() {
+export function init() {
+  const effect = new MouseEffect();
+  effect.start();
+}
+
+export function lazy() {
   const mouseHistory = new MouseHistory();
   let effect;
   let timeout;
@@ -189,5 +194,3 @@ function run() {
     }
   }, INTERVAL_MS);
 }
-
-run();

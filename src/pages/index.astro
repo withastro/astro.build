@@ -1,8 +1,7 @@
 ---
 import { Icon, Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
-import SkipLink from '../components/SkipLink.astro';
-import Banner from '../components/Banner.astro';
+import Header from '../components/Header.astro';
 import Nav from '../components/Nav.astro';
 import PixelLink from '../components/PixelLink.astro';
 import Panel from '../components/Panel.astro';
@@ -46,8 +45,6 @@ const meta = {
 		main {
 			max-width: 100vw;
 			overflow: hidden;
-			scroll-snap-align: center;
-			scroll-snap-type: proximity;
 		}
 		[astro-icon="logos/stackblitz"] {
 			transform: translateX(-0.5em);
@@ -100,9 +97,9 @@ const meta = {
 
 <body>
 	<Sprite.Provider>
-		<SkipLink />
-		<Banner items={['Astro v1.0.0 is now live!', 'Read the documentation to get started!']} />
-		<Nav />
+		<Header>
+			<Nav />
+		</Header>
 		<main id="content">
 			<Hero>
 				<Fragment slot="title">Static sites, solved.</Fragment>
