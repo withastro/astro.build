@@ -75,7 +75,6 @@ import Grid from './Grid.astro';
         flex-flow: row wrap;
         align-items: center;
         justify-content: center;
-        gap: 0.5em;
         z-index: 1;
     }
 
@@ -84,9 +83,10 @@ import Grid from './Grid.astro';
             position: absolute;
         }
     }
-    /* .cta > :global(* + *) {
-        margin-top: 0.5em;
-    } */
+    .cta > :global(*) {
+        box-sizing: border-box;
+        margin: 0.5rem;
+    }
 
     .background {
         --time: 25s;

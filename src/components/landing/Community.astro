@@ -1,5 +1,6 @@
 ---
 import Section from './Section.astro';
+import Title from './Title.astro';
 import ArrowLink from '../ArrowLink.astro';
 import Panel from '../Panel.astro';
 import { social } from '../../config.ts';
@@ -8,7 +9,7 @@ import { social } from '../../config.ts';
 <Section class="community">
     <Panel size="md" background="var(--color-dawn)">
         <Fragment slot="title">
-            <h3 class="head-md"><slot name="title" /></h3>
+            <h3 class="head-md"><Title id="community"><slot name="title" /></Title></h3>
             <div class="description"><slot /></div>
         </Fragment>
 
