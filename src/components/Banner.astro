@@ -6,31 +6,36 @@ const length = items.join('').length * 8.75;
 ---
 
 <not-marquee style={`--length: ${length};`} aria-hidden="true">
+    <input id="marquee-pause" type="checkbox">
     <Tag {href} class="track">
-        {Array.from({ length: 8 }, (_, i) => <span class="group" id={i === 0 ? 'not-marquee--measure' : undefined}>{items.map(item => <span>{item}</span>)}</span>)}
+        {Array.from({ length: 6 }, (_, i) => <span class="group" style={`--i: ${i};`}>{items.map(item => <span>{item}</span>)}</span>)}
     </Tag>
 </not-marquee>
 
-<script hoist type="module">
-const marquee = document.querySelector('not-marquee');
-const measure = document.querySelector('#not-marquee--measure');
-marquee.style.setProperty('--length', Math.round(measure.getBoundingClientRect().width));
+<script type="module" hoist>
+const checkbox = document.querySelector('#marquee-pause');
+
+checkbox.addEventListener('click', ({ target }) => {
+    const paused = target.checked;
+    localStorage.setItem('astro:marquee-paused', `${paused}`);
+})
 </script>
 
 <style>
     not-marquee {
-        --speed: 15;
-        --gap: 4rem;
-        --tx: calc(calc(var(--length) * 1px) + var(--gap));
+        --color: var(--color-midnight);
+        --height: 2rem;
+        --speed: 25;
+        --gap: var(--size-1000);
         display: flex;
         position: relative;
         width: 100vw;
-        height: 32px;
+        height: var(--height);
         overflow-x: hidden;
 
-        border-top: 1px solid black;
+        border-top: 1px solid var(--color);
         margin-top: -1px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--color);
         font-family: var(--font-display);
         text-transform: uppercase;
         font-size: 0.75em;
@@ -40,22 +45,92 @@ marquee.style.setProperty('--length', Math.round(measure.getBoundingClientRect()
         z-index: 1;
     }
 
-    not-marquee:hover .track {
+    not-marquee::before,
+    not-marquee::after {
+        content: "";
+        width: var(--gap);
+        height: var(--height);
+        position: absolute;
+        top: 0;
+        right: var(--right, auto);
+        bottom: 0;
+        left: var(--left, auto);
+        background: linear-gradient(var(--dir, to right), white, white 5%, rgba(255, 255, 255, 0));
+        z-index: 2;
+    }
+
+    not-marquee::before {
+        --left: calc(var(--height) - 4px);
+        --dir: to right;
+    }
+    not-marquee::after {
+        --right: 0;
+        --dir: to left;
+    }
+
+    input[type="checkbox"] {
+        --size: var(--height);
+        -webkit-appearance: none;
+        appearance: none;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 0;
+        z-index: 2;
+        background: white;
+        margin-top: -1px;
+        margin-left: -1px;
+        border: 1px solid var(--color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input[type="checkbox"]:hover,
+    input[type="checkbox"]:focus {
+        background: var(--color-dusk);
+    }
+
+    input[type="checkbox"]:active {
+        background: var(--color-purple);
+    }
+
+    input[type="checkbox"]:hover::before,
+    input[type="checkbox"]:focus::before,
+    input[type="checkbox"]:active::before {
+        filter: saturate(0) brightness(0) invert(1);
+    }
+    
+    input[type="checkbox"]::before {
+        content: "";
+        width: calc(var(--size) * 0.75);
+        height: calc(var(--size) * 0.75);
+    }
+
+    input[type="checkbox"]::before {
+        /* Pause */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M10 4H5v16h5V4zm9 0h-5v16h5V4z' fill='%2331274a'%3E%3C/path%3E%3C/svg%3E");
+    }
+
+    input[type="checkbox"]:checked::before {
+        /* Play */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M10 20H8V4h2v2h2v3h2v2h2v2h-2v2h-2v3h-2v2z' fill='%2331274a'%3E%3C/path%3E%3C/svg%3E");
+    }
+
+    input[type="checkbox"]:checked ~ .track,
+    .track:hover {
         animation-play-state: paused;
     }
 
     .track {
         height: 100%;
         width: 100%;
-        transform: translateX(calc(var(--tx) * -1.5));
         display: flex;
         align-items: center;
-        /* justify-content: center; */
-        position: absolute;
+
+        position: relative;
         white-space: nowrap;
-        will-change: transform;
         text-decoration: none;
-        color: var(--color-midnight);
+        color: var(--color);
         transition: color 300ms cubic-bezier(0.23, 1, 0.320, 1);
     }
 
@@ -69,35 +144,27 @@ marquee.style.setProperty('--length', Math.round(measure.getBoundingClientRect()
     }
 
     .group {
-        position: relative;
-        display: inline-block;
-        padding: 0.5em 0.5em;
+        position: absolute;
+        display: block;
         animation: marquee calc(var(--speed) * 1s) linear infinite;
+        animation-play-state: inherit;
+        user-select: none;
+        padding-left: var(--gap);
     }
 
     @media (prefers-reduced-motion: reduce) {
-        not-marquee {
-            --gap: 1rem;
-        }
         .track {
-            transform: none;
+            animation-play-state: paused;
             justify-content: flex-start;
-        }
-        .group {
-            animation: none;
-        }
-        span + span::before {
-            content: "•";
-            padding-right: var(--gap);
         }
     }
 
-    span + span {
+    .group > span + span {
         padding-left: var(--gap);
     }
 
     @keyframes marquee {
-        from { transform: translateX(var(--tx)) }
-        to { transform: translateX(0) }
+        from { transform: translateX(calc(100% * var(--i, 0))) }
+        to { transform: translateX(calc(100% * calc(var(--i, 0) - 1))) }
     }
 </style>

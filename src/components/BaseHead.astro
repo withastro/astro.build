@@ -8,6 +8,19 @@ export interface Props {
 const { title, description, image = 'https://astro.build/social.jpg', canonicalURL } = Astro.props;
 ---
 
+<!-- Blocking script -->
+<script>
+  const marqueePaused = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
+  window.addEventListener('DOMContentLoaded', () => {
+    const checkbox = document.querySelector('#marquee-pause');
+    checkbox.checked = marqueePaused;
+    document.body.classList.add('js');
+  });
+  if ('paintWorklet' in CSS) {
+    CSS.paintWorklet.addModule('/pixel.worklet.js');
+  }
+</script>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
