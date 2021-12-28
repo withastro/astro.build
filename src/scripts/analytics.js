@@ -205,11 +205,12 @@ class KonamiCode {
   handleMatch() {
     this.enabled = true;
     this.enable();
-    this.reset();
+    this.inputs = [];
   }
 
   reset() {
     if (this.enabled) {
+      this.enabled = false;
       this.disable();
     }
     if (this.inputs.length) {
