@@ -1,7 +1,6 @@
 // Parts of the below code have been adapted for the web
 // from https://github.com/jeffchannell/jiggle, GNU General Public License v2.0
 const INTERVAL_MS = 10;
-let intervals = [];
 let jiggling = false;
 
 class MouseMath {
@@ -84,8 +83,16 @@ class MouseHistory {
   }
 }
 
+function clearCircle(context,x,y,radius) {
+	context.save();
+	context.beginPath();
+	context.arc(x, y, radius, 0, 2*Math.PI, true);
+	context.clip();
+	context.clearRect(x-radius,y-radius,radius*2,radius*2);
+	context.restore();
+}
+
 export class MouseEffect {
-  timeouts = [];
   stopped = false;
   count = 0;
 
@@ -105,11 +112,14 @@ export class MouseEffect {
     this.handleMouseMove = this.handleMouseMove.bind(this);
   }
 
+  previousTimestamp = -1;
   render(x, y) {
     if (this.stopped) return;
-
-    requestAnimationFrame(() => {
-        this.count++;
+  
+    requestAnimationFrame((timestamp) => {
+        if (this.previousTimestamp === timestamp) {
+          return
+        };
         const { context: ctx } = this;
         const translate = (x, y) => ({ a: 1, b: 0, c: 0, d: 1, e: x, f: y });
         const base = new Path2D();
@@ -123,13 +133,16 @@ export class MouseEffect {
         ctx.fillStyle = 'black';
         ctx.fill(cursor, 'nonzero');
 
-        this.timeouts.push(setTimeout(() => {
-            ctx.clearRect(x, y, 32, 32);
+        this.count++;
+        this.previousTimestamp = timestamp;
+        
+        setTimeout(() => {
+            clearCircle(ctx, x, y, 36)
             this.count--;
             if (this.stopped && this.count <= 0) {
                 this.canvas.remove();
             }
-        }, 500));
+        }, 500);
     })
   }
 
@@ -154,15 +167,74 @@ export class MouseEffect {
   }
 }
 
-export function init() {
+class KonamiCode {
+  enabled = false;
+  keys = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+  accepted = [...new Set(this.keys)];
+  inputs = [];
+
+  constructor({ enable, disable }) {
+    this.enable = enable;
+    this.disable = disable;
+    this.handleKey = this.handleKey.bind(this);
+    document.addEventListener('keydown', this.handleKey);
+  }
+
+  handleKey({ key }) {
+    if (key === 'Escape' && this.enabled) {
+      this.disable();
+      this.reset();
+      return;
+    }
+    if (!this.accepted.includes(key)) return;
+
+    if (this.keys[this.inputs.length] === key) {
+      this.handleInput(key)
+    } else {
+      this.reset();
+    }
+  }
+
+  handleInput(key) {
+    this.inputs.push(key);
+
+    if (this.inputs.length === 10) {
+      this.handleMatch();
+    }
+  }
+
+  handleMatch() {
+    this.enabled = true;
+    this.enable();
+    this.reset();
+  }
+
+  reset() {
+    if (this.inputs.length) {
+      this.inputs = [];
+    }
+  }
+}
+
+export function eager() {
   const effect = new MouseEffect();
   effect.start();
+
+  new KonamiCode({
+    enable: () => document.body.classList.add('enable-rainbow'),
+    disable: () => document.body.classList.remove('enable-rainbow'),
+  });
 }
 
 export function lazy() {
   const mouseHistory = new MouseHistory();
   let effect;
   let timeout;
+
+  new KonamiCode({
+    enable: () => document.body.classList.add('enable-rainbow'),
+    disable: () => document.body.classList.remove('enable-rainbow'),
+  });
 
   window.addEventListener(
     "mousemove",
@@ -180,7 +252,7 @@ export function lazy() {
         effect = new MouseEffect();
         setTimeout(() => {
           effect.start();
-        }, 1000);
+        }, 500);
       }
     } else if (jiggling) {
       if (effect && !timeout) {
