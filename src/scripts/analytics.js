@@ -181,8 +181,7 @@ class KonamiCode {
   }
 
   handleKey({ key }) {
-    if (key === 'Escape' && this.enabled) {
-      this.disable();
+    if (this.enabled) {
       this.reset();
       return;
     }
@@ -210,6 +209,9 @@ class KonamiCode {
   }
 
   reset() {
+    if (this.enabled) {
+      this.disable();
+    }
     if (this.inputs.length) {
       this.inputs = [];
     }
