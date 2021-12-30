@@ -4,13 +4,19 @@ import Title from './Title.astro';
 import ArrowLink from '../ArrowLink.astro';
 import Panel from '../Panel.astro';
 import { social } from '../../config.ts';
+
+const { style } = Astro.props;
 ---
 
-<Section class="community">
+<Section class="community" style={style}>
     <Panel size="md" background="var(--color-dawn)">
         <Fragment slot="title">
-            <h3 class="head-md"><Title id="community"><slot name="title" /></Title></h3>
-            <div class="description"><slot /></div>
+            <h3 class="head-md"><Title id="community"><slot name="title">Join our community</slot></Title></h3>
+            <div class="description">
+                <slot>
+                    <p>Learn more about Astro, get support, and meet thousands of other devs in our Discord community!</p>
+                </slot>
+            </div>
         </Fragment>
 
         <ul class="links">
@@ -33,7 +39,7 @@ import { social } from '../../config.ts';
 <style>
 .community {
     padding-top: calc(var(--size-1000) * 1.5);
-    background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);
+    background: var(--background, transparent);
 }
 .description {
     margin-top: 1rem;

@@ -30,13 +30,13 @@ class MouseMath {
 
 class MouseHistory {
   HISTORY_MAX = 500;
-  SHAKE_DEGREES = 400;
+  SHAKE_DEGREES = 500;
 
   math = new MouseMath();
   history = [];
   lastX = 0;
   lastY = 0;
-  threshold = 100;
+  threshold = 200;
 
   check() {
     let now = performance.now();

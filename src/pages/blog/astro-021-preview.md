@@ -1,6 +1,8 @@
 ---
 setup: |
   import Layout from '../../layouts/Post.astro'
+  import Mention from '../../components/Mention.astro'
+  import Note from '../../components/Note.astro'
 title: 'Astro 0.21 Preview: Vite + WASM = ⚡️'
 description: 'Get a sneak preview of what is next for Astro, including our new Vite build engine and WASM-powered Go compiler.'
 publishDate: 'October 6, 2021'
@@ -51,7 +53,7 @@ The new [@astrojs/compiler](https://github.com/withastro/astro-compiler-next) un
 
 You can play with the new compiler today right in your browser at https://astro.build/play. This REPL is just one example of what is now possible when you have a fast, runs-anywhere compiler. 
 
-Shout out to [Nate Moore](https://twitter.com/n_moore) who did an incredible job with this project.
+<p>Shout out to <Mention name="nate" /> who did an incredible job with this project.</p>
 
 
 ## Components in Markdown
@@ -60,7 +62,7 @@ Our most requested feature ***by far*** has been the ability to use components d
 
 Starting in v0.21.0, you can import components inside of your Markdown frontmatter via an optional `setup` script. Once imported, your components can be used anywhere on the page:
 
-```astro
+```markdown
 ---
 title: 'Astro 0.21 Early Preview'
 setup: |
@@ -97,4 +99,10 @@ If you've read this far, we'd love your help trying out the latest release befor
 
 Leave feedback, report bugs, and get involved with Astro's development in our [Discord server](https://astro.build/chat). You can also [follow along](https://twitter.com/astrodotbuild) on Twitter.
 
-Keep your eyes on the sky, 👩‍🚀 Astronaut!
+<Note type="tip">
+
+Keep your eyes to the sky Astronaut!  🧑‍🚀🚀
+
+There will be more news on v0.21 soon.
+
+</Note>

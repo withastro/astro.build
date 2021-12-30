@@ -13,8 +13,8 @@ A little over a month ago, the first public beta for Astro was released to the w
 
 We are excited to introduce Astro v0.18, featuring:
 
-* __[Responsive partial hydration:](#responsive-component-hydration)__ Hydrate components with CSS media queries.
-* __[Named slots:](#named-slots)__ Support multiple content entrypoints inside of Astro components.
+* __[Responsive partial hydration:](#responsive-partial-hydration)__ Hydrate components with CSS media queries.
+* __[Named slots:](#named-slots-in-astro-components)__ Support multiple content entrypoints inside of Astro components.
 * __[Solid.js support:](#solid-support)__ Use [Solid.js](https://www.solidjs.com/) components in Astro.
 * __[Lit support:](#solid-support)__ Use [Lit SSR](https://lit.dev/) to get server-side rendering for web components.
 * [`<style global>` support](https://docs.astro.build/guides/styling#overview), [GitHub syntax highlighting](https://twitter.com/n_moore/status/1417881860051509250) and a [shiny new docs site.](https://docs.astro.build/)

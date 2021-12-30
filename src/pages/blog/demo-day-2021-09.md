@@ -1,6 +1,7 @@
 ---
 setup: |
   import Layout from '../../layouts/Post.astro'
+  import Mention from '../../components/Mention.astro'
 title: 'Astro Demo Day September Edition'
 authors: 
   - fred

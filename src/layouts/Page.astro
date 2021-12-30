@@ -2,7 +2,10 @@
 import { Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
+import Wrapper from '../components/Wrapper.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro'
+
 import { smartypants } from 'smartypants';
 
 let { title, description } = Astro.props;
@@ -24,9 +27,9 @@ const meta = {
 			background: var(--color-tan);
 		}
 		main {
+			width: max-content;
 			padding-bottom: 8rem;
 			min-height: 100vh;
-			color: var(--color-midnight);
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -39,9 +42,14 @@ const meta = {
 		<Header >
 			<Nav />
 		</Header>
-		<main id="content" class="container">
-            <slot />
-		</main>
+		
+		<Wrapper>
+			<main id="content" class="container">
+				<slot />
+			</main>
+		</Wrapper>
+
+		<Footer />
 	</Sprite.Provider>
 
 	<noscript></noscript>

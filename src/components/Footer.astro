@@ -1,18 +1,22 @@
 ---
-import Quote from './Quote.astro';
 import { Sprite } from 'astro-icon';
-import Grid from './Grid.astro';
-import { social } from '../../config.ts';
+import Quote from './landing/Quote.astro';
+import Grid from './landing/Grid.astro';
+import Community from './landing/Community.astro';
 
-const { quote = true } = Astro.props;
+import { social } from '../config.ts';
+
+const { quote } = Astro.slots;
 const YYYY = new Date().getFullYear();
 ---
 
-<footer>
+<footer class={!quote ? 'has-card' : ''}>
     <div class="background">
         <div class="blob" />
         <Grid class="footer-grid" />
     </div>
+
+    {!quote && <Community />}
 
     {quote && (
         <Quote color="white" blobs={false}>
@@ -63,6 +67,9 @@ const YYYY = new Date().getFullYear();
         min-height: var(--height);
         position: relative;
         background: var(--color-tan) linear-gradient(180deg, #E8ADB7, #C776BE, #9039CF, #7D32DE);
+    }
+    .has-card {
+        /* background: var(--color-tan) var(--gradient-pop-3); */
     }
     footer::before {
         content: '';

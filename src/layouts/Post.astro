@@ -3,13 +3,17 @@ import { Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Nav from '../components/Nav.astro';
+import Wrapper from '../components/Wrapper.astro';
+import Footer from '../components/Footer.astro';
 import Card from '../components/blog/Card.astro';
+import Outro from '../components/blog/Outro.astro';
 
 let { content: { title, publishDate, description, authors } } = Astro.props;
+const { canonicalURL } = Astro.request;
 const meta = {
 	title: `${title} | Astro`,
 	description,
-	canonicalURL: Astro.request.canonicalURL
+	canonicalURL
 }
 ---
 
@@ -26,13 +30,12 @@ const meta = {
 		main {
 			padding-bottom: 8rem;
 			min-height: 100vh;
-			color: var(--color-midnight);
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 		}
 		article {
-			max-width: 52ch;
+			max-width: 48rem;
 			padding-bottom: 4rem;
 			display: flex;
 			flex-flow: column nowrap;
@@ -43,6 +46,12 @@ const meta = {
 		}
 		article > :global(* + *) {
 			margin-top: 1em;
+		}
+		article :is(h2):not([class]) {
+			margin-top: 3em;
+		}
+		article > :global(.note:last-child) {
+			margin-top: 8rem;
 		}
 		.hero {
 			display: flex;
@@ -66,17 +75,24 @@ const meta = {
 		<Header >
 			<Nav />
 		</Header>
-		<main id="content" class="container">
-			<article>
-				<header class="hero">
-					<Card post={{ title, description, authors, publishDate }} variant="hero" />
-				</header>
-				
-				<hr>
 
-                <slot />
-			</article>
-		</main>
+		<Wrapper>
+			<main id="content" class="container">
+				<article>
+					<header class="hero">
+						<Card post={{ title, description, authors, publishDate }} variant="hero" />
+					</header>
+					
+					<hr>
+
+					<slot />
+				</article>
+			</main>
+
+			<Outro tweet={{ title, href: canonicalURL.toString() }} />
+		</Wrapper>
+
+		<Footer />
 	</Sprite.Provider>
 
 	<noscript></noscript>

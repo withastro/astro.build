@@ -2,6 +2,7 @@
     font-family: var(--font-display);
     line-height: 1.1;
     margin-bottom: 1.25rem;
+    color: var(--color-dusk);
 }
 h1 {
     --fill: var(--gradient-pop-1);
@@ -17,14 +18,34 @@ h2 {
 }
 
 code {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-weight: 400;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+code:not([class]) {
+    font-size: 0.85em;
+    color: var(--color-purple);
+}
+
+code:not([class])::before {
+    content: '\`';
+}
+code:not([class])::after {
+    content: '\`';
+}
+
+article img:not([class]) {
+    width: calc(100% + 4rem);
+    margin: 2rem -2rem;
+    margin-top: 2rem !important;
 }
 
 :is(h2, h3, h4, h5, h6) a {
     font: inherit;
     color: inherit;
-    text-decoration: none;
+    text-decoration: none !important;
     display: flex;
 }
 
@@ -45,9 +66,7 @@ code {
     }
 }
 
-:is(h2, h3, h4, h5, h6) a:active,
-:is(h2, h3, h4, h5, h6) a:hover,
-:is(h2, h3, h4, h5, h6) a:focus {
+:is(h2, h3, h4, h5, h6) a:is(:active, :visited, :hover, :focus) {
     color: var(--color-dusk);
 }
 
@@ -63,7 +82,187 @@ code {
 }
 
 :is(em, i) {
-    font-family: var(--font-display);
     font-weight: 400;
     font-style: normal;
+}
+
+:is(ul:not([class]), ol:not([class])) {
+    padding-left: 1.5em;
+}
+
+:where(ul:not([class])) {
+    list-style-type: square;
+}
+
+:where(ul:not([class]) > li + li) {
+    margin-top: 0.25em;
+} 
+
+::marker {
+    color: rgba(var(--color-midnight-rgb), 0.5);
+}
+
+pre > code:not([class*='language']) {
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	border-radius: 0;
+	color: inherit;
+}
+
+pre > code {
+	font-size: 1em;
+}
+
+table,
+pre {
+	position: relative;
+	--padding-block: 1rem;
+	--padding-inline: 2rem;
+	padding: var(--padding-block) var(--padding-inline);
+	padding-right: calc(var(--padding-inline) * 2);
+	margin-left: calc(var(--padding-inline) * -1);
+	margin-right: calc(var(--padding-inline) * -1);
+	font-family: var(--font-mono);
+
+	line-height: 1.5;
+	font-size: 0.85em;
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+
+pre {
+    background: linear-gradient(to bottom, var(--color-midnight), #1F1638);
+    color: white;
+}
+
+table {
+	width: 100%;
+	padding: var(--padding-block) 0;
+	margin: 0;
+	border-collapse: collapse;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+	background: var(--theme-bg-hover);
+}
+th {
+	background: var(--color-black);
+	color: var(--theme-color);
+	font-weight: bold;
+}
+td,
+th {
+	padding: 6px;
+	text-align: left;
+}
+
+/* Code */
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: #fd9170;
+}
+
+.language-diff .token.prefix.deleted,
+.language-diff .token.prefix.inserted {
+	user-select: none;
+}
+
+[class*='language-'] .namespace {
+	opacity: 0.7;
+}
+
+.token.plain-text,
+[class*='language-bash'] span.token,
+[class*='language-shell'] span.token {
+	color: hsla(var(--color-gray-90), 1);
+}
+
+[class*='language-bash'] span.token,
+[class*='language-shell'] span.token {
+	font-style: bold;
+}
+
+.token.prolog,
+.token.comment,
+[class*='language-bash'] span.token.comment,
+[class*='language-shell'] span.token.comment {
+	color: rgba(255, 255, 255, 0.67);
+}
+
+.token.front-matter-block {
+    color: white;
+    opacity: 0.8;
+}
+
+.token.selector,
+.token.tag,
+.token.unit,
+.token.url,
+.token.variable,
+.token.entity,
+.token.deleted {
+	color: #fa5e5b;
+}
+
+.token.boolean,
+.token.constant,
+.token.doctype,
+.token.number,
+.token.regex,
+.token.builtin,
+.token.class,
+.token.hexcode,
+.token.class-name,
+.token.attr-name {
+	color: hsla(var(--color-yellow), 1);
+}
+
+.token.atrule,
+.token.attribute,
+.token.attr-value .token.punctuation,
+.token.attr-value,
+.token.pseudo-class,
+.token.pseudo-element,
+.token.string {
+	color: hsla(var(--color-green), 1);
+}
+
+.token.symbol,
+.token.function,
+.token.id,
+.token.important {
+	color: hsla(var(--color-blue), 1);
+}
+
+.token.important,
+.token.id {
+	font-weight: bold;
+}
+
+.token.cdata,
+.token.char,
+.token.property {
+	color: #23b1af;
+}
+
+.token.inserted {
+	color: hsla(var(--color-green), 1);
+}
+
+.token.keyword {
+	color: #ff657c;
+	font-style: italic;
+}
+
+.token.operator {
+	color: hsla(var(--color-gray-70), 1);
+}
+
+.token.attr-value .token.attr-equals,
+.token.punctuation {
+	color: hsla(var(--color-gray-80), 1);
 }

@@ -3,7 +3,7 @@ setup: |
   import Layout from '../../layouts/Post.astro'
   import Shell from '../../components/Shell.astro'
   import Note from '../../components/Note.astro'
-  import BlockQuote from '../../components/BlockQuote.astro'
+  import Blockquote from '../../components/Blockquote.astro'
 title: "Introducing Astro: Ship Less JavaScript"
 authors: 
   - fred
@@ -21,7 +21,7 @@ Unfortunately, modern web development has been trending in the opposite directio
 
 Today I'm excited to publicly share Astro: a new kind of static site builder that delivers lightning-fast performance with a modern developer experience. To design Astro, we borrowed the best parts of our favorite tools and then added a few innovations of our own, including:
 
-- **Bring Your Own Framework (BYOF):** Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.
+- **Bring Your Own Framework (BYOF):** Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.
 - **100% Static HTML, No JS:** Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.
 - **On-Demand Components:** Need some JS? Astro can automatically hydrate interactive components when they become visible on the page. If the user never sees it, they never load it.
 - **Fully-Featured:** Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any of your favorite npm packages.
@@ -52,13 +52,6 @@ npm install
 npm run dev
 ```
 
-<Note>
-
-  To learn more about Astro and start building your first site, check out [our Getting Started guide.](https://docs.astro.build)
-
-</Note>
-
-
 ## How Astro Works
 
 Astro works a lot like a static site generator. If you have ever used Eleventy, Hugo, or Jekyll (or even a server-side web framework like Rails, Laravel, or Django) then you should feel right at home with Astro. 
@@ -73,19 +66,16 @@ You can even [automatically defer components](https://codepen.io/jonneal/full/ZE
 
 This new approach to web architecture is called [islands architecture](https://jasonformat.com/islands-architecture/). We didn't coin the term, but Astro may have perfected the technique. We are confident that an HTML-first, JavaScript-only-as-needed approach is the best solution for the majority of content-based websites.
 
-<Note>
-
-  To learn more about Astro and start building your first site, check out [our Getting Started guide.](https://docs.astro.build)
-
-</Note>
-
 ## Embracing the Pit of Success
 
-<BlockQuote author="Jeff Atwood" source="Falling Into The Pit of Success" sourceHref="https://blog.codinghorror.com/falling-into-the-pit-of-success/">
+<Blockquote>
+  <Fragment slot="quote">
+    A well-designed system makes it easy to do the right things and annoying (but not impossible) to do the wrong things
+  </Fragment>
 
-  A well-designed system makes it easy to do the right things and annoying (but not impossible) to do the wrong things
+  <Fragment slot="cite">Jeff Atwood, <a href="https://blog.codinghorror.com/falling-into-the-pit-of-success/">Falling Into The Pit of Success</a></Fragment>
+</Blockquote>
 
-</BlockQuote>
 
 Poor performance is often framed as a failure of the developer, but we respectfully disagree. In many cases, poor performance is a failure of tooling. It should be difficult to build a slow website. 
 
@@ -105,10 +95,8 @@ We're inspired by the early success of projects like [Tailwind](https://tailwind
 
 If your company is as excited about Astro as we are, [we'd love to hear from you.](https://astro.build/chat)
 
-Finally, I'd like to give a **HUGE** thanks to the 300+ developers who joined our earliest private beta. Your feedback has been essential in shaping Astro into the tool it is today. If you're interested in getting involved (or just following along with development) please [join us on Discord.](https://astro.build/chat)
+<Note type="tip">
 
-<Note>
-
-  To learn more about Astro and start building your first site, check out [our Getting Started guide.](https://docs.astro.build)
+  Finally, I'd like to give a **HUGE** thanks to the 300+ developers who joined our earliest private beta. Your feedback has been essential in shaping Astro into the tool it is today. If you're interested in getting involved (or just following along with development) please [join us on Discord.](https://astro.build/chat)
 
 </Note>

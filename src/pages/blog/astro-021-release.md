@@ -1,6 +1,8 @@
 ---
 setup: |
   import Layout from '../../layouts/Post.astro'
+  import Mention from '../../components/Mention.astro'
+  import Note from '../../components/Note.astro'
 title: 'Astro 0.21'
 description: 'Astro v0.21.0 is finally here!'
 publishDate: 'November 19, 2021'
@@ -24,7 +26,9 @@ Astro v0.21.0 is finally here! This is by far our biggest release ever, includin
 
 [Try Astro v0.21.0 today](https://astro.new) right in your browser. Or, run `npm install astro@latest` in any new or existing project directory to get started. [Read our v0.21 Early Preview](/blog/astro-021-preview) post for more details on what is included in this release.
 
-Thank you to every contributor and early preview tester who made this release possible. Thank you to [Nate Moore](https://twitter.com/n_moore), [Matthew Philips](https://twitter.com/matthewcp), and [Drew Powers](https://twitter.com/drwpow) for your tireless work over the last few months getting v0.21 out the door.
+<p>
+  Thank you to every contributor and early preview tester who made this release possible. Thank you to <Mention name="nate" />, <Mention name="matthew" />, and <Mention name="drew" /> for your tireless work over the last few months getting v0.21 out the door.
+</p>
 
 **With these new long-term investments, Astro isn't going anywhere.** Next stop, v1.0!
 
@@ -40,4 +44,8 @@ Most people don't know this, but the first version of the Astro compiler was ori
 
 Big rewrites are rarely easy, and this one was no exception. The timing was right for us to make a big investment in Astro now and deprecate our original forked compiler in favor of something designed with Astro in mind. This new compiler (written in Go) and new Vite-powered build engine will form a stable foundation that will last this project for years to come.
 
-*Thank you to Rich Harris and the entire Svelte team for building a great open source compiler that served Astro well in its early days.*
+<Note type="tip">
+
+A huge thank you to Rich Harris and the entire Svelte team&mdash;you built an incredible open source compiler and it served Astro so well in its early days!
+
+</Note>
