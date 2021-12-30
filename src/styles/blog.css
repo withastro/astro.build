@@ -1,0 +1,58 @@
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+}
+h1 {
+    --fill: var(--gradient-pop-1);
+    font-size: 3rem;
+    font-size: var(--size-800);
+    
+}
+h2 {
+    font-size: 2rem;
+    font-size: var(--size-600);
+    margin-top: 2em;
+    margin-bottom: -0.25em;
+}
+
+code {
+    font-family: var(--font-display);
+    font-weight: 400;
+}
+
+:is(h2, h3, h4, h5, h6) a {
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+}
+
+:is(h2, h3, h4, h5, h6) a::before {
+    content: "#";
+    width: 1em;
+    margin-left: 0.25em;
+    color: inherit;
+    opacity: 0;
+    transition: opacity 200ms cubic-bezier(0.23, 1, 0.320, 1);
+    order: 999;
+}
+
+@media (min-width: 50rem) {
+    :is(h2, h3, h4, h5, h6) a::before {
+        order: initial;
+        margin-left: -1em;
+    }
+}
+
+:is(h2, h3, h4, h5, h6) a:active,
+:is(h2, h3, h4, h5, h6) a:hover,
+:is(h2, h3, h4, h5, h6) a:focus {
+    color: var(--color-dusk);
+}
+
+:is(h2, h3, h4, h5, h6) a:active::before,
+:is(h2, h3, h4, h5, h6) a:hover::before,
+:is(h2, h3, h4, h5, h6) a:focus::before {
+    opacity: 0.6 !important;
+}

@@ -1,0 +1,51 @@
+---
+import { Sprite } from 'astro-icon';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Nav from '../components/Nav.astro';
+import { smartypants } from 'smartypants';
+
+let { title, description } = Astro.props;
+title = smartypants(title, 1);
+const meta = {
+	title: `${title} | Astro`,
+	description,
+	canonicalURL: Astro.request.canonicalURL
+}
+---
+
+<html lang="en">
+
+<head>
+	<BaseHead {...meta} />
+	<style>
+		:root {
+			scroll-padding-top: 10rem;
+			background: var(--color-tan);
+		}
+		main {
+			padding-bottom: 8rem;
+			min-height: 100vh;
+			color: var(--color-midnight);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	</style>
+</head>
+
+<body>
+	<Sprite.Provider>
+		<Header >
+			<Nav />
+		</Header>
+		<main id="content" class="container">
+            <slot />
+		</main>
+	</Sprite.Provider>
+
+	<noscript></noscript>
+	<script type="module" src={Astro.resolve('../scripts/defer.js')}></script>
+</body>
+
+</html>

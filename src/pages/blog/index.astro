@@ -1,0 +1,165 @@
+---
+import Page from '../../layouts/Page.astro';
+import DateTime from '../../components/Date.astro';
+import Author from '../../components/Author.astro';
+import { smartypants } from 'smartypants';
+import { parse, isBefore } from 'date-fns';
+
+const files = await import.meta.glob('./**/*.md');
+const posts = (await Promise.all(
+    Object.values(files)
+        .map((importFile: any, index) => importFile()
+            .then((res) => {
+                let { title, description, authors, publishDate } = res.frontmatter;
+                title = smartypants(title, 1);
+                const href = Object.keys(files)[index].replace(/^\./, '/blog').replace(/\.md$/, '');
+                return { title, description, authors, date: parse(publishDate, 'MMMM d, yyyy', new Date()), href }
+            })
+        )
+    )).sort((a, b) => {
+        if (isBefore(a.date, b.date)) return 1;
+        if (isBefore(b.date, a.date)) return -1;
+        return 0
+    });
+---
+
+<Page title="Blog">
+    <header>
+        <h1 class="title text-gradient">Blog</h1>
+    </header>
+
+    <ul class="posts">
+        {posts.map(post => {
+            return (
+                <li class="post">
+                    <a class="overlay" href={post.href} />
+                    <h2 class="title text-gradient">{post.title}</h2>
+                    <p class="description">{post.description}</p>
+
+                    <div class="authors">
+                        <h3>Written by</h3>
+                        <ul>
+                            {post.authors.map(author => (
+                                <li><Author name={author} /></li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div class="date">
+                        <h3>Published on</h3>
+                        <p><DateTime value={post.date} /></p>
+                    </div>
+                </li>
+            )
+        })}
+    </ul>
+</Page>
+
+<style>
+    header {
+        padding: 3rem 0 2rem;
+        width: 100%;
+        flex-grow: 1;
+    }
+    h1.title {
+        --fill: var(--gradient-pop-1);
+        font-size: var(--size-800);
+    }
+    .posts {
+        max-width: 52ch;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        display: flex;
+        flex-flow: column nowrap;
+        font-family: var(--font-body);
+        font-size: var(--size-500);
+        line-height: 1.3;
+        color: var(--color-midnight);
+    }
+    .post + .post {
+        margin-top: 4rem;
+    }
+    .post {
+        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        padding: 3rem 2rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+        background: white;
+        box-shadow: var(--shadow-md);
+        border-radius: var(--corner-md);
+        font-family: var(--font-body);
+        font-size: var(--size-500);
+        line-height: 1.3;
+        color: var(--color-midnight);
+    }
+    .post:hover,
+    .post:focus-within {
+        background: linear-gradient(to top, var(--color-dawn), white);
+    }
+    :is(.post:hover, .post:focus-within) .title {
+        --fill: var(--gradient-pop-1);
+    }
+    .post :global(a) {
+        z-index: 1;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        z-index: 0;
+    }
+    .title {
+        --fill: var(--color-dusk);
+        font-family: var(--font-display);
+        font-size: var(--size-600);
+        margin: 0 auto;
+        flex-grow: 1;
+        width: 100%;
+        line-height: 1.1;
+    }
+    .description {
+        flex-grow: 1;
+        width: 100%;
+        margin-top: 1em;
+    }
+    .post > div {
+        margin-top: 2em;
+    }
+    .authors {
+        flex-grow: 2;
+    }
+    .authors ul {
+        display: flex;
+        flex-flow: column nowrap;
+        list-style: none;
+    }
+    .authors ul > li + li {
+        margin-top: 0.5rem;
+    }
+    .date {
+        flex-grow: 1;
+    }
+    .post h3 {
+        margin: 0;
+        margin-bottom: var(--size-300);
+        font-family: var(--font-display);
+        font-size: var(--size-300);
+        font-weight: 700;
+        color: var(--color-dusk);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .date, .authors {
+        font-size: var(--size-400);
+    }
+    :is(.date, .authors) p {
+        margin: 0;
+        font-size: inherit;
+        height: 2rem;
+    }
+</style>

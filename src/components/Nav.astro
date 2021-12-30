@@ -2,10 +2,15 @@
 import { Sprite } from 'astro-icon';
 import { social } from '../config.ts';
 
-const { invert = false, offset } = Astro.props;
+const { invert = false, marginBottom = false } = Astro.props;
+
+const items = [
+    { href: '/blog', title: 'Blog' },
+    { href: '/docs', title: 'Docs' }
+]
 ---
 
-<nav class={`main ${invert ? 'invert' : ''}`.trim()} style={`--offset: 2.5;`}>
+<nav class={`main ${invert ? 'invert' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
     <ul class="container">
         <li class="logo">
             <a href="/" title="Astro">
@@ -15,11 +20,13 @@ const { invert = false, offset } = Astro.props;
             </a>
         </li>
 
-        <li>
-            <a href="/docs">
-                Docs
-            </a>
-        </li>
+        {items.map(item => (
+            <li>
+                <a aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined} href={item.href}>
+                    {item.title}
+                </a>
+            </li>
+        ))}
 
         {social.map(item => (
             <li class="icon">
@@ -39,12 +46,14 @@ nav {
     width: 100%;
     position: sticky;
     top: calc((var(--offset-height) * -1) - 1px);
+    margin-top: -0.5rem;
     padding: 0.5rem 0;
     background: linear-gradient(0deg, rgba(var(--color-tan-rgb), 0.7), rgba(var(--color-tan-rgb), 1));
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 2;
-    margin-top: 0;
+}
+nav.margin-bottom {
     margin-bottom: -4.5rem;
 }
 nav.invert {
@@ -97,7 +106,8 @@ ul {
 li {
     color: var(--color-dusk);
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 400;
+    font-size: var(--size-500);
 }
 nav.invert li {
     color: white;
@@ -105,13 +115,15 @@ nav.invert li {
 li + li {
     margin-left: 0;
 }
+[aria-current="page"] {
+    font-weight: 700;
+}
 .logo {
     font-size: 1rem;
     margin-right: auto;
 }
 .logo a {
     display: flex;
-    text-transform: lowercase;
     align-items: center;
     color: var(--color-midnight);
 }
@@ -151,7 +163,6 @@ a {
     height: 100%;
     color: inherit;
     text-decoration: none;
-    text-transform: lowercase;
     transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
     transition-property: transform, color;
     padding: 0 0.5rem;

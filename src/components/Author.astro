@@ -1,0 +1,71 @@
+---
+import { Sprite } from 'astro-icon';
+const { name } = Astro.props;
+
+const authors = {
+    fred: {
+        name: 'Fred K. Schott',
+        twitter: 'https://twitter.com/FredKSchott'
+    },
+    nate: {
+        name: 'Nate Moore',
+        twitter: 'https://twitter.com/n_moore'
+    },
+    matthew: {
+        name: 'Matthew Phillips',
+        twitter: 'https://twitter.com/matthewcp'
+    },
+    jon: {
+        name: 'Jonathan Neal',
+        twitter: 'https://twitter.com/jon_neal'
+    }
+}
+const author = authors[name];
+---
+
+<span class="author">
+    <img src={`/authors/${name}.jpg`}>
+    <span>{author.name}</span>
+    <a href={author.twitter}>
+        <span>
+            <Sprite pack="mdi" name="twitter" width="20" height="20" />
+        </span>
+    </a>
+</span>
+
+<style>
+    .author {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font: inherit;
+    }
+    img {
+        --size: 2rem;
+        display: block;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 0.5em;
+    }
+    a, a > span {
+        --size: 1.5rem;
+        width: var(--size);
+        height: var(--size);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: inherit;
+    }
+    a {
+        margin-left: 0.25em;
+        color: var(--color-dusk);
+        opacity: 0.7;
+    }
+    a:hover,
+    a:focus {
+        color: var(--color-dusk);
+        opacity: 1;
+    }
+</style>
