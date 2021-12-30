@@ -3,12 +3,9 @@ import { Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Nav from '../components/Nav.astro';
-import Date from '../components/Date.astro';
-import Author from '../components/Author.astro';
-import { smartypants } from 'smartypants';
+import Card from '../components/blog/Card.astro';
 
 let { content: { title, publishDate, description, authors } } = Astro.props;
-title = smartypants(title, 1);
 const meta = {
 	title: `${title} | Astro`,
 	description,
@@ -47,58 +44,11 @@ const meta = {
 		article > :global(* + *) {
 			margin-top: 1em;
 		}
-
 		.hero {
 			display: flex;
 			flex-flow: row wrap;
 			padding: 3rem 0 2rem;
 			max-width: 100%;
-		}
-		.title {
-			font-size: var(--size-800);
-			margin: 0 auto;
-			flex-grow: 1;
-			width: 100%;
-		}
-		.description {
-			flex-grow: 1;
-			width: 100%;
-			margin-top: 1em;
-		}
-		.hero > div {
-			margin-top: 2em;
-		}
-		.authors {
-			flex-grow: 2;
-		}
-		.authors ul {
-			display: flex;
-			flex-flow: column nowrap;
-			list-style: none;
-		}
-		.authors ul > li + li {
-			margin-top: 0.5rem;
-		}
-		.date {
-			flex-grow: 1;
-		}
-		.hero h3 {
-			margin: 0;
-			margin-bottom: var(--size-300);
-			font-family: var(--font-display);
-			font-size: var(--size-300);
-			font-weight: 700;
-			color: var(--color-dusk);
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-		.date, .authors {
-			font-size: var(--size-400);
-		}
-		:is(.date, .authors) p {
-			margin: 0;
-			font-size: inherit;
-			height: 2rem;
 		}
 		hr {
 			border: 0;
@@ -119,22 +69,7 @@ const meta = {
 		<main id="content" class="container">
 			<article>
 				<header class="hero">
-					<h1 class="title text-gradient">{title}</h1>
-					<p class="description">{description}</p>
-
-					<div class="authors">
-						<h3>Written by</h3>
-						<ul>
-							{authors.map(author => (
-								<li><Author name={author} /></li>
-							))}
-						</ul>
-					</div>
-
-					<div class="date">
-						<h3>Published on</h3>
-						<p><Date value={publishDate} /></p>
-					</div>
+					<Card post={{ title, description, authors, publishDate }} variant="hero" />
 				</header>
 				
 				<hr>

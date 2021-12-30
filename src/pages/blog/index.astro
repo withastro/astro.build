@@ -1,8 +1,6 @@
 ---
 import Page from '../../layouts/Page.astro';
-import DateTime from '../../components/Date.astro';
-import Author from '../../components/Author.astro';
-import { smartypants } from 'smartypants';
+import Card from '../../components/blog/Card.astro';
 import { parse, isBefore } from 'date-fns';
 
 const files = await import.meta.glob('./**/*.md');
@@ -10,15 +8,14 @@ const posts = (await Promise.all(
     Object.values(files)
         .map((importFile: any, index) => importFile()
             .then((res) => {
-                let { title, description, authors, publishDate } = res.frontmatter;
-                title = smartypants(title, 1);
+                const { title, description, authors, publishDate } = res.frontmatter;
                 const href = Object.keys(files)[index].replace(/^\./, '/blog').replace(/\.md$/, '');
-                return { title, description, authors, date: parse(publishDate, 'MMMM d, yyyy', new Date()), href }
+                return { title, description, authors, publishDate: parse(publishDate, 'MMMM d, yyyy', new Date()), href }
             })
         )
     )).sort((a, b) => {
-        if (isBefore(a.date, b.date)) return 1;
-        if (isBefore(b.date, a.date)) return -1;
+        if (isBefore(a.publishDate, b.publishDate)) return 1;
+        if (isBefore(b.publishDate, a.publishDate)) return -1;
         return 0
     });
 ---
@@ -26,6 +23,7 @@ const posts = (await Promise.all(
 <Page title="Blog">
     <header>
         <h1 class="title text-gradient">Blog</h1>
+        <p></p>
     </header>
 
     <ul class="posts">
@@ -33,22 +31,7 @@ const posts = (await Promise.all(
             return (
                 <li class="post">
                     <a class="overlay" href={post.href} />
-                    <h2 class="title text-gradient">{post.title}</h2>
-                    <p class="description">{post.description}</p>
-
-                    <div class="authors">
-                        <h3>Written by</h3>
-                        <ul>
-                            {post.authors.map(author => (
-                                <li><Author name={author} /></li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div class="date">
-                        <h3>Published on</h3>
-                        <p><DateTime value={post.date} /></p>
-                    </div>
+                    <Card post={post} variant="summary" />
                 </li>
             )
         })}
@@ -62,8 +45,9 @@ const posts = (await Promise.all(
         flex-grow: 1;
     }
     h1.title {
+        font-family: var(--font-display);
         --fill: var(--gradient-pop-1);
-        font-size: var(--size-800);
+        font-size: var(--size-900);
     }
     .posts {
         max-width: 52ch;
@@ -112,54 +96,5 @@ const posts = (await Promise.all(
         left: 0;
         display: block;
         z-index: 0;
-    }
-    .title {
-        --fill: var(--color-dusk);
-        font-family: var(--font-display);
-        font-size: var(--size-600);
-        margin: 0 auto;
-        flex-grow: 1;
-        width: 100%;
-        line-height: 1.1;
-    }
-    .description {
-        flex-grow: 1;
-        width: 100%;
-        margin-top: 1em;
-    }
-    .post > div {
-        margin-top: 2em;
-    }
-    .authors {
-        flex-grow: 2;
-    }
-    .authors ul {
-        display: flex;
-        flex-flow: column nowrap;
-        list-style: none;
-    }
-    .authors ul > li + li {
-        margin-top: 0.5rem;
-    }
-    .date {
-        flex-grow: 1;
-    }
-    .post h3 {
-        margin: 0;
-        margin-bottom: var(--size-300);
-        font-family: var(--font-display);
-        font-size: var(--size-300);
-        font-weight: 700;
-        color: var(--color-dusk);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    .date, .authors {
-        font-size: var(--size-400);
-    }
-    :is(.date, .authors) p {
-        margin: 0;
-        font-size: inherit;
-        height: 2rem;
     }
 </style>
