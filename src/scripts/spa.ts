@@ -63,6 +63,9 @@ async function navigateTo(url: URL, replace = false) {
     document.querySelector("[astro-icon-spritesheet]"),
     newDoc.querySelector("[astro-icon-spritesheet]")
   );
+  swapAttrs(document.documentElement, newDoc.documentElement);
+  swapAttrs(document.head, newDoc.head);
+  swapAttrs(document.body, newDoc.body);
   swapAttrs(document.querySelector("#nav"), newDoc.querySelector("#nav"));
   swap(document.querySelector("#root"), newDoc.querySelector("#root"));
   if (!replace) {
