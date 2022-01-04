@@ -51,13 +51,13 @@ async function navigateTo(url: URL, replace = false) {
   if (currentId !== id) {
     return;
   }
-  swap(document.querySelector("#root"), newDoc.querySelector("#root"));
+  swapHead(document.head, newDoc.head);
   swap(
     document.querySelector("[astro-icon-spritesheet]"),
     newDoc.querySelector("[astro-icon-spritesheet]")
   );
   swapAttrs(document.querySelector("#nav"), newDoc.querySelector("#nav"));
-  swapHead(document.head, newDoc.head);
+  swap(document.querySelector("#root"), newDoc.querySelector("#root"));
   if (!replace) {
     window.history.pushState({}, "", url);
     window.scrollTo({ top: 0, behavior: "auto" });
