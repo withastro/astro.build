@@ -3,8 +3,8 @@ function getAnchor(target: EventTarget): HTMLAnchorElement | undefined {
   return target.closest("a");
 }
 
-function isLocal(href: string) {
-  return /^\.?\//.test(href);
+function isLocalURL(href: string) {
+  return !/^(?:[a-z]+:)?\/\//i.test(href);
 }
 
 let ids = 0;
@@ -13,7 +13,7 @@ async function onClick(event: MouseEvent) {
   const anchor = getAnchor(event.target);
   if (!anchor) return;
   const href = anchor.getAttribute("href");
-  if (!isLocal(href)) return;
+  if (!isLocalURL(href)) return;
   event.preventDefault();
   try {
     await navigateTo(new URL(href, window.location.toString()));
@@ -28,7 +28,9 @@ async function get(url: URL) {
     redirect: "follow",
   }).then((res) => {
     if (!res.headers.get("content-type").includes("text/html")) {
-      throw new Error(`Unexpected content-type "${res.headers.get('content-type')}"`);
+      throw new Error(
+        `Unexpected content-type "${res.headers.get("content-type")}"`
+      );
     }
     return res.text();
   });
@@ -51,7 +53,12 @@ async function navigateTo(url: URL, replace = false) {
   if (currentId !== id) {
     return;
   }
-  swapHead(document.head, newDoc.head, new URL(window.location.toString()), url);
+  swapHead(
+    document.head,
+    newDoc.head,
+    new URL(window.location.toString()),
+    url
+  );
   swap(
     document.querySelector("[astro-icon-spritesheet]"),
     newDoc.querySelector("[astro-icon-spritesheet]")
@@ -109,16 +116,18 @@ function swapAttrs(oldEl: HTMLElement, newEl: HTMLElement) {
 }
 
 function isScript(node: Node): node is HTMLScriptElement {
-    return (node as Element).localName === 'script';
+  return (node as Element).localName === "script";
 }
 function isLink(node: Node): node is HTMLLinkElement {
-    return (node as Element).localName === 'link';
+  return (node as Element).localName === "link";
 }
-function getUrlAttr(node: HTMLLinkElement|HTMLScriptElement): string {
-    switch (node.localName) {
-        case 'link': return 'href';
-        case 'script': return 'src';
-    }
+function getUrlAttr(node: HTMLLinkElement | HTMLScriptElement): string {
+  switch (node.localName) {
+    case "link":
+      return "href";
+    case "script":
+      return "src";
+  }
 }
 const xml = new XMLSerializer();
 function serialize(node: Node, baseURL: URL): string {
@@ -126,17 +135,22 @@ function serialize(node: Node, baseURL: URL): string {
     const el = node.cloneNode() as HTMLLinkElement;
     const key = getUrlAttr(node);
     const value = el.getAttribute(key);
-    if (!isLocal(value)) {
-        return xml.serializeToString(node);
+    if (!isLocalURL(value)) {
+      return xml.serializeToString(node);
     }
     const url = new URL(value, baseURL);
-    el.setAttribute(key, url.toString())
-    const output = xml.serializeToString(el)
+    el.setAttribute(key, url.toString());
+    const output = xml.serializeToString(el);
     return output;
   }
   return xml.serializeToString(node);
 }
-function swapHead(oldHead: HTMLHeadElement, newHead: HTMLHeadElement, oldURL: URL, newURL: URL) {
+function swapHead(
+  oldHead: HTMLHeadElement,
+  newHead: HTMLHeadElement,
+  oldURL: URL,
+  newURL: URL
+) {
   let oldWalker = document.createTreeWalker(oldHead, NodeFilter.SHOW_ELEMENT);
   let newWalker = document.createTreeWalker(newHead, NodeFilter.SHOW_ELEMENT);
   let oldNodes = new Map<string, Element>();
