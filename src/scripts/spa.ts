@@ -51,7 +51,7 @@ async function navigateTo(url: URL, replace = false) {
   if (currentId !== id) {
     return;
   }
-  swapHead(document.head, newDoc.head);
+  swapHead(document.head, newDoc.head, new URL(window.location.toString()), url);
   swap(
     document.querySelector("[astro-icon-spritesheet]"),
     newDoc.querySelector("[astro-icon-spritesheet]")
@@ -108,11 +108,35 @@ function swapAttrs(oldEl: HTMLElement, newEl: HTMLElement) {
   }
 }
 
+function isScript(node: Node): node is HTMLScriptElement {
+    return (node as Element).localName === 'script';
+}
+function isLink(node: Node): node is HTMLLinkElement {
+    return (node as Element).localName === 'link';
+}
+function getUrlAttr(node: HTMLLinkElement|HTMLScriptElement): string {
+    switch (node.localName) {
+        case 'link': return 'href';
+        case 'script': return 'src';
+    }
+}
 const xml = new XMLSerializer();
-function serialize(node: Node): string {
+function serialize(node: Node, baseURL: URL): string {
+  if (isLink(node) || isScript(node)) {
+    const el = node.cloneNode() as HTMLLinkElement;
+    const key = getUrlAttr(node);
+    const value = el.getAttribute(key);
+    if (!isLocal(value)) {
+        return xml.serializeToString(node);
+    }
+    const url = new URL(value, baseURL);
+    el.setAttribute(key, url.toString())
+    const output = xml.serializeToString(el)
+    return output;
+  }
   return xml.serializeToString(node);
 }
-function swapHead(oldHead: HTMLHeadElement, newHead: HTMLHeadElement) {
+function swapHead(oldHead: HTMLHeadElement, newHead: HTMLHeadElement, oldURL: URL, newURL: URL) {
   let oldWalker = document.createTreeWalker(oldHead, NodeFilter.SHOW_ELEMENT);
   let newWalker = document.createTreeWalker(newHead, NodeFilter.SHOW_ELEMENT);
   let oldNodes = new Map<string, Element>();
@@ -120,17 +144,17 @@ function swapHead(oldHead: HTMLHeadElement, newHead: HTMLHeadElement) {
 
   while (oldWalker.nextNode()) {
     const node = oldWalker.currentNode as Element;
-    oldNodes.set(serialize(node), node);
+    oldNodes.set(serialize(node, oldURL), node);
   }
 
   while (newWalker.nextNode()) {
     const node = newWalker.currentNode as Element;
-    const key = serialize(node);
+    const key = serialize(node, oldURL);
 
     if (oldNodes.has(key)) {
       oldNodes.delete(key);
     } else {
-      newNodes.set(serialize(node), node);
+      newNodes.set(serialize(node, newURL), node);
     }
   }
 
