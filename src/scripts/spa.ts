@@ -144,17 +144,18 @@ function swapHead(oldHead: HTMLHeadElement, newHead: HTMLHeadElement, oldURL: UR
 
   while (oldWalker.nextNode()) {
     const node = oldWalker.currentNode as Element;
-    oldNodes.set(serialize(node, oldURL), node);
+    const key = serialize(node, oldURL);
+    oldNodes.set(key, node);
   }
 
   while (newWalker.nextNode()) {
     const node = newWalker.currentNode as Element;
-    const key = serialize(node, oldURL);
+    const key = serialize(node, newURL);
 
     if (oldNodes.has(key)) {
       oldNodes.delete(key);
     } else {
-      newNodes.set(serialize(node, newURL), node);
+      newNodes.set(key, node);
     }
   }
 
