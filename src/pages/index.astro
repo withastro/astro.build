@@ -1,7 +1,7 @@
 ---
 import { Icon, Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../components/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import PixelLink from '../components/PixelLink.astro';
 import Panel from '../components/Panel.astro';
@@ -34,179 +34,129 @@ const meta = {
 		:root {
 			scroll-padding-top: 10rem;
 		}
-		main {
+		:global(main) {
 			max-width: 100vw;
 			overflow: hidden;
 		}
 		[astro-icon="logos/stackblitz"] {
 			transform: translateX(-0.5em);
 		}
-		noscript {
-			order: -1;
-			height: 100vh;
-			width: 100vw;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			font-family: var(--font-display);
-			font-size: var(--size-600);
-			text-align: center;
-			color: var(--color-midnight);
-			background: linear-gradient(to bottom, var(--color-tan), white);
-		}
-		noscript::before {
-			--size: var(--size-1000);
-			padding-top: var(--size);
-			padding-left: 1rem;
-			padding-right: 1rem;
-			content: 'You need to enable JavaScript to view this site.';
-			background-size: var(--size);
-			background-position: center top;
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 140 140'%3E%3Cg fill='%23514375'%3E%3Cpath d='M129.7 100v20h-10v-20z'/%3E%3Cpath d='M119.69 100h20v10h-20zM10 100v20h10v-20z'/%3E%3Cpath d='M20 100H0v10h20zm0-90H0v10h20z'/%3E%3Cpath d='M20 20V0H10v20zm79.69 30h20v10h-20zm-39.21 0h20v10h-20zM29.73 20h80v10h-80zm-9.97 50h99.93v10H19.76zm10 10h79.93v10H29.76zm-.03 10h20v10h-20zm30.75 0h20v10h-20zm29.21 0h20v10h-20zM19.73 30h100v10h-100zm0 10h100v10h-100zm0 20h100v10h-100zm0-10h20v10h-20zM120 10h20v10h-20z'/%3E%3Cpath d='M120 20V0h10v20z'/%3E%3C/g%3E%3C/svg%3E%0A");
-		}
-		noscript::after {
-			--size: var(--size-1000);
-			content: 'Just kidding—you\'re going to love Astro!';
-			font-size: 0.75em;
-			padding-bottom: var(--size);
-			background-size: var(--size);
-			background-position: 50% 100%;
-			background-image: url("data:image/svg+xml,%3Csvg width='140' height='141' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23af43ff' d='M85 80.325v-20h10v20zM45 80.325v-20h10v20zM65 40.325h10v60H65z'/%3E%3Cpath fill='%23af43ff' d='M55 80.325h30v10H55z'/%3E%3C/svg%3E");
-			animation: bounce 1s steps(4) alternate-reverse infinite;
-		}
-
-		@keyframes bounce {
-			from {
-				background-position: 50% 100%;
-			}
-			to {
-				background-position: 50% calc(100% - 0.5em);
-			}
-		}
 	</style>
 </head>
 
 <body>
-	<Sprite.Provider>
-		<Header>
-			<Nav marginBottom />
-		</Header>
-		<main id="content">
-			<Hero>
-				<Fragment slot="title">Static sites, solved.</Fragment>
-				<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
-				<PixelLink href="/docs/getting-started">Read the docs</PixelLink>
-				<PixelLink variant="outline" href="https://astro.new">Try it now</PixelLink>
-			</Hero>
-			
-			<Trusted>
-				<Fragment slot="title">Developers around the world rely on Astro</Fragment>
-				<Fragment>
-					<li>
-						<Icon name="logos/google" height="2.25rem" />
-					</li>
-					<li>
-						<Icon name="logos/netlify" height="2.25rem" />
-					</li>
-					<li>
-						<Icon name="logos/divriots" height="1.75rem" />
-					</li>
-					<li>
-						<Icon name="logos/navillus" height="2.5rem" />
-					</li>
+	<BaseLayout>
+		<Nav marginBottom slot="nav" />
+
+		<Hero>
+			<Fragment slot="title">Static sites, solved.</Fragment>
+			<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
+			<PixelLink href="/docs/getting-started">Read the docs</PixelLink>
+			<PixelLink variant="outline" href="https://astro.new">Try it now</PixelLink>
+		</Hero>
+		
+		<Trusted>
+			<Fragment slot="title">Developers around the world rely on Astro</Fragment>
+			<Fragment>
+				<li>
+					<Icon name="logos/google" height="2.25rem" />
+				</li>
+				<li>
+					<Icon name="logos/netlify" height="2.25rem" />
+				</li>
+				<li>
+					<Icon name="logos/divriots" height="1.75rem" />
+				</li>
+				<li>
+					<Icon name="logos/navillus" height="2.5rem" />
+				</li>
+			</Fragment>
+		</Trusted>
+
+		<Demo>
+			<Title slot="title" id="ship-less-javascript">Ship less Javascript</Title>
+			<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
+
+			<div slot="illustration">
+				<Icon name="demo-a" width="631" height="530" />
+			</div>
+		</Demo>
+
+		<Demo reverse>
+			<Title slot="title" id="partial-hydration">Built-in Partial Hydration</Title>
+			<p>Interactive websites require JS—with Astro's selective hydration primitives, you're in full control over when your components are loaded.</p>
+
+			<div slot="illustration">
+				<Icon name="demo-b" width="631" height="530" />
+			</div>
+		</Demo>
+
+		<Performance>
+			<Title slot="title" id="peak-performance">Peak Performance</Title>
+			<Fragment>
+				<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
+				<p style="opacity: 0.75; margin-top: 1rem;">
+					<small>Did you know? 87% of websites currently fail Google's Core Web Vitals (CWV) benchmark. Astro is on a mission to change that.</small>
+				</p>
+			</Fragment>
+		</Performance>
+
+		<Quote padTop>
+			<a slot="logo" href="https://stackblitz.com">
+				<span>
+					<Sprite width="9em" height="2em" name="logos/stackblitz" title="StackBlitz" />
+				</span>
+			</a>
+			<Fragment slot="quote">Increasingly convinced of Astro VS framework specific SSR/SSGs. Huge opportunity to unify the web ecosystem's efforts.</Fragment>
+			<Fragment slot="cite">Eric Simons, StackBlitz CEO</Fragment>
+		</Quote>
+
+		<Section>
+			<Panel background="var(--gradient-pop-3)">
+				<Fragment slot="title">
+					<h3 class="head-md"><Title id="batteries-included">Batteries Included.</Title></h3>
+					<p>Astro does the heavy lifting in the background&mdash;no plugins required.</p>
 				</Fragment>
-			</Trusted>
 
-			<Demo>
-				<Title slot="title" id="ship-less-javascript">Ship less Javascript</Title>
-				<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
+				<Checklist>
+					<li>Markdown Support</li>
+					<li>TypeScript</li>
+					<li>CSS Modules</li>
+					<li>PostCSS, Sass, Less, Stylus</li>
+					<li>Built-in SEO</li>
+					<li>Sitemaps</li>
+					<li>RSS Feeds</li>
+					<li>Pagination</li>
+				</Checklist>
+			</Panel>
+		</Section>
 
-				<div slot="illustration">
-					<Icon name="demo-a" width="631" height="530" />
-				</div>
-			</Demo>
+		<Integrations>
+			<Title slot="title" id="integration-ready">
+				Integration Ready
+			</Title>
+			<Fragment>
+				<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
+				<p>If you don't need a framework, Astro can just as easily use HTML with progressively enhanced vanilla JS.</p>
+			</Fragment>
+		</Integrations>
 
-			<Demo reverse>
-				<Title slot="title" id="partial-hydration">Built-in Partial Hydration</Title>
-				<p>Interactive websites require JS—with Astro's selective hydration primitives, you're in full control over when your components are loaded.</p>
+		<Community style="--background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);" />
 
-				<div slot="illustration">
-					<Icon name="demo-b" width="631" height="530" />
-				</div>
-			</Demo>
+		<Sponsors>
+			<Title id="sponsors" slot="title">Sponsored by</Title>
+		</Sponsors>
 
-			<Performance>
-				<Title slot="title" id="peak-performance">Peak Performance</Title>
-				<Fragment>
-					<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
-					<p style="opacity: 0.75; margin-top: 1rem;">
-						<small>Did you know? 87% of websites currently fail Google's Core Web Vitals (CWV) benchmark. Astro is on a mission to change that.</small>
-					</p>
-				</Fragment>
-			</Performance>
-
-			<Quote padTop>
-				<a slot="logo" href="https://stackblitz.com">
-					<span>
-						<Sprite width="9em" height="2em" name="logos/stackblitz" title="StackBlitz" />
-					</span>
-				</a>
-				<Fragment slot="quote">Increasingly convinced of Astro VS framework specific SSR/SSGs. Huge opportunity to unify the web ecosystem's efforts.</Fragment>
-				<Fragment slot="cite">Eric Simons, StackBlitz CEO</Fragment>
-			</Quote>
-
-			<Section>
-				<Panel background="var(--gradient-pop-3)">
-					<Fragment slot="title">
-						<h3 class="head-md"><Title id="batteries-included">Batteries Included.</Title></h3>
-						<p>Astro does the heavy lifting in the background&mdash;no plugins required.</p>
-					</Fragment>
-
-					<Checklist>
-						<li>Markdown Support</li>
-						<li>TypeScript</li>
-						<li>CSS Modules</li>
-						<li>PostCSS, Sass, Less, Stylus</li>
-						<li>Built-in SEO</li>
-						<li>Sitemaps</li>
-						<li>RSS Feeds</li>
-						<li>Pagination</li>
-					</Checklist>
-				</Panel>
-			</Section>
-
-			<Integrations>
-				<Title slot="title" id="integration-ready">
-					Integration Ready
-				</Title>
-				<Fragment>
-					<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
-					<p>If you don't need a framework, Astro can just as easily use HTML with progressively enhanced vanilla JS.</p>
-				</Fragment>
-			</Integrations>
-
-			<Community style="--background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);" />
-
-			<Sponsors>
-				<Title id="sponsors" slot="title">Sponsored by</Title>
-			</Sponsors>
-
-			<Footer>
-				<a slot="logo" href="https://devtools.fm/episode/14">
-					<span>
-						<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
-					</span>
-				</a>
-				<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
-				<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
-			</Footer>
-		</main>
-	</Sprite.Provider>
-
-	<noscript></noscript>
-
-	<script type="module" src={Astro.resolve('../scripts/defer.js')}></script>
+		<Footer slot="footer">
+			<a slot="logo" href="https://devtools.fm/episode/14">
+				<span>
+					<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
+				</span>
+			</a>
+			<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
+			<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
+		</Footer>
+	</BaseLayout>
 </body>
 
 </html>

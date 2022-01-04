@@ -1,7 +1,6 @@
 ---
-import { Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../components/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Wrapper from '../components/Wrapper.astro';
 import Footer from '../components/Footer.astro';
@@ -27,7 +26,7 @@ const meta = {
 			scroll-padding-top: 10rem;
 			background: var(--color-tan);
 		}
-		main {
+		:global(main) {
 			padding-bottom: 8rem;
 			min-height: 100vh;
 			display: flex;
@@ -71,32 +70,23 @@ const meta = {
 </head>
 
 <body>
-	<Sprite.Provider>
-		<Header >
-			<Nav />
-		</Header>
+	<BaseLayout wrapper={Wrapper} container>
+		<Nav slot="nav" />
 
-		<Wrapper>
-			<main id="content" class="container">
-				<article>
-					<header class="hero">
-						<Card post={{ title, description, authors, publishDate }} variant="hero" />
-					</header>
-					
-					<hr>
+		<article>
+			<header class="hero">
+				<Card post={{ title, description, authors, publishDate }} variant="hero" />
+			</header>
+			
+			<hr>
 
-					<slot />
-				</article>
-			</main>
+			<slot />
+		</article>
 
-			<Outro tweet={{ title, href: canonicalURL.toString() }} />
-		</Wrapper>
+		<Outro tweet={{ title, href: canonicalURL.toString() }} />
 
-		<Footer />
-	</Sprite.Provider>
-
-	<noscript></noscript>
-	<script type="module" src={Astro.resolve('../scripts/defer.js')}></script>
+		<Footer slot="footer" />
+	</BaseLayout>
 </body>
 
 </html>

@@ -1,7 +1,6 @@
 ---
-import { Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../components/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import PixelLink from '../components/PixelLink.astro';
 import Starfield from '../components/Starfield.astro';
@@ -21,7 +20,7 @@ const meta = {
 		:root {
 			scroll-padding-top: 10rem;
 		}
-		main {
+		:global(main) {
 			min-height: 100vh;
 			max-width: 100vw;
 			overflow: hidden;
@@ -30,6 +29,7 @@ const meta = {
 			align-items: center;
 			justify-content: center;
 			text-align: center;
+			background-image: var(--gradient-pop-4);
 		}
 		:global(nav) {
 			margin-top: 0 !important;
@@ -78,24 +78,19 @@ const meta = {
 </head>
 
 <body>
-	<Sprite.Provider>
-		<Header>
-			<Nav invert marginBottom />
-		</Header>
-		<main id="content" style="background-image: var(--gradient-pop-4);">
-			<Starfield height={64} />
-			<div class="container text">
-				<h2 class="text-gradient">Lost in space there, astronaut?</h2>
-				<p>We couldn&rsquo;t find the page you were looking for&mdash;let&rsquo;s get you back to HQ.</p>
-				<div class="cta container">
-					<PixelLink href="/">Return Home</PixelLink>
-				</div>
-			</div>
-		</main>
-	</Sprite.Provider>
+	<BaseLayout>
+		<Nav invert marginBottom slot="nav" />
 
-	<noscript></noscript>
-	<script type="module" src={Astro.resolve('../scripts/defer.js')}></script>
+		<Starfield height={64} />
+
+		<div class="container text">
+			<h2 class="text-gradient">Lost in space there, astronaut?</h2>
+			<p>We couldn&rsquo;t find the page you were looking for&mdash;let&rsquo;s get you back to HQ.</p>
+			<div class="cta container">
+				<PixelLink href="/">Return Home</PixelLink>
+			</div>
+		</div>
+	</BaseLayout>
 </body>
 
 </html>

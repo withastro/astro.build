@@ -1,10 +1,9 @@
 ---
-import { Sprite } from 'astro-icon';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../components/BaseLayout.astro';
 import Wrapper from '../components/Wrapper.astro';
 import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro'
+import Footer from '../components/Footer.astro';
 
 import { smartypants } from 'smartypants';
 
@@ -26,7 +25,7 @@ const meta = {
 			scroll-padding-top: 10rem;
 			background: var(--color-tan);
 		}
-		main {
+		:global(main) {
 			width: max-content;
 			padding-bottom: 8rem;
 			min-height: 100vh;
@@ -38,22 +37,13 @@ const meta = {
 </head>
 
 <body>
-	<Sprite.Provider>
-		<Header >
-			<Nav />
-		</Header>
-		
-		<Wrapper>
-			<main id="content" class="container">
-				<slot />
-			</main>
-		</Wrapper>
+	<BaseLayout wrapper={Wrapper} container>
+		<Nav slot="nav" />
 
-		<Footer />
-	</Sprite.Provider>
+		<slot />
 
-	<noscript></noscript>
-	<script type="module" src={Astro.resolve('../scripts/defer.js')}></script>
+		<Footer slot="footer" />
+	</BaseLayout>
 </body>
 
 </html>
