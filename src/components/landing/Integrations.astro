@@ -3,8 +3,7 @@ import Section from './Section.astro';
 import { Icon } from 'astro-icon';
 
 const rows = [
-    ['react', 'vue', 'svelte', 'preact', 'solidjs'],
-    ['javascript', 'lit', 'alpinejs', 'typescript'],
+    ['typescript'],
     ['tailwindcss', 'sass', 'markdown'],
     ['wordpress', 'strapi', 'contentful', 'prismic', 'shopify'],
 ]
@@ -17,7 +16,7 @@ const rows = [
             <slot />
         </div>
     </div>
-    <ul class="container integrations">
+    <ul class="integrations">
         {rows.map(row => row.map(icon => <li><Icon name={`logos/${icon}`} height="4rem" /></li>))}
     </ul>
 </Section>

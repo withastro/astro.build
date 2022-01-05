@@ -6,6 +6,7 @@ import Nav from '../components/Nav.astro';
 import PixelLink from '../components/PixelLink.astro';
 import Panel from '../components/Panel.astro';
 import Checklist from '../components/Checklist.astro';
+import ChecklistItem from '../components/ChecklistItem.astro';
 import Footer from '../components/Footer.astro';
 
 import Title from '../components/landing/Title.astro';
@@ -16,7 +17,6 @@ import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
 import Integrations from '../components/landing/Integrations.astro';
 import Performance from '../components/landing/Performance.astro';
-import Community from '../components/landing/Community.astro';
 import Sponsors from '../components/landing/Sponsors.astro';
 
 const meta = {
@@ -30,16 +30,13 @@ const meta = {
 
 <head>
 	<BaseHead {...meta} />
-	<style>
+	<style global>
 		:root {
 			scroll-padding-top: 10rem;
 		}
-		:global(main) {
+		main {
 			max-width: 100vw;
 			overflow: hidden;
-		}
-		[astro-icon="logos/stackblitz"] {
-			transform: translateX(-0.5em);
 		}
 	</style>
 </head>
@@ -102,52 +99,6 @@ const meta = {
 		</Performance>
 
 		<Quote padTop>
-			<a slot="logo" href="https://stackblitz.com">
-				<span>
-					<Sprite width="9em" height="2em" name="logos/stackblitz" title="StackBlitz" />
-				</span>
-			</a>
-			<Fragment slot="quote">Increasingly convinced of Astro VS framework specific SSR/SSGs. Huge opportunity to unify the web ecosystem's efforts.</Fragment>
-			<Fragment slot="cite">Eric Simons, StackBlitz CEO</Fragment>
-		</Quote>
-
-		<Section>
-			<Panel background="var(--gradient-pop-3)">
-				<Fragment slot="title">
-					<h3 class="head-md"><Title id="batteries-included">Batteries Included.</Title></h3>
-					<p>Astro does the heavy lifting in the background&mdash;no plugins required.</p>
-				</Fragment>
-
-				<Checklist>
-					<li>Markdown Support</li>
-					<li>TypeScript</li>
-					<li>CSS Modules</li>
-					<li>PostCSS, Sass, Less, Stylus</li>
-					<li>Built-in SEO</li>
-					<li>Sitemaps</li>
-					<li>RSS Feeds</li>
-					<li>Pagination</li>
-				</Checklist>
-			</Panel>
-		</Section>
-
-		<Integrations>
-			<Title slot="title" id="integration-ready">
-				Integration Ready
-			</Title>
-			<Fragment>
-				<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
-				<p>If you don't need a framework, Astro can just as easily use HTML with progressively enhanced vanilla JS.</p>
-			</Fragment>
-		</Integrations>
-
-		<Community style="--background: var(--color-tan) linear-gradient(180deg, #D8C5EF 0%, rgba(225, 213, 238, 0) 100%);" />
-
-		<Sponsors>
-			<Title id="sponsors" slot="title">Sponsored by</Title>
-		</Sponsors>
-
-		<Footer slot="footer">
 			<a slot="logo" href="https://devtools.fm/episode/14">
 				<span>
 					<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
@@ -155,6 +106,66 @@ const meta = {
 			</a>
 			<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
 			<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
+		</Quote>
+
+		<Section>
+			<Panel background="var(--gradient-pop-3)">
+				<Fragment slot="title">
+					<h3 class="head-md"><Title id="framework-friendly">Framework Friendly.</Title></h3>
+					<p>Use what you know&mdash;leverage your existing framework components with Astro.</p>
+				</Fragment>
+
+				<Checklist cols={4}>
+					<ChecklistItem href="https://astro.new/minimal">
+						<Sprite name="frameworks/js" size={24} slot="icon" />
+						Vanilla
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-react">
+						<Sprite name="frameworks/react" size={24} slot="icon" />
+						React
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-svelte">
+						<Sprite name="frameworks/svelte" size={24} slot="icon" />
+						Svelte
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-vue">
+						<Sprite name="frameworks/vue" size={24} slot="icon" />
+						Vue
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-preact">
+						<Sprite name="frameworks/preact" size={24} slot="icon" />
+						Preact
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-lit">
+						<Sprite name="frameworks/lit" size={24} slot="icon" />
+						Lit
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-solid">
+						<Sprite name="frameworks/solid" size={24} slot="icon" />
+						Solid
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-alpine">
+						<Sprite name="frameworks/alpine" size={24} slot="icon" />
+						Alpine
+					</ChecklistItem>
+				</Checklist>
+			</Panel>
+		</Section>
+
+		<Integrations>
+			<Title slot="title" id="batteries-included">
+				Batteries Included
+			</Title>
+			<Fragment>
+				<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
+			</Fragment>
+		</Integrations>
+
+		<Sponsors>
+			<Title id="sponsors" slot="title">Sponsored by</Title>
+		</Sponsors>
+
+		<Footer slot="footer">
 		</Footer>
 	</BaseLayout>
 </body>
