@@ -1,9 +1,9 @@
 ---
 import Section from './Section.astro';
-const { padTop = false, background, blobs = true, color } = Astro.props;
+const { pad = 1, background, blobs = true, color } = Astro.props;
 ---
 
-<Section class={`quote ${padTop ? 'pad-top' : ''}`.trim()} background={background} style={color ? `--color: ${color};` : ''}>
+<Section class="quote" background={background} pad={pad} style={color ? `--color: ${color};` : ''}>
     {blobs && <div class="glow" />}
 
     <div class="logo">
@@ -23,12 +23,9 @@ const { padTop = false, background, blobs = true, color } = Astro.props;
     justify-content: center;
     position: relative;
     color: var(--color, var(--color-dusk));
-    padding-top: var(--size-1000);
-    padding-bottom: calc(var(--size-1000) * 2);
+    padding-top: calc(var(--size-1000) * var(--pad, 1));
+    padding-bottom: calc(var(--size-1000) * var(--pad, 1));
     z-index: 0;
-}
-.pad-top {
-    padding-top: calc(var(--size-1000) * 2);
 }
 
 blockquote {

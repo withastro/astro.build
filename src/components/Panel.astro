@@ -1,8 +1,8 @@
 ---
-const { background = 'color-tan', offset = 0, size = "lg" } = Astro.props;
-let style = '';
+const { background = 'color-tan', offset = 0, size = "lg", pad = 1 } = Astro.props;
+let style = `--pad: ${pad}; `;
 if (offset !== 0) {
-    style += `--offset: ${offset};`
+    style += `--offset-block: ${offset};`
 }
 ---
 
@@ -26,18 +26,18 @@ if (offset !== 0) {
     .container {
         position: relative;
         z-index: 1;
-        margin-top: calc(var(--offset, 0) * 1rem);
+        margin-top: calc(var(--offset-block, 0) * -1rem);
     }
     .panel {
-        --offset: 0.5rem;
+        --offset-inline: 0.5rem;
         background: var(--background);
         border-radius: var(--corner-md);
-        padding: 3.25rem 2rem;
+        padding: calc(3.25rem * var(--pad, 1)) 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: calc(var(--offset) * -1);
-        margin-right: calc(var(--offset) * -1);
+        margin-left: calc(var(--offset-inline) * -1);
+        margin-right: calc(var(--offset-inline) * -1);
     }
     .panel.size-md {
         max-width: 64rem;
@@ -47,7 +47,7 @@ if (offset !== 0) {
 
     @media (min-width: 45rem) {
         .panel {
-            --offset: 1.625rem;
+            --offset-inline: 1.625rem;
         }
     }
 
@@ -59,7 +59,7 @@ if (offset !== 0) {
         color: var(--color-dusk);
     }
 
-    .panel > :nth-child(2) {
+    .panel > :not(p):nth-child(2) {
         margin-top: 3rem;
     }
 </style>

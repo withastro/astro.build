@@ -1,8 +1,8 @@
 ---
 import Section from './Section.astro';
-const { reverse } = Astro.props;
+const { reverse, gradient = false } = Astro.props;
 ---
-<Section class="demo">
+<Section class={"demo" + (gradient ? ' gradient' : '')}>
     <div class="container">
         <div class="content">
             <h3 class="head-md title"><slot name="title" /></h3>
@@ -17,7 +17,13 @@ const { reverse } = Astro.props;
 
 <style>
 .demo {
-    padding-top: 0;
+    padding-bottom: var(--size-500);
+}
+.reverse {
+    padding-bottom: var(--size-1000);
+}
+.gradient {
+    background: var(--color-tan) linear-gradient(180deg, #E5DAEE 0%, rgba(255, 255, 255, 0) 100%);
 }
 .container {
     display: grid;
@@ -26,6 +32,11 @@ const { reverse } = Astro.props;
 .content > :global(p) {
     margin-top: 0.5rem;
     max-width: 52ch;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .illo {
     display: flex;
@@ -49,7 +60,7 @@ const { reverse } = Astro.props;
         order: -1;
     }
     .title {
-        margin-top: 2.5ex;
+        margin-top: -2.5ex;
     }
     .container {
         grid-template-columns: repeat(2, minmax(0, 1fr));

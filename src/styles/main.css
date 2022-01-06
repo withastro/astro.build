@@ -55,11 +55,12 @@
   --color-pink: #FDB2B7;
 
   --gradient-pop-1: linear-gradient(180deg, #205eff 0%, #c238bd 115%);
-  --gradient-pop-2: linear-gradient(
-    120deg,
-    #ff9776 7.5%,
-    #769cff 50%,
-    #c238bd 100%
+  --gradient-pop-2: repeating-linear-gradient(
+    135deg,
+    #ff9776 0em,
+    #769cff 1em,
+    #c238bd 2em,
+    #ff9776 3em
   );
   --gradient-pop-3: linear-gradient(180deg, #ffb4b4 0%, #c487f0 100%);
   --gradient-pop-4: linear-gradient(
@@ -347,17 +348,32 @@ p, .body-md {
   --marker-size: 2.25rem;
   display: grid;
   gap: 0.75rem;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  justify-content: center;
   width: 100%;
+  max-width: 72rem;
   list-style: none;
+}
+
+@media (min-width: 24rem) {
+  .checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 40rem) {
+  .checklist {
+    padding: 0 1.5rem;
+  }
 }
 
 @media (min-width: 52rem) {
   .checklist {
-    padding: 0 2rem;
+    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
   }
 }
 
@@ -386,14 +402,6 @@ p, .body-md {
 .checklist > li > svg {
   width: var(--marker-size);
   height: var(--marker-size);
-}
-
-@media (min-width: 52rem) {
-  .checklist {
-    width: 100%;
-    padding: 0 4rem;
-    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  }
 }
 
 .enable-rainbow {

@@ -17,11 +17,12 @@ import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
 import Integrations from '../components/landing/Integrations.astro';
 import Performance from '../components/landing/Performance.astro';
+import Award from '../components/landing/Award.astro';
 import Sponsors from '../components/landing/Sponsors.astro';
 
 const meta = {
 	title: 'Astro',
-	description: 'Build faster websites with less client-side JavaScript',
+	description: 'Build fast websites, faster. Astro is a site builder for a new era of the web. It’s ultra-powerful at build time and weightless at runtime.',
 	canonicalURL: new URL('.', Astro.site)
 }
 ---
@@ -46,10 +47,10 @@ const meta = {
 		<Nav marginBottom slot="nav" />
 
 		<Hero>
-			<Fragment slot="title">Static sites, solved.</Fragment>
-			<Fragment slot="tagline">Astro is a new kind of static site builder—one that delivers lightning-fast performance with a best-in-class developer experience.</Fragment>
+			<Fragment slot="title">Build fast websites, faster.</Fragment>
+			<Fragment slot="tagline">Astro is a site builder for a new era of the web. It&rsquo;s ultra-powerful at build time and weightless at runtime.</Fragment>
 			<PixelLink href="/docs/getting-started">Read the docs</PixelLink>
-			<PixelLink variant="outline" href="https://astro.new">Try it now</PixelLink>
+			<PixelLink variant="outline" href="https://astro.new">Get Started</PixelLink>
 		</Hero>
 		
 		<Trusted>
@@ -70,7 +71,7 @@ const meta = {
 			</Fragment>
 		</Trusted>
 
-		<Demo>
+		<Demo gradient>
 			<Title slot="title" id="ship-less-javascript">Ship less Javascript</Title>
 			<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
 
@@ -88,28 +89,8 @@ const meta = {
 			</div>
 		</Demo>
 
-		<Performance>
-			<Title slot="title" id="peak-performance">Peak Performance</Title>
-			<Fragment>
-				<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
-				<p style="opacity: 0.75; margin-top: 1rem;">
-					<small>Did you know? 87% of websites currently fail Google's Core Web Vitals (CWV) benchmark. Astro is on a mission to change that.</small>
-				</p>
-			</Fragment>
-		</Performance>
-
-		<Quote padTop>
-			<a slot="logo" href="https://devtools.fm/episode/14">
-				<span>
-					<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
-				</span>
-			</a>
-			<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
-			<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
-		</Quote>
-
 		<Section>
-			<Panel background="var(--gradient-pop-3)">
+			<Panel pad={2} background="var(--gradient-pop-3)">
 				<Fragment slot="title">
 					<h3 class="head-md"><Title id="framework-friendly">Framework Friendly.</Title></h3>
 					<p>Use what you know&mdash;leverage your existing framework components with Astro.</p>
@@ -152,21 +133,41 @@ const meta = {
 			</Panel>
 		</Section>
 
+		<Quote pad={2}>
+			<a slot="logo" href="https://devtools.fm/episode/14">
+				<span>
+					<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
+				</span>
+			</a>
+			<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
+			<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
+		</Quote>
+
 		<Integrations>
 			<Title slot="title" id="batteries-included">
 				Batteries Included
 			</Title>
 			<Fragment>
-				<p>You don't have to rebuild your existing components to benefit from Astro. Astro supports React, Svelte, Vue, Preact, Lit, Solid, and any other frameworks.</p>
+				<p>Astro comes with everything you need out of the box. From authoring pages as Markdown with Components to automatically generating sitemaps and RSS feeds, we&rsquo;ve got you covered.</p>
 			</Fragment>
 		</Integrations>
+
+
+		<Performance>
+			<Title slot="title" id="peak-performance">Peak Performance</Title>
+			<Fragment>
+				<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
+				<p style="opacity: 0.75; margin-top: 1rem;">
+					<small>Did you know? 87% of websites currently fail Google's Core Web Vitals (CWV) benchmark. Astro is on a mission to change that.</small>
+				</p>
+			</Fragment>
+		</Performance>
 
 		<Sponsors>
 			<Title id="sponsors" slot="title">Sponsored by</Title>
 		</Sponsors>
 
-		<Footer slot="footer">
-		</Footer>
+		<Footer slot="footer" />
 	</BaseLayout>
 </body>
 

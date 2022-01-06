@@ -3,9 +3,9 @@ import Section from './Section.astro';
 import { Icon } from 'astro-icon';
 
 const rows = [
-    ['typescript'],
-    ['tailwindcss', 'sass', 'markdown'],
-    ['wordpress', 'strapi', 'contentful', 'prismic', 'shopify'],
+    ['markdown', 'javascript', 'typescript'],
+    ['sass', 'tailwindcss', 'postcss'],
+    ['rss', 'seo', 'sitemap'],
 ]
 ---
 
@@ -17,11 +17,15 @@ const rows = [
         </div>
     </div>
     <ul class="integrations">
-        {rows.map(row => row.map(icon => <li><Icon name={`logos/${icon}`} height="4rem" /></li>))}
+        {rows.map(row => row.map(icon => <li class={`icon-${icon}`}><Icon name={`logos/${icon}`} height="4rem" /></li>))}
     </ul>
 </Section>
 
 <style>
+    #frameworks {
+        padding-top: var(--size-1000);
+        padding-bottom: var(--size-1000);
+    }
     .content {
         display: grid;
         color: var(--color-dusk);
@@ -36,21 +40,40 @@ const rows = [
         list-style: none;
     }
     .integrations {
+        --cols: 2;
         margin: 2rem auto;
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: 0.5rem 2rem;
+        display: grid;
+        grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+        gap: 1rem 2rem;
         padding: 4rem var(--size-500);
         opacity: 0.4;
-        color: var(--color-midnight);
+        color: black;
+    }
+    .icon-tailwindcss {
+        grid-column: auto / span 2;
+    }
+    .integrations > li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .integrations svg {
         height: var(--size-800);
     }
 
+    @media (min-width: 42rem) {
+        .integrations {
+            --cols: 3;
+        }
+        .icon-tailwindcss {
+            grid-column: initial;
+        }
+    }
+
     @media (min-width: 64rem) {
+        .integrations {
+            max-width: 80rem;
+        }
         .integrations svg {
             height: var(--size-900);
         }
