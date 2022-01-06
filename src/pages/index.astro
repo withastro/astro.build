@@ -17,12 +17,14 @@ import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
 import Integrations from '../components/landing/Integrations.astro';
 import Performance from '../components/landing/Performance.astro';
-import Award from '../components/landing/Award.astro';
 import Sponsors from '../components/landing/Sponsors.astro';
+
+const headline = 'Build fast websites, faster.'
+const tagline = 'Astro is a site builder for a new era of the web. It’s powerful at build time and ultra-lightweight at runtime.'
 
 const meta = {
 	title: 'Astro',
-	description: 'Build fast websites, faster. Astro is a site builder for a new era of the web. It’s ultra-powerful at build time and weightless at runtime.',
+	description: `${headline} ${tagline}`,
 	canonicalURL: new URL('.', Astro.site)
 }
 ---
@@ -47,8 +49,8 @@ const meta = {
 		<Nav marginBottom slot="nav" />
 
 		<Hero>
-			<Fragment slot="title">Build fast websites, faster.</Fragment>
-			<Fragment slot="tagline">Astro is a site builder for a new era of the web. It&rsquo;s ultra-powerful at build time and weightless at runtime.</Fragment>
+			<Fragment slot="title">{headline}</Fragment>
+			<Fragment slot="tagline">{tagline}</Fragment>
 			<PixelLink href="/docs/getting-started">Read the docs</PixelLink>
 			<PixelLink variant="outline" href="https://astro.new">Get Started</PixelLink>
 		</Hero>
