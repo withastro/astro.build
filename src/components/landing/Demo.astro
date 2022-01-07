@@ -2,7 +2,7 @@
 import Section from './Section.astro';
 const { reverse, gradient = false } = Astro.props;
 ---
-<Section class={"demo" + (gradient ? ' gradient' : '')}>
+<Section pad={2} class={"demo" + (gradient ? ' gradient' : '')}>
     <div class="container">
         <div class="content">
             <h3 class="head-md title"><slot name="title" /></h3>
@@ -16,9 +16,6 @@ const { reverse, gradient = false } = Astro.props;
 </Section>
 
 <style>
-.demo {
-    padding-bottom: var(--size-500);
-}
 .reverse {
     padding-bottom: var(--size-1000);
 }
