@@ -1,0 +1,123 @@
+---
+import { Sprite } from 'astro-icon';
+
+const { before, after } = Astro.props;
+---
+<div class="illustration">
+    <div class="before-astro">
+        <div class="screen">
+            <slot name="before" />
+        </div>
+        <div class="label">
+            <div class="badge">
+                <Sprite pack="ic" name="close" size={24} />
+            </div>
+            <div class="text">
+                <h4>{before}</h4>
+                <h5>Before Astro</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="after-astro">
+        <div class="screen">
+            <slot name="after" />
+        </div>
+        <div class="label">
+            <div class="badge">
+                <Sprite name="logo-single-color" size={20} />
+            </div>
+            <div class="text">
+                <h4>{after}</h4>
+                <h5>After Astro</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.illustration {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    z-index: 1;
+}
+.screen {
+    position: relative;
+    aspect-ratio: 4/6;
+    width: 220px;
+    border-radius: var(--corner-md);
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+}
+.before-astro {
+    --color: #E3CFC7;
+}
+.after-astro {
+    --color: #E8D6F3;
+}
+.before-astro :is(.label, .screen) {
+    background: #FAFAFA  linear-gradient(to bottom, transparent 0%, #F4EFED 100%);
+}
+.after-astro :is(.label, .screen) {
+    background: #FAFAFA linear-gradient(to bottom, transparent 0%, #F3E9FA 100%);
+}
+.after-astro .screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--gradient-pop-5);
+    filter: blur(10px);
+    z-index: -1;
+}
+.label {
+    position: relative;
+    width: 175px;
+    margin: -1.5rem auto 0;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    z-index: 1;
+    border-radius: 2rem;
+    box-shadow: var(--shadow-md);
+}
+.text {
+    margin-left: 0.5rem;
+}
+.text h4,
+.text h5 {
+    font-family: var(--font-display);
+    margin: 0;
+    line-height: 1;
+}
+.text h4 {
+    font-size: var(--size-400);
+    color: var(--color-midnight);
+}
+.text h5 {
+    font-size: var(--size-300);
+    color: #7C678B;
+    margin-top: 0.25em;
+}
+.badge {
+    --size: 2rem;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+}
+.before-astro .badge {
+    background: linear-gradient(180deg, #FA8C5D 0%, #CC2727 100%);
+}
+.after-astro .badge {
+    background: linear-gradient(180.2deg, #205EFF 0.17%, #C238BD 114.76%);
+}
+</style>

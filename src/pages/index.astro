@@ -13,6 +13,7 @@ import Title from '../components/landing/Title.astro';
 import Hero from '../components/landing/Hero.astro';
 import Trusted from '../components/landing/Trusted.astro';
 import Demo from '../components/landing/Demo.astro';
+import DemoA from '../components/landing/DemoA.astro';
 import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
 import Integrations from '../components/landing/Integrations.astro';
@@ -77,9 +78,7 @@ const meta = {
 			<Title slot="title" id="ship-less-javascript">Ship less Javascript</Title>
 			<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
 
-			<div slot="illustration">
-				<Icon name="demo-a" width="631" height="530" />
-			</div>
+			<DemoA slot="illustration" />
 		</Demo>
 
 		<Demo reverse>
@@ -171,6 +170,8 @@ const meta = {
 
 		<Footer slot="footer" />
 	</BaseLayout>
+
+	<script type="module" src="/src/scripts/animations.ts"></script>
 </body>
 
 </html>
