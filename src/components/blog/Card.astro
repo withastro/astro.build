@@ -7,24 +7,35 @@ const { post = {}, variant = 'summary' } = Astro.props;
 const Title = variant === 'summary' ? 'h2' : 'h1';
 ---
 
-<Title class="title text-gradient">{smartypants(post.title, 1)}</Title>
-<p class="description">{post.description}</p>
+<div class="wrapper">
+    <Title class="title text-gradient">{smartypants(post.title, 1)}</Title>
+    <div class="description">
+        <p>{post.description}</p>
+    </div>
 
-<div class="authors">
-    <h3>Written by</h3>
-    <ul role="list">
-        {post.authors.map(author => (
-            <li><Author name={author} /></li>
-        ))}
-    </ul>
-</div>
+    <div class="authors">
+        <h3>Written by</h3>
+        <ul role="list">
+            {post.authors.map(author => (
+                <li><Author name={author} /></li>
+            ))}
+        </ul>
+    </div>
 
-<div class="date">
-    <h3>Published on</h3>
-    <p><DateTime value={post.publishDate} /></p>
+    <div class="date">
+        <h3>Published on</h3>
+        <p><DateTime value={post.publishDate} /></p>
+    </div>
 </div>
 
 <style>
+.wrapper {
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+}
 .title {
     font-family: var(--font-display);
     margin: 0 auto;
@@ -44,11 +55,20 @@ h2.title {
     width: 100%;
     margin-top: 1em;
 }
+.description > p {
+    max-width: 48ch;
+}
 .post > div {
     margin-top: 2em;
 }
 .authors {
     flex-grow: 2;
+    width: 100%;
+}
+@media (min-width: 52rem) {
+    .authors {
+        width: initial;
+    }
 }
 .authors ul {
     display: flex;

@@ -6,7 +6,7 @@
 }
 hr {
     border: 0;
-    border-top: 1px solid var(--color-dusk);
+    border-top: 1px solid var(--color-dawn);
     margin-left: -2rem;
     margin-right: -2rem;
     margin-top: 2rem;
@@ -44,20 +44,20 @@ code:not([class])::after {
     content: '\`';
 }
 
-article img:not([class]) {
+#content img:not([class]) {
     width: calc(100% + 4rem);
     margin: 2rem -2rem;
     margin-top: 2rem !important;
 }
 
-:is(h2, h3, h4, h5, h6) a {
+#content :is(h2, h3, h4, h5, h6) a {
     font: inherit;
     color: inherit;
     text-decoration: none !important;
     display: flex;
 }
 
-:is(h2, h3, h4, h5, h6) a::before {
+#content :is(h2, h3, h4, h5, h6) a::before {
     content: "#";
     width: 1em;
     margin-left: 0.25em;
@@ -68,19 +68,19 @@ article img:not([class]) {
 }
 
 @media (min-width: 50rem) {
-    :is(h2, h3, h4, h5, h6) a::before {
+    #content :is(h2, h3, h4, h5, h6) a::before {
         order: initial;
         margin-left: -1em;
     }
 }
 
-:is(h2, h3, h4, h5, h6) a:is(:active, :visited, :hover, :focus) {
+#content :is(h2, h3, h4, h5, h6) a:is(:active, :visited, :hover, :focus) {
     color: var(--color-dusk);
 }
 
-:is(h2, h3, h4, h5, h6) a:active::before,
-:is(h2, h3, h4, h5, h6) a:hover::before,
-:is(h2, h3, h4, h5, h6) a:focus::before {
+#content :is(h2, h3, h4, h5, h6) a:active::before,
+#content :is(h2, h3, h4, h5, h6) a:hover::before,
+#content :is(h2, h3, h4, h5, h6) a:focus::before {
     opacity: 0.6 !important;
 }
 

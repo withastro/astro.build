@@ -22,11 +22,17 @@ const { type = 'tip', title } = Astro.props;
 		padding: var(--padding-block) var(--padding-inline);
 		margin-left: calc(var(--padding-inline) * -1);
 		margin-right: calc(var(--padding-inline) * -1);
+		margin-top: 4rem !important;
 
 		background: var(--color-dawn);
 		color: var(--color-midnight);
-		border-radius: var(--corner-md);
 		box-shadow: var(--shadow-md);
+	}
+
+	@media (min-width: 64rem) {
+		.note {
+			border-radius: var(--corner-md);
+		}
 	}
 
 	.note > :global(* + *) {

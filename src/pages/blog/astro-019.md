@@ -1,6 +1,7 @@
 ---
 setup: |
   import Layout from '../../layouts/Post.astro'
+  import Tweet from '../../components/Tweet.astro'
 title: 'Astro 0.19'
 description: 'Introducing: Next.js-inspired dynamic routing • Astro.resolve() • client:only components • translations • and more!'
 publishDate: 'August 18, 2021'
@@ -152,11 +153,14 @@ We'll be tweeting out personal "thank you" messages to every person and company 
 
 ## ICYMI (In case you missed it)
 
-[Github added official support](https://twitter.com/astrodotbuild/status/1423001137905651714?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1423001137905651714%7Ctwgr%5E%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fastro.build%2Fblog%2Fastro-019%2F) for `.astro` files and ```` ```astro```` syntax highlighting across their entire platform. Not to be outdone, CodeSandbox [quickly followed up](https://twitter.com/codesandbox/status/1425438635357257728) with support of their own! 
+[Github added official support](https://twitter.com/astrodotbuild/status/1423001137905651714?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1423001137905651714%7Ctwgr%5E%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fastro.build%2Fblog%2Fastro-019%2F) for `.astro` files and `astro` syntax highlighting across their entire platform. Not to be outdone, CodeSandbox [quickly followed up](https://twitter.com/codesandbox/status/1425438635357257728) with support of their own! 
 
 This is such a huge milestone for Astro, especially considering how young the project is! Thank you to everyone who used Astro, created projects, and showed these platforms how valuable Astro really is.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">It&#39;s official! 🎉 <a href="https://twitter.com/github?ref_src=twsrc%5Etfw">@github</a> now supports syntax highlighting for .astro files!<br><br>You can also use code blocks starting with ```` ```astro```` to get proper highlighting in Markdown files, issues, and PR comments! <a href="https://t.co/CDiGw66Qw6">pic.twitter.com/CDiGw66Qw6</a></p>&mdash; Astro (@astrodotbuild) <a href="https://twitter.com/astrodotbuild/status/1423001137905651714?ref_src=twsrc%5Etfw">August 4, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<Tweet src="https://twitter.com/astrodotbuild/status/1423001137905651714">
+  It&rsquo;s official! 🎉 <a href="https://twitter.com/github">@github</a> now supports syntax highlighting for <code>.astro</code> files!<br><br>You can also use code blocks starting with <code>astro</code> to get proper highlighting in Markdown files, issues, and PR comments!
+  <br><br><a href="https://t.co/CDiGw66Qw6">pic.twitter.com/CDiGw66Qw6</a></p>&mdash; Astro (@astrodotbuild) <a href="https://twitter.com/astrodotbuild/status/1423001137905651714?ref_src=twsrc%5Etfw">August 4, 2021</a></blockquote>
+</Tweet>
 
 ## 👋
 

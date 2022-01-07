@@ -1,6 +1,8 @@
 ---
 setup: |
   import Layout from '../../layouts/Post.astro'
+  import PixelLink from '../../components/PixelLink.astro'
+  import Note from '../../components/Note.astro'
 title: 'Introducing the Astro REPL'
 authors: 
   - fred
@@ -15,6 +17,12 @@ The Astro team proudly presents the new [Astro REPL:](https://astro.build/play) 
 
 ![astro](/assets/blog/astro-repl/astro-repl-screenshot.jpg)
 
-Try it today at [astro.build/play →](https://astro.build/play)
+<div style="display: flex; justify-content: center;">
+  <PixelLink href="https://astro.build/play">Try the REPL now!</PixelLink>
+</div>
+
+<Note>
 
 To learn more about our new compiler, [join us on Discord](https://astro.build/chat) and tune in to [Astro Demo Days](https://www.youtube.com/watch?v=-ExcBJrXOd8) next Monday, September 20, 2021 at 11am PST.
+
+</Note>

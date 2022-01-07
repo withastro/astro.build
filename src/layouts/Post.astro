@@ -6,6 +6,7 @@ import Wrapper from '../components/Wrapper.astro';
 import Footer from '../components/Footer.astro';
 import Card from '../components/blog/Card.astro';
 import Outro from '../components/blog/Outro.astro';
+import Panel from '../components/Panel.astro';
 
 let { content: { title, publishDate, description, authors } } = Astro.props;
 const { canonicalURL } = Astro.request;
@@ -26,30 +27,28 @@ const meta = {
 			scroll-padding-top: 10rem;
 			background: var(--color-tan);
 		}
-		:global(main) {
-			padding-bottom: 8rem;
+		:global(#content) {
 			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+			padding: 4rem 0;
 		}
-		article {
+		#article {
 			max-width: 48rem;
-			padding-bottom: 4rem;
+			padding-bottom: 2rem;
 			display: flex;
 			flex-flow: column nowrap;
 			font-family: var(--font-body);
 			font-size: var(--size-500);
 			line-height: 1.3;
 			color: var(--color-midnight);
+			z-index: 1;
 		}
-		article > :global(* + *) {
+		:where(#article > :global(* + *)) {
 			margin-top: 1em;
 		}
-		article :is(h2):not([class]) {
+		#article :is(h2):not([class]) {
 			margin-top: 3em;
 		}
-		article > :global(.note:last-child) {
+		#article > :global(.note:last-child) {
 			margin-top: 8rem;
 		}
 		.hero {
@@ -62,20 +61,23 @@ const meta = {
 </head>
 
 <body>
-	<BaseLayout wrapper={Wrapper} container>
+	<BaseLayout wrapper={Wrapper}>
 		<Nav slot="nav" />
+		
+		<Panel size="md" background="white linear-gradient(180deg, #E5DAEE 0%, rgba(255, 255, 255, 0) 24rem)">
+			<div id="article">
+				<header class="hero">
+					<Card post={{ title, description, authors, publishDate }} variant="hero" />
+				</header>
+				
+				<hr>
 
-		<article>
-			<header class="hero">
-				<Card post={{ title, description, authors, publishDate }} variant="hero" />
-			</header>
-			
-			<hr>
+				<slot />
 
-			<slot />
-		</article>
+				<Outro tweet={{ title, href: canonicalURL.toString() }} />
+			</div>
+		</Panel>
 
-		<Outro tweet={{ title, href: canonicalURL.toString() }} />
 
 		<Footer slot="footer" />
 	</BaseLayout>
