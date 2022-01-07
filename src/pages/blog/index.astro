@@ -26,11 +26,11 @@ const posts = (await Promise.all(
         <p></p>
     </header>
 
-    <ul class="posts">
+    <ul role="list" class="posts">
         {posts.map(post => {
             return (
                 <li class="post">
-                    <a class="overlay" href={post.href} />
+                    <a class="overlay" href={post.href}></a>
                     <Card post={post} variant="summary" />
                 </li>
             )
