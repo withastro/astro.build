@@ -4,6 +4,14 @@
     margin-bottom: 1.25rem;
     color: var(--color-dusk);
 }
+hr {
+    border: 0;
+    border-top: 1px solid var(--color-dusk);
+    margin-left: -2rem;
+    margin-right: -2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
 h1 {
     --fill: var(--gradient-pop-1);
     font-size: 3rem;
@@ -86,15 +94,15 @@ article img:not([class]) {
     font-style: normal;
 }
 
-:is(ul:not([class]), ol:not([class])) {
+:is(ul:not([role="list"]), ol:not([role="list"])) {
     padding-left: 1.5em;
 }
 
-:where(ul:not([class])) {
+:where(ul:not([role="list"])) {
     list-style-type: square;
 }
 
-:where(ul:not([class]) > li + li) {
+:where(ul:not([role="list"]) > li + li) {
     margin-top: 0.25em;
 } 
 
@@ -114,7 +122,6 @@ pre > code {
 	font-size: 1em;
 }
 
-table,
 pre {
 	position: relative;
 	--padding-block: 1rem;
