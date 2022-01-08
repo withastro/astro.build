@@ -13,8 +13,8 @@ import Title from '../components/landing/Title.astro';
 import Hero from '../components/landing/Hero.astro';
 import Trusted from '../components/landing/Trusted.astro';
 import Demo from '../components/landing/Demo.astro';
-import DemoA from '../components/landing/DemoA.astro';
-import DemoB from '../components/landing/DemoB.astro';
+import DemoTTI from '../components/landing/DemoTTI.astro';
+import DemoPartialHydration from '../components/landing/DemoPartialHydration.astro';
 import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
 import Integrations from '../components/landing/Integrations.astro';
@@ -79,14 +79,13 @@ const meta = {
 			<Title slot="title" id="ship-less-javascript">Ship less Javascript</Title>
 			<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
 
-			<DemoA slot="illustration" />
+			<DemoTTI slot="illustration" />
 		</Demo>
 
 		<Demo reverse>
 			<Title slot="title" id="partial-hydration">Built-in Partial Hydration</Title>
 			<p>Interactive websites require JS—with Astro's selective hydration primitives, you're in full control over when your components are loaded.</p>
-
-			<DemoB slot="illustration" />
+			<DemoPartialHydration slot="illustration" />
 		</Demo>
 
 		<Section>
