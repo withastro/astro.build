@@ -1,11 +1,9 @@
 ---
 const { href, items = [] } = Astro.props;
 const Tag = href ? 'a' : 'div';
-// A rough estimate of the content width based on RT Alias Medium Bold @ 12px
-const length = items.join('').length * 8.75;
 ---
 
-<not-marquee style={`--length: ${length};`} aria-hidden="true">
+<not-marquee aria-hidden="true">
     <input id="marquee-pause" type="checkbox">
     <Tag {href} class="track">
         {Array.from({ length: 6 }, (_, i) => <span class="group" style={`--i: ${i};`}>{items.map(item => <span>{item}</span>)}</span>)}

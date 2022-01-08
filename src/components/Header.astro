@@ -1,8 +1,12 @@
 ---
 import SkipLink from './SkipLink.astro';
 import Banner from './Banner.astro';
+
+import { getStars } from '../utils.ts';
+
+const stars = await getStars();
 ---
 
 <SkipLink />
-<Banner items={['Astro v1.0.0 is now live!', 'Read the documentation to get started!']} />
+<Banner href="https://github.com/withastro/astro/stargazers" items={[`Star Astro on GitHub!`, `Join ${stars} developers and counting...`]} />
 <slot />
