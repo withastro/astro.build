@@ -10,15 +10,6 @@ const Tag = href ? 'a' : 'div';
     </Tag>
 </not-marquee>
 
-<script type="module" hoist>
-const checkbox = document.querySelector('#marquee-pause');
-
-checkbox.addEventListener('click', ({ target }) => {
-    const paused = target.checked;
-    localStorage.setItem('astro:marquee-paused', `${paused}`);
-})
-</script>
-
 <style>
     not-marquee {
         --color: var(--color-midnight);
