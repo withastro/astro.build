@@ -356,13 +356,13 @@ p, .body-md {
     width: 100%;
 }
 
-:is(h1, h2, h3, h4, h5, h6) {
+#article :is(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-display);
     line-height: 1.1;
     margin-bottom: 1.25rem;
     color: var(--color-dusk);
 }
-hr {
+#article hr {
     border: 0;
     border-top: 1px solid var(--color-dawn);
     margin-left: -2rem;
@@ -370,35 +370,35 @@ hr {
     margin-top: 2rem;
     margin-bottom: 4rem;
 }
-h1 {
+#article h1 {
     --fill: var(--gradient-pop-1);
     font-size: 3rem;
     font-size: var(--size-800);
     
 }
-h2 {
+#article h2 {
     font-size: 2rem;
     font-size: var(--size-600);
     margin-top: 2em;
     margin-bottom: -0.25em;
 }
 
-code {
+#article code {
     font-family: var(--font-mono);
     font-weight: 400;
     white-space: pre-wrap;
     word-break: break-word;
 }
 
-code:not([class]) {
+#article code:not([class]) {
     font-size: 0.85em;
     color: var(--color-purple);
 }
 
-code:not([class])::before {
+#article code:not([class])::before {
     content: '\`';
 }
-code:not([class])::after {
+#article code:not([class])::after {
     content: '\`';
 }
 
@@ -440,33 +440,33 @@ code:not([class])::after {
     opacity: 0.6 !important;
 }
 
-:is(strong, b) {
+#article :is(strong, b) {
     font-family: inherit;
     font-weight: 600;
 }
 
-:is(em, i) {
+#article :is(em, i) {
     font-weight: 400;
     font-style: normal;
 }
 
-:is(ul:not([role="list"]), ol:not([role="list"])) {
+#article :is(ul:not([role="list"]), ol:not([role="list"])) {
     padding-left: 1.5em;
 }
 
-:where(ul:not([role="list"])) {
+#article :where(ul:not([role="list"])) {
     list-style-type: square;
 }
 
-:where(ul:not([role="list"]) > li + li) {
+#article :where(ul:not([role="list"]) > li + li) {
     margin-top: 0.25em;
 } 
 
-::marker {
+#article ::marker {
     color: rgba(var(--color-midnight-rgb), 0.5);
 }
 
-pre > code:not([class*='language']) {
+#article pre > code:not([class*='language']) {
 	background-color: transparent;
 	padding: 0;
 	margin: 0;
@@ -474,11 +474,11 @@ pre > code:not([class*='language']) {
 	color: inherit;
 }
 
-pre > code {
+#article pre > code {
 	font-size: 1em;
 }
 
-pre {
+#article pre {
 	position: relative;
 	--padding-block: 1rem;
 	--padding-inline: 2rem;
@@ -494,12 +494,12 @@ pre {
 	overflow-x: auto;
 }
 
-pre {
+#article pre {
     background: linear-gradient(to bottom, var(--color-midnight), #1F1638);
     color: white;
 }
 
-table {
+#article table {
 	width: 100%;
 	padding: var(--padding-block) 0;
 	margin: 0;
@@ -507,16 +507,16 @@ table {
 }
 
 /* Zebra striping */
-tr:nth-of-type(odd) {
+#article tr:nth-of-type(odd) {
 	background: var(--theme-bg-hover);
 }
-th {
+#article th {
 	background: var(--color-black);
 	color: var(--theme-color);
 	font-weight: bold;
 }
-td,
-th {
+#article td,
+#article th {
 	padding: 6px;
 	text-align: left;
 }
