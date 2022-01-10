@@ -6,13 +6,14 @@ const isLocalUrl = (href: string) => {
     return false;
 }
 const isRelativeHref = (href: string) => {
-    return href[0] === '.' || !(href.startsWith('http') || href.startsWith('/') || href.startsWith('#'));
+    return href[0] === '.' || !(href.startsWith('http') || href.startsWith('/'));
 }
 const getUrl = ({ target }: Event): URL|undefined => {
     if (!isElement(target)) return;
     const a = target.closest('a');
     if (!a) return;
     const { href } = a;
+    if (href.startsWith('#')) return;
     if (!isLocalUrl(href)) return;
     return new URL(href);
 }
