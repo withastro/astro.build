@@ -28,7 +28,7 @@ function getUser(user) {
 const individuals = users.filter(user => isUser(user)).map(user => getUser(user)).sort(() => 0.5 - Math.random());
 ---
 
-<Section pad={2} id="sponsors" {...Astro.props}>
+<Section pad={2} {...Astro.props}>
     <div class="container">
         <h3 class="head-sm title"><slot name="title" /></h3>
         <ul class="sponsors platinum">
