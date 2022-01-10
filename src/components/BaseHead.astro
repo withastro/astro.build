@@ -30,8 +30,8 @@ const { title, description, image = 'https://astro.build/social.jpg', canonicalU
 <link rel="sitemap" href="/sitemap.xml">
 
 <!-- Preload -->
-<link rel="preload" as="style" href="/sanitize.css">
-<link rel="preload" as="style" href={Astro.resolve('../styles/main.css')}>
+<link rel="preload" as="style" href="/styles/sanitize.css">
+<link rel="preload" as="style" href="/styles/main.css">
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -54,5 +54,5 @@ const { title, description, image = 'https://astro.build/social.jpg', canonicalU
 <meta property="twitter:image" content={image} />
 
 <!-- Assets -->
-<link rel="stylesheet" href="/sanitize.css" />
-<link rel="stylesheet" href={Astro.resolve('../styles/main.css')} />
+<link rel="stylesheet" href="/styles/sanitize.css" />
+<link rel="stylesheet" href="/styles/main.css" />

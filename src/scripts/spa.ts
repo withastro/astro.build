@@ -6,7 +6,7 @@ const isLocalUrl = (href: string) => {
     return false;
 }
 const isRelativeHref = (href: string) => {
-    return href[0] === '.' || !href.startsWith('http');
+    return href[0] === '.' || (!href.startsWith('http') && !href.startsWith('/'));
 }
 const getUrl = ({ target }: Event): URL|undefined => {
     if (!isElement(target)) return;
@@ -22,28 +22,66 @@ window.addEventListener('click', async (event) => {
     const url = getUrl(event);
     if (!url) return;
     event.preventDefault();
-    navigate(url);
+    try {
+        navigate(url);
+    } catch (e) {
+        window.location.assign(url);
+    }
 })
 
 window.addEventListener('popstate', () => {
-    navigate(new URL(window.location.toString()), true);
+    try {
+        navigate(new URL(window.location.toString()), true);
+    } catch (e) {
+        window.location.reload();
+    }
 })
 
 async function navigate(url: URL, isBack: boolean = false) {
-    const contents = await fetch(`${url}`).then(res => res.text());
-    const html = p.parseFromString(contents, 'text/html');
-    diff(document, html, new URL(window.location.toString()), url);
-
-    if (isBack) {
-        return;
-    } else {
+    if (!isBack) {
         history.pushState({}, '', url);
+    }
+    await document.querySelector('#root').animate({ opacity: 0 }, { duration: 120, easing: 'ease-out' }).finished;
+    document.documentElement.classList.add('transition');
+    if (!isBack) {
         window.scrollTo({ top: 0 })
     }
+    const contents = await fetch(`${url}`)
+        .then(res => res.text())
+        .catch(() => {
+            window.location.assign(url);
+        });
+    if (!contents) return;
+    const html = p.parseFromString(contents, 'text/html');
+    html.body.classList.add('js');
+    html.documentElement.classList.add('transition');
+    await diff(document, html, new URL(window.location.toString()), url);
+    await document.querySelector('#root').animate({ opacity: 1 }, { duration: 80, easing: 'ease-in' }).finished;
+    document.documentElement.classList.remove('transition');
+}
+
+function waitForLoad(elements: HTMLElement[]): Promise<void> {
+    return new Promise((resolve) => {
+        const styles = elements.filter(el => el.localName === 'link' && el.hasAttribute('href') && el.getAttribute('rel') === 'stylesheet');
+        const max = styles.length;
+        let count = 0;
+        if (max === 0) {
+            resolve();
+        }
+
+        styles.forEach(link => {
+            link.addEventListener('load', () => {
+                count++;
+                if (count >= max) {
+                    resolve();
+                }
+            }, { once: true });
+        })
+    })
 }
 
 const s = new XMLSerializer();
-function diff(a: Document, b: Document, aURL: URL, bURL: URL) {
+async function diff(a: Document, b: Document, aURL: URL, bURL: URL) {
     const keys = new Map();
     const remove = new Map();
     const add = new Map();
@@ -81,11 +119,10 @@ function diff(a: Document, b: Document, aURL: URL, bURL: URL) {
                 }
             }
         }
-    }
 
-    // Sync attributes
-    for (const el of ['documentElement', 'head', 'body']) {
-        sync(a[el], b[el]);
+        if (from.localName === 'title') {
+            from.textContent = to.textContent;
+        }
     }
 
     // Head logic
@@ -132,6 +169,7 @@ function diff(a: Document, b: Document, aURL: URL, bURL: URL) {
         } else {
             key = s.serializeToString(child);
         }
+
         
         remove.set(key, child);
     }
@@ -168,10 +206,8 @@ function diff(a: Document, b: Document, aURL: URL, bURL: URL) {
         if (remove.has(key)) {
             remove.delete(key);
             duplicates.add(key);
-            console.log('Duplicate', key);
         } else if (!duplicates.has(key) && !add.has(key)) {
             add.set(key, child);
-            console.log('Add', key);
         }
     }
 
@@ -181,18 +217,51 @@ function diff(a: Document, b: Document, aURL: URL, bURL: URL) {
     for (const node of add.values()) {
         a.head.appendChild(node);
     }
+    // Sync attributes
+    for (const el of ['documentElement', 'head', 'body']) {
+        sync(a[el], b[el]);
+    }
+    await waitForLoad(Array.from(add.values()));
+
 
     // Body
     const oldBody = new Map<string, Element>();
     const newBody = new Set<Element>();
     for (const child of a.body.children) {
-        oldBody.set(s.serializeToString(child), child);
+        let key: string;
+        if (child.localName === 'script' && child.hasAttribute('src')) {
+            const src = child.getAttribute('src');
+            if (isRelativeHref(src)) {
+                const absURL = new URL(src, bURL);
+                key = `script[src=${absURL.pathname}]`;
+                child.setAttribute('src', absURL.pathname);
+            } else {
+                key = `script[src=${src}]`
+            }
+        } else {
+            key = s.serializeToString(child);
+        }
+        oldBody.set(key, child);
     }
+
     outer: for (const child of b.body.children) {
-        const key = s.serializeToString(child);
+        let key: string;
+        if (child.localName === 'script' && child.hasAttribute('src')) {
+            const src = child.getAttribute('src');
+            if (isRelativeHref(src)) {
+                const absURL = new URL(src, bURL);
+                key = `script[src=${absURL.pathname}]`;
+                child.setAttribute('src', absURL.pathname);
+            } else {
+                key = `script[src=${src}]`
+            }
+        } else {
+            key = s.serializeToString(child);
+        }
+
         if (oldBody.has(key)) {
             oldBody.delete(key);
-            continue;
+            continue outer;
         }
 
         for (const [oldKey, oldChild] of oldBody.entries()) {
