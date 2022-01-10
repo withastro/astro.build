@@ -4,7 +4,7 @@
 <script type="module">
 const checkbox = document.querySelector('#marquee-pause');
 
-checkbox.addEventListener('click', ({ target }) => {
+checkbox.addEventListener('change', ({ target }) => {
     const paused = target.checked;
     localStorage.setItem('astro:marquee-paused', `${paused}`);
 })
