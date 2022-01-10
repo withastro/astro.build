@@ -3,9 +3,13 @@
 <script type="module" src={Astro.resolve('../scripts/spa.ts')}></script>
 <script type="module">
 const checkbox = document.querySelector('#marquee-pause');
-
-checkbox.addEventListener('change', ({ target }) => {
-    const paused = target.checked;
+function onChange(element) {
+    const paused = element.checked;
     localStorage.setItem('astro:marquee-paused', `${paused}`);
+}
+checkbox.addEventListener('change', ({ target }) => onChange(target))
+checkbox.addEventListener('keydown', ({ target, key }) => {
+    if (key !== 'Enter') return;
+    onChange(target);
 })
 </script>
