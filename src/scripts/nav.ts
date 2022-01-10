@@ -6,3 +6,9 @@ const io = new IntersectionObserver(
 )
 
 io.observe(nav)
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.scrollY > 65) {
+    nav.setAttribute('stuck', '')
+  }
+})
