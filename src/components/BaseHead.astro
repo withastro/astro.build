@@ -5,7 +5,7 @@ export interface Props {
   canonicalURL: URL | string,
   image?: string;
 }
-const { title, description, image = 'https://astro.build/social.jpg', canonicalURL } = Astro.props;
+const { title, description, image = new URL('./social.png', Astro.site), canonicalURL } = Astro.props;
 ---
 
 <!-- Blocking script -->
@@ -24,9 +24,9 @@ const { title, description, image = 'https://astro.build/social.jpg', canonicalU
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<meta name="theme-color" content="#ff5e00">
+<meta name="theme-color" content="#8D46E7">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="mask-icon" href="/favicon.svg" color="#ff5e00">
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7">
 <link rel="sitemap" href="/sitemap.xml">
 
 <!-- Preload -->
