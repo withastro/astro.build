@@ -34,11 +34,25 @@ const io = new IntersectionObserver((entries) => {
     }
 }, { threshold: [0, 0.5, 1] });
 
+async function loop(element: Element) {
+    const animations = element.getAnimations({ subtree: true });
+    await Promise.all(animations.map(anim => anim.finished));
+    // reset the animation after 3.5 seconds
+    setTimeout(() => {
+        const clone = element.cloneNode(true)
+        element.replaceWith(clone);
+        loop(clone as Element);
+    }, 3500)
+}
+
 function setup() {
     timeouts.clear();
     triggered.clear();
     const illustrations = Array.from(document.querySelectorAll('.illustration'));
     illustrations.forEach(illo => io.observe(illo));
+
+    const hydrate = illustrations.find(el => (el as HTMLElement).dataset.name === 'hydration');
+    loop(hydrate);
 }
 setup();
 window.addEventListener('astro:navchange', () => {
