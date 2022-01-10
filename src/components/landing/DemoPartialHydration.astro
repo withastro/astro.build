@@ -145,7 +145,6 @@ import Illustration from './DemoIllustration.astro';
     }
     .ph-content div[style*="--i"] {
         animation: hydrate-bg 1.25s calc(var(--delay) + calc(var(--i) * 350ms)) ease-out forwards;
-        animation-play-state: var(--animation-play-state, running);
     }
     .ph-content div[style*="--i"]::before,
     .ph-content div[style*="--i"]::after {
@@ -161,7 +160,6 @@ import Illustration from './DemoIllustration.astro';
         opacity: 0;
         animation: hydrate 1.25s calc(var(--delay) + calc(var(--i) * 350ms)) ease-out forwards;
         background: var(--accent-bg);
-        animation-play-state: var(--animation-play-state, running);
     }
     .ph-content div[style*="--i"]::after {
         box-shadow: 0 0 0 2px rgba(var(--accent), 1);
