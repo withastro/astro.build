@@ -13,7 +13,7 @@ const items = [
 <nav id="nav" class={`main ${invert ? 'invert' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
     <ul class="container" role="list">
         <li class="logo">
-            <a href="/" title="Astro">
+            <a href="/">
                 <h1 class="visually-hidden">Astro</h1>
                 <Sprite class="logomark" name="logo" size="3em" />
                 <Sprite class="wordmark" name="wordmark" height="3.5em" width="6em" />
@@ -31,7 +31,7 @@ const items = [
         {social.map(item => (
             <li class="icon">
                 <a href={item.href} title={item.title}>
-                    <Sprite name={item.icon} size="1.5em" />
+                    <Sprite name={item.icon} size="1.5em" role="presentation" />
                 </a>
             </li>
         ))}
