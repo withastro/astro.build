@@ -402,20 +402,18 @@ code:not([class])::after {
     content: '\`';
 }
 
-#content img:not([class]) {
-    width: calc(100% + 4rem);
-    margin: 2rem -2rem;
-    margin-top: 2rem !important;
+#article img:not([class]) {
+    max-width: 100%;
 }
 
-#content :is(h2, h3, h4, h5, h6) a {
+#article :is(h2, h3, h4, h5, h6) a {
     font: inherit;
     color: inherit;
     text-decoration: none !important;
     display: flex;
 }
 
-#content :is(h2, h3, h4, h5, h6) a::before {
+#article :is(h2, h3, h4, h5, h6) a::before {
     content: "#";
     width: 1em;
     margin-left: 0.25em;
@@ -425,10 +423,6 @@ code:not([class])::after {
     order: 999;
 }
 
-#article img {
-  max-width: 100%;
-}
-
 @media (min-width: 50rem) {
     #content :is(h2, h3, h4, h5, h6) a::before {
         order: initial;
@@ -436,13 +430,13 @@ code:not([class])::after {
     }
 }
 
-#content :is(h2, h3, h4, h5, h6) a:is(:active, :visited, :hover, :focus) {
+#article :is(h2, h3, h4, h5, h6) a:is(:active, :visited, :hover, :focus) {
     color: var(--color-dusk);
 }
 
-#content :is(h2, h3, h4, h5, h6) a:active::before,
-#content :is(h2, h3, h4, h5, h6) a:hover::before,
-#content :is(h2, h3, h4, h5, h6) a:focus::before {
+#article :is(h2, h3, h4, h5, h6) a:active::before,
+#article :is(h2, h3, h4, h5, h6) a:hover::before,
+#article :is(h2, h3, h4, h5, h6) a:focus::before {
     opacity: 0.6 !important;
 }
 
