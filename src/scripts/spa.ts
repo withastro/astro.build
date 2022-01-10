@@ -1,7 +1,26 @@
+function onHashChange() {
+    document.querySelector(`${window.location.hash}`).scrollIntoView({ block: 'start', behavior: 'smooth' });
+}
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+        onHashChange();
+    }
+})
+window.addEventListener('hashchange', (event) => {
+    event.preventDefault();
+    onHashChange()
+})
+
 const isElement = (target: EventTarget): target is Element => target instanceof Element;
 const isLocalUrl = (href: string) => {
     try {
-        return new URL(href).origin === window.location.origin;
+        const url = new URL(href);
+        if (window.location.origin === url.origin) {
+            if (url.pathname === window.location.pathname) {
+                return !url.hash;
+            }
+            return true;
+        }
     } catch (e) {}
     return false;
 }
@@ -13,7 +32,6 @@ const getUrl = ({ target }: Event): URL|undefined => {
     const a = target.closest('a');
     if (!a) return;
     const { href } = a;
-    if (href.startsWith('#')) return;
     if (!isLocalUrl(href)) return;
     return new URL(href);
 }
@@ -58,6 +76,7 @@ window.addEventListener('click', async (event) => {
     }
 })
 window.addEventListener('popstate', () => {
+    if (window.location.hash) return;
     try {
         navigate(new URL(window.location.toString()), true);
     } catch (e) {
