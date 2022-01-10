@@ -79,25 +79,23 @@ import Illustration from './DemoIllustration.astro';
         height: 100%;
         display: flex;
         flex-direction: column;
-        opacity: 0;
-        transition: opacity 300ms ease-out both;
-    }
-    :global([style*="--animation-play-state:running;"]) .spinner-container {
-        opacity: 1;
     }
     .before,
     .after {
-        animation: fade-out var(--duration) linear forwards;
+        animation: fade-out 10s linear infinite both;
         animation-play-state: var(--animation-play-state, running);
     }
-    .tti-content {
-       animation-name: fade-in;
+    .spinner-container.before {
+       animation-name: fade-out-before;
     }
-    .before {
-        --duration: 4s;
+    .tti-content.before {
+       animation-name: fade-in-before;
     }
-    .after {
-        --duration: 2.3s;
+    .spinner-container.after {
+       animation-name: fade-out-after;
+    }
+    .tti-content.after {
+       animation-name: fade-in-after;
     }
     .tti-content {
         opacity: 0;
@@ -162,26 +160,36 @@ import Illustration from './DemoIllustration.astro';
             stroke-dashoffset: calc(var(--len) * 0.25);
         }
     }
-    @keyframes fade-out {
-        0% {
+    @keyframes fade-in-before {
+        0%, 39.9%, 100% {
+            opacity: 0;
+        }
+        40%, 97% {
             opacity: 1;
         }
-        99.9% {
+    }
+    @keyframes fade-out-before {
+        0%, 39.9%, 100% {
             opacity: 1;
         }
-        100% {
+        40%, 99.9% {
             opacity: 0;
         }
     }
-    @keyframes fade-in {
-        0% {
+    @keyframes fade-in-after {
+        0%, 22.9%, 100% {
             opacity: 0;
         }
-        99.9% {
-            opacity: 0;
-        }
-        100% {
+        23%, 97% {
             opacity: 1;
+        }
+    }
+    @keyframes fade-out-after {
+        0%, 22.9%, 100% {
+            opacity: 1;
+        }
+        23%, 99.9% {
+            opacity: 0;
         }
     }
 </style>
