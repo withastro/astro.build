@@ -5,7 +5,7 @@ import hash from 'shorthash';
 const { before, after } = Astro.props;
 const id = hash.unique(`${before}/${after}`);
 ---
-<div class="illustration" id={id}>
+<div class="illustration" role="img" id={id}>
     <div class="before-astro">
         <div class="screen">
             <slot name="before" />
