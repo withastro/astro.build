@@ -2,10 +2,10 @@
 import { Sprite } from 'astro-icon';
 import hash from 'shorthash';
 
-const { before, after } = Astro.props;
+const { before, after, name } = Astro.props;
 const id = hash.unique(`${before}/${after}`);
 ---
-<div class="illustration" role="img" id={id}>
+<div class="illustration" role="img" data-name={name} id={id}>
     <div class="before-astro">
         <div class="screen">
             <slot name="before" />
@@ -62,10 +62,10 @@ const id = hash.unique(`${before}/${after}`);
     --color-rgb: 232, 214, 243;
 }
 .before-astro :is(.label, .screen) {
-    background: #FAFAFA  linear-gradient(to bottom, transparent 0%, #F4EFED 100%);
+    background: #FAFAFA  linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #F4EFED 100%);
 }
 .after-astro :is(.label, .screen) {
-    background: #FAFAFA linear-gradient(to bottom, transparent 0%, #F3E9FA 100%);
+    background: #FAFAFA linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #F3E9FA 100%);
 }
 .after-astro .screen::before {
     content: "";
