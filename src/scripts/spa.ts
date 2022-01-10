@@ -6,7 +6,7 @@ const isLocalUrl = (href: string) => {
     return false;
 }
 const isRelativeHref = (href: string) => {
-    return href[0] === '.' || (!href.startsWith('http') && !href.startsWith('/'));
+    return href[0] === '.' || (!href.startsWith('http') && !href.startsWith('/') && !href.startsWith('#'));
 }
 const getUrl = ({ target }: Event): URL|undefined => {
     if (!isElement(target)) return;
