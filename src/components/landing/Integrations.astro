@@ -3,9 +3,9 @@ import Section from './Section.astro';
 import { Icon } from 'astro-icon';
 
 const rows = [
-    ['markdown', 'javascript', 'typescript'],
-    ['sass', 'tailwindcss', 'postcss'],
-    ['rss', 'seo', 'sitemap'],
+    ['tailwindcss', 'sass', 'postcss', 'markdown', 'javascript', 'typescript'],
+    ['rss', 'wordpress', 'strapi', 'prismic', 'shopify'],
+    ['contentful', 'netlify-grid', 'vercel-grid', 'cloudflare', 'github'],
 ]
 ---
 
@@ -17,7 +17,7 @@ const rows = [
         </div>
     </div>
     <ul class="integrations">
-        {rows.map(row => row.map(icon => <li class={`icon-${icon}`}><Icon name={`logos/${icon}`} height="64" /></li>))}
+        {rows.map(row => row.map(icon => <li class={`icon-${icon}`}><Icon title={icon.replace(/\-grid$/, '')} name={`logos/${icon}`} height="64" /></li>))}
     </ul>
 </Section>
 
@@ -41,16 +41,15 @@ const rows = [
     }
     .integrations {
         --cols: 2;
-        margin: 2rem auto;
-        display: grid;
-        grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+        margin: 2rem -1rem;
+        max-width: 40rem;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
         gap: 1rem 2rem;
-        padding: 4rem var(--size-500);
+        padding: 4rem 0;
         opacity: 0.4;
         color: black;
-    }
-    .icon-tailwindcss {
-        grid-column: auto / span 2;
     }
     .integrations > li {
         display: flex;
@@ -63,16 +62,16 @@ const rows = [
 
     @media (min-width: 42rem) {
         .integrations {
-            --cols: 3;
-        }
-        .icon-tailwindcss {
-            grid-column: initial;
+            max-width: 60rem;
+            margin: 2rem auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
         }
     }
 
     @media (min-width: 64rem) {
         .integrations {
-            max-width: 80rem;
+            max-width: 79rem;
         }
         .integrations svg {
             height: var(--size-900);
