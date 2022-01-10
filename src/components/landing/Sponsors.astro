@@ -28,7 +28,7 @@ function getUser(user) {
 const individuals = users.filter(user => isUser(user)).map(user => getUser(user)).sort(() => 0.5 - Math.random());
 ---
 
-<Section class="sponsors" pad={2} {...Astro.props}>
+<Section class="sponsor-section" pad={2} {...Astro.props}>
     <div class="container">
         <h3 class="head-sm title"><slot name="title" /></h3>
         <ul class="sponsors platinum">
@@ -61,7 +61,7 @@ const individuals = users.filter(user => isUser(user)).map(user => getUser(user)
 </Section>
 
 <style>
-section.sponsors {
+.sponsor-section {
     padding-top: calc(var(--size-1000) * var(--pad, 1));
     --background: linear-gradient(to bottom, var(--color-tan) 0%, #E8ADB7 100%);
 }
