@@ -18,6 +18,34 @@ const getUrl = ({ target }: Event): URL|undefined => {
     return new URL(href);
 }
 
+const cache = new Map<string, string>();
+if (window.matchMedia('(hover: hover)').matches) {
+    let activeUrl: URL;
+    let activeTimeout: any;
+    const set = (url: URL) => {
+        if (cache.has(url.toString())) return;
+        activeUrl = url;
+        activeTimeout = setTimeout(() => {
+            fetch(url.toString()).then((res) => res.text()).then(text => cache.set(url.toString(), text));
+        }, 600);
+    }
+    const clear = () => {
+        if (activeTimeout) {
+            clearTimeout(activeTimeout);
+            activeUrl = null;
+            activeTimeout = null;
+        }
+    }
+    window.addEventListener('mousemove', (event) => {
+        const url = getUrl(event);
+        if (!url) return clear();
+        if (!activeUrl || url.toString() === activeUrl.toString()) {
+            if (activeTimeout) return;
+            return set(url);
+        }
+    })
+}
+
 const p = new DOMParser();
 window.addEventListener('click', async (event) => {
     const url = getUrl(event);
@@ -29,7 +57,6 @@ window.addEventListener('click', async (event) => {
         window.location.assign(url);
     }
 })
-
 window.addEventListener('popstate', () => {
     try {
         navigate(new URL(window.location.toString()), true);
@@ -47,7 +74,7 @@ async function navigate(url: URL, isBack: boolean = false) {
     if (!isBack) {
         window.scrollTo({ top: 0 })
     }
-    const contents = await fetch(`${url}`)
+    let contents = cache.get(`${url}`) || await fetch(`${url}`)
         .then(res => res.text())
         .catch(() => {
             window.location.assign(url);
