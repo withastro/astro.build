@@ -76,12 +76,13 @@ window.addEventListener('click', async (event) => {
     }
 })
 window.addEventListener('popstate', () => {
-    if (window.location.hash) return;
+    if (window.location.hash) return true;
     try {
         navigate(new URL(window.location.toString()), true);
     } catch (e) {
         window.location.reload();
     }
+    return true;
 })
 
 async function navigate(url: URL, isBack: boolean = false) {
@@ -105,6 +106,7 @@ async function navigate(url: URL, isBack: boolean = false) {
     await diff(document, html, new URL(window.location.toString()), url);
     await document.querySelector('#root').animate({ opacity: 1 }, { duration: 80, easing: 'ease-in' }).finished;
     document.documentElement.classList.remove('transition');
+    window.dispatchEvent(new CustomEvent('astro:navchange'));
 }
 
 function waitForLoad(elements: HTMLElement[]): Promise<void> {

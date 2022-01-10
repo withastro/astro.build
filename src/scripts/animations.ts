@@ -34,8 +34,14 @@ const io = new IntersectionObserver((entries) => {
     }
 }, { threshold: [0, 0.5, 1] });
 
-const illustrations = Array.from(document.querySelectorAll('.illustration'));
-illustrations.forEach(illo => {
-    io.observe(illo);
-    (illo as HTMLElement).style.setProperty('--animation-play-state', 'paused');
+function setup() {
+    timeouts.clear();
+    triggered.clear();
+    const illustrations = Array.from(document.querySelectorAll('.illustration'));
+    illustrations.forEach(illo => io.observe(illo));
+}
+setup();
+window.addEventListener('astro:navchange', () => {
+    console.log('astro:navchange')
+    setup();
 });

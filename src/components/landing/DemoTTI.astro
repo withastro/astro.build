@@ -79,6 +79,11 @@ import Illustration from './DemoIllustration.astro';
         height: 100%;
         display: flex;
         flex-direction: column;
+        opacity: 0;
+        transition: opacity 300ms ease-out both;
+    }
+    :global([style*="--animation-play-state:running;"]) .spinner-container {
+        opacity: 1;
     }
     .before,
     .after {
