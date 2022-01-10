@@ -3,9 +3,9 @@ const { href, items = [] } = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
 
-<not-marquee aria-hidden="true">
+<not-marquee>
     <input id="marquee-pause" type="checkbox">
     <Tag {href} class="track">
-        {Array.from({ length: 6 }, (_, i) => <span class="group" style={`--i: ${i};`}>{items.map(item => <span>{item}</span>)}</span>)}
+        {Array.from({ length: 6 }, (_, i) => <span class="group" style={`--i: ${i};`} aria-hidden={i === 0 ? 'true' : undefined}>{items.map(item => <span>{item}</span>)}</span>)}
     </Tag>
 </not-marquee>
