@@ -2,7 +2,7 @@
 import { Sprite } from 'astro-icon'
 const { href } = Astro.props;
 const Wrapper = href ? 'a' : Fragment;
-const wrapperProps = href ? { href, target: '_blank' } : {};
+const wrapperProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : {};
 ---
 
 <li class="checklist-item" role="listitem">
