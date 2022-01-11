@@ -2,7 +2,7 @@ import type { AstroUserConfig } from "astro";
 
 const config: AstroUserConfig = {
   buildOptions: {
-    site: "https://next.astro.build",
+    site: "https://astro.build",
     sitemap: true,
   },
   renderers: [],
