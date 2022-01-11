@@ -1,1 +1,1 @@
-# [astro.build (next)](https://next.astro.build)
+# [astro.build](https://astro.build)
