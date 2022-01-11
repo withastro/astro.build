@@ -25,6 +25,9 @@ import Sponsors from '../components/landing/Sponsors.astro';
 const headline = 'Build fast websites, faster.'
 const tagline = 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.'
 
+// TODO: This text is causing issues for some reason! Compiler bug? Moving to runtime expression for now.
+const partialHydration = 'Meet Astro&rsquo;s magic tool for web optimization. Astro is the first site builder to eliminate dead code from your website and only hydrate your essential, interactive UI.';
+
 const meta = {
 	title: 'Astro',
 	description: `${headline} ${tagline}`,
@@ -92,10 +95,8 @@ const meta = {
 
 		<Demo reverse>
 			<Title slot="title" id="automatic-partial-hydration">Automatic Partial Hydration</Title>
-			<Fragment>
-				<p>Meet Astro's magic tool for web optimization. Astro is the first site builder to eliminate dead code from your website and only hydrate your essential, interactive UI.</p>
-				<ArrowLink always href="https://docs.astro.build/en/core-concepts/component-hydration/">Learn more about Partial Hydration</ArrowLink>
-			</Fragment>
+			<p>{partialHydration}</p>
+			<ArrowLink always href="https://docs.astro.build/en/core-concepts/component-hydration/">Learn more about Partial Hydration</ArrowLink>
 			<DemoPartialHydration slot="illustration" />
 		</Demo>
 
