@@ -1,5 +1,6 @@
 ---
 import { Icon, Sprite } from 'astro-icon';
+import { Code } from 'astro/components';
 import BaseHead from '../components/BaseHead.astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
@@ -18,11 +19,10 @@ import DemoPartialHydration from '../components/landing/DemoPartialHydration.ast
 import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
 import Integrations from '../components/landing/Integrations.astro';
-import Performance from '../components/landing/Performance.astro';
 import Sponsors from '../components/landing/Sponsors.astro';
 
 const headline = 'Build fast websites, faster.'
-const tagline = 'Astro is a site builder for a new era of the web. It’s powerful at build time and ultra-lightweight at runtime.'
+const tagline = 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.'
 
 const meta = {
 	title: 'Astro',
@@ -54,7 +54,7 @@ const meta = {
 			<Fragment slot="title">{headline}</Fragment>
 			<Fragment slot="tagline">{tagline}</Fragment>
 			<PixelLink href="https://docs.astro.build">Read the docs</PixelLink>
-			<PixelLink variant="outline" href="https://astro.new">Get Started</PixelLink>
+			<PixelLink variant="outline" href="https://astro.new">Get Started →</PixelLink>
 		</Hero>
 		
 		<Trusted>
@@ -79,30 +79,25 @@ const meta = {
 		</Trusted>
 
 		<Demo gradient>
-			<Title slot="title" id="ship-less-javascript">Ship less JavaScript</Title>
-			<p>Astro statically renders your entire site to HTML and CSS, removing any unused JS along the way. You can use components from any framework and still ship a lightning-fast, zero JS site.</p>
-
+			<Title slot="title" id="ship-less-javascript">More HTML, Less JavaScript</Title>
+			<p>Astro features a modern UI component language that renders directly to HTML & CSS, bypassing  the slow JavaScript that bogs down most internet users.</p>
 			<DemoTTI slot="illustration" />
 		</Demo>
 
 		<Demo reverse>
-			<Title slot="title" id="partial-hydration">Built-in Partial Hydration</Title>
-			<p>Interactive websites require JS—with Astro's selective hydration primitives, you're in full control over when your components are loaded.</p>
+			<Title slot="title" id="partial-hydration">Automatic Partial Hydration</Title>
+			<p>Meet Astro's magic tool for web optimization. Astro is the first site builder to eliminate dead code from your website and only hydrate your essential, interactive UI. <a href="https://docs.astro.build/en/core-concepts/component-hydration/">Learn more →</a></p>
 			<DemoPartialHydration slot="illustration" />
 		</Demo>
 
 		<Section>
 			<Panel pad={2} background="var(--gradient-pop-3)">
 				<Fragment slot="title">
-					<h3 class="head-md"><Title id="framework-friendly">Framework Friendly.</Title></h3>
-					<p style="margin-top: 0.5rem;">Use what you know&mdash;leverage your existing framework components with Astro.</p>
+					<h3 class="head-md"><Title id="framework-friendly">Bring your favorite framework</Title></h3>
+					<p style="margin-top: 0.5rem;">Astro natively supports every popular framework -- you can even mix and match!</p>
 				</Fragment>
 
 				<Checklist cols={4}>
-					<ChecklistItem href="https://astro.new/minimal">
-						<Sprite role="img" name="frameworks/js" size={24} slot="icon" />
-						Vanilla
-					</ChecklistItem>
 					<ChecklistItem href="https://astro.new/framework-react">
 						<Sprite role="img" name="frameworks/react" size={24} slot="icon" />
 						React
@@ -115,25 +110,38 @@ const meta = {
 						<Sprite role="img" name="frameworks/vue" size={24} slot="icon" />
 						Vue
 					</ChecklistItem>
-					<ChecklistItem href="https://astro.new/framework-preact">
-						<Sprite role="img" name="frameworks/preact" size={24} slot="icon" />
-						Preact
-					</ChecklistItem>
-					<ChecklistItem href="https://astro.new/framework-lit">
-						<Sprite role="img" name="frameworks/lit" size={24} slot="icon" />
-						Lit
-					</ChecklistItem>
 					<ChecklistItem href="https://astro.new/framework-solid">
 						<Sprite role="img" name="frameworks/solid" size={24} slot="icon" />
 						Solid
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-preact">
+						<Sprite role="img" name="frameworks/preact" size={24} slot="icon" />
+						Preact
 					</ChecklistItem>
 					<ChecklistItem href="https://astro.new/framework-alpine">
 						<Sprite role="img" name="frameworks/alpine" size={24} slot="icon" />
 						Alpine
 					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/framework-lit">
+						<Sprite role="img" name="frameworks/lit" size={24} slot="icon" />
+						Lit
+					</ChecklistItem>
+					<ChecklistItem href="https://astro.new/minimal">
+						<Sprite role="img" name="frameworks/js" size={24} slot="icon" />
+						Vanilla
+					</ChecklistItem>
 				</Checklist>
 			</Panel>
 		</Section>
+
+		<Integrations>
+			<Title slot="title" id="integration-ready">
+				Build, Extend, Deploy
+			</Title>
+			<Fragment>
+				<p>Whatever you&rsquo;re building, Astro has you covered. With convenient, out-of-the-box features and even more ready-to-use integrations, Astro has everything that you need to build.</p>
+			</Fragment>
+		</Integrations>
 
 		<Quote pad={2}>
 			<a slot="logo" href="https://devtools.fm/episode/14">
@@ -144,17 +152,8 @@ const meta = {
 			<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
 			<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
 		</Quote>
-
-		<Integrations>
-			<Title slot="title" id="integration-ready">
-				Integration Ready
-			</Title>
-			<Fragment>
-				<p>Whatever you&rsquo;re building, Astro has you covered. There are tons of convenient, out-of-the-box features and even more ready-to-use integrations.</p>
-			</Fragment>
-		</Integrations>
-
-
+		
+<!-- 
 		<Performance>
 			<Title slot="title" id="peak-performance">Peak Performance</Title>
 			<Fragment>
@@ -163,7 +162,7 @@ const meta = {
 					<small>Did you know? 87% of websites currently fail Google's Core Web Vitals (CWV) benchmark. Astro is on a mission to change that.</small>
 				</p>
 			</Fragment>
-		</Performance>
+		</Performance> -->
 
 		<Sponsors>
 			<Title id="sponsors" slot="title">Sponsored by</Title>

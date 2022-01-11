@@ -4,7 +4,7 @@ title: Terms of Service
 updated_date: Jan 6, 2022
 description: Astro's terms of service
 header: |
-    These terms of service ("Terms") apply to your access and use of Astro (the "Service"). Please read them carefully.
+    These terms of service ("Terms") apply to your access and use of the Astro website (the "Service"). Please read them carefully.
 ---
 
 ### Accepting these terms
