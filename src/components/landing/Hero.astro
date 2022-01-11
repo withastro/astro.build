@@ -77,15 +77,17 @@ import Grid from './Grid.astro';
         left: 0;
         right: 0;
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column nowrap;
         align-items: center;
         justify-content: center;
         z-index: 1;
+        gap: 2rem;
     }
 
     @media (min-width: 52rem) {
         .cta {
             position: absolute;
+            flex-direction: row;
         }
     }
 

@@ -1,6 +1,5 @@
 ---
 import { Icon, Sprite } from 'astro-icon';
-import { Code } from 'astro/components';
 import BaseHead from '../components/BaseHead.astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
@@ -8,6 +7,7 @@ import PixelLink from '../components/PixelLink.astro';
 import Panel from '../components/Panel.astro';
 import Checklist from '../components/Checklist.astro';
 import ChecklistItem from '../components/ChecklistItem.astro';
+import ArrowLink from '../components/ArrowLink.astro';
 import Footer from '../components/Footer.astro';
 
 import Title from '../components/landing/Title.astro';
@@ -16,6 +16,7 @@ import Trusted from '../components/landing/Trusted.astro';
 import Demo from '../components/landing/Demo.astro';
 import DemoTTI from '../components/landing/DemoTTI.astro';
 import DemoPartialHydration from '../components/landing/DemoPartialHydration.astro';
+import Performance from '../components/landing/Performance.astro';
 import Section from '../components/landing/Section.astro';
 import Quote from '../components/landing/Quote.astro';
 import Integrations from '../components/landing/Integrations.astro';
@@ -54,7 +55,7 @@ const meta = {
 			<Fragment slot="title">{headline}</Fragment>
 			<Fragment slot="tagline">{tagline}</Fragment>
 			<PixelLink href="https://docs.astro.build">Read the docs</PixelLink>
-			<PixelLink variant="outline" href="https://astro.new">Get Started →</PixelLink>
+			<ArrowLink always href="https://astro.new">Get Started</ArrowLink>
 		</Hero>
 		
 		<Trusted>
@@ -73,28 +74,29 @@ const meta = {
 					<Icon name="logos/navillus" title="Navillus" height="40" />
 				</li>
 				<li>
-					<Icon name="logos/monogram" title="monogram" height="28" />
+					<Icon name="logos/monogram" title="monogram" height="36" />
 				</li>
 			</Fragment>
 		</Trusted>
 
 		<Demo gradient>
-			<Title slot="title" id="ship-less-javascript">More HTML, Less JavaScript</Title>
-			<p>Astro features a modern UI component language that renders directly to HTML & CSS, bypassing  the slow JavaScript that bogs down most internet users.</p>
+			<Title slot="title" id="more-html-less-javascript">More HTML, Less JavaScript</Title>
+			<p>Astro features a modern UI component language that renders directly to HTML &amp; CSS, bypassing the slow JavaScript that bogs down most internet users.</p>
 			<DemoTTI slot="illustration" />
 		</Demo>
 
 		<Demo reverse>
-			<Title slot="title" id="partial-hydration">Automatic Partial Hydration</Title>
-			<p>Meet Astro's magic tool for web optimization. Astro is the first site builder to eliminate dead code from your website and only hydrate your essential, interactive UI. <a href="https://docs.astro.build/en/core-concepts/component-hydration/">Learn more →</a></p>
+			<Title slot="title" id="automatic-partial-hydration">Automatic Partial Hydration</Title>
+			<p>Meet Astro's magic tool for web optimization. Astro is the first site builder to eliminate dead code from your website and only hydrate your essential, interactive UI.</p>
+			<ArrowLink always href="https://docs.astro.build/en/core-concepts/component-hydration/">Learn more</ArrowLink>
 			<DemoPartialHydration slot="illustration" />
 		</Demo>
 
 		<Section>
 			<Panel pad={2} background="var(--gradient-pop-3)">
 				<Fragment slot="title">
-					<h3 class="head-md"><Title id="framework-friendly">Bring your favorite framework</Title></h3>
-					<p style="margin-top: 0.5rem;">Astro natively supports every popular framework -- you can even mix and match!</p>
+					<h3 class="head-md"><Title id="byof">Bring your favorite framework</Title></h3>
+					<p style="margin-top: 0.5rem;">Astro natively supports every popular framework&mdash;you can even mix and match!</p>
 				</Fragment>
 
 				<Checklist cols={4}>
@@ -135,7 +137,7 @@ const meta = {
 		</Section>
 
 		<Integrations>
-			<Title slot="title" id="integration-ready">
+			<Title slot="title" id="build-extend-deploy">
 				Build, Extend, Deploy
 			</Title>
 			<Fragment>
@@ -143,18 +145,7 @@ const meta = {
 			</Fragment>
 		</Integrations>
 
-		<Quote pad={2}>
-			<a slot="logo" href="https://devtools.fm/episode/14">
-				<span>
-					<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
-				</span>
-			</a>
-			<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
-			<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
-		</Quote>
-		
-<!-- 
-		<Performance>
+		<!-- <Performance>
 			<Title slot="title" id="peak-performance">Peak Performance</Title>
 			<Fragment>
 				<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
@@ -163,6 +154,16 @@ const meta = {
 				</p>
 			</Fragment>
 		</Performance> -->
+
+		<Quote pad={1.5}>
+			<a slot="logo" href="https://devtools.fm/episode/14">
+				<span>
+					<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
+				</span>
+			</a>
+			<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
+			<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
+		</Quote>
 
 		<Sponsors>
 			<Title id="sponsors" slot="title">Sponsored by</Title>

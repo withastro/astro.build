@@ -34,6 +34,9 @@ import Section from './Section.astro'
     .logos {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    :global(li:last-child) {
+        grid-column: auto / span 2;
+    }
 }
 @media (min-width: 52rem) {
     .logos {
@@ -43,18 +46,21 @@ import Section from './Section.astro'
         gap: 2rem;
         grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     }
+    :global(li:last-child) {
+        grid-column: auto / auto;
+    }
 }
 @media (min-width: 64rem) {
     .logos {
         gap: 4rem;
     }
     .logos :global(svg) {
-        height: 2.5rem;
+        height: 2.25rem;
     }
 }
 @media (min-width: 82rem) {
     .logos :global(svg) {
-        height: 3rem;
+        height: 2.5rem;
     }
 }
 .logos > :global(li) {

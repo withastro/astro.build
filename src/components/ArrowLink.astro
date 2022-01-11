@@ -1,10 +1,10 @@
 ---
 import { Sprite } from 'astro-icon';
 
-const { icon, href, title } = Astro.props;
+const { icon, href, title, always = false } = Astro.props;
 ---
 
-<a href={href} label={title}>
+<a class={always ? 'always' : undefined} href={href} label={title}>
     {icon && <Sprite aria-hidden="true" name={icon} size="1.5em" />}
     <span><slot /></span>
     <Sprite aria-hidden="true" class="arrow" pack="mdi" name="arrow-right" size="1.5em" />
@@ -46,5 +46,17 @@ a:hover .arrow,
 a:focus .arrow {
     opacity: 1;
     transform: translateX(0em);
+}
+.always .arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+.always:hover,
+.always:focus {
+    transform: translateX(0);
+}
+.always:hover .arrow,
+.always:focus .arrow {
+    transform: translateX(0.25em);
 }
 </style>
