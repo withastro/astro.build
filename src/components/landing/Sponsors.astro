@@ -3,11 +3,11 @@
 import { Icon } from 'astro-icon';
 import Section from './Section.astro';
 
-const platinum = [
+const exclusive = [
     { name: 'netlify', title: 'Netlify', href: 'https://netlify.com', width: '240', height: '64' },
-    { name: 'vercel', title: 'Vercel', href: 'https://vercel.com', width: '240', height: '64' },
 ]
 const gold = [
+    { name: 'vercel', title: 'Vercel', href: 'https://vercel.com', width: '180', height: '48' },
     { name: 'divriots', title: '‹div›RIOTS', href: 'https://divriots.com', width: '192', height: '48' }
 ]
 const users = await fetch(`https://opencollective.com/astrodotbuild/members.json`).then(res => res.json());
@@ -31,8 +31,8 @@ const individuals = users.filter(user => isUser(user)).map(user => getUser(user)
 <Section class="sponsor-section" pad={2} {...Astro.props}>
     <div class="container">
         <h3 class="head-sm title"><slot name="title" /></h3>
-        <ul class="sponsors platinum">
-            {platinum.map(sponsor => (
+        <ul class="sponsors exclusive">
+            {exclusive.map(sponsor => (
                 <li><a href={sponsor.href} title={sponsor.title}><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} aria-hidden="true" /></span></a></li>
             ))}
         </ul>

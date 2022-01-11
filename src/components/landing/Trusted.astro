@@ -34,26 +34,22 @@ import Section from './Section.astro'
     .logos {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    :global(li:last-child) {
+    * :global(li:last-child) {
         grid-column: auto / span 2;
-    }
-}
-@media (min-width: 52rem) {
-    .logos {
-        grid-auto-flow: column;
-        max-width: max-content;
-        margin: 0 auto;
-        gap: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    }
-    :global(li:last-child) {
-        grid-column: auto / auto;
     }
 }
 @media (min-width: 64rem) {
     .logos {
-        gap: 4rem;
+        grid-auto-flow: column;
+        max-width: max-content;
+        margin: 0 auto;
+        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     }
+    * :global(li:last-child) {
+        grid-column: auto / auto;
+    }
+
     .logos :global(svg) {
         height: 2.25rem;
     }

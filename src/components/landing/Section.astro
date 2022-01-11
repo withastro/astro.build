@@ -1,5 +1,5 @@
 ---
-const { class: className, style: _style, pad = 1, ...props } = Astro.props;
+const { class: className = '', style: _style, pad = 1, ...props } = Astro.props;
 let style;
 if (_style) {
     style = `${_style}; --pad: ${pad};`

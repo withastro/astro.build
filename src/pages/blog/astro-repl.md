@@ -5,7 +5,7 @@ setup: |
   import Note from '../../components/Note.astro'
 title: 'Introducing the Astro REPL'
 authors: 
-  - fred
+  - drew
 description: 'The power of Astro, right in your browser.'
 publishDate: 'September 17, 2021'
 permalink: 'https://astro.build/blog/astro-repl/astro-repl.png'
