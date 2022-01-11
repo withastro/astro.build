@@ -101,6 +101,9 @@ async function navigate(url: URL, isBack: boolean = false) {
         });
     if (!contents) return;
     const html = p.parseFromString(contents, 'text/html');
+    if (document.body.classList.contains('🥚')) {
+        html.body.classList.add('🥚');
+    }
     html.body.classList.add('js');
     html.documentElement.classList.add('transition');
     await diff(document, html, new URL(window.location.toString()), url);
