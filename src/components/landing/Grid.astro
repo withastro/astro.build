@@ -36,6 +36,8 @@ const { class: className } = Astro.props;
     background: repeating-linear-gradient(180deg,var(--grid-color, white) 0%,transparent calc(1px + var(--grid-stroke,0px)), transparent var(--grid-size),var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
     background-position-y: 0px;
     animation: moving-grid var(--time) infinite linear;
+    /* TODO: enable animation in a more performant way */
+    animation-play-state: paused !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
