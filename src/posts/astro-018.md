@@ -1,6 +1,4 @@
 ---
-setup: |
-  import Layout from '../../layouts/Post.astro'
 title: 'Astro 0.18 Release'
 description: 'Introducing: Responsive partial hydration • Solid.js support • Lit SSR support • Named slots • Global style support • and more!'
 publishDate: 'July 27, 2021'

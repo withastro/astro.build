@@ -1,8 +1,7 @@
 ---
 setup: |
-  import Layout from '../../layouts/Post.astro'
-  import PixelLink from '../../components/PixelLink.astro'
-  import Note from '../../components/Note.astro'
+  import PixelLink from '/src/components/PixelLink.astro'
+  import Note from '/src/components/Note.astro'
 title: 'Introducing the Astro REPL'
 authors: 
   - drew

@@ -1,8 +1,7 @@
 ---
 setup: |
-  import Layout from '../../layouts/Post.astro'
-  import Mention from '../../components/Mention.astro'
-  import Note from '../../components/Note.astro'
+  import Mention from '/src/components/Mention.astro'
+  import Note from '/src/components/Note.astro'
 title: 'Astro 0.21 Preview: Vite + WASM = ⚡️'
 description: 'Get a sneak preview of what is next for Astro, including our new Vite build engine and WASM-powered Go compiler.'
 publishDate: 'October 6, 2021'
