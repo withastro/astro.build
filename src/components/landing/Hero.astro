@@ -127,6 +127,7 @@ import Grid from './Grid.astro';
             --blur: 1280px;
             --opacity: 0.7;
         }
+        /* Firefox really chokes on this animation, so let's just skip it */
         .blob-a, .blob-b, .blob-c {
             animation-play-state: paused !important;
         }
@@ -142,8 +143,6 @@ import Grid from './Grid.astro';
 
     .blob-a, .blob-b, .blob-c {
         will-change: transform;
-        /* TODO: enable animation in a more performant way */
-        animation-play-state: paused !important;
     }
 
     .blob-a {

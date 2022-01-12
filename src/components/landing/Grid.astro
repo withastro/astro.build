@@ -64,12 +64,12 @@ const { class: className } = Astro.props;
 
 @keyframes move {
     0% {
-        opacity: calc(0.1 + var(--n-start));
-        transform: scaleY(var(--n-start)) translateY(var(--ty-start));
+        opacity: calc(var(--n-start));
+        transform: translate3d(0, var(--ty-start), 0);
     }
     100%{
-        opacity: calc(0.1 + var(--n-end));
-        transform: scaleY(var(--n-end)) translateY(var(--ty-end));
+        opacity: calc(var(--n-end));
+        transform: translate3d(0, var(--ty-end), 0);
     }
 }
 </style>
