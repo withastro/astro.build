@@ -1,6 +1,7 @@
 ---
 const { class: className } = Astro.props;
 ---
+
 <div class={`grid ${className}`} />
 
 <style>
@@ -18,13 +19,23 @@ const { class: className } = Astro.props;
     width: 200%;
     height: 100%;
     background-position-y: 0px;
-    background-image: repeating-linear-gradient(90deg, var(--grid-color, white) 0%, transparent calc(1px + var(--grid-stroke, 0px)), transparent var(--grid-size), var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px))), repeating-linear-gradient(180deg,var(--grid-color, white) 0%,transparent calc(1px + var(--grid-stroke,0px)), transparent var(--grid-size),var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
+    background-image: repeating-linear-gradient(90deg, var(--grid-color, white) 0%, transparent calc(1px + var(--grid-stroke, 0px)), transparent var(--grid-size), var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
     transform: perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-1px);
-    animation: moving-grid var(--time) infinite linear;
     z-index: 1;
     filter: invert(1);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))
+}
+.grid::before {
+    content: "";
+    positioN: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: repeating-linear-gradient(180deg,var(--grid-color, white) 0%,transparent calc(1px + var(--grid-stroke,0px)), transparent var(--grid-size),var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
+    background-position-y: 0px;
+    animation: moving-grid var(--time) infinite linear;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -35,10 +46,10 @@ const { class: className } = Astro.props;
 
 @keyframes moving-grid {
     0%{
-        transform: perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-var(--grid-size));
+        background-position-y: 0px;
     }
     100%{
-        transform: perspective(50vh) rotateX(60deg) translateZ(10px) translateY(var(--grid-size));
+        background-position-y: var(--grid-size);
     }
 }
 </style>
