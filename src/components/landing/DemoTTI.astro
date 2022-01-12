@@ -50,7 +50,7 @@ import Illustration from './DemoIllustration.astro';
 
 <style>
     .spinner {
-        --size: 12rem;
+        --size: 8rem;
         --len: 156px;
         --rot: 360deg;
         transform-origin: center center;
@@ -64,6 +64,11 @@ import Illustration from './DemoIllustration.astro';
         stroke-dasharray: var(--len);
         stroke-dashoffset: calc(var(--len) * 0.25);
         animation: spin 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+    }
+    @media (min-width: 40rem) {
+        .spinner {
+            --size: 12rem;
+        }
     }
     .spinner > circle {
         transform-origin: center center;
@@ -115,6 +120,7 @@ import Illustration from './DemoIllustration.astro';
     .tti-content > * + * {
         margin-top: 1rem;
     }
+        
     
     .tti-content > div {
         height: var(--height, 1rem);
@@ -123,11 +129,17 @@ import Illustration from './DemoIllustration.astro';
         background: var(--color);
     }
     .tti-content > :nth-child(2) {
-        --height: 2rem;
+        --height: 1.5rem;
         --width: 67%;
     }
     .tti-content > :nth-child(4) {
         --width: 80%;
+    }
+    @media (min-width: 40rem) {
+        .tti-content > :nth-child(2) {
+            --height: 2rem;
+            --width: 67%;
+        }
     }
     @keyframes rotate {
         from {

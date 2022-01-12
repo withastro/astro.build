@@ -35,6 +35,12 @@ const Title = variant === 'summary' ? 'h2' : 'h1';
     margin: 0 auto;
     display: flex;
     flex-flow: row wrap;
+    --space: 0.5rem;
+}
+@media (min-width: 40rem) {
+    .wrapper {
+        --space: 1rem;
+    }
 }
 .title {
     font-family: var(--font-display);
@@ -53,13 +59,13 @@ h2.title {
 .description {
     flex-grow: 1;
     width: 100%;
-    margin-top: 1em;
+    margin-top: var(--space);
 }
 .description > p {
     max-width: 48ch;
 }
 .post > div {
-    margin-top: 2em;
+    margin-top: calc(var(--space) * 2);
 }
 .authors {
     flex-grow: 2;
@@ -92,7 +98,7 @@ h3 {
     letter-spacing: 1px;
 }
 .date, .authors {
-    margin-top: 2rem;
+    margin-top: calc(var(--space) * 2);
     font-size: var(--size-400);
 }
 :is(.date, .authors) p {
