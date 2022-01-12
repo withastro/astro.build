@@ -44,12 +44,19 @@ const { before, after, name } = Astro.props;
 }
 .screen {
     position: relative;
-    height: 330px;
-    width: 220px;
+    height: 248px;
+    width: 165px;
     border-radius: var(--corner-md);
     box-shadow: var(--shadow-xl);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+}
+@media (min-width: 40rem) {
+    .screen {
+        height: 330px;
+        width: 220px;
+    }
 }
 .before-astro {
     --color: #E3CFC7;
@@ -76,16 +83,44 @@ const { before, after, name } = Astro.props;
     filter: blur(10px);
     z-index: -1;
 }
+.before-astro {
+    z-index: 0;
+}
+.after-astro {
+    z-index: 1;
+}
+.after-astro .screen {
+    margin-left: -24px;
+    margin-top: 64px;
+}
+@media (min-width: 40rem) {
+    .after-astro .screen {
+        margin-top: initial;
+        margin-left: initial;
+    }
+}
 .label {
     position: relative;
-    width: 175px;
-    margin: -1.5rem auto 0;
+    width: 165px;
+    margin: -1.5rem 0 0;
     display: flex;
     align-items: center;
     padding: 0.5rem 1rem;
-    z-index: 1;
+    z-index: 2;
     border-radius: 2rem;
     box-shadow: var(--shadow-md);
+}
+.after-astro .label {
+    margin-left: -1.5rem;
+}
+@media (min-width: 40rem) {
+    .label {
+        margin: -1.5rem auto 0;
+        width: 175px;
+    }
+    .after-astro .label {
+        margin-left: auto;
+    }
 }
 .text {
     margin-left: 0.5rem;
