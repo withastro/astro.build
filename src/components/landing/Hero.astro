@@ -124,11 +124,12 @@ import Grid from './Grid.astro';
     /* Firefox tweaks */
     @supports (-moz-appearance: none) {
         .background {
-            --blur: 600px;
+            --blur: 1280px;
             --opacity: 0.7;
         }
+        /* Firefox really chokes on this animation, so let's just skip it */
         .blob-a, .blob-b, .blob-c {
-            mix-blend-mode: soft-light;
+            animation-play-state: paused !important;
         }
     }
 
