@@ -1,9 +1,8 @@
 ---
 setup: |
-  import Layout from '../../layouts/Post.astro'
-  import Shell from '../../components/Shell.astro'
-  import Note from '../../components/Note.astro'
-  import Blockquote from '../../components/Blockquote.astro'
+  import Shell from '/src/components/Shell.astro'
+  import Note from '/src/components/Note.astro'
+  import Blockquote from '/src/components/Blockquote.astro'
 title: "Introducing Astro: Ship Less JavaScript"
 authors: 
   - fred

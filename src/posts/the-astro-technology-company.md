@@ -1,7 +1,6 @@
 ---
 setup: |
-  import Layout from '../../layouts/Post.astro'
-  import Tweet from '../../components/Tweet.astro'
+  import Tweet from '/src/components/Tweet.astro'
 title: 'Announcing The Astro Technology Company'
 description: 'The Astro Technology Company has formed to support the Astro open source project and build a better platform for web developers everywhere.'
 publishDate: 'January 12, 2022'

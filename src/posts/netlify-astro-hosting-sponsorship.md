@@ -1,9 +1,8 @@
 ---
 setup: |
-  import Layout from '../../layouts/Post.astro'
   import { Sprite } from 'astro-icon'
-  import Note from '../../components/Note.astro'
-  import Blockquote from '../../components/Blockquote.astro'
+  import Note from '/src/components/Note.astro'
+  import Blockquote from '/src/components/Blockquote.astro'
 title: "Netlify Becomes Astro's Official Hosting Partner"
 authors: 
   - fred

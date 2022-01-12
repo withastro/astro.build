@@ -1,7 +1,6 @@
 ---
 setup: |
-  import Layout from '../../layouts/Post.astro'
-  import Tweet from '../../components/Tweet.astro'
+  import Tweet from '/src/components/Tweet.astro'
 title: 'Astro 0.19'
 description: 'Introducing: Next.js-inspired dynamic routing • Astro.resolve() • client:only components • translations • and more!'
 publishDate: 'August 18, 2021'

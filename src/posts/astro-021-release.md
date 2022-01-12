@@ -1,8 +1,7 @@
 ---
 setup: |
-  import Layout from '../../layouts/Post.astro'
-  import Mention from '../../components/Mention.astro'
-  import Note from '../../components/Note.astro'
+  import Mention from '/src/components/Mention.astro'
+  import Note from '/src/components/Note.astro'
 title: 'Astro 0.21'
 description: 'Astro v0.21.0 is finally here!'
 publishDate: 'November 19, 2021'
