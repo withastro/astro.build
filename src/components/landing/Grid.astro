@@ -2,7 +2,10 @@
 const { class: className } = Astro.props;
 ---
 
-<div class={`grid ${className}`} />
+<div class={`grid ${className}`}>
+    <div class="base" />
+    {Array.from({ length: 6 }, (_, i) => <div class="line" style={`--i: ${i};`} />)}
+</div>
 
 <style>
 .grid {
@@ -15,29 +18,39 @@ const { class: className } = Astro.props;
     position: absolute;
     bottom: -30%;
     left: 0;
-    margin-left: -50%;
-    width: 200%;
+    right: 0;
     height: 100%;
-    background-position-y: 0px;
-    background-image: repeating-linear-gradient(90deg, var(--grid-color, white) 0%, transparent calc(1px + var(--grid-stroke, 0px)), transparent var(--grid-size), var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
-    transform: perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-1px);
     z-index: 1;
     filter: invert(1);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))
 }
-.grid::before {
-    content: "";
-    positioN: absolute;
+.base {
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: repeating-linear-gradient(180deg,var(--grid-color, white) 0%,transparent calc(1px + var(--grid-stroke,0px)), transparent var(--grid-size),var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
+    margin-left: -50%;
+    width: 200%;
     background-position-y: 0px;
+    background-image: repeating-linear-gradient(90deg, var(--grid-color, white) 0%, transparent calc(1px + var(--grid-stroke, 0px)), transparent var(--grid-size), var(--grid-color, white) calc(var(--grid-size) + 1px + var(--grid-stroke, 0px)));
+    transform: perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-1px);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))
+}
+.line {
+    --n-start: calc((var(--i) + 1) / 8);
+    --n-end: calc((var(--i) + 2) / 8);
+    --ty-start: calc(var(--i) * calc(var(--grid-size) * ((var(--i) + 1) / 8)));
+    --ty-end: calc((var(--i) + 1) * calc(var(--grid-size) * ((var(--i) + 2) / 8)));
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 35.5%;
+    height: 1px;
+    width: 100%;
+    border: var(--grid-stroke) solid var(--grid-color);
+    transform: scaleY(var(--sy-start)) translateY(var(--ty-start));
     animation: moving-grid var(--time) infinite linear;
-    /* TODO: enable animation in a more performant way */
-    animation-play-state: paused !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -47,11 +60,13 @@ const { class: className } = Astro.props;
 }
 
 @keyframes moving-grid {
-    0%{
-        background-position-y: 0px;
+    0% {
+        opacity: calc(0.1 + var(--n-start));
+        transform: scaleY(var(--n-start)) translateY(var(--ty-start));
     }
     100%{
-        background-position-y: var(--grid-size);
+        opacity: calc(0.1 + var(--n-end));
+        transform: scaleY(var(--n-end)) translateY(var(--ty-end));
     }
 }
 </style>
