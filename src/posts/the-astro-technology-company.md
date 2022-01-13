@@ -10,7 +10,7 @@ authors:
 ---
 
 
-I am thrilled to announce the creation of **The Astro Technology Company** along with **$7M** in seed funding to help us build a better platform for web development. The round was led by Lightspeed Ventures with participation from Haystack, Gradient, and Uncorrelated Ventures. 
+I am thrilled to announce the creation of **The Astro Technology Company** along with **$7M** in seed funding to help us build a better platform for web development. The round was led by Lightspeed Venture Partners with participation from Haystack, Gradient, and Uncorrelated Ventures. 
 
 With this funding, the core team has moved from [Skypack](https://www.skypack.dev/) (formerly Pika) and joined The Astro Technology Company to continue working on Astro, growing our open source community, and driving towards our upcoming v1.0 release.
 
