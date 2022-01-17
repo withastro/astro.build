@@ -1,0 +1,119 @@
+---
+import Page from '../../layouts/Page.astro';
+import Card from '../../components/careers/Card.astro';
+import { getAllRoles } from '../../careers';
+
+const roles = await getAllRoles();
+console.log(roles);
+
+//   href: 'mailto:jobs@astro.build',
+//   title: 'Software Engineer - Devtools / Astro Core',
+//   description: 'Full Time • Remote • United States, Canada'
+// },  {
+//   href: 'mailto:jobs@astro.build',
+//   title: 'Software Engineer - Frontend',
+//   description: 'Full Time • Remote • United States, Canada'
+// }, {
+//   href: 'mailto:jobs@astro.build',
+//   title: 'Software Engineer - Full Stack',
+//   description: 'Full Time • Remote • United States, Canada'
+// }, {
+//   href: 'mailto:jobs@astro.build',
+//   title: 'Design Lead',
+//   description: 'Full Time • Remote • United States, Canada'
+// }]
+---
+
+<Page title="Careers">
+    <header>
+        <h1 class="title text-gradient">Join us.</h1>
+    </header>
+
+    <section>
+        <p>Love web development? Love developer tooling? Love the thought of working with talented, thoughtful people?</p>
+        <p>Join Astro and help make the web accessible to everyone. We are currently hiring for the following positions. To apply or just learn more, reach out to <a href="mailto:jobs@astro.build">jobs@astro.build.</a></p>
+    </section>
+
+    <ul role="list" class="roles">
+        {roles.map(role => {
+            return (
+                <li class="role">
+                    <a class="overlay" href={role.href}></a>
+                    <Card role={role} variant="summary" />
+                </li>
+            )
+        })}
+    </ul>
+</Page>
+
+<style>
+    header {
+        padding: 3rem 2rem 2rem;
+        width: 100%;
+        max-width: 64rem;
+        flex-grow: 1;
+    }
+    section {
+      padding: 0 2rem;
+      width: 100%;
+      max-width: 64rem;
+      flex-grow: 1;
+    }
+    section p {
+      margin-bottom: 1rem;
+    }
+    h1.title {
+        font-family: var(--font-display);
+        --fill: var(--gradient-pop-1);
+        font-size: var(--size-900);
+    }
+    .roles {
+        width: 100%;
+        max-width: 64rem;
+        padding: 2rem;
+        padding-bottom: 4rem;
+        display: flex;
+        flex-flow: column nowrap;
+        font-family: var(--font-body);
+        font-size: var(--size-500);
+        line-height: 1.3;
+        color: var(--color-midnight);
+    }
+    .role + .role {
+        margin-top: 1rem;
+    }
+    .role {
+        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        padding: 2rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+        background: white;
+        box-shadow: var(--shadow-sm);
+        border-radius: var(--corner-md);
+        font-family: var(--font-body);
+        font-size: var(--size-500);
+        line-height: 1.3;
+        color: var(--color-midnight);
+    }
+    .role:hover,
+    .role:focus-within {
+        background: linear-gradient(to top, var(--color-dawn), white);
+    }
+    :is(.role:hover, .role:focus-within) .title {
+        --fill: var(--gradient-pop-1);
+    }
+    .role :global(a) {
+        z-index: 1;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        z-index: 0;
+    }
+</style>

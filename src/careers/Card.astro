@@ -1,23 +1,14 @@
 ---
-import DateTime from '../../components/Date.astro';
 import { smartypants } from 'smartypants';
 
-const { role = {}, variant = 'summary' } = Astro.props;
+const { career = {}, variant = 'summary' } = Astro.props;
 const Title = variant === 'summary' ? 'h2' : 'h1';
 ---
 
 <div class="wrapper">
-    <Title class="title text-gradient">{smartypants(role.title, 1)}</Title>
+    <Title class="title text-gradient">{smartypants(career.title, 1)}</Title>
     <div class="description">
-        <p>{role.description}</p>
-    </div>
-    <div class="salary">
-        <h3>Salary</h3>
-        <p>{role.salary}</p>
-    </div>
-    <div class="date">
-        <h3>Listed on</h3>
-        <p><DateTime value={role.publishDate} /></p>
+        <p>{career.description}</p>
     </div>
 </div>
 
@@ -52,18 +43,28 @@ h2.title {
     max-width: 48ch;
     color: #999;
 }
-.salary {
-    flex-grow: auto;
-    margin-right: 2em;
+.post > div {
+    margin-top: 2em;
+}
+.authors {
+    flex-grow: 2;
     width: 100%;
 }
 @media (min-width: 52rem) {
-    .salary {
+    .authors {
         width: initial;
     }
 }
+.authors ul {
+    display: flex;
+    flex-flow: column nowrap;
+    list-style: none;
+}
+.authors ul > li + li {
+    margin-top: 0.5rem;
+}
 .date {
-    margin-left: auto;
+    flex-grow: 1;
 }
 h3 {
     margin: 0;
@@ -75,11 +76,11 @@ h3 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.date, .salary {
+.date, .authors {
     margin-top: 2rem;
     font-size: var(--size-400);
 }
-:is(.date, .salary) p {
+:is(.date, .authors) p {
     margin: 0;
     font-size: inherit;
     height: 2rem;
