@@ -1,0 +1,22 @@
+---
+import Role from '../../layouts/Role.astro';
+import { getAllRoles } from '../../careers';
+
+export async function getStaticPaths() {
+    const roles = await getAllRoles();
+
+    return roles.map((r) => {
+        return {
+            params: { slug: r.href.replace('/careers/', '') },
+            props: { role: r },
+        }
+    });
+}
+
+const role = Astro.props.role;
+const { default: Content } = await import(`/src/careers/${role.href.replace('/careers/', '')}.md`);
+---
+
+<Role content={role}>
+	<Content />
+</Role>
