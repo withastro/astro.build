@@ -16,7 +16,10 @@ contributemd = await contributemd.text()
 
     <ul role="list" class="posts">
         <Panel size="md">
-            <details title="First Rodeo?" class="article">
+            <details class="article">
+                <summary><h2 class="title text-gradient">First Rodeo?</h2>
+                <p>Get started fast, read the contributer guide!</p>
+                </summary>
                 <Markdown>
                     {contributemd}
                 </Markdown>
@@ -95,38 +98,64 @@ contributemd = await contributemd.text()
         z-index: 0;
     }
 
-		:root {
-			scroll-padding-top: 10rem;
-			background: var(--color-tan);
-		}
-		:global(#content) {
-			min-height: 100vh;
-			padding: 4rem 0;
-		}
-		.article {
-			max-width: 48rem;
-			padding-bottom: 2rem;
-			display: flex;
-			flex-flow: column nowrap;
-			font-family: var(--font-body);
-			font-size: var(--size-500);
-			line-height: 1.3;
-			color: var(--color-midnight);
-			z-index: 1;
-		}
-		:where(.article > :global(* + *)) {
-			margin-top: 1em;
-		}
-		.article :is(h2):not([class]) {
-			margin-top: 3em;
-		}
-		.article > :global(.note:last-child) {
-			margin-top: 8rem;
-		}
-		.hero {
-			display: flex;
-			flex-flow: row wrap;
-			padding: 3rem 0 2rem;
-			max-width: 100%;
-		}
+    .article :is(h1, h2, h3, h4, h5, h6) {
+        --fill: var(--color-dusk);
+        font-family: var(--font-display);
+        margin-top: 3em;
+    }
+
+    h2 {
+        --fill: var(--color-dusk);
+        font-size: var(--size-600);
+        font-family: var(--font-display);
+        margin: 0 auto;
+        flex-grow: 1;
+        width: 100%;
+        line-height: 1.1;
+        display: inline;
+    }
+
+    summary {
+        width: 100%;
+    }
+
+    summary::marker {
+        color: var(--color-dusk);
+        font-size: var(--size-600);
+        font-family: var(--font-display);
+    }
+
+    :root {
+        scroll-padding-top: 10rem;
+        background: var(--color-tan);
+    }
+    :global(#content) {
+        min-height: 100vh;
+        padding: 4rem 0;
+    }
+    .article {
+        width: 48rem;
+        display: flex;
+        flex-flow: column nowrap;
+        font-family: var(--font-body);
+        font-size: var(--size-500);
+        line-height: 1.3;
+        color: var(--color-midnight);
+        z-index: 1;
+    }
+    :where(.article > :global(* + *)) {
+        margin-top: 1em;
+    }
+    .article :is(h2):not([class]) {
+        margin-top: 3em;
+    }
+    .article > :global(.note:last-child) {
+        margin-top: 8rem;
+    }
+    .hero {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 3rem 0 2rem;
+        max-width: 100%;
+    }
 </style>
