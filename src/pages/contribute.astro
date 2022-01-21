@@ -1,11 +1,63 @@
 ---
-import Page from '../layouts/Page.astro';
-import Card from '../components/blog/Card.astro';
+import Page from '../layouts/Page.astro'
 import Panel from '../components/Panel.astro'
-import { Markdown } from 'astro/components';
+import { Markdown } from 'astro/components'
 let issues = []
 let contributemd: Response | String = await fetch('https://raw.githubusercontent.com/withastro/astro/main/CONTRIBUTING.md')
 contributemd = await contributemd.text()
+
+//#region ghstats
+function abbrNum(number, decPlaces) {
+    decPlaces = Math.pow(10,decPlaces)
+    var abbrev = [ "k", "m", "b", "t" ]
+    for (var i=abbrev.length-1; i>=0; i--) {
+        var size = Math.pow(10,(i+1)*3)
+        if(size <= number) {
+             number = Math.round(number*decPlaces/size)/decPlaces
+             if((number == 1000) && (i < abbrev.length - 1)) {
+                 number = 1
+                 i++
+             }
+             number += abbrev[i]
+             break
+        }
+    }
+    return number
+}
+
+let astrorepo: Response | String | {Any} = await fetch('https://api.github.com/repos/withastro/astro')
+astrorepo = await astrorepo.text()
+astrorepo = JSON.parse(astrorepo)
+
+const csvToJson = (string) => {
+  const regex = new RegExp(`\\s*(")?(.*?)\\1\\s*(?:,|$)`, 'gs')
+  const match = string => [...string.matchAll(regex)].map(match => match[2])
+    .filter((_, i, a) => i < a.length - 1)
+  const lines = string.split('\n')
+  const heads = match(lines.splice(0, 1)[0])
+  return lines.map(line => match(line).reduce((acc, cur, i) => ({
+    ...acc,
+    [heads[i] || `extra_${i}`]: (cur.length > 0) ? (Number(cur) || cur) : null
+  }), {}))
+}
+
+let csv: Response | string | {Any} = await fetch('https://raw.githubusercontent.com/withastro/astro/main/scripts/stats/stats.csv')
+csv = await csv.text()
+csv = csvToJson(csv)
+console.log(csv[0])
+
+let issueChange: string | number = csv[0]['Open Issues'] - csv[1]['Open Issues']
+
+if (0 > issueChange) issueChange = `-${issueChange}`
+else if (0 < issueChange) issueChange = `+${issueChange}`
+else if (issueChange == 0) issueChange = `+/-${issueChange}`
+
+let stats = {
+    "Open Issues (24h)": issueChange,
+    "PRs (24h)": csv[0]['PRs (24hr)'],
+    "Stars": String(abbrNum(astrorepo.stargazers_count,1))
+}
+//#endregion
 ---
 
 <Page title="Contribute">
@@ -14,7 +66,28 @@ contributemd = await contributemd.text()
         <p></p>
     </header>
 
-    <ul role="list" class="posts">
+    <ul role="list" class="items">
+        <Panel size="md">
+            <div class="article">
+                <h2 class="title text-gradient">Welcome!</h2>
+                <p>Hey, thank you for your interest in contributing to astro,
+                it's awesome that you even made it this far! We put together
+                this page to get you going as fast as possible. It has some
+                really useful information, and we hope it helps make your job
+                just a bit easier!
+                </p>
+            </div>
+        </Panel>
+            <div style="width: 48rem">
+                <h2 class="title text-gradient">Cool stats...</h2>
+            </div>
+            <div class="stats">
+                {Object.entries(stats).map(stat =>
+                    <Panel>
+                        <h2>{stat[0]}</h2>
+                        <h1 class="title text-gradient">{stat[1]}</h1>
+                    </Panel>)}
+            </div>
         <Panel size="md">
             <details class="article">
                 <summary><h2 class="title text-gradient">First Rodeo?</h2>
@@ -25,14 +98,6 @@ contributemd = await contributemd.text()
                 </Markdown>
             </details>
         </Panel>
-        {issues.map(issue => {
-            return (
-                <li class="post">
-
-                    <Card post={issue} variant="summary" />
-                </li>
-            )
-        })}
     </ul>
 </Page>
 
@@ -41,19 +106,20 @@ contributemd = await contributemd.text()
         padding: 3rem 2rem 2rem;
         width: 100%;
         max-width: 64rem;
-        flex-grow: 1;
     }
     h1.title {
         font-family: var(--font-display);
         --fill: var(--gradient-pop-1);
         font-size: var(--size-900);
     }
-    .posts {
+    .items {
         width: 100%;
         max-width: 64rem;
         padding: 2rem;
         padding-bottom: 4rem;
         display: flex;
+        align-items: center;
+        gap: 3rem;
         flex-flow: column nowrap;
         font-family: var(--font-body);
         font-size: var(--size-500);
@@ -98,10 +164,15 @@ contributemd = await contributemd.text()
         z-index: 0;
     }
 
-    .article :is(h1, h2, h3, h4, h5, h6) {
-        --fill: var(--color-dusk);
+    .article :is(h1, h2, h3, h4, h5, h6) :not(.title),
+    .stats h3
+    {
         font-family: var(--font-display);
-        margin-top: 3em;
+    }
+
+    .stats h1 {
+        margin: 0 auto !important;
+        width: 100%;
     }
 
     h2 {
@@ -157,5 +228,17 @@ contributemd = await contributemd.text()
         flex-flow: row wrap;
         padding: 3rem 0 2rem;
         max-width: 100%;
+    }
+
+    .stats {
+        display: flex;
+        gap: 2rem;
+        /* i'm so sorry */
+        width: calc(calc(calc(3.25rem * var(--pad,1)) * 2) + 48rem);
+        --offset-inline: 1.625rem;
+    }
+
+    .stats h2 {
+        white-space: nowrap;
     }
 </style>
