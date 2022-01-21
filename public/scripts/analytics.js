@@ -52,8 +52,15 @@ class KonamiCode {
 }
 
 export function init() {
+  const audio = new Audio('/tracking_band.mp3')
   new KonamiCode({
-    enable: () => document.body.classList.add('🥚'),
-    disable: () => document.body.classList.remove('🥚'),
+    enable: () => {
+      audio.play()
+      document.body.classList.add('🥚')
+    },
+    disable: () => {
+      audio.pause()
+      document.body.classList.remove('🥚')
+    },
   });
 }
