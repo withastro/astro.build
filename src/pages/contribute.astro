@@ -66,7 +66,7 @@ let stats = {
         <p></p>
     </header>
 
-    <ul role="list" class="items">
+    <div class="items">
         <Panel size="md">
             <div class="article">
                 <h2 class="title text-gradient">Welcome!</h2>
@@ -90,7 +90,7 @@ let stats = {
             </div>
         <Panel size="md">
             <details class="article">
-                <summary><h2 class="title text-gradient">First Rodeo?</h2>
+                <summary><h2 class="title interactive text-gradient">First Rodeo?</h2>
                 <p>Get started fast, read the contributer guide!</p>
                 </summary>
                 <Markdown>
@@ -98,7 +98,7 @@ let stats = {
                 </Markdown>
             </details>
         </Panel>
-    </ul>
+    </div>
 </Page>
 
 <style>
@@ -125,17 +125,12 @@ let stats = {
         font-size: var(--size-500);
         line-height: 1.3;
         color: var(--color-midnight);
+
     }
     .post + .post {
         margin-top: 4rem;
     }
-    .post {
-        position: relative;
-        display: flex;
-        flex-flow: row wrap;
-        padding: 3rem 2rem;
-        margin-left: -2rem;
-        margin-right: -2rem;
+    .items .panel {
         background: white;
         box-shadow: var(--shadow-md);
         border-radius: var(--corner-md);
@@ -144,14 +139,14 @@ let stats = {
         line-height: 1.3;
         color: var(--color-midnight);
     }
-    .post:hover,
-    .post:focus-within {
+    .panel:hover,
+    .panel:focus-within {
         background: linear-gradient(to top, var(--color-dawn), white);
     }
-    :is(.post:hover, .post:focus-within) .title {
+    :is(.panel:hover, .panel:focus-within) .interactive {
         --fill: var(--gradient-pop-1);
     }
-    .post :global(a) {
+    .panel :global(a) {
         z-index: 1;
     }
     .overlay {
