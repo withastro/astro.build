@@ -43,14 +43,8 @@ let csv: Response | string | {Any} = await fetch('https://raw.githubusercontent.
 csv = await csv.text()
 csv = csvToJson(csv)
 
-let issueChange: string | number = csv[0]['Open Issues'] - csv[1]['Open Issues']
-
-if (0 > issueChange) issueChange = `-${issueChange}`
-else if (0 < issueChange) issueChange = `+${issueChange}`
-else if (issueChange == 0) issueChange = `+/-${issueChange}`
-
 let stats = {
-    "Open Issues (24h)": issueChange,
+    "New Issues (24h)": csv[0]['Issues (24hr)'],
     "PRs (24h)": csv[0]['PRs (24hr)'],
     "Stars": String(abbrNum(astrorepo.stargazers_count,1))
 }
