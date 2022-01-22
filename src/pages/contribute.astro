@@ -1,8 +1,6 @@
 ---
 import Page from '../layouts/Page.astro'
-import Panel from '../components/Panel.astro'
 import { Markdown } from 'astro/components'
-let issues = []
 let contributemd: Response | String = await fetch('https://raw.githubusercontent.com/withastro/astro/main/CONTRIBUTING.md')
 contributemd = await contributemd.text()
 
@@ -44,7 +42,6 @@ const csvToJson = (string) => {
 let csv: Response | string | {Any} = await fetch('https://raw.githubusercontent.com/withastro/astro/main/scripts/stats/stats.csv')
 csv = await csv.text()
 csv = csvToJson(csv)
-console.log(csv[0])
 
 let issueChange: string | number = csv[0]['Open Issues'] - csv[1]['Open Issues']
 
@@ -65,11 +62,10 @@ let stats = {
         <h1 class="title text-gradient">Contribute</h1>
         <p></p>
     </header>
-
     <div class="items">
-        <Panel size="md">
-            <div class="article">
-                <h2 class="title text-gradient">Welcome!</h2>
+        <div class="post color">
+            <div>
+                <h2>Welcome!</h2>
                 <p>Hey, thank you for your interest in contributing to astro,
                 it's awesome that you even made it this far! We put together
                 this page to get you going as fast as possible. It has some
@@ -77,35 +73,42 @@ let stats = {
                 just a bit easier!
                 </p>
             </div>
-        </Panel>
-            <div style="width: 48rem">
-                <h2 class="title text-gradient">Cool stats...</h2>
-            </div>
-            <div class="stats">
+        </div>
+        <div class="secondary">
+            <h2>Cool stats...</h2>
+            <div class="stat">
                 {Object.entries(stats).map(stat =>
-                    <Panel>
+                    <div class="post color">
                         <h2>{stat[0]}</h2>
                         <h1 class="title text-gradient">{stat[1]}</h1>
-                    </Panel>)}
+                    </div>)}
             </div>
-        <Panel size="md">
-            <details class="article">
-                <summary><h2 class="title interactive text-gradient">First Rodeo?</h2>
+        </div>
+        <div class="post color interactive">
+            <details >
+                <summary><h2 style="display: inline;">First Rodeo?</h2>
                 <p>Get started fast, read the contributer guide!</p>
                 </summary>
                 <Markdown>
                     {contributemd}
                 </Markdown>
             </details>
-        </Panel>
+        </div>
     </div>
 </Page>
 
 <style>
-    header {
-        padding: 3rem 2rem 2rem;
+    h1,h2,h3,h4,h5,h6 {
+        font-family: var(--font-display);
+        margin: 0 auto;
+        flex-grow: 1;
         width: 100%;
-        max-width: 64rem;
+        color: var(--color-dusk);
+    }
+    .secondary {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
     }
     h1.title {
         font-family: var(--font-display);
@@ -118,69 +121,56 @@ let stats = {
         padding: 2rem;
         padding-bottom: 4rem;
         display: flex;
-        align-items: center;
-        gap: 3rem;
+        gap: 4rem;
         flex-flow: column nowrap;
         font-family: var(--font-body);
         font-size: var(--size-500);
         line-height: 1.3;
         color: var(--color-midnight);
-
     }
-    .post + .post {
-        margin-top: 4rem;
+    .stat {
+        display: flex;
+        gap: 2rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
     }
-    .items .panel {
-        background: white;
-        box-shadow: var(--shadow-md);
-        border-radius: var(--corner-md);
+    .stat > * {
+        flex-grow: 1;
+        flex-basis: 0;
+        white-space: nowrap;
+    }
+    .stat > .post {
+        padding: 3rem 2rem;
+    }
+    .items > .post {
+        padding: 3rem 2rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
         font-family: var(--font-body);
         font-size: var(--size-500);
         line-height: 1.3;
-        color: var(--color-midnight);
     }
-    .panel:hover,
-    .panel:focus-within {
+    .post.color {
+        background: white;
+        box-shadow: var(--shadow-md);
+        border-radius: var(--corner-md);
+    }
+    .post.interactive:hover,
+    .post.interactive:focus-within {
         background: linear-gradient(to top, var(--color-dawn), white);
     }
-    :is(.panel:hover, .panel:focus-within) .interactive {
+    :is(.post.interactive:hover, .post.interactive:focus-within) .title {
         --fill: var(--gradient-pop-1);
     }
-    .panel :global(a) {
+    .post :global(a) {
         z-index: 1;
     }
-    .overlay {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        display: block;
-        z-index: 0;
-    }
-
-    .article :is(h1, h2, h3, h4, h5, h6) :not(.title),
-    .stats h3
-    {
-        font-family: var(--font-display);
-    }
-
-    .stats h1 {
-        margin: 0 auto !important;
+    header {
+        padding: 3rem 2rem 2rem;
         width: 100%;
-    }
-
-    h2 {
-        --fill: var(--color-dusk);
-        font-size: var(--size-600);
-        font-family: var(--font-display);
-        margin: 0 auto;
+        max-width: 64rem;
         flex-grow: 1;
-        width: 100%;
-        line-height: 1.1;
-        display: inline;
     }
-
     summary {
         width: 100%;
     }
@@ -190,50 +180,7 @@ let stats = {
         font-size: var(--size-600);
         font-family: var(--font-display);
     }
-
-    :root {
-        scroll-padding-top: 10rem;
-        background: var(--color-tan);
-    }
-    :global(#content) {
-        min-height: 100vh;
-        padding: 4rem 0;
-    }
-    .article {
-        width: 48rem;
-        display: flex;
-        flex-flow: column nowrap;
-        font-family: var(--font-body);
-        font-size: var(--size-500);
-        line-height: 1.3;
-        color: var(--color-midnight);
-        z-index: 1;
-    }
-    :where(.article > :global(* + *)) {
+    p {
         margin-top: 1em;
-    }
-    .article :is(h2):not([class]) {
-        margin-top: 3em;
-    }
-    .article > :global(.note:last-child) {
-        margin-top: 8rem;
-    }
-    .hero {
-        display: flex;
-        flex-flow: row wrap;
-        padding: 3rem 0 2rem;
-        max-width: 100%;
-    }
-
-    .stats {
-        display: flex;
-        gap: 2rem;
-        /* i'm so sorry */
-        width: calc(calc(calc(3.25rem * var(--pad,1)) * 2) + 48rem);
-        --offset-inline: 1.625rem;
-    }
-
-    .stats h2 {
-        white-space: nowrap;
     }
 </style>
