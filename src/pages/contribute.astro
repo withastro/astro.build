@@ -1,5 +1,6 @@
 ---
 import Page from '../layouts/Page.astro'
+import PixelLink from '../components/PixelLink.astro'
 import { Markdown } from 'astro/components'
 let contributemd: Response | String = await fetch('https://raw.githubusercontent.com/withastro/astro/main/CONTRIBUTING.md')
 contributemd = await contributemd.text()
@@ -70,7 +71,7 @@ let stats = {
         </div>
         <div class="secondary">
             <h2>Cool stats...</h2>
-            <div class="stat">
+            <div class="stat spread">
                 {Object.entries(stats).map(stat =>
                     <div class="post color">
                         <h2>{stat[0]}</h2>
@@ -87,6 +88,16 @@ let stats = {
                     {contributemd}
                 </Markdown>
             </details>
+        </div>
+        <div class="secondary">
+            <div>
+                <h2>Some cool issues!</h2>
+            </div>
+            <div class="issue-nav stat">
+                <PixelLink href="https://docs.astro.build">Good First Issues</PixelLink>
+                <PixelLink variant="outline" href="https://docs.astro.build">Unimplemented RFCs</PixelLink>
+                <PixelLink variant="outline" href="https://docs.astro.build">Docs</PixelLink>
+            </div>
         </div>
     </div>
 </Page>
@@ -105,7 +116,6 @@ let stats = {
         gap: 4rem;
     }
     h1.title {
-        font-family: var(--font-display);
         --fill: var(--gradient-pop-1);
         font-size: var(--size-900);
     }
@@ -128,16 +138,16 @@ let stats = {
         margin-left: -2rem;
         margin-right: -2rem;
     }
-    .stat > * {
+    .stat.spread > * {
         flex-grow: 1;
         flex-basis: 0;
         white-space: nowrap;
     }
-    .stat > .post {
+    .stat > .post,
+    .items > .post {
         padding: 3rem 2rem;
     }
     .items > .post {
-        padding: 3rem 2rem;
         margin-left: -2rem;
         margin-right: -2rem;
         font-family: var(--font-body);
@@ -149,11 +159,10 @@ let stats = {
         box-shadow: var(--shadow-md);
         border-radius: var(--corner-md);
     }
-    .post.interactive:hover,
-    .post.interactive:focus-within {
+    .post.interactive:hover {
         background: linear-gradient(to top, var(--color-dawn), white);
     }
-    :is(.post.interactive:hover, .post.interactive:focus-within) .title {
+    :is(.post.interactive:hover) .title {
         --fill: var(--gradient-pop-1);
     }
     .post :global(a) {
