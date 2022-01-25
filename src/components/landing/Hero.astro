@@ -127,10 +127,6 @@ import Grid from './Grid.astro';
             --blur: 1280px;
             --opacity: 0.7;
         }
-        /* Firefox really chokes on this animation, so let's just skip it */
-        .blob-a, .blob-b, .blob-c {
-            animation-play-state: paused !important;
-        }
     }
 
     /* Safari tweaks */
@@ -139,10 +135,6 @@ import Grid from './Grid.astro';
             --blur: 80px;
             --opacity: 0.8;
         }
-    }
-
-    .blob-a, .blob-b, .blob-c {
-        will-change: transform;
     }
 
     .blob-a {
@@ -158,7 +150,6 @@ import Grid from './Grid.astro';
         transform-origin: center center;
         background: linear-gradient(-170deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         z-index: 0;
-        animation: blob-a calc(var(--time) * 3.5) ease-in-out infinite;
     }
 
     .blob-b {
@@ -176,7 +167,6 @@ import Grid from './Grid.astro';
         transform-origin: center center;
         background: linear-gradient(259deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         z-index: -1;
-        animation: blob-b calc(var(--time) * 2.5) ease-in-out infinite;
     }
 
     .blob-c {
@@ -194,42 +184,6 @@ import Grid from './Grid.astro';
         transform-origin: center center;
         background: linear-gradient(-180deg, #FF9900 0%, #AD00FF 30.71%, #0029FF 37.67%, #6D39FF 49.54%);
         z-index: 1;
-        animation: blob-c var(--time) ease-in-out alternate infinite;
-    }
-
-    @keyframes blob-a {
-        0% {
-            transform: translate3d(0, var(--ty), 0) rotate(5deg) translate3d(20%, -10%, 0) scale(0.7);
-        }
-        67% {
-            transform: translate3d(0, var(--ty), 0) rotate(5deg) translate3d(12.5%, -6.7%, 0) scale(0.9);
-        }
-        100% {
-            transform: translate3d(0, var(--ty), 0) rotate(0deg) translate3d(-2%, 4%, 0) scale(0.8);
-        }
-    }
-
-    @keyframes blob-b {
-        0% {
-            opacity: 0;
-            transform: translate3d(0, var(--ty), 0) rotate(-12deg) translate3d(-33%, -5%, 0) scale(1);
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-            transform: translate3d(0, var(--ty), 0) rotate(0deg) translate3d(50%, 5%, 0) scale(0.9);
-        }
-    }
-
-    @keyframes blob-c {
-        0% {
-            transform: translate3d(0, var(--ty), 0) rotate(5deg) translate3d(0, 0, 0) scale(0.8);
-        }
-        100% {
-            transform: translate3d(0, var(--ty), 0) rotate(-15deg) translate3d(15%, 7%, 0) scale(0.8);
-        }
     }
 
     @supports not (aspect-ratio: 1 / 1) {
