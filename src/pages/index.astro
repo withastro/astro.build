@@ -33,6 +33,35 @@ const meta = {
 	description: `${headline} ${tagline}`,
 	canonicalURL: new URL('.', Astro.site)
 }
+
+const logos = {
+	"Google": {
+		name: "google",
+		height: 36
+	},
+	"Netlify": {
+		name: "netlify",
+		height: 36
+	},
+	"Div Riots": {
+		name: "divriots",
+		height: 28
+	},
+	"Navillus": {
+		name: "navillus"
+	},
+	"monogram": {
+		name: "monogram",
+		width: 240
+	},
+	"trivago": {
+		name: "trivago"
+	}
+}
+Object.keys(logos).forEach(logo => {
+	logos[logo].name = `logos/${logos[logo].name}`
+	if (!logos[logo].height) logos[logo].height = 40
+});
 ---
 
 <html lang="en">
@@ -64,21 +93,11 @@ const meta = {
 		<Trusted>
 			<Fragment slot="title">Developers around the world rely on Astro</Fragment>
 			<Fragment>
+				{Object.entries(logos).map(logo =>
 				<li>
-					<Icon name="logos/google" title="Google" height="36" />
+					<Icon title={logo[0]} {...logo[1]} />
 				</li>
-				<li>
-					<Icon name="logos/netlify" title="Netlify" height="36" />
-				</li>
-				<li>
-					<Icon name="logos/divriots" title="Div Riots" height="28" />
-				</li>
-				<li>
-					<Icon name="logos/navillus" title="Navillus" height="40" />
-				</li>
-				<li>
-					<Icon name="logos/monogram" title="monogram" height="40" width="240" />
-				</li>
+				)}
 			</Fragment>
 		</Trusted>
 
