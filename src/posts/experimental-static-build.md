@@ -7,7 +7,7 @@ authors:
 lang: 'en'
 ---
 
-Astro's about to get a lot faster with a newly built build system intended to scale to tens, or even hundreds, of thousands of pages. If you hang out in our [Discord](https://astro.build/chat) or pay attention to recently releases you might have seen a lot of discussion about a "static build". This is our new implementation of `astro build` that does 2 things:
+Astro's about to get a lot faster with a new build system intended to scale to tens, or even hundreds, of thousands of pages. If you hang out in our [Discord](https://astro.build/chat) or pay attention to recently releases you might have seen a lot of discussion about a "static build". This is our new implementation of `astro build` that does 2 things:
 
 - Improves build times by up to 75%.
 - Sets us up for server-side rendering (SSR) in the near future.
