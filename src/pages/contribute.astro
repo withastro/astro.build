@@ -50,6 +50,15 @@ let stats = {
     "Stars": String(abbrNum(astrorepo.stargazers_count,1))
 }
 //#endregion
+
+//#region fetch docs
+let docs: Response | string | [{}] = await fetch('https://api.github.com/repos/withastro/astro/issues?labels=docs')
+docs = JSON.parse(await docs.text())
+docs = docs.map(doc => {
+    const title = doc.title.replace("📘 DOC: ",'')
+                            .replace(':blue_book: DOC: ','')
+    return {  ...doc, title: title}
+})
 ---
 
 <Page title="Contribute">
@@ -69,16 +78,6 @@ let stats = {
                 </p>
             </div>
         </div>
-        <div class="secondary">
-            <h2>Cool stats...</h2>
-            <div class="stat spread">
-                {Object.entries(stats).map(stat =>
-                    <div class="post color">
-                        <h2>{stat[0]}</h2>
-                        <h1 class="title text-gradient">{stat[1]}</h1>
-                    </div>)}
-            </div>
-        </div>
         <div class="post color interactive">
             <details >
                 <summary><h2 style="display: inline;">First Rodeo?</h2>
@@ -94,9 +93,30 @@ let stats = {
                 <h2>Some cool issues!</h2>
             </div>
             <div class="issue-nav stat">
-                <PixelLink href="https://docs.astro.build">Good First Issues</PixelLink>
+                <PixelLink variant="outline" href="https://docs.astro.build">Good First Issues</PixelLink>
                 <PixelLink variant="outline" href="https://docs.astro.build">Unimplemented RFCs</PixelLink>
-                <PixelLink variant="outline" href="https://docs.astro.build">Docs</PixelLink>
+                <PixelLink href="https://docs.astro.build">Docs</PixelLink>
+            </div>
+            <div class="issue-group" id="issue-doc">
+                {Object.entries(docs).map(docissue =>
+                    <div class="post color">
+                        <h2>{docissue[1].title}</h2>
+                        <p>
+                            <Markdown>
+                                {docissue[1].body.split('\n')[0]}
+                            </Markdown>
+                        </p>
+                    </div>)}
+            </div>
+        </div>
+        <div class="secondary">
+            <h2>Thanks to you...</h2>
+            <div class="stat spread">
+                {Object.entries(stats).map(stat =>
+                    <div class="post color">
+                        <h2>{stat[0]}</h2>
+                        <h1 class="title text-gradient">{stat[1]}</h1>
+                    </div>)}
             </div>
         </div>
     </div>
@@ -132,6 +152,13 @@ let stats = {
         line-height: 1.3;
         color: var(--color-midnight);
     }
+    .issue-group {
+        margin-left: -2rem;
+        margin-right: -2rem;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 2rem;
+    }
     .stat {
         display: flex;
         gap: 2rem;
@@ -144,7 +171,8 @@ let stats = {
         white-space: nowrap;
     }
     .stat > .post,
-    .items > .post {
+    .items > .post,
+    .issue-group > .post {
         padding: 3rem 2rem;
     }
     .items > .post {
