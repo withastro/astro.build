@@ -25,6 +25,11 @@ const { before, after } = Astro.slots;
         font-family: var(--font-display);
         font-size: 1.5rem;
         width: max-content;
+
+        /* don't delete this, it needs to be here
+        why? I don't know.*/
+        transform: translateY(0);
+
         transition-property: transform, --link-color-stop-a, --link-color-stop-b;
         transition-duration: var(--duration);
         transition-delay: var(--delay);
@@ -75,7 +80,6 @@ const { before, after } = Astro.slots;
 
     .variant-outline {
         --variant: outline;
-        --background: none;
         color: var(--background);
     }
     .variant-outline > a::before {
