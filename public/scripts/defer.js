@@ -1,3 +1,3 @@
 if (window.matchMedia('(hover: hover)').matches) {
-    import('/scripts/analytics.js').then(mod => mod.init());
+    import('/scripts/konami.js').then(mod => mod.init());
 }
