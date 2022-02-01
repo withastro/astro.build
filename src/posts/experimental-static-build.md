@@ -20,4 +20,4 @@ We're __now__ at the stage where this feature is ready for wider use. If you are
 astro build --experimental-static-build
 ```
 
-This build will remain flagged for the next few releases until we iron out all of the kinks. Please help us by reporting issues you encounter, either in the [Discord](https://astro.build/chat) or by filing an [issue](https://github.com/withastro/astro/issues/new/choose).
+This build approach will remain flagged for the next few releases until we iron out any issues, at which point we plan to promote it to be the default `astro build` command. Please help us by reporting issues you encounter, either in the [Discord](https://astro.build/chat) or by filing an [issue](https://github.com/withastro/astro/issues/new/choose).
