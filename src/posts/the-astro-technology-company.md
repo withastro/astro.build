@@ -34,6 +34,6 @@ Our goal is to grow Astro into the next great platform for web developers. We se
 
 ## Join us!
 
-Love web development? Love developer tooling? Love the thought of working with talented, thoughtful people full-time? **We're hiring!** Shoot me a DM on Twitter, Discord or at [fred@astro.build](mailto:fred@astro.build) to learn more. 
+Love web development? Love developer tooling? Love the thought of working with talented, thoughtful people full-time? [**We're hiring!**](/company)
 
 You can also [join us on Discord](https://astro.build/chat) to learn more about Astro and the community behind it.
