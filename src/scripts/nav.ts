@@ -1,14 +1,18 @@
-const nav = document.querySelector('nav.main') as HTMLElement;
+const nav = document.querySelector("nav.main") as HTMLElement;
 
-const io = new IntersectionObserver(
-  ([e]) => e.target.toggleAttribute('stuck', e.intersectionRatio < 1),
-  { threshold: 1 }
-)
-
-io.observe(nav)
-
-window.addEventListener('DOMContentLoaded', () => {
-  if (window.scrollY > 65) {
-    nav.setAttribute('stuck', '')
+window.addEventListener("DOMContentLoaded", () => {
+  let isStuck = false;
+  function updateStuck() {
+    if (isStuck && window.scrollY <= 65) {
+      isStuck = false;
+      nav.removeAttribute("stuck");
+    }
+    if (!isStuck && window.scrollY > 65) {
+      isStuck = true;
+      nav.setAttribute("stuck", "");
+    }
   }
-})
+
+  updateStuck();
+  window.addEventListener("scroll", updateStuck);
+});

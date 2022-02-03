@@ -1,5 +1,6 @@
 ---
 import { Icon, Sprite } from 'astro-icon';
+import Banner from '../components/Banner.astro';
 import BaseHead from '../components/BaseHead.astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
@@ -51,7 +52,8 @@ const meta = {
 </head>
 
 <body>
-	<BaseLayout>
+<Banner href="/blog/the-astro-technology-company/" items={[`Announcing the Astro Technology Company!`, `Investing in the future of Astro.`]} />
+<BaseLayout>
 		<Nav marginBottom slot="nav" />
 
 		<Hero>

@@ -27,6 +27,11 @@
   font-display: swap;
 }
 
+/** sanitize.css makes the line-height 1.5 globally, fix this for headers */
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1.11;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -633,7 +638,7 @@ p, .body-md {
     width: 100%;
     position: sticky;
     top: calc((var(--offset-height) * -1) - 1px);
-    margin-top: -0.5rem;
+    margin-top: -2rem;
     padding: 0.5rem 0;
     background: linear-gradient(0deg, rgba(var(--color-tan-rgb), 0.7), rgba(var(--color-tan-rgb), 1));
     -webkit-backdrop-filter: blur(10px);
@@ -737,6 +742,10 @@ p, .body-md {
 #nav .wordmark {
     display: none;
     color: inherit;
+    margin-top: -0.5rem;
+}
+#nav .hidden-mobile {
+  display: none;
 }
 
 @media (min-width: 52rem) {
@@ -748,6 +757,9 @@ p, .body-md {
     }
     #nav .wordmark {
         display: block;
+    }
+    #nav .hidden-mobile {
+      display: block;
     }
 }
 #nav a {
