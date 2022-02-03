@@ -1,36 +1,46 @@
 ---
 import Page from '../layouts/Page.astro';
 import Card from '../components/careers/Card.astro';
+import PixelLink from '../components/PixelLink.astro';
 
 const posts = [{
   href: 'mailto:jobs@astro.build',
-  title: 'Software Engineer - Devtools / Astro Core',
-  description: 'Full Time • Remote • United States, Canada'
-},  {
-  href: 'mailto:jobs@astro.build',
-  title: 'Software Engineer - Frontend',
+  title: 'Software Engineer ⌁ Astro, Open Source',
   description: 'Full Time • Remote • United States, Canada'
 }, {
   href: 'mailto:jobs@astro.build',
-  title: 'Software Engineer - Full Stack',
+  title: 'Software Engineer ⌁ Frontend UI',
   description: 'Full Time • Remote • United States, Canada'
 }, {
   href: 'mailto:jobs@astro.build',
-  title: 'Design Lead',
+  title: 'Product Designer',
   description: 'Full Time • Remote • United States, Canada'
+}, {
+  href: 'mailto:jobs@astro.build',
+  title: 'DevRel ⌁ Content Marketing',
+  description: 'Contract • Remote • Anywhere!'
+}, {
+  href: 'mailto:jobs@astro.build',
+  title: 'Technical Writer ⌁ Astro Documentation',
+  description: 'Contract or Full-time • Remote • Anywhere!'
 }]
 ---
 
 <Page title="Careers">
     <header>
-        <h1 class="title text-gradient">Join us.</h1>
+        <h1 class="title text-gradient">The Astro Technology Company</h1>
     </header>
 
     <section>
-        <p>Love web development? Love developer tooling? Love the thought of working with talented, thoughtful people?</p>
-        <p>Join Astro and help make the web accessible to everyone. We are currently hiring for the following positions. To apply or just learn more, reach out to <a href="mailto:jobs@astro.build">jobs@astro.build.</a></p>
+        <p><strong>The Astro Technology Company</strong> was announced in 2022 to support the long-term success of the Astro project. Its mission is to grow Astro into the best possible platform for web development. You can read more in <a href="/blog/the-astro-technology-company">the official blog post.</a></p>
+        <p>If this mission exciting, join us! We are currently looking for talented, thoughtful people to work with us to make the Astro vision a reality. If you love the idea of working on tools used by 10,000+ web developers around the world, then the Astro Technology Company might be for you.</p>
     </section>
-
+    <section>
+        <!-- <p>TODO Section - Some cool assets. Who we are? What we're about? etc. etc.</p> -->
+    </section>
+    <section>
+        <h2 class="title text-gradient">Open Positions</h2>
+        <p>Our team is growing, and we are currently hiring for the following positions. We are mainly focused in hiring from the United States & Canada, but are open to anyone in overlapping timezones. To apply or just learn more, reach out to <a href="mailto:jobs@astro.build">jobs@astro.build.</a></p>
     <ul role="list" class="posts">
         {posts.map(post => {
             return (
@@ -41,6 +51,7 @@ const posts = [{
             )
         })}
     </ul>
+    </section>
 </Page>
 
 <style>
@@ -48,7 +59,6 @@ const posts = [{
         padding: 3rem 2rem 2rem;
         width: 100%;
         max-width: 64rem;
-        flex-grow: 1;
     }
     section {
       padding: 0 2rem;
@@ -63,6 +73,12 @@ const posts = [{
         font-family: var(--font-display);
         --fill: var(--gradient-pop-1);
         font-size: var(--size-900);
+    }
+    h2.title {
+        font-family: var(--font-display);
+        --fill: var(--gradient-pop-1);
+        font-size: var(--size-800);
+        margin: 1rem 0;
     }
     .posts {
         width: 100%;

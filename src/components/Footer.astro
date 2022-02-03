@@ -29,32 +29,11 @@ const YYYY = new Date().getFullYear();
     )}
     
     <div class="container content">
-        <ul class="main">
-            <li class="logo">
-                <Sprite class="logomark" name="logo-single-color" size="72" fill="white" title="Astro" />
-                <Sprite class="wordmark" name="wordmark-single-color" width="160" height="64" fill="white" title="Astro" />
-            </li>
-            {social.map(item => (
-                <li class="icon">
-                    <a href={item.href} title={item.title}>
-                        <Sprite name={item.icon} size="3em" fill="white" />
-                    </a>
-                </li>
-            ))}
-        </ul>
         <ul class="links">
             <li>&copy; {YYYY} The Astro Technology Company</li>
-            <li><a href="/careers">Careers</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/company">We're Hiring!</a></li>
             <li><a href="/blog">Blog</a></li>
-        </ul>
-        <ul class="mark">
-            <li><Sprite class="wordmark" name="wordmark-single-color" width="160" height="64" fill="white" title="Astro" /></li>
-            <li>
-                <address>
-                    <p>490 43rd Street #51</p>
-                    <p>Oakland, CA 94609</p>
-                </address>
-            </li>
         </ul>
     </div>
 </footer>
@@ -154,6 +133,7 @@ const YYYY = new Date().getFullYear();
     .links > li:first-child {
         width: 100%;
         margin-bottom: 2rem;
+        text-align: center;
     }
     .links > li + li:nth-child(2) {
         margin-left: 0;
@@ -216,7 +196,6 @@ const YYYY = new Date().getFullYear();
         .links {
             order: initial;
             grid-row: 2;
-            justify-content: flex-start;
         }
         .links > li:first-child {
             width: initial;

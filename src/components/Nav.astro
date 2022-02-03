@@ -7,7 +7,7 @@ const { invert = false, marginBottom = false } = Astro.props;
 const items = [
     { href: '/blog', title: 'Blog' },
     { href: 'https://docs.astro.build', title: 'Docs' },
-    { href: '/play', title: 'Repl' }
+    { href: '/play', title: 'Playground', hiddenMobile: true }
 ]
 ---
 
@@ -22,7 +22,7 @@ const items = [
         </li>
 
         {items.map(item => (
-            <li>
+            <li class={`${item.hiddenMobile ? 'hidden-mobile' : ''}`}>
                 <a aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined} href={item.href}>
                     {item.title}
                 </a>
