@@ -16,7 +16,7 @@ astro build --experimental-static-build
 Our new build system can scale to tens, or even hundreds, of thousands of pages. If you hang out in our [Discord](https://astro.build/chat) or pay attention to recent releases you might have seen a lot of discussion about a "static build". Our new implementation of `astro build` does 2 things:
 
 - Improves build times by up to 75%.
-- Sets Astro up to support server-side rendering (SSR) in the near future.
+- Lowers memory usage when building very large sites (10,000+ pages).
 
 This new build works by first building an SSR version of your app and then rendering each page to HTML. Because the site is pre-optimized it can render each page in parallel and will never run out of memory.
 
