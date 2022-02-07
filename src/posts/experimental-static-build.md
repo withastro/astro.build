@@ -20,10 +20,6 @@ Our new build system can scale to tens, or even hundreds, of thousands of pages.
 
 This new build works by first building an SSR version of your app and then rendering each page to HTML. Because the site is pre-optimized it can render each page in parallel and will never run out of memory.
 
-If you are a current Astro user please try out this new build by passing this flag in your build script:
-
-```shell
-astro build --experimental-static-build
-```
+If you are a current Astro user please try out this new build by passing the flag in your `build` script.
 
 This build approach will remain flagged for the next few releases until we iron out any issues, at which point we plan to promote it to be the default `astro build` command. Please help us by reporting issues you encounter, either in the [Discord](https://astro.build/chat) or by filing an [issue](https://github.com/withastro/astro/issues/new/choose).
