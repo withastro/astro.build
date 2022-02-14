@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 
 import { smartypants } from 'smartypants';
 
-let { title, description } = Astro.props;
+let { title, description, stylesheet } = Astro.props;
 title = smartypants(title, 1);
 const meta = {
 	title: `${title} | Astro`,
@@ -18,7 +18,7 @@ const meta = {
 <html lang="en">
 
 <head>
-	<BaseHead {...meta} />
+	<BaseHead {...meta} {stylesheet} />
 	<slot name="head" />
 
 	<style>

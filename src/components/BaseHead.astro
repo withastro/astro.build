@@ -2,11 +2,16 @@
 export interface Props {
   title: string;
   description: string;
-  canonicalURL: URL | string,
+  canonicalURL: URL | string
   image?: string;
+  stylesheet?: string;
 }
-const { title, description, canonicalURL } = Astro.props;
+const { title, description, canonicalURL, stylesheet } = Astro.props;
 const image = new URL(Astro.props.image || './social.png', Astro.site);
+
+const allStyles = ['/styles/sanitize.css', '/styles/main.css']
+  .concat(stylesheet)
+  .filter(Boolean);
 ---
 
 <!-- Global Metadata -->
@@ -19,8 +24,7 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
 <!-- Preload -->
-<link rel="preload" as="style" href="/styles/sanitize.css">
-<link rel="preload" as="style" href="/styles/main.css">
+{allStyles.map(href => (<link rel="preload" as="style" {href}>))}
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -43,5 +47,4 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 <meta property="twitter:image" content={image} />
 
 <!-- Assets -->
-<link rel="stylesheet" href="/styles/sanitize.css" />
-<link rel="stylesheet" href="/styles/main.css" />
+{allStyles.map(href => (<link rel="stylesheet" {href}>))}

@@ -7,7 +7,7 @@ import { Markdown } from 'astro/components';
 const { content: { header = '', title = '', description = '', updated_date } = {} } = Astro.props;
 ---
 
-<Page {...{ title, description }}>
+<Page {...{ title, description }} stylesheet="/styles/article.css">
     <Panel size="md" background="white linear-gradient(180deg, #E5DAEE 0%, rgba(255, 255, 255, 0) 24rem)">
         <div id="article">
             <header>
