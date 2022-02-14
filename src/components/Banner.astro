@@ -24,28 +24,10 @@ const Tag = href ? 'a' : 'div';
 
 <!-- Blocking, rehydrate from localStorage immediately -->
 <script global>
-    (function() {
-        const marqueePaused = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
-        const checkbox = document.getElementById('marquee-pause');
-        checkbox.checked = marqueePaused;
-    })();
+    document.getElementById('marquee-pause').checked = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
 </script>
 
-<!-- Non-blocking -->
-<script type="module">
-    (function() {
-        const checkbox = document.querySelector('#marquee-pause');
-        function onChange(element) {
-            const paused = element.checked;
-            localStorage.setItem('astro:marquee-paused', `${paused}`);
-        }
-        checkbox.addEventListener('change', ({ target }) => onChange(target))
-        checkbox.addEventListener('keydown', ({ target, key }) => {
-            if (key !== 'Enter') return;
-            onChange(target);
-        })
-    })();
-</script>
+<script type="module" src="/src/scripts/marquee.ts"></script>
 
 <style>
     not-marquee {
