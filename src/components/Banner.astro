@@ -22,6 +22,31 @@ const Tag = href ? 'a' : 'div';
     </Tag>
 </not-marquee>
 
+<!-- Blocking, rehydrate from localStorage immediately -->
+<script global>
+    (function() {
+        const marqueePaused = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
+        const checkbox = document.getElementById('marquee-pause');
+        checkbox.checked = marqueePaused;
+    })();
+</script>
+
+<!-- Non-blocking -->
+<script type="module">
+    (function() {
+        const checkbox = document.querySelector('#marquee-pause');
+        function onChange(element) {
+            const paused = element.checked;
+            localStorage.setItem('astro:marquee-paused', `${paused}`);
+        }
+        checkbox.addEventListener('change', ({ target }) => onChange(target))
+        checkbox.addEventListener('keydown', ({ target, key }) => {
+            if (key !== 'Enter') return;
+            onChange(target);
+        })
+    })();
+</script>
+
 <style>
     not-marquee {
         --color: var(--color-midnight);

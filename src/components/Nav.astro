@@ -11,7 +11,26 @@ const items = [
 ]
 ---
 
-<script type="module" src='/src/scripts/nav.ts'></script>
+<script global type="module">
+    (function() {
+        const nav = document.getElementById("nav");
+
+        let isStuck = false;
+        function updateStuck() {
+            if (isStuck && window.scrollY <= 65) {
+                isStuck = false;
+                nav.removeAttribute("stuck");
+            }
+            if (!isStuck && window.scrollY > 65) {
+                isStuck = true;
+                nav.setAttribute("stuck");
+            }
+        }
+
+        updateStuck();
+        window.addEventListener("scroll", updateStuck);
+    })();
+</script>
 
 <nav id="nav" class={`main ${invert ? 'invert' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
     <ul class="container" role="list">

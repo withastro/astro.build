@@ -1,7 +1,6 @@
 ---
 import { Sprite } from 'astro-icon';
 import Header from '../components/Header.astro';
-import Scripts from '../components/Scripts.astro';
 
 const { wrapper: Wrapper = Fragment, container = false } = Astro.props;
 ---
@@ -23,4 +22,9 @@ const { wrapper: Wrapper = Fragment, container = false } = Astro.props;
     </div>
 </Sprite.Provider>
 
-<Scripts />
+{Astro.request.url.pathname === '/' && <noscript></noscript>}
+<script global hoist>
+    window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('js');
+    })
+</script>
