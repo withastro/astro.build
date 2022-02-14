@@ -19,9 +19,6 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
       document.body.classList.add('js');
     }
   });
-  if ('paintWorklet' in CSS) {
-    CSS.paintWorklet.addModule('/pixel.worklet.js');
-  }
 </script>
 
 <!-- Global Metadata -->
