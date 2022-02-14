@@ -10,6 +10,7 @@ import Checklist from '../components/Checklist.astro';
 import ChecklistItem from '../components/ChecklistItem.astro';
 import ArrowLink from '../components/ArrowLink.astro';
 import Footer from '../components/Footer.astro';
+import Noscript from '../components/Noscript.astro';
 
 import Title from '../components/landing/Title.astro';
 import Hero from '../components/landing/Hero.astro';
@@ -174,6 +175,8 @@ const meta = {
 
 		<Footer slot="footer" />
 	</BaseLayout>
+
+	<Noscript />
 
 	<script type="module" hoist>
 		import "/src/scripts/animations.ts";

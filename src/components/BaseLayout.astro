@@ -22,7 +22,6 @@ const { wrapper: Wrapper = Fragment, container = false } = Astro.props;
     </div>
 </Sprite.Provider>
 
-{Astro.request.url.pathname === '/' && <noscript></noscript>}
 <script global hoist>
     window.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('js');
