@@ -40,4 +40,23 @@ a:is(:hover, :focus) .arrow {
     transform: translateX(0.25em);
     opacity: 1;
 }
+.checklist-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--marker-size);
+    height: var(--marker-size);
+    background: var(--color-dawn);
+    color: var(--color-midnight);
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+.checklist-text {
+    font-size: var(--size-600);
+}
+@media (min-width: 24rem) {
+    .checklist-item {
+        margin-left: 2rem;
+    }
+}
 </style>
