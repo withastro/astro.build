@@ -56,6 +56,12 @@ const { class: className } = Astro.props;
     animation: move var(--time) infinite linear;
 }
 
+@-moz-document url-prefix() {
+    .line {
+        animation-play-state: paused;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .line {
         animation-play-state: paused;
