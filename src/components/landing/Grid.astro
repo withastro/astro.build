@@ -56,7 +56,8 @@ const { class: className } = Astro.props;
     animation: move var(--time) infinite linear;
 }
 
-@-moz-document url-prefix() {
+/* Firefox tweaks */
+@supports (-moz-appearance: none) {
     .line {
         animation-play-state: paused;
     }
