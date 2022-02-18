@@ -82,7 +82,7 @@ If you don't want a `<div>` wrapper, you can also use `set:html` on the Fragment
 
 For security, Vite only loads environment variables that are explicitly opted-in to be exposed with a `PUBLIC_` prefix. This restriction makes sense in the browser, and protects you from accidentally leaking secret tokens and values. However, it also meant that private environment variables weren't available to you at all, even locally inside of server-rendered Astro components.
 
-<p>In Astro v0.23, <code>import&#46;meta&#46;env</code> now lets you access your private environment variables inside of Astro and anytime code renders locally or on the server. Astro will continue to protect you on the client, and only expose <code>PUBLIC_</code> variables to the frontend that ships to your users. 
+<p>In Astro v0.23, <code>import&#46;meta&#46;env</code> now lets you access your private environment variables inside of Astro and anytime code renders locally or on the server. Astro will continue to protect you on the client, and only expose <code>PUBLIC_</code> variables to the frontend that ships to your users.</p>
 
 ```js
 // DB_PASSWORD is only available when building your site.
@@ -93,7 +93,7 @@ const data = await db(import.meta.env.DB_PASSWORD);
 const data = fetch(`${import.meta.env.PUBLIC_POKEAPI}/pokemon/squirtle`);
 ```
 
-See our <a href="https://docs.astro.build/en/guides/environment-variables/">Environment Variables documentation</a> to learn more.</p>
+See our [Environment Variables documentation](https://docs.astro.build/en/guides/environment-variables/) to learn more.
 
 ## Better builds with Vite v2.8
 
