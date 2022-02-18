@@ -78,12 +78,12 @@ If you don't want a `<div>` wrapper, you can also use `set:html` on the Fragment
 
 `set:text` is also available to set the element text directly, similar to setting the `.text` property on an element in the browser. Together, these two directives give you a bit more control over the Astro output when you need it.
 
-## Improved `import.meta.env` support
+## Improved <code data-astro-raw>import.meta<wbr>.env</code> support
 
 For security, Vite only loads environment variables that are explicitly opted-in to be exposed with a `PUBLIC_` prefix. 
 Because Astro runs entirely on the server, this restricition meant that private, server-side environment variables weren't very useful at all.
 
-In Astro v0.23, `import.meta.env` now supports private environment variables during SSR, but only exposes `PUBLIC_` variables to the client. See our [Environment Variables documentation](https://docs.astro.build/en/guides/environment-variables/) to learn more.
+In Astro v0.23, <code data-astro-raw>import.meta<wbr>.env</code> now supports private environment variables during SSR, but only exposes `PUBLIC_` variables to the client. See our [Environment Variables documentation](https://docs.astro.build/en/guides/environment-variables/) to learn more.
 
 ## Better builds with Vite v2.8
 
