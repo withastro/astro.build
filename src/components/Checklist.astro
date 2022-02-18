@@ -2,12 +2,12 @@
 const { cols = 2 } = Astro.props;
 ---
 
-<ul class="checklist" style={`--cols: ${cols};`} role="list">
+<ul style={`--cols: ${cols};`} role="list">
     <slot />
 </ul>
 
 <style>
-    .checklist {
+    ul {
         font-size: var(--size-500);
         --marker-size: 3rem;
         display: grid;
@@ -23,20 +23,20 @@ const { cols = 2 } = Astro.props;
     }
 
     @media (min-width: 24rem) {
-        .checklist {
+        ul {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             justify-content: flex-start;
         }
     }
 
     @media (min-width: 40rem) {
-        .checklist {
+        ul {
             padding: 0 1.5rem;
         }
     }
 
     @media (min-width: 52rem) {
-        .checklist {
+        ul {
             grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
         }
     }
