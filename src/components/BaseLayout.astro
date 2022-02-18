@@ -10,16 +10,14 @@ const { wrapper: Wrapper = Fragment, container = false } = Astro.props;
         <slot name="nav" />
     </Header>
 
-    <div id="root">
-        <Wrapper>
-            <slot name="start" />
-            <main id="content" class:list={{ container }}>
-                <slot />
-            </main>
-        </Wrapper>
+    <Wrapper>
+        <slot name="start" />
+        <main id="content" class:list={{ container }}>
+            <slot />
+        </main>
+    </Wrapper>
 
-        <slot name="footer" />
-    </div>
+    <slot name="footer" />
 </Sprite.Provider>
 
 <script global hoist>
