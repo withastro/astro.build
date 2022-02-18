@@ -13,7 +13,7 @@ authors:
 - [Dynamic File Routes](#dynamic-file-routes)
 - [Automatic XSS Protection](#automatic-xss-protection)
 - [New `set:html` and `set:text` directives](#new-sethtml-and-settext-directives)
-- [Improved Environment Variable support](#improved-environment-variable-support)
+- [Safe access to sensitive environment variables](#safe-access-to-sensitive-environment-variables)
 - [Better builds with Vite v2.8](#better-builds-with-vite-v28)
 - [Better stability with @astro/compiler v0.11](#better-stability-with-astrocompiler-v011)
 - [Better performance with `--experimental-static-builds`](#better-performance-with---experimental-static-builds)
@@ -78,15 +78,22 @@ If you don't want a `<div>` wrapper, you can also use `set:html` on the Fragment
 
 `set:text` is also available to set the element text directly, similar to setting the `.text` property on an element in the browser. Together, these two directives give you a bit more control over the Astro output when you need it.
 
-## Improved Environment Variable support
+## Safe access to sensitive environment variables
 
-For security, Vite only loads environment variables that are explicitly opted-in to be exposed with a `PUBLIC_` prefix. 
+For security, Vite only loads environment variables that are explicitly opted-in to be exposed with a `PUBLIC_` prefix. This restriction makes sense in the browser, and protects you from accidentally leaking secret tokens and values. However, it also meant that private environment variables weren't available to you at all, even locally inside of server-rendered Astro components.
 
-Because Astro runs entirely on the server, this restricition meant that private, server-side environment variables weren't very useful at all.
+<p>In Astro v0.23, <code>import&#46;meta&#46;env</code> now lets you access your private environment variables inside of Astro and anytime code renders locally or on the server. Astro will continue to protect you on the client, and only expose <code>PUBLIC_</code> variables to the frontend that ships to your users. 
 
+```js
+// DB_PASSWORD is only available when building your site.
+// If any code tried to run this in the browser, it will be empty.
+const data = await db(import.meta.env.DB_PASSWORD);
 
-<p>In Astro v0.23, <code>import&#46;meta&#46;env</code> now supports private environment variables during SSR, but only exposes <code>PUBLIC_</code> variables to the client. See our <a href="https://docs.astro.build/en/guides/environment-variables/">Environment Variables documentation</a> to learn more.</p>
+// PUBLIC_POKEAPI is available anywhere, thanks to the PUBLIC_ prefix!
+const data = fetch(`${import.meta.env.PUBLIC_POKEAPI}/pokemon/squirtle`);
+```
 
+See our <a href="https://docs.astro.build/en/guides/environment-variables/">Environment Variables documentation</a> to learn more.</p>
 
 ## Better builds with Vite v2.8
 
