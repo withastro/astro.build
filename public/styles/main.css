@@ -393,16 +393,21 @@ p, .body-md {
     word-break: break-word;
 }
 
-:not(.astro-code) code:not([class]) {
+#article code:not([class]) {
     font-size: 0.85em;
     color: var(--color-purple);
 }
 
-:not(.astro-code) code:not([class])::before {
+#article code:not([class])::before {
     content: '\`';
 }
-:not(.astro-code) code:not([class])::after {
+#article code:not([class])::after {
     content: '\`';
+}
+
+.astro-code > code::before,
+.astro-code > code::after {
+    content: none !important;
 }
 
 #article img {
