@@ -5,7 +5,8 @@ export interface Props {
   canonicalURL: URL | string,
   image?: string;
 }
-const { title, description, image = new URL('./social.png', Astro.site), canonicalURL } = Astro.props;
+const { title, description, canonicalURL } = Astro.props;
+const image = new URL(Astro.props.image || './social.png', Astro.site);
 ---
 
 <!-- Blocking script -->

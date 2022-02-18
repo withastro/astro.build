@@ -2,6 +2,7 @@
 title: 'Astro 0.23 Release Notes'
 description: 'Introducing: Dynamic file routes • Automatic XSS protection • two new component directives • vite 2.8 • and more!'
 publishDate: 'February 19, 2022'
+socialImage: '/assets/blog/astro-023/social.jpg'
 lang: 'en'
 authors: 
   - fred
@@ -9,7 +10,7 @@ authors:
 
 **Astro v0.23.0** has just been released with some new features and highlights:
 
-- [Dynamic File Routes](#dynamic-non-html-file-routes)
+- [Dynamic File Routes](#dynamic-file-routes)
 - [Automatic XSS Protection](#automatic-xss-protection)
 - [New `set:html` and `set:text` directives](#new-sethtml-and-settext-directives)
 - [Better builds with Vite v2.8](#better-builds-with-vite-v28)
@@ -39,7 +40,7 @@ export async function get() {
 }
 ```
 
-This feature is only available with the `--experimental-static-build` flag. [To learn more, check out the docs.](#TODO)
+This feature is only available with the `--experimental-static-build` flag. [To learn more, check out the docs.](https://docs.astro.build/en/core-concepts/astro-pages/#non-html-pages)
 
 ## Automatic XSS Protection
 
@@ -74,7 +75,7 @@ If you don't want a `<div>` wrapper, you can also use `set:html` on the Fragment
 + <Fragment set:html={`<span>Hello, dangerous HTML</span>`} />
 ```
 
-`set:text` sets the element text directly, similar to setting the `.text` property on an element in the browser. 
+`set:text` is also available to set the element text directly, similar to setting the `.text` property on an element in the browser. Together, these two directives give you a bit more control over the Astro output when you need it.
 
 ## Better builds with Vite v2.8
 

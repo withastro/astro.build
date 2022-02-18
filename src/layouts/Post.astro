@@ -8,13 +8,16 @@ import Card from '../components/blog/Card.astro';
 import Outro from '../components/blog/Outro.astro';
 import Panel from '../components/Panel.astro';
 
-let { content: { title, publishDate, description, authors } } = Astro.props;
+let { content: { title, publishDate, description, authors, socialImage } } = Astro.props;
 const { canonicalURL } = Astro.request;
 const meta = {
 	title: `${title} | Astro`,
 	description,
-	canonicalURL
+	canonicalURL,
+	image: socialImage,
 }
+
+console.log(Astro.props);
 ---
 
 <html lang="en">
