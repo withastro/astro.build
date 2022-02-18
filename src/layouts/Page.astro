@@ -9,7 +9,7 @@ import { smartypants } from 'smartypants';
 let { title, description } = Astro.props;
 title = smartypants(title, 1);
 const meta = {
-	title: `${title} | Astro`,
+	title,
 	description,
 	canonicalURL: Astro.request.canonicalURL
 }

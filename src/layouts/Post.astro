@@ -12,7 +12,7 @@ import '../styles/article.css';
 let { content: { title, publishDate, description, authors, socialImage } } = Astro.props;
 const { canonicalURL } = Astro.request;
 const meta = {
-	title: `${title} | Astro`,
+	title,
 	description,
 	canonicalURL,
 	image: socialImage,
