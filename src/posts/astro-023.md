@@ -13,7 +13,7 @@ authors:
 - [Dynamic File Routes](#dynamic-file-routes)
 - [Automatic XSS Protection](#automatic-xss-protection)
 - [New `set:html` and `set:text` directives](#new-sethtml-and-settext-directives)
-- [Improved `import.meta.env` support](#improved-import-meta-env-support)
+- [Improved Environment Variable support](#improved-environment-variable-support)
 - [Better builds with Vite v2.8](#better-builds-with-vite-v28)
 - [Better stability with @astro/compiler v0.11](#better-stability-with-astrocompiler-v011)
 - [Better performance with `--experimental-static-builds`](#better-performance-with---experimental-static-builds)
@@ -78,12 +78,15 @@ If you don't want a `<div>` wrapper, you can also use `set:html` on the Fragment
 
 `set:text` is also available to set the element text directly, similar to setting the `.text` property on an element in the browser. Together, these two directives give you a bit more control over the Astro output when you need it.
 
-## Improved <code data-astro-raw>import.meta<wbr>.env</code> support
+## Improved Environment Variable support
 
 For security, Vite only loads environment variables that are explicitly opted-in to be exposed with a `PUBLIC_` prefix. 
+
 Because Astro runs entirely on the server, this restricition meant that private, server-side environment variables weren't very useful at all.
 
-In Astro v0.23, <code data-astro-raw>import.meta<wbr>.env</code> now supports private environment variables during SSR, but only exposes `PUBLIC_` variables to the client. See our [Environment Variables documentation](https://docs.astro.build/en/guides/environment-variables/) to learn more.
+
+<p>In Astro v0.23, <code>import&#46;meta&#46;env</code> now supports private environment variables during SSR, but only exposes <code>PUBLIC_</code> variables to the client. See our <a href="https://docs.astro.build/en/guides/environment-variables/">Environment Variables documentation</a> to learn more.</p>
+
 
 ## Better builds with Vite v2.8
 
