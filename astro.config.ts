@@ -18,6 +18,7 @@ const config: AstroUserConfig = {
           "rehype-slug",
           ["rehype-autolink-headings", { behavior: "wrap" }],
         ],
+        syntaxHighlight: 'shiki',
       },
     ],
   },
