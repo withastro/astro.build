@@ -13,8 +13,10 @@ const { title, description, image = new URL('./social.png', Astro.site), canonic
   const marqueePaused = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
   window.addEventListener('DOMContentLoaded', () => {
     const checkbox = document.querySelector('#marquee-pause');
-    checkbox.checked = marqueePaused;
-    document.body.classList.add('js');
+    if(checkbox) {
+      checkbox.checked = marqueePaused;
+      document.body.classList.add('js');
+    }
   });
   if ('paintWorklet' in CSS) {
     CSS.paintWorklet.addModule('/pixel.worklet.js');

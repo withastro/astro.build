@@ -23,6 +23,7 @@ const config: AstroUserConfig = {
   },
   vite: {
     ssr: {
+      noExternal: ['smartypants'],
       external: ["svgo"],
     },
   },
