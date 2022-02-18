@@ -7,24 +7,15 @@ import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 export interface Props {
     wrapper?: any;
     meta: BaseHeadProps;
+    container?: boolean;
 }
 
-const { wrapper: Wrapper = Fragment, meta } = Astro.props;
+const { wrapper: Wrapper = Fragment, meta, container = false } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <BaseHead {...meta} />
-
-    <style>
-        :root {
-            scroll-padding-top: 10rem;
-        }
-        main {
-            max-width: 100vw;
-            overflow: hidden;
-        }
-    </style>
 
     <slot name="head" />
 
@@ -43,7 +34,7 @@ const { wrapper: Wrapper = Fragment, meta } = Astro.props;
 
         <Wrapper>
             <slot name="start" />
-            <main id="content">
+            <main id="content" class={container ? "container": ""}>
                 <slot />
             </main>
         </Wrapper>
@@ -55,3 +46,13 @@ const { wrapper: Wrapper = Fragment, meta } = Astro.props;
     <script type="module" src="/src/scripts/polyfill.ts"></script>
   </body>
 </html>
+
+<style global>
+    :root {
+        scroll-padding-top: 10rem;
+    }
+    main {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+</style>

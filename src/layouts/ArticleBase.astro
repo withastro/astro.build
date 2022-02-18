@@ -1,0 +1,46 @@
+---
+import Layout from './Page.astro';
+import Panel from '../components/Panel.astro';
+import '../styles/article.css';
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+	}
+}
+
+const { content } = Astro.props as Props;
+---
+
+<Layout {...content}>
+	<Panel size="md" background="white linear-gradient(180deg, #E5DAEE 0%, rgba(255, 255, 255, 0) 24rem)">
+		<div id="article">
+            <slot name="header" />
+			
+			<hr>
+
+			<slot />
+		</div>
+	</Panel>
+</Layout>
+
+<style global>
+	#content {
+		min-height: 100vh;
+		padding: 4rem 0;
+	}
+	#article :is(h2):not([class]) {
+		margin-top: 3em;
+	}
+	#article > .note:last-child {
+		margin-top: 8rem;
+	}
+</style>
+
+<style>
+	#article {
+		padding-bottom: 2rem;
+		z-index: 1;
+	}
+</style>

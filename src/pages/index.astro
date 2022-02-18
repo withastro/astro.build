@@ -33,7 +33,10 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<Banner slot="banner" href="/blog/the-astro-technology-company/" items={[`Announcing the Astro Technology Company!`, `Investing in the future of Astro.`]} />
+	<Fragment slot="banner">
+		<Noscript />
+	<Banner href="/blog/the-astro-technology-company/" items={[`Announcing the Astro Technology Company!`, `Investing in the future of Astro.`]} />
+	</Fragment>
 
 	<Nav marginBottom slot="nav" />
 
@@ -163,6 +166,4 @@ const meta = {
 	<script type="module" hoist>
 		import "/src/scripts/animations.ts";
 	</script>
-</body>
-
-</html>
+</Layout>

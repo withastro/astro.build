@@ -1,41 +1,50 @@
 ---
-import Page from './Page.astro';
+import Layout from './ArticleBase.astro';
 import Date from '../components/Date.astro';
-import Panel from '../components/Panel.astro';
 import { Markdown } from 'astro/components';
 
-const { content: { header = '', title = '', description = '', updated_date } = {} } = Astro.props;
+export interface Props {
+    content: {
+        header?: string;
+        title?: string;
+        description?: string;
+        updated_date?: string | Date;
+    }
+}
+
+const { content } = Astro.props as Props;
+const { header = '', title = '', description = '', updated_date } = content;
 ---
 
-<Page {...{ title, description }} stylesheet="/styles/article.css">
-    <Panel size="md" background="white linear-gradient(180deg, #E5DAEE 0%, rgba(255, 255, 255, 0) 24rem)">
-        <div id="article">
-            <header>
-                <h1 class="head-md text-gradient">{title}</h1>
-                <p>Last updated on <Date value={updated_date} />.</p>
-                {header && <Markdown content={header} />}
-            </header>
-            
-            <hr>
-        
-            <slot />
-        </div>
-    </Panel>
-</Page>
+<Layout content={{ title, description }}>
+    <header slot="header">
+        <h1 class="head-md text-gradient">{title}</h1>
+        <p>Last updated on <Date value={updated_date} />.</p>
+        {header && <Markdown content={header} />}
+    </header>
 
+    <slot />
+</Layout>
 
-<style>
-    #article :global(h3) {
+<style global>
+    #article h3 {
         margin-top: 2em;
         margin-bottom: -0.5em;
     }
-    #article :global(.panel h3) {
+    #article .panel h3 {
         margin-top: 0;
         margin-bottom: 0.5em;
     }
-    #article :global(h3:nth-child(2)) {
+    #article h3:nth-child(2) {
         margin-top: 0;
     }
+    .panel {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+</style>
+
+<style>
     header {
         padding: 3rem 0 2rem;
     }
@@ -48,9 +57,5 @@ const { content: { header = '', title = '', description = '', updated_date } = {
     header > p + p {
         margin-top: 1em;
         font-family: var(--font-body);
-    }
-    :global(.panel) {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
     }
 </style>
