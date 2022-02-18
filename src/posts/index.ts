@@ -10,12 +10,14 @@ export async function getAllPosts() {
           const href = Object.keys(files)
             [index].replace(/^\./, "/blog")
                 .replace(/\.md$/, "");
+
           return {
             title,
             description,
             authors,
             publishDate: parse(publishDate, "MMMM d, yyyy", new Date()),
             href,
+            Content: res.default
           };
         })
       )

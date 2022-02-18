@@ -175,7 +175,9 @@ const meta = {
 		<Footer slot="footer" />
 	</BaseLayout>
 
-	<script type="module" src="/src/scripts/animations.ts"></script>
+	<script type="module" hoist>
+		import "/src/scripts/animations.ts";
+	</script>
 </body>
 
 </html>
