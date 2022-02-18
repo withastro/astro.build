@@ -8,7 +8,7 @@ const Title = variant === 'summary' ? 'h2' : 'h1';
 ---
 
 <div class="wrapper">
-    <Title class="title text-gradient">{smartypants(post.title, 1)}</Title>
+    <Title class="title text-gradient" set:html={smartypants(post.title, 1)} />
 
     <div class="authors">
         <h3>Written by</h3>
