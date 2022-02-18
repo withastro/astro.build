@@ -10,12 +10,6 @@ const config: AstroUserConfig = {
     render: [
       "@astrojs/markdown-remark",
       {
-        syntaxHighlight: "shiki",
-        shikiConfig: {
-          theme: "github-dark",
-          langs: [],
-          wrap: false
-        },
         remarkPlugins: [
           "remark-smartypants",
           ["remark-autolink-headings", { behavior: "wrap" }],
