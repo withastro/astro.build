@@ -7,19 +7,18 @@ authors:
   - fred
 ---
 
-Astro v0.23.0 has just been released with some new features and highlights:
+**Astro v0.23.0** has just been released with some new features and highlights:
 
-- [Dynamic Non-HTML File Routes](#dynamic-non-html-file-routes)
+- [Dynamic File Routes](#dynamic-non-html-file-routes)
 - [Automatic XSS Protection](#automatic-xss-protection)
 - [New `set:html` and `set:text` directives](#new-sethtml-and-settext-directives)
 - [Better builds with Vite v2.8](#better-builds-with-vite-v28)
 - [Better stability with @astro/compiler v0.11](#better-stability-with-astrocompiler-v011)
-- [Coming soon: An new build strategy](#coming-soon-an-new-build-strategy)
-- [👋](#)
+- [Better performance with `--experimental-static-builds`](#better-performance-with---experimental-static-builds)
 
-## Dynamic Non-HTML File Routes
+## Dynamic File Routes
 
-You can now build dynamic, non-HTML files as a part of your build by using Astro's new **file routes**. Use file routes to dynamically generate files during your build for things like JSON, XML, or even non-text assets like images. This feature has been one of our most requested since the early days of Astro!
+You can now build dynamic, non-HTML files in your project by using Astro's new **file routes**. Use file routes to dynamically generate files during your build for things like JSON, XML, or even non-text assets like images. This feature has been one of our most requested since the early days of Astro!
 
 To create a file route inside of your Astro project, create a new JavaScript or TypeScript file inside of your `src/pages` directory. File routes leverage Astro's existing file-based router, so be sure to include the final built file extension in the filename.
 
@@ -85,8 +84,7 @@ Astro v0.23 comes with an internal Vite upgrade that brings new features and hug
 
 Astro v0.23 also got a compiler upgrade which should result in noticeable performance and stability improvements across all projects. [Check out the changelog](https://github.com/withastro/compiler/releases) to learn more.
 
-## Coming soon: An new build strategy
-
+## Better performance with `--experimental-static-builds`
 You may have noticed the reference to `--experimental-static-build` above, and the fact that some new features are only available behind this flag. This flag is not new in v0.23, but it continues to improve as we get closer to an official release of the feature. This new "static build" strategy will soon become the default build behavior in Astro.
 
 If you haven't tried the `--experimental-static-build` flag out yet in your build, please give it a try and leave us feedback in Discord. Check out our blog post [Scaling Astro to 10,000+ Pages](/blog/experimental-static-build) to learn more about this future build strategy for Astro.
