@@ -7,6 +7,7 @@ import Footer from '../components/Footer.astro';
 import Card from '../components/blog/Card.astro';
 import Outro from '../components/blog/Outro.astro';
 import Panel from '../components/Panel.astro';
+import '../styles/article.css';
 
 let { content: { title, publishDate, description, authors, socialImage } } = Astro.props;
 const { canonicalURL } = Astro.request;
@@ -23,7 +24,7 @@ console.log(Astro.props);
 <html lang="en">
 
 <head>
-	<BaseHead {...meta} stylesheet="/styles/article.css" />
+	<BaseHead {...meta} />
 	<style>
 		:root {
 			scroll-padding-top: 10rem;
