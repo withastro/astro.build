@@ -1,0 +1,57 @@
+---
+import { Sprite } from 'astro-icon';
+import BaseHead from '../components/BaseHead.astro';
+import SkipLink from '../components/SkipLink.astro';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+
+export interface Props {
+    wrapper?: any;
+    meta: BaseHeadProps;
+}
+
+const { wrapper: Wrapper = Fragment, meta } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead {...meta} />
+
+    <style>
+        :root {
+            scroll-padding-top: 10rem;
+        }
+        main {
+            max-width: 100vw;
+            overflow: hidden;
+        }
+    </style>
+
+    <slot name="head" />
+
+    <script global hoist>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('js');
+        })
+    </script>
+  </head>
+  <body>
+    <Sprite.Provider>
+        <slot name="banner" />
+
+        <SkipLink />
+        <slot name="nav" />
+
+        <Wrapper>
+            <slot name="start" />
+            <main id="content">
+                <slot />
+            </main>
+        </Wrapper>
+
+        <slot name="footer" />
+    </Sprite.Provider>
+
+
+    <script type="module" src="/src/scripts/polyfill.ts"></script>
+  </body>
+</html>
