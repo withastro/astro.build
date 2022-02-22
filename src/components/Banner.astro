@@ -27,7 +27,9 @@ const Tag = href ? 'a' : 'div';
     document.getElementById('marquee-pause').checked = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
 </script>
 
-<script type="module" src="/src/scripts/marquee.ts"></script>
+<script type="module" hoist>
+    import "/src/scripts/marquee.ts";
+</script>
 
 <style>
     not-marquee {

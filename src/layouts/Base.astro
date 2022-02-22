@@ -42,8 +42,9 @@ const { wrapper: Wrapper = Fragment, meta, container = false } = Astro.props;
         <slot name="footer" />
     </Sprite.Provider>
 
-
-    <script type="module" src="/src/scripts/polyfill.ts"></script>
+    <script type="module" hoist>
+        import "/src/scripts/defer.ts";
+    </script>
   </body>
 </html>
 
