@@ -1,4 +1,6 @@
 ---
+import { smartypants } from 'smartypants';
+
 export interface Props {
   title?: string;
   description?: string;
@@ -27,7 +29,7 @@ const title = [Astro.props.title, 'Astro']
 <link rel="preload" as="style" href="/styles/main.css">
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
+<title set:html={smartypants(title, 1)}></title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL}/>

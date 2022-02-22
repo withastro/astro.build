@@ -1,5 +1,4 @@
 ---
-import { smartypants } from 'smartypants';
 import Layout from './Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -10,10 +9,9 @@ export interface Props {
 }
 
 const { meta } = Astro.props as Props;
-const title = smartypants(meta.title, 1);
 ---
 
-<Layout container meta={{...meta, title}}>
+<Layout container meta={meta}>
     <Nav slot="nav" />
 
     <slot />
