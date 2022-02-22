@@ -16,7 +16,7 @@ authors:
 - [Safe access to sensitive environment variables](#safe-access-to-sensitive-environment-variables)
 - [Better builds with Vite v2.8](#better-builds-with-vite-v28)
 - [Better stability with @astro/compiler v0.11](#better-stability-with-astrocompiler-v011)
-- [Better performance with `--experimental-static-builds`](#better-performance-with---experimental-static-builds)
+- [Better build performance with `--experimental-static-builds`](#better-build-performance)
 
 ## Dynamic File Routes
 
@@ -103,7 +103,7 @@ Astro v0.23 comes with an internal Vite upgrade that brings new features and hug
 
 Astro v0.23 also got a compiler upgrade which should result in noticeable performance and stability improvements across all projects. [Check out the changelog](https://github.com/withastro/compiler/releases) to learn more.
 
-## Better performance with `--experimental-static-builds`
+## Better build performance
 You may have noticed the reference to `--experimental-static-build` above, and the fact that some new features are only available behind this flag. This flag is not new in v0.23, but it continues to improve as we get closer to an official release of the feature. This new "static build" strategy will soon become the default build behavior in Astro.
 
 If you haven't tried the `--experimental-static-build` flag out yet in your build, please give it a try and leave us feedback in Discord. Check out our blog post [Scaling Astro to 10,000+ Pages](/blog/experimental-static-build) to learn more about this future build strategy for Astro.
