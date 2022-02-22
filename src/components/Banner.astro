@@ -3,18 +3,6 @@ const { href, items = [] } = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
 
-<!-- Blocking script -->
-<script global hoist>
-    const marqueePaused = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
-    window.addEventListener('DOMContentLoaded', () => {
-        const checkbox = document.querySelector('#marquee-pause');
-        if(checkbox) {
-            checkbox.checked = marqueePaused;
-            document.body.classList.add('js');
-        }
-    });
-</script>
-
 <not-marquee role="marquee" aria-labelledby="not-marquee-label">
     <input id="marquee-pause" type="checkbox" aria-label="Toggle marquee">
     <Tag {href} class="track">
