@@ -16,7 +16,7 @@ const { content } = Astro.props as Props;
 const { header = '', title = '', description = '', updated_date } = content;
 ---
 
-<Layout content={{ title, description }}>
+<Layout meta={{ title, description }}>
     <header slot="header">
         <h1 class="head-md text-gradient">{title}</h1>
         <p>Last updated on <Date value={updated_date} />.</p>

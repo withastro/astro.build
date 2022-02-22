@@ -13,11 +13,17 @@ export interface Props {
 	}
 }
 
-const { content } = Astro.props as Props;
-const { title, description, authors, publishDate, socialImage: image } = content;
+const { content: { title, publishDate, description, authors, socialImage } } = Astro.props as Props;
+const { canonicalURL } = Astro.request;
+const meta = {
+	title,
+	description,
+	canonicalURL,
+	image: socialImage,
+}
 ---
 
-<Layout content={content}>
+<Layout meta={meta}>
 	<header slot="header" class="hero">
 		<Card post={{ title, description, authors, publishDate }} variant="hero" />
 	</header>
@@ -35,4 +41,3 @@ const { title, description, authors, publishDate, socialImage: image } = content
 		max-width: 100%;
 	}
 </style>
-
