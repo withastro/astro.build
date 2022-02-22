@@ -49,7 +49,7 @@ Astro v0.23 begins our migration towards automatic HTML escaping inside of Astro
 
 ```astro
 <!-- Examples of untrusted HTML injection -->
-<div>{`<span>Hello, trusted HTML</span>`}</div>
+<div>{`<span>Hello, dangerous HTML</span>`}</div>
 <div>{`<script>alert('oh no');</script>`}</div>
 <div>{untrustedHtml}</div>
 ```
@@ -64,8 +64,8 @@ Two new directives are introduced to support better HTML injection when you need
 
 ```astro
 <!-- Examples of explicit HTML setting -->
-<div set:html={`<span>Hello, trusted HTML</span>`}></div>
-<div set:html={`<script>alert('oh no');</script>`}></div>
+<div set:html={`<span>Hello, trusted or already escaped HTML</span>`}></div>
+<div set:html={`<script>alert('oh yes');</script>`}></div>
 <div set:html={trustedOrAlreadyEscapedHtml}></div>
 ```
 
@@ -73,7 +73,7 @@ If you don't want a `<div>` wrapper, you can also use `set:html` on the Fragment
 
 ```
 - {`<span>Hello, dangerous HTML</span>`}
-+ <Fragment set:html={`<span>Hello, dangerous HTML</span>`} />
++ <Fragment set:html={`<span>Hello, trusted or already escaped HTML</span>`} />
 ```
 
 `set:text` is also available to set the element text directly, similar to setting the `.text` property on an element in the browser. Together, these two directives give you a bit more control over the Astro output when you need it.
