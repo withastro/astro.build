@@ -1,11 +1,10 @@
 ---
-import Layout from '../layouts/Page.astro';
+import Page from '../layouts/Page.astro';
 import ContributorsAvatarList from '../components/ContributorsAvatarList.astro';
-
-const meta = { title: 'About' };
+import PixelLink from '../components/PixelLink.astro';
 ---
 
-<Layout meta={meta}>
+<Page title="About">
     <header>
         <h1 class="title text-gradient">What is Astro?</h1>
     </header>
@@ -38,7 +37,7 @@ const meta = { title: 'About' };
         <p>instructions on how to get involved - either full time (link to company) or through open source</p>
     </section>
      --> 
-</Layout>
+</Page>
 
 <style>
     header {

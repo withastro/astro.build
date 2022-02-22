@@ -1,50 +1,54 @@
 ---
-import Layout from './ArticleBase.astro';
+import Page from './Page.astro';
 import Date from '../components/Date.astro';
+import Panel from '../components/Panel.astro';
 import { Markdown } from 'astro/components';
 
-export interface Props {
-    content: {
-        header?: string;
-        title?: string;
-        description?: string;
-        updated_date?: string | Date;
-    }
-}
-
-const { content } = Astro.props as Props;
-const { header = '', title = '', description = '', updated_date } = content;
+const { content: { header = '', title = '', description = '', updated_date } = {} } = Astro.props;
 ---
 
-<Layout meta={{ title, description }}>
-    <header slot="header">
-        <h1 class="head-md text-gradient">{title}</h1>
-        <p>Last updated on <Date value={updated_date} />.</p>
-        {header && <Markdown content={header} />}
-    </header>
+<Page {...{ title, description }}>
+    <Panel size="md" background="white linear-gradient(180deg, #E5DAEE 0%, rgba(255, 255, 255, 0) 24rem)">
+        <div id="article">
+            <header>
+                <h1 class="head-md text-gradient">{title}</h1>
+                <p>Last updated on <Date value={updated_date} />.</p>
+                {header && <Markdown content={header} />}
+            </header>
+            
+            <hr>
+        
+            <slot />
+        </div>
+    </Panel>
+</Page>
 
-    <slot />
-</Layout>
 
-<style global>
-    #article h3 {
+<style>
+    #article {
+        max-width: 48rem;
+        padding-bottom: 4rem;
+        display: flex;
+        flex-flow: column nowrap;
+        font-family: var(--font-body);
+        font-size: var(--size-500);
+        line-height: 1.3;
+        color: var(--color-midnight);
+    }
+    :where(#article > :global(* + *)) {
+        margin-top: 1em;
+    }
+    #article :global(h3) {
         margin-top: 2em;
         margin-bottom: -0.5em;
     }
-    #article .panel h3 {
+    #article :global(.panel h3) {
         margin-top: 0;
         margin-bottom: 0.5em;
     }
-    #article h3:nth-child(2) {
+    #article :global(h3:nth-child(2)) {
         margin-top: 0;
     }
-    .panel {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
-</style>
-
-<style>
     header {
         padding: 3rem 0 2rem;
     }
@@ -57,5 +61,9 @@ const { header = '', title = '', description = '', updated_date } = content;
     header > p + p {
         margin-top: 1em;
         font-family: var(--font-body);
+    }
+    :global(.panel) {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
 </style>

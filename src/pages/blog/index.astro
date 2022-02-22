@@ -1,14 +1,12 @@
 ---
-import Layout from '../../layouts/Page.astro';
+import Page from '../../layouts/Page.astro';
 import Card from '../../components/blog/Card.astro';
 import { getAllPosts } from '../../posts';
 
 const posts = await getAllPosts();
-
-const meta = { title: 'Blog' };
 ---
 
-<Layout meta={meta}>
+<Page title="Blog">
     <header>
         <h1 class="title text-gradient">Blog</h1>
         <p></p>
@@ -24,7 +22,7 @@ const meta = { title: 'Blog' };
             )
         })}
     </ul>
-</Layout>
+</Page>
 
 <style>
     header {
