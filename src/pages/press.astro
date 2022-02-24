@@ -72,22 +72,22 @@ const assets = [
 	<Nav slot="nav" />
 
     <header class="text-center max-w-4xl mx-auto pb-24 lg:pb-32">
-        <h1 class="font-display text-3xl font-bold mb-6">Astro Logos</h1>
+        <h1 class="font-display text-3xl font-bold mb-6 text-gradient">Astro Logos</h1>
         <p>Feel free to download and use the logo assets below. Please do not modify or change the resources below. Be sure to abide by the usage rules noted under each asset.</p>
     </header>
 
     <div class="grid gap-x-4 gap-y-16 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4">
         {assets.map(asset => (
-            <article>
+            <article class="flex flex-col">
                 <div class={`aspect-video flex items-center justify-center ${asset.background === 'light' ? 'bg-white' : 'bg-black'}`}>
                     <img class="w-3/4 h-auto max-h-16" src={asset.svg} />
                 </div>
                 <h2 class="text-md font-bold mt-4 mb-6">{asset.title}</h2>
-                <p class="text-sm">{asset.description}</p>
+                <p class="text-sm flex-1">{asset.description}</p>
 
                 <footer class="pt-6">
-                    <a class="text-sm font-semibold px-4 py-2 bg-dusk text-white rounded" href={asset.svg}>SVG</a>
-                    <a class="text-sm font-semibold px-4 py-2 bg-dusk text-white rounded" href={asset.png}>PNG</a>
+                    <a class="text-sm font-semibold px-4 py-2 bg-dusk text-white rounded inline-block" href={asset.svg}>SVG</a>
+                    <a class="text-sm font-semibold px-4 py-2 bg-dusk text-white rounded inline-block" href={asset.png}>PNG</a>
                 </footer>
             </article>
         ))}
