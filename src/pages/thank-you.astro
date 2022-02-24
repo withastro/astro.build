@@ -27,6 +27,10 @@ const contributorLists = [
 const contributorsCount = staff.length + l3.length + l2.length + l1.length
 
 const meta = { title: 'Thank you' };
+
+function centerOnDesktop(list, i) {
+	return (list.length - 1 === i) && (i % 3 === 0)
+}
 ---
 
 <Layout fullscreen invert meta={meta}>
@@ -43,8 +47,8 @@ const meta = { title: 'Thank you' };
 				{contributorLists.map(({ title, members }) => (
 					<Fragment>
 						<h2 class="pt-16 pb-6 text-xl font-bold col-span-full">{title}</h2>
-						{members.map((member) => (
-							<p>{member.login}</p>
+						{members.map((member, i) => (
+							<p class={centerOnDesktop(members, i) ? "lg:col-start-2": ""}>{member.login}</p>
 						))}
 					</Fragment>
 				))}
