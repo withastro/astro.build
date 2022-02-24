@@ -13,6 +13,9 @@ const FONT_FAMILY_BASE = [
 ];
 
 module.exports = {
+  corePlugins: {
+    container: false,
+  },
   content: ["./src/**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}"],
   theme: {
     colors: {
@@ -55,5 +58,18 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require('@tailwindcss/typography'),
+    function({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '40rem',
+          '@screen md': { maxWidth: '50rem' },
+          '@screen lg': { maxWidth: '62rem' },
+          '@screen xl': { maxWidth: '80rem' },
+          '@screen 2xl': { maxWidth: '90rem' }
+        },
+      })
+    }
+  ],
 };
