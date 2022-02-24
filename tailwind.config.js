@@ -93,7 +93,6 @@ module.exports = {
               maxWidth: '75ch',
               fontSize: "var(--size-500)",
               lineHeight: "1.5",
-              paddingTop: theme("spacing.16"),
               // override @tailwindcss/typography colors
               "--tw-prose-body": theme("colors.midnight"),
               "--tw-prose-headings": theme("colors.dusk"),
