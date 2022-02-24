@@ -31,6 +31,9 @@ module.exports = {
       yellow: "#ffd542",
       purple: "#af43ff",
       pink: "#fdb2b7",
+      pop: {
+        1: "linear-gradient(180deg, #205eff 0%, #c238bd 115%)",
+      },
     },
     fontFamily: {
       body: FONT_FAMILY_BASE,
@@ -56,20 +59,94 @@ module.exports = {
       "3xl": "clamp(2.67rem, 2.07rem + 3vw, 4.21rem)",
       "4xl": "clamp(3.34rem, 2.45rem + 4.43vw, 5.61rem)",
     },
-    extend: {},
+    extend: {
+      typography: ({ theme }) => {
+        const headings = {
+          "h1, h2, h3, h4, h5, h6": {
+            fontFamily: "var(--font-display)",
+            fontWeight: "bold",
+            lineHeight: 1.1,
+          },
+          h1: {
+            fontSize: theme("fontSize.3xl"),
+          },
+          h2: {
+            fontSize: theme("fontSize.2xl"),
+          },
+          h3: {
+            fontSize: theme("fontSize.xl"),
+          },
+          h4: {
+            fontSize: theme("fontSize.lg"),
+          },
+          h5: {
+            fontSize: theme("fontSize.sm"),
+          },
+          h6: {
+            fontSize: theme("fontSize.xs"),
+          },
+        };
+
+        return {
+          DEFAULT: {
+            css: {
+              maxWidth: '75ch',
+              fontSize: "var(--size-500)",
+              lineHeight: "1.5",
+              paddingTop: theme("spacing.16"),
+              // override @tailwindcss/typography colors
+              "--tw-prose-body": theme("colors.midnight"),
+              "--tw-prose-headings": theme("colors.dusk"),
+              "--tw-prose-links": theme("colors.blue"),
+              "--tw-prose-code": theme("colors.purple"),
+              "--tw-prose-pre-bg":
+                "linear-gradient(to bottom,var(--color-midnight),#1f1638)",
+              "--tw-prose-pre-code": theme("colors.white"),
+              "--tw-prose-bullets": "rgba(var(--color-midnight-rgb), 0.5)",
+              ":focus-visible": {
+                outline: "2px dashed var(--color-blue)",
+              },
+              ...headings,
+              a: {
+                textDecoration: "none",
+                fontWeight: 400,
+                "&:hover": {
+                  textDecoration: "underline",
+                },
+                "> code": {
+                  color: "var(--tw-prose-code)",
+                },
+              },
+            },
+          },
+          sm: {
+            ...headings,
+          },
+          md: {
+            ...headings,
+          },
+          lg: {
+            ...headings,
+          },
+          xl: {
+            ...headings,
+          },
+        };
+      },
+    },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    function({ addComponents }) {
+    require("@tailwindcss/typography"),
+    function ({ addComponents }) {
       addComponents({
-        '.container': {
-          maxWidth: '40rem',
-          '@screen md': { maxWidth: '50rem' },
-          '@screen lg': { maxWidth: '62rem' },
-          '@screen xl': { maxWidth: '80rem' },
-          '@screen 2xl': { maxWidth: '90rem' }
+        ".container": {
+          maxWidth: "40rem",
+          "@screen md": { maxWidth: "50rem" },
+          "@screen lg": { maxWidth: "62rem" },
+          "@screen xl": { maxWidth: "80rem" },
+          "@screen 2xl": { maxWidth: "90rem" },
         },
-      })
-    }
+      });
+    },
   ],
 };

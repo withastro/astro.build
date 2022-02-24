@@ -10,12 +10,13 @@ import '../styles/tailwind.css';
 export interface Props {
     meta: BaseHeadProps;
     invert?: boolean;
+    fullscreen?: boolean;
 }
 
-const { meta, invert = false } = Astro.props;
+const { meta, invert = false, fullscreen = false } = Astro.props;
 ---
 
-<html lang="en" class={invert ? 'dark text-white' : 'bg-tan text-midnight'}>
+<html lang="en" class={`${fullscreen ? 'fullscreen' : ''} ${invert ? 'dark text-white' : 'bg-tan text-midnight'}`}>
   <head>
     <BaseHead {...meta} />
 
@@ -45,6 +46,12 @@ const { meta, invert = false } = Astro.props;
 </html>
 
 <style>
+  .fullscreen, .fullscreen body {
+    @apply h-full overflow-hidden;
+  }
+  .fullscreen :global(nav) {
+		margin-top: 0 !important;
+  }
   .dark {
     background-image: var(--gradient-pop-4);
   }
