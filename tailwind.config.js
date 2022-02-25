@@ -66,6 +66,7 @@ module.exports = {
             fontFamily: "var(--font-display)",
             fontWeight: "bold",
             lineHeight: 1.1,
+            textAlign: "inherit"
           },
           h1: {
             fontSize: theme("fontSize.3xl"),
@@ -109,6 +110,7 @@ module.exports = {
               a: {
                 textDecoration: "none",
                 fontWeight: 400,
+                wordBreak: "break-word",
                 "&:hover": {
                   textDecoration: "underline",
                 },
