@@ -11,21 +11,19 @@ const { meta } = Astro.props as Props;
 ---
 
 <Layout meta={meta}>
-	<Panel size="md" background="white linear-gradient(180deg, #E5DAEE 0%, rgba(255, 255, 255, 0) 24rem)">
-		<div id="article">
-            <slot name="header" />
-			
-			<hr>
+	<div id="article">
+		<slot name="header" />
+		
+		<hr>
 
-			<slot />
-		</div>
-	</Panel>
+		<slot />
+	</div>
 </Layout>
 
 <style global>
 	#content {
 		min-height: 100vh;
-		padding: 4rem 0;
+		padding: 1rem 2rem 4rem 1rem;
 	}
 	#article {
 		max-width: 48rem;
