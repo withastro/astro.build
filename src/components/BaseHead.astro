@@ -7,8 +7,9 @@ export interface Props {
   canonicalURL?: URL | string
   image?: string;
 }
-const { description, canonicalURL = Astro.request.canonicalURL } = Astro.props;
+const { canonicalURL = Astro.request.canonicalURL } = Astro.props;
 const image = new URL(Astro.props.image || './social.png', Astro.site);
+const description = Astro.props.description || 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.';
 
 const title = [Astro.props.title, 'Astro']
   .filter(Boolean)
@@ -25,8 +26,7 @@ const title = [Astro.props.title, 'Astro']
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
 <!-- Preload -->
-<link rel="preload" as="style" href="/styles/sanitize.css">
-<link rel="preload" as="style" href="/styles/main.css">
+<slot name="preload" />
 
 <!-- Primary Meta Tags -->
 <title set:html={smartypants(title, 1)}></title>
@@ -49,5 +49,4 @@ const title = [Astro.props.title, 'Astro']
 <meta property="twitter:image" content={image} />
 
 <!-- Assets -->
-<link rel="stylesheet" href="/styles/sanitize.css" />
-<link rel="stylesheet" href="/styles/main.css" />
+<slot name="assets" />

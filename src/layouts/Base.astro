@@ -8,14 +8,25 @@ export interface Props {
     wrapper?: any;
     meta: BaseHeadProps;
     container?: boolean;
+    routeId?: string;
 }
 
-const { wrapper: Wrapper = Fragment, meta, container = false } = Astro.props;
+const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead {...meta} />
+    <BaseHead {...meta}>
+        <Fragment slot="preload">
+            <link rel="preload" as="style" href="/styles/sanitize.css">
+            <link rel="preload" as="style" href="/styles/main.css">
+        </Fragment>
+
+        <Fragment slot="assets">
+            <link rel="stylesheet" href="/styles/sanitize.css" />
+            <link rel="stylesheet" href="/styles/main.css" />
+        </Fragment>
+    </BaseHead>
 
     <slot name="head" />
 
@@ -32,7 +43,7 @@ const { wrapper: Wrapper = Fragment, meta, container = false } = Astro.props;
 
         <Wrapper>
             <slot name="start" />
-            <main id="content" class={container ? "container": ""}>
+            <main id="content" data-route-id={routeId} class={container ? "container": ""}>
                 <slot />
             </main>
         </Wrapper>
