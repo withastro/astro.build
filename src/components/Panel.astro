@@ -1,5 +1,5 @@
 ---
-const { class: className, background = 'color-tan', offset = 0, size = "lg", pad = 1 } = Astro.props;
+const { class: className, background = 'color-tan', offset = 0, size = "lg", elevation = "xl", pad = 1 } = Astro.props;
 let style = `--pad: ${pad}; `;
 if (offset !== 0) {
     style += `--offset-block: ${offset};`
@@ -7,7 +7,7 @@ if (offset !== 0) {
 ---
 
 <div class="container" style={style}>
-    <article class={`panel elevation-xl size-${size} ${className}`} style={`--background: ${background};`}>
+    <article class={`panel elevation-${elevation} size-${size} ${className}`} style={`--background: ${background};`}>
         {Astro.slots.title && <div class="title">
             <slot name="title" />
         </div>}

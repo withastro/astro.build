@@ -11,11 +11,11 @@ const items = [
 ]
 ---
 
-<nav id="nav" class={`main ${invert ? 'invert' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
-    <ul class="container" role="list">
+<nav id="nav" class={`main ${invert ? 'dark' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
+    <ul class="container mx-auto" role="list">
         <li class="logo">
-            <a href="/">
-                <h1 class="visually-hidden">Astro</h1>
+            <a href="/" id="navlogo">
+                <h1 class="visually-hidden sr-only">Astro</h1>
                 <Sprite class="logomark" name="logo" size="3em" />
                 <Sprite class="wordmark" name="wordmark" height="3.5em" width="6em" />
             </a>
@@ -59,13 +59,13 @@ nav {
 nav.margin-bottom {
     margin-bottom: -4.5rem;
 }
-nav.invert {
+nav.dark {
     background: transparent;
     color: white;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 }
-nav.invert a {
+nav.dark a {
     color: white;
 }
 
@@ -76,8 +76,7 @@ nav::before {
     height: var(--offset-height);
     z-index: -2;
 }
-nav.invert::before {
-    background: #1f1638;
+nav.dark::before {
     margin-top: -0.5rem;
 }
 
@@ -115,7 +114,7 @@ li {
     font-weight: 400;
     font-size: var(--size-500);
 }
-nav.invert li {
+nav.dark li {
     color: white;
 }
 li + li {
@@ -146,7 +145,7 @@ li + li {
 .logomark {
     color: inherit;
 }
-nav.invert .logo :global(svg) {
+nav.dark .logo :global(svg) {
     color: white;
     fill: white;
 }

@@ -1,6 +1,10 @@
 ---
-import Layout from './ArticleBase.astro';
+import Layout from './Content.astro';
+import ProseBlock from '../components/blocks/ProseBlock.astro';
+import TitleBlock from '../components/blocks/TitleBlock.astro';
 import Date from '../components/Date.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
 import { Markdown } from 'astro/components';
 
 export interface Props {
@@ -17,45 +21,19 @@ const { header = '', title = '', description = '', updated_date } = content;
 ---
 
 <Layout meta={{ title, description }}>
-    <header slot="header">
-        <h1 class="head-md text-gradient">{title}</h1>
-        <p>Last updated on <Date value={updated_date} />.</p>
-        {header && <Markdown content={header} />}
-    </header>
+    <Nav slot="nav" />
 
-    <slot />
+    <TitleBlock>
+        <Fragment slot="title">{title}</Fragment>
+        
+        <b class="block pb-2 font-display">Last updated on <Date value={updated_date} />.</b>
+        {header && <Markdown content={header} />}
+    </TitleBlock>
+
+    <ProseBlock>
+        <slot />
+    </ProseBlock>
+
+    <Footer slot="footer" />
 </Layout>
 
-<style global>
-    #article h3 {
-        margin-top: 2em;
-        margin-bottom: -0.5em;
-    }
-    #article .panel h3 {
-        margin-top: 0;
-        margin-bottom: 0.5em;
-    }
-    #article h3:nth-child(2) {
-        margin-top: 0;
-    }
-    .panel {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
-</style>
-
-<style>
-    header {
-        padding: 3rem 0 2rem;
-    }
-    header h1 {
-        margin-bottom: 0.5rem;
-    }
-    header > p {
-        font-family: var(--font-display);
-    }
-    header > p + p {
-        margin-top: 1em;
-        font-family: var(--font-body);
-    }
-</style>
