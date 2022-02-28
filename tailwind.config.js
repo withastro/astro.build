@@ -143,6 +143,8 @@ module.exports = {
       addComponents({
         ".container": {
           maxWidth: "40rem",
+          marginLeft: "auto",
+          marginRight: "auto",
           "@screen md": { maxWidth: "50rem" },
           "@screen lg": { maxWidth: "62rem" },
           "@screen xl": { maxWidth: "80rem" },
