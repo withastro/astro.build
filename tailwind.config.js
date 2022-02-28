@@ -139,7 +139,7 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
-    function ({ addComponents }) {
+    function ({ addComponents, theme }) {
       addComponents({
         ".container": {
           maxWidth: "40rem",
@@ -148,6 +148,18 @@ module.exports = {
           "@screen xl": { maxWidth: "80rem" },
           "@screen 2xl": { maxWidth: "90rem" },
         },
+        ".head-md": {
+          fontFamily: theme("fontFamily.display"),
+          fontSize: theme("fontSize.xl"),
+          letterSpacing: -0.5,
+          lineHeight: 1.2,
+          fontWeight: "bold"
+        },
+        ".body-md": {
+          fontFamily: theme("fontFamily.body"),
+          fontSize: theme("fontSize.body"),
+          lineHeight: 1.3,
+        }
       });
     },
   ],

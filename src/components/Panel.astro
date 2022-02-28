@@ -6,7 +6,7 @@ if (offset !== 0) {
 }
 ---
 
-<div class="container" style={style}>
+<div class="astro-container px-2" style={style}>
     <article class={`panel elevation-${elevation} size-${size} ${className}`} style={`--background: ${background};`}>
         {Astro.slots.title && <div class="title">
             <slot name="title" />
@@ -16,7 +16,7 @@ if (offset !== 0) {
 </div>
 
 <style>
-    .container {
+    .astro-container {
         position: relative;
         z-index: 1;
         margin-top: calc(var(--offset-block, 0) * -1rem);
