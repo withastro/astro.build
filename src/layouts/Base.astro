@@ -43,7 +43,7 @@ const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.
 
         <Wrapper>
             <slot name="start" />
-            <main id="content" data-route-id={routeId} class={container ? "container": ""}>
+            <main id="content" data-route-id={routeId} class={container ? "astro-container container": ""}>
                 <slot />
             </main>
         </Wrapper>
