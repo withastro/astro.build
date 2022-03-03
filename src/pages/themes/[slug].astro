@@ -1,0 +1,25 @@
+---
+import { fetchCollections, fetchThemesForCollection } from '../../data/themes.ts';
+import Layout from '../../layouts/Themes.astro';
+
+export async function getStaticPaths() {
+    const collections: string[] = await fetchCollections();
+
+    return collections.map(slug => ({
+        params: {
+            slug,
+        },
+    }));
+}
+
+const { slug } = Astro.request.params;
+
+const themes: App.Theme[] = await fetchThemesForCollection(slug);
+
+const meta = {
+    title: 'Themes',
+    description: 'Start your next Astro project with a real world theme build by our amazing community.'
+}
+---
+
+<Layout meta={meta} themes={themes} />

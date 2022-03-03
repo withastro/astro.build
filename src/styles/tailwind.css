@@ -9,12 +9,44 @@
     }
 
     a {
-        color: var(--color-blue);
+        @apply text-blue transition-colors duration-150 ease-in-out;
     }
 
     a:hover {
-        text-decoration: underline;
+        @apply underline;
     }
+
+    a.subtle {
+        @apply text-inherit;
+    }
+
+    a.subtle:hover {
+        @apply text-blue no-underline;
+    }
+
+    .btn {
+		@apply px-4 py-2 text-sm rounded-md inline-flex items-center border-2 border-transparent font-medium shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 ease-in-out;
+	}
+
+	.btn.btn--icon {
+		@apply flex gap-x-2;
+	}
+
+	.btn.btn--sm {
+		@apply px-2.5 py-1.5 text-xs rounded;
+	}
+
+	.btn.btn--lg {
+		@apply px-6 py-3 text-base rounded-md;
+	}
+
+	.btn.btn--netlify {
+		@apply bg-teal-700 hover:bg-teal-800 focus:ring-teal-600;
+	}
+
+	.btn.btn--hollow {
+		@apply bg-white text-midnight border-midnight hover:bg-dawn focus:ring-dusk;
+	}
 
     .prose :is(h2, h3, h4, h5, h6) a {
         font: inherit;

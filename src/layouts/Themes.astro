@@ -1,0 +1,32 @@
+---
+import Layout from './Content.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import ThemeCard from '../components/ThemeCard.astro';
+import CardBlock from '../components/blocks/CardBlock.astro';
+import TitleBlock from '../components/blocks/TitleBlock.astro';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+
+export interface Props {
+    meta: BaseHeadProps;
+    themes: App.Theme[];
+}
+
+const { meta, themes } = Astro.props as Props;
+---
+
+<Layout meta={meta}>
+    <Nav slot="nav" />
+
+    <TitleBlock>
+        <Fragment slot="title">{meta.title}</Fragment>
+
+        <p>{meta.description}</p>
+    </TitleBlock>
+
+    <CardBlock>
+        {themes.map(theme => (<ThemeCard theme={theme} />))}
+    </CardBlock>
+
+    <Footer slot="footer" />
+</Layout>

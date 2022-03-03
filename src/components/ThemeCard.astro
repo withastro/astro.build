@@ -1,0 +1,30 @@
+---
+import { Sprite } from 'astro-icon';
+
+export interface Props {
+    theme: App.Theme;
+}
+
+const { theme } = Astro.props as Props;
+
+const Image = theme.demoUrl ? 'a' : 'header';
+---
+
+<article class="flex flex-col rounded-lg shadow-md overflow-hidden">
+    <Image href={theme.demoUrl?.href} class="aspect-x-4 aspect-y-3">
+        <img src={theme.image.src} alt={theme.image.alt} />
+    </Image>
+    
+    <h2 class="p-4 text-lg font-display font-bold">{theme.title}</h2>
+
+    <p class="px-4 pb-8 text-sm flex-1">{theme.description}</p>
+
+    <footer class="flex flex-row items-center justify-between px-4 pb-6">
+        <button type="button" class="btn btn--netlify" >Deploy to Netlify</button>
+        <a href={theme.repoUrl} class="subtle flex items-center gap-x-1 text-sm">
+            <span class="sr-only">View theme source code</span>
+            <Sprite pack="heroicons-outline" name="star" size="1.25em" />
+            164 stars
+        </a>
+    </footer>
+</article>
