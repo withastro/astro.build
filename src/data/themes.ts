@@ -1,12 +1,13 @@
 import { contains } from "../utils/contains";
 import { uniq } from "../utils/uniq";
+import { getStars, getStarsForRepo } from '../utils';
 
 interface ThemeData {
     title: string;
     description: string;
     image: string;
     categories: string[];
-    tags?: string[];
+    tags?: App.ThemeTag[];
     repoUrl: string;
     npmUrl?: string;
     demoUrl?: string;

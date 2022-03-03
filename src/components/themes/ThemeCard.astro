@@ -1,6 +1,7 @@
 ---
 import { Sprite } from 'astro-icon';
 import TagsList from './TagsList.astro';
+import { getStarsForRepo } from '../../utils.ts';
 
 export interface Props {
     theme: App.Theme;
@@ -10,12 +11,13 @@ const { theme } = Astro.props as Props;
 
 const Image = theme.demoUrl ? 'a' : 'header';
 const netlifyUrl = `https://app.netlify.com/start/deploy?repository=${theme.repoUrl}`;
+
+const stars = await getStarsForRepo(theme.repoUrl.href);
 ---
 
 <article class="flex flex-col rounded-lg shadow-md overflow-hidden bg-white">
     <Image href={theme.demoUrl?.href} class="aspect-w-16 aspect-h-9">
         <img src={theme.image.src} alt={theme.image.alt} />
-        
     </Image>
 
     <div class="flex justify-between items-start">
@@ -30,10 +32,10 @@ const netlifyUrl = `https://app.netlify.com/start/deploy?repository=${theme.repo
             <img src="https://www.netlify.com/img/deploy/button.svg" alt="" title="Deploy to Netlify">
         </a>
 
-        <a href={theme.repoUrl} class="subtle flex items-center gap-x-1 text-sm">
+        <a href={theme.repoUrl.href} class="subtle flex items-center gap-x-1 text-sm">
             <span class="sr-only">View theme source code</span>
             <Sprite pack="heroicons-outline" name="star" size="1.25em" />
-            164 stars
+            {stars} stars
         </a>
     </footer>
 </article>
