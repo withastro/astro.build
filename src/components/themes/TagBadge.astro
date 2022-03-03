@@ -1,0 +1,13 @@
+---
+import { Sprite } from 'astro-icon';
+
+export interface Props {
+    tag: App.ThemeTag;
+}
+
+const { tag } = Astro.props as Props;
+
+const spriteName = `themes/${tag}`
+---
+
+<Sprite name={spriteName} size="1em" />

@@ -9,13 +9,22 @@ declare namespace App {
         alt: string;
     }
 
+    type ThemeTag =
+        | 'js'
+        | 'tailwind'
+        | 'lit'
+        | 'preact'
+        | 'react'
+        | 'solid'
+        | 'svelte'
+        | 'vue';
     interface Theme {
         slug: string;
         title: string;
         description: string;
         image: Image;
         categories: string[];
-        tags?: string[];
+        tags?: ThemeTag[];
         repoUrl: Link;
         demoUrl?: Link;
         npmUrl?: Link;

@@ -1,0 +1,13 @@
+---
+import TagBadge from './TagBadge.astro';
+
+export interface Props {
+    tags: App.ThemeTag[];
+}
+
+const { tags } = Astro.props as Props;
+---
+
+<div class="flex p-4 gap-x-2 text-midnight text-lg">
+    {tags.map(tag => (<TagBadge tag={tag} />))}
+</div>

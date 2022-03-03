@@ -5,6 +5,7 @@ import { social } from '../config.ts';
 const { invert = false, marginBottom = false } = Astro.props;
 
 const items = [
+    { href: '/themes', title: 'Themes' },
     { href: '/blog', title: 'Blog' },
     { href: 'https://docs.astro.build', title: 'Docs' },
     { href: '/play', title: 'Playground', hiddenMobile: true }
@@ -55,6 +56,9 @@ nav {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 2;
+}
+nav a {
+    color: inherit;
 }
 nav.margin-bottom {
     margin-bottom: -4.5rem;

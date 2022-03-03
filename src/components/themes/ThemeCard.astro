@@ -1,5 +1,6 @@
 ---
 import { Sprite } from 'astro-icon';
+import TagsList from './TagsList.astro';
 
 export interface Props {
     theme: App.Theme;
@@ -10,12 +11,16 @@ const { theme } = Astro.props as Props;
 const Image = theme.demoUrl ? 'a' : 'header';
 ---
 
-<article class="flex flex-col rounded-lg shadow-md overflow-hidden">
+<article class="flex flex-col rounded-lg shadow-md overflow-hidden bg-white">
     <Image href={theme.demoUrl?.href} class="aspect-w-16 aspect-h-9">
         <img src={theme.image.src} alt={theme.image.alt} />
+        
     </Image>
-    
-    <h2 class="p-4 text-lg font-display font-bold">{theme.title}</h2>
+
+    <div class="flex justify-between items-start">
+        <h2 class="p-4 text-lg font-display font-bold">{theme.title}</h2>
+        {theme.tags.length > 0 && (<TagsList tags={theme.tags} />)}
+    </div>
 
     <p class="px-4 pb-8 text-sm flex-1">{theme.description}</p>
 
