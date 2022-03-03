@@ -2,17 +2,35 @@
 import Layout from './Content.astro';
 import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
+import PillList from '../components/PillList.astro';
 import ThemeCard from '../components/ThemeCard.astro';
 import CardBlock from '../components/blocks/CardBlock.astro';
 import TitleBlock from '../components/blocks/TitleBlock.astro';
+import { fetchCollections } from '../data/themes.ts';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
     meta: BaseHeadProps;
     themes: App.Theme[];
+    collection?: string;
 }
 
-const { meta, themes } = Astro.props as Props;
+const { meta, themes, collection = 'all' } = Astro.props as Props;
+
+const collections = await fetchCollections();
+
+const collectionLinks: App.Link[] = [
+    {
+        text: 'all',
+        href: '/themes',
+    },
+    ...collections.map(collection => ({
+        text: collection,
+        href: `/themes/${collection}`
+    }))
+];
+
+const currentCollection = collectionLinks.find(({ text }) => text === collection);
 ---
 
 <Layout meta={meta}>
@@ -23,6 +41,8 @@ const { meta, themes } = Astro.props as Props;
 
         <p>{meta.description}</p>
     </TitleBlock>
+
+    <PillList title="collections" links={collectionLinks} current={currentCollection} class="mb-6" />
 
     <CardBlock>
         {themes.map(theme => (<ThemeCard theme={theme} />))}
