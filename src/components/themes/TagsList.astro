@@ -8,6 +8,6 @@ export interface Props {
 const { tags } = Astro.props as Props;
 ---
 
-<div class="flex p-4 gap-x-2 text-midnight text-lg">
+<div class="flex p-4 gap-x-2 text-midnight text-xl sm:text-lg">
     {tags.map(tag => (<TagBadge tag={tag} />))}
 </div>
