@@ -12,10 +12,6 @@ export async function getStarsForRepo(repoUrl: string) {
     }
 
     const stars = fetch(repoUrl.replace('https://github.com/', 'https://api.github.com/repos/'))
-        .then(res => {
-            console.log(res)
-            return res;
-        })
         .then(res => res.json())
         .then(res => formatter.format(res.stargazers_count))
 
