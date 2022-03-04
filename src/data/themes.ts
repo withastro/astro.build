@@ -1,6 +1,5 @@
 import { contains } from "../utils/contains";
 import { uniq } from "../utils/uniq";
-import { getStars, getStarsForRepo } from '../utils';
 
 interface ThemeData {
     title: string;

@@ -44,6 +44,18 @@
         @apply bg-tan text-dusk border-dusk hover:bg-midnight hover:border-midnight focus:ring-midnight hover:text-white;
     }
 
+    [data-tip] {
+        position: relative;
+    }
+
+    [data-tip]::before {
+        @apply absolute left-1/2 top-3/4 -translate-x-1/2 bg-midnight text-white rounded-md text-xs font-semibold tracking-wide px-3 py-1 z-10;
+    }
+
+    [data-tip]:hover::before {
+        content: attr(data-tip);
+    }
+
     .prose :is(h2, h3, h4, h5, h6) a {
         font: inherit;
         color: inherit;

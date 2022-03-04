@@ -5,9 +5,21 @@ export interface Props {
     tag: App.ThemeTag;
 }
 
+const TOOLTIPS = {
+    js: 'JavaScript',
+    tailwind: 'TailwindCSS',
+    preact: 'Preact',
+    react: 'React',
+    svelte: 'Svelte',
+    solid: 'SolidJS',
+    vue: 'Vue 3'
+}
+
 const { tag } = Astro.props as Props;
 
 const spriteName = `themes/${tag}`
 ---
 
-<Sprite name={spriteName} size="1em" />
+<div data-tip={TOOLTIPS[tag]}>
+    <Sprite name={spriteName} size="1em" />
+</div>
