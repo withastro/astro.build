@@ -1,0 +1,46 @@
+---
+import clsx from 'clsx';
+export interface Props {
+	title?: string;
+	type?: 'tip' | 'warning' | 'error';
+	class?: string;
+}
+const { type = 'tip', title, class: className } = Astro.props;
+---
+
+<aside class={clsx(className, type)}>
+	{title && <h3 class="head-sm">{title}</h3>}
+	<slot />
+</aside>
+
+<style>
+	aside {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 2rem;
+		background: var(--color-dawn);
+		color: var(--color-midnight);
+        border-radius: var(--corner-md);
+	}
+
+	aside > :global(* + *) {
+		margin-top: 1em;
+	}
+	
+	h3 {
+		font-weight: 700;
+		font-size: var(--size-500);
+		color: var(--color-accent);
+		margin: 0;
+	}
+
+	.tip {
+		--color-accent: var(--color-blue);
+	}
+	.warning {
+		--color-accent: var(--color-yellow);
+	}
+	.error {
+		--color-accent: var(--color-red);
+	}
+</style>
