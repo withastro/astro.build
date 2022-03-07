@@ -10,14 +10,14 @@ export interface Props {
 const { theme } = Astro.props as Props;
 
 const Image = theme.demoUrl ? 'a' : 'header';
-const netlifyUrl = `https://app.netlify.com/start/deploy?repository=${theme.repoUrl}`;
 
 const stars = await getStarsForRepo(theme.repoUrl.href);
+const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`;
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
     <Image href={theme.demoUrl?.href} class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden">
-        <img src={theme.image.src} alt={theme.image.alt} />
+        <img src={theme.image.src} alt={theme.image.alt} class="h-auto" />
     </Image>
 
     <div class="flex justify-between items-start">
@@ -27,15 +27,22 @@ const stars = await getStarsForRepo(theme.repoUrl.href);
 
     <p class="px-4 pb-8 text-sm flex-1">{theme.description}</p>
 
-    <footer class="flex flex-row items-center justify-between px-4 pb-6">
-        <a href={netlifyUrl}>
-            <img src="https://www.netlify.com/img/deploy/button.svg" alt="" title="Deploy to Netlify">
-        </a>
+    <footer class="flex items-center px-4 pb-6">
+        {netlifyUrl && (
+            <a href={netlifyUrl}>
+                <img src="https://www.netlify.com/img/deploy/button.svg" alt="" title="Deploy to Netlify">
+            </a>
+        )}
 
-        <a href={theme.repoUrl.href} class="subtle flex items-center gap-x-1 text-sm">
+        <a href={theme.repoUrl.href} class="subtle ml-auto flex items-center gap-x-1 col-start-2 text-sm">
             <span class="sr-only">View theme source code</span>
-            <Sprite pack="heroicons-outline" name="star" size="1.25em" />
-            {stars} stars
+            {!!stars ? (
+                    <Sprite pack="heroicons-outline" name="star" size="1.25em" />
+                    <span>{stars} stars</span>
+                ) : (
+                    <Sprite name="logos/github-mark" size="2.25em" />
+                )
+            }
         </a>
     </footer>
 </article>

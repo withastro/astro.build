@@ -1,5 +1,10 @@
 const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
+function canGetStars(repoUrl: string) {
+    const url = new URL(repoUrl)
+    return url.pathname.split('/').filter(Boolean).length === 2
+}
+
 export async function getStars() {
     return await getStarsForRepo('https://github.com/withastro/astro');
 }
@@ -7,6 +12,10 @@ export async function getStars() {
 const starsMap = new Map<string, Promise<string>>();
 
 export async function getStarsForRepo(repoUrl: string) {
+    if (!canGetStars(repoUrl)) {
+        return undefined;
+    }
+
     if (starsMap.has(repoUrl)) {
         return starsMap.get(repoUrl);
     }
@@ -19,3 +28,4 @@ export async function getStarsForRepo(repoUrl: string) {
 
     return await stars;
 }
+

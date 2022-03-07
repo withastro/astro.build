@@ -11,6 +11,7 @@ declare namespace App {
 
     type ThemeTag =
         | 'js'
+        | 'scss'
         | 'tailwind'
         | 'lit'
         | 'preact'
@@ -18,6 +19,7 @@ declare namespace App {
         | 'solid'
         | 'svelte'
         | 'vue';
+
     interface Theme {
         slug: string;
         title: string;
