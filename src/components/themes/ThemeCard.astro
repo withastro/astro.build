@@ -16,7 +16,7 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a href={linkHref} class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden">
+    <a href={linkHref} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden">
         <img src={theme.image.src} alt={theme.image.alt} class="h-auto" />
     </a>
 
@@ -31,12 +31,12 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 
     <footer class="flex items-center px-4 pb-6">
         {netlifyUrl && (
-            <a href={netlifyUrl}>
+            <a href={netlifyUrl} target="_blank" rel="noopener noreferrer">
                 <img src="https://www.netlify.com/img/deploy/button.svg" alt="" title="Deploy to Netlify">
             </a>
         )}
 
-        <a href={theme.repoUrl.href} class="subtle ml-auto flex items-center gap-x-1 col-start-2 text-sm">
+        <a href={theme.repoUrl.href} target="_blank" rel="noopener noreferrer" class="subtle ml-auto flex items-center gap-x-1 col-start-2 text-sm">
             <span class="sr-only">View theme source code</span>
             {!!stars && (
                 <Sprite pack="heroicons-outline" name="star" size="1.25em" />
