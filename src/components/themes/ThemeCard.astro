@@ -9,19 +9,21 @@ export interface Props {
 
 const { theme } = Astro.props as Props;
 
-const Image = theme.demoUrl ? 'a' : 'header';
+const linkHref = theme.demoUrl?.href || theme.repoUrl.href;
 
 const stars = await getStarsForRepo(theme.repoUrl.href);
 const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`;
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <Image href={theme.demoUrl?.href} class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden">
+    <a href={linkHref} class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden">
         <img src={theme.image.src} alt={theme.image.alt} class="h-auto" />
-    </Image>
+    </a>
 
     <div class="flex justify-between items-start">
-        <h2 class="p-4 text-lg font-display font-bold">{theme.title}</h2>
+        <h2 class="p-4 text-lg font-display font-bold">
+            <a href={linkHref} class="subtle">{theme.title}</a>
+        </h2>
         {theme.tags.length > 0 && (<TagsList tags={theme.tags} />)}
     </div>
 
@@ -36,13 +38,10 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 
         <a href={theme.repoUrl.href} class="subtle ml-auto flex items-center gap-x-1 col-start-2 text-sm">
             <span class="sr-only">View theme source code</span>
-            {!!stars ? (
-                    <Sprite pack="heroicons-outline" name="star" size="1.25em" />
-                    <span>{stars} stars</span>
-                ) : (
-                    <Sprite name="logos/github-mark" size="2.25em" />
-                )
-            }
+            {!!stars && (
+                <Sprite pack="heroicons-outline" name="star" size="1.25em" />
+                <span>{stars}</span>
+            )}
         </a>
     </footer>
 </article>
