@@ -5,9 +5,10 @@ import { footer, navigation, social } from '../config.ts';
 
 <nav>
     <ul>
+        <li><a href="/" class="subtle" aria-current={Astro.request.url.pathname === "/" ? 'page' : undefined}>Home</a></li>
         {navigation.map(item => (
             <li>
-                <a href={item.href} class="subtle">{item.title}</a>
+                <a href={item.href} class="subtle" aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.title}</a>
             </li>
         ))}
     </ul>
