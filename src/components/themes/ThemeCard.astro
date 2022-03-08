@@ -16,8 +16,8 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a href={linkHref} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden">
-        <img src={theme.image.src} alt={theme.image.alt} class="h-auto" />
+    <a href={linkHref} target="_blank" rel="noopener noreferrer" data-badge={theme.official ? "Official" : undefined} class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden">
+        <img src={theme.image.src} alt={theme.image.alt} class="h-auto" loading="lazy" />
     </a>
 
     <div class="flex justify-between items-start">
@@ -30,18 +30,32 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
     <p class="px-4 pb-8 text-sm flex-1">{theme.description}</p>
 
     <footer class="flex items-center px-4 pb-6">
-        {netlifyUrl && (
+        {netlifyUrl ? (
             <a href={netlifyUrl} target="_blank" rel="noopener noreferrer">
                 <img src="https://www.netlify.com/img/deploy/button.svg" alt="" title="Deploy to Netlify">
             </a>
+        ) : (
+            <a href={linkHref} target="_blank" rel="noopener noreferrer" class="btn btn--hollow btn--icon btn--sm">
+                <Sprite name="logos/github-mark" size="1.25rem" />
+                View source
+            </a>
         )}
-
-        <a href={theme.repoUrl.href} target="_blank" rel="noopener noreferrer" class="subtle ml-auto flex items-center gap-x-1 col-start-2 text-sm">
-            <span class="sr-only">View theme source code</span>
-            {!!stars && (
+        
+        {stars && (
+            <a href={theme.repoUrl.href} target="_blank" rel="noopener noreferrer" class="subtle ml-auto flex items-center gap-x-1 col-start-2 text-sm">
+                <span class="sr-only">View theme source code</span>
                 <Sprite pack="heroicons-outline" name="star" size="1.25em" />
                 <span>{stars}</span>
-            )}
-        </a>
+            </a>
+        )}
+
+        
     </footer>
 </article>
+
+<style>
+    [data-badge]::after {
+        @apply absolute text-xs bg-dusk text-white rounded-md px-3 py-1 top-2 right-2;
+        content: attr(data-badge);
+    }
+</style>

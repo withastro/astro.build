@@ -30,5 +30,6 @@ declare namespace App {
         repoUrl: Link;
         demoUrl?: Link;
         npmUrl?: Link;
+        official?: boolean;
     }
 }
