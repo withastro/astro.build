@@ -1,0 +1,58 @@
+---
+export interface Props {
+    id: string;
+}
+
+const { id } = Astro.props as Props;
+---
+
+<astro-drawer {id} role="modal" aria-modal="true" aria-hidden="true" class="elevation-xl">
+    <slot />
+</astro-drawer>
+
+<div class="backdrop" aria-hidden="true" />
+
+<style>
+    astro-drawer, astro-drawer + .backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    astro-drawer {
+        width: 90vw;
+        max-width: 25rem;
+        z-index: 40;
+        background: var(--color-tan);
+        color: var(--color-midnight);
+        transform: translate3d(100%, 0, 0);
+        transition: transform 400ms ease;
+    }
+
+    astro-drawer + .backdrop {
+        left: 0;
+        z-index: 30;
+        background-color: black;
+        opacity: 0;
+        transition: opacity 300ms ease;
+        transition-delay: 100ms;
+        pointer-events: none;
+    }
+
+    astro-drawer[aria-hidden="false"], astro-drawer:target {
+        transform: translate3d(0, 0, 0);
+    }
+
+    astro-drawer[aria-hidden="false"] + .backdrop, astro-drawer:target + .backdrop {
+        opacity: 0.5;
+    }
+
+    :global(:root.drawer-open) {
+        overflow: hidden;
+    }
+</style>
+
+<script type="module" hoist>
+    import './Drawer.ts';
+</script>

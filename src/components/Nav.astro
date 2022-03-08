@@ -1,15 +1,10 @@
 ---
 import { Sprite } from 'astro-icon';
-import { social } from '../config.ts';
+import Drawer from './Drawer.astro';
+import MobileMenu from './MobileMenu.astro';
+import { navigation, social } from '../config.ts';
 
 const { invert = false, marginBottom = false } = Astro.props;
-
-const items = [
-    { href: '/themes', title: 'Themes' },
-    { href: '/blog', title: 'Blog' },
-    { href: 'https://docs.astro.build', title: 'Docs' },
-    { href: '/play', title: 'Playground', hiddenMobile: true }
-]
 ---
 
 <nav id="nav" class={`main ${invert ? 'dark' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
@@ -22,7 +17,7 @@ const items = [
             </a>
         </li>
 
-        {items.map(item => (
+        {navigation.map(item => (
             <li class={`${item.hiddenMobile ? 'hidden-mobile' : ''}`}>
                 <a aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined} href={item.href}>
                     {item.title}
@@ -37,11 +32,27 @@ const items = [
                 </a>
             </li>
         ))}
+
+        <button type="button" id="menubtn">
+            <span class="visually-hidden sr-only">Open navigation menu</span>
+            <Sprite pack="heroicons-outline" name="menu" size="1.5rem" />
+        </button>
     </ul>
 </nav>
 
-<script type="module" hoist>
+<Drawer id="menudrawer">
+    <MobileMenu />
+</Drawer>
+
+<script type="module">
     import "/src/scripts/nav.ts";
+
+    const menuBtn = document.getElementById('menubtn');
+    
+    menuBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        window.dispatchEvent(new CustomEvent('drawer:open', { detail: 'menudrawer' }));
+    });
 </script>
 
 <style>
@@ -157,6 +168,34 @@ nav.dark .logo :global(svg) {
 }
 .hidden-mobile {
   display: none;
+}
+button, a[href="#menudrawer"] {
+    background: transparent;
+    border: none;
+    height: 3rem;
+    width: 3rem;
+}
+
+button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 40rem) {
+    :global(.js) button {
+        display: flex;
+    }
+
+    :global(.js) li:not(.logo) {
+        display: none;
+    }
+}
+
+@media (min-width: 40rem) {
+    :global(.js) button {
+        display: none;
+    }
 }
 
 @media (min-width: 52rem) {

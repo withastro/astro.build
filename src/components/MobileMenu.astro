@@ -1,0 +1,127 @@
+---
+import { Sprite } from 'astro-icon';
+import { navigation, social } from '../config.ts';
+---
+
+<nav>
+    <ul>
+        {navigation.map(item => (
+            <li>
+                <a href={item.href}>{item.title}</a>
+            </li>
+        ))}
+    </ul>
+
+    <footer>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/company">We're Hiring!</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/press">Press</a></li>
+        </ul>
+    </footer>
+    
+    <header>
+        <ul class="social">
+            {social.map(item => (
+                <li class="icon">
+                    <a href={item.href} title={item.title}>
+                        <Sprite name={item.icon} size="1.5rem" role="presentation" />
+                    </a>
+                </li>
+            ))}
+        </ul>
+
+        <button type="button" id="menuclose">
+            <Sprite pack="heroicons-outline" name="x" size="1.5rem" />
+        </button>
+    </header>
+</nav>
+
+<style>
+    nav {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: .75rem 1rem 2rem;
+    }
+
+    header {
+        order: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: .75rem;
+        border-bottom: 1px solid rgba(var(--color-midnight-rgb), .1);
+    }
+
+    nav > ul {
+        order: 2;
+        flex: 1;
+    }
+
+    footer {
+        order: 3;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 0 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    header ul {
+        flex-direction: row;
+        padding: 0;
+    }
+
+    header a {
+        height: 3rem;
+        width: 3rem;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer a {
+        font-size: var(--size-500);
+    }
+
+    a {
+        display: block;
+        padding: .5rem 0;
+        font-size: var(--size-600);
+        color: var(--color-midnight);
+    }
+
+    a:focus,
+    a:hover {
+        color: var(--color-purple);
+    }
+    a:active {
+        color: var(--color-blue);
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        height: 3rem;
+        width: 3rem;
+    }
+</style>
+
+<script type="module">
+    const closeBtn = document.getElementById('menuclose');
+
+    closeBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.dispatchEvent(new CustomEvent('drawer:close', { detail: 'menudrawer' }))
+    }, false);
+</script>
