@@ -44,8 +44,8 @@ const { invert = false, marginBottom = false } = Astro.props;
     <MobileMenu />
 </Drawer>
 
-<script type="module">
-    import "/src/scripts/nav.ts";
+<script type="module" hoist>
+    import "../scripts/nav.ts";
 
     const menuBtn = document.getElementById('menubtn');
     
