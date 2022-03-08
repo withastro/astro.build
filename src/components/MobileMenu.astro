@@ -1,23 +1,22 @@
 ---
 import { Sprite } from 'astro-icon';
-import { navigation, social } from '../config.ts';
+import { footer, navigation, social } from '../config.ts';
 ---
 
 <nav>
     <ul>
         {navigation.map(item => (
             <li>
-                <a href={item.href}>{item.title}</a>
+                <a href={item.href} class="subtle">{item.title}</a>
             </li>
         ))}
     </ul>
 
     <footer>
         <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/company">We're Hiring!</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/press">Press</a></li>
+            {footer.map(item => (
+                <li><a href={item.href} class="subtle">{item.title}</a></li>
+            ))}
         </ul>
     </footer>
     
@@ -25,7 +24,7 @@ import { navigation, social } from '../config.ts';
         <ul class="social">
             {social.map(item => (
                 <li class="icon">
-                    <a href={item.href} title={item.title}>
+                    <a href={item.href} title={item.title} class="subtle">
                         <Sprite name={item.icon} size="1.5rem" role="presentation" />
                     </a>
                 </li>
