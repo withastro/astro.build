@@ -18,23 +18,21 @@ import { footer, navigation, social } from '../config.ts';
                 <li><a href={item.href} class="subtle">{item.title}</a></li>
             ))}
         </ul>
-    </footer>
-    
-    <header>
+
         <ul class="social">
             {social.map(item => (
                 <li class="icon">
                     <a href={item.href} title={item.title} class="subtle">
-                        <Sprite name={item.icon} size="1.5rem" role="presentation" />
+                        <Sprite name={item.icon} size="2rem" role="presentation" />
                     </a>
                 </li>
             ))}
         </ul>
-
-        <button type="button" id="menuclose">
-            <Sprite pack="heroicons-outline" name="x" size="1.5rem" />
-        </button>
-    </header>
+    </footer>
+    
+    <button type="button" id="menuclose">
+        <Sprite pack="heroicons-outline" name="x" size="1.5rem" />
+    </button>
 </nav>
 
 <style>
@@ -43,15 +41,6 @@ import { footer, navigation, social } from '../config.ts';
         display: flex;
         flex-direction: column;
         padding: .75rem 1rem 2rem;
-    }
-
-    header {
-        order: 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: .75rem;
-        border-bottom: 1px solid rgba(var(--color-midnight-rgb), .1);
     }
 
     nav > ul {
@@ -67,9 +56,17 @@ import { footer, navigation, social } from '../config.ts';
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
-        padding: 1rem 0 0;
+        padding: 0;
         margin: 0;
         list-style: none;
+        text-align: center;
+    }
+
+    ul.social {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+        padding-top: 1rem;
     }
 
     header ul {
@@ -106,6 +103,7 @@ import { footer, navigation, social } from '../config.ts';
     }
 
     button {
+        order: 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -113,6 +111,8 @@ import { footer, navigation, social } from '../config.ts';
         border: none;
         height: 3rem;
         width: 3rem;
+        margin-left: auto;
+        margin-right: -.25rem;
     }
 </style>
 
