@@ -34,15 +34,19 @@ export class AstroDrawer extends HTMLElement {
     }
 
     open() {
-        this.setAttribute('aria-hidden', 'false');
-        this.#focusTrap.activate();
-        document.documentElement.classList.add('drawer-open');
+        requestAnimationFrame(() => {
+            this.setAttribute('aria-hidden', 'false');
+            this.#focusTrap.activate();
+            document.documentElement.classList.add('drawer-open');
+        });
     }
 
     close() {
-        this.setAttribute('aria-hidden', 'true');
-        this.#focusTrap.deactivate();
-        document.documentElement.classList.remove('drawer-open');
+        requestAnimationFrame(() => {
+            this.setAttribute('aria-hidden', 'true');
+            this.#focusTrap.deactivate();
+            document.documentElement.classList.remove('drawer-open');
+        });
     }
 }
 
