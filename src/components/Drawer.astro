@@ -14,24 +14,35 @@ const { id } = Astro.props as Props;
 
 <style>
     astro-drawer, astro-drawer + .backdrop {
+        display: none;
         position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
+        left: 0;
     }
 
     astro-drawer {
-        width: 90vw;
-        max-width: 25rem;
         z-index: 40;
         background: var(--color-tan);
         color: var(--color-midnight);
+    }
+
+    astro-drawer[animated] {
+        display: block;
+        left: unset;
+        width: 90vw;
+        max-width: 25rem;
         transform: translate3d(100%, 0, 0);
         transition: transform 400ms ease;
     }
 
     astro-drawer + .backdrop {
-        left: 0;
+        display: none;
+    }
+
+    astro-drawer[animated] + .backdrop {
+        display: block;
         z-index: 30;
         background-color: black;
         opacity: 0;
@@ -40,16 +51,16 @@ const { id } = Astro.props as Props;
         pointer-events: none;
     }
 
-    astro-drawer[aria-hidden="false"], astro-drawer:target {
+    astro-drawer[aria-hidden="false"] {
+        display: block;
+    }
+
+    astro-drawer[animated][aria-hidden="false"], astro-drawer:target {
         transform: translate3d(0, 0, 0);
     }
 
-    astro-drawer[aria-hidden="false"] + .backdrop, astro-drawer:target + .backdrop {
+    astro-drawer[animated][aria-hidden="false"] + .backdrop {
         opacity: 0.5;
-    }
-
-    :global(:root.drawer-open) {
-        overflow: hidden;
     }
 </style>
 

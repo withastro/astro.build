@@ -9,8 +9,10 @@ export class AstroDrawer extends HTMLElement {
             onDeactivate: this.close.bind(this)
         });
 
-        window.addEventListener('drawer:open', this.onDrawerOpen.bind(this), false)
-        window.addEventListener('drawer:close', this.onDrawerClose.bind(this), false)
+        window.addEventListener('drawer:open', this.onDrawerOpen.bind(this), false);
+        window.addEventListener('drawer:close', this.onDrawerClose.bind(this), false);
+
+        this.addEventListener('touchmove', this.onTouchMove.bind(this), false);
     }
 
     onDrawerOpen(event: CustomEvent<string>) {
@@ -25,6 +27,10 @@ export class AstroDrawer extends HTMLElement {
         }
     }
 
+    onTouchMove(event: TouchEvent) {
+        event.preventDefault();
+    }
+
     get id() {
         return this.getAttribute('id');
     }
@@ -37,7 +43,6 @@ export class AstroDrawer extends HTMLElement {
         requestAnimationFrame(() => {
             this.setAttribute('aria-hidden', 'false');
             this.#focusTrap.activate();
-            document.documentElement.classList.add('drawer-open');
         });
     }
 
@@ -45,7 +50,6 @@ export class AstroDrawer extends HTMLElement {
         requestAnimationFrame(() => {
             this.setAttribute('aria-hidden', 'true');
             this.#focusTrap.deactivate();
-            document.documentElement.classList.remove('drawer-open');
         });
     }
 }

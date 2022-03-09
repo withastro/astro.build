@@ -1,12 +1,21 @@
 ---
 import { Sprite } from 'astro-icon';
 import { footer, navigation, social } from '../config.ts';
+
+const visibleOnMobile = (item) => !item.hiddenMobile;
 ---
 
 <nav>
+    <header>
+        <Sprite class="logomark" name="logo" size="2.4em" />
+        <button type="button" id="menuclose">
+            <Sprite pack="heroicons-outline" name="x" size="1.5em" />
+        </button>
+    </header>
+
     <ul>
         <li><a href="/" class="subtle" aria-current={Astro.request.url.pathname === "/" ? 'page' : undefined}>Home</a></li>
-        {navigation.map(item => (
+        {navigation.filter(visibleOnMobile).map(item => (
             <li>
                 <a href={item.href} class="subtle" aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.title}</a>
             </li>
@@ -24,19 +33,22 @@ import { footer, navigation, social } from '../config.ts';
             {social.map(item => (
                 <li class="icon">
                     <a href={item.href} title={item.title} class="subtle">
-                        <Sprite name={item.icon} size="2rem" role="presentation" />
+                        <Sprite name={item.icon} size="1.75em" role="presentation" />
                     </a>
                 </li>
             ))}
         </ul>
     </footer>
-    
-    <button type="button" id="menuclose">
-        <Sprite pack="heroicons-outline" name="x" size="1.5rem" />
-    </button>
 </nav>
 
 <style>
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 0.75rem;
+    }
+
     nav {
         height: 100%;
         display: flex;
@@ -45,12 +57,7 @@ import { footer, navigation, social } from '../config.ts';
     }
 
     nav > ul {
-        order: 2;
         flex: 1;
-    }
-
-    footer {
-        order: 3;
     }
 
     ul {
@@ -104,7 +111,6 @@ import { footer, navigation, social } from '../config.ts';
     }
 
     button {
-        order: 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -112,7 +118,6 @@ import { footer, navigation, social } from '../config.ts';
         border: none;
         height: 3rem;
         width: 3rem;
-        margin-left: auto;
     }
 </style>
 
