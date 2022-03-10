@@ -16,7 +16,7 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a href={linkHref} target="_blank" rel="noopener noreferrer" data-badge={theme.official ? "Official" : undefined} class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
+    <a href={linkHref} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
         <img src={theme.image.src} alt={theme.image.alt} class="h-auto" loading="lazy" />
     </a>
 
@@ -27,7 +27,15 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
         {theme.tags.length > 0 && (<TagsList tags={theme.tags} />)}
     </div>
 
-    <p class="px-4 pb-8 text-sm flex-1">{theme.description}</p>
+    <p class="px-4 pb-8 text-sm flex-1">
+        {theme.official && (
+            <span class="bg-dawn rounded-md py-1 px-0.5 font-bold mr-1">
+                <Sprite name="logo" size="1.5em" class="inline -mr-1" />
+                Official
+            </span>
+        )}
+        {theme.description}
+    </p>
 
     <footer class="flex items-center px-4 pb-6">
         {netlifyUrl ? (
@@ -48,14 +56,5 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
                 <span>{stars}</span>
             </a>
         )}
-
-        
     </footer>
 </article>
-
-<style>
-    [data-badge]::after {
-        @apply absolute text-xs bg-dusk text-white rounded-md px-3 py-1 top-2 right-2;
-        content: attr(data-badge);
-    }
-</style>
