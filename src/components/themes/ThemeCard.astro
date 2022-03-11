@@ -1,6 +1,5 @@
 ---
 import { Sprite } from 'astro-icon';
-import TagsList from './TagsList.astro';
 import { getStarsForRepo } from '../../utils.ts';
 
 export interface Props {
@@ -20,41 +19,39 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
         <img src={theme.image.src} alt={theme.image.alt} class="h-auto" loading="lazy" />
     </a>
 
-    <div class="flex justify-between items-start">
-        <h2 class="p-4 text-lg font-display font-bold">
+    <div class="flex justify-between items-center p-4">
+        <h2 class="text-lg font-display font-bold">
             <a href={linkHref} class="subtle">{theme.title}</a>
         </h2>
-        {theme.tags.length > 0 && (<TagsList tags={theme.tags} />)}
+
+        {(stars || theme.official) && (
+            <a href={theme.repoUrl.href} target="_blank" rel="noopener noreferrer" class="subtle flex items-center gap-x-1 col-start-2 text-sm">
+                <span class="sr-only">View theme source code</span>
+
+                {theme.official ? (
+                    <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" />
+                    <span>Official</span>
+                ) : (
+                    <Sprite pack="fa-regular" name="star" size="1.25em" />
+                    <span>{stars}</span>
+                )}
+            </a>
+        )}
     </div>
 
     <p class="px-4 pb-8 text-sm flex-1">
-        {theme.official && (
-            <span class="bg-dawn rounded-md py-1 px-0.5 font-bold mr-1">
-                <Sprite name="logo" size="1.5em" class="inline -mr-1" />
-                Official
-            </span>
-        )}
         {theme.description}
     </p>
 
     <footer class="flex items-center px-4 pb-6">
-        {netlifyUrl ? (
+        {netlifyUrl && (
             <a href={netlifyUrl} target="_blank" rel="noopener noreferrer">
                 <img src="https://www.netlify.com/img/deploy/button.svg" alt="" title="Deploy to Netlify">
             </a>
-        ) : (
-            <a href={linkHref} target="_blank" rel="noopener noreferrer" class="btn btn--hollow btn--icon btn--sm">
-                <Sprite name="logos/github-mark" size="1.75em" />
-                View source
-            </a>
         )}
-        
-        {stars && (
-            <a href={theme.repoUrl.href} target="_blank" rel="noopener noreferrer" class="subtle ml-auto flex items-center gap-x-1 col-start-2 text-sm">
-                <span class="sr-only">View theme source code</span>
-                <Sprite pack="heroicons-outline" name="star" size="1.25em" />
-                <span>{stars}</span>
-            </a>
-        )}
+
+        <a href={theme.repoUrl.href} class="subtle ml-auto p-3 -mr-3 -mb-3">
+            <Sprite name="logos/github-mark" size={28} />
+        </a>        
     </footer>
 </article>
