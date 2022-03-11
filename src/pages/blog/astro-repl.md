@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 setup: |
   import PixelLink from '/src/components/PixelLink.astro'
   import Note from '/src/components/Note.astro'

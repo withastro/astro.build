@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 title: 'Astro 0.23 Release Notes'
 description: 'Introducing: Dynamic file routes • Automatic XSS protection • two new component directives • vite 2.8 • and more!'
 publishDate: 'February 19, 2022'

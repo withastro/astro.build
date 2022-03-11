@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 setup: |
   import Shell from '/src/components/Shell.astro'
   import Note from '/src/components/Note.astro'

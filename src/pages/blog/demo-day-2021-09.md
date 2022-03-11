@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 setup: |
   import Mention from '/src/components/Mention.astro'
 title: 'Astro Demo Day September Edition'

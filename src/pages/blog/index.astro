@@ -1,9 +1,21 @@
 ---
+import { parse, isBefore } from 'date-fns';
 import Layout from '../../layouts/Page.astro';
 import Card from '../../components/blog/Card.astro';
-import { getAllPosts } from '../../posts';
 
-const posts = await getAllPosts();
+const posts = Astro.fetchContent('./*.md')
+    .map(({ title, description, authors, publishDate, url }) => ({
+        title,
+        description,
+        authors,
+        publishDate:  parse(publishDate, "MMMM d, yyyy", new Date()),
+        href: url
+    }))
+    .sort((a, b) => {
+        if (isBefore(a.publishDate, b.publishDate)) return 1;
+        if (isBefore(b.publishDate, a.publishDate)) return -1;
+        return 0;
+    });
 
 const meta = { title: 'Blog' };
 ---

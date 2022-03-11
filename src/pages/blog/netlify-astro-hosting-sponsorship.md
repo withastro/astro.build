@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 setup: |
   import { Sprite } from 'astro-icon'
   import Note from '/src/components/Note.astro'
