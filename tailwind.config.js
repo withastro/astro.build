@@ -18,23 +18,6 @@ module.exports = {
   },
   content: ["./src/**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}"],
   theme: {
-    colors: {
-      white: "#fff",
-      black: "#000",
-      transparent: "transparent",
-      tan: "#f4efed",
-      dawn: "#f3e9fa",
-      dusk: "#514375",
-      midnight: "#31274a",
-      blue: "#205eff",
-      red: "#ff5050",
-      yellow: "#ffd542",
-      purple: "#af43ff",
-      pink: "#fdb2b7",
-      pop: {
-        1: "linear-gradient(180deg, #205eff 0%, #c238bd 115%)",
-      },
-    },
     fontFamily: {
       body: FONT_FAMILY_BASE,
       display: ["RT Alias Medium", ...FONT_FAMILY_BASE],
@@ -60,6 +43,23 @@ module.exports = {
       "4xl": "clamp(3.34rem, 2.45rem + 4.43vw, 5.61rem)",
     },
     extend: {
+      colors: {
+        white: "#fff",
+        black: "#000",
+        transparent: "transparent",
+        tan: "#f4efed",
+        dawn: "#f3e9fa",
+        dusk: "#514375",
+        midnight: "#31274a",
+        blue: "#205eff",
+        red: "#ff5050",
+        yellow: "#ffd542",
+        purple: "#af43ff",
+        pink: "#fdb2b7",
+        pop: {
+          1: "linear-gradient(180deg, #205eff 0%, #c238bd 115%)",
+        },
+      },
       typography: ({ theme }) => {
         const headings = {
           "h1, h2, h3, h4, h5, h6": {

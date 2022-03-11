@@ -8,12 +8,52 @@
         line-height: 1.11;
     }
 
-    a {
-        color: var(--color-blue);
+    a:not(:is(.btn, .pill)), .link {
+        @apply text-blue transition-colors duration-150 ease-in-out;
     }
 
-    a:hover {
-        text-decoration: underline;
+    a.subtle, .link.link--subtle {
+        @apply text-inherit hover:no-underline hover:text-blue;
+    }
+
+    .btn {
+		@apply px-4 py-2 text-sm rounded-md inline-flex items-center border-2 border-transparent font-medium shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 ease-in-out;
+	}
+
+	.btn.btn--icon {
+		@apply flex gap-x-2;
+	}
+
+	.btn.btn--sm {
+		@apply px-2.5 py-1.5 text-xs rounded;
+	}
+
+	.btn.btn--lg {
+		@apply px-6 py-3 text-base rounded-md;
+	}
+
+	.btn.btn--hollow {
+		@apply bg-white text-midnight border-midnight hover:bg-dawn focus:ring-dusk;
+	}
+
+    .pill {
+        @apply inline-flex items-center px-4 py-0.5 border border-2 border-transparent text-sm font-bold font-display tracking-wide rounded-full shadow-sm text-white bg-dusk hover:bg-midnight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-midnight transition-colors duration-150 ease-in-out;
+    }
+
+    .pill.pill--hollow {
+        @apply bg-tan text-dusk border-dusk hover:bg-midnight hover:border-midnight focus:ring-midnight hover:text-white;
+    }
+
+    [data-tip] {
+        position: relative;
+    }
+
+    [data-tip]::before {
+        @apply absolute left-1/2 top-3/4 -translate-x-1/2 bg-midnight text-white rounded-md text-xs font-semibold tracking-wide px-3 py-1 z-10;
+    }
+
+    [data-tip]:hover::before {
+        content: attr(data-tip);
     }
 
     .prose :is(h2, h3, h4, h5, h6) a {

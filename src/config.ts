@@ -15,3 +15,17 @@ export const social = [
         href: 'https://twitter.com/astrodotbuild'
     },
 ]
+
+export const navigation = [
+    { href: '/themes', title: 'Themes' },
+    { href: '/blog', title: 'Blog' },
+    { href: 'https://docs.astro.build', title: 'Docs' },
+    { href: '/play', title: 'Playground', hiddenMobile: true }
+]
+
+export const footer = [
+    { href: '/about', title: 'About' },
+    { href: '/company', title: "We're Hiring!" },
+    { href: '/blog', title: 'Blog' },
+    { href: '/press', title: 'Press' }
+]

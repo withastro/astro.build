@@ -1,0 +1,131 @@
+---
+import { Sprite } from 'astro-icon';
+import { footer, navigation, social } from '../config.ts';
+
+const visibleOnMobile = (item) => !item.hiddenMobile;
+---
+
+<nav>
+    <header>
+        <Sprite class="logomark" name="logo" size="2.4em" />
+        <button type="button" id="menuclose">
+            <Sprite pack="heroicons-outline" name="x" size={24} />
+        </button>
+    </header>
+
+    <ul>
+        <li><a href="/" class="subtle" aria-current={Astro.request.url.pathname === "/" ? 'page' : undefined}>Home</a></li>
+        {navigation.filter(visibleOnMobile).map(item => (
+            <li>
+                <a href={item.href} class="subtle" aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.title}</a>
+            </li>
+        ))}
+    </ul>
+
+    <footer>
+        <ul>
+            {footer.map(item => (
+                <li><a href={item.href} class="subtle">{item.title}</a></li>
+            ))}
+        </ul>
+
+        <ul class="social">
+            {social.map(item => (
+                <li class="icon">
+                    <a href={item.href} title={item.title} class="subtle">
+                        <Sprite name={item.icon} size="1.75em" role="presentation" />
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </footer>
+</nav>
+
+<style>
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 0.75rem;
+    }
+
+    nav {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: .5rem;
+    }
+
+    nav > ul {
+        flex: 1;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+    }
+
+    ul.social {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+        padding: 1rem 0;
+    }
+
+    header ul {
+        flex-direction: row;
+        padding: 0;
+    }
+
+    header a {
+        height: 3rem;
+        width: 3rem;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer a {
+        font-size: var(--size-500);
+    }
+
+    a {
+        display: block;
+        padding: .5rem 0;
+        font-size: var(--size-600);
+        color: var(--color-midnight);
+    }
+
+    a:focus,
+    a:hover {
+        color: var(--color-purple);
+    }
+    a:active {
+        color: var(--color-blue);
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        height: 3rem;
+        width: 3rem;
+    }
+</style>
+
+<script type="module">
+    const closeBtn = document.getElementById('menuclose');
+
+    closeBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.dispatchEvent(new CustomEvent('drawer:close', { detail: 'menudrawer' }))
+    }, false);
+</script>

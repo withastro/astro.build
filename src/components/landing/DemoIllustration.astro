@@ -3,7 +3,7 @@ import { Sprite } from 'astro-icon';
 
 const { before, after, name } = Astro.props;
 ---
-<div class="illustration" role="img" data-name={name}>
+<demo-illustration class="illustration" role="img" data-name={name}>
     <div class="before-astro">
         <div class="screen">
             <slot name="before" />
@@ -33,7 +33,11 @@ const { before, after, name } = Astro.props;
             </div>
         </div>
     </div>
-</div>
+</demo-illustration>
+
+<script type="module" hoist>
+    import "/src/components/landing/DemoIllustration.ts";
+</script>
 
 <style>
 .illustration {

@@ -1,10 +1,8 @@
 ---
-import { Sprite } from 'astro-icon';
 import Quote from './landing/Quote.astro';
 import Grid from './landing/Grid.astro';
 import Community from './landing/Community.astro';
-
-import { social } from '../config.ts';
+import { footer } from '../config.ts';
 
 const { quote } = Astro.slots;
 const YYYY = new Date().getFullYear();
@@ -31,10 +29,9 @@ const YYYY = new Date().getFullYear();
     <div class="astro-container container content">
         <ul class="links">
             <li>&copy; {YYYY} The Astro Technology Company</li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/company">We're Hiring!</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/press">Press</a></li>
+            {footer.map(item => (
+                <li><a href={item.href}>{item.title}</a></li>
+            ))}
         </ul>
     </div>
 </footer>
