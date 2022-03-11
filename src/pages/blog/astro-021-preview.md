@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 setup: |
   import Mention from '/src/components/Mention.astro'
   import Note from '/src/components/Note.astro'

@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 setup: |
   import Tweet from '/src/components/Tweet.astro'
 title: 'Announcing The Astro Technology Company'

@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 title: 'Scaling Astro to 10,000+ Pages'
 description: 'A new experimental flag in Astro build enables building sites with tens of thousands of pages.'
 publishDate: 'January 25, 2022'
