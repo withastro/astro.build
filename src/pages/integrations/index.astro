@@ -1,0 +1,13 @@
+---
+import { fetchIntegrations } from '../../data/integrations.ts';
+import Layout from '../../layouts/Integrations.astro';
+
+const integrations: App.Integration[] = await fetchIntegrations();
+
+const meta = {
+    title: 'Integration',
+    description: 'Launch your Astro project at warp speed with plugins and components built by our amazing community.'
+};
+---
+
+<Layout meta={meta} integrations={integrations} />
