@@ -32,4 +32,16 @@ declare namespace App {
         npmUrl?: Link;
         official?: boolean;
     }
+
+    interface Integration {
+        slug: string;
+        title: string;
+        description: string;
+        image: Image;
+        categories: string[];
+        repoUrl: Link;
+        npmUrl: Link;
+        url?: Link;
+        official?: boolean;
+    }
 }

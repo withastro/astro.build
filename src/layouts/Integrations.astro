@@ -1,0 +1,69 @@
+---
+import { Sprite } from 'astro-icon';
+import Layout from './Content.astro';
+import Aside from '../components/Aside.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import PillList from '../components/PillList.astro';
+import CardsBlock from '../components/blocks/CardsBlock.astro';
+import TitleBlock from '../components/blocks/TitleBlock.astro';
+import IntegrationCard from '../components/integrations/IntegrationCard.astro';
+import { fetchCollections } from '../data/integrations.ts';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+
+export interface Props {
+    meta: BaseHeadProps;
+    integrations: App.Integration[];
+    collection?: string;
+}
+
+const { meta, integrations, collection = 'all' } = Astro.props as Props;
+
+const collections = await fetchCollections();
+
+const collectionLinks: App.Link[] = [
+    {
+        text: 'all',
+        href: '/integrations',
+    },
+    ...collections.map(collection => ({
+        text: collection,
+        href: `/integrations/${collection}`
+    }))
+];
+
+const currentCollection = collectionLinks.find(({ text }) => text === collection);
+---
+
+<Layout meta={meta}>
+    <Nav slot="nav" />
+
+    <TitleBlock>
+        <Fragment slot="title">{meta.title}</Fragment>
+
+        <p>{meta.description}</p>
+    </TitleBlock>
+
+    <PillList title="collections" links={collectionLinks} current={currentCollection} class="mb-6" />
+
+    <Aside class="mb-4 text-sm">
+        <p class="text-justify">
+            <Sprite pack="heroicons-outline" name="information-circle" size="1.5em" class="inline-block" />
+            <a
+                href="https://github.com/withastro/astro.build/issues/new/choose"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="subtle underline">
+                Add your own starter project.
+            </a>
+            <span>Questions about building your own themes? Join our community on</span>
+            <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+        </p>
+    </Aside>
+
+    <CardsBlock>
+        {integrations.map(integration => (<IntegrationCard {integration} />))}
+    </CardsBlock>
+
+    <Footer slot="footer" />
+</Layout>
