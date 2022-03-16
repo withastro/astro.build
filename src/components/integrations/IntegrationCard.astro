@@ -1,6 +1,7 @@
 ---
 import { Sprite } from 'astro-icon';
-import { getStarsForRepo } from '../../utils.ts';
+import { getStarsForRepo } from '../../github.ts';
+import { getDownloadsForPackage } from '../../npm.ts';
 
 export interface Props {
     integration: App.Integration;
@@ -9,7 +10,7 @@ export interface Props {
 const { integration } = Astro.props as Props;
 
 const stars = await getStarsForRepo(integration.repoUrl.href);
-const downloads = '1.2k';
+const downloads = await getDownloadsForPackage(integration.title);
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white relative">
