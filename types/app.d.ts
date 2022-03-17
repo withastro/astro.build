@@ -43,5 +43,7 @@ declare namespace App {
         npmUrl: Link;
         url?: Link;
         official?: boolean;
+        downloads: number;
+        stars: number;
     }
 }
