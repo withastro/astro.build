@@ -16,26 +16,26 @@ async function loadIntegrations(): Promise<App.Integration[]> {
     const items = import.meta.globEager<{ [slug: string]: IntegrationData }>('./integrations/*.json');
 
     return Object.keys(items).map(slug => {
-        const theme = items[slug].default;
+        const integration = items[slug].default;
 
         return {
-            ...theme,
+            ...integration,
             slug,
-            image: {
-                src: theme.image,
-                alt: theme.description,
+            image: integration.image && {
+                src: integration.image,
+                alt: integration.description,
             },
             repoUrl: {
-                href: theme.repoUrl,
-                text: theme.title,
+                href: integration.repoUrl,
+                text: integration.title,
             },
             npmUrl: {
-                href: theme.npmUrl,
-                text: theme.title,
+                href: integration.npmUrl,
+                text: integration.title,
             },
             url: {
-                href: theme.url || theme.npmUrl || theme.repoUrl,
-                text: theme.title,
+                href: integration.url || integration.npmUrl || integration.repoUrl,
+                text: integration.title,
             }
         }
     })

@@ -17,8 +17,12 @@ const downloads = await getDownloadsForPackage(integration.title);
     <a href={integration.url.href} alt={integration.url.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer"></a>
 
     <div class="flex gap-x-4 justify-between items-center p-4">
+            <div class="inline-block p-1 rounded-full border-2 border-dawn">
+                {integration.image
+                    ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em]" loading="lazy" />)
+                    : (<Sprite pack="mdi" name="toy-brick" size="1.5em" class="opacity-30" />)}
+            </div>
         <h2 class="text-lg font-display font-bold">
-            <img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em] inline-block mr-1 p-1 rounded-full border-2 border-dawn" loading="lazy" />
             {integration.title}
         </h2>
         {stars && (
