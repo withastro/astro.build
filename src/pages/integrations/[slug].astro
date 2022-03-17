@@ -1,10 +1,8 @@
 ---
-import { fetchCollections, fetchIntegrationsForCollection } from '../../data/integrations.ts';
+import { collections, getIntegrationsForCollection } from '../../data/integrations.ts';
 import Layout from '../../layouts/Integrations.astro';
 
 export async function getStaticPaths() {
-    const collections: string[] = await fetchCollections();
-
     return collections.map(slug => ({
         params: {
             slug,
@@ -14,7 +12,7 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.request.params;
 
-const integrations: App.Integration[] = await fetchIntegrationsForCollection(slug);
+const integrations: App.Integration[] = getIntegrationsForCollection(slug);
 
 const meta = {
     title: 'Integration',

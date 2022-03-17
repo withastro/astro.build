@@ -1,8 +1,6 @@
 ---
-import { fetchIntegrations } from '../../data/integrations.ts';
 import Layout from '../../layouts/Integrations.astro';
-
-const integrations: App.Integration[] = await fetchIntegrations();
+import integrations from '../../data/integrations.json';
 
 const meta = {
     title: 'Integration',

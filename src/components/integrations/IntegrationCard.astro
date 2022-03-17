@@ -1,7 +1,5 @@
 ---
 import { Sprite } from 'astro-icon';
-import { getStarsForRepo } from '../../github.ts';
-import { getDownloadsForPackage } from '../../npm.ts';
 
 export interface Props {
     integration: App.Integration;
@@ -9,24 +7,26 @@ export interface Props {
 
 const { integration } = Astro.props as Props;
 
-const stars = await getStarsForRepo(integration.repoUrl.href);
-const downloads = await getDownloadsForPackage(integration.title);
+const formatter = Intl.NumberFormat('en', { notation: 'compact' });
+
+const stars = !!integration.stars && formatter.format(integration.stars);
+const downloads = !!integration.downloads && formatter.format(integration.downloads);
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white relative">
     <a href={integration.url.href} alt={integration.url.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer"></a>
 
     <div class="flex gap-x-4 justify-between items-center p-4">
-            <div class="inline-block p-1 rounded-full border-2 border-dawn">
-                {integration.image
-                    ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em]" loading="lazy" />)
-                    : (<Sprite pack="mdi" name="toy-brick" size="1.5em" class="opacity-30" />)}
-            </div>
-        <h2 class="text-lg font-display font-bold">
+        <div class="inline-block p-1 rounded-full border-2 border-dawn">
+            {integration.image
+                ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em]" loading="lazy" />)
+                : (<Sprite pack="mdi" name="toy-brick" size="1.5em" class="opacity-30" />)}
+        </div>
+        <h2 class="text-md font-display font-bold mr-auto break-word">
             {integration.title}
         </h2>
         {stars && (
-            <a href={integration.repoUrl.href} target="_blank" rel="noopener noreferrer" class="z-20 ml-auto subtle flex items-center gap-x-1 col-start-2 text-sm">
+            <a href={integration.repoUrl.href} target="_blank" rel="noopener noreferrer" class="z-20 subtle flex items-center gap-x-1 col-start-2 text-sm">
                 <span class="sr-only">View the integration source code</span>
                 <Sprite pack="fa-regular" name="star" size="1.25em" />
                 <span>{stars}</span>

@@ -8,7 +8,7 @@ import PillList from '../components/PillList.astro';
 import CardsBlock from '../components/blocks/CardsBlock.astro';
 import TitleBlock from '../components/blocks/TitleBlock.astro';
 import IntegrationCard from '../components/integrations/IntegrationCard.astro';
-import { fetchCollections } from '../data/integrations.ts';
+import { collections } from '../data/integrations.ts';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
@@ -18,8 +18,6 @@ export interface Props {
 }
 
 const { meta, integrations, collection = 'all' } = Astro.props as Props;
-
-const collections = await fetchCollections();
 
 const collectionLinks: App.Link[] = [
     {
