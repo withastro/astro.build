@@ -37,7 +37,7 @@ declare namespace App {
         slug: string;
         title: string;
         description: string;
-        image: Image;
+        image?: Image;
         categories: string[];
         repoUrl: Link;
         npmUrl: Link;
