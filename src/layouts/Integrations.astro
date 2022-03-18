@@ -31,6 +31,8 @@ const collectionLinks: App.Link[] = [
 ];
 
 const currentCollection = collectionLinks.find(({ text }) => text === collection);
+
+console.log('layout', Astro.slots.has('description'))
 ---
 
 <Layout meta={meta}>
@@ -39,7 +41,7 @@ const currentCollection = collectionLinks.find(({ text }) => text === collection
     <TitleBlock>
         <Fragment slot="title">{meta.title}</Fragment>
 
-        <p>{meta.description}</p>
+        <slot name="description"><p>{meta.description}</p></slot>
     </TitleBlock>
 
     <PillList title="collections" links={collectionLinks} current={currentCollection} class="mb-6" />
