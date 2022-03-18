@@ -10,7 +10,7 @@ export const overrides = {
     },
     "astro-seo": {
         "categories": ["seo"]
-    }
+    },
 };
 
 export const keywords = {

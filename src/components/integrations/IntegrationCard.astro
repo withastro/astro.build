@@ -16,21 +16,27 @@ const downloads = !!integration.downloads && formatter.format(integration.downlo
 <article class="flex flex-col p-4 rounded-lg shadow-md bg-white relative">
     <a href={integration.url.href} alt={integration.url.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer"></a>
 
-    <div class="flex gap-x-3 items-center">
-        <div class="inline-block p-1 rounded-full border-2 border-dawn">
+    <div class="flex gap-x-4 items-center">
+        <div class="inline-block p-1 rounded-full border-2 border-dawn mr-auto">
             {integration.image 
                 ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em]" loading="lazy" />)
                 : (<Sprite pack="mdi" name="toy-brick" size="1.5em" class="opacity-30" />)}
         </div>
-        {stars && (
-            <a href={integration.repoUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center gap-x-1 text-sm first-of-type:ml-auto">
+        {integration.official && (
+            <div class="flex items-center gap-x-1 col-start-2 text-sm">
+                <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" />
+                <span>Official</span>
+            </div>
+        )}
+        {!integration.official && stars && (
+            <a href={integration.repoUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center gap-x-1 text-sm">
                 <span class="sr-only">View the integration source code</span>
                 <Sprite pack="fa-regular" name="star" size="1.25em" />
                 <span>{stars}</span>
             </a>
         )}
-        {downloads && (
-            <a href={integration.npmUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center text-sm first-of-type:ml-auto">
+        {!integration.official && downloads && (
+            <a href={integration.npmUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center text-sm">
                 <span class="sr-only">View on NPM</span>
                 <Sprite pack="heroicons-outline" name="download" size="1.25em" />
                 <span>{downloads}</span>
