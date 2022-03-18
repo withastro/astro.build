@@ -2,9 +2,55 @@
 import { Sprite } from 'astro-icon';
 import Drawer from './Drawer.astro';
 import MobileMenu from './MobileMenu.astro';
+import FlyoutMenu from './FlyoutMenu.astro';
 import { navigation, social } from '../config.ts';
 
 const { invert = false, marginBottom = false } = Astro.props;
+
+const menus = [
+    {
+        title: "Build",
+        items: [{
+            link: {
+                href: "https://docs.astro.build/en/getting-started/",
+                text: "Getting Started"
+            },
+            description: "New to Astro? Start with our docs and online playground."
+        }, {
+            link: {
+                href: "/themes",
+                text: "Themes"
+            },
+            description: "Start your next Astro project with a prebuilt theme."
+        }, {
+            link: {
+                href: "/integrations",
+                text: "Integrations"
+            },
+            description: "Try the plugins and components built by our amazing community."
+        }]
+    },
+    {
+        title: "Learn",
+        items: [{
+            link: {
+                href: "https://docs.astro.build",
+                text: "Docs"
+            },
+        }, {
+            link: {
+                href: "https://docs.astro.build/en/reference/configuration-reference/",
+                text: "API"
+            }
+        }, {
+            link: {
+                href: "/blog",
+                text: "Blog"
+            },
+            description: "The latest Astro news, straight from the team."
+        }]
+    },
+];
 ---
 
 <nav id="nav" class={`main ${invert ? 'dark' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
@@ -17,13 +63,15 @@ const { invert = false, marginBottom = false } = Astro.props;
             </a>
         </li>
 
-        {navigation.map(item => (
-            <li class={`${item.hiddenMobile ? 'hidden-mobile' : ''}`}>
-                <a aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined} href={item.href}>
-                    {item.title}
-                </a>
+        {menus.map(menu => (
+            <li class="flyout">
+                <FlyoutMenu {...menu} />
             </li>
         ))}
+
+        <li class="hidden-mobile">
+            <a href="/play">Play</a>
+        </li>
 
         {social.map(item => (
             <li class="icon">
@@ -219,6 +267,9 @@ nav a {
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
     transition-property: transform, color;
+    padding: 0 0.5rem;
+}
+nav .flyout {
     padding: 0 0.5rem;
 }
 nav a:focus,
