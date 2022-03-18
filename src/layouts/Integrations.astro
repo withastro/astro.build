@@ -24,9 +24,9 @@ const collectionLinks: App.Link[] = [
         text: 'all',
         href: '/integrations',
     },
-    ...collections.map(collection => ({
-        text: collection,
-        href: `/integrations/${collection}`
+    ...collections.map(({ text, slug }) => ({
+        text,
+        href: `/integrations/${slug}`
     }))
 ];
 

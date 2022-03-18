@@ -1,7 +1,7 @@
 import { format, subDays } from 'date-fns';
 import fs from 'node:fs';
 import fetch from 'node-fetch';
-import { keywords, overrides } from './integrations.mjs';
+import { keywords, overrides } from './integrations-data.mjs';
 
 if (!process.env.GITHUB_TOKEN) {
     throw new Error('GITHUB_TOKEN env variable must be set to run.');

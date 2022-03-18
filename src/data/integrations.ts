@@ -1,6 +1,11 @@
 import integrations from './integrations.json';
 
-function getCollections() {
+export interface Collection {
+    text: string;
+    slug: string;
+}
+
+function getCollections(): Collection[] {
     const collectionsMap = new Map<string, number>();
 
     for (const integration of integrations) {
@@ -16,7 +21,10 @@ function getCollections() {
     return Array.from(collectionsMap.entries())
         .map(([category, count]) => ({ category, count }))
         .sort((a, b) => b.count === a.count ? a.category.localeCompare(b.category) : b.count - a.count)
-        .map(({ category }) => category.replace('+', ' + '));
+        .map(({ category }) => ({
+            slug: category,
+            text: category.replace('+', ' + ')
+        }));
 }
 
 export const collections = getCollections();
