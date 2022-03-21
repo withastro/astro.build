@@ -5,48 +5,108 @@ import clsx from 'clsx';
 export interface Props {
     title?: string;
     items: {
-        link: App.Link;
+        title: string;
+        href: string;
         description?: string;
     }[];
 }
 
+console.log(Astro.props);
 const { title, items } = Astro.props as Props;
 
 const hasDescriptions = items.some(({ description }) => !!description);
 ---
 
-<flyout-menu class="relative block">
-  <button type="button" class="flex items-center font-display" aria-expanded="false">
-    {title}
-    <Sprite pack="heroicons-solid" name="chevron-down" class="chevron h-5 w-5 opacity-50 transition transition-transform duration-200 ease" />
-  </button>
+<details class="flyout">
+    <summary>
+        {title}
+        <Sprite pack="heroicons-solid" name="chevron-down" size="1.25rem" />
+    </summary>
 
-  <section aria-hidden="true" class={clsx("absolute z-10 top-full left-1/2 transform -translate-x-1/2 mt-3 px-2 max-w-xs sm:px-0 pointer-events-none opacity-0 -translate-y-2 transition duration-200 ease", hasDescriptions ? "w-screen" : "text-center whitespace-nowrap")}>
-    <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-      <div class="relative flex flex-col gap-6 font-normal font-body bg-white px-5 py-6 sm:gap-8 sm:p-8">
-        {items.map(({ link, description }) => (
-            <a href={link.href} class="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
-                <p class="text-base font-medium text-gray-900">{link.text}</p>
-                {description && (
-                    <p class="mt-1 text-sm text-gray-500">{description}</p>
-                )}
-            </a>
-        ))}
-      </div>
+    <div>
+        <nav class={clsx({ descriptions: hasDescriptions })}>
+            {items.map(({ title, href, description }) => (
+                <a href={href} alt={title} class="subtle">
+                    <h4>{title}</h4>
+                    {description && (
+                        <p>{description}</p>
+                    )}
+                </a>
+            ))}
+        </nav>
     </div>
-  </section>
-</flyout-menu>
-
-<style>
-    section[aria-hidden="false"] {
-        @apply opacity-100 translate-y-0 pointer-events-auto;
-    }
-
-    flyout-menu[open] .chevron {
-        @apply rotate-180;
-    }
-</style>
+</details>
 
 <script type="module" hoist>
     import './FlyoutMenu.ts';
 </script>
+
+<style>
+    details {
+        position: relative;
+    }
+
+    summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        font-family: var(--font-display);
+        font-size: var(--size-500);
+        color: var(--color-dusk);
+    }
+
+    summary::webkit-details-marker {
+        display: none;
+    }
+
+    summary :global(svg) {
+        opacity: 0.5;
+        margin-left: 0.125rem;
+    }
+
+    div {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        padding-top: 1rem;
+        transform: translate(-50%);
+        opacity: 0;
+        transition: opacity 150ms ease;
+        will-change: opacity;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 20rem;
+        background: white;
+        text-align: center;
+        white-space: nowrap;
+        box-shadow: var(--shadow-sm);
+        border-radius: 0.5rem;
+    }
+
+    details[open] div {
+        opacity: 1;
+    }
+
+    nav.descriptions {
+        width: 100vw;
+        text-align: start;
+        white-space: normal;
+    }
+
+    a h4 {
+        font-size: var(--size-500);
+        font-family: var(--font-body);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    a p {
+        font-size: var(--size-400);
+        opacity: 0.75;
+    }
+</style>
