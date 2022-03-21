@@ -14,11 +14,15 @@ export const overrides = {
 };
 
 export const keywordsMap = {
+    "a11y": "accessibility",
+    "accessibility": "accessibility",
     "astro-component": "css+ui",
-    "seo": "seo",
     "analytics": "analytics",
     "cms": "cms",
-    "astro-renderer": "renderers"
+    "ecommerce": "ecommerce",
+    "performance": "performance",
+    "renderer": "renderer",
+    "seo": "seo",
 }
 
 export function keywordToCategory(keyword) {
