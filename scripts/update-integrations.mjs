@@ -7,12 +7,17 @@ import {
   searchByKeyword,
 } from "./npm.mjs";
 
+function isOfficial(pkg) {
+  return pkg.startsWith("@astrojs/");
+}
+
 function normalizePackageDetails(data, pkg) {
   return {
     slug: data.name,
     title: data.name,
     description: data.description,
     categories: (data.keywords ?? []).map(keywordToCategory).filter(Boolean),
+    official: isOfficial(pkg),
     repoUrl: {
       href: data.repository.url
         .replace("git+", "")
@@ -33,6 +38,7 @@ function normalizePackageDetails(data, pkg) {
 
 async function getStarsForRepo(repoUrl) {
   const { org, repo } = parseRepoUrl(repoUrl) ?? {};
+
   if (!org || !repo) {
     return 0;
   }
@@ -70,8 +76,9 @@ async function main() {
     downloads,
   }));
 
+  // don't fetch stars for official packages, they get a badge instead
   const stars = await Promise.all(
-    npmData.map((data) => getStarsForRepo(data.repoUrl.href))
+    npmData.map((data) => data.official ? undefined : getStarsForRepo(data.repoUrl.href))
   );
 
   const integrations = npmData
