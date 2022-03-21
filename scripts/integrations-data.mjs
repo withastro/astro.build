@@ -13,8 +13,14 @@ export const overrides = {
     },
 };
 
-export const keywords = {
-    "astro-component": {
-        "categories": ["css+ui"]
-    }
+export const keywordsMap = {
+    "astro-component": "css+ui",
+    "seo": "seo",
+    "analytics": "analytics",
+    "cms": "cms",
+    "astro-renderer": "renderers"
+}
+
+export function keywordToCategory(keyword) {
+    return keywordsMap[keyword];
 }
