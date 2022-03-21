@@ -29,3 +29,51 @@ export const footer = [
     { href: '/blog', title: 'Blog' },
     { href: '/press', title: 'Press' }
 ]
+
+export interface NavigationItem {
+    href: string;
+    title: string;
+    description?: string;
+    hiddenMobile?: boolean;
+}
+
+export interface NavigationGroup {
+    title: string;
+    items: NavigationItem[];
+}
+
+export type GlobalNavigation = (NavigationItem | NavigationGroup)[];
+
+export const globalNavigation: GlobalNavigation = [
+    {
+        title: "Build",
+        items: [{
+            href: "https://docs.astro.build/en/getting-started/",
+            title: "Getting Started",
+            description: "New to Astro? Start with our docs and online playground."
+        }, {
+            href: "/themes",
+            title: "Themes",
+            description: "Start your next Astro project with a prebuilt theme."
+        }, {
+            href: "/integrations",
+            title: "Integrations",
+            description: "Try the plugins and components built by our amazing community."
+        }]
+    },
+    {
+        title: "Learn",
+        items: [{
+            href: "https://docs.astro.build",
+            title: "Docs",
+        }, {
+            href: "https://docs.astro.build/en/reference/configuration-reference/",
+            title: "API"
+        }, {
+            href: "/blog",
+            title: "Blog",
+            description: "The latest Astro news, straight from the team."
+        }]
+    },
+    { href: '/play', title: 'Playground', hiddenMobile: true }
+]

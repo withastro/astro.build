@@ -3,55 +3,9 @@ import { Sprite } from 'astro-icon';
 import Drawer from './Drawer.astro';
 import MobileMenu from './MobileMenu.astro';
 import FlyoutMenu from './FlyoutMenu.astro';
-import Flyout from './Flyout.astro';
-import { navigation, social } from '../config.ts';
+import { globalNavigation, social } from '../config.ts';
 
 const { invert = false, marginBottom = false } = Astro.props;
-
-const menus = [
-    {
-        title: "Build",
-        items: [{
-            link: {
-                href: "https://docs.astro.build/en/getting-started/",
-                text: "Getting Started"
-            },
-            description: "New to Astro? Start with our docs and online playground."
-        }, {
-            link: {
-                href: "/themes",
-                text: "Themes"
-            },
-            description: "Start your next Astro project with a prebuilt theme."
-        }, {
-            link: {
-                href: "/integrations",
-                text: "Integrations"
-            },
-            description: "Try the plugins and components built by our amazing community."
-        }]
-    },
-    {
-        title: "Learn",
-        items: [{
-            link: {
-                href: "https://docs.astro.build",
-                text: "Docs"
-            },
-        }, {
-            link: {
-                href: "https://docs.astro.build/en/reference/configuration-reference/",
-                text: "API"
-            }
-        }, {
-            link: {
-                href: "/blog",
-                text: "Blog"
-            },
-            description: "The latest Astro news, straight from the team."
-        }]
-    },
-];
 ---
 
 <nav id="nav" class={`main ${invert ? 'dark' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
@@ -64,15 +18,17 @@ const menus = [
             </a>
         </li>
 
-        {menus.map(menu => (
-            <li class="flyout">
-                <Flyout {...menu} />
-            </li>
+        {globalNavigation.map(item => (
+            item.items ? (
+                <li class="flyout">
+                    <FlyoutMenu {...item} />
+                </li>
+            ) : (
+                <li>
+                    <a href={item.href}>{item.title}</a>
+                </li>
+            )
         ))}
-
-        <li class="hidden-mobile">
-            <a href="/play">Play</a>
-        </li>
 
         {social.map(item => (
             <li class="icon">
