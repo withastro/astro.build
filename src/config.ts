@@ -66,9 +66,11 @@ export const globalNavigation: GlobalNavigation = [
         items: [{
             href: "https://docs.astro.build",
             title: "Docs",
+            description: "Not your first rodeo? Jump into our docs for examples and best practices.",
         }, {
             href: "https://docs.astro.build/en/reference/configuration-reference/",
-            title: "API"
+            title: "API",
+            description: "Read more about our API, configuration, built-in components, and more."
         }, {
             href: "/blog",
             title: "Blog",
