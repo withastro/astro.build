@@ -25,6 +25,12 @@ export const keywordsMap = {
     "seo": "seo",
 }
 
+/**
+ * Gets an integration category for a given NPM package keyword, or undefined if it isn't recognized.
+ * 
+ * @param {String} keyword Keyword from npm package (case insensitive)
+ * @returns {String | undefined }
+ */
 export function keywordToCategory(keyword) {
-    return keywordsMap[keyword];
+    return keywordsMap[keyword.toLowerCase()];
 }
