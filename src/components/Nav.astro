@@ -3,6 +3,7 @@ import { Sprite } from 'astro-icon';
 import Drawer from './Drawer.astro';
 import MobileMenu from './MobileMenu.astro';
 import FlyoutMenu from './FlyoutMenu.astro';
+import Flyout from './Flyout.astro';
 import { navigation, social } from '../config.ts';
 
 const { invert = false, marginBottom = false } = Astro.props;
@@ -65,7 +66,7 @@ const menus = [
 
         {menus.map(menu => (
             <li class="flyout">
-                <FlyoutMenu {...menu} />
+                <Flyout {...menu} />
             </li>
         ))}
 
