@@ -10,6 +10,7 @@ import TitleBlock from '../components/blocks/TitleBlock.astro';
 import IntegrationCard from '../components/integrations/IntegrationCard.astro';
 import { collections } from '../data/integrations.ts';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+import Search from '../components/integrations/Search.astro';
 
 export interface Props {
     meta: BaseHeadProps;
@@ -42,7 +43,11 @@ const currentCollection = collectionLinks.find(({ text }) => text === collection
         <slot name="description"><p>{meta.description}</p></slot>
     </TitleBlock>
 
-    <PillList title="collections" links={collectionLinks} current={currentCollection} class="mb-6" />
+    <header class="flex flex-row items-center justify-between">
+        <PillList title="collections" links={collectionLinks} current={currentCollection} class="mb-6" />
+
+        <Search id="integrationsearch" selector="#integrations > *" placeholder="search integrations" />
+    </header>
 
     <Aside class="mb-4 text-sm">
         <p class="text-justify">
@@ -59,8 +64,8 @@ const currentCollection = collectionLinks.find(({ text }) => text === collection
         </p>
     </Aside>
 
-    <CardsBlock>
-        {integrations.map(integration => (<IntegrationCard {integration} />))}
+    <CardsBlock id="integrations">
+        {integrations.map(integration => (<IntegrationCard integration={integration} />))}
     </CardsBlock>
 
     <Footer slot="footer" />

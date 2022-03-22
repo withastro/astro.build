@@ -1,0 +1,117 @@
+---
+import { Sprite } from 'astro-icon';
+
+export interface Props {
+    id: string;
+    placeholder: string;
+    selector: string;
+}
+
+const { id, placeholder, selector = '#integrations > *' } = Astro.props as Props;
+
+const inlineStyle = `
+    ${selector}[hidden] {
+        display: none;
+    }
+`
+---
+
+<div class="relative h-12 hidden sm:block">
+    <div class="wrapper">
+        <input type="text" {id} {placeholder}>
+        <button>
+            <Sprite pack="heroicons-outline" name="search" size={24} />
+        </button>
+    </div>
+</div>
+
+<style set:html={inlineStyle}></style>
+
+<script type="module" define:vars={{selector, id}}>
+    /* https://gomakethings.com/how-to-create-a-search-page-for-a-static-website-with-vanilla-js/ */
+    const stopWords = ['a', 'an', 'and', 'are', 'aren\'t', 'as', 'by', 'can', 'cannot', 'can\'t', 'could', 'couldn\'t', 'how', 'is', 'isn\'t', 'it', 'its', 'it\'s', 'that', 'the', 'their', 'there', 'they', 'they\'re', 'them', 'to', 'too', 'us', 'very', 'was', 'we', 'well', 'were', 'what', 'whatever', 'when', 'whenever', 'where', 'with', 'would', 'yet', 'you', 'your', 'yours', 'yourself', 'yourselves', 'the'];
+
+    const input = document.getElementById(id);
+    const button = document.querySelector(`#${id} + button`);
+    const items = document.querySelectorAll(selector);
+
+    const update = () => {
+        const regexMap = input.value.toLowerCase()
+            .split(' ')
+            .filter(word => word.length && !stopWords.includes(word))
+            .map(word => new RegExp(word, 'i'));
+
+        for (const item of items) {
+            const isMatch = !regexMap.length || regexMap.some(regex => !!item.textContent.match(regex));
+            isMatch ? item.removeAttribute('hidden') : item.setAttribute('hidden', '');
+        }
+    }
+
+    input.addEventListener('input', update, true);
+    button.addEventListener('click', () => input.focus(), true);
+    
+    update();
+</script>
+
+<style>
+    /* div */
+    .wrapper {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: white;
+        border-radius: 9999px;
+        padding: .25rem;
+        box-shadow: var(--shadow-sm);
+    }
+    :global(.js) .wrapper {
+        display: flex;
+    }
+    /* input */
+    input {
+        outline: none;
+        border: none;
+        background: none;
+        width: 0;
+        padding: 0;
+        color: var(--color-midnight);
+        float: left;
+        font-size: 16px;
+        transition: .3s ease;
+        line-height: 40px;
+    }
+    input::placeholder {
+        color: var(--color-midnight);
+        opacity: 0.75;
+    }
+    /* icon */
+    button {
+        color: var(--color-midnight);
+        float: right;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        transition: .3s ease;
+    }
+    input:focus,
+    input:not(:placeholder-shown) {
+        width: 25ch;
+        padding: 0 .5rem;
+    }
+    .wrapper:hover > input {
+        width: 25ch;
+        padding: 0 .5rem;
+    }
+    .wrapper:hover > button,
+    input:focus + button,
+    input:not(:placeholder-shown) + button {
+        background: var(--color-dusk);
+        color: white;
+    }
+</style>
