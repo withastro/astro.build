@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import { keywordToCategory, overrides } from "./integrations-data.mjs";
+import { getCategoriesForKeyword, getOverrides } from "./integrations-data.mjs";
 import { parseRepoUrl, orgApi } from "./github.mjs";
 import {
   fetchDetailsForPackage,
@@ -12,11 +12,16 @@ function isOfficial(pkg) {
 }
 
 function normalizePackageDetails(data, pkg) {
+  const allCategories = (data.keywords ?? []).map(getCategoriesForKeyword).flat();
+  const uniqCategories = Array.from(
+    new Set(allCategories)
+  );
+
   return {
     slug: data.name,
     title: data.name,
     description: data.description,
-    categories: (data.keywords ?? []).map(keywordToCategory).filter(Boolean),
+    categories: uniqCategories,
     official: isOfficial(pkg),
     repoUrl: {
       href: data.repository.url
@@ -48,7 +53,7 @@ async function getStarsForRepo(repoUrl) {
 
 async function fetchDetailsWithOverrides(pkg) {
   const details = await fetchDetailsForPackage(pkg);
-  const integrationOverrides = overrides[pkg] || {};
+  const integrationOverrides = getOverrides(pkg) || {};
 
   return {
     ...normalizePackageDetails(details, pkg),
