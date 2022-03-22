@@ -1,36 +1,46 @@
-export const overrides = {
-    "astro-analytics": {
-        "categories": ["analytics"]
-    },
-    "astro-xelement": {
-        "description": "XElement is a powerful Astro Web Component generator."
-    },
-    "astro-pandoc": {
-        "description": "Astro component for using pandoc to convert content."
-    },
-    "astro-seo": {
-        "categories": ["seo"]
-    },
-};
+import { readFileSync } from 'fs';
 
-export const keywordsMap = {
-    "a11y": "accessibility",
-    "accessibility": "accessibility",
-    "astro-component": "css+ui",
-    "analytics": "analytics",
-    "cms": "cms",
-    "ecommerce": "ecommerce",
-    "performance": "performance",
-    "renderer": "renderer",
-    "seo": "seo",
+const integrations = JSON.parse(
+    readFileSync(
+        new URL('./integrations.json', import.meta.url)
+    )
+);
+
+const keywordToCategories = Object.entries(integrations.categories)
+    .reduce((acc, [key, value]) => {
+        const { keywords } = value;
+
+        for (const keyword of keywords) {
+            const set = acc.has(keyword) ? acc.get(keyword) : new Set();
+            set.add(key);
+            acc.set(keyword, set);
+        }
+
+        return acc;
+    }, new Map());
+
+/**
+ * Gets the overridden integration properties for an npm package, or undefined if not found.
+ * 
+ * @param {String} packageName Name of the NPM package
+ * @returns {Partial<AppendMode.Integration> | undefined}
+ */
+export function getOverrides(packageName) {
+    return packageName in integrations.overrides
+        ? integrations.overrides[packageName]
+        : undefined
 }
 
 /**
- * Gets an integration category for a given NPM package keyword, or undefined if it isn't recognized.
+ * Gets a list of integration categories for an npm keyword.
  * 
- * @param {String} keyword Keyword from npm package (case insensitive)
- * @returns {String | undefined }
+ * @param {String} keyword NPM package keyword
+ * @returns {String[]}
  */
-export function keywordToCategory(keyword) {
-    return keywordsMap[keyword.toLowerCase()];
+export function getCategoriesForKeyword(keyword) {
+    const categories = keywordToCategories.has(keyword)
+        ? Array.from(keywordToCategories.get(keyword))
+        : [];
+
+    return categories.length ? categories : ['css+ui'];
 }
