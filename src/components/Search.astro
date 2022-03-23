@@ -34,6 +34,14 @@ const inlineStyle = `
     const button = document.querySelector(`#${id} + button`);
     const items = document.querySelectorAll(selector);
 
+    function debounce(fn, timeout = 150) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn.apply(this, args), timeout);
+        }
+    }
+
     const updateOpen = () => {
         requestAnimationFrame(() => {
         (!!input.value || document.activeElement === input)
@@ -56,7 +64,7 @@ const inlineStyle = `
         }
     }
 
-    input.addEventListener('input', update, true);
+    input.addEventListener('input', debounce(update), true);
     button.addEventListener('click', input.focus, true);
     input.addEventListener('focus', updateOpen, true);
     input.addEventListener('blur', updateOpen, true);
