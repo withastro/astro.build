@@ -11,6 +11,34 @@ const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
 const stars = !!integration.stars && formatter.format(integration.stars);
 const downloads = !!integration.downloads && formatter.format(integration.downloads);
+
+const colors = [
+    'text-blue opacity-40',
+    'text-red opacity-50',
+    'text-yellow opacity-60',
+    'text-purple opacity-50'
+]
+
+const icons = [
+    { pack: 'icon-park-outline', name: 'block-one' },
+    { pack: 'icon-park-outline', name: 'block-two' },
+    { pack: 'icon-park-outline', name: 'block-three' },
+    { pack: 'icon-park-outline', name: 'block-four' },
+    { pack: 'icon-park-outline', name: 'block-five' },
+    { pack: 'icon-park-outline', name: 'block-six' },
+    { pack: 'icon-park-outline', name: 'block-seven' },
+    { pack: 'icon-park-outline', name: 'block-eight' },
+    { pack: 'icon-park-outline', name: 'block-nine' },
+    { pack: 'icon-park-outline', name: 'block-ten' },
+]
+
+function randomColor() {
+    return colors[Math.floor(Math.random() * colors.length)]
+}
+
+function randomIcon() {
+    return icons[Math.floor(Math.random() * icons.length)]
+}
 ---
 
 <article class="isolate flex flex-col p-4 rounded-lg shadow-md bg-white relative">
@@ -20,7 +48,7 @@ const downloads = !!integration.downloads && formatter.format(integration.downlo
         <div class="inline-block p-1 rounded-full border-2 border-dawn mr-auto">
             {integration.image 
                 ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em]" loading="lazy" />)
-                : (<Sprite pack="mdi" name="toy-brick" size="1.5em" class="opacity-30" />)}
+                : (<Sprite {...randomIcon()} size="1.5em" class={randomColor()} />)}
         </div>
         {integration.official && (
             <div class="flex items-center gap-x-1 col-start-2 text-sm">
@@ -44,7 +72,7 @@ const downloads = !!integration.downloads && formatter.format(integration.downlo
         )}
     </div>
 
-    <h2 class="text-md pt-4 pb-1 sm:pt-6 sm:pb-2 font-display font-bold break-word">
+    <h2 class="text-md pt-4 pb-1 sm:pt-5 sm:pb-2 font-display font-bold break-word">
         {integration.title}
     </h2>
 
