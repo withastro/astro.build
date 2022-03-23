@@ -5,12 +5,12 @@ import Aside from '../components/Aside.astro';
 import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import PillList from '../components/PillList.astro';
+import Search from '../components/Search.astro';
 import CardsBlock from '../components/blocks/CardsBlock.astro';
 import TitleBlock from '../components/blocks/TitleBlock.astro';
 import IntegrationCard from '../components/integrations/IntegrationCard.astro';
 import { collections } from '../data/integrations.ts';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
-import Search from '../components/integrations/Search.astro';
 
 export interface Props {
     meta: BaseHeadProps;
@@ -43,8 +43,8 @@ const currentCollection = collectionLinks.find(({ text }) => text === collection
         <slot name="description"><p>{meta.description}</p></slot>
     </TitleBlock>
 
-    <header class="flex flex-row items-center justify-between">
-        <PillList title="collections" links={collectionLinks} current={currentCollection} class="mb-6" />
+    <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
+        <PillList title="collections" links={collectionLinks} current={currentCollection} />
 
         <Search id="integrationsearch" selector="#integrations > *" placeholder="search integrations" />
     </header>
