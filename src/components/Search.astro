@@ -34,6 +34,8 @@ const inlineStyle = `
     const button = document.querySelector(`#${id} + button`);
     const items = document.querySelectorAll(selector);
 
+    const FPS_30 = 1000 / 30;
+
     function debounce(fn, timeout = 150) {
         let timer;
         return (...args) => {
@@ -64,7 +66,7 @@ const inlineStyle = `
         }
     }
 
-    input.addEventListener('input', debounce(update), true);
+    input.addEventListener('input', debounce(update, FPS_30), true);
     button.addEventListener('click', input.focus, true);
     input.addEventListener('focus', updateOpen, true);
     input.addEventListener('blur', updateOpen, true);
