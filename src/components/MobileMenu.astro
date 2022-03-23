@@ -4,6 +4,14 @@ import MobileMenuGroup from './MobileMenuGroup.astro';
 import { footer, globalNavigation, social } from '../config.ts';
 
 const visibleOnMobile = (item) => !item.hiddenMobile;
+
+const visibleItems = globalNavigation.map(item => {
+    const items = item.items?.filter(visibleOnMobile)
+    return {
+        ...item,
+        items
+    }
+}).filter(item => visibleOnMobile(item) || item.items?.length);
 ---
 
 <nav>
@@ -17,7 +25,7 @@ const visibleOnMobile = (item) => !item.hiddenMobile;
     <ul>
         <li><a href="/" class="subtle" aria-current={Astro.request.url.pathname === "/" ? 'page' : undefined}>Home</a></li>
 
-        {globalNavigation.filter(item => visibleOnMobile(item) || item.items).map(item => (
+        {visibleItems.map(item => (
             <li>
                 {item.items
                     ? (<MobileMenuGroup {...item} />)
@@ -105,6 +113,9 @@ const visibleOnMobile = (item) => !item.hiddenMobile;
         display: block;
         padding: .5rem 0;
         font-size: var(--size-600);
+    }
+
+    a, a:visited {
         color: var(--color-midnight);
     }
 
