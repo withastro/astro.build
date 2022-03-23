@@ -1,3 +1,3 @@
-import { listen } from 'quicklink';
+import { listen } from 'quicklink'
 
-listen();
+listen()

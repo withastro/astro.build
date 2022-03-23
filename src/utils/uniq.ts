@@ -1,3 +1,3 @@
 export function uniq<T>(arr: T[]) {
-    return Array.from(new Set(arr));
+	return Array.from(new Set(arr))
 }

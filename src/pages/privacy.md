@@ -1,12 +1,12 @@
 ---
 setup: |
-    import Layout from '../layouts/Legal.astro'
-    import PanelBlock from '../components/blocks/PanelBlock.astro'
+  import Layout from '../layouts/Legal.astro'
+  import PanelBlock from '../components/blocks/PanelBlock.astro'
 title: Privacy Policy
 updated_date: Jan 6, 2022
 description: Astro's privacy policy
 header: |
-    In addition to this Privacy Policy, Astro also has [Terms of Service](/terms).
+  In addition to this Privacy Policy, Astro also has [Terms of Service](/terms).
 ---
 
 The Astro Privacy Policy describes the privacy practices of Astro website and services. The laws of California and the laws of the United States apply. If you are a resident of EU/EEA, the European Commission-approved Standard Contractual Clauses (also referred to as Model Contracts) apply to Trans-Atlantic data transfers.
@@ -17,7 +17,6 @@ We collect very limited personally identifiable information described below (the
 
 - It is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of [Terms of Service](/terms), or as otherwise required by law.
 - We transfer information about you if Astro is acquired by or merged with another company. In this event, Astro will notify you before information about you is transferred and becomes subject to a different privacy policy.
-
 
 ### Information Gathering and Usage
 
@@ -44,7 +43,6 @@ Data is kept for the time necessary to provide the products or services requeste
 Data subject (customer) can always request Astro to allow access and correction, supplement or update of data. Subject to a reasonable request of a data subject, Astro will remove data pertaining to a data subject unless applicable laws impose a duty to retain data for certain time or identification, location and deletion of data imposes a disproportionate financial burden upon Astro. Any requests for access, correction or deletion of data should be directed to Astro by sending an email to [privacy@astro.build](mailto:privacy@astro.build).
 
 You may be aware that a European Union law, called the General Data Protection Regulation or "GDPR" gives certain rights to individuals in relation to their personal data. In order to enable you to exercise these rights with ease in relation to how Astro uses your personal data, we provide you with access to the following settings via your Account Settings page:
-
 
 - Remove Account - allows you to delete your account and associated personal data; and,
 - Notifications - allows you to manage communications you receive from Astro.
@@ -84,7 +82,6 @@ We may display content that links to third-party websites. We cannot control or 
 ### Changes
 
 Astro may periodically update this policy. We encourage you to periodically review our website for the latest information on our privacy practices.
-
 
 ### Questions
 
