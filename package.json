@@ -1,36 +1,42 @@
 {
-  "name": "astro.build",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "astro dev --experimental-static-build",
-    "dev": "astro dev --experimental-static-build",
-    "debug": "DEBUG=* astro dev --experimental-static-build",
-    "build": "astro build --experimental-static-build",
-    "preview": "astro preview",
-    "update-contributors": "node ./update-contributors.mjs"
-  },
-  "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.0",
-    "@tailwindcss/typography": "^0.5.2",
-    "astro": "^0.24.3",
-    "astro-icon": "^0.6.0",
-    "autoprefixer": "^10.4.4",
-    "clsx": "^1.1.1",
-    "focus-trap": "^6.7.3",
-    "micromorph": "^0.1.2",
-    "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23"
-  },
-  "volta": {
-    "node": "14.18.3"
-  },
-  "dependencies": {
-    "date-fns": "^2.28.0",
-    "quicklink": "^2.2.0",
-    "rehype-autolink-headings": "^6.1.1",
-    "remark-autolink-headings": "^7.0.1",
-    "remark-smartypants": "^2.0.0",
-    "smartypants": "^0.1.6"
-  }
+	"name": "astro.build",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "astro dev",
+		"dev": "astro dev",
+		"debug": "DEBUG=* astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"lint": "prettier --write .",
+		"update-contributors": "node -r dotenv/config ./scripts/update-contributors.mjs",
+		"update-integrations": "node -r dotenv/config ./scripts/update-integrations.mjs"
+	},
+	"devDependencies": {
+		"@tailwindcss/aspect-ratio": "^0.4.0",
+		"@tailwindcss/line-clamp": "^0.3.1",
+		"@tailwindcss/typography": "^0.5.2",
+		"astro": "^0.24.3",
+		"astro-icon": "^0.6.0",
+		"autoprefixer": "^10.4.4",
+		"clsx": "^1.1.1",
+		"dotenv": "^16.0.0",
+		"focus-trap": "^6.7.3",
+		"micromorph": "^0.1.2",
+		"postcss": "^8.4.12",
+		"prettier": "^2.6.0",
+		"prettier-plugin-astro": "^0.0.12",
+		"tailwindcss": "^3.0.23"
+	},
+	"volta": {
+		"node": "14.18.3"
+	},
+	"dependencies": {
+		"date-fns": "^2.28.0",
+		"quicklink": "^2.2.0",
+		"rehype-autolink-headings": "^6.1.1",
+		"remark-autolink-headings": "^7.0.1",
+		"remark-smartypants": "^2.0.0",
+		"smartypants": "^0.1.6"
+	}
 }

@@ -1,0 +1,74 @@
+---
+import { Sprite } from 'astro-icon';
+import type { NavigationGroup } from '../config.ts';
+
+export type Props = NavigationGroup;
+
+const { title, items } = Astro.props as Props;
+---
+
+<details>
+    <summary>
+        {title}
+        <Sprite pack="heroicons-solid" name="chevron-down" size="1.25rem" />
+    </summary>
+
+    <ul>
+        {items.map(subitem => (
+            <li>
+                <a href={subitem.href}>{subitem.title}</a>
+            </li>
+        ))}
+    </ul>
+</details>
+
+<style>
+    summary {
+        position: relative;
+        padding: 0.5rem 0;
+        list-style: none;
+        font-size: var(--size-600);
+        color: var(--color-dusk);
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary :global(svg) {
+        opacity: 0.5;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        will-change: transform;
+        transition: transform 150ms ease;
+    }
+    
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    a {
+        display: block;
+        padding: .5rem 0;
+        font-size: var(--size-500);
+    }
+
+    a, a:visited {
+        color: var(--color-dusk);
+    }
+
+    a:focus,
+    a:hover {
+        color: var(--color-purple);
+    }
+    a:active {
+        color: var(--color-blue);
+    }
+
+    details[open] summary :global(svg) {
+        transform: translateY(-50%) rotate(180deg);
+    }
+</style>

@@ -1,0 +1,75 @@
+---
+import { Sprite } from 'astro-icon';
+import Layout from './Content.astro';
+import Aside from '../components/Aside.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import PillList from '../components/PillList.astro';
+import Search from '../components/Search.astro';
+import CardsBlock from '../components/blocks/CardsBlock.astro';
+import TitleBlock from '../components/blocks/TitleBlock.astro';
+import IntegrationCard from '../components/integrations/IntegrationCard.astro';
+import { collections } from '../data/integrations.ts';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+
+export interface Props {
+    meta: BaseHeadProps;
+    integrations: App.Integration[];
+    collection?: string;
+}
+
+const { meta, integrations, collection = 'all' } = Astro.props as Props;
+
+type CollectionLink = App.Link & { slug: string };
+const collectionLinks: CollectionLink[] = [
+    {
+        text: 'all',
+        href: '/integrations',
+        slug: 'all'
+    },
+    ...collections.map(({ text, slug }) => ({
+        text,
+        href: `/integrations/${slug}`,
+        slug
+    }))
+];
+
+const currentCollection = collectionLinks.find(({ slug }) => slug === collection);
+---
+
+<Layout meta={meta}>
+    <Nav slot="nav" />
+
+    <TitleBlock>
+        <Fragment slot="title">{meta.title}</Fragment>
+
+        <slot name="description"><p>{meta.description}</p></slot>
+    </TitleBlock>
+
+    <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
+        <PillList title="collections" links={collectionLinks} current={currentCollection} />
+
+        <Search id="integrationsearch" selector="#integrations > *" placeholder="Search" />
+    </header>
+
+    <Aside class="mb-4 text-sm">
+        <p class="text-justify">
+            <Sprite pack="heroicons-outline" name="information-circle" size="1.5em" class="inline-block" />
+            <a
+                href="https://github.com/withastro/astro.build/issues/new/choose"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="subtle underline">
+                Add your own integrations.
+            </a>
+            <span>Questions about building plugins and components? Join our community on</span>
+            <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+        </p>
+    </Aside>
+
+    <CardsBlock id="integrations">
+        {integrations.map(integration => (<IntegrationCard integration={integration} />))}
+    </CardsBlock>
+
+    <Footer slot="footer" />
+</Layout>

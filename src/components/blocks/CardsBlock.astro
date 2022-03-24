@@ -1,3 +1,11 @@
-<section class="container grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+---
+export interface Props {
+    id?: string;
+}
+
+const { id } = Astro.props as Props;
+---
+
+<section {id} class="container grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <slot />
 </section>
