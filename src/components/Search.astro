@@ -17,12 +17,14 @@ const inlineStyle = `
 `
 ---
 
-<div>
-    <input type="text" {id} {placeholder}>
-    <button>
-        <Sprite pack="heroicons-outline" name="search" size={24} />
-    </button>
-</div>
+<section>
+    <div>
+        <input type="text" {id} {placeholder}>
+        <button>
+            <Sprite pack="heroicons-outline" name="search" size={24} />
+        </button>
+    </div>
+</section>
 
 <style set:html={inlineStyle}></style>
 
@@ -75,6 +77,13 @@ const inlineStyle = `
 </script>
 
 <style>
+    section {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 16px;
+        width: calc(25ch + 2.5rem);
+    }
+
     div {
         display: flex;
         border-radius: 9999px;
@@ -109,7 +118,7 @@ const inlineStyle = `
     }
 
     @media (max-width: 768px) {
-        div {
+        div, section {
             width: 100%;
         }
 
