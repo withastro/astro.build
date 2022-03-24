@@ -1,0 +1,32 @@
+name: Update a Community Integration
+description: Update integration details shown on astro.build (add icons, update description, etc)
+title: 'INTEGRATION:'
+labels: []
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Quick Checklist
+        Thank you for sharing your integraitons with the Astro community! Please fill out this form as completely as possible.
+
+        ✅ Integration is publicly available on NPM
+        ✅ NPM package.json includes the `astro-component` keyword
+
+        Optional: Though not required, icons are a great way to add brand recognition in the Astro's integrations library!
+  - type: input
+    attributes:
+      label: NPM package name
+      description: "ex: `astro-icon` or `@astrojs/react`"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Short description (if different than package.json) and icon
+      description: Icons should either be an SVG or 64x64 pixel PNG.
+  - type: input
+    attributes:
+      label: Homepage URL (if different than package.json)
+      placeholder: https://github.com/username/repo
+    validations:
+      required: true
