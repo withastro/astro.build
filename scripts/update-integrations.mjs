@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { getCategoriesForKeyword, getOverrides } from './integrations-data.mjs'
+import { getCategoriesForKeyword, getOverrides } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
 import {
 	fetchDetailsForPackage,
@@ -16,6 +16,10 @@ function normalizePackageDetails(data, pkg) {
 		.map(getCategoriesForKeyword)
 		.flat()
 	const uniqCategories = Array.from(new Set(allCategories))
+
+	if (!data.repository) {
+		console.log(pkg, data);
+	}
 
 	return {
 		slug: data.name,
