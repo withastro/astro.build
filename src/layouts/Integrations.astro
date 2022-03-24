@@ -20,18 +20,21 @@ export interface Props {
 
 const { meta, integrations, collection = 'all' } = Astro.props as Props;
 
-const collectionLinks: App.Link[] = [
+type CollectionLink = App.Link & { slug: string };
+const collectionLinks: CollectionLink[] = [
     {
         text: 'all',
         href: '/integrations',
+        slug: 'all'
     },
     ...collections.map(({ text, slug }) => ({
         text,
-        href: `/integrations/${slug}`
+        href: `/integrations/${slug}`,
+        slug
     }))
 ];
 
-const currentCollection = collectionLinks.find(({ text }) => text === collection);
+const currentCollection = collectionLinks.find(({ slug }) => slug === collection);
 ---
 
 <Layout meta={meta}>
