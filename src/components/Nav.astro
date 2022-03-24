@@ -21,7 +21,7 @@ const { invert = false, marginBottom = false } = Astro.props;
         {globalNavigation.map((item, i) => (
             item.items ? (
                 <li class="flyout">
-                    <FlyoutMenu {...item} align="right" />
+                    <FlyoutMenu {...item} />
                 </li>
             ) : (
                 <li>

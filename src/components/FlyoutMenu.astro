@@ -12,7 +12,7 @@ export interface Props {
     }[];
 }
 
-const { align = 'left', title, items } = Astro.props as Props;
+const { align = 'center', title, items } = Astro.props as Props;
 
 const hasDescriptions = items.some(({ description }) => !!description);
 ---
