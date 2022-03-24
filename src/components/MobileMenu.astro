@@ -1,17 +1,8 @@
 ---
 import { Sprite } from 'astro-icon';
-import MobileMenuGroup from './MobileMenuGroup.astro';
-import { footer, globalNavigation, social } from '../config.ts';
+import { footer, navigation, social } from '../config.ts';
 
 const visibleOnMobile = (item) => !item.hiddenMobile;
-
-const visibleItems = globalNavigation.map(item => {
-    const items = item.items?.filter(visibleOnMobile)
-    return {
-        ...item,
-        items
-    }
-}).filter(item => visibleOnMobile(item) || item.items?.length);
 ---
 
 <nav>
@@ -24,13 +15,9 @@ const visibleItems = globalNavigation.map(item => {
 
     <ul>
         <li><a href="/" class="subtle" aria-current={Astro.request.url.pathname === "/" ? 'page' : undefined}>Home</a></li>
-
-        {visibleItems.map(item => (
+        {navigation.filter(visibleOnMobile).map(item => (
             <li>
-                {item.items
-                    ? (<MobileMenuGroup {...item} />)
-                    : (<a href={item.href}>{item.title}</a>)
-                }
+                <a href={item.href} class="subtle" aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.title}</a>
             </li>
         ))}
     </ul>
@@ -71,7 +58,6 @@ const visibleItems = globalNavigation.map(item => {
 
     nav > ul {
         flex: 1;
-        gap: 1rem;
     }
 
     ul {
@@ -113,9 +99,6 @@ const visibleItems = globalNavigation.map(item => {
         display: block;
         padding: .5rem 0;
         font-size: var(--size-600);
-    }
-
-    a, a:visited {
         color: var(--color-midnight);
     }
 
