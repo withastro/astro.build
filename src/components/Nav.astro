@@ -18,10 +18,10 @@ const { invert = false, marginBottom = false } = Astro.props;
             </a>
         </li>
 
-        {globalNavigation.map(item => (
+        {globalNavigation.map((item, i) => (
             item.items ? (
                 <li class="flyout">
-                    <FlyoutMenu {...item} />
+                    <FlyoutMenu {...item} align="right" />
                 </li>
             ) : (
                 <li>

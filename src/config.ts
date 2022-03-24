@@ -88,5 +88,20 @@ export const globalNavigation: GlobalNavigation = [
 			},
 		],
 	},
-	{ href: '/play', title: 'Playground', hiddenMobile: true },
+	{
+		title: 'Play',
+		hiddenMobile: true,
+		items: [
+			{
+				href: 'https://astro.new',
+				title: 'Start a Project',
+				description: 'Choose from a variety of starter templates.'
+			},
+			{
+				href: '/play',
+				title: 'Explore the language',
+				description: 'Jump into our online playground to try Astro with zero setup.'
+			}
+		]
+	}
 ]
