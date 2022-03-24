@@ -2,8 +2,7 @@
 import { Sprite } from 'astro-icon';
 import Drawer from './Drawer.astro';
 import MobileMenu from './MobileMenu.astro';
-import FlyoutMenu from './FlyoutMenu.astro';
-import { globalNavigation, social } from '../config.ts';
+import { navigation, social } from '../config.ts';
 
 const { invert = false, marginBottom = false } = Astro.props;
 ---
@@ -18,16 +17,12 @@ const { invert = false, marginBottom = false } = Astro.props;
             </a>
         </li>
 
-        {globalNavigation.map((item, i) => (
-            item.items ? (
-                <li class="flyout">
-                    <FlyoutMenu {...item} />
-                </li>
-            ) : (
-                <li>
-                    <a href={item.href}>{item.title}</a>
-                </li>
-            )
+        {navigation.map(item => (
+            <li class={`${item.hiddenMobile ? 'hidden-mobile' : ''}`}>
+                <a aria-current={Astro.request.url.pathname.startsWith(item.href) ? 'page' : undefined} href={item.href}>
+                    {item.title}
+                </a>
+            </li>
         ))}
 
         {social.map(item => (
@@ -224,9 +219,6 @@ nav a {
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
     transition-property: transform, color;
-    padding: 0 0.5rem;
-}
-nav .flyout {
     padding: 0 0.5rem;
 }
 nav a:focus,

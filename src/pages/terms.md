@@ -4,7 +4,7 @@ title: Terms of Service
 updated_date: Jan 6, 2022
 description: Astro's terms of service
 header: |
-  These terms of service ("Terms") apply to your access and use of the Astro website (the "Service"). Please read them carefully.
+    These terms of service ("Terms") apply to your access and use of the Astro website (the "Service"). Please read them carefully.
 ---
 
 ### Accepting these terms
@@ -26,7 +26,6 @@ For information about how we collect and use information about users of the Serv
 From time to time, we may provide you with links to third party websites or services that we do not own or control. Your use of the Service may also include the use of applications that are developed or owned by a third party. Your use of such third party applications, websites, and services is governed by that party’s own terms of service or privacy policies. We encourage you to read the terms and conditions and privacy policy of any third party application, website or service that you visit or use.
 
 ### Creating Accounts
-
 When you create an account or use another service to log in to the Service, you agree to maintain the security of your password and accept all risks of unauthorized access to any data or other information you provide to the Service.
 
 If you discover or suspect any Service security breaches, please let us know as soon as possible.
