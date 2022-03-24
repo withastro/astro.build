@@ -3,6 +3,7 @@ import { Sprite } from 'astro-icon';
 import clsx from 'clsx';
 
 export interface Props {
+    align?: 'left' | 'center' | 'right'
     title?: string;
     items: {
         title: string;
@@ -11,12 +12,12 @@ export interface Props {
     }[];
 }
 
-const { title, items } = Astro.props as Props;
+const { align = 'left', title, items } = Astro.props as Props;
 
 const hasDescriptions = items.some(({ description }) => !!description);
 ---
 
-<details class="flyout">
+<details class={clsx('flyout', align)}>
     <summary>
         {title}
         <Sprite pack="heroicons-solid" name="chevron-down" size="1.25rem" />
@@ -66,12 +67,20 @@ const hasDescriptions = items.some(({ description }) => !!description);
     div {
         position: absolute;
         top: 100%;
-        left: 50%;
         padding-top: 1rem;
-        transform: translate(-50%);
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 0;
         transition: opacity 150ms ease;
         will-change: opacity;
+    }
+
+    details.left div {
+        transform: translateX(-25%);
+    }
+
+    details.right div {
+        transform: translateX(-75%);
     }
 
     nav {
@@ -79,7 +88,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
         flex-direction: column;
         gap: 2rem;
         padding: 2rem;
-        max-width: 25rem;
+        max-width: min(25rem, 50vw);
         background: white;
         text-align: center;
         white-space: nowrap;
@@ -109,7 +118,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
         opacity: 0.75;
     }
 
-    summary:hover, a.subtle:hover {
+    details[open] summary, summary:hover, a.subtle:hover {
         color: var(--color-purple);
     }
 </style>
