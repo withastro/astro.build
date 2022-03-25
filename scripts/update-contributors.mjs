@@ -20,7 +20,7 @@ async function main() {
 
 	fs.writeFileSync(
 		'src/data/contributors.json',
-		JSON.stringify({ staff, l3, l2, l1 })
+		JSON.stringify({ staff, l3, l2, l1 }, null, 4)
 	)
 }
 
