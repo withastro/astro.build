@@ -7,6 +7,19 @@ import {
 	searchByKeyword,
 } from './npm.mjs'
 
+const WHITELIST_PACKAGES = [
+	"@astrojs/lit",
+	"@astrojs/partytown",
+	"@astrojs/preact",
+	"@astrojs/react",
+	"@astrojs/solid-js",
+	"@astrojs/svelte",
+	"@astrojs/tailwind",
+	"@astrojs/turbolinks",
+	"@astrojs/vue",
+	'astro-icon'
+];
+
 function isOfficial(pkg) {
 	return pkg.startsWith('@astrojs/')
 }
@@ -69,10 +82,10 @@ async function main() {
 	const keyword = 'astro-component'
 
 	const packagesMap = await searchByKeyword(keyword)
-	const packageNames = Array.from(packagesMap.keys())
+	const packageNames = new Set([...packagesMap.keys(), ...WHITELIST_PACKAGES])
 
 	const data = await Promise.all(
-		packageNames.map(pkg =>
+		[...packageNames].map(pkg =>
 			Promise.all([
 				fetchDetailsWithOverrides(pkg),
 				fetchDownloadsForPackage(pkg),
