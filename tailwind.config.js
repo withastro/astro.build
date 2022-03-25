@@ -106,7 +106,13 @@ module.exports = {
 							':focus-visible': {
 								outline: '2px dashed var(--color-blue)',
 							},
+							':target': {
+								scrollMargin: '6rem 0 0'
+							},
 							...headings,
+							code: {
+								fontWeight: 400,
+							},
 							a: {
 								textDecoration: 'none',
 								fontWeight: 400,
@@ -118,19 +124,17 @@ module.exports = {
 									color: 'var(--tw-prose-code)',
 								},
 							},
+							'.astro-code': {
+								background: 'linear-gradient(to bottom,var(--color-midnight),#1f1638)',
+								color: theme('colors.white'),
+								margin: '0 -1rem',
+								fontSize: '0.75em',
+								'> code': {
+									whiteSpace: 'pre-wrap',
+									wordBreak: 'break-word'
+								}
+							}
 						},
-					},
-					sm: {
-						...headings,
-					},
-					md: {
-						...headings,
-					},
-					lg: {
-						...headings,
-					},
-					xl: {
-						...headings,
 					},
 				}
 			},

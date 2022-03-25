@@ -1,3 +1,11 @@
-<section class="prose mx-auto">
+---
+export interface Props {
+    class?: string;
+}
+
+const { class: className = '' } = Astro.props as Props
+---
+
+<section class=`prose mx-auto ${className}`>
     <slot />
 </section>
