@@ -13,18 +13,16 @@ jobs:
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 6.32.3
       
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Status
-        run: git status
       
       - name: Update data
         run: pnpm run nightly
