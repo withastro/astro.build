@@ -2,6 +2,7 @@
 // SEE https://developers.google.com/search/docs/advanced/guidelines/qualify-outbound-links for rel="sponsored" info
 import { Icon } from 'astro-icon';
 import Section from './Section.astro';
+import { members as individuals } from '../../data/sponsors.json';
 
 const exclusive = [
     { name: 'netlify', title: 'Netlify', href: 'https://netlify.com', width: '240', height: '64' },
@@ -11,22 +12,6 @@ const gold = [
     { name: 'divriots', title: '‹div›RIOTS', href: 'https://divriots.com', width: '192', height: '48' },
     { name: 'stackup', title: 'StackUp Digital', href: 'https://stackupdigital.co.uk/', width: '162', height: '40' }
 ]
-const users = await fetch(`https://opencollective.com/astrodotbuild/members.json`).then(res => res.json());
-
-const skipTier = new Set(['Platinum Sponsor', 'Gold Sponsor']);
-function isUser(user) {
-    return user.role === 'BACKER' && !skipTier.has(user.tier);
-}
-function getUser(user) {
-    return {
-        name: user.name,
-        image: user.image,
-        initials: user.name.split(' ').slice(0, 2).map(word => word[0].toUpperCase()).join(''),
-        href: user.website ?? user.twitter ?? user.github
-    };
-};
-
-const individuals = users.filter(user => isUser(user)).map(user => getUser(user)).sort(() => 0.5 - Math.random());
 ---
 
 <Section class="sponsor-section" pad={2} {...Astro.props}>
