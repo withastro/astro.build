@@ -51,7 +51,6 @@ async function main() {
         allMembers
             .filter(isUser)
             .map(normalizeMember)
-            .sort(() => 0.5 - Math.random())
             .map(cacheAvatar)
     )
 
