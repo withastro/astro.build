@@ -68,15 +68,18 @@
 		color: inherit;
 		text-decoration: none !important;
 		display: inline-flex;
+		flex-wrap: wrap;
 	}
-	.prose :is(h2, h3, h4, h5, h6) a:after {
-		content: '#';
-		width: 1em;
-		margin-left: 0.25em;
-		color: inherit;
-		opacity: 0;
-		transition: opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-		order: 999;
+	@media (hover: hover) {
+		.prose :is(h2, h3, h4, h5, h6) a:after {
+			content: '#';
+			width: 1em;
+			margin-left: 0.25em;
+			color: inherit;
+			opacity: 0;
+			transition: opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+			order: 999;
+		}
 	}
 	.prose :is(h2, h3, h4, h5, h6) a:is(:active, :visited, :hover, :focus) {
 		color: var(--color-dusk);
