@@ -1,10 +1,11 @@
 ---
 import { Sprite } from 'astro-icon';
+import clsx from 'clsx';
 
 const { icon, href, title, always = false } = Astro.props;
 ---
 
-<a class={always ? 'always' : undefined} href={href} label={title} rel="noopener noreferrer">
+<a class={clsx("subtle", { always: undefined })} href={href} label={title} rel="noopener noreferrer">
     {icon && <Sprite aria-hidden="true" name={icon} size="1.5em" />}
     <span><slot /></span>
     <Sprite aria-hidden="true" class="arrow" pack="mdi" name="arrow-right" size="1.5em" />

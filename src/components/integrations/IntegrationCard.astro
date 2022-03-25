@@ -1,0 +1,90 @@
+---
+import { Sprite } from 'astro-icon';
+import clsx from 'clsx';
+
+export interface Props {
+    integration: App.Integration;
+}
+
+const { integration } = Astro.props as Props;
+
+const formatter = Intl.NumberFormat('en', { notation: 'compact' });
+
+const stars = !!integration.stars && formatter.format(integration.stars);
+const downloads = !!integration.downloads && formatter.format(integration.downloads);
+
+const colors = [
+    'text-blue opacity-40',
+    'text-red opacity-50',
+    'text-yellow opacity-60',
+    'text-purple opacity-50'
+]
+
+const icons = [
+    { pack: 'icon-park-outline', name: 'block-one' },
+    { pack: 'icon-park-outline', name: 'block-two' },
+    { pack: 'icon-park-outline', name: 'block-three' },
+    { pack: 'icon-park-outline', name: 'block-four' },
+    { pack: 'icon-park-outline', name: 'block-five' },
+    { pack: 'icon-park-outline', name: 'block-six' },
+    { pack: 'icon-park-outline', name: 'block-seven' },
+    { pack: 'icon-park-outline', name: 'block-eight' },
+    { pack: 'icon-park-outline', name: 'block-nine' },
+    { pack: 'icon-park-outline', name: 'block-ten' },
+]
+
+function randomColor() {
+    return colors[Math.floor(Math.random() * colors.length)]
+}
+
+function randomIcon() {
+    return icons[Math.floor(Math.random() * icons.length)]
+}
+---
+
+<article class="isolate flex flex-col p-4 rounded-lg shadow-md bg-white relative min-h-[11rem]">
+    <a href={integration.url.href} alt={integration.url.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer"></a>
+
+    <div class="flex gap-x-4 items-center">
+        <div class={clsx("inline-block mr-auto", !integration.image && "p-1 rounded-full border-2 border-dawn")}>
+            {integration.image 
+                ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em]" loading="lazy" />)
+                : (<Sprite {...randomIcon()} size="1.5em" class={randomColor()} />)}
+        </div>
+        {integration.official && (
+            <div class="flex items-center gap-x-1 col-start-2 text-sm">
+                <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" />
+                <span>Official</span>
+            </div>
+        )}
+        {!integration.official && stars && (
+            <a href={integration.repoUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center gap-x-1 text-sm">
+                <span class="sr-only">View the integration source code</span>
+                <Sprite pack="fa-regular" name="star" size="1.25em" />
+                <span>{stars}</span>
+            </a>
+        )}
+        {!integration.official && downloads && (
+            <a href={integration.npmUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center text-sm">
+                <span class="sr-only">View on NPM</span>
+                <Sprite pack="heroicons-outline" name="download" size="1.25em" />
+                <span>{downloads}</span>
+            </a>
+        )}
+    </div>
+
+    <h2 class="text-md pt-4 pb-1 sm:pt-5 sm:pb-2 font-display font-bold break-word">
+        {integration.title}
+    </h2>
+
+    <p class="text-sm flex-1 line-clamp-2">
+        {integration.description}
+    </p>
+</article>
+
+<style>
+    /* Add margin to package avatars to match border and padding in placeholder icons */
+    img {
+        margin: calc(0.25rem + 2px);
+    }
+</style>

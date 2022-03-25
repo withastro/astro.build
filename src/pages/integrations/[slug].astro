@@ -1,0 +1,28 @@
+---
+import { collections, getIntegrationsForCollection } from '../../data/integrations.ts';
+import Layout from '../../layouts/Integrations.astro';
+
+export async function getStaticPaths() {
+    return collections.map(({ slug }) => ({
+        params: {
+            slug,
+        },
+    }));
+}
+
+const { slug } = Astro.request.params;
+
+const integrations: App.Integration[] = getIntegrationsForCollection(slug);
+
+const meta = {
+    title: 'Integration',
+    description: 'Launch your next Astro project at warp speed. Try the plugins and components built by our amazing community.'
+};
+---
+
+<Layout meta={meta} integrations={integrations} collection={slug}>
+    <Fragment slot="description">
+        <p>Launch your next Astro project at warp speed.</p>
+        <p>Try the plugins and components built by our amazing community.</p>
+    </Fragment>
+</Layout>
