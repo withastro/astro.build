@@ -64,3 +64,27 @@ This helps you:
 We've also added a handy wizard to select your favorite integrations and component frameworks. Check that stunning sample output below 👀
 
 ![astro add wizard to 1. enable frameworks 2. select other integrations 3. update your config 4. install all dependencies](/assets/blog/astro-025/astro-add-demo.jpg)
+
+## Detailed production build logs
+
+Until now, our production builds gave 2 pieces of feedback:
+1. Your build started
+2. Your build finished
+
+...with radio silence in between 😬
+
+There's countless details you might need for debugging, especially for larger-scale projects measured in build-minutes instead of build-seconds. Until now, you could enable the `DEBUG` flag for more granular updates. But we think all users could benefit from this information!
+
+Builds are now broken down into 3 major steps, with real-time updates along the way:
+
+1. **🏃‍♂️ Setup phase -** we'll scan your pages to understand their imports, and compile to SSR modules for rendering later on.
+2. **🔨 Client build phase -** this is Vite's time to shine. We display Vite's production build logs unmodified so you can watch your CSS and JS assets bundle in real time.
+3. **🗺 Route generation phase -** We'll display all routes generated for each of your input files, complete with unique icons for HTML files and data endpoints. This is especially helpful for debugging `getStaticPaths`!
+
+Try running `astro build` in your project today 🚀
+
+## Syntax highlighter updates
+
+We love to find sensible defaults that "just work" out-of-the-box. As part of this, we decided to make [Shiki](https://github.com/shikijs/shiki) our new default syntax highlighter. This comes pre-configured with the `github-dark` theme, providing zero-config highlighting in your code blocks without extraneous CSS classes, stylesheets, or client-side JS.
+
+Check our new [syntax highlighting docs](https://docs.astro.build/en/guides/markdown-content/#syntax-highlighting) for full details! If you prefer to keep Prism as your syntax highlighter, don't worry. You can [set the `syntaxHighlight` option to `'prism'`](/en/guides/markdown-content/#prism-configuration) in your project's markdown configuration.
