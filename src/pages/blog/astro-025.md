@@ -3,7 +3,7 @@ layout: '../../layouts/Post.astro'
 title: 'Astro 0.25 Release Notes'
 description: 'Introducing: Astro Integrations • A new "add" command • A new syntax highlighter'
 publishDate: 'March 27, 2022'
-socialImage: '/assets/blog/astro-023/social.jpg'
+socialImage: '/assets/blog/astro-025/social.jpg'
 lang: 'en'
 authors:
   - fred
