@@ -1,0 +1,73 @@
+---
+layout: '../../layouts/Post.astro'
+title: 'Astro 0.25 Release Notes'
+description: 'Introducing: Astro Integrations • A new "add" command • A new syntax highlighter'
+publishDate: 'March 27, 2022'
+socialImage: '/assets/blog/astro-023/social.jpg'
+lang: 'en'
+authors:
+  - fred
+  - ben
+---
+
+**Astro v0.25.0** ha been released with some exciting new updates to share:
+
+- [New: Astro Integrations](#new-astro-integrations)
+- [New: `astro add` command](#new-astro-add-command)
+- [Improved Build CLI Output](#improved-build-cli-output)
+- [Astro + Shiki Syntax Highligher](#astro--shiki-syntax-highligher)
+
+Oh, and [stay tuned](https://twitter.com/astrodotbuild) tomorrow for another, **VERY** exciting announcement...
+## New: Astro Integrations
+
+There are a few undeniable truths about the world: The sun will rise. Pizza tastes delicious. Developers love to customize their build tools.
+
+We can't do anything about the first two, but we can make Astro even easier for you to customize. You should be able to bring your frameworks (React vs. Svelte, go!), CSS tools (Tailwind vs. Sass, go!), and packages into Astro with just a few keystrokes.
+
+**Astro Integrations** are a brand new concept to make this dream a reality. Integrations unlock a whole galaxy of features in a few lines of code.
+
+We'll share a lot more on this over the next two weeks, but you can start exploring the new API today [on our docs site.](https://docs.astro.build/en/guides/integrations-guide/). To migrate an existing Astro project to this new API, [read through our migration guide](https://docs.astro.build/en/migrate/#astro-integrations).
+
+```diff
+// astro.config.js
++ import lit from '@astrojs/lit';
++ import react from '@astrojs/react';
+
+export default {
+-   renderers: ['@astrojs/renderer-lit', '@astrojs/renderer-react'],
++   integrations: [lit(), react()],
+}
+```
+
+## New: `astro add` command
+
+To make integrations even easier to use, Astro v0.25 includes a new, *experimental* CLI command: `astro add` 🚀
+
+![astro add wizard to 1. enable frameworks 2. select other integrations 3. update your config 4. install all dependencies](/assets/blog/astro-025/astro-add-demo.jpg)
+
+Running `astro add` will walk you through adding new integrations to your project. Once you've selected the integrations to add, Astro will automatically make the necessary changes to your config file and install any new dependencies into your project.
+
+## Improved Build CLI Output
+
+Until now, the `astro build` command refused to tell you more than 2 things:
+1. Your build has started.
+2. Your build has finished.
+
+By testing Astro on larger-and-larger projects, we know first-hand that long blocks of silence are never very inspiring. Behind the scenes, there were countless details being reported about your build, but that were hidden away in debug logs.
+
+Starting in Astro v0.25.0, those details are now front-and center in your build output, giving you helpful information about how your build is progressing.
+
+Try running `astro build` in your project today to see the new, pretty output. 🚀
+
+## Astro + Shiki Syntax Highligher
+
+We love to find sensible defaults that "just work" out-of-the-box. In Astro v0.25.0, we have migrated to [Shiki](https://github.com/shikijs/shiki) as our new default syntax highlighter. Shiki is a super-powerful syntax highlighter that unlocks out-of-the-box support for popular VSCode themes and syntax highlighting in your frontend code blocks.
+
+If you prefer to keep Prism as your syntax highlighter, don't worry. You can [set the `syntaxHighlight` option to `'prism'`](/en/guides/markdown-content/#prism-configuration) in your project configuration to keep the previous, v0.24.0 default behavior.
+
+Check our new [syntax highlighting docs](https://docs.astro.build/en/guides/markdown-content/#syntax-highlighting) for full details.
+
+---
+
+Thank you to every contributor and early preview tester who made this release possible. [Follow Astro on Twitter](https://twitter.com/astrodotbuild) for more updates and [join us on Discord](https://astro.build/chat) to get involved with everything Astro.
+

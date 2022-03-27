@@ -30,4 +30,9 @@ export const mentions: Record<string, Mention> = {
 		avatar: '/authors/jon.jpg',
 		twitter: 'https://twitter.com/jon_neal',
 	},
+	ben: {
+		name: 'Ben Holmes',
+		avatar: '/authors/ben.jpg',
+		twitter: 'https://twitter.com/bholmesdev',
+	},
 }
