@@ -1,7 +1,7 @@
 ---
 layout: '../../layouts/Post.astro'
 title: 'Astro 0.25 Release Notes'
-description: 'Introducing: Astro Integrations • A new "add" command • A new syntax highlighter'
+description: 'Introducing: a new integration system • a new "add" command • shiki syntax highlighting • improved CLI build output'
 publishDate: 'March 27, 2022'
 socialImage: '/assets/blog/astro-025/social.jpg'
 lang: 'en'
