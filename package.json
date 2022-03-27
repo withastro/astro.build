@@ -9,9 +9,10 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"lint": "prettier --write .",
-		"update-contributors": "node -r dotenv/config ./scripts/update-contributors.mjs",
-		"update-integrations": "node -r dotenv/config ./scripts/update-integrations.mjs",
-		"update-sponsors": "node -r dotenv/config ./scripts/update-sponsors.mjs"
+		"update:contributors": "node -r dotenv/config ./scripts/update-contributors.mjs",
+		"update:integrations": "node -r dotenv/config ./scripts/update-integrations.mjs",
+		"update:sponsors": "node -r dotenv/config ./scripts/update-sponsors.mjs",
+		"nightly": "run-s update:*"
 	},
 	"devDependencies": {
 		"@tailwindcss/aspect-ratio": "^0.4.0",
@@ -24,6 +25,7 @@
 		"dotenv": "^16.0.0",
 		"focus-trap": "^6.7.3",
 		"micromorph": "^0.1.2",
+		"npm-run-all": "^4.1.5",
 		"postcss": "^8.4.12",
 		"prettier": "^2.6.0",
 		"prettier-plugin-astro": "^0.0.12",
