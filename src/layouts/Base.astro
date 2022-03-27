@@ -35,7 +35,6 @@ const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.
     </script>
   </head>
   <body>
-    <Sprite.Provider>
         <slot name="banner" />
 
         <SkipLink />
@@ -49,7 +48,6 @@ const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.
         </Wrapper>
 
         <slot name="footer" />
-    </Sprite.Provider>
 
     <script type="module" hoist>
         import "/src/scripts/defer.ts";
