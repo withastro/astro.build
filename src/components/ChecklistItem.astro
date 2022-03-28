@@ -19,12 +19,15 @@ const wrapperProps = href ? { href, target: '_blank', rel: 'noopener noreferrer'
 a {
     display: inline-flex;
     align-items: center;
-    color: inherit;
+    color: var(--color-dusk);
     text-decoration: none;
 }
 .marker {
     transition: transform 200ms cubic-bezier(0.23, 1, 0.320, 1);
     transition-property: transform, background, color;
+}
+a:is(:hover, :focus) {
+    color: var(--color-purple);
 }
 a:is(:hover, :focus) .marker {
     color: var(--color-dawn);
