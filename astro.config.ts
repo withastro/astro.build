@@ -1,24 +1,34 @@
 import type { AstroUserConfig } from 'astro'
+import { defineConfig } from 'astro/config'
 
 const config: AstroUserConfig = {
 	buildOptions: {
 		site: 'https://astro.build',
 		sitemap: true,
 	},
-	renderers: [],
+	integrations: [],
 	markdownOptions: {
 		render: [
 			'@astrojs/markdown-remark',
 			{
 				remarkPlugins: [
 					'remark-smartypants',
-					['remark-autolink-headings', { behavior: 'wrap' }],
+					[
+						'remark-autolink-headings',
+						{
+							behavior: 'wrap',
+						},
+					],
 				],
 				rehypePlugins: [
 					'rehype-slug',
-					['rehype-autolink-headings', { behavior: 'wrap' }],
+					[
+						'rehype-autolink-headings',
+						{
+							behavior: 'wrap',
+						},
+					],
 				],
-				syntaxHighlight: 'shiki',
 			},
 		],
 	},
@@ -30,4 +40,5 @@ const config: AstroUserConfig = {
 	},
 }
 
-export default config
+// https://astro.build/config
+export default defineConfig(config)
