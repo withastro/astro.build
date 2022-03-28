@@ -8,17 +8,17 @@ import {
 } from './npm.mjs'
 
 const WHITELIST_PACKAGES = [
-	"@astrojs/lit",
-	"@astrojs/partytown",
-	"@astrojs/preact",
-	"@astrojs/react",
-	"@astrojs/solid-js",
-	"@astrojs/svelte",
-	"@astrojs/tailwind",
-	"@astrojs/turbolinks",
-	"@astrojs/vue",
-	'astro-icon'
-];
+	'@astrojs/lit',
+	'@astrojs/partytown',
+	'@astrojs/preact',
+	'@astrojs/react',
+	'@astrojs/solid-js',
+	'@astrojs/svelte',
+	'@astrojs/tailwind',
+	'@astrojs/turbolinks',
+	'@astrojs/vue',
+	'astro-icon',
+]
 
 function isOfficial(pkg) {
 	return pkg.startsWith('@astrojs/')
@@ -31,7 +31,7 @@ function normalizePackageDetails(data, pkg) {
 	const uniqCategories = Array.from(new Set(allCategories))
 
 	if (!data.repository) {
-		console.log(pkg, data);
+		console.log(pkg, data)
 	}
 
 	return {

@@ -2,7 +2,7 @@ name: Nightly Build
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
         uses: pnpm/action-setup@v2.2.1
         with:
           version: 6.32.3
-      
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-      
+
       - name: Update data
         run: pnpm run nightly
         env:
