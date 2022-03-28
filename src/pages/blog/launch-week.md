@@ -1,7 +1,7 @@
 ---
 layout: '../../layouts/Post.astro'
 title: 'Astro Beta Launch Week'
-description: 'ATTENTION SPACE CADETS // INCOMING TRANSMISSION...'
+description: 'incoming transmission // attention space cadets...'
 publishDate: 'March 28, 2022'
 socialImage: '/assets/blog/launch-week/social.jpg'
 lang: 'en'
