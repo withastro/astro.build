@@ -1,7 +1,7 @@
 interface Mention {
 	name: string
 	avatar: string
-	twitter: string
+	twitter?: string
 }
 
 export const mentions: Record<string, Mention> = {
@@ -35,4 +35,8 @@ export const mentions: Record<string, Mention> = {
 		avatar: '/authors/ben.jpg',
 		twitter: 'https://twitter.com/bholmesdev',
 	},
+	tony: {
+		name: 'Tony Sullivan',
+		avatar: '/authors/tony.jpg'
+	}
 }
