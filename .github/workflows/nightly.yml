@@ -26,6 +26,8 @@ jobs:
       
       - name: Update data
         run: pnpm run nightly
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
