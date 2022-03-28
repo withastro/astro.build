@@ -13,21 +13,24 @@ const { meta } = Astro.props as Props;
 
 <Layout container meta={meta}>
     <Nav slot="nav" />
-
-    <slot />
-
+    <div id="page">
+        <slot />
+    </div>
     <Footer slot="footer" />
 </Layout>
 
-<style global>
-    :root {
-        background: var(--color-tan);
-    }
-    main {
+<style>
+    #page {
         padding-bottom: 8rem;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+</style>
+
+<style global>
+    :root {
+        background: var(--color-tan);
     }
 </style>
