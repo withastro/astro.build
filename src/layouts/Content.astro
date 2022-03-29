@@ -11,16 +11,17 @@ export interface Props {
     meta: BaseHeadProps;
     invert?: boolean;
     fullscreen?: boolean;
+    baseHref?: string;
 }
 
-const { meta, invert = false, fullscreen = false } = Astro.props;
+const { meta, invert = false, fullscreen = false, baseHref } = Astro.props;
 ---
 
 <html lang="en" class={`${fullscreen ? 'fullscreen' : ''} ${invert ? 'dark text-white' : 'bg-tan text-midnight'}`}>
   <head>
     <BaseHead {...meta} />
 
-    <slot name="head" />
+    {baseHref && (<base href={baseHref} />)}
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
