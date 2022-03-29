@@ -12,11 +12,9 @@ const meta = {
 ---
 
 <Layout fullscreen invert meta={meta}>
-
-    <!-- TODO: <base> tag should exist in "head" slot, but was removed due to a bug.
-         See: https://github.com/withastro/astro/issues/2904 
-		 <Fragment slot="head"> </Fragment> -->
-	<base href="/404" />
+	<Fragment slot="head">
+		<base href="/404" />
+	</Fragment>
 
 	<Nav invert slot="nav" />
 
