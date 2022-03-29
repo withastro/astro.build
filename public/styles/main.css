@@ -53,19 +53,20 @@ h6 {
 }
 
 :root {
+	--color-white: #fefeff;
 	--color-tan: #f4efed;
 	--color-tan-rgb: 244, 239, 237;
 	--color-dawn: #f3e9fa;
 	--color-dusk: #514375;
 	--color-midnight: #31274a;
 	--color-midnight-rgb: 49, 39, 74;
-	--color-blue: #205eff;
+	--color-blue: #1d5bfc;
 	--color-red: #ff5050;
 	--color-yellow: #ffd542;
 	--color-purple: #af43ff;
 	--color-pink: #fdb2b7;
 
-	--gradient-pop-1: linear-gradient(180deg, #205eff 0%, #c238bd 115%);
+	--gradient-pop-1: linear-gradient(180deg, #1d5bfc 0%, #c238bd 115%);
 	--gradient-pop-2: repeating-linear-gradient(
 		135deg,
 		#ff9776 0em,
@@ -133,7 +134,7 @@ h6 {
 	/* @property fallbacks */
 	--border-radius: 4;
 	--pixel-size: 4;
-	--link-color-stop-a: #205eff;
+	--link-color-stop-a: #1d5bfc;
 	--link-color-stop-b: #c238bd;
 
 	background: var(--color-tan);
@@ -157,7 +158,7 @@ body {
 @property --link-color-stop-a {
 	syntax: '<color>';
 	inherits: false;
-	initial-value: #205eff;
+	initial-value: #1d5bfc;
 }
 @property --link-color-stop-b {
 	syntax: '<color>';
@@ -205,11 +206,11 @@ html {
 
 ::selection {
 	background: var(--color-blue);
-	color: white;
+	color: var(--color-white);
 }
 
 .text-gradient::selection {
-	--fill: white;
+	--fill: var(--color-white);
 	color: var(--fill);
 	-webkit-background-clip: initial;
 	-webkit-text-fill-color: initial;

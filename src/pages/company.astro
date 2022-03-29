@@ -41,7 +41,9 @@ const meta = {
         {posts.map(post => {
             return (
                 <li class="post">
-                    <a class="overlay" href={post.href}></a>
+                    <a class="overlay" href={post.href} alt="View details">
+                        <span class="visually-hidden">View details</span>
+                    </a>
                     <Card career={post} variant="summary" />
                 </li>
             )
@@ -98,7 +100,7 @@ const meta = {
         padding: 2rem;
         margin-left: -2rem;
         margin-right: -2rem;
-        background: white;
+        background: var(--color-white);
         box-shadow: var(--shadow-sm);
         border-radius: var(--corner-md);
         font-family: var(--font-body);
@@ -108,7 +110,7 @@ const meta = {
     }
     .post:hover,
     .post:focus-within {
-        background: linear-gradient(to top, var(--color-dawn), white);
+        background: linear-gradient(to top, var(--color-dawn), var(--color-white));
     }
     :is(.post:hover, .post:focus-within) .title {
         --fill: var(--gradient-pop-1);

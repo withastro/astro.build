@@ -19,8 +19,8 @@ const inlineStyle = `
 
 <section>
     <div>
-        <input type="text" {id} {placeholder}>
-        <button>
+        <input type="text" {id} {placeholder} aria-label="Search">
+        <button aria-hidden="true">
             <Sprite pack="heroicons-outline" name="search" size={24} />
         </button>
     </div>
@@ -88,7 +88,7 @@ const inlineStyle = `
         display: flex;
         border-radius: 9999px;
         padding: 0.25rem;
-        background: white;
+        background: var(--color-white);
     }
 
     input {
@@ -114,7 +114,7 @@ const inlineStyle = `
         height: 2.5rem;
         border-radius: 9999px;
         background: var(--color-dusk);
-        color: white;
+        color: var(--color-white);
     }
 
     @media (max-width: 768px) {
@@ -155,7 +155,7 @@ const inlineStyle = `
         }
 
         div:hover, div[open] {
-            background: white;
+            background: var(--color-white);
         }
 
         div:hover > input {
@@ -168,7 +168,7 @@ const inlineStyle = `
         input:focus + button,
         input:not(:placeholder-shown) + button {
             background: var(--color-dusk);
-            color: white;
+            color: var(--color-white);
         }
     }
 </style>

@@ -81,15 +81,15 @@ const assets = [
             <article class="flex flex-col">
                 <div class={`aspect-w-16 aspect-h-9 ${asset.background === 'light' ? 'bg-white' : 'bg-black'}`}>
                     <div class="flex items-center justify-center">
-                        <img class="w-3/4 h-auto max-h-16" src={asset.svg} />
+                        <img class="w-3/4 h-auto max-h-16" src={asset.svg} alt={asset.title} />
                     </div>
                 </div>
                 <h2 class="text-md font-bold mt-4 mb-6">{asset.title}</h2>
-                <p class="text-sm flex-1" set:html={smartypants(asset.description)}></p>
+                <p class="text-sm flex-1" set:html={smartypants(asset.description, 1)}></p>
 
                 <footer class="pt-6">
-                    <a class="text-sm font-semibold px-4 py-2 bg-dusk text-white rounded inline-block" href={asset.svg}>SVG</a>
-                    <a class="text-sm font-semibold px-4 py-2 bg-dusk text-white rounded inline-block" href={asset.png}>PNG</a>
+                    <a class="btn" href={asset.svg}>SVG</a>
+                    <a class="btn" href={asset.png}>PNG</a>
                 </footer>
             </article>
         ))}

@@ -15,7 +15,7 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a href={linkHref} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
+    <a href={linkHref} alt={theme.image.alt} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
         <img src={theme.image.src} alt={theme.image.alt} class="h-auto" loading="lazy" />
     </a>
 
@@ -25,9 +25,7 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
         </h2>
 
         {(stars || theme.official) && (
-            <a href={theme.repoUrl.href} target="_blank" rel="noopener noreferrer" class="subtle flex items-center gap-x-1 col-start-2 text-sm">
-                <span class="sr-only">View theme source code</span>
-
+            <a href={theme.repoUrl.href} alt="View the source code" target="_blank" rel="noopener noreferrer" class="subtle flex items-center gap-x-1 col-start-2 text-sm">
                 {theme.official ? (
                     <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" />
                     <span>Official</span>
@@ -46,11 +44,12 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
     <footer class="flex items-center px-4 pb-3">
         {netlifyUrl && (
             <a href={netlifyUrl} target="_blank" rel="noopener noreferrer">
-                <img src="https://www.netlify.com/img/deploy/button.svg" alt="" title="Deploy to Netlify">
+                <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" title="Deploy to Netlify">
             </a>
         )}
 
-        <a href={theme.repoUrl.href} class="subtle ml-auto p-3 -mr-3">
+        <a href={theme.repoUrl.href} alt="View on Github" class="subtle ml-auto p-3 -mr-3">
+            <span class="sr-only">View on Github</span>
             <Sprite name="logos/github-mark" size={28} />
         </a>        
     </footer>

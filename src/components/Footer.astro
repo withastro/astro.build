@@ -17,7 +17,7 @@ const YYYY = new Date().getFullYear();
     {!quote && <Community />}
 
     {quote && (
-        <Quote color="white" blobs={false}>
+        <Quote color="var(--color-white)" blobs={false}>
             <Fragment slot="logo">
                 <slot name="logo" />
             </Fragment>
@@ -80,7 +80,7 @@ const YYYY = new Date().getFullYear();
     .content {
         position: relative;
         z-index: 1;
-        color: white;
+        color: var(--color-white);
         margin-bottom: 6.5rem;
         display: grid;
         grid-template-columns: 1fr;
@@ -92,7 +92,7 @@ const YYYY = new Date().getFullYear();
         align-items: center;
     }
     .content a {
-        color: white;
+        color: var(--color-white);
         text-decoration: none;
     }
     .content a:hover,
