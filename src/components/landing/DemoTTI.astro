@@ -49,6 +49,18 @@ import Illustration from './DemoIllustration.astro';
 
 
 <style>
+    :global(demo-illustration[paused]) :is(
+        .spinner,
+        .spiner > circle,
+        .before,
+        .after,
+        .spiner-container.before,
+        .tti-content.before,
+        .spinner-container.after,
+        .tti-content.after
+    ) {
+        animation-play-state: paused;
+    }
     .spinner {
         --size: 8rem;
         --len: 156px;
@@ -64,6 +76,7 @@ import Illustration from './DemoIllustration.astro';
         stroke-dasharray: var(--len);
         stroke-dashoffset: calc(var(--len) * 0.25);
         animation: spin 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+        will-change: transform;
     }
     @media (min-width: 40rem) {
         .spinner {
@@ -73,6 +86,7 @@ import Illustration from './DemoIllustration.astro';
     .spinner > circle {
         transform-origin: center center;
         animation: rotate 6s linear infinite;
+        will-change: transform;
     }
     .spinner-container {
         position: absolute;
@@ -87,18 +101,23 @@ import Illustration from './DemoIllustration.astro';
     }
     .before,
     .after {
+        will-change: opacity;
         animation: fade-out 10s linear infinite both;
     }
     .spinner-container.before {
+        will-change: opacity;
        animation-name: fade-out-before;
     }
     .tti-content.before {
+        will-change: opacity;
        animation-name: fade-in-before;
     }
     .spinner-container.after {
+        will-change: opacity;
        animation-name: fade-out-after;
     }
     .tti-content.after {
+        will-change: opacity;
        animation-name: fade-in-after;
     }
     .tti-content {

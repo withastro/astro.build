@@ -10,20 +10,8 @@ const Tag = href ? 'a' : 'div';
     </Tag>
 </not-marquee>
 
-<!-- Blocking, rehydrate from localStorage immediately -->
-<script global>
-    /**
-     * Pause immediately, delaying the animation for the next repaint
-     */
-    document.getElementById('marquee-pause').checked = true
-
-    if (localStorage.getItem('astro:marquee-paused') === 'false') {
-        window.requestAnimationFrame(() => document.getElementById('marquee-pause').checked = false);
-    }
-</script>
-
 <script type="module" hoist>
-    import "/src/scripts/marquee.ts";
+    import "./Banner.ts";
 </script>
 
 <style>
@@ -124,7 +112,8 @@ const Tag = href ? 'a' : 'div';
     }
 
     input[type="checkbox"]:checked ~ .track,
-    .track:hover {
+    .track:hover,
+    not-marquee[visible="false"] .track {
         animation-play-state: paused;
     }
 
@@ -157,6 +146,7 @@ const Tag = href ? 'a' : 'div';
         animation-play-state: inherit;
         user-select: none;
         padding-left: var(--gap);
+        will-change: transform;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -171,7 +161,7 @@ const Tag = href ? 'a' : 'div';
     }
 
     @keyframes marquee {
-        from { transform: translateX(calc(100% * var(--i, 0))) }
-        to { transform: translateX(calc(100% * calc(var(--i, 0) - 1))) }
+        from { transform: translate3d(calc(100% * var(--i, 0)), 0, 0) }
+        to { transform: translate3d(calc(100% * calc(var(--i, 0) - 1)), 0, 0) }
     }
 </style>
