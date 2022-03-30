@@ -25,6 +25,10 @@ export async function getStarsForRepo(repoUrl: string) {
 	)
 		.then(res => res.json())
 		.then(res => formatter.format(res.stargazers_count))
+		.catch(err => {
+			console.warn(repoUrl, err)
+			return '0'
+		})
 
 	starsMap.set(repoUrl, stars)
 
