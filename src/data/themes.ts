@@ -10,6 +10,7 @@ interface ThemeData {
 	repoUrl: string
 	npmUrl?: string
 	demoUrl?: string
+	official?: boolean
 }
 
 let _loadThemes: Promise<App.Theme[]>
@@ -42,7 +43,7 @@ async function loadThemes(): Promise<App.Theme[]> {
 				text: theme.title,
 			},
 		}
-	})
+	}).sort(() => 0.5 - Math.random())
 }
 
 export async function fetchThemes() {
