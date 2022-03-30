@@ -12,7 +12,9 @@ class StarField extends HTMLElement {
     }
 
     set visible(value: boolean) {
-        this.setAttribute('visible', `${value}`)
+        requestAnimationFrame(() => {
+            this.setAttribute('visible', `${value}`)
+        })
     }
 }
 

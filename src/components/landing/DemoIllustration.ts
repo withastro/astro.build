@@ -31,8 +31,10 @@ class DemoIllustration extends HTMLElement {
 
 		Promise.race([this.#cancelled, restart]).then(cancelled => {
 			if (!cancelled) {
-				const clone = this.cloneNode(true)
-				this.replaceWith(clone)
+				requestAnimationFrame(() => {
+					const clone = this.cloneNode(true)
+					this.replaceWith(clone)
+				})
 			}
 		})
 	}
