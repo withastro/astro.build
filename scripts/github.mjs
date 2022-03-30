@@ -40,10 +40,10 @@ export function parseRepoUrl(repoUrl) {
 					org: parts[0],
 					repo: parts[1],
 			  }
-			: undefined
+			: []
 	} catch (err) {
 		console.error(repoUrl, err)
-		return undefined
+		return []
 	}
 }
 
