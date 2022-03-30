@@ -3,7 +3,7 @@ class NotMarquee extends HTMLElement {
 
 	connectedCallback() {
 		if ('IntersectionObserver' in window) {
-			this.visible = false;
+			this.visible = false
 
 			this.#io = new IntersectionObserver(([entry]) => {
 				this.visible = entry.isIntersecting
@@ -15,7 +15,7 @@ class NotMarquee extends HTMLElement {
 		this.checkbox.addEventListener('change', this.onCheckboxChanged.bind(this))
 
 		if (window.localStorage.getItem('astro:marquee-paused') === 'false') {
-			requestAnimationFrame(() => this.checkbox.checked = false)
+			requestAnimationFrame(() => (this.checkbox.checked = false))
 		}
 	}
 

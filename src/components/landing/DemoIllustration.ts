@@ -14,8 +14,8 @@ class DemoIllustration extends HTMLElement {
 
 	connectedCallback() {
 		if ('IntersectionObserver' in window) {
-			this.paused = true;
-			
+			this.paused = true
+
 			this.#io = new IntersectionObserver(([entry]) => {
 				this.paused = !entry.isIntersecting
 			})
@@ -45,7 +45,7 @@ class DemoIllustration extends HTMLElement {
 
 	set paused(value: boolean) {
 		requestAnimationFrame(() => {
-			value ? this.setAttribute('paused', '') : this.removeAttribute('paused');
+			value ? this.setAttribute('paused', '') : this.removeAttribute('paused')
 		})
 	}
 }
