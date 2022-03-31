@@ -110,7 +110,7 @@ async function main() {
 			...data,
 			stars: stars[i],
 		}))
-		.sort((a, b) => b.downloads - a.downloads)
+		.sort(() => 0.5 - Math.random())
 
 	fs.writeFileSync(
 		'src/data/integrations.json',

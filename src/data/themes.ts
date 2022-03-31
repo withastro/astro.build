@@ -19,31 +19,33 @@ async function loadThemes(): Promise<App.Theme[]> {
 		'./themes/*.json'
 	)
 
-	return Object.keys(items).map(slug => {
-		const theme = items[slug].default
+	return Object.keys(items)
+		.map(slug => {
+			const theme = items[slug].default
 
-		return {
-			...theme,
-			slug,
-			image: {
-				src: theme.image,
-				alt: theme.description,
-			},
-			tags: theme.tags || [],
-			repoUrl: {
-				href: theme.repoUrl,
-				text: theme.title,
-			},
-			npmUrl: theme.npmUrl && {
-				href: theme.npmUrl,
-				text: theme.title,
-			},
-			demoUrl: theme.demoUrl && {
-				href: theme.demoUrl,
-				text: theme.title,
-			},
-		}
-	}).sort(() => 0.5 - Math.random())
+			return {
+				...theme,
+				slug,
+				image: {
+					src: theme.image,
+					alt: theme.description,
+				},
+				tags: theme.tags || [],
+				repoUrl: {
+					href: theme.repoUrl,
+					text: theme.title,
+				},
+				npmUrl: theme.npmUrl && {
+					href: theme.npmUrl,
+					text: theme.title,
+				},
+				demoUrl: theme.demoUrl && {
+					href: theme.demoUrl,
+					text: theme.title,
+				},
+			}
+		})
+		.sort(() => 0.5 - Math.random())
 }
 
 export async function fetchThemes() {
