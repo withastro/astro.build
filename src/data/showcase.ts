@@ -36,5 +36,18 @@ async function loadShowcase(): Promise<App.Showcase[]> {
 export async function fetchShowcase() {
 	_loadShowcase = _loadShowcase || loadShowcase()
 	return _loadShowcase
+}
 
+export async function fetchSitesForCollection(collection: string) {
+	const allSites = await fetchShowcase()
+
+	const containsCollection = contains(collection)
+
+	return allSites.filter(site => containsCollection(site.categories))
+}
+
+export async function fetchCollections(): Promise<string[]> {
+	const allSites = await fetchShowcase()
+
+	return uniq(allSites.map(site => site.categories).flat())
 }

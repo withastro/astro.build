@@ -1,0 +1,25 @@
+---
+import { fetchCollections, fetchSitesForCollection } from '../../data/showcase.ts';
+import Layout from '../../layouts/Showcase.astro';
+
+export async function getStaticPaths() {
+    const collections: string[] = await fetchCollections();
+
+    return collections.map(slug => ({
+        params: {
+            slug,
+        },
+    }));
+}
+
+const { slug } = Astro.request.params;
+
+const sites: App.Showcase[] = await fetchSitesForCollection(slug);
+
+const meta = {
+    title: 'Showcase',
+    description: "Explore what's possible with Astro and get inspired for your next project."
+};
+---
+
+<Layout meta={meta} sites={sites} collection={slug} />

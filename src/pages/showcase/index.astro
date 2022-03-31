@@ -1,0 +1,13 @@
+---
+import { fetchShowcase } from '../../data/showcase.ts';
+import Layout from '../../layouts/Showcase.astro';
+
+const sites: App.Showcase[] = await fetchShowcase();
+
+const meta = {
+    title: 'Showcase',
+    description: "Explore what's possible with Astro and get inspired for your next project."
+};
+---
+
+<Layout meta={meta} sites={sites} />

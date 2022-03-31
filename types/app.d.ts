@@ -51,6 +51,7 @@ declare namespace App {
 		slug: string
 		title: string
 		image: Image
+		categories?: string[]
 		url: Link
 	}
 }
