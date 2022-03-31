@@ -2,10 +2,16 @@
 const { height = 50 } = Astro.props;
 ---
 
-<div class="starfield" style={`--height: ${height}%;`} />
+<star-field style={`--height: ${height}%;`}>
+    <slot />
+</star-field>
+
+<script type="module" hoist>
+    import "./Starfield.ts";
+</script>
 
 <style>
-.starfield {
+star-field {
     position: absolute;
     top: 0;
     right: 0;
@@ -20,6 +26,18 @@ const { height = 50 } = Astro.props;
     animation: sparkle 10s linear infinite alternate-reverse;
     pointer-events: none;
 }
+
+star-field[visible="false"] {
+    animation-play-state: paused;
+}
+
+/* Safari tweaks */
+@supports (-webkit-appearance: none) {
+    star-field {
+        animation-play-state: paused;
+    }
+}
+
 @keyframes sparkle {
     from {
         -webkit-mask-position: top right;

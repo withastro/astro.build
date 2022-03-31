@@ -30,7 +30,9 @@ const meta = { title: 'Blog' };
         {posts.map(post => {
             return (
                 <li class="post">
-                    <a class="overlay" href={post.href}></a>
+                    <a class="overlay" href={post.href} alt="Read more">
+                        <span class="sr-only visually-hidden">Read more</span>
+                    </a>
                     <Card post={post} variant="summary" />
                 </li>
             )
@@ -72,7 +74,7 @@ const meta = { title: 'Blog' };
         padding: 3rem 2rem;
         margin-left: -2rem;
         margin-right: -2rem;
-        background: white;
+        background: var(--color-white);
         box-shadow: var(--shadow-sm);
         border-radius: var(--corner-md);
         font-family: var(--font-body);

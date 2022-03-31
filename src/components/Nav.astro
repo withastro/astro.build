@@ -33,7 +33,7 @@ const { invert = false, marginBottom = false } = Astro.props;
         {social.map(item => (
             <li class="icon">
                 <a href={item.href} title={item.title}>
-                    <Sprite name={item.icon} size="1.5em" role="presentation" />
+                    <Sprite name={item.icon} size="1.5em" role="presentation" aria-hidden="true" />
                 </a>
             </li>
         ))}
@@ -78,12 +78,12 @@ nav.margin-bottom {
 }
 nav.dark {
     background: transparent;
-    color: white;
+    color: var(--color-white);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 }
 nav.dark a {
-    color: white;
+    color: var(--color-white);
 }
 
 nav::before {
@@ -132,7 +132,7 @@ li {
     font-size: var(--size-500);
 }
 nav.dark li {
-    color: white;
+    color: var(--color-white);
 }
 li + li {
     margin-left: 0;
@@ -163,8 +163,8 @@ li + li {
     color: inherit;
 }
 nav.dark .logo :global(svg) {
-    color: white;
-    fill: white;
+    color: var(--color-white);
+    fill: var(--color-white);
 }
 .wordmark {
     display: none;

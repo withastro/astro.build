@@ -21,7 +21,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
 <details class={clsx('flyout', align, { light: invert })}>
     <summary>
         {title}
-        <Sprite pack="heroicons-solid" name="chevron-down" size="1.25rem" />
+        <Sprite pack="heroicons-solid" name="chevron-down" size={20} />
     </summary>
 
     <div>
@@ -94,7 +94,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
         gap: 2rem;
         padding: 2rem;
         max-width: min(25rem, 50vw);
-        background: white;
+        background: var(--color-white);
         color: var(--color-midnight);
         text-align: center;
         white-space: nowrap;

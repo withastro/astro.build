@@ -44,20 +44,20 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				white: '#fff',
+				white: '#fefeff',
 				black: '#000',
 				transparent: 'transparent',
 				tan: '#f4efed',
 				dawn: '#f3e9fa',
 				dusk: '#514375',
 				midnight: '#31274a',
-				blue: '#205eff',
+				blue: '#1d5bfc',
 				red: '#ff5050',
 				yellow: '#ffd542',
 				purple: '#af43ff',
 				pink: '#fdb2b7',
 				pop: {
-					1: 'linear-gradient(180deg, #205eff 0%, #c238bd 115%)',
+					1: 'linear-gradient(180deg, #1d5bfc 0%, #c238bd 115%)',
 				},
 			},
 			typography: ({ theme }) => {

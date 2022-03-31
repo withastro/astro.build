@@ -10,13 +10,8 @@ const Tag = href ? 'a' : 'div';
     </Tag>
 </not-marquee>
 
-<!-- Blocking, rehydrate from localStorage immediately -->
-<script global>
-    document.getElementById('marquee-pause').checked = (localStorage.getItem('astro:marquee-paused') || 'false') === 'true';
-</script>
-
 <script type="module" hoist>
-    import "/src/scripts/marquee.ts";
+    import "./Banner.ts";
 </script>
 
 <style>
@@ -39,7 +34,7 @@ const Tag = href ? 'a' : 'div';
         font-size: 0.75em;
         font-weight: 700;
         letter-spacing: 1px;
-        background: white;
+        background: var(--color-white);
         z-index: 3;
         
     }
@@ -54,7 +49,7 @@ const Tag = href ? 'a' : 'div';
         right: var(--right, auto);
         bottom: 0;
         left: var(--left, auto);
-        background: linear-gradient(var(--dir, to right), white, white 5%, rgba(255, 255, 255, 0));
+        background: linear-gradient(var(--dir, to right), var(--color-white), var(--color-white) 5%, rgba(255, 255, 255, 0));
         z-index: 2;
     }
 
@@ -75,7 +70,7 @@ const Tag = href ? 'a' : 'div';
         height: var(--size);
         border-radius: 0;
         z-index: 2;
-        background: white;
+        background: var(--color-white);
         margin-top: -1px;
         margin-left: -1px;
         border: 1px solid var(--color);
@@ -117,7 +112,8 @@ const Tag = href ? 'a' : 'div';
     }
 
     input[type="checkbox"]:checked ~ .track,
-    .track:hover {
+    .track:hover,
+    not-marquee[visible="false"] .track {
         animation-play-state: paused;
     }
 
@@ -150,6 +146,7 @@ const Tag = href ? 'a' : 'div';
         animation-play-state: inherit;
         user-select: none;
         padding-left: var(--gap);
+        will-change: transform;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -164,7 +161,7 @@ const Tag = href ? 'a' : 'div';
     }
 
     @keyframes marquee {
-        from { transform: translateX(calc(100% * var(--i, 0))) }
-        to { transform: translateX(calc(100% * calc(var(--i, 0) - 1))) }
+        from { transform: translate3d(calc(100% * var(--i, 0)), 0, 0) }
+        to { transform: translate3d(calc(100% * calc(var(--i, 0) - 1)), 0, 0) }
     }
 </style>

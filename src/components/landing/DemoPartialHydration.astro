@@ -1,5 +1,6 @@
 ---
 import Illustration from './DemoIllustration.astro';
+import Spinner from '../Spinner.astro';
 ---
 
 <Illustration before="255 kB" after="10.7 kB" name="hydration"> 
@@ -14,9 +15,7 @@ import Illustration from './DemoIllustration.astro';
                     return (
                         <li>
                             <div class="img" style={`--i: ${(i * 0.5) + 1}`}>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"width="48" height="44" viewBox="0 0 64 59" role="img">
-                                    <path fill="#FAFAFA" d="M13 1h5v1h2v1h2v2h1v3h3v2h1v5h-1v2h-3v2h-1v3h-2v1h-2v1h-5v-1h-2v-1H8v-3H7v-2H5v-2H4v-5h1V8h2V5h1V3h3V2h2V1ZM1 54h3v-4h3v-3h3v-3h3v-3h2v-3h5v3h4v3h2v3h5v-3h2v-4h3v-4h1v-5h2v-3h2v-3h2v-3h2v3h2v3h2v3h2v5h2v4h2v4h2v3h3v4h1v4h2v4H1v-5Z"/>
-                                </svg>
+                                <img src="/assets/landing/demo-hydration.png" width="48" height="44" />
                             </div>
                             <span class="group">
                                 <div style={`--i: ${(i * 0.5) + 1.33}`} />
@@ -39,9 +38,7 @@ import Illustration from './DemoIllustration.astro';
                     return (
                         <li>
                             <div class="img">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="48" height="44" viewBox="0 0 64 59" role="img">
-                                    <path fill="#FAFAFA" d="M13 1h5v1h2v1h2v2h1v3h3v2h1v5h-1v2h-3v2h-1v3h-2v1h-2v1h-5v-1h-2v-1H8v-3H7v-2H5v-2H4v-5h1V8h2V5h1V3h3V2h2V1ZM1 54h3v-4h3v-3h3v-3h3v-3h2v-3h5v3h4v3h2v3h5v-3h2v-4h3v-4h1v-5h2v-3h2v-3h2v-3h2v3h2v3h2v3h2v5h2v4h2v4h2v3h3v4h1v4h2v4H1v-5Z"/>
-                                </svg>
+                                <img src="/assets/landing/demo-hydration.png" width="48" height="44" />
                             </div>
                             <span class="group">
                                 <div />
@@ -57,6 +54,9 @@ import Illustration from './DemoIllustration.astro';
 
 
 <style>
+    :global(demo-illustration[paused]) .ph-content div[style*="--i"]::after {
+        animation-play-state: paused;
+    }
     .before {
         --accent: 94, 81, 76;
         --accent-bg: linear-gradient(to bottom, #DFC9C0 0%, #A8938A 100%);
@@ -157,6 +157,7 @@ import Illustration from './DemoIllustration.astro';
         z-index: -1;
         border-radius: inherit;
         opacity: 1;
+        will-change: opacity;
     }
     .ph-content div[style*="--i"]::after {
         box-shadow: 0 0 0 2px rgba(var(--accent), 1);
