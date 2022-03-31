@@ -46,4 +46,11 @@ declare namespace App {
 		downloads: number
 		stars: number
 	}
+
+	interface Showcase {
+		slug: string
+		title: string
+		image: Image
+		url: Link
+	}
 }
