@@ -31,6 +31,13 @@ star-field[visible="false"] {
     animation-play-state: paused;
 }
 
+/* Safari tweaks */
+@supports (-webkit-appearance: none) {
+    star-field {
+        animation-play-state: paused;
+    }
+}
+
 @keyframes sparkle {
     from {
         -webkit-mask-position: top right;
