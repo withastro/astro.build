@@ -13,7 +13,7 @@ import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
     meta: BaseHeadProps;
-    sites: App.Showcase[];
+    sites: App.ShowcaseSite[];
     collection?: string;
 }
 
@@ -62,7 +62,7 @@ const currentCollection = collectionLinks.find(({ text }) => text === collection
     </Aside>
 
     <CardsBlock>
-        {sites.map(site => (<ShowcaseCard showcase={site} />))}
+        {sites.map(site => (<ShowcaseCard site={site} />))}
     </CardsBlock>
 
     <Footer slot="footer" />

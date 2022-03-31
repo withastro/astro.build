@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.request.params;
 
-const sites: App.Showcase[] = await fetchSitesForCollection(slug);
+const sites: App.ShowcaseSite[] = await fetchSitesForCollection(slug);
 
 const meta = {
     title: 'Showcase',

@@ -47,7 +47,7 @@ declare namespace App {
 		stars: number
 	}
 
-	interface Showcase {
+	interface ShowcaseSite {
 		slug: string
 		title: string
 		image: Image

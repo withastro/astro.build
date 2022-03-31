@@ -1,13 +1,13 @@
 ---
 export interface Props {
-    showcase: App.Showcase;
+    site: App.ShowcaseSite;
 }
 
-const { showcase } = Astro.props as Props;
+const { site } = Astro.props as Props;
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a {...showcase.url} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow">
-        <img {...showcase.image} class="h-auto" loading="lazy" />
+    <a {...site.url} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow">
+        <img {...site.image} class="h-auto" loading="lazy" />
     </a>
 </article>

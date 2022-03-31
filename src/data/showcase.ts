@@ -1,15 +1,15 @@
 import { contains } from '../utils/contains'
 import { uniq } from '../utils/uniq'
 
-interface ShowcaseData {
+interface ShowcaseSiteData {
 	title: string
 	image: string
     url: string
 }
 
-let _loadShowcase: Promise<App.Showcase[]>
-async function loadShowcase(): Promise<App.Showcase[]> {
-	const items = import.meta.globEager<{ [slug: string]: ShowcaseData }>(
+let _loadShowcase: Promise<App.ShowcaseSite[]>
+async function loadShowcase(): Promise<App.ShowcaseSite[]> {
+	const items = import.meta.globEager<{ [slug: string]: ShowcaseSiteData }>(
 		'./showcase/*.json'
 	)
 
