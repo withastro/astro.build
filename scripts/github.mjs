@@ -7,7 +7,16 @@ if (!process.env.GITHUB_TOKEN) {
 function fetchJson(url) {
 	return fetch(url, {
 		headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN },
-	}).then(res => res.json())
+	})
+		.then(res => {
+			if (res.status >= 400) {
+				console.error(res.status, res.statusText)
+				throw new Error(res.statusText)
+			}
+
+			return res.json()
+		})
+	
 }
 
 /**
