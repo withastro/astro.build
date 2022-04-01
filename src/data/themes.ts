@@ -13,6 +13,11 @@ interface ThemeData {
 	official?: boolean
 }
 
+export interface Collection {
+	text: string
+	slug: string
+}
+
 let _loadThemes: Promise<App.Theme[]>
 async function loadThemes(): Promise<App.Theme[]> {
 	const items = import.meta.globEager<{ [slug: string]: ThemeData }>(
@@ -61,8 +66,30 @@ export async function fetchThemesForCollection(collection: string) {
 	return allThemes.filter(theme => containsCollection(theme.categories))
 }
 
-export async function fetchCollections(): Promise<string[]> {
+export async function fetchCollections(): Promise<Collection[]> {
 	const themes = await fetchThemes()
 
-	return uniq(themes.map(theme => theme.categories).flat())
+	const collectionsMap = new Map<string, number>()
+
+	for (const theme of themes) {
+		for (const category of theme.categories) {
+			if (collectionsMap.has(category)) {
+				collectionsMap.set(category, collectionsMap.get(category) + 1)
+			} else {
+				collectionsMap.set(category, 1)
+			}
+		}
+	}
+
+	return Array.from(collectionsMap.entries())
+		.map(([category, count]) => ({ category, count }))
+		.sort((a, b) =>
+			b.count === a.count
+				? a.category.localeCompare(b.category)
+				: b.count - a.count
+		)
+		.map(({ category }) => ({
+			slug: category,
+			text: category.replace('+', ' + '),
+		}))
 }
