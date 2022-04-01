@@ -38,6 +38,20 @@ const { invert = false, marginBottom = false } = Astro.props;
             </li>
         ))}
 
+        <noscript>
+            {globalNavigation.map((item, i) => (
+                item.items ? (
+                    <li class="flyout">
+                        <FlyoutMenu {invert} {...item} align={i === 0 ? "center" : "right"} />
+                    </li>
+                ) : (
+                    <li>
+                        <a href={item.href}>{item.title}</a>
+                    </li>
+                )
+            ))}
+        </noscript>
+
         <button type="button" id="menubtn">
             <span class="visually-hidden sr-only">Open navigation menu</span>
             <Sprite pack="heroicons-outline" name="menu" size={24} />
@@ -187,19 +201,27 @@ button {
     justify-content: center;
 }
 
-@media (max-width: 40rem) {
+nav :global(noscript) {
+    display: flex;
+}
+
+@media (max-width: 640px) {
     :global(.js) button {
         display: flex;
     }
 
-    :global(.js) li:not(.logo) {
+    li:not(.logo) {
         display: none;
+    }
+
+    :global(noscript) li:not(.logo) {
+        display: initial;
     }
 }
 
-@media (min-width: 40rem) {
-    :global(.js) button {
-        display: none;
+@media (min-width: 641px) {
+    nav :global(noscript) {
+        display: none !important;
     }
 }
 

@@ -81,11 +81,11 @@ const hasDescriptions = items.some(({ description }) => !!description);
     }
 
     details.left div {
-        transform: translateX(-25%);
+        transform: translateX(-15%);
     }
 
     details.right div {
-        transform: translateX(-75%);
+        transform: translateX(-85%);
     }
 
     nav {
@@ -127,5 +127,11 @@ const hasDescriptions = items.some(({ description }) => !!description);
 
     details[open] summary, summary:hover, a.subtle:hover {
         color: var(--color-purple);
+    }
+
+    @media (max-width: 40rem) {
+        nav {
+            max-width: min(25rem, 60vw);
+        }
     }
 </style>
