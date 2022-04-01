@@ -1,8 +1,10 @@
 ---
-import { fetchThemes } from '../../data/themes.ts';
-import Layout from '../../layouts/Themes.astro';
+import { fetchCollections, fetchThemes } from '../../data/themes.ts';
+import Layout from '../../layouts/Catalog.astro';
+import ThemeCard from '../../components/themes/ThemeCard.astro';
 
 const themes: App.Theme[] = await fetchThemes();
+const collections = await fetchCollections();
 
 const meta = {
     title: 'Themes',
@@ -10,4 +12,20 @@ const meta = {
 };
 ---
 
-<Layout meta={meta} themes={themes} />
+<Layout meta={meta} {collections} baseHref="/themes">
+    <Fragment slot="info">
+        <a
+            href="https://github.com/withastro/astro.build/issues/new/choose"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="subtle underline">
+            Add your own starter project.
+        </a>
+        <span>Questions about building your own themes? Join our community on</span>
+        <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+    </Fragment>
+
+    <Fragment slot="cards">
+        {themes.map(theme => (<ThemeCard theme={theme} />))}
+    </Fragment>
+</Layout>

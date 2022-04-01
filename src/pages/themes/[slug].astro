@@ -1,11 +1,12 @@
 ---
 import { fetchCollections, fetchThemesForCollection } from '../../data/themes.ts';
-import Layout from '../../layouts/Themes.astro';
+import Layout from '../../layouts/Catalog.astro';
+import ThemeCard from '../../components/themes/ThemeCard.astro';
 
 export async function getStaticPaths() {
     const collections: string[] = await fetchCollections();
 
-    return collections.map(slug => ({
+    return collections.map(({ text, slug }) => ({
         params: {
             slug,
         },
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.request.params;
 
 const themes: App.Theme[] = await fetchThemesForCollection(slug);
+const collections = await fetchCollections();
 
 const meta = {
     title: 'Themes',
@@ -22,4 +24,20 @@ const meta = {
 }
 ---
 
-<Layout meta={meta} themes={themes} collection={slug} />
+<Layout meta={meta} {collections} current={slug} baseHref="/themes">
+    <Fragment slot="info">
+        <a
+            href="https://github.com/withastro/astro.build/issues/new/choose"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="subtle underline">
+            Add your own starter project.
+        </a>
+        <span>Questions about building your own themes? Join our community on</span>
+        <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+    </Fragment>
+
+    <Fragment slot="cards">
+        {themes.map(theme => (<ThemeCard theme={theme} />))}
+    </Fragment>
+</Layout>

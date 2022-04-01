@@ -8,33 +8,29 @@ import PillList from '../components/PillList.astro';
 import Search from '../components/Search.astro';
 import CardsBlock from '../components/blocks/CardsBlock.astro';
 import TitleBlock from '../components/blocks/TitleBlock.astro';
-import IntegrationCard from '../components/integrations/IntegrationCard.astro';
-import { collections } from '../data/integrations.ts';
 import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
     meta: BaseHeadProps;
-    integrations: App.Integration[];
-    collection?: string;
+    collections: { text: string; slug: string }[];
+    current?: string;
+    baseHref: string;
 }
 
-const { meta, integrations, collection = 'all' } = Astro.props as Props;
+const { meta, collections, current = 'all', baseHref } = Astro.props as Props;
 
-type CollectionLink = App.Link & { slug: string };
-const collectionLinks: CollectionLink[] = [
+const collectionLinks: App.Link[] = [
     {
         text: 'all',
-        href: '/integrations',
-        slug: 'all'
+        href: baseHref
     },
     ...collections.map(({ text, slug }) => ({
         text,
-        href: `/integrations/${slug}`,
-        slug
+        href: `${baseHref}/${slug}`
     }))
 ];
 
-const currentCollection = collectionLinks.find(({ slug }) => slug === collection);
+const currentCollection = collectionLinks.find(({ text }) => text === current);
 ---
 
 <Layout meta={meta}>
@@ -49,26 +45,20 @@ const currentCollection = collectionLinks.find(({ slug }) => slug === collection
     <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
         <PillList title="collections" links={collectionLinks} current={currentCollection} />
 
-        <Search id="integrationsearch" selector="#integrations > *" placeholder="Search" />
+        <Search id="catalogsearch" selector="#catalog > *" placeholder="Search" />
     </header>
-
-    <Aside class="mb-4 text-sm">
+    
+    {Astro.slots.info && (
+        <Aside class="mb-4 text-sm">
         <p class="text-justify">
             <Sprite pack="heroicons-outline" name="information-circle" size="1.5em" class="inline-block" />
-            <a
-                href="https://docs.astro.build/en/guides/publish-to-npm/#integrations-library"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="subtle underline">
-                Add your own integrations.
-            </a>
-            <span>Questions about building plugins and components? Join our community on</span>
-            <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+            <slot name='info' />
         </p>
     </Aside>
+    )}
 
-    <CardsBlock id="integrations">
-        {integrations.map(integration => (<IntegrationCard integration={integration} />))}
+    <CardsBlock id="catalog">
+        <slot name="cards" />
     </CardsBlock>
 
     <Footer slot="footer" />
