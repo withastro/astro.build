@@ -15,9 +15,10 @@ export interface Props {
     collections: { text: string; slug: string }[];
     current?: string;
     baseHref: string;
+    searchable?: boolean;
 }
 
-const { meta, collections, current = 'all', baseHref } = Astro.props as Props;
+const { meta, collections, current = 'all', baseHref, searchable = true } = Astro.props as Props;
 
 const collectionLinks: App.Link[] = [
     {
@@ -45,7 +46,9 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
     <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
         <PillList title="collections" links={collectionLinks} current={currentCollection} />
 
-        <Search id="catalogsearch" selector="#catalog > *" placeholder="Search" />
+        {searchable && (
+            <Search id="catalogsearch" selector="#catalog > *" placeholder="Search" />
+        )}
     </header>
     
     {Astro.slots.info && (
