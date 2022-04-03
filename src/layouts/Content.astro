@@ -41,12 +41,12 @@ const { meta, invert = false, fullscreen = false, baseHref } = Astro.props;
 
         <slot name="footer" />
     </Sprite.Provider>
-
-    <script type="module" hoist>
-        import "/src/scripts/defer.ts";
-    </script>
   </body>
 </html>
+
+<script>
+    import "/src/scripts/defer.ts";
+</script>
 
 <style>
   .fullscreen, .fullscreen body {

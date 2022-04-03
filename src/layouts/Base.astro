@@ -51,13 +51,13 @@ const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.
         <slot name="footer" />
     </Sprite.Provider>
 
-    <script type="module" hoist>
+    <script>
         import "/src/scripts/defer.ts";
     </script>
   </body>
 </html>
 
-<style global>
+<style is:global>
     :root {
         scroll-padding-top: 10rem;
     }

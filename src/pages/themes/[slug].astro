@@ -29,7 +29,8 @@ export async function getStaticPaths({rss}) {
     }));
 }
 
-const { slug } = Astro.request.params;
+const { slug } = Astro.params;
+
 const themes: App.Theme[] = await fetchThemesForCollection(slug);
 const collections = await fetchCollections();
 

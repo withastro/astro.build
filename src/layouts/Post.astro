@@ -32,11 +32,11 @@ const meta = {
 	<div id="article">
 		<slot />
 
-		<Outro tweet={{ title, href: Astro.request.canonicalURL.toString() }} />
+		<Outro tweet={{ title, href: Astro.canonicalURL.toString() }} />
 	</div>
 </Layout>
 
-<style global>
+<style is:global>
 
 	.post-header {
 		margin: 1rem auto 3rem;
