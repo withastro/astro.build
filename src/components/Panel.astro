@@ -1,12 +1,12 @@
 ---
-const { class: className, background = 'color-tan', offset = 0, size = "lg", elevation = "xl", pad = 1 } = Astro.props;
+const { class: className, background = 'color-tan', container = true, offset = 0, size = "lg", elevation = "xl", pad = 1 } = Astro.props;
 let style = `--pad: ${pad}; `;
 if (offset !== 0) {
     style += `--offset-block: ${offset};`
 }
 ---
 
-<div class="astro-container px-2" style={style}>
+<div class={container ? "astro-container container" : ""} style={style}>
     <article class={`panel elevation-${elevation} size-${size} ${className}`} style={`--background: ${background};`}>
         {Astro.slots.title && <div class="title">
             <slot name="title" />
@@ -22,7 +22,7 @@ if (offset !== 0) {
         margin-top: calc(var(--offset-block, 0) * -1rem);
     }
     .panel {
-        --offset-inline: 0.5rem;
+        --offset-inline: 0;
         background: var(--background);
         border-radius: var(--corner-md);
         padding: calc(1.25rem * var(--pad, 1)) 1.5rem;

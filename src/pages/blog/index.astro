@@ -31,7 +31,7 @@ const meta = { title: 'Blog' };
         {posts.map(post => {
             return (
                 <li>
-                    <Panel size="md" elevation="sm" background="var(--color-white)">
+                    <Panel size="md" elevation="sm" container={false} background="var(--color-white)">
                         <Card post={post} variant="summary" />
                     </Panel>
                     <a class="overlay" href={post.href} alt="Read more">
@@ -58,7 +58,6 @@ const meta = { title: 'Blog' };
     .posts {
         width: 100%;
         max-width: 64rem;
-        padding-bottom: 4rem;
         gap: 1rem;
         display: flex;
         flex-flow: column nowrap;
@@ -70,7 +69,6 @@ const meta = { title: 'Blog' };
     }
     li {
         position: relative;
-        margin: 0 -.5rem;
         cursor: pointer;
     }
     .post + .post {

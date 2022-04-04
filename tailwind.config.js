@@ -146,6 +146,8 @@ module.exports = {
 					maxWidth: '40rem',
 					marginLeft: 'auto',
 					marginRight: 'auto',
+					paddingLeft: theme('spacing.4'),
+					paddingRight: theme('spacing.4'),
 					'@screen md': { maxWidth: '50rem' },
 					'@screen lg': { maxWidth: '62rem' },
 					'@screen xl': { maxWidth: '80rem' },
