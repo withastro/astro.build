@@ -7,10 +7,8 @@ function onPreload(event: MouseEvent) {
         return;
     }
     
-    const link = document.createElement('link');
-    link.rel = 'prerender';
-    link.href = target.href;
-    document.head.appendChild(link);
+    fetch(target.href, { cache: "force-cache" });
+
     target.removeEventListener('mouseenter', onPreload, true);
     target.removeEventListener('touchstart', onPreload, true);
 }
