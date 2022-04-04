@@ -48,9 +48,9 @@ Astro also lets you **bring your own framework.** React, Svelte, Vue, Solid, and
 This unique approach to JavaScript (known as *partial* or *selective hydration*) unlocks some really compelling, fine-grained optimization features. Components load and hydrate individually, so we can customize and control loading behavior on a component-by-component basis:
 
 ```astro
-<!-- client:load -- load this component on the page ASAP -->
+<!-- client:load -- high priority, load this component on the page ASAP -->
 <MyCriticalBuyButton client:load />
-<!-- client:visible -- only load when visible on the page -->
+<!-- client:visible -- low priority, only load when visible on the page -->
 <MyHeavyReactImageCarousel client:visible />
 ```
 
