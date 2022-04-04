@@ -6,6 +6,8 @@ publishDate: 'April 4, 2022'
 authors:
   - nate
   - fred
+socialImage: '/assets/blog/astro-1-beta-release/social.png'
+coverImage: '/assets/blog/astro-1-beta-release/cover.png'
 lang: 'en'
 ---
 
