@@ -13,20 +13,13 @@ lang: 'en'
 
 **The Astro 1.0 Beta is now available!** This release marks the stabilization of all major APIs, with no more major breaking changes planned between now and the official v1.0 release.
 
-Take it for a spin online by visiting [astro.new](http://astro.new) or locally by running...
-
-```shell
-npm init astro
-```
-
-> Upgrading from an older version of Astro? Please reference our comprehensive [Migration Guide](https://docs.astro.build/en/migrate/).
-
-
 In addition, we are thrilled to announce that the **official Astro v1.0.0 release will be available on June 8, 2022.** We plan to use these next two months to improve documentation, squash bugs, collect your feedback, and finish up [a few final Astro improvements](https://github.com/withastro/rfcs/discussions/161).
 
-We are incredibly grateful for the support Astro has received so far. Thousands of developers – including teams from [Firebase](https://firebase.blog/), [Trivago](https://tech.trivago.com/), and [The Guardian](https://developers.theguardian.com/) – are already running Astro in production today. If you’ve been waiting to try Astro, there has never been a better time!
+We are incredibly grateful for the support Astro has received so far. Thousands of developers – including teams from [Firebase](https://firebase.blog/), [Trivago](https://tech.trivago.com/), and [The Guardian](https://developers.theguardian.com/) – are already running Astro in production today. If you’ve been waiting to try Astro, there has never been a better time to get started.
 
-To celebrate the release, this post dives into Astro’s background and explores the 3 principles that drive our team every day:
+**Visit [astro.new](http://astro.new) to try out the Astro v1.0 beta release right in your browser.** You can also run `npm init astro` to get started locally. Read our [Getting Started](https://docs.astro.build/en/getting-started/) & [Migration](https://docs.astro.build/en/migrate/) guides to learn more.
+
+To celebrate the release, this post will explore Astro’s background and the 3 core principles that drive our project:
 
 1. Great web performance should be the norm, not the exception.
 2. Simple, straightforward APIs are our superpower.
@@ -36,9 +29,9 @@ To celebrate the release, this post dives into Astro’s background and explores
 
 For the last decade, developer tools have optimized for a single type of project—JavaScript *applications,* typically Single Page Applications (SPAs). SPA frameworks have revolutionized the way we build software on the web, dominating the last decade of web development.
 
-But even the best SPAs come with trade-offs, some of which make little sense in less stateful, content-based websites. [Thoughtworks](https://www.thoughtworks.com/radar/techniques?blipid=202203006) said it best: 
+But even the best SPAs come with trade-offs, some of which make little sense in less stateful, content-based websites. [Thoughtworks Technology Radar](https://www.thoughtworks.com/radar/techniques?blipid=202203006) said it best: 
 
-> "Too often [we see teams] blindly accepting the complexity of **SPAs by default** even when the business needs don't justify it.” — Thoughtworks Technology Radar
+> "Too often [we see teams] blindly accepting the complexity of **SPAs by default** even when the business needs don't justify it.” — [Thoughtworks Technology Radar](https://www.thoughtworks.com/radar/techniques?blipid=202203006) 
 
 This got us thinking... what *would* a web framework designed for content-focused websites look like? How would a tool that prioritized performance shift our approach? If we abandoned the notion that SPAs are always better, could we push the web forward the same way that JSX did almost 10 years ago?
 
