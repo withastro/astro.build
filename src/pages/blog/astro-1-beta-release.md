@@ -69,12 +69,12 @@ The most important thing to know about Astro’s component language is that it�
 
 You’d be surprised how far you can get in Astro with HTML alone!
 
-As you gain more experience, you’ll learn how Astro supports dynamic templating with JSX-like expressions and component props. You’ll also grow more familiar with the “frontmatter” component script that we use to run server-side code alongside your template. In no time, you’ll be writing more powerful components like this:
+As you gain more experience, you’ll learn how Astro supports dynamic templating with JSX-like expressions and component props. You’ll also grow more familiar with the “frontmatter” component script that we use to run server-side code alongside your template. In no time, you’ll be writing more powerful UI components like this:
 
 ```astro
 ---
-// Run server-side JavaScript code in your frontmatter. 
-// None of this ever ends up on the client!
+// Run JavaScript code in your component frontmatter. 
+// This all runs at build time, so no JS on the client!
 const message = "Hello, " + Astro.props.name;
 ---
 <p>{message}</p>
@@ -90,9 +90,9 @@ Case in point: [SolidJS](https://www.solidjs.com/) launched in 2021 without an o
 
 **Framework lock-in** can be a huge problem, especially in large organizations that think about technology decisions on a much longer time-scale than the rest of us. In the larger open source ecosystem, framework lock-in just makes it harder for new frameworks like SolidJS to gain traction.
 
-With this in mind, we’ve designed Astro to be completely framework-agnostic. Our focus is to **build the best foundation** for long-term projects, giving organizations the flexibility to change technologies and frameworks over time. 
+With this in mind, we’ve designed Astro to be completely framework-agnostic. Our focus is to **build the best foundation** for long-term projects, giving organizations the flexibility to change technologies and frameworks over time. Large organizations like Google can also benefit from streamlining infrastructure and support to just a single tool (Astro) while still giving their frontend teams the flexibility to use their favorite UI framework.
 
-If you’re building a new web framework, consider launching your project with Astro support.
+If you’re building a new UI framework for the web, consider launching your project with Astro support.
 
 ## What’s Next for Astro?
 
