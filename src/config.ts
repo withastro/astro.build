@@ -26,7 +26,7 @@ export const navigation = [
 export const footer = [
 	{ href: '/about', title: 'About' },
 	{ href: '/company', title: "We're Hiring!" },
-	{ href: '/blog', title: 'Blog' },
+	{ href: '/blog', title: 'Blog', hiddenMobile: true },
 	{ href: '/press', title: 'Press' },
 ]
 
