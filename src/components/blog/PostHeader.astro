@@ -87,7 +87,11 @@ const { title, authors, publishDate, coverImage } = Astro.props as Props
     }
 
     div {
-        margin: 1.5rem 0;
+        margin: 1rem 0 1.5rem;
+    }
+
+    img + div {
+        margin-top: 1.5rem;
     }
 
     .authors, .published p {
