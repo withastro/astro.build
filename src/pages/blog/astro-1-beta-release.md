@@ -42,7 +42,7 @@ But even the best SPAs come with trade-offs, some of which make little sense in 
 
 > "Too often [we see teams] blindly accepting the complexity of **SPAs by default** even when the business needs don't justify it.” — Thoughtworks Technology Radar
 
-This got us thinking... what *would* a web framework designed for content-focused websites look like? How would a tool that priotized performance shift our approach? If we abandoned the notion that SPAs are always better, could we push the web forward the same way that JSX did almost 10 years ago?
+This got us thinking... what *would* a web framework designed for content-focused websites look like? How would a tool that prioritized performance shift our approach? If we abandoned the notion that SPAs are always better, could we push the web forward the same way that JSX did almost 10 years ago?
 
 We found our answers in Astro. 
 
