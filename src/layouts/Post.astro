@@ -1,5 +1,6 @@
 ---
 import Layout from './Page.astro';
+import PostHeader from '../components/blog/PostHeader.astro';
 import Card from '../components/blog/Card.astro';
 import Outro from '../components/blog/Outro.astro';
 import Panel from '../components/Panel.astro';
@@ -11,10 +12,11 @@ export interface Props {
 		authors: string[];
 		publishDate: string | Date;
 		socialImage: string;
+		coverImage?: string;
 	}
 }
 
-const { content: { title, publishDate, description, authors, socialImage } } = Astro.props as Props;
+const { content: { title, publishDate, description, authors, socialImage, coverImage } } = Astro.props as Props;
 const { canonicalURL } = Astro.request;
 const meta = {
 	title,
@@ -25,9 +27,13 @@ const meta = {
 ---
 
 <Layout meta={meta}>
-	<Panel size="md" elevation="sm" class="post-header" background="var(--color-white)">
-		<Card post={{ title, description, authors, publishDate }} variant="hero" />
-	</Panel>
+	{!coverImage ?
+		(<Panel size="md" elevation="sm" class="post-header" background="var(--color-white)">
+			<Card post={{ title, description, authors, publishDate }} variant="hero" />
+		</Panel>)
+		: (<PostHeader title={title} authors={authors} publishDate={publishDate} coverImage={coverImage} />)
+	}
+	
 
 	<div id="article">
 		<slot />
