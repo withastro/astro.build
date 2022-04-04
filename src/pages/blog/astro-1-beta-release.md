@@ -52,7 +52,7 @@ It should be impossible (or at least very difficult) to build a slow site in Ast
 
 By default, Astro helps you build sites that ship **zero JavaScript to the browser**. Astro’s built-in component syntax generates static HTML as much as possible, only sending down JavaScript for any interactive parts of your page. You’ll be shocked by how little JavaScript you actually need when you build your first Astro website.
 
-Astro also lets you **bring your own framework.** React, Svelte, Vue, Solid, and all of the popular web UI frameworks are supported in Astro. You can mix-and-match these components on your page, while still enjoying Astro’s automatic JavaScript reduction. If a component is 100% static, then Astro strips out the JavaScript entirely and just sends it as HTML. 
+Astro also lets you **bring your own framework.** React, Svelte, Vue, Solid, and all of the popular web UI frameworks are supported in Astro. You can mix-and-match these components on your page, while still enjoying Astro’s automatic JavaScript reduction. If a component is 100% static, Astro strips out the JavaScript entirely and just sends it as HTML. 
 
 This unique approach to JavaScript (known as *partial* or *selective hydration*) unlocks some really compelling, fine-grained optimization features. Components load and hydrate individually, so we can customize and control loading behavior on a component-by-component basis:
 
