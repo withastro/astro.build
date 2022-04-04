@@ -21,9 +21,9 @@ We are incredibly grateful for the support Astro has received so far. Thousands 
 
 To celebrate the release, this post will explore Astro’s background and the 3 core principles that drive our project:
 
-1. Great web performance should be the norm, not the exception.
-2. Simple, straightforward APIs are our superpower.
-3. The web deserves a framework-agnostic foundation.
+1. [Great web performance should be the norm, not the exception.](#1-great-web-performance-should-be-the-norm-not-the-exception)
+2. [Simple, straightforward APIs are our superpower.](#2-simple-straightforward-apis-are-our-superpower)
+3. [The web deserves a framework-agnostic foundation.](#3-the-web-deserves-a-framework-agnostic-foundation)
 
 ## Background
 
