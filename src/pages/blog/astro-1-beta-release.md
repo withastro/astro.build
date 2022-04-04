@@ -69,7 +69,7 @@ This level of control is extremely difficult in an SPA framework like Next.js or
 
 We designed Astro’s language syntax to be simple, with the hope that anyone could pick it up regardless of background or skill level. Astro will feel familiar even if you’ve only ever used a frontend JavaScript framework, are used to more traditional backend tooling, or are just working on the basics of HTML and JavaScript.
 
-The most important thing to know about Astro’s component language is that it’s just a superset of HTML. A valid HTML snippet is a valid Astro component. There are no render functions to export, JSX to return, or hooks to manage. In fact, there’s no JavaScript at all! 
+The most important thing to know about Astro’s component language is that it’s a **superset of HTML.** A valid HTML snippet is a valid Astro component. There are no render functions to export, JSX to return, or hooks to manage. In fact, there’s no JavaScript at all! 
 
 ```html
 <!-- This is a valid Astro component! HTML is the best :) -->
