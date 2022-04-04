@@ -40,7 +40,7 @@ const { title, authors, publishDate, coverImage } = Astro.props as Props
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 'title title' 'image image' 'authors published';
-        padding: 2rem 0 4rem;
+        padding: 2rem 0.5rem 3rem;
     }
 
     .authors {
@@ -55,7 +55,7 @@ const { title, authors, publishDate, coverImage } = Astro.props as Props
     h1 {
         grid-area: title;
         font-family: var(--font-display);
-        font-size: var(--size-800);
+        font-size: var(--size-700);
         margin-bottom: .75em;
     }
 
@@ -88,5 +88,15 @@ const { title, authors, publishDate, coverImage } = Astro.props as Props
 
     .published p {
         line-height: 2rem;
+    }
+
+    @media (min-width: 40rem) {
+        header {
+            padding-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: var(--size-800);
+        }
     }
 </style>
