@@ -36,7 +36,7 @@ const visibleItems = globalNavigation.map(item => {
     </ul>
 
     <footer>
-        <ul>
+        <ul class="about">
             {footer.map(item => (
                 <li><a href={item.href} class="subtle">{item.title}</a></li>
             ))}
@@ -55,18 +55,21 @@ const visibleItems = globalNavigation.map(item => {
 </nav>
 
 <style>
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 0.75rem;
-    }
-
     nav {
         height: 100%;
         display: flex;
         flex-direction: column;
-        padding: .5rem;
+        padding: 0 .5 .5rem;
+        overflow-y: auto;
+    }
+    header {
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.5rem;
+        padding-left: 0.75rem;
     }
 
     nav > ul {
@@ -105,8 +108,24 @@ const visibleItems = globalNavigation.map(item => {
         justify-content: center;
     }
 
+    footer .about {
+        flex-direction: row;
+        gap: 1rem;
+        padding: 0 1rem;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 30rem;
+        margin: 0 auto;
+    }
+
     footer a {
-        font-size: var(--size-500);
+        font-size: var(--size-400);
+    }
+
+    @media (min-width: 375px) {
+        footer a {
+            font-size: var(--size-500);
+        }
     }
 
     a {
