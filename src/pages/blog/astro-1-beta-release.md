@@ -11,8 +11,6 @@ coverImage: '/assets/blog/astro-1-beta-release/cover.png'
 lang: 'en'
 ---
 
-# Astro 1.0 Beta Release
-
 **The Astro 1.0 Beta is now available!** This release marks the stabilization of all major APIs, with no more major breaking changes planned between now and the official v1.0 release.
 
 Take it for a spin online by visiting [astro.new](http://astro.new) or locally by running...

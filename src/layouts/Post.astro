@@ -27,13 +27,7 @@ const meta = {
 ---
 
 <Layout meta={meta}>
-	{!coverImage ?
-		(<Panel size="md" elevation="sm" class="post-header" container={false} background="var(--color-white)">
-			<Card post={{ title, description, authors, publishDate }} variant="hero" />
-		</Panel>)
-		: (<PostHeader title={title} authors={authors} publishDate={publishDate} coverImage={coverImage} />)
-	}
-	
+	<PostHeader title={title} authors={authors} publishDate={publishDate} coverImage={coverImage} />
 
 	<div id="article">
 		<slot />
