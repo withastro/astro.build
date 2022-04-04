@@ -36,8 +36,8 @@ const visibleItems = globalNavigation.map(item => {
     </ul>
 
     <footer>
-        <ul>
-            {footer.map(item => (
+        <ul class="about">
+            {footer.filter(visibleOnMobile).map(item => (
                 <li><a href={item.href} class="subtle">{item.title}</a></li>
             ))}
         </ul>
@@ -103,6 +103,16 @@ const visibleItems = globalNavigation.map(item => {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    footer .about {
+        flex-direction: row;
+        column-gap: 1rem;
+        padding: 0 2rem;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 30rem;
+        margin: 0 auto;
     }
 
     footer a {

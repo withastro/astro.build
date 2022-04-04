@@ -1,5 +1,6 @@
 import type { AstroUserConfig } from 'astro'
 import { defineConfig } from 'astro/config'
+import { tokens } from './syntax-highlighting-theme';
 
 const config: AstroUserConfig = {
 	buildOptions: {
@@ -11,6 +12,13 @@ const config: AstroUserConfig = {
 		render: [
 			'@astrojs/markdown-remark',
 			{
+				shikiConfig: {
+					theme: {
+						name: 'Star gazer',
+						type: 'dark',
+						settings: tokens,
+					},
+				},
 				remarkPlugins: [
 					'remark-smartypants',
 					[

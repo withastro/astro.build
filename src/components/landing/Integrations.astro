@@ -16,7 +16,7 @@ const rows = [
             <slot />
         </div>
     </div>
-    <ul class="integrations">
+    <ul class="integrations astro-container container">
         {rows.map(row => row.map(icon => <li class={`icon-${icon}`}><Icon title={icon.replace(/\-grid$/, '')} name={`logos/${icon}`} height="64" /></li>))}
     </ul>
 </Section>
@@ -42,7 +42,7 @@ const rows = [
     .integrations {
         box-sizing: border-box;
         --cols: 2;
-        margin: 2rem -1rem;
+        margin: 2rem 0;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-evenly;
