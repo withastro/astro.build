@@ -76,7 +76,7 @@ The most important thing to know about Astro’s component language is that it�
 <p>Hello, World!</p>
 ```
 
-You’d be surprised how far you can get in Astro with just HTML alone!
+You’d be surprised how far you can get in Astro with HTML alone!
 
 As you gain more experience, you’ll learn how Astro supports dynamic templating with JSX-like expressions and component props. You’ll also grow more familiar with the “frontmatter” component script that we use to run server-side code alongside your template. In no time, you’ll be writing more powerful components like this:
 
