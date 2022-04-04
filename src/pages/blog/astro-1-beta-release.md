@@ -17,7 +17,7 @@ In addition, we are thrilled to announce that the **official Astro v1.0.0 releas
 
 We are incredibly grateful for the support Astro has received so far. Thousands of developers – including teams from [Firebase](https://firebase.blog/), [Trivago](https://tech.trivago.com/), and [The Guardian](https://developers.theguardian.com/) – are already running Astro in production today. If you’ve been waiting to try Astro, there has never been a better time to get started.
 
-**Visit [astro.new](http://astro.new) to try out the Astro v1.0 beta release right in your browser.** You can also run `npm init astro` to get started locally. Read our [Getting Started](https://docs.astro.build/en/getting-started/) & [Migration](https://docs.astro.build/en/migrate/) guides to learn more.
+**Visit [astro.new](http://astro.new) to try out the Astro v1.0 beta release right in your browser.** You can also run `npm init astro` to get started locally. Read our [Getting Started](https://docs.astro.build/en/getting-started/) and [Migration](https://docs.astro.build/en/migrate/) guides to learn more.
 
 To celebrate the release, this post will explore Astro’s background and the 3 core principles that drive our project:
 
