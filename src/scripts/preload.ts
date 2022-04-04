@@ -1,16 +1,22 @@
 const links = document.querySelectorAll<HTMLAnchorElement>('a')
 
+function preload(href: string) {
+    const xhr = new XMLHttpRequest()
+    xhr.open("GET", href)
+    xhr.send()
+}
+
 function onPreload(event: MouseEvent) {
     const target = event.target as HTMLAnchorElement;
 
     if (!target.href) {
         return;
     }
-    
-    fetch(target.href, { cache: "force-cache" });
 
     target.removeEventListener('mouseenter', onPreload, true);
     target.removeEventListener('touchstart', onPreload, true);
+
+    preload(target.href);
 }
 
 for (const link of links) {
