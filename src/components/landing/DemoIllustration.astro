@@ -43,7 +43,7 @@ const { before, after, name } = Astro.props;
 .illustration {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    gap: .5rem;
     z-index: 1;
 }
 .screen {
@@ -94,13 +94,15 @@ const { before, after, name } = Astro.props;
     z-index: 1;
 }
 .after-astro .screen {
-    margin-left: -24px;
     margin-top: 64px;
 }
 @media (min-width: 40rem) {
     .after-astro .screen {
         margin-top: initial;
         margin-left: initial;
+    }
+    .illustration {
+        gap: 2rem;
     }
 }
 .label {
@@ -113,9 +115,6 @@ const { before, after, name } = Astro.props;
     z-index: 2;
     border-radius: 2rem;
     box-shadow: var(--shadow-md);
-}
-.after-astro .label {
-    margin-left: -1.5rem;
 }
 @media (min-width: 40rem) {
     .label {
