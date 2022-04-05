@@ -1,0 +1,31 @@
+---
+import { fetchCollections, fetchShowcase } from '../../data/showcase.ts';
+import Layout from '../../layouts/Catalog.astro';
+import ShowcaseCard from '../../components/showcase/ShowcaseCard.astro';
+
+const sites: App.ShowcaseSite[] = await fetchShowcase();
+const collections = await fetchCollections();
+
+const meta = {
+    title: 'Showcase',
+    description: "Explore what's possible with Astro and get inspired for your next project."
+};
+---
+
+<Layout meta={meta} {collections} baseHref="/showcase" searchable={false}>
+    <Fragment slot="info">
+        <a
+            href="https://github.com/withastro/astro.build/issues/new/choose"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="subtle underline">
+            Add your own starter project.
+        </a>
+        <span>Questions about building your own project? Join our community on</span>
+        <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+    </Fragment>
+
+    <Fragment slot="cards">
+        {sites.map(site => (<ShowcaseCard site={site} />))}
+    </Fragment>
+</Layout>
