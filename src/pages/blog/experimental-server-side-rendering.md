@@ -142,7 +142,7 @@ Not only is the adapter model easy for developers to set up, but it also lets us
 - Run entirely on the edge with **Cloudflare** and **Deno Deploy**.
 - Run on a modern dev platform like **Netlify** and **Vercel**.
 - Run on a bare-metal serverless function on **AWS**, **Azure**, and **Google Cloud**.
-- Run on a JavaScript server runtime can deploy yourselfm like **Node.js** and **Deno.**
+- Run on a JavaScript server runtime can deploy yourself like **Node.js** and **Deno.**
 
 SSR support in Astro is still experimental. Over the next two months, we’re excited to work with all of the major hosting providers to launch more adapters and partnerships for every platform that our users care about. If you are a hosting provider interested in building your own Adapter for Astro, please reach out to us on Discord or via email: fred@astro.build.
 
