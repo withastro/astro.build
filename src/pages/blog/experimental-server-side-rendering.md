@@ -3,8 +3,8 @@ layout: '../../layouts/Post.astro'
 title: 'Server-side Rendering with Astro'
 description: 'Announcing experimental support for server-side rendering in Astro'
 publishDate: 'April 5, 2022'
-socialImage: '/assets/blog/experimental-ssr/ssr.png'
-coverImage: '/assets/blog/experimental-ssr/ssr.png'
+socialImage: '/assets/blog/experimental-ssr/social.jpg'
+coverImage: '/assets/blog/experimental-ssr/cover.jpg'
 lang: 'en'
 authors:
   - matthew
