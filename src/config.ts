@@ -64,11 +64,13 @@ export const globalNavigation: GlobalNavigation = [
 				description:
 					'Try the plugins and components built by our amazing community.',
 			},
-			{
-				href: '/showcase',
-				title: 'Showcase',
-				description: 'Looking for inspiration? Explore these awesome sites built with Astro.'
-			}
+			/**
+			 * {
+			 *	href: '/showcase',
+			 *	title: 'Showcase',
+			 *	description: 'Looking for inspiration? Explore these awesome sites built with Astro.'
+			 * }
+			 */
 		],
 	},
 	{
