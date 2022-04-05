@@ -94,7 +94,12 @@ if(!user) {
 // 4. If the user is logged in, you can now use the `user` object
 //    right in your page template to show an avatar, name, etc.
 ---
-<html> <!-- contents here --> </html>
+<html>
+...
+<h1>Hello {user.name} 👋</h1>
+<img src={user.avatar} alt={user.name}>
+...
+</html>
 ```
 
 Astro front matter is like a single function call that takes a request and returns a rendered template. Since it’s a function call you can handle the request, fetch data to be fed into the template, and exit early (as with the redirect) if needed.
