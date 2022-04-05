@@ -7,8 +7,8 @@ export async function getStaticPaths({rss}) {
     const collections = await fetchCollections();
     // WORKAROUND: Add RSS feed here for the blog, since we don't have a better place.
     // Move this back when we add support for RSS outside of getStaticPaths().
-    const allPosts = await Astro.fetchContent('../blog/*.md');
-    const sortedPosts = allPosts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+    const allPosts = await Astro.glob('../blog/*.md');
+    const sortedPosts = allPosts.sort((a, b) => Number(new Date(b.frontmatter.date)) - Number(new Date(a.frontmatter.date)));
     rss({
         // The RSS Feed title, description, and custom metadata.
         title: 'The Astro Blog',
@@ -16,10 +16,10 @@ export async function getStaticPaths({rss}) {
         description: 'News and updates about Astro.',
         // The list of items for your RSS feed, sorted.
         items: sortedPosts.map(item => ({
-            title: item.title,
-            description: item.description,
+            title: item.frontmatter.title,
+            description: item.frontmatter.description,
             link: item.url,
-            pubDate: item.date,
+            pubDate: item.frontmatter.date,
         })),
     });
     return collections.map(({ text, slug }) => ({
