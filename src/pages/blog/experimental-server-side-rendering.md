@@ -46,7 +46,7 @@ Take user authentication, which is something not easily achieved on a static sit
 </script>
 ```
 
-1. Call an API that will check if a user is logged in, like `/api/auth`. Going this route is going to mean that you need to show loading spinners in each of your islands while you wait on the response.
+2. Call an API that will check if a user is logged in, like `/api/auth`. Going this route is going to mean that you need to show loading spinners in each of your islands while you wait on the response.
 
 ```jsx
 function App() {
