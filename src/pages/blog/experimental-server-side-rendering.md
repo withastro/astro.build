@@ -10,7 +10,7 @@ authors:
   - matthew
 ---
 
-# Server-side Rendering with Astro
+# Server-Side Rendering with Astro
 
 Today we are thrilled to announce experimental support for server-side rendering (SSR) in Astro. With SSR in Astro, we’ve unlocked entirely new use-cases (E-commerce, anyone?) and scale that just weren’t possible before. Our SSR implementation combines Astro’s unique server-first approach with dynamic features like user authentication, login flows, database access, data-fetching and more.
 
