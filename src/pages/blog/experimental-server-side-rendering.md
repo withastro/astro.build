@@ -22,7 +22,7 @@ We heard you! One of the questions we get most often is “Can Astro do SSR?”
 
 When we set out to build Astro, we decided to focus on the prebuilt, static site architecture popularly called “Jamstack” (also known static-site generation or SSG). This approach let us iterate and launch new features quickly, but came with some important limitations:
 
-- Large sites can’t statically pre-render to static HTML without introducing longer build times or slower, client-side rendering of dynamic content.
+- Large sites can’t pre-render to static HTML without introducing longer build times or slower, client-side rendering of dynamic content.
 - Dynamic sites can’t pre-render to static HTML without forcing you to rebuild and redeploy some portion of your site whenever your data changes.
 - Interactive sites can’t pre-render to static HTML without moving all user-individualized data to the client. User names, avatars, and permissions all get more complicated when you’re dealing with static, pre-built HTML.
 
@@ -34,9 +34,9 @@ From Day 1, we knew that Astro’s approach to island architecture was uniquely 
 
 Server-side rendering is a well-understood solution to scaling large websites, going back to the earliest days of the internet. SSR is no silver bullet, but, when done right, SSR is an invaluable tool for certain use-cases.
 
-Take user authentication, which is something not easily achieved on a static site. You might do a couple of different ways:
+Take user authentication for instance. With static site generation, you have a couple different approaches:
 
-1. Check for a cookie or JWT in localStorage, then redirect to a login page if the user doesn’t have one. If using a cookie this prevents using `HttpOnly`, opening you to malicious JavaScript attacks. Also not shown here is, what do you do if the token is not valid? You still need to check and respond in that case.
+1. Check for a cookie or JWT in localStorage, then redirect to a login page if the user doesn’t have one. If using a cookie this prevents using `HttpOnly`, opening you to malicious JavaScript attacks.
 
 ```html
 <script>
@@ -45,6 +45,8 @@ Take user authentication, which is something not easily achieved on a static sit
   }
 </script>
 ```
+
+Additionally, what do you do if the token is not valid? You still need to check and respond in that case.
 
 2. Call an API that will check if a user is logged in, like `/api/auth`. Going this route is going to mean that you need to show loading spinners in each of your islands while you wait on the response.
 
@@ -65,7 +67,7 @@ No matter your approach, going client-side for authentication is always going to
 
 ## Astro SSR: Designed to be Simple
 
-SSR might sound like a solved problem. Next.js, Nuxt, Gatsby, SvelteKit, and the whole gang of modern JavaScript meta-frameworks all have some idea of SSR already in place. SSR as a term is really just a rebranding of how Rails, PHP and other server frameworks already work today. If that’s all true, then what’s the big deal?
+Next.js, Nuxt, Gatsby, SvelteKit, and the whole gang of modern JavaScript meta-frameworks have some idea of SSR already. What makes Astro SSR so special?
 
 Astro has one key advantage over the current set of JavaScript-focused meta-frameworks who have tackled SSR before us: **Astro was designed to run on the server.** 
 
