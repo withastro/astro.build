@@ -144,7 +144,7 @@ Not only is the adapter model easy for developers to set up, but it also lets us
 - Run on a bare-metal serverless function on **AWS**, **Azure**, and **Google Cloud**.
 - Run on a JavaScript server runtime can deploy yourself like **Node.js** and **Deno.**
 
-SSR support in Astro is still experimental. Over the next two months, we’re excited to work with all of the major hosting providers to launch more adapters and partnerships for every platform that our users care about. If you are a hosting provider interested in building your own Adapter for Astro, please reach out to us on Discord or via email: fred@astro.build.
+SSR support in Astro is still experimental. Over the next two months, we’re excited to work with all of the major hosting providers to launch more adapters and partnerships for every platform that our users care about. If you are a hosting provider interested in building your own Adapter for Astro, please reach out to us on Discord or via email: partner@astro.build.
 
 To celebrate this announcement, we were lucky enough to work with our launch partner (and official hosting sponsor) Netlify, to launch an official, day-one adapter for the Netlify platform. The Netlify adapter configures your Astro SSR build to run on Netlify Functions with just one line of code:
 
