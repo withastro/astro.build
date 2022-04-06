@@ -6,6 +6,7 @@ title: 'Astro Themes & Integrations'
 description: 'Introducing: a growing catalog of themes, components, and integrations to jumpstart your next Astro project.'
 publishDate: 'April 6, 2022'
 socialImage: '/assets/blog/themes-and-integrations/social.jpg'
+coverImage: '/assets/blog/themes-and-integrations/cover.jpg'
 lang: 'en'
 authors:
   - tony
