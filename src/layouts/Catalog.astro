@@ -23,11 +23,11 @@ const { meta, collections, current = 'all', baseHref, searchable = true } = Astr
 const collectionLinks: App.Link[] = [
     {
         text: 'all',
-        href: baseHref
+        href: `${baseHref}/`
     },
     ...collections.map(({ text, slug }) => ({
         text,
-        href: `${baseHref}/${slug}`
+        href: `${baseHref}/${slug}/`
     }))
 ];
 

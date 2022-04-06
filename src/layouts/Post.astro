@@ -17,7 +17,7 @@ export interface Props {
 }
 
 const { content: { title, publishDate, description, authors, socialImage, coverImage } } = Astro.props as Props;
-const { canonicalURL } = Astro.request;
+const { canonicalURL } = Astro;
 const meta = {
 	title,
 	description,

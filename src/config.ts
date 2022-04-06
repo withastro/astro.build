@@ -17,17 +17,17 @@ export const social = [
 ]
 
 export const navigation = [
-	{ href: '/themes', title: 'Themes' },
-	{ href: '/blog', title: 'Blog' },
+	{ href: '/themes/', title: 'Themes' },
+	{ href: '/blog/', title: 'Blog' },
 	{ href: 'https://docs.astro.build', title: 'Docs' },
-	{ href: '/play', title: 'Playground', hiddenMobile: true },
+	{ href: '/play/', title: 'Playground', hiddenMobile: true },
 ]
 
 export const footer = [
-	{ href: '/about', title: 'About' },
-	{ href: '/company', title: "We're Hiring!" },
-	{ href: '/blog', title: 'Blog', hiddenMobile: true },
-	{ href: '/press', title: 'Press' },
+	{ href: '/about/', title: 'About' },
+	{ href: '/company/', title: "We're Hiring!" },
+	{ href: '/blog/', title: 'Blog', hiddenMobile: true },
+	{ href: '/press/', title: 'Press' },
 ]
 
 export interface NavigationItem {
@@ -54,12 +54,12 @@ export const globalNavigation: GlobalNavigation = [
 				description: 'New to Astro? Start with our docs and online playground.',
 			},
 			{
-				href: '/themes',
+				href: '/themes/',
 				title: 'Themes',
 				description: 'Start your next Astro project with a prebuilt theme.',
 			},
 			{
-				href: '/integrations',
+				href: '/integrations/',
 				title: 'Integrations',
 				description:
 					'Try the plugins and components built by our amazing community.',
@@ -89,7 +89,7 @@ export const globalNavigation: GlobalNavigation = [
 					'Read more about our API, configuration, built-in components, and more.',
 			},
 			{
-				href: '/blog',
+				href: '/blog/',
 				title: 'Blog',
 				description: 'The latest Astro news, straight from the team.',
 			},
@@ -105,7 +105,7 @@ export const globalNavigation: GlobalNavigation = [
 				description: 'Choose from a variety of starter templates.',
 			},
 			{
-				href: '/play',
+				href: '/play/',
 				title: 'Explore the language',
 				description:
 					'Jump into our online playground to try Astro with zero setup.',
