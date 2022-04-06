@@ -10,13 +10,11 @@ authors:
   - matthew
 ---
 
-# Server-Side Rendering with Astro
-
 Today we are thrilled to announce experimental support for server-side rendering (SSR) in Astro. With SSR in Astro, we’ve unlocked entirely new use-cases (E-commerce, anyone?) and scale that just weren’t possible before. Our SSR implementation combines Astro’s unique server-first approach with dynamic features like user authentication, login flows, database access, data-fetching and more.
 
 If you’re ready to jump in, head over to [the docs](https://docs.astro.build/en/guides/server-side-rendering/) and get started.
 
-# Motivation
+## Motivation
 
 We heard you! One of the questions we get most often is “Can Astro do SSR?”
 
@@ -30,7 +28,7 @@ E-commerce is especially hurt by all three of the above problems. In an industry
 
 From Day 1, we knew that Astro’s approach to island architecture was uniquely positioned to solve this problem. Islands allow pages to load quickly and become interactive lazily; the user sees and is able to interact with the most important parts of the page, faster.
 
-# Enter: Server-Side Rendering (SSR)
+## Enter: Server-Side Rendering (SSR)
 
 Server-side rendering is a well-understood solution to scaling large websites, going back to the earliest days of the internet. SSR is no silver bullet, but, when done right, SSR is an invaluable tool for certain use-cases.
 
@@ -65,7 +63,7 @@ No matter your approach, going client-side for authentication is always going to
 - Your server can only respond with `200 OK` response codes.
 - It’s just plain slow. The user has to wait for the full HTML response (including JS, CSS, etc) even if they then immediately redirect. This creates multiple page requests before the user lands on the correct page.
 
-## Astro SSR: Designed to be Simple
+### Astro SSR: Designed to be Simple
 
 Next.js, Nuxt, Gatsby, SvelteKit, and the whole gang of modern JavaScript meta-frameworks have some idea of SSR already. What makes Astro SSR so special?
 
@@ -133,7 +131,7 @@ export function post(params, request) {
 }
 ```
 
-# Adapters: Deploy Astro Anywhere
+## Adapters: Deploy Astro Anywhere
 
 Modern web hosts set a high bar for developer experience. Developers expect frameworks to integrate with their favored providers, without too much configuration or setup.
 
@@ -167,7 +165,7 @@ To deploy, run your `astro build` and then deploy to Netlify:
     Sorry, your browser doesn't support embedded videos.
 </video>
 
-# Next Steps
+## Next Steps
 
 Server-side rendering is available today as an experimental API in the Astro 1.0 Beta. This release is focused on providing the low-level primitives and a foundation to build upon.
 
