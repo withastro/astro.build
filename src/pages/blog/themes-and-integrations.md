@@ -43,7 +43,7 @@ For example, let’s say you’re having performance trouble with 3rd-party scri
 
 ![Astro + Partytown](/assets/blog/themes-and-integrations/astro-partytown.png)
 
-Check out the full docs for details on how to build your own integrations.
+Check out the [full docs](https://docs.astro.build/en/reference/integrations-reference/) for details on how to build your own integrations.
 
 ## Ship It
 
