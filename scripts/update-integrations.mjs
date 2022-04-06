@@ -8,14 +8,19 @@ import {
 } from './npm.mjs'
 
 const WHITELIST_PACKAGES = [
+	'@astrojs/deno',
 	'@astrojs/lit',
+	'@astrojs/netlify',
+	'@astrojs/node',
 	'@astrojs/partytown',
 	'@astrojs/preact',
 	'@astrojs/react',
+	'@astrojs/sitemap',
 	'@astrojs/solid-js',
 	'@astrojs/svelte',
 	'@astrojs/tailwind',
 	'@astrojs/turbolinks',
+	'@astrojs/vercel',
 	'@astrojs/vue',
 	'astro-icon',
 ]
