@@ -4,19 +4,21 @@ import Layout from '../../layouts/Page.astro';
 import Card from '../../components/blog/Card.astro';
 import Panel from '../../components/Panel.astro';
 
-const posts = Astro.fetchContent('./*.md')
-    .map(({ title, description, authors, publishDate, url }) => ({
-        title,
-        description,
-        authors,
-        publishDate:  parse(publishDate, "MMMM d, yyyy", new Date()),
-        href: url
-    }))
-    .sort((a, b) => {
-        if (isBefore(a.publishDate, b.publishDate)) return 1;
-        if (isBefore(b.publishDate, a.publishDate)) return -1;
-        return 0;
-    });
+const posts = await Astro.glob('./*.md')
+    .then(posts => posts
+        .map(({ frontmatter, url }) => ({
+            title: frontmatter.title,
+            description: frontmatter.description,
+            authors: frontmatter.authors,
+            publishDate:  parse(frontmatter.publishDate, "MMMM d, yyyy", new Date()),
+            href: url
+        }))
+        .sort((a, b) => {
+            if (isBefore(a.publishDate, b.publishDate)) return 1;
+            if (isBefore(b.publishDate, a.publishDate)) return -1;
+            return 0;
+        })
+    );
 
 const meta = { title: 'Blog' };
 ---
@@ -71,21 +73,6 @@ const meta = { title: 'Blog' };
         position: relative;
         cursor: pointer;
     }
-    .post + .post {
-        margin-top: 1rem;
-    }
-    .post {
-        position: relative;
-        display: flex;
-        flex-flow: row wrap;
-        background: var(--color-white);
-        box-shadow: var(--shadow-sm);
-        border-radius: var(--corner-md);
-        font-family: var(--font-body);
-        font-size: var(--size-500);
-        line-height: 1.3;
-        color: var(--color-midnight);
-    }
     :is(li:hover, li:focus-within) :global(.title) {
         --fill: var(--gradient-pop-1);
     }
@@ -97,5 +84,9 @@ const meta = { title: 'Blog' };
         left: 0;
         display: block;
         z-index: 1;
+    }
+
+    li :global(a:not(.overlay)) {
+        z-index: 2;
     }
 </style>

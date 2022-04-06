@@ -16,7 +16,7 @@ const { title, items } = Astro.props as Props;
     <ul>
         {items.map(subitem => (
             <li>
-                <a href={subitem.href}>{subitem.title}</a>
+                <a href={subitem.href} aria-current={Astro.canonicalURL.pathname === subitem.href ? 'page' : undefined}>{subitem.title}</a>
             </li>
         ))}
     </ul>

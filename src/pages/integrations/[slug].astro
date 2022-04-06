@@ -11,7 +11,7 @@ export async function getStaticPaths() {
     }));
 }
 
-const { slug } = Astro.request.params;
+const { slug } = Astro.params;
 
 const integrations: App.Integration[] = getIntegrationsForCollection(slug);
 

@@ -7,7 +7,7 @@ const { before, after } = Astro.slots;
 ---
 
 <!-- Blocking script -->
-<script hoist>
+<script is:inline>
   if ('paintWorklet' in CSS) {
     CSS.paintWorklet.addModule('/pixel.worklet.js');
   }
