@@ -33,7 +33,7 @@ We created the Astro Themes Catalog to showcase these amazing community-develope
 
 Visit [astro.build/themes](http://astro.build/themes) to get started with any official or community theme. 
 
-Interested in releasing your own theme? We’re here to help! Check out our [publishing best-practices](https://docs.astro.build/en/guides/publish-to-npm/#packagejson) for help getting started and instructions to get your theme listed on our catalog. Need help? Join the #themes channel on [Discord](https://astro.build/chat) to chat with other Astro theme builders.
+Interested in releasing your own theme? We’re here to help! Check out our [publishing best-practices](https://docs.astro.build/en/guides/publish-to-npm/#packagejson) for help getting started and instructions to get your theme listed on our catalog. Need help? Join the #themes channel on [Discord](https://astro.build/chat) to chat with other Astro theme creators.
 
 ## Integrations
 
