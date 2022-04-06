@@ -19,7 +19,7 @@ We [launched Astro](https://astro.build/blog/introducing-astro/) almost a year a
 
 ![Astro Themes Catalog](/assets/blog/themes-and-integrations/astro-themes-integrations.png)
 
-With our new **Theme Catalog**, it's never been easier to go from idea to live traffic. And when it’s time to add your favorite tools, libraries and services into Astro, our **Integration Catalog** has got you covered. Extend Astro with a single one-line `astro add` command.
+With our new **Theme Catalog**, it's never been easier to go from idea to live traffic. And when it’s time to add your favorite tools, libraries and services into Astro, our **Integration Catalog** has got you covered. Extend Astro with a single `astro add` command.
 
 ## Introducing Astro Themes
 
