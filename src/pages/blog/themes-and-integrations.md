@@ -50,5 +50,5 @@ Check out the [full docs](https://docs.astro.build/en/reference/integrations-ref
 We can't wait to see what you come up with! [Add your own themes to the catalog](https://github.com/withastro/astro.build/issues/new/choose), publish your own [components and integrations](https://docs.astro.build/en/guides/publish-to-npm/#integrations-library), and join our [Discord](https://astro.build/chat) to say hello!
 
 <Note title="Stay Tuned">
-  We're launching the next Astro Hackathon on Friday, April 8th! $15,000 in cash prizes will be awarded for a wide range of categories. Full details coming soon!
+  We're launching the next Astro Hackathon on Monday, April 11! Cash prizes will be awarded for a wide range of categories. Full details coming soon!
 </Note>
