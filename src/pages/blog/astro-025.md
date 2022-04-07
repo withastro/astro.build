@@ -43,7 +43,7 @@ export default {
 
 To make integrations even easier to use, Astro v0.25 includes a new, *experimental* CLI command: `astro add` 🚀
 
-![astro add wizard to 1. enable frameworks 2. select other integrations 3. update your config 4. install all dependencies](/assets/blog/astro-025/astro-add-demo.jpg)
+![astro add wizard to 1. enable frameworks 2. select other integrations 3. update your config 4. install all dependencies](/src/pages/blog/assets/astro-025/astro-add-demo.jpg)
 
 Running `astro add` will walk you through adding new integrations to your project. Once you've selected the integrations to add, Astro will automatically make the necessary changes to your config file and install any new dependencies into your project.
 

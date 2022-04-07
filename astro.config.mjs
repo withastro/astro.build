@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
+import astroImagePlugin from 'astro-imagetools/plugin'
 import { tokens } from './syntax-highlighting-theme.mjs'
 
 // https://astro.build/config
@@ -34,6 +35,7 @@ export default defineConfig({
 		],
 	},
 	vite: {
+		plugins: [astroImagePlugin],
 		ssr: {
 			noExternal: ['smartypants'],
 			external: ['svgo'],

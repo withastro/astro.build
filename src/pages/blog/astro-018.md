@@ -1,5 +1,7 @@
 ---
 layout: '../../layouts/Post.astro'
+setup: |
+  import { Icon } from 'astro-icon'
 title: 'Astro 0.18 Release'
 description: 'Introducing: Responsive partial hydration • Solid.js support • Lit SSR support • Named slots • Global style support • and more!'
 publishDate: 'July 27, 2021'
@@ -21,7 +23,7 @@ We are excited to introduce Astro v0.18, featuring:
 ## Responsive partial hydration
 
 
-<img src="/assets/blog/astro-018/responsive-hydration.jpg" alt="Code example that shows off using the new client:media hydrator." />
+<img src="/src/pages/blog/assets/astro-018/responsive-hydration.jpg" alt="Code example that shows off using the new client:media hydrator." />
 <!-- Saved from https://carbon.now.sh/16xchqPVdt5IEAY3Czg3 -->
 
 Responsive websites often load components that are only visible on certain device sizes, like a mobile sidebar menu. As a developer, it can be difficult (impossible?) to avoid loading mobile-only code on non-mobile devices. The result is wasted time spent on code that will never even be seen by the end user.
@@ -32,7 +34,7 @@ Add the `client:media` directive to a component and it will only hydrate once th
 
 ## Named slots in Astro components
 
-![Using multiple slots to provide the head and body parts of a Layout component.](/assets/blog/astro-018/named-slots.png)
+![Using multiple slots to provide the head and body parts of a Layout component.](/src/pages/blog/assets/astro-018/named-slots.png)
 <!-- https://carbon.now.sh/9UwJkMCezRIOhzac5VVp -->
 
 [Named slots](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots) are a standard web feature used in [browser APIs](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots) and web frameworks like [Vue](https://vuejs.org/v2/guide/components-slots.html#Named-Slots). In this release, [Astro adds support for named slots](https://docs.astro.build/core-concepts/astro-components#slots) to Astro components, pages, and layouts.
@@ -42,7 +44,7 @@ Named slots are particularly useful for page layouts. A layout can now specify s
 
 ## Solid support
 
-<img src="/assets/blog/astro-018/solid-logo-dark.svg" alt="Solid.js logo" style="background-color: rgb(65, 64, 66); padding: 2rem 4rem;" />
+<Icon name="blog/astro-018/solid-logo-dark" alt="Solid.js logo" style="background-color: rgb(65, 64, 66); padding: 2rem 4rem;" />
 
 [Solid](https://www.solidjs.com/) is a JSX-based UI framework that bills itself as the familiar, modern, more reactive alternative to React. We're really excited about Solid, and with the new [Solid renderer](https://github.com/withastro/astro/tree/main/packages/renderers/renderer-solid) for Astro you can use Solid as a first-class framework in your project.
 
@@ -53,7 +55,7 @@ The release of Solid v1.0 is the perfect showcase for Astro's multi-framework pr
 
 ## Lit SSR support
 
-![Lit logo](/assets/blog/astro-018/lit-logo.svg)
+<Icon name="blog/astro-018/lit-logo" alt="Lit logo" style="background-color: var(--color-white); padding: 2rem 4rem;" />
 
 Server-side rendering (SSR) for web components is finally here, thanks to Lit and the new [Lit renderer for Astro](https://github.com/withastro/astro/tree/main/packages/renderers/renderer-lit).
 

@@ -6,7 +6,7 @@ title: 'Astro Themes & Integrations'
 description: 'Introducing: a growing catalog of themes, components, and integrations to jumpstart your next Astro project.'
 publishDate: 'April 6, 2022'
 socialImage: '/assets/blog/themes-and-integrations/social.jpg?v=1'
-coverImage: '/assets/blog/themes-and-integrations/cover.jpg'
+coverImage: '/src/pages/blog/assets/themes-and-integrations/cover.jpg'
 lang: 'en'
 authors:
   - tony
@@ -17,7 +17,7 @@ We [launched Astro](https://astro.build/blog/introducing-astro/) almost a year a
 
 **Today, we're excited to announce two new catalogs to help speed up development: [Themes](https://astro.build/themes) and [Integrations](https://astro.build/integrations).**
 
-![Astro Themes Catalog](/assets/blog/themes-and-integrations/astro-themes-integrations.png)
+![Astro Themes Catalog](/src/pages/blog/assets/themes-and-integrations/astro-themes-integrations.png)
 
 With our new **Theme Catalog**, it's never been easier to go from idea to live traffic. And when it’s time to add your favorite tools, libraries and services into Astro, our **Integration Catalog** has got you covered. Extend Astro with a single `astro add` command.
 
@@ -29,7 +29,7 @@ Meanwhile, our amazing community of developers had already begun to build and sh
 
 We created the Astro Themes Catalog to showcase these amazing community-developed themes alongside our official set of starter kits.
 
-![Astro Themes Catalog](/assets/blog/themes-and-integrations/astro-themes.png)
+![Astro Themes Catalog](/src/pages/blog/assets/themes-and-integrations/astro-themes.png)
 
 Visit [astro.build/themes](http://astro.build/themes) to get started with any official or community theme. 
 
@@ -41,7 +41,7 @@ With your frontend out of the way, how do you actually use your favorite CMS, or
 
 For example, let’s say you’re having performance trouble with 3rd-party scripts on your page. This isn't surprising, since [sending too much JavaScript](https://web.dev/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/) can lock up the main thread and block the [`window.onload`](https://developer.mozilla.org/en/docs/Web/API/GlobalEventHandlers/onload) event (even if the script is marked as `async` or `defer`). Search our Integrations catalog to find the [official Partytown integration](https://github.com/withastro/astro/tree/main/packages/integrations/partytown) for Astro, and add it with a single command:
 
-![Astro + Partytown](/assets/blog/themes-and-integrations/astro-partytown.png)
+![Astro + Partytown](/src/pages/blog/assets/themes-and-integrations/astro-partytown.png)
 
 Check out the [full docs](https://docs.astro.build/en/reference/integrations-reference/) for details on how to build your own integrations.
 

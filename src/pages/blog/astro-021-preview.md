@@ -8,8 +8,7 @@ description: 'Get a sneak preview of what is next for Astro, including our new V
 publishDate: 'October 6, 2021'
 permalink: 'https://astro.build/blog/astro-021-preview'
 lang: 'en'
-heroImage: '/assets/blog/astro-021-preview/hero.png'
-heroImageAlt: 'Spacecraft overlooking Earth'
+coverImage: '/src/pages/blog/assets/astro-021-preview/cover.png'
 socialImage: '/assets/blog/astro-021-preview/social.png'
 authors: 
   - fred

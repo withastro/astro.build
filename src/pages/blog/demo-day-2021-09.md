@@ -9,8 +9,8 @@ description: 'Astro September Demo Day was today and we had 4 amazing talks, inc
 publishDate: 'September 20, 2021'
 permalink: 'https://astro.build/blog/demo-day-2021-09'
 lang: 'en'
-heroImage: '/assets/blog/demo-day-2021-09/hero.png'
-heroImageAlt: 'Spacecraft overlooking Earth'
+coverImage: '/src/pages/blog/assets/demo-day-2021-09/hero.png'
+socialImage: '/assets/blog/experimental-ssr/social.jpg'
 ---
 **Astro Demo Day** was today! We had **4** amazing talks, including one big announcement on the future direction of Astro. If you missed the livestream, fear not! You can see the full event [on YouTube](https://www.youtube.com/watch?v=-ExcBJrXOd8) or watch the talks in any order by visiting the links below. Subscribe to the [Astro YouTube channel](https://www.youtube.com/channel/UCeFjmvZEK-MoefuYXptnX6A) to make sure you don't miss our next demo day. Today's demos were:
 
@@ -21,7 +21,7 @@ heroImageAlt: 'Spacecraft overlooking Earth'
 
 As always, our Discord community brought the hype:
 
-<img alt="Messages from the Demo Day chat room on Discord" src="/assets/blog/demo-day-2021-09/discord-chat.jpg" class="chat-messages" />
+<img alt="Messages from the Demo Day chat room on Discord" src="/src/pages/blog/assets/demo-day-2021-09/discord-chat.jpg" class="chat-messages" />
 
 ## The next Astro release
 

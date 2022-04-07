@@ -105,11 +105,15 @@ const meta = {
 	#article code:not([class])::after {
 		content: "`";
 	}
-	#article :is(img, video) {
+	#article :where(img, video, picture, [astro-icon]) {
 		max-width: 100%;
+		margin: 2rem 0;
 		border-radius: var(--corner-md);
 		box-shadow: var(--shadow-sm);
-		margin: 2rem 0;
+		overflow: hidden;
+	}
+	#article picture > img {
+		margin: 0;
 	}
 	#article :is(h2, h3, h4, h5, h6) a {
 		font: inherit;

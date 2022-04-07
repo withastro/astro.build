@@ -1,4 +1,6 @@
 ---
+import Image from 'astro-imagetools';
+
 export interface Props {
     site: App.ShowcaseSite;
 }
@@ -7,8 +9,16 @@ const { site } = Astro.props as Props;
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow">
+    <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="rounded-lg overflow-hidden shadow">
         <span class="sr-only">{site.title}</span>
-        <img {...site.image} class="h-auto" loading="lazy" />
+        <Image
+            {...site.image}
+            aspect="16/9"
+            sizes="(min-width: 640px) 50vw, (min-width: 1024px) 33vw, (min-width: 1440px) 454px, 100vw"
+            breakpoints={[227, 454, 681, 908]}
+            loading="lazy"
+            decoding="async"
+            fadeInTransition={150}
+        />
     </a>
 </article>

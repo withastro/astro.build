@@ -10,7 +10,8 @@ authors:
 description: |
   We are happy to announce that Netlify has become Astro’s first corporate sponsor and exclusive hosting partner, donating $2,500 each month towards the ongoing open source maintenance and development of Astro.
 publishDate: 'September 9, 2021'
-heroImage: '/assets/blog/astro-netlify-social.jpg'
+coverImage: '/src/pages/blog/assets/netlify-astro-hosting-sponsorship/cover.jpg'
+socialImage: '/assets/blog/astro-netlify-social.jpg'
 lang: 'en'
 ---
 

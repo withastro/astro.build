@@ -10,12 +10,12 @@ description: 'The power of Astro, right in your browser.'
 publishDate: 'September 17, 2021'
 permalink: 'https://astro.build/blog/astro-repl/astro-repl.png'
 lang: 'en'
-heroImage: '/assets/blog/astro-repl/astro-repl-hero.jpg'
-heroImageAlt: 'Hills with stars above'
+coverImage: '/src/pages/blog/assets/astro-repl/astro-repl-hero.jpg'
+socialIamge: '/assets/blog/astro-repl/astro-repl-social.jpg'
 ---
 The Astro team proudly presents the new [Astro REPL:](https://astro.build/play) compile Astro right in your browser. Use it to explore Astro's HTML-based component language, debug issues, or even prototype an entire webpage. It's powered by Astro’s **new WASM compiler** (written in Go) that runs anywhere and can rebuild files in an instant.
 
-![astro](/assets/blog/astro-repl/astro-repl-screenshot.jpg)
+![astro](/src/pages/blog/assets/astro-repl/astro-repl-screenshot.jpg)
 
 <div style="display: flex; justify-content: center;">
   <PixelLink href="https://astro.build/play">Try the REPL now!</PixelLink>

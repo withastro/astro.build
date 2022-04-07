@@ -7,7 +7,7 @@ authors:
   - nate
   - fred
 socialImage: '/assets/blog/astro-1-beta-release/social.png'
-coverImage: '/assets/blog/astro-1-beta-release/cover.png'
+coverImage: '/src/pages/blog/assets/astro-1-beta-release/cover.png'
 lang: 'en'
 ---
 
