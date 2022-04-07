@@ -1,6 +1,7 @@
 ---
 // SEE https://developers.google.com/search/docs/advanced/guidelines/qualify-outbound-links for rel="sponsored" info
 import { Icon } from 'astro-icon';
+import Image from 'astro-imagetools';
 import Section from './Section.astro';
 import { members } from '../../data/sponsors.json';
 
@@ -37,7 +38,17 @@ const individuals = members.sort(() => 0.5 - Math.random())
                     <li>
                         <Tag class="individual" title={user.name} {...tagProps}>
                             <span data-initials={user.initials}>
-                                <img aria-hidden="true" loading="lazy" src={user.image} width="64" height="64" alt={user.name} />
+                                {user.image && (
+                                    <Image
+                                        aria-hidden="true"
+                                        loading="lazy"
+                                        src={user.image}
+                                        w={128}
+                                        h={128}
+                                        quality={80}
+                                        alt={user.name}
+                                    />
+                                )}
                             </span>
                         </Tag>
                     </li>

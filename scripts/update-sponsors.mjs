@@ -29,16 +29,12 @@ async function cacheAvatar(member) {
 
 	const inputBuffer = await fetch(member.image).then(res => res.buffer())
 
-	if (!fs.existsSync('public/assets/sponsors')) {
-		fs.mkdirSync('public/assets/sponsors', { recursive: true })
-	}
-
-	const output = `public/assets/sponsors/${member.id}.jpg`
+	const output = `src/data/sponsors/images/${member.id}.jpg`
 
 	await sharp(inputBuffer)
 		.resize(128)
 		.jpeg({ mozjpeg: true })
-		.toFile(output, (error, info) => {
+		.toFile(output, (error) => {
 			if (error) {
 				console.error(error)
 			}
@@ -46,7 +42,7 @@ async function cacheAvatar(member) {
 
 	return {
 		...member,
-		image: output.replace('public', ''),
+		image: `/${output}`,
 	}
 }
 
