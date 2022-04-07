@@ -31,6 +31,7 @@ declare namespace App {
 		demoUrl?: Link
 		npmUrl?: Link
 		official?: boolean
+		stars: number
 	}
 
 	interface Integration {

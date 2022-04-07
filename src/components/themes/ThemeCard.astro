@@ -1,6 +1,5 @@
 ---
 import { Sprite } from 'astro-icon';
-import { getStarsForRepo } from '../../github.ts';
 
 export interface Props {
     theme: App.Theme;
@@ -10,7 +9,7 @@ const { theme } = Astro.props as Props;
 
 const linkHref = theme.demoUrl?.href || theme.repoUrl.href;
 
-const stars = await getStarsForRepo(theme.repoUrl.href);
+const stars = theme.stars;
 const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`;
 ---
 
