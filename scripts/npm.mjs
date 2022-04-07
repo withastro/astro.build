@@ -22,10 +22,6 @@ export function fetchDownloadsForPackage(pkg) {
 		`${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`
 	)
 		.then(res => res.downloads)
-		.catch(err => {
-			console.error('getDownloadsForPackage', err)
-			return 0
-		})
 }
 
 /**
