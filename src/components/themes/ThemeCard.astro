@@ -1,5 +1,6 @@
 ---
 import { Sprite } from 'astro-icon';
+import Image from 'astro-imagetools';
 
 export interface Props {
     theme: App.Theme;
@@ -14,8 +15,18 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a href={linkHref} alt={theme.image.alt} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
-        <img src={theme.image.src} alt={theme.image.alt} class="h-auto" loading="lazy" />
+    <a href={linkHref} alt={theme.image.alt} target="_blank" rel="noopener noreferrer" class="rounded-t-lg overflow-hidden shadow">
+        <Image
+            {...theme.image}
+            aspect={16/9}
+            sizes="(min-width: 640px) 50vw, (min-width: 1024px) 33vw, (min-width: 1440px) 454px, 100vw"
+            breakpoints={[227, 454, 681, 908]}
+            quality={80}
+            position="top"
+            loading="lazy"
+            decoding="async"
+            fadeInTransition={150}
+        />
     </a>
 
     <div class="flex justify-between items-center p-4">

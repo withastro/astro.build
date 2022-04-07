@@ -15,6 +15,7 @@ async function withStars(theme) {
 	}
 
 	const stars = await orgApi(org).repo(repo).fetchStars()
+    console.log(theme.title, stars)
 
     return {
         ...theme,

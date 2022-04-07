@@ -13,9 +13,11 @@ const { site } = Astro.props as Props;
         <span class="sr-only">{site.title}</span>
         <Image
             {...site.image}
-            aspect="16/9"
+            aspect={16/9}
             sizes="(min-width: 640px) 50vw, (min-width: 1024px) 33vw, (min-width: 1440px) 454px, 100vw"
-            breakpoints={[227, 454, 681, 908]}
+            breakpoints={[227, 454]}
+            quality={80}
+            position="top"
             loading="lazy"
             decoding="async"
             fadeInTransition={150}
