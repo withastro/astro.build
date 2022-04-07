@@ -1,10 +1,8 @@
 ---
-import { fetchCollections, fetchThemes } from '../../data/themes.ts';
+import themes from '../../data/themes.json';
+import { collections } from '../../data/themes.ts';
 import Layout from '../../layouts/Catalog.astro';
 import ThemeCard from '../../components/themes/ThemeCard.astro';
-
-const themes: App.Theme[] = await fetchThemes();
-const collections = await fetchCollections();
 
 const meta = {
     title: 'Themes',

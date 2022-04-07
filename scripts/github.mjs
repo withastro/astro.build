@@ -112,10 +112,6 @@ export function orgApi(org) {
 			const url = new URL(`https://api.github.com/repos/${org}/${repo}`)
 			return fetchJson(url.toString())
 				.then(res => res.stargazers_count)
-				.catch(err => {
-					console.error(repoUrl, err)
-					return 0
-				})
 		}
 
 		return {
