@@ -1,7 +1,7 @@
 ---
 layout: '../../layouts/Post.astro'
-title: Community Day
-description: 'After a long week of new features and releases, we wanted to  turn our attention back to the most important aspect of this project: the Astro community.'
+title: Astro Contributor Day
+description: "Happy Astro Contributor Day! Who are some of our awesome contributors? Where does Astro's sponsorship 💰 go? How does Astro give back to OSS? Lets get into it!"
 publishDate: 'April 7, 2022'
 socialImage: '/assets/blog/community-day/social.jpg'
 coverImage: '/assets/blog/community-day/cover.jpg'
@@ -17,6 +17,8 @@ I’m excited to share a couple of new announcements, as well as updates on our 
 ## The Astro Community is Awesome
 
 **Our brain lives on [GitHub](https://github.com/withastro/astro).** In the Astro monorepo alone, we have welcomed over 240 unique contributors across 2,600+ commits. The project is covered by a well-defined [open governance model](https://github.com/withastro/astro/blob/main/GOVERNANCE.md), a [Code of Conduct](https://github.com/withastro/astro/blob/main/CODE_OF_CONDUCT.md), a structured [RFC process](https://github.com/withastro/rfcs), [cool automation](https://twitter.com/FredKSchott/status/1489287560387956736), and 17 amazing Maintainers who help us keep it all running.
+
+![Astro community contributors](/assets/blog/community-day/astro-community.png)
 
 **Our heart lives on [Discord](https://astro.build/chat).** We have over 4000 total members in our Discord, with over 400 actively engaged members visiting and hanging out with us every week. Self-organizing teams like **@Maintainers**, **@Moderators**, **@Support Squad**, and our awesome **@Docs Team** are a huge part of what make our server the best software-focused community on Discord, hands down.
 
@@ -48,7 +50,7 @@ We’ll be posting this same list in our Discord later today, along with more de
 
 Some open source projects are lucky, and can raise large amounts of money from sponsors. [Webpack raises $223,113/yr.](https://opencollective.com/webpack) [Babel raises almost $300,000/yr](https://opencollective.com/babel). 
 
-Unfortunately, these types of projects are in a very small minority. For a variety of reasons, most other funded projects receive only a small fraction of this kind of money. 80% of npm’s top 1000 packages received zero funding of any kind (2019). 
+Unfortunately, these types of projects are in a very small minority. For a variety of reasons, most other funded projects receive only a small fraction of this kind of money. 80% of npm’s top 1000 packages received zero funding of any kind (2019)[1].
 
 This is a huge problem in open source today. The money is there, but it is not distributed fairly, Large open source projects have an obligation to sponsor smaller open source projects that they depend on.
 
@@ -78,3 +80,7 @@ Thank you again to all of our 400+ active Discord community member, who make thi
 If you found this post interesting, consider sponsoring Astro. We welcome individual contributions, but really encourage corporate sponsorship if at all possible. Check out our Open Collective to learn more.
 
 If you have ideas about open source sustainability or are just interested in discussing the topic more, please reach out on Discord. Feel free to start a conversation or make a suggestion to us in our #suggestions channel.
+
+---
+
+[1] This number may be out of date. I last checked back in 2019, based on the list of 1000 most downloaded packages, based on download count, and checked each one for a funding source of any kind. 80% of those 1000 packages did not list a funding source.
