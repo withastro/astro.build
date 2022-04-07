@@ -16,11 +16,11 @@ I’m excited to share a couple of new announcements, as well as updates on our 
 
 ## The Astro Community is Awesome
 
-**Our brain lives on [GitHub](https://github.com/withastro/astro).** In the Astro monorepo alone, we have welcomed over 240 unique contributors across 2,600+ commits. The project is covered by a well-defined [open governance model](https://github.com/withastro/astro/blob/main/GOVERNANCE.md), a [Code of Conduct](https://github.com/withastro/astro/blob/main/CODE_OF_CONDUCT.md), a structured [RFC process](https://github.com/withastro/rfcs), [cool automation](https://twitter.com/FredKSchott/status/1489287560387956736), and 17 amazing Maintainers who help us keep it all running.
+**We do a lot of work on [GitHub](https://github.com/withastro/astro).** In the Astro monorepo alone, we have welcomed over 240 unique contributors across 2,600+ commits. The project is covered by a well-defined [open governance model](https://github.com/withastro/astro/blob/main/GOVERNANCE.md), a [Code of Conduct](https://github.com/withastro/astro/blob/main/CODE_OF_CONDUCT.md), a structured [RFC process](https://github.com/withastro/rfcs), [cool automation](https://twitter.com/FredKSchott/status/1489287560387956736), and 17 amazing Maintainers who help us keep it all running.
+
+**We do a lot of community-building on [Discord](https://astro.build/chat).** We have over 4000 total members in our Discord, with over 400 actively engaged members visiting and hanging out with us every week. Self-organizing teams like **@Maintainers**, **@Moderators**, **@Support Squad**, and our awesome **@Docs Team** are a huge part of what make our server the best software-focused community on Discord, hands down.
 
 ![Astro community contributors](/assets/blog/community-day/astro-community.png)
-
-**Our heart lives on [Discord](https://astro.build/chat).** We have over 4000 total members in our Discord, with over 400 actively engaged members visiting and hanging out with us every week. Self-organizing teams like **@Maintainers**, **@Moderators**, **@Support Squad**, and our awesome **@Docs Team** are a huge part of what make our server the best software-focused community on Discord, hands down.
 
 ## Recognizing our Amazing Contributors
 
