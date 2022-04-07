@@ -23,7 +23,7 @@ With our new **Theme Catalog**, it's never been easier to go from idea to live t
 
 ## Introducing Astro Themes
 
-Astro has always maintained a collection of official [example projects](https://github.com/withastro/astro/tree/main/examples) and [starter templates](https://asto.new/). These were great learning resources, but they were also limiting: 1 official blog theme, 1 official docs theme, etc. etc.
+Astro has always maintained a collection of official [example projects](https://github.com/withastro/astro/tree/main/examples) and [starter templates](https://astro.new/). These were great learning resources, but they were also limiting: 1 official blog theme, 1 official docs theme, etc. etc.
 
 Meanwhile, our amazing community of developers had already begun to build and share fully-designed themes on our community Discord. Do you keep meaning to start a personal blog, but never seem to find the time? Grab a copy of the [Astro Ink](https://github.com/one-aalam/astro-ink) theme and start writing! With built-in support for dark mode, automated publishing for draft posts, and client-side search, you'll skip weeks of hacking to jump straight into the sharing your content. 
 
