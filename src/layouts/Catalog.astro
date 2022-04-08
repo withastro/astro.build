@@ -43,13 +43,17 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
         <slot name="description"><p>{meta.description}</p></slot>
     </TitleBlock>
 
-    <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
-        <PillList title="collections" links={collectionLinks} current={currentCollection} />
+    {(searchable || collectionLinks.length > 1) && (
+        <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
+            {collectionLinks.length > 1 && (
+                <PillList title="collections" links={collectionLinks} current={currentCollection} />
+            )}
 
-        {searchable && (
-            <Search id="catalogsearch" selector="#catalog > *" placeholder="Search" />
-        )}
-    </header>
+            {searchable && (
+                <Search id="catalogsearch" selector="#catalog > *" placeholder="Search" />
+            )}
+        </header>
+    )}
     
     {Astro.slots.info && (
         <Aside class="mb-4 text-sm">

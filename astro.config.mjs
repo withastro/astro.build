@@ -36,7 +36,7 @@ export default defineConfig({
 	vite: {
 		ssr: {
 			noExternal: ['smartypants'],
-			external: ['svgo'],
+			external: ['svgo', '@11ty/eleventy-img'],
 		},
 	},
 })

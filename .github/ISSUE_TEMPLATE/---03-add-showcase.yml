@@ -1,0 +1,32 @@
+name: Add your Website to the Showcase
+description: Submit a website to be included on the Showcase page
+title: 'SHOWCASE:'
+labels: []
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Quick Checklist
+        Thank you for sharing your themes with the Astro community! Please fill out this form as completely as possible.
+
+        ✅ The website is built with Astro
+        ✅ The website is publicly available at the provided URL
+        ✅ Theme preview image or screenshot included (see below for details)
+  - type: input
+    attributes:
+      label: Website title
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Short description and preview image
+      description: Preview images should be 16:9 aspect ratio, 906px wide or larger.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Public website URL
+      placeholder: https://astro.build
+    validations:
+      required: true

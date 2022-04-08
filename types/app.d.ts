@@ -54,5 +54,7 @@ declare namespace App {
 		image: Image
 		categories?: string[]
 		url: Link
+		featured?: number
+		highlight?: boolean
 	}
 }
