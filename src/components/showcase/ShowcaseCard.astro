@@ -1,6 +1,6 @@
 ---
 import clsx from 'clsx'
-import { generateImage } from 'astro-eleventy-img'
+import { generateImage, generatePlaceholder } from 'astro-eleventy-img'
 
 export interface Props {
     site: App.ShowcaseSite;
@@ -19,6 +19,8 @@ const {webp, avif, png} = generateImage(site.image.src, {
 const avifSrcset = avif.map(({ srcset }) => srcset).join(',')
 const webpSrcset = webp.map(({ srcset }) => srcset).join(',')
 const pngSrcset = png.map(({ srcset }) => srcset).join(',')
+
+const placeholder = await generatePlaceholder(site.image.src)
 ---
 
 <article class={clsx("relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
@@ -29,7 +31,7 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(',')
             <source type="image/avif" srcset={avifSrcset} {sizes} />
             <source type="image/webp" srcset={webpSrcset} {sizes} />
             <source type="image/png" srcset={pngSrcset} {sizes} />
-            <img class="w-full h-full object-cover" alt={site.image.alt} {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" />
+            <img class="w-full h-full object-cover" {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" onload="this.style.backgroundImage='none'" style={`background-size: cover; background-image: url(${placeholder.dataURI})`} />
         </picture>
     </a>
 
