@@ -45,7 +45,7 @@ function normalizePackageDetails(data, pkg) {
 		description: data.description,
 		categories: uniqCategories,
 		official: isOfficial(pkg),
-		repoUrl: {
+		repoUrl: data.repository?.url && {
 			href: data.repository.url
 				.replace('git+', '')
 				.replace('.git', '')
@@ -56,7 +56,7 @@ function normalizePackageDetails(data, pkg) {
 			href: `https://www.npmjs.com/package/${pkg}`,
 			text: 'View on NPM',
 		},
-		url: {
+		url: data.homepage && {
 			href: data.homepage,
 			text: 'View homepage',
 		},
@@ -101,7 +101,7 @@ async function main() {
 	const npmData = data.map(([details, downloads]) => ({
 		...details,
 		downloads,
-	}))
+	})).filter(data => !!data.repoUrl?.href)
 
 	// don't fetch stars for official packages, they get a badge instead
 	const stars = await Promise.all(

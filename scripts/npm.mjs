@@ -42,11 +42,14 @@ export function fetchDetailsForPackage(pkg) {
  * @returns {Map} Map of search results, keyed by package name
  */
 export async function searchByKeyword(keyword, ranking = 'quality') {
-	const url = new URL(`${API_BASE_URL}search`)
+	const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`)
 	url.searchParams.set('text', `keywords:${keyword}`)
 	url.searchParams.set('ranking', ranking)
+	url.searchParams.set('size', '100')
 
-	const { objects } = await fetchJson(url.toString())
+	// TODO: add paging support
+
+	const { objects, total } = await fetchJson(url.toString())
 
 	return objects.reduce((acc, next) => {
 		acc.set(next.package.name, next)
