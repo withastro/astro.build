@@ -23,7 +23,7 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(',')
 const placeholder = await generatePlaceholder(site.image.src)
 ---
 
-<article class={clsx("relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
+<article onload="console.log('loaded')" class={clsx("relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
     <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="rounded-lg overflow-hidden shadow">
         <span class="sr-only">{site.title}</span>
 
@@ -31,7 +31,7 @@ const placeholder = await generatePlaceholder(site.image.src)
             <source type="image/avif" srcset={avifSrcset} {sizes} />
             <source type="image/webp" srcset={webpSrcset} {sizes} />
             <source type="image/png" srcset={pngSrcset} {sizes} />
-            <img class="w-full h-full object-cover" {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" onload="this.style.backgroundImage='none'" style={`background-size: cover; background-image: url(${placeholder.dataURI})`} />
+            <img class="w-full h-full object-cover" {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" onload="this.style.backgroundImage='none';this.classList.add('loaded')" style={`background-size: cover; background-image: url(${placeholder.dataURI});`} />
         </picture>
     </a>
 
@@ -42,6 +42,15 @@ const placeholder = await generatePlaceholder(site.image.src)
 </article>
 
 <style>
+    :global(.js) img {
+        transition: filter 300ms ease;
+        will-change: filter;
+    }
+
+    :global(.js) img:not(.loaded) {
+        filter: blur(15px);
+    }
+
     picture::after {
         @apply absolute inset-0 bg-black opacity-0 transition-opacity duration-150 ease-out;
         content: "";
