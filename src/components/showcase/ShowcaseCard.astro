@@ -1,16 +1,35 @@
 ---
 import clsx from 'clsx'
+import { generateImage } from 'astro-eleventy-img'
 
 export interface Props {
     site: App.ShowcaseSite;
 }
 
 const { site } = Astro.props as Props;
+
+const widths = site.highlight ? [453, 906, null] : [453, 906]
+const sizes = site.highlight ? '(min-width: 1024px) 67vw, 100vw' : '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)'
+
+const {webp, avif, png} = generateImage(site.image.src, {
+    widths,
+    formats: ['webp', 'avif', 'png']
+})
+
+const avifSrcset = avif.map(({ srcset }) => srcset).join(',')
+const webpSrcset = webp.map(({ srcset }) => srcset).join(',')
+const pngSrcset = png.map(({ srcset }) => srcset).join(',')
 ---
 
 <article class={clsx("flex flex-col rounded-lg shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
     <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="rounded-lg overflow-hidden shadow">
         <span class="sr-only">{site.title}</span>
-        <img {...site.image} class="h-full w-full object-cover" loading="lazy" />
+
+        <picture class="w-full h-full">
+            <source type="image/avif" srcset={avifSrcset} {sizes} />
+            <source type="image/webp" srcset={webpSrcset} {sizes} />
+            <source type="image/png" srcset={pngSrcset} {sizes} />
+            <img class="w-full h-full object-cover" alt={site.image.alt} {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" />
+        </picture>
     </a>
 </article>
