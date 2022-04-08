@@ -24,7 +24,7 @@ It’s finally here: The Astro 1.0 Hackathon!
   - 🏆 Best New Astro Theme
   - 🏆 Best New Astro Site, Built with SSR
 - **3 amazing winners will be chosen by judges**
-- **3 prizes of $5,000 each ($15,000 in total prizes!)**
+- **$15,000 in total prizes**
 - **Global: Everyone is welcome!**
 
 It all starts... **now!**
