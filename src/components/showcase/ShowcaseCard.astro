@@ -21,7 +21,7 @@ const webpSrcset = webp.map(({ srcset }) => srcset).join(',')
 const pngSrcset = png.map(({ srcset }) => srcset).join(',')
 ---
 
-<article class={clsx("flex flex-col rounded-lg shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
+<article class={clsx("relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
     <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="rounded-lg overflow-hidden shadow">
         <span class="sr-only">{site.title}</span>
 
@@ -32,4 +32,28 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(',')
             <img class="w-full h-full object-cover" alt={site.image.alt} {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" />
         </picture>
     </a>
+
+    <footer class="pointer-events-none absolute z-10 py-4 bg-black text-center text-white font-normal h-fit inset-x-0 top-full -translate-y-full opacity-0 transition-opacity duration-300 ease-out">
+        <p>{site.title}</p>
+        <a {...site.url} class="text-sm underline font-light">{site.url.href}</a>
+    </footer>
 </article>
+
+<style>
+    picture::after {
+        @apply absolute inset-0 bg-black opacity-0 transition-opacity duration-150 ease-out;
+        content: "";
+    }
+
+    article:hover picture::after {
+        @apply opacity-40;
+    }
+
+    article:hover footer {
+        @apply opacity-100;
+    }
+
+    footer a {
+        @apply text-inherit;
+    }
+</style>
