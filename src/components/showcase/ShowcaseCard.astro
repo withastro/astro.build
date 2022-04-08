@@ -24,18 +24,18 @@ const placeholder = await generatePlaceholder(site.image.src)
 ---
 
 <article onload="console.log('loaded')" class={clsx("relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
-    <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="rounded-lg overflow-hidden shadow">
+    <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer">
         <span class="sr-only">{site.title}</span>
 
         <picture class="w-full h-full">
             <source type="image/avif" srcset={avifSrcset} {sizes} />
             <source type="image/webp" srcset={webpSrcset} {sizes} />
             <source type="image/png" srcset={pngSrcset} {sizes} />
-            <img class="w-full h-full object-cover" {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" onload="this.style.backgroundImage='none';this.classList.add('loaded')" style={`background-size: cover; background-image: url(${placeholder.dataURI});`} />
+            <img class="w-full h-full object-cover rounded-lg overflow-hidden" {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" onload="this.style.backgroundImage='none';this.classList.add('loaded')" style={`background-size: cover; background-image: url(${placeholder.dataURI});`} />
         </picture>
     </a>
 
-    <footer class="pointer-events-none absolute z-10 py-4 bg-black text-center text-white font-normal h-fit inset-x-0 top-full -translate-y-full opacity-0 transition-opacity duration-300 ease-out">
+    <footer class="pointer-events-none absolute z-10 py-4 rounded-b-lg overflow-hidden bg-black text-center text-white font-normal h-fit inset-x-0 top-full -translate-y-full opacity-0 transition-opacity duration-300 ease-out">
         <p>{site.title}</p>
         <a {...site.url} class="text-sm underline font-light">{site.url.href}</a>
     </footer>
@@ -52,7 +52,7 @@ const placeholder = await generatePlaceholder(site.image.src)
     }
 
     picture::after {
-        @apply absolute inset-0 bg-black opacity-0 transition-opacity duration-150 ease-out;
+        @apply absolute inset-0 bg-black rounded-lg overflow-hidden opacity-0 transition-opacity duration-150 ease-out;
         content: "";
     }
 
