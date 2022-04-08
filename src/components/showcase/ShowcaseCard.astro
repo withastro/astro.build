@@ -1,4 +1,6 @@
 ---
+import clsx from 'clsx'
+
 export interface Props {
     site: App.ShowcaseSite;
 }
@@ -6,9 +8,9 @@ export interface Props {
 const { site } = Astro.props as Props;
 ---
 
-<article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow">
+<article class={clsx("flex flex-col rounded-lg shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
+    <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer" class="rounded-lg overflow-hidden shadow">
         <span class="sr-only">{site.title}</span>
-        <img {...site.image} class="h-auto" loading="lazy" />
+        <img {...site.image} class="h-full w-full object-cover" loading="lazy" />
     </a>
 </article>

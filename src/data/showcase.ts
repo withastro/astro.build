@@ -1,10 +1,11 @@
 import { contains } from '../utils/contains'
-import { uniq } from '../utils/uniq'
 
 interface ShowcaseSiteData {
 	title: string
 	image: string
     url: string
+	featured?: boolean
+	highlight?: boolean
 }
 
 export interface Collection {
@@ -35,7 +36,13 @@ async function loadShowcase(): Promise<App.ShowcaseSite[]> {
 				},
 			}
 		})
-		.sort(() => 0.5 - Math.random())
+		.sort((a, b) => {
+			// prioritize featured sites
+			if (a.featured && !b.featured) { return -1 }
+			else if (b.featured && !a.featured) { return 1 }
+
+			return 0.5 - Math.random()
+		})
 }
 
 export async function fetchShowcase() {
@@ -52,6 +59,9 @@ export async function fetchSitesForCollection(collection: string) {
 }
 
 export async function fetchCollections(): Promise<Collection[]> {
+	// TEMP: disabling collections for now
+	return []
+
 	const sites = await fetchShowcase()
 
 	const collectionsMap = new Map<string, number>()
