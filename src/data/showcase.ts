@@ -4,7 +4,7 @@ interface ShowcaseSiteData {
 	title: string
 	image: string
     url: string
-	featured?: boolean
+	featured?: number
 	highlight?: boolean
 }
 
@@ -40,6 +40,7 @@ async function loadShowcase(): Promise<App.ShowcaseSite[]> {
 			// prioritize featured sites
 			if (a.featured && !b.featured) { return -1 }
 			else if (b.featured && !a.featured) { return 1 }
+			else if (a.featured && b.featured) { return a.featured - b.featured }
 
 			return 0.5 - Math.random()
 		})
