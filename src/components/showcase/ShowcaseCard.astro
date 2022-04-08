@@ -24,7 +24,7 @@ const placeholder = await generatePlaceholder(site.image.src)
 ---
 
 <article onload="console.log('loaded')" class={clsx("relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
-    <a {...site.url} target="_blank" alt={site.title} rel="noopener noreferrer">
+    <a {...site.url} target="_blank" alt={site.title} rel="noopener">
         <span class="sr-only">{site.title}</span>
 
         <picture class="w-full h-full">
