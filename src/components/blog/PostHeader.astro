@@ -59,13 +59,14 @@ const { title, authors, publishDate, cover } = Astro.props as Props
         grid-area: title;
         font-family: var(--font-display);
         font-size: var(--size-700);
-        margin-bottom: .75em;
+        margin-bottom: .25em;
     }
 
     img {
         grid-area: image;
         width: 100%;
         border-radius: var(--corner-md);
+        margin: 0.25rem 0;
     }
 
     ul {
@@ -104,7 +105,7 @@ const { title, authors, publishDate, cover } = Astro.props as Props
 
     @media (min-width: 40rem) {
         header {
-            margin: 3rem 0 4rem;
+            margin: 2.5rem 0;
             max-width: 100%;
         }
 

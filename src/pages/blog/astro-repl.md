@@ -8,7 +8,7 @@ authors:
   - drew
 description: 'The power of Astro, right in your browser.'
 publishDate: 'September 17, 2021'
-permalink: 'https://astro.build/blog/astro-repl/astro-repl.png'
+permalink: 'https://astro.build/blog/astro-repl'
 lang: 'en'
 heroImage: '/assets/blog/astro-repl/astro-repl-hero.jpg'
 heroImageAlt: 'Hills with stars above'
