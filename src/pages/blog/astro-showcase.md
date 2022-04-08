@@ -8,7 +8,7 @@ authors:
   - tony
 description: 'Explore beautiful community websites built with Astro.'
 publishDate: 'April 8, 2022'
-socialImage: '/assets/showcase/social.jpg?v=2'
+socialImage: '/assets/showcase/social.jpg?v=3'
 permalink: 'https://astro.build/blog/astro-showcase'
 lang: 'en'
 ---
