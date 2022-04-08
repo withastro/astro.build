@@ -4,7 +4,7 @@ title: Astro Contributor Day
 description: "Happy Astro Contributor Day! Who are some of our awesome contributors? Where does Astro's sponsorship 💰 go? How does Astro give back to OSS? Lets get into it!"
 publishDate: 'April 7, 2022'
 socialImage: '/assets/blog/community-day/social.jpg'
-coverImage: '/assets/blog/community-day/cover.jpg'
+coverImage: '/src/pages/blog/assets/community-day/cover.jpg'
 lang: 'en'
 authors:
   - fred
@@ -20,7 +20,7 @@ I’m excited to share a couple of new announcements, as well as updates on our 
 
 **We do a lot of community-building on [Discord](https://astro.build/chat).** We have over 4000 total members in our Discord, with over 400 actively engaged members visiting and hanging out with us every week. Self-organizing teams like **@Maintainers**, **@Moderators**, **@Support Squad**, and our awesome **@Docs Team** are a huge part of what make our server the best software-focused community on Discord, hands down.
 
-![Astro community contributors](/assets/blog/community-day/astro-community.png)
+![Astro community contributors](/src/pages/blog/assets/community-day/astro-community.png)
 
 ## Recognizing our Amazing Contributors
 
