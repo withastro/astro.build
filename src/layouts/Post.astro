@@ -13,10 +13,13 @@ export interface Props {
 		publishDate: string | Date;
 		socialImage: string;
 		coverImage?: string;
+		coverImageAlt?: string;
+		heroImage?: string;
+		heroImageAlt?: string;
 	}
 }
 
-const { content: { title, publishDate, description, authors, socialImage, coverImage } } = Astro.props as Props;
+const { content: { title, publishDate, description, authors, socialImage, coverImage, heroImage, coverImageAlt, heroImageAlt } } = Astro.props as Props;
 const { canonicalURL } = Astro;
 const meta = {
 	title,
@@ -24,10 +27,12 @@ const meta = {
 	canonicalURL,
 	image: socialImage,
 }
+
+const cover = (coverImage || heroImage) && { src: coverImage ?? heroImage, alt: coverImageAlt ?? heroImageAlt ?? title}
 ---
 
 <Layout meta={meta}>
-	<PostHeader title={title} authors={authors} publishDate={publishDate} coverImage={coverImage} />
+	<PostHeader title={title} authors={authors} publishDate={publishDate} {cover} />
 
 	<div id="article">
 		<slot />

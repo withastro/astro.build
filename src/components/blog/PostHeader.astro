@@ -7,17 +7,17 @@ interface Props {
     title: string;
     authors: string[];
     publishDate: string | Date;
-    coverImage?: string;
+    cover?: App.Image;
 }
 
-const { title, authors, publishDate, coverImage } = Astro.props as Props
+const { title, authors, publishDate, cover } = Astro.props as Props
 ---
 
 <header class="container">
     <h1 class="text-gradient" set:html={smartypants(title, 1)}></h1>
 
-    {coverImage && (
-        <img src={coverImage} alt={title} />
+    {cover && (
+        <img src={cover.src} alt={cover.alt} />
     )}
 
     <div class="authors">
