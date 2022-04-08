@@ -37,7 +37,7 @@ const placeholder = await generatePlaceholder(site.image.src)
 
     <footer class="pointer-events-none absolute z-10 py-4 rounded-b-lg overflow-hidden bg-black text-center text-white font-normal h-fit inset-x-0 top-full -translate-y-full opacity-0 transition-opacity duration-300 ease-out">
         <p>{site.title}</p>
-        <a {...site.url} class="text-sm underline font-light">{site.url.href}</a>
+        <small {...site.url} class="underline font-light">{site.url.href}</small>
     </footer>
 </article>
 
@@ -56,15 +56,11 @@ const placeholder = await generatePlaceholder(site.image.src)
         content: "";
     }
 
-    article:hover picture::after {
+    article:hover picture::after, a:focus picture::after {
         @apply opacity-40;
     }
 
-    article:hover footer {
+    article:hover footer, a:focus + footer {
         @apply opacity-100;
-    }
-
-    footer a {
-        @apply text-inherit;
     }
 </style>
