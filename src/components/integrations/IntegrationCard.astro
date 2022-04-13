@@ -40,10 +40,22 @@ function randomColor() {
 function randomIcon() {
     return icons[Math.floor(Math.random() * icons.length)]
 }
+
+if (!integration.url?.href) {
+    console.log('url.href', integration.title)
+}
+
+if (!integration.repoUrl?.href) {
+    console.log('repoUrl.href', integration.title)
+}
+
+if (!integration.npmUrl?.href) {
+    console.log('npmjsUrl.href', integration.url)
+}
 ---
 
 <article class="isolate flex flex-col p-4 rounded-lg shadow-md bg-white relative min-h-[11rem]">
-    <a href={integration.url.href} alt={integration.url.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer">
+    <a href={integration.url?.href} alt={integration.url?.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer">
         <span class="sr-only">View homepage</span>
     </a>
 
@@ -60,14 +72,14 @@ function randomIcon() {
             </div>
         )}
         {!integration.official && stars && (
-            <a href={integration.repoUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center gap-x-1 text-sm">
+            <a href={integration.repoUrl?.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center gap-x-1 text-sm">
                 <span class="sr-only">View the integration source code</span>
                 <Sprite pack="fa-regular" name="star" size="1.25em" />
                 <span>{stars}</span>
             </a>
         )}
         {!integration.official && downloads && (
-            <a href={integration.npmUrl.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center text-sm">
+            <a href={integration.npmUrl?.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center text-sm">
                 <span class="sr-only">View on NPM</span>
                 <Sprite pack="heroicons-outline" name="download" size="1.25em" />
                 <span>{downloads}</span>

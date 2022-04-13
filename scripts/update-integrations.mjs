@@ -35,27 +35,33 @@ function normalizePackageDetails(data, pkg) {
 		.flat()
 	const uniqCategories = Array.from(new Set(allCategories))
 
+	const npmUrl = {
+		href: `https://www.npmjs.com/package/${pkg}`,
+		text: 'View on NPM'
+	}
+
+	const repoUrl = data.repository?.url && {
+		href: data.repository.url
+			.replace('git+', '')
+			.replace('.git', '')
+			.replace('git:', 'https:'),
+		text: 'View source code',
+	}
+
+	const url = data.homepage ? {
+		href: data.homepage,
+		text: 'View homepage'
+	} : npmUrl
+
 	return {
 		slug: data.name,
 		title: data.name,
 		description: data.description,
 		categories: uniqCategories,
 		official: isOfficial(pkg),
-		repoUrl: data.repository?.url && {
-			href: data.repository.url
-				.replace('git+', '')
-				.replace('.git', '')
-				.replace('git:', 'https:'),
-			text: 'View source code',
-		},
-		npmUrl: {
-			href: `https://www.npmjs.com/package/${pkg}`,
-			text: 'View on NPM',
-		},
-		url: data.homepage && {
-			href: data.homepage,
-			text: 'View homepage',
-		},
+		repoUrl,
+		npmUrl,
+		url
 	}
 }
 
@@ -97,12 +103,12 @@ async function main() {
 	const npmData = data.map(([details, downloads]) => ({
 		...details,
 		downloads,
-	})).filter(data => !!data.repoUrl?.href)
+	}))
 
 	// don't fetch stars for official packages, they get a badge instead
 	const stars = await Promise.all(
 		npmData.map(data =>
-			data.official ? undefined : getStarsForRepo(data.repoUrl.href)
+			(data.official || !data.repoUrl?.href) ? undefined : getStarsForRepo(data.repoUrl.href)
 		)
 	)
 
