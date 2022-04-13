@@ -35,10 +35,6 @@ function normalizePackageDetails(data, pkg) {
 		.flat()
 	const uniqCategories = Array.from(new Set(allCategories))
 
-	if (!data.repository) {
-		console.log(pkg, data)
-	}
-
 	return {
 		slug: data.name,
 		title: data.name,
