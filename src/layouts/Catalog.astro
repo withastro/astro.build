@@ -72,7 +72,15 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
 </Layout>
 
 <script>
-    import { outlet } from '../scripts/spa.ts'
+    import listen from 'micromorph/spa';
 
-    if (import.meta.env.PROD) { outlet('a.pill'); }
+    if (import.meta.env.PROD) {
+        listen({
+            include: 'a.pill',
+            beforeDiff: (doc) => {
+                // make sure the `js` class on the body is maintained
+                doc.body.classList.add(...document.body.classList)
+            }
+        });
+    }
 </script>
