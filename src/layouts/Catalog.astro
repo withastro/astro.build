@@ -77,6 +77,7 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
     if (import.meta.env.PROD) {
         listen({
             include: 'a.pill',
+            scrollToTop: false,
             beforeDiff: (doc) => {
                 // make sure the `js` class on the body is maintained
                 doc.body.classList.add(...document.body.classList)
