@@ -14,8 +14,13 @@ function shouldPreload({ href }: { href: string }) {
 }
 
 let parser: DOMParser
+let observer: IntersectionObserver
 
-async function preloadHref(href: string) {
+async function preloadHref(link: HTMLAnchorElement) {
+    observer.unobserve(link)
+
+    const { href } = link
+
     const contents = await fetch(href).then(res => res.text())
     parser = parser || new DOMParser()
 
@@ -32,9 +37,19 @@ export function preload(elements: string | NodeListOf<HTMLAnchorElement> = 'a[hr
             : elements
         ).filter(shouldPreload)
 
+    observer = observer || new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.target instanceof HTMLAnchorElement) {
+                preloadHref(entry.target)
+            }
+        })
+    })
+
     for (const link of links) {
         preloaded.add(link.href)
-        console.log('preload::', link.href)
-        events.map(event => link.addEventListener(event, () => preloadHref(link.href), { once: true }));
+        observer.observe(link)
+        events.map(event => link.addEventListener(event, () => preloadHref(link), { once: true }));
     }
+
+    
 }
