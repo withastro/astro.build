@@ -16,8 +16,25 @@ function shouldPreload({ href }: { href: string }) {
 let parser: DOMParser
 let observer: IntersectionObserver
 
-async function preloadHref(link: HTMLAnchorElement) {
+function observe(link: HTMLAnchorElement) {
+    preloaded.add(link.href)
+    observer.observe(link)
+    events.map(event => link.addEventListener(event, onLinkEvent, { once: true }))
+}
+
+function unobserve(link: HTMLAnchorElement) {
     observer.unobserve(link)
+    events.map(event => link.removeEventListener(event, onLinkEvent))
+}
+
+function onLinkEvent({ target }: Event) {
+    if (!(target instanceof HTMLAnchorElement)) { return }
+
+    preloadHref(target)
+}
+
+async function preloadHref(link: HTMLAnchorElement) {
+    unobserve(link)
 
     const { href } = link
 
@@ -48,8 +65,6 @@ export function preload(elements: string | NodeListOf<HTMLAnchorElement> = 'a[hr
     })
 
     for (const link of links) {
-        preloaded.add(link.href)
-        observer.observe(link)
-        events.map(event => link.addEventListener(event, () => preloadHref(link), { once: true }));
+        observe(link)
     }
 }
