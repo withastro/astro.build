@@ -74,5 +74,5 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
 <script>
     import { outlet } from '../scripts/outlet.ts'
 
-    outlet('a.pill')
+    if (import.meta.env.PROD) { outlet('a.pill'); }
 </script>
