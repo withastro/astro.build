@@ -46,7 +46,9 @@ const { meta, invert = false, fullscreen = false, baseHref } = Astro.props;
 
 <script>
     import "/src/scripts/defer.ts";
-    import "/src/scripts/preload.ts";
+    import { preload } from"/src/scripts/preload.ts";
+
+    preload();
 </script>
 
 <style>

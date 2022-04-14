@@ -1,27 +1,13 @@
-if (typeof fetch === 'function') {
-    const links = document.querySelectorAll<HTMLAnchorElement>('a')
+const events = ['mouseenter', 'touchstart', 'focus']
 
-    function preload(href: string) {
-        fetch(href, { cache: "force-cache" });
-    }
-
-    function onPreload(event: MouseEvent) {
-        const target = event.target as HTMLAnchorElement;
-
-        if (!target.href) {
-            return;
-        }
-
-        target.removeEventListener('mouseenter', onPreload, true);
-        target.removeEventListener('touchstart', onPreload, true);
-
-        preload(target.href);
-    }
+export function preload(elements: string | NodeListOf<HTMLAnchorElement> = 'a[href]') {
+    const links = typeof elements === 'string'
+        ? document.querySelectorAll<HTMLAnchorElement>(elements)
+        : elements
 
     for (const link of links) {
-        if (link.href.startsWith(location.origin)) {
-            link.addEventListener('mouseenter', onPreload, true);
-            link.addEventListener('touchstart', onPreload, true);
+        if (link.href.startsWith(location.origin) && link.href !== location.href) {
+            events.map(event => link.addEventListener(event, () => fetch(link.href), { once: true }));
         }
-}
+    }
 }

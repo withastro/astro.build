@@ -53,7 +53,9 @@ const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.
 
     <script>
         import "/src/scripts/defer.ts";
-        import "/src/scripts/preload.ts";
+        import { preload } from "/src/scripts/preload.ts";
+
+        preload();
     </script>
   </body>
 </html>
