@@ -21,13 +21,15 @@ async function preloadHref(link: HTMLAnchorElement) {
 
     const { href } = link
 
-    const contents = await fetch(href).then(res => res.text())
-    parser = parser || new DOMParser()
+    try {
+        const contents = await fetch(href).then(res => res.text())
+        parser = parser || new DOMParser()
 
-    const html = parser.parseFromString(contents, 'text/html')
-    const styles = Array.from(html.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'))
+        const html = parser.parseFromString(contents, 'text/html')
+        const styles = Array.from(html.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'))
 
-    await Promise.all(styles.map(({ href }) => fetch(href)))
+        await Promise.all(styles.map(({ href }) => fetch(href)))
+    } catch { }
 }
 
 export function preload(elements: string | NodeListOf<HTMLAnchorElement> = 'a[href]') {
@@ -50,6 +52,4 @@ export function preload(elements: string | NodeListOf<HTMLAnchorElement> = 'a[hr
         observer.observe(link)
         events.map(event => link.addEventListener(event, () => preloadHref(link), { once: true }));
     }
-
-    
 }
