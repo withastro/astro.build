@@ -70,3 +70,18 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
 
     <Footer slot="footer" />
 </Layout>
+
+<script>
+    import listen from 'micromorph/spa';
+
+    if (import.meta.env.PROD) {
+        listen({
+            include: 'a.pill',
+            scrollToTop: false,
+            beforeDiff: (doc) => {
+                // make sure the `js` class on the body is maintained
+                doc.body.classList.add(...document.body.classList)
+            }
+        });
+    }
+</script>

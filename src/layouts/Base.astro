@@ -50,12 +50,15 @@ const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.
 
         <slot name="footer" />
     </Sprite.Provider>
-
-    <script>
-        import "/src/scripts/defer.ts";
-    </script>
   </body>
 </html>
+
+<script>
+    import "/src/scripts/defer.ts";
+    import { preload } from "/src/scripts/preload.ts";
+
+    if (import.meta.env.PROD) { preload(); }
+</script>
 
 <style is:global>
     :root {
