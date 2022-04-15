@@ -1,3 +1,5 @@
+import requestIdleCallback from '../utils/requestIdleCallback'
+
 const events = ['mouseenter', 'touchstart', 'focus']
 
 const preloaded = new Set<string>()
@@ -49,13 +51,7 @@ async function preloadHref(link: HTMLAnchorElement) {
     } catch { }
 }
 
-export function preload(elements: string | NodeListOf<HTMLAnchorElement> = 'a[href]') {
-    const links = Array.from(
-        typeof elements === 'string'
-            ? document.querySelectorAll<HTMLAnchorElement>(elements)
-            : elements
-        ).filter(shouldPreload)
-
+export function preload(elements: string = 'a[href]') {
     observer = observer || new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting && entry.target instanceof HTMLAnchorElement) {
@@ -64,7 +60,15 @@ export function preload(elements: string | NodeListOf<HTMLAnchorElement> = 'a[hr
         })
     })
 
-    for (const link of links) {
-        observe(link)
-    }
+    requestIdleCallback(() => {
+        const links = Array.from(
+            typeof elements === 'string'
+                ? document.querySelectorAll<HTMLAnchorElement>(elements)
+                : elements
+            ).filter(shouldPreload)
+
+        for (const link of links) {
+            observe(link)
+        }
+    })
 }
