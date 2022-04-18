@@ -50,7 +50,7 @@ function randomIcon() {
     <div class="flex gap-x-4 items-center">
         <div class={clsx("inline-block mr-auto", !integration.image && "p-1 rounded-full border-2 border-dawn")}>
             {integration.image 
-                ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em]" loading="lazy" />)
+                ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em] object-contain" loading="lazy" />)
                 : (<Sprite {...randomIcon()} size="1.5em" class={randomColor()} />)}
         </div>
         {integration.official && (
