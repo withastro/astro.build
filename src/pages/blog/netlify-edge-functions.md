@@ -3,8 +3,8 @@ layout: '../../layouts/Post.astro'
 title: 'Astro on Netlify Edge Functions'
 description: 'Announcing support for the new Netlify Edge Functions platform'
 publishDate: 'April 19, 2022'
-socialImage: '/assets/blog/experimental-ssr/social.jpg'
-coverImage: '/assets/blog/experimental-ssr/cover.jpg'
+socialImage: '/assets/blog/astro-netlify-social.jpg'
+coverImage: '/assets/blog/astro-netlify-social.jpg'
 lang: 'en'
 authors:
   - matthew
@@ -73,11 +73,6 @@ And that should be it! The next time you build, it will generate an SSR build co
 
 ## Partnerships
 
-Netlify was Astro’s launch partner for SSR. Even within the short time since that announcement, we have seen tremendous support from other hosting platforms:
+Netlify was Astro’s launch partner for SSR. Even within the short time since that announcement, we have seen tremendous support from other hosting platforms with adapters either already been built or in the works.
 
-- [Begin](https://begin.com/) [announced support](https://blog.begin.com/posts/2022-04-15-astro-ssr-lambda-with-architect) for Astro on AWS Lambda through the [Architect framework](https://arc.codes/docs/en/get-started/quickstart).
-- A [Vercel adapter](https://github.com/withastro/astro/tree/main/packages/integrations/vercel) was added as a core integration through community contributions.
-- Serverless Cloud announced their own [adapter](https://github.com/serverless/cloud/tree/main/templates/astro-ssr).
-- A Deno (including [Deno Deploy](https://deno.com/deploy)) [adapter](https://github.com/withastro/astro/tree/main/packages/integrations/deno) was added to core.
-
-With several other big hosts having adapters in the works. If you’d like to build an adapter for another platform, swing by our [Discord channel](https://discord.com/channels/830184174198718474/852168748353060875) and we’d be happy to help you along!
+If you’d like to build an adapter for another platform, swing by our [Discord channel](https://discord.com/channels/830184174198718474/852168748353060875) and we’d be happy to help you along!
