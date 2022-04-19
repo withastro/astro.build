@@ -69,7 +69,7 @@ export default defineConfig({
 });
 ```
 
-And that should be it! The next time you build, it will generate an SSR build compatible with Edge Functions, which can then be deployed with `netlify deploy`.
+And that should be it! The next time you build, it will generate an SSR build compatible with Edge Functions, which can then be deployed with `netlify deploy --build`.
 
 ## Partnerships
 
