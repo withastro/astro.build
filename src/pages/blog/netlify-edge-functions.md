@@ -73,6 +73,6 @@ And that should be it! The next time you build, it will generate an SSR build co
 
 ## Partnerships
 
-Netlify was Astro’s launch partner for SSR. Even within the short time since that announcement, we have seen tremendous support from other hosting platforms with adapters either already been built or in the works.
+Netlify was Astro’s launch partner for SSR. Even within the short time since that announcement we have seen tremendous support from other hosting platforms with adapters either already been built or in the works.
 
 If you’d like to build an adapter for another platform, swing by our [Discord channel](https://discord.com/channels/830184174198718474/852168748353060875) and we’d be happy to help you along!
