@@ -47,7 +47,7 @@ Netlify Edge Functions run on top of [Deno](https://deno.land/), but *most* Astr
 
 If you are using dependencies that depend on Node.js’ built-in modules, it’s possible that you cannot move off of Netlify Functions. If so, Netlify Functions is still a great platform for most use-cases and provides a standard Node.js runtime for Node package support. 
 
-If you use the `<Markdown />` component, it cannot presently run in non-Node environments. We recommend using `.md` pages for substantial markdown anyways, so consider moving off of the Markdown component.
+If you use the `<Markdown />` component, it cannot presently run in non-Node environments. A possible alternative in the meantime is using `.md` pages.
 
 ### Migration
 
@@ -57,7 +57,7 @@ First, upgrade to the latest `@astrojs/netlify` like so:
 npm install @astrojs/netlify@latest
 ```
 
-Then, update your astro config to import the edge functions adapter:
+Then, update your `astro.config.mjs` to import the edge functions adapter:
 
 ```diff
 import { defineConfig } from 'astro/config';
@@ -69,7 +69,7 @@ export default defineConfig({
 });
 ```
 
-And that should be it! The next time you build, it will generate
+And that should be it! The next time you build, it will generate an SSR build compatible with Edge Functions, which can then be deployed with `netlify deploy`.
 
 ## Partnerships
 
