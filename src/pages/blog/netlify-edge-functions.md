@@ -10,7 +10,7 @@ authors:
   - matthew
 ---
 
-Two weeks ago, we [announced experimental support for server-side rendering (SSR) with Netlify](https://www.netlify.com/blog/astro-ssr) as our launch partner on [Netlify Functions](https://docs.netlify.com/functions/overview/). Today, we’re announcing support for SSR on Netlify’s new Edge Functions platform. Edge Functions went live today and Astro has day 1 support.
+Two weeks ago, we [announced experimental support for server-side rendering (SSR) with Netlify](https://www.netlify.com/blog/astro-ssr) as our launch partner on [Netlify Functions](https://docs.netlify.com/functions/overview/). Today, we’re announcing support for SSR on Netlify’s new [Edge Functions](https://www.netlify.com/products/#netlify-edge-functions) platform. Edge Functions went live today and Astro has day 1 support.
 
 With SSR and Astro, you can:
 
