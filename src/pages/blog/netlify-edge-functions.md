@@ -18,7 +18,7 @@ With SSR and Astro, you can:
 - Build apps that need authentication or persistent state, such as E-commerce backends.
 - Use a simplified HTML-like syntax with sprinkles of JavaScript, only when you need it.
 
-With **edge rendering,** you bring SSR closer to your users, getting those first bytes to the browser, faster. Combined with serving static assets at the edge, this gives you optimal network performance. Astro is committed to making performant content sites easy to achieve, and Netlify’s new Edge Function platform is an ideal place to deploy your Astro SSR applications today.
+With **edge rendering** you bring SSR closer to your users, getting those first bytes to the browser, faster. Combined with serving static assets at the edge, this gives you optimal network performance. Astro is committed to making performant content sites easy to achieve, and Netlify’s new Edge Function platform is an ideal place to deploy your Astro SSR applications today.
 
 To get started, install the Netlify adapter:
 
@@ -68,6 +68,8 @@ export default defineConfig({
 	adapter: netlify()
 });
 ```
+
+And that should be it! The next time you build, it will generate
 
 ## Partnerships
 
