@@ -15,7 +15,7 @@ lang: 'en'
 
 In addition, we are thrilled to announce that the **official Astro v1.0.0 release will be available on June 8, 2022.** We plan to use these next two months to improve documentation, squash bugs, collect your feedback, and finish up [a few final Astro improvements](https://github.com/withastro/rfcs/discussions/161).
 
-We are incredibly grateful for the support Astro has received so far. Thousands of developers – including teams from [Firebase](https://firebase.blog/), [Trivago](https://tech.trivago.com/), and [The Guardian](https://developers.theguardian.com/) – are already running Astro in production today. If you’ve been waiting to try Astro, there has never been a better time to get started.
+We are incredibly grateful for the support Astro has received so far. Thousands of developers – including teams from [Firebase](https://firebase.blog/), [Trivago](https://tech.trivago.com/), and [The Guardian](https://theguardian.engineering/) – are already running Astro in production today. If you’ve been waiting to try Astro, there has never been a better time to get started.
 
 **Visit [astro.new](http://astro.new) to try out the Astro v1.0 beta release right in your browser.** You can also run `npm init astro` to get started locally. Read our [Getting Started](https://docs.astro.build/en/getting-started/) and [Migration](https://docs.astro.build/en/migrate/) guides to learn more.
 
