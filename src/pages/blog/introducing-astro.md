@@ -11,7 +11,7 @@ authors:
 description: | 
   We're excited to announce Astro as a new way to build static websites and deliver lightning-fast performance without sacrificing a modern developer experience.
 publishDate: 'June 8, 2021'
-heroImage: '/social.jpg'
+heroImage: '/social.png'
 permalink: 'https://astro.build/blog/introducing-astro'
 lang: 'en'
 ---
