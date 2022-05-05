@@ -46,13 +46,8 @@ export type GlobalNavigation = (NavigationItem | NavigationGroup)[]
 
 export const globalNavigation: GlobalNavigation = [
 	{
-		title: 'Build',
+		title: 'Explore',
 		items: [
-			{
-				href: 'https://docs.astro.build/en/getting-started/',
-				title: 'Getting Started',
-				description: 'New to Astro? Start with our docs and online playground.',
-			},
 			{
 				href: '/themes/',
 				title: 'Themes',
@@ -64,50 +59,37 @@ export const globalNavigation: GlobalNavigation = [
 				description:
 					'Try the plugins and components built by our amazing community.',
 			},
-			{
-			 	href: '/showcase',
-			 	title: 'Showcase',
-				description: 'Looking for inspiration? Explore these awesome sites built with Astro.'
-			}
 		],
 	},
 	{
 		title: 'Learn',
 		items: [
 			{
+				href: 'https://docs.astro.build/en/getting-started/',
+				title: 'Guides',
+				description: 'New to Astro? Start here.',
+			},
+			{
 				href: 'https://docs.astro.build',
-				title: 'Docs',
+				title: 'Documentation',
 				description:
-					'Not your first rodeo? Jump into our docs for examples and best practices.',
-			},
-			{
-				href: 'https://docs.astro.build/en/reference/configuration-reference/',
-				title: 'API',
-				description:
-					'Read more about our API, configuration, built-in components, and more.',
-			},
-			{
-				href: '/blog/',
-				title: 'Blog',
-				description: 'The latest Astro news, straight from the team.',
-			},
-		],
-	},
-	{
-		title: 'Play',
-		hiddenMobile: true,
-		items: [
-			{
-				href: 'https://astro.new',
-				title: 'Start a Project',
-				description: 'Choose from a variety of starter templates.',
+					'Jump into our docs to learn how to get the most out of Astro.',
 			},
 			{
 				href: '/play/',
-				title: 'Explore the language',
+				title: 'Playground',
 				description:
 					'Jump into our online playground to try Astro with zero setup.',
 			},
 		],
+	},
+	{
+		 href: '/showcase',
+		 title: 'Showcase',
+		description: 'Looking for inspiration? Explore these awesome sites built with Astro.'
+	},
+	{
+		title: 'Blog',
+		href: '/blog/',
 	},
 ]
