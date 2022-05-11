@@ -25,7 +25,7 @@ export const navigation = [
 
 export const footer = [
 	{ href: '/about/', title: 'About' },
-	{ href: 'https://astroinc.notion.site/Join-The-Astro-Company-51cbe3489aab41388100bc875121ac15', title: "We're Hiring!" },
+	{ href: '/company/', title: "We're Hiring!" },
 	{ href: '/blog/', title: 'Blog', hiddenMobile: true },
 	{ href: '/press/', title: 'Press' },
 ]
