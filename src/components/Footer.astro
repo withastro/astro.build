@@ -30,7 +30,7 @@ const YYYY = new Date().getFullYear();
         <ul class="links">
             <li>&copy; {YYYY} The Astro Technology Company</li>
             {footer.map(item => (
-                <li><a href={item.href}>{item.title}</a></li>
+                <li><a href={item.href} target={item.external ? "_blank" : undefined}>{item.title}</a></li>
             ))}
         </ul>
     </div>
