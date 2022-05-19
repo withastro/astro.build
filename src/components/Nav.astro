@@ -148,9 +148,6 @@ li {
 nav.dark li {
     color: var(--color-white);
 }
-li + li {
-    margin-left: 0;
-}
 [aria-current="page"] {
     font-weight: 700;
 }
@@ -246,7 +243,7 @@ nav a {
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
     transition-property: transform, color;
-    padding: 0 0.5rem;
+    padding: 0 0.6rem;
 }
 nav .flyout {
     padding: 0 0.5rem;
@@ -259,12 +256,21 @@ nav a:active {
     color: var(--color-blue);
 }
 
-.icon a :global(svg) {
+li.icon {
+    margin-left: 1rem;
+}
+li.icon + li.icon {
+    margin-left: 0rem;
+}
+li.icon a {
+    padding: 0.25rem;
+}
+li.icon a :global(svg) {
     transform: scale(0.9);
 }
 
-.icon a:focus :global(svg),
-.icon a:hover :global(svg) {
+li.icon a:focus :global(svg),
+li.icon a:hover :global(svg) {
     transform: scale(1);
 }
 
