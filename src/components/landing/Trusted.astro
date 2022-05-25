@@ -25,29 +25,33 @@ import Section from './Section.astro'
     padding: 0;
     width: 100%;
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
     color: var(--color-dusk);
 }
+.logos > :global(li) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
 @media (min-width: 32rem) {
     .logos {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
     }
-    * :global(li:last-child) {
-        grid-column: auto / span 2;
+    .logos > :global(li) {
+        width: auto;
     }
 }
 @media (min-width: 64rem) {
     .logos {
-        grid-auto-flow: column;
         max-width: max-content;
         margin: 0 auto;
         gap: 3rem;
-        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    }
-    * :global(li:last-child) {
-        grid-column: auto / auto;
     }
 
     .logos :global(svg) {
@@ -58,12 +62,5 @@ import Section from './Section.astro'
     .logos :global(svg) {
         height: 2.5rem;
     }
-}
-.logos > :global(li) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
 }
 </style>
