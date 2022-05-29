@@ -1,28 +1,10 @@
 class NotMarquee extends HTMLElement {
-	#io: IntersectionObserver
-
 	connectedCallback() {
-		if ('IntersectionObserver' in window) {
-			this.visible = false
-
-			this.#io = new IntersectionObserver(([entry]) => {
-				this.visible = entry.isIntersecting
-			})
-
-			this.#io.observe(this)
-		}
-
 		this.checkbox.addEventListener('change', this.onCheckboxChanged.bind(this))
 
 		if (window.localStorage.getItem('astro:marquee-paused') === 'false') {
 			requestAnimationFrame(() => (this.checkbox.checked = false))
 		}
-	}
-
-	set visible(value: boolean) {
-		requestAnimationFrame(() => {
-			this.setAttribute('visible', `${value}`)
-		})
 	}
 
 	get checkbox(): HTMLInputElement {
@@ -41,4 +23,4 @@ class NotMarquee extends HTMLElement {
 	}
 }
 
-customElements.define('not-marquee', NotMarquee)
+customElements.define('not-marquee', NotMarquee);
