@@ -2,16 +2,12 @@
 const { height = 50 } = Astro.props;
 ---
 
-<star-field style={`--height: ${height}%;`}>
+<div style={`--height: ${height}%;`}>
     <slot />
-</star-field>
-
-<script>
-    import "./Starfield.ts";
-</script>
+</div>
 
 <style>
-star-field {
+div {
     position: absolute;
     top: 0;
     right: 0;
@@ -21,21 +17,11 @@ star-field {
     background-repeat: repeat;
     -webkit-mask-image: url(/stars-mask.png);
     -webkit-mask-repeat: repeat;
+    transform: translate3d(0px, 0px, 0px);
     mask-image: url(/stars-mask.png);
     mask-repeat: repeat;
     animation: sparkle 10s linear infinite alternate-reverse;
     pointer-events: none;
-}
-
-star-field[visible="false"] {
-    animation-play-state: paused;
-}
-
-/* Safari tweaks */
-@supports (-webkit-appearance: none) {
-    star-field {
-        animation-play-state: paused;
-    }
 }
 
 @keyframes sparkle {
