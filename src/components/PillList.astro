@@ -11,7 +11,7 @@ export interface Props {
 const { links, current, title, class: className } = Astro.props as Props;
 ---
 
-<section class={clsx("max-w-3xl", className)}>
+<section class={clsx("max-w-4xl", className)}>
     <h2 class="text-xs pb-2 font-display font-bold tracking-wider uppercase text-dusk">{title}</h2>
     <ul class="flex flex-row gap-2 flex-wrap">
         {links.map(link => (

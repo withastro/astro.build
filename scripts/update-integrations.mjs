@@ -86,7 +86,7 @@ async function fetchDetailsWithOverrides(pkg) {
 }
 
 async function main() {
-	const keyword = 'astro-component'
+	const keyword = 'astro-component,withastro'
 
 	const packagesMap = await searchByKeyword(keyword)
 	const packageNames = new Set([...packagesMap.keys(), ...WHITELIST_PACKAGES])
