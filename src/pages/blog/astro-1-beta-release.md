@@ -1,4 +1,6 @@
 ---
+setup: |
+  import Note from '../../components/Note.astro'
 layout: '../../layouts/Post.astro'
 title: 'Astro 1.0 Beta Release'
 description: 'The Astro 1.0 Beta is now available! This release marks the stabilization of all major APIs, with no more major breaking changes planned between now and the official v1.0 release.'
@@ -11,9 +13,15 @@ coverImage: '/assets/blog/astro-1-beta-release/cover.png'
 lang: 'en'
 ---
 
+<Note type="warning" title="This post was most recently updated on June 6, 2022">
+
+  We’re pushing back our v1.0.0 release to late July in order to make some final developer experience improvements to Astro. [Read more](https://astro.build/blog/astro-1-release-update/).
+
+</Note>
+
 **The Astro 1.0 Beta is now available!** This release marks the stabilization of all major APIs, with no more major breaking changes planned between now and the official v1.0 release.
 
-In addition, we are thrilled to announce that the **official Astro v1.0.0 release will be available on June 8, 2022.** We plan to use these next two months to improve documentation, squash bugs, collect your feedback, and finish up [a few final Astro improvements](https://github.com/withastro/rfcs/discussions/161).
+In addition, we are thrilled to announce that the **official Astro v1.0.0 release will be available in late July 2022.** We plan to use these next few months to improve documentation, squash bugs, collect your feedback, and finish up [a few final Astro improvements](https://github.com/withastro/rfcs/discussions/161).
 
 We are incredibly grateful for the support Astro has received so far. Thousands of developers – including teams from [Firebase](https://firebase.blog/), [Trivago](https://tech.trivago.com/), and [The Guardian](https://theguardian.engineering/) – are already running Astro in production today. If you’ve been waiting to try Astro, there has never been a better time to get started.
 
@@ -103,6 +111,6 @@ This week is **Launch Week** at Astro HQ, so we have a few more exciting announc
 - Thursday, April 7: **Contributor Day**
 - Friday, April 8: **Recap (and one more thing...)**
 
-Beyond that, you can check [our public roadmap](https://github.com/withastro/rfcs/discussions/161) for updates as we work towards the official release of Astro v1.0.0 on **June 8, 2022**! 🎉
+Beyond that, you can check [our public roadmap](https://github.com/withastro/rfcs/discussions/161) for updates as we work towards the official release of Astro v1.0.0 in **July 2022**! 🎉
 
 If you’re interested in getting involved or sharing any feedback, we invite you to [visit our GitHub](https://github.com/withastro/astro) repository and [join our Discord server](https://astro.build/chat).
