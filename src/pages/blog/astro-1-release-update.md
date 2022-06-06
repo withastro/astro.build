@@ -14,7 +14,7 @@ lang: 'en'
 
 Since we announced the [Astro v1.0.0 Beta](https://astro.build/blog/astro-1-beta-release/) back in April, we have collected a ton of feedback from early adopters. We've used that feedback to fix bugs, upgrade HMR, and vastly improve the overall developer experience compared to just two months ago. In the last few weeks alone, we have taken an active focus on resolving open issues, which have dropped from a peak of 130 issues to just 56 issues today.
 
-<!-- Comment for Nate: Do we have a graph that we could show of open issues? maybe https://9-volt.github.io/bug-life/ ? -->
+<img src="/assets/blog/astro-1-release-update/pulse.svg" />
 
 In order to deliver on the best-in-class developer experience that we promised, we've decided to delay Astro's release until late July. We'll be using this period to:
 
