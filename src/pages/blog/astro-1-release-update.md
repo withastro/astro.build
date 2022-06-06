@@ -25,4 +25,4 @@ In order to deliver on the best-in-class developer experience that we promised, 
 
 In the meantime, please continue to use the [Astro v1.0.0 Beta Release](https://docs.astro.build/en/getting-started/), which benefits from all of these improvements with regular weekly releases.
 
-Thank you for your patience as we continue the best website build tool on the planet! If you want to get involved or share feedback with the team, please [visit our GitHub](https://github.com/withastro/astro) repository and [join us on Discord](https://astro.build/chat).
+Thank you for your patience as we continue to develop the best website build tool on the planet! If you want to get involved or share feedback with the team, please [visit our GitHub](https://github.com/withastro/astro) repository and [join us on Discord](https://astro.build/chat).
