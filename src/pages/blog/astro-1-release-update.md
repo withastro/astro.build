@@ -10,9 +10,9 @@ coverImage: '/assets/blog/astro-1-release-update/cover.jpeg'
 lang: 'en'
 ---
 
-**Astro v1.0.0 has a new release date!** We're pushing back our v1.0.0 release to late July in order to make some final developer experience improvements. 
+**Astro v1.0.0 has a new release date!** We're pushing back our v1.0.0 release to late July in order to make some final developer experience improvements to Astro. 
 
-Since we announced the [Astro v1.0.0 Beta](https://astro.build/blog/astro-1-beta-release/) back in April, we have collected a ton of feedback from early adopters. We've used that feedback to fix bugs, upgrade HMR, and vastly improve the overall developer experience compared to just two months ago. In the last few weeks alone, we have taken an active focus on resolving open issues, which have dropped from a peak of 130 issues to just 56 issues today.
+Since we announced the [Astro v1.0.0 Beta](https://astro.build/blog/astro-1-beta-release/) back in April, we have collected a ton of feedback from early adopters. We've used that feedback to fix bugs, upgrade our HMR handling, and vastly improve the overall developer experience compared to just two months ago. In the last month alone, our team has merged 129 PRs and closed 144 issues.
 
 <img src="/assets/blog/astro-1-release-update/pulse.svg" />
 
@@ -20,7 +20,7 @@ In order to deliver on the best-in-class developer experience that we promised, 
 
 - Invest in even more out-of-the-box performance optimizations
 - Improve error handling in our compiler
-- Deliver dev server improvements like better HMR and more accurate stacktraces
+- Deliver dev server improvements like more accurate stacktraces
 - Resolve incoming bug reports as quickly as possible
 
 In the meantime, please continue to use the [Astro v1.0.0 Beta Release](https://docs.astro.build/en/getting-started/), which benefits from all of these improvements with regular weekly releases.
