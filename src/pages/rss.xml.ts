@@ -23,22 +23,5 @@ export const get = () => {
             link: item.url,
             pubDate: item.frontmatter.publishDate,
         })),
-    })
-    
-    /*
-    const sortedPosts = allPosts.sort((a, b) => Number(new Date(b.frontmatter.publishDate)) - Number(new Date(a.frontmatter.publishDate)));
-     rss({
-        // The RSS Feed title, description, and custom metadata.
-        title: 'The Astro Blog',
-        // See "Styling" section below
-        description: 'News and updates about Astro.',
-        // The list of items for your RSS feed, sorted.
-        items: sortedPosts.map(item => ({
-            title: item.frontmatter.title,
-            description: item.frontmatter.description,
-            link: item.url,
-            pubDate: item.frontmatter.publishDate,
-        })),
     });
-    */
 }
