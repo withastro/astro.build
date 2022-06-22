@@ -1,7 +1,7 @@
 export const social = [
 	{
 		icon: 'mdi:github',
-		title: 'Github',
+		title: 'GitHub',
 		href: 'https://github.com/withastro/astro',
 	},
 	{
