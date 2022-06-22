@@ -158,7 +158,7 @@ We'll be tweeting out personal "thank you" messages to every person and company 
 This is such a huge milestone for Astro, especially considering how young the project is! Thank you to everyone who used Astro, created projects, and showed these platforms how valuable Astro really is.
 
 <Tweet src="https://twitter.com/astrodotbuild/status/1423001137905651714">
-  It&rsquo;s official! 🎉 <a href="https://twitter.com/github">@github</a> now supports syntax highlighting for <code>.astro</code> files!<br><br>You can also use code blocks starting with <code>astro</code> to get proper highlighting in Markdown files, issues, and PR comments!
+  <blockquote><p>It&rsquo;s official! 🎉 <a href="https://twitter.com/github">@github</a> now supports syntax highlighting for <code>.astro</code> files!<br><br>You can also use code blocks starting with <code>astro</code> to get proper highlighting in Markdown files, issues, and PR comments!
   <br><br><a href="https://t.co/CDiGw66Qw6">pic.twitter.com/CDiGw66Qw6</a></p>&mdash; Astro (@astrodotbuild) <a href="https://twitter.com/astrodotbuild/status/1423001137905651714?ref_src=twsrc%5Etfw">August 4, 2021</a></blockquote>
 </Tweet>
 
