@@ -46,7 +46,7 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
     {(searchable || collectionLinks.length > 1) && (
         <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
             {collectionLinks.length > 1 && (
-                <PillList title="collections" links={collectionLinks} current={currentCollection} />
+                <PillList title="collections" links={collectionLinks} current={currentCollection} prefetch />
             )}
 
             {searchable && (
