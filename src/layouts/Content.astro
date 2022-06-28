@@ -1,69 +1,64 @@
 ---
-import { Sprite } from 'astro-icon'
-import BaseHead from '../components/BaseHead.astro'
-import SkipLink from '../components/SkipLink.astro'
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro'
-import '../styles/fonts.css'
-import '../styles/variables.css'
-import '../styles/tailwind.css'
+import { Sprite } from 'astro-icon';
+import BaseHead from '../components/BaseHead.astro';
+import SkipLink from '../components/SkipLink.astro';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+import '../styles/fonts.css';
+import '../styles/variables.css';
+import '../styles/tailwind.css';
 
 export interface Props {
-	meta: BaseHeadProps
-	invert?: boolean
-	fullscreen?: boolean
-	baseHref?: string
+    meta: BaseHeadProps;
+    invert?: boolean;
+    fullscreen?: boolean;
+    baseHref?: string;
 }
 
-const { meta, invert = false, fullscreen = false, baseHref } = Astro.props
+const { meta, invert = false, fullscreen = false, baseHref } = Astro.props;
 ---
 
-<html
-	lang='en'
-	class={`${fullscreen ? 'fullscreen' : ''} ${
-		invert ? 'dark text-white' : 'bg-tan text-midnight'
-	}`}
->
-	<head>
-		<BaseHead {...meta} />
+<html lang="en" class={`${fullscreen ? 'fullscreen' : ''} ${invert ? 'dark text-white' : 'bg-tan text-midnight'}`}>
+  <head>
+    <BaseHead {...meta} />
 
-		{baseHref && <base href={baseHref} />}
+    {baseHref && (<base href={baseHref} />)}
 
-		<script>
-			window.addEventListener('DOMContentLoaded', () => {
-				document.body.classList.add('js')
-			})
-		</script>
-	</head>
-	<body>
-		<Sprite.Provider>
-			<SkipLink />
-			<slot name='nav'></slot>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('js');
+        });
+    </script>
+  </head>
+  <body>
+    <Sprite.Provider>
+        <SkipLink />
+        <slot name="nav" />
 
-			<slot name='start'></slot>
-			<main id='content' class='container text-base font-base'>
-				<slot></slot>
-			</main>
+          <slot name="start" />
+          <main id="content" class="container text-base font-base">
+              <slot />
+          </main>
 
-			<slot name='footer'></slot>
-		</Sprite.Provider>
-		<script>
-			import '/src/scripts/defer.js'
-		</script>
-
-		<style>
-			.fullscreen,
-			.fullscreen body {
-				@apply h-full overflow-hidden;
-			}
-			.fullscreen :global(nav) {
-				margin-top: 0 !important;
-			}
-			.dark {
-				background-image: var(--gradient-pop-4);
-			}
-			html:not(.fullscreen) main {
-				@apply pt-16 pb-16 sm:pb-24 lg:pb-32;
-			}
-		</style>
-	</body>
+        <slot name="footer" />
+    </Sprite.Provider>
+  </body>
 </html>
+
+<script>
+    import "/src/scripts/defer.ts";
+</script>
+
+<style>
+  .fullscreen, .fullscreen body {
+    @apply h-full overflow-hidden;
+  }
+  .fullscreen :global(nav) {
+		margin-top: 0 !important;
+  }
+  .dark {
+    background-image: var(--gradient-pop-4);
+  }
+  html:not(.fullscreen) main {
+    @apply pt-16 pb-16 sm:pb-24 lg:pb-32;
+  }
+</style>

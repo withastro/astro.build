@@ -1,38 +1,26 @@
 ---
-import Layout from './Page.astro'
-import PostHeader from '../components/blog/PostHeader.astro'
-import Card from '../components/blog/Card.astro'
-import Outro from '../components/blog/Outro.astro'
-import Panel from '../components/Panel.astro'
+import Layout from './Page.astro';
+import PostHeader from '../components/blog/PostHeader.astro';
+import Card from '../components/blog/Card.astro';
+import Outro from '../components/blog/Outro.astro';
+import Panel from '../components/Panel.astro';
 
 export interface Props {
 	content: {
-		title: string
-		description: string
-		authors: string[]
-		publishDate: string | Date
-		socialImage: string
-		coverImage?: string
-		coverImageAlt?: string
-		heroImage?: string
-		heroImageAlt?: string
+		title: string;
+		description: string;
+		authors: string[];
+		publishDate: string | Date;
+		socialImage: string;
+		coverImage?: string;
+		coverImageAlt?: string;
+		heroImage?: string;
+		heroImageAlt?: string;
 	}
 }
 
-const {
-	content: {
-		title,
-		publishDate,
-		description,
-		authors,
-		socialImage,
-		coverImage,
-		heroImage,
-		coverImageAlt,
-		heroImageAlt,
-	},
-} = Astro.props as Props
-const { canonicalURL } = Astro
+const { content: { title, publishDate, description, authors, socialImage, coverImage, heroImage, coverImageAlt, heroImageAlt } } = Astro.props as Props;
+const { canonicalURL } = Astro;
 const meta = {
 	title,
 	description,
@@ -40,24 +28,21 @@ const meta = {
 	image: socialImage,
 }
 
-const cover = (coverImage || heroImage) && {
-	src: coverImage ?? heroImage,
-	alt: coverImageAlt ?? heroImageAlt ?? title,
-}
+const cover = (coverImage || heroImage) && { src: coverImage ?? heroImage, alt: coverImageAlt ?? heroImageAlt ?? title}
 ---
 
 <Layout meta={meta}>
-	<PostHeader title={title} authors={authors} publishDate={publishDate} {cover}
-	/>
+	<PostHeader title={title} authors={authors} publishDate={publishDate} {cover} />
 
-	<div id='article'>
-		<slot></slot>
+	<div id="article">
+		<slot />
 
 		<Outro tweet={{ title, href: Astro.canonicalURL.toString() }} />
 	</div>
 </Layout>
 
 <style is:global>
+
 	.post-header {
 		margin: 1rem auto 3rem;
 	}
@@ -89,7 +74,7 @@ const cover = (coverImage || heroImage) && {
 	#article hr {
 		border-color: var(--color-dusk);
 		border-style: dashed;
-		margin-top: 2em;
+	    margin-top: 2em;
 		padding: 0;
 	}
 	#article h1 {
@@ -120,10 +105,10 @@ const cover = (coverImage || heroImage) && {
 		color: #9b19fe;
 	}
 	#article code:not([class])::before {
-		content: '`';
+		content: "`";
 	}
 	#article code:not([class])::after {
-		content: '`';
+		content: "`";
 	}
 	#article :is(img, video) {
 		max-width: 100%;
@@ -140,7 +125,7 @@ const cover = (coverImage || heroImage) && {
 	}
 
 	#article :is(h2, h3, h4, h5, h6) a::before {
-		content: '#';
+		content: "#";
 		width: 1em;
 		margin-left: 0.25em;
 		color: inherit;
@@ -174,15 +159,15 @@ const cover = (coverImage || heroImage) && {
 		border-left: 1px solid rgba(var(--color-midnight-rgb), 0.5);
 	}
 
-	#article :is(ul:not([role='list']), ol:not([role='list'])) {
+	#article :is(ul:not([role="list"]), ol:not([role="list"])) {
 		padding-left: 1.5em;
 	}
 
-	#article :where(ul:not([role='list'])) {
+	#article :where(ul:not([role="list"])) {
 		list-style-type: square;
 	}
 
-	#article :where(ul:not([role='list']) > li + li) {
+	#article :where(ul:not([role="list"]) > li + li) {
 		margin-top: 0.25em;
 	}
 
@@ -190,7 +175,7 @@ const cover = (coverImage || heroImage) && {
 		color: rgba(var(--color-midnight-rgb), 0.5);
 	}
 
-	#article pre > code:not([class*='language']) {
+	#article pre > code:not([class*="language"]) {
 		background-color: transparent;
 		padding: 0;
 		margin: 0;

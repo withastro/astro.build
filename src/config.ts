@@ -79,10 +79,9 @@ export const globalNavigation: GlobalNavigation = [
 		],
 	},
 	{
-		href: '/showcase',
-		title: 'Showcase',
-		description:
-			'Looking for inspiration? Explore these awesome sites built with Astro.',
+		 href: '/showcase',
+		 title: 'Showcase',
+		description: 'Looking for inspiration? Explore these awesome sites built with Astro.'
 	},
 	{
 		title: 'Blog',

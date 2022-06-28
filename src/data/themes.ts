@@ -33,6 +33,6 @@ export function getCollections(): Collection[] {
 
 export const collections = getCollections()
 
-export function getThemesForCollection(collection: string) {
+export function getThemesForCollection(collection: string) { 
 	return themes.filter(({ categories }) => categories.indexOf(collection) >= 0)
 }

@@ -1,42 +1,40 @@
 ---
-import { collections, getThemesForCollection } from '../../data/themes.js'
-import Layout from '../../layouts/Catalog.astro'
-import ThemeCard from '../../components/themes/ThemeCard.astro'
+import { collections, getThemesForCollection } from '../../data/themes.ts';
+import Layout from '../../layouts/Catalog.astro';
+import ThemeCard from '../../components/themes/ThemeCard.astro';
 
 export async function getStaticPaths() {
-	return collections.map(({ slug }) => ({
-		params: {
-			slug,
-		},
-	}))
+    return collections.map(({ slug }) => ({
+        params: {
+            slug,
+        },
+    }));
 }
 
-const { slug } = Astro.params
+const { slug } = Astro.params;
 
-const themes: App.Theme[] = getThemesForCollection(slug)
+const themes: App.Theme[] = getThemesForCollection(slug);
 
 const meta = {
-	title: 'Themes',
-	description:
-		'Start your next Astro project with a real world theme built by our amazing community.',
+    title: 'Themes',
+    description: 'Start your next Astro project with a real world theme built by our amazing community.'
 }
 ---
 
-<Layout meta={meta} {collections} current={slug} baseHref='/themes'>
-	<Fragment slot='info'>
-		<a
-			href='https://github.com/withastro/astro.build/issues/new/choose'
-			target='_blank'
-			rel='noopener noreferrer'
-			class='subtle underline'
-		>
-			Add your own starter project.
-		</a>
-		<span>Questions about building your own themes? Join our community on</span>
-		<a href='https://astro.build/chat' class='subtle underline'>Discord!</a>
-	</Fragment>
+<Layout meta={meta} {collections} current={slug} baseHref="/themes">
+    <Fragment slot="info">
+        <a
+            href="https://github.com/withastro/astro.build/issues/new/choose"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="subtle underline">
+            Add your own starter project.
+        </a>
+        <span>Questions about building your own themes? Join our community on</span>
+        <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+    </Fragment>
 
-	<Fragment slot='cards'>
-		{themes.map(theme => <ThemeCard theme={theme} />)}
-	</Fragment>
+    <Fragment slot="cards">
+        {themes.map(theme => (<ThemeCard theme={theme} />))}
+    </Fragment>
 </Layout>

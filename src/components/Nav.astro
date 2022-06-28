@@ -3,7 +3,7 @@ import { Sprite } from 'astro-icon';
 import Drawer from './Drawer.astro';
 import MobileMenu from './MobileMenu.astro';
 import FlyoutMenu from './FlyoutMenu.astro';
-import { globalNavigation, social } from '../config.js';
+import { globalNavigation, social } from '../config.ts';
 
 const { invert = false, marginBottom = false } = Astro.props;
 ---
@@ -64,7 +64,7 @@ const { invert = false, marginBottom = false } = Astro.props;
 </Drawer>
 
 <script>
-    import "../scripts/nav.js";
+    import "../scripts/nav.ts";
 
     const menuBtn = document.getElementById('menubtn');
     

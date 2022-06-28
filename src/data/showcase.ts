@@ -3,7 +3,7 @@ import { contains } from '../utils/contains'
 interface ShowcaseSiteData {
 	title: string
 	image: string
-	url: string
+    url: string
 	featured?: number
 	highlight?: boolean
 }
@@ -26,10 +26,10 @@ async function loadShowcase(): Promise<App.ShowcaseSite[]> {
 			return {
 				...site,
 				slug,
-				image: {
-					src: site.image,
-					alt: site.title,
-				},
+                image: {
+                    src: site.image,
+                    alt: site.title,
+                },
 				url: {
 					href: site.url,
 					text: site.title,
@@ -38,13 +38,9 @@ async function loadShowcase(): Promise<App.ShowcaseSite[]> {
 		})
 		.sort((a, b) => {
 			// prioritize featured sites
-			if (a.featured && !b.featured) {
-				return -1
-			} else if (b.featured && !a.featured) {
-				return 1
-			} else if (a.featured && b.featured) {
-				return a.featured - b.featured
-			}
+			if (a.featured && !b.featured) { return -1 }
+			else if (b.featured && !a.featured) { return 1 }
+			else if (a.featured && b.featured) { return a.featured - b.featured }
 
 			return 0.5 - Math.random()
 		})

@@ -20,7 +20,8 @@ const START_DATE = format(subDays(new Date(), 7), 'yyyy-MM-dd')
 export function fetchDownloadsForPackage(pkg) {
 	return fetchJson(
 		`${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`
-	).then(res => res.downloads)
+	)
+		.then(res => res.downloads)
 }
 
 /**

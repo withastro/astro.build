@@ -1,37 +1,33 @@
 ---
-import Layout from '../../layouts/Catalog.astro'
-import integrations from '../../data/integrations.json'
-import { collections } from '../../data/integrations.js'
-import IntegrationCard from '../../components/integrations/IntegrationCard.astro'
+import Layout from '../../layouts/Catalog.astro';
+import integrations from '../../data/integrations.json';
+import { collections } from '../../data/integrations.ts';
+import IntegrationCard from '../../components/integrations/IntegrationCard.astro';
 
 const meta = {
-	title: 'Integrations',
-	description:
-		'Launch your next Astro project at warp speed. Try the plugins and components built by our amazing community.',
-}
+    title: 'Integrations',
+    description: 'Launch your next Astro project at warp speed. Try the plugins and components built by our amazing community.'
+};
 ---
 
-<Layout meta={meta} {collections} baseHref='/integrations'>
-	<Fragment slot='description'>
-		<p>Launch your next Astro project at warp speed.</p>
-		<p>Try the plugins and components built by our amazing community.</p>
-	</Fragment>
+<Layout meta={meta} {collections} baseHref="/integrations">
+    <Fragment slot="description">
+        <p>Launch your next Astro project at warp speed.</p>
+        <p>Try the plugins and components built by our amazing community.</p>
+    </Fragment>
 
-	<Fragment slot='info'>
-		<a
-			href='https://docs.astro.build/en/guides/publish-to-npm/#integrations-library'
-			target='_blank'
-			rel='noopener noreferrer'
-			class='subtle underline'
-			>Add your own integrations.
-		</a>
-		Questions about building plugins and components? Join our community on
-		<a href='https://astro.build/chat' class='subtle underline'>Discord!</a>
-	</Fragment>
+    <Fragment slot="info">
+        <a
+            href="https://docs.astro.build/en/guides/publish-to-npm/#integrations-library"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="subtle underline"
+        >Add your own integrations.</a>
+        Questions about building plugins and components? Join our community on
+        <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
+    </Fragment>
 
-	<Fragment slot='cards'>
-		{integrations.map(integration => (
-			<IntegrationCard integration={integration} />
-		))}
-	</Fragment>
+    <Fragment slot="cards">
+        {integrations.map(integration => (<IntegrationCard integration={integration} />))}
+    </Fragment>
 </Layout>

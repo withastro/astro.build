@@ -1,39 +1,44 @@
-<div class='ring'><div></div><div></div><div></div><div></div></div>
+<div class="ring"><div>
+</div><div>
+</div><div>
+</div><div>
+</div></div>
+
 
 <style>
-	.ring {
-		display: inline-block;
-		position: relative;
-		width: var(--size, 5rem);
-		height: var(--size, 5rem);
-	}
-	.ring div {
-		box-sizing: border-box;
-		display: block;
-		position: absolute;
-		width: calc(0.8 * var(--size, 5rem));
-		height: calc(0.8 * var(--size, 5rem));
-		margin: calc(0.125 * var(--size, 5rem));
-		border: calc(0.125 * var(--size, 5rem)) solid var(--color, #fff);
-		border-radius: 50%;
-		animation: ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-		border-color: var(--color, #fff) transparent transparent transparent;
-	}
-	.ring div:nth-child(1) {
-		animation-delay: -0.45s;
-	}
-	.ring div:nth-child(2) {
-		animation-delay: -0.3s;
-	}
-	.ring div:nth-child(3) {
-		animation-delay: -0.15s;
-	}
-	@keyframes ring {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
+    .ring {
+        display: inline-block;
+        position: relative;
+        width: var(--size, 5rem);
+        height: var(--size, 5rem);
+    }
+    .ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: calc(.8 * var(--size, 5rem));
+        height: calc(.8 * var(--size, 5rem));
+        margin: calc(.125 * var(--size, 5rem));
+        border: calc(.125 * var(--size, 5rem)) solid var(--color, #fff);
+        border-radius: 50%;
+        animation: ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: var(--color, #fff) transparent transparent transparent;
+    }
+    .ring div:nth-child(1) {
+        animation-delay: -0.45s;
+    }
+    .ring div:nth-child(2) {
+        animation-delay: -0.3s;
+    }
+    .ring div:nth-child(3) {
+        animation-delay: -0.15s;
+    }
+    @keyframes ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 </style>

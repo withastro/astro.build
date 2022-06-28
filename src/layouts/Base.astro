@@ -1,76 +1,68 @@
 ---
-import { Sprite } from 'astro-icon'
-import BaseHead from '../components/BaseHead.astro'
-import SkipLink from '../components/SkipLink.astro'
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro'
+import { Sprite } from 'astro-icon';
+import BaseHead from '../components/BaseHead.astro';
+import SkipLink from '../components/SkipLink.astro';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
-	wrapper?: any
-	meta: BaseHeadProps
-	container?: boolean
-	routeId?: string
+    wrapper?: any;
+    meta: BaseHeadProps;
+    container?: boolean;
+    routeId?: string;
 }
 
-const {
-	wrapper: Wrapper = Fragment,
-	meta,
-	container = false,
-	routeId,
-} = Astro.props
+const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.props;
 ---
 
-<html lang='en'>
-	<head>
-		<BaseHead {...meta}>
-			<Fragment slot='preload'>
-				<link rel='preload' as='style' href='/styles/sanitize.css' />
-				<link rel='preload' as='style' href='/styles/main.css' />
-			</Fragment>
+<html lang="en">
+  <head>
+    <BaseHead {...meta}>
+        <Fragment slot="preload">
+            <link rel="preload" as="style" href="/styles/sanitize.css">
+            <link rel="preload" as="style" href="/styles/main.css">
+        </Fragment>
 
-			<Fragment slot='assets'>
-				<link rel='stylesheet' href='/styles/sanitize.css' />
-				<link rel='stylesheet' href='/styles/main.css' />
-			</Fragment>
-		</BaseHead>
+        <Fragment slot="assets">
+            <link rel="stylesheet" href="/styles/sanitize.css" />
+            <link rel="stylesheet" href="/styles/main.css" />
+        </Fragment>
+    </BaseHead>
 
-		<script>
-			window.addEventListener('DOMContentLoaded', () => {
-				document.body.classList.add('js')
-			})
-		</script>
-	</head>
-	<body>
-		<Sprite.Provider>
-			<slot name='banner'></slot>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('js');
+        });
+    </script>
+  </head>
+  <body>
+    <Sprite.Provider>
+        <slot name="banner" />
 
-			<SkipLink />
-			<slot name='nav'></slot>
+        <SkipLink />
+        <slot name="nav" />
 
-			<Wrapper>
-				<slot name='start'></slot>
-				<main
-					id='content'
-					data-route-id={routeId}
-					class={container ? 'astro-container container' : ''}
-				>
-					<slot></slot>
-				</main>
-			</Wrapper>
+        <Wrapper>
+            <slot name="start" />
+            <main id="content" data-route-id={routeId} class={container ? "astro-container container": ""}>
+                <slot />
+            </main>
+        </Wrapper>
 
-			<slot name='footer'></slot>
-		</Sprite.Provider>
-		<script>
-			import '/src/scripts/defer.js'
-		</script>
-
-		<style is:global>
-			:root {
-				scroll-padding-top: 10rem;
-			}
-			main {
-				max-width: 100vw;
-				overflow: hidden;
-			}
-		</style>
-	</body>
+        <slot name="footer" />
+    </Sprite.Provider>
+  </body>
 </html>
+
+<script>
+    import "/src/scripts/defer.ts";
+</script>
+
+<style is:global>
+    :root {
+        scroll-padding-top: 10rem;
+    }
+    main {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+</style>

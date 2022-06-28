@@ -1,13 +1,13 @@
 ---
-import { Sprite } from 'astro-icon'
+import { Sprite } from 'astro-icon';
 
 export interface Props {
-	id: string
-	placeholder: string
-	selector: string
+    id: string;
+    placeholder: string;
+    selector: string;
 }
 
-const { id, placeholder, selector = '#integrations > *' } = Astro.props as Props
+const { id, placeholder, selector = '#integrations > *' } = Astro.props as Props;
 
 const inlineStyle = `
     ${selector}[hidden] {
@@ -18,237 +18,179 @@ const inlineStyle = `
 ---
 
 <section>
-	<div>
-		<input type='text' {id} {placeholder} aria-label='Search' />
-		<button aria-hidden='true'>
-			<Sprite pack='heroicons-outline' name='search' size={24} />
-		</button>
-	</div>
+    <div>
+        <input type="text" {id} {placeholder} aria-label="Search">
+        <button aria-hidden="true">
+            <Sprite pack="heroicons-outline" name="search" size={24} />
+        </button>
+    </div>
 </section>
 
-<style set:html={inlineStyle}>
+<style set:html={inlineStyle}></style>
 
-</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=URLSearchParams" />
+<script type="module" define:vars={{selector, id}}>
+    /* https://gomakethings.com/how-to-create-a-search-page-for-a-static-website-with-vanilla-js/ */
+    const stopWords = ['a', 'an', 'and', 'are', 'aren\'t', 'as', 'by', 'can', 'cannot', 'can\'t', 'could', 'couldn\'t', 'how', 'is', 'isn\'t', 'it', 'its', 'it\'s', 'that', 'the', 'their', 'there', 'they', 'they\'re', 'them', 'to', 'too', 'us', 'very', 'was', 'we', 'well', 'were', 'what', 'whatever', 'when', 'whenever', 'where', 'with', 'would', 'yet', 'you', 'your', 'yours', 'yourself', 'yourselves', 'the'];
 
-<script src='https://polyfill.io/v3/polyfill.min.js?features=URLSearchParams'>
+    const input = document.getElementById(id);
+    const button = document.querySelector(`#${id} + button`);
+    const items = document.querySelectorAll(selector);
 
-</script>
-<script type='module' define:vars={{ selector, id }}>
-	/* https://gomakethings.com/how-to-create-a-search-page-for-a-static-website-with-vanilla-js/ */
-	const stopWords = [
-		'a',
-		'an',
-		'and',
-		'are',
-		"aren't",
-		'as',
-		'by',
-		'can',
-		'cannot',
-		"can't",
-		'could',
-		"couldn't",
-		'how',
-		'is',
-		"isn't",
-		'it',
-		'its',
-		"it's",
-		'that',
-		'the',
-		'their',
-		'there',
-		'they',
-		"they're",
-		'them',
-		'to',
-		'too',
-		'us',
-		'very',
-		'was',
-		'we',
-		'well',
-		'were',
-		'what',
-		'whatever',
-		'when',
-		'whenever',
-		'where',
-		'with',
-		'would',
-		'yet',
-		'you',
-		'your',
-		'yours',
-		'yourself',
-		'yourselves',
-		'the',
-	]
+    const FPS_30 = 1000 / 30;
 
-	const input = document.getElementById(id)
-	const button = document.querySelector(`#${id} + button`)
-	const items = document.querySelectorAll(selector)
+    function debounce(fn, timeout = 150) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn.apply(this, args), timeout);
+        }
+    }
 
-	const FPS_30 = 1000 / 30
+    const updateOpen = () => {
+        requestAnimationFrame(() => {
+        (!!input.value || document.activeElement === input)
+            ? input.parentElement.setAttribute('open', '')
+            : input.parentElement.removeAttribute('open');
+        });
+    }
 
-	function debounce(fn, timeout = 150) {
-		let timer
-		return (...args) => {
-			clearTimeout(timer)
-			timer = setTimeout(() => fn.apply(this, args), timeout)
-		}
-	}
+    const update = () => {
+        updateOpen();
 
-	const updateOpen = () => {
-		requestAnimationFrame(() => {
-			!!input.value || document.activeElement === input
-				? input.parentElement.setAttribute('open', '')
-				: input.parentElement.removeAttribute('open')
-		})
-	}
+        const regexMap = input.value.toLowerCase()
+            .split(' ')
+            .filter(word => word.length && !stopWords.includes(word))
+            .map(word => new RegExp(word, 'i'));
 
-	const update = () => {
-		updateOpen()
+        for (const item of items) {
+            const isMatch = !regexMap.length || regexMap.some(regex => !!item.textContent.match(regex));
+            isMatch ? item.removeAttribute('hidden') : item.setAttribute('hidden', '');
+        }
 
-		const regexMap = input.value
-			.toLowerCase()
-			.split(' ')
-			.filter(word => word.length && !stopWords.includes(word))
-			.map(word => new RegExp(word, 'i'))
+        updateURL()
+    }
 
-		for (const item of items) {
-			const isMatch =
-				!regexMap.length ||
-				regexMap.some(regex => !!item.textContent.match(regex))
-			isMatch ? item.removeAttribute('hidden') : item.setAttribute('hidden', '')
-		}
+    const updateURL = () => {
+        const q = input.value?.trim()
 
-		updateURL()
-	}
+        if (q) {
+            const params = new URLSearchParams()
+            params.set('q', q)
+            window.history.replaceState(null, null, `?${params.toString()}`)
+        } else {
+            const [href] = window.location.href.split('?')
+            window.history.replaceState(null, null, href)
+        }
+    }
 
-	const updateURL = () => {
-		const q = input.value?.trim()
+    const hydrateQuery = () => {
+        const params = new URLSearchParams(location.search)
+        input.value = params.get('q') || ''
+    }
 
-		if (q) {
-			const params = new URLSearchParams()
-			params.set('q', q)
-			window.history.replaceState(null, null, `?${params.toString()}`)
-		} else {
-			const [href] = window.location.href.split('?')
-			window.history.replaceState(null, null, href)
-		}
-	}
-
-	const hydrateQuery = () => {
-		const params = new URLSearchParams(location.search)
-		input.value = params.get('q') || ''
-	}
-
-	input.addEventListener('input', debounce(update, FPS_30), true)
-	button.addEventListener('click', input.focus, true)
-	input.addEventListener('focus', updateOpen, true)
-	input.addEventListener('blur', updateOpen, true)
-
-	hydrateQuery()
-	update()
+    input.addEventListener('input', debounce(update, FPS_30), true);
+    button.addEventListener('click', input.focus, true);
+    input.addEventListener('focus', updateOpen, true);
+    input.addEventListener('blur', updateOpen, true);
+    
+    hydrateQuery()
+    update();
 </script>
 
 <style>
-	section {
-		display: flex;
-		justify-content: flex-end;
-		font-size: 16px;
-		width: calc(25ch + 2.5rem);
-	}
+    section {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 16px;
+        width: calc(25ch + 2.5rem);
+    }
 
-	div {
-		display: flex;
-		border-radius: 9999px;
-		padding: 0.25rem;
-		background: var(--color-white);
-	}
+    div {
+        display: flex;
+        border-radius: 9999px;
+        padding: 0.25rem;
+        background: var(--color-white);
+    }
 
-	input {
-		line-height: 2.5rem;
-		width: 25ch;
-		max-width: 25ch;
-		padding-left: 0.75rem;
-		background: transparent;
-		font-size: 16px;
-		outline: none;
-	}
+    input {
+        line-height: 2.5rem;
+        width: 25ch;
+        max-width: 25ch;
+        padding-left: 0.75rem;
+        background: transparent;
+        font-size: 16px;
+        outline: none;
+    }
 
-	input::placeholder {
-		color: var(--color-midnight);
-		opacity: 0.75;
-	}
+    input::placeholder {
+        color: var(--color-midnight);
+        opacity: 0.75;
+    }
 
-	button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: 9999px;
-		background: var(--color-dusk);
-		color: var(--color-white);
-	}
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        background: var(--color-dusk);
+        color: var(--color-white);
+    }
 
-	@media (max-width: 768px) {
-		div,
-		section {
-			width: 100%;
-		}
+    @media (max-width: 768px) {
+        div, section {
+            width: 100%;
+        }
 
-		input {
-			flex: 1;
-			max-width: unset;
-		}
-	}
+        input {
+            flex: 1;
+            max-width: unset;
+        }
+    }
 
-	@media (hover: hover) {
-		div {
-			background: transparent;
-		}
+    @media(hover: hover) {
+        div {
+            background: transparent;
+        }
 
-		input {
-			max-width: 0;
-			padding-left: 0;
-		}
+        input {
+            max-width: 0;
+            padding-left: 0;
+        }
 
-		input,
-		button {
-			transition: 250ms ease;
-		}
+        input, button {
+            transition: 250ms ease;
+        }
 
-		input:focus,
-		input:not(:placeholder-shown) {
-			max-width: initial;
-			padding: 0 0.5rem;
-			padding-left: 0.75rem;
-		}
+        input:focus,
+        input:not(:placeholder-shown) {
+            max-width: initial;
+            padding: 0 .5rem;
+            padding-left: 0.75rem;
+        }
 
-		button {
-			background: transparent;
-			color: var(--color-midnight);
-		}
+        button {
+            background: transparent;
+            color: var(--color-midnight);
+        }
 
-		div:hover,
-		div[open] {
-			background: var(--color-white);
-		}
+        div:hover, div[open] {
+            background: var(--color-white);
+        }
 
-		div:hover > input {
-			max-width: 25ch;
-			padding: 0 0.5rem;
-			padding-left: 0.75rem;
-		}
+        div:hover > input {
+            max-width: 25ch;
+            padding: 0 .5rem;
+            padding-left: 0.75rem;
+        }
 
-		div:hover > button,
-		input:focus + button,
-		input:not(:placeholder-shown) + button {
-			background: var(--color-dusk);
-			color: var(--color-white);
-		}
-	}
+        div:hover > button,
+        input:focus + button,
+        input:not(:placeholder-shown) + button {
+            background: var(--color-dusk);
+            color: var(--color-white);
+        }
+    }
 </style>

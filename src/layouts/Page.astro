@@ -1,36 +1,36 @@
 ---
-import Layout from './Base.astro'
-import Nav from '../components/Nav.astro'
-import Footer from '../components/Footer.astro'
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro'
+import Layout from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
-	meta: BaseHeadProps
+    meta: BaseHeadProps;
 }
 
-const { meta } = Astro.props as Props
+const { meta } = Astro.props as Props;
 ---
 
 <Layout container meta={meta}>
-	<Nav slot='nav' />
-	<div id='page'>
-		<slot></slot>
-	</div>
-	<Footer slot='footer' />
+    <Nav slot="nav" />
+    <div id="page">
+        <slot />
+    </div>
+    <Footer slot="footer" />
 </Layout>
 
 <style>
-	#page {
-		padding-bottom: 8rem;
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+    #page {
+        padding-bottom: 8rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 </style>
 
 <style is:global>
-	:root {
-		background: var(--color-tan);
-	}
+    :root {
+        background: var(--color-tan);
+    }
 </style>

@@ -1,107 +1,87 @@
 ---
-import { Sprite } from 'astro-icon'
-import Layout from './Content.astro'
-import Aside from '../components/Aside.astro'
-import Footer from '../components/Footer.astro'
-import Nav from '../components/Nav.astro'
-import PillList from '../components/PillList.astro'
-import Search from '../components/Search.astro'
-import CardsBlock from '../components/blocks/CardsBlock.astro'
-import TitleBlock from '../components/blocks/TitleBlock.astro'
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro'
+import { Sprite } from 'astro-icon';
+import Layout from './Content.astro';
+import Aside from '../components/Aside.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import PillList from '../components/PillList.astro';
+import Search from '../components/Search.astro';
+import CardsBlock from '../components/blocks/CardsBlock.astro';
+import TitleBlock from '../components/blocks/TitleBlock.astro';
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
 
 export interface Props {
-	meta: BaseHeadProps
-	collections: { text: string; slug: string }[]
-	current?: string
-	baseHref: string
-	searchable?: boolean
+    meta: BaseHeadProps;
+    collections: { text: string; slug: string }[];
+    current?: string;
+    baseHref: string;
+    searchable?: boolean;
 }
 
-const {
-	meta,
-	collections,
-	current = 'all',
-	baseHref,
-	searchable = true,
-} = Astro.props as Props
+const { meta, collections, current = 'all', baseHref, searchable = true } = Astro.props as Props;
 
 const collectionLinks: App.Link[] = [
-	{
-		text: 'all',
-		href: `${baseHref}/`,
-	},
-	...collections.map(({ text, slug }) => ({
-		text,
-		href: `${baseHref}/${slug}/`,
-	})),
-]
+    {
+        text: 'all',
+        href: `${baseHref}/`
+    },
+    ...collections.map(({ text, slug }) => ({
+        text,
+        href: `${baseHref}/${slug}/`
+    }))
+];
 
-const currentCollection = collectionLinks.find(({ text }) => text === current)
+const currentCollection = collectionLinks.find(({ text }) => text === current);
 ---
 
 <Layout meta={meta}>
-	<Nav slot='nav' />
+    <Nav slot="nav" />
 
-	<TitleBlock>
-		<Fragment slot='title'>{meta.title}</Fragment>
+    <TitleBlock>
+        <Fragment slot="title">{meta.title}</Fragment>
 
-		<slot name='description'><p>{meta.description}</p></slot>
-	</TitleBlock>
+        <slot name="description"><p>{meta.description}</p></slot>
+    </TitleBlock>
 
-	{(searchable || collectionLinks.length > 1) && (
-		<header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
-			{collectionLinks.length > 1 && (
-				<PillList
-					title="collections"
-					links={collectionLinks}
-					current={currentCollection}
-					prefetch
-				/>
-			)}
+    {(searchable || collectionLinks.length > 1) && (
+        <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
+            {collectionLinks.length > 1 && (
+                <PillList title="collections" links={collectionLinks} current={currentCollection} prefetch />
+            )}
 
-			{searchable && (
-				<Search
-					id="catalogsearch"
-					selector="#catalog > *"
-					placeholder="Search"
-				/>
-			)}
-		</header>
-	)}
+            {searchable && (
+                <Search id="catalogsearch" selector="#catalog > *" placeholder="Search" />
+            )}
+        </header>
+    )}
+    
+    {Astro.slots.info && (
+        <Aside class="mb-4 text-sm">
+        <p class="text-justify">
+            <Sprite pack="heroicons-outline" name="information-circle" size="1.5em" class="inline-block" />
+            <slot name='info' />
+        </p>
+    </Aside>
+    )}
 
-	{Astro.slots.info && (
-		<Aside class="mb-4 text-sm">
-			<p class="text-justify">
-				<Sprite
-					pack="heroicons-outline"
-					name="information-circle"
-					size="1.5em"
-					class="inline-block"
-				/>
-				<slot name="info" />
-			</p>
-		</Aside>
-	)}
+    <CardsBlock id="catalog">
+        <slot name="cards" />
+    </CardsBlock>
 
-	<CardsBlock id='catalog'>
-		<slot name='cards'></slot>
-	</CardsBlock>
-
-	<Footer slot='footer' />
+    <Footer slot="footer" />
 </Layout>
 
 <script>
-	import listen from 'micromorph/spa'
+    import listen from 'micromorph/spa';
 
-	if (import.meta.env.PROD) {
-		listen({
-			include: 'a.pill',
-			scrollToTop: false,
-			beforeDiff: doc => {
-				// make sure the `js` class on the body is maintained
-				doc.body.classList.add(...document.body.classList)
-			},
-		})
-	}
+    if (import.meta.env.PROD) {
+        listen({
+            include: 'a.pill',
+            scrollToTop: false,
+            beforeDiff: (doc) => {
+                // make sure the `js` class on the body is maintained
+                doc.body.classList.add(...document.body.classList)
+            }
+        });
+    }
 </script>

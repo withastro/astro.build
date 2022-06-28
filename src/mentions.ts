@@ -37,6 +37,6 @@ export const mentions: Record<string, Mention> = {
 	},
 	tony: {
 		name: 'Tony Sullivan',
-		avatar: '/authors/tony.jpg',
-	},
+		avatar: '/authors/tony.jpg'
+	}
 }

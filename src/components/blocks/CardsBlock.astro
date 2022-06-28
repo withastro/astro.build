@@ -1,14 +1,11 @@
 ---
 export interface Props {
-	id?: string
+    id?: string;
 }
 
-const { id } = Astro.props as Props
+const { id } = Astro.props as Props;
 ---
 
-<section
-	{id}
-	class='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense'
->
-	<slot></slot>
+<section {id} class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense">
+    <slot />
 </section>

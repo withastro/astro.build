@@ -7,14 +7,16 @@ if (!process.env.GITHUB_TOKEN) {
 function fetchJson(url) {
 	return fetch(url, {
 		headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN },
-	}).then(res => {
-		if (res.status >= 400) {
-			console.error(res.status, res.statusText)
-			throw new Error(res.statusText)
-		}
-
-		return res.json()
 	})
+		.then(res => {
+			if (res.status >= 400) {
+				console.error(res.status, res.statusText)
+				throw new Error(res.statusText)
+			}
+
+			return res.json()
+		})
+	
 }
 
 /**
@@ -110,10 +112,10 @@ export function orgApi(org) {
 			const url = new URL(`https://api.github.com/repos/${org}/${repo}`)
 			return fetchJson(url.toString())
 				.then(res => res.stargazers_count)
-				.catch(error => {
-					console.warn('fetchStars::', error)
-					return 0
-				})
+				.catch((error) => {
+					console.warn('fetchStars::', error);
+					return 0;
+				});
 		}
 
 		return {

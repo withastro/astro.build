@@ -1,117 +1,116 @@
 ---
-import DateTime from '../../components/Date.astro'
-import Author from '../../components/Author.astro'
-import { smartypants } from 'smartypants'
+import DateTime from '../../components/Date.astro';
+import Author from '../../components/Author.astro';
+import { smartypants } from 'smartypants';
 
 interface Props {
-	title: string
-	authors: string[]
-	publishDate: string | Date
-	cover?: App.Image
+    title: string;
+    authors: string[];
+    publishDate: string | Date;
+    cover?: App.Image;
 }
 
 const { title, authors, publishDate, cover } = Astro.props as Props
 ---
 
-<header class='container'>
-	<h1 class='text-gradient' set:html={smartypants(title, 1)}></h1>
+<header class="container">
+    <h1 class="text-gradient" set:html={smartypants(title, 1)}></h1>
 
-	{cover && <img src={cover.src} alt={cover.alt} />}
+    {cover && (
+        <img src={cover.src} alt={cover.alt} />
+    )}
 
-	<div class='authors'>
-		<h3>Written by</h3>
-		<ul role='list'>
-			{authors.map(author => (
-				<li>
-					<Author name={author} />
-				</li>
-			))}
-		</ul>
-	</div>
+    <div class="authors">
+        <h3>Written by</h3>
+        <ul role="list">
+            {authors.map(author => (
+                <li><Author name={author} /></li>
+            ))}
+        </ul>
+    </div>
 
-	<div class='published'>
-		<h3>Published on</h3>
-		<p><DateTime value={publishDate} /></p>
-	</div>
+    <div class="published">
+        <h3>Published on</h3>
+        <p><DateTime value={publishDate} /></p>
+    </div>
 </header>
 
 <style>
-	header {
-		width: 48rem;
-		max-width: 100%;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-areas: 'title title' 'image image' 'authors published';
-		margin: 2rem 0 3rem;
-		border-bottom: solid 1px rgba(var(--color-midnight-rgb), 0.1);
-	}
+    header {
+        width: 48rem;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'title title' 'image image' 'authors published';
+        margin: 2rem 0 3rem;
+        border-bottom: solid 1px rgba(var(--color-midnight-rgb), .1);
+    }
 
-	.authors {
-		grid-area: authors;
-	}
+    .authors {
+        grid-area: authors;
+    }
 
-	.published {
-		grid-area: published;
-		text-align: end;
-	}
+    .published {
+        grid-area: published;
+        text-align: end;
+    }
 
-	h1 {
-		grid-area: title;
-		font-family: var(--font-display);
-		font-size: var(--size-700);
-		margin-bottom: 0.25em;
-	}
+    h1 {
+        grid-area: title;
+        font-family: var(--font-display);
+        font-size: var(--size-700);
+        margin-bottom: .25em;
+    }
 
-	img {
-		grid-area: image;
-		width: 100%;
-		border-radius: var(--corner-md);
-		margin: 0.25rem 0;
-	}
+    img {
+        grid-area: image;
+        width: 100%;
+        border-radius: var(--corner-md);
+        margin: 0.25rem 0;
+    }
 
-	ul {
-		grid-area: authors;
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		gap: 1em;
-	}
+    ul {
+        grid-area: authors;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
 
-	h3 {
-		font-family: var(--font-display);
-		font-size: var(--size-300);
-		font-weight: 700;
-		color: var(--color-dusk);
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		padding-bottom: 0.75em;
-	}
+    h3 {
+        font-family: var(--font-display);
+        font-size: var(--size-300);
+        font-weight: 700;
+        color: var(--color-dusk);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-bottom: .75em;
+    }
 
-	div {
-		margin: 1rem 0 1.5rem;
-	}
+    div {
+        margin: 1rem 0 1.5rem;
+    }
 
-	img + div {
-		margin-top: 1.5rem;
-	}
+    img + div {
+        margin-top: 1.5rem;
+    }
 
-	.authors,
-	.published p {
-		font-size: var(--size-400);
-	}
+    .authors, .published p {
+        font-size: var(--size-400);
+    }
 
-	.published p {
-		line-height: 2rem;
-	}
+    .published p {
+        line-height: 2rem;
+    }
 
-	@media (min-width: 40rem) {
-		header {
-			margin: 2.5rem 0;
-			max-width: 100%;
-		}
+    @media (min-width: 40rem) {
+        header {
+            margin: 2.5rem 0;
+            max-width: 100%;
+        }
 
-		h1 {
-			font-size: var(--size-800);
-		}
-	}
+        h1 {
+            font-size: var(--size-800);
+        }
+    }
 </style>

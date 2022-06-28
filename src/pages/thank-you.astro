@@ -1,10 +1,10 @@
 ---
-import Nav from '../components/Nav.astro'
-import Starfield from '../components/Starfield.astro'
-import Layout from '../layouts/Content.astro'
-import contributors from '../data/contributors.json'
+import Nav from '../components/Nav.astro';
+import Starfield from '../components/Starfield.astro';
+import Layout from '../layouts/Content.astro';
+import contributors from '../data/contributors.json';
 
-const { staff, l3, l2, l1 } = contributors
+const {staff, l3, l2, l1} = contributors;
 const contributorLists = [
 	{
 		title: 'Staff',
@@ -21,44 +21,34 @@ const contributorLists = [
 	{
 		title: 'Contributor',
 		members: l1,
-	},
-]
+	}
+];
 
 const contributorsCount = staff.length + l3.length + l2.length + l1.length
 
-const meta = { title: 'Thank you' }
+const meta = { title: 'Thank you' };
 
 function centerOnDesktop(list, i) {
-	return list.length - 1 === i && i % 3 === 0
+	return (list.length - 1 === i) && (i % 3 === 0)
 }
 ---
 
 <Layout fullscreen invert meta={meta}>
-	<Nav invert slot='nav' />
+	<Nav invert slot="nav" />
 
 	<Starfield height={64} />
 
-	<div class='font-display mt-10 overflow-hidden'>
-		<div
-			class='credits max-w-3xl mx-auto flex flex-col items-center text-center pt-[20vh]'
-		>
-			<h1 class='text-3xl font-bold pb-12'>Thank you</h1>
-			<p class='font-thin'>
-				<b>Astro</b> is an open source project powered by hundreds of contributors
-				making thousands of individual contributions.
-			</p>
+	<div class="font-display mt-10 overflow-hidden">
+		<div class="credits max-w-3xl mx-auto flex flex-col items-center text-center pt-[20vh]">
+			<h1 class="text-3xl font-bold pb-12">Thank you</h1>
+			<p class="font-thin"><b>Astro</b> is an open source project powered by hundreds of contributors making thousands of individual contributions.</p>
 
-			<section
-				id='contributors'
-				class='grid sm:grid-cols-2 lg:grid-cols-3 gap-y-1 gap-x-12'
-			>
+			<section id="contributors" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-1 gap-x-12">
 				{contributorLists.map(({ title, members }) => (
 					<Fragment>
 						<h2 class="pt-16 pb-6 text-xl font-bold col-span-full">{title}</h2>
 						{members.map((member, i) => (
-							<p class={centerOnDesktop(members, i) ? 'lg:col-start-2' : ''}>
-								{member.login}
-							</p>
+							<p class={centerOnDesktop(members, i) ? "lg:col-start-2": ""}>{member.login}</p>
 						))}
 					</Fragment>
 				))}
@@ -67,20 +57,20 @@ function centerOnDesktop(list, i) {
 	</div>
 </Layout>
 
-<script type='module'>
-	const credits = document.querySelector('.credits')
+<script type="module">
+	const credits = document.querySelector('.credits');
 
 	function onAnimationEnd(event) {
 		if (event.animationName === 'credits') {
-			credits.classList.add('done')
-			credits.removeEventListener('animationend', onAnimationEnd)
+			credits.classList.add('done');
+			credits.removeEventListener('animationend', onAnimationEnd);
 		}
 	}
 
-	credits.addEventListener('animationend', onAnimationEnd)
+	credits.addEventListener('animationend', onAnimationEnd);
 </script>
 
-<style define:vars={{ contributorsCount }}>
+<style define:vars={{contributorsCount}}>
 	.credits {
 		animation-duration: calc(1s * var(--contributorsCount));
 		animation-name: credits;
@@ -113,20 +103,12 @@ function centerOnDesktop(list, i) {
 	}
 
 	@keyframes credits {
-		from {
-			transform: translate3d(0, 0, 0);
-		}
-		to {
-			transform: translate3d(0, -100%, 0);
-		}
+		from { transform: translate3d(0, 0, 0);	}
+		to { transform: translate3d(0, -100%, 0); }
 	}
 
 	@keyframes fade {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
+		0% { opacity: 0; }
+		100% { opacity: 1; }
 	}
 </style>

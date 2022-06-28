@@ -1,26 +1,26 @@
 ---
-import { Sprite } from 'astro-icon'
+import { Sprite } from 'astro-icon';
 
 export interface Props {
-	tag: App.ThemeTag
+    tag: App.ThemeTag;
 }
 
 const TOOLTIPS = {
-	js: 'JavaScript',
-	scss: 'SCSS',
-	tailwind: 'TailwindCSS',
-	preact: 'Preact',
-	react: 'React',
-	svelte: 'Svelte',
-	solid: 'SolidJS',
-	vue: 'Vue 3',
+    js: 'JavaScript',
+    scss: 'SCSS',
+    tailwind: 'TailwindCSS',
+    preact: 'Preact',
+    react: 'React',
+    svelte: 'Svelte',
+    solid: 'SolidJS',
+    vue: 'Vue 3'
 }
 
-const { tag } = Astro.props as Props
+const { tag } = Astro.props as Props;
 
 const spriteName = `themes/${tag}`
 ---
 
 <div data-tip={TOOLTIPS[tag]}>
-	<Sprite name={spriteName} size='1em' />
+    <Sprite name={spriteName} size="1em" />
 </div>
