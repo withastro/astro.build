@@ -23,4 +23,4 @@ class NotMarquee extends HTMLElement {
 	}
 }
 
-customElements.define('not-marquee', NotMarquee);
+customElements.define('not-marquee', NotMarquee)

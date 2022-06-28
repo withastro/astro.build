@@ -1,15 +1,18 @@
-function shim(callback: IdleRequestCallback, options?: IdleRequestOptions): number {
-    const timeout = options?.timeout ?? 50
-    const start = Date.now()
+function shim(
+	callback: IdleRequestCallback,
+	options?: IdleRequestOptions
+): number {
+	const timeout = options?.timeout ?? 50
+	const start = Date.now()
 
-    return setTimeout(function() {
-        callback({
-            didTimeout: false,
-            timeRemaining: function() {
-                return Math.max(0, timeout - (Date.now() - start))
-            }
-        })
-    }, 1)
+	return setTimeout(function () {
+		callback({
+			didTimeout: false,
+			timeRemaining: function () {
+				return Math.max(0, timeout - (Date.now() - start))
+			},
+		})
+	}, 1)
 }
 
 const requestIdleCallback = window.requestIdleCallback || shim

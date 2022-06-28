@@ -1,43 +1,56 @@
 ---
-import { fetchCollections, fetchSitesForCollection } from '../../data/showcase.ts';
-import Layout from '../../layouts/Catalog.astro';
-import ShowcaseCard from '../../components/showcase/ShowcaseCard.astro';
+import {
+	fetchCollections,
+	fetchSitesForCollection,
+} from '../../data/showcase.js'
+import Layout from '../../layouts/Catalog.astro'
+import ShowcaseCard from '../../components/showcase/ShowcaseCard.astro'
 
 export async function getStaticPaths() {
-    const collections = await fetchCollections();
+	const collections = await fetchCollections()
 
-    return collections.map(({ text, slug }) => ({
-        params: {
-            slug,
-        },
-    }));
+	return collections.map(({ text, slug }) => ({
+		params: {
+			slug,
+		},
+	}))
 }
 
-const { slug } = Astro.params;
-const sites: App.ShowcaseSite[] = await fetchSitesForCollection(slug);
+const { slug } = Astro.params
+const sites: App.ShowcaseSite[] = await fetchSitesForCollection(slug)
 
-const collections = await fetchCollections();
+const collections = await fetchCollections()
 
 const meta = {
-    title: 'Showcase',
-    description: "Explore what's possible with Astro and get inspired for your next project."
-};
+	title: 'Showcase',
+	description:
+		"Explore what's possible with Astro and get inspired for your next project.",
+}
 ---
 
-<Layout meta={meta} {collections} current={slug} baseHref="/showcase" searchable={false}>
-    <Fragment slot="info">
-        <a
-            href="https://github.com/withastro/astro.build/issues/new/choose"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="subtle underline">
-            Add your own starter project.
-        </a>
-        <span>Questions about building your own project? Join our community on</span>
-        <a href="https://astro.build/chat" class="subtle underline">Discord!</a>
-    </Fragment>
+<Layout
+	meta={meta}
+	{collections}
+	current={slug}
+	baseHref='/showcase'
+	searchable={false}
+>
+	<Fragment slot='info'>
+		<a
+			href='https://github.com/withastro/astro.build/issues/new/choose'
+			target='_blank'
+			rel='noopener noreferrer'
+			class='subtle underline'
+		>
+			Add your own starter project.
+		</a>
+		<span
+			>Questions about building your own project? Join our community on
+		</span>
+		<a href='https://astro.build/chat' class='subtle underline'>Discord!</a>
+	</Fragment>
 
-    <Fragment slot="cards">
-        {sites.map(site => (<ShowcaseCard site={site} />))}
-    </Fragment>
+	<Fragment slot='cards'>
+		{sites.map(site => <ShowcaseCard site={site} />)}
+	</Fragment>
 </Layout>

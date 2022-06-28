@@ -1,39 +1,40 @@
 ---
-import { Sprite } from 'astro-icon';
+import { Sprite } from 'astro-icon'
 
 export interface Props {
-    title?: string;
+	title?: string
 }
 
-const { title } = Astro.props as Props;
+const { title } = Astro.props as Props
 ---
-<details>
-    <summary>
-        <slot name="summary">
-            {title}
-            <Sprite pack="heroicons-solid" name="chevron-down" size={20} />
-        </slot>
-    </summary>
 
-    <slot />
+<details>
+	<summary>
+		<slot name='summary'>
+			{title}
+			<Sprite pack='heroicons-solid' name='chevron-down' size={20} />
+		</slot>
+	</summary>
+
+	<slot></slot>
 </details>
 
 <style>
-    summary {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: var(--size-600);
-        color: var(--color-dusk);
-    }
+	summary {
+		list-style: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--size-600);
+		color: var(--color-dusk);
+	}
 
-    summary::-webkit-details-marker {
-        display: none;
-    }
+	summary::-webkit-details-marker {
+		display: none;
+	}
 
-    summary :global(svg) {
-        opacity: 0.5;
-        margin-left: 0.125rem;
-    }
+	summary :global(svg) {
+		opacity: 0.5;
+		margin-left: 0.125rem;
+	}
 </style>

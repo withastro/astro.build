@@ -1,157 +1,172 @@
 ---
-import Illustration from './DemoIllustration.astro';
-import Spinner from '../Spinner.astro';
+import Illustration from './DemoIllustration.astro'
+import Spinner from '../Spinner.astro'
 ---
 
-<Illustration before="4.0s TTI" after="2.3s TTI" name="tti"> 
-    <Fragment slot="before">
-        <div class="spinner-container before">
-            <Spinner />
-        </div>
-        <div class="tti-content before">
-            <img class="img" src="/assets/landing/demo-tti-before.png" width="188" height="148" aria-hidden="true" />
-            <div />
-            <div />
-            <div />
-        </div>
-    </Fragment>
-    <Fragment slot="after">
-        <div class="spinner-container after">
-            <Spinner />
-        </div>
-        <div class="tti-content after">
-            
-            <img class="img" src="/assets/landing/demo-tti-after.png" width="188" height="148" aria-hidden="true" />
-            <div />
-            <div />
-            <div />
-        </div>
-    </Fragment>
+<Illustration before='4.0s TTI' after='2.3s TTI' name='tti'>
+	<Fragment slot='before'>
+		<div class='spinner-container before'>
+			<Spinner />
+		</div>
+		<div class='tti-content before'>
+			<img
+				class='img'
+				src='/assets/landing/demo-tti-before.png'
+				width='188'
+				height='148'
+				aria-hidden='true'
+			/>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</Fragment>
+	<Fragment slot='after'>
+		<div class='spinner-container after'>
+			<Spinner />
+		</div>
+		<div class='tti-content after'>
+			<img
+				class='img'
+				src='/assets/landing/demo-tti-after.png'
+				width='188'
+				height='148'
+				aria-hidden='true'
+			/>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</Fragment>
 </Illustration>
 
-
 <style>
-    :global(demo-illustration[paused]) :is(
-        .before,
-        .after,
-        .spiner-container.before,
-        .tti-content.before,
-        .spinner-container.after,
-        .tti-content.after
-    ) {
-        animation-play-state: paused;
-    }
-    @media (min-width: 40rem) {
-        .spinner-container {
-            --size: 12rem;
-        }
-    }
-    .spinner-container {
-        --size: 8rem;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    .before,
-    .after {
-        will-change: opacity;
-        animation: fade-out 10s linear infinite both;
-    }
-    .spinner-container.before {
-        will-change: opacity;
-       animation-name: fade-out-before;
-    }
-    .tti-content.before {
-        will-change: opacity;
-       animation-name: fade-in-before;
-    }
-    .spinner-container.after {
-        will-change: opacity;
-       animation-name: fade-out-after;
-    }
-    .tti-content.after {
-        will-change: opacity;
-       animation-name: fade-in-after;
-    }
-    .tti-content {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-    }
-    .img {
-        width: 100%;
-        height: auto;
-    }
-    .tti-content > * + * {
-        margin-top: 1rem;
-    }
-        
-    
-    .tti-content > div {
-        height: var(--height, 1rem);
-        width: var(--width, 100%);
-        border-radius: 8px;
-        background: var(--color);
-    }
-    .tti-content > :nth-child(2) {
-        --height: 1.5rem;
-        --width: 67%;
-    }
-    .tti-content > :nth-child(4) {
-        --width: 80%;
-    }
-    @media (min-width: 40rem) {
-        .tti-content > :nth-child(2) {
-            --height: 2rem;
-            --width: 67%;
-        }
-    }
-    @keyframes fade-in-before {
-        0%, 39.9%, 100% {
-            opacity: 0;
-        }
-        40%, 85% {
-            opacity: 1;
-        }
-    }
-    @keyframes fade-out-before {
-        0%, 39.9%, 100% {
-            opacity: 1;
-        }
-        40%, 99.9% {
-            opacity: 0;
-        }
-    }
-    @keyframes fade-in-after {
-        0%, 22.9%, 100% {
-            opacity: 0;
-        }
-        23%, 85% {
-            opacity: 1;
-        }
-    }
-    @keyframes fade-out-after {
-        0%, 22.9%, 100% {
-            opacity: 1;
-        }
-        23%, 99.9% {
-            opacity: 0;
-        }
-    }
+	:global(demo-illustration[paused])
+		:is(.before, .after, .spiner-container.before, .tti-content.before, .spinner-container.after, .tti-content.after) {
+		animation-play-state: paused;
+	}
+	@media (min-width: 40rem) {
+		.spinner-container {
+			--size: 12rem;
+		}
+	}
+	.spinner-container {
+		--size: 8rem;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.before,
+	.after {
+		will-change: opacity;
+		animation: fade-out 10s linear infinite both;
+	}
+	.spinner-container.before {
+		will-change: opacity;
+		animation-name: fade-out-before;
+	}
+	.tti-content.before {
+		will-change: opacity;
+		animation-name: fade-in-before;
+	}
+	.spinner-container.after {
+		will-change: opacity;
+		animation-name: fade-out-after;
+	}
+	.tti-content.after {
+		will-change: opacity;
+		animation-name: fade-in-after;
+	}
+	.tti-content {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+	}
+	.img {
+		width: 100%;
+		height: auto;
+	}
+	.tti-content > * + * {
+		margin-top: 1rem;
+	}
+
+	.tti-content > div {
+		height: var(--height, 1rem);
+		width: var(--width, 100%);
+		border-radius: 8px;
+		background: var(--color);
+	}
+	.tti-content > :nth-child(2) {
+		--height: 1.5rem;
+		--width: 67%;
+	}
+	.tti-content > :nth-child(4) {
+		--width: 80%;
+	}
+	@media (min-width: 40rem) {
+		.tti-content > :nth-child(2) {
+			--height: 2rem;
+			--width: 67%;
+		}
+	}
+	@keyframes fade-in-before {
+		0%,
+		39.9%,
+		100% {
+			opacity: 0;
+		}
+		40%,
+		85% {
+			opacity: 1;
+		}
+	}
+	@keyframes fade-out-before {
+		0%,
+		39.9%,
+		100% {
+			opacity: 1;
+		}
+		40%,
+		99.9% {
+			opacity: 0;
+		}
+	}
+	@keyframes fade-in-after {
+		0%,
+		22.9%,
+		100% {
+			opacity: 0;
+		}
+		23%,
+		85% {
+			opacity: 1;
+		}
+	}
+	@keyframes fade-out-after {
+		0%,
+		22.9%,
+		100% {
+			opacity: 1;
+		}
+		23%,
+		99.9% {
+			opacity: 0;
+		}
+	}
 </style>

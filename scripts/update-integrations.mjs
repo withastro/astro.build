@@ -37,7 +37,7 @@ function normalizePackageDetails(data, pkg) {
 
 	const npmUrl = {
 		href: `https://www.npmjs.com/package/${pkg}`,
-		text: 'View on NPM'
+		text: 'View on NPM',
 	}
 
 	const repoUrl = data.repository?.url && {
@@ -48,10 +48,12 @@ function normalizePackageDetails(data, pkg) {
 		text: 'View source code',
 	}
 
-	const url = data.homepage ? {
-		href: data.homepage,
-		text: 'View homepage'
-	} : npmUrl
+	const url = data.homepage
+		? {
+				href: data.homepage,
+				text: 'View homepage',
+		  }
+		: npmUrl
 
 	return {
 		slug: data.name,
@@ -61,7 +63,7 @@ function normalizePackageDetails(data, pkg) {
 		official: isOfficial(pkg),
 		repoUrl,
 		npmUrl,
-		url
+		url,
 	}
 }
 
@@ -108,7 +110,9 @@ async function main() {
 	// don't fetch stars for official packages, they get a badge instead
 	const stars = await Promise.all(
 		npmData.map(data =>
-			(data.official || !data.repoUrl?.href) ? undefined : getStarsForRepo(data.repoUrl.href)
+			data.official || !data.repoUrl?.href
+				? undefined
+				: getStarsForRepo(data.repoUrl.href)
 		)
 	)
 

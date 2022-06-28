@@ -1,24 +1,41 @@
 ---
-import clsx from 'clsx';
+import clsx from 'clsx'
 
 export interface Props {
-    links: App.Link[];
-    current: App.Link;
-    title: string;
-    prefetch?: boolean;
-    class?: string;
+	links: App.Link[]
+	current: App.Link
+	title: string
+	prefetch?: boolean
+	class?: string
 }
 
-const { links, current, title, prefetch, class: className } = Astro.props as Props;
+const {
+	links,
+	current,
+	title,
+	prefetch,
+	class: className,
+} = Astro.props as Props
 ---
 
-<section class={clsx("max-w-4xl", className)}>
-    <h2 class="text-xs pb-2 font-display font-bold tracking-wider uppercase text-dusk">{title}</h2>
-    <ul class="flex flex-row gap-2 flex-wrap">
-        {links.map(link => (
-            <li>
-                <a rel={prefetch ? 'prefetch' : undefined} class={clsx("pill", { "pill--hollow": current !== link })} href={link.href} aria-current={current === link ? "page" : undefined}>{link.text}</a>
-            </li>
-        ))}
-    </ul>
+<section class={clsx('max-w-4xl', className)}>
+	<h2
+		class='text-xs pb-2 font-display font-bold tracking-wider uppercase text-dusk'
+	>
+		{title}
+	</h2>
+	<ul class='flex flex-row gap-2 flex-wrap'>
+		{links.map(link => (
+			<li>
+				<a
+					rel={prefetch ? 'prefetch' : undefined}
+					class={clsx('pill', { 'pill--hollow': current !== link })}
+					href={link.href}
+					aria-current={current === link ? 'page' : undefined}
+				>
+					{link.text}
+				</a>
+			</li>
+		))}
+	</ul>
 </section>

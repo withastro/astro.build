@@ -1,37 +1,37 @@
 ---
-const { height = 50 } = Astro.props;
+const { height = 50 } = Astro.props
 ---
 
 <div style={`--height: ${height}%;`}>
-    <slot />
+	<slot></slot>
 </div>
 
 <style>
-div {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: calc(100% - var(--height));
-    left: 0;
-    background-image: url(/stars.png);
-    background-repeat: repeat;
-    -webkit-mask-image: url(/stars-mask.png);
-    -webkit-mask-repeat: repeat;
-    transform: translate3d(0px, 0px, 0px);
-    mask-image: url(/stars-mask.png);
-    mask-repeat: repeat;
-    animation: sparkle 10s linear infinite alternate-reverse;
-    pointer-events: none;
-}
+	div {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: calc(100% - var(--height));
+		left: 0;
+		background-image: url(/stars.png);
+		background-repeat: repeat;
+		-webkit-mask-image: url(/stars-mask.png);
+		-webkit-mask-repeat: repeat;
+		transform: translate3d(0px, 0px, 0px);
+		mask-image: url(/stars-mask.png);
+		mask-repeat: repeat;
+		animation: sparkle 10s linear infinite alternate-reverse;
+		pointer-events: none;
+	}
 
-@keyframes sparkle {
-    from {
-        -webkit-mask-position: top right;
-        mask-position: top right;
-    }
-    to {
-        -webkit-mask-position: bottom left;
-        mask-position: bottom left;
-    }
-}
+	@keyframes sparkle {
+		from {
+			-webkit-mask-position: top right;
+			mask-position: top right;
+		}
+		to {
+			-webkit-mask-position: bottom left;
+			mask-position: bottom left;
+		}
+	}
 </style>

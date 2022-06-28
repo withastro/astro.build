@@ -1,14 +1,14 @@
 ---
 export interface Props {
-	title?: string;
-	type?: 'tip' | 'warning' | 'error';
+	title?: string
+	type?: 'tip' | 'warning' | 'error'
 }
-const { type = 'tip', title } = Astro.props;
+const { type = 'tip', title } = Astro.props
 ---
 
 <aside class={`note type-${type}`}>
 	{title && <h3 class="head-sm">{title}</h3>}
-	<slot />
+	<slot></slot>
 </aside>
 
 <style>

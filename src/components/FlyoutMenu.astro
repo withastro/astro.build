@@ -1,137 +1,137 @@
 ---
-import { Sprite } from 'astro-icon';
-import clsx from 'clsx';
+import { Sprite } from 'astro-icon'
+import clsx from 'clsx'
 
 export interface Props {
-    align?: 'left' | 'center' | 'right'
-    title?: string;
-    items: {
-        title: string;
-        href: string;
-        description?: string;
-    }[];
-    invert?: boolean;
+	align?: 'left' | 'center' | 'right'
+	title?: string
+	items: {
+		title: string
+		href: string
+		description?: string
+	}[]
+	invert?: boolean
 }
 
-const { align = 'center', title, items, invert = false } = Astro.props as Props;
+const { align = 'center', title, items, invert = false } = Astro.props as Props
 
-const hasDescriptions = items.some(({ description }) => !!description);
+const hasDescriptions = items.some(({ description }) => !!description)
 ---
 
 <details class={clsx('flyout', align, { light: invert })}>
-    <summary>
-        {title}
-        <Sprite pack="heroicons-solid" name="chevron-down" size={20} />
-    </summary>
+	<summary>
+		{title}
+		<Sprite pack='heroicons-solid' name='chevron-down' size={20} />
+	</summary>
 
-    <div>
-        <nav class={clsx({ descriptions: hasDescriptions })}>
-            {items.map(({ title, href, description }) => (
-                <a href={href} alt={title} class="subtle">
-                    <h4>{title}</h4>
-                    {description && (
-                        <p>{description}</p>
-                    )}
-                </a>
-            ))}
-        </nav>
-    </div>
+	<div>
+		<nav class={clsx({ descriptions: hasDescriptions })}>
+			{items.map(({ title, href, description }) => (
+				<a href={href} alt={title} class="subtle">
+					<h4>{title}</h4>
+					{description && <p>{description}</p>}
+				</a>
+			))}
+		</nav>
+	</div>
 </details>
 
 <script>
-    import './FlyoutMenu.ts';
+	import './FlyoutMenu.js'
 </script>
 
 <style>
-    details {
-        position: relative;
-    }
+	details {
+		position: relative;
+	}
 
-    summary {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        font-family: var(--font-display);
-        font-size: var(--size-500);
-        color: var(--color-midnight);
-    }
+	summary {
+		list-style: none;
+		display: flex;
+		align-items: center;
+		font-family: var(--font-display);
+		font-size: var(--size-500);
+		color: var(--color-midnight);
+	}
 
-    details.light summary {
-        color: var(--color-white);
-    }
+	details.light summary {
+		color: var(--color-white);
+	}
 
-    summary::-webkit-details-marker {
-        display: none;
-    }
+	summary::-webkit-details-marker {
+		display: none;
+	}
 
-    summary :global(svg) {
-        opacity: 0.5;
-        margin-left: 0.125rem;
-    }
+	summary :global(svg) {
+		opacity: 0.5;
+		margin-left: 0.125rem;
+	}
 
-    div {
-        position: absolute;
-        top: 100%;
-        padding-top: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: opacity 150ms ease;
-        will-change: opacity;
-    }
+	div {
+		position: absolute;
+		top: 100%;
+		padding-top: 1rem;
+		left: 50%;
+		transform: translateX(-50%);
+		opacity: 0;
+		transition: opacity 150ms ease;
+		will-change: opacity;
+	}
 
-    details.left div {
-        transform: translateX(-15%);
-    }
+	details.left div {
+		transform: translateX(-15%);
+	}
 
-    details.right div {
-        transform: translateX(-85%);
-    }
+	details.right div {
+		transform: translateX(-85%);
+	}
 
-    nav {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        padding: 2rem;
-        max-width: min(25rem, 50vw);
-        background: var(--color-white);
-        color: var(--color-midnight);
-        text-align: center;
-        white-space: nowrap;
-        box-shadow: var(--shadow-sm);
-        border-radius: 0.5rem;
-    }
+	nav {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 2rem;
+		max-width: min(25rem, 50vw);
+		background: var(--color-white);
+		color: var(--color-midnight);
+		text-align: center;
+		white-space: nowrap;
+		box-shadow: var(--shadow-sm);
+		border-radius: 0.5rem;
+	}
 
-    details[open] div {
-        opacity: 1;
-    }
+	details[open] div {
+		opacity: 1;
+	}
 
-    nav.descriptions {
-        width: 100vw;
-        text-align: start;
-        white-space: normal;
-    }
+	nav.descriptions {
+		width: 100vw;
+		text-align: start;
+		white-space: normal;
+	}
 
-    a h4 {
-        font-size: var(--size-500);
-        font-family: var(--font-body);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
+	a h4 {
+		font-size: var(--size-500);
+		font-family: var(--font-body);
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
 
-    a p {
-        font-family: var(--font-body);
-        font-size: var(--size-400);
-        opacity: 0.75;
-    }
+	a p {
+		font-family: var(--font-body);
+		font-size: var(--size-400);
+		opacity: 0.75;
+	}
 
-    details[open] summary, summary:hover, a.subtle:hover {
-        color: var(--color-purple);
-    }
+	details[open] summary,
+	summary:hover,
+	a.subtle:hover {
+		color: var(--color-purple);
+	}
 
-    @media (max-width: 40rem) {
-        nav {
-            max-width: min(25rem, 60vw);
-        }
-    }
+	@media (max-width: 40rem) {
+		nav {
+			max-width: min(25rem, 60vw);
+		}
+	}
 </style>
