@@ -4,12 +4,8 @@ import Starfield from '../components/Starfield.astro';
 import Layout from '../layouts/Content.astro';
 import contributors from '../data/contributors.json';
 
-const {staff, l3, l2, l1} = contributors;
+const {l3, l2, l1} = contributors;
 const contributorLists = [
-	{
-		title: 'Staff',
-		members: staff,
-	},
 	{
 		title: 'Core',
 		members: l3,
@@ -24,7 +20,7 @@ const contributorLists = [
 	}
 ];
 
-const contributorsCount = staff.length + l3.length + l2.length + l1.length
+const contributorsCount = l3.length + l2.length + l1.length
 
 const meta = { title: 'Thank you' };
 
