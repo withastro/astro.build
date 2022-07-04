@@ -90,7 +90,8 @@ const inlineStyle = `
     }
 
     input.addEventListener('input', debounce(update, FPS_30), true);
-    button.addEventListener('click', input.focus, true);
+    // For some reason input.focus needs to be called this way otherwise it doesn't work
+    button.addEventListener('click', () => input.focus(), true);
     input.addEventListener('focus', updateOpen, true);
     input.addEventListener('blur', updateOpen, true);
     
