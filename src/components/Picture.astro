@@ -1,0 +1,38 @@
+---
+import { getImage } from '@astrojs/image'
+import { Image } from '@astrojs/image/components'
+// @ts-ignore
+import loader from 'virtual:image-loader'
+import type { ImageMetadata, OutputFormat } from '@astrojs/image'
+import { lookup } from 'mrmime'
+
+export interface Props {
+    src: ImageMetadata
+    sizes: HTMLImageElement['sizes']
+    widths: number[]
+    formats?: OutputFormat[]
+}
+
+const { src, sizes, widths, formats = ['avif', 'webp', 'jpeg'] } = Astro.props as Props
+
+const aspectRatio = src.width / src.height;
+
+async function getSource(format: OutputFormat) {
+    const imgs = await Promise.all(widths.map(async (width) => {
+        const img = await getImage(loader, { src: src.src, format, width, height: Math.round(width / aspectRatio) });
+        return `${img.src} ${width}w`
+    }))
+
+    return {
+        type: lookup(format) || format,
+        srcset: imgs.join(',')
+    }
+}
+
+const sources = await Promise.all(formats.map(format => getSource(format)))
+---
+
+<picture>
+    {sources.map(attrs => (<source {...attrs} {sizes}>))}
+    <Image {sizes} {src} loading="lazy" decoding="async" width={906} height={514} />
+</picture>
