@@ -1,5 +1,4 @@
 ---
-import clsx from 'clsx';
 export interface Props {
 	title?: string;
 	type?: 'tip' | 'warning' | 'error';
@@ -8,7 +7,7 @@ export interface Props {
 const { type = 'tip', title, class: className } = Astro.props;
 ---
 
-<aside class={clsx(className, type)}>
+<aside class:list={[className, type]}>
 	{title && <h3 class="head-sm">{title}</h3>}
 	<slot />
 </aside>
