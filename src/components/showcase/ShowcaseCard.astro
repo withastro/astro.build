@@ -7,7 +7,9 @@ export interface Props {
 
 const { site } = Astro.props as Props;
 
-const { default: image } = await import(site.image.src.replace('src/data', `../../data`));
+const allImages = import.meta.globEager('/src/data/showcase/images/*');
+
+const { default: image } = allImages[site.image.src];
 
 const widths = site.highlight ? [453, 906, image.width] : [453, 906]
 const sizes = site.highlight ? '(min-width: 1024px) 67vw, 100vw' : '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)'
