@@ -7,6 +7,8 @@ const rows = [
     ['rss', 'wordpress', 'strapi', 'prismic', 'shopify'],
     ['contentful', 'netlify-grid', 'vercel-grid', 'cloudflare', 'github'],
 ]
+
+const icons = rows.flat();
 ---
 
 <Section id="frameworks">
@@ -17,7 +19,9 @@ const rows = [
         </div>
     </div>
     <ul class="integrations astro-container container">
-        {rows.map(row => row.map(icon => <li class={`icon-${icon}`}><Icon title={icon.replace(/\-grid$/, '')} name={`logos/${icon}`} height="64" /></li>))}
+        {icons.map(icon => (
+            <li class={`icon-${icon}`}><Icon title={icon.replace(/\-grid$/, '')} name={`logos/${icon}`} height="64" /></li>
+        ))}
     </ul>
 </Section>
 
