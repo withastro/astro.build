@@ -1,11 +1,16 @@
 ---
 import { Sprite } from 'astro-icon';
+import Picture from '../Picture.astro';
+import { themeImage } from '../../data/images.js';
 
 export interface Props {
     theme: App.Theme;
 }
 
 const { theme } = Astro.props as Props;
+
+const image = await themeImage(theme.image.src);
+console.log(image)
 
 const linkHref = theme.demoUrl?.href || theme.repoUrl.href;
 
@@ -15,7 +20,7 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
     <a href={linkHref} alt={theme.image.alt} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
-        <img src={theme.image.src} alt={theme.image.alt} class="h-auto" loading="lazy" />
+        <Picture src={image} sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)" widths={[400, 800]} />
     </a>
 
     <div class="flex justify-between items-center p-4">
