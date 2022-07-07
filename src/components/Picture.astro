@@ -8,12 +8,13 @@ import { lookup } from 'mrmime'
 
 export interface Props {
     src: ImageMetadata
+    alt: string
     sizes: HTMLImageElement['sizes']
     widths: number[]
     formats?: OutputFormat[]
 }
 
-const { src, sizes, widths, formats = ['avif', 'webp', 'jpeg'] } = Astro.props as Props
+const { src, alt, sizes, widths, formats = ['avif', 'webp', 'jpeg'] } = Astro.props as Props
 
 const aspectRatio = src.width / src.height;
 
@@ -37,5 +38,5 @@ const height = Math.round(width / aspectRatio)
 
 <picture>
     {sources.map(attrs => (<source {...attrs} {sizes}>))}
-    <Image {sizes} {src} {width} {height} loading="lazy" decoding="async" />
+    <Image {sizes} {src} {alt} {width} {height} loading="lazy" decoding="async" />
 </picture>
