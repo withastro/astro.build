@@ -18,7 +18,7 @@ const sizes = site.highlight ? '(min-width: 1024px) 67vw, 100vw' : '(max-width: 
     <a {...site.url} alt={site.title} rel="noopener">
         <span class="sr-only">{site.title}</span>
 
-        <Picture src={image} widths={widths} sizes={sizes} />
+        <Picture src={image} widths={widths} sizes={sizes} alt={site.title} />
     </a>
 
     <footer class="pointer-events-none absolute z-10 py-4 rounded-b-lg overflow-hidden bg-black text-center text-white font-normal h-fit inset-x-0 top-full -translate-y-full opacity-0 transition-opacity duration-300 ease-out">
