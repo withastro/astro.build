@@ -1,6 +1,5 @@
 ---
 import { Sprite } from 'astro-icon';
-import clsx from 'clsx';
 
 export interface Props {
     align?: 'left' | 'center' | 'right'
@@ -18,14 +17,14 @@ const { align = 'center', title, items, invert = false } = Astro.props as Props;
 const hasDescriptions = items.some(({ description }) => !!description);
 ---
 
-<details class={clsx('flyout', align, { light: invert })}>
+<details class:list={['flyout', align, { light: invert }]}>
     <summary>
         {title}
         <Sprite pack="heroicons-solid" name="chevron-down" size={20} />
     </summary>
 
     <div>
-        <nav class={clsx({ descriptions: hasDescriptions })}>
+        <nav class:list={[{ descriptions: hasDescriptions }]}>
             {items.map(({ title, href, description }) => (
                 <a href={href} alt={title} class="subtle">
                     <h4>{title}</h4>

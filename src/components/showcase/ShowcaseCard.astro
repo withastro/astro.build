@@ -1,5 +1,4 @@
 ---
-import clsx from 'clsx'
 import { generateImage, generatePlaceholder } from 'astro-eleventy-img'
 
 export interface Props {
@@ -23,7 +22,7 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(',')
 const placeholder = await generatePlaceholder(site.image.src)
 ---
 
-<article class={clsx("relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2")}>
+<article class:list={["relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2"]}>
     <a {...site.url} alt={site.title} rel="noopener">
         <span class="sr-only">{site.title}</span>
 
