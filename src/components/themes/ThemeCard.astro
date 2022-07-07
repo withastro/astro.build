@@ -10,7 +10,6 @@ export interface Props {
 const { theme } = Astro.props as Props;
 
 const image = await themeImage(theme.image.src);
-console.log(image)
 
 const linkHref = theme.demoUrl?.href || theme.repoUrl.href;
 

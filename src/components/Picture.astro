@@ -30,9 +30,12 @@ async function getSource(format: OutputFormat) {
 }
 
 const sources = await Promise.all(formats.map(format => getSource(format)))
+
+const width = widths.sort().shift()
+const height = Math.round(width / aspectRatio)
 ---
 
 <picture>
     {sources.map(attrs => (<source {...attrs} {sizes}>))}
-    <Image {sizes} {src} loading="lazy" decoding="async" width={906} height={514} />
+    <Image {sizes} {src} {width} {height} />
 </picture>
