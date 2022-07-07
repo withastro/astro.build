@@ -1,5 +1,6 @@
 ---
-import { generateImage, generatePlaceholder } from 'astro-eleventy-img'
+import Picture from '../Picture.astro'
+import { showcaseImage } from '../../data/images.js'
 
 export interface Props {
     site: App.ShowcaseSite;
@@ -7,31 +8,17 @@ export interface Props {
 
 const { site } = Astro.props as Props;
 
-const widths = site.highlight ? [453, 906, null] : [453, 906]
+const image = await showcaseImage(site.image.src);
+
+const widths = site.highlight ? [453, 906, image.width] : [453, 906]
 const sizes = site.highlight ? '(min-width: 1024px) 67vw, 100vw' : '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)'
-
-const {webp, avif, png} = generateImage(site.image.src, {
-    widths,
-    formats: ['webp', 'avif', 'png']
-})
-
-const avifSrcset = avif.map(({ srcset }) => srcset).join(',')
-const webpSrcset = webp.map(({ srcset }) => srcset).join(',')
-const pngSrcset = png.map(({ srcset }) => srcset).join(',')
-
-const placeholder = await generatePlaceholder(site.image.src)
 ---
 
 <article class:list={["relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2"]}>
     <a {...site.url} alt={site.title} rel="noopener">
         <span class="sr-only">{site.title}</span>
 
-        <picture class="w-full h-full">
-            <source type="image/avif" srcset={avifSrcset} {sizes} />
-            <source type="image/webp" srcset={webpSrcset} {sizes} />
-            <source type="image/png" srcset={pngSrcset} {sizes} />
-            <img class="w-full h-full object-cover rounded-lg overflow-hidden" {sizes} loading="lazy" decoding="async" src={png[1].url} width="906" height="514" onload="this.style.backgroundImage='none';this.classList.add('loaded')" style={`background-size: cover; background-image: url(${placeholder.dataURI});`} />
-        </picture>
+        <Picture src={image} widths={widths} sizes={sizes} alt={site.title} />
     </a>
 
     <footer class="pointer-events-none absolute z-10 py-4 rounded-b-lg overflow-hidden bg-black text-center text-white font-normal h-fit inset-x-0 top-full -translate-y-full opacity-0 transition-opacity duration-300 ease-out">
@@ -41,22 +28,20 @@ const placeholder = await generatePlaceholder(site.image.src)
 </article>
 
 <style>
-    :global(.js) img {
-        transition: filter 300ms ease;
-        will-change: filter;
+    article :global(picture) {
+        @apply w-full h-full;
     }
 
-    :global(.js) img:not(.loaded) {
-        filter: blur(15px);
-        transform: translate3d(0, 0, 0);
+    article :global(img) {
+        @apply w-full h-full object-cover rounded-lg overflow-hidden;
     }
 
-    picture::after {
+    article :global(picture::after) {
         @apply absolute inset-0 bg-black rounded-lg overflow-hidden opacity-0 transition-opacity duration-150 ease-out;
         content: "";
     }
 
-    article:hover picture::after, a:focus picture::after {
+    article:hover :global(picture::after), a:focus :global(picture::after) {
         @apply opacity-40;
     }
 
