@@ -37,5 +37,5 @@ const height = Math.round(width / aspectRatio)
 
 <picture>
     {sources.map(attrs => (<source {...attrs} {sizes}>))}
-    <Image {sizes} {src} {width} {height} />
+    <Image {sizes} {src} {width} {height} loading="lazy" decoding="async" />
 </picture>
