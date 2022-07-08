@@ -18,12 +18,13 @@ const inlineStyle = `
 ---
 
 <section>
-    <div>
+    <label>
         <input type="text" {id} {placeholder} aria-label="Search">
-        <button aria-hidden="true">
+        <div>
             <Sprite pack="heroicons-outline" name="search" size={24} />
-        </button>
-    </div>
+        </div>
+        <span class="sr-only visually-hidden">Search</span>
+    </label>
 </section>
 
 <style set:html={inlineStyle}></style>
@@ -34,7 +35,6 @@ const inlineStyle = `
     const stopWords = ['a', 'an', 'and', 'are', 'aren\'t', 'as', 'by', 'can', 'cannot', 'can\'t', 'could', 'couldn\'t', 'how', 'is', 'isn\'t', 'it', 'its', 'it\'s', 'that', 'the', 'their', 'there', 'they', 'they\'re', 'them', 'to', 'too', 'us', 'very', 'was', 'we', 'well', 'were', 'what', 'whatever', 'when', 'whenever', 'where', 'with', 'would', 'yet', 'you', 'your', 'yours', 'yourself', 'yourselves', 'the'];
 
     const input = document.getElementById(id);
-    const button = document.querySelector(`#${id} + button`);
     const items = document.querySelectorAll(selector);
 
     const FPS_30 = 1000 / 30;
@@ -90,7 +90,6 @@ const inlineStyle = `
     }
 
     input.addEventListener('input', debounce(update, FPS_30), true);
-    button.addEventListener('click', input.focus, true);
     input.addEventListener('focus', updateOpen, true);
     input.addEventListener('blur', updateOpen, true);
     
@@ -106,7 +105,7 @@ const inlineStyle = `
         width: calc(25ch + 2.5rem);
     }
 
-    div {
+    label {
         display: flex;
         border-radius: 9999px;
         padding: 0.25rem;
@@ -128,7 +127,7 @@ const inlineStyle = `
         opacity: 0.75;
     }
 
-    button {
+    div {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -140,7 +139,7 @@ const inlineStyle = `
     }
 
     @media (max-width: 768px) {
-        div, section {
+        label, section {
             width: 100%;
         }
 
@@ -151,7 +150,7 @@ const inlineStyle = `
     }
 
     @media(hover: hover) {
-        div {
+        label {
             background: transparent;
         }
 
@@ -160,7 +159,7 @@ const inlineStyle = `
             padding-left: 0;
         }
 
-        input, button {
+        input, div {
             transition: 250ms ease;
         }
 
@@ -171,24 +170,24 @@ const inlineStyle = `
             padding-left: 0.75rem;
         }
 
-        button {
+        div {
             background: transparent;
             color: var(--color-midnight);
         }
 
-        div:hover, div[open] {
+        label:hover, label[open] {
             background: var(--color-white);
         }
 
-        div:hover > input {
+        label:hover > input {
             max-width: 25ch;
             padding: 0 .5rem;
             padding-left: 0.75rem;
         }
 
-        div:hover > button,
-        input:focus + button,
-        input:not(:placeholder-shown) + button {
+        label:hover > div,
+        input:focus + div,
+        input:not(:placeholder-shown) + div {
             background: var(--color-dusk);
             color: var(--color-white);
         }
