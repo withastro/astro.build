@@ -108,8 +108,9 @@ export function orgApi(org) {
 		 *
 		 * @returns {Promise} number of stars for the github repo
 		 */
-		function fetchStars() {
+		async function fetchStars() {
 			const url = new URL(`https://api.github.com/repos/${org}/${repo}`)
+			
 			return fetchJson(url.toString())
 				.then(res => res.stargazers_count)
 				.catch((error) => {

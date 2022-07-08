@@ -18,7 +18,7 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 ---
 
 <article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a href={linkHref} alt={theme.image.alt} target="_blank" rel="noopener noreferrer" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
+    <a href={linkHref} alt={theme.image.alt} target="_blank" rel="noopener" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
         <Picture src={image} alt={theme.title} sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)" widths={[400, 800]} />
     </a>
 
@@ -28,12 +28,12 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
         </h2>
 
         {(stars || theme.official) && (
-            <a href={theme.repoUrl.href} alt="View the source code" target="_blank" rel="noopener noreferrer" class="subtle flex items-center gap-x-1 col-start-2 text-sm">
+            <a href={theme.repoUrl.href} alt="View the source code" target="_blank" rel="noopener" class="subtle flex items-center gap-x-1 col-start-2 text-sm">
                 {theme.official ? (
-                    <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" />
+                    <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" aria-hidden="true" />
                     <span>Official</span>
                 ) : (
-                    <Sprite pack="fa-regular" name="star" size="1.25em" />
+                    <Sprite pack="fa-regular" name="star" size="1.25em" aria-label="GitHub stars count" />
                     <span>{stars}</span>
                 )}
             </a>
@@ -46,14 +46,14 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
 
     <footer class="flex items-center px-4 pb-3">
         {netlifyUrl && (
-            <a href={netlifyUrl} target="_blank" rel="noopener noreferrer">
-                <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" title="Deploy to Netlify">
+            <a href={netlifyUrl} target="_blank" rel="noopener">
+                <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" title="Deploy to Netlify" width="146" height="32">
             </a>
         )}
 
         <a href={theme.repoUrl.href} alt="View on GitHub" class="subtle ml-auto p-3 -mr-3">
             <span class="sr-only">View on GitHub</span>
-            <Sprite name="logos/github-mark" size={28} />
+            <Sprite name="logos/github-mark" size={28} aria-hidden="true" />
         </a>        
     </footer>
 </article>

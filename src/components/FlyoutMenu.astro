@@ -20,14 +20,14 @@ const hasDescriptions = items.some(({ description }) => !!description);
 <details class:list={['flyout', align, { light: invert }]}>
     <summary>
         {title}
-        <Sprite pack="heroicons-solid" name="chevron-down" size={20} />
+        <Sprite pack="heroicons-solid" name="chevron-down" size={20} aria-label={`Open ${title} menu`} />
     </summary>
 
     <div>
-        <nav class:list={[{ descriptions: hasDescriptions }]}>
+        <nav class:list={[{ descriptions: hasDescriptions }]} aria-label={title}>
             {items.map(({ title, href, description }) => (
                 <a href={href} alt={title} class="subtle">
-                    <h4>{title}</h4>
+                    <span>{title}</span>
                     {description && (
                         <p>{description}</p>
                     )}
@@ -111,7 +111,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
         white-space: normal;
     }
 
-    a h4 {
+    a span {
         font-size: var(--size-500);
         font-family: var(--font-body);
         font-weight: 600;

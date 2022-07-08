@@ -36,9 +36,11 @@ const { wrapper: Wrapper = Fragment, meta, container = false, routeId } = Astro.
   </head>
   <body>
     <Sprite.Provider>
-        <slot name="banner" />
-
-        <SkipLink />
+        <aside>
+            <slot name="banner" />
+            <SkipLink />
+        </aside>
+        
         <slot name="nav" />
 
         <Wrapper>

@@ -3,7 +3,7 @@ import { Sprite } from 'astro-icon';
 
 const { before, after, name } = Astro.props;
 ---
-<demo-illustration class="illustration" role="img" data-name={name}>
+<demo-illustration class="illustration" role="img" data-name={name} aria-label={name}>
     <div class="before-astro">
         <div class="screen">
             <slot name="before" />

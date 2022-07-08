@@ -37,7 +37,7 @@ function normalizePackageDetails(data, pkg) {
 
 	const npmUrl = {
 		href: `https://www.npmjs.com/package/${pkg}`,
-		text: 'View on NPM'
+		text: `View ${pkg} on NPM`
 	}
 
 	const repoUrl = data.repository?.url && {
@@ -45,12 +45,12 @@ function normalizePackageDetails(data, pkg) {
 			.replace('git+', '')
 			.replace('.git', '')
 			.replace('git:', 'https:'),
-		text: 'View source code',
+		text: `View the ${pkg} source code`,
 	}
 
 	const url = data.homepage ? {
 		href: data.homepage,
-		text: 'View homepage'
+		text: `Learn more about ${pkg}`
 	} : npmUrl
 
 	return {
