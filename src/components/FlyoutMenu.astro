@@ -20,7 +20,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
 <details class:list={['flyout', align, { light: invert }]}>
     <summary>
         {title}
-        <Sprite pack="heroicons-solid" name="chevron-down" size={20} />
+        <Sprite pack="heroicons-solid" name="chevron-down" size={20} aria-label={`Open ${title} menu`} />
     </summary>
 
     <div>
