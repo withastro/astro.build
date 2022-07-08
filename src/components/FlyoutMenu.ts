@@ -1,10 +1,20 @@
+import { supported } from '../utils/passive.js'
+
 function flyout(elem: HTMLDetailsElement) {
-	elem.onmouseenter = () => {
-		elem.setAttribute('open', 'open')
-	}
-	elem.onmouseleave = () => {
-		elem.removeAttribute('open')
-	}
+	elem.addEventListener(
+		'mouseenter',
+		() => {
+			elem.setAttribute('open', 'open')
+		},
+		supported ? { passive: true } : false
+	)
+	elem.addEventListener(
+		'mouseleave',
+		() => {
+			elem.removeAttribute('open')
+		},
+		supported ? { passive: true } : false
+	)
 }
 
 Array.from(document.querySelectorAll<HTMLDetailsElement>('details.flyout')).map(
