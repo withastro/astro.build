@@ -49,15 +49,15 @@ export async function getDetailsForPackage(
 				description: res.description,
 				repoUrl: {
 					href: res.repository.url.replace('git+', '').replace('.git', ''),
-					text: 'View source code',
+					text: `View the ${res.name} source code`,
 				},
 				npmUrl: {
 					href: `https://www.npmjs.com/package/${pkg}`,
-					text: 'View on NPM',
+					text: `View ${res.name} on NPM`,
 				},
 				url: {
 					href: res.homepage,
-					text: 'View homepage',
+					text: `Learn more about ${res.name}`,
 				},
 			}
 		})
