@@ -9,6 +9,10 @@ const { integration } = Astro.props as Props;
 
 const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
+const badges = [
+    integration.official && 'official'
+].filter(Boolean);
+
 const stars = !!integration.stars && formatter.format(integration.stars);
 const downloads = !!integration.downloads && formatter.format(integration.downloads);
 
@@ -41,51 +45,71 @@ function randomIcon() {
 }
 ---
 
-<article class="isolate flex flex-col p-4 rounded-lg shadow-md bg-white relative min-h-[11rem]">
+<article class="isolate p-4 rounded-lg shadow-md bg-white relative">
     <a href={integration.url?.href} alt={integration.url?.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer">
         <span class="sr-only">Learn more about {integration.title}</span>
     </a>
 
-    <div class="flex gap-x-4 items-center">
-        <div class:list={["inline-block mr-auto", !integration.image && "p-1 rounded-full border-2 border-dawn"]} aria-hidden="true">
-            {integration.image 
-                ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[1.5em] w-[1.5em] object-contain" loading="lazy" />)
-                : (<Sprite {...randomIcon()} size="1.5em" class={randomColor()} />)}
-        </div>
-        {integration.official && (
-            <div class="flex items-center gap-x-1 col-start-2 text-sm">
-                <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" aria-hidden="true" />
-                <span>Official</span>
-            </div>
-        )}
-        {!integration.official && stars && (
-            <a href={integration.repoUrl?.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center gap-x-1 text-sm">
-                <span class="sr-only">View the {integration.title} source code</span>
-                <Sprite pack="fa-regular" name="star" size="1.25em" aria-hidden="true" />
-                <span>{stars}</span>
-            </a>
-        )}
-        {!integration.official && downloads && (
-            <a href={integration.npmUrl?.href} target="_blank" rel="noopener noreferrer" class="inline-block z-20 subtle flex items-center text-sm">
-                <span class="sr-only">View {integration.title} on NPM</span>
-                <Sprite pack="heroicons-outline" name="download" size="1.25em" aria-hidden="true" />
-                <span>{downloads}</span>
-            </a>
-        )}
+    <div class:list={["inline-block mr-auto icon mr-4", !integration.image && "p-2 rounded-full border-2 border-dawn"]} aria-hidden="true">
+        {integration.image 
+            ? (<img src={integration.image.src} alt={integration.image.alt} class="h-[2.5em] w-[2.5em] object-contain" loading="lazy" />)
+            : (<Sprite {...randomIcon()} size="2em" class={randomColor()} />)}
     </div>
 
-    <h2 class="text-md pt-4 pb-1 sm:pt-5 sm:pb-2 font-display font-bold break-word">
+    <h3 class="text-md font-display font-bold break-word pt-2">
         {integration.title}
-    </h2>
+    </h3>
+
+    <ul class="flex items-center justify-end">
+        {badges.map((badge) => (
+            <li class="text-xs font-bold bg-dawn text-midnight px-2 py-0.5 rounded-full">{badge}</li>
+        ))}
+    </ul>
 
     <p class="text-sm flex-1 line-clamp-2">
         {integration.description}
     </p>
+
+    {stars && (
+        <a href={integration.repoUrl?.href} target="_blank" rel="noopener noreferrer" class="justify-self-end inline-block z-20 subtle flex items-center gap-x-1 text-sm">
+            <span class="sr-only">View the {integration.title} source code</span>
+            <Sprite pack="fa-regular" name="star" size="1.25em" aria-hidden="true" />
+            <span>{stars}</span>
+        </a>
+    )}
 </article>
 
 <style>
     /* Add margin to package avatars to match border and padding in placeholder icons */
     img {
         margin: calc(0.25rem + 2px);
+    }
+
+    article {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+            'icon badges stars'
+            'title title title'
+            'description description description';
+        row-gap: 0.5rem;
+    }
+
+    .icon {
+        grid-area: icon;
+    }
+
+    h3 {
+        grid-area: title;
+    }
+
+    ul {
+        grid-area: badges;
+    }
+
+    p {
+        grid-area: description;
+        align-self: start;
     }
 </style>
