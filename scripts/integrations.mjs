@@ -34,6 +34,9 @@ const authorToCategories = Object.entries(integrations.categories).reduce(
 	new Map()
 )
 
+export const whitelist = integrations.whitelist
+export const blacklist = integrations.blacklist
+
 /**
  * Gets the overridden integration properties for an npm package, or undefined if not found.
  *

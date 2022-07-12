@@ -1,29 +1,11 @@
 import fs from 'node:fs'
-import { getCategoriesForAuthor, getCategoriesForKeyword, getOverrides } from './integrations.mjs'
+import { getCategoriesForAuthor, getCategoriesForKeyword, getOverrides, whitelist, blacklist } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
 import {
 	fetchDetailsForPackage,
 	fetchDownloadsForPackage,
 	searchByKeyword,
 } from './npm.mjs'
-
-const WHITELIST_PACKAGES = [
-	'@astrojs/deno',
-	'@astrojs/lit',
-	'@astrojs/netlify',
-	'@astrojs/node',
-	'@astrojs/partytown',
-	'@astrojs/preact',
-	'@astrojs/react',
-	'@astrojs/sitemap',
-	'@astrojs/solid-js',
-	'@astrojs/svelte',
-	'@astrojs/tailwind',
-	'@astrojs/turbolinks',
-	'@astrojs/vercel',
-	'@astrojs/vue',
-	'astro-icon',
-]
 
 function isOfficial(pkg) {
 	return pkg.startsWith('@astrojs/')
@@ -96,7 +78,7 @@ async function main() {
 	const keyword = 'astro-component,withastro'
 
 	const packagesMap = await searchByKeyword(keyword)
-	const packageNames = new Set([...packagesMap.keys(), ...WHITELIST_PACKAGES])
+	const packageNames = new Set([...packagesMap.keys(), ...whitelist].filter(pkg => !blacklist.includes(pkg)))
 
 	const data = await Promise.all(
 		[...packageNames].map(pkg =>
@@ -112,19 +94,8 @@ async function main() {
 		downloads,
 	}))
 
-	// don't fetch stars for official packages, they get a badge instead
-	const stars = await Promise.all(
-		npmData.map(data =>
-			(data.official || !data.repoUrl?.href) ? undefined : getStarsForRepo(data.repoUrl.href)
-		)
-	)
-
 	const integrations = npmData
-		.map((data, i) => ({
-			...data,
-			stars: stars[i],
-		}))
-		.sort(() => 0.5 - Math.random())
+		.sort((a, b) => b.downloads - a.downloads)
 
 	fs.writeFileSync(
 		'src/data/integrations.json',

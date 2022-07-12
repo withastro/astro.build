@@ -9,11 +9,8 @@ const { integration } = Astro.props as Props;
 
 const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
-const badges = [
-    integration.official && 'official'
-].filter(Boolean);
+const badges = [].filter(Boolean);
 
-const stars = !!integration.stars && formatter.format(integration.stars);
 const downloads = !!integration.downloads && formatter.format(integration.downloads);
 
 const colors = [
@@ -56,7 +53,7 @@ function randomIcon() {
             : (<Sprite {...randomIcon()} size="2em" class={randomColor()} />)}
     </div>
 
-    <h3 class="text-md font-display font-bold break-word pt-2">
+    <h3 class="font-display font-bold break-word pt-2">
         {integration.title}
     </h3>
 
@@ -70,11 +67,11 @@ function randomIcon() {
         {integration.description}
     </p>
 
-    {stars && (
-        <a href={integration.repoUrl?.href} target="_blank" rel="noopener noreferrer" class="justify-self-end inline-block z-20 subtle flex items-center gap-x-1 text-sm">
-            <span class="sr-only">View the {integration.title} source code</span>
-            <Sprite pack="fa-regular" name="star" size="1.25em" aria-hidden="true" />
-            <span>{stars}</span>
+    {downloads && (
+        <a href={integration.npmUrl?.href} target="_blank" rel="noopener noreferrer" class="justify-self-end inline-block z-20 subtle flex items-center gap-x-1 text-sm">
+            <span class="sr-only">{downloads} weekly downloads</span>
+            <Sprite pack="heroicons-outline" name="download" size="1.25em" aria-hidden="true" />
+            <span>{downloads}</span>
         </a>
     )}
 </article>
