@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { getCategoriesForAuthor, getCategoriesForKeyword, getOverrides, whitelist, blacklist } from './integrations.mjs'
+import { badgesForPackage, getCategoriesForAuthor, getCategoriesForKeyword, getOverrides, whitelist, blacklist } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
 import {
 	fetchDetailsForPackage,
@@ -68,9 +68,14 @@ async function fetchDetailsWithOverrides(pkg) {
 	const details = await fetchDetailsForPackage(pkg)
 	const integrationOverrides = getOverrides(pkg) || {}
 
+	const downloads = await fetchDownloadsForPackage(pkg)
+	const badges = badgesForPackage(details)
+
 	return {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
+		downloads,
+		badges
 	}
 }
 
@@ -80,19 +85,9 @@ async function main() {
 	const packagesMap = await searchByKeyword(keyword)
 	const packageNames = new Set([...packagesMap.keys(), ...whitelist].filter(pkg => !blacklist.includes(pkg)))
 
-	const data = await Promise.all(
-		[...packageNames].map(pkg =>
-			Promise.all([
-				fetchDetailsWithOverrides(pkg),
-				fetchDownloadsForPackage(pkg),
-			])
-		)
+	const npmData = await Promise.all(
+		[...packageNames].map(fetchDetailsWithOverrides)
 	)
-
-	const npmData = data.map(([details, downloads]) => ({
-		...details,
-		downloads,
-	}))
 
 	const integrations = npmData
 		.sort((a, b) => b.downloads - a.downloads)

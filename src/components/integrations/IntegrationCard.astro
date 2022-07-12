@@ -9,7 +9,7 @@ const { integration } = Astro.props as Props;
 
 const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
-const badges = [].filter(Boolean);
+const badges = integration.badges;
 
 const downloads = !!integration.downloads && formatter.format(integration.downloads);
 

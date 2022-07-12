@@ -1,4 +1,5 @@
 import { readFileSync } from 'fs'
+import { differenceInDays } from 'date-fns'
 
 const integrations = JSON.parse(
 	readFileSync(new URL('./integrations.json', import.meta.url))
@@ -33,6 +34,17 @@ const authorToCategories = Object.entries(integrations.categories).reduce(
 	},
 	new Map()
 )
+
+function isNewPackage(pkg) {
+	if (!pkg.time?.created) {
+		console.log(pkg)
+		return false
+	}
+
+	const date = new Date(pkg.time.created)
+	const today = new Date()
+	return differenceInDays(today, date) <= 14
+}
 
 export const whitelist = integrations.whitelist
 export const blacklist = integrations.blacklist
@@ -73,4 +85,18 @@ export function getCategoriesForAuthor(author) {
 	return authorToCategories.has(author)
 		? Array.from(authorToCategories.get(author))
 		: []
+}
+
+export function badgesForPackage(pkg) {
+	const badges = new Set()
+
+	if (integrations.featured.includes(pkg.name)) {
+		badges.add('featured')
+	}
+
+	if (isNewPackage(pkg)) {
+		badges.add('new')
+	}
+
+	return Array.from(badges)
 }
