@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs'
 import { differenceInDays } from 'date-fns'
 
+const NEW_THRESHOLD_DAYS = 14
+
 const integrations = JSON.parse(
 	readFileSync(new URL('./integrations.json', import.meta.url))
 )
@@ -37,13 +39,12 @@ const authorToCategories = Object.entries(integrations.categories).reduce(
 
 function isNewPackage(pkg) {
 	if (!pkg.time?.created) {
-		console.log(pkg)
 		return false
 	}
 
 	const date = new Date(pkg.time.created)
 	const today = new Date()
-	return differenceInDays(today, date) <= 30
+	return differenceInDays(today, date) <= NEW_THRESHOLD_DAYS
 }
 
 export const whitelist = integrations.whitelist

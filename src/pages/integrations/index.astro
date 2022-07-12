@@ -13,11 +13,21 @@ const meta = {
 const groups = [
     {
         title: 'featured',
-        integrations: integrations.filter(({ badges }) => badges.includes('featured')) as App.Integration[]
+        integrations: integrations
+            .filter(({ badges }) => badges.includes('featured'))
+            .map(integration => ({
+                ...integration,
+                badges: []
+            })) as App.Integration[]
     },
     {
         title: 'new',
-        integrations: integrations.filter(({ badges }) => badges.includes('new')) as App.Integration[]
+        integrations: integrations
+            .filter(({ badges }) => badges.includes('new'))
+            .map(integration => ({
+                ...integration,
+                badges: []
+            })) as App.Integration[]
     },
     {
         title: 'all',
