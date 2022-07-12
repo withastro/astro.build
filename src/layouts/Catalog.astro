@@ -50,7 +50,7 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
             )}
 
             {searchable && (
-                <Search id="catalogsearch" selector="#catalog > *" placeholder="Search" />
+                <Search id="catalogsearch" selector="#catalog article" placeholder="Search" />
             )}
         </header>
     )}
@@ -64,9 +64,9 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
     </Aside>
     )}
 
-    <CardsBlock id="catalog">
+    <section id="catalog" class="flex flex-col gap-y-8 sm:gap-y-12 lg:gap-y-16 pt-4 sm:pt-6 lg:pt-8">
         <slot name="cards" />
-    </CardsBlock>
+    </section>
 
     <Footer slot="footer" />
 </Layout>

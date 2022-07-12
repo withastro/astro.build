@@ -1,4 +1,5 @@
 ---
+import CardsBlock from '../../components/blocks/CardsBlock.astro';
 import { collections, getIntegrationsForCollection } from '../../data/integrations.js';
 import Layout from '../../layouts/Catalog.astro';
 import IntegrationCard from '../../components/integrations/IntegrationCard.astro';
@@ -11,9 +12,9 @@ export async function getStaticPaths() {
     }));
 }
 
-const { slug } = Astro.params;
+const slug = Astro.params.slug.toString();
 
-const integrations: App.Integration[] = getIntegrationsForCollection(slug);
+const integrations = getIntegrationsForCollection(slug) as App.Integration[];
 
 const meta = {
     title: 'Integrations',
@@ -21,7 +22,7 @@ const meta = {
 };
 ---
 
-<Layout meta={meta} {collections} current={slug.replace('+', ' + ')} baseHref="/integrations">
+<Layout meta={meta} collections={collections} current={slug.replace('+', ' + ')} baseHref="/integrations">
     <Fragment slot="description">
         <p>Launch your next Astro project at warp speed.</p>
         <p>Try the plugins and components built by our amazing community.</p>
@@ -40,6 +41,8 @@ const meta = {
     </Fragment>
 
     <Fragment slot="cards">
-        {integrations.map(integration => (<IntegrationCard integration={integration} />))}
+        <CardsBlock>
+            {integrations.map(integration => (<IntegrationCard integration={integration} />))}
+        </CardsBlock>
     </Fragment>
 </Layout>

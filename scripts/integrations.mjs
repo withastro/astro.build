@@ -43,7 +43,7 @@ function isNewPackage(pkg) {
 
 	const date = new Date(pkg.time.created)
 	const today = new Date()
-	return differenceInDays(today, date) <= 14
+	return differenceInDays(today, date) <= 30
 }
 
 export const whitelist = integrations.whitelist

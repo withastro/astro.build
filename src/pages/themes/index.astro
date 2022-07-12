@@ -1,4 +1,5 @@
 ---
+import CardsBlock from '../../components/blocks/CardsBlock.astro';
 import themes from '../../data/themes.json';
 import { collections } from '../../data/themes.js';
 import Layout from '../../layouts/Catalog.astro';
@@ -10,7 +11,7 @@ const meta = {
 };
 ---
 
-<Layout meta={meta} {collections} baseHref="/themes">
+<Layout meta={meta} collections={collections} baseHref="/themes">
     <Fragment slot="info">
         <a
             href="https://github.com/withastro/astro.build/issues/new/choose"
@@ -23,6 +24,8 @@ const meta = {
     </Fragment>
 
     <Fragment slot="cards">
-        {themes.map(theme => (<ThemeCard theme={theme} />))}
+        <CardsBlock>
+            {themes.map(theme => (<ThemeCard theme={theme as App.Theme} />))}
+        </CardsBlock>
     </Fragment>
 </Layout>

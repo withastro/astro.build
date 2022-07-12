@@ -43,9 +43,9 @@ declare namespace App {
 		repoUrl: Link
 		npmUrl: Link
 		url?: Link
-		official?: boolean
+		official?: Boolean
 		downloads: number
-		stars: number
+		badges: string[]
 	}
 
 	interface ShowcaseSite {
