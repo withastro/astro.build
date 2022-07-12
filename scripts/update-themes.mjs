@@ -56,19 +56,19 @@ async function loadThemes() {
     return await Promise.all(promises)
 }
 
+function themeComparer(a, b) {
+    return b.stars - a.stars
+}
+
 async function main() {
     // load all themes JSON from src/data
     const data = await loadThemes()
     
-    const themes = await Promise.all(
-        data
-            .sort(() => 0.5 - Math.random()) // randomize the order
-            .map(withStars) // include GitHub stars
-    )
+    const themes = await Promise.all(data.map(withStars))
 
     await fs.writeFile(
 		'src/data/themes.json',
-		JSON.stringify(themes, null, 4)
+		JSON.stringify(themes.sort(themeComparer), null, 4)
 	)
 }
 

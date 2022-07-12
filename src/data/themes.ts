@@ -20,19 +20,19 @@ export function getCollections(): Collection[] {
 
 	return Array.from(collectionsMap.entries())
 		.map(([category, count]) => ({ category, count }))
-		.sort((a, b) =>
+		.sort((a, b) => 
 			b.count === a.count
 				? a.category.localeCompare(b.category)
 				: b.count - a.count
 		)
 		.map(({ category }) => ({
 			slug: category,
-			text: category.replace('+', ' + '),
+			text: category.replace('+', ' + ')
 		}))
 }
 
 export const collections = getCollections()
 
-export function getThemesForCollection(collection: string) { 
+export function getThemesForCollection(collection: string) {
 	return themes.filter(({ categories }) => categories.indexOf(collection) >= 0)
 }
