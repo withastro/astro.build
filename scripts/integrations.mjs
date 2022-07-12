@@ -6,12 +6,27 @@ const integrations = JSON.parse(
 
 const keywordToCategories = Object.entries(integrations.categories).reduce(
 	(acc, [key, value]) => {
-		const { keywords } = value
+		const { keywords = [] } = value
 
 		for (const keyword of keywords) {
 			const set = acc.has(keyword) ? acc.get(keyword) : new Set()
 			set.add(key)
 			acc.set(keyword, set)
+		}
+
+		return acc
+	},
+	new Map()
+)
+
+const authorToCategories = Object.entries(integrations.categories).reduce(
+	(acc, [key, value]) => {
+		const { authors = [] } = value
+
+		for (const author of authors) {
+			const set = acc.has(author) ? acc.get(author) : new Set()
+			set.add(key)
+			acc.set(author, set)
 		}
 
 		return acc
@@ -43,4 +58,16 @@ export function getCategoriesForKeyword(keyword) {
 		: []
 
 	return categories.length ? categories : ['css+ui']
+}
+
+/**
+ * Gets a list of integration categories for an package author.
+ *
+ * @param {String} author Package author
+ * @returns {String[]}
+ */
+export function getCategoriesForAuthor(author) {
+	return authorToCategories.has(author)
+		? Array.from(authorToCategories.get(author))
+		: []
 }

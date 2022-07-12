@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { getCategoriesForKeyword, getOverrides } from './integrations.mjs'
+import { getCategoriesForAuthor, getCategoriesForKeyword, getOverrides } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
 import {
 	fetchDetailsForPackage,
@@ -30,10 +30,17 @@ function isOfficial(pkg) {
 }
 
 function normalizePackageDetails(data, pkg) {
-	const allCategories = (data.keywords ?? [])
+	const keywordCategories = (data.keywords ?? [])
 		.map(getCategoriesForKeyword)
 		.flat()
-	const uniqCategories = Array.from(new Set(allCategories))
+
+	const authorCategories = data.author?.name
+		? getCategoriesForAuthor(data.author.name)
+		: []
+
+	const uniqCategories = Array.from(
+		new Set([...keywordCategories, ...authorCategories])
+	)
 
 	const npmUrl = {
 		href: `https://www.npmjs.com/package/${pkg}`,
