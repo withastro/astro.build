@@ -18,8 +18,8 @@ const groups = [
             .sort((a, b) => a.featured - b.featured)
     },
     {
-        title: 'all',
-        themes
+        title: 'trending',
+        themes: themes.filter(({ featured }) => !featured).slice(0, 12)
     }
 ]
 ---

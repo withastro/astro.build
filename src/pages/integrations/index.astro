@@ -21,24 +21,16 @@ const groups = [
             })) as App.Integration[]
     },
     {
-        title: 'new',
-        integrations: integrations
-            .filter(({ badges }) => badges.includes('new'))
-            .map(integration => ({
-                ...integration,
-                badges: []
-            })) as App.Integration[]
-    },
-    {
-        title: 'all',
-        integrations: integrations as App.Integration[]
+        title: 'trending',
+        integrations: integrations.filter(({ badges }) => !badges.includes('featured')).slice(0, 12)
     }
-].filter(({ integrations }) => integrations.length > 0)
+];
 ---
 
 <Layout meta={meta} collections={collections} baseHref="/integrations">
     <Fragment slot="description">
-        <p>{meta.description}</p>
+        <p>Launch your next Astro project at warp speed.</p>
+        <p>Try the plugins and components built by our amazing community.</p>
     </Fragment>
 
     <Fragment slot="info">

@@ -17,16 +17,16 @@ export interface Props {
     searchable?: boolean;
 }
 
-const { meta, collections, current = 'all', baseHref, searchable = true } = Astro.props as Props;
+const { meta, collections, current = 'featured', baseHref, searchable = true } = Astro.props as Props;
 
 const collectionLinks: App.Link[] = [
     {
-        text: 'all',
-        href: `${baseHref}/`
+        text: 'featured',
+        href: `${baseHref}/#header`
     },
     ...collections.map(({ text, slug }) => ({
         text,
-        href: `${baseHref}/${slug}/`
+        href: `${baseHref}/${slug}/#header`
     }))
 ];
 
@@ -43,7 +43,7 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
     </TitleBlock>
 
     {(searchable || collectionLinks.length > 1) && (
-        <header class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
+        <header id="header" class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
             {collectionLinks.length > 1 && (
                 <PillList title="collections" links={collectionLinks} current={currentCollection} prefetch />
             )}
