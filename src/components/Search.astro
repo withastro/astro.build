@@ -5,9 +5,10 @@ export interface Props {
     id: string;
     placeholder: string;
     selector: string;
+    groupSelector?: string;
 }
 
-const { id, placeholder, selector = '#integrations > *' } = Astro.props as Props;
+const { id, placeholder, selector, groupSelector } = Astro.props as Props;
 
 const inlineStyle = `
     ${selector}[hidden] {
@@ -30,12 +31,13 @@ const inlineStyle = `
 <style set:html={inlineStyle}></style>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=URLSearchParams" />
-<script type="module" define:vars={{selector, id}}>
+<script type="module" define:vars={{selector, groupSelector, id}}>
     /* https://gomakethings.com/how-to-create-a-search-page-for-a-static-website-with-vanilla-js/ */
     const stopWords = ['a', 'an', 'and', 'are', 'aren\'t', 'as', 'by', 'can', 'cannot', 'can\'t', 'could', 'couldn\'t', 'how', 'is', 'isn\'t', 'it', 'its', 'it\'s', 'that', 'the', 'their', 'there', 'they', 'they\'re', 'them', 'to', 'too', 'us', 'very', 'was', 'we', 'well', 'were', 'what', 'whatever', 'when', 'whenever', 'where', 'with', 'would', 'yet', 'you', 'your', 'yours', 'yourself', 'yourselves', 'the'];
 
     const input = document.getElementById(id);
     const items = document.querySelectorAll(selector);
+    const groups = groupSelector ? document.querySelectorAll(groupSelector) : [];
 
     const FPS_30 = 1000 / 30;
 
@@ -66,6 +68,11 @@ const inlineStyle = `
         for (const item of items) {
             const isMatch = !regexMap.length || regexMap.some(regex => !!item.textContent.match(regex));
             isMatch ? item.removeAttribute('hidden') : item.setAttribute('hidden', '');
+        }
+
+        for (const group of groups) {
+            const matchedItems = group.querySelectorAll(`${selector}:not([hidden])`)
+            matchedItems.length > 0 ? group.removeAttribute('hidden') : group.setAttribute('hidden', '');
         }
 
         updateURL()
