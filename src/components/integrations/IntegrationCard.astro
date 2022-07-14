@@ -9,8 +9,6 @@ const { integration } = Astro.props as Props;
 
 const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
-const badges = integration.badges;
-
 const downloads = !!integration.downloads && formatter.format(integration.downloads);
 
 const colors = [
@@ -43,7 +41,7 @@ function randomIcon() {
 ---
 
 <article class="isolate p-4 rounded-lg shadow-md bg-white relative">
-    <a href={integration.url?.href} alt={integration.url?.text} class="absolute inset-0 z-10" target="_blank" rel="noopener noreferrer">
+    <a href={integration.url?.href} alt={integration.url?.text} class="absolute inset-0 z-10" target="_blank">
         <span class="sr-only">Learn more about {integration.title}</span>
     </a>
 
@@ -56,15 +54,9 @@ function randomIcon() {
     <h3 class="font-display font-bold break-word pt-2 flex items-center gap-2">
         <span>{integration.title}</span>
         {integration.official && (
-            <Sprite pack="heroicons-solid" name="badge-check" size="0.8em" class="text-blue opacity-70" aria-label="Official Integration" />
+            <Sprite pack="heroicons-solid" name="badge-check" size="0.85em" class="text-blue opacity-70" aria-label="Official Integration" />
         )}
     </h3>
-
-    <ul class="flex items-center justify-end pr-2 gap-x-2">
-        {badges.map((badge) => (
-            <li class="text-xs font-bold bg-dawn text-midnight px-3 py-0.5 rounded-full">{badge}</li>
-        ))}
-    </ul>
 
     <p class="text-sm flex-1 line-clamp-2">
         {integration.description}
@@ -88,11 +80,11 @@ function randomIcon() {
     article {
         display: grid;
         grid-template-rows: auto auto 1fr;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: auto 1fr;
         grid-template-areas:
-            'icon badges stars'
-            'title title title'
-            'description description description';
+            'icon stars'
+            'title title'
+            'description description';
         row-gap: 0.5rem;
     }
 

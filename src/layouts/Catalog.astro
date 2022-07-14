@@ -53,19 +53,19 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
             )}
         </header>
     )}
+
+    <section id="catalog" class="flex flex-col gap-y-12 lg:gap-y-16 pt-4 sm:pt-6 lg:pt-8">
+        <slot name="cards" />
+    </section>
     
     {Astro.slots.info && (
-        <Aside class="mb-4 text-sm">
+        <Aside class="mt-8 text-sm shadow-md">
         <p class="text-justify">
             <Sprite pack="heroicons-outline" name="information-circle" size="1.5em" class="inline-block" aria-hidden="true" />
             <slot name='info' />
         </p>
     </Aside>
     )}
-
-    <section id="catalog" class="flex flex-col gap-y-8 sm:gap-y-12 lg:gap-y-16 pt-4 sm:pt-6 lg:pt-8">
-        <slot name="cards" />
-    </section>
 
     <Footer slot="footer" />
 </Layout>
