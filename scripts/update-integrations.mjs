@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { getCategoriesForKeyword, getOverrides } from './integrations.mjs'
+import { badgesForPackage, getCategoriesForAuthor, getCategoriesForKeyword, getOverrides, whitelist, blacklist, getFeaturedPackagePriority } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
 import {
 	fetchDetailsForPackage,
@@ -7,33 +7,22 @@ import {
 	searchByKeyword,
 } from './npm.mjs'
 
-const WHITELIST_PACKAGES = [
-	'@astrojs/deno',
-	'@astrojs/lit',
-	'@astrojs/netlify',
-	'@astrojs/node',
-	'@astrojs/partytown',
-	'@astrojs/preact',
-	'@astrojs/react',
-	'@astrojs/sitemap',
-	'@astrojs/solid-js',
-	'@astrojs/svelte',
-	'@astrojs/tailwind',
-	'@astrojs/turbolinks',
-	'@astrojs/vercel',
-	'@astrojs/vue',
-	'astro-icon',
-]
-
 function isOfficial(pkg) {
 	return pkg.startsWith('@astrojs/')
 }
 
 function normalizePackageDetails(data, pkg) {
-	const allCategories = (data.keywords ?? [])
+	const keywordCategories = (data.keywords ?? [])
 		.map(getCategoriesForKeyword)
 		.flat()
-	const uniqCategories = Array.from(new Set(allCategories))
+
+	const authorCategories = data.author?.name
+		? getCategoriesForAuthor(data.author.name)
+		: []
+
+	const uniqCategories = Array.from(
+		new Set([...keywordCategories, ...authorCategories])
+	)
 
 	const npmUrl = {
 		href: `https://www.npmjs.com/package/${pkg}`,
@@ -79,9 +68,16 @@ async function fetchDetailsWithOverrides(pkg) {
 	const details = await fetchDetailsForPackage(pkg)
 	const integrationOverrides = getOverrides(pkg) || {}
 
+	const downloads = await fetchDownloadsForPackage(pkg)
+	const badges = badgesForPackage(details)
+	const featured = getFeaturedPackagePriority(pkg)
+
 	return {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
+		downloads,
+		badges,
+		featured
 	}
 }
 
@@ -89,35 +85,14 @@ async function main() {
 	const keyword = 'astro-component,withastro'
 
 	const packagesMap = await searchByKeyword(keyword)
-	const packageNames = new Set([...packagesMap.keys(), ...WHITELIST_PACKAGES])
+	const packageNames = new Set([...packagesMap.keys(), ...whitelist].filter(pkg => !blacklist.includes(pkg)))
 
-	const data = await Promise.all(
-		[...packageNames].map(pkg =>
-			Promise.all([
-				fetchDetailsWithOverrides(pkg),
-				fetchDownloadsForPackage(pkg),
-			])
-		)
-	)
-
-	const npmData = data.map(([details, downloads]) => ({
-		...details,
-		downloads,
-	}))
-
-	// don't fetch stars for official packages, they get a badge instead
-	const stars = await Promise.all(
-		npmData.map(data =>
-			(data.official || !data.repoUrl?.href) ? undefined : getStarsForRepo(data.repoUrl.href)
-		)
+	const npmData = await Promise.all(
+		[...packageNames].map(fetchDetailsWithOverrides)
 	)
 
 	const integrations = npmData
-		.map((data, i) => ({
-			...data,
-			stars: stars[i],
-		}))
-		.sort(() => 0.5 - Math.random())
+		.sort((a, b) => b.downloads - a.downloads)
 
 	fs.writeFileSync(
 		'src/data/integrations.json',

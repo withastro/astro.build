@@ -1,4 +1,5 @@
 ---
+import CardsBlock from '../../components/blocks/CardsBlock.astro';
 import { fetchCollections, fetchShowcase } from '../../data/showcase.js';
 import Layout from '../../layouts/Catalog.astro';
 import ShowcaseCard from '../../components/showcase/ShowcaseCard.astro';
@@ -27,6 +28,8 @@ const meta = {
 
     <Fragment slot="cards">
         <h2 class="sr-only visually-hidden">All showcase sites</h2>
-        {sites.map(site => (<ShowcaseCard site={site} />))}
+        <CardsBlock>
+            {sites.map(site => (<ShowcaseCard site={site} />))}
+        </CardsBlock>
     </Fragment>
 </Layout>

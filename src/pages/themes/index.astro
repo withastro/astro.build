@@ -1,6 +1,7 @@
 ---
+import CardsBlock from '../../components/blocks/CardsBlock.astro';
 import themes from '../../data/themes.json';
-import { collections } from '../../data/themes.js';
+import { collections, getThemesForCollection } from '../../data/themes.js';
 import Layout from '../../layouts/Catalog.astro';
 import ThemeCard from '../../components/themes/ThemeCard.astro';
 
@@ -8,9 +9,18 @@ const meta = {
     title: 'Themes',
     description: 'Start your next Astro project with a real world theme built by our amazing community.'
 };
+
+const groups = [
+    {
+        title: undefined,
+        themes: themes
+            .filter(({ featured }) => !!featured)
+            .sort((a, b) => a.featured - b.featured)
+    }
+]
 ---
 
-<Layout meta={meta} {collections} baseHref="/themes">
+<Layout meta={meta} collections={collections} baseHref="/themes">
     <Fragment slot="info">
         <a
             href="https://github.com/withastro/astro.build/issues/new/choose"
@@ -23,6 +33,10 @@ const meta = {
     </Fragment>
 
     <Fragment slot="cards">
-        {themes.map(theme => (<ThemeCard theme={theme} />))}
+        {groups.map(({ title, themes }) => (
+            <CardsBlock title={title}>
+                {themes.map(theme => (<ThemeCard theme={theme} />))}
+            </CardsBlock>
+        ))}
     </Fragment>
 </Layout>

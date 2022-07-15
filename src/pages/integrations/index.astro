@@ -1,4 +1,5 @@
 ---
+import CardsBlock from '../../components/blocks/CardsBlock.astro';
 import Layout from '../../layouts/Catalog.astro';
 import integrations from '../../data/integrations.json';
 import { collections } from '../../data/integrations.js';
@@ -8,9 +9,22 @@ const meta = {
     title: 'Integrations',
     description: 'Launch your next Astro project at warp speed. Try the plugins and components built by our amazing community.'
 };
+
+const groups = [
+    {
+        title: undefined,
+        integrations: integrations
+            .filter(({ featured }) => !!featured)
+            .map(integration => ({
+                ...integration,
+                badges: []
+            }))
+            .sort((a, b) => a.featured - b.featured) as App.Integration[]
+    }
+];
 ---
 
-<Layout meta={meta} {collections} baseHref="/integrations">
+<Layout meta={meta} collections={collections} baseHref="/integrations">
     <Fragment slot="description">
         <p>Launch your next Astro project at warp speed.</p>
         <p>Try the plugins and components built by our amazing community.</p>
@@ -28,6 +42,10 @@ const meta = {
     </Fragment>
 
     <Fragment slot="cards">
-        {integrations.map(integration => (<IntegrationCard integration={integration} />))}
+        {groups.map(({ title, integrations }) => (
+            <CardsBlock title={title}>
+                {integrations.map(integration => (<IntegrationCard integration={integration as App.Integration} />))}
+            </CardsBlock>
+        ))}
     </Fragment>
 </Layout>

@@ -9,7 +9,9 @@ const API_BASE_URL = 'https://api.npmjs.org/'
 const REGISTRY_BASE_URL = 'https://registry.npmjs.org/'
 
 const END_DATE = format(new Date(), 'yyyy-MM-dd')
-const START_DATE = format(subDays(new Date(), 7), 'yyyy-MM-dd')
+const START_DATE = format(subDays(new Date(), 30), 'yyyy-MM-dd')
+
+const PAGE_SIZE = 100
 
 /**
  * Gets the number of weekly downloads for an npm package.
@@ -42,14 +44,27 @@ export function fetchDetailsForPackage(pkg) {
  * @returns {Map} Map of search results, keyed by package name
  */
 export async function searchByKeyword(keyword, ranking = 'quality') {
-	const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`)
-	url.searchParams.set('text', `keywords:${keyword}`)
-	url.searchParams.set('ranking', ranking)
-	url.searchParams.set('size', '100')
+	let objects = []
+	let total = -1
+	let page = 0
 
-	// TODO: add paging support
+	do {
+		const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`)
+		url.searchParams.set('text', `keywords:${keyword}`)
+		url.searchParams.set('ranking', ranking)
+		url.searchParams.set('size', PAGE_SIZE)
+		url.searchParams.set('from', page++ * PAGE_SIZE)
 
-	const { objects, total } = await fetchJson(url.toString())
+		const results = await fetchJson(url.toString())
+
+		// just in case, bail if no objects were returned for the page
+		if (results.objects.length === 0) {
+			break
+		}
+
+		objects.push(...results.objects)
+		total = results.total
+	} while(total > objects.length)
 
 	return objects.reduce((acc, next) => {
 		acc.set(next.package.name, next)

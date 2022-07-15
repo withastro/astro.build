@@ -1,11 +1,18 @@
 ---
 export interface Props {
     id?: string;
+    title?: string;
 }
 
-const { id } = Astro.props as Props;
+const { id, title } = Astro.props as Props;
 ---
 
-<section {id} class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense">
-    <slot />
+<section {id}>
+    {title && (
+        <h2 class="text-xs pb-3 font-display font-bold tracking-wider uppercase text-dusk">{title}</h2>
+    )}
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense">
+        <slot />
+    </div>
 </section>
