@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { badgesForPackage, getCategoriesForAuthor, getCategoriesForKeyword, getOverrides, whitelist, blacklist } from './integrations.mjs'
+import { badgesForPackage, getCategoriesForAuthor, getCategoriesForKeyword, getOverrides, whitelist, blacklist, getFeaturedPackagePriority } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
 import {
 	fetchDetailsForPackage,
@@ -70,12 +70,14 @@ async function fetchDetailsWithOverrides(pkg) {
 
 	const downloads = await fetchDownloadsForPackage(pkg)
 	const badges = badgesForPackage(details)
+	const featured = getFeaturedPackagePriority(pkg)
 
 	return {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		downloads,
-		badges
+		badges,
+		featured
 	}
 }
 

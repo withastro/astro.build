@@ -12,14 +12,10 @@ const meta = {
 
 const groups = [
     {
-        title: 'featured',
+        title: undefined,
         themes: themes
             .filter(({ featured }) => !!featured)
             .sort((a, b) => a.featured - b.featured)
-    },
-    {
-        title: 'trending',
-        themes: themes.filter(({ featured }) => !featured).slice(0, 12)
     }
 ]
 ---

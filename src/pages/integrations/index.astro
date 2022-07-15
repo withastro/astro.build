@@ -12,17 +12,14 @@ const meta = {
 
 const groups = [
     {
-        title: 'featured',
+        title: undefined,
         integrations: integrations
-            .filter(({ badges }) => badges.includes('featured'))
+            .filter(({ featured }) => !!featured)
             .map(integration => ({
                 ...integration,
                 badges: []
-            })) as App.Integration[]
-    },
-    {
-        title: 'trending',
-        integrations: integrations.filter(({ badges }) => !badges.includes('featured')).slice(0, 12)
+            }))
+            .sort((a, b) => a.featured - b.featured) as App.Integration[]
     }
 ];
 ---

@@ -22,11 +22,11 @@ const { meta, collections, current = 'featured', baseHref, searchable = true } =
 const collectionLinks: App.Link[] = [
     {
         text: 'featured',
-        href: `${baseHref}/#header`
+        href: `${baseHref}#header`
     },
     ...collections.map(({ text, slug }) => ({
         text,
-        href: `${baseHref}/${slug}/#header`
+        href: `${baseHref}/${slug}#header`
     }))
 ];
 

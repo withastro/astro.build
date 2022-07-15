@@ -101,3 +101,8 @@ export function badgesForPackage(pkg) {
 
 	return Array.from(badges)
 }
+
+export function getFeaturedPackagePriority(pkg) {
+	const index = integrations.featured.indexOf(pkg) + 1
+	return index > 0 ? index : undefined
+}

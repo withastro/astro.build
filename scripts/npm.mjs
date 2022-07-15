@@ -9,7 +9,7 @@ const API_BASE_URL = 'https://api.npmjs.org/'
 const REGISTRY_BASE_URL = 'https://registry.npmjs.org/'
 
 const END_DATE = format(new Date(), 'yyyy-MM-dd')
-const START_DATE = format(subDays(new Date(), 7), 'yyyy-MM-dd')
+const START_DATE = format(subDays(new Date(), 30), 'yyyy-MM-dd')
 
 const PAGE_SIZE = 100
 

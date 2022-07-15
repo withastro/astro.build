@@ -45,6 +45,7 @@ declare namespace App {
 		url?: Link
 		official?: Boolean
 		downloads: number
+		featured?: number
 		badges: string[]
 	}
 
