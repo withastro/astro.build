@@ -22,11 +22,11 @@ const { meta, collections, current = 'featured', baseHref, searchable = true } =
 const collectionLinks: App.Link[] = [
     {
         text: 'featured',
-        href: `${baseHref}#header`
+        href: `${baseHref}/`
     },
     ...collections.map(({ text, slug }) => ({
         text,
-        href: `${baseHref}/${slug}#header`
+        href: `${baseHref}/${slug}/`
     }))
 ];
 
@@ -43,7 +43,7 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
     </TitleBlock>
 
     {(searchable || collectionLinks.length > 1) && (
-        <header id="header" class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
+        <header id="collections" class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
             {collectionLinks.length > 1 && (
                 <PillList title="collections" links={collectionLinks} current={currentCollection} prefetch />
             )}
