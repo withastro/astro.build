@@ -23,19 +23,17 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
     </a>
 
     <div class="flex justify-between items-center p-4">
-        <h2 class="text-lg font-display font-bold">
+        <h2 class="text-lg font-display font-bold flex items-center gap-2">
             <a href={linkHref} class="subtle">{theme.title}</a>
+            {theme.official && (
+                <Sprite pack="heroicons-solid" name="badge-check" size={20} class="text-blue opacity-70" aria-label="Official Integration" />
+            )}
         </h2>
 
-        {(stars || theme.official) && (
+        {stars && (
             <a href={theme.repoUrl.href} alt="View the source code" target="_blank" rel="noopener" class="subtle flex items-center gap-x-1 col-start-2 text-sm">
-                {theme.official ? (
-                    <Sprite name="logo" size="1.5em" class="inline -mr-0.5 mt-1" aria-hidden="true" />
-                    <span>Official</span>
-                ) : (
-                    <Sprite pack="fa-regular" name="star" size="1.25em" aria-label="GitHub stars count" />
-                    <span>{stars}</span>
-                )}
+                <Sprite pack="fa-regular" name="star" size="1.25em" aria-label="GitHub stars count" />
+                <span>{stars}</span>
             </a>
         )}
     </div>
