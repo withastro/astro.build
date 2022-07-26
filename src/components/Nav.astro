@@ -29,7 +29,7 @@ function isNavigationGroup(value: NavigationItem | NavigationGroup): value is Na
                 </li>
             ) : (
                 <li>
-                    <a href={item.href}>{item.title}</a>
+                    <a class="subtle" href={item.href}>{item.title}</a>
                 </li>
             )
         ))}
@@ -253,13 +253,6 @@ nav a, nav a:visited {
 }
 nav .flyout {
     padding: 0 0.5rem;
-}
-nav a:focus,
-nav a:hover {
-    color: var(--color-purple);
-}
-nav a:active {
-    color: var(--color-blue);
 }
 
 li.icon {
