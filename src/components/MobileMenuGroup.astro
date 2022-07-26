@@ -5,6 +5,8 @@ import type { NavigationGroup } from '../config.js';
 export type Props = NavigationGroup;
 
 const { title, items } = Astro.props as Props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <details>
@@ -16,7 +18,7 @@ const { title, items } = Astro.props as Props;
     <ul>
         {items.map(subitem => (
             <li>
-                <a href={subitem.href} aria-current={Astro.canonicalURL.pathname === subitem.href ? 'page' : undefined}>{subitem.title}</a>
+                <a href={subitem.href} aria-current={canonicalURL.pathname === subitem.href ? 'page' : undefined}>{subitem.title}</a>
             </li>
         ))}
     </ul>

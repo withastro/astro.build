@@ -46,7 +46,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
         position: relative;
     }
 
-    summary {
+    details summary {
         list-style: none;
         display: flex;
         align-items: center;
@@ -59,11 +59,11 @@ const hasDescriptions = items.some(({ description }) => !!description);
         color: var(--color-white);
     }
 
-    summary::-webkit-details-marker {
+    details summary::-webkit-details-marker {
         display: none;
     }
 
-    summary :global(svg) {
+    details summary :global(svg) {
         opacity: 0.5;
         margin-left: 0.125rem;
     }

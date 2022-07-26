@@ -5,7 +5,7 @@ import TitleBlock from '../components/blocks/TitleBlock.astro';
 import Date from '../components/Date.astro';
 import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
-import { Markdown } from 'astro/components';
+import Markdown from '@astrojs/markdown-component';
 
 export interface Props {
     content: {
@@ -20,7 +20,7 @@ const { content } = Astro.props as Props;
 const { header = '', title = '', description = '', updated_date } = content;
 ---
 
-<Layout meta={{ title, description }}>
+<Layout meta={{ title, description }} prose>
     <Nav slot="nav" />
 
     <TitleBlock>
@@ -36,4 +36,3 @@ const { header = '', title = '', description = '', updated_date } = content;
 
     <Footer slot="footer" />
 </Layout>
-

@@ -13,14 +13,14 @@
 		line-height: 1.11;
 	}
 
-	a:not(:is(.btn, .pill)),
+	:where(a:not(:is(.btn, .pill))),
 	.link {
 		@apply text-blue transition-colors duration-150 ease-in-out;
 	}
 
 	a.subtle,
 	.link.link--subtle {
-		@apply text-inherit hover:no-underline hover:text-blue;
+		@apply text-inherit hover:no-underline hover:text-purple focus:text-purple;
 	}
 
 	.btn {
