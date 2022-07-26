@@ -12,9 +12,10 @@ export interface Props {
     invert?: boolean;
     fullscreen?: boolean;
     baseHref?: string;
+    prose?: boolean;
 }
 
-const { meta, invert = false, fullscreen = false, baseHref } = Astro.props;
+const { meta, invert = false, fullscreen = false, baseHref, prose } = Astro.props;
 ---
 
 <html lang="en" class={`${fullscreen ? 'fullscreen' : ''} ${invert ? 'dark text-white' : 'bg-tan text-midnight'}`}>
@@ -35,7 +36,7 @@ const { meta, invert = false, fullscreen = false, baseHref } = Astro.props;
         <slot name="nav" />
 
           <slot name="start" />
-          <main id="content" class="container text-base font-base">
+          <main id="content" class:list={['container', 'text-base', 'font-base', { 'max-w-4xl': prose }]}>
               <slot />
           </main>
 

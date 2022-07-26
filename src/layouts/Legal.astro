@@ -20,7 +20,7 @@ const { content } = Astro.props as Props;
 const { header = '', title = '', description = '', updated_date } = content;
 ---
 
-<Layout meta={{ title, description }}>
+<Layout meta={{ title, description }} prose>
     <Nav slot="nav" />
 
     <TitleBlock>
@@ -36,4 +36,3 @@ const { header = '', title = '', description = '', updated_date } = content;
 
     <Footer slot="footer" />
 </Layout>
-
