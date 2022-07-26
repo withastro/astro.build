@@ -20,7 +20,7 @@ export interface Props {
 }
 
 const { content: { title, publishDate, description, authors, socialImage, coverImage, heroImage, coverImageAlt, heroImageAlt } } = Astro.props as Props;
-const { canonicalURL } = Astro;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const meta = {
 	title,
 	description,
@@ -37,7 +37,7 @@ const cover = (coverImage || heroImage) && { src: coverImage ?? heroImage, alt: 
 	<div id="article">
 		<slot />
 
-		<Outro tweet={{ title, href: Astro.canonicalURL.toString() }} />
+		<Outro tweet={{ title, href: canonicalURL.toString() }} />
 	</div>
 </Layout>
 

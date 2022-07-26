@@ -12,6 +12,8 @@ const visibleItems = globalNavigation.map(item => {
         items
     }
 }).filter(item => visibleOnMobile(item) || item.items?.length);
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <nav>
@@ -23,7 +25,7 @@ const visibleItems = globalNavigation.map(item => {
     </header>
 
     <ul>
-        <li><a href="/" class="subtle" aria-current={Astro.canonicalURL.pathname === "/" ? 'page' : undefined}>Home</a></li>
+        <li><a href="/" class="subtle" aria-current={canonicalURL.pathname === "/" ? 'page' : undefined}>Home</a></li>
 
         {visibleItems.map(item => (
             <li>

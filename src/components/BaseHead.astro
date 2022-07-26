@@ -7,7 +7,7 @@ export interface Props {
   canonicalURL?: URL | string
   image?: string;
 }
-const { canonicalURL = Astro.canonicalURL } = Astro.props;
+const { canonicalURL = new URL(Astro.url.pathname, Astro.site) } = Astro.props;
 const image = new URL(Astro.props.image || './social.png', Astro.site);
 const description = Astro.props.description || 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.';
 

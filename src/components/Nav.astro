@@ -3,9 +3,13 @@ import { Sprite } from 'astro-icon';
 import Drawer from './Drawer.astro';
 import MobileMenu from './MobileMenu.astro';
 import FlyoutMenu from './FlyoutMenu.astro';
-import { globalNavigation, social } from '../config.js';
+import { globalNavigation, NavigationGroup, NavigationItem, social } from '../config.js';
 
 const { invert = false, marginBottom = false } = Astro.props;
+
+function isNavigationGroup(value: NavigationItem | NavigationGroup): value is NavigationGroup {
+    return 'items' in value;
+}
 ---
 
 <nav id="nav" class={`main ${invert ? 'dark' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
@@ -19,7 +23,7 @@ const { invert = false, marginBottom = false } = Astro.props;
         </li>
 
         {globalNavigation.map((item, i) => (
-            item.items ? (
+            isNavigationGroup(item) ? (
                 <li class="flyout">
                     <FlyoutMenu {invert} {...item} />
                 </li>
@@ -40,7 +44,7 @@ const { invert = false, marginBottom = false } = Astro.props;
 
         <noscript>
             {globalNavigation.map((item, i) => (
-                item.items ? (
+                isNavigationGroup(item) ? (
                     <li class="flyout">
                         <FlyoutMenu {invert} {...item} align={i === 0 ? "center" : "right"} />
                     </li>
@@ -96,7 +100,7 @@ nav.dark {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 }
-nav.dark a {
+nav.dark a, nav.dark a:visited {
     color: var(--color-white);
 }
 
@@ -239,11 +243,13 @@ nav :global(noscript) {
 nav a {
     display: flex;
     height: 100%;
-    color: var(--color-midnight);
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
     transition-property: transform, color;
     padding: 0 0.6rem;
+}
+nav a, nav a:visited {
+    color: var(--color-midnight);
 }
 nav .flyout {
     padding: 0 0.5rem;
