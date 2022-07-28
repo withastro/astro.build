@@ -6,7 +6,7 @@ const Tag = href ? 'a' : 'div';
 <not-marquee role="marquee" aria-labelledby="not-marquee-label">
     <input id="marquee-pause" type="checkbox" aria-label="Toggle marquee">
     <Tag {href} class="track">
-        {Array.from({ length: 6 }, (_, i) => <span class="group" style={`--i: ${i};`} id={i === 0 ? 'not-marquee-label' : undefined} aria-hidden={i > 0 ? 'true' : undefined}>{items.map(item => <span>{item}</span>)}</span>)}
+        {Array.from({ length: 6 }, (_, i) => <span class="group" id={i === 0 ? 'not-marquee-label' : undefined} aria-hidden={i > 0 ? 'true' : undefined}>{items.map(item => <span>{item}</span>)}</span>)}
     </Tag>
 </not-marquee>
 
@@ -122,6 +122,7 @@ const Tag = href ? 'a' : 'div';
         width: 100%;
         display: flex;
         align-items: center;
+        overflow: hidden;
 
         position: relative;
         white-space: nowrap;
@@ -140,7 +141,6 @@ const Tag = href ? 'a' : 'div';
     }
 
     .group {
-        position: absolute;
         display: block;
         animation: marquee calc(var(--speed) * 1s) linear infinite;
         animation-play-state: inherit;
@@ -161,7 +161,7 @@ const Tag = href ? 'a' : 'div';
     }
 
     @keyframes marquee {
-        from { transform: translate3d(calc(100% * var(--i, 0)), 0, 0) }
-        to { transform: translate3d(calc(100% * calc(var(--i, 0) - 1)), 0, 0) }
+        from { transform: translate3d(0, 0, 0) }
+        to { transform: translate3d(-100%, 0, 0) }
     }
 </style>
