@@ -15,9 +15,10 @@ export interface Props {
     current?: string;
     baseHref: string;
     searchable?: boolean;
+    searchLabel?: string;
 }
 
-const { meta, collections, current = 'featured', baseHref, searchable = true } = Astro.props as Props;
+const { meta, collections, current = 'featured', baseHref, searchable = true, searchLabel = 'Search' } = Astro.props as Props;
 
 const collectionLinks: App.Link[] = [
     {
@@ -43,18 +44,18 @@ const currentCollection = collectionLinks.find(({ text }) => text === current);
     </TitleBlock>
 
     {(searchable || collectionLinks.length > 1) && (
-        <header id="collections" class="flex flex-col gap-4 mb-4 md:flex-row items-center justify-between md:items-end">
+        <header id="collections" class="flex flex-col items-center justify-between gap-4 mb-4 md:flex-row md:items-end">
             {collectionLinks.length > 1 && (
                 <PillList title="collections" links={collectionLinks} current={currentCollection} prefetch />
             )}
 
             {searchable && (
-                <Search id="catalogsearch" selector="#catalog article" groupSelector="#catalog > section" placeholder="Search" />
+                <Search id="catalogsearch" selector="#catalog article" groupSelector="#catalog > section" placeholder={searchLabel} />
             )}
         </header>
     )}
 
-    <section id="catalog" class="flex flex-col gap-y-12 lg:gap-y-16 pt-4 sm:pt-6 lg:pt-8">
+    <section id="catalog" class="flex flex-col pt-4 gap-y-12 lg:gap-y-16 sm:pt-6 lg:pt-8">
         <slot name="cards" />
     </section>
     
