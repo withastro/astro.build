@@ -12,13 +12,13 @@ function isNavigationGroup(value: NavigationItem | NavigationGroup): value is Na
 }
 ---
 
-<nav id="nav" class={`main ${invert ? 'dark' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
-    <ul class="astro-container container" role="list">
+<nav aria-label="Primary" id="nav" class={`main ${invert ? 'dark' : ''} ${marginBottom ? 'margin-bottom' : ''}`.trim()} style={`--offset: 2.5;`}>
+    <ul class="container astro-container">
         <li class="logo">
             <a href="/" id="navlogo">
-                <h1 class="visually-hidden sr-only">Astro</h1>
-                <Sprite class="logomark" name="logo" size="3em" aria-label="Astro" aria-hidden="true" />
-                <Sprite class="wordmark" name="wordmark" height="3.5em" width="6em" aria-label="Astro" aria-hidden="true" />
+                <span class="sr-only visually-hidden">Astro</span>
+                <Sprite class="logomark" name="logo" size="3em" aria-hidden="true" />
+                <Sprite class="wordmark" name="wordmark" height="3.5em" width="6em" aria-hidden="true" />
             </a>
         </li>
 
@@ -37,7 +37,7 @@ function isNavigationGroup(value: NavigationItem | NavigationGroup): value is Na
         {social.map(item => (
             <li class="icon">
                 <a class="subtle" href={item.href} title={item.title}>
-                    <Sprite name={item.icon} size="1.5em" role="presentation" aria-hidden="true" />
+                    <Sprite name={item.icon} size="1.5em" aria-hidden="true" />
                 </a>
             </li>
         ))}
@@ -57,7 +57,7 @@ function isNavigationGroup(value: NavigationItem | NavigationGroup): value is Na
         </noscript>
 
         <button type="button" id="menubtn">
-            <span class="visually-hidden sr-only">Open navigation menu</span>
+            <span class="sr-only visually-hidden">Open navigation menu</span>
             <Sprite pack="heroicons-outline" name="menu" size={24} />
         </button>
     </ul>
