@@ -17,13 +17,13 @@ const stars = theme.stars;
 const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`;
 ---
 
-<article class="flex flex-col rounded-lg shadow-md bg-white">
-    <a href={linkHref} alt={theme.image.alt} target="_blank" rel="noopener" class="aspect-w-16 aspect-h-9 rounded-t-lg overflow-hidden shadow">
+<article role="listitem" class="flex flex-col bg-white rounded-lg shadow-md">
+    <a href={linkHref} target="_blank" rel="noopener" class="overflow-hidden rounded-t-lg shadow aspect-w-16 aspect-h-9">
         <Picture src={image} alt={theme.title} sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)" widths={[400, 800]} />
     </a>
 
-    <div class="flex justify-between items-center p-4">
-        <h2 class="text-lg font-display font-bold flex items-center gap-2">
+    <div class="flex items-center justify-between p-4">
+        <h2 class="flex items-center gap-2 text-lg font-bold font-display">
             <a href={linkHref} class="subtle">{theme.title}</a>
             {theme.official && (
                 <Sprite pack="heroicons-solid" name="badge-check" size={20} class="text-blue opacity-70" aria-label="Official Integration" />
@@ -31,14 +31,15 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
         </h2>
 
         {stars && (
-            <a href={theme.repoUrl.href} alt="View the source code" target="_blank" rel="noopener" class="subtle flex items-center gap-x-1 col-start-2 text-sm">
+            <a href={theme.repoUrl.href} target="_blank" rel="noopener" class="flex items-center col-start-2 text-sm subtle gap-x-1">
+                <span class="sr-only">View the source code</span>
                 <Sprite pack="fa-regular" name="star" size="1.25em" aria-label="GitHub stars count" />
                 <span>{stars}</span>
             </a>
         )}
     </div>
 
-    <p class="px-4 mb-4 text-sm flex-1 line-clamp-3">
+    <p class="flex-1 px-4 mb-4 text-sm line-clamp-3">
         {theme.description}
     </p>
 
@@ -49,9 +50,16 @@ const netlifyUrl = stars !== undefined && `https://app.netlify.com/start/deploy?
             </a>
         )}
 
-        <a href={theme.repoUrl.href} alt="View on GitHub" class="subtle ml-auto p-3 -mr-3">
+        <a href={theme.repoUrl.href} class="p-3 ml-auto -mr-3 subtle">
             <span class="sr-only">View on GitHub</span>
             <Sprite name="logos/github-mark" size={28} aria-hidden="true" />
         </a>        
     </footer>
 </article>
+
+<style>
+    article {
+        /* Outline only visible for high contrast users */
+        outline: 1px solid transparent;
+    }
+</style>

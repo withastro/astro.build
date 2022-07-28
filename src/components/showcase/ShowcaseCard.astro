@@ -14,16 +14,16 @@ const widths = site.highlight ? [453, 906, image.width] : [453, 906]
 const sizes = site.highlight ? '(min-width: 1024px) 67vw, 100vw' : '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)'
 ---
 
-<article class:list={["relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2"]}>
-    <a {...site.url} alt={site.title} rel="noopener">
+<article role="listitem" class:list={["relative flex flex-col rounded-lg overflow-hidden shadow-md bg-white aspect-w-16 aspect-h-9", site.highlight && "sm:col-span-2 sm:row-span-2"]}>
+    <a {...site.url} rel="noopener">
         <span class="sr-only">{site.title}</span>
 
-        <Picture src={image} widths={widths} sizes={sizes} alt={site.title} />
+        <Picture src={image} widths={widths} sizes={sizes} alt="" />
     </a>
 
-    <footer class="pointer-events-none absolute z-10 py-4 rounded-b-lg overflow-hidden bg-black text-center text-white font-normal h-fit inset-x-0 top-full -translate-y-full opacity-0 transition-opacity duration-300 ease-out">
+    <footer class="absolute inset-x-0 z-10 py-4 overflow-hidden font-normal text-center text-white transition-opacity duration-300 ease-out -translate-y-full bg-black rounded-b-lg opacity-0 pointer-events-none h-fit top-full">
         <p>{site.title}</p>
-        <small {...site.url} class="underline font-light">{site.url.href}</small>
+        <small {...site.url} class="font-light underline">{site.url.href}</small>
     </footer>
 </article>
 
