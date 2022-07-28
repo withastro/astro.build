@@ -20,20 +20,22 @@ const hasDescriptions = items.some(({ description }) => !!description);
 <details class:list={['flyout', align, { light: invert }]}>
     <summary>
         {title}
-        <Sprite pack="heroicons-solid" name="chevron-down" size={20} aria-label={`Open ${title} menu`} />
+        <Sprite pack="heroicons-solid" name="chevron-down" size={20} aria-hidden="true" />
     </summary>
 
     <div>
-        <nav class:list={[{ descriptions: hasDescriptions }]} aria-label={title}>
+        <ul class:list={[{ descriptions: hasDescriptions }]}>
             {items.map(({ title, href, description }) => (
-                <a href={href} alt={title} class="subtle">
-                    <span>{title}</span>
-                    {description && (
-                        <p>{description}</p>
-                    )}
-                </a>
+                <li>
+                    <a href={href} class="subtle">
+                        <span>{title}</span>
+                        {description && (
+                            <p>{description}</p>
+                        )}
+                    </a>
+                </li>
             ))}
-        </nav>
+        </ul>
     </div>
 </details>
 
@@ -77,6 +79,8 @@ const hasDescriptions = items.some(({ description }) => !!description);
         opacity: 0;
         transition: opacity 150ms ease;
         will-change: opacity;
+        /* Outline only visible for high contrast users */
+        outline: 1px solid transparent;
     }
 
     details.left div {
@@ -87,7 +91,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
         transform: translateX(-85%);
     }
 
-    nav {
+    details ul {
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -105,7 +109,7 @@ const hasDescriptions = items.some(({ description }) => !!description);
         opacity: 1;
     }
 
-    nav.descriptions {
+    ul.descriptions {
         width: 100vw;
         text-align: start;
         white-space: normal;

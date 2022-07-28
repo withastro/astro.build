@@ -19,7 +19,7 @@ const individuals = members.sort(() => 0.5 - Math.random())
 
 <Section class="sponsor-section" pad={2} {...Astro.props}>
     <div class="astro-container">
-        <h3 class="head-sm title"><slot name="title" /></h3>
+        <h2 class="head-sm title"><slot name="title" /></h2>
         <ul class="sponsors exclusive">
             {exclusive.map(sponsor => (
                 <li><a href={sponsor.href} title={sponsor.title}><span><Icon name={`sponsors/${sponsor.name}`} width={sponsor.width} height={sponsor.height} aria-hidden="true" /></span></a></li>

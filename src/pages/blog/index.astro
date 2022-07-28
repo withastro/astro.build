@@ -33,12 +33,12 @@ const meta = { title: 'Blog' };
         {posts.map(post => {
             return (
                 <li>
+                    <a class="overlay" href={post.href}>
+                        <span class="sr-only visually-hidden">{post.title}</span>
+                    </a>
                     <Panel size="md" elevation="sm" container={false} background="var(--color-white)">
                         <Card post={post} variant="summary" />
                     </Panel>
-                    <a class="overlay" href={post.href}>
-                        <span class="sr-only visually-hidden">Read more from "{post.title}"</span>
-                    </a>
                 </li>
             )
         })}
@@ -84,6 +84,8 @@ const meta = { title: 'Blog' };
         left: 0;
         display: block;
         z-index: 1;
+        /* Border only visible for high contrast users */
+        border: 1px solid transparent;
     }
 
     li :global(a:not(.overlay)) {

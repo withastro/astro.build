@@ -11,7 +11,7 @@ export const social = [
 	},
 	{
 		icon: 'mdi:twitter',
-		title: '@astrodotbuild',
+		title: 'Twitter',
 		href: 'https://twitter.com/astrodotbuild',
 	},
 ]

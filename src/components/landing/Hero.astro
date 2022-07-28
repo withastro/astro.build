@@ -8,10 +8,10 @@ import Grid from './Grid.astro';
         <div class="blob-c" />
     </div>
     <Grid />
-    <div class="astro-container container content">
-        <h2 class="text-gradient"><slot name="title" /></h2>
+    <div class="container astro-container content">
+        <h1 class="text-gradient"><slot name="title" /></h1>
         <p><slot name="tagline" /></p>
-        <div class="cta astro-container container">
+        <div class="container cta astro-container">
             <slot />
         </div>
     </div>
@@ -53,7 +53,7 @@ import Grid from './Grid.astro';
         }
     }
     
-    h2 {
+    h1 {
         --fill: var(--gradient-pop-1);
         font-size: 4rem;
         font-size: var(--size-800);
@@ -62,7 +62,7 @@ import Grid from './Grid.astro';
         margin-bottom: 1.25rem;
     }
     @media (min-width: 52rem) {
-        h2 {
+        h1 {
             font-size: var(--size-900);
         }
     }

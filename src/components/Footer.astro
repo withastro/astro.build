@@ -26,13 +26,15 @@ const YYYY = new Date().getFullYear();
         </Quote>
     )}
     
-    <div class="astro-container container content">
-        <ul class="links">
-            <li>&copy; {YYYY} The Astro Technology Company</li>
-            {footer.map(item => (
-                <li><a href={item.href} target={item.external ? "_blank" : undefined}>{item.title}</a></li>
-            ))}
-        </ul>
+    <div class="container astro-container content">
+        <nav aria-label="Secondary">
+            <ul class="links">
+                <li role="presentation">&copy; {YYYY} The Astro Technology Company</li>
+                {footer.map(item => (
+                    <li><a href={item.href} target={item.external ? "_blank" : undefined}>{item.title}</a></li>
+                ))}
+            </ul>
+        </nav>
     </div>
 </footer>
 

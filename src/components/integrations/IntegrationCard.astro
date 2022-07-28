@@ -39,9 +39,8 @@ function randomIcon() {
     return icons[Math.floor(Math.random() * icons.length)]
 }
 ---
-
-<article class="isolate p-4 rounded-lg shadow-md bg-white relative">
-    <a href={integration.url?.href} alt={integration.url?.text} class="absolute inset-0 z-10" target="_blank">
+<article role="listitem" class="relative p-4 bg-white rounded-lg shadow-md isolate">
+    <a href={integration.url?.href} class="absolute inset-0 z-10" target="_blank">
         <span class="sr-only">Learn more about {integration.title}</span>
     </a>
 
@@ -51,22 +50,22 @@ function randomIcon() {
             : (<Sprite {...randomIcon()} size="2em" class={randomColor()} />)}
     </div>
 
-    <h3 class="font-display font-bold break-word pt-2 flex items-center gap-2">
+    <h3 class="flex items-center gap-2 pt-2 font-bold font-display break-word">
         <span>{integration.title}</span>
         {integration.official && (
             <Sprite pack="heroicons-solid" name="badge-check" size={20} class="text-blue opacity-70" aria-label="Official Integration" />
         )}
     </h3>
 
-    <p class="text-sm flex-1 line-clamp-2">
+    <p class="flex-1 text-sm line-clamp-2">
         {integration.description}
     </p>
 
     {downloads && (
-        <a href={integration.npmUrl?.href} target="_blank" rel="noopener noreferrer" class="justify-self-end inline-block z-20 subtle flex items-center gap-x-1 text-sm">
+        <a href={integration.npmUrl?.href} target="_blank" rel="noopener noreferrer" class="z-20 flex items-center inline-block text-sm justify-self-end subtle gap-x-1">
             <span class="sr-only">{downloads} weekly downloads</span>
             <Sprite pack="heroicons-outline" name="download" size="1.25em" aria-hidden="true" />
-            <span>{downloads}</span>
+            <span aria-hidden="true">{downloads}</span>
         </a>
     )}
 </article>
@@ -86,6 +85,8 @@ function randomIcon() {
             'title title'
             'description description';
         row-gap: 0.5rem;
+        /* Outline only visible for high contrast users */
+        outline: 1px solid transparent;
     }
 
     .icon {

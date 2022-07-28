@@ -20,6 +20,8 @@ const { type = 'tip', title, class: className } = Astro.props;
 		background: var(--color-dawn);
 		color: var(--color-midnight);
         border-radius: var(--corner-md);
+		/* Outline only visible for high contrast users */
+        outline: 1px solid transparent;
 	}
 
 	aside > :global(* + *) {

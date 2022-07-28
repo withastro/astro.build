@@ -12,13 +12,13 @@ const icons = rows.flat();
 ---
 
 <Section id="frameworks">
-    <div class="astro-container container content">
-        <h3 class="head-md title"><slot name="title" /></h3>
+    <div class="container astro-container content">
+        <h2 class="head-md title"><slot name="title" /></h2>
         <div class="body">
             <slot />
         </div>
     </div>
-    <ul class="integrations astro-container container">
+    <ul class="container integrations astro-container">
         {icons.map(icon => (
             <li class={`icon-${icon}`}><Icon title={icon.replace(/\-grid$/, '')} name={`logos/${icon}`} height="64" /></li>
         ))}
@@ -55,7 +55,7 @@ const icons = rows.flat();
         color: black;
     }
     .integrations > li {
-        border: 1rem solid transparent;
+        margin-inline: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -63,7 +63,6 @@ const icons = rows.flat();
     .integrations svg {
         height: var(--size-800);
     }
-
     @media (min-width: 42rem) {
         .integrations {
             margin: 2rem auto;

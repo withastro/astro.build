@@ -103,6 +103,9 @@ const { before, after } = Astro.slots;
         transition-delay: var(--delay);
         transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     }
+    html.dark .link {
+        color: var(--color-white);
+    }
     .link:hover,
     .link:focus-within {
         transform: translateY(calc(var(--pixel-size) * -0.5px));

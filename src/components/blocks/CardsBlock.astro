@@ -9,10 +9,9 @@ const { id, title } = Astro.props as Props;
 
 <section {id}>
     {title && (
-        <h2 class="text-xs pb-3 font-display font-bold tracking-wider uppercase text-dusk">{title}</h2>
+        <h2 class="pb-3 text-xs font-bold tracking-wider uppercase font-display text-dusk">{title}</h2>
     )}
-
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense">
+    <ul class="grid grid-flow-row-dense grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <slot />
-    </div>
+    </ul>
 </section>
