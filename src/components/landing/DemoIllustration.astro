@@ -70,6 +70,10 @@ const { before, after, name } = Astro.props;
     --color: #E8D6F3;
     --color-rgb: 232, 214, 243;
 }
+.before-astro, .after-astro {
+    /* Outline only visible for high contrast users */
+    outline: 1px solid transparent;
+}
 .before-astro :is(.label, .screen) {
     background: #FAFAFA  linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #F4EFED 100%);
 }
