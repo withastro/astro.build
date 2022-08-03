@@ -5,8 +5,7 @@ export async function get() {
 
   const result = showcase.map((site) => ({
     title: site.title,
-    url: site.url.href,
-    slug: site.slug
+    url: site.url.href
   }));
 
   return {
