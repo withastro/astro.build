@@ -1,4 +1,6 @@
 import fs from 'node:fs'
+import sizeOf from 'image-size'
+import fetch from 'node-fetch'
 import { fetchAllMembers } from './opencollective.mjs'
 
 const skipTier = new Set(['Platinum Sponsor', 'Gold Sponsor'])
@@ -20,11 +22,32 @@ function normalizeMember(member) {
 	}
 }
 
+async function withCachedImage(member) {
+	if (!member.image) {
+		return member
+	}
+
+	let image = undefined
+
+	try {
+		const resp = await fetch(member.image)
+		const buffer = await resp.buffer()
+		const { type } = sizeOf(buffer)
+		image = `images/${member.id}.${type}`
+		fs.writeFileSync(`src/data/sponsors/${image}`, buffer)
+	} catch (err) { console.error(err) }
+
+	return {
+		...member,
+		image: image && `./${image}`
+	}
+}
+
 async function main() {
 	const allMembers = await fetchAllMembers()
 
 	const members = await Promise.all(
-		allMembers.filter(isUser).map(normalizeMember)
+		allMembers.filter(isUser).map(normalizeMember).map(withCachedImage)
 	)
 
 	fs.writeFileSync(

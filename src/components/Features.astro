@@ -1,0 +1,89 @@
+---
+import { Icon } from 'astro-icon'
+import CardGrid from './CardGrid.astro'
+import Section from './Section.astro'
+
+interface FeatureCard {
+    icon: string
+    title: string
+    description: string
+}
+
+const cards: FeatureCard[] = [
+    {
+        icon: 'heroicons-outline:shield-check',
+        title: 'Image Optimizations',
+        description:
+            'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.'
+    },
+    {
+        icon: 'heroicons-outline:server',
+        title: 'Edge-ready',
+        description:
+            'Deploy anywhere, even a global edge runtime like Deno or Cloudflare.'
+    },
+    {
+        icon: 'heroicons-outline:server',
+        title: 'SSG & SSR Build Output',
+        description:
+            'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.'
+    },
+    {
+        icon: 'heroicons-outline:server',
+        title: 'TypeScript Support',
+        description:
+            'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.'
+    },
+    {
+        icon: 'heroicons-outline:cog',
+        title: 'Markdown & MDX',
+        description:
+            'Markdown and MDX are both supported for writing super-charged docs, blog posts, and more.'
+    },
+    {
+        icon: 'heroicons-outline:server',
+        title: 'Filesystem Routing',
+        description:
+            'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.'
+    }
+]
+---
+
+<Section
+    title="Features"
+    subtitle="All-in-one."
+    description="Astro comes with everything that you need to build your next website."
+>
+    <CardGrid class="mt-12">
+        {cards.map(({ icon, title, description }, i) => (
+            <div class="pt-6 text-center">
+                <div class="flow-root rounded-lg bg-neutral-50 px-6 pb-8">
+                    <div class="-mt-6">
+                        <div>
+                            <span
+                                class:list={[
+                                    'inline-flex items-center justify-center rounded-md text-neutral-50 p-3 shadow-lg',
+                                    i % 2 === 0
+                                        ? 'bg-primary-800'
+                                        : 'bg-primary-500'
+                                ]}
+                            >
+                                <Icon
+                                    name={icon}
+                                    size={24}
+                                    aria-hidden="true"
+                                />
+                            </span>
+                        </div>
+                        <h3 class="mt-8 text-lg font-medium tracking-tight text-neutral-900">
+                            {title}
+                        </h3>
+                        <p class="mt-5 text-base text-neutral-500">
+                            {description}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </CardGrid>
+</Section>

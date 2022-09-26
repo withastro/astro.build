@@ -1,0 +1,19 @@
+---
+export interface Props {
+  href: string;
+  primary?: boolean;
+}
+
+const { href, primary } = Astro.props as Props;
+---
+
+<a {href}
+  class:list={[
+    'w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-md',
+    'text-base font-medium no-underline',
+    'md:text-lg',
+    primary ? 'text-neutral-50 bg-primary-600 hover:bg-primary-700' : 'text-primary-700 bg-primary-100 hover:bg-primary-200'
+  ]}
+>
+  <slot />
+</a>

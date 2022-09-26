@@ -1,0 +1,27 @@
+---
+import { Image } from '@astrojs/image/components';
+import { getAuthor } from '../data/authors';
+import { Image as ImageType } from '../types';
+export type Props = {
+  name?: string;
+  image?: ImageType
+}
+
+let { name, image } = Astro.props as Props;
+if (!image) {
+  const author = await getAuthor(name);
+  if (!author) {
+      throw new Error(`Could not find mentioned user "${name}"!`)
+  }
+  image = author.image;
+}
+---
+
+{image && <Image
+  class="my-0 w-6 h-6 rounded-full"
+  src={image.src}
+  alt=""
+  aria-hidden="true"
+  width={48}
+  aspectRatio={1}
+/>}

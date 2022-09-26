@@ -1,43 +1,63 @@
 ---
-import CardsBlock from '../../components/blocks/CardsBlock.astro';
-import { collections, getThemesForCollection } from '../../data/themes.js';
-import Layout from '../../layouts/Catalog.astro';
-import ThemeCard from '../../components/themes/ThemeCard.astro';
+import {
+    getCollections,
+    getThemesForCollection
+} from '../../data/themes/index.js'
+import CardGrid from '../../components/CardGrid.astro'
+import ThemeCard from '../../components/ThemeCard.astro'
+import Layout from '../../layouts/Catalog.astro'
 
 export async function getStaticPaths() {
+    const collections = await getCollections()
+
     return collections.map(({ slug }) => ({
-        params: {
-            slug,
-        },
-    }));
+        params: { slug }
+    }))
 }
 
-const slug = Astro.params.slug.toString();
+const collections = (await getCollections()).map((collection) => {
+    return {
+        slug: collection.slug,
+        link: {
+            text: collection.text,
+            href: `/themes/${collection.slug}/`
+        }
+    }
+})
 
-const themes = getThemesForCollection(slug) as App.Theme[];
+const { slug } = Astro.params as { slug: string }
 
-const meta = {
-    title: 'Themes',
-    description: 'Start your next Astro project with a real world theme built by our amazing community.'
-}
+const themes = await getThemesForCollection(slug)
+
+const title = 'Themes'
+const description =
+    'Start your next Astro project with a real world theme built by our amazing community.'
 ---
 
-<Layout meta={meta} collections={collections} current={slug} baseHref="/themes" searchLabel="Search integrations">
+<Layout
+    title={title}
+    description={description}
+    collections={collections}
+    current={slug}
+>
+    <Fragment slot="cards">
+        <CardGrid>
+            {themes.map((theme) => (
+                <li>
+                    <ThemeCard theme={theme} />
+                </li>
+            ))}
+        </CardGrid>
+    </Fragment>
+
     <Fragment slot="info">
         <a
             href="https://github.com/withastro/astro.build/issues/new/choose"
             target="_blank"
             rel="noopener noreferrer"
-            class="underline subtle">
-            Add your own starter project.
-        </a>
+            class="underline subtle"
+            >Submit your theme.</a>
         Questions about building your own themes? Join our community on
         <a href="https://astro.build/chat" class="underline subtle">Discord!</a>
-    </Fragment>
-
-    <Fragment slot="cards">
-        <CardsBlock>
-            {themes.map(theme => (<ThemeCard theme={theme} />))}
-        </CardsBlock>
     </Fragment>
 </Layout>

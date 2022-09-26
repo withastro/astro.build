@@ -1,0 +1,21 @@
+---
+import MaxWidth, { Props as MaxWidthProps } from './MaxWidth.astro'
+import Starfield from './Starfield.astro'
+
+export type Props = Partial<MaxWidthProps>
+
+const { ...props } = Astro.props as Props
+---
+
+<div class="relative pt-20 pb-12 md:pt-24 md:pb-16 lg:pb-20">
+
+    <Starfield subtle />
+    <MaxWidth as="section" {...props}>
+            <h1
+                class="text-3xl md:text-4xl font-extrabold text-neutral-50 sm:text-5xl sm:tracking-tight lg:text-6xl"
+            >
+            <slot name="title" />
+            </h1>
+            <p class="mt-5 text-lg md:text-xl text-neutral-300"><slot /></p>
+    </MaxWidth>
+</div>

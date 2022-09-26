@@ -1,0 +1,64 @@
+---
+import { Sprite } from "astro-icon";
+import CodeHero from "../CodeHero.astro";
+---
+<CodeHero filename="src/pages/components-in-markdown.mdx" lang="mdx" code={`---
+title: Creating pages with MDX
+layout: ../layouts/Base.astro
+---
+
+import Hero from '../components/Hero.astro'
+import Counter from '../components/Counter.jsx'
+
+<Hero>
+  Creating a page using MDX is _easy_ with Astro!
+</Hero>
+
+Add a \`.mdx\` file to your \`pages\` directory and Astro
+will turn it into a page on your site. MDX files make
+it easy to mix components from any framework with
+your text content.
+
+<Counter client:visible />
+
+`}>
+  <div class="font-black">Creating pages with MDX</div>
+  <div class="text-xs mt-3 space-y-3 leading-relaxed">
+    <p class="bg-primary-600/50 p-4 -mx-4">
+      <Sprite name="heroicons-solid:sparkles" size={14} class="inline text-accent-200" />
+      Creating a page using MDX is <em>easy</em> with Astro!
+    </p>
+    <p>
+      Add a <code class="rounded bg-white/10 px-1 py-0.5 -my-0.5">.mdx</code> file
+      to your <code class="rounded bg-white/10 px-1 py-0.5 -my-0.5">pages</code> directory
+      and Astro will turn it into a page on your site. MDX files make
+      it easy to mix components from any framework with your text content.
+    </p>
+    <p>
+      <mini-counter>
+        <button class="dec rounded bg-accent-800 hover:bg-accent-900 active:translate-y-px text-white font-bold px-1.5">-</button>
+        <span class="count mx-1 bg-white/10 min-w-[2rem] inline-block text-center">0</span>
+        <button class="inc rounded bg-accent-800 hover:bg-accent-900 active:translate-y-px text-white font-bold px-1.5">+</button>
+      </mini-counter>
+    </p>
+  </div>
+</CodeHero>
+
+<script>
+  class MiniCounter extends HTMLElement {
+    count = 0;
+
+    constructor() {
+      super();
+      this.querySelector('.inc')!.addEventListener('click', () => this.setCount(1))
+      this.querySelector('.dec')!.addEventListener('click', () => this.setCount(-1));
+    }
+
+    setCount(diff: number) {
+      this.count += diff;
+      this.querySelector('.count')!.textContent = this.count.toString();
+    }
+  }
+
+  customElements.define('mini-counter', MiniCounter);
+</script>

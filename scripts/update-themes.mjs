@@ -10,11 +10,11 @@ async function withStars(theme) {
 
     const { org, repo } = parseRepoUrl(theme.repoUrl.href) ?? {}
 
-	if (!org || !repo) {
-		return theme
-	}
+    if (!org || !repo) {
+        return theme
+    }
 
-	const stars = await orgApi(org).repo(repo).fetchStars()
+    const stars = await orgApi(org).repo(repo).fetchStars()
 
     return {
         ...theme,
@@ -31,28 +31,26 @@ async function loadTheme(pathname) {
         slug,
         image: {
             src: data.image,
-            alt: data.description,
+            alt: data.description
         },
-        tags: data.tags || [],
         repoUrl: {
             href: data.repoUrl,
-            text: data.title,
+            text: data.title
         },
         npmUrl: data.npmUrl && {
             href: data.npmUrl,
-            text: data.title,
+            text: data.title
         },
         demoUrl: data.demoUrl && {
             href: data.demoUrl,
-            text: data.title,
-        },
+            text: data.title
+        }
     }
 }
 
 async function loadThemes() {
-    const promises = glob.sync('src/data/themes/*.json')
-        .map(loadTheme)
-    
+    const promises = glob.sync('src/data/themes/*.json').map(loadTheme)
+
     return await Promise.all(promises)
 }
 
@@ -63,13 +61,13 @@ function themeComparer(a, b) {
 async function main() {
     // load all themes JSON from src/data
     const data = await loadThemes()
-    
+
     const themes = await Promise.all(data.map(withStars))
 
     await fs.writeFile(
-		'src/data/themes.json',
-		JSON.stringify(themes.sort(themeComparer), null, 4)
-	)
+        'src/data/themes.json',
+        JSON.stringify(themes.sort(themeComparer), null, 4)
+    )
 }
 
 main()

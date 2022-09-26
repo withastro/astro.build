@@ -1,0 +1,67 @@
+---
+import { Picture } from '@astrojs/image/components'
+import type { ShowcaseSite } from '../types.js'
+
+export interface Props {
+    site: ShowcaseSite
+}
+
+const { site } = Astro.props as Props
+const image = site.image
+
+const widths = site.highlight ? [400, 800, 1600] : [400, 800]
+const sizes = site.highlight
+    ? '(min-width: 1024px) 67vw, 100vw'
+    : '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 100vw)'
+---
+
+<li
+    class:list={[
+        site.highlight && 'highlight',
+        'relative flex flex-col rounded-lg overflow-hidden shadow-md bg-neutral-50 aspect-w-16 aspect-h-9',
+        site.highlight && 'sm:col-span-2 sm:row-span-2'
+    ]}
+>
+    <a {...site.url} rel="noopener">
+        <span class="sr-only">{site.title}</span>
+
+        <Picture src={image} widths={widths} sizes={sizes} alt="" />
+    </a>
+
+    <footer
+        class="absolute inset-x-0 z-10 py-4 overflow-hidden font-normal text-center text-neutral-50 transition-opacity duration-300 ease-out -translate-y-full bg-neutral-900 rounded-b-lg opacity-0 pointer-events-none h-fit top-full"
+    >
+        <p class="text-lg">{site.title}</p>
+        <small {...site.url} class="font-light underline"
+            >{site.url.href}
+        </small>
+    </footer>
+</li>
+
+<style>
+    article.highlight:nth-of-type(even) {
+        grid-column-end: -1;
+    }
+    article :global(picture) {
+        @apply w-full h-full;
+    }
+
+    article :global(img) {
+        @apply w-full h-full object-cover rounded-lg overflow-hidden;
+    }
+
+    article :global(picture::after) {
+        @apply absolute inset-0 bg-neutral-900 rounded-lg overflow-hidden opacity-0 transition-opacity duration-150 ease-out;
+        content: '';
+    }
+
+    article:hover :global(picture::after),
+    a:focus :global(picture::after) {
+        @apply opacity-40;
+    }
+
+    article:hover footer,
+    a:focus + footer {
+        @apply opacity-100;
+    }
+</style>

@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon'
+import { Image } from '../types.js'
+import Section, { Props as SectionProps } from './Section.astro'
+
+interface LogoImage extends Image {
+    src: string
+    height?: number
+}
+
+interface Props extends SectionProps {
+    logos: LogoImage[]
+    dense?: boolean
+}
+
+const { logos, dense = false, ...props } = Astro.props as Props
+---
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div {...props}>
+    <div 
+    class:list={['flex flex-wrap items-center justify-center gap-y-6 sm:gap-y-8', dense ? ['gap-x-6 sm:gap-x-8 lg:gap-x-12'] : ['gap-x-12 sm:gap-x-16 lg:gap-x-20']]}>
+        {logos.map(({ src, alt, height = 48 }) => (
+            <Icon name={src} aria-label={alt} height={height} />
+        ))}
+    </div>
+</div>

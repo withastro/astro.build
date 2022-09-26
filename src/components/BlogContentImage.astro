@@ -1,0 +1,19 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+export interface Props {
+  src: string;
+  alt?: string;
+  [attr: string]: any;
+}
+
+const { src, ...attrs } = Astro.props as Props;
+---
+
+<Picture src={src} widths={[400, 800, 1500]} sizes="(max-width: 767px) 100vw, 736px" {...attrs} />
+
+<style>
+  img, picture :global(img), svg {
+    @apply rounded-xl shadow-lg my-10;
+  }
+</style>

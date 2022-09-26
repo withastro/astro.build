@@ -1,23 +1,33 @@
 ---
-import { smartypants } from 'smartypants';
+import { getImage } from '@astrojs/image'
+import SEO from 'simple-astro-seo'
+import smartypants from 'smartypants'
+import site from '../data/site.js'
 
 export interface Props {
-  title?: string;
-  description?: string;
-  canonicalURL?: URL | string
-  image?: string;
+    title?: string
+    description?: string
+    image?: string | ImageMetadata
+    canonicalURL?: URL
+    pageType?: 'website' | 'article'
 }
-const { canonicalURL = new URL(Astro.url.pathname, Astro.site) } = Astro.props;
-const image = new URL(Astro.props.image || './social.png', Astro.site);
-const description = Astro.props.description || 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.';
 
-const title = [Astro.props.title, 'Astro']
-  .filter(Boolean)
-  .join(' | ')
+const {
+    description = site.description,
+    image = site.image,
+    canonicalURL = new URL(Astro.request.url, Astro.site),
+    pageType = 'website'
+} = Astro.props as Props
+
+const ensureTrailingSlash = (url: string) => url.replace(/\/$/, '') + '/';
+const resolvedImage = await getImage({ src: image, width: 1200, aspectRatio: 2, format: 'jpeg' });
+const resolvedImageWithDomain = new URL(resolvedImage.src, Astro.url).toString();
+const title = Astro.props.title ? [Astro.props.title, site.title].join(' | ') : 'Astro | Build faster websites'
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
+<meta name="generator" content={Astro.generator} />
 <meta name="viewport" content="width=device-width" />
 <meta name="theme-color" content="#8D46E7">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -25,37 +35,17 @@ const title = [Astro.props.title, 'Astro']
 <link rel="sitemap" href="/sitemap-index.xml">
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
-<!-- Preload -->
-<slot name="preload" />
-
-<!-- Primary Meta Tags -->
 <title set:html={smartypants(title, 1)}></title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
-<link rel="canonical" href={canonicalURL}/>
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
+<SEO
+    siteName={site.title}
+    {title}
+    {description}
+    image={resolvedImageWithDomain}
+    twitterHandle={site.twitterHandle}
+    pageType={pageType}
+    url={ensureTrailingSlash(canonicalURL.toString())}
+/>
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} />
-
-<!-- Assets -->
-<slot name="assets" />
-
-<!--
-<script type="module" hoist>
-    import listen from "micromorph/spa"
-    listen({ beforeDiff: () => {
-      window.dispatchEvent(new CustomEvent('astro:navchange'))
-    } })
-</script>
--->
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>

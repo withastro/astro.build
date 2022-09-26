@@ -1,22 +1,20 @@
 import fetch from 'node-fetch'
 
 if (!process.env.GITHUB_TOKEN) {
-	throw new Error('GITHUB_TOKEN env variable must be set to run.')
+    throw new Error('GITHUB_TOKEN env variable must be set to run.')
 }
 
 function fetchJson(url) {
-	return fetch(url, {
-		headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN },
-	})
-		.then(res => {
-			if (res.status >= 400) {
-				console.error(res.status, res.statusText)
-				throw new Error(res.statusText)
-			}
+    return fetch(url, {
+        headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN, "User-Agent": "chrome" }
+    }).then((res) => {
+        if (res.status >= 400) {
+            console.error(res.status, res.statusText)
+            throw new Error(res.statusText)
+        }
 
-			return res.json()
-		})
-	
+        return res.json()
+    })
 }
 
 /**
@@ -28,9 +26,9 @@ function fetchJson(url) {
  * @returns {Function} Filter function that returns true if the user is only included in one list
  */
 export function loginIsUniq(...lists) {
-	return function withUser(user) {
-		return !lists.some(list => list.some(a => a.login === user.login))
-	}
+    return function withUser(user) {
+        return !lists.some((list) => list.some((a) => a.login === user.login))
+    }
 }
 
 /**
@@ -41,19 +39,19 @@ export function loginIsUniq(...lists) {
  * @returns
  */
 export function parseRepoUrl(repoUrl) {
-	try {
-		const url = new URL(repoUrl)
-		const parts = url.pathname.split('/').filter(Boolean)
-		return parts.length === 2
-			? {
-					org: parts[0],
-					repo: parts[1],
-			  }
-			: []
-	} catch (err) {
-		console.error(repoUrl, err)
-		return []
-	}
+    try {
+        const url = new URL(repoUrl)
+        const parts = url.pathname.split('/').filter(Boolean)
+        return parts.length === 2
+            ? {
+                  org: parts[0],
+                  repo: parts[1]
+              }
+            : []
+    } catch (err) {
+        console.error(repoUrl, err)
+        return []
+    }
 }
 
 /**
@@ -63,70 +61,70 @@ export function parseRepoUrl(repoUrl) {
  * @returns API helpers for the github team and repository
  */
 export function orgApi(org) {
-	function teamApi(team) {
-		/**
-		 * Fetches the list of members for a github organization and team.
-		 *
-		 * @param {Number | undefined} count (optional) Maximum number of results to fetch
-		 * @returns {Promise} JSON list of github members
-		 */
-		function fetchMembers(count) {
-			const url = new URL(
-				`https://api.github.com/orgs/${org}/teams/${team}/members`
-			)
-			if (count) {
-				url.searchParams.set('per_page', count)
-			}
+    function teamApi(team) {
+        /**
+         * Fetches the list of members for a github organization and team.
+         *
+         * @param {Number | undefined} count (optional) Maximum number of results to fetch
+         * @returns {Promise} JSON list of github members
+         */
+        function fetchMembers(count) {
+            const url = new URL(
+                `https://api.github.com/orgs/${org}/teams/${team}/members`
+            )
+            if (count) {
+                url.searchParams.set('per_page', count)
+            }
 
-			return fetchJson(url.toString())
-		}
+            return fetchJson(url.toString())
+        }
 
-		return {
-			fetchMembers,
-		}
-	}
+        return {
+            fetchMembers
+        }
+    }
 
-	function repoApi(repo) {
-		/**
-		 *
-		 * @param {Number | undefined} count (optional) Maxmimum number of results to fetch
-		 * @returns {Promise} JSON list of github members
-		 */
-		function fetchContributors(count) {
-			const url = new URL(
-				`https://api.github.com/repos/${org}/${repo}/contributors`
-			)
-			if (count) {
-				url.searchParams.set('per_page', count)
-			}
+    function repoApi(repo) {
+        /**
+         *
+         * @param {Number | undefined} count (optional) Maxmimum number of results to fetch
+         * @returns {Promise} JSON list of github members
+         */
+        function fetchContributors(count) {
+            const url = new URL(
+                `https://api.github.com/repos/${org}/${repo}/contributors`
+            )
+            if (count) {
+                url.searchParams.set('per_page', count)
+            }
 
-			return fetchJson(url.toString())
-		}
+            return fetchJson(url.toString())
+        }
 
-		/**
-		 * Gets the current number of stars for the github repository.
-		 *
-		 * @returns {Promise} number of stars for the github repo
-		 */
-		async function fetchStars() {
-			const url = new URL(`https://api.github.com/repos/${org}/${repo}`)
-			
-			return fetchJson(url.toString())
-				.then(res => res.stargazers_count)
-				.catch((error) => {
-					console.warn('fetchStars::', error.message);
-					return 0;
-				});
-		}
+        /**
+         * Gets the current number of stars for the github repository.
+         *
+         * @returns {Promise} number of stars for the github repo
+         */
+        async function fetchStars() {
+            const url = new URL(`https://api.github.com/repos/${org}/${repo}`)
 
-		return {
-			fetchContributors,
-			fetchStars,
-		}
-	}
+            return fetchJson(url.toString())
+                .then((res) => res.stargazers_count)
+                .catch((error) => {
+                    console.warn('fetchStars::', error.message)
+                    return 0
+                })
+        }
 
-	return {
-		team: teamApi,
-		repo: repoApi,
-	}
+        return {
+            fetchContributors,
+            fetchStars
+        }
+    }
+
+    return {
+        team: teamApi,
+        repo: repoApi
+    }
 }

@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon'
+
+export interface Props extends Omit<astroHTML.JSX.HTMLAttributes, 'aria-label'> {
+    target: string
+    dark?: boolean
+}
+
+const { target, dark = false, class: className, ...attrs } = Astro.props
+---
+
+<click-to-copy data-target={target} class:list={["relative flex", className]} {...attrs}>
+    <button aria-label="Copy to clipboard">
+        <Icon name="akar-icons:clipboard" size={22} aria-hidden="true" />
+    </button>
+    <div class="absolute bottom-full left-1/2 mb-2.5 pb-1 -translate-x-1/2 scale-100 translate-y-0 opacity-100 transform ease-out duration-150 transition origin-bottom" aria-hidden="true" role="log" aria-live="polite">
+        <span class:list={["block relative font-mono text-xs leading-6 font-medium px-1.5 rounded-lg", dark ? "bg-primary-800 text-neutral-50" : "bg-neutral-50 text-primary-800"]}>
+            Copied
+            <svg aria-hidden="true" width="16" height="6" view-box="0 0 16 6" class:list={["absolute top-full left-1/2 -mt-px -ml-2", dark ? "text-primary-800" : "text-neutral-50"]}>
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M15 0H1V1.00366V1.00366V1.00371H1.01672C2.72058 1.0147 4.24225 2.74704 5.42685 4.72928C6.42941 6.40691 9.57154 6.4069 10.5741 4.72926C11.7587 2.74703 13.2803 1.0147 14.9841 1.00371H15V0Z" />
+            </svg>
+        </span>
+    </div>
+</click-to-copy>
+
+<style>
+    div[aria-hidden=true] {
+        @apply scale-95 translate-y-0.5 opacity-0;
+    }
+</style>
+
+<script>
+    class ClickToCopy extends HTMLElement {
+        connectedCallback() {
+            this.button.addEventListener('click', this.copy.bind(this), false)
+        }
+
+        async copy() {
+            const text = this.target?.innerText
+
+            if (text) {
+                await navigator.clipboard.writeText(text)
+
+                this.toast.removeAttribute('aria-hidden')
+                await new Promise((res) => setTimeout(res, 2000))
+                this.toast.setAttribute('aria-hidden', 'true')
+            }
+        }
+
+        get toast() {
+            return this.querySelector('div');
+        }
+
+        get button() {
+            return this.querySelector('button');
+        }
+
+        get target() {
+            return document.querySelector<HTMLElement>(this.dataset.target)
+        }
+    }
+
+    customElements.define('click-to-copy', ClickToCopy)
+</script>

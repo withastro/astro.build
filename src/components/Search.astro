@@ -1,14 +1,14 @@
 ---
-import { Sprite } from 'astro-icon';
+import { Sprite } from 'astro-icon'
 
 export interface Props {
-    id: string;
-    placeholder: string;
-    selector: string;
-    groupSelector?: string;
+    id: string
+    placeholder: string
+    selector: string
+    groupSelector?: string
 }
 
-const { id, placeholder, selector, groupSelector } = Astro.props as Props;
+const { id, placeholder, selector, groupSelector } = Astro.props as Props
 
 const inlineStyle = `
     ${selector}[hidden] {
@@ -20,59 +20,125 @@ const inlineStyle = `
 
 <section>
     <label>
-        <input type="text" {id} {placeholder}>
+        <input type="text" id={id} placeholder={placeholder} />
         <div>
-            <Sprite pack="heroicons-outline" name="search" size={24} aria-hidden="true" />
+            <Sprite
+                pack="heroicons-outline"
+                name="search"
+                size={24}
+                aria-hidden="true"
+            />
         </div>
         <span class="sr-only visually-hidden">Search</span>
     </label>
 </section>
 
-<style set:html={inlineStyle}></style>
+<style set:html={inlineStyle}>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=URLSearchParams" />
-<script type="module" define:vars={{selector, groupSelector, id}}>
+</style>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=URLSearchParams">
+
+</script>
+<script type="module" define:vars={{ selector, groupSelector, id }}>
     /* https://gomakethings.com/how-to-create-a-search-page-for-a-static-website-with-vanilla-js/ */
-    const stopWords = ['a', 'an', 'and', 'are', 'aren\'t', 'as', 'by', 'can', 'cannot', 'can\'t', 'could', 'couldn\'t', 'how', 'is', 'isn\'t', 'it', 'its', 'it\'s', 'that', 'the', 'their', 'there', 'they', 'they\'re', 'them', 'to', 'too', 'us', 'very', 'was', 'we', 'well', 'were', 'what', 'whatever', 'when', 'whenever', 'where', 'with', 'would', 'yet', 'you', 'your', 'yours', 'yourself', 'yourselves', 'the'];
+    const stopWords = [
+        'a',
+        'an',
+        'and',
+        'are',
+        "aren't",
+        'as',
+        'by',
+        'can',
+        'cannot',
+        "can't",
+        'could',
+        "couldn't",
+        'how',
+        'is',
+        "isn't",
+        'it',
+        'its',
+        "it's",
+        'that',
+        'the',
+        'their',
+        'there',
+        'they',
+        "they're",
+        'them',
+        'to',
+        'too',
+        'us',
+        'very',
+        'was',
+        'we',
+        'well',
+        'were',
+        'what',
+        'whatever',
+        'when',
+        'whenever',
+        'where',
+        'with',
+        'would',
+        'yet',
+        'you',
+        'your',
+        'yours',
+        'yourself',
+        'yourselves',
+        'the'
+    ]
 
-    const input = document.getElementById(id);
-    const items = document.querySelectorAll(selector);
-    const groups = groupSelector ? document.querySelectorAll(groupSelector) : [];
+    const input = document.getElementById(id)
+    const items = document.querySelectorAll(selector)
+    const groups = groupSelector ? document.querySelectorAll(groupSelector) : []
 
-    const FPS_30 = 1000 / 30;
+    const FPS_30 = 1000 / 30
 
     function debounce(fn, timeout = 150) {
-        let timer;
+        let timer
         return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => fn.apply(this, args), timeout);
+            clearTimeout(timer)
+            timer = setTimeout(() => fn.apply(this, args), timeout)
         }
     }
 
     const updateOpen = () => {
         requestAnimationFrame(() => {
-        (!!input.value || document.activeElement === input)
-            ? input.parentElement.setAttribute('open', '')
-            : input.parentElement.removeAttribute('open');
-        });
+            !!input.value || document.activeElement === input
+                ? input.parentElement.setAttribute('open', '')
+                : input.parentElement.removeAttribute('open')
+        })
     }
 
     const update = () => {
-        updateOpen();
+        updateOpen()
 
-        const regexMap = input.value.toLowerCase()
+        const regexMap = input.value
+            .toLowerCase()
             .split(' ')
-            .filter(word => word.length && !stopWords.includes(word))
-            .map(word => new RegExp(word, 'i'));
+            .filter((word) => word.length && !stopWords.includes(word))
+            .map((word) => new RegExp(word, 'i'))
 
         for (const item of items) {
-            const isMatch = !regexMap.length || regexMap.some(regex => !!item.textContent.match(regex));
-            isMatch ? item.removeAttribute('hidden') : item.setAttribute('hidden', '');
+            const isMatch =
+                !regexMap.length ||
+                regexMap.some((regex) => !!item.textContent.match(regex))
+            isMatch
+                ? item.removeAttribute('hidden')
+                : item.setAttribute('hidden', '')
         }
 
         for (const group of groups) {
-            const matchedItems = group.querySelectorAll(`${selector}:not([hidden])`)
-            matchedItems.length > 0 ? group.removeAttribute('hidden') : group.setAttribute('hidden', '');
+            const matchedItems = group.querySelectorAll(
+                `${selector}:not([hidden])`
+            )
+            matchedItems.length > 0
+                ? group.removeAttribute('hidden')
+                : group.setAttribute('hidden', '')
         }
 
         updateURL()
@@ -96,74 +162,56 @@ const inlineStyle = `
         input.value = params.get('q') || ''
     }
 
-    input.addEventListener('input', debounce(update, FPS_30), true);
-    input.addEventListener('focus', updateOpen, true);
-    input.addEventListener('blur', updateOpen, true);
-    
+    input.addEventListener('input', debounce(update, FPS_30), true)
+    input.addEventListener('focus', updateOpen, true)
+    input.addEventListener('blur', updateOpen, true)
+
     hydrateQuery()
-    update();
+    update()
 </script>
 
 <style>
     section {
-        display: flex;
-        justify-content: flex-end;
-        font-size: 16px;
+        @apply flex justify-end;
         width: calc(25ch + 2.5rem);
+        min-width: calc(25ch + 2.5rem);
     }
 
     label {
-        display: flex;
-        border-radius: 9999px;
-        padding: 0.25rem;
-        background: var(--color-white);
+        @apply flex rounded-full p-1 bg-neutral-50;
     }
 
     input {
+        @apply pl-3 bg-transparent outline-none;
         line-height: 2.5rem;
         width: 25ch;
-        max-width: 25ch;
-        padding-left: 0.75rem;
-        background: transparent;
-        font-size: 16px;
-        outline: none;
     }
 
     input::placeholder {
-        color: var(--color-midnight);
-        opacity: 0.75;
+        @apply text-primary-900 opacity-75;
     }
 
     div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 9999px;
-        background: var(--color-dusk);
-        color: var(--color-white);
+        @apply flex items-center justify-center w-10 h-10 rounded-full bg-primary-700 text-neutral-50;
     }
 
     @media (max-width: 768px) {
         label, section {
-            width: 100%;
+            @apply w-full;
         }
 
         input {
-            flex: 1;
-            max-width: unset;
+            @apply flex-1 max-w-none;
         }
     }
 
     @media(hover: hover) {
         label {
-            background: transparent;
+            @apply bg-transparent;
         }
 
-        input {
-            max-width: 0;
-            padding-left: 0;
+        label:not([open]) input {
+            @apply max-w-0 pl-0;
         }
 
         input, div {
@@ -172,18 +220,16 @@ const inlineStyle = `
 
         input:focus,
         input:not(:placeholder-shown) {
-            max-width: initial;
             padding: 0 .5rem;
             padding-left: 0.75rem;
         }
 
         div {
-            background: transparent;
-            color: var(--color-midnight);
+            @apply bg-transparent text-primary-900;
         }
 
         label:hover, label[open] {
-            background: var(--color-white);
+            @apply bg-neutral-50;
         }
 
         label:hover > input {
@@ -195,8 +241,7 @@ const inlineStyle = `
         label:hover > div,
         input:focus + div,
         input:not(:placeholder-shown) + div {
-            background: var(--color-dusk);
-            color: var(--color-white);
+            @apply bg-primary-700 text-neutral-50;
         }
     }
 </style>

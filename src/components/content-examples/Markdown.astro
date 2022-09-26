@@ -1,0 +1,27 @@
+---
+import CodeHero from "../CodeHero.astro";
+---
+
+<CodeHero filename="src/pages/markdown-pages.md" lang="md" code={`---
+title: Creating pages with Markdown
+layout: ../layouts/Base.astro
+---
+
+Creating a page using Markdown is _easy_ with Astro!
+
+Add a \`.md\` file to your \`pages\` directory and Astro
+will turn it into a page on your site. You can specify
+an Astro component in frontmatter to use as a page
+layout.
+`}>
+  <div class="font-black">Creating pages with Markdown</div>
+  <div class="text-xs mt-3 space-y-3 leading-relaxed">
+    <p>Creating a page using Markdown is <em>easy</em> with Astro!</p>
+    <p>
+      Add a <code class="rounded bg-white/10 px-1 py-0.5 -my-0.5">.md</code> file
+      to your <code class="rounded bg-white/10 px-1 py-0.5 -my-0.5">pages</code> directory
+      and Astro will turn it into a page on your site. You can specify an
+      Astro component in frontmatter to use as a page layout.
+    </p>
+  </div>
+</CodeHero>

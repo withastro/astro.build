@@ -1,0 +1,139 @@
+---
+export interface Props {
+  tabs: { label: string; id: string }[]
+}
+
+const { tabs } = Astro.props as Props;
+---
+
+<tabbed-content>
+  <ul class="flex xs:space-x-2 p-4 -mx-3 sm:-mx-4">
+    {tabs.map((tab) => (
+      <li class="shrink-0 focus-within:z-10">
+        <a href={'#' + tab.id} class="tab-link">
+          {tab.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="content">
+    <slot />
+  </div>
+</tabbed-content>
+
+<style>
+  .tab-link {
+    @apply px-3 py-2 sm:px-4 sm:py-3 border-2 border-transparent rounded-md text-base font-medium no-underline md:text-lg text-neutral-500 bg-neutral-50 hover:bg-primary-100 transition-colors duration-200;
+  }
+
+  .tab-link[aria-selected="true"] {
+    @apply text-primary-700 bg-primary-100 border-primary-700 cursor-default;
+  }
+</style>
+
+<script>
+  class Tabs extends HTMLElement {
+    count = 0;
+    TabStore: Set<HTMLElement>[] = [];
+    PanelStore: Set<HTMLElement>[] = [];
+
+    constructor() {
+      super();
+
+      // Get relevant elements and collections
+      const panels: NodeListOf<HTMLElement> = this.querySelectorAll('.content > section');
+      const tablist = this.querySelector('ul');
+      const tabs = tablist.querySelectorAll('a');
+
+      // Add the tablist role to the first <ul> in the .tabbed container
+      tablist.setAttribute('role', 'tablist');
+
+      // Add semantics are remove user focusability for each tab
+      Array.prototype.forEach.call(tabs, (tab: HTMLElement, i: number) => {
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('id', 'tab' + this.count++);
+        tab.setAttribute('tabindex', '-1');
+        tab.parentNode.setAttribute('role', 'presentation');
+        if (!this.TabStore[i]) this.TabStore.push(new Set());
+        this.TabStore[i].add(tab);
+
+        // Handle clicking of tabs for mouse users
+        tab.addEventListener('click', (e) => {
+          e.preventDefault();
+          const currentTab: HTMLElement = tablist.querySelector('[aria-selected]');
+          if (e.currentTarget !== currentTab) {
+            this.switchTab(e.currentTarget as HTMLElement, i);
+          }
+        });
+
+        // Handle keydown events for keyboard users
+        tab.addEventListener('keydown', (e) => {
+          // Get the index of the current tab in the tabs node list
+          const index: number = Array.prototype.indexOf.call(tabs, e.currentTarget);
+          // Work out which key the user is pressing and
+          // Calculate the new tab's index where appropriate
+          const dir =
+            e.key === 'ArrowLeft'
+              ? index - 1
+              : e.key === 'ArrowRight'
+                ? index + 1
+                : e.key === 'ArrowDown'
+                  ? 'down'
+                  : null;
+          if (dir !== null) {
+            e.preventDefault();
+            // If the down key is pressed, move focus to the open panel,
+            // otherwise switch to the adjacent tab
+            dir === 'down'
+              ? panels[i].focus()
+              : tabs[dir]
+                ? this.switchTab(tabs[dir], dir)
+                : void 0;
+          }
+        });
+      });
+
+      // Add tab panel semantics and hide them all
+      Array.prototype.forEach.call(panels, (panel: HTMLElement, i: number) => {
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('tabindex', '-1');
+        panel.setAttribute('aria-labelledby', tabs[i].id);
+        panel.hidden = true;
+        if (!this.PanelStore[i]) this.PanelStore.push(new Set());
+        this.PanelStore[i].add(panel);
+      });
+
+      // Initially activate the user’s preferred tab and reveal the preferred tab panel
+      const idx = 0;
+      tabs[idx].removeAttribute('tabindex');
+      tabs[idx].setAttribute('aria-selected', 'true');
+      panels[idx].hidden = false;
+    }
+
+    // The tab switching function
+    switchTab(newTab: HTMLElement, index: number) {
+      this.TabStore.forEach(store => store.forEach((oldTab) => {
+        oldTab.removeAttribute('aria-selected');
+        oldTab.setAttribute('tabindex', '-1');
+      }));
+      this.TabStore[index].forEach((newTab) => {
+        // Make the active tab focusable by the user (Tab key)
+        newTab.removeAttribute('tabindex');
+        // Set the selected state
+        newTab.setAttribute('aria-selected', 'true');
+      });
+
+      this.PanelStore.forEach(store => store.forEach((oldPanel) => {
+        oldPanel.hidden = true;
+      }));
+      this.PanelStore[index].forEach((newPanel) => {
+        newPanel.hidden = false;
+      });
+
+      newTab.focus();
+    }
+  }
+
+  customElements.define('tabbed-content', Tabs);
+</script>

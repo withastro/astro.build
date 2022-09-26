@@ -1,17 +1,20 @@
 ---
 const {obj, size, type} = Astro.props;
-let color, label;
+let color, label, shadow;
 switch (type) {
   case 'staff':
-    color= 'var(--color-red)';
+    shadow = 'shadow-red-500';
+    color= 'bg-red-500';
     label= 'Staff';
     break;
   case 'l3':
-    color= 'var(--color-purple)';
+  shadow = 'shadow-purple-500';
+    color= 'bg-purple-500';
     label= 'Core';
     break;
   case 'l2':
-    color= 'var(--color-blue)';
+  shadow = 'shadow-blue-500';
+    color= 'bg-blue-500';
     label= 'Maintainer';
     break;
     default: 
@@ -19,43 +22,23 @@ switch (type) {
     break;
 }
 ---
-<a class="avatar" title={`@${obj.login}`} href={obj.html_url}>
-  <div class="avatar-image-border" style={`
+<a class="relative block" title={`@${obj.login}`} href={obj.html_url}>
+  <div class:list={["overflow-hidden rounded-full", shadow]} style={`
     box-shadow: 
-    0px 0px 4px 0px ${color};`}>
+    0px 0px 4px 0px var(--tw-shadow-color);`}>
     <div class="avatar-image" style={`
         width: ${size}px;
         height: ${size}px;
         background-image: url("${obj.avatar_url}"); `}>
     </div>
   </div>
-  {label && <div class="badge" style={`background-color: ${color}`}>{label}</div>}
+  {label && <div class:list={['absolute bottom-0 -right-1.5 text-xs text-neutral-50 font-semibold rounded-md py-0.5 px-1.5', color]}>{label}</div>}
 </a>
 
 <style>
-.avatar {
-    position: relative;
-    display: block;
-}
-.avatar-image-border {
-    overflow: hidden;
-    border-radius: 50%;
-
-}
 .avatar-image {
     background-size: 100% 100%;
     background-position: center center;
     transition: background-size 400ms ease-out, filter 200ms ease-out;
 }
-  .badge {
-    position: absolute;
-    right: -6px;
-    bottom: 0;
-    border-radius: 6px;
-    background-color: limegreen;
-    padding: 2px 6px;
-    font-size: 11px;
-    color: var(--color-white);
-    font-weight: bold;
-  }
 </style>

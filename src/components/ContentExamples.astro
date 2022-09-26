@@ -1,0 +1,33 @@
+---
+import CMS from "./content-examples/CMS.astro";
+import Markdown from "./content-examples/Markdown.astro";
+import MDX from "./content-examples/MDX.astro";
+import API from "./content-examples/API.astro";
+import TabbedContainer from "./TabbedContainer.astro";
+import TabPanel from "./TabPanel.astro";
+---
+<div class="mx-auto max-w-4xl w-full">
+  <TabbedContainer tabs={[
+    { label: 'CMS', id: 'cms-demo' },
+    { label: 'Markdown', id: 'md-demo' },
+    { label: 'MDX', id: 'mdx-demo' },
+    { label: 'API', id: 'api-demo' },
+  ]}>
+    <TabPanel id="cms-demo">
+      <CMS />
+    </TabPanel>
+
+    <TabPanel id="md-demo">
+      <Markdown />
+    </TabPanel>
+
+    <TabPanel id="mdx-demo">
+      <MDX />
+    </TabPanel>
+
+    <TabPanel id="api-demo">
+      <API />
+    </TabPanel>
+
+  </TabbedContainer>
+</div>

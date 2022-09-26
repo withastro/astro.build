@@ -1,29 +1,54 @@
 ---
+import type { Link } from '../types.js'
+
 export interface Props {
-    links: App.Link[];
-    current: App.Link;
-    title: string;
-    prefetch?: boolean;
-    class?: string;
+    links: Link[]
+    current: Link
+    title: string
+    prefetch?: boolean
+    class?: string
 }
 
-const { links, current, title, prefetch, class: className } = Astro.props as Props;
+const {
+    links,
+    current,
+    title,
+    prefetch,
+    class: className
+} = Astro.props as Props
 ---
 
-<section class:list={["max-w-4xl", className]}>
-    <h2 class="pb-2 text-xs font-bold tracking-wider uppercase font-display text-dusk">{title}</h2>
+<section class:list={['w-full', className]}>
+    <h2 class="pb-2 text-xs font-bold tracking-wider uppercase text-primary-700">
+        {title}
+    </h2>
     <ul class="flex flex-row flex-wrap gap-2">
-        {links.map(link => (
+        {links.map((link) => (
             <li>
-                <a rel={prefetch ? 'prefetch' : undefined} class:list={["pill", { "pill--hollow": current !== link }]} href={link.href} aria-current={current === link ? "page" : undefined}>{link.text}</a>
+                <a
+                    rel={prefetch ? 'prefetch' : undefined}
+                    class:list={['pill', { 'pill--hollow': current !== link }]}
+                    href={link.href}
+                    aria-current={current === link ? 'page' : undefined}
+                >
+                    {link.text}
+                </a>
             </li>
         ))}
     </ul>
 </section>
 
 <style>
+    a.pill {
+        @apply inline-flex items-center px-4 py-0.5 border-2 border-transparent text-sm font-bold tracking-wide rounded-full shadow-sm text-neutral-50 bg-primary-900 hover:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-800 transition-colors duration-150 ease-in-out;
+    }
+
+    a.pill--hollow {
+        @apply bg-transparent text-primary-900 border-primary-900  hover:bg-primary-900 hover:border-primary-900 focus:ring-primary-900 hover:text-neutral-50;
+    }
+
     @media (forced-colors: active) {
-        a[aria-current="page"] {
+        a[aria-current='page'] {
             color: Highlight;
         }
     }

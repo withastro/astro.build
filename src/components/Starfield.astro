@@ -1,37 +1,26 @@
 ---
-const { height = 50 } = Astro.props;
+export interface Props {
+    subtle?: boolean;
+    noGradient?: boolean;
+}
+
+const { subtle, noGradient } = Astro.props as Props;
 ---
 
-<div style={`--height: ${height}%;`}>
-    <slot />
+<div class:list={[
+    "pointer-events-none",
+    "absolute inset-0 -z-50 border-t-[3.5rem] border-slate-900",
+    subtle && "bg-[length:100%_175%]",
+    noGradient ? 'bg-slate-900' : 'bg-gradient-to-b bg-no-repeat bg-purple-800 from-slate-900 to-purple-800'
+]}>
+    <div class="starfield absolute inset-0" />
 </div>
 
 <style>
-div {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: calc(100% - var(--height));
-    left: 0;
+.starfield {
     background-image: url(/stars.png);
     background-repeat: repeat;
-    -webkit-mask-image: url(/stars-mask.png);
-    -webkit-mask-repeat: repeat;
-    transform: translate3d(0px, 0px, 0px);
-    mask-image: url(/stars-mask.png);
+    mask-image: url(/stars-mask.webp);
     mask-repeat: repeat;
-    animation: sparkle 10s linear infinite alternate-reverse;
-    pointer-events: none;
-}
-
-@keyframes sparkle {
-    from {
-        -webkit-mask-position: top right;
-        mask-position: top right;
-    }
-    to {
-        -webkit-mask-position: bottom left;
-        mask-position: bottom left;
-    }
 }
 </style>

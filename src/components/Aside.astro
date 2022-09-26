@@ -1,47 +1,29 @@
 ---
+import MaxWidth from './MaxWidth.astro'
+
 export interface Props {
-	title?: string;
-	type?: 'tip' | 'warning' | 'error';
-	class?: string;
+    title?: string
+    type?: 'tip' | 'warning' | 'error'
+    class?: string
 }
-const { type = 'tip', title, class: className } = Astro.props;
+const { type = 'tip', title, class: className } = Astro.props
 ---
 
-<aside class:list={[className, type]}>
-	{title && <h3 class="head-sm">{title}</h3>}
-	<slot />
-</aside>
+<MaxWidth as="aside">
+    <div
+        class:list={[
+            type,
+            className,
+            'flex flex-col p-4 bg-primary-100 text-primary-900 rounded-md'
+        ]}
+    >
+        {title && <h3 class="font-bold text-lg text-blue-600">{title}</h3>}
+        <slot />
+    </div>
+</MaxWidth>
 
 <style>
-	aside {
-		display: flex;
-		flex-direction: column;
-		padding: 1rem 2rem;
-		background: var(--color-dawn);
-		color: var(--color-midnight);
-        border-radius: var(--corner-md);
-		/* Outline only visible for high contrast users */
-        outline: 1px solid transparent;
-	}
-
-	aside > :global(* + *) {
-		margin-top: 1em;
-	}
-	
-	h3 {
-		font-weight: 700;
-		font-size: var(--size-500);
-		color: var(--color-accent);
-		margin: 0;
-	}
-
-	.tip {
-		--color-accent: var(--color-blue);
-	}
-	.warning {
-		--color-accent: var(--color-yellow);
-	}
-	.error {
-		--color-accent: var(--color-red);
-	}
+    aside > div > :global(* + *) {
+        margin-top: 1em;
+    }
 </style>

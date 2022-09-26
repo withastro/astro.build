@@ -1,0 +1,21 @@
+---
+import BlogPost from "../../layouts/BlogPost.astro";
+import { slugFromFile } from "./_utils";
+
+export async function getStaticPaths() {
+  const blogPosts = await Astro.glob('../../content/blog/*.mdx');
+  return blogPosts.map(post => ({
+    params: { slug: slugFromFile(post.file) },
+    props: post,
+  }));
+}
+
+const {
+  frontmatter,
+  default: Content
+} = Astro.props
+---
+
+<BlogPost content={frontmatter}>
+  <Content />
+</BlogPost>

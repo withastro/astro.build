@@ -1,33 +1,43 @@
 ---
-import CardsBlock from '../../components/blocks/CardsBlock.astro';
-import Layout from '../../layouts/Catalog.astro';
-import integrations from '../../data/integrations.json';
-import { collections } from '../../data/integrations.js';
-import IntegrationCard from '../../components/integrations/IntegrationCard.astro';
+import {
+    getCollections,
+    getIntegrationsForCollection
+} from '../../data/integrations/index.js'
+import CardGrid from '../../components/CardGrid.astro'
+import IntegrationCard from '../../components/IntegrationCard.astro'
+import Layout from '../../layouts/Catalog.astro'
 
-const meta = {
-    title: 'Integrations',
-    description: 'Launch your next Astro project at warp speed. Try the plugins and components built by our amazing community.'
-};
-
-const groups = [
-    {
-        title: undefined,
-        integrations: integrations
-            .filter(({ featured }) => !!featured)
-            .map(integration => ({
-                ...integration,
-                badges: []
-            }))
-            .sort((a, b) => a.featured - b.featured) as App.Integration[]
+const collections = (await getCollections()).map((collection) => {
+    return {
+        slug: collection.slug,
+        link: {
+            text: collection.text,
+            href: `/integrations/${collection.slug}/`
+        }
     }
-];
+})
+
+const integrations = await getIntegrationsForCollection(collections[0].slug)
+
+const title = 'Integrations'
+const description =
+    'Launch your next Astro project at warp speed. Try the plugins and components built by our amazing community.'
 ---
 
-<Layout meta={meta} collections={collections} baseHref="/integrations" searchLabel="Search integrations">
-    <Fragment slot="description">
-        <p>Launch your next Astro project at warp speed.</p>
-        <p>Try the plugins and components built by our amazing community.</p>
+<Layout
+    title={title}
+    description={description}
+    collections={collections}
+    current={collections[0].slug}
+>
+    <Fragment slot="cards">
+        <CardGrid>
+            {integrations.map((integration) => (
+                <li>
+                    <IntegrationCard integration={integration} />
+                </li>
+            ))}
+        </CardGrid>
     </Fragment>
 
     <Fragment slot="info">
@@ -36,16 +46,8 @@ const groups = [
             target="_blank"
             rel="noopener noreferrer"
             class="underline subtle"
-        >Add your own integrations.</a>
+            >Add your own integrations.</a>
         Questions about building plugins and components? Join our community on
         <a href="https://astro.build/chat" class="underline subtle">Discord!</a>
-    </Fragment>
-
-    <Fragment slot="cards">
-        {groups.map(({ title, integrations }) => (
-            <CardsBlock title={title}>
-                {integrations.map(integration => (<IntegrationCard integration={integration as App.Integration} />))}
-            </CardsBlock>
-        ))}
     </Fragment>
 </Layout>

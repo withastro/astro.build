@@ -1,165 +1,204 @@
 ---
-import { Icon, Sprite } from 'astro-icon';
-import Banner from '../components/Banner.astro';
-import Nav from '../components/Nav.astro';
-import PixelLink from '../components/PixelLink.astro';
-import Panel from '../components/Panel.astro';
-import Checklist from '../components/Checklist.astro';
-import ChecklistItem from '../components/ChecklistItem.astro';
-import ArrowLink from '../components/ArrowLink.astro';
-import Footer from '../components/Footer.astro';
-import Noscript from '../components/Noscript.astro';
-import Layout from '../layouts/Base.astro';
+import AvatarGrid from '../components/AvatarGrid.astro'
+import CardGrid from '../components/CardGrid.astro'
+import ContentExamples from '../components/ContentExamples.astro'
+import Hero from '../components/Hero.astro'
+import IconGrid from '../components/IconGrid.astro'
+import IntegrationsTeaser from '../components/IntegrationsTeaser.astro'
+import LogoCloud from '../components/LogoCloud.astro'
+import Hyperdrive from '../components/Hyperdrive.astro'
+import SecondaryCTA from '../components/SecondaryCTA.astro'
+import Section from '../components/Section.astro'
+import Sponsors from '../components/Sponsors.astro'
+import Layout from '../layouts/Base.astro'
+import Starfield from '../components/Starfield.astro'
 
-import Title from '../components/landing/Title.astro';
-import Hero from '../components/landing/Hero.astro';
-import Trusted from '../components/landing/Trusted.astro';
-import Demo from '../components/landing/Demo.astro';
-import DemoTTI from '../components/landing/DemoTTI.astro';
-import DemoPartialHydration from '../components/landing/DemoPartialHydration.astro';
-import Performance from '../components/landing/Performance.astro';
-import Section from '../components/landing/Section.astro';
-import Quote from '../components/landing/Quote.astro';
-import Integrations from '../components/landing/Integrations.astro';
-import Sponsors from '../components/landing/Sponsors.astro';
+const trustedByLogos = [
+  { src: 'logos/google', alt: 'Google', height: 36 },
+  { src: 'logos/netlify', alt: 'Netlify', height: 36 },
+  { src: 'logos/trivago', alt: 'Trivago', height: 40 },
+  { src: 'logos/rokt', alt: 'Rokt', height: 28 },
+  { src: 'logos/theguardian', alt: 'The Guardian', height: 32 },
+];
 
-const headline = 'Build fast websites, faster.'
-const tagline = 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.'
+const integrationLogos = [
+  { label: 'SolidJS', name: 'logos:solidjs-icon', href: 'https://docs.astro.build/en/guides/integrations-guide/solid-js/' },
+  { label: 'React', name: 'logos:react', href: 'https://docs.astro.build/en/guides/integrations-guide/react/' },
+  { label: 'Preact', name: 'logos:preact', href: 'https://docs.astro.build/en/guides/integrations-guide/preact/' },
+  { label: 'Svelte', name: 'logos:svelte-icon', href: 'https://docs.astro.build/en/guides/integrations-guide/svelte/' },
+  { label: 'Vue', name: 'logos:vue', href: 'https://docs.astro.build/en/guides/integrations-guide/vue/' },
+  { label: 'Lit', name: 'logos:lit-icon', href: 'https://docs.astro.build/en/guides/integrations-guide/lit/' },
+  { label: 'Alpine', name: 'logos:alpinejs-icon', href: 'https://docs.astro.build/en/core-concepts/framework-components/' },
+  { label: 'Tailwind CSS', name: 'logos:tailwindcss-icon', href: 'https://docs.astro.build/en/guides/integrations-guide/tailwind/' },
+  { label: 'Sass', name: 'logos:sass', href: 'https://docs.astro.build/en/guides/styling/#css-preprocessors' },
+  { label: 'TypeScript', name: 'logos:typescript-icon', href: 'https://docs.astro.build/en/guides/typescript/' },
+  { label: 'Markdown', name: 'fa-brands:markdown', href: 'https://docs.astro.build/en/guides/markdown-content/' },
+  { label: 'MDX', name: 'logos:mdx', href: 'https://docs.astro.build/en/guides/integrations-guide/mdx/' },
+];
 
-const meta = {
-	description: `${headline} ${tagline}`,
-	canonicalURL: new URL('.', Astro.site)
-}
+const deployLogos = [
+  {
+    label: 'Cloudflare',
+    name: 'logos:cloudflare',
+    href: 'https://docs.astro.build/en/guides/deploy/cloudflare/',
+  },
+  {
+    label: 'Deno Deploy',
+    name: 'logos:deno',
+    href: 'https://docs.astro.build/en/guides/deploy/deno/',
+  },
+  {
+    label: 'Netlify',
+    name: 'logos:netlify',
+    href: 'https://docs.astro.build/en/guides/deploy/netlify/',
+  },
+  {
+    label: 'GitHub Pages',
+    name: 'logos:github-icon',
+    href: 'https://docs.astro.build/en/guides/deploy/github/',
+  },
+  {
+    label: 'Node.js',
+    name: 'logos:nodejs-icon',
+    href: 'https://docs.astro.build/en/guides/integrations-guide/node/',
+  },
+  {
+    label: '`Vercel`',
+    name: 'logos:vercel-icon',
+    href: 'https://docs.astro.build/en/guides/deploy/vercel/',
+  },
+  {
+    label: 'Google Cloud',
+    name: 'logos:google-cloud',
+    href: 'https://docs.astro.build/en/guides/deploy/google-cloud/',
+  },
+  {
+    label: 'AWS',
+    name: 'logos:aws',
+    href: 'https://docs.astro.build/en/guides/deploy/aws/',
+  },
+];
+
 ---
 
-<Layout meta={meta}>
-	<Fragment slot="banner">
-		<Noscript />
-		<Banner href="https://twitter.com/astrodotbuild/status/1512505545210707973" items={[`Astro 1.0-Beta Launch Week Recap`]} />
-	</Fragment>
+<Layout hero>
+    <Hero />
 
-	<Nav marginBottom slot="nav" />
+    <Section>
+        <h2 class="text-center text-neutral-500 text-base pb-6 font-semibold uppercase tracking-wide">
+            Trusted by over 30,000 developers and world-class teams
+        </h2>
+        <LogoCloud dense logos={trustedByLogos} class="fill-neutral-500" />
+    </Section>
 
-	<Hero>
-		<Fragment slot="title">{headline}</Fragment>
-		<Fragment slot="tagline">{tagline}</Fragment>
-		<PixelLink href="https://docs.astro.build">Read the docs</PixelLink>
-		<ArrowLink always href="https://astro.new">Get Started</ArrowLink>
-	</Hero>
-	
-	<Trusted>
-		<Fragment slot="title">Developers around the world rely on Astro</Fragment>
-		<Fragment>
-			<li>
-				<Icon name="logos/google" title="Google" height="36" />
-			</li>
-			<li>
-				<Icon name="logos/netlify" title="Netlify" height="36" />
-			</li>
-			<li>
-				<Icon name="logos/trivago" title="Trivago" height="40" />
-			</li>
-			<li>
-				<Icon name="logos/rokt" title="Rokt" height="28" />
-			</li>
-			<li>
-				<Icon name="logos/theguardian" title="The Guardian" height="32" />
-			</li>
-		</Fragment>
-	</Trusted>
+    <!-- <Section subtitle="How Astro Works"></Section> -->
 
-	<Demo gradient>
-		<Title slot="title" id="more-html-less-javascript">More HTML, Less JavaScript</Title>
-		<p>Astro uses a modern server-side templating language that renders directly to HTML &amp; CSS, eliminating heavy JavaScript automatically.</p>
-		<DemoTTI slot="illustration" />
-	</Demo>
+    <div class="relative py-px bg-gradient-to-br border-y overflow-hidden" id="warp-speed">
+        <Starfield noGradient />
+        <Hyperdrive class="z-0 w-full h-full" slot="background" />
+        <Section invert style="background: radial-gradient(#0f172a 0%, transparent 75%);" class="relative z-10 flex flex-col gap-4 max-w-5xl" icon="carbon:flash" title="Designed for speed"
+            subtitle="Introducing: Astro Islands"
+            description="Astro Islands represent a leading paradigm shift for frontend web architecture. Astro extracts your UI into smaller, isolated components on the page. Unused JavaScript is replaced with lightweight HTML, guaranteeing faster loads and time-to-interactive (TTI).">
+            <SecondaryCTA invert slot="cta" href="https://docs.astro.build/en/concepts/islands/">Learn more about Astro Islands</SecondaryCTA>
 
-	<Demo reverse>
-		<Title slot="title" id="automatic-partial-hydration">Automatic Partial Hydration</Title>
-		<p>Meet Astro&rsquo;s magic tool for web optimization. Astro is the first site builder to eliminate dead code from your website and only hydrate your essential, interactive UI.</p>
-		<ArrowLink always href="https://docs.astro.build/en/core-concepts/component-hydration/">Learn more about Partial Hydration</ArrowLink>
-		<DemoPartialHydration slot="illustration" />
-	</Demo>
+            <CardGrid>
+                <li class="flex flex-col p-8 bg-neutral-800 border rounded-lg shadow shadow-primary-900 border-neutral-700 text-white gap-1">
+                    <h3 class="font-semibold">Zero JavaScript Runtime</h3>
+                    <p class="text-gray-400">Astro renders HTML on the server and strips away any remaining, unused JavaScript.</p>
+                </li>
+                <li class="flex flex-col p-8 bg-neutral-800 border rounded-lg shadow shadow-primary-900 border-neutral-700 text-white gap-1">
+                    <h3 class="font-semibold">The Power of Islands</h3>
+                    <p class="text-gray-400">Need interactive UI? Load individual, non-blocking component islands in parallel.</p>
+                </li>
+                <li class="flex flex-col p-8 bg-neutral-800 border rounded-lg shadow shadow-primary-900 border-neutral-700 text-white gap-1">
+                    <h3 class="font-semibold">Lazy-Loading Islands</h3>
+                    <p class="text-gray-400">Components only hydrate when they scroll into view. If you don't see it, Astro won't load it.</p>
+                </li>
+            </CardGrid>
+        </Section>
+    </div>
 
-	<Section>
-		<Panel pad={2} background="var(--gradient-pop-3)">
-			<Fragment slot="title">
-				<h2 class="head-md"><Title id="byof">Bring your favorite framework</Title></h2>
-				<p style="margin-top: 0.5rem;">Astro natively supports every popular framework&mdash;you can even mix and match!</p>
-			</Fragment>
+    <Section class="flex flex-col max-w-5xl" icon="carbon:document" title="Designed for content"
+        subtitle="Your content, your way."
+        description="Astro works with your favorite content sources. Pull content from the filesystem or fetch it remotely from your favorite CMS, database, or API. Astro supports both static output&nbsp;(SSG) and live server output&nbsp;(SSR) that can render your content on-demand.">
+        <ContentExamples />
+    </Section>
 
-			<Checklist cols={4}>
-				<ChecklistItem href="https://astro.new/framework-react">
-					<Sprite role="img" name="frameworks/react" size={24} slot="icon" aria-hidden="true" />
-					React
-				</ChecklistItem>
-				<ChecklistItem href="https://astro.new/framework-svelte">
-					<Sprite role="img" name="frameworks/svelte" size={24} slot="icon" aria-hidden="true" />
-					Svelte
-				</ChecklistItem>
-				<ChecklistItem href="https://astro.new/framework-vue">
-					<Sprite role="img" name="frameworks/vue" size={24} slot="icon" aria-hidden="true" />
-					Vue
-				</ChecklistItem>
-				<ChecklistItem href="https://astro.new/framework-solid">
-					<Sprite role="img" name="frameworks/solid" size={24} slot="icon" aria-hidden="true" />
-					Solid
-				</ChecklistItem>
-				<ChecklistItem href="https://astro.new/framework-preact">
-					<Sprite role="img" name="frameworks/preact" size={24} slot="icon" aria-hidden="true" />
-					Preact
-				</ChecklistItem>
-				<ChecklistItem href="https://astro.new/framework-alpine">
-					<Sprite role="img" name="frameworks/alpine" size={24} slot="icon" aria-hidden="true" />
-					Alpine
-				</ChecklistItem>
-				<ChecklistItem href="https://astro.new/framework-lit">
-					<Sprite role="img" name="frameworks/lit" size={24} slot="icon"aria-hidden="true" />
-					Lit
-				</ChecklistItem>
-				<ChecklistItem href="https://astro.new/minimal">
-					<Sprite role="img" name="frameworks/js" size={24} slot="icon" aria-hidden="true" />
-					Vanilla
-				</ChecklistItem>
-			</Checklist>
-		</Panel>
-	</Section>
+    <Section class="flex flex-col gap-4 max-w-5xl" icon="carbon:tools-alt" title="Designed to feel familiar"
+        subtitle="Use the tools you already love."
+        description="Bring your own component framework. Astro offers first-class support for front-end tools like React, Vue, Svelte, and Tailwind CSS. Avoid confusing configuration and get started in seconds: just type <code>astro add</code>.">
+        <SecondaryCTA slot="cta" href="https://docs.astro.build/en/guides/integrations-guide/">Get started with
+            integrations</SecondaryCTA>
+        <IconGrid class="w-full px-4 max-w-4xl mx-auto md:my-1 -mt-4" icons={integrationLogos} />
+    </Section>
 
-	<Integrations>
-		<Title slot="title" id="build-extend-deploy">
-			Build, Extend, Deploy
-		</Title>
-		<Fragment>
-			<p>Whatever you&rsquo;re building, Astro has you covered. With convenient, out-of-the-box features and even more ready-to-use integrations, Astro has everything that you need to build.</p>
-		</Fragment>
-	</Integrations>
 
-	<Performance>
-		<Title slot="title" id="peak-performance">Peak Performance</Title>
-		<Fragment>
-			<p>Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.</p>
-			<p style="opacity: 0.75; margin-top: 1rem;">
-				<small>87% of websites currently fail Google's Core Web Vitals (CWV) benchmark. Astro is on a mission to change that.</small>
-			</p>
-		</Fragment>
-	</Performance>
+    <Section class="flex flex-col gap-4 max-w-5xl" icon="carbon:content-delivery-network" title="Designed to scale"
+        subtitle="Deploy to anywhere, even the edge."
+        description="Astro supports both static output&nbsp;(SSG) and live server output&nbsp;(SSR). No matter what you choose to build, Astro's flexible adapter system makes deployment setup and configuration a breeze.">
+        <SecondaryCTA slot="cta" href="https://docs.astro.build/en/guides/deploy/">Deploy your first Astro site
+        </SecondaryCTA>
+        <IconGrid class="w-full px-4 max-w-4xl mx-auto md:my-1 -mt-4" icons={deployLogos} />
+    </Section>
 
-	<Quote pad={1.5}>
-		<a slot="logo" href="https://devtools.fm/episode/14">
-			<span>
-				<Sprite width="9em" height="3em" name="logos/devtoolsfm" title="devtools.fm" />
-			</span>
-		</a>
-		<Fragment slot="quote">Astro is really shaping up to be one of the formative ways to build mostly-static sites.</Fragment>
-		<Fragment slot="cite">Justin Bennett, devtools.fm Host</Fragment>
-	</Quote>
+    <Section class="flex flex-col gap-4 max-w-5xl" icon="carbon:network-4-reference" title="Designed to grow with you"
+        subtitle="Explore Astro’s ecosystem."
+        description="Get more out of Astro with an ecosystem of 100+ integrations & themes to explore. Community packages make it easy to add new features to your project to improve performance, SEO, analytics, accessibility and more.">
+        <span slot="cta" class="flex gap-x-4 gap-y-2 flex-wrap">
+            <SecondaryCTA href="/integrations">See all integrations</SecondaryCTA>
+            <SecondaryCTA href="/themes">See all themes</SecondaryCTA>
+        </span>
 
-	<Sponsors>
-		<Title id="sponsors" slot="title">Sponsored by</Title>
-		<ArrowLink always href="https://opencollective.com/astrodotbuild" slot="cta">Become a sponsor</ArrowLink>
-	</Sponsors>
+        <IntegrationsTeaser />
+    </Section>
 
-	<Footer slot="footer" />
+    <Section class="flex flex-col gap-4 max-w-5xl" icon="carbon:user-multiple" title="Designed for everyone"
+        subtitle="Our community is pretty great, too."
+        description="The best thing about Astro is its community. The Astro Discord is full of 5000+ builders ready to help you troubleshoot, find inspiration, and have fun as you explore with Astro. Our open governance model allows anyone to contribute and get involved with growing and maintaining Astro. All experience levels welcome!">
+        <SecondaryCTA slot="cta" href="/chat">Join us on Discord</SecondaryCTA>
 
-	<Noscript />
+        <AvatarGrid></AvatarGrid>
+    </Section>
+
+    <Sponsors />
+
+    <!-- <IntroducingIslands /> -->
+
+    <!-- TODO: What goes here? 
+  * 1. Hit what Astro is good at, 4 blocks with illustrations
+	2. A great testimonial
+	 -->
+    <!-- <Usecases /> -->
+    <!-- -mx-10 -->
+    <!-- <Section>
+        <div class="flex gap-8 justify-center">
+            {Array.from({ length: 13 }).map(() => (
+            <div class="h-10" set:html={NetlifyLogo} />
+            ))}
+        </div>
+        <div class="flex gap-8 justify-center">
+            {Array.from({ length: 12 }).map(() => (
+            <Image class="h-10" src={VercelLogo} height={40} />
+            ))}
+        </div>
+        <div class="flex gap-8 justify-center">
+            {Array.from({ length: 12 }).map(() => (
+            <code set:text={`@astrojs/netlify`} />
+            ))}
+        </div>
+    </Section> -->
+
+    <!-- <Foo /> -->
+    <!-- <Integrations /> -->
+    <!-- <FeatureHighlight /> -->
+    <!-- <FeatureHighlight reverse={true} /> -->
+    <!-- <Features /> -->
 </Layout>
+
+<style>
+    span[data-initials]::before {
+        @apply absolute top-0 right-0 bottom-0 left-0 z-0 bg-primary-900 text-neutral-50 text-lg flex items-center justify-center text-center;
+        content: "";
+        content: attr(data-initials);
+    }
+</style>

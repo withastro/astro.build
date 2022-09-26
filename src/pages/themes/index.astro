@@ -1,42 +1,53 @@
 ---
-import CardsBlock from '../../components/blocks/CardsBlock.astro';
-import themes from '../../data/themes.json';
-import { collections, getThemesForCollection } from '../../data/themes.js';
-import Layout from '../../layouts/Catalog.astro';
-import ThemeCard from '../../components/themes/ThemeCard.astro';
+import {
+    getCollections,
+    getThemesForCollection
+} from '../../data/themes/index.js'
+import CardGrid from '../../components/CardGrid.astro'
+import ThemeCard from '../../components/ThemeCard.astro'
+import Layout from '../../layouts/Catalog.astro'
 
-const meta = {
-    title: 'Themes',
-    description: 'Start your next Astro project with a real world theme built by our amazing community.'
-};
-
-const groups = [
-    {
-        title: undefined,
-        themes: themes
-            .filter(({ featured }) => !!featured)
-            .sort((a, b) => a.featured - b.featured)
+const collections = (await getCollections()).map((collection) => {
+    return {
+        slug: collection.slug,
+        link: {
+            text: collection.text,
+            href: `/themes/${collection.slug}/`
+        }
     }
-]
+})
+
+const themes = await getThemesForCollection(collections[0].slug)
+
+const title = 'Themes'
+const description =
+    'Start your next Astro project with a real world theme built by our amazing community.'
 ---
 
-<Layout meta={meta} collections={collections} baseHref="/themes" searchLabel="Search themes">
+<Layout
+    title={title}
+    description={description}
+    collections={collections}
+    current={collections[0].slug}
+>
+    <Fragment slot="cards">
+        <CardGrid>
+            {themes.map((theme) => (
+                <li>
+                    <ThemeCard theme={theme} />
+                </li>
+            ))}
+        </CardGrid>
+    </Fragment>
+
     <Fragment slot="info">
         <a
             href="https://github.com/withastro/astro.build/issues/new/choose"
             target="_blank"
             rel="noopener noreferrer"
             class="underline subtle"
-        >Submit your site.</a>
+            >Submit your theme.</a>
         Questions about building your own themes? Join our community on
         <a href="https://astro.build/chat" class="underline subtle">Discord!</a>
-    </Fragment>
-
-    <Fragment slot="cards">
-        {groups.map(({ title, themes }) => (
-            <CardsBlock title={title}>
-                {themes.map(theme => (<ThemeCard theme={theme} />))}
-            </CardsBlock>
-        ))}
     </Fragment>
 </Layout>

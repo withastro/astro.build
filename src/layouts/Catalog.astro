@@ -1,87 +1,89 @@
 ---
-import { Sprite } from 'astro-icon';
-import Layout from './Content.astro';
-import Aside from '../components/Aside.astro';
-import Footer from '../components/Footer.astro';
-import Nav from '../components/Nav.astro';
-import PillList from '../components/PillList.astro';
-import Search from '../components/Search.astro';
-import TitleBlock from '../components/blocks/TitleBlock.astro';
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+import { Sprite } from 'astro-icon'
+import Layout from './Base.astro'
+import type { Props as LayoutProps } from './Base.astro'
+import Aside from '../components/Aside.astro'
+import PageTitle from '../components/PageTitle.astro'
+import PillList from '../components/PillList.astro'
+import Search from '../components/Search.astro'
+import { Link } from '../types.js'
+import MaxWidth from '../components/MaxWidth.astro'
 
-export interface Props {
-    meta: BaseHeadProps;
-    collections: { text: string; slug: string; }[];
-    current?: string;
-    baseHref: string;
-    searchable?: boolean;
-    searchLabel?: string;
+interface Props extends LayoutProps {
+    collections: { slug: string; link: Link }[]
+    current: string
+    searchable?: boolean
+    searchLabel?: string
 }
 
-const { meta, collections, current = 'featured', baseHref, searchable = true, searchLabel = 'Search' } = Astro.props as Props;
+const {
+    collections,
+    current,
+    searchable = true,
+    searchLabel = 'Search',
+    ...layout
+} = Astro.props as Props
 
-const collectionLinks: App.Link[] = [
-    {
-        text: 'featured',
-        href: `${baseHref}/`
-    },
-    ...collections.map(({ text, slug }) => ({
-        text,
-        href: `${baseHref}/${slug}/`
-    }))
-];
-
-const currentCollection = collectionLinks.find(({ text }) => text === current);
+const currentCollection = collections.find(({ slug }) => slug === current)
 ---
 
-<Layout meta={meta}>
-    <Nav slot="nav" />
+<Layout {...layout}>
+    <PageTitle>
+        <Fragment slot="title">{layout.title}</Fragment>
 
-    <TitleBlock>
-        <Fragment slot="title">{meta.title}</Fragment>
+        <slot name="description"
+            ><Fragment>{layout.description}</Fragment>
+        </slot>
+    </PageTitle>
 
-        <slot name="description"><p>{meta.description}</p></slot>
-    </TitleBlock>
-
-    {(searchable || collectionLinks.length > 1) && (
-        <header id="collections" class="flex flex-col items-center justify-between gap-4 mb-4 md:flex-row md:items-end">
-            {collectionLinks.length > 1 && (
-                <PillList title="collections" links={collectionLinks} current={currentCollection} prefetch />
+    <div class="pt-12 pb-16">
+    {(searchable || collections.length > 1) && (
+        <MaxWidth
+            as="header"
+            id="collections"
+            class="flex flex-col items-center justify-between gap-4 md:flex-row md:items-end"
+        >
+            {collections.length > 1 && (
+                <PillList
+                    title="collections"
+                    links={collections.map(({ link }) => link)}
+                    current={currentCollection.link}
+                    prefetch
+                />
             )}
 
             {searchable && (
-                <Search id="catalogsearch" selector="#catalog article" groupSelector="#catalog > section" placeholder={searchLabel} />
+                <Search
+                    id="catalogsearch"
+                    selector="#catalog li"
+                    groupSelector="#catalog > section"
+                    placeholder={searchLabel}
+                />
             )}
-        </header>
+        </MaxWidth>
     )}
 
-    <section id="catalog" class="flex flex-col pt-4 gap-y-12 lg:gap-y-16 sm:pt-6 lg:pt-8">
+    <MaxWidth
+        as="section"
+        id="catalog"
+        class="flex flex-col pt-4 gap-y-12 mt-0 lg:gap-y-16 sm:pt-6 lg:pt-8"
+    >
         <slot name="cards" />
-    </section>
-    
+    </MaxWidth>
+
     {Astro.slots.info && (
         <Aside class="mt-8 text-sm shadow-md">
-        <p class="text-justify">
-            <Sprite pack="heroicons-outline" name="information-circle" size="1.5em" class="inline-block" aria-hidden="true" />
-            <slot name='info' />
-        </p>
-    </Aside>
+            <p class="text-justify">
+                <Sprite
+                    pack="heroicons-outline"
+                    name="information-circle"
+                    size="1.5em"
+                    class="inline-block"
+                    aria-hidden="true"
+                />
+                <slot name="info" />
+            </p>
+        </Aside>
     )}
-
-    <Footer slot="footer" />
+    </div>
 </Layout>
-
-<script>
-    import listen from 'micromorph/spa';
-
-    if (import.meta.env.PROD) {
-        listen({
-            include: 'a.pill',
-            scrollToTop: false,
-            beforeDiff: (doc) => {
-                // make sure the `js` class on the body is maintained
-                doc.body.classList.add(...document.body.classList)
-            }
-        });
-    }
-</script>
