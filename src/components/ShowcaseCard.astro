@@ -39,28 +39,28 @@ const sizes = site.highlight
 </li>
 
 <style>
-    article.highlight:nth-of-type(even) {
+    li.highlight:nth-of-type(even) {
         grid-column-end: -1;
     }
-    article :global(picture) {
+    li :global(picture) {
         @apply w-full h-full;
     }
 
-    article :global(img) {
+    li :global(img) {
         @apply w-full h-full object-cover rounded-lg overflow-hidden;
     }
 
-    article :global(picture::after) {
+    li :global(picture::after) {
         @apply absolute inset-0 bg-neutral-900 rounded-lg overflow-hidden opacity-0 transition-opacity duration-150 ease-out;
         content: '';
     }
 
-    article:hover :global(picture::after),
+    li:hover :global(picture::after),
     a:focus :global(picture::after) {
         @apply opacity-40;
     }
 
-    article:hover footer,
+    li:hover footer,
     a:focus + footer {
         @apply opacity-100;
     }
