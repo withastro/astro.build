@@ -25,7 +25,7 @@ You can update your projects by running `npm install astro@latest`.
 
 <BlogContentImage src={cookies} alt="Code example that shows off using Astro.cookies" />
 
-Site built targeting <abbr title="Server-side rendering">SSR</abbr> are able to read and set cookies in Astro. Previously reading cookies required reading the `cookie` header in the request (`Astro.request` in pages) and then parsing it using a library. Writing cookies then required serializing into `Set-Cookie` headers.
+Sites built with <abbr title="Server-side rendering">SSR</abbr> are able to read and set cookies in Astro. Previously, reading cookies required reading the `cookie` header in the request (`Astro.request` in pages) and then parsing it using a library. Writing cookies required serializing into `Set-Cookie` headers in the returned Response.
 
 Given the importance of cookies in stateful and authenticated apps we felt a simplified abstraction for cookies would make all of this easier.
 
