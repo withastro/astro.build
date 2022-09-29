@@ -35,7 +35,7 @@ Check out [the docs](https://docs.astro.build/en/reference/api-reference/#astroc
 
 ## Strict dependency installation
 
-If you are using [pnpm](https://pnpm.io/) in your Astro project you can now install your project using its strict dependency algorithm. Since Astro runs code on your behalf, in the past this has meant you have needed to [hoist packages to the root](https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root), which means that most of your dependencies, and their dependencies where installed into the top-level `node_modules/` folder.
+If you are using [pnpm](https://pnpm.io/) in your Astro project, you can now install your dependencies using its strict dependency algorithm. Since Astro runs code on your behalf, you previously needed to [hoist packages to the root](https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root), which meant that most of your dependencies (and *their* dependencies) were installed into the top-level `node_modules/` folder.
 
 A stricter installation is more *correct*, in that a package can only import dependencies it defines in its own package.json. A stricter installation is also faster, as Node.js does not need to look in as many folders to find packages.
 
