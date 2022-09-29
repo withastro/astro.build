@@ -79,7 +79,7 @@ h1:where(.astro-1234) {
 
 Given that these selectors both have the same specificity, the one listed later—the one scoped to your Title.astro component—will prevail. Within that component, the `h1` will have `color: aliceblue`, but any `h1` defined outside of your component will be `onyx`.
 
-You get the best of both worlds; styles defined in Astro are prioritized given the same specificity, but you can override them by increasing specificity when needed.
+You get the best of both worlds: styles defined in Astro are better prioritized if they have the same specificity, but you can override this by increasing specificity when needed.
 
 The output CSS order is now (from lowest to highest precedence):
 
