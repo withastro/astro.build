@@ -27,7 +27,7 @@ You can update your projects by running `npm install astro@latest`.
 
 Sites built with <abbr title="Server-side rendering">SSR</abbr> are able to read and set cookies in Astro. Previously, reading cookies required reading the `cookie` header in the request (`Astro.request` in pages) and then parsing it using a library. Writing cookies required serializing into `Set-Cookie` headers in the returned Response.
 
-Given the importance of cookies in stateful and authenticated apps we felt a simplified abstraction for cookies would make all of this easier.
+Given the importance of cookies in stateful and authenticated apps, we felt a simplified abstraction for cookies would make all of this easier.
 
 With `Astro.cookies` you can read and write cookies with a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)-like API. In the above example we are checking if a cookie exists, and if not setting a default value, then finally using the value in our template.
 
