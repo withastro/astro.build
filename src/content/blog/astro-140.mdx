@@ -79,7 +79,7 @@ Given that these selectors both have the same specificity, the one lowest in ord
 
 You get the best of both worlds; styles defined in Astro are prioritized given the same specificity, but you can override them by increasing specificity when needed.
 
-The order of CSS in Astro now is:
+The output CSS order is now (from lowest to highest precedence):
 
 1. CSS in your `public/` folder that add as `<link>` tags in the head.
 1. CSS you import in your frontmatter, ordered by the order of your import statements (depth-first).
