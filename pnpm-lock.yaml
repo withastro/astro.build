@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@astrojs/image': ^0.8.0
+  '@astrojs/image': 0.0.0-imgcache-20220929145446
   '@astrojs/mdx': ^0.11.2
   '@astrojs/prefetch': 0.0.7
   '@astrojs/rss': ^1.0.1
@@ -19,8 +19,10 @@ specifiers:
   eslint: ^8.24.0
   eslint-plugin-astro: ^0.19.0
   eslint-plugin-jsx-a11y: ^6.6.1
+  http-cache-semantics: ^4.1.0
   image-size: ^1.0.2
   micromorph: ^0.3.1
+  netlify-plugin-cache: ^1.0.3
   node-fetch: ^3.2.10
   npm-run-all: ^4.1.5
   prettier: ^2.7.1
@@ -31,7 +33,7 @@ specifiers:
   tailwindcss: ^3.1.8
 
 devDependencies:
-  '@astrojs/image': 0.8.0
+  '@astrojs/image': 0.0.0-imgcache-20220929145446_sharp@0.31.0
   '@astrojs/mdx': 0.11.2_rollup@2.79.1
   '@astrojs/prefetch': 0.0.7
   '@astrojs/rss': 1.0.1
@@ -49,8 +51,10 @@ devDependencies:
   eslint: 8.24.0
   eslint-plugin-astro: 0.19.0_eslint@8.24.0
   eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
+  http-cache-semantics: 4.1.0
   image-size: 1.0.2
   micromorph: 0.3.1
+  netlify-plugin-cache: 1.0.3
   node-fetch: 3.2.10
   npm-run-all: 4.1.5
   prettier: 2.7.1
@@ -82,13 +86,20 @@ packages:
     resolution: {integrity: sha512-xZ81C/oMfExdF18I1Tyd2BKKzBqO+qYYctSy4iCwH4UWSo/4Y8A8MAzV1hG67uuE7hFRourSl6H5KUbhyChv/A==}
     dev: true
 
-  /@astrojs/image/0.8.0:
-    resolution: {integrity: sha512-9iCamTDMtlF0e+tUurqVG6kfC2iH8BkDCR4g4p8qF1c3YjjeNfI1BKiQjoVSfcC3zP1ZH7CJJqlV7moafyLLzw==}
+  /@astrojs/image/0.0.0-imgcache-20220929145446_sharp@0.31.0:
+    resolution: {integrity: sha512-qvAuOi0CixZrltfHzbXlXtye44Vudqd27T9FbySQffcZuWg1jEyhWwFQhPWIfsyMZpqPxEpLEDaRWKjNLP+ECQ==}
+    peerDependencies:
+      sharp: '>=0.31.0'
+    peerDependenciesMeta:
+      sharp:
+        optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
       image-size: 1.0.2
       magic-string: 0.25.9
       mime: 3.0.0
+      sharp: 0.31.0
+      slash: 4.0.0
     dev: true
 
   /@astrojs/language-server/0.26.2:
@@ -2912,6 +2923,10 @@ packages:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
     dev: true
 
+  /http-cache-semantics/4.1.0:
+    resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
+    dev: true
+
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
     engines: {node: '>=12.20.0'}
@@ -3980,6 +3995,10 @@ packages:
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+    dev: true
+
+  /netlify-plugin-cache/1.0.3:
+    resolution: {integrity: sha512-CTOwNWrTOP59T6y6unxQNnp1WX702v2R/faR5peSH94ebrYfyY4zT5IsRcIiHKq57jXeyCrhy0GLuTN8ktzuQg==}
     dev: true
 
   /nice-try/1.0.5:

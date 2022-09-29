@@ -8,3 +8,9 @@
 
 [dev]
   command = "pnpm start"
+
+[[plugins]]
+package = "netlify-plugin-cache"
+  [plugins.inputs]
+  # Optional (but highly recommended). Defaults to [".cache"].
+  paths = ["node_modules/.astro"]
