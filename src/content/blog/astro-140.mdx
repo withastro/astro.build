@@ -29,13 +29,13 @@ Site built targeting <abbr title="Server-side rendering">SSR</abbr> are able to 
 
 Given the importance of cookies in stateful and authenticated apps we felt a simplified abstraction for cookies would make all of this easier.
 
-With `Astro.cookies` you can read and write cookies with its [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)-like API. In the above example we are checking if a cookie exists, and if not setting a default value, then finally using the value in our template.
+With `Astro.cookies` you can read and write cookies with a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)-like API. In the above example we are checking if a cookie exists, and if not setting a default value, then finally using the value in our template.
 
 Check out [the docs](https://docs.astro.build/en/reference/api-reference/#astrocookies) for the full API reference.
 
 ## Strict dependency installation
 
-If you are using [pnpm](https://pnpm.io/) in your Astro project you can now install your project using its strict dependency algorithm. Since Astro runs code on your behalf, in the past this has been you have needed to [hoist packages to the root](https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root), which means that most of your dependencies, and their dependencies where installed into the top-level `node_modules/` folder.
+If you are using [pnpm](https://pnpm.io/) in your Astro project you can now install your project using its strict dependency algorithm. Since Astro runs code on your behalf, in the past this has meant you have needed to [hoist packages to the root](https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root), which means that most of your dependencies, and their dependencies where installed into the top-level `node_modules/` folder.
 
 A stricter installation is more *correct*, in that a package can only import dependencies it defines in its own package.json. A stricter installation is also faster, as Node.js does not need to look in as many folders to find packages.
 
@@ -45,7 +45,7 @@ This feature comes for free in Astro 1.4.0 for new projects. Existing projects c
 
 When Astro 1.0 was released we changed our CSS scoping mechanism to use the `[:where() pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:where). This means that you can better control specificity using the usual means, such as adding class names.
 
-Making this switch we didn't realize that the ordering of styles was not idea. In 1.4.0 styles you write in Astro components will come *after* global styles imported. In practice this means that you write a component like so:
+Making this switch we didn't realize that the ordering of styles was ideal. In 1.4.0 styles you write in Astro components will come *after* global styles imported. In practice this means that you write a component like so:
 
 __Title.astro__
 
@@ -77,12 +77,12 @@ h1:where(.astro-1234) {
 
 Given that these selectors both have the same specificity, the one lowest in order, the one you defined in your Title.astro component will prevail within that component. Any `h1` defined outside of your component will be `onyx` color.
 
-You get the best of both worlds; styles defined in Astro are prioritized given the same specificity, but you can override them by increasing specificity when needed, such as adding a class name.
+You get the best of both worlds; styles defined in Astro are prioritized given the same specificity, but you can override them by increasing specificity when needed.
 
 The order of CSS in Astro now is:
 
 1. CSS in your `public/` folder that add as `<link>` tags in the head.
-1. CSS you import in your frontmatter, ordered by the order of your import statements.
+1. CSS you import in your frontmatter, ordered by the order of your import statements (depth-first).
 1. CSS defined in Astro style tags.
 
 We're currently writing up full document to explain how CSS ordering works and how you can control CSS priority via ordering and specificity.
