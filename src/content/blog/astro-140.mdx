@@ -1,0 +1,96 @@
+---
+title: 'Astro 1.4.0 Release'
+description: 'Introducing: Responsive partial hydration • Solid.js support • Lit SSR support • Named slots • Global style support • and more!'
+publishDate: 'September 29, 2022'
+authors:
+  - matthew
+lang: 'en'
+---
+
+import cookies from '/src/assets/blog/astro-140/astro-cookies.png'
+import vueJsx from '/src/assets/blog/astro-140/vue-jsx.png'
+
+import BlogContentImage from '/src/components/BlogContentImage.astro'
+
+We just released Astro 1.4.0, featuring:
+
+* __[Astro.cookies](#astro-cookies)__ A simplified approach to manipulating cookies within Astro pages and API routes.
+* __[Support for strict dependency installation](#strict-dependency-installation)__ pnpm users now can have the benefits of its default semi-strict dependency installation strategy in Astro projects.
+* __[Better control over style ordering](#style-ordering)__ We've fixed style ordering so that styles defined in Astro components are lower in bundled CSS than global styles you import.
+* __[JSX support in Vue](#jsx-support-in-vue)__ Vue users can now define components using JSX and TSX.
+
+## Astro.cookies
+
+<BlogContentImage src={cookies} alt="Code example that shows off using Astro.cookies" />
+
+Site built targeting <abbr title="Server-side rendering">SSR</abbr> are able to read and set cookies in Astro. Previously reading cookies required reading the `cookie` header in the request (`Astro.request` in pages) and then parsing it using a library. Writing cookies then required serializing into `Set-Cookie` headers.
+
+Given the importance of cookies in stateful and authenticated apps we felt a simplified abstraction for cookies would make all of this easier.
+
+With `Astro.cookies` you can read and write cookies with its [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)-like API. In the above example we are checking if a cookie exists, and if not setting a default value, then finally using the value in our template.
+
+Check out [the docs](https://docs.astro.build/en/reference/api-reference/#astrocookies) for the full API reference.
+
+## Strict dependency installation
+
+If you are using [pnpm](https://pnpm.io/) in your Astro project you can now install your project using its strict dependency algorithm. Since Astro runs code on your behalf, in the past this has been you have needed to [hoist packages to the root](https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root), which means that most of your dependencies, and their dependencies where installed into the top-level `node_modules/` folder.
+
+A stricter installation is more *correct*, in that a package can only import dependencies it defines in its own package.json. A stricter installation is also faster, as Node.js does not need to look in as many folders to find packages.
+
+This feature comes for free in Astro 1.4.0 for new projects. Existing projects can remove hoisting configuration they might have in a `.npmrc` file.
+
+## Better control over style ordering
+
+When Astro 1.0 was released we changed our CSS scoping mechanism to use the `[:where() pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:where). This means that you can better control specificity using the usual means, such as adding class names.
+
+Making this switch we didn't realize that the ordering of styles was not idea. In 1.4.0 styles you write in Astro components will come *after* global styles imported. In practice this means that you write a component like so:
+
+__Title.astro__
+
+```astro
+---
+import '../styles/global-titles.css';
+---
+<h1>{ Astro.props.title }</h1>
+<style>
+  h1 {
+    color: aliceblue;
+  }
+</style>
+```
+
+When your site is built and the CSS is bundled you get something like the following:
+
+```css
+/* /src/styles/global-titles.css */
+h1 {
+  color: onyx;
+}
+
+/* /src/components/Title.astro */
+h1:where(.astro-1234) {
+  color: aliceblue;
+}
+```
+
+Given that these selectors both have the same specificity, the one lowest in order, the one you defined in your Title.astro component will prevail within that component. Any `h1` defined outside of your component will be `onyx` color.
+
+You get the best of both worlds; styles defined in Astro are prioritized given the same specificity, but you can override them by increasing specificity when needed, such as adding a class name.
+
+The order of CSS in Astro now is:
+
+1. CSS in your `public/` folder that add as `<link>` tags in the head.
+1. CSS you import in your frontmatter, ordered by the order of your import statements.
+1. CSS defined in Astro style tags.
+
+We're currently writing up full document to explain how CSS ordering works and how you can control CSS priority via ordering and specificity.
+
+## JSX support in Vue
+
+<BlogContentImage src={vueJsx} alt="Code example that shows a JSX component defined with Vue" />
+
+Using the [Vue integration](https://github.com/withastro/astro/blob/d08093f7d4f9762c0edc71e14c796d7ea8038cda/packages/integrations/vue/README.md) you can now use JSX and TSX. Setting `jsx: true` in the integrations options enables the [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) Vite plugin which does most of the work.
+
+---
+
+Thanks to everyone that contributed to this outstanding release. In addition to these new features there were also a bunch of bug fixes throughout the core packages and integrations. See the [release notes](https://github.com/withastro/astro/pull/4903) to learn more.
