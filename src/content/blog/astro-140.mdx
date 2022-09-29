@@ -45,7 +45,9 @@ This feature comes for free in Astro 1.4.0 for new projects. Existing projects c
 
 When Astro 1.0 was released, we changed our CSS scoping mechanism to use the [`:where()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:where). This allowed you to better control specificity with the usual means, such as adding class names.
 
-Making this switch we didn't realize that the ordering of styles was ideal. In 1.4.0 styles you write in Astro components will come *after* global styles imported. In practice this means that you write a component like so:
+Making this switch, we didn't realize that the default ordering of styles wasn't ideal: styles defined directly in a component came before imported styles in the CSS output, giving component styles a lower precedence than imported styles.
+
+In 1.4.0, styles you write in Astro components will come *after* global styles imported. In practice, this means that if you write a component like so:
 
 __Title.astro__
 
