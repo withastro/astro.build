@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@astrojs/image': ^0.8.0
+  '@astrojs/image': 0.9.1
   '@astrojs/mdx': ^0.11.2
   '@astrojs/prefetch': 0.0.7
   '@astrojs/rss': ^1.0.1
@@ -19,6 +19,7 @@ specifiers:
   eslint: ^8.24.0
   eslint-plugin-astro: ^0.19.0
   eslint-plugin-jsx-a11y: ^6.6.1
+  http-cache-semantics: ^4.1.0
   image-size: ^1.0.2
   micromorph: ^0.3.1
   node-fetch: ^3.2.10
@@ -31,7 +32,7 @@ specifiers:
   tailwindcss: ^3.1.8
 
 devDependencies:
-  '@astrojs/image': 0.8.0
+  '@astrojs/image': 0.9.1_sharp@0.31.0
   '@astrojs/mdx': 0.11.2_rollup@2.79.1
   '@astrojs/prefetch': 0.0.7
   '@astrojs/rss': 1.0.1
@@ -49,6 +50,7 @@ devDependencies:
   eslint: 8.24.0
   eslint-plugin-astro: 0.19.0_eslint@8.24.0
   eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
+  http-cache-semantics: 4.1.0
   image-size: 1.0.2
   micromorph: 0.3.1
   node-fetch: 3.2.10
@@ -82,13 +84,21 @@ packages:
     resolution: {integrity: sha512-xZ81C/oMfExdF18I1Tyd2BKKzBqO+qYYctSy4iCwH4UWSo/4Y8A8MAzV1hG67uuE7hFRourSl6H5KUbhyChv/A==}
     dev: true
 
-  /@astrojs/image/0.8.0:
-    resolution: {integrity: sha512-9iCamTDMtlF0e+tUurqVG6kfC2iH8BkDCR4g4p8qF1c3YjjeNfI1BKiQjoVSfcC3zP1ZH7CJJqlV7moafyLLzw==}
+  /@astrojs/image/0.9.1_sharp@0.31.0:
+    resolution: {integrity: sha512-tnrL9tL539gIzkM9oqRd+asOePPUE/ehtQjmrcsTjJtQx8aPhKHEteJIMuDhby94wRhV6vMK1Wqt4u5DBf6GQQ==}
+    peerDependencies:
+      sharp: '>=0.31.0'
+    peerDependenciesMeta:
+      sharp:
+        optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
+      http-cache-semantics: 4.1.0
       image-size: 1.0.2
       magic-string: 0.25.9
       mime: 3.0.0
+      sharp: 0.31.0
+      slash: 4.0.0
     dev: true
 
   /@astrojs/language-server/0.26.2:
@@ -2910,6 +2920,10 @@ packages:
 
   /html-void-elements/2.0.1:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
+    dev: true
+
+  /http-cache-semantics/4.1.0:
+    resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
     dev: true
 
   /human-signals/3.0.1:
