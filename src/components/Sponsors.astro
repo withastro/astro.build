@@ -4,15 +4,17 @@ import { Sprite, Icon } from 'astro-icon';
 import Section from './Section.astro';
 import CardGrid from '../components/CardGrid.astro'
 
-const exclusive = [
-    { name: 'netlify', title: 'Netlify', href: 'https://netlify.com', height: '52', label: 'Exclusive Hosting Partner' },
-    { name: 'storyblok', title: 'Storyblok', href: 'https://storyblok.com', height: '52', label: 'Exclusive CMS Partner' },
+const official = [
+    { name: 'netlify', title: 'Netlify', href: 'https://netlify.com', height: '52', label: 'Official Hosting Partner' },
+    { name: 'storyblok', title: 'Storyblok', href: 'https://storyblok.com', height: '52', label: 'Official CMS Partner' },
 ]
 const gold = [
     { name: 'vercel', title: 'Vercel', href: 'https://vercel.com', width: '180', height: '48' },
     { name: 'divriots', title: '‹div›RIOTS', href: 'https://divriots.com', width: '192', height: '48' },
     { name: 'stackup', title: 'StackUp Digital', href: 'https://stackupdigital.co.uk/', width: '162', height: '40' },
-    { name: 'buttercms', title: 'ButterCMS', href: 'https://buttercms.com/?utm_source=astro.build&utm_medium=banner&utm_campaign=sponsorship', width: '192', height: '48' }
+    { name: 'buttercms', title: 'ButterCMS', href: 'https://buttercms.com/?utm_source=astro.build&utm_medium=banner&utm_campaign=sponsorship', width: '192', height: '48' },
+    { name: 'deepgram', title: 'Deepgram', href: 'http://deepgram.com/', width: '162', height: '48' },
+    { name: 'shipshape', title: 'ShipShape', href: 'https://shipshape.io/?ref=astro', width: '162', height: '48' }
 ]
 
 ---
@@ -25,7 +27,7 @@ const gold = [
             Astro is free, open source software made possible by these wonderful sponsors:
         </p>
         <div class="grid md:grid-flow-col auto-cols-fr gap-6">
-            {exclusive.map(sponsor => (
+            {official.map(sponsor => (
             <a href={sponsor.href}
                 class="flex flex-col items-center gap-2 xl:flex-row p-4 md:p-6 bg-neutral-50 border shadow-sky-200 border-primary-300 hover:border-primary-400 rounded-lg shadow content-center justify-between hover:shadow-accent-300 text-gray-500 hover:text-gray-700">
                 <div class="font-light text-xl md:text-2xl text-center md:text-left xl:w-6">
