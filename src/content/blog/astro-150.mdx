@@ -1,0 +1,132 @@
+---
+title: 'Astro 1.5.0 Release'
+description: 'Introducing: Adapter support for astro preview • Node.js standalone mode • HMR improvements • New API route params'
+publishDate: 'October 13, 2022'
+authors:
+  - matthew
+lang: 'en'
+---
+
+Astro 1.5.0 just went out and it features:
+
+* __[Adapter support for `astro preview`](#adapter-support-for-astro-preview)__: Adapters can now support `astro preview`.
+* __[Standalone mode in Node.js adapter](#standalone-mode-in-nodejs-adapter)__: The Node.js adapter now can build to a standalone server.
+* __[HMR for Tailwind and TypeScript config](#hmr-for-tailwind-and-typescript-config)__: The dev server will now automatically reload on Tailwind config and tsconfig changes.
+* __[API Endpoint improvements](#api-endpoint-improvements)__: The API route `APIContext` object now matches the Astro global more closely.
+* __[Astro.redirect status code](#astroredirect-status-code)__: You can not optionally pass a status code when using `Astro.redirect`.
+
+You can update your projects by running `npm install astro@latest`.
+
+## Adapter support for `astro preview`
+
+We are rolling out support for the `astro preview` command in adatpers via a new integration option, starting with the Node.js adapter [@astrojs/node](https://docs.astro.build/en/guides/integrations-guide/node/). If you are using `@astrojs/node`, you can now preview your SSR app by running:
+
+```shell
+npm run preview
+```
+
+### Adapter API
+
+We will be updating the other first party Astro adapters to support preview over time. Adapters can opt-in to this feature by providing the `previewEntrypoint` via the `setAdapter` function in `astro:config:done` hook. The Node.js adapter's code looks like this:
+
+```diff
+export default function() {
+  return {
+    name: '@astrojs/node',
+    hooks: {
+      'astro:config:done': ({ setAdapter, config }) => {
+        setAdapter({
+          name: '@astrojs/node',
+          serverEntrypoint: '@astrojs/node/server.js',
++          previewEntrypoint: '@astrojs/node/preview.js',
+          exports: ['handler'],
+        });
+
+        // more here
+      }
+    }
+  };
+}
+```
+
+## Standalone mode in Node.js adapter
+
+New in [@astrojs/node](https://docs.astro.build/en/guides/integrations-guide/node/) is support for **standalone mode**. With standalone mode, you can start your production server without needing to write any server JavaScript logic yourself. The server starts simply by running the script like so:
+
+```shell
+node ./dist/server/entry.mjs
+```
+
+To enable standalone mode, set the new `mode` option to `'standalone'` in your Astro config:
+
+```js
+import { defineConfig } from 'astro/config';
+import nodejs from '@astrojs/node';
+
+export default defineConfig({
+  output: 'server',
+  adapter: nodejs({
+    mode: 'standalone',
+  }),
+});
+```
+
+See the [@astrojs/node](https://docs.astro.build/en/guides/integrations-guide/node/) documentation for all of the options available in standalone mode.
+
+Existing @astrojs/node users who are using their own HTTP server framework such as [Express](https://expressjs.com/) can upgrade by setting the `mode` option to `'middleware'` in order to build to a middleware mode, which is the same behavior and API as before.
+
+```js
+import { defineConfig } from 'astro/config';
+import nodejs from '@astrojs/node';
+
+export default defineConfig({
+  output: 'server',
+  adapter: nodejs({
+    mode: 'middleware',
+  }),
+});
+```
+
+## HMR for Tailwind and TypeScript config
+
+HMR is vitally important even at the beginning stages of a project. In a recent Astro release we ensured that changes to your `astro.config.mjs` file resulted in an automatic server restart. Today we are expanding our support for HMR with other configuration files.
+
+Now, editing your [tsconfig.json](https://docs.astro.build/en/guides/integrations-guide/tailwind/) settings (for example, to add an alias) results in an HMR update.
+
+Similarly, [Tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/) configuration file changes now update as well. Just edit your `tailwind.config.(js|cjs|mjs)` file and the changes will reflect without the need to restart your dev server.
+
+We're continuing to focus on HMR and the dev experience in upcoming releases.
+
+## API Endpoint improvements
+
+In API routes, you can now get the `site`, `generator`, `url`, `clientAddress`, `props`, and `redirect` fields on the `APIContext`, which is the first parameter passed to an API route. This was done to make the `APIContext` more closely align with the Astro global in .astro pages.
+
+For example, here's how you might use the `clientAddress`, which is the user's IP address, to selectively allow users.
+
+```ts
+export function post({ clientAddress, redirect }) {
+  if (!allowList.has(clientAddress)) {
+    return redirect('/not-allowed');
+  }
+}
+```
+
+Check out [the docs](https://docs.astro.build/en/core-concepts/endpoints/#server-endpoints-api-routes) for more information on the newly available fields.
+
+
+## Astro.redirect status code
+
+New in 1.5 is the ability to pass a status code to `Astro.redirect`. By default it uses `302`, but now you can pass another code as the second argument:
+
+__/src/pages/old-post.astro__
+
+```astro
+---
+// This page was moved, redirect the user to the new permanent page.
+return Astro.redirect('/posts/new-post-name', 301);
+---
+```
+
+---
+
+This release also comes with many bug fixes. Thanks to everyone who has contributed to another outstanding release. See the [release notes](https://github.com/withastro/astro/pull/5046) for full details on the changes.
