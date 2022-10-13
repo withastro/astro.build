@@ -101,7 +101,7 @@ We're continuing to focus on HMR and the dev experience in upcoming releases.
 
 In API routes, you can now get the `site`, `generator`, `url`, `clientAddress`, `props`, and `redirect` fields on the `APIContext`, which is the first parameter passed to an API route. This was done to make the `APIContext` more closely align with the Astro global in .astro pages.
 
-For example, here's how you might use the clientAddress, which is the user's IP address, to selectively allow users.
+For example, here's how you might use the `clientAddress`, which is the user's IP address, to selectively allow users.
 
 ```ts
 export function post({ clientAddress, redirect }) {
