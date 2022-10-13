@@ -11,8 +11,8 @@ Astro 1.5.0 just went out and it features:
 
 * __[Adapter support for `astro preview`](#adapter-support-for-astro-preview)__: Adapters can now support `astro preview`.
 * __[Standalone mode in Node.js adapter](#standalone-mode-in-nodejs-adapter)__: The Node.js adapter now can build to a standalone server.
-* __[HMR improvements on configuration files](#hmr-improvements-on-configuration-files)__: The dev server will now automatically reload on Tailwind config and tsconfig changes.
-* __[New API route params](#new-api-route-params)__: The API route `APIContext` object now matches the Astro global more closely.
+* __[HMR for Tailwind and TypeScript config](#hmr-for-tailwind-and-typescript-config)__: The dev server will now automatically reload on Tailwind config and tsconfig changes.
+* __[API Endpoint improvements](#api-endpoint-improvements)__: The API route `APIContext` object now matches the Astro global more closely.
 * __[Astro.redirect status code](#astroredirect-status-code)__: You can not optionally pass a status code when using `Astro.redirect`.
 
 You can update your projects by running `npm install astro@latest`.
@@ -87,7 +87,7 @@ export default defineConfig({
 });
 ```
 
-## HMR improvements on configuration files
+## HMR for Tailwind and TypeScript config
 
 HMR is vitally important even at the beginning stages of a project. In a recent Astro release we made it so that changes to your `astro.config.mjs` file resulted in an automatic server restart. Today we are expanding our support for HMR with configuration files.
 
@@ -97,7 +97,7 @@ Now when you edit your [tsconfig.json](https://docs.astro.build/en/guides/integr
 
 We're continuing to focus on HMR and the dev experience in upcoming releases.
 
-## New API Route params
+## API Endpoint improvements
 
 In API routes, you can now get the `site`, `generator`, `url`, `clientAddress`, `props`, and `redirect` fields on the `APIContext`, which is the first parameter passed to an API route. This was done to make the `APIContext` more closely align with the Astro global in .astro pages.
 
