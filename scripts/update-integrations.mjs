@@ -1,7 +1,6 @@
 import fs from 'node:fs'
 import {
     badgesForPackage,
-    getCategoriesForAuthor,
     getCategoriesForKeyword,
     getOverrides,
     whitelist,
@@ -23,13 +22,13 @@ function normalizePackageDetails(data, pkg) {
     const keywordCategories = (data.keywords ?? [])
         .map(getCategoriesForKeyword)
         .flat()
-
-    const authorCategories = data.author?.name
-        ? getCategoriesForAuthor(data.author.name)
-        : []
+    
+    const otherCategories = [
+        isOfficial(pkg) ? 'official' : undefined
+    ].filter(Boolean)
 
     const uniqCategories = Array.from(
-        new Set([...keywordCategories, ...authorCategories])
+        new Set([...keywordCategories, ...otherCategories])
     )
 
     const npmUrl = {
