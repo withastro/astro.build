@@ -32,8 +32,8 @@ function isNewPackage(pkg) {
     return differenceInDays(today, date) <= NEW_THRESHOLD_DAYS
 }
 
-export const whitelist = integrations.whitelist
-export const blacklist = integrations.blacklist
+export const allowlist = integrations.allowlist
+export const blocklist = integrations.blocklist
 
 /**
  * Gets the overridden integration properties for an npm package, or undefined if not found.
