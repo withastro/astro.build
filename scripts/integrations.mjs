@@ -22,21 +22,6 @@ const keywordToCategories = Object.entries(integrations.categories).reduce(
     new Map()
 )
 
-const authorToCategories = Object.entries(integrations.categories).reduce(
-    (acc, [key, value]) => {
-        const { authors = [] } = value
-
-        for (const author of authors) {
-            const set = acc.has(author) ? acc.get(author) : new Set()
-            set.add(key)
-            acc.set(author, set)
-        }
-
-        return acc
-    },
-    new Map()
-)
-
 function isNewPackage(pkg) {
     if (!pkg.time?.created) {
         return false
@@ -47,8 +32,8 @@ function isNewPackage(pkg) {
     return differenceInDays(today, date) <= NEW_THRESHOLD_DAYS
 }
 
-export const whitelist = integrations.whitelist
-export const blacklist = integrations.blacklist
+export const allowlist = integrations.allowlist
+export const blocklist = integrations.blocklist
 
 /**
  * Gets the overridden integration properties for an npm package, or undefined if not found.
@@ -74,18 +59,6 @@ export function getCategoriesForKeyword(keyword) {
         : []
 
     return categories.length ? categories : ['css+ui']
-}
-
-/**
- * Gets a list of integration categories for an package author.
- *
- * @param {String} author Package author
- * @returns {String[]}
- */
-export function getCategoriesForAuthor(author) {
-    return authorToCategories.has(author)
-        ? Array.from(authorToCategories.get(author))
-        : []
 }
 
 export function badgesForPackage(pkg) {

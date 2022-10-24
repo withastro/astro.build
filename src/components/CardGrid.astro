@@ -20,9 +20,9 @@ const columns = dense
 >
     <slot />
     {Astro.slots.footer && (
-        <footer class:list={['sm:col-span-2', dense ? 'lg:col-span-4' : 'lg:col-span-3']}>
+        <li class:list={['footer', 'sm:col-span-2', dense ? 'lg:col-span-4' : 'lg:col-span-3']}>
             <slot name="footer" />
-        </footer>
+        </li>
     )}
 </ul>
 

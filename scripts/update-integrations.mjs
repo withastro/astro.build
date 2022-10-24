@@ -1,11 +1,10 @@
 import fs from 'node:fs'
 import {
     badgesForPackage,
-    getCategoriesForAuthor,
     getCategoriesForKeyword,
     getOverrides,
-    whitelist,
-    blacklist,
+    allowlist,
+    blocklist,
     getFeaturedPackagePriority
 } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
@@ -23,13 +22,13 @@ function normalizePackageDetails(data, pkg) {
     const keywordCategories = (data.keywords ?? [])
         .map(getCategoriesForKeyword)
         .flat()
-
-    const authorCategories = data.author?.name
-        ? getCategoriesForAuthor(data.author.name)
-        : []
+    
+    const otherCategories = [
+        isOfficial(pkg) ? 'official' : undefined
+    ].filter(Boolean)
 
     const uniqCategories = Array.from(
-        new Set([...keywordCategories, ...authorCategories])
+        new Set([...keywordCategories, ...otherCategories])
     )
 
     const npmUrl = {
@@ -96,8 +95,8 @@ async function main() {
 
     const packagesMap = await searchByKeyword(keyword)
     const packageNames = new Set(
-        [...packagesMap.keys(), ...whitelist].filter(
-            (pkg) => !blacklist.includes(pkg)
+        [...packagesMap.keys(), ...allowlist].filter(
+            (pkg) => !blocklist.includes(pkg)
         )
     )
 
