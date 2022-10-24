@@ -3,8 +3,8 @@ import {
     badgesForPackage,
     getCategoriesForKeyword,
     getOverrides,
-    whitelist,
-    blacklist,
+    allowlist,
+    blocklist,
     getFeaturedPackagePriority
 } from './integrations.mjs'
 import { parseRepoUrl, orgApi } from './github.mjs'
@@ -95,8 +95,8 @@ async function main() {
 
     const packagesMap = await searchByKeyword(keyword)
     const packageNames = new Set(
-        [...packagesMap.keys(), ...whitelist].filter(
-            (pkg) => !blacklist.includes(pkg)
+        [...packagesMap.keys(), ...allowlist].filter(
+            (pkg) => !blocklist.includes(pkg)
         )
     )
 
