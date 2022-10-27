@@ -1,17 +1,32 @@
 ---
-interface Props {
+
+type ButtonBaseProps = {
     theme?: 'primary' | 'secondary' | 'hollow'
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-    href?: string
-    alt?: string
 }
 
-const { theme = 'primary', size = 'md', href, alt } = Astro.props as Props
+type ButtonProps = astroHTML.JSX.ButtonHTMLAttributes & ButtonBaseProps
 
-const Component = href ? 'a' : 'button'
+type LinkProps = astroHTML.JSX.AnchorHTMLAttributes &
+    ButtonBaseProps & { href: string }
+
+export type Props = ButtonProps | LinkProps
+
+const { theme = 'primary', size = 'md', class: classProp = '', ...props } = Astro.props
+const className = ['btn', `btn--${size}`, `btn--${theme}`, classProp]
 ---
 
-<Component class:list={['btn', `btn--${size}`, `btn--${theme}`]} {href} {alt}><slot /></Component>
+{
+    'href' in props ? (
+        <a {...props} class:list={className}>
+            <slot />
+        </a>
+    ) : (
+        <button {...props} class:list={className}>
+            <slot />
+        </button>
+    )
+}
 
 <style>
     .btn {
