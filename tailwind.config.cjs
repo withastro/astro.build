@@ -42,7 +42,7 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/line-clamp'),
-        require('@tailwindcss/forms'),
+        // require('@tailwindcss/forms'),
 
         plugin(function childrenPlugin({ addVariant }) {
             // apply a style to all direct children
