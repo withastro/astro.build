@@ -1,0 +1,21 @@
+---
+export interface Props {
+    label: string
+    inline?: boolean
+    required?: boolean
+}
+---
+
+<label
+    class:list={[
+        'w-full flex',
+        Astro.props.inline ? 'items-center gap-2' : 'flex-col gap-1'
+    ]}
+>
+    <div class="text-sm font-medium leading-none">
+        {Astro.props.label}
+        {Astro.props.required && <span class="text-red-500">*</span>}
+    </div>
+
+    <slot />
+</label>

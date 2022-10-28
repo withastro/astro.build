@@ -1,0 +1,17 @@
+---
+import { textAreaClass } from '../styles'
+import Field from './Field.astro'
+
+export type Props = astroHTML.JSX.TextareaHTMLAttributes & {
+    label: string
+}
+
+const { label, ...props } = Astro.props
+---
+
+<Field
+    label={label}
+    required={props.required === true || props.required === 'true'}
+>
+    <textarea {...props} class:list={[textAreaClass, props.class]}></textarea>
+</Field>

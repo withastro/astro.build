@@ -1,10 +1,10 @@
 ---
-import {
-    getCollections,
-    getThemesForCollection
-} from '../../data/themes/index.js'
 import CardGrid from '../../components/CardGrid.astro'
 import ThemeCard from '../../components/ThemeCard.astro'
+import {
+getCollections,
+getThemesForCollection
+} from '../../data/themes/index.js'
 import Layout from '../../layouts/Catalog.astro'
 
 const collections = (await getCollections()).map((collection) => {
@@ -42,9 +42,7 @@ const description =
 
     <Fragment slot="info">
         <a
-            href="https://github.com/withastro/astro.build/issues/new/choose"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/themes/submit"
             class="underline subtle"
             >Submit your theme.</a>
         Questions about building your own themes? Join our community on

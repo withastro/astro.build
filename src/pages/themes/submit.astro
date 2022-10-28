@@ -1,155 +1,105 @@
 ---
-import clsx from 'clsx'
 import Button from '../../components/Button.astro'
-import Field from '../../components/Field.astro'
+import Field from '../../components/forms/Field.astro'
+import ImageInput from '../../components/forms/ImageInput.astro'
+import InputField from '../../components/forms/InputField.astro'
+import Switch from '../../components/forms/Switch.astro'
+import TextAreaField from '../../components/forms/TextAreaField.astro'
 import PageTitle from '../../components/PageTitle.astro'
 import Base from '../../layouts/Base.astro'
-
-const inputBaseClass = clsx(
-    'border-2 border-neutral-300 focus:border-primary-400 focus:outline-none rounded px-2 py-2 focus:ring-0'
-)
-const checkboxClass = clsx(inputBaseClass)
-const textAreaClass = clsx(inputBaseClass, 'w-full')
-const inputClass = clsx(textAreaClass, 'leading-none w-full')
-
-const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'].join(
-    ','
-)
 ---
 
-<Base title="Submit Theme">
+<Base title="Submit a theme">
     <PageTitle>
-        <Fragment slot="title">Submit Theme</Fragment>
-        submit a cool theme or something
+        <Fragment slot="title">Submit a theme</Fragment>
+        Thank you for sharing your themes with the Astro community! Choose to make
+        your theme free or paid. All payments go directly to you, we don't handle
+        the sale or take a cut.
     </PageTitle>
+
+    <section class="max-w-screen-md mx-auto px-4">
+        <h3 class="text-3xl mt-8 mb-4">Best practices</h3>
+        <p class="my-4">What we look for when reviewing submissions:</p>
+        <ul class="my-4 whitespace-normal children:before:content-['✅_']">
+            <li>Your theme uses the latest release of Astro</li>
+            <li>
+                For free themes, source code for the theme is available in a
+                public repository
+            </li>
+            <li>All NPM dependencies used in the theme are public</li>
+            <li>
+                Theme preview image or screenshot included (see below for
+                details)
+            </li>
+        </ul>
+    </section>
+
     <form
         method="post"
-        class="max-w-screen-md flex flex-col items-start gap-4 mx-auto py-8 px-4"
+        class="max-w-screen-sm flex flex-col items-center gap-4 mx-auto py-8 px-4"
         data-netlify="true"
     >
-        <Field label="Theme name (required)">
-            <input
-                name="title"
-                class={inputClass}
-                required
-                placeholder="My Awesome Theme"
-            />
-        </Field>
-        <Field label="Live demo URL">
-            <input
-                name="liveDemoLink"
-                class={inputClass}
-                placeholder="https://example.com/themedemo"
-            />
-        </Field>
-        <Field label="Repo URL">
-            <input
-                name="repoLink"
-                class={inputClass}
-                placeholder="https://github.com/me/my-awesome-theme"
-            />
-        </Field>
-        <Field label="Author name">
-            <input
-                name="authorName"
-                class={inputClass}
-                placeholder="Alex Smith"
-            />
-        </Field>
-        <Field label="Author avatar">
-            <image-preview-input>
-                <input
-                    name="authorAvatar"
-                    type="file"
-                    accept="image/*"
-                    accept={imageTypes}
-                />
-            </image-preview-input>
-        </Field>
-        <Field label="Author URL">
-            <input
-                name="authorUrl"
-                class={inputClass}
-                placeholder="https://your.website"
-            />
-        </Field>
-        <Field label="Short description (required)">
-            <textarea name="shortDescription" class={textAreaClass} required placeholder="A short description of your theme, displayed on the theme list page" />
-        </Field>
-        <Field label="Long description">
-            <textarea
-                name="longDescription"
-                class={textAreaClass}
-                rows={5}
-                placeholder="**Markdown supported!**"></textarea>
-        </Field>
-        <!-- <Field label="Links">
-            <input name="links" class={inputClass} />
-        </Field> -->
-        <Field label="Thumbnail">
-            <image-preview-input>
-                <input
-                    name="thumbnail"
-                    type="file"
-                    accept="image/*"
-                    accept={imageTypes}
-                />
-            </image-preview-input>
-        </Field>
-        <Field label="Gallery images">
-            <image-preview-input>
-                <input
-                    name="images"
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    accept={imageTypes}
-                />
-            </image-preview-input>
-        </Field>
-        <!-- <Field label="Tags">
-            <input name="tags" class={inputClass} placeholder="react, tailwind, " />
-        </Field> -->
-        <Field label="Is this theme paid?" inline>
-            <input name="paid" type="checkbox" class={checkboxClass} />
-        </Field>
+        <InputField
+            name="authorName"
+            label="Your name"
+            placeholder="Sally Ride"
+            required
+        />
+        <InputField
+            name="authorEmail"
+            label="Your email"
+            type="email"
+            placeholder="me@website.com"
+            required
+        />
+        <InputField
+            label="Theme name"
+            name="themeName"
+            placeholder="My Awesome Theme"
+            required
+        />
+        <div class="w-fit self-start">
+            <Field label="Free">
+                <Switch name="free" checked data-free-switch />
+            </Field>
+        </div>
+        <InputField
+            label="Live demo URL"
+            name="liveDemoUrl"
+            placeholder="https://example.com/theme-demo"
+        />
+        <InputField
+            label="Public repo URL (required for free themes)"
+            name="repoUrl"
+            placeholder="https://github.com/me/my-awesome-theme"
+            data-repo-url
+        />
+        <div class="w-full">
+            <ImageInput name="previewImage" required />
+        </div>
+        <TextAreaField
+            label="Short description"
+            name="shortDescription"
+            placeholder="A short description of your theme, displayed on the theme list page"
+            required
+        />
         <Button type="submit" theme="primary">Submit</Button>
     </form>
 </Base>
 
 <script>
-    class ImagePreviewInput extends HTMLElement {
-        input = this.querySelector('input')
+    const freeSwitch =
+        document.querySelector<HTMLInputElement>('[data-free-switch]')
+    const repoUrl = document.querySelector<HTMLInputElement>('[data-repo-url]')
 
-        constructor() {
-            super()
-            this.input.addEventListener('input', this.handleFiles)
-        }
-
-        getPreview = () => {
-            let preview = this.querySelector<HTMLElement>('[data-preview]')
-            if (!preview) {
-                preview = document.createElement('div')
-                preview.className = 'flex flex-wrap gap-2 mb-2'
-                preview.dataset.preview = ''
-                this.insertBefore(preview, this.input)
-            }
-            return preview
-        }
-
-        handleFiles = () => {
-            const files = this.input.files
-            if (!files.length) return
-
-            const preview = this.getPreview()
-            preview.innerHTML = ''
-            for (const file of files) {
-                const img = document.createElement('img')
-                img.className = 'h-24'
-                img.src = URL.createObjectURL(file)
-                preview.append(img)
-            }
+    const updateRepoUrlRequired = () => {
+        if (freeSwitch.checked) {
+            repoUrl.required = true
+        } else {
+            repoUrl.required = false
         }
     }
-    customElements.define('image-preview-input', ImagePreviewInput)
+
+    updateRepoUrlRequired()
+    freeSwitch.addEventListener('change', updateRepoUrlRequired)
 </script>
