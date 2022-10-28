@@ -1,3 +1,4 @@
+const plugin = require('tailwindcss/plugin')
 const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
@@ -41,6 +42,12 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/line-clamp'),
-        require('@tailwindcss/forms')
+        require('@tailwindcss/forms'),
+
+        plugin(function childrenPlugin({ addVariant }) {
+            // apply a style to all direct children
+            // example usage: "children:border-l children:border-blue-500"
+            addVariant('children', '& > *')
+        })
     ]
 }
