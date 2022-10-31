@@ -14,7 +14,7 @@ export interface Props {
 >
     <div class="text-sm font-medium leading-none">
         {Astro.props.label}
-        {Astro.props.required && <span class="text-red-500">*</span>}
+        {Astro.props.required && <span class="text-red-500" aria-hidden="true">*</span>}
     </div>
 
     <slot />

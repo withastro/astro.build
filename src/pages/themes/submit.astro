@@ -59,9 +59,20 @@ import Base from '../../layouts/Base.astro'
             required
         />
         <div class="w-fit self-start">
-            <Field label="Free">
-                <Switch name="free" checked data-free-switch />
+            <Field label="Free or paid?">
+                <Switch name="free" data-free-switch on="Paid" off="Free" />
             </Field>
+        </div>
+        <div class="w-fit self-start">
+            <fieldset>
+                <legend>Is your theme free or paid?</legend>
+              
+                <input id="free" class="peer/free" type="radio" name="status" checked />
+                <label for="free" class="peer-checked/free:text-sky-500">Free</label>
+              
+                <input id="paid" class="peer/paid" type="radio" name="status" />
+                <label for="paid" class="peer-checked/paid:text-sky-500">Paid</label>
+            </fieldset>
         </div>
         <InputField
             label="Live demo URL"

@@ -1,10 +1,15 @@
 ---
-export type Props = Omit<astroHTML.JSX.InputHTMLAttributes, 'type' | 'class'>
+export interface Props extends Omit<astroHTML.JSX.InputHTMLAttributes, 'type' | 'class'> {
+    on: string
+    off: string
+}
+
+const { on, off, ...attrs } = Astro.props
 ---
 
-<div class="relative">
+<div class="relative flex justify-center gap-x-2">
     <input
-        {...Astro.props}
+        {...attrs}
         type="checkbox"
         class="appearance-none border-2 border-neutral-300 rounded-full w-12 h-6 peer transition cursor-pointer focus:outline-none focus:border-primary-400 hover:border-primary-400"
     />
@@ -12,4 +17,6 @@ export type Props = Omit<astroHTML.JSX.InputHTMLAttributes, 'type' | 'class'>
         class="pointer-events-none h-4 w-4 rounded-full bg-neutral-400 absolute top-1 left-1 inset-x-auto transition peer-checked:bg-primary-400 peer-checked:right-1 peer-checked:translate-x-6"
     >
     </div>
+    <span class="peer-checked:inline-block hidden">{on}</span>
+    <span class="peer-checked:hidden">{off}</span>
 </div>
