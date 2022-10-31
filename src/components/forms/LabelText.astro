@@ -1,0 +1,16 @@
+---
+export interface Props {
+    required?: boolean
+}
+---
+
+<span class="text-sm font-medium leading-none">
+    <slot />
+    {
+        Astro.props.required && (
+            <span class="text-red-500" aria-hidden="true">
+                *
+            </span>
+        )
+    }
+</span>
