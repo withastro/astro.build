@@ -5,6 +5,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp']
 
 export default function ImageInput(props: {
     name: string
+    label: string
     required?: boolean
 }) {
     const [hydrated, setHydrated] = useState(false)
@@ -14,12 +15,25 @@ export default function ImageInput(props: {
 
     if (!hydrated) {
         return (
-            <input
-                type="file"
-                name={props.name}
-                required={props.required}
-                accept={imageTypes.join(',')}
-            />
+            <label class="w-full">
+                <div class="text-sm font-medium leading-none">
+                    {props.label}{' '}
+                    {props.required && (
+                        <span
+                            class="text-red-500 text-base align-text-top"
+                            aria-hidden
+                        >
+                            *
+                        </span>
+                    )}
+                </div>
+                <input
+                    type="file"
+                    name={props.name}
+                    required={props.required}
+                    accept={imageTypes.join(',')}
+                />
+            </label>
         )
     }
 
@@ -57,6 +71,7 @@ export default function ImageInput(props: {
                 />
             )}
             <input
+                aria-label={props.label}
                 type="file"
                 name={props.name}
                 required={props.required}

@@ -51,7 +51,12 @@ import Base from '../../layouts/Base.astro'
                 Don’t fill this out if you’re human: <input name="bot-field" />
             </label>
         </p>
-        <ImageInput client:idle name="previewImage" required />
+        <ImageInput
+            client:idle
+            name="previewImage"
+            label="Preview image"
+            required
+        />
         <InputField
             name="authorName"
             label="Your name"
