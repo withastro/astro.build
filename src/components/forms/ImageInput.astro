@@ -7,18 +7,23 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'].join(
 ---
 
 <image-input class="contents">
-    <label>
-        <div data-label-text class="text-sm font-medium leading-none mb-1">
-            Preview image
-        </div>
-        <input {...Astro.props} type="file" accept={imageTypes} />
-    </label>
     <button
         type="button"
         data-dropzone
-        class="hidden w-full max-w-md aspect-[16/9] mx-auto bg-center bg-cover bg-neutral-100 border-2 border-dashed border-neutral-400 flex-col items-center justify-center gap-2 rounded-md text-neutral-600 transition hover:bg-neutral-200 focus:outline-none focus-visible:border-2 focus-visible:border-primary-400 group relative overflow-hidden"
+        class="hidden w-full max-w-md aspect-[16/9] mb-4 bg-center bg-cover bg-neutral-100 border-2 border-dashed border-neutral-400 flex-col items-center justify-center gap-2 rounded-md text-neutral-600 transition hover:bg-neutral-200 focus:outline-none focus-visible:border-2 focus-visible:border-primary-400 group relative overflow-hidden"
     >
-        <span class="text-2xl">Preview image</span>
+        <span class="text-2xl">
+            Preview image {
+                Astro.props.required && (
+                    <span
+                        class="text-red-500 text-base align-text-top"
+                        aria-hidden
+                    >
+                        *
+                    </span>
+                )
+            }
+        </span>
         <span>16:9, 906px wide or larger.</span>
         <img
             data-dropzone-image
@@ -26,6 +31,12 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'].join(
             class="w-full h-full absolute inset-0 object-cover group-hover:opacity-25 transition"
         />
     </button>
+    <label>
+        <div data-label-text class="text-sm font-medium leading-none mb-1">
+            Preview image
+        </div>
+        <input {...Astro.props} type="file" accept={imageTypes} />
+    </label>
 </image-input>
 
 <script>
@@ -39,7 +50,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'].join(
 
         constructor() {
             super()
-            this.input.hidden = true
+            // this.input.hidden = true
             this.input.addEventListener('input', this.handleFiles)
 
             this.labelText.classList.add('sr-only')
@@ -53,18 +64,19 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'].join(
             this.dropzoneImage.style.display = 'none'
         }
 
-        setDropzoneImage = (url) => {
-            this.dropzoneImage.src = url
-            this.dropzoneImage.style.display = 'block'
+        setDropzoneImage = (fileUrl) => {
+            if (fileUrl) {
+                this.dropzoneImage.src = fileUrl
+                this.dropzoneImage.style.display = 'block'
+            } else {
+                this.dropzoneImage.src = ''
+                this.dropzoneImage.style.display = 'none'
+            }
         }
 
         handleFiles = () => {
-            const files = this.input.files
-            if (!files.length) return
-
-            const file = files[0]
-            const url = URL.createObjectURL(file)
-            this.setDropzoneImage(url)
+            const file = this.input.files[0]
+            this.setDropzoneImage(file && URL.createObjectURL(file))
         }
 
         handleDragOver = (e) => {
@@ -74,7 +86,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'].join(
         handleDrop = (e) => {
             e.preventDefault()
             const files = e.dataTransfer.files
-            if (!files.length) return
+            if (!files?.length) return
 
             this.input.files = files
             this.handleFiles()
