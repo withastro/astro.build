@@ -79,10 +79,17 @@ import Base from '../../layouts/Base.astro'
                     <LabelText>Is your theme free or paid?</LabelText>
                 </legend>
                 <div class="flex items-center gap-3">
-                    <Checkbox name="freeOrPaid" value="free" checked>
+                    <Checkbox
+                        name="freeOrPaid"
+                        value="free"
+                        checked
+                        data-free-checkbox
+                    >
                         Free
                     </Checkbox>
-                    <Checkbox name="freeOrPaid" value="paid">Paid</Checkbox>
+                    <Checkbox name="freeOrPaid" value="paid" data-paid-checkbox>
+                        Paid
+                    </Checkbox>
                 </div>
             </fieldset>
         </div>
@@ -92,13 +99,14 @@ import Base from '../../layouts/Base.astro'
             type="url"
             placeholder="https://example.com/theme-demo"
         />
-        <InputField
-            label="Public repo URL (required for free themes)"
-            name="repoUrl"
-            type="url"
-            placeholder="https://github.com/me/my-awesome-theme"
-            data-repo-url
-        />
+        <div class="contents" data-repo-url>
+            <InputField
+                label="Public repo URL"
+                name="repoUrl"
+                type="url"
+                placeholder="https://github.com/me/my-awesome-theme"
+            />
+        </div>
         <TextAreaField
             label="Short description"
             name="shortDescription"
@@ -110,18 +118,30 @@ import Base from '../../layouts/Base.astro'
 </Base>
 
 <script>
-    const freeSwitch =
-        document.querySelector<HTMLInputElement>('[data-free-switch]')
-    const repoUrl = document.querySelector<HTMLInputElement>('[data-repo-url]')
+    const freeCheckbox = document.querySelector<HTMLInputElement>(
+        '[data-free-checkbox]'
+    )
+    const paidCheckbox = document.querySelector<HTMLInputElement>(
+        '[data-paid-checkbox]'
+    )
+    const repoUrl = document.querySelector<HTMLInputElement>(
+        '[data-repo-url] input'
+    )
+    const requiredLabelText = document.querySelector<HTMLInputElement>(
+        '[data-repo-url] [data-label-text]'
+    )
 
     const updateRepoUrlRequired = () => {
-        if (freeSwitch.checked) {
+        if (freeCheckbox.checked) {
             repoUrl.required = true
+            requiredLabelText.dataset.required = 'true'
         } else {
             repoUrl.required = false
+            delete requiredLabelText.dataset.required
         }
     }
 
     updateRepoUrlRequired()
-    freeSwitch.addEventListener('change', updateRepoUrlRequired)
+    freeCheckbox.addEventListener('input', updateRepoUrlRequired)
+    paidCheckbox.addEventListener('input', updateRepoUrlRequired)
 </script>

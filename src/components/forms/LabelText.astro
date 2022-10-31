@@ -4,13 +4,10 @@ export interface Props {
 }
 ---
 
-<span class="text-sm font-medium leading-none">
+<span
+    data-label-text
+    data-required={Astro.props.required}
+    class="text-sm font-medium leading-none data-[required]:after:content-['*'] after:text-red-500"
+>
     <slot />
-    {
-        Astro.props.required && (
-            <span class="text-red-500" aria-hidden="true">
-                *
-            </span>
-        )
-    }
 </span>
