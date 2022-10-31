@@ -1,7 +1,7 @@
 ---
 import Button from '../../components/Button.astro'
 import Checkbox from '../../components/forms/Checkbox.astro'
-import ImageInput from '../../components/forms/ImageInput.astro'
+import ImageInput from '../../components/forms/ImageInput'
 import InputField from '../../components/forms/InputField.astro'
 import LabelText from '../../components/forms/LabelText.astro'
 import TextAreaField from '../../components/forms/TextAreaField.astro'
@@ -51,9 +51,7 @@ import Base from '../../layouts/Base.astro'
                 Don’t fill this out if you’re human: <input name="bot-field" />
             </label>
         </p>
-        <div class="w-full">
-            <ImageInput name="previewImage" required />
-        </div>
+        <ImageInput client:idle name="previewImage" required />
         <InputField
             name="authorName"
             label="Your name"
