@@ -9,10 +9,9 @@ export type Props = {
 export default function LabelText(props: Props) {
     return (
         <span
-            data-label-text
             class={clsx(
                 'text-sm font-medium leading-none after:text-red-500',
-                props.required && "after:content-['*']"
+                props.required && "after:content-['_*']"
             )}
         >
             {props.children}
