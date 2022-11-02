@@ -36,8 +36,8 @@ export interface BlogPost {
     description: string
     publishDate: Date
     authors: Person[]
-    socialImage?: string;
-    coverImage?: string;
+    socialImage?: string
+    coverImage?: string
 }
 
 export interface Theme {
@@ -87,3 +87,6 @@ export interface Sponsor {
     initials: string
     href?: string
 }
+
+/** Overwrite the properties of one type with another */
+export type Merge<A extends object, B extends object> = Omit<A, keyof B> & B
