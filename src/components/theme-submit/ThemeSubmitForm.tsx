@@ -11,6 +11,7 @@ export default function ThemeSubmitForm() {
     const hydrated = typeof window !== 'undefined'
     return (
         <form
+            name="themeSubmit"
             method="post"
             class="max-w-screen-sm flex flex-col items-center gap-4 mx-auto my-8 px-4"
             action="/themes/submit/success"
