@@ -1,10 +1,10 @@
 import { useState } from 'preact/hooks'
 import useHydrated from '../../hooks/useHydrated.js'
 import Button from '../Button.js'
-import Checkbox from '../forms/Checkbox.js'
 import ImageInput from '../forms/ImageInput.js'
 import InputField from '../forms/InputField.js'
 import LabelText from '../forms/LabelText.js'
+import Radio from '../forms/Radio.js'
 import TextAreaField from '../forms/TextAreaField.js'
 
 export default function ThemeSubmitForm() {
@@ -51,22 +51,22 @@ export default function ThemeSubmitForm() {
                         <LabelText>Is your theme free or paid?</LabelText>
                     </legend>
                     <div class="flex items-center gap-3">
-                        <Checkbox
+                        <Radio
                             name="freeOrPaid"
                             value="free"
                             checked={paidStatus === 'free'}
                             onInput={() => setPaidStatus('free')}
                         >
                             Free
-                        </Checkbox>
-                        <Checkbox
+                        </Radio>
+                        <Radio
                             name="freeOrPaid"
                             value="paid"
                             checked={paidStatus === 'paid'}
                             onInput={() => setPaidStatus('paid')}
                         >
                             Paid
-                        </Checkbox>
+                        </Radio>
                     </div>
                 </fieldset>
             </div>
