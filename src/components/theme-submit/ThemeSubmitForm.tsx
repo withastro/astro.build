@@ -1,5 +1,4 @@
 import { useState } from 'preact/hooks'
-import useHydrated from '../../hooks/useHydrated.js'
 import Button from '../Button.js'
 import ImageInput from '../forms/ImageInput.js'
 import InputField from '../forms/InputField.js'
@@ -9,7 +8,7 @@ import TextAreaField from '../forms/TextAreaField.js'
 
 export default function ThemeSubmitForm() {
     const [paidStatus, setPaidStatus] = useState<'free' | 'paid'>('free')
-    const hydrated = useHydrated()
+    const hydrated = typeof window !== 'undefined'
     return (
         <form
             method="post"
