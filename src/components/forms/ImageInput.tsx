@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import { useEffect, useState } from 'preact/hooks'
+import { useState } from 'preact/hooks'
+import useHydrated from '../../hooks/useHydrated.js'
 
 const imageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp']
 
@@ -8,9 +9,7 @@ export default function ImageInput(props: {
     label: string
     required?: boolean
 }) {
-    const [hydrated, setHydrated] = useState(false)
-    useEffect(() => setHydrated(true), [])
-
+    const hydrated = useHydrated()
     const [previewUrl, setPreviewUrl] = useState<string>()
 
     if (!hydrated) {
