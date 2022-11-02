@@ -47,7 +47,8 @@ export default function ImageInput(props: {
                 'bg-neutral-100 bg-center bg-cover hover:bg-neutral-200',
                 'text-neutral-600',
                 'border-2 border-dashed border-neutral-400 focus-within:border-primary-400',
-                'rounded-md overflow-hidden'
+                'rounded-md overflow-hidden',
+                'cursor-pointer children:cursor-pointer'
             )}
         >
             <span class="text-2xl">
@@ -75,7 +76,7 @@ export default function ImageInput(props: {
                 name={props.name}
                 required={props.required}
                 accept={imageTypes.join(',')}
-                class="opacity-0 absolute inset-0 cursor-pointer"
+                class="opacity-0 absolute inset-0 w-full"
                 onInput={(event) => {
                     const file = event.currentTarget.files[0]
                     setPreviewUrl(file ? URL.createObjectURL(file) : undefined)
