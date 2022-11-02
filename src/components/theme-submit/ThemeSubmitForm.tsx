@@ -52,7 +52,7 @@ export default function ThemeSubmitForm() {
                     </legend>
                     <div class="flex items-center gap-3">
                         <Radio
-                            name="freeOrPaid"
+                            name="paidStatus"
                             value="free"
                             checked={paidStatus === 'free'}
                             onInput={() => setPaidStatus('free')}
@@ -60,7 +60,7 @@ export default function ThemeSubmitForm() {
                             Free
                         </Radio>
                         <Radio
-                            name="freeOrPaid"
+                            name="paidStatus"
                             value="paid"
                             checked={paidStatus === 'paid'}
                             onInput={() => setPaidStatus('paid')}
@@ -70,15 +70,16 @@ export default function ThemeSubmitForm() {
                     </div>
                 </fieldset>
             </div>
-            {hydrated ? (
+            {hydrated && paidStatus === 'free' && (
                 <InputField
                     label="Public repo URL"
                     name="repoUrl"
                     type="url"
                     placeholder="https://github.com/me/my-awesome-theme"
-                    required={paidStatus === 'free'}
+                    required
                 />
-            ) : (
+            )}
+            {!hydrated && (
                 <InputField
                     label="Public repo URL (required for free themes)"
                     name="repoUrl"
@@ -86,7 +87,7 @@ export default function ThemeSubmitForm() {
                     placeholder="https://github.com/me/my-awesome-theme"
                 />
             )}
-            {paidStatus === 'paid' && (
+            {hydrated && paidStatus === 'paid' && (
                 <InputField
                     label="Purchase URL"
                     name="purchaseUrl"
