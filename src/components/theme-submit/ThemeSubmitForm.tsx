@@ -12,11 +12,12 @@ export default function ThemeSubmitForm() {
     return (
         <form
             name="themeSubmit"
-            method="post"
-            class="max-w-screen-sm flex flex-col items-center gap-4 mx-auto my-8 px-4"
+            method="POST"
+            encType="multipart/form-data"
             action="/themes/submit/success"
             data-netlify="true"
             netlify-honeypot="bot-field"
+            class="max-w-screen-sm flex flex-col items-center gap-4 mx-auto my-8 px-4"
         >
             {/* https://docs.netlify.com/forms/spam-filters/#honeypot-field */}
             <p class="hidden">
