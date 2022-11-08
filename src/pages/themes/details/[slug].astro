@@ -1,0 +1,140 @@
+---
+import { GetStaticPathsResult } from 'astro'
+import clsx from 'clsx'
+import Button from '../../../components/Button.astro'
+import Base from '../../../layouts/Base.astro'
+
+export type Props = {
+    theme: {
+        title: string
+        description: string
+    }
+}
+
+export function getStaticPaths(): GetStaticPathsResult {
+    const props: Props = {
+        theme: {
+            title: 'Odyssey',
+            description:
+                'My awesome new theme, completely with 4 landing pages, 3 blog templates, about page, and contact us page.'
+        }
+    }
+
+    return [
+        {
+            params: { slug: 'placeholder' },
+            props
+        }
+    ]
+}
+
+const placeholderClass = clsx(`
+    bg-neutral-200
+    border-4 border-dashed border-neutral-400 rounded-lg
+    text-neutral-600 text-2xl font-medium
+    flex items-center justify-center text-center
+    aspect-[16/9]
+`)
+
+const detailSections = [
+    {
+        title: 'Hot and fresh, right off the grill!',
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem.`
+    },
+    {
+        title: 'Quick and easy, no assembly required!',
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem.
+        
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem.`
+    }
+]
+
+const links = [
+    { title: 'Twitter', url: 'https://twitter.com' },
+    { title: 'Facebook', url: 'https://facebook.com' },
+    { title: 'Instagram', url: 'https://instagram.com' }
+]
+
+const { theme } = Astro.props
+---
+
+<Base>
+    <div class="h-16">
+        <!-- header spacers, my one true love -->
+    </div>
+
+    <div
+        class="max-w-screen-xl mx-auto px-8 py-8 grid gap-8 items-start content-start md:grid-cols-2"
+    >
+        <section class="grid gap-4 grid-cols-2 md:sticky top-24">
+            <h2 class="sr-only">Image Gallery</h2>
+            <div class="col-span-2">
+                <div class={placeholderClass}>16:9</div>
+            </div>
+            <div class="hidden md:contents">
+                <div class={placeholderClass}>16:9</div>
+                <div class={placeholderClass}>16:9</div>
+                <div class={placeholderClass}>16:9</div>
+                <div class={placeholderClass}>16:9</div>
+                <div class={placeholderClass}>16:9</div>
+            </div>
+        </section>
+
+        <section
+            class="grid gap-10 content-start text-center justify-items-center md:justify-items-start md:text-left"
+        >
+            <div class="grid gap-4 justify-items-center md:justify-items-start">
+                <h1 class="text-4xl font-medium">{theme.title}</h1>
+
+                <p>{theme.description}</p>
+
+                <div class="flex flex-wrap gap-4">
+                    <Button>Buy for $50</Button>
+                    <Button>Live Demo</Button>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    {
+                        ['Tailwind', 'SolidJS', 'Vercel'].map((tag) => (
+                            <p class="border border-primary-500 text-primary-500 rounded leading-none p-1">
+                                {tag}
+                            </p>
+                        ))
+                    }
+                </div>
+            </div>
+
+            {
+                detailSections.map((section) => (
+                    <section>
+                        <h2 class="text-2xl font-medium mb-2">
+                            {section.title}
+                        </h2>
+                        {/* prettier-ignore */}
+                        <p class="text-neutral-600 whitespace-pre-line">{section.description}</p>
+                    </section>
+                ))
+            }
+
+            <section>
+                <h2 class="text-2xl font-medium mb-2">Links</h2>
+                <ul class="flex flex-wrap gap-3">
+                    {
+                        links.map((link) => (
+                            <li>
+                                <a
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-primary-500 hover:underline"
+                                >
+                                    <span aria-hidden>🔗</span> {link.title}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+        </section>
+    </div>
+</Base>
