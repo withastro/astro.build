@@ -1,6 +1,6 @@
 ---
 import { Sprite } from 'astro-icon'
-import BaseHead,{ Props as BaseHeadProps } from '../components/BaseHead.astro'
+import BaseHead, { Props as BaseHeadProps } from '../components/BaseHead.astro'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 
@@ -13,14 +13,14 @@ const { hero = false, class: className = '', ...head } = Astro.props as Props
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-neutral-50 text-neutral-900">
     <head>
         <BaseHead {...head} />
     </head>
 
     <body>
         <Sprite.Provider>
-            <div class="relative overflow-hidden min-h-screen flex flex-col">
+            <div class="min-h-screen flex flex-col">
                 <Header />
 
                 <main class:list={['flex-1', className]}>
@@ -32,9 +32,3 @@ const { hero = false, class: className = '', ...head } = Astro.props as Props
         </Sprite.Provider>
     </body>
 </html>
-
-<style>
-    body {
-        @apply bg-neutral-50 text-neutral-900;
-    }
-</style>
