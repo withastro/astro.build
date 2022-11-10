@@ -1,4 +1,4 @@
-import { useId, useState } from 'preact/hooks'
+import { useState } from 'preact/hooks'
 import Button from '../Button.js'
 import ImageInput from '../forms/ImageInput.js'
 import InputField from '../forms/InputField.js'
@@ -10,8 +10,6 @@ const hydrated = typeof window !== 'undefined'
 
 export default function ThemeSubmitForm() {
     const [paidStatus, setPaidStatus] = useState<'free' | 'paid'>('free')
-    const imageInputBaseId = useId()
-
     return (
         <form
             name="themeSubmit"
