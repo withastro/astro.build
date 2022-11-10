@@ -51,6 +51,7 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/line-clamp'),
+        require('@tailwindcss/container-queries'),
 
         plugin(function childrenPlugin({ addVariant }) {
             // apply a style to all direct children
