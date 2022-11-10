@@ -33,5 +33,15 @@ import Base from '../../layouts/Base.astro'
         </ul>
     </section>
 
-    <ThemeSubmitForm client:load />
+    <form
+        name="themeSubmit"
+        method="POST"
+        enctype="multipart/form-data"
+        action="/themes/submit/success"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="max-w-screen-sm flex flex-col items-center gap-4 mx-auto my-8 px-4"
+    >
+        <ThemeSubmitForm client:load />
+    </form>
 </Base>

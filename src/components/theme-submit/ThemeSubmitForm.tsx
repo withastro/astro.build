@@ -11,15 +11,7 @@ const hydrated = typeof window !== 'undefined'
 export default function ThemeSubmitForm() {
     const [paidStatus, setPaidStatus] = useState<'free' | 'paid'>('free')
     return (
-        <form
-            name="themeSubmit"
-            method="POST"
-            encType="multipart/form-data"
-            action="/themes/submit/success"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            class="max-w-screen-sm flex flex-col items-center gap-4 mx-auto my-8 px-4"
-        >
+        <>
             {/* https://docs.netlify.com/forms/spam-filters/#honeypot-field */}
             <p class="hidden">
                 <label>
@@ -134,6 +126,6 @@ export default function ThemeSubmitForm() {
             <Button type="submit" theme="primary">
                 Submit
             </Button>
-        </form>
+        </>
     )
 }
