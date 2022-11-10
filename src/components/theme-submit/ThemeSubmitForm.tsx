@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks'
+import { useId, useState } from 'preact/hooks'
 import Button from '../Button.js'
 import ImageInput from '../forms/ImageInput.js'
 import InputField from '../forms/InputField.js'
@@ -6,9 +6,12 @@ import LabelText from '../forms/LabelText.js'
 import Radio from '../forms/Radio.js'
 import TextAreaField from '../forms/TextAreaField.js'
 
+const hydrated = typeof window !== 'undefined'
+
 export default function ThemeSubmitForm() {
     const [paidStatus, setPaidStatus] = useState<'free' | 'paid'>('free')
-    const hydrated = typeof window !== 'undefined'
+    const imageInputBaseId = useId()
+
     return (
         <form
             name="themeSubmit"
@@ -26,7 +29,20 @@ export default function ThemeSubmitForm() {
                     <input name="bot-field" />
                 </label>
             </p>
-            <ImageInput name="previewImage" label="Preview image" required />
+            <ImageInput
+                name="mainPreviewImage"
+                label="Preview image"
+                required
+            />
+            <div class="grid md:grid-cols-2 w-full gap-4">
+                {Array.from({ length: 4 }, (_, i) => (
+                    <ImageInput
+                        key={i}
+                        name={'previewImage' + (i + 1)}
+                        label={'Additional image ' + (i + 1)}
+                    />
+                ))}
+            </div>
             <InputField
                 name="authorName"
                 label="Your name"
