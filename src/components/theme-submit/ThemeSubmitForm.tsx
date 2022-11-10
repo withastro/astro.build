@@ -11,7 +11,7 @@ const hydrated = typeof window !== 'undefined'
 export default function ThemeSubmitForm() {
     const [paidStatus, setPaidStatus] = useState<'free' | 'paid'>('free')
     return (
-        <>
+        <div class="flex flex-col gap-4 items-center">
             {/* https://docs.netlify.com/forms/spam-filters/#honeypot-field */}
             <p class="hidden">
                 <label>
@@ -126,6 +126,6 @@ export default function ThemeSubmitForm() {
             <Button type="submit" theme="primary">
                 Submit
             </Button>
-        </>
+        </div>
     )
 }
