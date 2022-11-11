@@ -1,0 +1,47 @@
+---
+import PageTitle from '../../components/PageTitle.astro'
+import ThemeSubmitForm from '../../components/theme-submit/ThemeSubmitForm.jsx'
+import Base from '../../layouts/Base.astro'
+---
+
+<Base title="Submit a theme">
+    <PageTitle>
+        <Fragment slot="title">Submit a theme</Fragment>
+        Thank you for sharing your themes with the Astro community! Choose to make
+        your theme free or paid. All payments go directly to you, we don't handle
+        the sale or take a cut.
+    </PageTitle>
+
+    <section class="max-w-screen-md mx-auto p-4">
+        <header class="my-4">
+            <h2 class="text-3xl">Best practices</h2>
+            <p class="text-neutral-600">
+                What we look for when reviewing submissions:
+            </p>
+        </header>
+        <ul class="my-4 whitespace-normal children:before:content-['✅_']">
+            <li>Your theme uses the latest release of Astro</li>
+            <li>
+                For free themes, source code for the theme is available in a
+                public repository
+            </li>
+            <li>All NPM dependencies used in the theme are public</li>
+            <li>
+                Theme preview image or screenshot included (see below for
+                details)
+            </li>
+        </ul>
+    </section>
+
+    <form
+        name="themeSubmit"
+        method="POST"
+        enctype="multipart/form-data"
+        action="/themes/submit/success"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="max-w-screen-sm mx-auto my-8 px-4"
+    >
+        <ThemeSubmitForm client:load />
+    </form>
+</Base>
