@@ -20,7 +20,7 @@ const authors = await Promise.all(Astro.props.content.authors.map(getAuthor))
             {title}
         </h1>
         <div class="my-4 space-y-2 text-neutral-500 text-lg">
-            <p class="flex gap-2 items-center justify-center">
+            <p class="flex gap-2 items-center justify-center flex-wrap">
                 <time datetime={publishDate}>
                     {publishDate}
                 </time>
