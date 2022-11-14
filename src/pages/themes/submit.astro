@@ -1,7 +1,15 @@
 ---
+import { Icon } from 'astro-icon';
 import PageTitle from '../../components/PageTitle.astro'
 import ThemeSubmitForm from '../../components/theme-submit/ThemeSubmitForm.jsx'
 import Base from '../../layouts/Base.astro'
+
+const bestPractices = [
+    'Your theme uses the latest release of Astro',
+    'For free themes, source code for the theme is available in a public repository',
+    'All NPM dependencies used in the theme are public',
+    'Theme preview image or screenshot included (see below for details)'
+]
 ---
 
 <Base title="Submit a theme">
@@ -12,24 +20,20 @@ import Base from '../../layouts/Base.astro'
         the sale or take a cut.
     </PageTitle>
 
-    <section class="max-w-screen-md mx-auto p-4">
-        <header class="my-4">
-            <h2 class="text-3xl">Best practices</h2>
-            <p class="text-neutral-600">
+    <section class="max-w-screen-sm mx-auto px-4 pb-4 pt-12 md:pt-16 lg:pt-20">
+        <header class="mb-4">
+            <h2 class="text-3xl font-semibold pb-2">Best practices</h2>
+            <p class="text-neutral-500">
                 What we look for when reviewing submissions:
             </p>
         </header>
-        <ul class="my-4 whitespace-normal children:before:content-['✅_']">
-            <li>Your theme uses the latest release of Astro</li>
-            <li>
-                For free themes, source code for the theme is available in a
-                public repository
-            </li>
-            <li>All NPM dependencies used in the theme are public</li>
-            <li>
-                Theme preview image or screenshot included (see below for
-                details)
-            </li>
+        <ul class="flex flex-col gap-2 mt-6 mb-4 whitespace-normal text-neutral-700 -ml-1">
+            {bestPractices.map((text) => (
+                <li class="flex items-center gap-1">
+                    <Icon name="heroicons-outline:check" size={28} class="text-green-500" aria-hidden="true" />
+                    {text}
+                </li>
+            ))}
         </ul>
     </section>
 
