@@ -55,19 +55,22 @@ export const handler: Handler = async (event) => {
         const themeFileName = `${kebabCase(themeData.themeName)}-${now}.json`
 
         await mkdir(dirname(repoFolder), { recursive: true })
-        await execa('git', ['clone', repoUrl, repoFolder])
-        await execa('cd', [repoFolder])
 
-        await execa('git', ['switch', '-c', branchName])
+        await execa('git', ['clone', repoUrl, repoFolder])
+        await execa('git', ['switch', '-c', branchName], { cwd: repoFolder })
 
         await writeFile(
             join(repoFolder, 'src/data/themes', themeFileName),
             JSON.stringify(themeData, undefined, 2)
         )
 
-        await execa('git', ['add', '.'])
-        await execa('git', ['commit', '-m', `Add theme ${themeData.themeName}`])
-        await execa('git', ['push', 'origin', branchName])
+        await execa('git', ['add', '.'], { cwd: repoFolder })
+        await execa(
+            'git',
+            ['commit', '-m', `Add theme ${themeData.themeName}`],
+            { cwd: repoFolder }
+        )
+        await execa('git', ['push', 'origin', branchName], { cwd: repoFolder })
 
         await octokit.pulls.create({
             owner: 'withastro',
