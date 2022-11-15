@@ -123,7 +123,11 @@ export const handler: BackgroundHandler = async (event) => {
             http,
             dir: repoFolder,
             remote: 'origin',
-            ref: branchName
+            ref: branchName,
+            onAuth: () => ({
+                username: 'astrobot',
+                password: process.env.GITHUB_TOKEN
+            })
         })
 
         console.log('create PR')
