@@ -76,6 +76,13 @@ export const handler: BackgroundHandler = async (event) => {
             depth: 1
         })
 
+        console.info('git.branch', branchName)
+        await git.branch({
+            fs,
+            dir: repoFolder,
+            ref: branchName
+        })
+
         console.info('git.checkout', branchName)
         await git.checkout({
             fs,
