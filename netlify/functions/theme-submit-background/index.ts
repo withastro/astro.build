@@ -110,6 +110,10 @@ export const handler: BackgroundHandler = async (event) => {
         await git.commit({
             fs,
             dir: repoFolder,
+            author: {
+                name: 'astrobot',
+                email: 'astrobot@astro.build'
+            },
             message: `Add theme ${themeData.themeName}`
         })
 
