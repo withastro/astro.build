@@ -50,7 +50,7 @@ export const handler: BackgroundHandler = async (event) => {
 
         const themeData = themeDataSchema.parse(body?.data)
 
-        console.info(
+        console.log(
             'Theme data:',
             inspect(themeData, { depth: Infinity, colors: true })
         )
@@ -58,15 +58,15 @@ export const handler: BackgroundHandler = async (event) => {
         const branchName = `theme-submissions/${kebabCase(
             themeData.themeName
         )}-${now}`
-        console.info('Branch name:', branchName)
+        console.log('Branch name:', branchName)
 
         const themeFileName = `${kebabCase(themeData.themeName)}-${now}.json`
-        console.info('Theme file name:', themeFileName)
+        console.log('Theme file name:', themeFileName)
 
-        console.info('mkdir', path.dirname(repoFolder))
+        console.log('mkdir', path.dirname(repoFolder))
         await fs.promises.mkdir(path.dirname(repoFolder), { recursive: true })
 
-        console.info('git.clone', repoUrl, repoFolder)
+        console.log('git.clone', repoUrl, repoFolder)
         await git.clone({
             fs,
             http,
@@ -76,21 +76,21 @@ export const handler: BackgroundHandler = async (event) => {
             depth: 1
         })
 
-        console.info('git.branch', branchName)
+        console.log('git.branch', branchName)
         await git.branch({
             fs,
             dir: repoFolder,
             ref: branchName
         })
 
-        console.info('git.checkout', branchName)
+        console.log('git.checkout', branchName)
         await git.checkout({
             fs,
             dir: repoFolder,
             ref: branchName
         })
 
-        console.info(
+        console.log(
             'write',
             path.join(repoFolder, 'src/data/themes', themeFileName)
         )
@@ -99,21 +99,21 @@ export const handler: BackgroundHandler = async (event) => {
             JSON.stringify(themeData, undefined, 2)
         )
 
-        console.info('git.add .')
+        console.log('git.add .')
         await git.add({
             fs,
             dir: repoFolder,
             filepath: '.'
         })
 
-        console.info('git.commit')
+        console.log('git.commit')
         await git.commit({
             fs,
             dir: repoFolder,
             message: `Add theme ${themeData.themeName}`
         })
 
-        console.info('git.push')
+        console.log('git.push')
         await git.push({
             fs,
             http,
@@ -122,7 +122,7 @@ export const handler: BackgroundHandler = async (event) => {
             ref: branchName
         })
 
-        console.info('create PR')
+        console.log('create PR')
         await octokit.pulls.create({
             owner: 'withastro',
             repo: 'astro.build',
@@ -143,7 +143,7 @@ export const handler: BackgroundHandler = async (event) => {
             base: 'main'
         })
 
-        console.info('done!')
+        console.log('done!')
     } finally {
         await fs.promises.rm(repoFolder, { recursive: true, force: true })
     }
