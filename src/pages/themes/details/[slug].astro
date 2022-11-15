@@ -64,8 +64,8 @@ const { theme } = Astro.props
                 <p class="pt-3 pb-6">{theme.description}</p>
 
                 <div class="flex flex-wrap gap-4">
-                    <Button>Buy for $50</Button>
-                    <Button theme="secondary">Live Demo</Button>
+                    <Button href={theme.buyUrl?.href || theme.repoUrl.href}>{theme.buyUrl?.href ? "Buy now" : "Get started" }</Button>
+                    <Button theme="secondary" href={theme.demoUrl.href}>Live Demo</Button>
                 </div>
 
                 {theme.tags?.length > 0 && (

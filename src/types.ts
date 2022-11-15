@@ -53,6 +53,7 @@ export interface Theme {
     repoUrl: Link
     demoUrl?: Link
     npmUrl?: Link
+    buyUrl?: Link
     links?: Link[]
     official?: boolean
     stars: number
