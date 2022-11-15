@@ -1,4 +1,4 @@
-import { ImageMetadata } from '@astrojs/image'
+import type { ImageMetadata } from '@astrojs/image/dist/vite-plugin-astro-image.js'
 
 /** Base Data Types */
 export interface Image {
@@ -40,18 +40,24 @@ export interface BlogPost {
     coverImage?: string
 }
 
+export type Markdown = string
+
 export interface Theme {
     slug: string
     title: string
     description: string
+    fullDescription?: Markdown
     image: ImageMetadata
+    images: ImageMetadata[]
     categories: string[]
     repoUrl: Link
     demoUrl?: Link
     npmUrl?: Link
+    links?: Link[]
     official?: boolean
     stars: number
     featured?: number
+    tags?: string[]
 }
 
 export interface Integration {

@@ -33,6 +33,10 @@ async function loadTheme(pathname) {
             src: data.image,
             alt: data.description
         },
+        images: (data.images || []).map((src) => ({
+            src,
+            alt: data.description,
+        })),
         repoUrl: {
             href: data.repoUrl,
             text: data.title
