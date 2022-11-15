@@ -1,17 +1,18 @@
 // @ts-check
 import { Handler } from '@netlify/functions'
 import { Octokit } from '@octokit/rest'
-import { execa } from 'execa'
-import { mkdir, rm, writeFile } from 'fs/promises'
+import fs from 'fs'
+import git from 'isomorphic-git'
+import http from 'isomorphic-git/http/node'
 import { kebabCase } from 'lodash-es'
 import { tmpdir } from 'os'
-import { dirname, join } from 'path'
+import path from 'path'
 import { literal, number, object, string, union } from 'zod'
 
 const now = Date.now()
 
 const repoUrl = 'https://github.com/withastro/astro.build.git'
-const repoFolder = join(tmpdir(), `astro.build-${now}`)
+const repoFolder = path.join(tmpdir(), `astro.build-${now}`)
 
 const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN
@@ -54,23 +55,56 @@ export const handler: Handler = async (event) => {
 
         const themeFileName = `${kebabCase(themeData.themeName)}-${now}.json`
 
-        await mkdir(dirname(repoFolder), { recursive: true })
+        await fs.promises.mkdir(path.dirname(repoFolder), { recursive: true })
 
-        await execa('git', ['clone', repoUrl, repoFolder])
-        await execa('git', ['switch', '-c', branchName], { cwd: repoFolder })
+        // await execa('git', ['clone', repoUrl, repoFolder])
+        await git.clone({
+            fs,
+            http,
+            url: repoUrl,
+            dir: repoFolder,
+            singleBranch: true,
+            depth: 1
+        })
 
-        await writeFile(
-            join(repoFolder, 'src/data/themes', themeFileName),
+        // await execa('git', ['switch', '-c', branchName], { cwd: repoFolder })
+        await git.checkout({
+            fs,
+            dir: repoFolder,
+            ref: branchName
+        })
+
+        await fs.promises.writeFile(
+            path.join(repoFolder, 'src/data/themes', themeFileName),
             JSON.stringify(themeData, undefined, 2)
         )
 
-        await execa('git', ['add', '.'], { cwd: repoFolder })
-        await execa(
-            'git',
-            ['commit', '-m', `Add theme ${themeData.themeName}`],
-            { cwd: repoFolder }
-        )
-        await execa('git', ['push', 'origin', branchName], { cwd: repoFolder })
+        // await execa('git', ['add', '.'], { cwd: repoFolder })
+        await git.add({
+            fs,
+            dir: repoFolder,
+            filepath: '.'
+        })
+
+        // await execa(
+        //     'git',
+        //     ['commit', '-m', `Add theme ${themeData.themeName}`],
+        //     { cwd: repoFolder }
+        // )
+        await git.commit({
+            fs,
+            dir: repoFolder,
+            message: `Add theme ${themeData.themeName}`
+        })
+
+        // await execa('git', ['push', 'origin', branchName], { cwd: repoFolder })
+        await git.push({
+            fs,
+            http,
+            dir: repoFolder,
+            remote: 'origin',
+            ref: branchName
+        })
 
         await octokit.pulls.create({
             owner: 'withastro',
@@ -96,6 +130,6 @@ export const handler: Handler = async (event) => {
             statusCode: 200
         }
     } finally {
-        await rm(repoFolder, { recursive: true, force: true })
+        await fs.promises.rm(repoFolder, { recursive: true, force: true })
     }
 }
