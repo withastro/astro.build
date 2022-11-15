@@ -103,7 +103,7 @@ export const handler: BackgroundHandler = async (event) => {
         await git.add({
             fs,
             dir: repoFolder,
-            filepath: '.'
+            filepath: path.join(repoFolder, 'src/data/themes', themeFileName)
         })
 
         console.log('git.commit')
