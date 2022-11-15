@@ -1,5 +1,21 @@
+// @ts-check
 import { Handler } from '@netlify/functions'
+import { Octokit } from '@octokit/rest'
+import { execa } from 'execa'
+import { rm, writeFile } from 'fs/promises'
+import { kebabCase } from 'lodash-es'
+import { tmpdir } from 'os'
+import { join } from 'path'
 import { literal, number, object, string, union } from 'zod'
+
+const now = Date.now()
+
+const repoUrl = 'https://github.com/withastro/astro.build.git'
+const repoFolder = join(tmpdir(), `astro.build-${now}`)
+
+const octokit = new Octokit({
+    auth: process.env.GITHUB_TOKEN
+})
 
 const formImageSchema = object({
     filename: string(),
@@ -24,28 +40,56 @@ const themeDataSchema = object({
     shortDescription: string()
 }).partial()
 
-export const handler: Handler = async (event, context) => {
-    // const themeJson = {
-    //     title: getTextField('themeName'),
-    //     description: getTextField('shortDescription'),
-    //     image: getTextField('mainPreviewImage'),
-    //     repoUrl: getTextField('repoUrl'),
-    //     purchaseUrl: getTextField('purchaseUrl'),
-    //     demoUrl: getTextField('liveDemoUrl'),
-    //     paidStatus: getTextField('paidStatus'),
-    //     authorName: getTextField('authorName'),
-    //     authorEmail: getTextField('authorEmail')
-    // }
+export const handler: Handler = async (event) => {
+    try {
+        const body = event.isBase64Encoded
+            ? JSON.parse(Buffer.from(event.body, 'base64').toString())
+            : JSON.parse(event.body)
 
-    let body
-    if (event.isBase64Encoded) {
-        body = Buffer.from(event.body, 'base64').toString()
-    } else {
-        body = event.body
-    }
-    console.log(event.body)
+        const themeData = themeDataSchema.parse(body?.data)
 
-    return {
-        statusCode: 200
+        const branchName = `theme-submissions/${kebabCase(
+            themeData.themeName
+        )}-${now}`
+
+        const themeFileName = `${kebabCase(themeData.themeName)}-${now}.json`
+
+        await execa('git', ['clone', repoUrl, repoFolder])
+        await execa('git', ['switch', '-c', branchName])
+
+        await writeFile(
+            join(repoFolder, 'src/data/themes', themeFileName),
+            JSON.stringify(themeData, undefined, 2)
+        )
+
+        await execa('git', ['add', '.'])
+        await execa('git', ['commit', '-m', `Add theme ${themeData.themeName}`])
+        await execa('git', ['push', 'origin', branchName])
+
+        await octokit.pulls.create({
+            owner: 'withastro',
+            repo: 'astro.build',
+            title: `THEME: ${themeData.themeName ?? ''}`,
+            body: [
+                `**Author**: ${themeData.authorName ?? 'N/A'}`,
+                `**Paid or Free**: ${themeData.paidStatus ?? 'N/A'}`,
+                `**Repo Link**: ${themeData.repoUrl ?? 'N/A'}`,
+                `**Purchase Link**: ${themeData.purchaseUrl ?? 'N/A'}`,
+                `**Live Demo Link**: ${themeData.liveDemoUrl ?? 'N/A'}`,
+                `**Preview Image**: ${
+                    themeData.mainPreviewImage?.url ?? 'N/A'
+                }`,
+                ``,
+                themeData.shortDescription ?? ''
+            ].join('\n'),
+            head: branchName,
+            base: 'main'
+        })
+
+        return {
+            statusCode: 200
+        }
+    } finally {
+        await rm(repoFolder, { recursive: true, force: true })
     }
 }
