@@ -7,6 +7,7 @@ import http from 'isomorphic-git/http/node'
 import { kebabCase } from 'lodash-es'
 import { tmpdir } from 'os'
 import path from 'path'
+import { inspect } from 'util'
 import { literal, number, object, string, union } from 'zod'
 
 const now = Date.now()
@@ -49,15 +50,23 @@ export const handler: BackgroundHandler = async (event) => {
 
         const themeData = themeDataSchema.parse(body?.data)
 
+        console.info(
+            'Theme data:',
+            inspect(themeData, { depth: Infinity, colors: true })
+        )
+
         const branchName = `theme-submissions/${kebabCase(
             themeData.themeName
         )}-${now}`
+        console.info('Branch name:', branchName)
 
         const themeFileName = `${kebabCase(themeData.themeName)}-${now}.json`
+        console.info('Theme file name:', themeFileName)
 
+        console.info('mkdir', path.dirname(repoFolder))
         await fs.promises.mkdir(path.dirname(repoFolder), { recursive: true })
 
-        // await execa('git', ['clone', repoUrl, repoFolder])
+        console.info('git.clone', repoUrl, repoFolder)
         await git.clone({
             fs,
             http,
@@ -67,37 +76,37 @@ export const handler: BackgroundHandler = async (event) => {
             depth: 1
         })
 
-        // await execa('git', ['switch', '-c', branchName], { cwd: repoFolder })
+        console.info('git.checkout', branchName)
         await git.checkout({
             fs,
             dir: repoFolder,
             ref: branchName
         })
 
+        console.info(
+            'write',
+            path.join(repoFolder, 'src/data/themes', themeFileName)
+        )
         await fs.promises.writeFile(
             path.join(repoFolder, 'src/data/themes', themeFileName),
             JSON.stringify(themeData, undefined, 2)
         )
 
-        // await execa('git', ['add', '.'], { cwd: repoFolder })
+        console.info('git.add .')
         await git.add({
             fs,
             dir: repoFolder,
             filepath: '.'
         })
 
-        // await execa(
-        //     'git',
-        //     ['commit', '-m', `Add theme ${themeData.themeName}`],
-        //     { cwd: repoFolder }
-        // )
+        console.info('git.commit')
         await git.commit({
             fs,
             dir: repoFolder,
             message: `Add theme ${themeData.themeName}`
         })
 
-        // await execa('git', ['push', 'origin', branchName], { cwd: repoFolder })
+        console.info('git.push')
         await git.push({
             fs,
             http,
@@ -106,6 +115,7 @@ export const handler: BackgroundHandler = async (event) => {
             ref: branchName
         })
 
+        console.info('create PR')
         await octokit.pulls.create({
             owner: 'withastro',
             repo: 'astro.build',
@@ -125,6 +135,8 @@ export const handler: BackgroundHandler = async (event) => {
             head: branchName,
             base: 'main'
         })
+
+        console.info('done!')
     } finally {
         await fs.promises.rm(repoFolder, { recursive: true, force: true })
     }
