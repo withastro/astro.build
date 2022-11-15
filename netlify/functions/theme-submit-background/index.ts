@@ -1,5 +1,5 @@
 // @ts-check
-import { Handler } from '@netlify/functions'
+import { BackgroundHandler } from '@netlify/functions'
 import { Octokit } from '@octokit/rest'
 import fs from 'fs'
 import git from 'isomorphic-git'
@@ -41,7 +41,7 @@ const themeDataSchema = object({
     shortDescription: string()
 }).partial()
 
-export const handler: Handler = async (event) => {
+export const handler: BackgroundHandler = async (event) => {
     try {
         const body = event.isBase64Encoded
             ? JSON.parse(Buffer.from(event.body, 'base64').toString())
@@ -125,10 +125,6 @@ export const handler: Handler = async (event) => {
             head: branchName,
             base: 'main'
         })
-
-        return {
-            statusCode: 200
-        }
     } finally {
         await fs.promises.rm(repoFolder, { recursive: true, force: true })
     }
