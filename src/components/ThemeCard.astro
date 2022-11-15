@@ -10,19 +10,17 @@ export interface Props {
 
 const { theme } = Astro.props as Props
 
-const linkHref = theme.demoUrl?.href || theme.repoUrl.href
+const link = {
+    href: !!theme.fullDescription ? `/themes/details/${theme.slug}` : theme.demoUrl?.href || theme.repoUrl.href,
+    target: !theme.fullDescription ? "_blank" : undefined
+}
 
 const stars = theme.stars
-const netlifyUrl =
-    stars !== undefined &&
-    `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`
 ---
 
 <article class:list={["flex flex-col bg-neutral-50", neonOutlineCardStyle]}>
     <a
-        href={linkHref}
-        target="_blank"
-        rel="noopener"
+        {...link}
         class="overflow-hidden rounded-t-lg shadow aspect-w-16 aspect-h-9"
     >
         <Picture
@@ -36,7 +34,7 @@ const netlifyUrl =
 
     <div class="flex items-center justify-between p-4">
         <h2 class="flex items-center gap-2 text-lg font-bold">
-            <a href={linkHref} class="subtle">{theme.title}</a>
+            <a {...link} class="subtle">{theme.title}</a>
             {theme.official && (
                 <Sprite
                     pack="heroicons-solid"
@@ -70,25 +68,6 @@ const netlifyUrl =
     <p class="flex-1 px-4 mb-4 text-sm line-clamp-3">
         {theme.description}
     </p>
-
-    <!-- <footer class="flex items-center px-4 pb-3">
-        {netlifyUrl && (
-            <a href={netlifyUrl} target="_blank" rel="noopener" aria-label={`Deploy ${theme.title} to Netlify`}>
-                <img
-                    src="https://www.netlify.com/img/deploy/button.svg"
-                    alt="Deploy to Netlify"
-                    title="Deploy to Netlify"
-                    width="146"
-                    height="32"
-                />
-            </a>
-        )}
-
-        <a href={theme.repoUrl.href} class="p-3 ml-auto -mr-3">
-            <span class="sr-only">View {theme.title} on GitHub</span>
-            <Sprite pack="bi" name="github" size={28} aria-hidden="true" />
-        </a>
-    </footer> -->
 </article>
 
 <style>
