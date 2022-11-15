@@ -69,19 +69,17 @@ const { theme } = Astro.props
                 </div>
 
                 {theme.tags?.length > 0 && (
-                    <div class="flex flex-wrap gap-2">
+                    <div class="mt-4 flex flex-wrap gap-4 md:gap-6">
                         {
                             theme.tags.map((tag) => (
-                                <p class="border border-primary-500 text-primary-500 rounded leading-none p-1 cursor-default">
-                                    {tag}
-                                </p>
+                                <Icon name={`badges/${tag}`} height={26} class="max-w-[128px]" />
                             ))
                         }
                     </div>
                 )}
             </div>
 
-            <section class="prose">
+            <section class="prose mt-6">
                 <Markdown content={theme.fullDescription} />
             </section>
 

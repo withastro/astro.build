@@ -42,6 +42,20 @@ export interface BlogPost {
 
 export type Markdown = string
 
+export type ThemeTag =
+    | "alpinejs"
+    | "lit"
+    | "markdown"
+    | "postcss"
+    | "preact"
+    | "react"
+    | "sass"
+    | "solidjs"
+    | "svelte"
+    | "tailwind"
+    | "typescript"
+    | "vue"
+
 export interface Theme {
     slug: string
     title: string
@@ -58,7 +72,7 @@ export interface Theme {
     official?: boolean
     stars: number
     featured?: number
-    tags?: string[]
+    tags?: ThemeTag[]
 }
 
 export interface Integration {
