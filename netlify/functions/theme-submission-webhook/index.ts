@@ -2,10 +2,10 @@
 import { Handler } from '@netlify/functions'
 import { Octokit } from '@octokit/rest'
 import { execa } from 'execa'
-import { rm, writeFile } from 'fs/promises'
+import { mkdir, rm, writeFile } from 'fs/promises'
 import { kebabCase } from 'lodash-es'
 import { tmpdir } from 'os'
-import { join } from 'path'
+import { dirname, join } from 'path'
 import { literal, number, object, string, union } from 'zod'
 
 const now = Date.now()
@@ -53,6 +53,8 @@ export const handler: Handler = async (event) => {
         )}-${now}`
 
         const themeFileName = `${kebabCase(themeData.themeName)}-${now}.json`
+
+        await mkdir(dirname(repoFolder), { recursive: true })
 
         await execa('git', ['clone', repoUrl, repoFolder])
         await execa('git', ['switch', '-c', branchName])
