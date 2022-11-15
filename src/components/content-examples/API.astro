@@ -3,21 +3,21 @@ import CodeHero from "../CodeHero.astro";
 ---
 
 <CodeHero filename="src/pages/wow.astro" lang="astro" code={`---
-const response = await fetch('https://owen-wilson-wow-api.herokuapp.com/wows/random');
+const response = await fetch('https://owen-wilson-wow-api.onrender.com/wows/random');
 const data = await response.json();
 ---
 <h1>Using an API</h1>
 <p>
   With native fetch built-in, Astro makes it easy
   to work with data from any API.
-  Powered by https://owen-wilson-wow-api.herokuapp.com.
+  Powered by https://owen-wilson-wow-api.onrender.com.
 </p>
 <audio controls>
-  <source src={data.audio} type="audio/mpeg">
+  <source src={data[0].audio} type="audio/mpeg">
 </audio>
 `}>
   <div class="font-black">Using an API</div>
-  <p class="text-xs mt-3 mb-2">With native fetch built-in, Astro makes it easy to work with data from any API. Powered by <a class="text-sky-300" target="_blank" href="https://owen-wilson-wow-api.herokuapp.com">https://owen-wilson-wow-api.herokuapp.com</a></p>
+  <p class="text-xs mt-3 mb-2">With native fetch built-in, Astro makes it easy to work with data from any API. Powered by <a class="text-sky-300" target="_blank" href="https://owen-wilson-wow-api.onrender.com">https://owen-wilson-wow-api.onrender.com</a></p>
   <audio controls class="origin-top-left scale-[.6]">
     <source src="https://assets.ctfassets.net/bs8ntwkklfua/2et2yTzkvbv0Le61jdwd3/41dbcc6fb05f49d1449a8c921843f695/Little_Fockers_Wow_2.mp3" type="audio/mpeg">
   </audio>
