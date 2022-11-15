@@ -55,8 +55,9 @@ export const handler: Handler = async (event) => {
         const themeFileName = `${kebabCase(themeData.themeName)}-${now}.json`
 
         await mkdir(dirname(repoFolder), { recursive: true })
-
         await execa('git', ['clone', repoUrl, repoFolder])
+        await execa('cd', [repoFolder])
+
         await execa('git', ['switch', '-c', branchName])
 
         await writeFile(
