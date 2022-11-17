@@ -1,4 +1,5 @@
 import type { ImageMetadata } from '@astrojs/image/dist/vite-plugin-astro-image.js'
+import { z } from 'zod'
 
 /** Base Data Types */
 export interface Image {
@@ -6,21 +7,49 @@ export interface Image {
     alt: string
 }
 
+export const ImageMetadataSchema = z.object({
+    src: z.string(),
+    height: z.number(),
+    width: z.number(),
+    format: z.string()
+})
+
+export const ImageSchema = z.object({
+    src: z.string().or(ImageMetadataSchema),
+    alt: z.string()
+})
+
 export interface Link {
     href: string
     text: string
 }
+
+export const LinkSchema = z.object({
+    href: z.string(),
+    text: z.string()
+})
 
 export interface IconLink extends Link {
     pack: string
     name: string
 }
 
+export const IconLinkSchema = LinkSchema.extend({
+    pack: z.string(),
+    name: z.string()
+})
+
 export interface Person {
     image: Image
     name: string
     twitter?: string
 }
+
+export const PersonSchema = z.object({
+    image: ImageSchema,
+    name: z.string(),
+    twitter: z.string().optional()
+})
 
 export interface Site {
     title: string
@@ -30,15 +59,33 @@ export interface Site {
     socialLinks: IconLink[]
 }
 
+export const SiteSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    image: ImageMetadataSchema,
+    twitterHandle: z.string(),
+    socialLinks: z.array(IconLinkSchema)
+})
+
 export interface BlogPost {
     url: string
     title: string
     description: string
     publishDate: Date
     authors: Person[]
-    socialImage?: string
-    coverImage?: string
+    socialImage?: string | ImageMetadata
+    coverImage?: string | ImageMetadata
 }
+
+export const BlogPostSchema = z.object({
+    url: z.string(),
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.date(),
+    authors: z.array(PersonSchema),
+    socialImage: z.string().or(ImageMetadataSchema).optional(),
+    coverImage: z.string().or(ImageMetadataSchema).optional()
+})
 
 export type Markdown = string
 
@@ -56,6 +103,21 @@ export type ThemeTag =
     | "typescript"
     | "vue"
 
+export const ThemeTagSchema = z.enum([
+    'alpinejs',
+    'lit',
+    'markdown',
+    'postcss',
+    'preact',
+    'react',
+    'sass',
+    'solidjs',
+    'svelte',
+    'tailwind',
+    'typescript',
+    'vue'
+])
+
 export interface Theme {
     slug: string
     title: string
@@ -64,16 +126,35 @@ export interface Theme {
     image: ImageMetadata
     images: ImageMetadata[]
     categories: string[]
-    repoUrl: Link
+    repoUrl?: Link
     demoUrl?: Link
     npmUrl?: Link
     buyUrl?: Link
     links?: Link[]
     official?: boolean
-    stars: number
+    stars?: number
     featured?: number
     tags?: ThemeTag[]
 }
+
+export const ThemeSchema = z.object({
+    slug: z.string(),
+    title: z.string(),
+    description: z.string(),
+    fullDescription: z.string().optional(),
+    image: ImageMetadataSchema,
+    images: z.array(ImageMetadataSchema).optional(),
+    categories: z.array(z.string()),
+    repoUrl: LinkSchema.optional(),
+    demoUrl: LinkSchema.optional(),
+    npmUrl: LinkSchema.optional(),
+    buyUrls: LinkSchema.optional(),
+    links: z.array(LinkSchema).optional(),
+    official: z.boolean().optional(),
+    stars: z.number().min(0).optional(),
+    featured: z.number().min(1).optional(),
+    tags: z.array(ThemeTagSchema).optional()
+})
 
 export interface Integration {
     slug: string
@@ -84,13 +165,27 @@ export interface Integration {
         alt: string
     }
     categories: string[]
-    repoUrl: Link
+    repoUrl?: Link
     npmUrl: Link
     url?: Link
     official?: Boolean
     downloads: number
     featured?: number
 }
+
+export const IntegrationSchema = z.object({
+    slug: z.string(),
+    title: z.string(),
+    description: z.string().optional(),
+    image: ImageSchema.optional(),
+    categories: z.array(z.string()),
+    repoUrl: LinkSchema.optional(),
+    npmUrl: LinkSchema,
+    url: LinkSchema.optional(),
+    official: z.boolean().optional(),
+    downloads: z.number().min(0),
+    featured: z.number().min(1).optional()
+})
 
 export interface ShowcaseSite {
     slug: string

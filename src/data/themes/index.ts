@@ -1,6 +1,7 @@
 import type { ImageMetadata } from '@astrojs/image/dist/vite-plugin-astro-image.js'
+import { z } from 'zod'
 import data from '../themes.json'
-import type { Link, Theme } from '../../types.js'
+import { Link, Theme, ThemeSchema, ThemeTag } from '../../types.js'
 
 interface ThemeData {
     title: string
@@ -41,11 +42,12 @@ async function loadThemes(): Promise<Theme[]> {
             
             const images = theme.images || []
 
-            return {
+            return ThemeSchema.passthrough().parse({
                 ...theme,
+                tags: theme.tags as ThemeTag[],
                 image: await resolveImage(theme.image.src),
                 images: await Promise.all(images.map(({ src }) => resolveImage(src)))
-            }
+            }) as Theme
         })
     )
 }
