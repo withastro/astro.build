@@ -8,7 +8,9 @@ import { kebabCase } from 'lodash-es'
 import { tmpdir } from 'os'
 import path from 'path'
 import { inspect } from 'util'
-import { literal, number, object, string, union } from 'zod'
+import { literal, number, object, string, union, z } from 'zod'
+import { ThemeData } from '../../../src/data/themes/index.js'
+import { Image, Link } from '../../../src/types.js'
 
 const now = Date.now()
 
@@ -28,21 +30,25 @@ const formImageSchema = object({
 
 const themeDataSchema = object({
     mainPreviewImage: formImageSchema,
-    previewImage1: union([formImageSchema, literal('')]),
-    previewImage2: union([formImageSchema, literal('')]),
-    previewImage3: union([formImageSchema, literal('')]),
-    previewImage4: union([formImageSchema, literal('')]),
+    previewImage1: union([formImageSchema, literal('')]).optional(),
+    previewImage2: union([formImageSchema, literal('')]).optional(),
+    previewImage3: union([formImageSchema, literal('')]).optional(),
+    previewImage4: union([formImageSchema, literal('')]).optional(),
     authorName: string(),
     authorEmail: string(),
     themeName: string(),
     paidStatus: string(),
-    repoUrl: string(),
-    purchaseUrl: string(),
-    liveDemoUrl: string(),
+    repoUrl: string().optional(),
+    purchaseUrl: string().optional(),
+    liveDemoUrl: string().optional(),
     shortDescription: string()
-}).partial()
+})
 
 export const handler: BackgroundHandler = async (event) => {
+    if (!event.body) {
+        throw new Error('No body')
+    }
+
     try {
         const body = event.isBase64Encoded
             ? JSON.parse(Buffer.from(event.body, 'base64').toString())
@@ -94,9 +100,12 @@ export const handler: BackgroundHandler = async (event) => {
             'write',
             path.join(repoFolder, 'src/data/themes', themeFileName)
         )
+
+        const localThemeData: ThemeData = getLocalThemeData(themeData)
+
         await fs.promises.writeFile(
             path.join(repoFolder, 'src/data/themes', themeFileName),
-            JSON.stringify(themeData, undefined, 2)
+            JSON.stringify(localThemeData, undefined, 2)
         )
 
         console.log('git.add .')
@@ -155,4 +164,71 @@ export const handler: BackgroundHandler = async (event) => {
     } finally {
         await fs.promises.rm(repoFolder, { recursive: true, force: true })
     }
+}
+
+function getLocalThemeData(
+    themeData: z.infer<typeof themeDataSchema>
+): ThemeData {
+    const themeImages: Image[] = []
+    if (themeData.previewImage1) {
+        themeImages.push({
+            src: themeData.previewImage1.url,
+            alt: ''
+        })
+    }
+    if (themeData.previewImage2) {
+        themeImages.push({
+            src: themeData.previewImage2.url,
+            alt: ''
+        })
+    }
+    if (themeData.previewImage3) {
+        themeImages.push({
+            src: themeData.previewImage3.url,
+            alt: ''
+        })
+    }
+    if (themeData.previewImage4) {
+        themeImages.push({
+            src: themeData.previewImage4.url,
+            alt: ''
+        })
+    }
+
+    const links: Link[] = []
+    if (themeData.purchaseUrl) {
+        links.push({
+            href: themeData.purchaseUrl,
+            text: 'Purchase'
+        })
+    }
+
+    const localThemeData: ThemeData = {
+        title: themeData.themeName,
+        description: themeData.shortDescription,
+        fullDescription: '',
+        image: {
+            src: themeData.mainPreviewImage.url,
+            alt: `Preview for ${themeData.themeName}`
+        },
+        images: themeImages,
+        categories: [],
+        slug: ''
+    }
+
+    if (themeData.repoUrl) {
+        localThemeData.repoUrl = {
+            href: themeData.repoUrl,
+            text: 'View Repo'
+        }
+    }
+
+    if (themeData.liveDemoUrl) {
+        localThemeData.demoUrl = {
+            href: themeData.liveDemoUrl,
+            text: 'View Demo'
+        }
+    }
+
+    return localThemeData
 }

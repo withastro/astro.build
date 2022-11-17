@@ -1,18 +1,23 @@
 import type { ImageMetadata } from '@astrojs/image'
-import data from '../themes.json'
 import type { Link, Theme } from '../../types.js'
+import data from '../themes.json'
 
-interface ThemeData {
+export interface ThemeData {
     title: string
     description: string
-    image: { src: string; alt: string }
-    repoUrl: Link
+    fullDescription?: string
+    image: { src: string; alt: string; }
+    images?: { src: string; alt: string; }[]
+    repoUrl?: Link
     npmUrl?: Link
     demoUrl?: Link
+    links?: Link[]
     categories: string[]
     featured?: number
     slug: string
-    stars: number
+    stars?: number
+    tags?: string[]
+    PREVIEW?: true
 }
 
 const allImages: { [key: string]: () => Promise<{ default: ImageMetadata }> } =
