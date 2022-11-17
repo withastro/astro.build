@@ -1,4 +1,4 @@
-import { Person } from '../../types.js'
+import { Person, PersonSchema } from '../../types.js'
 
 interface Author {
     name: string
@@ -31,13 +31,13 @@ export async function getAuthor(id: string): Promise<Person | undefined> {
 
     const imageMod = (await allImages[mod.default.image]()) as { default: any }
 
-    const author = {
+    const author = PersonSchema.parse({
         ...mod.default,
         image: {
             src: imageMod.default,
             alt: mod.default.name
         }
-    }
+    }) as Person
 
     cache.set(id, author)
     return author

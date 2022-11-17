@@ -1,32 +1,27 @@
 ---
+import { Picture } from '@astrojs/image/components'
 import { GetStaticPathsResult } from 'astro'
 import { Icon } from 'astro-icon'
+import { Markdown } from 'astro-remote'
 import clsx from 'clsx'
 import Button from '../../../components/Button.jsx'
 import Base from '../../../layouts/Base.astro'
+import { getThemes } from '../../../data/themes/index.js'
+import type { Theme } from '../../../types.js'
 
-export type Props = {
-    theme: {
-        title: string
-        description: string
-    }
+export interface Props {
+    theme: Theme
 }
 
-export function getStaticPaths(): GetStaticPathsResult {
-    const props: Props = {
-        theme: {
-            title: 'Odyssey',
-            description:
-                'My awesome new theme, completely with 4 landing pages, 3 blog templates, about page, and contact us page.'
-        }
-    }
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+    const themes = await getThemes()
 
-    return [
-        {
-            params: { slug: 'placeholder' },
-            props
-        }
-    ]
+    return themes
+        .filter(theme => !!theme.fullDescription)
+        .map((theme) => ({
+            params: { slug: theme.slug },
+            props: { theme }
+        }))
 }
 
 const placeholderClass = clsx(`
@@ -36,25 +31,6 @@ const placeholderClass = clsx(`
     flex items-center justify-center text-center
     aspect-[16/9]
 `)
-
-const detailSections = [
-    {
-        title: 'Hot and fresh, right off the grill!',
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem.`
-    },
-    {
-        title: 'Quick and easy, no assembly required!',
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem.
-        
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem. Sed euismod, nisl nec aliquam aliquam, nisl nunc aliquam massa, nec aliquam nisl nunc vel lorem.`
-    }
-]
-
-const links = [
-    { title: 'Twitter', url: 'https://twitter.com' },
-    { title: 'Facebook', url: 'https://facebook.com' },
-    { title: 'Instagram', url: 'https://instagram.com' }
-]
 
 const { theme } = Astro.props
 ---
@@ -70,14 +46,12 @@ const { theme } = Astro.props
         <section class="grid gap-4 grid-cols-2 md:sticky top-24">
             <h2 class="sr-only">Image Gallery</h2>
             <div class="col-span-2">
-                <div class={placeholderClass}>16:9</div>
+                <Picture src={theme.image} widths={[576, 800, 1176]} alt={theme.title} class="rounded-lg shadow-md" />
             </div>
             <div class="hidden md:contents">
-                <div class={placeholderClass}>16:9</div>
-                <div class={placeholderClass}>16:9</div>
-                <div class={placeholderClass}>16:9</div>
-                <div class={placeholderClass}>16:9</div>
-                <div class={placeholderClass}>16:9</div>
+                {theme.images.map((image) => (
+                    <Picture src={theme.image} widths={[414, 576, 768]} alt={theme.title} class="rounded-md shadow-md" />
+                ))}
             </div>
         </section>
 
@@ -90,52 +64,46 @@ const { theme } = Astro.props
                 <p class="pt-3 pb-6">{theme.description}</p>
 
                 <div class="flex flex-wrap gap-4">
-                    <Button>Buy for $50</Button>
-                    <Button>Live Demo</Button>
+                    <Button href={theme.buyUrl?.href || theme.repoUrl.href}>{theme.buyUrl?.href ? "Buy now" : "Get started" }</Button>
+                    <Button theme="secondary" href={theme.demoUrl.href}>Live Demo</Button>
                 </div>
 
-                <div class="flex flex-wrap gap-2">
-                    {
-                        ['Tailwind', 'SolidJS', 'Vercel'].map((tag) => (
-                            <p class="border border-primary-500 text-primary-500 rounded leading-none p-1 cursor-default">
-                                {tag}
-                            </p>
-                        ))
-                    }
-                </div>
+                {theme.tags?.length > 0 && (
+                    <div class="mt-4 flex flex-wrap gap-4 md:gap-6">
+                        {
+                            theme.tags.map((tag) => (
+                                <Icon name={`badges/${tag}`} height={26} class="max-w-[128px]" />
+                            ))
+                        }
+                    </div>
+                )}
             </div>
 
-            {
-                detailSections.map((section) => (
-                    <section>
-                        <h2 class="text-2xl font-medium mb-2">
-                            {section.title}
-                        </h2>
-                        {/* prettier-ignore */}
-                        <p class="text-neutral-600 whitespace-pre-line">{section.description}</p>
-                    </section>
-                ))
-            }
-
-            <section>
-                <h2 class="text-2xl font-medium mb-2">Links</h2>
-                <ul class="flex flex-wrap gap-3 md:gap-4">
-                    {
-                        links.map((link) => (
-                            <li>
-                                <a
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="text-primary-500 hover:underline flex items-center gap-0.5"
-                                >
-                                    <Icon name="heroicons-outline:link" size={18} aria-hidden="" class="opacity-50" /> {link.title}
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
+            <section class="prose mt-6">
+                <Markdown content={theme.fullDescription} />
             </section>
+
+            {theme.links?.length > 0 && (
+                <section>
+                    <h2 class="text-2xl font-medium mb-2">Links</h2>
+                    <ul class="flex flex-wrap gap-3 md:gap-4">
+                        {
+                            theme.links.map(({href, text}) => (
+                                <li>
+                                    <a
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-primary-500 hover:underline flex items-center gap-0.5"
+                                    >
+                                        <Icon name="heroicons-outline:link" size={18} aria-hidden="" class="opacity-50" /> {text}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </section>
+            )}
         </section>
     </div>
 </Base>
