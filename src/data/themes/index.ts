@@ -42,6 +42,17 @@ async function loadThemes(): Promise<Theme[]> {
             
             const images = theme.images || []
 
+            const test = ThemeSchema.passthrough().safeParse({
+                ...theme,
+                tags: theme.tags as ThemeTag[],
+                image: await resolveImage(theme.image.src),
+                images: await Promise.all(images.map(({ src }) => resolveImage(src)))
+            })
+
+            if (!test.success) {
+                console.log(theme.slug, test)
+            }
+
             return ThemeSchema.passthrough().parse({
                 ...theme,
                 tags: theme.tags as ThemeTag[],

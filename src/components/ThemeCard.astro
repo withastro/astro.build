@@ -2,6 +2,7 @@
 import { Picture } from '@astrojs/image/components'
 import { Sprite } from 'astro-icon'
 import type { Theme } from '../types.js'
+import Button from './Button.jsx'
 import { neonOutlineCardStyle } from './styles.js'
 
 export interface Props {
@@ -62,6 +63,10 @@ const stars = theme.stars
                 />
                 <span>{stars}</span>
             </a>
+        )}
+
+        {theme.buyUrl && (
+            <Button size="sm" href={theme.buyUrl.href}>{theme.buyUrl.text}</Button>
         )}
     </div>
 
