@@ -4,7 +4,7 @@ import glob from 'fast-glob'
 import { parseRepoUrl, orgApi } from './github.mjs'
 
 async function withStars(theme) {
-    if (theme.official) {
+    if (theme.official || !theme.repoUrl) {
         return theme
     }
 
@@ -33,7 +33,11 @@ async function loadTheme(pathname) {
             src: data.image,
             alt: data.description
         },
-        repoUrl: {
+        images: (data.images || []).map((src) => ({
+            src,
+            alt: data.description,
+        })),
+        repoUrl: data.repoUrl && {
             href: data.repoUrl,
             text: data.title
         },
@@ -44,6 +48,10 @@ async function loadTheme(pathname) {
         demoUrl: data.demoUrl && {
             href: data.demoUrl,
             text: data.title
+        },
+        buyUrl: data.buyUrl && {
+            href: data.buyUrl,
+            text: 'Buy now'
         }
     }
 }
