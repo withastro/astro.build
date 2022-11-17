@@ -1,36 +1,22 @@
-import type { ImageMetadata } from '@astrojs/image/dist/vite-plugin-astro-image.js'
-import { z } from 'zod'
+import type { ImageMetadata } from '@astrojs/image'
 import data from '../themes.json'
-import { Link, Theme, ThemeSchema, ThemeTag } from '../../types.js'
+import type { Link, Theme } from '../../types.js'
 
 interface ThemeData {
     title: string
     description: string
-    fullDescription?: string
-    image: { src: string; alt: string; }
-    images?: { src: string; alt: string; }[]
+    image: { src: string; alt: string }
     repoUrl: Link
     npmUrl?: Link
     demoUrl?: Link
-    links?: Link[]
     categories: string[]
     featured?: number
     slug: string
     stars: number
-    tags?: string[]
 }
 
-const allImages = import.meta.glob('./images/*.{png,jpg,jpeg}') as { [key: string]: () => Promise<{ default: ImageMetadata }> }
-
-async function resolveImage(src: string) {
-    if (!(src in allImages)) {
-        throw new Error(`[loadThemes] "${src}" image not found! Does it exist in /src/data/themes/images?`)
-    }
-
-    const mod = await allImages[src]()
-
-    return mod.default
-}
+const allImages: { [key: string]: () => Promise<{ default: ImageMetadata }> } =
+    import.meta.glob('./images/*.{png,jpg,jpeg}')
 
 let allThemes: Promise<Theme[]>
 async function loadThemes(): Promise<Theme[]> {
@@ -40,30 +26,17 @@ async function loadThemes(): Promise<Theme[]> {
                 console.log(`[themes] Image for "${theme.title}" not found! Provided: "${theme.image.src}", is there a typo?`)
             }
             
-            const images = theme.images || []
+            const mod = await allImages[theme.image.src]()
 
-            const test = ThemeSchema.passthrough().safeParse({
+            return {
                 ...theme,
-                tags: theme.tags as ThemeTag[],
-                image: await resolveImage(theme.image.src),
-                images: await Promise.all(images.map(({ src }) => resolveImage(src)))
-            })
-
-            if (!test.success) {
-                console.log(theme.slug, test)
+                image: mod.default
             }
-
-            return ThemeSchema.passthrough().parse({
-                ...theme,
-                tags: theme.tags as ThemeTag[],
-                image: await resolveImage(theme.image.src),
-                images: await Promise.all(images.map(({ src }) => resolveImage(src)))
-            }) as Theme
         })
     )
 }
 
-export async function getThemes() {
+async function getThemes() {
     if (!allThemes) {
         allThemes = loadThemes()
     }
