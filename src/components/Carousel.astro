@@ -35,7 +35,7 @@ const { each } = Astro.props
         }
     }
 
-    function safeParse(maybeNumber: unknown) {
+    function safeParse(maybeNumber: any) {
         try {
             return parseInt(maybeNumber)
         } catch {
