@@ -49,12 +49,12 @@ const { each } = Astro.props
         connectedCallback() {
             this.selected = 0
 
-            this.listElem?.addEventListener('scroll', throttle((event) => {
+            this.listElem?.addEventListener('scroll', throttle(() => {
                 this.selected = this.calcSelected()
             }))
 
             this.navBubbles?.forEach((bubble, i) =>
-                bubble.addEventListener('click', () => this.scrollIntoView(i))
+                bubble.addEventListener('click', () => this.scrollToIndex(i))
             )
         }
 
@@ -97,7 +97,7 @@ const { each } = Astro.props
             return this.itemElems.findIndex((elem) => Math.abs(elem.getBoundingClientRect().left - carouselRect.left) < (carouselRect.width / 2))
         }
 
-        scrollIntoView(index: number) {
+        scrollToIndex(index: number) {
             this.itemElems[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' })
         }
     }
