@@ -8,6 +8,7 @@ import Button from '../../../components/Button.jsx'
 import Base from '../../../layouts/Base.astro'
 import { getThemes } from '../../../data/themes/index.js'
 import type { Theme } from '../../../types.js'
+import Carousel from '../../../components/Carousel.astro'
 
 export interface Props {
     theme: Theme
@@ -36,22 +37,31 @@ const { theme } = Astro.props
 ---
 
 <Base>
-    <div class="h-16">
+    <div class="pt-20 md:pt-24">
         <!-- header spacers, my one true love -->
     </div>
 
     <div
-        class="max-w-screen-xl mx-auto px-8 py-12 md:py-16 lg:py-20 grid gap-8 items-start content-start md:grid-cols-2 md:gap-16"
+        class="max-w-screen-xl mx-auto px-8 pt-4 md:pt-16 pb-12 md:pb-16 lg:py-20 grid gap-8 items-start content-start md:grid-cols-2 md:gap-16"
     >
-        <section class="grid gap-4 grid-cols-2 md:sticky top-24">
+        <section class="grid gap-4 md:grid-cols-2 md:sticky top-24">
             <h2 class="sr-only">Image Gallery</h2>
-            <div class="col-span-2">
-                <Picture src={theme.image} widths={[576, 800, 1176]} alt={theme.title} class="rounded-lg shadow-md" />
-            </div>
-            <div class="hidden md:contents">
-                {theme.images.map((image) => (
+            <div class=" hidden md:contents">
+                <div class="col-span-2">
                     <Picture src={theme.image} widths={[414, 576, 768]} alt={theme.title} class="rounded-md shadow-md" />
+                </div>
+                {theme.images.map((image) => (
+                    <Picture src={image} widths={[414, 576, 768]} alt={theme.title} class="rounded-md shadow-md" />
                 ))}
+            </div>
+            <div class="md:hidden -mx-8">
+                <Carousel each={[theme.image, ...theme.images]}>
+                    {(image) => (
+                        <div class="px-4">
+                            <Picture src={image} widths={[414, 576, 768]} alt={theme.title} class="rounded-md shadow-md" />
+                        </div>
+                    )}
+                </Carousel>
             </div>
         </section>
 
