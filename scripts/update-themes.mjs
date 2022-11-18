@@ -66,9 +66,9 @@ function themeComparer(a, b) {
     /** TEMP: sorting paid themes to the top since they won't have stars */
     // return b.stars = a.stars
 
-    return a.buyUrl && !b.buyUrl
+    return a.fullDescription && !b.fullDescription
         ? -1
-        : !a.buyUrl && b.buyUrl
+        : !a.fullDescription && b.fullDescription
             ? 1
             : b.stars - a.stars
 }
@@ -86,3 +86,4 @@ async function main() {
 }
 
 main()
+
