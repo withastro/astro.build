@@ -63,7 +63,14 @@ async function loadThemes() {
 }
 
 function themeComparer(a, b) {
-    return b.stars - a.stars
+    /** TEMP: sorting paid themes to the top since they won't have stars */
+    // return b.stars = a.stars
+
+    return a.buyUrl && !b.buyUrl
+        ? -1
+        : !a.buyUrl && b.buyUrl
+            ? 1
+            : b.stars - a.stars
 }
 
 async function main() {
