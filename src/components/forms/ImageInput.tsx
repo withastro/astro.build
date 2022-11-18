@@ -69,7 +69,7 @@ export default function ImageInput(props: {
                         />
                     </>
                 ) : (
-                    <label>
+                    <label class="flex flex-col items-center gap-4">
                         <div class="text-sm font-medium leading-none">
                             {props.label}{' '}
                             {props.required && (
@@ -85,6 +85,7 @@ export default function ImageInput(props: {
                             type="file"
                             name={props.name}
                             required={props.required}
+                            class="max-w-[220px]"
                             id={props.inputId}
                             accept={imageTypes.join(',')}
                         />
