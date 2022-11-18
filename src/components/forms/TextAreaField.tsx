@@ -7,6 +7,8 @@ export type Props = {
     type?: string
     placeholder?: string
     required?: boolean
+    rows?: number
+    cols?: number
 }
 
 export default function TextAreaField({ label, ...props }: Props) {

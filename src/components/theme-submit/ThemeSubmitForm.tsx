@@ -1,3 +1,4 @@
+import '@cloudfour/elastic-textarea'
 import { useState } from 'preact/hooks'
 import Button from '../Button.js'
 import ImageInput from '../forms/ImageInput.js'
@@ -117,15 +118,32 @@ export default function ThemeSubmitForm() {
                 type="url"
                 placeholder="https://example.com/theme-demo"
             />
-            <TextAreaField
+            <InputField
                 label="Short description"
                 name="shortDescription"
                 placeholder="A short description of your theme, displayed on the theme list page"
                 required
             />
+            <elastic-textarea class="contents">
+                <TextAreaField
+                    label="Full description"
+                    name="fullDescription"
+                    placeholder="A longer description of your theme, displayed on the theme details page. **Supports Markdown!**"
+                    required
+                    rows={3}
+                />
+            </elastic-textarea>
             <Button type="submit" theme="primary">
                 Submit
             </Button>
         </div>
     )
+}
+
+declare module 'preact' {
+    namespace JSX {
+        interface IntrinsicElements {
+            'elastic-textarea': JSX.HTMLAttributes<HTMLElement>
+        }
+    }
 }
