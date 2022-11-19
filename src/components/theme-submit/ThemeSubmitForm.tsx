@@ -1,10 +1,12 @@
 import '@cloudfour/elastic-textarea'
 import { useState } from 'preact/hooks'
 import Button from '../Button.js'
+import Field from '../forms/Field.js'
 import ImageInput from '../forms/ImageInput.js'
 import InputField from '../forms/InputField.js'
 import LabelText from '../forms/LabelText.js'
 import Radio from '../forms/Radio.js'
+import TagInput from '../forms/TagInput.js'
 import TextAreaField from '../forms/TextAreaField.js'
 
 const hydrated = typeof window !== 'undefined'
@@ -133,6 +135,9 @@ export default function ThemeSubmitForm() {
                     rows={3}
                 />
             </elastic-textarea>
+            <Field label="Tags">
+                <TagInput name="tags" />
+            </Field>
             <Button type="submit" theme="primary">
                 Submit
             </Button>
