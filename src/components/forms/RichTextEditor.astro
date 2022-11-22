@@ -1,0 +1,39 @@
+---
+import Field from './Field.astro'
+import 'trix/dist/trix.css'
+
+export interface Props {
+    id: string
+    name: string
+	label: string
+	required?: boolean
+}
+
+const { id, name, label, required } = Astro.props
+---
+
+<Field label={label} required={required}>
+	<input id={id} type="hidden" name={name} value="<div>Editor content goes <strong>here<br></strong><br></div><h2>Testing</h2><div><br></div>">
+	<trix-editor input={id} class="w-full prose"></trix-editor>
+</Field>
+
+<script>
+	import Trix from "trix"
+
+	document.addEventListener("trix-before-initialize", () => {
+		Trix.config.blockAttributes.heading1.tagName = 'h2'
+		console.log(Trix.config)
+	})
+
+	document.addEventListener("trix-file-accept", function(event) {
+		event.preventDefault();
+	});
+</script>
+
+<style is:global>
+	.trix-button-group.trix-button-group--file-tools,
+    .trix-button--icon-decrease-nesting-level,
+    .trix-button--icon-increase-nesting-level {
+		display:none;
+	}
+</style>
