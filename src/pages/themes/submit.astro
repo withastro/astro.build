@@ -1,7 +1,11 @@
 ---
 import { Icon } from 'astro-icon';
+import Button from '../../components/Button.astro'
 import PageTitle from '../../components/PageTitle.astro'
-import ThemeSubmitForm from '../../components/theme-submit/ThemeSubmitForm.jsx'
+import InputField from '../../components/forms/InputField.astro'
+import ImageInput from '../../components/forms/ImageInput.jsx'
+import TextAreaField from '../../components/forms/TextAreaField.astro'
+import PaidFreeInput from '../../components/theme-submit/PaidFreeInput.jsx'
 import Base from '../../layouts/Base.astro'
 
 const bestPractices = [
@@ -46,6 +50,74 @@ const bestPractices = [
         netlify-honeypot="bot-field"
         class="max-w-screen-sm mx-auto my-8 px-4"
     >
-        <ThemeSubmitForm client:load />
+        <!--<ThemeSubmitForm client:load />-->
+        <div class="flex flex-col gap-4 items-center">
+            {/* https://docs.netlify.com/forms/spam-filters/#honeypot-field */}
+            <p class="hidden">
+                <label>
+                    Don&apos;t fill this out if you&apos;re human:{' '}
+                    <input name="bot-field" />
+                </label>
+            </p>
+
+            <ImageInput
+                name="mainPreviewImage"
+                label="Preview image"
+                required
+                client:idle
+            />
+
+            <div class="grid md:grid-cols-2 w-full gap-4">
+                {Array.from({ length: 4 }, (_, i) => (
+                    <ImageInput
+                        name={'previewImage' + (i + 1)}
+                        label={'Additional image ' + (i + 1)}
+                        client:idle
+                    />
+                ))}
+            </div>
+
+            <InputField
+                name="authorName"
+                label="Your name"
+                placeholder="Sally Ride"
+                required
+            />
+
+            <InputField
+                name="authorEmail"
+                label="Your email"
+                type="email"
+                placeholder="me@website.com"
+                required
+            />
+
+            <InputField
+                label="Theme name"
+                name="themeName"
+                placeholder="My Awesome Theme"
+                required
+            />
+
+            <PaidFreeInput client:idle />
+
+            <InputField
+                label="Live demo URL"
+                name="liveDemoUrl"
+                type="url"
+                placeholder="https://example.com/theme-demo"
+            />
+
+            <TextAreaField
+                label="Short description"
+                name="shortDescription"
+                placeholder="A short description of your theme, displayed on the theme list page"
+                required
+            />
+
+            <Button type="submit" theme="primary">
+                Submit
+            </Button>
+        </div>
     </form>
 </Base>
