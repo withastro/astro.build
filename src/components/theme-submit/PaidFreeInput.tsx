@@ -12,7 +12,7 @@ export default function PaidFreeInput() {
             <div class="w-fit self-start">
                 <fieldset>
                     <legend>
-                        <LabelText>Is your theme free or paid?</LabelText>
+                        <LabelText required>Is your theme free or paid?</LabelText>
                     </legend>
                     <div class="flex items-center gap-3">
                         <Radio

@@ -14,7 +14,7 @@ export default function Field(props: Props) {
         <label
             class={clsx(
                 'w-full flex',
-                props.inline ? 'items-center gap-2' : 'flex-col gap-1'
+                props.inline ? 'items-center gap-2' : 'flex-col gap-2'
             )}
         >
             <LabelText required={props.required}>{props.label}</LabelText>

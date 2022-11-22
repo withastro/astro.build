@@ -10,7 +10,7 @@ export interface Props {
 const { label, inline, required } = Astro.props
 ---
 
-<label class:list={['w-full flex', inline ? 'items-center gap-2' : 'flex-col gap-1']}>
+<label class:list={['w-full flex', inline ? 'items-center gap-2' : 'flex-col gap-2']}>
     <LabelText required={required}>{label}</LabelText>
     <slot />
 </label>
