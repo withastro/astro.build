@@ -4,12 +4,15 @@ interface Props {
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     href?: string
     alt?: string
+    type?: 'button' | 'submit' | 'reset'
 }
-const { theme = 'primary', size = 'md', href, alt } = Astro.props as Props
+const { theme = 'primary', size = 'md', href, alt, type } = Astro.props as Props
 const Component = href ? 'a' : 'button'
 ---
 
-<Component class:list={['btn', `btn--${size}`, `btn--${theme}`]} {href} {alt}><slot /></Component>
+<Component class:list={['btn', `btn--${size}`, `btn--${theme}`]} href={href} alt={alt} type={type}>
+    <slot />
+</Component>
 
 <style>
     .btn {
