@@ -5,11 +5,10 @@ import { Icon } from 'astro-icon'
 import { Markdown } from 'astro-remote'
 import clsx from 'clsx'
 import Button from '../../../components/Button.astro'
-import Base from '../../../layouts/Base.astro'
+import Layout from '../../../layouts/Base.astro'
 import { getThemes } from '../../../data/themes/index.js'
 import type { Theme } from '../../../types.js'
 import Carousel from '../../../components/Carousel.astro'
-import Pill from '../../../components/Pill.astro'
 
 export interface Props {
     theme: Theme
@@ -37,7 +36,7 @@ const placeholderClass = clsx(`
 const { theme } = Astro.props
 ---
 
-<Base>
+<Layout image={theme.image} title={theme.title} description={theme.description}>
     <div class="pt-20 md:pt-12">
         <!-- header spacers, my one true love -->
     </div>
@@ -92,7 +91,7 @@ const { theme } = Astro.props
                 <Markdown content={theme.fullDescription} />
             </section>
 
-            {theme.keywords.length > 0 && (
+            {theme.keywords?.length > 0 && (
                 <section>
                     <h2 class="text-lg font-medium mb-2">Features</h2>
                     <ul class="flex flex-wrap gap-2">
