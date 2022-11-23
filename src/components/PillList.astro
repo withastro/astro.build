@@ -1,4 +1,5 @@
 ---
+import Pill from './Pill.astro'
 import type { Link } from '../types.js'
 
 export interface Props {
@@ -25,31 +26,9 @@ const {
     <ul class="flex flex-row flex-wrap gap-2">
         {links.map((link) => (
             <li>
-                <a
-                    rel={prefetch ? 'prefetch' : undefined}
-                    class:list={['pill', { 'pill--hollow': current !== link }]}
-                    href={link.href}
-                    aria-current={current === link ? 'page' : undefined}
-                >
-                    {link.text}
-                </a>
+                <Pill {...link} current={current === link} prefetch={prefetch} />
             </li>
         ))}
     </ul>
 </section>
 
-<style>
-    a.pill {
-        @apply inline-flex items-center px-4 py-0.5 border-2 border-transparent text-sm font-bold tracking-wide rounded-full shadow-sm text-neutral-50 bg-primary-900 hover:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-800 transition-colors duration-150 ease-in-out;
-    }
-
-    a.pill--hollow {
-        @apply bg-transparent text-primary-900 border-primary-900  hover:bg-primary-900 hover:border-primary-900 focus:ring-primary-900 hover:text-neutral-50;
-    }
-
-    @media (forced-colors: active) {
-        a[aria-current='page'] {
-            color: Highlight;
-        }
-    }
-</style>

@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon'
 import { Markdown } from 'astro-remote'
 import clsx from 'clsx'
 import Button from '../../../components/Button.astro'
-import Base from '../../../layouts/Base.astro'
+import Layout from '../../../layouts/Base.astro'
 import { getThemes } from '../../../data/themes/index.js'
 import type { Theme } from '../../../types.js'
 import Carousel from '../../../components/Carousel.astro'
@@ -36,15 +36,15 @@ const placeholderClass = clsx(`
 const { theme } = Astro.props
 ---
 
-<Base>
+<Layout image={theme.image} title={theme.title} description={theme.description}>
     <div class="pt-20 md:pt-12">
         <!-- header spacers, my one true love -->
     </div>
 
     <div
-        class="max-w-screen-xl mx-auto px-8 pt-4 md:pt-16 pb-12 md:pb-16 lg:py-20 grid gap-8 items-start content-start md:grid-cols-2 md:gap-16"
+        class="max-w-screen-xl mx-auto px-4 md:px-8 pt-4 md:pt-16 pb-12 md:pb-16 lg:py-20 grid gap-4 items-start content-start md:grid-cols-2 md:gap-16"
     >
-        <section class="flex flex-col gap-4 md:sticky top-32">
+        <section class="flex flex-col gap-4 md:sticky md:top-32">
             <h2 class="sr-only">Image Gallery</h2>
             <div class=" hidden md:contents">
                 <Picture src={theme.image} widths={[576, 1152]} sizes="50vw" alt={theme.title} class="rounded-md shadow-md" />
@@ -52,7 +52,7 @@ const { theme } = Astro.props
                     <Picture src={image} widths={[576, 1152]} sizes="50vw" alt={theme.title} class="rounded-md shadow-md" />
                 ))}
             </div>
-            <div class="md:hidden -mx-8">
+            <div class="md:hidden -mx-4 md:-mx-8">
                 <Carousel each={[theme.image, ...theme.images]}>
                     {(image) => (
                         <div class="px-4">
@@ -64,36 +64,49 @@ const { theme } = Astro.props
         </section>
 
         <section
-            class="grid gap-10 content-start text-center justify-items-center md:justify-items-start md:text-left md:sticky top-32"
+            class="grid gap-10 content-start text-center justify-items-center md:justify-items-start md:text-left md:sticky md:top-32"
         >
             <div class="grid gap-4 justify-items-center md:justify-items-start">
-                <h1 class="text-4xl font-medium">{theme.title}</h1>
+                <h1 class="text-3xl md:text-4xl font-medium">{theme.title}</h1>
 
-                <p class="pt-3 pb-6">{theme.description}</p>
+                <p class="pt-1 md:pt-3">{theme.description}</p>
+
+                {theme.tags?.length > 0 && (
+                    <div class="py-2 md:py-4 flex flex-wrap gap-4 md:gap-6">
+                        {
+                            theme.tags.map((tag) => (
+                                <Icon name={`badges/${tag}`} height={32} class="max-w-[128px]" />
+                            ))
+                        }
+                    </div>
+                )}
 
                 <div class="flex flex-wrap gap-4">
                     <Button href={theme.buyUrl?.href || theme.repoUrl.href}>{theme.buyUrl?.href ? "Buy now" : "Get started" }</Button>
                     <Button theme="secondary" href={theme.demoUrl.href}>Live Demo</Button>
                 </div>
-
-                {theme.tags?.length > 0 && (
-                    <div class="mt-4 flex flex-wrap gap-4 md:gap-6">
-                        {
-                            theme.tags.map((tag) => (
-                                <Icon name={`badges/${tag}`} height={26} class="max-w-[128px]" />
-                            ))
-                        }
-                    </div>
-                )}
             </div>
 
-            <section class="prose mt-6">
+            <section class="prose md:mt-4">
                 <Markdown content={theme.fullDescription} />
             </section>
 
+            {theme.keywords?.length > 0 && (
+                <section>
+                    <h2 class="text-lg font-medium mb-2">Features</h2>
+                    <ul class="flex flex-wrap gap-2">
+                        {theme.keywords.map((keyword) => (
+                            <li class="text-sm font-bold bg-neutral-100 rounded px-3 py-1">
+                                {keyword}
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
+
             {theme.links?.length > 0 && (
                 <section>
-                    <h2 class="text-2xl font-medium mb-2">Links</h2>
+                    <h2 class="text-lg font-medium mb-2">Links</h2>
                     <ul class="flex flex-wrap gap-3 md:gap-4">
                         {
                             theme.links.map(({href, text}) => (
