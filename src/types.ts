@@ -149,7 +149,7 @@ export const ThemeSchema = z.object({
     repoUrl: LinkSchema.optional(),
     demoUrl: LinkSchema.optional(),
     npmUrl: LinkSchema.optional(),
-    buyUrls: LinkSchema.optional(),
+    buyUrl: LinkSchema.optional(),
     links: z.array(LinkSchema).optional(),
     official: z.boolean().optional(),
     stars: z.number().min(0).optional(),
