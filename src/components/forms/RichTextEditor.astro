@@ -12,8 +12,8 @@ export interface Props {
 const { id, name, label, required } = Astro.props
 ---
 
-<Field label={label} required={required}>
-	<input id={id} type="hidden" name={name} value="<div>Editor content goes <strong>here<br></strong><br></div><h2>Testing</h2><div><br></div>">
+<Field as='div' label={label} required={required}>
+	<input id={id} type="hidden" name={name}>
 	<trix-editor input={id} class="w-full prose"></trix-editor>
 </Field>
 
@@ -29,6 +29,13 @@ const { id, name, label, required } = Astro.props
 		event.preventDefault();
 	});
 </script>
+
+<style>
+    .prose :global(:is(h1, h2, h3, h4)) {
+        margin-top: calc(1rem + 0.75em);
+        margin-bottom: calc(0.25rem + 0.5em);
+    }
+</style>
 
 <style is:global>
 	.trix-button-group.trix-button-group--file-tools,
