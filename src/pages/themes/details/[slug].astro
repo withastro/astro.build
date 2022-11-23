@@ -37,14 +37,14 @@ const { theme } = Astro.props
 ---
 
 <Base>
-    <div class="pt-20 md:pt-24">
+    <div class="pt-20 md:pt-12">
         <!-- header spacers, my one true love -->
     </div>
 
     <div
         class="max-w-screen-xl mx-auto px-8 pt-4 md:pt-16 pb-12 md:pb-16 lg:py-20 grid gap-8 items-start content-start md:grid-cols-2 md:gap-16"
     >
-        <section class="flex flex-col gap-4 md:sticky top-24">
+        <section class="flex flex-col gap-4 md:sticky top-32">
             <h2 class="sr-only">Image Gallery</h2>
             <div class=" hidden md:contents">
                 <Picture src={theme.image} widths={[576, 1152]} sizes="50vw" alt={theme.title} class="rounded-md shadow-md" />
@@ -64,7 +64,7 @@ const { theme } = Astro.props
         </section>
 
         <section
-            class="grid gap-10 content-start text-center justify-items-center md:justify-items-start md:text-left md:sticky top-24"
+            class="grid gap-10 content-start text-center justify-items-center md:justify-items-start md:text-left md:sticky top-32"
         >
             <div class="grid gap-4 justify-items-center md:justify-items-start">
                 <h1 class="text-4xl font-medium">{theme.title}</h1>
