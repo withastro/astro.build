@@ -9,6 +9,7 @@ import Base from '../../../layouts/Base.astro'
 import { getThemes } from '../../../data/themes/index.js'
 import type { Theme } from '../../../types.js'
 import Carousel from '../../../components/Carousel.astro'
+import Pill from '../../../components/Pill.astro'
 
 export interface Props {
     theme: Theme
@@ -77,7 +78,7 @@ const { theme } = Astro.props
                 </div>
 
                 {theme.tags?.length > 0 && (
-                    <div class="mt-4 flex flex-wrap gap-4 md:gap-6">
+                    <div class="pt-4 flex flex-wrap gap-4 md:gap-6">
                         {
                             theme.tags.map((tag) => (
                                 <Icon name={`badges/${tag}`} height={26} class="max-w-[128px]" />
@@ -87,13 +88,26 @@ const { theme } = Astro.props
                 )}
             </div>
 
-            <section class="prose mt-6">
+            <section class="prose mt-4">
                 <Markdown content={theme.fullDescription} />
             </section>
 
+            {theme.keywords.length > 0 && (
+                <section>
+                    <h2 class="text-lg font-medium mb-2">Features</h2>
+                    <ul class="flex flex-wrap gap-2">
+                        {theme.keywords.map((keyword) => (
+                            <li class="text-sm font-bold bg-neutral-100 rounded px-3 py-1">
+                                {keyword}
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
+
             {theme.links?.length > 0 && (
                 <section>
-                    <h2 class="text-2xl font-medium mb-2">Links</h2>
+                    <h2 class="text-lg font-medium mb-2">Links</h2>
                     <ul class="flex flex-wrap gap-3 md:gap-4">
                         {
                             theme.links.map(({href, text}) => (
