@@ -42,32 +42,14 @@ const stars = theme.stars
             )}
         </h2>
 
-        <!--{stars > 0 && (
-            <a
-                href={theme.repoUrl.href}
-                target="_blank"
-                class="flex items-center col-start-2 text-sm subtle gap-x-1"
-            >
-                <span class="sr-only">View the source code</span>
-                <Sprite
-                    pack="fa-regular"
-                    name="star"
-                    size="1.25em"
-                    aria-label="GitHub stars count"
-                />
-                <span>{stars}</span>
-            </a>
-        )}
-
-        {theme.buyUrl && (
-            <Button size="sm" href={theme.buyUrl.href}>{theme.buyUrl.text}</Button>
-        )}-->
-
-        {theme.buyUrl ? (
-            <p class="bg-primary-800 text-neutral-50 font-bold text-xs px-3 py-1 rounded-full tracking-wide">PREMIUM</p>
-        ) : (
-            <p class="bg-primary-100 text-primary-800 font-bold text-xs px-3 py-1 rounded-full tracking-wide">FREE</p>
-        )}
+        <p class:list={[
+            'font-bold text-xs px-3 py-1 rounded-full tracking-wide',
+            theme.buyUrl?.href
+                ? 'bg-primary-800 text-neutral-50'
+                : 'bg-primary-100 text-primary-800'
+        ]}>
+            {theme.buyUrl?.href ? 'PREMIUM' : 'FREE'}
+        </p>
     </div>
 
     <p class="flex-1 px-4 mb-4 text-sm line-clamp-3">
