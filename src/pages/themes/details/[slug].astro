@@ -82,7 +82,9 @@ const { theme } = Astro.props
 
                 <div class="flex flex-wrap gap-4">
                     <Button href={theme.buyUrl?.href || theme.repoUrl.href}>{theme.buyUrl?.href ? "Buy now" : "Get started" }</Button>
-                    <Button theme="secondary" href={theme.demoUrl.href}>Live Demo</Button>
+                    {theme.demoUrl?.href && (
+                        <Button theme="secondary" href={theme.demoUrl.href}>Live Demo</Button>
+                    )}
                 </div>
             </div>
 
