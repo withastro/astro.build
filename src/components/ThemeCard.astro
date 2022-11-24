@@ -11,17 +11,12 @@ export interface Props {
 
 const { theme } = Astro.props as Props
 
-const link = {
-    href: !!theme.fullDescription ? `/themes/details/${theme.slug}` : theme.demoUrl?.href || theme.repoUrl.href,
-    target: !theme.fullDescription ? "_blank" : undefined
-}
-
 const stars = theme.stars
 ---
 
-<article class:list={["flex flex-col bg-neutral-50", neonOutlineCardStyle, { 'bg-secondary-300': theme.PREVIEW}]}>
+<article class:list={["flex flex-col bg-neutral-50", neonOutlineCardStyle]}>
     <a
-        {...link}
+        href={`/themes/details/${theme.slug}`}
         class="overflow-hidden rounded-t-lg shadow aspect-w-16 aspect-h-9"
     >
         <Picture
@@ -35,7 +30,7 @@ const stars = theme.stars
 
     <div class="flex items-center justify-between p-4">
         <h2 class="flex items-center gap-2 text-lg font-bold">
-            <a {...link} class="subtle">{theme.title}</a>
+            <a href={`/themes/details/${theme.slug}`} class="subtle">{theme.title}</a>
             {theme.official && (
                 <Sprite
                     pack="heroicons-solid"
@@ -47,11 +42,10 @@ const stars = theme.stars
             )}
         </h2>
 
-        {stars > 0 && (
+        <!--{stars > 0 && (
             <a
                 href={theme.repoUrl.href}
                 target="_blank"
-                rel="noopener"
                 class="flex items-center col-start-2 text-sm subtle gap-x-1"
             >
                 <span class="sr-only">View the source code</span>
@@ -67,6 +61,12 @@ const stars = theme.stars
 
         {theme.buyUrl && (
             <Button size="sm" href={theme.buyUrl.href}>{theme.buyUrl.text}</Button>
+        )}-->
+
+        {theme.buyUrl ? (
+            <p class="bg-primary-800 text-neutral-50 font-bold text-xs px-3 py-1 rounded-full tracking-wide">PREMIUM</p>
+        ) : (
+            <p class="bg-primary-100 text-primary-800 font-bold text-xs px-3 py-1 rounded-full tracking-wide">FREE</p>
         )}
     </div>
 
