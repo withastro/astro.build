@@ -81,6 +81,8 @@ async function fetchDetailsWithOverrides(pkg) {
     const badges = badgesForPackage(details)
     const featured = getFeaturedPackagePriority(pkg)
 
+    console.log('fetchDetails::', pkg)
+
     return {
         ...normalizePackageDetails(details, pkg),
         ...integrationOverrides,
@@ -88,6 +90,14 @@ async function fetchDetailsWithOverrides(pkg) {
         badges,
         featured
     }
+}
+
+function chunk(array, size) {
+    const chunkedArray = []
+    for (var i = 0; i < array.length; i += size) {
+     chunkedArray.push(array.slice(i, i + size))
+    }
+    return chunkedArray
 }
 
 async function main() {
@@ -100,9 +110,17 @@ async function main() {
         )
     )
 
-    const npmData = await Promise.all(
-        [...packageNames].map(fetchDetailsWithOverrides)
-    )
+    const pkgChunks = chunk(Array.from(packageNames.values()), 10)
+
+    let npmData = []
+
+    for (const chunk of pkgChunks) {
+        npmData = npmData.concat(
+            await Promise.all(
+                chunk.map(fetchDetailsWithOverrides)
+            )
+        )
+    }
 
     const integrations = npmData.sort((a, b) => b.downloads - a.downloads)
 
