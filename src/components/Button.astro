@@ -4,14 +4,15 @@ interface Props {
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     href?: string
     alt?: string
+    download?: boolean
 }
 
-const { theme = 'primary', size = 'md', href, alt } = Astro.props as Props
+const { theme = 'primary', size = 'md', href, alt, download } = Astro.props as Props
 
 const Component = href ? 'a' : 'button'
 ---
 
-<Component class:list={['btn', `btn--${size}`, `btn--${theme}`]} {href} {alt}><slot /></Component>
+<Component class:list={['btn', `btn--${size}`, `btn--${theme}`]} {href} {alt} {download}><slot /></Component>
 
 <style>
     .btn {
