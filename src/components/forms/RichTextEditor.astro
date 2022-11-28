@@ -21,8 +21,7 @@ const { id, name, label, required } = Astro.props
 	import Trix from "trix"
 
 	document.addEventListener("trix-before-initialize", () => {
-		Trix.config.blockAttributes.heading1.tagName = 'h2'
-		console.log(Trix.config)
+		Trix.config.blockAttributes.heading1.tagName = 'h3'
 	})
 
 	document.addEventListener("trix-file-accept", function(event) {
@@ -31,8 +30,10 @@ const { id, name, label, required } = Astro.props
 </script>
 
 <style>
-    .prose :global(:is(h1, h2, h3, h4)) {
+    .prose :global(:is(h1, h2, h3, h4):not(:first-child)) {
         margin-top: calc(1rem + 0.75em);
+	}
+	.prose :global(:is(h1, h2, h3, h4):not(:last-child)) {
         margin-bottom: calc(0.25rem + 0.5em);
     }
 </style>
