@@ -37,6 +37,21 @@ const currentCollection = collections.find(({ slug }) => slug === current)
     </PageTitle>
 
     <div class="pt-12 pb-16">
+    {Astro.slots.info && (
+        <Aside class="mb-8 text-sm shadow-md">
+            <p class="text-justify">
+                <Sprite
+                    pack="heroicons-outline"
+                    name="information-circle"
+                    size="1.5em"
+                    class="inline-block"
+                    aria-hidden="true"
+                />
+                <slot name="info" />
+            </p>
+        </Aside>
+    )}
+
     {(searchable || collections.length > 1) && (
         <MaxWidth
             as="header"
@@ -70,20 +85,5 @@ const currentCollection = collections.find(({ slug }) => slug === current)
     >
         <slot name="cards" />
     </MaxWidth>
-
-    {Astro.slots.info && (
-        <Aside class="mt-8 text-sm shadow-md">
-            <p class="text-justify">
-                <Sprite
-                    pack="heroicons-outline"
-                    name="information-circle"
-                    size="1.5em"
-                    class="inline-block"
-                    aria-hidden="true"
-                />
-                <slot name="info" />
-            </p>
-        </Aside>
-    )}
     </div>
 </Layout>

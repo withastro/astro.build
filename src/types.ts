@@ -135,6 +135,7 @@ export interface Theme {
     stars?: number
     featured?: number
     tags?: ThemeTag[]
+    keywords?: string[]
 }
 
 export const ThemeSchema = z.object({
@@ -148,12 +149,13 @@ export const ThemeSchema = z.object({
     repoUrl: LinkSchema.optional(),
     demoUrl: LinkSchema.optional(),
     npmUrl: LinkSchema.optional(),
-    buyUrls: LinkSchema.optional(),
+    buyUrl: LinkSchema.optional(),
     links: z.array(LinkSchema).optional(),
     official: z.boolean().optional(),
     stars: z.number().min(0).optional(),
     featured: z.number().min(1).optional(),
-    tags: z.array(ThemeTagSchema).optional()
+    tags: z.array(ThemeTagSchema).optional(),
+    keywords: z.array(z.string()).optional()
 })
 
 export interface Integration {

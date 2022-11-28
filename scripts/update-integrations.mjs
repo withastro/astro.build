@@ -90,6 +90,14 @@ async function fetchDetailsWithOverrides(pkg) {
     }
 }
 
+function chunk(array, size) {
+    const chunkedArray = []
+    for (var i = 0; i < array.length; i += size) {
+     chunkedArray.push(array.slice(i, i + size))
+    }
+    return chunkedArray
+}
+
 async function main() {
     const keyword = 'astro-component,withastro'
 
@@ -100,9 +108,17 @@ async function main() {
         )
     )
 
-    const npmData = await Promise.all(
-        [...packageNames].map(fetchDetailsWithOverrides)
-    )
+    const pkgChunks = chunk(Array.from(packageNames.values()), 10)
+
+    let npmData = []
+
+    for (const chunk of pkgChunks) {
+        npmData = npmData.concat(
+            await Promise.all(
+                chunk.map(fetchDetailsWithOverrides)
+            )
+        )
+    }
 
     const integrations = npmData.sort((a, b) => b.downloads - a.downloads)
 
