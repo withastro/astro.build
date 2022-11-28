@@ -81,8 +81,6 @@ async function fetchDetailsWithOverrides(pkg) {
     const badges = badgesForPackage(details)
     const featured = getFeaturedPackagePriority(pkg)
 
-    console.log('fetchDetails::', pkg)
-
     return {
         ...normalizePackageDetails(details, pkg),
         ...integrationOverrides,
