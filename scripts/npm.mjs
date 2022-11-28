@@ -1,8 +1,15 @@
 import fetch from 'node-fetch'
 import { format, subDays } from 'date-fns'
 
-function fetchJson(url) {
-    return fetch(url).then((res) => res.json())
+async function fetchJson(url) {
+    const res = await fetch(url)
+
+    if (!res.ok) {
+        console.error(`[${url}] ${res.status} ${res.statusText}`)
+        throw new Error()
+    }
+
+    return await res.json()
 }
 
 const API_BASE_URL = 'https://api.npmjs.org/'
