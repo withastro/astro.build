@@ -5,43 +5,43 @@ import 'trix/dist/trix.css'
 export interface Props {
     id: string
     name: string
-	label: string
-	required?: boolean
+    label: string
+    required?: boolean
 }
 
 const { id, name, label, required } = Astro.props
 ---
 
-<Field as='div' label={label} required={required}>
-	<input id={id} type="hidden" name={name}>
-	<trix-editor input={id} class="w-full prose"></trix-editor>
+<Field as="div" label={label} required={required}>
+    <input id={id} type="hidden" name={name} />
+    <trix-editor input={id} class="w-full prose"></trix-editor>
 </Field>
 
 <script>
-	import Trix from "trix"
+    import Trix from 'trix'
 
-	document.addEventListener("trix-before-initialize", () => {
-		Trix.config.blockAttributes.heading1.tagName = 'h3'
-	})
+    document.addEventListener('trix-before-initialize', () => {
+        Trix.config.blockAttributes.heading1.tagName = 'h3'
+    })
 
-	document.addEventListener("trix-file-accept", function(event) {
-		event.preventDefault();
-	});
+    document.addEventListener('trix-file-accept', function (event) {
+        event.preventDefault()
+    })
 </script>
 
 <style>
     .prose :global(:is(h1, h2, h3, h4):not(:first-child)) {
         margin-top: calc(1rem + 0.75em);
-	}
-	.prose :global(:is(h1, h2, h3, h4):not(:last-child)) {
+    }
+    .prose :global(:is(h1, h2, h3, h4):not(:last-child)) {
         margin-bottom: calc(0.25rem + 0.5em);
     }
 </style>
 
 <style is:global>
-	.trix-button-group.trix-button-group--file-tools,
+    .trix-button-group.trix-button-group--file-tools,
     .trix-button--icon-decrease-nesting-level,
     .trix-button--icon-increase-nesting-level {
-		display:none;
-	}
+        display: none;
+    }
 </style>
