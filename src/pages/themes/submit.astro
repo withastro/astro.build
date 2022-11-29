@@ -5,7 +5,7 @@ import Field from '../../components/forms/Field.jsx'
 import ImageInput from '../../components/forms/ImageInput.jsx'
 import InputField from '../../components/forms/InputField.jsx'
 import LabelText from '../../components/forms/LabelText.jsx'
-import TagInput from '../../components/forms/TagInput.jsx'
+import { TagInput, TagSelect } from '../../components/forms/TagInput.jsx'
 import TextAreaField from '../../components/forms/TextAreaField.astro'
 import PageTitle from '../../components/PageTitle.astro'
 import PaidFreeInput from '../../components/theme-submit/PaidFreeInput.jsx'
@@ -146,7 +146,7 @@ const toolOptions = [
                 <label for="tools">
                     <LabelText>Tools used</LabelText>
                 </label>
-                <TagInput
+                <TagSelect
                     client:idle
                     id="tools"
                     name="tools"
