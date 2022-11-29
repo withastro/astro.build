@@ -1,6 +1,7 @@
 ---
 import Field from './Field.astro'
-import 'trix/dist/trix.css'
+import { inputClass } from '../styles.js'
+import '../../assets/quill.snow.css'
 
 export interface Props {
     id: string
@@ -13,20 +14,35 @@ const { id, name, label, required } = Astro.props
 ---
 
 <Field as="div" label={label} required={required}>
-    <input id={id} type="hidden" name={name} />
-    <trix-editor input={id} class="w-full prose"></trix-editor>
+    <rich-text-editor class:list={[inputClass, 'py-0 px-0']}>
+        <input id={id} type="hidden" name={name} />
+        <div class='quill w-full prose max-w-full'></div>
+    </rich-text-editor>
 </Field>
 
 <script>
-    import Trix from 'trix'
+    import Quill from 'quill'
 
-    document.addEventListener('trix-before-initialize', () => {
-        Trix.config.blockAttributes.heading1.tagName = 'h3'
-    })
+    class RichTextEditor extends HTMLElement {
+        #quill: Quill
 
-    document.addEventListener('trix-file-accept', function (event) {
-        event.preventDefault()
-    })
+        connectedCallback() {
+            this.#quill = new Quill(this.editor, { theme: 'snow' })
+            this.#quill.on('text-change', () => {
+                this.input.value = this.#quill.editor.scroll.domNode.innerHTML
+            })
+        }
+
+        get input() {
+            return this.querySelector<HTMLInputElement>('input')
+        }
+
+        get editor() {
+            return this.querySelector<HTMLDivElement>('.quill')
+        }
+    }
+
+    customElements.define('rich-text-editor', RichTextEditor)
 </script>
 
 <style>
@@ -36,12 +52,14 @@ const { id, name, label, required } = Astro.props
     .prose :global(:is(h1, h2, h3, h4):not(:last-child)) {
         margin-bottom: calc(0.25rem + 0.5em);
     }
-</style>
+    .prose :global(.ql-editor > :first-child) {
+        margin-top: 0;
+    }
+    .prose :global(.ql-editor > :last-child) {
+        margin-bottom: 0;
+    }
 
-<style is:global>
-    .trix-button-group.trix-button-group--file-tools,
-    .trix-button--icon-decrease-nesting-level,
-    .trix-button--icon-increase-nesting-level {
-        display: none;
+    .prose :global(.ql-editor) {
+        @apply min-h-[8rem] p-4;
     }
 </style>
