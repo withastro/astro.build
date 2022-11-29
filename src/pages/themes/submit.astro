@@ -5,6 +5,7 @@ import PageTitle from '../../components/PageTitle.astro'
 import Field from '../../components/forms/Field.astro'
 import InputField from '../../components/forms/InputField.astro'
 import ImageInput from '../../components/forms/ImageInput.jsx'
+import RichTextEditor from '../../components/forms/RichTextEditor.astro'
 import TextAreaField from '../../components/forms/TextAreaField.astro'
 import PaidFreeInput from '../../components/theme-submit/PaidFreeInput.jsx'
 import Base from '../../layouts/Base.astro'
@@ -117,6 +118,8 @@ const bestPractices = [
                 placeholder="A short description of your theme, displayed on the theme list page"
                 required
             />
+
+            <RichTextEditor id="fullDescription" name="fullDescription" label="Full description" />
 
             <Button type="submit" theme="primary">
                 Submit

@@ -1,0 +1,81 @@
+---
+import Field from './Field.astro'
+import { inputClass } from '../styles.js'
+import '../../assets/quill.snow.css'
+
+export interface Props {
+    id: string
+    name: string
+    label: string
+    required?: boolean
+}
+
+const { id, name, label, required } = Astro.props
+---
+
+<Field as="div" label={label} required={required}>
+    <rich-text-editor class:list={[inputClass, 'py-0 px-0']}>
+        <input id={id} type="hidden" name={name} />
+        <div class='quill w-full prose max-w-full'></div>
+        <noscript>
+            <strong class="block text-red-600 p-2">JavaScript is required for the rich text editor</strong>
+        </noscript>
+    </rich-text-editor>
+</Field>
+
+<script>
+    import Quill from 'quill'
+
+    const TOOLBAR_CONFIG = [
+        [{ header: ['2', '3', false] }],
+        ['bold', 'italic', 'underline', 'link'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['blockquote', 'code-block'],
+        ['clean']
+    ]
+
+    class RichTextEditor extends HTMLElement {
+        #quill: Quill
+
+        connectedCallback() {
+            this.#quill = new Quill(this.editor, {
+                theme: 'snow',
+                modules: {
+                    toolbar: TOOLBAR_CONFIG
+                }
+            })
+            this.#quill.on('text-change', () => {
+                this.input.value = this.#quill.editor.scroll.domNode.innerHTML
+            })
+        }
+
+        get input() {
+            return this.querySelector<HTMLInputElement>('input')
+        }
+
+        get editor() {
+            return this.querySelector<HTMLDivElement>('.quill')
+        }
+    }
+
+    customElements.define('rich-text-editor', RichTextEditor)
+</script>
+
+<style>
+    .prose :global(:is(h1, h2, h3, h4):not(:first-child)) {
+        margin-top: calc(1rem + 0.75em);
+    }
+    .prose :global(:is(h1, h2, h3, h4):not(:last-child)) {
+        margin-bottom: calc(0.25rem + 0.5em);
+    }
+    .prose :global(.ql-editor > :first-child) {
+        margin-top: 0;
+    }
+    .prose :global(.ql-editor > :last-child) {
+        margin-bottom: 0;
+    }
+
+    .prose :global(.ql-editor) {
+        @apply min-h-[8rem] p-4;
+    }
+</style>
