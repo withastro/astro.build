@@ -5,7 +5,7 @@ export const neonOutlineCardStyle = clsx(
 )
 
 export const inputBaseClass = clsx(
-    'border-2 border-neutral-300 focus:border-primary-400 focus:outline-none rounded px-2 py-2 focus:ring-0 transition'
+    'border-2 border-neutral-300 focus:border-primary-400 focus:outline-none rounded px-2 py-2 focus:ring-0 transition bg-white'
 )
 export const checkboxClass = clsx(inputBaseClass)
 export const textAreaClass = clsx(inputBaseClass, 'w-full')
