@@ -17,11 +17,10 @@ export interface Props {
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     const themes = await getThemes()
 
-    return themes
-        .map((theme) => ({
-            params: { slug: theme.slug },
-            props: { theme }
-        }))
+    return themes.map((theme) => ({
+        params: { slug: theme.slug },
+        props: { theme }
+    }))
 }
 
 const placeholderClass = clsx(`
@@ -45,19 +44,40 @@ const { theme } = Astro.props
     >
         <section class="flex flex-col gap-4 md:sticky md:top-32">
             <h2 class="sr-only">Image Gallery</h2>
-            <div class=" hidden md:contents">
-                <Picture src={theme.image} widths={[576, 1152]} sizes="50vw" alt={theme.title} class="rounded-md shadow-md" />
-                {theme.images.map((image) => (
-                    <Picture src={image} widths={[576, 1152]} sizes="50vw" alt={theme.title} class="rounded-md shadow-md" />
-                ))}
+            <div class="hidden md:contents">
+                <Picture
+                    src={theme.image}
+                    widths={[576, 1152]}
+                    sizes="50vw"
+                    alt={theme.title}
+                    class="rounded-md shadow-md"
+                />
+                {
+                    theme.images.map((image) => (
+                        <Picture
+                            src={image}
+                            widths={[576, 1152]}
+                            sizes="50vw"
+                            alt={theme.title}
+                            class="rounded-md shadow-md"
+                        />
+                    ))
+                }
             </div>
             <div class="md:hidden -mx-4 md:-mx-8">
                 <Carousel each={[theme.image, ...theme.images]}>
-                    {(image) => (
-                        <div class="px-4">
-                            <Picture src={image} widths={[414, 828]} alt={theme.title} class="rounded-md shadow-md" />
-                        </div>
-                    )}
+                    {
+                        (image) => (
+                            <div class="px-4">
+                                <Picture
+                                    src={image}
+                                    widths={[414, 828]}
+                                    alt={theme.title}
+                                    class="rounded-md shadow-md"
+                                />
+                            </div>
+                        )
+                    }
                 </Carousel>
             </div>
         </section>
@@ -70,49 +90,63 @@ const { theme } = Astro.props
 
                 <p class="pt-1 md:pt-3">{theme.description}</p>
 
-                {theme.tags?.length > 0 && (
-                    <div class="py-2 md:py-4 flex flex-wrap gap-4 md:gap-6">
-                        {
-                            theme.tags.map((tag) => (
-                                <Icon name={`badges/${tag}`} height={32} class="max-w-[128px]" />
-                            ))
-                        }
-                    </div>
-                )}
+                {
+                    theme.tags?.length > 0 && (
+                        <div class="py-2 md:py-4 flex flex-wrap gap-4 md:gap-6">
+                            {theme.tags.map((tag) => (
+                                <Icon
+                                    name={`badges/${tag}`}
+                                    height={32}
+                                    class="max-w-[128px]"
+                                />
+                            ))}
+                        </div>
+                    )
+                }
 
                 <div class="flex flex-wrap gap-4">
-                    <Button href={theme.buyUrl?.href || theme.repoUrl.href}>{theme.buyUrl?.href ? "Buy now" : "Get started" }</Button>
-                    {theme.demoUrl?.href && (
-                        <Button theme="secondary" href={theme.demoUrl.href}>Live Demo</Button>
-                    )}
+                    <Button href={theme.buyUrl?.href || theme.repoUrl.href}
+                        >{
+                            theme.buyUrl?.href ? 'Buy Now' : 'Get Started'
+                        }</Button
+                    >
+                    {
+                        theme.demoUrl?.href && (
+                            <Button theme="secondary" href={theme.demoUrl.href}>
+                                Live Demo
+                            </Button>
+                        )
+                    }
                 </div>
             </div>
 
-            {theme.fullDescription && (
-                <section class="prose md:mt-4">
-                    <Markdown content={theme.fullDescription} />
-                </section>
-            )}
+            {
+                theme.fullDescription && (
+                    <section class="prose md:mt-4" set:html={theme.fullDescription}></section>
+                )
+            }
 
-            {theme.keywords?.length > 0 && (
-                <section>
-                    <h2 class="text-lg font-medium mb-2">Features</h2>
-                    <ul class="flex flex-wrap gap-2">
-                        {theme.keywords.map((keyword) => (
-                            <li class="text-sm font-bold bg-neutral-100 rounded px-3 py-1">
-                                {keyword}
-                            </li>
-                        ))}
-                    </ul>
-                </section>
-            )}
+            {
+                theme.keywords?.length > 0 && (
+                    <section>
+                        <h2 class="text-lg font-medium mb-2">Features</h2>
+                        <ul class="flex flex-wrap gap-2">
+                            {theme.keywords.map((keyword) => (
+                                <li class="text-sm font-bold bg-neutral-100 rounded px-3 py-1">
+                                    {keyword}
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )
+            }
 
-            {theme.links?.length > 0 && (
-                <section>
-                    <h2 class="text-lg font-medium mb-2">Links</h2>
-                    <ul class="flex flex-wrap gap-3 md:gap-4">
-                        {
-                            theme.links.map(({href, text}) => (
+            {
+                theme.links?.length > 0 && (
+                    <section>
+                        <h2 class="text-lg font-medium mb-2">Links</h2>
+                        <ul class="flex flex-wrap gap-3 md:gap-4">
+                            {theme.links.map(({ href, text }) => (
                                 <li>
                                     <a
                                         href={href}
@@ -120,21 +154,29 @@ const { theme } = Astro.props
                                         rel="noopener noreferrer"
                                         class="text-primary-500 hover:underline flex items-center gap-0.5"
                                     >
-                                        <Icon name="heroicons-outline:link" size={18} aria-hidden="" class="opacity-50" /> {text}
+                                        <Icon
+                                            name="heroicons-outline:link"
+                                            size={18}
+                                            aria-hidden=""
+                                            class="opacity-50"
+                                        />{' '}
+                                        {text}
                                     </a>
                                 </li>
-                            ))
-                        }
-                    </ul>
-                </section>
-            )}
+                            ))}
+                        </ul>
+                    </section>
+                )
+            }
         </section>
     </div>
-</Base>
+</Layout>
 
 <style>
-    .prose :global(:is(h1, h2, h3, h4)) {
+    .prose :global(:is(h1, h2, h3, h4):not(:first-child)) {
         margin-top: calc(1rem + 0.75em);
+    }
+    .prose :global(:is(h1, h2, h3, h4):not(:last-child)) {
         margin-bottom: calc(0.25rem + 0.5em);
     }
 </style>

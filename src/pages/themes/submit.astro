@@ -5,6 +5,7 @@ import Field from '../../components/forms/Field.jsx'
 import ImageInput from '../../components/forms/ImageInput.jsx'
 import InputField from '../../components/forms/InputField.jsx'
 import LabelText from '../../components/forms/LabelText.jsx'
+import RichTextEditor from '../../components/forms/RichTextEditor.astro'
 import { TagInput, TagSelect } from '../../components/forms/TagInput.jsx'
 import TextAreaField from '../../components/forms/TextAreaField.astro'
 import PageTitle from '../../components/PageTitle.astro'
@@ -160,6 +161,12 @@ const toolOptions = [
                 </label>
                 <TagInput client:idle id="keywords" name="keywords" />
             </div>
+
+            <RichTextEditor
+                id="fullDescription"
+                name="fullDescription"
+                label="Full description"
+            />
 
             <Button type="submit" theme="primary">Submit</Button>
         </div>
