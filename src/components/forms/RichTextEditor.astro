@@ -17,6 +17,9 @@ const { id, name, label, required } = Astro.props
     <rich-text-editor class:list={[inputClass, 'py-0 px-0']}>
         <input id={id} type="hidden" name={name} />
         <div class='quill w-full prose max-w-full'></div>
+        <noscript>
+            <strong class="block text-red-600 p-2">JavaScript is required for the rich text editor</strong>
+        </noscript>
     </rich-text-editor>
 </Field>
 
