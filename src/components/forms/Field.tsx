@@ -1,17 +1,18 @@
 import clsx from 'clsx'
-import { ComponentChildren } from 'preact'
+import { ComponentChildren, JSX } from 'preact'
 import LabelText from './LabelText.js'
 
 export type Props = {
+    as?: keyof JSX.IntrinsicElements
     label: string
     inline?: boolean
     required?: boolean
     children?: ComponentChildren
 }
 
-export default function Field(props: Props) {
+export default function Field({ as: Component = 'label', ...props }: Props) {
     return (
-        <label
+        <Component
             class={clsx(
                 'w-full flex',
                 props.inline ? 'items-center gap-2' : 'flex-col gap-2'
@@ -19,6 +20,6 @@ export default function Field(props: Props) {
         >
             <LabelText required={props.required}>{props.label}</LabelText>
             {props.children}
-        </label>
+        </Component>
     )
 }
