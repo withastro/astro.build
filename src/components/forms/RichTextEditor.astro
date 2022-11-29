@@ -26,11 +26,24 @@ const { id, name, label, required } = Astro.props
 <script>
     import Quill from 'quill'
 
+    const TOOLBAR_CONFIG = [
+        [{ header: ['2', '3', false] }],
+        ['bold', 'italic', 'underline', 'link'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['blockquote', 'code-block'],
+        ['clean']
+    ]
+
     class RichTextEditor extends HTMLElement {
         #quill: Quill
 
         connectedCallback() {
-            this.#quill = new Quill(this.editor, { theme: 'snow' })
+            this.#quill = new Quill(this.editor, {
+                theme: 'snow',
+                modules: {
+                    toolbar: TOOLBAR_CONFIG
+                }
+            })
             this.#quill.on('text-change', () => {
                 this.input.value = this.#quill.editor.scroll.domNode.innerHTML
             })
