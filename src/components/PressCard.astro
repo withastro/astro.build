@@ -23,7 +23,7 @@ const { title, description, background, svg, png } = Astro.props as Props
     <p class="text-sm flex-1" set:html={smartypants(description, 1)}></p>
 
     <footer class="pt-6">
-        <Button href={svg} alt="Download as an SVG">SVG</Button>
-        <Button href={png} alt="Download as a PNG">PNG</Button>
+        <Button href={svg} alt="Download as an SVG" download>SVG</Button>
+        <Button href={png} alt="Download as a PNG" download>PNG</Button>
     </footer>
 </article>
