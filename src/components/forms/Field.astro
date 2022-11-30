@@ -1,0 +1,18 @@
+---
+import type { HTMLTag } from 'astro/types'
+import LabelText from './LabelText.astro'
+
+export interface Props {
+    as?: HTMLTag
+    label: string
+    inline?: boolean
+    required?: boolean
+}
+
+const { as: Component = 'label', label, inline, required } = Astro.props
+---
+
+<Component class:list={['w-full flex', inline ? 'items-center gap-2' : 'flex-col gap-2']}>
+    <LabelText required={required}>{label}</LabelText>
+    <slot />
+</Component>

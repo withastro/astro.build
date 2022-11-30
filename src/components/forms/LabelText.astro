@@ -1,0 +1,11 @@
+---
+export interface Props {
+    required?: boolean
+}
+
+const { required } = Astro.props
+---
+
+<span class:list={['text-sm font-medium leading-none after:text-red-500', { "after:content-['_*']": required }]}>
+    <slot />
+</span>
