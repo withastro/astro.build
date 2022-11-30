@@ -4,13 +4,17 @@ import Layout from './Base.astro'
 import { getAuthor } from '../data/authors/index.js'
 import Avatar from '../components/Avatar.astro'
 import BlogContentImage from '../components/BlogContentImage.astro'
+import { CollectionEntry } from 'astro:content'
+import { format } from 'date-fns'
 
-const { content: { title, description, publishDate, coverImage, socialImage } } = Astro.props
+type Props = CollectionEntry<'blog'>['data'];
 
-const authors = await Promise.all(Astro.props.content.authors.map(getAuthor))
+const { title, authors: unparsedAuthors, description, publishDate, coverImage, socialImage } = Astro.props;
+
+const authors = await Promise.all(unparsedAuthors.map(getAuthor));
 ---
 
-<Layout pageType="article" {...{ title, description, pageType: 'article', image: socialImage }}>
+<Layout {title} {description} pageType="article" image={socialImage}>
     <article class="max-w-screen-md px-4 py-12 sm:py-24 mx-auto">
         {/* Use empty alt text to hide cover image as purely decorative. */}
         {coverImage && <div class="cover-image">
@@ -21,8 +25,8 @@ const authors = await Promise.all(Astro.props.content.authors.map(getAuthor))
         </h1>
         <div class="my-4 space-y-2 text-neutral-500 text-lg">
             <p class="flex gap-2 items-center justify-center flex-wrap">
-                <time datetime={publishDate}>
-                    {publishDate}
+                <time datetime={publishDate.toISOString()}>
+                    {format(publishDate, 'MMMM d, yyyy')}
                 </time>
 				<span>by</span>
                 {authors.map(({ name, twitter, image }, i) => {

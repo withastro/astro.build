@@ -1,21 +1,20 @@
 ---
+import { CollectionEntry, getCollection, renderEntry } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
-import { slugFromFile } from "./_utils";
 
 export async function getStaticPaths() {
-  const blogPosts = await Astro.glob('../../content/blog/*.mdx');
-  return blogPosts.map(post => ({
-    params: { slug: slugFromFile(post.file) },
+  const blog = await getCollection('blog');
+  return blog.map(post => ({
+    params: { slug: post.slug },
     props: post,
   }));
 }
+type Props = CollectionEntry<'blog'>;
 
-const {
-  frontmatter,
-  default: Content
-} = Astro.props
+const { id, collection, data } = Astro.props;
+const { Content } = await renderEntry({ id, collection });
 ---
 
-<BlogPost content={frontmatter}>
+<BlogPost {...data}>
   <Content />
 </BlogPost>
