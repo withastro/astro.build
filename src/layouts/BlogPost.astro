@@ -1,17 +1,17 @@
 ---
-import { Icon } from 'astro-icon'
 import Layout from './Base.astro'
 import { getAuthor } from '../data/authors/index.js'
 import Avatar from '../components/Avatar.astro'
 import BlogContentImage from '../components/BlogContentImage.astro'
 import { CollectionEntry } from 'astro:content'
 import { format } from 'date-fns'
+import type { Person } from '../types'
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, authors: unparsedAuthors, description, publishDate, coverImage, socialImage } = Astro.props;
 
-const authors = await Promise.all(unparsedAuthors.map(getAuthor));
+const authors = (await Promise.all(unparsedAuthors.map(getAuthor))).filter((author): author is Person => author !== undefined);
 ---
 
 <Layout {title} {description} pageType="article" image={socialImage}>
