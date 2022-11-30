@@ -1,60 +1,144 @@
-// @ts-check
-import { BackgroundHandler } from '@netlify/functions'
-import { Octokit } from '@octokit/rest'
-import fs from 'fs'
-import git from 'isomorphic-git'
-import http from 'isomorphic-git/http/node'
-import { kebabCase } from 'lodash-es'
-import { tmpdir } from 'os'
-import path from 'path'
-import { inspect } from 'util'
-import { literal, number, object, string, union, z } from 'zod'
-import { ThemeData } from '../../../src/data/themes/index.js'
-import { Image, Link } from '../../../src/types.js'
+import { Handler } from '@netlify/functions'
+import fetch, { File, FormData } from 'node-fetch'
+import { array, object, string } from 'zod'
+import { type ThemeData } from '../../../src/data/themes/index.js'
+import { parseMultipartForm } from './parse-multipart-form.js'
 
-const now = Date.now()
+const env = object({
+    DISCORD_WEBHOOK_URL: string()
+}).parse(process.env)
 
-const repoUrl = 'https://github.com/withastro/astro.build.git'
-const repoFolder = path.join(tmpdir(), `astro.build-${now}`)
-
-const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN
+const discordWebhookMessageSchema = object({
+    id: string(),
+    content: string(),
+    attachments: array(object({ filename: string(), url: string() }))
 })
 
-const formImageSchema = object({
-    filename: string(),
-    type: string(),
-    size: number(),
-    url: string()
-})
+const slugify = (str: string) =>
+    str
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '')
 
-const themeDataSchema = object({
-    mainPreviewImage: formImageSchema,
-    previewImage1: union([formImageSchema, literal('')]).optional(),
-    previewImage2: union([formImageSchema, literal('')]).optional(),
-    previewImage3: union([formImageSchema, literal('')]).optional(),
-    previewImage4: union([formImageSchema, literal('')]).optional(),
-    authorName: string(),
-    authorEmail: string(),
-    themeName: string(),
-    paidStatus: string(),
-    repoUrl: string().optional(),
-    purchaseUrl: string().optional(),
-    liveDemoUrl: string().optional(),
-    shortDescription: string()
-})
-
-export const handler: BackgroundHandler = async (event) => {
+export const handler: Handler = async (event) => {
     if (!event.body) {
         throw new Error('No body')
     }
 
-    try {
-        const body = event.isBase64Encoded
-            ? JSON.parse(Buffer.from(event.body, 'base64').toString())
-            : JSON.parse(event.body)
+    const form = await parseMultipartForm(
+        event.isBase64Encoded
+            ? Buffer.from(event.body, 'base64').toString()
+            : event.body,
+        event.headers
+    )
 
-        const themeData = themeDataSchema.parse(body?.data)
+    const getString = (name: string) => {
+        const value = form.get(name)
+        return typeof value === 'string' ? value : undefined
+    }
+
+    // rickroll the bots
+    if (form.get('botField')) {
+        return {
+            statusCode: 303,
+            headers: {
+                Location: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+            }
+        }
+    }
+
+    const initialMessageBody = new FormData()
+    initialMessageBody.set('content', 'New theme submission!')
+    for (const [index, file] of form.getAll('images').entries()) {
+        initialMessageBody.set(`files[${index}]`, file)
+    }
+
+    const webhookResponse = await fetch(env.DISCORD_WEBHOOK_URL, {
+        method: 'POST',
+        body: initialMessageBody
+    })
+    if (!webhookResponse.ok) {
+        throw new Error(`Initial webhook failed: ${webhookResponse.statusText}`)
+    }
+
+    const webhookMessageJson = discordWebhookMessageSchema.parse(
+        await webhookResponse.json()
+    )
+
+    const [image, ...images] = webhookMessageJson.attachments.map(
+        (attachment) => ({
+            src: attachment.url,
+            alt: attachment.filename
+        })
+    )
+
+    if (!image) {
+        throw new Error('No image')
+    }
+
+    const repoUrl = getString('repoUrl')
+    const demoUrl = getString('demoUrl')
+
+    const themeName = getString('themeName')
+    if (!themeName) {
+        throw new Error('Theme name required')
+    }
+
+    const themeData: ThemeData = {
+        title: themeName,
+        description: getString('shortDescription') ?? '',
+        image,
+        images,
+        repoUrl: repoUrl ? { href: repoUrl, text: 'Repo URL' } : undefined,
+        demoUrl: demoUrl ? { href: demoUrl, text: 'Demo URL' } : undefined,
+        categories: [],
+        slug: slugify(themeName),
+        fullDescription: getString('fullDescription') ?? '',
+        PREVIEW: true
+    }
+
+    const discordFormData = new FormData()
+    discordFormData.append(
+        'files[0]',
+        new File([JSON.stringify(themeData, null, 2)], `${themeData.slug}.json`)
+    )
+    discordFormData.append(
+        'files[1]',
+        new File(
+            [JSON.stringify(Object.fromEntries(form), null, 2)],
+            'submission.json'
+        )
+    )
+
+    const discordResponse = await fetch(
+        `${env.DISCORD_WEBHOOK_URL.replace(/\/$/, '')}/messages/${
+            webhookMessageJson.id
+        }`,
+        {
+            method: 'PATCH',
+            body: discordFormData
+        }
+    )
+
+    if (!discordResponse.ok) {
+        throw new Error(
+            `Message update failed failed: ${discordResponse.statusText}`
+        )
+    }
+
+    return {
+        statusCode: 303,
+        headers: { Location: '/themes/submit/success' }
+    }
+
+    /* 
+    try {
+
+        const themeData: ThemeData = {
+            title: body.textFields.themeName?.[0] ?? '',
+            description: body.textFields.shortDescription?.[0] ?? '',
+            fullDescription: body.textFields.fullDescription?.[0] ?? ''
+        }
 
         console.log(
             'Theme data:',
@@ -163,9 +247,9 @@ export const handler: BackgroundHandler = async (event) => {
         console.log('done!')
     } finally {
         await fs.promises.rm(repoFolder, { recursive: true, force: true })
-    }
+    } */
 }
-
+/* 
 function getLocalThemeData(
     themeData: z.infer<typeof themeDataSchema>
 ): ThemeData {
@@ -232,3 +316,4 @@ function getLocalThemeData(
 
     return localThemeData
 }
+ */
