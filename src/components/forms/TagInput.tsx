@@ -118,6 +118,14 @@ export function TagInput(props: JSX.IntrinsicElements['input']) {
     const [tags, setTags] = useState(new Set<string>())
     const hydrated = useHydrated()
 
+    function handleTagAdded(event: JSX.TargetedEvent<HTMLInputElement>) {
+        const value = event.currentTarget.value.trim()
+        if (!value) return
+
+        setTags((tags) => new Set(tags.add(value)))
+        event.currentTarget.value = ''
+    }
+
     if (!hydrated) {
         return (
             <input
@@ -147,17 +155,15 @@ export function TagInput(props: JSX.IntrinsicElements['input']) {
                 <input
                     class="flex-1 outline-none bg-transparent"
                     placeholder="Add tags (separated by commas or spaces)"
+                    onBlur={handleTagAdded}
                     onKeyDown={(event) => {
                         if (
                             event.key === 'Enter' ||
                             event.key === ' ' ||
                             event.key === ','
                         ) {
-                            const value = event.currentTarget.value.trim()
                             event.preventDefault()
-                            if (value === '') return
-                            setTags((tags) => new Set(tags.add(value)))
-                            event.currentTarget.value = ''
+                            handleTagAdded(event)
                         }
 
                         if (
