@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { BlogPost } from '../../types.js'
+import type { BlogPost } from '../../types.js'
 
 export const slugFromFile = (file: string) => path.parse(file).name
 

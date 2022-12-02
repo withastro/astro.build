@@ -1,12 +1,10 @@
 ---
-import { getAuthor } from '../data/authors';
-import Avatar from './Avatar.astro';
-const { name } = Astro.props;
+import { getAuthor } from '../data/authors'
+import Avatar from './Avatar.astro'
+const { name } = Astro.props
 
-const mention = await getAuthor(name);
-if (!mention) {
-    throw new Error(`Could not find mentioned user "${name}"!`)
-}
+const mention = getAuthor(name)
+if (mention instanceof Error) throw Error
 ---
 
 <span class="mention inline-block align-middle leading-none m-0">
