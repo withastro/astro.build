@@ -1,12 +1,14 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon'
 import Button from '../../components/Button.astro'
-import PageTitle from '../../components/PageTitle.astro'
-import Field from '../../components/forms/Field.astro'
-import InputField from '../../components/forms/InputField.astro'
+import Field from '../../components/forms/Field.jsx'
 import ImageInput from '../../components/forms/ImageInput.jsx'
+import InputField from '../../components/forms/InputField.jsx'
+import LabelText from '../../components/forms/LabelText.jsx'
 import RichTextEditor from '../../components/forms/RichTextEditor.astro'
+import { TagInput, TagSelect } from '../../components/forms/TagInput.jsx'
 import TextAreaField from '../../components/forms/TextAreaField.astro'
+import PageTitle from '../../components/PageTitle.astro'
 import PaidFreeInput from '../../components/theme-submit/PaidFreeInput.jsx'
 import Base from '../../layouts/Base.astro'
 
@@ -15,6 +17,17 @@ const bestPractices = [
     'For free themes, source code for the theme is available in a public repository',
     'All NPM dependencies used in the theme are public',
     'Theme preview image or screenshot included (see below for details)'
+]
+
+const toolOptions = [
+    'Astro',
+    'TailwindCSS',
+    'Svelte',
+    'React',
+    'Vue',
+    'Preact',
+    'Solid',
+    'Lit'
 ]
 ---
 
@@ -33,13 +46,22 @@ const bestPractices = [
                 What we look for when reviewing submissions:
             </p>
         </header>
-        <ul class="flex flex-col gap-2 mt-6 mb-4 whitespace-normal text-neutral-700 -ml-1">
-            {bestPractices.map((text) => (
-                <li class="flex items-center gap-1">
-                    <Icon name="heroicons-outline:check" size={28} class="text-green-500" aria-hidden="true" />
-                    {text}
-                </li>
-            ))}
+        <ul
+            class="flex flex-col gap-2 mt-6 mb-4 whitespace-normal text-neutral-700 -ml-1"
+        >
+            {
+                bestPractices.map((text) => (
+                    <li class="flex items-center gap-1">
+                        <Icon
+                            name="heroicons-outline:check"
+                            size={28}
+                            class="text-green-500"
+                            aria-hidden="true"
+                        />
+                        {text}
+                    </li>
+                ))
+            }
         </ul>
     </section>
 
@@ -71,13 +93,15 @@ const bestPractices = [
                 />
 
                 <div class="grid md:grid-cols-2 w-full gap-4 pt-3">
-                    {Array.from({ length: 4 }, (_, i) => (
-                        <ImageInput
-                            name={'previewImage' + (i + 1)}
-                            label={'Additional image ' + (i + 1)}
-                            client:idle
-                        />
-                    ))}
+                    {
+                        Array.from({ length: 4 }, (_, i) => (
+                            <ImageInput
+                                name={'previewImage' + (i + 1)}
+                                label={'Additional image ' + (i + 1)}
+                                client:idle
+                            />
+                        ))
+                    }
                 </div>
             </Field>
 
@@ -119,11 +143,32 @@ const bestPractices = [
                 required
             />
 
-            <RichTextEditor id="fullDescription" name="fullDescription" label="Full description" />
+            <div class="w-full">
+                <label for="tools">
+                    <LabelText>Tools used</LabelText>
+                </label>
+                <TagSelect
+                    client:idle
+                    id="tools"
+                    name="tools"
+                    options={toolOptions}
+                />
+            </div>
 
-            <Button type="submit" theme="primary">
-                Submit
-            </Button>
+            <div class="w-full">
+                <label for="keywords">
+                    <LabelText>Keywords</LabelText>
+                </label>
+                <TagInput client:idle id="keywords" name="keywords" />
+            </div>
+
+            <RichTextEditor
+                id="fullDescription"
+                name="fullDescription"
+                label="Full description"
+            />
+
+            <Button type="submit" theme="primary">Submit</Button>
         </div>
     </form>
 </Base>
