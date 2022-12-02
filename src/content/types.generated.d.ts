@@ -249,15 +249,6 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 },
 },
-".": {
-"config.ts": {
-  id: "config.ts",
-  slug: "config",
-  body: string,
-  collection: ".",
-  data: InferEntrySchema<".">
-},
-},
 
 	};
 
