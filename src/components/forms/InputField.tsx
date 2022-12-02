@@ -1,11 +1,9 @@
+import { JSX } from 'preact/jsx-runtime'
 import { inputClass } from '../styles'
 import Field from './Field.js'
 
-export type Props = {
+export type Props = JSX.IntrinsicElements['input'] & {
     label: string
-    name?: string
-    type?: string
-    placeholder?: string
     required?: boolean
 }
 

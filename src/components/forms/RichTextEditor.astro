@@ -1,7 +1,7 @@
 ---
-import Field from './Field.astro'
-import { inputClass } from '../styles.js'
 import '../../assets/quill.snow.css'
+import { inputClass } from '../styles.js'
+import Field from './Field.jsx'
 
 export interface Props {
     id: string
@@ -16,9 +16,11 @@ const { id, name, label, required } = Astro.props
 <Field as="div" label={label} required={required}>
     <rich-text-editor class:list={[inputClass, 'py-0 px-0']}>
         <input id={id} type="hidden" name={name} />
-        <div class='quill w-full prose max-w-full'></div>
+        <div class="quill w-full prose max-w-full"></div>
         <noscript>
-            <strong class="block text-red-600 p-2">JavaScript is required for the rich text editor</strong>
+            <strong class="block text-red-600 p-2">
+                JavaScript is required for the rich text editor
+            </strong>
         </noscript>
     </rich-text-editor>
 </Field>
