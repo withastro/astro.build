@@ -17,9 +17,11 @@ const { each } = Astro.props
             }
         })}
     </ul>
-    <nav class="flex items-center justify-center gap-2 py-4" aria-hidden="true">
-        {each.map((_, i) => (<div class='h-2.5 w-2.5 bg-primary-300 rounded-full' />))}
-    </nav>
+    {each.length > 1 && (
+        <nav class="flex items-center justify-center gap-2 py-4" aria-hidden="true">
+            {each.map((_, i) => (<div class='h-2.5 w-2.5 bg-primary-300 rounded-full' />))}
+        </nav>
+    )}
 </astro-carousel>
 
 <script>
