@@ -1,10 +1,12 @@
 ---
 import { Icon } from 'astro-icon'
 import Button from '../../components/Button.astro'
-import Field from '../../components/forms/Field.astro'
+import Field from '../../components/forms/Field.jsx'
 import ImageInput from '../../components/forms/ImageInput.jsx'
-import InputField from '../../components/forms/InputField.astro'
+import InputField from '../../components/forms/InputField.jsx'
+import LabelText from '../../components/forms/LabelText.jsx'
 import RichTextEditor from '../../components/forms/RichTextEditor.astro'
+import { TagInput, TagSelect } from '../../components/forms/TagInput.jsx'
 import TextAreaField from '../../components/forms/TextAreaField.astro'
 import PageTitle from '../../components/PageTitle.astro'
 import PaidFreeInput from '../../components/theme-submit/PaidFreeInput.jsx'
@@ -15,6 +17,17 @@ const bestPractices = [
     'For free themes, source code for the theme is available in a public repository',
     'All NPM dependencies used in the theme are public',
     'Theme preview image or screenshot included (see below for details)'
+]
+
+const toolOptions = [
+    'Astro',
+    'TailwindCSS',
+    'Svelte',
+    'React',
+    'Vue',
+    'Preact',
+    'Solid',
+    'Lit'
 ]
 ---
 
@@ -127,6 +140,25 @@ const bestPractices = [
                 placeholder="A short description of your theme, displayed on the theme list page"
                 required
             />
+
+            <div class="w-full">
+                <label for="tools">
+                    <LabelText>Tools used</LabelText>
+                </label>
+                <TagSelect
+                    client:idle
+                    id="tools"
+                    name="tools"
+                    options={toolOptions}
+                />
+            </div>
+
+            <div class="w-full">
+                <label for="keywords">
+                    <LabelText>Keywords</LabelText>
+                </label>
+                <TagInput client:idle id="keywords" name="keywords" />
+            </div>
 
             <RichTextEditor
                 id="fullDescription"

@@ -30,6 +30,7 @@ export function fetchDownloadsForPackage(pkg) {
     return fetchJson(
         `${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`
     ).then((res) => res.downloads)
+    .catch(() => 0)
 }
 
 /**
