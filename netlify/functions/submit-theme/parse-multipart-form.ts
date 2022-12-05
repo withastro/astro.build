@@ -15,7 +15,10 @@ export type ParsedMultipartForm = {
 }
 
 // https://netlify.app/blog/2021/07/29/how-to-process-multipart-form-data-with-a-netlify-function/
-export function parseMultipartForm(body: string, headers: Event['headers']) {
+export function parseMultipartForm(
+    body: string | Buffer,
+    headers: Event['headers']
+) {
     return new Promise<FormData>((resolve, reject) => {
         const formData = new FormData()
 
@@ -31,9 +34,7 @@ export function parseMultipartForm(body: string, headers: Event['headers']) {
                     if (chunks.length === 0) return
                     formData.append(
                         name,
-                        new File([Buffer.concat(chunks)], info.filename, {
-                            type: info.mimeType
-                        })
+                        new File(chunks, info.filename, { type: info.mimeType })
                     )
                 })
             })

@@ -1,4 +1,5 @@
 import { Handler } from '@netlify/functions'
+import { Response } from '@netlify/functions/dist/function/response.js'
 import fetch, { File, FormData } from 'node-fetch'
 import { array, object, string } from 'zod'
 import { type ThemeData } from '../../../src/data/themes/index.js'
@@ -20,15 +21,18 @@ const slugify = (str: string) =>
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)+/g, '')
 
+const redirect = (url: string): Response => ({
+    headers: { Location: url },
+    statusCode: 303
+})
+
 export const handler: Handler = async (event) => {
     if (!event.body) {
         throw new Error('No body')
     }
 
     const form = await parseMultipartForm(
-        event.isBase64Encoded
-            ? Buffer.from(event.body, 'base64').toString()
-            : event.body,
+        event.isBase64Encoded ? Buffer.from(event.body, 'base64') : event.body,
         event.headers
     )
 
@@ -39,19 +43,21 @@ export const handler: Handler = async (event) => {
 
     // rickroll the bots
     if (form.get('botField')) {
-        return {
-            statusCode: 303,
-            headers: {
-                Location: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            }
-        }
+        return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     }
 
     const initialMessageBody = new FormData()
-    initialMessageBody.set('content', 'New theme submission!')
-    for (const [index, file] of form.getAll('images').entries()) {
-        initialMessageBody.set(`files[${index}]`, file)
+
+    for (const [index, value] of form.getAll('images').entries()) {
+        if (value instanceof File) {
+            initialMessageBody.append(`files[${index}]`, value, value.name)
+        }
     }
+
+    initialMessageBody.append(
+        'payload_json',
+        JSON.stringify({ content: 'New theme submission!' })
+    )
 
     const webhookResponse = await fetch(env.DISCORD_WEBHOOK_URL, {
         method: 'POST',
@@ -76,14 +82,13 @@ export const handler: Handler = async (event) => {
         throw new Error('No image')
     }
 
-    const repoUrl = getString('repoUrl')
-    const demoUrl = getString('demoUrl')
-
     const themeName = getString('themeName')
     if (!themeName) {
         throw new Error('Theme name required')
     }
 
+    const repoUrl = getString('repoUrl')
+    const demoUrl = getString('demoUrl')
     const themeData: ThemeData = {
         title: themeName,
         description: getString('shortDescription') ?? '',
@@ -100,13 +105,18 @@ export const handler: Handler = async (event) => {
     const discordFormData = new FormData()
     discordFormData.append(
         'files[0]',
-        new File([JSON.stringify(themeData, null, 2)], `${themeData.slug}.json`)
+        new File(
+            [JSON.stringify(themeData, null, 2)],
+            `${themeData.slug}.json`,
+            { type: 'application/json' }
+        )
     )
     discordFormData.append(
         'files[1]',
         new File(
             [JSON.stringify(Object.fromEntries(form), null, 2)],
-            'submission.json'
+            'submission.json',
+            { type: 'application/json' }
         )
     )
 
@@ -126,10 +136,7 @@ export const handler: Handler = async (event) => {
         )
     }
 
-    return {
-        statusCode: 303,
-        headers: { Location: '/themes/submit/success' }
-    }
+    return redirect('/themes/submit/success')
 
     /* 
     try {
