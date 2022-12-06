@@ -49,6 +49,8 @@ const { theme } = Astro.props
                     src={theme.image}
                     widths={[576, 1152]}
                     sizes="50vw"
+                    width={theme.image.width}
+                    height={theme.image.height}
                     alt={theme.title}
                     class="rounded-md shadow-md"
                 />
@@ -58,6 +60,8 @@ const { theme } = Astro.props
                             src={image}
                             widths={[576, 1152]}
                             sizes="50vw"
+                            width={image.width}
+                            height={image.height}
                             alt={theme.title}
                             class="rounded-md shadow-md"
                         />
@@ -72,6 +76,9 @@ const { theme } = Astro.props
                                 <Picture
                                     src={image}
                                     widths={[414, 828]}
+                                    sizes="100vw"
+                                    width={image.width}
+                                    height={image.height}
                                     alt={theme.title}
                                     class="rounded-md shadow-md"
                                 />

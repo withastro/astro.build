@@ -43,7 +43,7 @@ export default function ImageInput(props: {
                         </p>
                         <div class="text-center text-sm">
                             <p>16:9 aspect ratio</p>
-                            <p>906px wide or larger</p>
+                            <p>1280px wide or larger</p>
                         </div>
                         {previewUrl && (
                             <img
