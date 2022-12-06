@@ -125,6 +125,7 @@ export interface Theme {
     fullDescription?: Markdown
     image: ImageMetadata
     images: ImageMetadata[]
+    author: Link & { avatar?: string }
     categories: string[]
     repoUrl?: Link
     demoUrl?: Link
@@ -145,6 +146,9 @@ export const ThemeSchema = z.object({
     fullDescription: z.string().optional(),
     image: ImageMetadataSchema,
     images: z.array(ImageMetadataSchema).optional(),
+    author: LinkSchema.extend({
+        avatar: z.string().url().optional()
+    }).optional(),
     categories: z.array(z.string()),
     repoUrl: LinkSchema.optional(),
     demoUrl: LinkSchema.optional(),

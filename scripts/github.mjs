@@ -6,7 +6,10 @@ if (!process.env.GITHUB_TOKEN) {
 
 function fetchJson(url) {
     return fetch(url, {
-        headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN, "User-Agent": "chrome" }
+        headers: {
+            Authorization: 'token ' + process.env.GITHUB_TOKEN,
+            'User-Agent': 'chrome'
+        }
     }).then((res) => {
         if (res.status >= 400) {
             console.error(res.status, res.statusText)
@@ -42,12 +45,10 @@ export function parseRepoUrl(repoUrl) {
     try {
         const url = new URL(repoUrl)
         const parts = url.pathname.split('/').filter(Boolean)
-        return parts.length === 2
-            ? {
-                  org: parts[0],
-                  repo: parts[1]
-              }
-            : []
+        return {
+            org: parts[0],
+            repo: parts[1]
+        }
     } catch (err) {
         console.error(repoUrl, err)
         return []
@@ -123,8 +124,36 @@ export function orgApi(org) {
         }
     }
 
+    function userApi() {
+        /**
+         *
+         * @returns {Promise} JSON data for the github user or org account
+         */
+        function fetchUser() {
+            const url = new URL(`https://api.github.com/users/${org}`)
+            return fetchJson(url.toString())
+        }
+
+        return {
+            fetchUser
+        }
+    }
+
+    function orgApi() {
+        function fetchOrg() {
+            const url = new URL(`https://api.github.com/orgs/${org}`)
+            return fetchJson(url.toString())
+        }
+
+        return {
+            fetchOrg
+        }
+    }
+
     return {
         team: teamApi,
-        repo: repoApi
+        repo: repoApi,
+        user: userApi,
+        org: orgApi
     }
 }
