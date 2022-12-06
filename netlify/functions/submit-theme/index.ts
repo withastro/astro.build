@@ -109,8 +109,7 @@ export const handler: Handler = async (event) => {
         demoUrl: demoUrl ? { href: demoUrl, text: 'Demo URL' } : undefined,
         categories: [],
         slug: slugify(themeName),
-        fullDescription: getString('fullDescription') ?? '',
-        PREVIEW: true
+        fullDescription: getString('fullDescription') ?? ''
     }
 
     const discordFormData = new FormData()

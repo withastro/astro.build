@@ -28,8 +28,7 @@ export const themeDataSchema = z.object({
     featured: z.number().optional(),
     slug: z.string(),
     stars: z.number().optional(),
-    tags: z.array(z.string()).optional(),
-    PREVIEW: z.boolean().optional()
+    tags: z.array(z.string()).optional()
 })
 export type ThemeData = z.infer<typeof themeDataSchema>
 
