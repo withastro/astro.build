@@ -69,9 +69,7 @@ const toolOptions = [
         name="themeSubmit"
         method="POST"
         enctype="multipart/form-data"
-        action="/themes/submit/success"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
+        action="/.netlify/functions/submit-theme"
         class="max-w-screen-sm mx-auto my-8 px-4"
     >
         <!--<ThemeSubmitForm client:load />-->
@@ -80,13 +78,13 @@ const toolOptions = [
             <p class="hidden">
                 <label>
                     Don&apos;t fill this out if you&apos;re human:{' '}
-                    <input name="bot-field" />
+                    <input name="botField" />
                 </label>
             </p>
 
             <Field label="Preview images (max 8MB combined)">
                 <ImageInput
-                    name="mainPreviewImage"
+                    name="images"
                     label="Preview image"
                     required
                     client:idle
@@ -96,7 +94,7 @@ const toolOptions = [
                     {
                         Array.from({ length: 4 }, (_, i) => (
                             <ImageInput
-                                name={'previewImage' + (i + 1)}
+                                name="images"
                                 label={'Additional image ' + (i + 1)}
                                 client:idle
                             />
