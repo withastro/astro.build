@@ -1,8 +1,7 @@
 ---
-import { Picture } from '@astrojs/image/components'
+import { Image, Picture } from '@astrojs/image/components'
 import { GetStaticPathsResult } from 'astro'
 import { Icon } from 'astro-icon'
-import { Markdown } from 'astro-remote'
 import clsx from 'clsx'
 import Button from '../../../components/Button.astro'
 import Layout from '../../../layouts/Base.astro'
@@ -89,11 +88,34 @@ const { theme } = Astro.props
             </div>
         </section>
 
-        <section
-            class="grid gap-10 content-start md:sticky md:top-32"
-        >
+        <section class="grid gap-10 content-start md:sticky md:top-32">
             <div class="grid gap-4 justify-items-center md:justify-items-start">
                 <h1 class="text-3xl md:text-4xl font-medium">{theme.title}</h1>
+
+                {
+                    theme.author && (
+                        <p class="flex gap-1.5 items-center text-sm font-medium">
+                            <span class="text-neutral-500 pr-1">By</span>
+
+                            {theme.author.avatar && (
+                                <Image
+                                    class="w-6 h-6 rounded-full"
+                                    src={theme.author.avatar}
+                                    alt=""
+                                    width={48}
+                                    height={48}
+                                />
+                            )}
+                            <a
+                                href={theme.author.href}
+                                target="_blank"
+                                class="text-primary-700 underline"
+                            >
+                                {theme.author.text}
+                            </a>
+                        </p>
+                    )
+                }
 
                 <p class="pt-1 md:pt-3">{theme.description}</p>
 
@@ -129,7 +151,10 @@ const { theme } = Astro.props
 
             {
                 theme.fullDescription && (
-                    <section class="prose md:mt-4" set:html={theme.fullDescription}></section>
+                    <section
+                        class="prose md:mt-4"
+                        set:html={theme.fullDescription}
+                    />
                 )
             }
 

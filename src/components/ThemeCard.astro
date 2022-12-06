@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components'
+import { Image, Picture } from '@astrojs/image/components'
 import { Sprite } from 'astro-icon'
 import type { Theme } from '../types.js'
 import Button from './Button.astro'
@@ -52,9 +52,18 @@ const stars = theme.stars
         </p>
     </div>
 
-    <p class="flex-1 px-4 mb-4 text-sm line-clamp-3">
+    <p class="flex-1 px-4 mb-4 text-sm line-clamp-2">
         {theme.description}
     </p>
+
+    {theme.author && (
+        <div class="px-4 mb-4 flex gap-2 items-center text-sm text-neutral-600 font-medium">
+            {theme.author?.avatar && (
+                <Image class="w-5 h-5 rounded-full" src={theme.author.avatar} alt="" width={48} height={48} />
+            )}
+            <span>{theme.author.text}</span>
+        </div>
+    )}
 </article>
 
 <style>
