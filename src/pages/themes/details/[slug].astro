@@ -134,15 +134,17 @@ const { theme } = Astro.props
                 }
 
                 <div class="flex flex-wrap gap-4">
-                    <Button href={theme.buyUrl?.href || theme.repoUrl.href}
-                        >{
+                    <Button external href={theme.buyUrl?.href || theme.repoUrl.href} class="flex gap-2">
+                        {
                             theme.buyUrl?.href ? 'Buy Now' : 'Get Started'
-                        }</Button
-                    >
+                        }
+                        <Icon name='heroicons-solid:external-link' size={18} class="opacity-70 -mr-1" aria-hidden="true" />
+                    </Button>
                     {
                         theme.demoUrl?.href && (
-                            <Button theme="secondary" href={theme.demoUrl.href}>
+                            <Button external theme="secondary" href={theme.demoUrl.href} class="flex gap-2">
                                 Live Demo
+                                <Icon name='heroicons-solid:external-link' size={18} class="opacity-70 -mr-1" aria-hidden="true" />
                             </Button>
                         )
                     }

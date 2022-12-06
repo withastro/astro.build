@@ -6,6 +6,8 @@ interface Props {
     alt?: string
     download?: boolean
     type?: 'button' | 'submit' | 'reset'
+    external?: boolean
+    class?: string
 }
 const {
     theme = 'primary',
@@ -14,6 +16,8 @@ const {
     alt,
     download,
     type,
+    external,
+    class: className = '',
     ...props
 } = Astro.props as Props
 const Component = href ? 'a' : 'button'
@@ -21,11 +25,12 @@ const Component = href ? 'a' : 'button'
 
 <Component
     {...props}
-    class:list={['btn', `btn--${size}`, `btn--${theme}`]}
+    class:list={['btn', `btn--${size}`, `btn--${theme}`, className]}
     href={href}
     alt={alt}
     type={type}
     download={download}
+    target={href && external ? "_blank" : undefined}
 >
     <slot />
 </Component>
