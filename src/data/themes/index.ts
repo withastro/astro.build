@@ -64,6 +64,10 @@ export async function getThemes() {
 const COLLECTION_PRIORITY = {
     featured: 1,
     official: 2,
+    blog: 3,
+    'landing-page': 4,
+    portfolio: 5,
+    docs: 6,
     other: -1 // always pushed to the end
 }
 
@@ -112,7 +116,7 @@ export async function getCollections(): Promise<Collection[]> {
         })
         .map(({ category }) => ({
             slug: category,
-            text: category.replace('+', ' + ')
+            text: category.replace('+', ' + ').replace('-', ' ')
         }))
 }
 
