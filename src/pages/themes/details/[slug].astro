@@ -214,3 +214,14 @@ const { theme } = Astro.props
         margin-bottom: calc(0.25rem + 0.5em);
     }
 </style>
+
+<script>
+    import requestIdleCallback from '../../../utils/requestIdleCallback.js'
+
+    requestIdleCallback(() => {
+        const carousel = document.querySelector('astro-carousel')
+        if (carousel) {
+            carousel.querySelectorAll('img').forEach((elem) => elem.setAttribute('loading', 'eager'))
+        }
+    })
+</script>
