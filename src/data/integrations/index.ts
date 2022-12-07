@@ -1,5 +1,5 @@
 import data from '../integrations.json'
-import type { Integration } from '../../types.js'
+import { Integration, IntegrationSchema } from '../../types.js'
 
 // collections in this list will always be sorted first
 const COLLECTION_PRIORITY = {
@@ -12,6 +12,12 @@ const COLLECTION_PRIORITY = {
 
 let integrations: Promise<Integration[]>
 async function loadIntegrations() {
+    data.map((i) => {
+        const res = IntegrationSchema.safeParse(i)
+        if (!res.success) {
+            console.log(i.slug, res)
+        }
+    })
     return data as Integration[]
 }
 

@@ -1,0 +1,59 @@
+---
+import type { Link } from '../types.js'
+
+export interface TextProps {
+    text: string
+}
+
+export interface LinkProps extends Link {
+    current?: boolean
+    prefetch?: boolean
+}
+
+export type Props = TextProps | LinkProps
+
+function isLinkProps(props: Props):props is LinkProps {
+    return 'href' in props
+}
+
+const props = Astro.props as Props
+---
+
+{isLinkProps(props) ? (
+    <a
+    rel={props.prefetch ? 'prefetch' : undefined}
+    class:list={['pill', { 'pill--hollow': !props.current }]}
+    href={props.href}
+    aria-current={props.current ? 'page' : undefined}
+>
+    {props.text}
+</a>
+) : (
+    <div class="pill pill--hollow">
+        {props.text}
+    </div>
+)}
+
+<style>
+    .pill {
+        @apply cursor-default inline-flex items-center px-4 py-0.5 border-2 border-transparent text-sm font-bold tracking-wide rounded-full shadow-sm text-neutral-50 bg-primary-900;
+    }
+
+    .pill.pill--hollow {
+        @apply bg-transparent text-primary-900 border-primary-900;
+    }
+
+    a.pill {
+        @apply cursor-pointer hover:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-800 transition-colors duration-150 ease-in-out;
+    }
+
+    a.pill.pill--hollow {
+        @apply hover:bg-primary-900 hover:border-primary-900 focus:ring-primary-900 hover:text-neutral-50;
+    }
+
+    @media (forced-colors: active) {
+        a[aria-current='page'] {
+            color: Highlight;
+        }
+    }
+</style>

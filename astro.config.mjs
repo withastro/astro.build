@@ -1,5 +1,6 @@
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
+import preact from '@astrojs/preact';
 import prefetch from '@astrojs/prefetch';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
@@ -15,6 +16,7 @@ export default defineConfig({
     prefetch(),
     mdx(),
     sitemap(),
+    preact(),
     webfinger({
       instance: 'webtoo.ls',
       username: 'astro',
@@ -26,4 +28,4 @@ export default defineConfig({
       external: ['svgo']
     }
   }
-});
+})

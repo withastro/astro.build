@@ -1,7 +1,7 @@
-import type { Site } from '../types.js'
+import { Site, SiteSchema } from '../types.js'
 import social from '../assets/social.png'
 
-const site: Site = {
+const site: Site = SiteSchema.parse({
     title: 'Astro',
     description:
         "Pull content from anywhere and serve it fast with Astro's next-gen island architecture. Astro is the web framework that you'll enjoy using.",
@@ -37,6 +37,6 @@ const site: Site = {
             footerOnly: true
         }
     ]
-}
+}) as Site
 
 export default site

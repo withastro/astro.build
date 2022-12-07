@@ -2,7 +2,7 @@ import path from 'node:path';
 import social from '../../assets/social.png'
 import { getAuthor } from '../../data/authors/index.js'
 import type { MarkdownInstance } from 'astro'
-import type { BlogPost } from '../../types.js'
+import { BlogPost, BlogPostSchema } from '../../types.js'
 
 export const slugFromFile = (file: string) => path.parse(file).name;
 const urlFromContentUrl = (url: string) => {
@@ -32,7 +32,7 @@ export async function parseBlogPost({
         coverImage
     } = frontmatter
 
-    return {
+    return BlogPostSchema.parse({
         url: urlFromContentUrl(url),
         title,
         description,
@@ -40,7 +40,7 @@ export async function parseBlogPost({
         authors: await Promise.all(authors.map(getAuthor)),
         socialImage,
         coverImage,
-    }
+    }) as BlogPost
 }
 
 export function sortPosts(a: BlogPost, b: BlogPost) {
