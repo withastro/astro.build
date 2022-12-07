@@ -33,7 +33,8 @@ const site: Site = {
             me: 'https://m.webtoo.ls/@astro',
             text: 'Follow Astro on Mastodon',
             pack: 'bi',
-            name: 'mastodon'
+            name: 'mastodon',
+            footerOnly: true
         }
     ]
 }

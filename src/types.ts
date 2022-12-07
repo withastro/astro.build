@@ -27,7 +27,7 @@ export interface Site {
     description: string
     image: ImageMetadata
     twitterHandle: string
-    socialLinks: (IconLink & { me?: string })[]
+    socialLinks: (IconLink & { me?: string; footerOnly?: boolean })[]
 }
 
 export interface BlogPost {
