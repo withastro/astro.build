@@ -29,6 +29,8 @@ const links: Link[] = [
 
 const formatter = Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 })
 const stars = formatter.format(monorepo.stars)
+
+const socialLinks = site.socialLinks.filter((link) => !link.footerOnly)
 ---
 
 <script>
@@ -94,7 +96,7 @@ const stars = formatter.format(monorepo.stars)
                     id="mobilesocial"
                     class="items-center gap-x-3 flex sm:hidden pb-4"
                 >
-                    {site.socialLinks.map(({ href, text, pack, name }) => {
+                    {socialLinks.map(({ href, text, pack, name }) => {
                         return name === 'github' ? (
                             <a
                                 class="flex items-center no-underline ml-3"
@@ -140,7 +142,7 @@ const stars = formatter.format(monorepo.stars)
                 </div>
             </div>
             <div class="items-center ml-6 pl-1 gap-x-3 hidden md:flex">
-                {site.socialLinks.map(({ href, text, pack, name }) => {
+                {socialLinks.map(({ href, text, pack, name }) => {
                     return name === 'github' ? (
                         <a
                             class="flex items-center no-underline ml-3"
