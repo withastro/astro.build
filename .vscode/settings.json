@@ -1,4 +1,17 @@
 {
+    // format astro files with prettier
+    "prettier.documentSelectors": ["**/*.astro"],
+    "[astro]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // match the prettier tab size
+    "editor.tabSize": 4,
+
+    // use .js for imports
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+
     // get tailwind intellisense inside classNames(), clsx(), etc.
     "tailwindCSS.experimental.classRegex": [
         [
@@ -13,5 +26,6 @@
             "(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)",
             "(?:`)((?:\\`|[^`])*)(?:`)"
         ]
-    ]
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

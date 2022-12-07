@@ -1,7 +1,8 @@
 ---
-import { Picture } from '@astrojs/image/components'
+import { Image, Picture } from '@astrojs/image/components'
 import { Sprite } from 'astro-icon'
 import type { Theme } from '../types.js'
+import Button from './Button.astro'
 import { neonOutlineCardStyle } from './styles.js'
 
 export interface Props {
@@ -10,19 +11,12 @@ export interface Props {
 
 const { theme } = Astro.props as Props
 
-const linkHref = theme.demoUrl?.href || theme.repoUrl.href
-
 const stars = theme.stars
-const netlifyUrl =
-    stars !== undefined &&
-    `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`
 ---
 
 <article class:list={["flex flex-col bg-neutral-50", neonOutlineCardStyle]}>
     <a
-        href={linkHref}
-        target="_blank"
-        rel="noopener"
+        href={`/themes/details/${theme.slug}`}
         class="overflow-hidden rounded-t-lg shadow aspect-w-16 aspect-h-9"
     >
         <Picture
@@ -36,7 +30,7 @@ const netlifyUrl =
 
     <div class="flex items-center justify-between p-4">
         <h2 class="flex items-center gap-2 text-lg font-bold">
-            <a href={linkHref} class="subtle">{theme.title}</a>
+            <a href={`/themes/details/${theme.slug}`} class="subtle">{theme.title}</a>
             {theme.official && (
                 <Sprite
                     pack="heroicons-solid"
@@ -48,47 +42,28 @@ const netlifyUrl =
             )}
         </h2>
 
-        {stars > 0 && (
-            <a
-                href={theme.repoUrl.href}
-                target="_blank"
-                rel="noopener"
-                class="flex items-center col-start-2 text-sm subtle gap-x-1"
-            >
-                <span class="sr-only">View the source code</span>
-                <Sprite
-                    pack="fa-regular"
-                    name="star"
-                    size="1.25em"
-                    aria-label="GitHub stars count"
-                />
-                <span>{stars}</span>
-            </a>
-        )}
+        <p class:list={[
+            'font-bold text-xs px-3 py-1 rounded-full tracking-wide',
+            theme.buyUrl?.href
+                ? 'bg-primary-800 text-neutral-50'
+                : 'bg-primary-100 text-primary-800'
+        ]}>
+            {theme.buyUrl?.href ? 'PAID' : 'FREE'}
+        </p>
     </div>
 
-    <p class="flex-1 px-4 mb-4 text-sm line-clamp-3">
+    <p class="flex-1 px-4 mb-4 text-sm line-clamp-2">
         {theme.description}
     </p>
 
-    <!-- <footer class="flex items-center px-4 pb-3">
-        {netlifyUrl && (
-            <a href={netlifyUrl} target="_blank" rel="noopener" aria-label={`Deploy ${theme.title} to Netlify`}>
-                <img
-                    src="https://www.netlify.com/img/deploy/button.svg"
-                    alt="Deploy to Netlify"
-                    title="Deploy to Netlify"
-                    width="146"
-                    height="32"
-                />
-            </a>
-        )}
-
-        <a href={theme.repoUrl.href} class="p-3 ml-auto -mr-3">
-            <span class="sr-only">View {theme.title} on GitHub</span>
-            <Sprite pack="bi" name="github" size={28} aria-hidden="true" />
-        </a>
-    </footer> -->
+    {theme.author && (
+        <div class="px-4 mb-4 flex gap-2 items-center text-sm text-neutral-600 font-medium">
+            {theme.author?.avatar && (
+                <Image class="w-5 h-5 rounded-full" src={theme.author.avatar} alt="" width={48} height={48} />
+            )}
+            <span>{theme.author.text}</span>
+        </div>
+    )}
 </article>
 
 <style>

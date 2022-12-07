@@ -1,42 +1,77 @@
 import type { ImageMetadata } from '@astrojs/image'
+import { z } from 'zod'
+import type { Theme } from '../../types.js'
+import { ThemeSchema, ThemeTag } from '../../types.js'
 import data from '../themes.json'
-import type { Link, Theme } from '../../types.js'
 
-interface ThemeData {
-    title: string
-    description: string
-    image: { src: string; alt: string }
-    repoUrl: Link
-    npmUrl?: Link
-    demoUrl?: Link
-    categories: string[]
-    featured?: number
-    slug: string
-    stars: number
+const imageSchema = z.object({
+    src: z.string(),
+    alt: z.string()
+})
+
+const linkSchema = z.object({
+    href: z.string(),
+    text: z.string()
+})
+
+export const themeDataSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    fullDescription: z.string().optional(),
+    image: imageSchema,
+    images: z.array(imageSchema).optional(),
+    repoUrl: linkSchema.optional(),
+    npmUrl: linkSchema.optional(),
+    demoUrl: linkSchema.optional(),
+    links: z.array(linkSchema).optional(),
+    categories: z.array(z.string()),
+    featured: z.number().optional(),
+    slug: z.string(),
+    stars: z.number().optional(),
+    tags: z.array(z.string()).optional()
+})
+export type ThemeData = z.infer<typeof themeDataSchema>
+
+const allImages = import.meta.glob('./images/*.{png,jpg,jpeg}') as {
+    [key: string]: () => Promise<{ default: ImageMetadata }>
 }
 
-const allImages: { [key: string]: () => Promise<{ default: ImageMetadata }> } =
-    import.meta.glob('./images/*.{png,jpg,jpeg}')
+async function resolveImage(src: string) {
+    if (!(src in allImages)) {
+        throw new Error(
+            `[loadThemes] "${src}" image not found! Does it exist in /src/data/themes/images?`
+        )
+    }
+
+    const mod = await allImages[src]!()
+    return mod.default
+}
 
 let allThemes: Promise<Theme[]>
 async function loadThemes(): Promise<Theme[]> {
     return Promise.all(
         (data as ThemeData[]).map(async (theme) => {
             if (!(theme.image.src in allImages)) {
-                console.log(`[themes] Image for "${theme.title}" not found! Provided: "${theme.image.src}", is there a typo?`)
+                console.log(
+                    `[themes] Image for "${theme.title}" not found! Provided: "${theme.image.src}", is there a typo?`
+                )
             }
-            
-            const mod = await allImages[theme.image.src]()
 
-            return {
+            const images = theme.images || []
+
+            return ThemeSchema.parse({
                 ...theme,
-                image: mod.default
-            }
+                tags: theme.tags as ThemeTag[],
+                image: await resolveImage(theme.image.src),
+                images: await Promise.all(
+                    images.map(({ src }) => resolveImage(src))
+                )
+            }) as Theme
         })
     )
 }
 
-async function getThemes() {
+export async function getThemes() {
     if (!allThemes) {
         allThemes = loadThemes()
     }
@@ -48,6 +83,10 @@ async function getThemes() {
 const COLLECTION_PRIORITY = {
     featured: 1,
     official: 2,
+    blog: 3,
+    'landing-page': 4,
+    portfolio: 5,
+    docs: 6,
     other: -1 // always pushed to the end
 }
 
@@ -68,11 +107,10 @@ export async function getCollections(): Promise<Collection[]> {
 
     for (const theme of themes) {
         for (const category of theme.categories) {
-            if (collectionsMap.has(category)) {
-                collectionsMap.set(category, collectionsMap.get(category) + 1)
-            } else {
-                collectionsMap.set(category, 1)
-            }
+            collectionsMap.set(
+                category,
+                (collectionsMap.get(category) ?? 0) + 1
+            )
         }
     }
 
@@ -96,7 +134,7 @@ export async function getCollections(): Promise<Collection[]> {
         })
         .map(({ category }) => ({
             slug: category,
-            text: category.replace('+', ' + ')
+            text: category.replace('+', ' + ').replace('-', ' ')
         }))
 }
 
@@ -108,6 +146,6 @@ export async function getThemesForCollection(collection: string) {
     return collection === 'featured'
         ? themes
               .filter(({ featured }) => !!featured)
-              .sort((a, b) => a.featured - b.featured)
+              .sort((a, b) => a.featured! - b.featured!)
         : themes.filter(({ categories }) => categories.indexOf(collection) >= 0)
 }
