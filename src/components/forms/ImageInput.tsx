@@ -21,7 +21,7 @@ export default function ImageInput(props: {
                 'focus:outline-none',
                 'bg-neutral-100 bg-center bg-cover hover:bg-neutral-200',
                 'text-neutral-600',
-                'border-2 border-dashed border-neutral-400 focus-within:border-primary-400',
+                'border-2 border-dashed border-neutral-400  focus-within:outline-offset-2 focus-within:outline-2 focus-within:outline-primary-400 focus-within:outline',
                 'rounded-md overflow-hidden',
                 'p-4',
                 '@container'

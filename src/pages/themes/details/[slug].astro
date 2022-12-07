@@ -50,7 +50,7 @@ const { theme } = Astro.props
                     sizes="50vw"
                     width={theme.image.width}
                     height={theme.image.height}
-                    alt={theme.title}
+                    alt=""
                     class="rounded-md shadow-md"
                 />
                 {
@@ -61,7 +61,7 @@ const { theme } = Astro.props
                             sizes="50vw"
                             width={image.width}
                             height={image.height}
-                            alt={theme.title}
+                            alt=""
                             class="rounded-md shadow-md"
                         />
                     ))
@@ -78,7 +78,7 @@ const { theme } = Astro.props
                                     sizes="100vw"
                                     width={image.width}
                                     height={image.height}
-                                    alt={theme.title}
+                                    alt=""
                                     class="rounded-md shadow-md"
                                 />
                             </div>
@@ -127,6 +127,7 @@ const { theme } = Astro.props
                                     name={`badges/${tag}`}
                                     height={32}
                                     class="max-w-[128px]"
+                                    aria-label={tag}
                                 />
                             ))}
                         </div>
