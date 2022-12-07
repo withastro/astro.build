@@ -6,7 +6,8 @@ import { type ThemeData } from '../../../src/data/themes/index.js'
 import { parseMultipartForm } from './parse-multipart-form.js'
 
 const env = object({
-    DISCORD_WEBHOOK_URL: string()
+    DISCORD_WEBHOOK_URL: string(),
+    DISCORD_WEBHOOK_THREAD_ID: string()
 }).parse(process.env)
 
 const discordWebhookMessageSchema = object({
@@ -68,7 +69,9 @@ export const handler: Handler = async (event) => {
         JSON.stringify({ content: 'New theme submission!' })
     )
 
-    const webhookResponse = await fetch(env.DISCORD_WEBHOOK_URL, {
+    const webhookUrl = new URL(env.DISCORD_WEBHOOK_URL)
+    webhookUrl.searchParams.set('thread_id', env.DISCORD_WEBHOOK_THREAD_ID)
+    const webhookResponse = await fetch(webhookUrl.href, {
         method: 'POST',
         body: initialMessageBody
     })
@@ -130,15 +133,17 @@ export const handler: Handler = async (event) => {
         )
     )
 
-    const discordResponse = await fetch(
+    const editWebhookUrl = new URL(
         `${env.DISCORD_WEBHOOK_URL.replace(/\/$/, '')}/messages/${
             webhookMessageJson.id
-        }`,
-        {
-            method: 'PATCH',
-            body: discordFormData
-        }
+        }`
     )
+    editWebhookUrl.searchParams.set('thread_id', env.DISCORD_WEBHOOK_THREAD_ID)
+
+    const discordResponse = await fetch(editWebhookUrl.href, {
+        method: 'PATCH',
+        body: discordFormData
+    })
 
     if (!discordResponse.ok) {
         return errorRedirect(
