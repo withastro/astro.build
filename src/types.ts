@@ -92,7 +92,7 @@ export type Markdown = string
 export type ThemeTag =
     | "alpinejs"
     | "lit"
-    | "markdown"
+    | "mdx"
     | "postcss"
     | "preact"
     | "react"
@@ -106,7 +106,7 @@ export type ThemeTag =
 export const ThemeTagSchema = z.enum([
     'alpinejs',
     'lit',
-    'markdown',
+    'mdx',
     'postcss',
     'preact',
     'react',
