@@ -56,7 +56,7 @@ export interface Site {
     description: string
     image: ImageMetadata
     twitterHandle: string
-    socialLinks: IconLink[]
+    socialLinks: (IconLink & { me?: string; footerOnly?: boolean })[]
 }
 
 export const SiteSchema = z.object({

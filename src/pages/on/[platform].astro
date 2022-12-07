@@ -1,0 +1,21 @@
+---
+import type { Link } from '../../types.js'
+import site from '../../data/site.js'
+
+interface Props {
+    link: Link
+}
+
+export function getStaticPaths() {
+    return site.socialLinks.map((link) => ({
+        params: { platform: link.name },
+        props: { link }
+    }))
+}
+
+const mastodon = site.socialLinks.find((link) => link.name === 'mastodon')
+const { link } = Astro.props
+---
+
+{mastodon && <link rel="me" href={mastodon.me ?? mastodon.href} />}
+<meta http-equiv="refresh" content={`0;URL='${link.href}'`} />
