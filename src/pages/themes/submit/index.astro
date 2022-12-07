@@ -1,16 +1,18 @@
 ---
 import { Icon } from 'astro-icon'
-import Button from '../../components/Button.astro'
-import Field from '../../components/forms/Field.jsx'
-import ImageInput from '../../components/forms/ImageInput.jsx'
-import InputField from '../../components/forms/InputField.jsx'
-import LabelText from '../../components/forms/LabelText.jsx'
-import RichTextEditor from '../../components/forms/RichTextEditor.astro'
-import { TagInput, TagSelect } from '../../components/forms/TagInput.jsx'
-import TextAreaField from '../../components/forms/TextAreaField.astro'
-import PageTitle from '../../components/PageTitle.astro'
-import PaidFreeInput from '../../components/theme-submit/PaidFreeInput.jsx'
-import Base from '../../layouts/Base.astro'
+import Aside from '../../../components/Aside.astro'
+import Button from '../../../components/Button.astro'
+import Field from '../../../components/forms/Field.jsx'
+import ImageInput from '../../../components/forms/ImageInput.jsx'
+import InputField from '../../../components/forms/InputField.jsx'
+import LabelText from '../../../components/forms/LabelText.jsx'
+import Note from '../../../components/Note.astro'
+import RichTextEditor from '../../../components/forms/RichTextEditor.astro'
+import { TagInput, TagSelect } from '../../../components/forms/TagInput.jsx'
+import TextAreaField from '../../../components/forms/TextAreaField.astro'
+import PageTitle from '../../../components/PageTitle.astro'
+import PaidFreeInput from '../../../components/theme-submit/PaidFreeInput.jsx'
+import Base from '../../../layouts/Base.astro'
 
 const bestPractices = [
     'Your theme uses the latest release of Astro',
@@ -68,6 +70,19 @@ const toolOptions = [
             }
         </ul>
     </section>
+
+    <Aside class="max-w-screen-sm text-sm shadow-md w-full mx-auto">
+        <p class="text-justify">
+            <Icon
+                pack="heroicons-outline"
+                name="information-circle"
+                size="1.5em"
+                class="inline-block"
+                aria-hidden="true"
+            />
+            Looking for inspiration for your theme's preview images? Check out our <a href="/resources/image-templates" target="_blank" class="underline font-semibold">Image Templates</a>!
+        </p>
+    </Aside>
 
     <form
         name="themeSubmit"
