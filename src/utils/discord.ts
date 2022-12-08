@@ -2,10 +2,18 @@ import fetch, { FormData, Response } from 'node-fetch'
 import { posix } from 'node:path'
 import * as z from 'zod'
 
+const discordMessageAttachmentSchema = z.object({
+    filename: z.string(),
+    url: z.string(),
+    width: z.number().optional(),
+    height: z.number().optional(),
+    content_type: z.string().optional()
+})
+
 const discordWebhookMessageSchema = z.object({
     id: z.string(),
     content: z.string(),
-    attachments: z.array(z.object({ filename: z.string(), url: z.string() }))
+    attachments: z.array(discordMessageAttachmentSchema)
 })
 export type DiscordWebhookMessage = z.infer<typeof discordWebhookMessageSchema>
 

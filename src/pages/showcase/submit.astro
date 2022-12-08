@@ -1,0 +1,190 @@
+---
+import { Icon } from 'astro-icon'
+import Aside from '../../components/Aside.astro'
+import Button from '../../components/Button.astro'
+import Field from '../../components/forms/Field.jsx'
+import ImageInput from '../../components/forms/ImageInput.jsx'
+import InputField from '../../components/forms/InputField.jsx'
+import LabelText from '../../components/forms/LabelText.jsx'
+import RichTextEditor from '../../components/forms/RichTextEditor.astro'
+import { TagInput, TagSelect } from '../../components/forms/TagInput.jsx'
+import TextAreaField from '../../components/forms/TextAreaField.astro'
+import PageTitle from '../../components/PageTitle.astro'
+import Base from '../../layouts/Base.astro'
+
+const bestPractices = [
+    'The website is built with Astro',
+    'The website is publicly available at the provided URL',
+    'Theme preview image or screenshot included (see below for details)'
+]
+
+const toolOptions = [
+    'AlpineJS',
+    'Lit',
+    'MDX',
+    'PostCSS',
+    'Preact',
+    'React',
+    'SASS',
+    'SolidJS',
+    'Svelte',
+    'Tailwind',
+    'TypeScript',
+    'Vue'
+]
+---
+
+<Base title="Submit a theme">
+    <PageTitle>
+        <Fragment slot="title">Submit a theme</Fragment>
+        Thank you for sharing your project with the Astro community! Please fill
+        out this form as completely as possible.
+    </PageTitle>
+
+    <section class="max-w-screen-sm mx-auto px-4 pb-4 pt-12 md:pt-16 lg:pt-20">
+        <header class="mb-4">
+            <h2 class="text-3xl font-semibold pb-2">Best practices</h2>
+            <p class="text-neutral-500">
+                What we look for when reviewing submissions:
+            </p>
+        </header>
+        <ul
+            class="flex flex-col gap-2 mt-6 mb-4 whitespace-normal text-neutral-700 -ml-1"
+        >
+            {
+                bestPractices.map((text) => (
+                    <li class="flex items-center gap-1">
+                        <Icon
+                            name="heroicons-outline:check"
+                            size={28}
+                            class="text-green-500"
+                            aria-hidden="true"
+                        />
+                        {text}
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+
+    <Aside class="max-w-screen-sm text-sm shadow-md w-full mx-auto">
+        <p class="text-justify">
+            <Icon
+                pack="heroicons-outline"
+                name="information-circle"
+                size="1.5em"
+                class="inline-block"
+                aria-hidden="true"
+            />
+            Looking for inspiration for your theme's preview images? Check out our
+            <a
+                href="/resources/image-templates"
+                target="_blank"
+                class="underline font-semibold">Image Templates</a
+            >!
+        </p>
+    </Aside>
+
+    <form
+        name="themeSubmit"
+        method="POST"
+        enctype="multipart/form-data"
+        action="/.netlify/functions/submit-showcase"
+        class="max-w-screen-sm mx-auto my-8 px-4"
+    >
+        <div class="flex flex-col gap-6 items-center">
+            {/* https://docs.netlify.com/forms/spam-filters/#honeypot-field */}
+            <p class="hidden">
+                <label>
+                    Don&apos;t fill this out if you&apos;re human:{' '}
+                    <input name="botField" />
+                </label>
+            </p>
+
+            <Field label="Preview images (max 8MB combined)">
+                <ImageInput
+                    name="images"
+                    label="Preview image"
+                    required
+                    client:idle
+                />
+
+                <div class="grid md:grid-cols-2 w-full gap-4 pt-3">
+                    {
+                        Array.from({ length: 4 }, (_, i) => (
+                            <ImageInput
+                                name="images"
+                                label={'Additional image ' + (i + 1)}
+                                client:idle
+                            />
+                        ))
+                    }
+                </div>
+            </Field>
+
+            <InputField
+                name="authorName"
+                label="Your name"
+                placeholder="Sally Ride"
+                required
+            />
+
+            <InputField
+                name="authorEmail"
+                label="Your email"
+                type="email"
+                placeholder="me@website.com"
+                required
+            />
+
+            <InputField
+                label="Website name"
+                name="websiteName"
+                placeholder="My Awesome Website"
+                required
+            />
+
+            <TextAreaField
+                label="Short description"
+                name="shortDescription"
+                placeholder="A short description of your website, displayed on the showcase list page"
+                required
+            />
+
+            <InputField
+                label="Public website URL"
+                name="websiteUrl"
+                type="url"
+                placeholder="https://my.awesome.website"
+                required
+            />
+
+            <div class="w-full">
+                <label for="tools">
+                    <LabelText>Tools used</LabelText>
+                </label>
+                <TagSelect
+                    client:idle
+                    id="tools"
+                    name="tools"
+                    options={toolOptions}
+                />
+            </div>
+
+            <div class="w-full">
+                <label for="keywords">
+                    <LabelText>Keywords</LabelText>
+                </label>
+                <TagInput client:idle id="keywords" name="keywords" />
+            </div>
+
+            <RichTextEditor
+                id="fullDescription"
+                name="fullDescription"
+                label="Full description"
+            />
+
+            <Button type="submit" theme="primary">Submit</Button>
+        </div>
+    </form>
+</Base>

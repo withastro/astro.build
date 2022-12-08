@@ -1,9 +1,9 @@
 ---
-import { getShowcase } from '../data/showcase/index.js'
+import shareImage from '../assets/showcase/social.jpg'
 import CardGrid from '../components/CardGrid.astro'
 import ShowcaseCard from '../components/ShowcaseCard.astro'
+import { getShowcase } from '../data/showcase/index.js'
 import Layout from '../layouts/Catalog.astro'
-import shareImage from '../assets/showcase/social.jpg'
 
 const showcase = await getShowcase()
 
@@ -27,12 +27,8 @@ const description =
     </Fragment>
 
     <Fragment slot="info">
-        <a
-            href="https://github.com/withastro/astro.build/issues/new/choose"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="underline subtle"
-            >Submit your site.</a>
+        <a href="/showcase/submit" class="underline subtle">Submit your site.</a
+        >
         Questions about building your own themes? Join our community on
         <a href="https://astro.build/chat" class="underline subtle">Discord!</a>
     </Fragment>
