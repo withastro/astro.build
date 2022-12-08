@@ -3,7 +3,7 @@ import { Response } from '@netlify/functions/dist/function/response.js'
 import fetch, { File, FormData } from 'node-fetch'
 import { array, object, string } from 'zod'
 import { type ThemeData } from '../../../src/data/themes/index.js'
-import { parseMultipartForm } from './parse-multipart-form.js'
+import { parseMultipartForm } from '../../../src/utils/parseMultipartForm.js'
 
 const env = object({
     DISCORD_WEBHOOK_URL: string(),
