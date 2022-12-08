@@ -1,20 +1,20 @@
 import { Handler } from '@netlify/functions'
 import { Response } from '@netlify/functions/dist/function/response.js'
-import fetch, { File, FormData } from 'node-fetch'
-import { array, object, string } from 'zod'
+import { File } from 'node-fetch'
+import { object, string } from 'zod'
 import { type ThemeData } from '../../../src/data/themes/index.js'
+import {
+    DiscordWebhookMessage,
+    editDiscordWebhookMessage,
+    executeDiscordWebhook
+} from '../../../src/utils/discord.js'
+import { toError } from '../../../src/utils/errors.js'
 import { parseMultipartForm } from '../../../src/utils/parseMultipartForm.js'
 
 const env = object({
     DISCORD_WEBHOOK_URL: string(),
     DISCORD_WEBHOOK_THREAD_ID: string()
 }).parse(process.env)
-
-const discordWebhookMessageSchema = object({
-    id: string(),
-    content: string(),
-    attachments: array(object({ filename: string(), url: string() }))
-})
 
 const slugify = (str: string) =>
     str
@@ -46,7 +46,7 @@ export const handler: Handler = async (event) => {
         event.headers
     )
 
-    const getString = (name: string) => {
+    const getStringOrUndefined = (name: string) => {
         const value = form.get(name)
         return typeof value === 'string' ? value : undefined
     }
@@ -56,98 +56,70 @@ export const handler: Handler = async (event) => {
         return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     }
 
-    const initialMessageBody = new FormData()
-
-    for (const [index, value] of form.getAll('images').entries()) {
-        if (value instanceof File) {
-            initialMessageBody.append(`files[${index}]`, value, value.name)
-        }
-    }
-
-    initialMessageBody.append(
-        'payload_json',
-        JSON.stringify({ content: 'New theme submission!' })
-    )
-
-    const webhookUrl = new URL(env.DISCORD_WEBHOOK_URL)
-    webhookUrl.searchParams.set('thread_id', env.DISCORD_WEBHOOK_THREAD_ID)
-    const webhookResponse = await fetch(webhookUrl.href, {
-        method: 'POST',
-        body: initialMessageBody
-    })
-    if (!webhookResponse.ok) {
+    let message: DiscordWebhookMessage
+    try {
+        message = await executeDiscordWebhook(env.DISCORD_WEBHOOK_URL, {
+            threadId: env.DISCORD_WEBHOOK_THREAD_ID,
+            content: 'New theme submission!',
+            files: form
+                .getAll('images')
+                .filter((value): value is File => value instanceof File)
+        })
+    } catch (error: unknown) {
         return errorRedirect(
-            `Initial webhook failed: ${webhookResponse.statusText}`
+            `Initial webhook failed: ${toError(error).message}`
         )
     }
 
-    const webhookMessageJson = discordWebhookMessageSchema.parse(
-        await webhookResponse.json()
-    )
-
-    const [image, ...images] = webhookMessageJson.attachments.map(
-        (attachment) => ({
-            src: attachment.url,
-            alt: attachment.filename
-        })
-    )
+    const [image, ...images] = message.attachments.map((attachment) => ({
+        src: attachment.url,
+        alt: attachment.filename
+    }))
 
     if (!image) {
         return errorRedirect('No image')
     }
 
-    const themeName = getString('themeName')
+    const themeName = getStringOrUndefined('themeName')
     if (!themeName) {
         return errorRedirect('Theme name required')
     }
 
-    const repoUrl = getString('repoUrl')
-    const demoUrl = getString('demoUrl')
+    const repoUrl = getStringOrUndefined('repoUrl')
+    const demoUrl = getStringOrUndefined('demoUrl')
     const themeData: ThemeData = {
         title: themeName,
-        description: getString('shortDescription') ?? '',
+        description: getStringOrUndefined('shortDescription') ?? '',
         image,
         images,
         repoUrl: repoUrl ? { href: repoUrl, text: 'Repo URL' } : undefined,
         demoUrl: demoUrl ? { href: demoUrl, text: 'Demo URL' } : undefined,
         categories: [],
         slug: slugify(themeName),
-        fullDescription: getString('fullDescription') ?? ''
+        fullDescription: getStringOrUndefined('fullDescription') ?? ''
     }
 
-    const discordFormData = new FormData()
-    discordFormData.append(
-        'files[0]',
+    const files = [
         new File(
             [JSON.stringify(themeData, null, 2)],
             `${themeData.slug}.json`,
             { type: 'application/json' }
-        )
-    )
-    discordFormData.append(
-        'files[1]',
+        ),
         new File(
             [JSON.stringify(Object.fromEntries(form), null, 2)],
             'submission.json',
             { type: 'application/json' }
         )
-    )
+    ]
 
-    const editWebhookUrl = new URL(
-        `${env.DISCORD_WEBHOOK_URL.replace(/\/$/, '')}/messages/${
-            webhookMessageJson.id
-        }`
-    )
-    editWebhookUrl.searchParams.set('thread_id', env.DISCORD_WEBHOOK_THREAD_ID)
-
-    const discordResponse = await fetch(editWebhookUrl.href, {
-        method: 'PATCH',
-        body: discordFormData
-    })
-
-    if (!discordResponse.ok) {
+    try {
+        await editDiscordWebhookMessage(env.DISCORD_WEBHOOK_URL, message.id, {
+            threadId: env.DISCORD_WEBHOOK_THREAD_ID,
+            files
+        })
+    } catch (error: unknown) {
         return errorRedirect(
-            `Message update failed failed: ${discordResponse.statusText}`
+            `Editing webhook failed: ${toError(error).message}`
         )
     }
 
