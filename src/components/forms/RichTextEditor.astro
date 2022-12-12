@@ -80,4 +80,9 @@ const { id, name, label, required } = Astro.props
     .prose :global(.ql-editor) {
         @apply min-h-[8rem] p-4;
     }
+
+    /* the container already has a focus state */
+    .prose :global(.ql-editor:focus) {
+        @apply outline-none;
+    }
 </style>

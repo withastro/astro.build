@@ -1,0 +1,108 @@
+---
+import { Icon } from 'astro-icon'
+import Button from '../../components/Button.astro'
+import Field from '../../components/forms/Field.jsx'
+import ImageInput from '../../components/forms/ImageInput.jsx'
+import InputField from '../../components/forms/InputField.jsx'
+import PageTitle from '../../components/PageTitle.astro'
+import Base from '../../layouts/Base.astro'
+
+const bestPractices = [
+    'The website is built with Astro',
+    'The website is publicly available at the provided URL',
+    'Theme preview image or screenshot included (see below for details)'
+]
+---
+
+<Base title="Submit a site to the Astro Showcase">
+    <PageTitle>
+        <Fragment slot="title">Submit a site to the Astro Showcase</Fragment>
+        Thank you for sharing your project with the Astro community! Please fill
+        out this form as completely as possible.
+    </PageTitle>
+
+    <section class="max-w-screen-sm mx-auto px-4 pb-4 pt-12 md:pt-16 lg:pt-20">
+        <header class="mb-4">
+            <h2 class="text-3xl font-semibold pb-2">Best practices</h2>
+            <p class="text-neutral-500">
+                What we look for when reviewing submissions:
+            </p>
+        </header>
+        <ul
+            class="flex flex-col gap-2 mt-6 mb-4 whitespace-normal text-neutral-700 -ml-1"
+        >
+            {
+                bestPractices.map((text) => (
+                    <li class="flex items-center gap-1">
+                        <Icon
+                            name="heroicons-outline:check"
+                            size={28}
+                            class="text-green-500"
+                            aria-hidden="true"
+                        />
+                        {text}
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+
+    <form
+        name="themeSubmit"
+        method="POST"
+        enctype="multipart/form-data"
+        action="/.netlify/functions/submit-showcase"
+        class="max-w-screen-sm mx-auto my-8 px-4"
+    >
+        <div class="flex flex-col gap-6 items-center">
+            {/* https://docs.netlify.com/forms/spam-filters/#honeypot-field */}
+            <p class="hidden">
+                <label>
+                    Don&apos;t fill this out if you&apos;re human:{' '}
+                    <input name="botField" />
+                </label>
+            </p>
+
+            <Field label="Preview images (max 8MB combined)">
+                <ImageInput
+                    name="previewImage"
+                    label="Preview image"
+                    required
+                    client:idle
+                />
+            </Field>
+
+            <InputField
+                name="authorName"
+                label="Your name"
+                placeholder="Sally Ride"
+                required
+            />
+
+            <InputField
+                name="authorEmail"
+                label="Your email"
+                type="email"
+                placeholder="me@website.com"
+                required
+            />
+
+            <InputField
+                label="Website name"
+                name="websiteName"
+                placeholder="My Awesome Website"
+                required
+            />
+
+            <InputField
+                label="Public website URL"
+                name="websiteUrl"
+                type="url"
+                placeholder="https://my.awesome.website"
+                required
+            />
+
+            <Button type="submit" theme="primary">Submit</Button>
+        </div>
+    </form>
+</Base>

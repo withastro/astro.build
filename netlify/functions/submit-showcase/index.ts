@@ -1,8 +1,9 @@
+import { InputFormat } from '@astrojs/image/dist/loaders/index.js'
 import { Handler } from '@netlify/functions'
 import { Response } from '@netlify/functions/dist/function/response.js'
 import { File } from 'node-fetch'
 import { object, string } from 'zod'
-import { type ThemeData } from '../../../src/data/themes/index.js'
+import { ShowcaseSite } from '../../../src/types.js'
 import {
     DiscordWebhookMessage,
     editDiscordWebhookMessage,
@@ -30,7 +31,7 @@ const redirect = (url: string): Response => ({
 const errorRedirect = (message: string): Response => ({
     statusCode: 303,
     headers: {
-        Location: `/themes/submit/error?errorMessage=${encodeURIComponent(
+        Location: `/showcase/submit/error?errorMessage=${encodeURIComponent(
             message
         )}`
     }
@@ -56,13 +57,23 @@ export const handler: Handler = async (event) => {
         return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     }
 
+    const websiteName = getStringOrUndefined('websiteName')
+    if (!websiteName) {
+        return errorRedirect('Website name required')
+    }
+
+    const websiteUrl = getStringOrUndefined('websiteUrl')
+    if (!websiteUrl) {
+        return errorRedirect('Website URL required')
+    }
+
     let message: DiscordWebhookMessage
     try {
         message = await executeDiscordWebhook(env.DISCORD_WEBHOOK_URL, {
             threadId: env.DISCORD_WEBHOOK_THREAD_ID,
-            content: 'New theme submission!',
+            content: 'New showcase submission!',
             files: form
-                .getAll('images')
+                .getAll('previewImage')
                 .filter((value): value is File => value instanceof File)
         })
     } catch (error: unknown) {
@@ -71,40 +82,41 @@ export const handler: Handler = async (event) => {
         )
     }
 
-    const [image, ...images] = message.attachments.map((attachment) => ({
-        src: attachment.url,
-        alt: attachment.filename
-    }))
+    const [image] = message.attachments.flatMap((attachment) => {
+        if (!attachment.content_type?.startsWith('image/')) return []
+
+        const format = attachment.content_type.replace(
+            /^image\//,
+            ''
+        ) as InputFormat
+
+        if (!attachment.width) return []
+        if (!attachment.height) return []
+
+        return {
+            src: attachment.url,
+            alt: attachment.filename,
+            width: attachment.width,
+            height: attachment.height,
+            format
+        }
+    })
 
     if (!image) {
         return errorRedirect('No image')
     }
 
-    const themeName = getStringOrUndefined('themeName')
-    if (!themeName) {
-        return errorRedirect('Theme name required')
-    }
-
-    const repoUrl = getStringOrUndefined('repoUrl')
-    const demoUrl = getStringOrUndefined('demoUrl')
-    const themeData: ThemeData = {
-        title: themeName,
-        description: getStringOrUndefined('shortDescription') ?? '',
+    const siteData: ShowcaseSite = {
+        slug: slugify(websiteName),
+        title: websiteName,
         image,
-        images,
-        repoUrl: repoUrl ? { href: repoUrl, text: 'Repo URL' } : undefined,
-        demoUrl: demoUrl ? { href: demoUrl, text: 'Demo URL' } : undefined,
-        categories: [],
-        slug: slugify(themeName),
-        fullDescription: getStringOrUndefined('fullDescription') ?? ''
+        url: { href: websiteUrl, text: 'Visit' }
     }
 
     const files = [
-        new File(
-            [JSON.stringify(themeData, null, 2)],
-            `${themeData.slug}.json`,
-            { type: 'application/json' }
-        ),
+        new File([JSON.stringify(siteData, null, 2)], `${siteData.slug}.json`, {
+            type: 'application/json'
+        }),
         new File(
             [JSON.stringify(Object.fromEntries(form), null, 2)],
             'submission.json',
