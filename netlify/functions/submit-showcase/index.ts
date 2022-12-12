@@ -73,7 +73,7 @@ export const handler: Handler = async (event) => {
             threadId: env.DISCORD_WEBHOOK_THREAD_ID,
             content: 'New showcase submission!',
             files: form
-                .getAll('images')
+                .getAll('previewImage')
                 .filter((value): value is File => value instanceof File)
         })
     } catch (error: unknown) {
@@ -82,7 +82,7 @@ export const handler: Handler = async (event) => {
         )
     }
 
-    const [image, ...images] = message.attachments.flatMap((attachment) => {
+    const [image] = message.attachments.flatMap((attachment) => {
         if (!attachment.content_type?.startsWith('image/')) return []
 
         const format = attachment.content_type.replace(
