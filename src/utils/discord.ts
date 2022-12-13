@@ -1,4 +1,4 @@
-import fetch, { FormData, Response } from 'node-fetch'
+import fetch, { FormData, Headers, Response } from 'node-fetch'
 import { posix } from 'node:path'
 import * as z from 'zod'
 
