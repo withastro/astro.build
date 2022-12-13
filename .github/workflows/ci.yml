@@ -13,8 +13,8 @@ jobs:
     timeout-minutes: 3
     strategy:
       matrix:
-        OS: [ubuntu-latest]
-        NODE_VERSION: [14]
+        OS: [ubuntu-latest, 'windows-latest', 'macos-latest']
+        NODE_VERSION: [14, 16, 18]
       fail-fast: true
     steps:
       - name: Checkout
