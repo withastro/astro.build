@@ -1,65 +1,47 @@
 import type { ImageMetadata } from '@astrojs/image/dist/vite-plugin-astro-image.js'
 import { z } from 'zod'
 
-/** Base Data Types */
-export interface Image {
-    src: string | ImageMetadata
-    alt: string
-}
-
-export const ImageMetadataSchema = z.object({
+const ImageMetadataSchema = z.object({
     src: z.string(),
     height: z.number(),
     width: z.number(),
-    format: z.string()
+    format: z.enum([
+        'heic',
+        'heif',
+        'avif',
+        'jpeg',
+        'jpg',
+        'png',
+        'tiff',
+        'webp',
+        'gif'
+    ])
 })
 
-export const ImageSchema = z.object({
+const ImageSchema = z.object({
     src: z.string().or(ImageMetadataSchema),
     alt: z.string()
 })
 
-export interface Link {
-    href: string
-    text: string
-}
-
-export const LinkSchema = z.object({
+const LinkSchema = z.object({
     href: z.string(),
     text: z.string()
 })
+export type Link = z.infer<typeof LinkSchema>
 
-export interface IconLink extends Link {
-    pack: string
-    name: string
-}
-
-export const IconLinkSchema = LinkSchema.extend({
+const IconLinkSchema = LinkSchema.extend({
     pack: z.string(),
     name: z.string(),
     rel: z.string().optional(),
     footerOnly: z.boolean().default(false)
 })
 
-export interface Person {
-    image: Image
-    name: string
-    twitter?: string
-}
-
 export const PersonSchema = z.object({
     image: ImageSchema,
     name: z.string(),
     twitter: z.string().optional()
 })
-
-export interface Site {
-    title: string
-    description: string
-    image: ImageMetadata
-    twitterHandle: string
-    socialLinks: (IconLink & { me?: string; footerOnly?: boolean })[]
-}
+export type Person = z.infer<typeof PersonSchema>
 
 export const SiteSchema = z.object({
     title: z.string(),
@@ -68,16 +50,7 @@ export const SiteSchema = z.object({
     twitterHandle: z.string(),
     socialLinks: z.array(IconLinkSchema)
 })
-
-export interface BlogPost {
-    url: string
-    title: string
-    description: string
-    publishDate: Date
-    authors: Person[]
-    socialImage?: string | ImageMetadata
-    coverImage?: string | ImageMetadata
-}
+export type Site = z.infer<typeof SiteSchema>
 
 export const BlogPostSchema = z.object({
     url: z.string(),
@@ -88,24 +61,9 @@ export const BlogPostSchema = z.object({
     socialImage: z.string().or(ImageMetadataSchema).optional(),
     coverImage: z.string().or(ImageMetadataSchema).optional()
 })
+export type BlogPost = z.infer<typeof BlogPostSchema>
 
-export type Markdown = string
-
-export type ThemeTag =
-    | "alpinejs"
-    | "lit"
-    | "mdx"
-    | "postcss"
-    | "preact"
-    | "react"
-    | "sass"
-    | "solidjs"
-    | "svelte"
-    | "tailwind"
-    | "typescript"
-    | "vue"
-
-export const ThemeTagSchema = z.enum([
+const ThemeTagSchema = z.enum([
     'alpinejs',
     'lit',
     'mdx',
@@ -119,27 +77,7 @@ export const ThemeTagSchema = z.enum([
     'typescript',
     'vue'
 ])
-
-export interface Theme {
-    slug: string
-    title: string
-    description: string
-    fullDescription?: Markdown
-    image: ImageMetadata
-    images: ImageMetadata[]
-    author: Link & { avatar?: string }
-    categories: string[]
-    repoUrl?: Link
-    demoUrl?: Link
-    npmUrl?: Link
-    buyUrl?: Link
-    links?: Link[]
-    official?: boolean
-    stars?: number
-    featured?: number
-    tags?: ThemeTag[]
-    keywords?: string[]
-}
+export type ThemeTag = z.infer<typeof ThemeTagSchema>
 
 export const ThemeSchema = z.object({
     slug: z.string(),
@@ -163,30 +101,24 @@ export const ThemeSchema = z.object({
     tags: z.array(ThemeTagSchema).optional(),
     keywords: z.array(z.string()).optional()
 })
-
-export interface Integration {
-    slug: string
-    title: string
-    description: string
-    image?: {
-        src: string
-        alt: string
-    }
-    categories: string[]
-    repoUrl?: Link
-    npmUrl: Link
-    url?: Link
-    official?: Boolean
-    downloads: number
-    featured?: number
-}
+export type Theme = z.infer<typeof ThemeSchema>
 
 export const IntegrationSchema = z.object({
     slug: z.string(),
     title: z.string(),
     description: z.string().optional(),
     image: ImageSchema.optional(),
-    categories: z.array(z.string()),
+    categories: z.array(
+        z.enum([
+            'css+ui',
+            'official',
+            'performance+seo',
+            'frameworks',
+            'adapters',
+            'analytics',
+            'accessibility'
+        ])
+    ),
     repoUrl: LinkSchema.optional(),
     npmUrl: LinkSchema,
     url: LinkSchema.optional(),
@@ -194,6 +126,7 @@ export const IntegrationSchema = z.object({
     downloads: z.number().min(0),
     featured: z.number().min(1).optional()
 })
+export type Integration = z.infer<typeof IntegrationSchema>
 
 export interface ShowcaseSite {
     slug: string
