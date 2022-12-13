@@ -36,7 +36,9 @@ export interface IconLink extends Link {
 
 export const IconLinkSchema = LinkSchema.extend({
     pack: z.string(),
-    name: z.string()
+    name: z.string(),
+    rel: z.string().optional(),
+    footerOnly: z.boolean().default(false)
 })
 
 export interface Person {
