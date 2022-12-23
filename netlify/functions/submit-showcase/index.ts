@@ -135,5 +135,5 @@ export const handler: Handler = async (event) => {
         )
     }
 
-    return redirect('/themes/submit/success')
+    return redirect('/showcase/submit/success')
 }
