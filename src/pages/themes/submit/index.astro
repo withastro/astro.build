@@ -6,7 +6,6 @@ import Field from '../../../components/forms/Field.jsx'
 import ImageInput from '../../../components/forms/ImageInput.jsx'
 import InputField from '../../../components/forms/InputField.jsx'
 import LabelText from '../../../components/forms/LabelText.jsx'
-import Note from '../../../components/Note.astro'
 import RichTextEditor from '../../../components/forms/RichTextEditor.astro'
 import { TagInput, TagSelect } from '../../../components/forms/TagInput.jsx'
 import TextAreaField from '../../../components/forms/TextAreaField.astro'
@@ -189,3 +188,48 @@ const toolOptions = [
         </div>
     </form>
 </Base>
+
+<script>
+    const MAX_SIZE = 6 * 1000 * 1000 // 6MB limit for Netlify Functions
+
+const form = document.querySelector('form[name="themeSubmit"]')
+
+if (form) {
+    form.addEventListener('submit', (event) => {
+        // calculate the total size of the form data
+        const formsize = getFormDataSize(event.target as HTMLFormElement)
+
+        if (formsize >= MAX_SIZE) {
+            // block the form submission and pop up an alert (lazy UI...I know)
+            event.preventDefault()
+            alert('File size is too large! This is likely due to attached images, try reducing the image size or minifying the image and resubmit.')
+        }
+    })
+}
+
+function getFormDataSize(form: HTMLFormElement) {
+    const formdata = new FormData(form)
+
+    return [...formdata.values()]
+        .reduce((acc, next) => {
+            return acc + getSize(next)
+        }, 0)
+}
+
+function getSize(value: unknown) {
+    switch (typeof value) {
+        case 'string':
+            return value.length * 2
+        case 'boolean':
+            return 4
+        case 'number':
+            return 8
+    }
+
+    if (value instanceof File) {
+        return value.size
+    }
+
+    return 0
+}
+</script>
