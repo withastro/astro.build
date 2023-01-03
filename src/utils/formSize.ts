@@ -1,13 +1,16 @@
 export function getFormDataSize(form: HTMLFormElement) {
     const formdata = new FormData(form)
 
-    return [...formdata.values()]
-        .reduce((acc, next) => {
-            return acc + getSize(next)
-        }, 0)
+    return [...formdata.values()].reduce((acc, next) => {
+        return acc + getSize(next)
+    }, 0)
 }
 
-export function formSizeValidator(maxSize: number, message: string, fathomEventId?: string) {
+export function formSizeValidator(
+    maxSize: number,
+    message: string,
+    fathomEventId?: string
+) {
     return function onSubmit(event: SubmitEvent) {
         // calculate the total size of the form data
         const formsize = getFormDataSize(event.target as HTMLFormElement)
@@ -18,7 +21,7 @@ export function formSizeValidator(maxSize: number, message: string, fathomEventI
             alert(message)
 
             if (fathomEventId && 'fathom' in window) {
-                (window.fathom as any).trackGoal(fathomEventId, 0)
+                ;(window.fathom as any).trackGoal(fathomEventId, 0)
             }
         }
     }
