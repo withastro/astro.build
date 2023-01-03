@@ -79,7 +79,12 @@ const toolOptions = [
                 class="inline-block"
                 aria-hidden="true"
             />
-            Looking for inspiration for your theme's preview images? Check out our <a href="/resources/image-templates" target="_blank" class="underline font-semibold">Image Templates</a>!
+            Looking for inspiration for your theme's preview images? Check out our
+            <a
+                href="/resources/image-templates"
+                target="_blank"
+                class="underline font-semibold">Image Templates</a
+            >!
         </p>
     </Aside>
 
@@ -190,49 +195,19 @@ const toolOptions = [
 </Base>
 
 <script>
+    import { formSizeValidator } from '../../../utils/formSize.js'
+
     const MAX_SIZE = 6 * 1000 * 1000 // 6MB limit for Netlify Functions
+    const ALERT =
+        'File size is too large! This is likely due to attached images, try reducing the image size or minifying the image and resubmit.'
+    const FATHOM_EVENT_ID = 'GMXMIRTN'
 
-const form = document.querySelector('form[name="themeSubmit"]')
+    const form = document.querySelector('form[name="themeSubmit"]')
 
-if (form) {
-    form.addEventListener('submit', (event) => {
-        // calculate the total size of the form data
-        const formsize = getFormDataSize(event.target as HTMLFormElement)
-
-        if (formsize >= MAX_SIZE) {
-            // block the form submission and pop up an alert (lazy UI...I know)
-            event.preventDefault()
-            alert('File size is too large! This is likely due to attached images, try reducing the image size or minifying the image and resubmit.')
-            if ('fathom' in window) {
-                (window.fathom as any).trackGoal('GMXMIRTN', 0)
-            }
-        }
-    })
-}
-
-function getFormDataSize(form: HTMLFormElement) {
-    const formdata = new FormData(form)
-
-    return [...formdata.values()]
-        .reduce((acc, next) => {
-            return acc + getSize(next)
-        }, 0)
-}
-
-function getSize(value: unknown) {
-    switch (typeof value) {
-        case 'string':
-            return value.length * 2
-        case 'boolean':
-            return 4
-        case 'number':
-            return 8
+    if (form) {
+        form.addEventListener(
+            'submit',
+            formSizeValidator(MAX_SIZE, ALERT, FATHOM_EVENT_ID)
+        )
     }
-
-    if (value instanceof File) {
-        return value.size
-    }
-
-    return 0
-}
 </script>
