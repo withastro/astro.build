@@ -6,7 +6,6 @@ import Field from '../../../components/forms/Field.jsx'
 import ImageInput from '../../../components/forms/ImageInput.jsx'
 import InputField from '../../../components/forms/InputField.jsx'
 import LabelText from '../../../components/forms/LabelText.jsx'
-import Note from '../../../components/Note.astro'
 import RichTextEditor from '../../../components/forms/RichTextEditor.astro'
 import { TagInput, TagSelect } from '../../../components/forms/TagInput.jsx'
 import TextAreaField from '../../../components/forms/TextAreaField.astro'
@@ -80,7 +79,12 @@ const toolOptions = [
                 class="inline-block"
                 aria-hidden="true"
             />
-            Looking for inspiration for your theme's preview images? Check out our <a href="/resources/image-templates" target="_blank" class="underline font-semibold">Image Templates</a>!
+            Looking for inspiration for your theme's preview images? Check out our
+            <a
+                href="/resources/image-templates"
+                target="_blank"
+                class="underline font-semibold">Image Templates</a
+            >!
         </p>
     </Aside>
 
@@ -101,7 +105,7 @@ const toolOptions = [
                 </label>
             </p>
 
-            <Field label="Preview images (max 8MB combined)">
+            <Field label="Preview images (max 6MB combined)">
                 <ImageInput
                     name="images"
                     label="Preview image"
@@ -189,3 +193,21 @@ const toolOptions = [
         </div>
     </form>
 </Base>
+
+<script>
+    import { formSizeValidator } from '../../../utils/formSize.js'
+
+    const MAX_SIZE = 6 * 1000 * 1000 // 6MB limit for Netlify Functions
+    const ALERT =
+        'File size is too large! This is likely due to attached images, try reducing the image size or minifying the image and resubmit.'
+    const FATHOM_EVENT_ID = 'GMXMIRTN'
+
+    const form = document.querySelector('form[name="themeSubmit"]')
+
+    if (form) {
+        form.addEventListener(
+            'submit',
+            formSizeValidator(MAX_SIZE, ALERT, FATHOM_EVENT_ID)
+        )
+    }
+</script>

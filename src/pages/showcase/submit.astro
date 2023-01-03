@@ -48,7 +48,7 @@ const bestPractices = [
     </section>
 
     <form
-        name="themeSubmit"
+        name="showcaseSubmit"
         method="POST"
         enctype="multipart/form-data"
         action="/.netlify/functions/submit-showcase"
@@ -63,7 +63,7 @@ const bestPractices = [
                 </label>
             </p>
 
-            <Field label="Preview images (max 8MB combined)">
+            <Field label="Preview images (max 6MB combined)">
                 <ImageInput
                     name="previewImage"
                     label="Preview image"
@@ -106,3 +106,21 @@ const bestPractices = [
         </div>
     </form>
 </Base>
+
+<script>
+    import { formSizeValidator } from '../../utils/formSize.js'
+
+    const MAX_SIZE = 6 * 1000 * 1000 // 6MB limit for Netlify Functions
+    const ALERT =
+        'File size is too large! This is likely due to attached images, try reducing the image size or minifying the image and resubmit.'
+    const FATHOM_EVENT_ID = '4KYQKJX0'
+
+    const form = document.querySelector('form[name="showcaseSubmit"]')
+
+    if (form) {
+        form.addEventListener(
+            'submit',
+            formSizeValidator(MAX_SIZE, ALERT, FATHOM_EVENT_ID)
+        )
+    }
+</script>
