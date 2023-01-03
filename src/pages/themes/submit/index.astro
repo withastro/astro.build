@@ -203,6 +203,9 @@ if (form) {
             // block the form submission and pop up an alert (lazy UI...I know)
             event.preventDefault()
             alert('File size is too large! This is likely due to attached images, try reducing the image size or minifying the image and resubmit.')
+            if ('fathom' in window) {
+                (window.fathom as any).trackGoal('GMXMIRTN', 0)
+            }
         }
     })
 }
