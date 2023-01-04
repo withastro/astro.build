@@ -79,6 +79,15 @@ const ThemeTagSchema = z.enum([
 ])
 export type ThemeTag = z.infer<typeof ThemeTagSchema>
 
+const ThemeCategory = z.enum([
+    'blog',
+    'landing-page',
+    'portfolio',
+    'docs',
+    'minimal',
+    'other'
+])
+
 export const ThemeSchema = z.object({
     slug: z.string(),
     title: z.string(),
@@ -89,7 +98,7 @@ export const ThemeSchema = z.object({
     author: LinkSchema.extend({
         avatar: z.string().url().optional()
     }).optional(),
-    categories: z.array(z.string()),
+    categories: z.array(ThemeCategory),
     repoUrl: LinkSchema.optional(),
     demoUrl: LinkSchema.optional(),
     npmUrl: LinkSchema.optional(),
