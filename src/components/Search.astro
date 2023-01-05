@@ -19,7 +19,7 @@ const inlineStyle = `
 ---
 
 <section>
-    <label>
+    <label for={id}>
         <input type="text" id={id} placeholder={placeholder} />
         <div>
             <Sprite
@@ -106,17 +106,7 @@ const inlineStyle = `
         }
     }
 
-    const updateOpen = () => {
-        requestAnimationFrame(() => {
-            !!input.value || document.activeElement === input
-                ? input.parentElement.setAttribute('open', '')
-                : input.parentElement.removeAttribute('open')
-        })
-    }
-
     const update = () => {
-        updateOpen()
-
         const regexMap = input.value
             .toLowerCase()
             .split(' ')
@@ -161,10 +151,16 @@ const inlineStyle = `
         const params = new URLSearchParams(location.search)
         input.value = params.get('q') || ''
     }
+    
+    const keyDownFocusInput = (event) => {
+        if (event.key === '/') {
+            event.preventDefault();
+            input.focus();
+        }
+    }
 
     input.addEventListener('input', debounce(update, FPS_30), true)
-    input.addEventListener('focus', updateOpen, true)
-    input.addEventListener('blur', updateOpen, true)
+    document.addEventListener('keydown', keyDownFocusInput)
 
     hydrateQuery()
     update()
@@ -172,19 +168,25 @@ const inlineStyle = `
 
 <style>
     section {
-        @apply flex justify-end;
-        width: calc(25ch + 2.5rem);
-        min-width: calc(25ch + 2.5rem);
+        @apply flex justify-end w-full;
     }
 
     label {
-        @apply flex rounded-full p-1 bg-neutral-50;
+        @apply flex rounded-3xl p-1 bg-neutral-50 border border-primary-300 w-full transition duration-300 ease-out relative;
+    }
+
+    label:focus-within {
+        @apply border-primary-400 shadow shadow-accent-300;
+    }
+
+    label::after {
+        content: "/";
+        @apply absolute border border-primary-400 font-medium text-primary-600 flex h-6 items-center justify-center right-12 rounded-sm text-sm top-3 w-6;
     }
 
     input {
-        @apply pl-3 bg-transparent outline-none;
+        @apply pl-3 bg-transparent outline-none w-full;
         line-height: 2.5rem;
-        width: 25ch;
     }
 
     input::placeholder {
@@ -192,7 +194,7 @@ const inlineStyle = `
     }
 
     div {
-        @apply flex items-center justify-center w-10 h-10 rounded-full bg-primary-700 text-neutral-50;
+        @apply flex items-center justify-center w-10 h-10 rounded-full text-primary-700;
     }
 
     @media (max-width: 768px) {
@@ -210,10 +212,6 @@ const inlineStyle = `
             @apply bg-transparent;
         }
 
-        label:not([open]) input {
-            @apply max-w-0 pl-0;
-        }
-
         input, div {
             transition: 250ms ease;
         }
@@ -224,24 +222,14 @@ const inlineStyle = `
             padding-left: 0.75rem;
         }
 
-        div {
-            @apply bg-transparent text-primary-900;
-        }
-
-        label:hover, label[open] {
+        label:hover {
             @apply bg-neutral-50;
         }
 
         label:hover > input {
-            max-width: 25ch;
             padding: 0 .5rem;
             padding-left: 0.75rem;
         }
 
-        label:hover > div,
-        input:focus + div,
-        input:not(:placeholder-shown) + div {
-            @apply bg-primary-700 text-neutral-50;
-        }
     }
 </style>
