@@ -8,7 +8,7 @@ export interface Props {
     title?: string
     description?: string
     image?: string | ImageMetadata
-    canonicalURL?: URL
+    canonicalURL?: URL | null
     pageType?: 'website' | 'article'
 }
 
@@ -47,7 +47,7 @@ const title = Astro.props.title ? [Astro.props.title, site.title].join(' | ') : 
     image={resolvedImageWithDomain}
     twitterHandle={site.twitterHandle}
     pageType={pageType}
-    url={ensureTrailingSlash(canonicalURL.toString())}
+    url={canonicalURL && ensureTrailingSlash(canonicalURL.toString())}
 />
 
 <!-- Fathom - beautiful, simple website analytics -->

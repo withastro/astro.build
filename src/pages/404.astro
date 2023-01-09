@@ -5,10 +5,9 @@ import Layout from '../layouts/Base.astro'
 
 const title = 'Page Not Found'
 const description = 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.'
-const canonicalURL = new URL('./404', Astro.site)
 ---
 
-<Layout title={title} description={description} canonicalURL={canonicalURL} class="flex items-center">
+<Layout title={title} description={description} canonicalURL={null} class="flex items-center">
     <Section class="flex flex-col justify-center items-center text-center">
 		<h2 class="font-display text-3xl font-bold pb-6">Lost in space there, astronaut?</h2>
 		<p class="pb-8">We couldn&rsquo;t find the page you were looking for&mdash;let&rsquo;s get you back to HQ.</p>
