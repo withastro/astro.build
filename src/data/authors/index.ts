@@ -37,7 +37,7 @@ export function getAuthor(id: string): Person {
         image:
             typeof image.default === 'string'
                 ? { src: image.default }
-                : (image as any),
+                : (image.default as any),
         name: author.name,
         twitter: author.twitter
     }
