@@ -22,7 +22,7 @@ const blog = defineCollection({
                     return author
                 })
             }),
-        socialImage: z.string().default(social.src),
+        socialImage: z.string().optional().default(social.src),
         coverImage: z.string().optional(),
         lang: z.enum(['en']).default('en')
     })
