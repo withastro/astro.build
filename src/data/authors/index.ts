@@ -14,9 +14,9 @@ function toJsonPath(key: string) {
     return `${jsonBase}${key}${jsonExt}`
 }
 
-export function getAuthor(id: string): Person | Error {
+export function getAuthor(id: string): Person {
     const authorMod = authors[toJsonPath(id)]
-    if (!authorMod) return new Error(`Author ${JSON.stringify(id)} not found.`)
+    if (!authorMod) throw new Error(`Author ${JSON.stringify(id)} not found.`)
     const parsedAuthor = z
         .object({
             name: z.string(),
@@ -25,18 +25,19 @@ export function getAuthor(id: string): Person | Error {
         })
         .safeParse(authorMod)
     if (!parsedAuthor.success) {
-        return new Error(
+        throw new Error(
             `Author ${JSON.stringify(id)} has invalid JSON. Full error: ${
                 parsedAuthor.error
             }`
         )
     }
     const author = parsedAuthor.data
-    const { default: image } = images[author.image] as {
-        default: any
-    }
+    const image = images[author.image] as any
     return {
-        image,
+        image:
+            typeof image.default === 'string'
+                ? { src: image.default }
+                : (image as any),
         name: author.name,
         twitter: author.twitter
     }

@@ -16,11 +16,7 @@ const blog = defineCollection({
         authors: z
             .array(z.enum(validAuthors))
             .transform(async (authors): Promise<Person[]> => {
-                return authors.map((id) => {
-                    const author = getAuthor(id)
-                    if (author instanceof Error) throw author
-                    return author
-                })
+                return authors.map((id) => getAuthor(id))
             }),
         socialImage: z.string().optional().default(social.src),
         coverImage: z.string().optional(),
