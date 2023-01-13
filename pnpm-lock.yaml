@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/image': 1.0.0-beta.2
-  '@astrojs/mdx': 0.0.0-content-schemas-20221130135236
+  '@astrojs/mdx': 1.0.0-beta.2
   '@astrojs/preact': ^1.2.0
   '@astrojs/prefetch': 0.1.1
   '@astrojs/rss': ^1.0.3
@@ -54,7 +54,7 @@ dependencies:
 
 devDependencies:
   '@astrojs/image': 1.0.0-beta.2_hyr2v5hy7at7ekeybii7xolhsm
-  '@astrojs/mdx': 0.0.0-content-schemas-20221130135236_rollup@3.10.0
+  '@astrojs/mdx': 1.0.0-beta.2_ydfdylg4locjzx3g5zg4r6ohx4
   '@astrojs/prefetch': 0.1.1
   '@astrojs/rss': 1.0.3
   '@astrojs/site-kit': github.com/withastro/site-kit/f1f73aec5fc32213bc55984af7c1033105a96cbd_@types+node@18.11.9
@@ -231,11 +231,12 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/mdx/0.0.0-content-schemas-20221130135236_rollup@3.10.0:
-    resolution: {integrity: sha512-oSPfRPS27HM1/PbeiKqVC6Tlz3Lu8UR3kUfDsUjZFmbPrdR+lpSNNOlGbk3Qqj9YIXsn8uMbUAhHskTwdkBLiQ==}
-    engines: {node: ^14.18.0 || >=16.12.0}
+  /@astrojs/mdx/1.0.0-beta.2_ydfdylg4locjzx3g5zg4r6ohx4:
+    resolution: {integrity: sha512-jGdM+5zQfS7BB7q2DUi/vZlJnv164pjJZ6x3EOzU+uLgtw9ycWJSNOf3/AsTujrRPvaPVXXQ6IPwoSwz/mIAvA==}
+    engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/prism': 1.0.2
+      '@astrojs/markdown-remark': 2.0.0-beta.2_astro@2.0.0-beta.2
+      '@astrojs/prism': 2.0.0-beta.0
       '@mdx-js/mdx': 2.1.5
       '@mdx-js/rollup': 2.1.5_rollup@3.10.0
       acorn: 8.8.1
@@ -252,6 +253,7 @@ packages:
       unist-util-visit: 4.1.1
       vfile: 5.3.5
     transitivePeerDependencies:
+      - astro
       - rollup
       - supports-color
     dev: true
