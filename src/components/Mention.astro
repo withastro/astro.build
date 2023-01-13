@@ -4,7 +4,6 @@ import Avatar from './Avatar.astro'
 const { name } = Astro.props
 
 const mention = getAuthor(name)
-if (mention instanceof Error) throw Error
 ---
 
 <span class="mention inline-block align-middle leading-none m-0">
