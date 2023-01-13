@@ -8,7 +8,7 @@ specifiers:
   '@astrojs/rss': ^1.0.3
   '@astrojs/site-kit': github:withastro/site-kit
   '@astrojs/sitemap': ^1.0.0
-  '@astrojs/tailwind': ^2.1.2
+  '@astrojs/tailwind': 3.0.0-beta.1
   '@netlify/functions': ^1.3.0
   '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/container-queries': ^0.1.0
@@ -59,7 +59,7 @@ devDependencies:
   '@astrojs/rss': 1.0.3
   '@astrojs/site-kit': github.com/withastro/site-kit/f1f73aec5fc32213bc55984af7c1033105a96cbd_@types+node@18.11.9
   '@astrojs/sitemap': 1.0.0
-  '@astrojs/tailwind': 2.1.2_tailwindcss@3.2.4
+  '@astrojs/tailwind': 3.0.0-beta.1_qpjr2jmeso4nezdyninvkfh7oe
   '@netlify/functions': 1.3.0
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.4
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
@@ -317,14 +317,16 @@ packages:
       zod: 3.19.1
     dev: true
 
-  /@astrojs/tailwind/2.1.2_tailwindcss@3.2.4:
-    resolution: {integrity: sha512-nIrlT+WWp/Wv2VQ29Nvncq608E+j3qB9k1f7yiAjY2ijxizZo4OnQzdRPQcIjIZHL5YxPtzbcoSP2u3v+Domqw==}
+  /@astrojs/tailwind/3.0.0-beta.1_qpjr2jmeso4nezdyninvkfh7oe:
+    resolution: {integrity: sha512-Y1vptD7xk7/p1mcn9d/hwTRX38YVOgjYB4OtccGUPfkVov63C6bO2zNBTnJVgnaq1sopuLWX9it1+GsqFxY3HQ==}
     peerDependencies:
+      astro: ^2.0.0-beta.2
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      autoprefixer: 10.4.13_postcss@8.4.19
-      postcss: 8.4.19
+      astro: 2.0.0-beta.2_@types+node@18.11.9
+      autoprefixer: 10.4.13_postcss@8.4.21
+      postcss: 8.4.21
       tailwindcss: 3.2.4_postcss@8.4.21
     dev: true
 
@@ -2958,8 +2960,8 @@ packages:
       ora: 6.1.2
       path-browserify: 1.0.1
       path-to-regexp: 6.2.1
-      postcss: 8.4.19
-      postcss-load-config: 3.1.4_postcss@8.4.19
+      postcss: 8.4.21
+      postcss-load-config: 3.1.4_postcss@8.4.21
       preferred-pm: 3.0.3
       prompts: 2.4.2
       recast: 0.20.5
@@ -3091,7 +3093,7 @@ packages:
     hasBin: true
     dev: true
 
-  /autoprefixer/10.4.13_postcss@8.4.19:
+  /autoprefixer/10.4.13_postcss@8.4.21:
     resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -3103,7 +3105,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.19
+      postcss: 8.4.21
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -4520,8 +4522,8 @@ packages:
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     dependencies:
       is-url: 1.2.4
-      postcss: 8.4.19
-      postcss-values-parser: 6.0.2_postcss@8.4.19
+      postcss: 8.4.21
+      postcss-values-parser: 6.0.2_postcss@8.4.21
     dev: true
 
   /detective-sass/4.0.1:
@@ -10185,23 +10187,6 @@ packages:
       camelcase-css: 2.0.1
       postcss: 8.4.21
 
-  /postcss-load-config/3.1.4_postcss@8.4.19:
-    resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
-    engines: {node: '>= 10'}
-    peerDependencies:
-      postcss: '>=8.0.9'
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      postcss:
-        optional: true
-      ts-node:
-        optional: true
-    dependencies:
-      lilconfig: 2.0.6
-      postcss: 8.4.19
-      yaml: 1.10.2
-    dev: true
-
   /postcss-load-config/3.1.4_postcss@8.4.21:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
@@ -10237,7 +10222,7 @@ packages:
   /postcss-value-parser/4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  /postcss-values-parser/6.0.2_postcss@8.4.19:
+  /postcss-values-parser/6.0.2_postcss@8.4.21:
     resolution: {integrity: sha512-YLJpK0N1brcNJrs9WatuJFtHaV9q5aAOj+S4DI5S7jgHlRfm0PIbDCAFRYMQD5SHq7Fy6xsDhyutgS0QOAs0qw==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -10245,7 +10230,7 @@ packages:
     dependencies:
       color-name: 1.1.4
       is-url-superb: 4.0.0
-      postcss: 8.4.19
+      postcss: 8.4.21
       quote-unquote: 1.0.0
     dev: true
 
