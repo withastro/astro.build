@@ -4,11 +4,20 @@ import Avatar from '../components/Avatar.astro'
 import BlogContentImage from '../components/BlogContentImage.astro'
 import { CollectionEntry } from 'astro:content'
 import { format } from 'date-fns'
+import { getAuthor } from '../data/authors/index.js'
 
 type Props = CollectionEntry<'blog'>['data']
 
-const { title, authors, description, publishDate, coverImage, socialImage } =
-    Astro.props
+const {
+    title,
+    authors: authorIds,
+    description,
+    publishDate,
+    coverImage,
+    socialImage
+} = Astro.props
+
+const authors = authorIds.map(getAuthor)
 ---
 
 <Layout {title} {description} pageType="article" image={socialImage}>
@@ -37,7 +46,7 @@ const { title, authors, description, publishDate, coverImage, socialImage } =
                 </time>
                 <span>by</span>
                 {
-                    authors.map(({ name, twitter, image }, i) => {
+                    authors.map(({ name, twitter, image }) => {
                         return twitter ? (
                             <a
                                 href={twitter}
