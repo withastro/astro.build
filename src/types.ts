@@ -1,5 +1,5 @@
 import type { ImageMetadata } from '@astrojs/image/dist/vite-plugin-astro-image.js'
-import { z, CollectionEntry } from 'astro:content'
+import { z } from 'astro:content'
 
 const ImageMetadataSchema = z.object({
     src: z.string(),
@@ -22,6 +22,7 @@ const ImageSchema = z.object({
     src: z.string().or(ImageMetadataSchema),
     alt: z.string()
 })
+export type Image = z.infer<typeof ImageSchema>
 
 const LinkSchema = z.object({
     href: z.string(),
@@ -51,7 +52,6 @@ export const SiteSchema = z.object({
     socialLinks: z.array(IconLinkSchema)
 })
 export type Site = z.infer<typeof SiteSchema>
-export type BlogPost = CollectionEntry<'blog'>
 
 const ThemeTagSchema = z.enum([
     'alpinejs',
