@@ -1,5 +1,5 @@
 import { z } from 'astro:content'
-import { Person } from '../../types.js'
+import { ImageSchema, Person } from '../../types.js'
 
 export const authors = import.meta.glob('./*.json', { eager: true })
 export const images = import.meta.glob('./*{png,jpg,jpeg}', { eager: true })
@@ -32,12 +32,19 @@ export function getAuthor(id: string): Person {
         )
     }
     const author = parsedAuthor.data
-    const image = images[author.image] as any
+    const parsedImage = ImageSchema.safeParse({
+        src: (images[author.image] as any)?.default,
+        alt: author.name
+    })
+    if (!parsedImage.success) {
+        throw new Error(
+            `Author ${JSON.stringify(id)} has invalid image. Full error: ${
+                parsedImage.error
+            }`
+        )
+    }
     return {
-        image:
-            typeof image.default === 'string'
-                ? { src: image.default }
-                : (image.default as any),
+        image: parsedImage.data,
         name: author.name,
         twitter: author.twitter
     }

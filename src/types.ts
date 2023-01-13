@@ -18,7 +18,7 @@ const ImageMetadataSchema = z.object({
     ])
 })
 
-const ImageSchema = z.object({
+export const ImageSchema = z.object({
     src: z.string().or(ImageMetadataSchema),
     alt: z.string()
 })
