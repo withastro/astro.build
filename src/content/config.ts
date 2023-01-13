@@ -9,7 +9,7 @@ const validAuthors = Object.keys(authors).map(
 ) as ArrayWithAtLeastOneEl
 
 const blog = defineCollection({
-    schema: {
+    schema: z.object({
         title: z.string(),
         description: z.string(),
         publishDate: z.string().transform((str) => new Date(str)),
@@ -25,7 +25,7 @@ const blog = defineCollection({
         socialImage: z.string().default(social.src),
         coverImage: z.string().optional(),
         lang: z.enum(['en']).default('en')
-    }
+    })
 })
 
 export const collections = { blog }
