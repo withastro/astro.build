@@ -2,13 +2,15 @@
 interface Props {
     theme?: 'primary' | 'secondary' | 'hollow'
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-    href?: string
     alt?: string
     download?: boolean
     type?: 'button' | 'submit' | 'reset'
     external?: boolean
     class?: string
+    analyticsEvent?: string
+    analyticsEventValue?: number
 }
+
 const {
     theme = 'primary',
     size = 'md',
@@ -18,8 +20,11 @@ const {
     type,
     external,
     class: className = '',
+    analyticsEvent,
+    analyticsEventValue = 0,
     ...props
 } = Astro.props as Props
+
 const Component = href ? 'a' : 'button'
 ---
 
@@ -31,9 +36,22 @@ const Component = href ? 'a' : 'button'
     type={type}
     download={download}
     target={href && external ? "_blank" : undefined}
+    data-analytics-event={`${analyticsEvent}:${analyticsEventValue}`}
 >
     <slot />
 </Component>
+
+<script>
+    document.querySelectorAll<HTMLElement>('[data-analytics-event]').forEach((elem) => {
+        if ('fathom' in window && elem.dataset.analyticsEvent) {
+            const [eventId, value] = elem.dataset.analyticsEvent.split(':')
+
+            elem.addEventListener('click', () => {
+                (window.fathom as any).trackGoal(eventId, parseInt(value!))
+            })
+        }
+    })
+</script>
 
 <style>
     .btn {
