@@ -1,7 +1,7 @@
 import { Handler } from '@netlify/functions'
 import { Response } from '@netlify/functions/dist/function/response.js'
 import { File } from 'node-fetch'
-import { object, string } from 'zod'
+import { object, string } from 'astro/zod'
 import { type ThemeData } from '../../../src/data/themes/index.js'
 import {
     DiscordWebhookMessage,
