@@ -2,7 +2,7 @@ import { InputFormat } from '@astrojs/image/dist/loaders/index.js'
 import { Handler } from '@netlify/functions'
 import { Response } from '@netlify/functions/dist/function/response.js'
 import { File } from 'node-fetch'
-import { object, string } from 'astro/zod'
+import { object, string } from 'zod'
 import { ShowcaseSite } from '../../../src/types.js'
 import {
     DiscordWebhookMessage,
