@@ -25,10 +25,10 @@ In this post, we'll go over how hybrid rendering works by exploring just a few o
 
 ## How does `astro build` work?
 
-We'll simplify things a bit for clarity, but we first need to understand that Astro's build process happens in multiple stages. Initially, Astro uses [Vite](https://vitejs.dev) to generate a server-side JavaScript bundle. While this bundle is being generated, we perform static analysis on your source code to generate a client manifest. The output of this bundle includes:
+We'll simplify things a bit for clarity, but we first need to understand that Astro's build process happens in multiple stages. Initially, Astro uses [Vite](https://vitejs.dev) to generate a server-side JavaScript bundle. The output of this bundle includes:
 
 -   **Server-side JavaScript** used to render HTML
--   A **client manifest** which collects all components needed for client-side interactivity
+-   A **client manifest** which uses static analysis to collect all components needed for client-side interactivity
 -   **CSS and other assets** for the client
 
 Next, Astro uses the client manifest to initiate a second build process which bundles optimized client-side JavaScript.
