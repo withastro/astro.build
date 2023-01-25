@@ -101,7 +101,9 @@ Hybrid rendering solves our performance problem by rendering the homepage to sta
 
 ## Use case: add an API to your existing static site
 
-As your static website grows, you may find the need to add a public API. Historically, adding an API to a static site has required host-specific configuration, but in Astro 2.0, we can add [Server Endpoints (API Routes)](https://docs.astro.build/en/core-concepts/endpoints/#server-endpoints-api-routes) without sacrificing the performance of our static pages.
+As your static website grows, you may find the need to host a public API. Historically, adding an API to a static site has required host-specific configuration, but in Astro 2.0, we can add [server endpoints (API routes)](https://docs.astro.build/en/core-concepts/endpoints/#server-endpoints-api-routes) without sacrificing the performance of our static pages.
+
+In fact, server endpoints can be added automatically by our [Integrations API](https://docs.astro.build/en/reference/integrations-reference/)'s [`injectRoute`](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) hook. We're excited to foster a powerful third-party integration ecosystem with these new primitives!
 
 ## Use case: improve build performance of large sites
 
