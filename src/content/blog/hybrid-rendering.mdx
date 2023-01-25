@@ -51,7 +51,7 @@ Adapters ensure that your server-side JavaScript is compatible with a particular
 ## How does hybrid rendering work?
 
 In Astro 2.0, we've revamped the `astro build` pipeline to handle hybrid rendering.
-During the initial bundling process, we've added an additional static analysis step that determines which pages should be prerendered.
+During the initial bundling process, a new static analysis step determines which pages should be prerendered.
 This allows us to split your routes into seperate chunks, depending on _when_ they should be rendered.
 
 Much like the original `static` process, the prerendered chunk is executed and the output is written to `.html` files. The chunk is then discarded.
