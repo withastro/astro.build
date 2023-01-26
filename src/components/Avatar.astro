@@ -12,7 +12,6 @@ let { name, image } = Astro.props
 
 if (!image && name) {
     const author = getAuthor(name)
-    if (author instanceof Error) throw author
     image = author.image
 }
 ---
