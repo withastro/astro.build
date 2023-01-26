@@ -1,44 +1,56 @@
-import { Person, PersonSchema } from '../../types.js'
+import { z } from 'astro:content'
+import { ImageSchema, Person, PersonSchema } from '../../types.js'
 
-interface Author {
-    name: string
-    title: string
-    image: string
-    twitter?: string
+export const authors = import.meta.glob('./*.json', { eager: true })
+export const images = import.meta.glob('./*{png,jpg,jpeg}', { eager: true })
+
+const jsonBase = './'
+const jsonExt = '.json'
+
+export function toJsonSlug(key: string) {
+    return key.replace(jsonBase, '').replace(jsonExt, '')
+}
+function toJsonPath(key: string) {
+    return `${jsonBase}${key}${jsonExt}`
 }
 
-const allAuthors = import.meta.glob('./*.json')
-const allImages = import.meta.glob('./*{png,jpg,jpeg}')
-
 const cache = new Map<string, Person>()
+export function getAuthor(id: string): Person {
+    if (cache.has(id)) return cache.get(id)!
 
-export async function getAuthor(id: string): Promise<Person | undefined> {
-    if (cache.has(id)) {
-        return cache.get(id)
+    const authorMod = authors[toJsonPath(id)]
+    if (!authorMod) throw new Error(`Author ${JSON.stringify(id)} not found.`)
+    const parsedAuthor = PersonSchema.extend({ image: z.string() }).safeParse(
+        authorMod
+    )
+    if (!parsedAuthor.success) {
+        throw new Error(
+            `Author ${JSON.stringify(id)} has invalid JSON. Full error: ${
+                parsedAuthor.error
+            }`
+        )
     }
-
-    const key = `./${id}.json`
-
-    if (!(key in allAuthors)) {
-        return undefined
+    const author = parsedAuthor.data
+    const image = images[author.image] as { default: any }
+    if (!image) {
+        throw new Error(`Image ${JSON.stringify(author.image)} not found.`)
     }
-
-    const mod = (await allAuthors[key]()) as { default: Author }
-
-    if (!mod?.default) {
-        return undefined
+    const parsedImage = ImageSchema.safeParse({
+        src: image.default,
+        alt: author.name
+    })
+    if (!parsedImage.success) {
+        throw new Error(
+            `Author ${JSON.stringify(id)} has invalid image. Full error: ${
+                parsedImage.error
+            }`
+        )
     }
-
-    const imageMod = (await allImages[mod.default.image]()) as { default: any }
-
-    const author = PersonSchema.parse({
-        ...mod.default,
-        image: {
-            src: imageMod.default,
-            alt: mod.default.name
-        }
-    }) as Person
-
-    cache.set(id, author)
-    return author
+    const person: Person = {
+        image: parsedImage.data,
+        name: author.name,
+        twitter: author.twitter
+    }
+    cache.set(id, person)
+    return person
 }

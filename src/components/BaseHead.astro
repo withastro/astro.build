@@ -21,7 +21,6 @@ const {
 
 const ensureTrailingSlash = (url: string) => url.replace(/\/$/, '') + '/';
 const resolvedImage = await getImage({ src: image, width: 1200, aspectRatio: 2, format: 'jpeg' });
-const resolvedImageWithDomain = new URL(resolvedImage.src, Astro.url).toString();
 const title = Astro.props.title ? [Astro.props.title, site.title].join(' | ') : 'Astro | Build faster websites'
 ---
 
@@ -44,7 +43,7 @@ const title = Astro.props.title ? [Astro.props.title, site.title].join(' | ') : 
     siteName={site.title}
     {title}
     {description}
-    image={resolvedImageWithDomain}
+    image={resolvedImage.src ? new URL(resolvedImage.src, Astro.url).toString() : null}
     twitterHandle={site.twitterHandle}
     pageType={pageType}
     url={canonicalURL && ensureTrailingSlash(canonicalURL.toString())}

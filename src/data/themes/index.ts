@@ -1,5 +1,5 @@
 import type { ImageMetadata } from '@astrojs/image'
-import { z } from 'zod'
+import { z } from 'astro/zod'
 import type { Theme } from '../../types.js'
 import { ThemeSchema, ThemeTag } from '../../types.js'
 import data from '../themes.json'
