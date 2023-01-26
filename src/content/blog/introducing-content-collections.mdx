@@ -42,7 +42,7 @@ Everything inside of a collection is type-safe, including your frontmatter. Defi
 
 ```ts
 const blog = defineCollection({
-  schema: {
+  schema: z.object({
     // Define your expected frontmatter properties
     title: z.string(),
     // Mark certain properties as optional
@@ -52,7 +52,7 @@ const blog = defineCollection({
     // Improve SEO with descriptive warnings
 	description: z.string().max(160, 'Short descriptions have better SEO!')
     // ...
-  },
+  }),
 });
 ```
 This magic is thanks to [Zod](https://github.com/colinhacks/zod), a powerful validation library for TypeScript. Using Zod's expressive schema builder, you can ensure important properties like `title` are always present and correctly typed. When you get something wrong, Zod provides helpful error messages on everything from missing properties to important SEO suggestions.
