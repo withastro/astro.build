@@ -86,7 +86,7 @@ export const ThemeSchema = z.object({
     image: ImageMetadataSchema,
     images: z.array(ImageMetadataSchema).optional(),
     author: LinkSchema.extend({
-        avatar: z.string().url().optional()
+        avatar: z.string().url().or(z.string().startsWith('/assets/themes/avatars/')).optional()
     }).optional(),
     categories: z.array(ThemeCategory),
     repoUrl: LinkSchema.optional(),
