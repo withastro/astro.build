@@ -1,6 +1,6 @@
+import { z } from 'astro/zod'
 import fetch, { FormData, Headers, Response } from 'node-fetch'
 import { posix } from 'node:path'
-import * as z from 'astro/zod'
 
 const discordMessageAttachmentSchema = z.object({
     filename: z.string(),
