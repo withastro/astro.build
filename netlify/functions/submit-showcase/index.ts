@@ -67,14 +67,19 @@ export const handler: Handler = async (event) => {
         return errorRedirect('Website URL required')
     }
 
+    const images = form
+        .getAll('previewImage')
+        .filter((value): value is File => value instanceof File)
+    if (!images.length) {
+        return errorRedirect('One or more images required')
+    }
+
     let message: DiscordWebhookMessage
     try {
         message = await executeDiscordWebhook(env.DISCORD_WEBHOOK_URL, {
             threadId: env.DISCORD_WEBHOOK_THREAD_ID,
             content: 'New showcase submission!',
-            files: form
-                .getAll('previewImage')
-                .filter((value): value is File => value instanceof File)
+            files: images
         })
     } catch (error: unknown) {
         return errorRedirect(
@@ -103,7 +108,9 @@ export const handler: Handler = async (event) => {
     })
 
     if (!image) {
-        return errorRedirect('No image')
+        return errorRedirect(
+            'No images found in the submission. This is a bug, please report it in the Astro discord!'
+        )
     }
 
     const siteData: ShowcaseSite = {
