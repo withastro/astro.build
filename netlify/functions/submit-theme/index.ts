@@ -56,14 +56,19 @@ export const handler: Handler = async (event) => {
         return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     }
 
+    const submittedImages = form
+        .getAll('previewImage')
+        .filter((value): value is File => value instanceof File)
+    if (!submittedImages.length) {
+        return errorRedirect('One or more images required')
+    }
+
     let message: DiscordWebhookMessage
     try {
         message = await executeDiscordWebhook(env.DISCORD_WEBHOOK_URL, {
             threadId: env.DISCORD_WEBHOOK_THREAD_ID,
             content: 'New theme submission!',
-            files: form
-                .getAll('images')
-                .filter((value): value is File => value instanceof File)
+            files: submittedImages
         })
     } catch (error: unknown) {
         return errorRedirect(
