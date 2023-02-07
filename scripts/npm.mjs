@@ -73,8 +73,14 @@ export async function searchByKeyword(keyword, ranking = 'quality') {
         total = results.total
     } while (total > objects.length)
 
-    return objects.reduce((acc, next) => {
-        acc.set(next.package.name, next)
-        return acc
-    }, new Map())
+    return objects
+        .filter(({ package: pkg }) => {
+            // remove any published forks of official @astrojs integrations
+            return pkg.links.repository !== 'https://github.com/withastro/astro'
+                || pkg.name.startsWith('@astrojs/')
+        })
+        .reduce((acc, next) => {
+            acc.set(next.package.name, next)
+            return acc
+        }, new Map())
 }
