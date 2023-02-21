@@ -84,7 +84,7 @@ export const ThemeSchema = z.object({
     description: z.string(),
     fullDescription: z.string().optional(),
     image: ImageMetadataSchema,
-    images: z.array(ImageMetadataSchema).optional(),
+    images: z.array(ImageMetadataSchema).default([]),
     author: LinkSchema.extend({
         avatar: z.string().url().or(z.string().startsWith('/assets/themes/avatars/')).optional()
     }).optional(),
@@ -93,12 +93,12 @@ export const ThemeSchema = z.object({
     demoUrl: LinkSchema.optional(),
     npmUrl: LinkSchema.optional(),
     buyUrl: LinkSchema.optional(),
-    links: z.array(LinkSchema).optional(),
+    links: z.array(LinkSchema).default([]),
     official: z.boolean().optional(),
     stars: z.number().min(0).optional(),
     featured: z.number().min(1).optional(),
-    tags: z.array(ThemeTagSchema).optional(),
-    keywords: z.array(z.string()).optional()
+    tags: z.array(ThemeTagSchema).default([]),
+    keywords: z.array(z.string()).default([])
 })
 export type Theme = z.infer<typeof ThemeSchema>
 

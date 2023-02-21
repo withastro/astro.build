@@ -120,7 +120,7 @@ const { theme } = Astro.props
                 <p class="pt-1 md:pt-3">{theme.description}</p>
 
                 {
-                    theme.tags?.length > 0 && (
+                    theme.tags.length > 0 && (
                         <div class="py-2 md:py-4 flex flex-wrap gap-4 md:gap-6">
                             {theme.tags.map((tag) => (
                                 <Icon
@@ -182,7 +182,7 @@ const { theme } = Astro.props
             }
 
             {
-                theme.keywords?.length > 0 && (
+                theme.keywords.length > 0 && (
                     <section>
                         <h2 class="text-lg font-medium mb-2">Features</h2>
                         <ul class="flex flex-wrap gap-2">
@@ -197,7 +197,7 @@ const { theme } = Astro.props
             }
 
             {
-                theme.links?.length > 0 && (
+                theme.links.length > 0 && (
                     <section>
                         <h2 class="text-lg font-medium mb-2">Links</h2>
                         <ul class="flex flex-wrap gap-3 md:gap-4">
