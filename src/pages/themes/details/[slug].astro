@@ -31,6 +31,11 @@ const placeholderClass = clsx(`
 `)
 
 const { theme } = Astro.props
+
+const netlifyUrl =
+    theme.repoUrl &&
+    typeof theme.stars !== 'undefined' &&
+    `https://app.netlify.com/start/deploy?repository=${theme.repoUrl}`
 ---
 
 <Layout image={theme.image} title={theme.title} description={theme.description}>
@@ -134,7 +139,7 @@ const { theme } = Astro.props
                     )
                 }
 
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 items-center justify-center md:justify-start">
                     <Button
                         external
                         href={theme.buyUrl?.href || theme.repoUrl.href}
@@ -167,6 +172,24 @@ const { theme } = Astro.props
                                     aria-hidden="true"
                                 />
                             </Button>
+                        )
+                    }
+                    {
+                        netlifyUrl && (
+                            <a
+                                href={netlifyUrl}
+                                target="_blank"
+                                rel="noopener"
+                                aria-label={`Deploy ${theme.title} to Netlify`}
+                            >
+                                <img
+                                    src="https://www.netlify.com/img/deploy/button.svg"
+                                    alt="Deploy to Netlify"
+                                    title="Deploy to Netlify"
+                                    width="146"
+                                    height="32"
+                                />
+                            </a>
                         )
                     }
                 </div>
