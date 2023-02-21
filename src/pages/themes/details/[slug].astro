@@ -35,7 +35,7 @@ const { theme } = Astro.props
 const netlifyUrl =
     theme.repoUrl &&
     typeof theme.stars !== 'undefined' &&
-    `https://app.netlify.com/start/deploy?repository=${theme.repoUrl}`
+    `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`
 ---
 
 <Layout image={theme.image} title={theme.title} description={theme.description}>
