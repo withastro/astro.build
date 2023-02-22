@@ -35,7 +35,7 @@ export default function ImageInput(props: {
                             {props.required && (
                                 <span
                                     class="text-red-500 text-base align-text-top"
-                                    aria-hidden
+                                    aria-hidden="true"
                                 >
                                     *
                                 </span>
@@ -75,7 +75,7 @@ export default function ImageInput(props: {
                             {props.required && (
                                 <span
                                     class="text-red-500 text-base align-text-top"
-                                    aria-hidden
+                                    aria-hidden="true"
                                 >
                                     *
                                 </span>
