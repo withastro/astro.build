@@ -7,8 +7,7 @@ export type Props = Partial<MaxWidthProps>
 const { ...props } = Astro.props as Props
 ---
 
-<div class="relative pt-20 pb-12 md:pt-24 md:pb-16 lg:pb-20">
-
+<div class="relative pt-20 pb-12 md:pt-24 md:pb-16 lg:pb-20 bg-primary-800 z-10">
     <Starfield subtle />
     <MaxWidth as="section" {...props}>
             <h1
