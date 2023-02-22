@@ -92,7 +92,7 @@ export function TagSelect({ options, ...props }: TagSelectProps) {
                                 <option key={index}>{option}</option>
                             ))}
                     </select>
-                    <span class="absolute right-0 select-none" aria-hidden>
+                    <span class="absolute right-0 select-none" aria-hidden="true">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
