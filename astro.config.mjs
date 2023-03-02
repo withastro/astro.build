@@ -8,14 +8,20 @@ import webfinger from 'astro-webfinger'
 import { defineConfig } from 'astro/config'
 
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
-const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL
+import markdoc from '@astrojs/markdoc'
+const NETLIFY_PREVIEW_SITE =
+    process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL
+
+// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
     site: NETLIFY_PREVIEW_SITE || 'https://astro.build',
     integrations: [
         tailwind(),
-        image({ serviceEntryPoint: '@astrojs/image/sharp' }),
+        image({
+            serviceEntryPoint: '@astrojs/image/sharp'
+        }),
         prefetch(),
         mdx(),
         sitemap(),
@@ -23,7 +29,8 @@ export default defineConfig({
         webfinger({
             instance: 'webtoo.ls',
             username: 'astro'
-        })
+        }),
+        markdoc()
     ],
     vite: {
         ssr: {
