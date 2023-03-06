@@ -25,6 +25,10 @@ export function createDisclosure({
 		if (!visible() && !animated) {
 			content.style.display = "none"
 		}
+		/* make sure page scrolling is disabled when the menu is open */
+		if (visible()) {
+			document.documentElement.classList.add("disclosure-open")
+		}
 
 		// run after an animation frame to let the element start at the leave state
 		requestAnimationFrame(() => {
@@ -42,6 +46,7 @@ export function createDisclosure({
 		content.addEventListener("transitionend", () => {
 			if (!visible()) {
 				content.style.display = "none"
+				document.documentElement.classList.remove("disclosure-open")
 			}
 		})
 	}
