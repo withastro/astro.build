@@ -43,7 +43,7 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(a:not([class])) {
-		@apply underline inline-block font-medium text-astro-pink-light;
+		@apply underline inline-block font-medium text-astro-pink-light hover:outline outline-astro-pink-light;
 	}
 
 	article :global(a code) {
@@ -87,7 +87,11 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(:is(img, video):not([class])) {
-		@apply max-w-full mx-auto rounded-lg my-10 border border-astro-gray-400;
+		@apply max-w-full w-full mx-auto rounded-lg my-10 border border-astro-gray-400;
+	}
+
+	article :global(video + aside) {
+		@apply -my-6 italic px-3;
 	}
 
 	article :global(a :is(img, video):not([class])) {
