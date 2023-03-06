@@ -4,13 +4,25 @@ export function createDisclosure({
 	button,
 	content,
 	animated = false,
+	closeAt = -1,
 }: {
 	button: HTMLElement
 	content: HTMLElement
 	animated?: boolean
+	closeAt?: number
 }) {
 	if (content.id) {
 		button.setAttribute("aria-controls", content.id)
+	}
+
+	if (closeAt > 0) {
+		const mediaQuery = window.matchMedia(`(min-width: ${closeAt}px)`)
+
+		mediaQuery.addEventListener("change", (event: MediaQueryListEvent) => {
+			if (event.matches) {
+				setVisible(false)
+			}
+		})
 	}
 
 	const [visible, setVisible] = createSignal(false)
@@ -24,6 +36,10 @@ export function createDisclosure({
 
 		if (!visible() && !animated) {
 			content.style.display = "none"
+		}
+		/* make sure page scrolling is disabled when the menu is open */
+		if (visible()) {
+			document.documentElement.classList.add("disclosure-open")
 		}
 
 		// run after an animation frame to let the element start at the leave state
@@ -42,6 +58,7 @@ export function createDisclosure({
 		content.addEventListener("transitionend", () => {
 			if (!visible()) {
 				content.style.display = "none"
+				document.documentElement.classList.remove("disclosure-open")
 			}
 		})
 	}
