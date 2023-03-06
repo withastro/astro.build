@@ -1,0 +1,54 @@
+---
+import ChevronIcon from "~/icons/ChevronIcon.jsx"
+import LayersIcon from "~/icons/LayersIcon.jsx"
+import OpenBookIcon from "~/icons/OpenBookIcon.jsx"
+import PaletteIcon from "~/icons/PaletteIcon.jsx"
+---
+
+<div class="group relative">
+	<button class="group link flex items-center gap-2">
+		Resources
+		<ChevronIcon
+			class="inline-block h-4 w-4 rotate-0 transition-transform delay-200 group-focus-within:-rotate-180 group-hover:-rotate-180 group-hover:delay-[0ms]"
+		/>
+	</button>
+	<div
+		class:list={[
+			// flex
+			"flex flex-col",
+
+			// positioning
+			"absolute top-full left-0 translate-y-2",
+
+			// panel styling
+			"rounded bg-astro-gray-100 p-1 text-astro-gray-700 min-w-[150px] shadow-md",
+
+			// transitioning
+			"invisible group-hover:visible group-focus-within:visible",
+			"origin-top scale-95 group-hover:scale-100 group-focus-within:scale-100",
+			"opacity-0 group-hover:opacity-100 group-focus-within:opacity-100",
+
+			// delay the transition on hover out, so the menu doesn't immediately disappear
+			"transition-all delay-200 group-hover:delay-[0ms]",
+		]}
+	>
+		<a
+			href="/themes/"
+			class="flex items-center gap-2 rounded p-3 leading-none transition hover:bg-black/10"
+		>
+			<PaletteIcon class="h-4 w-4" /> Themes
+		</a>
+		<a
+			href="/integrations/"
+			class="flex items-center gap-2 rounded p-3 leading-none transition hover:bg-black/10"
+		>
+			<LayersIcon class="h-4 w-4" /> Integrations
+		</a>
+		<a
+			href="https://docs.astro.build/en/tutorial/0-introduction/"
+			class="flex items-center gap-2 rounded p-3 leading-none transition hover:bg-black/10"
+		>
+			<OpenBookIcon class="h-4 w-4" /> Tutorials
+		</a>
+	</div>
+</div>

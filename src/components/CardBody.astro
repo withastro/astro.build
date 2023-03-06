@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes, HTMLTag } from "astro/types"
+
+export type Props<T extends HTMLTag> = HTMLAttributes<T> & {
+	as?: T
+}
+
+const { as: Component = "div", class: className, href, ...attrs } = Astro.props
+---
+
+<Component
+	class:list={["flex flex-1 flex-col gap-6 p-6 text-left", className]}
+	href={href}
+	{...attrs}
+>
+	<slot />
+</Component>

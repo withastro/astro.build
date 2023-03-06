@@ -1,0 +1,9 @@
+---
+import FormError from "./FormError.astro"
+
+export type Props = {
+	errors?: string | string[]
+}
+---
+
+{[Astro.props.errors ?? []].flat().map((error) => <FormError>{error}</FormError>)}

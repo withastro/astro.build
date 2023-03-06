@@ -1,18 +1,27 @@
 ---
-import { getAuthor } from '../data/authors'
-import Avatar from './Avatar.astro'
+import { getEntryBySlug } from "astro:content"
+import Avatar from "./Avatar.astro"
+
+export type Props = {
+	name: string
+}
+
 const { name } = Astro.props
 
-const mention = getAuthor(name)
+const mention = await getEntryBySlug("authors", name)
 ---
 
-<span class="mention inline-block align-middle leading-none m-0">
-    <a
-        href={mention.twitter}
-        title={`Follow ${mention.name} on Twitter`}
-        class="inline-flex no-underline items-center whitespace-nowrap m-0 font-bold space-x-1"
-    >
-        <Avatar {name} />
-        <span>{mention.name}</span>
-    </a>
-</span>
+{
+	mention && (
+		<span class="m-0 inline-block align-middle leading-none">
+			<a
+				href={mention.data.twitter}
+				title={`Follow ${mention.data.name} on Twitter`}
+				class="m-0 inline-flex items-center space-x-1 whitespace-nowrap font-medium"
+			>
+				<Avatar name={name} />
+				<span class="underline">{mention.data.name}</span>
+			</a>
+		</span>
+	)
+}

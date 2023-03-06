@@ -1,0 +1,321 @@
+---
+import type { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
+import type { HTMLAttributes } from "astro/types"
+import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
+
+export type GalleryImage = {
+	thumbnail: ImageMetadata
+	fullImage: ImageMetadata
+	alt?: string
+}
+
+export type Props = HTMLAttributes<"div"> & {
+	images: GalleryImage[]
+}
+
+const { images, class: className, ...attrs } = Astro.props
+---
+
+<image-gallery
+	selected="0"
+	class:list={["sm:aspect-[16/7] pb-4 sm:pb-0 grid sm:grid-cols-[77.75%,22.25%]", className]}
+	{...attrs}
+>
+	<div class="relative max-w-full">
+		<ul
+			id="gallery"
+			class="flex aspect-video h-full w-full flex-shrink-0 snap-x snap-mandatory scroll-p-0 overflow-y-hidden overflow-x-scroll"
+		>
+			{
+				images.map((image, i) => (
+					<li
+						class="relative flex w-full flex-shrink-0 snap-start snap-always items-center justify-center"
+						id={`gallery-${i + 1}`}
+					>
+						<img
+							src={image.fullImage.src}
+							width={image.fullImage.width}
+							height={image.fullImage.height}
+							alt={image.alt || ""}
+							decoding="async"
+							class="aspect-video max-h-full max-w-full object-cover"
+						/>
+					</li>
+				))
+			}
+		</ul>
+
+		<div
+			class="absolute bottom-6 right-6 z-10 hidden h-24 w-12 flex-col divide-y divide-astro-gray-400 sm:flex"
+		>
+			<button
+				id="gallery-prev"
+				class="flex flex-1 items-center justify-center rounded-t-full bg-astro-gray-500 text-astro-gray-200 outline-astro-pink-light focus-within:z-20 hover:z-20 hover:outline focus:outline-2"
+			>
+				<RightArrowIcon class="-rotate-90" aria-hidden="true" />
+				<span class="sr-only">Go to previous image</span>
+			</button>
+			<button
+				id="gallery-next"
+				class="flex flex-1 items-center justify-center rounded-b-full bg-astro-gray-500 text-astro-gray-200 outline-astro-pink-light focus-within:z-20 hover:z-20 hover:outline focus:outline-2"
+			>
+				<RightArrowIcon class="rotate-90" aria-hidden="true" />
+				<span class="sr-only">Go to next image</span>
+			</button>
+		</div>
+	</div>
+	<nav class="w-full sm:h-full sm:overflow-y-auto">
+		<ul class="hidden h-full sm:block">
+			{
+				images.map((image, i) => (
+					<li>
+						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? "true" : "false"}>
+							<img
+								src={image.thumbnail.src}
+								width={image.thumbnail.width}
+								height={image.thumbnail.height}
+								alt={image.alt || ""}
+								class="aspect-video h-full w-full object-cover"
+								decoding="async"
+								loading="lazy"
+							/>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<div class="mt-3 flex items-center justify-center gap-2 sm:hidden" aria-hidden="true">
+			{
+				images.map((_, i) => (
+					<div
+						class="pill h-2.5 w-2.5 rounded-full bg-astro-gray-100 transition-all duration-200 ease-in-out"
+						aria-current={i === 0 ? "true" : "false"}
+					/>
+				))
+			}
+		</div>
+	</nav>
+</image-gallery>
+
+<style>
+	image-gallery [aria-current="false"]:empty,
+	image-gallery [aria-current="false"] img {
+		@apply opacity-50;
+	}
+
+	#gallery {
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	#gallery::-webkit-scrollbar {
+		@apply hidden;
+	}
+
+	nav :global(img) {
+		user-drag: none;
+		-webkit-user-drag: none;
+	}
+
+	.pill[aria-current="true"] {
+		@apply w-5;
+	}
+
+	nav::-webkit-scrollbar {
+		@apply w-2.5;
+	}
+
+	nav::-webkit-scrollbar-track {
+		@apply bg-astro-gray-700;
+	}
+
+	nav::-webkit-scrollbar-thumb {
+		@apply bg-astro-gray-300 rounded-full cursor-pointer;
+	}
+</style>
+
+<script>
+	function throttle(fn: Function, delay = 50) {
+		let lastCalled = 0
+		return (...args: any[]) => {
+			let now = new Date().getTime()
+			if (now - lastCalled < delay) {
+				return
+			}
+			lastCalled = now
+			return fn(...args)
+		}
+	}
+
+	function safeParse(maybeNumber: any) {
+		try {
+			return parseInt(maybeNumber)
+		} catch {
+			return undefined
+		}
+	}
+
+	class ImageGallery extends HTMLElement {
+		connectedCallback() {
+			this.enhance()
+			this.update()
+
+			window.addEventListener("hashchange", () => this.onHashChange())
+			this.mainScroller?.addEventListener(
+				"scroll",
+				throttle(() => this.onScroll()),
+			)
+
+			this.next?.addEventListener("click", () => {
+				this.selected = (this.selected + 1) % this.scrollerItems.length
+				this.scrollToItem(this.selected)
+			})
+
+			this.previous?.addEventListener("click", () => {
+				if (this.selected === 0) {
+					this.selected = this.scrollerItems.length - 1
+				} else {
+					this.selected -= 1
+				}
+				this.scrollToItem(this.selected)
+			})
+		}
+
+		static get observedAttributes() {
+			return ["selected"]
+		}
+
+		attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+			if (name !== "selected" || oldValue === newValue) {
+				return
+			}
+
+			this.update()
+		}
+
+		private onHashChange() {
+			this.selected = this.scrollerItems.findIndex((elem) => elem.matches(window.location.hash))
+		}
+
+		private onScroll() {
+			this.selected = this.calcSelected()
+		}
+
+		private get selected() {
+			return safeParse(this.getAttribute("selected")) || 0
+		}
+
+		private set selected(value: number) {
+			this.setAttribute("selected", String(value))
+		}
+
+		private get next() {
+			return this.querySelector<HTMLButtonElement>("#gallery-next")
+		}
+
+		private get previous() {
+			return this.querySelector<HTMLButtonElement>("#gallery-prev")
+		}
+
+		private get mainScroller() {
+			return this.querySelector<HTMLUListElement>("#gallery")
+		}
+
+		private get scrollerItems() {
+			return Array.from(this.mainScroller?.querySelectorAll<HTMLLIElement>("li") || [])
+		}
+
+		private get navScroller() {
+			return this.querySelector<HTMLUListElement>("nav")
+		}
+
+		private get navScrollerItems() {
+			return Array.from(this.navScroller?.querySelectorAll<HTMLAnchorElement>(`a[href^="#"]`) || [])
+		}
+
+		private get scrollIndicator() {
+			return this.querySelector<HTMLDivElement>("nav > div")
+		}
+
+		private get scrollIndicatorPills() {
+			return Array.from(this.scrollIndicator?.querySelectorAll<HTMLDivElement>("div") || [])
+		}
+
+		private update() {
+			for (let i = 0; i < this.scrollerItems.length; i++) {
+				const current = i === this.selected
+
+				this.navScrollerItems[i].setAttribute("aria-current", String(current))
+				this.scrollIndicatorPills[i].setAttribute("aria-current", String(current))
+			}
+
+			if (this.navScroller) {
+				const link = this.navScrollerItems[this.selected]
+
+				// make sure the nav preview image is fully visible
+				if (this.navScroller.scrollTop > link.offsetTop) {
+					// preview image is cut off on the top, need to scroll up
+					this.navScroller.scrollTo({ top: link.offsetTop, behavior: "smooth" })
+				} else if (this.navScroller.offsetHeight < link.offsetTop + link.offsetHeight) {
+					// preview image is cut off on the bottom, need to scroll down
+					this.navScroller.scrollTo({
+						top: link.offsetTop + link.offsetHeight - this.navScroller.offsetHeight,
+						behavior: "smooth",
+					})
+				}
+			}
+		}
+
+		private enhance() {
+			// click hijacking the navigation image previews
+			this.navScrollerItems.forEach((link, i) => {
+				link.addEventListener("click", (event) => {
+					// should never happen!
+					if (!this.mainScroller || !this.navScroller) {
+						return
+					}
+
+					// try to find the matching full-size image
+					const url = new URL(link.href)
+					const target = this.mainScroller.querySelector<HTMLElement>(url.hash)
+
+					if (!target) {
+						// oops! Let the navigation link continue
+						return
+					}
+
+					// hijacking commence
+					event.preventDefault()
+
+					this.scrollToItem(i)
+
+					this.selected = i
+				})
+			})
+		}
+
+		private scrollToItem(index: number) {
+			if (this.mainScroller) {
+				const target = this.scrollerItems[index]
+
+				// programmatically scroll the full image into view
+				this.mainScroller.scrollLeft = target.offsetLeft
+			}
+		}
+
+		private calcSelected() {
+			if (!this.mainScroller || !this.scrollerItems?.length) {
+				return 0
+			}
+
+			const carouselRect = this.mainScroller.getBoundingClientRect()
+			return this.scrollerItems.findIndex(
+				(elem) =>
+					Math.abs(elem.getBoundingClientRect().left - carouselRect.left) < carouselRect.width / 2,
+			)
+		}
+	}
+
+	customElements.define("image-gallery", ImageGallery)
+</script>

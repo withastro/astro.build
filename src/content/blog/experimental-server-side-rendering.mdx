@@ -1,10 +1,9 @@
 ---
-title: 'Server-Side Rendering with Astro'
-description: 'Announcing experimental support for server-side rendering in Astro'
-publishDate: 'April 5, 2022'
-socialImage: '/assets/blog/experimental-ssr/social.jpg'
-coverImage: '/assets/blog/experimental-ssr/cover.jpg'
-lang: 'en'
+title: "Server-Side Rendering with Astro"
+description: "Announcing experimental support for server-side rendering in Astro"
+publishDate: "April 5, 2022"
+socialImage: "/src/content/blog/_images/experimental-ssr/social.webp"
+lang: "en"
 authors:
   - matthew
 ---
@@ -35,26 +34,26 @@ Take user authentication for instance. With static site generation, you have a c
 
 1. Check for a cookie or JWT in localStorage, then redirect to a login page if the user doesn’t have one. If using a cookie this prevents using `HttpOnly`, opening you to malicious JavaScript attacks.
 
-    ```html
-    <script>
-      if(!parseCookie(document.cookie).auth) {
-        window.location = '/login';
-      }
-    </script>
-    ```
+   ```html
+   <script>
+   	if (!parseCookie(document.cookie).auth) {
+   		window.location = "/login"
+   	}
+   </script>
+   ```
 
-    Additionally, what do you do if the token is not valid? You still need to check and respond in that case.
+   Additionally, what do you do if the token is not valid? You still need to check and respond in that case.
 
 2. Call an API that will check if a user is logged in, like `/api/auth`. Going this route is going to mean that you need to show loading spinners in each of your islands while you wait on the response.
 
-    ```jsx
-    function App() {
-      const auth = useAuth();
-      if(auth.loading) return <AnnoyingLoadingSpinner />
-      if(!auth.loggedIn) return <LoginPage />;
-      return <UserProfile user={auth.user} />
-    }
-    ```
+   ```jsx
+   function App() {
+   	const auth = useAuth()
+   	if (auth.loading) return <AnnoyingLoadingSpinner />
+   	if (!auth.loggedIn) return <LoginPage />
+   	return <UserProfile user={auth.user} />
+   }
+   ```
 
 No matter your approach, going client-side for authentication is always going to mean:
 
@@ -66,38 +65,39 @@ No matter your approach, going client-side for authentication is always going to
 
 Next.js, Nuxt, Gatsby, SvelteKit, and the whole gang of modern JavaScript meta-frameworks have some idea of SSR already. What makes Astro SSR so special?
 
-Astro has one key advantage over the current set of JavaScript-focused meta-frameworks who have tackled SSR before us: **Astro was designed to run on the server.** 
+Astro has one key advantage over the current set of JavaScript-focused meta-frameworks who have tackled SSR before us: **Astro was designed to run on the server.**
 
-With Astro you are free to write your server code how it works in your mind, free from the unnecessary abstractions that come with other, “universal” SPA-first frameworks. While SPA-first thinking might be great for super stateful web applications (think dashboards, apps, portals) it’s a cost that most content-focused websites would be better off not paying. 
+With Astro you are free to write your server code how it works in your mind, free from the unnecessary abstractions that come with other, “universal” SPA-first frameworks. While SPA-first thinking might be great for super stateful web applications (think dashboards, apps, portals) it’s a cost that most content-focused websites would be better off not paying.
 
 Here’s how user authentication works in Astro SSR, using only 5 lines of JavaScript:
 
 ```astro
 ---
 // Example: src/pages/index.astro
-// In an Astro component (*.astro), you write server code directly 
-// in the component front matter (this space between the two --- fences). 
+// In an Astro component (*.astro), you write server code directly
+// in the component front matter (this space between the two --- fences).
 
 // 1. Import any dependencies (Full support for JavaScript/TypeScript)
-import { getUser } from '../api/index.js';
+import { getUser } from "../api/index.js"
 
 // 2. Check that the user token exists and is not malicious.
-const user = await getUser(Astro.request);
+const user = await getUser(Astro.request)
 
 // 3. If no user was found, return a redirect. This instantly
 //    completes the response with the correct status code & headers.
-if(!user) {
-  return Astro.redirect('/login');
+if (!user) {
+	return Astro.redirect("/login")
 }
 
 // 4. If the user is logged in, you can now use the `user` object
 //    right in your page template to show an avatar, name, etc.
 ---
+
 <html>
-...
-<h1>Hello {user.name} 👋</h1>
-<img src={user.avatar} alt={user.name}>
-...
+	...
+	<h1>Hello {user.name} 👋</h1>
+	<img src={user.avatar} alt={user.name} />
+	...
 </html>
 ```
 
@@ -107,7 +107,7 @@ Astro front matter is like a single function call that takes a request and retur
 
 Astro’s HTML-first approach to web development will get you pretty far on its own, but Astro also supports interactive UI using your favorite framework (like React). When you build for the client, you often need endpoints to read and write data between the user and the server. Built-in API routes are here to deliver that need.
 
-In Astro, an API route is a `.js` or `.ts` file in the `src/pages/` folder, that takes a request and returns a response. API routes were designed for maximum flexibility: 
+In Astro, an API route is a `.js` or `.ts` file in the `src/pages/` folder, that takes a request and returns a response. API routes were designed for maximum flexibility:
 
 - Build a form submission handler for JS-free form submission.
 - Build an upload handler for user file submissions.
@@ -119,14 +119,14 @@ API routes work by exporting a function that implements an HTTP method. Here is 
 ```js
 // Example: src/pages/api/profile.js
 export async function post(params, request) {
-  const profile = await request.json();
-  await saveProfile(profile);
-  return new Response(JSON.stringify({ ok: true }), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+	const profile = await request.json()
+	await saveProfile(profile)
+	return new Response(JSON.stringify({ ok: true }), {
+		status: 200,
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
 }
 ```
 
@@ -134,7 +134,7 @@ export async function post(params, request) {
 
 Modern web hosts set a high bar for developer experience. Developers expect frameworks to integrate with their favored providers, without too much configuration or setup.
 
-When we built Astro SSR, we evaluated the different ways that other frameworks tackle this problem. In the end, we decided to follow in the footsteps of [SvelteKit](https://kit.svelte.dev/) and [Remix](https://remix.run/) and adopt the idea of ***pluggable host*** ***adapters***. Adapters are simple, pluggable integrations that automatically configure your build for your favorite host.
+When we built Astro SSR, we evaluated the different ways that other frameworks tackle this problem. In the end, we decided to follow in the footsteps of [SvelteKit](https://kit.svelte.dev/) and [Remix](https://remix.run/) and adopt the idea of **_pluggable host_** **_adapters_**. Adapters are simple, pluggable integrations that automatically configure your build for your favorite host.
 
 Not only is the adapter model easy for developers to set up, but it also lets us support as many different kinds of hosts as possible, including:
 
@@ -148,20 +148,19 @@ SSR support in Astro is still experimental. Over the next two months, we’re ex
 To celebrate this announcement, we were lucky enough to work with our launch partner (and official hosting sponsor) Netlify, to launch an official, day-one adapter for the Netlify platform. The Netlify adapter configures your Astro SSR build to run on Netlify Functions with just one line of code:
 
 ```js
-import { defineConfig } from 'astro/config';
-import netlify from '@astrojs/netlify/functions';
+import { defineConfig } from "astro/config"
+import netlify from "@astrojs/netlify/functions"
 
 export default defineConfig({
-  adapter: netlify()
-});
+	adapter: netlify(),
+})
 ```
 
 To deploy, run your `astro build` and then deploy to Netlify:
 
 <video controls>
-    <source src="/assets/blog/experimental-ssr/netlify-deploy-2.mp4 "
-            type="video/mp4"/>
-    Sorry, your browser doesn't support embedded videos.
+	<source src="/assets/blog/experimental-ssr/netlify-deploy-2.mp4 " type="video/mp4" />
+	Sorry, your browser doesn't support embedded videos.
 </video>
 
 ## Next Steps

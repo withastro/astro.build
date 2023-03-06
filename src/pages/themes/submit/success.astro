@@ -1,16 +1,69 @@
 ---
-import Button from '../../../components/Button.astro'
-import PageTitle from '../../../components/PageTitle.astro'
-import Base from '../../../layouts/Base.astro'
+import MainLayout from "~/layouts/MainLayout.astro"
+import houston from "./_assets/houston_love.webp"
 ---
 
-<Base title="Theme successfully submitted">
-    <PageTitle>
-        <Fragment slot="title">Thanks for submitting your theme!</Fragment>
-        We try to review all theme submissions within two weeks. In the meantime,
-        join our active community on Discord!
-        <br />
-        <br />
-        <Button href="/themes">Back to Themes</Button>
-    </PageTitle>
-</Base>
+<MainLayout>
+	<section class="mt-10 flex flex-1 flex-col items-center">
+		<div class="my-auto flex flex-col items-center px-4 text-center">
+			<svg
+				class="noise-underlay mb-4 s-20"
+				viewBox="0 0 81 80"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<g filter="url(#filter0_f_773_3112)">
+					<path
+						d="M49.566 29.3001L35.266 43.6334L29.766 38.1334C29.4672 37.7845 29.0995 37.5011 28.6859 37.301C28.2724 37.1009 27.8219 36.9885 27.3629 36.9708C26.9038 36.953 26.446 37.0304 26.0183 37.198C25.5905 37.3655 25.202 37.6197 24.8772 37.9446C24.5523 38.2694 24.2982 38.6579 24.1306 39.0857C23.963 39.5134 23.8856 39.9712 23.9034 40.4303C23.9211 40.8893 24.0335 41.3398 24.2336 41.7533C24.4337 42.1669 24.7171 42.5346 25.066 42.8334L32.8994 50.7001C33.2108 51.009 33.5802 51.2534 33.9863 51.4193C34.3925 51.5852 34.8273 51.6693 35.266 51.6668C36.1405 51.6631 36.9785 51.3159 37.5994 50.7001L54.266 34.0334C54.5785 33.7235 54.8264 33.3549 54.9957 32.9487C55.1649 32.5425 55.252 32.1068 55.252 31.6667C55.252 31.2267 55.1649 30.791 54.9957 30.3848C54.8264 29.9786 54.5785 29.61 54.266 29.3001C53.6415 28.6792 52.7967 28.3308 51.916 28.3308C51.0354 28.3308 50.1906 28.6792 49.566 29.3001ZM40.4994 6.66675C33.9067 6.66675 27.462 8.62171 21.9804 12.2844C16.4987 15.9471 12.2263 21.1531 9.70338 27.244C7.18046 33.3348 6.52035 40.0371 7.80652 46.5031C9.0927 52.9691 12.2674 58.9086 16.9291 63.5703C21.5909 68.2321 27.5303 71.4068 33.9964 72.6929C40.4624 73.9791 47.1646 73.319 53.2555 70.7961C59.3463 68.2732 64.5523 64.0007 68.215 58.5191C71.8777 53.0375 73.8327 46.5928 73.8327 40.0001C73.8327 35.6227 72.9705 31.2882 71.2953 27.244C69.6202 23.1998 67.1649 19.5251 64.0696 16.4299C60.9743 13.3346 57.2997 10.8793 53.2555 9.2041C49.2113 7.52894 44.8768 6.66675 40.4994 6.66675V6.66675ZM40.4994 66.6668C35.2252 66.6668 30.0695 65.1028 25.6842 62.1726C21.2988 59.2424 17.8809 55.0777 15.8626 50.205C13.8442 45.3323 13.3162 39.9705 14.3451 34.7977C15.374 29.6248 17.9138 24.8733 21.6432 21.1439C25.3726 17.4145 30.1241 14.8747 35.297 13.8458C40.4698 12.8169 45.8316 13.345 50.7043 15.3633C55.577 17.3816 59.7417 20.7996 62.6719 25.1849C65.6021 29.5702 67.166 34.7259 67.166 40.0001C67.166 47.0725 64.3565 53.8553 59.3555 58.8563C54.3546 63.8572 47.5718 66.6668 40.4994 66.6668V66.6668Z"
+						fill="url(#paint0_linear_773_3112)"></path>
+				</g>
+				<defs>
+					<filter
+						id="filter0_f_773_3112"
+						x="-3.5"
+						y="-4"
+						width="88"
+						height="88"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
+					>
+						<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"
+						></feBlend>
+						<feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_773_3112"
+						></feGaussianBlur>
+					</filter>
+					<linearGradient
+						id="paint0_linear_773_3112"
+						x1="73.8327"
+						y1="6.66675"
+						x2="-6.63898"
+						y2="40.4483"
+						gradientUnits="userSpaceOnUse"
+					>
+						<stop stop-color="#4AF2C8"></stop>
+						<stop offset="1" stop-color="#2F4CB3"></stop>
+					</linearGradient>
+				</defs>
+			</svg>
+
+			<h1 class="heading-3 mb-4">Theme submitted!</h1>
+
+			<p class="mx-auto mb-8 w-full max-w-2xl">
+				Thank you for sharing your themes with the Astro community! We will review your submission
+				and reach out if we encounter any problems.<br />
+				<a href="/themes/" class="link-underline mt-2 inline-block">View all themes</a>
+			</p>
+		</div>
+
+		<img
+			src={houston.src}
+			width={houston.width}
+			height={houston.height}
+			alt=""
+			class="noise-underlay w-full max-w-sm"
+			loading="lazy"
+			decoding="async"
+		/>
+	</section>
+</MainLayout>

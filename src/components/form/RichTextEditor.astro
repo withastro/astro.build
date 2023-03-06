@@ -1,0 +1,186 @@
+---
+import "quill/dist/quill.snow.css"
+
+export interface Props extends astroHTML.JSX.InputHTMLAttributes {}
+---
+
+<rich-text-editor class="input p-0">
+	<input type="hidden" {...Astro.props} />
+	<div data-editor></div>
+	<noscript>
+		<strong class="block p-2 text-red-400"> JavaScript is required for the rich text editor</strong>
+	</noscript>
+</rich-text-editor>
+
+<script>
+	import Quill from "quill"
+	import { getElement } from "~/helpers/dom.js"
+
+	import { sanitizeThemeDescription } from "~/helpers/themes.js"
+
+	const TOOLBAR_CONFIG = [
+		[{ header: ["2", "3", false] }],
+		["bold", "italic", "underline", "link"],
+		[{ list: "ordered" }, { list: "bullet" }],
+		["blockquote", "code-block"],
+		["clean"],
+	]
+
+	class RichTextEditor extends HTMLElement {
+		connectedCallback() {
+			const quill = new Quill(this.editor, {
+				theme: "snow",
+				modules: {
+					toolbar: TOOLBAR_CONFIG,
+				},
+			})
+
+			quill.root.innerHTML = sanitizeThemeDescription(this.input.value)
+			quill.on("text-change", () => {
+				this.input.value = quill.root.innerHTML
+			})
+		}
+
+		get input() {
+			return getElement("input", HTMLInputElement, this)
+		}
+
+		get editor() {
+			return getElement("[data-editor]", HTMLDivElement, this)
+		}
+	}
+
+	customElements.define("rich-text-editor", RichTextEditor)
+</script>
+
+<style is:global>
+	.ql-toolbar.ql-snow {
+		border: none;
+		border-bottom: 1px solid theme("colors.astro-gray.500");
+	}
+
+	.ql-container.ql-snow {
+		border: none;
+	}
+
+	.ql-snow .ql-picker {
+		@apply text-astro-gray-200;
+	}
+	.ql-snow .ql-picker-options {
+		@apply bg-astro-gray-600;
+	}
+
+	.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label,
+	.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+		@apply border-astro-gray-500;
+	}
+
+	.ql-snow .ql-stroke,
+	.ql-snow .ql-fill {
+		@apply stroke-astro-gray-200;
+	}
+
+	/* lol */
+	.ql-snow.ql-toolbar button:hover,
+	.ql-snow .ql-toolbar button:hover,
+	.ql-snow.ql-toolbar button:focus,
+	.ql-snow .ql-toolbar button:focus,
+	.ql-snow.ql-toolbar button.ql-active,
+	.ql-snow .ql-toolbar button.ql-active,
+	.ql-snow.ql-toolbar .ql-picker-label:hover,
+	.ql-snow .ql-toolbar .ql-picker-label:hover,
+	.ql-snow.ql-toolbar .ql-picker-label.ql-active,
+	.ql-snow .ql-toolbar .ql-picker-label.ql-active,
+	.ql-snow.ql-toolbar .ql-picker-item:hover,
+	.ql-snow .ql-toolbar .ql-picker-item:hover,
+	.ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+	.ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+		color: theme(colors.purple.400);
+	}
+
+	.ql-snow.ql-toolbar button:hover .ql-fill,
+	.ql-snow .ql-toolbar button:hover .ql-fill,
+	.ql-snow.ql-toolbar button:focus .ql-fill,
+	.ql-snow .ql-toolbar button:focus .ql-fill,
+	.ql-snow.ql-toolbar button.ql-active .ql-fill,
+	.ql-snow .ql-toolbar button.ql-active .ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+	.ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill,
+	.ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill,
+	.ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill,
+	.ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill,
+	.ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,
+	.ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+	.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
+	.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+		fill: theme(colors.purple.400);
+	}
+
+	.ql-snow.ql-toolbar button:hover .ql-stroke,
+	.ql-snow .ql-toolbar button:hover .ql-stroke,
+	.ql-snow.ql-toolbar button:focus .ql-stroke,
+	.ql-snow .ql-toolbar button:focus .ql-stroke,
+	.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+	.ql-snow .ql-toolbar button.ql-active .ql-stroke,
+	.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+	.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+	.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+	.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+	.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+	.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,
+	.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+	.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+	.ql-snow.ql-toolbar button:hover .ql-stroke-miter,
+	.ql-snow .ql-toolbar button:hover .ql-stroke-miter,
+	.ql-snow.ql-toolbar button:focus .ql-stroke-miter,
+	.ql-snow .ql-toolbar button:focus .ql-stroke-miter,
+	.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+	.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+	.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+	.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+	.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+	.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+	.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+	.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+	.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+	.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+		stroke: theme(colors.purple.400);
+	}
+</style>
+
+<style>
+	[data-editor] :global(:is(h1, h2, h3, h4):not(:first-child)) {
+		margin-top: 1.75rem;
+	}
+	[data-editor] :global(:is(h1, h2, h3, h4):not(:last-child)) {
+		margin-bottom: 0.75rem;
+	}
+	[data-editor] :global(.ql-editor > :first-child) {
+		margin-top: 0;
+	}
+	[data-editor] :global(.ql-editor > :last-child) {
+		margin-bottom: 0;
+	}
+
+	[data-editor] :global(.ql-editor) {
+		@apply min-h-[8rem] p-4;
+	}
+
+	/* the container already has a focus state */
+	[data-editor] :global(.ql-editor:focus) {
+		@apply outline-none;
+	}
+</style>

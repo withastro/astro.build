@@ -1,0 +1,187 @@
+---
+import { CollectionEntry, getCollection } from "astro:content"
+import CardGrid from "~/components/CardGrid.astro"
+import Pagination from "~/components/Pagination.astro"
+import SearchFilter, { FilterGroup } from "~/components/SearchFilter.astro"
+import SidebarLayout from "~/components/SidebarLayout.astro"
+import SidebarPanel from "~/components/SidebarPanel.astro"
+import { ThemeCategories, ThemeTools } from "~/content/config.js"
+import { paginate } from "~/helpers/paginate.js"
+import MainLayout from "~/layouts/MainLayout.astro"
+import SubmitTheme from "./_components/SubmitTheme.astro"
+import ThemeCard from "./_components/ThemeCard.astro"
+
+// Sorting priority: featured first, then compare downloads, then sort alphabetically
+function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
+	if (a.data.featured && b.data.featured) {
+		return a.data.featured - b.data.featured
+	}
+
+	if (a.data.featured && !b.data.featured) {
+		return -1
+	}
+
+	if (!a.data.featured && b.data.featured) {
+		return 1
+	}
+
+	if (a.data.stars === b.data.stars) {
+		return b.data.title.localeCompare(a.data.title)
+	}
+
+	return b.data.stars - a.data.stars
+}
+
+// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
+// otherwise, try to parse the page number from the URL
+const currentPage = typeof Astro.params.page === "undefined" ? 1 : parseInt(Astro.params.page)
+
+// invalid page number!
+if (!currentPage || isNaN(currentPage)) {
+	return Astro.redirect("/404")
+}
+
+// search term from the search/filter panel
+const search = Astro.url.searchParams.get("search")
+
+// get a list of all supported categories, this is the same list used by the zod schema
+const categories = Array.from(ThemeCategories.keys())
+
+// get a list of category filters applied to the request
+const selectedCategories = Astro.url.searchParams.getAll("categories[]")
+
+// massage category data for the Filter components
+const categoryFilter: FilterGroup = {
+	title: "Categories",
+	options: categories.map((c) => ({
+		id: c,
+		name: "categories[]",
+		value: c,
+		label: ThemeCategories.get(c)!,
+		selected: selectedCategories.includes(c),
+	})),
+}
+
+// get a list of all supported tools, this is the same list used by the zod schema
+const tools = Array.from(ThemeTools.keys())
+
+// get a list of tool filters applied to the request
+const selectedTools = Astro.url.searchParams.getAll("technology[]")
+
+// massage tool data for the Filter components
+const toolFilter: FilterGroup = {
+	title: "Technology",
+	options: tools.map((t) => ({
+		id: t,
+		name: "technology[]",
+		value: t,
+		label: ThemeTools.get(t)!,
+		selected: selectedTools.includes(t),
+	})),
+}
+
+const searchRegex = search && new RegExp(search, "i")
+
+function themeFilter(theme: CollectionEntry<"themes">) {
+	// if at least one category filter is applied, hide themes that don't match
+	if (selectedCategories.length > 0) {
+		if (!theme.data.categories.some((c: string) => selectedCategories.includes(c))) {
+			return false
+		}
+	}
+
+	// if at least one tool filter is applied, hide themes that don't match
+	if (selectedTools.length > 0) {
+		if (!theme.data.tools.some((c: string) => selectedTools.includes(c))) {
+			return false
+		}
+	}
+
+	// if a search term was used, filter down checking name/title/description
+	if (searchRegex) {
+		return (
+			searchRegex.test(theme.data.title) ||
+			searchRegex.test(theme.data.description) ||
+			searchRegex.test(theme.body)
+		)
+	}
+
+	return true
+}
+
+// get themes, filtered by the applied search & filter, then sort the matches
+const allThemes = await getCollection("themes", themeFilter).then((entries) =>
+	entries.sort(sortThemes),
+)
+
+// take all matching themes and create a paginated list of results
+const paginatedResults = paginate({
+	data: allThemes,
+	pageSize: 12,
+	currentPage,
+	route: "/themes/[...page]",
+	searchParams: Astro.url.searchParams,
+})
+
+const { page, allPages } = paginatedResults
+
+// make sure the requested page number is valid, if not redirect to the first page of results
+if (allPages.length && !page) {
+	return Astro.redirect(allPages[0])
+}
+
+const themes = page.data
+---
+
+<MainLayout title="Themes" image={{ src: "/og/themes.jpg", alt: "Explore the possibilities" }}>
+	<div class="bg-grid relative overflow-x-clip">
+		<div class="grid-container">
+			<h1
+				class="heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 md:pt-32 lg:heading-1 lg:pt-40"
+			>
+				Jumpstart your next project with a theme
+			</h1>
+		</div>
+	</div>
+
+	<SidebarLayout>
+		<Fragment slot="sidebar">
+			<SidebarPanel>
+				<SearchFilter
+					indexRoute="/themes"
+					groups={[categoryFilter, toolFilter]}
+					search={search}
+					searchPlaceholder="Search for a theme"
+				/>
+			</SidebarPanel>
+			<SubmitTheme class="hidden lg:block" />
+		</Fragment>
+
+		{
+			themes.length > 0 ? (
+				<div class="flex flex-col items-center gap-8 pb-10 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:pb-20">
+					<CardGrid class="w-full max-w-screen-2xl pt-8 sm:grid-cols-2 sm:px-4 md:px-8 lg:px-10 lg:pt-10 xl:grid-cols-3">
+						{themes.map((theme) => (
+							<ThemeCard theme={theme} />
+						))}
+					</CardGrid>
+
+					{allPages.length > 1 && (
+						<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
+					)}
+				</div>
+			) : (
+				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
+					<p>
+						<strong>0</strong> results found for themes matching <strong>"{search}"</strong>
+					</p>
+					<a href="/themes/" class="button-primary">
+						Clear filters
+					</a>
+				</div>
+			)
+		}
+
+		<SubmitTheme class="lg:hidden" />
+	</SidebarLayout>
+</MainLayout>

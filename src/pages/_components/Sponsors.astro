@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon"
+
+const sponsors = [
+	{ src: "sponsors/vercel", alt: "Vercel Logo", href: "https://vercel.com/" },
+	{
+		src: "sponsors/buttercms",
+		alt: "ButterCMS Logo",
+		href: "https://buttercms.com/?utm_source=astro.build&utm_medium=banner&utm_campaign=sponsorship",
+	},
+	{ src: "sponsors/deepgram", alt: "Deepgram Logo", href: "https://deepgram.com/" },
+	{ src: "sponsors/shipshape", alt: "Ship Shape Logo", href: "https://shipshape.io/?ref=astro" },
+	{ src: "sponsors/divriots", alt: "Div Riots Logo", href: "https://divriots.com/" },
+]
+---
+
+<section class="landing-section gap-12 py-16 sm:gap-24 sm:py-20 md:py-24 lg:py-28 xl:py-32">
+	<h2 class="heading-4 max-w-4xl px-8 lg:heading-3">
+		Astro is free, open source software made possible by these wonderful sponsors
+	</h2>
+
+	<div class="grid gap-12 sm:gap-24 md:auto-cols-[240px] md:grid-flow-col md:grid-cols-2">
+		<a
+			href="https://netlify.com/"
+			rel="sponsored"
+			class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer"
+		>
+			<figure class="flex h-full flex-col items-center justify-end gap-2">
+				<Icon name="sponsors/netlify" alt="Netlify Logo" aria-label="Netlify" />
+				<figcaption class="body text-astro-gray-200">Official Hosting Partner</figcaption>
+			</figure>
+		</a>
+		<a
+			href="https://www.storyblok.com/?utm_source=astro&utm_medium=display&utm_campaign=AWA_SPON_ASTR_TRA&utm_content=astro_collab"
+			class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer"
+			rel="sponsored"
+		>
+			<figure class="flex h-full flex-col items-center justify-end gap-2">
+				<Icon name="sponsors/storyblok" alt="Storyblok Logo" aria-label="Storyblok" />
+				<figcaption class="body text-astro-gray-200">Official CMS Partner</figcaption>
+			</figure>
+		</a>
+	</div>
+
+	<ul
+		class="flex max-w-screen-lg flex-wrap items-center justify-center gap-12 px-8 sm:gap-x-24 md:gap-x-48"
+	>
+		{
+			sponsors.map((sponsor) => (
+				<li class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer">
+					<a href={sponsor.href} rel="sponsored">
+						<Icon name={sponsor.src} aria-label={sponsor.alt} class="w-32" />
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</section>

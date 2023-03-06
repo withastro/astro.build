@@ -1,0 +1,68 @@
+---
+import iconBalance from "../_assets/icon-balance.png"
+import iconCode from "../_assets/icon-code.png"
+import iconGlobe from "../_assets/icon-globe.png"
+import iconHeart from "../_assets/icon-heart.png"
+import iconMoney from "../_assets/icon-money.png"
+import iconMonitor from "../_assets/icon-monitor.png"
+import iconPalmTree from "../_assets/icon-palm-tree.png"
+import iconShield from "../_assets/icon-shield.png"
+import FeatureCard, { type Props as Feature } from "./FeatureCard.astro"
+
+const features: Feature[] = [
+	{
+		image: iconGlobe.src,
+		title: "Remote-first team",
+	},
+	{
+		image: iconMoney.src,
+		title: "Competitive stock & salary",
+	},
+	{
+		image: iconPalmTree.src,
+		title: "20 days paid time off",
+	},
+	{
+		image: iconShield.src,
+		title: "Health insurance",
+	},
+	{
+		image: iconMonitor.src,
+		title: "Learning & office stipends",
+	},
+	{
+		image: iconBalance.src,
+		title: "Work/life balance",
+	},
+	{
+		image: iconHeart.src,
+		title: "Paid family leave",
+	},
+	{
+		image: iconCode.src,
+		title: "Work on open source",
+	},
+]
+---
+
+<ul class="mx-auto grid w-full max-w-5xl justify-center gap-8 md:justify-between md:gap-16">
+	{
+		features.map((feature) => (
+			<li>
+				<FeatureCard image={feature.image} title={feature.title} class="h-full" />
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.grid {
+		grid-template-columns: repeat(2, auto);
+	}
+
+	@media (min-width: 768px) {
+		.grid {
+			grid-template-columns: repeat(4, auto);
+		}
+	}
+</style>

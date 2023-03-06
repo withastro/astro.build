@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content"
+import { resolveImage } from "~/content/showcase/_resolveImage.js"
+import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx"
+
+export type Props = { site: CollectionEntry<"showcase"> }
+
+const { site } = Astro.props
+
+const image = await resolveImage(site, site.data.highlight ? 2 : 1)
+---
+
+<article
+	class:list={[
+		"group relative flex flex-col w-full h-full overflow-clip bg-astro-gray-600 aspect-video cursor-pointer",
+	]}
+>
+	<a href={site.data.url} rel="noopener" target="_blank" class="h-full w-full">
+		<span class="sr-only">{site.data.title}</span>
+		<img
+			src={image.src}
+			width={image.width}
+			height={image.height}
+			alt=""
+			class="h-full w-full object-cover"
+			loading="lazy"
+			decoding="async"
+		/>
+
+		<footer
+			class="noise-panel pointer-events-none absolute bottom-0 z-10 flex w-full flex-col gap-2 bg-astro-gray-500/95 p-4 opacity-0 transition-opacity duration-300 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
+		>
+			<h2 class="heading-5">{site.data.title}</h2>
+			<p class="body flex flex-row items-center gap-2">
+				<span>{site.data.url}</span>
+				<ExternalLinkIcon />
+			</p>
+		</footer>
+	</a>
+</article>

@@ -1,38 +1,17 @@
 ---
-export interface Props extends astroHTML.JSX.HTMLAttributes {
-    dense?: boolean;
-}
+import type { HTMLAttributes } from "astro/types"
 
-const { dense = false, class: className = '', ...props } = Astro.props as Props
+export type Props = HTMLAttributes<"div">
 
-const columns = dense
-    ? 'sm:grid-cols-2 lg:grid-cols-4'
-    : 'sm:grid-cols-2 lg:grid-cols-3'
+const { class: className, ...attrs } = Astro.props
 ---
 
-<ul
-    class:list={[
-        'space-y-6 sm:space-y-0 sm:grid gap-6',
-        columns,
-        className
-    ]}
-    {...props}
->
-    <slot />
-    {Astro.slots.footer && (
-        <li class:list={['footer', 'sm:col-span-2', dense ? 'lg:col-span-4' : 'lg:col-span-3']}>
-            <slot name="footer" />
-        </li>
-    )}
-</ul>
+<div class:list={["grid gap-8 lg:gap-10", className]} {...attrs}>
+	<slot />
+</div>
 
 <style>
-    ul > :global(li) {
-        @apply flex;
-    }
-
-    ul > :global(li > :first-child) {
-        width: 100%;
-        height: 100%;
-    }
+	div > :global(*) {
+		@apply flex-1;
+	}
 </style>

@@ -1,0 +1,39 @@
+---
+import { CollectionEntry, getCollection } from "astro:content"
+import Prose from "~/components/Prose.astro"
+import MainLayout from "~/layouts/MainLayout.astro"
+
+export const prerender = true
+
+export async function getStaticPaths() {
+	const pages = await getCollection("pages")
+
+	return pages.map((page) => {
+		return {
+			params: { slug: page.slug },
+			props: { page },
+		}
+	})
+}
+
+const { page } = Astro.props as { page: CollectionEntry<"pages"> }
+const { seo, updated_date } = page.data
+const { Content } = await page.render()
+---
+
+<MainLayout {...seo}>
+	<section class="noise-underlay mb-20 bg-blue-purple-gradient sm:mb-24 md:mb-28 lg:mb-32">
+		<div class="mx-auto flex max-w-screen-lg flex-col items-center pt-24 pb-16 text-center">
+			<p class="code">
+				Last updated on {updated_date.toLocaleDateString("en-US", { dateStyle: "long" })}
+			</p>
+			<h1 class="heading-3 pt-3 pb-10 sm:heading-2">{seo.title}</h1>
+		</div>
+	</section>
+
+	<section class="grid-container">
+		<Prose>
+			<Content />
+		</Prose>
+	</section>
+</MainLayout>

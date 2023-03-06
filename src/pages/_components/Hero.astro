@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon"
+import CodeBlock from "~/components/CodeBlock.astro"
+import ExternalLink from "~/components/ExternalLink.astro"
+import PageTitleBlock from "~/components/PageTitleBlock.astro"
+
+const logos = [
+	{ src: "logos/google", alt: "Google Logo" },
+	{ src: "logos/netlify", alt: "Netlify Logo" },
+	{ src: "logos/nordvpn", alt: "NordVPN Logo" },
+	{ src: "logos/rokt", alt: "Rokt Logo" },
+	{ src: "logos/theguardian", alt: "The Guardian Logo" },
+	{ src: "logos/trivago", alt: "Trivago Logo" },
+]
+---
+
+<section class="landing-section relative overflow-x-hidden pt-14 pb-40 sm:pt-20 lg:pt-32">
+	<div class="noise-underlay absolute inset-0"></div>
+	<PageTitleBlock
+		lg
+		body="Astro is the all-in-one web framework designed for speed. Pull your content from anywhere and deploy everywhere, all powered by your favorite UI components and libraries."
+	>
+		<Fragment slot="title">
+			Build the web
+			<br class="hidden sm:block" />
+			you want
+		</Fragment>
+	</PageTitleBlock>
+
+	<div
+		class="isolate mb-14 mt-8 flex w-full justify-center gap-6 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28"
+	>
+		<ExternalLink href="https://docs.astro.build/" class="button-white">Get Started</ExternalLink>
+		<div class="hidden sm:block">
+			<CodeBlock>npm create astro@latest</CodeBlock>
+		</div>
+	</div>
+
+	<div class="flex flex-col gap-y-8 px-4 md:px-6 lg:flex-row lg:items-center">
+		<p class="body px-8 text-astro-gray-200 lg:max-w-[12rem] lg:px-0 lg:text-left">
+			Used by over 100,000 developers and teams around the world:
+		</p>
+		<div class="flex flex-wrap justify-center gap-x-8 gap-y-6 px-4">
+			{
+				logos.map((logo) => (
+					<Icon
+						name={logo.src}
+						aria-label={logo.alt}
+						height={48}
+						class="h-6 object-contain text-white sm:h-8 md:h-10 lg:h-11"
+					/>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	section::before {
+		position: absolute;
+		content: "";
+		z-index: -1;
+		top: 0%;
+		bottom: 10%;
+		width: 150%;
+		left: -25%;
+		background: url(/assets/noise.png) repeat, linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+		background-blend-mode: overlay;
+		mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 70%);
+	}
+</style>

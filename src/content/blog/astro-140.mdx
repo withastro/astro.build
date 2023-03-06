@@ -1,23 +1,23 @@
 ---
-title: 'Astro 1.4.0 Release'
-description: 'Introducing: Astro.cookies • Strict dependency installation • Better control over style ordering • JSX in Vue components'
-publishDate: 'September 29, 2022'
+title: "Astro 1.4.0 Release"
+description: "Introducing: Astro.cookies • Strict dependency installation • Better control over style ordering • JSX in Vue components"
+publishDate: "September 29, 2022"
 authors:
   - matthew
-lang: 'en'
+lang: "en"
 ---
 
-import cookies from '/src/assets/blog/astro-140/astro-cookies.png'
-import vueJsx from '/src/assets/blog/astro-140/vue-jsx.png'
+import cookies from "/src/content/blog/_images/astro-140/astro-cookies.webp"
+import vueJsx from "/src/content/blog/_images/astro-140/vue-jsx.webp"
 
-import BlogContentImage from '/src/components/BlogContentImage.astro'
+import BlogContentImage from "/src/components/BlogContentImage.astro"
 
 We just released Astro 1.4.0, featuring:
 
-* __[Astro.cookies](#astro-cookies)__: A simplified approach to manipulating cookies within Astro pages and API routes.
-* __[Support for strict dependency installation](#strict-dependency-installation)__: pnpm users can now have the benefits of its default semi-strict dependency installation strategy in Astro projects.
-* __[Better control over style ordering](#style-ordering)__: We've fixed style ordering so that styles defined in Astro components are lower in bundled CSS than global styles you import.
-* __[JSX support in Vue](#jsx-support-in-vue)__: Vue users can now define components using JSX and TSX.
+- **[Astro.cookies](#astro-cookies)**: A simplified approach to manipulating cookies within Astro pages and API routes.
+- **[Support for strict dependency installation](#strict-dependency-installation)**: pnpm users can now have the benefits of its default semi-strict dependency installation strategy in Astro projects.
+- **[Better control over style ordering](#style-ordering)**: We've fixed style ordering so that styles defined in Astro components are lower in bundled CSS than global styles you import.
+- **[JSX support in Vue](#jsx-support-in-vue)**: Vue users can now define components using JSX and TSX.
 
 You can update your projects by running `npm install astro@latest`.
 
@@ -35,9 +35,9 @@ Check out [the docs](https://docs.astro.build/en/reference/api-reference/#astroc
 
 ## Strict dependency installation
 
-If you are using [pnpm](https://pnpm.io/) in your Astro project, you can now install your dependencies using its strict dependency algorithm. Since Astro runs code on your behalf, you previously needed to [hoist packages to the root](https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root), which meant that most of your dependencies (and *their* dependencies) were installed into the top-level `node_modules/` folder.
+If you are using [pnpm](https://pnpm.io/) in your Astro project, you can now install your dependencies using its strict dependency algorithm. Since Astro runs code on your behalf, you previously needed to [hoist packages to the root](https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root), which meant that most of your dependencies (and _their_ dependencies) were installed into the top-level `node_modules/` folder.
 
-A stricter installation is more *correct*, in that a package can only import dependencies it defines in its own `package.json`. A stricter installation is also faster, as Node.js does not need to look in as many folders to find packages.
+A stricter installation is more _correct_, in that a package can only import dependencies it defines in its own `package.json`. A stricter installation is also faster, as Node.js does not need to look in as many folders to find packages.
 
 This feature comes for free in Astro 1.4.0 for new projects. Existing projects can remove hoisting configuration they might have in a `.npmrc` file.
 
@@ -47,19 +47,20 @@ When Astro 1.0 was released, we changed our CSS scoping mechanism to use the [`:
 
 Making this switch, we didn't realize that the default ordering of styles wasn't ideal: styles defined directly in a component came before imported styles in the CSS output, giving component styles a lower precedence than imported styles.
 
-In 1.4.0, styles you write in Astro components will come *after* global styles imported. In practice, this means that if you write a component like so:
+In 1.4.0, styles you write in Astro components will come _after_ global styles imported. In practice, this means that if you write a component like so:
 
-__Title.astro__
+**Title.astro**
 
 ```astro
 ---
-import '../styles/global-titles.css';
+import "../styles/global-titles.css"
 ---
-<h1>{ Astro.props.title }</h1>
+
+<h1>{Astro.props.title}</h1>
 <style>
-  h1 {
-    color: aliceblue;
-  }
+	h1 {
+		color: aliceblue;
+	}
 </style>
 ```
 
@@ -68,12 +69,12 @@ When your site is built and the CSS is bundled you get something like the follow
 ```css
 /* /src/styles/global-titles.css */
 h1 {
-  color: onyx;
+	color: onyx;
 }
 
 /* /src/components/Title.astro */
 h1:where(.astro-1234) {
-  color: aliceblue;
+	color: aliceblue;
 }
 ```
 

@@ -1,19 +1,20 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
 
 export interface Props {
-  src: string;
-  alt?: string;
-  [attr: string]: any;
+	src: ImageMetadata
+	alt?: string
 }
 
-const { src, ...attrs } = Astro.props as Props;
+const { src, alt = "" } = Astro.props as Props
 ---
 
-<Picture src={src} widths={[400, 800, 1500]} sizes="(max-width: 767px) 100vw, 736px" {...attrs} />
-
-<style>
-  img, picture :global(img), svg {
-    @apply rounded-xl shadow-lg my-10;
-  }
-</style>
+<img
+	src={src.src}
+	alt={alt}
+	width={src.width}
+	height={src.height}
+	class="mx-auto my-10 max-w-full rounded-xl shadow-lg"
+	loading="lazy"
+	decoding="async"
+/>

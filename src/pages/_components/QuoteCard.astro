@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from "astro/types"
+import type { CollectionEntry } from "astro:content"
+
+export type Props = Omit<HTMLAttributes<"article">, "slot"> & {
+	quote: CollectionEntry<"quotes">
+}
+
+const { quote, class: className, ...attrs } = Astro.props
+
+const { Content } = await quote.render()
+---
+
+<article
+	class:list={[
+		"relative w-fit bg-astro-gray-600 border border-astro-gray-500 flex flex-col gap-3 p-5 text-astro-gray-200 shadow-md",
+		className,
+	]}
+	{...attrs}
+>
+	<header class="flex items-center gap-4">
+		<img
+			src={quote.data.author.avatar.src}
+			alt={quote.data.author.avatar.alt || ""}
+			class="h-10 w-10 rounded-full border border-white"
+		/>
+		<strong class="text-white">{quote.data.author.handle}</strong>
+		<time class="text-xs text-astro-gray-200" datetime={quote.data.published.toISOString()}
+			>{quote.data.published.toLocaleDateString()}</time
+		>
+	</header>
+	<Content />
+</article>

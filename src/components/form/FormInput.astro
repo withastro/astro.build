@@ -1,0 +1,15 @@
+---
+export type Props = astroHTML.JSX.InputHTMLAttributes & {
+	label: string
+}
+
+const { label, ...props } = Astro.props
+---
+
+<label class="group" data-required={props.required}>
+	<span class="group-data-[required]:after:text-red-500 group-data-[required]:after:content-['*']">
+		{label}
+	</span>
+	<br />
+	<input {...props} />
+</label>

@@ -1,0 +1,66 @@
+---
+import ChevronIcon from "~/icons/ChevronIcon.jsx"
+---
+
+<div data-code-block class="bg-blue-purple-gradient p-0.5 shadow-sm">
+	<div class="flex items-center bg-astro-gray-600">
+		<ChevronIcon class="relative mr-2 ml-4 block w-3 -rotate-90" />
+
+		<code data-code class="code flex-1 text-left leading-none">
+			<slot />
+		</code>
+
+		<div class="relative">
+			<button
+				data-copy-button
+				class="block p-4 transition hover:scale-110 active:scale-100 active:transition-none"
+				title="Copy to clipboard"
+			>
+				<svg
+					class="w-5"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+					<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+				</svg>
+			</button>
+
+			<p
+				data-tooltip
+				class="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-black/50 p-2 text-sm leading-none opacity-0 transition data-[visible=true]:opacity-100"
+			>
+				Copied!
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+	import { createEffect } from "solid-js"
+	import { getElement } from "~/helpers/dom.js"
+	import { createTimer } from "~/helpers/timer.js"
+
+	for (const codeBlock of document.querySelectorAll("[data-code-block]")) {
+		const code = getElement("[data-code]", HTMLElement, codeBlock)
+		const button = getElement("[data-copy-button]", HTMLButtonElement, codeBlock)
+		const tooltip = getElement("[data-tooltip]", HTMLElement, codeBlock)
+
+		const timer = createTimer(1500)
+
+		button.addEventListener("click", () => {
+			navigator.clipboard.writeText(code.innerText)
+			timer.start()
+		})
+
+		createEffect(() => {
+			button.title = timer.running() ? "Copied!" : "Copy to clipboard"
+			tooltip.dataset.visible = String(timer.running())
+			tooltip.ariaHidden = String(!timer.running())
+		})
+	}
+</script>

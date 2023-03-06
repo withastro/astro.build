@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content"
+import Card from "~/components/Card.astro"
+import CardBody from "~/components/CardBody.astro"
+import CardFooter from "~/components/CardFooter.astro"
+import { resolveImage } from "~/content/themes/_resolveImage.js"
+import Avatar from "./Avatar.astro"
+import Badge from "./Badge.astro"
+
+export type Props = {
+	theme: CollectionEntry<"themes">
+}
+
+const { theme } = Astro.props
+
+const image = await resolveImage(theme)
+---
+
+<Card isLink>
+	<a class="flex h-full flex-col" href={`/themes/details/${theme.slug}`}>
+		<img
+			src={image.src}
+			width={image.width}
+			height={image.height}
+			alt=""
+			class="aspect-video w-full"
+			loading="lazy"
+			decoding="async"
+		/>
+		<CardBody>
+			<div>
+				<h3 class:list={["heading-5 mb-2 text-white", { official: theme.data.official }]}>
+					{theme.data.title}
+				</h3>
+				<p class="line-clamp-2">{theme.data.description}</p>
+			</div>
+			<CardFooter
+				class="grid grid-cols-[1fr,auto] items-center justify-between gap-2 overflow-hidden border-t border-astro-gray-400 pt-6"
+			>
+				<Avatar theme={theme} />
+
+				<Badge theme={theme.data.paid ? "primary" : "secondary"}>
+					{theme.data.paid ? "Paid" : "Free"}
+				</Badge>
+			</CardFooter>
+		</CardBody>
+	</a>
+</Card>
+
+<style>
+	.official::after {
+		@apply inline-block ml-1 w-5 h-5 translate-y-[2px] bg-contain bg-no-repeat;
+		content: "";
+		background-image: url(/assets/official.svg);
+	}
+</style>

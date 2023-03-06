@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+export type Props = HTMLAttributes<"section"> & {
+	title: string
+	body?: string
+}
+
+const { title, body, class: className, ...attrs } = Astro.props
+---
+
+<section class:list={["flex flex-col gap-y-8 md:gap-y-12 lg:gap-y-16", className]} {...attrs}>
+	<h2 class="heading-4 mx-auto max-w-4xl text-center sm:heading-3 lg:heading-2">
+		<slot name="title">{title}</slot>
+	</h2>
+	{
+		(body || Astro.slots.has("body")) && (
+			<p class="body max-w-3xl px-8 text-center text-astro-gray-200 sm:body-large">
+				<slot name="body">{body}</slot>
+			</p>
+		)
+	}
+
+	<slot />
+</section>

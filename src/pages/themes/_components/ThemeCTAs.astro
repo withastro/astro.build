@@ -1,0 +1,55 @@
+---
+import type { HTMLAttributes } from "astro/types"
+import { CollectionEntry } from "astro:content"
+import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx"
+
+export type Props = HTMLAttributes<"div"> & {
+	theme: CollectionEntry<"themes">
+}
+
+const { theme, class: className, ...attrs } = Astro.props
+
+const netlifyUrl =
+	theme.data.repoUrl &&
+	typeof theme.data.stars !== "undefined" &&
+	`https://app.netlify.com/start/deploy?repository=${theme.data.repoUrl}`
+---
+
+<div class:list={["flex flex-col gap-4", className]} {...attrs}>
+	{
+		theme.data.buyUrl && (
+			<a href={theme.data.buyUrl} class="button-primary" data-analytics-event="PDDOCXCA:1">
+				<span>Buy now</span>
+				<ExternalLinkIcon aria-hidden="true" />
+			</a>
+		)
+	}
+	{
+		theme.data.repoUrl && (
+			<a href={theme.data.repoUrl} class="button-primary" data-analytics-event="PDDOCXCA:0">
+				<span>Get started</span>
+				<ExternalLinkIcon aria-hidden="true" />
+			</a>
+		)
+	}
+	{
+		theme.data.demoUrl && (
+			<a href={theme.data.demoUrl} class="button-outline" data-analytics-event="DI9WVRXV:0">
+				<span>Live demo</span>
+				<ExternalLinkIcon aria-hidden="true" />
+			</a>
+		)
+	}
+</div>
+
+<script>
+	document.querySelectorAll<HTMLElement>("[data-analytics-event]").forEach((elem) => {
+		if ("fathom" in window && elem.dataset.analyticsEvent) {
+			const [eventId, value = "0"] = elem.dataset.analyticsEvent.split(":")
+
+			elem.addEventListener("click", () => {
+				window.fathom.trackGoal(eventId, parseInt(value!))
+			})
+		}
+	})
+</script>

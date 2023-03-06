@@ -1,0 +1,44 @@
+---
+import { type CollectionEntry } from "astro:content"
+import { format } from "date-fns"
+import { resolveCoverImage } from "~/content/blog/_resolveImage.js"
+
+export type Props = {
+	post: CollectionEntry<"blog">
+}
+
+const { post } = Astro.props
+
+const image = await resolveCoverImage(post)
+---
+
+<article
+	class="border border-astro-gray-500 bg-astro-gray-600 p-5 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
+>
+	<a href={`/blog/${post.slug}/`} class="block outline-none">
+		<header>
+			<time class="code text-astro-gray-200" datetime={post.data.publishDate.toISOString()}>
+				{format(post.data.publishDate, "MMMM d, yyyy")}
+			</time>
+		</header>
+
+		{
+			image && (
+				<img
+					src={image.src}
+					width={image.width}
+					height={image.height}
+					alt={post.data.title}
+					class="my-8"
+					loading="lazy"
+					decoding="async"
+				/>
+			)
+		}
+
+		<div class="mt-6 grid gap-y-4 gap-x-16 md:grid-cols-2">
+			<h3 class="heading-4 md:heading-3">{post.data.title}</h3>
+			<p class="text-astro-gray-200">{post.data.description}</p>
+		</div></a
+	>
+</article>

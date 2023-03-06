@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from "astro/types"
+import ChevronIcon from "~/icons/ChevronIcon.jsx"
+
+export type Props = HTMLAttributes<"details"> & {
+	summary: string
+}
+
+const { summary, class: className, ...attrs } = Astro.props
+---
+
+<details class:list={["group", className]} {...attrs}>
+	<summary
+		class="code flex cursor-pointer list-none items-center justify-between text-astro-gray-200"
+	>
+		<span>{summary}</span>
+		<ChevronIcon
+			class="chevron h-4 w-4 rotate-0 transition-transform duration-300 ease-in-out group-open:-rotate-180"
+		/>
+	</summary>
+
+	<div class="pt-4">
+		<slot />
+	</div>
+</details>
+
+<style>
+	summary::-webkit-details-marker {
+		display: none;
+	}
+</style>

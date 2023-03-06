@@ -1,24 +1,41 @@
 ---
-import CallToAction from '../components/CallToAction.astro';
-import Section from '../components/Section.astro';
-import Layout from '../layouts/Base.astro'
+import MainLayout from "~/layouts/MainLayout.astro"
+import FailHouston from "./_assets/fail-houston.webp"
 
-const title = 'Page Not Found'
-const description = 'Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.'
+export const prerender = true
 ---
 
-<Layout title={title} description={description} canonicalURL={null} class="flex items-center">
-    <Section class="flex flex-col justify-center items-center text-center">
-		<h2 class="font-display text-3xl font-bold pb-6">Lost in space there, astronaut?</h2>
-		<p class="pb-8">We couldn&rsquo;t find the page you were looking for&mdash;let&rsquo;s get you back to HQ.</p>
-        <footer>
-            <CallToAction primary href="/">Return Home</CallToAction>
-        </footer>
-	</Section>
-</Layout>
+<MainLayout title="Page not found">
+	<section class="grid-container relative overflow-clip py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28">
+		<div class="my-auto flex h-full flex-col items-center justify-center gap-8">
+			<img
+				src={FailHouston.src}
+				width={FailHouston.width}
+				height={FailHouston.height}
+				class="sm:56 h-48 w-auto animate-float md:h-64 lg:h-72"
+				alt=""
+			/>
+			<div class="mt-8 flex flex-col items-center text-center">
+				<h1 class="code text-5xl font-semibold text-white sm:text-6xl md:text-7xl lg:text-8xl">
+					404
+				</h1>
+				<p class="body-large mt-3 mb-2 lg:text-3xl">Houston, we have a problem.</p>
+				<p class="body lg:body-large">
+					We couldn’t find that link.<br class="sm:hidden" /> Check the address or <a
+						class="link-underline border-astro-pink-light text-astro-pink-light">head back home</a
+					>.
+				</p>
+			</div>
+		</div>
+		<div
+			class="bleed-full noise-underlay absolute inset-x-0 bottom-0 h-[50vw] translate-y-[60%] bg-blue-purple-gradient opacity-50 mask-radial-gradient"
+		>
+		</div>
+	</section>
+</MainLayout>
 
 <script>
-    if (window.fathom) {
-	    window.addEventListener('load', () => window.fathom.trackGoal('D4HJRKZ6', 0));
-    }
+	if ("fathom" in window) {
+		window.addEventListener("load", () => window.fathom.trackGoal("D4HJRKZ6", 0))
+	}
 </script>

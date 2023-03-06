@@ -1,0 +1,23 @@
+---
+export type Props = astroHTML.JSX.HTMLAttributes & {
+	required?: boolean
+}
+
+const { required, ...props } = Astro.props
+---
+
+<span
+	{...props}
+	class:list={["field-label inline-flex leading-none text-gray-200 group", props.class]}
+	data-required={required}
+>
+	<slot />
+	<span class="required text-red-500 group-data-[required]:after:content-['*']" aria-hidden="true"
+	></span>
+</span>
+
+<style>
+	:global(*[required]) ~ .field-label > .required::after {
+		content: "*";
+	}
+</style>

@@ -1,0 +1,184 @@
+---
+import clsx from "clsx"
+import Card from "~/components/Card.astro"
+import CardBleed from "~/components/CardBleed.astro"
+import CardBody from "~/components/CardBody.astro"
+import CardFooter from "~/components/CardFooter.astro"
+import CardHeading from "~/components/CardHeading.astro"
+import CardLabel from "~/components/CardLabel.astro"
+import CardParagraph from "~/components/CardParagraph.astro"
+import alpine from "../_assets/alpine.png"
+import cloudflare from "../_assets/cloudflare.png"
+import communityCloud from "../_assets/community-cloud.webp"
+import deno from "../_assets/deno.png"
+import lit from "../_assets/lit-html.png"
+import netlify from "../_assets/netlify.png"
+import nodejs from "../_assets/nodejs.png"
+import preact from "../_assets/preact.png"
+import react from "../_assets/react.png"
+import solid from "../_assets/solid.png"
+import svelte from "../_assets/svelte.png"
+import tailwind from "../_assets/tailwind.png"
+import vercel from "../_assets/vercel.png"
+import vue from "../_assets/vue.png"
+import DocsGraphic from "./DocsGraphic.astro"
+import LandingSectionText from "./LandingSectionText.astro"
+import LogoCarousel from "./LogoCarousel.astro"
+import SandboxGraphic from "./SandboxGraphic.astro"
+import ThemesGraphic from "./ThemesGraphic.astro"
+
+const toolingLogos = [
+	{ src: react, alt: "React Logo" },
+	{ src: preact, alt: "Preact Logo" },
+	{ src: svelte, alt: "Svelte Logo" },
+	{ src: vue, alt: "Vue Logo" },
+	{ src: lit, alt: "Lit Logo" },
+	{ src: solid, alt: "Solid Logo" },
+	{ src: tailwind, alt: "Tailwind Logo" },
+	{ src: alpine, alt: "Alpine Logo" },
+]
+
+// repeat the logos so they fill the width
+toolingLogos.push(...toolingLogos)
+
+const deployLogos = [
+	{ src: cloudflare, alt: "Cloudflare Logo" },
+	{ src: netlify, alt: "Netlify Logo" },
+	{ src: vercel, alt: "Vercel Logo" },
+	{ src: nodejs, alt: "Node.js Logo" },
+	{ src: deno, alt: "Deno Logo" },
+]
+
+// repeat the logos so they fill the width
+deployLogos.push(...deployLogos)
+
+// adds a fake box to limit the width of the first line,
+// so it doesn't overlap the graphic
+const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32")
+---
+
+<section class="landing-section">
+	<LandingSectionText>
+		<Fragment slot="title">
+			Zero to website in <strong class="font-obviously-wide">whoa</strong>
+		</Fragment>
+	</LandingSectionText>
+
+	<div
+		class="mx-auto grid min-w-0 max-w-screen-xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3"
+	>
+		<div class="grid lg:col-span-2">
+			<Card>
+				<CardBody>
+					<CardLabel>Easy to use</CardLabel>
+					<CardBleed>
+						<LogoCarousel logos={toolingLogos} />
+					</CardBleed>
+					<div class="flex grid-cols-2 flex-col justify-center gap-5 lg:grid">
+						<CardHeading>Bring your<br />favorite tools</CardHeading>
+						<p class="body mt-2 text-gray-100">
+							Your existing UI components already run in Astro, no changes required. Add new
+							integrations to your project with <code class="rounded-sm bg-white/20 py-0.5 px-1.5"
+								>astro add</code
+							>.
+						</p>
+					</div>
+				</CardBody>
+			</Card>
+		</div>
+
+		<Card>
+			<CardBody>
+				<CardLabel>Easy to scale</CardLabel>
+				<CardBleed>
+					<LogoCarousel logos={deployLogos} />
+				</CardBleed>
+				<CardHeading>Deploy anywhere, even to the edge</CardHeading>
+			</CardBody>
+		</Card>
+
+		<Card background="blue-purple">
+			<SandboxGraphic class="absolute top-8 right-2" />
+			<CardBody>
+				<CardLabel>Sandbox</CardLabel>
+				<div class={graphicCardHeadingClass}>
+					<CardHeading>Try Astro in your browser</CardHeading>
+				</div>
+				<CardParagraph>
+					Start your first Astro project right in the browser—no local development environment or
+					signup required!
+				</CardParagraph>
+				<CardFooter>
+					<a href="https://astro.new/" class="button-white">Start a Project</a>
+				</CardFooter>
+			</CardBody>
+		</Card>
+
+		<Card background="blue-green">
+			<ThemesGraphic class="absolute top-6 right-0" />
+			<CardBody>
+				<CardLabel>Get started</CardLabel>
+				<div class={graphicCardHeadingClass}>
+					<CardHeading>Explore our ecosystem</CardHeading>
+				</div>
+				<CardParagraph>
+					Discover 100+ themes & integrations to take your project to the next level: SEO,
+					analytics, CMS integrations and more.
+				</CardParagraph>
+				<CardFooter>
+					<a href="/themes/" class="button-white">Explore Themes</a>
+				</CardFooter>
+			</CardBody>
+		</Card>
+
+		<Card background="red-pink">
+			<DocsGraphic class="absolute top-6 right-2" />
+			<CardBody>
+				<CardLabel>Documentation</CardLabel>
+				<div class={graphicCardHeadingClass}>
+					<CardHeading>Learn more in our docs</CardHeading>
+				</div>
+				<CardParagraph>
+					Thanks to our wonderful contributors, our docs are the best place to learn, troubleshoot,
+					and explore Astro.
+				</CardParagraph>
+				<CardFooter>
+					<a href="https://docs.astro.build/" class="button-white">Start Learning</a>
+				</CardFooter>
+			</CardBody>
+		</Card>
+
+		<div class="grid lg:col-span-3">
+			<Card background="blue-purple">
+				<div class="flex flex-1 flex-col lg:flex-row">
+					<CardBody>
+						<CardLabel>Community</CardLabel>
+						<div class="flex flex-1 flex-col justify-center gap-6 lg:px-8 lg:pb-12">
+							<CardHeading>
+								<span class="lg:heading-2 lg:leading-[1.1]">Join our community</span>
+							</CardHeading>
+							<CardParagraph>
+								Get support, get involved, and join our community of 10,000+ Astro developers—it all
+								happens on Discord.
+							</CardParagraph>
+							<div class="mt-auto lg:mt-0">
+								<a href="/chat" class="button-white">Join our Discord</a>
+							</div>
+						</div>
+					</CardBody>
+					<div class="relative h-[420px] overflow-clip sm:hidden lg:block lg:h-[480px] lg:flex-1">
+						<img
+							src={communityCloud.src}
+							width={communityCloud.width}
+							height={communityCloud.height}
+							alt=""
+							class="absolute left-16 top-8 max-w-none"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
+				</div>
+			</Card>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,18 @@
+---
+import CatalogSubmitCallout, {
+	type Props as CalloutProps,
+} from "~/components/CatalogSubmitCallout.astro"
+
+export type Props = Omit<CalloutProps, "slot" | "title" | "cta">
+
+const { ...attrs } = Astro.props
+---
+
+<CatalogSubmitCallout
+	title="Submit a theme"
+	cta={{ href: "/themes/submit", text: "Submit theme" }}
+	{...attrs}
+>
+	Anyone can sumbit a theme to Astro. If you have questions about building your own theme, join our
+	community on <a class="link link-underline" href="/chat">Discord</a>!
+</CatalogSubmitCallout>

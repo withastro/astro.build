@@ -1,0 +1,30 @@
+---
+export type Props = {
+	lg?: boolean
+	title?: string
+	body?: string
+	wide?: boolean
+}
+
+const { lg = false, title, body, wide = false } = Astro.props
+---
+
+<div class="flex flex-col items-center">
+	<h1
+		class:list={[
+			"lg:heading-1 mb-10 px-4 text-center",
+			lg ? "heading-2" : "heading-3 sm:heading-2",
+			wide ? "max-w-5xl" : "max-w-3xl",
+		]}
+	>
+		<slot name="title">{title}</slot>
+	</h1>
+	<p
+		class:list={[
+			"body px-8 text-center text-astro-gray-100 sm:body-large",
+			wide ? "max-w-5xl" : "max-w-3xl",
+		]}
+	>
+		<slot name="body">{body}</slot>
+	</p>
+</div>

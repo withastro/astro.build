@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from "astro/types"
+import type { CollectionEntry } from "astro:content"
+import Avatar from "./Avatar.astro"
+import Badge from "./Badge.astro"
+
+export type Props = HTMLAttributes<"div"> & {
+	theme: CollectionEntry<"themes">
+}
+
+const { theme, class: className, ...attrs } = Astro.props
+
+const netlifyUrl =
+	theme.data.repoUrl &&
+	typeof theme.data.stars !== "undefined" &&
+	`https://app.netlify.com/start/deploy?repository=${theme.data.repoUrl}`
+---
+
+<div class:list={["flex flex-col gap-4", className]} {...attrs}>
+	<div class="flex items-center justify-between">
+		<small class="code text-astro-gray-200">Cost</small>
+		<Badge theme={theme.data.paid ? "secondary" : "primary"}>
+			{theme.data.paid ? "Paid" : "Free"}
+		</Badge>
+	</div>
+	<hr class="border-astro-gray-500" />
+	<div class="flex items-center justify-between">
+		<small class="code text-astro-gray-200">Created by</small>
+		<Avatar theme={theme} />
+	</div>
+	{
+		netlifyUrl && (
+			<>
+				<hr class="border-astro-gray-500" />
+				<a href={netlifyUrl} class="link flex flex-row items-center gap-2" target="_blank">
+					<img src="/assets/integrations/netlify.svg" width="28" height="28" alt="Netlify logo" />
+					Deploy to Netlify
+				</a>
+			</>
+		)
+	}
+</div>
