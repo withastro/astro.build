@@ -1,0 +1,48 @@
+---
+export type Props = { repeat?: number }
+---
+
+<div class="group flex overflow-clip">
+	{
+		Array.from({ length: Astro.props.repeat ?? 3 }, (_, i) => (
+			<div class="marquee shrink-0" aria-hidden={i === 0 ? undefined : "true"} data-marquee>
+				<slot />
+			</div>
+		))
+	}
+</div>
+
+<script>
+	import { getElements } from "~/helpers/dom.js"
+
+	const speedPixelsPerSecond = 10
+
+	for (const element of getElements("[data-marquee]", HTMLElement)) {
+		new ResizeObserver(([info]) => {
+			element.style.animationDuration = `${info.contentRect.width / speedPixelsPerSecond}s`
+		}).observe(element)
+	}
+</script>
+
+<style>
+	@keyframes marque {
+		0% {
+			transform: translate3d(0, 0, 0);
+		}
+		100% {
+			transform: translate3d(-100%, 0, 0);
+		}
+	}
+
+	.marquee {
+		animation: marque linear infinite;
+		animation-duration: 60s;
+		will-change: transform;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.marquee {
+			animation-play-state: paused;
+		}
+	}
+</style>

@@ -1,0 +1,31 @@
+---
+import AstroLogo from "./AstroLogo.astro"
+import ResourcesMenu from "./ResourcesMenu.astro"
+import SocialLinks from "./SocialLinks.astro"
+---
+
+<a href="/" title="Home" data-home-link>
+	<AstroLogo />
+</a>
+
+<script>
+	import { getElement } from "~/helpers/dom.js"
+	getElement("[data-home-link]", HTMLAnchorElement).addEventListener("contextmenu", (event) => {
+		event.preventDefault()
+		window.location.href = "/press"
+	})
+</script>
+
+<div class="ml-16 hidden shrink flex-row items-center gap-16 lg:flex">
+	<a href="https://docs.astro.build" class="link">Documentation</a>
+	<a href="/showcase/" class="link">Showcase</a>
+	<ResourcesMenu />
+	<a href="/blog/" class="link">Blog</a>
+	<a href="/about/" class="link">About</a>
+</div>
+
+<div class="flex-1"></div>
+
+<div class="hidden sm:block">
+	<SocialLinks />
+</div>

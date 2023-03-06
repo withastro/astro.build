@@ -1,70 +1,127 @@
 ---
-import { Sprite } from 'astro-icon'
-import site from '../data/site.js'
-import type { Link } from '../types.js'
+import SocialLinks from "./SocialLinks.astro"
 
-const links: Link[] = [
-    {
-        href: 'https://docs.astro.build/en/concepts/why-astro/',
-        text: 'Why Astro?'
-    },
-    {
-        href: 'https://docs.astro.build/',
-        text: 'Documentation'
-    },
-    {
-        href: '/blog',
-        text: 'Blog'
-    },
-    {
-        href: '/press',
-        text: 'Press'
-    },
-    {
-        href: '/partnerships',
-        text: 'Partnerships'
-    },
-    {
-        href: '/privacy',
-        text: 'Privacy Policy'
-    },
-    {
-        href: 'https://astro.build/company/',
-        text: "The Astro Technology Company (We're Hiring!)"
-    },
+type Link = {
+	href: string
+	text: string
+}
+
+type LinkGroup = {
+	title: string
+	items: Link[]
+}
+
+const groups: LinkGroup[] = [
+	{
+		title: "Resources",
+		items: [
+			{
+				href: "https://docs.astro.build/en/getting-started/",
+				text: "Documentation",
+			},
+			{
+				href: "https://astro.new/",
+				text: "Starter templates",
+			},
+			{
+				href: "/themes/",
+				text: "Themes",
+			},
+			{
+				href: "/integrations/",
+				text: "Integrations",
+			},
+		],
+	},
+	{
+		title: "Community",
+		items: [
+			{
+				href: "/showcase/",
+				text: "Showcase",
+			},
+			{
+				href: "https://github.com/withastro/astro/blob/main/CONTRIBUTING.md",
+				text: "Contributing",
+			},
+			{
+				href: "https://opencollective.com/astrodotbuild",
+				text: "Open Collective",
+			},
+			{
+				href: "/chat",
+				text: "Join our Discord",
+			},
+		],
+	},
+	{
+		title: "Astro",
+		items: [
+			{
+				href: "/about/",
+				text: "About",
+			},
+			{
+				href: "/blog/",
+				text: "Blog",
+			},
+			{
+				href: "/press/",
+				text: "Press",
+			},
+			{
+				href: "/careers/",
+				text: "Careers",
+			},
+			{
+				href: "https://www.notion.so/Partner-with-Astro-b05cfd5dcf4248dcbea4a2d81554efed",
+				text: "Partner with us!",
+			},
+		],
+	},
 ]
-
-const today = new Date()
 ---
 
-<footer class="bg-neutral-900">
-    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-        <nav
-            class="-mx-5 -my-2 flex flex-wrap justify-center"
-            aria-label="Footer"
-        >
-            {links.map(({ href, text }) => (
-                <div class="px-5 py-2 text-center">
-                    <a
-                        href={href}
-                        class="text-base text-neutral-300 hover:text-neutral-100 hover:underline"
-                    >
-                        {text}
-                    </a>
-                </div>
-            ))}
-        </nav>
-        <div class="mt-8 flex justify-center space-x-6">
-            {site.socialLinks.map(({ href, text, pack, name }) => (
-                <a
-                    href={href}
-                    title={text}
-                    class="text-neutral-300 hover:text-neutral-100"
-                >
-                    <span class="sr-only">{text}</span>
-                    <Sprite pack={pack} name={name} size={24} aria-hidden="true" />
-                </a>
-            ))}
-        </div>
-    </div>
+<footer class="container">
+	<nav
+		aria-label="Secondary"
+		class="flex flex-col items-start justify-between gap-12 py-8 sm:flex-row-reverse md:py-12"
+	>
+		<SocialLinks />
+		<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
+			{
+				groups.map(({ title, items }, index) => (
+					<section class="group flex flex-col">
+						<h2 id={`footerHeading${index}`} class="code mb-4 text-base leading-none opacity-50">
+							{title}
+						</h2>
+						<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
+							{items.map(({ href, text }) => (
+								<li>
+									<a href={href} class="link whitespace-nowrap">
+										{text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</section>
+				))
+			}
+		</div>
+	</nav>
+	<hr class="border-astro-gray-500" />
+	<div
+		class="grid grid-cols-[1fr,auto] items-center gap-x-4 gap-y-16 py-8 opacity-60 md:grid-cols-[auto,1fr,auto] md:py-12"
+	>
+		<a class="link" href="/privacy">Privacy Policy</a>
+		<a class="mr-auto" class="link" href="/terms">Terms of Service</a>
+		<p class="col-span-2 text-center md:col-span-1">
+			<a href="https://github.com/withastro/astro/blob/main/LICENSE" target="_blank" class="link"
+				>MIT License</a
+			> &copy; {new Date().getFullYear()}
+			<a href="https://github.com/withastro/astro/graphs/contributors" class="link" target="_blank"
+				>Astro Contributors</a
+			>
+		</p>
+	</div>
 </footer>

@@ -1,0 +1,111 @@
+---
+import MagnifierIcon from "~/icons/MagnifierIcon.jsx"
+import Accordion from "./Accordion.astro"
+import Checkbox from "./Checkbox.astro"
+import TextInput from "./TextInput.astro"
+
+export type FilterOptions = {
+	id: string
+	name: string
+	value: string
+	label: string
+	selected?: boolean
+}
+
+export type FilterGroup = {
+	title: string
+	options: FilterOptions[]
+}
+
+export type Props = {
+	indexRoute: string
+	groups: FilterGroup[]
+	search?: string | null
+	searchPlaceholder: string
+}
+
+const { indexRoute, groups, search = "", searchPlaceholder } = Astro.props
+
+const groupsSelected = groups.filter(({ options }) =>
+	options.some(({ selected }) => selected),
+).length
+
+const resetHref =
+	groupsSelected > 0 ? (search ? `${indexRoute}?search=${search}` : indexRoute) : undefined
+---
+
+<form action={indexRoute} class="searchfilter">
+	<div class="border-b border-astro-gray-500">
+		<TextInput
+			class="w-full"
+			type="search"
+			name="search"
+			placeholder={searchPlaceholder}
+			value={search}
+		>
+			<MagnifierIcon slot="icon" />
+		</TextInput>
+	</div>
+	<div class="py-6">
+		<div class="flex items-end justify-between">
+			<h3 class="heading-4">Filter</h3>
+			{
+				resetHref && (
+					<a href={resetHref} class="text-sm underline">
+						reset
+					</a>
+				)
+			}
+		</div>
+		{
+			groups.map(({ title, options }) => (
+				<>
+					<hr class="my-4 border-astro-gray-500" />
+					<Accordion summary={title} open={options.some(({ selected }) => selected)}>
+						<fieldset class="flex flex-col items-start gap-2">
+							{options.map(({ id, name, value, label, selected }) => (
+								<Checkbox id={id} name={name} value={value} label={label} checked={selected} />
+							))}
+						</fieldset>
+					</Accordion>
+				</>
+			))
+		}
+	</div>
+	<div>
+		<button type="submit" class="button-outline m-6 hidden sm:mx-4 md:mx-8 lg:mx-10 lg:mb-8"
+			>View results</button
+		>
+		<noscript>
+			<button type="submit" class="button-outline m-6 sm:mx-4 md:mx-8 lg:mx-10 lg:mb-8"
+				>View results</button
+			>
+		</noscript>
+	</div>
+</form>
+
+<script>
+	/** progressive enhancement! only show the View results button when the form is changed */
+	document.querySelectorAll<HTMLFormElement>("form.searchfilter").forEach((form) => {
+		const submitBtn = form.querySelector<HTMLButtonElement>("[type=submit]")
+		const searchInput = form.querySelector<HTMLInputElement>("[type=search]")
+
+		if (!submitBtn) {
+			return
+		}
+
+		if (searchInput) {
+			searchInput.addEventListener("input", () => submitBtn.classList.remove("hidden"), {
+				once: true,
+			})
+		}
+
+		form.addEventListener(
+			"change",
+			() => {
+				submitBtn.classList.remove("hidden")
+			},
+			{ once: true },
+		)
+	})
+</script>

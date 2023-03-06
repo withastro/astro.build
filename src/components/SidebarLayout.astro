@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+export type Props = HTMLAttributes<"section"> & {
+	columnReverse?: boolean
+}
+
+const { class: className, columnReverse = false, ...attrs } = Astro.props
+---
+
+<div
+	class:list={[
+		"flex lg:flex-row border-t border-astro-gray-500",
+		columnReverse ? "flex-col-reverse" : "flex-col",
+		className,
+	]}
+	{...attrs}
+>
+	<aside
+		class:list={[
+			"border-inherit min-w-[30ch] lg:max-w-xs xl:max-w-sm lg:border-r",
+			columnReverse ? "border-t lg:border-t-0" : "border-b lg:border-b-0",
+		]}
+	>
+		<slot name="sidebar" />
+	</aside>
+
+	<section class="mx-auto px-4 lg:px-0">
+		<slot />
+	</section>
+</div>

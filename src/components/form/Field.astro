@@ -1,0 +1,24 @@
+---
+import FieldLabel from "./FieldLabel.astro"
+import FormErrorList from "./FormErrorList.astro"
+
+export type Props = {
+	errors?: string | string[]
+}
+---
+
+<div>
+	<div class="mb-1 flex flex-col-reverse gap-2">
+		<slot />
+		<FieldLabel>
+			<slot name="label" />
+		</FieldLabel>
+	</div>
+	{
+		Astro.props.errors?.length ? (
+			<div class="text-sm">
+				<FormErrorList errors={Astro.props.errors} />
+			</div>
+		) : null
+	}
+</div>

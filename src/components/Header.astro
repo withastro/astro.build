@@ -1,203 +1,31 @@
 ---
-import { Icon } from 'astro-icon'
-import site from '../data/site.js'
-import monorepo from '../data/monorepo.json'
-import { Link } from '../types.js'
-
-const links: Link[] = [
-    {
-        href: '/showcase',
-        text: 'Showcase'
-    },
-    {
-        href: 'https://docs.astro.build',
-        text: 'Docs'
-    },
-    {
-        href: '/themes',
-        text: 'Themes'
-    },
-    {
-        href: '/integrations',
-        text: 'Integrations'
-    },
-    {
-        href: '/blog',
-        text: 'Blog'
-    }
-]
-
-const formatter = Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 })
-const stars = formatter.format(monorepo.stars)
-
-const socialLinks = site.socialLinks.filter((link) => !link.footerOnly)
+import MenuIcon from "~/icons/MenuIcon.jsx"
 ---
 
-<script>
-    const header = document.getElementById('navheader')
-    const menuBtn = document.getElementById('menubtn')
-    const logo = document.getElementById('navlogo')
-
-    menuBtn.onclick = () => header.classList.toggle('open')
-
-    if (matchMedia('(pointer:fine)').matches) {
-        logo.addEventListener('contextmenu', event => {
-            event.preventDefault()
-            window.location.href = '/press'
-        })
-    }
-</script>
-
-<header id="navheader" class="fixed top-0 left-0 right-0 z-20">
-    <div class="bg-neutral-900 text-neutral-400 py-4">
-        <nav
-            class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8"
-            aria-label="Global"
-        >
-            <div class="flex flex-col sm:flex-row items-center flex-1 gap-y-6">
-                <div
-                    class="flex items-center justify-between w-full md:w-auto"
-                >
-                    <a
-                        href="/"
-                        class="flex gap-x-1 text-neutral-50 font-semibold text-xl"
-                        id="navlogo"
-                    >
-                        <Icon name="full-logo-dark" height={32} class="-mb-1" aria-hidden="true" />
-                        <span class="sr-only">Astro</span>
-                    </a>
-                    <div class="-mr-2 sm:-mr-6 flex items-center md:hidden">
-                        <button
-                            type="button"
-                            id="menubtn"
-                            class="rounded-md p-2 inline-flex items-center justify-center hover:bg-neutral-600 hover:text-neutral-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-neutral-50"
-                            aria-expanded="false"
-                        >
-                            <span class="sr-only">Open main menu</span>
-                            <Icon pack="heroicons-outline" name="menu" size={24} aria-hidden="true" />
-                        </button>
-                    </div>
-                </div>
-                <div
-                    id="menu"
-                    class="flex flex-col sm:flex-row gap-x-8 gap-y-4 sm:ml-10 text-center sm:text-left sm:pb-0"
-                >
-                    {links.map(({ href, text }) => (
-                        <a
-                            href={href}
-                            class="text-base text-neutral-50 hover:text-neutral-300"
-                        >
-                            {text}
-                        </a>
-                    ))}
-                </div>
-
-                <div
-                    id="mobilesocial"
-                    class="items-center gap-x-3 flex sm:hidden pb-4"
-                >
-                    {socialLinks.map(({ href, text, pack, name }) => {
-                        return name === 'github' ? (
-                            <a
-                                class="flex items-center no-underline ml-3"
-                                href={href}
-                                title={text}
-                            >
-                                <div class="item-center hidden sm:flex">
-                                    <div class="flex h-6 items-center rounded-l border border-r-0 bg-primary-900 border-primary-500 px-2 text-[13px] font-semibold	leading-3 text-orange-100">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                            aria-hidden="true"
-                                            class="mr-1 block h-4 w-4"
-                                        >
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                        </svg>
-                                        {stars}
-                                    </div>
-                                    <div class="inline-block w-[18px] overflow-hidden">
-                                        <div class="h-6 w-[17px] origin-top-left rotate-45 transform bg-primary-900 border border-primary-500 border-l-0" />
-                                    </div>
-                                </div>
-                                <Icon
-                                    name="mdi:github"
-                                    class="w-7 h-7 hover:text-neutral-500"
-                                    aria-hidden="true"
-                                />
-                            </a>
-                        ) : (
-                            <a href={href}>
-                                <span class="sr-only">{text}</span>
-                                <Icon
-                                    pack={pack}
-                                    name={name}
-                                    size={28}
-                                    class="hover:text-neutral-500"
-                                    aria-hidden="true"
-                                />
-                            </a>
-                        )
-                    })}
-                </div>
-            </div>
-            <div class="items-center ml-6 pl-1 gap-x-3 hidden md:flex">
-                {socialLinks.map(({ href, text, pack, name }) => {
-                    return name === 'github' ? (
-                        <a
-                            class="flex items-center no-underline ml-3"
-                            href={href}
-                            title={text}
-                        >
-                            <div class="item-center hidden lg:flex">
-                                <div class="flex h-6 items-center rounded-l border border-r-0 bg-primary-900 border-primary-500 px-2 text-[13px] font-semibold	leading-3 text-orange-100">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        aria-hidden="true"
-                                        class="mr-1 block h-4 w-4"
-                                    >
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    {stars}
-                                </div>
-                                <div class="inline-block w-[18px] overflow-hidden">
-                                    <div class="h-6 w-[17px] origin-top-left rotate-45 transform bg-primary-900 border border-primary-500 border-l-0" />
-                                </div>
-                            </div>
-                            <Icon
-                                name="mdi:github"
-                                class="w-7 h-7 hover:text-neutral-500"
-                                aria-hidden="true"
-                            />
-                        </a>
-                    ) : (
-                        <a href={href} title={text}>
-                            <span class="sr-only">{text}</span>
-                            <Icon
-                                pack={pack}
-                                name={name}
-                                size={28}
-                                class="hover:text-neutral-500"
-                                aria-hidden="true"
-                            />
-                        </a>
-                    )
-                })}
-            </div>
-        </nav>
-    </div>
+<header class="noise-container shadow-lg">
+	<div class="noise"></div>
+	<nav aria-label="Primary" class="container flex h-header items-center">
+		<slot />
+		<button id="astro-header-drawer-button" type="button" class="link ml-6 lg:hidden">
+			<MenuIcon class="w-6" />
+			<span class="sr-only">Show Menu</span>
+		</button>
+	</nav>
+	<div
+		id="astro-header-drawer"
+		class="-translate-x-4 border-t border-astro-gray-500 opacity-0 transition data-[open]:translate-x-0 data-[open]:opacity-100"
+		style="display: none;"
+	>
+		<slot name="drawer" />
+	</div>
 </header>
 
-<style>
-    @media (max-width: 768px) {
-        header:not(.open) :is(#menu, #mobilesocial) {
-            @apply hidden;
-        }
+<script>
+	import { createDisclosure } from "~/helpers/disclosure.js"
 
-        header.open {
-            @apply bg-neutral-900;
-        }
-    }
-</style>
+	createDisclosure({
+		button: document.querySelector("#astro-header-drawer-button") as HTMLElement,
+		content: document.querySelector("#astro-header-drawer") as HTMLElement,
+		animated: true,
+	})
+</script>

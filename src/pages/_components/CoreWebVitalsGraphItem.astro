@@ -1,0 +1,32 @@
+---
+export interface Props {
+	title: string
+	score: number
+	glow?: boolean
+}
+const scoreWidth = (Astro.props.score - 33) * (100 / (100 - 33))
+---
+
+<div
+	data-glow={Astro.props.glow}
+	class="group flex w-full flex-col justify-center gap-y-1 gap-x-3 md:flex-row"
+>
+	<dt
+		class="heading-4 flex items-center whitespace-nowrap text-sm group-data-[glow]:text-2xl group-data-[glow]:text-white md:basis-52 md:justify-end md:text-2xl"
+	>
+		{Astro.props.title}
+	</dt>
+	<dd
+		class="flex w-full items-center gap-3 rounded-lg border border-astro-gray-400 p-1 group-data-[glow]:border-astro-gray-200"
+	>
+		<div
+			class="noise-underlay relative flex h-8 rounded bg-astro-gray-400 group-data-[glow]:bg-blue-green-gradient"
+			style={{ width: scoreWidth + "%" }}
+		>
+		</div>
+		<p class="flex-shrink-0 pr-2 font-mono text-xl group-data-[glow]:text-white">
+			<span class="sr-only">Score:</span>
+			{Astro.props.score}
+		</p>
+	</dd>
+</div>

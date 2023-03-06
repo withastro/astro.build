@@ -1,53 +1,75 @@
 ---
-import { getImage } from '@astrojs/image'
-import SEO from 'simple-astro-seo'
-import smartypants from 'smartypants'
-import site from '../data/site.js'
+import Inter from "@fontsource/inter/files/inter-latin-variable-wghtOnly-normal.woff2"
+import smartypants from "smartypants"
+import siteInfo from "~/data/site-info"
+import Favicon from "./Favicon.astro"
+import SEO from "./SEO.astro"
 
-export interface Props {
-    title?: string
-    description?: string
-    image?: string | ImageMetadata
-    canonicalURL?: URL | null
-    pageType?: 'website' | 'article'
+export type Props = {
+	title?: string
+	description?: string
+	image?: { src: string; alt: string }
+	canonicalURL?: URL
+	pageType?: "website" | "article"
 }
 
+const twitterHandle = "astrodotbuild"
+
 const {
-    description = site.description,
-    image = site.image,
-    canonicalURL = new URL(Astro.request.url, Astro.site),
-    pageType = 'website'
+	description = siteInfo.description,
+	image = siteInfo.image,
+	canonicalURL = new URL(Astro.request.url, Astro.site),
+	pageType = "website",
 } = Astro.props as Props
 
-const ensureTrailingSlash = (url: string) => url.replace(/\/$/, '') + '/';
-const resolvedImage = await getImage({ src: image, width: 1200, aspectRatio: 2, format: 'jpeg' });
-const title = Astro.props.title ? [Astro.props.title, site.title].join(' | ') : 'Astro | Build faster websites'
+const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ")
+const resolvedImage = {
+	src: new URL(image.src, Astro.site).toString(),
+	alt: image.alt,
+}
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="generator" content={Astro.generator} />
 <meta name="viewport" content="width=device-width" />
-<meta name="theme-color" content="#8D46E7">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="mask-icon" href="/favicon.svg" color="#8D46E7">
-<link rel="sitemap" href="/sitemap-index.xml">
-<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
-{site.socialLinks.filter((link) => !!link.me).map((link) => (
-    <link rel="me" href={link.me || link.href} />
-))}
+<meta name="theme-color" content="#8D46E7" />
 
-<title set:html={smartypants(title, 1)}></title>
+<Favicon />
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
+
+<title set:html={smartypants(title, 1)} />
 
 <SEO
-    siteName={site.title}
-    {title}
-    {description}
-    image={resolvedImage.src ? new URL(resolvedImage.src, Astro.url).toString() : null}
-    twitterHandle={site.twitterHandle}
-    pageType={pageType}
-    url={canonicalURL && ensureTrailingSlash(canonicalURL.toString())}
+	name={siteInfo.name}
+	title={title}
+	description={description}
+	image={resolvedImage}
+	twitter={{ handle: twitterHandle }}
+	og={{ type: pageType }}
+	canonicalURL={canonicalURL}
 />
 
 <!-- Fathom - beautiful, simple website analytics -->
 <script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+<!-- Font preloads -->
+<link
+	rel="preload"
+	href="https://fonts-cdn.astro.build/Obviously/Obviously Normal/Web/Obviously-Regular.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
+<link
+	rel="preload"
+	href="https://fonts-cdn.astro.build/MD IO/Web/MDIO0.5-Regular.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
+<link rel="preload" href={Inter} as="font" type="font/woff2" crossorigin />

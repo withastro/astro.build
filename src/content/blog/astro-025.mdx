@@ -1,16 +1,16 @@
 ---
-title: 'Astro 0.25 Release Notes'
+title: "Astro 0.25 Release Notes"
 description: 'Introducing: a new integration system • a new "add" command • shiki syntax highlighting • improved CLI build output'
-publishDate: 'March 27, 2022'
-socialImage: '/assets/blog/astro-025/social.jpg'
-lang: 'en'
+publishDate: "March 27, 2022"
+socialImage: "/src/content/blog/_images/astro-025/social.webp"
+lang: "en"
 authors:
   - fred
   - ben
 ---
 
-import astroAddDemo from '/src/assets/blog/astro-025/astro-add-demo.jpg'
-import BlogContentImage from '/src/components/BlogContentImage.astro'
+import astroAddDemo from "/src/content/blog/_images/astro-025/astro-add-demo.webp"
+import BlogContentImage from "/src/components/BlogContentImage.astro"
 
 **Astro v0.25.0** ha been released with some exciting new updates to share:
 
@@ -20,6 +20,7 @@ import BlogContentImage from '/src/components/BlogContentImage.astro'
 - [Astro + Shiki Syntax Highligher](#astro--shiki-syntax-highligher)
 
 Oh, and [stay tuned](https://twitter.com/astrodotbuild) tomorrow for another, **VERY** exciting announcement...
+
 ## New: Astro Integrations
 
 There are a few undeniable truths about the world: The sun will rise. Pizza tastes delicious. Developers love to customize their build tools.
@@ -43,15 +44,19 @@ export default {
 
 ## New: `astro add` command
 
-To make integrations even easier to use, Astro v0.25 includes a new, *experimental* CLI command: `astro add` 🚀
+To make integrations even easier to use, Astro v0.25 includes a new, _experimental_ CLI command: `astro add` 🚀
 
-<BlogContentImage src={astroAddDemo} alt="astro add wizard to 1. enable frameworks 2. select other integrations 3. update your config 4. install all dependencies" />
+<BlogContentImage
+	src={astroAddDemo}
+	alt="astro add wizard to 1. enable frameworks 2. select other integrations 3. update your config 4. install all dependencies"
+/>
 
 Running `astro add` will walk you through adding new integrations to your project. Once you've selected the integrations to add, Astro will automatically make the necessary changes to your config file and install any new dependencies into your project.
 
 ## Improved Build CLI Output
 
 Until now, the `astro build` command refused to tell you more than 2 things:
+
 1. Your build has started.
 2. Your build has finished.
 
@@ -72,4 +77,3 @@ Check our new [syntax highlighting docs](https://docs.astro.build/en/guides/mark
 ---
 
 Thank you to every contributor and early preview tester who made this release possible. [Follow Astro on Twitter](https://twitter.com/astrodotbuild) for more updates and [join us on Discord](https://astro.build/chat) to get involved with everything Astro.
-

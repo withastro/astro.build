@@ -1,0 +1,47 @@
+---
+import ChevronIcon from "~/icons/ChevronIcon.jsx"
+import LayersIcon from "~/icons/LayersIcon.jsx"
+import OpenBookIcon from "~/icons/OpenBookIcon.jsx"
+import PaletteIcon from "~/icons/PaletteIcon.jsx"
+import SocialLinks from "./SocialLinks.astro"
+---
+
+<nav
+	aria-label="Primary"
+	class="heading-3 flex flex-col divide-y divide-astro-gray-500 text-left [&>*]:p-6"
+>
+	<a href="https://docs.astro.build/" class="link"> Docs</a>
+	<a href="/showcase/" class="link"> Showcase</a>
+	<details class="group">
+		<summary class="link flex cursor-pointer list-none items-center justify-between">
+			Resources
+			<ChevronIcon class="inline-block -rotate-180 transition-transform group-open:rotate-0" />
+		</summary>
+		<div class="mt-4 flex flex-col gap-4 text-2xl font-light">
+			<a href="/themes/" class="link flex items-center gap-4">
+				<PaletteIcon /> Themes
+			</a>
+			<a href="/integrations/" class="link flex items-center gap-4">
+				<LayersIcon /> Integrations
+			</a>
+			<a
+				href="https://docs.astro.build/en/tutorial/0-introduction/"
+				class="link flex items-center gap-4"
+			>
+				<OpenBookIcon /> Tutorials
+			</a>
+		</div>
+	</details>
+	<a href="/about/" class="link"> About</a>
+	<a href="/blog/" class="link"> Blog</a>
+	<div class="flex flex-col gap-6">
+		<SocialLinks />
+		<a href="https://docs.astro.build/" class="button-primary"> Get Started</a>
+	</div>
+</nav>
+
+<style>
+	summary::-webkit-details-marker {
+		display: none;
+	}
+</style>

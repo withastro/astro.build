@@ -1,0 +1,27 @@
+---
+import FormRadio from "./FormRadio.astro"
+
+export type Props = Omit<astroHTML.JSX.HTMLAttributes, "name" | "type" | "slot"> & {
+	name: string
+	options: Array<{
+		label: string
+		value: string
+	}>
+	defaultValue?: string
+}
+
+const { name, options, defaultValue, ...props } = Astro.props
+---
+
+<div {...props} class="inline-flex gap-4">
+	{
+		options.map((option) => (
+			<FormRadio
+				label={option.label}
+				name={name}
+				value={option.value}
+				checked={option.value === defaultValue}
+			/>
+		))
+	}
+</div>

@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+export type Props = HTMLAttributes<"div"> & {
+	threshold?: "sm" | "md" | "lg"
+	mobileReverse?: boolean
+}
+
+const { threshold = "md", class: className, mobileReverse, ...attrs } = Astro.props
+---
+
+<div
+	class:list={[
+		"flex gap-12",
+		mobileReverse ? "flex-col-reverse" : "flex-col",
+		threshold === "sm" ? "sm:flex-row" : threshold === "md" ? "md:flex-row" : "lg:flex-row",
+		className,
+	]}
+	{...attrs}
+>
+	<slot name="start" />
+	<slot name="end" />
+</div>
+
+<style>
+	.flex > :global(*) {
+		@apply flex-1;
+	}
+</style>

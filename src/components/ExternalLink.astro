@@ -1,0 +1,9 @@
+---
+export type Props = astroHTML.JSX.AnchorHTMLAttributes & {
+	href: string
+}
+---
+
+<a target="_blank" rel="noopener noreferer" {...Astro.props}>
+	<slot />
+</a>

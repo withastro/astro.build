@@ -1,273 +1,124 @@
 ---
-import { Image, Picture } from '@astrojs/image/components'
-import { GetStaticPathsResult } from 'astro'
-import { Icon } from 'astro-icon'
-import clsx from 'clsx'
-import Button from '../../../components/Button.astro'
-import Layout from '../../../layouts/Base.astro'
-import { getThemes } from '../../../data/themes/index.js'
-import type { Theme } from '../../../types.js'
-import Carousel from '../../../components/Carousel.astro'
+import { CollectionEntry, getCollection } from "astro:content"
+import CardGrid from "~/components/CardGrid.astro"
+import ImageGallery from "~/components/ImageGallery.astro"
+import Prose from "~/components/Prose.astro"
+import { resolveAllImages } from "~/content/themes/_resolveImage.js"
+import { getRelatedThemes } from "~/helpers/relatedThemes.js"
+import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx"
+import MainLayout from "~/layouts/MainLayout.astro"
+import ThemeCard from "../_components/ThemeCard.astro"
+import ThemeCTAs from "../_components/ThemeCTAs.astro"
+import ThemeStats from "../_components/ThemeStats.astro"
 
-export interface Props {
-    theme: Theme
+export const prerender = true
+
+export async function getStaticPaths() {
+	const themes = await getCollection("themes")
+
+	return themes.map((theme) => {
+		return {
+			params: { slug: theme.slug },
+			props: { theme },
+		}
+	})
 }
 
-export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-    const themes = await getThemes()
+const { theme } = Astro.props as { theme: CollectionEntry<"themes"> }
 
-    return themes.map((theme) => ({
-        params: { slug: theme.slug },
-        props: { theme }
-    }))
-}
-
-const placeholderClass = clsx(`
-    bg-neutral-200
-    border-4 border-dashed border-neutral-400 rounded-lg
-    text-neutral-600 text-2xl font-medium
-    flex items-center justify-center text-center
-    aspect-[16/9]
-`)
-
-const { theme } = Astro.props
-
-const netlifyUrl =
-    theme.repoUrl &&
-    typeof theme.stars !== 'undefined' &&
-    `https://app.netlify.com/start/deploy?repository=${theme.repoUrl.href}`
+const { Content } = await theme.render()
+const relatedThemes = await getRelatedThemes(theme)
+const images = await resolveAllImages(theme)
 ---
 
-<Layout image={theme.image} title={theme.title} description={theme.description}>
-    <div class="pt-20 md:pt-12">
-        <!-- header spacers, my one true love -->
-    </div>
+<MainLayout
+	title={theme.data.title}
+	description={theme.data.description}
+	image={{ src: images[0].fullImage.src, alt: theme.data.title }}
+>
+	<div class="grid-container gap-y-0">
+		{
+			images.length > 1 ? (
+				<ImageGallery
+					images={images}
+					class="bleed-full mx-auto w-full"
+					style="max-width: var(--container-width, 1280px)"
+				/>
+			) : (
+				<img
+					src={images[0].fullImage.src}
+					width={images[0].fullImage.width}
+					height={(images[0].fullImage.width * 7) / 16}
+					alt=""
+					class="mx-auto max-w-full"
+					decoding="async"
+				/>
+			)
+		}
+		<div class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x">
+			<section class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:py-10 lg:px-20">
+				<a href="/themes/" class="flex items-center gap-2 self-start text-sm text-astro-gray-200">
+					<LeftArrowIcon aria-hidden="true" />
+					<span class="pr-2">Back to themes</span>
+				</a>
+				<div>
+					<h1 class="heading-3 mb-4 sm:heading-2">{theme.data.title}</h1>
+					<p class="text-lg text-astro-gray-200 lg:text-xl">{theme.data.description}</p>
+					<ThemeCTAs theme={theme} class="py-6 md:hidden" />
+					<hr class="border-astro-gray-500 md:hidden" />
+					<ThemeStats theme={theme} class="py-4 md:hidden" />
+				</div>
+				<hr class="hidden border-astro-gray-500 md:block" />
+				<Prose class="max-w-full">
+					<Content />
+				</Prose>
+			</section>
 
-    <div
-        class="max-w-screen-xl mx-auto px-4 md:px-8 pt-4 md:pt-16 pb-12 md:pb-16 lg:py-20 grid gap-4 items-start content-start md:grid-cols-2 md:gap-16"
-    >
-        <section class="flex flex-col gap-4 md:sticky md:top-32">
-            <h2 class="sr-only">Image Gallery</h2>
-            <div class="hidden md:contents">
-                <Picture
-                    src={theme.image}
-                    widths={[576, 1152]}
-                    sizes="50vw"
-                    width={theme.image.width}
-                    height={theme.image.height}
-                    alt=""
-                    class="rounded-md shadow-md"
-                />
-                {
-                    theme.images.map((image) => (
-                        <Picture
-                            src={image}
-                            widths={[576, 1152]}
-                            sizes="50vw"
-                            width={image.width}
-                            height={image.height}
-                            alt=""
-                            class="rounded-md shadow-md"
-                        />
-                    ))
-                }
-            </div>
-            <div class="md:hidden -mx-4 md:-mx-8">
-                <Carousel each={[theme.image, ...theme.images]}>
-                    {
-                        (image) => (
-                            <div class="px-4">
-                                <Picture
-                                    src={image}
-                                    widths={[414, 828]}
-                                    sizes="100vw"
-                                    width={image.width}
-                                    height={image.height}
-                                    alt=""
-                                    class="rounded-md shadow-md"
-                                />
-                            </div>
-                        )
-                    }
-                </Carousel>
-            </div>
-        </section>
-
-        <section class="grid gap-10 content-start md:sticky md:top-32">
-            <div class="grid gap-4 justify-items-center md:justify-items-start">
-                <h1 class="text-3xl md:text-4xl font-medium">{theme.title}</h1>
-
-                {
-                    theme.author && (
-                        <p class="flex gap-1.5 items-center text-sm font-medium">
-                            <span class="text-neutral-500 pr-1">By</span>
-
-                            {theme.author.avatar && (
-                                <Image
-                                    class="w-6 h-6 rounded-full"
-                                    src={theme.author.avatar}
-                                    alt=""
-                                    width={48}
-                                    height={48}
-                                />
-                            )}
-                            <a
-                                href={theme.author.href}
-                                target="_blank"
-                                class="text-primary-700 underline"
-                            >
-                                {theme.author.text}
-                            </a>
-                        </p>
-                    )
-                }
-
-                <p class="pt-1 md:pt-3">{theme.description}</p>
-
-                {
-                    theme.tags.length > 0 && (
-                        <div class="py-2 md:py-4 flex flex-wrap gap-4 md:gap-6">
-                            {theme.tags.map((tag) => (
-                                <Icon
-                                    name={`badges/${tag}`}
-                                    height={32}
-                                    class="max-w-[128px]"
-                                    aria-label={tag}
-                                />
-                            ))}
-                        </div>
-                    )
-                }
-
-                <div class="flex flex-wrap gap-4 items-center justify-center md:justify-start">
-                    <Button
-                        external
-                        href={theme.buyUrl?.href || theme.repoUrl.href}
-                        class="flex gap-2"
-                        analyticsEvent="PDDOCXCA"
-                        analyticsEventValue={theme.buyUrl?.href ? 1 : 0}
-                    >
-                        {theme.buyUrl?.href ? 'Buy Now' : 'Get Started'}
-                        <Icon
-                            name="heroicons-solid:external-link"
-                            size={18}
-                            class="opacity-70 -mr-1"
-                            aria-hidden="true"
-                        />
-                    </Button>
-                    {
-                        theme.demoUrl?.href && (
-                            <Button
-                                external
-                                theme="secondary"
-                                href={theme.demoUrl.href}
-                                class="flex gap-2"
-                                analyticsEvent="DI9WVRXV"
-                            >
-                                Live Demo
-                                <Icon
-                                    name="heroicons-solid:external-link"
-                                    size={18}
-                                    class="opacity-70 -mr-1"
-                                    aria-hidden="true"
-                                />
-                            </Button>
-                        )
-                    }
-                    {
-                        netlifyUrl && (
-                            <a
-                                href={netlifyUrl}
-                                target="_blank"
-                                rel="noopener"
-                                aria-label={`Deploy ${theme.title} to Netlify`}
-                            >
-                                <img
-                                    src="https://www.netlify.com/img/deploy/button.svg"
-                                    alt="Deploy to Netlify"
-                                    title="Deploy to Netlify"
-                                    width="146"
-                                    height="32"
-                                />
-                            </a>
-                        )
-                    }
-                </div>
-            </div>
-
-            {
-                theme.fullDescription && (
-                    <section
-                        class="prose md:mt-4"
-                        set:html={theme.fullDescription}
-                    />
-                )
-            }
-
-            {
-                theme.keywords.length > 0 && (
-                    <section>
-                        <h2 class="text-lg font-medium mb-2">Features</h2>
-                        <ul class="flex flex-wrap gap-2">
-                            {theme.keywords.map((keyword) => (
-                                <li class="text-sm font-bold bg-neutral-100 rounded px-3 py-1">
-                                    {keyword}
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-                )
-            }
-
-            {
-                theme.links.length > 0 && (
-                    <section>
-                        <h2 class="text-lg font-medium mb-2">Links</h2>
-                        <ul class="flex flex-wrap gap-3 md:gap-4">
-                            {theme.links.map(({ href, text }) => (
-                                <li>
-                                    <a
-                                        href={href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-primary-600 hover:underline flex items-center gap-0.5"
-                                    >
-                                        <Icon
-                                            name="heroicons-outline:link"
-                                            size={18}
-                                            aria-hidden="true"
-                                            class="opacity-50"
-                                        />{' '}
-                                        {text}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-                )
-            }
-        </section>
-    </div>
-</Layout>
+			<aside
+				class="hidden w-full divide-y divide-astro-gray-500 border-astro-gray-500 md:block md:max-w-md md:border-l"
+			>
+				<ThemeCTAs theme={theme} class="p-6 lg:p-8 xl:p-10" />
+				<hr class="border-astro-gray-500" />
+				<ThemeStats theme={theme} class="p-6 lg:p-8 xl:p-10" />
+			</aside>
+		</div>
+		<div class="related bleed-full relative border-t border-astro-gray-500">
+			<div class="grid-container gap-y-10 pt-20 pb-0">
+				<header
+					class="flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between"
+				>
+					<h2 class="heading-4 md:heading-3">Other themes to consider</h2>
+					<a href="/themes/" class="button-outline button-small hidden md:flex">
+						<span>View more</span>
+						<span class="sr-only">themes</span>
+					</a>
+				</header>
+				<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
+					{relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
+				</CardGrid>
+				<a href="/themes/" class="button-outline button-small md:hidden">
+					<span>View more</span>
+					<span class="sr-only">themes</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</MainLayout>
 
 <style>
-    .prose :global(:is(h1, h2, h3, h4):not(:first-child)) {
-        margin-top: calc(1rem + 0.75em);
-    }
-    .prose :global(:is(h1, h2, h3, h4):not(:last-child)) {
-        margin-bottom: calc(0.25rem + 0.5em);
-    }
+	.grid-container :global(picture) {
+		@apply mx-auto w-full;
+		grid-column: 1 / -1;
+		max-width: var(--container-width, 1280px);
+	}
+
+	.related::before {
+		@apply absolute w-full aspect-square bg-repeat;
+		content: "";
+		background-size: 20px 20px;
+		background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
+			linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
+		mask-image: linear-gradient(to bottom, white, transparent);
+		z-index: -1;
+	}
 </style>
-
-<script>
-    import requestIdleCallback from '../../../utils/requestIdleCallback.js'
-
-    requestIdleCallback(() => {
-        const carousel = document.querySelector('astro-carousel')
-        if (carousel) {
-            carousel
-                .querySelectorAll('img')
-                .forEach((elem) => elem.setAttribute('loading', 'eager'))
-        }
-    })
-</script>

@@ -1,10 +1,7 @@
-[build.environment]
-  NPM_FLAGS = "--version"
-
 [build]
-  command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
-  publish = "dist"
-  ignore = "git diff --quiet $COMMIT_REF $CACHED_COMMIT_REF -- /"
+command = "pnpm build"
+publish = "dist"
+ignore = "git diff --quiet $COMMIT_REF $CACHED_COMMIT_REF -- /"
 
 [dev]
-  command = "pnpm start"
+command = "pnpm start"

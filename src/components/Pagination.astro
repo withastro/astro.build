@@ -1,0 +1,104 @@
+---
+import type { Page } from "astro"
+import type { HTMLAttributes } from "astro/types"
+import { collapseRange } from "~/helpers/paginate.js"
+import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx"
+import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
+
+export type Props = Omit<HTMLAttributes<"nav">, "slot"> & {
+	page: Page<unknown>
+	allPages: string[]
+	restRoute?: boolean
+}
+
+const {
+	page,
+	allPages,
+	restRoute = false,
+	"aria-label": ariaLabel = "Pagination",
+	...attrs
+} = Astro.props
+
+const pages = allPages.map((href, i) => {
+	return {
+		pageNum: i + 1,
+		text: String(i + 1),
+		href,
+	}
+})
+
+const collapsedPages = collapseRange(page, pages)
+---
+
+<nav aria-label={ariaLabel} {...attrs}>
+	<ul class="flex items-center gap-4">
+		{
+			page.url.prev && (
+				<li class="prev rounded-full border border-white">
+					<a href={page.url.prev} class="flex h-10 w-10 items-center justify-center">
+						<LeftArrowIcon aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`} />
+					</a>
+				</li>
+			)
+		}
+		{
+			collapsedPages.map((link) => (
+				<li class="hidden sm:inline-block">
+					{!link.href ? (
+						<p>{link.text}</p>
+					) : (
+						<a
+							href={link.href}
+							class:list={[
+								"relative rounded-md w-10 h-10 flex items-center justify-center border border-transparent transition-colors duration-150",
+								link.pageNum !== page.currentPage && "hover:border-white focus:border-white",
+							]}
+							aria-current={link.pageNum === page.currentPage ? "page" : undefined}
+						>
+							{link.pageNum}
+						</a>
+					)}
+				</li>
+			))
+		}
+		<li class="sm:hidden">
+			<p aria-current="page">Page {page.currentPage} of {page.lastPage}</p>
+		</li>
+		{
+			page.url.next && (
+				<li class="next ease rounded-full border border-white transition-colors duration-150">
+					<a href={page.url.next} class="flex h-10 w-10 items-center justify-center">
+						<RightArrowIcon aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`} />
+					</a>
+				</li>
+			)
+		}
+	</ul>
+</nav>
+
+<style>
+	.next:hover,
+	.prev:hover {
+		background: linear-gradient(247.23deg, rgba(74, 242, 200, 0.2) 0%, rgba(47, 76, 179, 0.2) 100%);
+	}
+
+	@media screen(sm) {
+		[aria-current="page"]::before {
+			@apply absolute inset-0;
+			content: "";
+			margin: -1px;
+			border-radius: inherit;
+			background: linear-gradient(247.23deg, rgba(74, 242, 200, 1) 0%, rgba(47, 76, 179, 1) 100%);
+			z-index: -2;
+		}
+
+		[aria-current="page"]::after {
+			@apply absolute inset-0;
+			content: "";
+			border-radius: inherit;
+			z-index: -1;
+			background: rgb(35 38 45)
+				linear-gradient(247.23deg, rgba(74, 242, 200, 0.2) 0%, rgba(47, 76, 179, 0.2) 100%);
+		}
+	}
+</style>

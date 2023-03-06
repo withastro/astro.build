@@ -1,10 +1,10 @@
 ---
-title: 'Astro on Netlify Edge Functions'
-description: 'Announcing support for the new Netlify Edge Functions platform'
-publishDate: 'April 19, 2022'
-socialImage: '/assets/blog/astro-netlify-social.jpg'
-coverImage: '/assets/blog/astro-netlify-social.jpg'
-lang: 'en'
+title: "Astro on Netlify Edge Functions"
+description: "Announcing support for the new Netlify Edge Functions platform"
+publishDate: "April 19, 2022"
+socialImage: "/src/content/blog/_images/astro-netlify-social.webp"
+coverImage: "/src/content/blog/_images/astro-netlify-social.webp"
+lang: "en"
 authors:
   - matthew
 ---
@@ -28,12 +28,12 @@ npm install @astrojs/netlify
 And then add the adapter in your `astro.config.mjs` file:
 
 ```jsx
-import { defineConfig } from 'astro/config';
-import netlify from '@astrojs/netlify/edge-functions';
+import { defineConfig } from "astro/config"
+import netlify from "@astrojs/netlify/edge-functions"
 
 export default defineConfig({
-	adapter: netlify()
-});
+	adapter: netlify(),
+})
 ```
 
 ## Migrating from Netlify Functions
@@ -42,9 +42,9 @@ Astro is already available on Netlify Functions, a Node.js based serverless runt
 
 ### Compatibility
 
-Netlify Edge Functions run on top of [Deno](https://deno.land/), but *most* Astro applications do not need to change code to deploy to the new environment. The Netlify adapter takes care of compiling and bundling your source so that it can run on Deno.
+Netlify Edge Functions run on top of [Deno](https://deno.land/), but _most_ Astro applications do not need to change code to deploy to the new environment. The Netlify adapter takes care of compiling and bundling your source so that it can run on Deno.
 
-If you are using dependencies that depend on Node.js’ built-in modules, it’s possible that you cannot move off of Netlify Functions. If so, Netlify Functions is still a great platform for most use-cases and provides a standard Node.js runtime for Node package support. 
+If you are using dependencies that depend on Node.js’ built-in modules, it’s possible that you cannot move off of Netlify Functions. If so, Netlify Functions is still a great platform for most use-cases and provides a standard Node.js runtime for Node package support.
 
 If you use the `<Markdown />` component, it cannot presently run in non-Node environments. A possible alternative in the meantime is using `.md` pages.
 

@@ -1,0 +1,21 @@
+---
+import CatalogSubmitCallout, {
+	type Props as CalloutProps,
+} from "~/components/CatalogSubmitCallout.astro"
+
+export type Props = Omit<CalloutProps, "slot" | "title" | "cta">
+
+const { ...attrs } = Astro.props
+---
+
+<CatalogSubmitCallout
+	title="Submit an integration"
+	cta={{
+		href: "https://docs.astro.build/en/guides/publish-to-npm/#integrations-library",
+		text: "Submit integration",
+	}}
+	{...attrs}
+>
+	Anyone can sumbit an integration to Astro. If you have questions about building your own
+	integration, join our community on <a class="link link-underline" href="/chat">Discord</a>!
+</CatalogSubmitCallout>

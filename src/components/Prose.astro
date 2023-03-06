@@ -1,0 +1,100 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+export type Props = HTMLAttributes<"article">
+
+const { class: className, ...attrs } = Astro.props
+---
+
+<article
+	class:list={["body w-full mx-auto max-w-[85ch] text-astro-gray-200", className]}
+	{...attrs}
+>
+	<slot />
+</article>
+
+<style>
+	article :global(> * + *) {
+		@apply my-4 md:my-6;
+	}
+
+	article :global(h1, h2, h3, h4) {
+		@apply heading-4 text-astro-gray-100;
+	}
+
+	article :global(:where(h1, h2, h3, h4):not(:first-child)) {
+		@apply pt-8;
+	}
+
+	article :global(:where(h1, h2, h3, h4):not(:last-child)) {
+		@apply pb-1;
+	}
+
+	article :global(hr) {
+		@apply my-12 border-astro-gray-400;
+	}
+
+	article :global(p) {
+		@apply text-astro-gray-200;
+	}
+
+	article :global(strong) {
+		@apply font-medium;
+	}
+
+	article :global(a:not([class])) {
+		@apply underline inline-block font-medium text-astro-pink-light hover:outline outline-astro-pink-light;
+	}
+
+	article :global(a code) {
+		@apply px-1 underline;
+	}
+
+	article :global(code) {
+		@apply bg-astro-gray-500 text-astro-gray-100 px-2.5 py-0.5 mx-0.5 rounded-lg inline-block;
+	}
+
+	article :global(pre) {
+		@apply leading-relaxed my-6 rounded-md px-5 py-3 border border-astro-gray-400;
+	}
+
+	article :global(pre code) {
+		@apply bg-inherit p-0 rounded-none text-inherit leading-7;
+	}
+
+	article :global(blockquote) {
+		@apply border-l-4 pl-4 py-2 border-astro-gray-400 space-y-2 md:space-y-4;
+	}
+
+	article :global(ul, ol) {
+		@apply pl-6 md:pl-8;
+	}
+
+	article :global(ol) {
+		@apply list-decimal;
+	}
+
+	article :global(ul) {
+		@apply list-disc;
+	}
+
+	article :global(li > :where(ul, ol)) {
+		@apply mt-2;
+	}
+
+	article :global(li + li) {
+		@apply mt-2;
+	}
+
+	article :global(:is(img, video):not([class])) {
+		@apply max-w-full mx-auto rounded-lg my-10 border border-astro-gray-400;
+	}
+
+	article :global(a :is(img, video):not([class])) {
+		@apply my-0 border-none;
+	}
+
+	article :global(iframe) {
+		@apply max-w-full;
+	}
+</style>

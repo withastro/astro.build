@@ -1,19 +1,20 @@
 ---
-import type { Link } from '../../types.js'
-import site from '../../data/site.js'
+import siteInfo, { type SocialLink } from "~/data/site-info.js"
+
+export const prerender = true
 
 interface Props {
-    link: Link
+	link: SocialLink
 }
 
 export function getStaticPaths() {
-    return site.socialLinks.map((link) => ({
-        params: { platform: link.name },
-        props: { link }
-    }))
+	return siteInfo.socialLinks.map((link) => ({
+		params: { platform: link.platform },
+		props: { link },
+	}))
 }
 
-const mastodon = site.socialLinks.find((link) => link.name === 'mastodon')
+const mastodon = siteInfo.socialLinks.find((link) => link.platform === "mastodon")
 const { link } = Astro.props
 ---
 
