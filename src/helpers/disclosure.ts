@@ -4,13 +4,25 @@ export function createDisclosure({
 	button,
 	content,
 	animated = false,
+	closeAt = -1,
 }: {
 	button: HTMLElement
 	content: HTMLElement
 	animated?: boolean
+	closeAt?: number
 }) {
 	if (content.id) {
 		button.setAttribute("aria-controls", content.id)
+	}
+
+	if (closeAt > 0) {
+		const mediaQuery = window.matchMedia(`(min-width: ${closeAt}px)`)
+
+		mediaQuery.addEventListener("change", (event: MediaQueryListEvent) => {
+			if (event.matches) {
+				setVisible(false)
+			}
+		})
 	}
 
 	const [visible, setVisible] = createSignal(false)
