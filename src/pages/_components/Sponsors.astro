@@ -23,7 +23,7 @@ const sponsors = [
 		<a
 			href="https://netlify.com/"
 			rel="sponsored"
-			class="outline-offset-8 outline-astro-pink-light hover:outline"
+			class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer"
 		>
 			<figure class="flex h-full flex-col items-center justify-end gap-2">
 				<Icon name="sponsors/netlify" alt="Netlify Logo" aria-label="Netlify" />
@@ -32,7 +32,7 @@ const sponsors = [
 		</a>
 		<a
 			href="https://www.storyblok.com/?utm_source=astro&utm_medium=display&utm_campaign=AWA_SPON_ASTR_TRA&utm_content=astro_collab"
-			class="outline-offset-8 outline-astro-pink-light hover:outline"
+			class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer"
 			rel="sponsored"
 		>
 			<figure class="flex h-full flex-col items-center justify-end gap-2">
@@ -47,7 +47,7 @@ const sponsors = [
 	>
 		{
 			sponsors.map((sponsor) => (
-				<li class="outline-offset-8 outline-astro-pink-light hover:outline">
+				<li class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer">
 					<a href={sponsor.href} rel="sponsored">
 						<Icon name={sponsor.src} aria-label={sponsor.alt} class="w-32" />
 					</a>
