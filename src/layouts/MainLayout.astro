@@ -23,7 +23,7 @@ const { ...head } = Astro.props
 	</head>
 	<body>
 		<div class="isolate flex min-h-screen flex-col">
-			<div class="sticky top-0 z-20">
+			<div id="nav" class="sticky top-0 z-20 max-h-screen">
 				<Header>
 					<HeaderNav />
 					<HeaderDrawerContent slot="drawer" />
@@ -43,5 +43,14 @@ const { ...head } = Astro.props
 				<Footer />
 			</div>
 		</div>
+		<style>
+			:root.disclosure-open {
+				overflow-y: hidden;
+			}
+
+			:root.disclosure-open #nav {
+				overflow-y: auto;
+			}
+		</style>
 	</body>
 </html>
