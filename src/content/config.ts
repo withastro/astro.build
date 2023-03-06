@@ -111,7 +111,7 @@ export const collections = {
 			type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
 			image: z
 				.object({
-					src: z.string().default("/src/assets/social.png"),
+					src: z.string().default("/og/social.jpg"),
 					alt: z.string().default("Astro | Build the web you want"),
 				})
 				.default({}),
@@ -143,7 +143,7 @@ export const collections = {
 				description: z.string().min(15).max(160),
 				image: z
 					.object({
-						src: z.string().default("/src/assets/social.png"),
+						src: z.string().default("/og/social.jpg"),
 						alt: z.string().default("Build the web you want"),
 					})
 					.default({}),
