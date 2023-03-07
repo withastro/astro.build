@@ -1,0 +1,169 @@
+---
+title: "Astro 2.1 Release"
+description: "Introducing core image support • Markdoc integration • Watch mode for astro check • getStaticPaths() TypeScript helpers"
+publishDate: "March 8, 2023"
+authors:
+  - matthew
+socialImage: "/src/content/blog/_images/astro-210/blog-hero-2_1-release.jpg"
+coverImage: "/src/content/blog/_images/astro-210/og-image-2_1-release.jpg"
+lang: "en"
+---
+
+import markdoc from "/src/content/blog/_images/astro-210/markdoc.png"
+import astrocheckwatch from "/src/content/blog/_images/astro-210/astro-check-watch.png"
+
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+
+We just released Astro 2.1, featuring:
+
+- **[Image optimizations in core](#image-support-in-astro-core)**: An experimental feature that brings the learnings from `@astrojs/image` to core.
+- **[Markdoc integration](#markdoc-integration)**: Markdoc is a new authoring format from Stripe that is optimized to scale to large codebases.
+- **[Watch flag for astro check](#watch-mode-in-astro-check)**: Use this flag to type check your `.astro` files during development.
+- **[TypeScript helpers for getStaticPaths](#typescript-helpers-for-getstaticpaths)**: Get the params and props without defining the types twice.
+
+Install this new release by running `npm install astro@latest`.
+
+## Image support in Astro core
+
+Image optimizations are something almost every website needs. That's why we're taking what we learned through the `@astrojs/image` integration and bringing that into core where image optimizations are more tightly integrated with other Astro features such as [Content Collections](https://docs.astro.build/en/guides/content-collections/).
+
+The following features are available behind the new `--experimental-assets` flag. We'll continue to revise and improve support for images until the feature is stable and the flag dropped in a future release. You can contribute your feedback by commenting on the [image RFC](https://github.com/withastro/roadmap/pull/500).
+
+### Assets folder
+
+The new `src/assets/` folder is the recommended place to put images. You can then access them through a newly provided alias:
+
+```astro
+---
+import penguin from "~/assets/penguin.png"
+---
+```
+
+Images in this folder are also available to be optimized through content collections (explained below).
+
+### Image component
+
+The `<Image />` component has been migrated from the `@astrojs/image` integration. A typical usage of the image component looks like this:
+
+```astro
+---
+import { Image } from "astro:asset"
+import penguin from "~/assets/penguin.png"
+---
+
+<Image src={penguin} quality="high" />
+```
+
+As with the integration, you can adjust the size of the image using the `width` and `height` attributes. If not provided the image will be optimized for its actual dimensions. Additionally, the new `quality` attribute allows for adjusting the quality scale of the image.
+
+### Content Collections usage
+
+A new `image()` helper is used to define a property on your schema as being an image. Provided that the image is in the `src/assets/` folder, it will be automatically checked for you.
+
+```ts
+import { image, defineCollection, z } from "astro:content"
+
+const blogCollection = defineCollection({
+	schema: z.object({
+		title: z.string(),
+		cover: image().refine((img) => img.width === 600, {
+			message: "Cover needs to be 600 pixels wide!",
+		}),
+	}),
+})
+
+export const collections = {
+	blog: blogCollection,
+}
+```
+
+And then provide this property in any of your items in the collection:
+
+```md
+---
+title: Penguins are cool
+image: emperor-penguin.png
+---
+
+# Migration patterns of emperor penguins
+
+Post here...
+```
+
+Using this schema is a great way to ensure that your images in a collection are all of the same dimensions.
+
+## Markdoc integration
+
+<BlogContentImage src={markdoc} alt="The logo for the Markdoc project" />
+
+As we look for ways to scale Astro sites to hundreds of thousands of pages we are continuously looking for ways to make our build times faster.
+
+[Markdoc](https://markdoc.dev/) is a promising new format by Stripe that was purpose-built to scale to larger sites. Markdoc is a format that builds on top of Markdown, allowing you to build interactive content pages without sacrificing performance.
+
+Markdoc achieves this by having a declarative approach. This forces a separation between code and content, which sacrifices power and flexibility for performance.
+
+As part of the `@astrojs/markdoc integration`, we built a performance benchmark to compare Markdoc build performance at scale against our existing content formats, Markdown and MDX. In our benchmarking, we have seen up to a 3x improvement over MDX rendering static content with islands of interactivity. The results, along with a complete explanation of the findings can be found [here](https://gist.github.com/bholmesdev/07ec840d0bcdc24c0114268e16b2d0b0).
+
+Markdoc support can be brought into your project by installing our new integration:
+
+```shell
+npm install @astrojs/markdoc
+```
+
+Markdoc is only available to use through [Content Collections](https://docs.astro.build/en/guides/content-collections/) by adding files with an `.mdoc` file extension. You can mix Markdoc files alongside your other content (Markdown and MDX), so you can do a gradual migration, or just try out the format on a few of your pages.
+
+Support for MDX is not going away. We are experimenting with both formats as we feel out what the future of content looks like in Astro. We'd love your feedback as we try to find the right balance between flexible syntax and scaling to larger sites.
+
+## Watch mode in `astro check`
+
+<BlogContentImage
+	src={astrocheckwatch}
+	alt="CLI output of the astro check --watch command, showing no errors and that it is waiting on file changes."
+/>
+
+`astro check` runs TypeScript type checking on your `.astro` files. Often times it is used in CI to catch bugs before merging changes in your site.
+
+For some, getting errors in your editor is easy to miss. And it can be easy to forget to run `astro check` manually before pushing a change. For those people, a new `--watch` flag has been added to `astro check`. This will spawn a process that listens for file changes and reruns diagnostics on changed files.
+
+You can incorporate this with your dev script with something like this:
+
+**package.json**
+
+```json
+{
+	"scripts": {
+		"dev": "astro check --watch & astro dev"
+	}
+}
+```
+
+## TypeScript helpers for getStaticPaths()
+
+The `getStaticPaths()` export in your Astro pages is used to define which pages should be built for a dynamic route in <abbr title="Static-site generation">SSG</abbr> mode. For each page you return a `params` and `props` property.
+
+In order to provide type checking when using these values in your template, we've added two new helpers to infer the types:
+
+```astro
+---
+import { InferGetStaticParamsType, InferGetStaticPropsType } from "astro"
+export async function getStaticPaths() {
+	const posts = await getCollection("blog")
+	return posts.map((post) => {
+		return {
+			params: { slug: post.slug },
+			props: { draft: post.data.draft, title: post.data.title },
+		}
+	})
+}
+type Params = InferGetStaticParamsType<typeof getStaticPaths>
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
+const { slug } = Astro.params
+//               ^? { slug: string; }
+const { title } = Astro.props
+//                ^? { draft: boolean; title: string; }
+---
+```
+
+---
+
+Thanks to everyone that contributed to this outstanding release. In addition to these new features, there were also a bunch of bug fixes throughout the core packages and integrations. See the [release notes](LINK) to learn more.
