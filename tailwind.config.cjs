@@ -59,6 +59,9 @@ module.exports = {
 			height: {
 				header: "5rem",
 			},
+			lineHeight: {
+				prose: 1.8125,
+			},
 		},
 	},
 	corePlugins: {
