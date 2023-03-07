@@ -53,7 +53,7 @@ import CardLabel from "../CardLabel.astro"
 			},
 			data: {
 				labels: data.map((row) => row.framework),
-				datasets: ["p25", "percentile", "p75", "p90", "p95"].map((label, i) => ({
+				datasets: ["p25", "p50, median", "p75", "p90", "p95"].map((label, i) => ({
 					label,
 					data: data.map((row) => row.val[i]),
 					backgroundColor: ["#BC52EE", "#83EE52", "#EEBD52", "#EE5289", "#5283EE"][i],

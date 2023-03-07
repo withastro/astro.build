@@ -25,13 +25,15 @@ The purpose of this report is to look at real-world data to better understand th
 
 - [The Chrome User Experience Report (CrUX)](https://developer.chrome.com/docs/crux/) provides user experience metrics for how real-world Chrome users experience popular destinations on the web.
 - [The HTTP Archive](https://httparchive.org/) which tracks and reports the performance of over 15 million websites over time by regularly collecting Lighthouse performance data.
-- [The Core Web Vitals Technology Report](https://discuss.httparchive.org/t/new-dashboard-the-core-web-vitals-technology-report/2178) which pulls insights from the previous two datasets.
+- [The Core Web Vitals Technology Report](https://discuss.httparchive.org/t/new-dashboard-the-core-web-vitals-technology-report/2178) which collects useful insights from the previous two datasets.
 
-**All data was collected from public, independently-managed datasets.** No performance data was measured directly by the Astro team. All queries used in this report are available at. [Learn more about our methodology.](LINK TO SECTION BELOW)
+**All data was collected from public, independently-managed datasets.** No performance data was measured directly by the Astro team. All queries used in this report are available at.
+
+[Learn more about our methodology in the section below.](#methodology--limitations)
 
 # The Frameworks
 
-To create this report, we decided to look at six popular JavaScript-based web frameworks: [Astro](https://astro.build/), [Gatsby](https://gatsbyjs.com/), [Next.js](https://nextjs.org/), [Nuxt](https://nuxtjs.org/), [Remix](https://remix.run/), and [SvelteKit](https://kit.svelte.dev/). We also include data from [WordPress](https://wordpress.com/) when possible, due to its popularity and gigantic market share on the web.
+To create this report, we decided to look at six popular JavaScript-based web frameworks: [Astro](https://astro.build/), [Gatsby](https://gatsbyjs.com/), [Next.js](https://nextjs.org/), [Nuxt](https://nuxtjs.org/), [Remix](https://remix.run/), and [SvelteKit](https://kit.svelte.dev/). We also include data from [WordPress](https://wordpress.com/) when possible, due to its popularity and large market share (43.2%) on the web.
 
 Several exciting new frameworks had to be left out due to not having enough real-world usage in our chosen datasets, but we hope to include more frameworks in the next report.
 
@@ -41,7 +43,7 @@ Several exciting new frameworks had to be left out due to not having enough real
 
 Google’s [Core Web Vitals Assessment](https://pagespeed.web.dev/) is a test that looks at real user measurement data (from the [CrUX](https://developer.chrome.com/docs/crux/) dataset) across all three metrics to determine an overall pass/fail grade for each website. For a website to pass, it must meet the [associated threshold](https://web.dev/defining-core-web-vitals-thresholds/) of **“good”** in all three metrics. If any metric fails the threshold, the website fails the assessment.
 
-The CWV Assessment is unique in its use of real-world user data and measurements. This makes it a more accurate reflection of how users actually experience a website, especially over longer sessions. Lighthouse and other lab testing tools are only able to measure first page load.
+The CWV Assessment is unique in its use of real-world user data and measurements. This makes it a more accurate reflection of how users actually experience a website, especially over longer sessions. Lighthouse and other lab testing tools are only able to measure first page load, which fails to capture the full experience of using a website.
 
 <CWVCulminativeChart />
 
@@ -53,7 +55,7 @@ What is the most likely cause for a website to fail Google's Core Web Vitals Ass
 
 [First Input Delay (FID)](https://web.dev/fid/) measures the time from when a user first interacts with a page to the time when the browser is able to respond to that interaction. Google's CWV Assessment looks for a FID of 100 milliseconds or less. Anything slower is considered needing improvement and failing the assessment.
 
-Most of our frameworks pass this test handily, with over 90% or more of websites passing the assessment. No framework drops below an 80% pass rate on this test. This means that most of the websites tested are responsive to the first user interaction.
+Most of the frameworks pass this test handily, with over 90% or more of websites passing the assessment. No framework drops below an 80% pass rate on this test. This means that most of the websites tested are responsive to the first user interaction.
 
 <CWVCLSChart />
 
@@ -69,17 +71,17 @@ All frameworks scored 50% or higher in this metric. However, it's the youngest f
 
 LCP is the hardest of the three metrics to master. Only 52% of all websites tested pass this metric. Of our six frameworks tested, only Astro and SvelteKit beat this average. The rest come in below the average.
 
-# Coming Soon: Interaction to Next Paint (INP)
+# Coming Soon? Interaction to Next Paint (INP)
 
 **Interaction to Next Paint (INP)** is an experimental web vital that assesses overall website responsiveness, similar to First Input Delay (FID). Where the two metrics differ is that INP observes the latency of all interactions a user has made with the page, not just the first one. It also A low INP means the page was consistently able to respond quickly to all—or the vast majority—of user interactions.
 
 While INP is not an official core web vital today, the Chrome team has signaled [their hope](https://www.youtube.com/watch?v=Mizzbsvv8Os&t=378s) to replace FID with INP as a more holistic, accurate measure of responsiveness.
 
-So, how do our frameworks stack up against this new responsiveness metric?
+So, how do the frameworks stack up against this new responsiveness metric?
 
 <CWVINPChart />
 
-Most noticeable in the chart is that a good INP measurement is overall _much_ harder for our frameworks to achieve than First Input Delay (FID). While every framework tested saw an 80%+ pass rate of FID, no framework was able to see that same 80% pass rate on INP. Astro came closest, at 68.8% passing.
+Most noticeable in the chart is that a good INP measurement is overall _much_ harder for each framework to achieve than First Input Delay (FID). While every framework tested saw an 80%+ pass rate of FID, no framework was able to see that same 80% pass rate on INP. Astro came closest, at 68.8% passing.
 
 It's worth noting that the average pass rate across all tracked websites is a surprisingly high 60.9%. While Astro and WordPress look like the standout successes in the chart above, these sites are actually only performing modestly above the industry average. Why do many of the web frameworks tested struggle with this metric?
 
@@ -93,7 +95,7 @@ Anne Burnes of RebelMouse has a great writeup on the difference between FID and 
 >
 > This is particularly difficult on mobile. We took a look at a handful of sites across the industry and within our site network, and found that on mobile INP scores are 35.5% worse than FID on average. When reviewing desktop performance across the same dataset, there was only a 14.1% drop on average.
 >
-> -- Anne Burnes, [RebelMouse](https://rebelmouse.com/)
+> -- Anne Burnes, [RebelMouse](https://www.rebelmouse.com/inp-core-web-vitals)
 
 This will be an interesting metric to watch in 2023, and Google continues to weigh adding INP as an official Core Web Vital.
 
@@ -129,4 +131,4 @@ This report was compiled from several publicly available datasets. You can learn
 
 Due to capacity limitations, our analysis only looks at the homepages of every tracked website. One benefit of this limitation is that there is less variance in the purpose and use case of each analyzed website. However, one drawback is that this also means interior pages (like `/about` and `/admin/...` pages) and the technologies that they use are not analyzed and therefore excluded from our analysis.
 
-Another limitation that is unexplored in this report is the impact of a framework's age on measured web performance. The older frameworks measured here (Gatsby, Next.js, Nuxt) have a longer tail of legacy websites running older versions of their framework which are included in the dataset. This creates a situation where only the newer frameworks (Astro, Remix, SvelteKit) can be assumed to be running more modern versions of their software from the last 1-2 years, which could impact the data. This is a limitation of the data that we have available, but it is something that we hope to explore in future reports.
+Another limitation that is unexplored in this report is the impact of a framework's age on measured web performance. The older frameworks measured here (Gatsby, Next.js, Nuxt) have a longer tail of legacy websites running older versions of their framework which are included in the dataset. This creates a situation where only the newer frameworks (Astro, Remix, SvelteKit) can be assumed to be running more modern versions of their software from the last 1-2 years. This is a limitation of the data that we have available, but it is something that we hope to explore in future reports.
