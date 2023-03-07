@@ -105,7 +105,7 @@ Real user data like Core Web Vitals is still the best measurement of the the rea
 
 <LighthouseMedianChart />
 
-In the interest of consistency, we have kept the original order from the previous section. However, you will notice that Remix appears much stronger on performance on Lighthouse than it did in the CWV Assessment. One explanation for this may be Remix's use of `startTransition` and `requestIdleCallback` to [defer React hydration on page load.](https://github.com/remix-run/remix/blob/4988875856ba4007d4e1e4219b117ce9c7012489/packages/remix-dev/config/defaults/entry.client.react.tsx) This would theoretically translate to better performance in some lab situations (like Lighthouse) at the expense of increased first-input delay in other, real-world situations.
+In the interest of consistency, we have kept the original order from the previous section. However, you will notice that Remix appears much stronger on performance on Lighthouse than it did in the CWV Assessment. One explanation for this may be Remix's use of `startTransition` and `requestIdleCallback` to [defer React hydration on page load.](https://github.com/remix-run/remix/blob/4988875856ba4007d4e1e4219b117ce9c7012489/packages/remix-dev/config/defaults/entry.client.react.tsx) This could theoretically translate to better performance in some lab situations (like Lighthouse) at the expense of increased first-input delay in other, real-world situations.
 
 Unfortunately, the median Lighthouse performance score is low across the board. Half of the frameworks tested had a median performance considered "poor" (49 or below) while the other half had a median score that "needs Improvement" (50-89). No frameworks reached a "good" median score of 90+.
 
