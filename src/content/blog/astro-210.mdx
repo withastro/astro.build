@@ -16,14 +16,14 @@ import BlogContentImage from "/src/components/BlogContentImage.astro"
 
 We just released Astro 2.1, featuring:
 
-- **[Image optimizations in core](#image-support-in-astro-core)**: An experimental feature that brings the learnings from `@astrojs/image` to core.
+- **[Built-in Image Support (experimental)](#built-in-image-support-experimental)**: An experimental feature that brings the learnings from `@astrojs/image` to core.
 - **[Markdoc integration](#markdoc-integration)**: Markdoc is a new authoring format from Stripe that is optimized to scale to large codebases.
-- **[Watch flag for astro check](#watch-mode-in-astro-check)**: Use this flag to type check your `.astro` files during development.
+- **[astro check --watch](#astro-check-watch)**: Use this flag to type check your `.astro` files during development.
 - **[TypeScript helpers for getStaticPaths](#typescript-helpers-for-getstaticpaths)**: Get the params and props without defining the types twice.
 
 Install this new release by running `npm install astro@latest`.
 
-## Image support in Astro core
+## Built-in Image Support (experimental)
 
 Image optimizations are something almost every website needs. That's why we're taking what we learned through the `@astrojs/image` integration and bringing that into core where image optimizations are more tightly integrated with other Astro features such as [Content Collections](https://docs.astro.build/en/guides/content-collections/).
 
@@ -96,9 +96,7 @@ Using this schema is a great way to ensure that your images in a collection are 
 
 <BlogContentImage src={markdoc} alt="The logo for the Markdoc project" />
 
-As we look for ways to scale Astro sites to hundreds of thousands of pages, we are continuously looking for ways to make our build times faster.
-
-[Markdoc](https://markdoc.dev/) is a promising new format by Stripe that was purpose-built to scale to larger sites. Markdoc is a format that builds on top of Markdown, allowing you to build interactive content pages without sacrificing performance.
+A new experimental Markdoc integration has been added in 2.1. [Markdoc](https://markdoc.dev/) is a promising new format by Stripe that was purpose-built to scale to larger sites. Markdoc is a format that builds on top of Markdown, allowing you to build interactive content pages without sacrificing performance.
 
 This is driven by [Markdoc's separation of content from code](https://markdoc.dev/docs/faq#why-not-mdx), offering huge wins for rendering speed, maintainability, and reusability.
 
@@ -114,7 +112,7 @@ Once installed, Markdoc is available exclusively through [Content Collections](h
 
 Support for MDX is not going away. We are experimenting with both formats as we feel out what the future of content looks like in Astro. We'd love your feedback as we try to find the right balance between flexible syntax and scaling to larger sites.
 
-## Watch mode in `astro check`
+## astro check --watch
 
 <BlogContentImage
 	src={astrocheckwatch}
