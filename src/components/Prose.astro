@@ -19,7 +19,19 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(h1, h2, h3, h4) {
-		@apply heading-4 text-astro-gray-100;
+		@apply text-astro-gray-100;
+	}
+
+	article :global(h2) {
+		@apply heading-4 md:heading-3;
+	}
+
+	article :global(h3) {
+		@apply heading-5 md:heading-4;
+	}
+
+	article :global(h4) {
+		@apply heading-5;
 	}
 
 	article :global(:where(h1, h2, h3, h4):not(:first-child)) {
