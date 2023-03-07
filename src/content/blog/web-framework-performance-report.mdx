@@ -16,10 +16,7 @@ import CWVINPChart from "/src/components/charts/CWVINPChart.astro"
 import LighthouseMedianChart from "/src/components/charts/LighthouseMedianChart.astro"
 import LighthousePercentileChart from "/src/components/charts/LighthousePercentileChart.astro"
 import CostOfJSChart from "/src/components/charts/CostOfJSChart.astro"
-
-[INTRO]
-
-# The Data
+import LogoCarousel from "/src/pages/_components/LogoCarousel.astro"
 
 The purpose of this report is to look at real-world data to better understand the relationship between framework choice, performance, and actual user experience on the web. To do this, we looked at three different third-party datasets:
 
@@ -27,17 +24,15 @@ The purpose of this report is to look at real-world data to better understand th
 - [The HTTP Archive](https://httparchive.org/) which tracks and reports the performance of over 15 million websites over time by regularly collecting Lighthouse performance data.
 - [The Core Web Vitals Technology Report](https://discuss.httparchive.org/t/new-dashboard-the-core-web-vitals-technology-report/2178) which collects useful insights from the previous two datasets.
 
-**All data was collected from public, independently-managed datasets.** No performance data was measured directly by the Astro team. All queries used in this report are available at.
+**All data was collected from public, independently-managed datasets.** No performance data was measured directly by the Astro team. [Learn more about our methodology in the section below.](#methodology--limitations)
 
-[Learn more about our methodology in the section below.](#methodology--limitations)
-
-# The Frameworks
+## The Frameworks
 
 To create this report, we decided to look at six popular JavaScript-based web frameworks: [Astro](https://astro.build/), [Gatsby](https://gatsbyjs.com/), [Next.js](https://nextjs.org/), [Nuxt](https://nuxtjs.org/), [Remix](https://remix.run/), and [SvelteKit](https://kit.svelte.dev/). We also include data from [WordPress](https://wordpress.com/) when possible, due to its popularity and large market share (43.2%) on the web.
 
 Several exciting new frameworks had to be left out due to not having enough real-world usage in our chosen datasets, but we hope to include more frameworks in the next report.
 
-# Core Web Vitals
+## Core Web Vitals
 
 [Google’s Core Web Vitals (CWV)](https://web.dev/learn-core-web-vitals/) are a set of three standardized metrics that help you understand how users experience a web page. Each metric measures a different aspect of user experience — load speed, responsiveness, visual stability — and together they quantify the overall performance of a website.
 
@@ -51,11 +46,15 @@ When looking at all known websites built with a certain framework, Astro and Sve
 
 What is the most likely cause for a website to fail Google's Core Web Vitals Assessment? We can break down the data by individual metric to gain insight into where different frameworks struggle (and succeed) when it comes to web vitals.
 
+### First Input Delay (FID)
+
 <CWVFIDChart />
 
 [First Input Delay (FID)](https://web.dev/fid/) measures the time from when a user first interacts with a page to the time when the browser is able to respond to that interaction. Google's CWV Assessment looks for a FID of 100 milliseconds or less. Anything slower is considered needing improvement and failing the assessment.
 
 Most of the frameworks pass this test handily, with over 90% or more of websites passing the assessment. No framework drops below an 80% pass rate on this test. This means that most of the websites tested are responsive to the first user interaction.
+
+### Cumulative Layout Shift (CLS)
 
 <CWVCLSChart />
 
@@ -65,13 +64,15 @@ CLS is an interesting metric for Google to include as one of the three Core Web 
 
 All frameworks scored 50% or higher in this metric. However, it's the youngest frameworks (Astro, SvelteKit, and Remix) that score the highest on this metric. All three scored over 75% on the assessment of this metric across all websites tested.
 
+### Largest Contentful Paint (LCP)
+
 <CWVLCPChart />
 
 [Largest Contentful Paint (LCP)](https://web.dev/lcp/) is the last of the three Core Web Vitals, and arguably the most important when it comes to perceived performance. It measures the point when the page's main content has likely loaded. An LCP of 2.5 seconds or less is required to pass Google's CWV Assessment. Anything slower is considered needing improvement and failing the assessment.
 
 LCP is the hardest of the three metrics to master. Only 52% of all websites tested pass this metric. Of our six frameworks tested, only Astro and SvelteKit beat this average. The rest come in below the average.
 
-# Coming Soon? Interaction to Next Paint (INP)
+### Coming Soon? Interaction to Next Paint (INP)
 
 **Interaction to Next Paint (INP)** is an experimental web vital that assesses overall website responsiveness, similar to First Input Delay (FID). Where the two metrics differ is that INP observes the latency of all interactions a user has made with the page, not just the first one. It also A low INP means the page was consistently able to respond quickly to all—or the vast majority—of user interactions.
 
@@ -99,7 +100,7 @@ Anne Burnes of RebelMouse has a great writeup on the difference between FID and 
 
 This will be an interesting metric to watch in 2023, and Google continues to weigh adding INP as an official Core Web Vital.
 
-# Lighthouse Performance
+## Lighthouse Performance
 
 [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) is another tool that we can use to measure the user experience of a website. HTTP Archive runs Lighthouse in simulated mobile loading conditions. This offers a significantly more detailed and consistent analysis of page load performance, down to 100ms fractions of a second. Instead of looking at large “good” vs. “bad” thresholds and buckets, Lighthouse gives you a more detailed performance score measured out of 100.
 
@@ -117,7 +118,7 @@ Across all tracked websites, the median performance score was a 34/100. To that 
 
 By breaking the data down by percentile, we can start to see some slightly more encouraging numbers with Astro and SvelteKit reaching a score of 90+ in the p90 or p95 percentiles. However, the data clearly shows that all websites and frameworks (including Astro) still struggle to achieve good performance in real-world situations.
 
-# **The Cost of JavaScript**
+## **The Cost of JavaScript**
 
 The last thing that we wanted to explore was the relationship between framework choice, performance, and total JavaScript payload size in real-world usage. Do the fastest frameworks tend to be the ones that also send the least amount of JavaScript to the client?
 
@@ -125,7 +126,7 @@ The last thing that we wanted to explore was the relationship between framework 
 
 The trend in the data is clear: sites that ship less JavaScript tend to perform better. However, there are too many factors at play for us to confidently tie this trend back to the choice of web framework itself. It could be the case that some frameworks encourage/discourage JavaScript differently than others, but more research is needed before we draw any conclusions.
 
-# Methodology & Limitations
+## Methodology & Limitations
 
 This report was compiled from several publicly available datasets. You can learn more about these datasets and their methodology here: [HTTP Archive methodology](https://almanac.httparchive.org/en/2021/methodology#dataset), [CrUX methodology](https://developer.chrome.com/docs/crux/methodology/), and [CWV Technology Report methodology](https://discuss.httparchive.org/t/new-dashboard-the-core-web-vitals-technology-report/2178).
 
