@@ -23,7 +23,7 @@ const invalidUrlMessage = "Invalid URL, must start with http:// or https://"
 
 const schema = zfd
 	.formData({
-		featuredImage: z.instanceof(File, "Featured image is required"),
+		featuredImage: z.instanceof(File, { message: "Featured image is required" }),
 		additionalImages: zfd.repeatable(
 			z.array(z.instanceof(File)).max(4, "Too many additional images (max 4)"),
 		),
