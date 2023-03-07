@@ -1,0 +1,127 @@
+---
+title: "2023 Web Framework Performance Report"
+description: "TODO"
+publishDate: "March 7, 2023"
+authors:
+  - fred
+lang: "en"
+---
+
+import CWVCulminativeChart from "/src/components/charts/CWVCulminativeChart.astro"
+import CWVFIDChart from "/src/components/charts/CWVFIDChart.astro"
+import CWVLCPChart from "/src/components/charts/CWVLCPChart.astro"
+import CWVCLSChart from "/src/components/charts/CWVCLSChart.astro"
+import CWVINPChart from "/src/components/charts/CWVINPChart.astro"
+import LighthouseMedianChart from "/src/components/charts/LighthouseMedianChart.astro"
+import LighthousePercentileChart from "/src/components/charts/LighthousePercentileChart.astro"
+import CostOfJSChart from "/src/components/charts/CostOfJSChart.astro"
+
+[INTRO]
+
+# The Data
+
+The purpose of this report is to look at real-world data -- as measured across 8+ million websites -- to better understand the relationship between framework choice, performance, and the overall user experience. To do this, we looked at three different third-party datasets:
+
+- [The Chrome User Experience Report (CrUX)](https://developer.chrome.com/docs/crux/) provides user experience metrics for how real-world Chrome users experience popular destinations on the web.
+- [The HTTP Archive](https://httparchive.org/) which tracks and reports the performance of over 15 million websites over time by regularly collecting Lighthouse performance data.
+- [The Core Web Vitals Technology Report](https://discuss.httparchive.org/t/new-dashboard-the-core-web-vitals-technology-report/2178) which pulls data from the previous two datasets.
+
+**All data used in this report is collected from publicly available data and third-party datasets.** No performance data was measured directly by the Astro team. All queries used in this report are available for your review. [Learn more about our methodology.](LINK TO SECTION BELOW)
+
+# The Frameworks
+
+To create this report, we decided to look at six popular JavaScript-based web frameworks: [Astro](https://astro.build/), [Gatsby](https://gatsbyjs.com/), [Next.js](https://nextjs.org/), [Nuxt.js](https://nuxtjs.org/), [Remix](https://remix.run/), and [SvelteKit](https://kit.svelte.dev/). Because the report relies on real-world usage, several exciting new frameworks had to be left out due to not having enough real-world usage.
+
+We also compare the frameworks against data from [Wordpress](https://wordpress.com/) whenever possible, due to its popularity and gigantic market share on the web.
+
+# 2023 Highlights
+
+- Astro websites performed best out of all the websites tested, across all Core Web Vitals and Lighthouse performance tests.
+- The newer frameworks (Astro, SvelteKit, Remix) saw better performance in the wild than older frameworks (Next.js, Nuxt.js, Gatsby).
+- Frameworks that encourage fewer bytes of client-side JavaScript generally see better performance results.
+
+# Real-World Performance
+
+[Google’s Core Web Vitals (CWV)](https://web.dev/learn-core-web-vitals/) are a set of three standardized metrics that help someone understand how users experience a web page. Each metric measures a different aspect of user experience — load speed, responsiveness, visual stability — and together they help to quantify the overall performance of a website.
+
+Google’s [Core Web Vitals Assessment](https://pagespeed.web.dev/) is a test that looks at real user measurement data across all three of these metrics to determine an overall pass/fail grade for each website. By using real, anonymized user data from the Chrome User Experience Report, this assessment is able to measure an accurate representation of how users actually experience a website.
+
+For a website to pass, it must meet the [associated threshold](https://web.dev/defining-core-web-vitals-thresholds/) of **“good”** in all three metrics. If any metric fails the threshold, the website fails the assessment.
+
+<CWVCulminativeChart />
+
+When looking at all known websites built with a certain framework, Astro was the only framework to reach above 50% of websites passing Google's CWV Assessment. Astro and SvelteKit beat the average pass rate of all websites tested (40.5%) while the rest of the frameworks did not. Next.js and Nuxt.js came in at the bottom of the pack with only 1-in-4 and 1-in-5 websites passing the assessment, respectively.
+
+What is the most likely cause for a website to fail Google's Core Web Vitals Assessment? We can break down the data by metric to gain insight into where frameworks struggle (and succeed) when it comes to performance.
+
+<CWVFIDChart />
+
+[First Input Delay (FID)](https://web.dev/fid/) measures the time from when a user first interacts with a page to the time when the browser is able to respond to that interaction. Google's CWV Assessment looks for a FID of 100 milliseconds or less, measured at the 75th percentile of page loads, segmented across mobile and desktop devices.
+
+Most of our frameworks pass this test handily, with over 90% or more of websites passing the assessment. No framework drops below an 80% pass rate on this test.
+
+<CWVCLSChart />
+
+[Cumulative Layout Shift (CLS)](https://web.dev/cls/) measures visual stability on the page. To pass this assessment, you should reduce unexpected layout shift to near-zero to give your users a reliable visual experience.
+
+CLS is an interesting metric for Google to include as one of the three Core Web Vitals because it isn't strictly related to speed or responsiveness. It's inclusion underscores the importance of looking at more than just performance when it comes to measuring the overall quality of user experiences on the web.
+
+All frameworks scored 50% or higher in this metric. However, it's the youngest frameworks (Astro, SvelteKit and Remix) that score the highest on this metric. All three scored over 75% on the assessment of this metric across all websites tested.
+
+<CWVLCPChart />
+
+[Largest Contentful Paint (LCP)](https://web.dev/lcp/) is the last of the three Core Web Vitals, and arguably the most important when it comes to perceived performance. It measures the point when the page's main content has likely loaded. An LCP of 2.5 seconds or less is required to pass Google's CWV Assessment. Anything slower is considered needing improvement and failing the assessment.
+
+LCP is the hardest of the three metrics to master. Only 52% of all websites tested pass this metric. Of our six frameworks tested, only Astro and SvelteKit beat this average. The rest come in below the average.
+
+# Coming Soon: Interaction to Next Paint (INP)
+
+**Interaction to Next Paint (INP)** is an experimental web vital that assesses responsiveness. INP observes the latency of all interactions a user has made with the page, and reports a single value which all (or nearly all) interactions were below. A low INP means the page was consistently able to respond quickly to all—or the vast majority—of user interactions.
+
+While INP is not an official core web vital today, the Chrome team has signaled [their hope](https://www.youtube.com/watch?v=Mizzbsvv8Os&t=378s) to replace First Input Delay (FID) with INP as the best measurement of responsiveness. If this happens, INP will become the third official core web vital.
+
+So, how do our frameworks stack up against this new metric?
+
+<CWVINPChart />
+
+Most noticible in the chart is that a good INP measurement is overall _much_ harder for our frameworks to achieve than First Input Delay (FID). While every framework tested saw an 80%+ pass rate of FID, no framework was able to see that same 80% pass rate on INP. Astro came closest, at 68.8% passing.
+
+Why is this? To quote Anne Burnes of RebelMouse:
+
+> FID quantifies a user's experience when trying to interact with unresponsive pages, but it only measures the first interaction. According to Google, INP takes a more well-rounded measurement of a site’s responsiveness by covering a site’s entire spectrum of interactions, from the time a page first begins to load until the user leaves a page. This comprehensive measurement makes INP a more reliable indicator of a site’s overall responsiveness than FID.
+>
+> The holistic nature of INP makes it more challenging to solve than FID, because your code has to be implemented in a way that protects responsiveness for the user during their entire journey, not just on first load. Since many interactions are done through JavaScript, it means your site has to be loaded carefully for optimized performance.
+>
+> -- Anne Burnes, [RebelMouse](https://rebelmouse.com/)
+
+While all six of our frameworks struggle with this metric, it's worth noting that the average pass rate across all tracked websites is a suprisingly high 60.9%. While Astro and Wordpress look like the standout successes in the chart above, these sites are performing only slightly above the industry average.
+
+This will be an interesting metric to watch in 2023, and Google continues to weigh adding FID as an official Core Web Vital.
+
+# Lighthouse Performance
+
+[Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) is another tool that we can use to measure the user experience of a website. Lighthouse uses simulated lab data to generate its reports which offs a significantly more detailed analysis of page load timing down to a 100ms fraction of a second. Instead of looking at large “good” vs. “bad” thresholds and buckets, Lighthouse analyzes your page and summarizing your performance with a more detailed score out of 100.
+
+Real user data like Core Web Vitals is still the best measurement of the the real user experience, however there is still interesting insights to be learned from Lighthouse. Let's take a look at the data.
+
+<LighthouseMedianChart />
+
+In the interest of consistency, we have kept the original order from the previous section. However, you will notice that Remix appears much stronger on performance on Lighthouse than it did in the CWV Assessment. One explanation for this may be Remix's use of `startTransition` and `requestIdleCallback` to defer React hydration on page load. This would theoretically translate to better performance in some situations (like Lighthouse) at the expense of increased first-input delay in other, real-world situations that would be captured by the CWV Assessment.
+
+Unfortunately, the median Lighthouse performance score is low across the board. Half of the frameworks tested had a median performance considered "poor" (49 or below) while the other half had a median score that "needs Improvement" (50-89). Across all frameworks and technologies, the median performance score was a 34/100. Of our frameworks tested, only Next.js and Nuxt.js came in below the internet average.
+
+By breaking the data down by percentile, we can start to see some slightly more encouraging numbers:
+
+<LighthousePercentileChart />
+
+# **The Cost of JavaScript**
+
+The last thing that we wanted to explore was the relationship between framework choice, performance, and total JavaScript payload size. Do the fastest frameworks tend to be the ones that send the least amount of JavaScript to the client?
+
+<CostOfJSChart />
+
+In this chart, frameworks are plotted by thier CWV Assessment pass rate vs. median JavaScript payload size (in kilobytes) of a site built with that framework. The trend in the data is clear: frameworks that result in a small median JavaScript payload tend to perform better than those with a larger median JavaScript payload.
+
+# Methodology & Limitations
+
+Due to capacity limitations (HTTP Archive can only test one page per website) our analysis only looks at the homepages of every tracked website. One benefit of this limitation is that there is less variance in the purpose and use-case of each analyzed website. However, this also means that interior pages (like `/about` and `/admin/...` pages) are not analyzed and therefore excluded from our analysis.

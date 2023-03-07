@@ -1,0 +1,71 @@
+---
+import Card from "../Card.astro"
+import CardBody from "../CardBody.astro"
+import CardLabel from "../CardLabel.astro"
+---
+
+<Card className="max-w-2xl mx-auto">
+	<CardBody>
+		<CardLabel>% Sites Passing CLS</CardLabel>
+		<canvas id="chart-cwv-cls"></canvas>
+	</CardBody>
+</Card>
+
+<script>
+	import Chart from "chart.js/auto"
+
+	Chart.defaults.borderColor = "#444"
+	Chart.defaults.color = "#bdbfc7"
+	Chart.defaults.font.family = '"MD IO 0.5", monospace'
+	const data = [
+		{ framework: "Astro", val: 0.864516129032258 },
+		{ framework: "SvelteKit", val: 0.757131214343928 },
+		{ framework: "Gatsby", val: 0.622569333758368 },
+		{ framework: "Remix", val: 0.768233387358185 },
+		{ framework: "WordPress", val: 0.757308464163499 },
+		{ framework: "Next.js", val: 0.639933080678753 },
+		{ framework: "Nuxt.js", val: 0.520453599667083 },
+	]
+
+	new Chart(document.getElementById("chart-cwv-cls") as HTMLCanvasElement, {
+		type: "bar",
+		options: {
+			plugins: {
+				legend: {
+					display: false,
+				},
+			},
+			scales: {
+				y: {
+					max: 1,
+					ticks: {
+						format: {
+							style: "percent",
+							minimumFractionDigits: 0,
+							maximumFractionDigits: 1,
+						},
+					},
+				},
+			},
+		},
+		data: {
+			labels: data.map((row) => row.framework),
+			datasets: [
+				{
+					label: "% Sites Passing CLS",
+					data: data.map((row) => row.val),
+					backgroundColor: [
+						"#9BD0F5",
+						"#9BD0F5",
+						"#9BD0F5",
+						"#9BD0F5",
+						"#AAA8",
+						"#9BD0F5",
+						"#9BD0F5",
+					],
+					barPercentage: 0.5,
+				},
+			],
+		},
+	})
+</script>
