@@ -2,7 +2,7 @@
 export type Props = { repeat?: number }
 ---
 
-<div class="group flex overflow-clip">
+<div class="group flex overflow-hidden">
 	{
 		Array.from({ length: Astro.props.repeat ?? 3 }, (_, i) => (
 			<div class="marquee shrink-0" aria-hidden={i === 0 ? undefined : "true"} data-marquee>
