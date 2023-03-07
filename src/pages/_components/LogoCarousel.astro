@@ -1,12 +1,12 @@
 ---
+import { Sprite } from "astro-icon"
 import Marquee from "~/components/Marquee.astro"
 
 export type Props = {
 	logos: Array<{
-		src: ImageMetadata
+		icon?: string
 		alt: string
 		href?: string
-		imageClass?: string
 	}>
 }
 ---
@@ -16,13 +16,7 @@ export type Props = {
 		{
 			Astro.props.logos.map((logo) => (
 				<li class="flex items-center justify-center rounded-full bg-white s-16">
-					<img
-						src={logo.src.src}
-						alt={logo.alt}
-						class:list={["object-contain s-8", logo.imageClass]}
-						loading="lazy"
-						decoding="async"
-					/>
+					<Sprite name={logo.icon} size={32} />
 				</li>
 			))
 		}
