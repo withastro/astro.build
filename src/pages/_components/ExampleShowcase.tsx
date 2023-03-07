@@ -168,6 +168,8 @@ export default function ExampleShowcase() {
 							</p>
 							<img
 								src={item.image.src}
+								width={item.image.width}
+								height={item.image.height}
 								alt={`Example image for ${item.title}`}
 								class="w-full object-cover object-left-top"
 							/>
