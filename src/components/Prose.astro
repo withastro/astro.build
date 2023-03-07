@@ -14,7 +14,8 @@ const { class: className, ...attrs } = Astro.props
 </article>
 
 <style>
-	article :global(> * + *) {
+	article :global(> * + *),
+	article :global(blockquote > * + *) {
 		@apply my-4 md:my-6;
 	}
 
@@ -75,7 +76,7 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(blockquote) {
-		@apply border-l-4 pl-4 py-2 border-astro-gray-400 space-y-2 md:space-y-4;
+		@apply border-l-4 p-6 border-astro-gray-400 space-y-2 md:space-y-4 bg-astro-gray-600 italic;
 	}
 
 	article :global(ul, ol) {
