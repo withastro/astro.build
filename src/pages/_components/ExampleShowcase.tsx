@@ -172,6 +172,8 @@ export default function ExampleShowcase() {
 								height={item.image.height}
 								alt={`Example image for ${item.title}`}
 								class="w-full object-cover object-left-top"
+								loading="lazy"
+								decoding="async"
 							/>
 						</a>
 					)}
