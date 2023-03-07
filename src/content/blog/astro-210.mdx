@@ -100,7 +100,7 @@ As we look for ways to scale Astro sites to hundreds of thousands of pages, we a
 
 [Markdoc](https://markdoc.dev/) is a promising new format by Stripe that was purpose-built to scale to larger sites. Markdoc is a format that builds on top of Markdown, allowing you to build interactive content pages without sacrificing performance.
 
-Markdoc achieves this by having a declarative approach. This forces a separation between code and content, which sacrifices power and flexibility for performance.
+This is driven by [Markdoc's separation of content from code](https://markdoc.dev/docs/faq#why-not-mdx), offering huge wins for rendering speed, maintainability, and reusability.
 
 As part of the `@astrojs/markdoc integration`, we built a performance benchmark to compare Markdoc build performance at scale against our existing content formats, Markdown and MDX. In our benchmarking, we have seen up to a 3x improvement over MDX rendering static content with islands of interactivity. The results, along with a complete explanation of the findings can be found [here](https://gist.github.com/bholmesdev/07ec840d0bcdc24c0114268e16b2d0b0).
 
