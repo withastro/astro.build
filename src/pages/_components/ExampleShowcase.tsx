@@ -4,9 +4,9 @@ import Collapse from "~/components/Collapse.jsx"
 import { positiveMod } from "~/helpers/math.js"
 import agenciesImage from "../_assets/example-agencies.png"
 import blogsImage from "../_assets/example-blogs.png"
-import eCommerceImage from "../_assets/example-e-commerce.png"
-import marketingImage from "../_assets/example-marketing.png"
-import portfolioImage from "../_assets/example-portfolio.png"
+import eCommerceImage from "../_assets/example-e-commerce.webp"
+import marketingImage from "../_assets/example-marketing.webp"
+import portfolioImage from "../_assets/example-portfolio.webp"
 
 type Item = {
 	title: string
