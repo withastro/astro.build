@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import { createEffect, createSignal, JSX, onCleanup, onMount, splitProps } from "solid-js";
+import clsx from "clsx"
+import { createEffect, createSignal, JSX, onCleanup, onMount, splitProps } from "solid-js"
 
 export default function Collapse(
 	props: { children: JSX.Element; isOpen: boolean } & JSX.IntrinsicElements["div"],
@@ -11,7 +11,7 @@ export default function Collapse(
 	const [contentHeight, setContentHeight] = createSignal(inner.clientHeight)
 
 	const outer = (
-		<div {...divProps} class={clsx("relative overflow-clip transition-[height]", divProps.class)}>
+		<div {...divProps} class={clsx("relative overflow-hidden transition-[height]", divProps.class)}>
 			{inner}
 		</div>
 	) as HTMLElement
