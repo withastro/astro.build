@@ -1,4 +1,5 @@
 ---
+import { Sprite } from "astro-icon"
 import MainLayout from "~/layouts/MainLayout.astro"
 import ContentFirstFast from "./_components/ContentFirstFast.astro"
 import FullSpeedAhead from "./_components/FullSpeedAhead.astro"
@@ -10,16 +11,18 @@ import ToolingAndEcosystem from "./_components/ToolingAndEcosystem.astro"
 export const prerender = true
 ---
 
-<MainLayout image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}>
-	<Hero />
-	<div class="relative">
-		<div class="noise-underlay bg-grid absolute inset-0"></div>
-		<div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
-			<FullSpeedAhead />
-			<ContentFirstFast />
-			<ToolingAndEcosystem />
-			<GetStarted />
+<Sprite.Provider>
+	<MainLayout image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}>
+		<Hero />
+		<div class="relative">
+			<div class="noise-underlay bg-grid absolute inset-0"></div>
+			<div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
+				<FullSpeedAhead />
+				<ContentFirstFast />
+				<ToolingAndEcosystem />
+				<GetStarted />
+			</div>
 		</div>
-	</div>
-	<Sponsors />
-</MainLayout>
+		<Sponsors />
+	</MainLayout>
+</Sprite.Provider>
