@@ -14,7 +14,7 @@ import CardLabel from "../CardLabel.astro"
 <script>
 	import Chart from "chart.js/auto"
 
-	Chart.defaults.borderColor = "#444"
+	Chart.defaults.borderColor = "#545864"
 	Chart.defaults.color = "#bdbfc7"
 	Chart.defaults.font.family = '"MD IO 0.5", monospace'
 	const data = [
@@ -27,7 +27,7 @@ import CardLabel from "../CardLabel.astro"
 		// { framework: "Wordpress", cwv: 0.303861022955256, js: 515.69 },
 	]
 
-	const chart = new Chart(document.getElementById("chart-cost-of-js") as HTMLCanvasElement, {
+	new Chart(document.getElementById("chart-cost-of-js") as HTMLCanvasElement, {
 		type: "bubble",
 		options: {
 			plugins: {

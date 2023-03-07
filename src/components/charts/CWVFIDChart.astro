@@ -14,7 +14,7 @@ import CardLabel from "../CardLabel.astro"
 <script>
 	import Chart from "chart.js/auto"
 
-	Chart.defaults.borderColor = "#444"
+	Chart.defaults.borderColor = "#545864"
 	Chart.defaults.color = "#bdbfc7"
 	Chart.defaults.font.family = '"MD IO 0.5", monospace'
 	const data = [
@@ -30,6 +30,11 @@ import CardLabel from "../CardLabel.astro"
 	new Chart(document.getElementById("chart-cwv-fid") as HTMLCanvasElement, {
 		type: "bar",
 		options: {
+			color: "#bdbfc7",
+			borderColor: "#545864",
+			font: {
+				family: '"MD IO 0.5", monospace',
+			},
 			plugins: {
 				legend: {
 					display: false,
@@ -55,13 +60,13 @@ import CardLabel from "../CardLabel.astro"
 					label: "% Sites Passing FID",
 					data: data.map((row) => row.val),
 					backgroundColor: [
-						"#9BD0F5",
-						"#9BD0F5",
-						"#9BD0F5",
-						"#9BD0F5",
-						"#AAA8",
-						"#9BD0F5",
-						"#9BD0F5",
+						"#5283EE",
+						"#5283EE",
+						"#5283EE",
+						"#5283EE",
+						"#66666A",
+						"#5283EE",
+						"#5283EE",
 					],
 					barPercentage: 0.5,
 				},

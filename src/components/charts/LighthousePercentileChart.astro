@@ -14,9 +14,6 @@ import CardLabel from "../CardLabel.astro"
 <script>
 	import Chart from "chart.js/auto"
 
-	Chart.defaults.borderColor = "#444"
-	Chart.defaults.color = "#bdbfc7"
-	Chart.defaults.font.family = '"MD IO 0.5", monospace'
 	const data = [
 		{ framework: "Astro", val: [0.44, 0.65, 0.87, 0.98, 0.99] },
 		{ framework: "SvelteKit", val: [0.3275, 0.52, 0.73, 0.89, 0.9] },
@@ -31,6 +28,11 @@ import CardLabel from "../CardLabel.astro"
 		{
 			type: "bar",
 			options: {
+				color: "#bdbfc7",
+				borderColor: "#545864",
+				font: {
+					family: '"MD IO 0.5", monospace',
+				},
 				plugins: {
 					legend: {
 						align: "end",
@@ -54,7 +56,7 @@ import CardLabel from "../CardLabel.astro"
 				datasets: ["p25", "percentile", "p75", "p90", "p95"].map((label, i) => ({
 					label,
 					data: data.map((row) => row.val[i]),
-					backgroundColor: ["#a44", "#a66", "#a88", "#abe", "#9BD0F5"][i],
+					backgroundColor: ["#BC52EE", "#83EE52", "#EEBD52", "#EE5289", "#5283EE"][i],
 					barPercentage: 0.5,
 				})),
 			},
