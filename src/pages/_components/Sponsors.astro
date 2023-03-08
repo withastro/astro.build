@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon"
+import MainSponsorItem from "./MainSponsorItem.astro"
 
 const sponsors = [
 	{ src: "sponsors/vercel", alt: "Vercel Logo", href: "https://vercel.com/" },
@@ -12,6 +13,8 @@ const sponsors = [
 	{ src: "sponsors/shipshape", alt: "Ship Shape Logo", href: "https://shipshape.io/?ref=astro" },
 	{ src: "sponsors/divriots", alt: "Div Riots Logo", href: "https://divriots.com/" },
 ]
+
+const mainSponsorLogoHeight = 40
 ---
 
 <section class="landing-section gap-12 py-16 sm:gap-24 sm:py-20 md:py-24 lg:py-28 xl:py-32">
@@ -19,27 +22,37 @@ const sponsors = [
 		Astro is free, open source software made possible by these wonderful sponsors
 	</h2>
 
-	<div class="grid gap-12 sm:gap-24 md:auto-cols-[240px] md:grid-flow-col md:grid-cols-2">
-		<a
-			href="https://netlify.com/"
-			rel="sponsored"
-			class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer"
-		>
-			<figure class="flex h-full flex-col items-center justify-end gap-2">
-				<Icon name="sponsors/netlify" alt="Netlify Logo" aria-label="Netlify" />
-				<figcaption class="body text-astro-gray-200">Official Hosting Partner</figcaption>
-			</figure>
-		</a>
-		<a
+	<div class="flex flex-wrap items-center justify-center gap-12 px-8 sm:gap-16">
+		<MainSponsorItem href="https://netlify.com/" caption="Official Hosting Partner">
+			<Icon
+				name="sponsors/netlify"
+				alt="Netlify Logo"
+				aria-label="Netlify"
+				height={mainSponsorLogoHeight}
+			/>
+		</MainSponsorItem>
+		<MainSponsorItem
 			href="https://www.storyblok.com/?utm_source=astro&utm_medium=display&utm_campaign=AWA_SPON_ASTR_TRA&utm_content=astro_collab"
-			class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer"
-			rel="sponsored"
+			caption="Official CMS Partner"
 		>
-			<figure class="flex h-full flex-col items-center justify-end gap-2">
-				<Icon name="sponsors/storyblok" alt="Storyblok Logo" aria-label="Storyblok" />
-				<figcaption class="body text-astro-gray-200">Official CMS Partner</figcaption>
-			</figure>
-		</a>
+			<Icon
+				name="sponsors/storyblok"
+				alt="Storyblok Logo"
+				aria-label="Storyblok"
+				height={mainSponsorLogoHeight}
+			/>
+		</MainSponsorItem>
+		<MainSponsorItem
+			href="https://developer.chrome.com/blog/framework-fund-2022/"
+			caption="Web Frameworks Fund"
+		>
+			<Icon
+				name="sponsors/chrome"
+				alt="Google Chrome Logo"
+				aria-label="Google Chrome"
+				height={mainSponsorLogoHeight}
+			/>
+		</MainSponsorItem>
 	</div>
 
 	<ul
