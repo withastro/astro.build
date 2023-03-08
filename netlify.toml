@@ -1,12 +1,3 @@
-[build]
-command = "pnpm build"
-publish = "dist"
-ignore = "git diff --quiet $COMMIT_REF $CACHED_COMMIT_REF -- /"
-
-[dev]
-command = "astro dev"
-framework = "astro"
-
 [[headers]]
 for = "/assets/*"
 
@@ -84,3 +75,13 @@ status = 301
 [[redirects]]
 from = "/hack"
 to = "https://astroinc.notion.site/FRIDAY-Astro-1-0-Hackathon-9fb3499b375e4b01b88b080fd918b184"
+
+
+[build]
+command = "pnpm build"
+publish = "dist"
+ignore = "git diff --quiet $COMMIT_REF $CACHED_COMMIT_REF -- /"
+
+[dev]
+command = "astro dev"
+framework = "astro"
