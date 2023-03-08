@@ -4,6 +4,7 @@ import Footer from "~/components/Footer.astro"
 import Header from "~/components/Header.astro"
 import HeaderDrawerContent from "~/components/HeaderDrawerContent.astro"
 import HeaderNav from "~/components/HeaderNav.astro"
+import NotificationBanner from "~/components/NotificationBanner.astro"
 
 export type Props = HeadProps
 
@@ -20,6 +21,9 @@ const { ...head } = Astro.props
 	</head>
 	<body>
 		<div class="isolate flex min-h-screen flex-col overflow-x-hidden">
+			<NotificationBanner uid="astro-210">
+				<a href="/blog/astro-210/">Astro version 2.1 just shipped!</a>
+			</NotificationBanner>
 			<div id="nav" class="sticky top-0 z-20 max-h-screen">
 				<Header>
 					<HeaderNav />

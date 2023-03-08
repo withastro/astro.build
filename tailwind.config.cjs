@@ -22,9 +22,9 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ["InterVariable", "sans-serif"],
-				mono: [`"MD IO 0.5"`, "monospace"],
-				obviously: ["Obviously", "sans-serif"],
-				"obviously-wide": `"Obviously Wide", "sans-serif"`,
+				mono: [`"MD IO 0.5"`, "md-io-fallback", "monospace"],
+				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
+				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},
 			colors: {
 				black: "#17191E",
