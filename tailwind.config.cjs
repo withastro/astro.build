@@ -152,6 +152,12 @@ module.exports = {
 					},
 				},
 
+				".accordion": {
+					"&::-webkit-details-marker": {
+						display: "none",
+					},
+				},
+
 				".button-base": {
 					"@apply inline-flex h-14 items-center justify-center gap-4 rounded-full px-10 text-center font-sans text-base font-medium leading-none transition":
 						{},
