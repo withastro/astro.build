@@ -2,9 +2,10 @@
 export type Props = {
 	background?: "neutral" | "blue-purple" | "blue-green" | "red-pink"
 	isLink?: boolean
+	className?: string
 }
 
-const { background = "neutral", isLink = false } = Astro.props
+const { background = "neutral", isLink = false, className } = Astro.props
 ---
 
 <article
@@ -15,6 +16,7 @@ const { background = "neutral", isLink = false } = Astro.props
 		background === "red-pink" && "bg-red-pink-gradient",
 		background === "neutral" ? "text-astro-gray-200" : "text-astro-gray-100",
 		isLink && "hover:scale-[1.03] transition-transform duration-300 ease-out",
+		className,
 	]}
 >
 	<slot />

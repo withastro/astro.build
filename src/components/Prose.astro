@@ -14,12 +14,25 @@ const { class: className, ...attrs } = Astro.props
 </article>
 
 <style>
-	article :global(> * + *) {
+	article :global(> * + *),
+	article :global(blockquote > * + *) {
 		@apply my-4 md:my-6;
 	}
 
 	article :global(h1, h2, h3, h4) {
-		@apply heading-4 text-astro-gray-100;
+		@apply text-astro-gray-100;
+	}
+
+	article :global(h2) {
+		@apply heading-4 md:heading-3;
+	}
+
+	article :global(h3) {
+		@apply heading-5 md:heading-4;
+	}
+
+	article :global(h4) {
+		@apply heading-5;
 	}
 
 	article :global(:where(h1, h2, h3, h4):not(:first-child)) {
@@ -35,7 +48,7 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(p) {
-		@apply text-astro-gray-200;
+		@apply text-astro-gray-200 leading-prose;
 	}
 
 	article :global(strong) {
@@ -63,7 +76,7 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(blockquote) {
-		@apply border-l-4 pl-4 py-2 border-astro-gray-400 space-y-2 md:space-y-4;
+		@apply border-l-4 p-6 border-astro-gray-400 space-y-2 md:space-y-4 bg-astro-gray-600 italic;
 	}
 
 	article :global(ul, ol) {
@@ -87,7 +100,7 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(:is(img, video):not([class])) {
-		@apply max-w-full w-full mx-auto rounded-lg my-10 border border-astro-gray-400;
+		@apply max-w-full w-full mx-auto rounded-lg my-10 border border-astro-gray-500;
 	}
 
 	article :global(video + aside) {

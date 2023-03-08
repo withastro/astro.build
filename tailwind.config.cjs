@@ -22,9 +22,9 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ["InterVariable", "sans-serif"],
-				mono: [`"MD IO 0.5"`, "monospace"],
-				obviously: ["Obviously", "sans-serif"],
-				"obviously-wide": `"Obviously Wide", "sans-serif"`,
+				mono: [`"MD IO 0.5"`, "md-io-fallback", "monospace"],
+				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
+				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},
 			colors: {
 				black: "#17191E",
@@ -51,13 +51,16 @@ module.exports = {
 				"astro-hover": "#E8C4F9",
 			},
 			backgroundImage: {
-				"blue-purple-gradient": "linear-gradient(83.21deg, #3245FF 0%, #BC52EE 100%)",
+				"blue-purple-gradient": "linear-gradient(83.21deg, #3245FF 0%, #B845ED 100%)",
 				"blue-green-gradient": "linear-gradient(247.23deg, #4AF2C8 0%, #2F4CB3 100%)",
 				"red-pink-gradient": "linear-gradient(66.77deg, #D83333 0%, #F041FF 100%)",
 				"orange-yellow-gradient": "linear-gradient(266.93deg, #F8E42E 0%, #FF7D54 100%)",
 			},
 			height: {
 				header: "5rem",
+			},
+			lineHeight: {
+				prose: 1.8125,
 			},
 		},
 	},
@@ -146,6 +149,12 @@ module.exports = {
 
 					"& > .bleed-none": {
 						gridColumn: "2 !important",
+					},
+				},
+
+				".accordion": {
+					"&::-webkit-details-marker": {
+						display: "none",
 					},
 				},
 

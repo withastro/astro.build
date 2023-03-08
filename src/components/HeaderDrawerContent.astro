@@ -8,12 +8,12 @@ import SocialLinks from "./SocialLinks.astro"
 
 <nav
 	aria-label="Primary"
-	class="heading-3 flex flex-col divide-y divide-astro-gray-500 text-left [&>*]:p-6 pb-12"
+	class="heading-3 flex flex-col divide-y divide-astro-gray-500 pb-12 text-left [&>*]:p-6"
 >
 	<a href="https://docs.astro.build/" class="link"> Docs</a>
 	<a href="/showcase/" class="link"> Showcase</a>
 	<details class="group">
-		<summary class="link flex cursor-pointer list-none items-center justify-between">
+		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
 			Resources
 			<ChevronIcon class="inline-block rotate-0 transition-transform group-open:-rotate-180" />
 		</summary>
@@ -39,9 +39,3 @@ import SocialLinks from "./SocialLinks.astro"
 		<a href="https://docs.astro.build/" class="button-primary"> Get Started</a>
 	</div>
 </nav>
-
-<style>
-	summary::-webkit-details-marker {
-		display: none;
-	}
-</style>

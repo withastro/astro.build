@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "MD IO 0.5";
-	src: url("https://fonts-cdn.astro.build/MD IO/Web/MDIO0.5-Regular.woff2") format("woff2");
+	src: url("/fonts/MD IO/Web/MDIO0.5-Regular.woff2") format("woff2");
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -8,8 +8,7 @@
 
 @font-face {
 	font-family: "Obviously";
-	src: url("https://fonts-cdn.astro.build/Obviously/Obviously Normal/Web/Obviously-Light.woff2")
-		format("woff2");
+	src: url("/fonts/Obviously/Obviously Normal/Web/Obviously-Light.woff2") format("woff2");
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
@@ -17,8 +16,7 @@
 
 @font-face {
 	font-family: "Obviously";
-	src: url("https://fonts-cdn.astro.build/Obviously/Obviously Normal/Web/Obviously-Regular.woff2")
-		format("woff2");
+	src: url("/fonts/Obviously/Obviously Normal/Web/Obviously-Regular.woff2") format("woff2");
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -26,10 +24,31 @@
 
 @font-face {
 	font-family: "Obviously Wide";
-	src: url("https://fonts-cdn.astro.build/Obviously/Obviously Wide/Web/Obviously-Wide_Semibold.woff2")
-		format("woff2");
+	src: url("/fonts/Obviously/Obviously Wide/Web/Obviously-Wide_Semibold.woff2") format("woff2");
 	font-weight: 600;
 	font-style: normal;
 	font-stretch: wider;
 	font-display: swap;
+}
+
+/* == FALLBACK FONT CONFIG == */
+@font-face {
+	font-family: md-io-fallback;
+	src: local("Courier New");
+	line-gap-override: 7%;
+}
+
+@font-face {
+	font-family: obviously-regular-fallback;
+	src: local("Verdana");
+	size-adjust: 112%;
+	line-gap-override: 19%;
+}
+
+@font-face {
+	font-family: obviously-wide-fallback;
+	src: local("Arial Black");
+	size-adjust: 134%;
+	ascent-override: 96%;
+	descent-override: 27%;
 }

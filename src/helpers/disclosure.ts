@@ -77,7 +77,9 @@ export function createDisclosure({
 	const handleFocusLost = (event: FocusEvent) => {
 		// close the menu when losing focus from it
 		if (content.contains(event.target as Node)) return
-		setVisible(false)
+		// ignore if the new target is the button, it's click handler will handle it
+		if (event.target === button) return
+		event.stopPropagation()
 	}
 
 	const handleClickOutside = (event: MouseEvent) => {

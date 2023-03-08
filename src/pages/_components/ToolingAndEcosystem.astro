@@ -7,20 +7,7 @@ import CardFooter from "~/components/CardFooter.astro"
 import CardHeading from "~/components/CardHeading.astro"
 import CardLabel from "~/components/CardLabel.astro"
 import CardParagraph from "~/components/CardParagraph.astro"
-import alpine from "../_assets/alpine.png"
-import cloudflare from "../_assets/cloudflare.png"
 import communityCloud from "../_assets/community-cloud.webp"
-import deno from "../_assets/deno.png"
-import lit from "../_assets/lit-html.png"
-import netlify from "../_assets/netlify.png"
-import nodejs from "../_assets/nodejs.png"
-import preact from "../_assets/preact.png"
-import react from "../_assets/react.png"
-import solid from "../_assets/solid.png"
-import svelte from "../_assets/svelte.png"
-import tailwind from "../_assets/tailwind.png"
-import vercel from "../_assets/vercel.png"
-import vue from "../_assets/vue.png"
 import DocsGraphic from "./DocsGraphic.astro"
 import LandingSectionText from "./LandingSectionText.astro"
 import LogoCarousel from "./LogoCarousel.astro"
@@ -28,25 +15,25 @@ import SandboxGraphic from "./SandboxGraphic.astro"
 import ThemesGraphic from "./ThemesGraphic.astro"
 
 const toolingLogos = [
-	{ src: react, alt: "React Logo" },
-	{ src: preact, alt: "Preact Logo" },
-	{ src: svelte, alt: "Svelte Logo" },
-	{ src: vue, alt: "Vue Logo" },
-	{ src: lit, alt: "Lit Logo" },
-	{ src: solid, alt: "Solid Logo" },
-	{ src: tailwind, alt: "Tailwind Logo" },
-	{ src: alpine, alt: "Alpine Logo" },
+	{ icon: "logos/react-logomark", alt: "React Logo" },
+	{ icon: "logos/preact-logomark", alt: "Preact Logo" },
+	{ icon: "logos/svelte-logomark", alt: "Svelte Logo" },
+	{ icon: "logos/vue-logomark", alt: "Vue Logo" },
+	{ icon: "logos/lit-logomark", alt: "Lit Logo" },
+	{ icon: "logos/solid-logomark", alt: "Solid Logo" },
+	{ icon: "logos/tailwind-logomark", alt: "Tailwind Logo" },
+	{ icon: "logos/alpinejs-logomark", alt: "Alpine Logo" },
 ]
 
 // repeat the logos so they fill the width
 toolingLogos.push(...toolingLogos)
 
 const deployLogos = [
-	{ src: cloudflare, alt: "Cloudflare Logo" },
-	{ src: netlify, alt: "Netlify Logo" },
-	{ src: vercel, alt: "Vercel Logo" },
-	{ src: nodejs, alt: "Node.js Logo" },
-	{ src: deno, alt: "Deno Logo" },
+	{ icon: "logos/cloudflare-logomark", alt: "Cloudflare Logo" },
+	{ icon: "logos/netlify-logomark", alt: "Netlify Logo" },
+	{ icon: "logos/vercel-logomark", alt: "Vercel Logo" },
+	{ icon: "logos/node-logomark", alt: "Node.js Logo" },
+	{ icon: "logos/deno-logomark", alt: "Deno Logo" },
 ]
 
 // repeat the logos so they fill the width
@@ -166,13 +153,13 @@ const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32"
 							</div>
 						</div>
 					</CardBody>
-					<div class="relative h-[420px] overflow-clip sm:hidden lg:block lg:h-[480px] lg:flex-1">
+					<div class="relative h-[420px] overflow-hidden sm:hidden lg:block lg:h-[480px] lg:flex-1">
 						<img
 							src={communityCloud.src}
 							width={communityCloud.width}
 							height={communityCloud.height}
 							alt=""
-							class="absolute left-16 top-8 max-w-none"
+							class="absolute left-16 top-8 h-[150%] w-[150%] max-w-none object-contain object-left-top"
 							loading="lazy"
 							decoding="async"
 						/>

@@ -1,0 +1,71 @@
+---
+import Card from "../Card.astro"
+import CardBody from "../CardBody.astro"
+import CardLabel from "../CardLabel.astro"
+---
+
+<Card className="mx-auto max-w-2xl">
+	<CardBody>
+		<CardLabel>% Sites Passing INP</CardLabel>
+		<canvas id="chart-cwv-inp"></canvas>
+	</CardBody>
+</Card>
+
+<script>
+	import Chart from "chart.js/auto"
+
+	Chart.defaults.borderColor = "#545864"
+	Chart.defaults.color = "#bdbfc7"
+	Chart.defaults.font.family = '"MD IO 0.5", monospace'
+	const data = [
+		{ framework: "Astro", val: 0.688144329896907 },
+		{ framework: "SvelteKit", val: 0.452887537993921 },
+		{ framework: "Gatsby", val: 0.389566708435006 },
+		{ framework: "Remix", val: 0.331337325349301 },
+		{ framework: "WordPress", val: 0.635697328986587 },
+		{ framework: "Next.js", val: 0.245211543372776 },
+		{ framework: "Nuxt", val: 0.303267168043398 },
+	]
+
+	new Chart(document.getElementById("chart-cwv-inp") as HTMLCanvasElement, {
+		type: "bar",
+		options: {
+			plugins: {
+				legend: {
+					display: false,
+				},
+			},
+			scales: {
+				y: {
+					max: 1,
+					ticks: {
+						format: {
+							style: "percent",
+							minimumFractionDigits: 0,
+							maximumFractionDigits: 1,
+						},
+					},
+				},
+			},
+		},
+		data: {
+			labels: data.map((row) => row.framework),
+			datasets: [
+				{
+					label: "% Sites Passing INP",
+					data: data.map((row) => row.val),
+					backgroundColor: [
+						"#5283EE",
+						"#5283EE",
+						"#5283EE",
+						"#5283EE",
+						"#66666A",
+						"#5283EE",
+						"#5283EE",
+					],
+					barPercentage: 0.5,
+				},
+			],
+		},
+	})
+</script>

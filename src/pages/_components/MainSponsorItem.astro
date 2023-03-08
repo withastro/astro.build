@@ -1,0 +1,17 @@
+---
+export type Props = {
+	href: string
+	caption: string
+}
+---
+
+<a
+	href={Astro.props.href}
+	rel="sponsored"
+	class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer"
+>
+	<figure class="flex h-full flex-col items-center justify-end gap-2">
+		<slot />
+		<figcaption class="body text-astro-gray-200">{Astro.props.caption}</figcaption>
+	</figure>
+</a>
