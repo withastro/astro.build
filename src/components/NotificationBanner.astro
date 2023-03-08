@@ -9,11 +9,12 @@ const { uid } = Astro.props
 <aside
 	id="notification-banner"
 	data-uid={uid}
-	class="relative w-full noise-underlay bg-blue-purple-gradient text-center body py-2"
+	class="relative w-full noise-underlay bg-blue-purple-gradient text-white text-center body py-2"
 >
 	<slot />
 	<button class="absolute h-full aspect-square right-0 top-0 flex items-center justify-center">
-		<XIcon class="h-5" />
+		<span class="sr-only">Hide banner</span>
+		<XIcon class="h-5" aria-hidden="true" />
 	</button>
 </aside>
 
