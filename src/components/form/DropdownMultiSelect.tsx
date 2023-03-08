@@ -55,7 +55,7 @@ export function DropdownMultiSelect(props: {
 			<summary
 				data-toggle
 				data-focus-target
-				class="[::-webkit-details-marker]:hidden flex cursor-pointer select-none list-none items-center p-3 leading-tight"
+				class="accordion flex cursor-pointer select-none list-none items-center p-3 leading-tight"
 			>
 				<div class="flex flex-1 flex-wrap gap-1">
 					<For

@@ -11,7 +11,7 @@ const { summary, class: className, ...attrs } = Astro.props
 
 <details class:list={["group", className]} {...attrs}>
 	<summary
-		class="code flex cursor-pointer list-none items-center justify-between text-astro-gray-200"
+		class="accordion code flex cursor-pointer list-none items-center justify-between text-astro-gray-200"
 	>
 		<span>{summary}</span>
 		<ChevronIcon
@@ -23,9 +23,3 @@ const { summary, class: className, ...attrs } = Astro.props
 		<slot />
 	</div>
 </details>
-
-<style>
-	summary::-webkit-details-marker {
-		display: none;
-	}
-</style>

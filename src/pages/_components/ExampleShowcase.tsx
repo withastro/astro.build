@@ -97,7 +97,7 @@ export default function ExampleShowcase() {
 									setCurrent(index())
 								}}
 							>
-								<summary class="heading-4 flex w-full cursor-pointer select-none  items-center justify-between">
+								<summary class="accordion heading-4 flex w-full cursor-pointer select-none items-center justify-between">
 									<span>{item.title}</span>
 									<div
 										aria-hidden="true"
