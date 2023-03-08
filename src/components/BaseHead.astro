@@ -1,7 +1,9 @@
 ---
 import Inter from "@fontsource/inter/files/inter-latin-variable-wghtOnly-normal.woff2"
+import "@fontsource/inter/variable.css"
 import smartypants from "smartypants"
 import siteInfo from "~/data/site-info"
+import "~/styles/fonts.css"
 import Favicon from "./Favicon.astro"
 import SEO from "./SEO.astro"
 
@@ -58,7 +60,7 @@ const resolvedImage = {
 <!-- Font preloads -->
 <link
 	rel="preload"
-	href="https://fonts-cdn.astro.build/Obviously/Obviously Normal/Web/Obviously-Regular.woff2"
+	href="/fonts/Obviously/Obviously Normal/Web/Obviously-Regular.woff2"
 	as="font"
 	type="font/woff2"
 	crossorigin
@@ -66,10 +68,14 @@ const resolvedImage = {
 
 <link
 	rel="preload"
-	href="https://fonts-cdn.astro.build/MD IO/Web/MDIO0.5-Regular.woff2"
+	href="/fonts/MD IO/Web/MDIO0.5-Regular.woff2"
 	as="font"
 	type="font/woff2"
 	crossorigin
 />
 
 <link rel="preload" href={Inter} as="font" type="font/woff2" crossorigin />
+
+<!-- image preloads -->
+
+<link rel="preload" as="image" href="/assets/noise.png" />
