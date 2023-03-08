@@ -62,7 +62,7 @@ export const collections = {
 If the image that you reference in your frontmatter doesn't exist, Astro will let you know. You can refine the schema even further to check for things like image dimensions and file extension:
 
 ```js
-cover: image().refine((img) => img.width === 800 && image.height === 600, {
+cover: image().refine((img) => img.width === 800 && img.height === 600, {
 	message: "Cover needs to be 800x600 pixels!",
 })
 ```
