@@ -1,0 +1,55 @@
+---
+import XIcon from "~/icons/XIcon.jsx"
+export type Props = {
+	uid: string
+}
+const { uid } = Astro.props
+---
+
+<aside
+	id="notification-banner"
+	data-uid={uid}
+	class="relative w-full noise-underlay bg-blue-purple-gradient text-center body py-2"
+>
+	<slot />
+	<button class="absolute h-full aspect-square right-0 top-0 flex items-center justify-center">
+		<XIcon class="h-5" />
+	</button>
+</aside>
+
+<style>
+	aside :global(a) {
+		@apply underline hover:text-astro-gray-200;
+	}
+</style>
+
+<script is:inline>
+	// inline function to ensure it executes immediately
+	;(function () {
+		const banner = document.getElementById("notification-banner")
+		if (!banner) {
+			return
+		}
+		const uid = banner.dataset.uid
+		if (!uid) {
+			return
+		}
+		const key = `astro-banner-${uid}`
+		const removeBanner = () => banner.parentElement.removeChild(banner)
+		if (localStorage.getItem(key) === "closed") {
+			// banner was already closed previously
+			removeBanner()
+		} else {
+			const button = banner.querySelector("button")
+			button.addEventListener(
+				"click",
+				() => {
+					// save the close preference and remove the banner
+					localStorage.setItem(key, "closed")
+					removeBanner()
+				},
+				{ once: true },
+			)
+		}
+	})()
+</script>
