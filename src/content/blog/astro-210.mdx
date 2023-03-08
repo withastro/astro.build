@@ -25,19 +25,22 @@ Astro 2.1 is available on npm today. Run `npm i astro@latest` to upgrade an exis
 
 ## Built-in Image Support
 
-Astro 2.1 brings experimental support for built-in image handling and optimization to Astro. To enable it in your project, run Astro with the `--experimental-assets` flag or set the `experimental.assets` boolean flag in your `astro.config.js` file.
+Astro 2.1 brings experimental support for built-in image optimization to Astro. To enable it in your project, run Astro with the `--experimental-assets` flag or set the `experimental.assets` boolean flag in your Astro config file.
 
-If you're already familiar with our original `@astrojs/image` integration, Astro's new built-in `<Image>` component should feel familiar but with some notable improvements. You can now adjust the size of the image using the `width` and `height` props (without changing its aspect ratio) and control the level of image optimization using the new `quality` prop.
+If you're already familiar with our original `@astrojs/image` integration, Astro's new built-in `<Image>` component should feel familiar but with some notable improvements. You can now adjust the size of the image using the `width` and `height` props without changing its aspect ratio and control the level of image optimization using the new `quality` prop.
 
 ```astro
 ---
 import { Image } from "astro:asset"
 import penguin from "~/assets/penguin.png"
 ---
+
 <Image src={penguin} quality="high" alt="a high-quality penguin" />
 ```
 
-The resulting image will be automatically optimized for you to a modern web format, for maximum performance with minimum [Culminative Layout Shift (CLS)](https://web.dev/cls/). You can also connect this to an production image CDN like [Cloudinary](https://cloudinary.com/) or a host like [Vercel](https://vercel.com/) to leverage their image optimization services instead.
+The resulting image will be automatically optimized for you in a modern web format, for maximum performance with minimum [Culminative Layout Shift (CLS)](https://web.dev/cls/).
+
+Additionally the built-in image support can be swapped out for another provider, allowing you to connect this to an production image CDN like [Cloudinary](https://cloudinary.com/) or a host like [Vercel](https://vercel.com/) to leverage their image optimization services instead.
 
 Astro 2.1 also answers one of our most requested features coming out of the original 2.0 launch: **image handling inside of content collections.** A new `image()` schema helper is now available from the Content Collections API that lets you define images in your frontmatter schema.
 
@@ -70,15 +73,15 @@ To try it for yourself, check out the migration instructions in our new [Assets 
 
 <BlogContentImage src={markdoc} alt="The logo for the Markdoc project" />
 
-A new experimental [Markdoc](https://markdoc.dev/) integration has also been published alongside Astro 2.1. You can add `@astrojs/markdoc` to your project today by running `npx astro add markdoc` in your project directory. 
+A new experimental [Markdoc](https://markdoc.dev/) integration has also been published alongside Astro 2.1. You can add `@astrojs/markdoc` to your project today by running `npx astro add markdoc` in your project directory.
 
-[Markdoc](https://markdoc.dev/) is a promising new content format developed by [Stripe](https://stripe.com/) when they needed something that could match their scale. While we still love MDX for Astro, it's not uncommon for our users to see a noticable slowdown when processing a large number of MDX files. 
+[Markdoc](https://markdoc.dev/) is a promising new content format developed by [Stripe](https://stripe.com/) when they needed something that could match their scale. While we still love MDX for Astro, it's not uncommon for our users to see a noticable slowdown when processing a large number of MDX files.
 
 As part of our own investigation, we built a performance benchmark to compare Markdoc build performance inside of Astro against our existing content formats: Markdown and MDX. These tests show exciting improvements, with [up to 3x faster builds](https://github.com/withastro/roadmap/pull/508#issuecomment-1458762554) over MDX rendering static content and islands of interactivity.
 
 Once the `@astrojs/markdoc` integration has been added to your project, Markdoc becomes available exclusively inside of [Content Collections](https://docs.astro.build/en/guides/content-collections/) using the `.mdoc` file extension. You can mix Markdoc files alongside your existing Markdown and MDX files for a smooth, gradual migration process.
 
-Support for MDX is not going away. We are experimenting with both formats as we feel out what the future of content looks like in Astro. We'd love your feedback as we try to find the right balance between flexible syntax and scaling to larger sites. Especially if this is your first time trying Markdoc, give us your thoughts [in the ongoing Markdoc RFC.](https://github.com/withastro/roadmap/pull/508#issuecomment-1458762554)
+Support for MDX is not going away. We are experimenting with both formats as we feel out what the future of content looks like in Astro. We'd love your feedback as we try to find the right balance between flexible syntax and scaling to larger sites. Especially if this is your first time trying Markdoc, give us your thoughts [in the ongoing Markdoc RFC.](https://github.com/withastro/roadmap/pull/508)
 
 ## astro check --watch
 
@@ -89,7 +92,7 @@ Support for MDX is not going away. We are experimenting with both formats as we 
 
 `astro check` is a built-in Astro CLI command that runs TypeScript type checking on your project `.astro` files. It is often used to catch bugs and type errors in CI before merging changes or deploying your site.
 
-We heard from some users that they wanted this same feature for development, similar to `tsc --watch` in TypeScript. For some, getting errors in your editor is easy to miss, and it can be easy to forget to run `astro check` manually before pushing a change. 
+We heard from some users that they wanted this same feature for development, similar to `tsc --watch` in TypeScript. For some, getting errors in your editor is easy to miss, and it can be easy to forget to run `astro check` manually before pushing a change.
 
 In Astro 2.1, a new `--watch` flag has been added to the `astro check` command. This will spawn a long-running process that listens for file changes and reruns diagnostics on changed files. You can run this in parallel with your dev server with by adding a script to your `package.json`:
 
@@ -128,7 +131,9 @@ You could now use the new `InferGetStaticParamsType` and `InferGetStaticPropsTyp
 
 ```ts
 import { InferGetStaticParamsType, InferGetStaticPropsType } from "astro"
-export async function getStaticPaths() { /* ... */ }
+export async function getStaticPaths() {
+	/* ... */
+}
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
