@@ -249,7 +249,7 @@ module.exports = {
 					zIndex: -20,
 					position: "absolute",
 					inset: 0,
-					backgroundImage: `url("/assets/noise.png")`,
+					backgroundImage: `url("/assets/noise.webp")`,
 					opacity: 0.4,
 					mixBlendMode: "overlay",
 					pointerEvents: "none",
@@ -259,7 +259,7 @@ module.exports = {
 					"&::before": {
 						"@apply absolute inset-0 opacity-40 mix-blend-overlay -z-20": {},
 						content: "''",
-						backgroundImage: `url("/assets/noise.png")`,
+						backgroundImage: `url("/assets/noise.webp")`,
 					},
 				},
 
