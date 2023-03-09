@@ -15,7 +15,102 @@ const logos = [
 ---
 
 <section class="landing-section relative overflow-x-hidden pt-14 pb-40 sm:pt-20 lg:pt-32">
-	<div class="noise-underlay absolute inset-0"></div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+	<div
+		class="absolute noise-underlay top-0 bottom-[10%] w-[150%] -left-1/4 bg-blue-purple-gradient mask-radial-gradient"
+	>
+	</div>
+
+	<!-- <canvas class="absolute top-0 left-0 w-full h-full noise-underlay" id="color-blob"></canvas>
+	<script>
+		import { getElement } from "~/helpers/dom.js"
+		import { raise } from "~/helpers/errors.js"
+
+		const canvas = getElement("#color-blob", HTMLCanvasElement)
+		const rect = canvas.getBoundingClientRect()
+		canvas.width = rect.width
+		canvas.height = rect.height
+
+		const context = canvas.getContext("2d") ?? raise("Could not get canvas context")
+
+		const gradient = context.createRadialGradient(110, 90, 0, 100, 100, 70)
+
+		gradient.addColorStop(0, "white")
+		gradient.addColorStop(1, "transparent")
+
+		context.fillStyle = gradient
+		context.beginPath()
+		context.ellipse(100, 100, 80, 80, 0, 0, Math.PI) //(20, 20, 160, 160)
+		context.fill()
+
+		// const radialGradient = context.createRadialGradient(100, 100, 100, 200, 200, 200)
+		// radialGradient.addColorStop(0, "red")
+		// radialGradient.addColorStop(1, "blue")
+		// context.fillStyle = radialGradient
+
+		// context.ellipse(
+		// 	canvas.width / 2,
+		// 	canvas.height / 2,
+		// 	canvas.width / 2,
+		// 	canvas.height / 2,
+		// 	0,
+		// 	0,
+		// 	Math.PI * 2,
+		// )
+
+		// const gradient = context.createLinearGradient(0, 0, canvas.width, canvas.height)
+		// gradient.addColorStop(0, "#3245FF")
+		// gradient.addColorStop(1, "#B845ED")
+
+		// // context.fillStyle = "linear-gradient(83.21deg, #3245FF 0%, #B845ED 100%)"
+		// context.fillStyle = gradient
+
+		// context.ellipse(
+		// 	canvas.width / 2,
+		// 	canvas.height / 2,
+		// 	canvas.width / 2,
+		// 	canvas.height / 2,
+		// 	0,
+		// 	0,
+		// 	Math.PI * 2,
+		// )
+	</script> -->
+
 	<PageTitleBlock
 		lg
 		body="Astro is the all-in-one web framework designed for speed. Pull your content from anywhere and deploy everywhere, all powered by your favorite UI components and libraries."
@@ -57,18 +152,3 @@ const logos = [
 		</div>
 	</div>
 </section>
-
-<style>
-	section::before {
-		position: absolute;
-		content: "";
-		z-index: -1;
-		top: 0%;
-		bottom: 10%;
-		width: 150%;
-		left: -25%;
-		background: url(/assets/noise.webp) repeat, linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		background-blend-mode: overlay;
-		mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 70%);
-	}
-</style>

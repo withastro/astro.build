@@ -249,17 +249,17 @@ module.exports = {
 					zIndex: -20,
 					position: "absolute",
 					inset: 0,
-					backgroundImage: `url("/assets/noise.webp")`,
+					// backgroundImage: `url("/assets/noise.webp")`,
 					opacity: 0.4,
-					mixBlendMode: "overlay",
+					// mixBlendMode: "overlay",
 					pointerEvents: "none",
 				},
 				".noise-panel": {
 					"@apply relative isolate border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
 					"&::before": {
-						"@apply absolute inset-0 opacity-40 mix-blend-overlay -z-20": {},
+						"@apply absolute inset-0 opacity-40 -z-20": {},
 						content: "''",
-						backgroundImage: `url("/assets/noise.webp")`,
+						// backgroundImage: `url("/assets/noise.webp")`,
 					},
 				},
 
@@ -279,7 +279,7 @@ module.exports = {
 					imageRendering: "pixelated",
 
 					// https://stackoverflow.com/a/9670876/1332403
-					maskImage: `linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)`,
+					// maskImage: `linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)`,
 				},
 			})
 		}),
