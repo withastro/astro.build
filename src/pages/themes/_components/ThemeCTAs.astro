@@ -8,11 +8,6 @@ export type Props = HTMLAttributes<"div"> & {
 }
 
 const { theme, class: className, ...attrs } = Astro.props
-
-const netlifyUrl =
-	theme.data.repoUrl &&
-	typeof theme.data.stars !== "undefined" &&
-	`https://app.netlify.com/start/deploy?repository=${theme.data.repoUrl}`
 ---
 
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>
