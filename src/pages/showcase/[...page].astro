@@ -54,7 +54,11 @@ const description = "Explore what's possible with Astro and get inspired for you
 						<li class:list={{ "md:col-span-2 md:row-span-2": site.data.highlight }}>
 							<ShowcaseCard site={site} />
 						</li>
-						{i === 5 && <SubmitSite class="md:col-span-2 lg:col-span-3" />}
+						{i === 5 && (
+							<li class="md:col-span-2 lg:col-span-3">
+								<SubmitSite />
+							</li>
+						)}
 					</>
 				))
 			}
