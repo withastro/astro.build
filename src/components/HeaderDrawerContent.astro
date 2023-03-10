@@ -11,17 +11,17 @@ import SocialLinks from "./SocialLinks.astro"
 	class="heading-3 flex flex-col divide-y divide-astro-gray-500 pb-12 text-left [&>*]:p-6"
 >
 	<a href="https://docs.astro.build/" class="link"> Docs</a>
-	<a href="/showcase/" class="link"> Showcase</a>
+	<a href="/showcase/" rel="prefetch" class="link"> Showcase</a>
 	<details class="group">
 		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
 			Resources
 			<ChevronIcon class="inline-block rotate-0 transition-transform group-open:-rotate-180" />
 		</summary>
 		<div class="mt-4 flex flex-col gap-4 text-2xl font-light">
-			<a href="/themes/" class="link flex items-center gap-4">
+			<a href="/themes/" rel="prefetch" class="link flex items-center gap-4">
 				<PaletteIcon /> Themes
 			</a>
-			<a href="/integrations/" class="link flex items-center gap-4">
+			<a href="/integrations/" rel="prefetch" class="link flex items-center gap-4">
 				<LayersIcon /> Integrations
 			</a>
 			<a
@@ -32,8 +32,8 @@ import SocialLinks from "./SocialLinks.astro"
 			</a>
 		</div>
 	</details>
-	<a href="/about/" class="link"> About</a>
-	<a href="/blog/" class="link"> Blog</a>
+	<a href="/about/" rel="prefetch" class="link"> About</a>
+	<a href="/blog/" rel="prefetch" class="link"> Blog</a>
 	<div class="flex flex-col gap-6">
 		<SocialLinks />
 		<a href="https://docs.astro.build/" class="button-primary"> Get Started</a>
