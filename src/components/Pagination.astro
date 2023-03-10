@@ -35,7 +35,7 @@ const collapsedPages = collapseRange(page, pages)
 		{
 			page.url.prev && (
 				<li class="prev rounded-full border border-white">
-					<a href={page.url.prev} class="flex h-10 w-10 items-center justify-center">
+					<a href={page.url.prev} rel="prefetch" class="flex h-10 w-10 items-center justify-center">
 						<LeftArrowIcon aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`} />
 					</a>
 				</li>
@@ -49,6 +49,7 @@ const collapsedPages = collapseRange(page, pages)
 					) : (
 						<a
 							href={link.href}
+							rel="prefetch"
 							class:list={[
 								"relative rounded-md w-10 h-10 flex items-center justify-center border border-transparent transition-colors duration-150",
 								link.pageNum !== page.currentPage && "hover:border-white focus:border-white",
@@ -67,7 +68,7 @@ const collapsedPages = collapseRange(page, pages)
 		{
 			page.url.next && (
 				<li class="next ease rounded-full border border-white transition-colors duration-150">
-					<a href={page.url.next} class="flex h-10 w-10 items-center justify-center">
+					<a href={page.url.next} rel="prefetch" class="flex h-10 w-10 items-center justify-center">
 						<RightArrowIcon aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`} />
 					</a>
 				</li>
