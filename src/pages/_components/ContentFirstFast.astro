@@ -25,30 +25,27 @@ import LandingSectionText from "./LandingSectionText.astro"
 
 <style>
 	section::before {
-		position: absolute;
+		@apply absolute bg-blue-green-gradient mask-radial-gradient z-noise-underlay;
 		content: "";
-		z-index: -1;
 		top: 15%;
 		height: 60%;
 		width: 150%;
 		left: -25%;
-		background: url(/assets/noise.webp) repeat, linear-gradient(247.23deg, #4af2c8 0%, #2f4cb3 100%);
-		background-blend-mode: overlay;
-		mask-image: radial-gradient(rgba(0, 0, 0, 0.8), transparent 70%);
 	}
 
 	@media screen(md) {
 		section::before {
-			left: 25%;
+			left: 10%;
 			top: 20%;
 			height: 80%;
-			mask-image: radial-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6) 30%, transparent 65%);
 		}
 	}
 
 	@media screen(lg) {
 		section::before {
-			top: 15%;
+			top: 5%;
+			left: 15%;
+			height: 90%;
 		}
 	}
 
@@ -62,7 +59,7 @@ import LandingSectionText from "./LandingSectionText.astro"
 
 	@media (min-width: 1920px) {
 		section::before {
-			width: 67%;
+			width: 60%;
 			left: 35%;
 			height: 90%;
 		}

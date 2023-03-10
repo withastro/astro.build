@@ -67,23 +67,18 @@ const description = `Astro is free, open source software. In 2022, we formed The
 	}
 
 	.backgrounds::after {
-		@apply absolute w-full right-0;
+		@apply absolute bg-red-pink-gradient mask-radial-gradient z-noise-underlay;
 		content: "";
-		z-index: -1;
 		top: 25%;
 		height: 150%;
 		width: 150%;
 		left: -25%;
-		background: url(/assets/noise.webp) repeat, linear-gradient(66.77deg, #d83333 0%, #f041ff 100%);
-		background-blend-mode: overlay;
-		mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 70%);
 	}
 
 	@media screen(lg) {
 		.backgrounds::after {
 			left: 0%;
 			width: 100%;
-			mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 60%);
 		}
 	}
 </style>

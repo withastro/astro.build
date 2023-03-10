@@ -14,6 +14,10 @@ module.exports = {
 					"50%": { transform: "translate3d(0px, 8px, 0)" },
 				},
 			},
+			zIndex: {
+				noise: -20,
+				"noise-underlay": -30,
+			},
 			boxShadow: {
 				xs: "0px 1px 1px rgba(24, 24, 27, 0.06), 0px 0px 0px rgba(24, 24, 27, 0.08), 0px 0px 0px rgba(24, 24, 27, 0.08)",
 				sm: "0px 2px 1px rgba(24, 24, 27, 0.01), 0px 1px 1px rgba(24, 24, 27, 0.05), 0px 1px 1px rgba(24, 24, 27, 0.09), 0px 0px 0px rgba(24, 24, 27, 0.1), 0px 0px 0px rgba(24, 24, 27, 0.1);",
@@ -242,11 +246,11 @@ module.exports = {
 					backgroundColor: theme("colors.astro-gray.700"),
 				},
 				".noise-underlay": {
-					zIndex: -30,
+					zIndex: theme("zIndex.noise-underlay"),
 					position: "relative",
 				},
 				".noise": {
-					zIndex: -20,
+					zIndex: theme("zIndex.noise"),
 					position: "absolute",
 					inset: 0,
 					backgroundImage: `url("/assets/noise.webp")`,
@@ -257,7 +261,7 @@ module.exports = {
 				".noise-panel": {
 					"@apply relative isolate border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
 					"&::before": {
-						"@apply absolute inset-0 opacity-40 mix-blend-overlay -z-20": {},
+						"@apply absolute inset-0 opacity-40 mix-blend-overlay z-noise": {},
 						content: "''",
 						backgroundImage: `url("/assets/noise.webp")`,
 					},

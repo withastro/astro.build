@@ -47,7 +47,7 @@ const featuredPosts = [
 	image={{ src: "/og/blog.jpg", alt: "What’s new in the Astro ecosystem" }}
 >
 	<div class="lg:py-18 grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
-		<div class="bleed-full bg-grid absolute inset-0"></div>
+		<div class="bleed-full bg-grid mask-linear-gradient-to-b absolute inset-0"></div>
 		<div class="relative flex flex-col items-center gap-6 text-center">
 			<h1 class="heading-2 mx-auto max-w-screen-lg md:heading-1">Welcome, world</h1>
 			<p class="body text-astro-gray-200 md:body-large">
@@ -103,9 +103,3 @@ const featuredPosts = [
 		</div>
 	</SidebarLayout>
 </Layout>
-
-<style>
-	.bg-grid {
-		mask-image: linear-gradient(to bottom, white 0%, white 33%, transparent 90%);
-	}
-</style>

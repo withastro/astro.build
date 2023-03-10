@@ -60,15 +60,18 @@ const logos = [
 
 <style>
 	section::before {
-		position: absolute;
+		@apply absolute mask-radial-gradient bg-blue-purple-gradient z-noise-underlay opacity-70;
 		content: "";
-		z-index: -1;
-		top: 0%;
-		bottom: 10%;
-		width: 150%;
-		left: -25%;
-		background: url(/assets/noise.webp) repeat, linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		background-blend-mode: overlay;
-		mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 70%);
+		top: 10%;
+		bottom: 0%;
+		width: 200%;
+		left: -50%;
+	}
+
+	@media screen(xl) {
+		section::before {
+			width: 150%;
+			left: -25%;
+		}
 	}
 </style>

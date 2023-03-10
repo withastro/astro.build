@@ -113,12 +113,10 @@ const images = await resolveAllImages(theme)
 	}
 
 	.related::before {
-		@apply absolute w-full aspect-square bg-repeat;
+		@apply absolute w-full h-full aspect-square bg-repeat mask-linear-gradient-to-b z-noise-underlay;
 		content: "";
 		background-size: 20px 20px;
 		background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
 			linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
-		mask-image: linear-gradient(to bottom, white, transparent);
-		z-index: -1;
 	}
 </style>

@@ -32,22 +32,17 @@ import houston from "../_assets/houston.webp"
 
 <style>
 	section::before {
-		position: absolute;
+		@apply absolute bg-blue-green-gradient mask-radial-gradient z-noise-underlay;
 		content: "";
-		z-index: -10;
 		top: 25%;
 		height: 150%;
 		width: 150%;
 		left: -25%;
-		background: url(/assets/noise.webp) repeat, linear-gradient(247.23deg, #4af2c8 0%, #2f4cb3 100%);
-		background-blend-mode: overlay;
-		mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 70%);
 	}
 	@media screen(lg) {
 		section::before {
 			left: 0%;
 			width: 100%;
-			mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 60%);
 		}
 	}
 </style>
