@@ -26,7 +26,12 @@ const { ...head } = Astro.props
 			<NotificationBanner uid="astro-210">
 				<a href="/blog/astro-210/" rel="prefetch">Astro version 2.1 just shipped!</a>
 			</NotificationBanner>
-			<div id="nav" class="sticky top-0 z-20 max-h-screen" data-persist>
+			<div
+				id="nav"
+				style={{ "view-transition-name": "nav" }}
+				class="sticky top-0 z-20 max-h-screen"
+				data-persist
+			>
 				<Header>
 					<HeaderNav />
 					<HeaderDrawerContent slot="drawer" />
@@ -71,7 +76,7 @@ const { ...head } = Astro.props
 						)
 					}
 					return Promise.race([
-						new Promise((resolve) => setTimeout(resolve, 100)),
+						new Promise((resolve) => setTimeout(resolve, 200)),
 						Promise.all(promises),
 					])
 				},

@@ -25,6 +25,7 @@ const image = await resolveCoverImage(post)
 		{
 			image && (
 				<img
+					style={{ "view-transition-name": `blog-hero-${post.slug}` }}
 					src={image.src}
 					width={image.width}
 					height={image.height}
