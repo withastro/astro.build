@@ -57,10 +57,23 @@ const { ...head } = Astro.props
 		</style>
 		<script>
 			import listen from "micromorph/nav"
+			const cache = new Set()
 			listen({
 				beforeDiff(doc) {
-					const styles = Array.from(doc.querySelectorAll('link[rel="stylesheet"]'))
-					console.log(styles.map((style) => style.getAttribute("href")))
+					const promises = []
+					for (const { href } of doc.querySelectorAll('link[rel="stylesheet"]')) {
+						if (cache.has(href)) continue
+
+						promises.push(
+							fetch(new URL(href, window.location.toString())).then((res) => {
+								cache.add(href)
+							}),
+						)
+					}
+					return Promise.race([
+						new Promise((resolve) => setTimeout(resolve, 100)),
+						Promise.all(promises),
+					])
 				},
 			})
 		</script>
