@@ -57,7 +57,12 @@ const { ...head } = Astro.props
 		</style>
 		<script>
 			import listen from "micromorph/nav"
-			listen()
+			listen({
+				beforeDiff(doc) {
+					const styles = Array.from(doc.querySelectorAll('link[rel="stylesheet"]'))
+					console.log(styles.map((style) => style.getAttribute("href")))
+				},
+			})
 		</script>
 	</body>
 </html>
