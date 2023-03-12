@@ -91,6 +91,7 @@ export default function ExampleShowcase() {
 						const details = (
 							<details
 								class="group noise-panel p-4 text-left"
+								open={index() === 0}
 								onClick={(event) => {
 									if (event.target.localName === "a") return
 									event.preventDefault()

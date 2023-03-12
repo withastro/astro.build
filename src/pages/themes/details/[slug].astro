@@ -57,7 +57,11 @@ const images = await resolveAllImages(theme)
 		}
 		<div class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x">
 			<section class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:py-10 lg:px-20">
-				<a href="/themes/" class="flex items-center gap-2 self-start text-sm text-astro-gray-200">
+				<a
+					href="/themes/"
+					rel="prefetch"
+					class="flex items-center gap-2 self-start text-sm text-astro-gray-200"
+				>
 					<LeftArrowIcon aria-hidden="true" />
 					<span class="pr-2">Back to themes</span>
 				</a>
@@ -88,7 +92,7 @@ const images = await resolveAllImages(theme)
 					class="flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between"
 				>
 					<h2 class="heading-4 md:heading-3">Other themes to consider</h2>
-					<a href="/themes/" class="button-outline button-small hidden md:flex">
+					<a href="/themes/" rel="prefetch" class="button-outline button-small hidden md:flex">
 						<span>View more</span>
 						<span class="sr-only">themes</span>
 					</a>
@@ -96,7 +100,7 @@ const images = await resolveAllImages(theme)
 				<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
 					{relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
 				</CardGrid>
-				<a href="/themes/" class="button-outline button-small md:hidden">
+				<a href="/themes/" rel="prefetch" class="button-outline button-small md:hidden">
 					<span>View more</span>
 					<span class="sr-only">themes</span>
 				</a>

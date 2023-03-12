@@ -1,37 +1,40 @@
-import clsx from "clsx";
-import { createEffect, createSignal, JSX, onCleanup, onMount, splitProps } from "solid-js";
+import clsx from "clsx"
+import { createEffect, createSignal, JSX, onCleanup, onMount, splitProps } from "solid-js"
 
 export default function Collapse(
 	props: { children: JSX.Element; isOpen: boolean } & JSX.IntrinsicElements["div"],
 ) {
 	const [, divProps] = splitProps(props, ["children", "isOpen"])
+	const [contentHeight, setContentHeight] = createSignal()
 
-	const inner = (<div>{props.children}</div>) as HTMLElement
+	let outer: HTMLElement | undefined
+	let inner: HTMLElement | undefined
 
-	const [contentHeight, setContentHeight] = createSignal(inner.clientHeight)
-
-	const outer = (
-		<div {...divProps} class={clsx("relative overflow-hidden transition-[height]", divProps.class)}>
-			{inner}
-		</div>
-	) as HTMLElement
-
-	const ro = new ResizeObserver(([entry]) => {
-		setContentHeight(entry.contentRect.height)
-	})
-	ro.observe(inner)
-
-	onCleanup(() => {
-		ro.disconnect()
+	createEffect(() => {
+		const ro = new ResizeObserver(([entry]) => {
+			setContentHeight(entry.contentRect.height)
+		})
+		ro.observe(inner!)
+		onCleanup(() => {
+			ro.disconnect()
+		})
 	})
 
 	onMount(() => {
-		inner.style.position = "absolute"
+		inner!.style.position = "absolute"
 	})
 
 	createEffect(() => {
-		outer.style.height = props.isOpen ? `${contentHeight()}px` : "0"
+		outer!.style.height = props.isOpen ? contentHeight() + "px" : "0px"
 	})
 
-	return outer
+	return (
+		<div
+			{...divProps}
+			class={clsx("relative overflow-hidden transition-[height]", divProps.class)}
+			ref={(el) => (outer = el)}
+		>
+			<div ref={(el) => (inner = el)}>{props.children}</div>
+		</div>
+	)
 }

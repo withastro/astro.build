@@ -4,6 +4,7 @@ import fs from "node:fs"
 import image from "@astrojs/image"
 import mdx from "@astrojs/mdx"
 import netlify from "@astrojs/netlify/functions"
+import prefetch from "@astrojs/prefetch"
 import sitemap from "@astrojs/sitemap"
 import solidJs from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
@@ -22,6 +23,7 @@ export default defineConfig({
 		solidJs(),
 		mdx(),
 		sitemap(),
+		prefetch(),
 	],
 	markdown: {
 		shikiConfig: {

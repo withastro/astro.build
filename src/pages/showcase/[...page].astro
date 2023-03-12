@@ -4,6 +4,7 @@ import { CollectionEntry, getCollection } from "astro:content"
 import Pagination from "~/components/Pagination.astro"
 import MainLayout from "~/layouts/MainLayout.astro"
 import ShowcaseCard from "./_components/ShowcaseCard.astro"
+import SubmitSite from "./_components/SubmitSite.astro"
 
 export const prerender = true
 
@@ -46,12 +47,19 @@ const description = "Explore what's possible with Astro and get inspired for you
 	</div>
 
 	<div class="backgrounds grid-container relative">
-		<ul class="grid gap-5 sm:grid-flow-row-dense sm:grid-cols-2 lg:grid-cols-3">
+		<ul class="grid gap-5 md:grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3">
 			{
-				showcase.map((site) => (
-					<li class:list={{ "md:col-span-2 md:row-span-2": site.data.highlight }}>
-						<ShowcaseCard site={site} />
-					</li>
+				showcase.map((site, i) => (
+					<>
+						<li class:list={{ "md:col-span-2 md:row-span-2": site.data.highlight }}>
+							<ShowcaseCard site={site} />
+						</li>
+						{i === 5 && (
+							<li class="md:col-span-2 lg:col-span-3">
+								<SubmitSite />
+							</li>
+						)}
+					</>
 				))
 			}
 		</ul>

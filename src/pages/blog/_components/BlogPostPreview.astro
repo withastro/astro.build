@@ -15,7 +15,7 @@ const image = await resolveCoverImage(post)
 <article
 	class="border border-astro-gray-500 bg-astro-gray-600 p-5 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
 >
-	<a href={`/blog/${post.slug}/`} class="block outline-none">
+	<a href={`/blog/${post.slug}/`} rel="prefetch" class="block outline-none">
 		<header>
 			<time class="code text-astro-gray-200" datetime={post.data.publishDate.toISOString()}>
 				{format(post.data.publishDate, "MMMM d, yyyy")}
