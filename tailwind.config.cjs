@@ -280,9 +280,6 @@ module.exports = {
 					)} 1px, transparent 1px)`,
 					backgroundPosition: "top center",
 					imageRendering: "pixelated",
-
-					// https://stackoverflow.com/a/9670876/1332403
-					maskImage: `linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)`,
 				},
 			})
 		}),
