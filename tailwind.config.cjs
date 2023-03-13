@@ -254,14 +254,13 @@ module.exports = {
 					position: "absolute",
 					inset: 0,
 					backgroundImage: `url("/assets/noise.webp")`,
-					opacity: 0.4,
-					mixBlendMode: "overlay",
+					opacity: 0.15,
 					pointerEvents: "none",
 				},
 				".noise-panel": {
 					"@apply relative isolate border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
 					"&::before": {
-						"@apply absolute inset-0 opacity-40 mix-blend-overlay z-noise": {},
+						"@apply absolute inset-0 opacity-10 z-noise": {},
 						content: "''",
 						backgroundImage: `url("/assets/noise.webp")`,
 					},
