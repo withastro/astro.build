@@ -86,8 +86,10 @@ if (Astro.request.method === "POST") {
 	}
 
 	try {
-		const message = await executeDiscordWebhook(env.SUBMISSION_DISCORD_WEBHOOK_URL, {
-			threadId: env.SUBMISSION_DISCORD_WEBHOOK_THREAD_ID,
+		const { SUBMISSION_DISCORD_WEBHOOK_URL, SUBMISSION_DISCORD_WEBHOOK_THREAD_ID } = env()
+		
+		const message = await executeDiscordWebhook(SUBMISSION_DISCORD_WEBHOOK_URL, {
+			threadId: SUBMISSION_DISCORD_WEBHOOK_THREAD_ID,
 			content: `**New theme submission!**`,
 			files: [result.data.featuredImage, ...result.data.additionalImages],
 		})
@@ -123,8 +125,8 @@ if (Astro.request.method === "POST") {
 			theme.repoUrl = result.data.themeUrl
 		}
 
-		await editDiscordWebhookMessage(env.SUBMISSION_DISCORD_WEBHOOK_URL, message.id, {
-			threadId: env.SUBMISSION_DISCORD_WEBHOOK_THREAD_ID,
+		await editDiscordWebhookMessage(SUBMISSION_DISCORD_WEBHOOK_URL, message.id, {
+			threadId: SUBMISSION_DISCORD_WEBHOOK_THREAD_ID,
 			files: [
 				new File(
 					[
