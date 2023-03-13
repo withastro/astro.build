@@ -3,7 +3,7 @@ import ExampleShowcase from "./ExampleShowcase.jsx"
 import LandingSectionText from "./LandingSectionText.astro"
 ---
 
-<section class="landing-section relative overflow-hidden">
+<section class="landing-section relative overflow-x">
 	<LandingSectionText>
 		<Fragment slot="title">Content-focused</Fragment>
 		<Fragment slot="body">
@@ -16,8 +16,8 @@ import LandingSectionText from "./LandingSectionText.astro"
 			> APIs.
 		</Fragment>
 	</LandingSectionText>
-	<div class="relative mt-12 flex w-full items-center">
-		<div class="w-full overflow-hidden">
+	<div class="relative mt-12 flex w-full items-center overflow-hidden">
+		<div class="w-full">
 			<ExampleShowcase client:idle />
 		</div>
 	</div>
@@ -25,43 +25,12 @@ import LandingSectionText from "./LandingSectionText.astro"
 
 <style>
 	section::before {
-		@apply absolute bg-blue-green-gradient mask-radial-gradient z-noise-underlay;
+		@apply absolute z-noise-underlay blur-xl rounded-3xl w-2/3 max-w-screen-xl left-1/2 -translate-x-1/4 h-full top-1/2 -translate-y-1/3;
 		content: "";
-		top: 15%;
-		height: 60%;
-		width: 150%;
-		left: -25%;
-	}
-
-	@media screen(md) {
-		section::before {
-			left: 10%;
-			top: 20%;
-			height: 80%;
-		}
-	}
-
-	@media screen(lg) {
-		section::before {
-			top: 5%;
-			left: 15%;
-			height: 90%;
-		}
-	}
-
-	@media screen(2xl) {
-		section::before {
-			width: 100%;
-			left: 25%;
-			height: 80%;
-		}
-	}
-
-	@media (min-width: 1920px) {
-		section::before {
-			width: 60%;
-			left: 35%;
-			height: 90%;
-		}
+		background: radial-gradient(
+			rgba(100, 177, 203, 0.7),
+			rgba(100, 177, 203, 0.5) 40%,
+			transparent 80%
+		);
 	}
 </style>
