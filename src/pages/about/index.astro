@@ -164,30 +164,44 @@ const quotes = await Promise.all(
 
 <style>
 	.hero-graphic::after {
-		@apply absolute z-noise-underlay w-full h-full rounded-full inset-0 blur-xl;
+		@apply absolute mask-radial-gradient bg-blue-purple-gradient z-noise-underlay;
 		content: "";
-		background: rgba(119, 75, 247, 0.5);
+		width: 150%;
+		height: 150%;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
 	}
 
 	.quotes::before {
-		@apply absolute z-noise-underlay blur-xl rounded-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+		@apply absolute bg-blue-purple-gradient mask-radial-gradient z-noise-underlay;
 		content: "";
-		background: radial-gradient(
-			rgba(119, 75, 247, 0.6),
-			rgba(119, 75, 247, 0.4) 40%,
-			transparent 80%
-		);
 		width: 200%;
 		height: 150%;
+		left: -50%;
+		top: -35%;
 	}
 
 	.company::before {
-		@apply absolute blur-xl z-noise-underlay rounded-3xl w-full lg:w-3/4 max-w-screen-xl left-1/2 -translate-x-1/2 h-full bottom-0 translate-y-1/2;
+		@apply absolute bg-orange-yellow-gradient mask-radial-gradient z-noise-underlay;
 		content: "";
-		background: radial-gradient(
-			rgba(252, 178, 65, 0.7),
-			rgba(252, 178, 65, 0.5) 40%,
-			transparent 80%
-		);
+		top: 25%;
+		height: 150%;
+		width: 200%;
+		left: -50%;
+	}
+
+	@media screen(lg) {
+		.company::before {
+			left: -25%;
+			width: 150%;
+		}
+	}
+
+	@media screen(xl) {
+		.company::before {
+			width: 100%;
+			left: 0;
+		}
 	}
 </style>

@@ -32,13 +32,18 @@ import houston from "../_assets/houston.webp"
 
 <style>
 	section::before {
-		@apply absolute blur-xl z-noise-underlay rounded-3xl w-full lg:w-3/4 max-w-screen-xl left-1/2 -translate-x-1/2 h-full lg:h-3/4 bottom-0 translate-y-1/2;
+		@apply absolute bg-blue-green-gradient mask-radial-gradient z-noise-underlay;
 		content: "";
-		background: radial-gradient(
-			rgba(100, 177, 203, 0.7),
-			rgba(100, 177, 203, 0.5) 40%,
-			transparent 80%
-		);
+		top: 25%;
+		height: 150%;
+		width: 150%;
+		left: -25%;
+	}
+	@media screen(lg) {
+		section::before {
+			left: 0%;
+			width: 100%;
+		}
 	}
 </style>
 
