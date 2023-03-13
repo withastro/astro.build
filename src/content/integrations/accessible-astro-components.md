@@ -10,6 +10,6 @@ npmUrl: "https://www.npmjs.com/package/accessible-astro-components"
 image: "/assets/integrations/accessible-astro-components.png"
 repoUrl: "https://github.com/markteekman/accessible-astro-components"
 featured: 16
-homepageUrl: "https://components.accessible-astro.dev/"
+homepageUrl: "https://accessible-astro.dev/accessible-components/"
 downloads: 994
 ---
