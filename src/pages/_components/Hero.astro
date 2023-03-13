@@ -60,18 +60,12 @@ const logos = [
 
 <style>
 	section::before {
-		@apply absolute mask-radial-gradient bg-blue-purple-gradient z-noise-underlay opacity-70;
+		@apply absolute z-noise-underlay w-full h-4/5 max-w-screen-2xl top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 blur-xl rounded-3xl;
 		content: "";
-		top: 10%;
-		bottom: 0%;
-		width: 200%;
-		left: -50%;
-	}
-
-	@media screen(xl) {
-		section::before {
-			width: 150%;
-			left: -25%;
-		}
+		background: radial-gradient(
+			rgba(119, 75, 247, 0.6),
+			rgba(119, 75, 247, 0.4) 40%,
+			transparent 80%
+		);
 	}
 </style>
