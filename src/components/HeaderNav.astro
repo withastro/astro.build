@@ -4,7 +4,7 @@ import ResourcesMenu from "./ResourcesMenu.astro"
 import SocialLinks from "./SocialLinks.astro"
 ---
 
-<a href="/" title="Home" data-home-link>
+<a href="/" rel="prefetch" title="Home" data-home-link>
 	<AstroLogo />
 </a>
 
@@ -18,10 +18,10 @@ import SocialLinks from "./SocialLinks.astro"
 
 <div class="ml-16 hidden shrink flex-row items-center gap-16 lg:flex">
 	<a href="https://docs.astro.build" class="link">Documentation</a>
-	<a href="/showcase/" class="link">Showcase</a>
+	<a href="/showcase/" rel="prefetch" class="link">Showcase</a>
 	<ResourcesMenu />
-	<a href="/blog/" class="link">Blog</a>
-	<a href="/about/" class="link">About</a>
+	<a href="/blog/" rel="prefetch" class="link">Blog</a>
+	<a href="/about/" rel="prefetch" class="link">About</a>
 </div>
 
 <div class="flex-1"></div>
