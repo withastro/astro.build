@@ -15,7 +15,7 @@ export const prerender = true
 	<MainLayout image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}>
 		<Hero />
 		<div class="relative">
-			<div class="noise-underlay bg-grid absolute inset-0"></div>
+			<div class="bg-grid"></div>
 			<div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
 				<FullSpeedAhead />
 				<ContentFirstFast />
@@ -26,3 +26,17 @@ export const prerender = true
 		<Sponsors />
 	</MainLayout>
 </Sprite.Provider>
+
+<style>
+	.bg-grid {
+		mask-image: linear-gradient(
+			transparent,
+			white 5%,
+			white 25%,
+			transparent 40%,
+			white 55%,
+			white 85%,
+			transparent 100%
+		);
+	}
+</style>

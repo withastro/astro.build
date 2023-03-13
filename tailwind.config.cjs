@@ -271,15 +271,9 @@ module.exports = {
 				},
 
 				".bg-grid": {
+					"@apply absolute inset-0 bg-repeat z-noise-underlay": {},
 					// https://stackoverflow.com/a/32861765/1332403
-					backgroundSize: "20px 20px",
-					backgroundImage: `linear-gradient(to right, ${theme(
-						"colors.astro-gray.600",
-					)} 1px, transparent 1px),\n    linear-gradient(to bottom, ${theme(
-						"colors.astro-gray.600",
-					)} 1px, transparent 1px)`,
-					backgroundPosition: "top center",
-					imageRendering: "pixelated",
+					backgroundImage: `url("/assets/bg-grid.webp")`,
 				},
 			})
 		}),
