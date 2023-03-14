@@ -1,6 +1,6 @@
 ---
 title: "Brightlight"
-description: "Brightlight is a an elegant UI KIt for your digital product."
+description: "Brightlight is a an elegant UI Kit for your digital product."
 image: "/src/content/themes/_images/brightlight-hero.webp"
 images:
   [
