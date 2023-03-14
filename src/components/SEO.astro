@@ -8,7 +8,7 @@ export type SEOMetadata = {
 	title: string
 	description: string
 	image: Image
-	canonicalURL?: URL | string
+	canonicalURL?: URL | string | null
 	locale?: string
 }
 export type OpenGraph = Partial<SEOMetadata> & {
@@ -58,14 +58,14 @@ const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/,
 
 <!-- Page Metadata -->
 <meta name="generator" content={Astro.generator} />
-<link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
+{canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />}
 <title>{title}</title>
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={og.title} />
 <meta property="og:type" content={og.type} />
-<meta property="og:url" content={ensureTrailingSlash(og.canonicalURL)} />
+{og.canonicalURL && <meta property="og:url" content={ensureTrailingSlash(og.canonicalURL)} />}
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />
