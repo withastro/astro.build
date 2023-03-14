@@ -24,8 +24,7 @@ tools:
 ---
 
 <p>
-  ✺ <strong>Brightligh UI kit</strong>
-  ━ An clean design that empowers you to efficiently create pages across
+  ✺ Brightligh UI kit ━ An clean design that empowers you to efficiently create pages across
   diverse categories and customize them to your preferences, facilitating the construction of a
   landing page or website within hours instead of months.
 </p>
