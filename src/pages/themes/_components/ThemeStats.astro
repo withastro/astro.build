@@ -26,7 +26,9 @@ const netlifyUrl =
 	<hr class="border-astro-gray-500" />
 	<div class="flex items-center justify-between">
 		<small class="code text-astro-gray-200">Created by</small>
-		<Avatar theme={theme} />
+		<a href={theme.data.author.url} target="_blank">
+			<Avatar theme={theme} />
+		</a>
 	</div>
 	{
 		netlifyUrl && (
