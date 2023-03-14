@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-head"
 repoUrl: "https://github.com/Destiner/astro-head"
 homepageUrl: "https://github.com/Destiner/astro-head#readme"
-downloads: 11
+downloads: 14
 ---

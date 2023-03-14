@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-convert"
 repoUrl: "https://github.com/Lightrix/astro-convert"
 homepageUrl: "https://github.com/Lightrix/astro-convert#readme"
-downloads: 6
+downloads: 3
 ---

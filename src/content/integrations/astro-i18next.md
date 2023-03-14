@@ -10,5 +10,7 @@ npmUrl: "https://www.npmjs.com/package/astro-i18next"
 repoUrl: "https://github.com/yassinedoghri/astro-i18next"
 featured: 17
 homepageUrl: "https://astro-i18next.yassinedoghri.com/"
-downloads: 9622
+downloads: 10727
+badges:
+  - "featured"
 ---

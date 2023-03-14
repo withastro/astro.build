@@ -1,7 +1,7 @@
 ---
 name: "@astrojs/partytown"
 title: "@astrojs/partytown"
-description: "Astro + Partytown integration"
+description: "Use Partytown to move scripts into a web worker in your Astro project"
 categories:
   - "css+ui"
   - "analytics"
@@ -13,5 +13,7 @@ image: "/assets/integrations/partytown.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 3
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/partytown/"
-downloads: 22083
+downloads: 27326
+badges:
+  - "featured"
 ---

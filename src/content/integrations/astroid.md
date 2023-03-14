@@ -7,6 +7,7 @@ categories:
   - "performance+seo"
 npmUrl: "https://www.npmjs.com/package/astroid"
 image: "/assets/integrations/astroid.png"
-homepageUrl: "https://github.com/xisli/astroid"
-downloads: 38
+homepageUrl: "https://www.npmjs.com/package/astroid"
+downloads: 26
+url: "https://github.com/xisli/astroid"
 ---

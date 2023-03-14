@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-template-outlet"
 homepageUrl: "https://www.npmjs.com/package/astro-template-outlet"
-downloads: 15
+downloads: 21
 ---

@@ -1,7 +1,7 @@
 ---
 name: "@astrojs/image"
 title: "@astrojs/image"
-description: "Load and transform images in your Astro site."
+description: "Load and transform images in your Astro site"
 categories:
   - "css+ui"
   - "official"
@@ -11,5 +11,7 @@ image: "/assets/integrations/image.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 12
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/image/"
-downloads: 51402
+downloads: 54764
+badges:
+  - "featured"
 ---
