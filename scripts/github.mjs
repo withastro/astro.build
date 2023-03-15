@@ -1,5 +1,3 @@
-import fetch from "node-fetch"
-
 if (!process.env.GITHUB_TOKEN) {
 	throw new Error("GITHUB_TOKEN env variable must be set to run.")
 }

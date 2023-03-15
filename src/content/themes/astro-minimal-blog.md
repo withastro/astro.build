@@ -12,7 +12,7 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/alexanderhodes/astro-minimal-blog"
 demoUrl: "https://sunny-arithmetic-1e866e.netlify.app/"
-stars: 12
+stars: 14
 tools:
   - "tailwind"
   - "mdx"

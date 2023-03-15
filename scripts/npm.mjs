@@ -1,5 +1,4 @@
 import { format, subDays } from "date-fns"
-import fetch from "node-fetch"
 
 async function fetchJson(url) {
 	const res = await fetch(url)
