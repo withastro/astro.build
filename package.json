@@ -12,10 +12,11 @@
     "lint:eslint": "eslint --ignore-path .gitignore --ext js,jsx,ts,tsx,mjs,cjs,astro .",
     "lint:ts": "astro sync && tsc --noEmit",
     "lint:astro": "astro check",
+    "lint:prettier": "prettier --plugin-search-dir=. --check .",
     "format": "run-s format:*",
-    "format:prettier": "prettier -w --plugin-search-dir=. .",
-    "format:eslint": "eslint --ignore-path .gitignore --ext js,jsx,ts,tsx,mjs,cjs,astro --fix .",
     "format:imports": "organize-imports-cli ./tsconfig.json",
+    "format:eslint": "eslint --ignore-path .gitignore --ext js,jsx,ts,tsx,mjs,cjs,astro --fix .",
+    "format:prettier": "prettier -w --plugin-search-dir=. .",
     "update:integrations": "node -r dotenv/config ./scripts/update-integrations.mjs",
     "update:themes": "node -r dotenv/config ./scripts/update-themes.mjs"
   },
@@ -67,6 +68,7 @@
     "organize-imports-cli": "^0.10.0",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.8.0",
+    "prettier-plugin-tailwindcss": "^0.2.4",
     "smartypants": "^0.1.6",
     "tiny-glob": "^0.2.9",
     "typescript": "^4.9.5"

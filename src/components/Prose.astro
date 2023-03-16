@@ -48,7 +48,7 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(p) {
-		@apply text-astro-gray-200 leading-prose;
+		@apply leading-prose text-astro-gray-200;
 	}
 
 	article :global(strong) {
@@ -56,7 +56,7 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(a:not([class])) {
-		@apply underline inline-block font-medium text-astro-pink-light;
+		@apply inline-block font-medium text-astro-pink-light underline;
 	}
 
 	article :global(a code) {
@@ -64,19 +64,19 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(code) {
-		@apply bg-astro-gray-500 text-astro-gray-100 px-2 mx-0.5 rounded-lg inline-block leading-6 align-baseline text-sm;
+		@apply mx-0.5 inline-block rounded-lg bg-astro-gray-500 px-2 align-baseline text-sm leading-6 text-astro-gray-100;
 	}
 
 	article :global(pre) {
-		@apply my-6 rounded-md px-5 py-3 border border-astro-gray-400 text-sm;
+		@apply my-6 rounded-md border border-astro-gray-400 px-5 py-3 text-sm;
 	}
 
 	article :global(pre code) {
-		@apply bg-inherit p-0 rounded-none text-inherit;
+		@apply rounded-none bg-inherit p-0 text-inherit;
 	}
 
 	article :global(blockquote) {
-		@apply border-l-4 p-6 border-astro-gray-400 space-y-2 md:space-y-4 bg-astro-gray-600 italic;
+		@apply space-y-2 border-l-4 border-astro-gray-400 bg-astro-gray-600 p-6 italic md:space-y-4;
 	}
 
 	article :global(ul, ol) {
@@ -100,11 +100,11 @@ const { class: className, ...attrs } = Astro.props
 	}
 
 	article :global(:is(img, video):not([class])) {
-		@apply max-w-full w-full mx-auto rounded-lg my-10 border border-astro-gray-500;
+		@apply mx-auto my-10 w-full max-w-full rounded-lg border border-astro-gray-500;
 	}
 
 	article :global(video + aside) {
-		@apply -my-6 italic px-3;
+		@apply -my-6 px-3 italic;
 	}
 
 	article :global(a :is(img, video):not([class])) {
