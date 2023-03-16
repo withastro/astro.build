@@ -1,6 +1,6 @@
 ---
 title: "Repeats Group"
-image: "/src/content/showcase/_images/repeats-group.webp"
+image: "showcase/repeats-group.png"
 url: "https://repeats-group.com/"
 categories: ["marketing"]
 ---

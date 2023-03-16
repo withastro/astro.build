@@ -1,6 +1,6 @@
 ---
 title: "NordVPN Social Responsibility"
-image: "/src/content/showcase/_images/nordvpn-social-responsibility.webp"
+image: "showcase/nordvpn-social-responsibility.png"
 url: "https://nordvpn.org/"
 categories: ["tech"]
 highlight: true

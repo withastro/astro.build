@@ -1,6 +1,6 @@
 ---
 title: "Be Radio Stereo"
-image: "/src/content/showcase/_images/be-radio.webp"
+image: "showcase/be-radio.png"
 url: "https://beradiostereo.com/"
 categories: ["marketing"]
 ---

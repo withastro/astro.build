@@ -1,6 +1,6 @@
 ---
 title: "Year Of"
-image: "/src/content/showcase/_images/year-of.webp"
+image: "showcase/year-of.png"
 url: "https://www.enjoyyearof.com/"
 categories: ["marketing", "e-commerce"]
 highlight: true

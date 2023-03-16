@@ -1,6 +1,6 @@
 ---
 title: "The Manual"
-image: "/src/content/showcase/_images/the-manual.webp"
+image: "showcase/the-manual.png"
 url: "https://psykip.vercel.app/"
 categories: ["other"]
 ---

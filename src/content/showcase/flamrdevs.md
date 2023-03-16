@@ -1,6 +1,6 @@
 ---
 title: "flamrdevs"
-image: "/src/content/showcase/_images/flamrdevs.webp"
+image: "showcase/flamrdevs.png"
 url: "https://flamrdevs.vercel.app/"
 categories: ["personal"]
 ---

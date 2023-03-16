@@ -1,6 +1,6 @@
 ---
 title: "The Firebase Blog"
-image: "/src/content/showcase/_images/firebase-blog.webp"
+image: "showcase/firebase-blog.png"
 url: "https://firebase.blog/"
 categories: ["tech"]
 highlight: true

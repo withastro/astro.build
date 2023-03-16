@@ -1,6 +1,6 @@
 ---
 title: "vanntile"
-image: "/src/content/showcase/_images/vanntile.webp"
+image: "showcase/vanntile.png"
 url: "https://vanntile.com/"
 categories: ["personal", "blog"]
 ---

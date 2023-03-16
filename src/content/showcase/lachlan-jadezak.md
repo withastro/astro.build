@@ -1,6 +1,6 @@
 ---
 title: "Lachlan Jadezak"
-image: "/src/content/showcase/_images/lachlan-jadezak.webp"
+image: "showcase/lachlan-jadezak.png"
 url: "https://jadezak.com/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Kathryn Bloomer Interiors"
-image: "/src/content/showcase/_images/kathryn-bloomer-interiors.webp"
+image: "showcase/kathryn-bloomer-interiors.png"
 url: "https://kathrynbloomerinteriors.com.au/"
 categories: ["marketing"]
 ---

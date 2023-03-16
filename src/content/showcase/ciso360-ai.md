@@ -1,6 +1,6 @@
 ---
 title: "CISO360.AI"
-image: "/src/content/showcase/_images/ciso360-ai.webp"
+image: "showcase/ciso360-ai.png"
 url: "https://ciso360.ai/"
 categories: ["marketing"]
 ---

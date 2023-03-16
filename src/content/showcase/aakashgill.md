@@ -1,6 +1,6 @@
 ---
 title: "Aakash Gill"
-image: "/src/content/showcase/_images/aakashgill.webp"
+image: "showcase/aakashgill.png"
 url: "https://aakashgill.in/"
 categories: ["personal"]
 ---

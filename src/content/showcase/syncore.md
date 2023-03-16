@@ -1,6 +1,6 @@
 ---
 title: "Syncore"
-image: "/src/content/showcase/_images/syncore.webp"
+image: "showcase/syncore.png"
 url: "https://synco.re/"
 categories: ["marketing"]
 ---

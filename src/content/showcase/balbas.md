@@ -1,6 +1,6 @@
 ---
 title: "Philip Balbas"
-image: "/src/content/showcase/_images/balbas.webp"
+image: "showcase/balbas.png"
 url: "https://balbas.io/"
 categories: ["personal"]
 ---

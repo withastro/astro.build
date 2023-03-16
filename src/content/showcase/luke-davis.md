@@ -1,6 +1,6 @@
 ---
 title: "Luke Davis"
-image: "/src/content/showcase/_images/luke-davis.webp"
+image: "showcase/luke-davis.png"
 url: "https://lukealexdavis.co.uk/"
 categories: ["personal"]
 ---

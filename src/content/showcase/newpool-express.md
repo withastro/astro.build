@@ -1,6 +1,6 @@
 ---
 title: "Newpool Express"
-image: "/src/content/showcase/_images/newpool-express.webp"
+image: "showcase/newpool-express.png"
 url: "https://www.piscine-newpoolexpress.com/"
 categories: ["marketing"]
 ---

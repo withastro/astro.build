@@ -1,6 +1,6 @@
 ---
 title: "UpNext.com.au"
-image: "/src/content/showcase/_images/up-next.webp"
+image: "showcase/up-next.png"
 url: "https://upnext.com.au/"
 categories: ["other"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Mr. Stukov - DIY Woodworking projects"
-image: "/src/content/showcase/_images/mr-stukov.webp"
+image: "showcase/mr-stukov.jpg"
 url: "https://mrstukov.com/"
 categories: ["personal"]
 ---

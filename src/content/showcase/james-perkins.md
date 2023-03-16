@@ -1,6 +1,6 @@
 ---
 title: "James Perkins"
-image: "/src/content/showcase/_images/james-perkins.webp"
+image: "showcase/james-perkins.png"
 url: "https://jamesperkins.dev/"
 categories: ["personal"]
 ---

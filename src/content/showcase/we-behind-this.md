@@ -1,6 +1,6 @@
 ---
 title: "We Behind this"
-image: "/src/content/showcase/_images/we-behind-this.webp"
+image: "showcase/we-behind-this.jpg"
 url: "https://webehindthis.com/"
 categories: ["other"]
 ---

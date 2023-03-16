@@ -1,6 +1,6 @@
 ---
 title: "Okiki Ojo"
-image: "/src/content/showcase/_images/okikio.webp"
+image: "showcase/okikio.png"
 url: "https://okikio.dev/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "React Awesome Reveal"
-image: "/src/content/showcase/_images/react-awesome-reveal.webp"
+image: "showcase/react-awesome-reveal.png"
 url: "https://react-awesome-reveal.morello.dev/"
 categories: ["tech"]
 ---

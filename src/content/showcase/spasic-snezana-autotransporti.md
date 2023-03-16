@@ -1,6 +1,6 @@
 ---
 title: "Spasić Snežana Autotrasporti"
-image: "/src/content/showcase/_images/spasic-snezana-autotransporti.webp"
+image: "showcase/spasic-snezana-autotransporti.png"
 url: "https://www.snezanaspasicautotrasporti.it/"
 categories: ["marketing"]
 ---

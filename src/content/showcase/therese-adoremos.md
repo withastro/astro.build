@@ -1,6 +1,6 @@
 ---
 title: "Therese Adoremos"
-image: "/src/content/showcase/_images/therese-adoremos.webp"
+image: "showcase/therese-adoremos.png"
 url: "https://www.thereseadoremos.com"
 categories: ["personal"]
 ---

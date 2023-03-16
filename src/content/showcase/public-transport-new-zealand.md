@@ -1,6 +1,6 @@
 ---
 title: "Public Transport Forum New Zealand"
-image: "/src/content/showcase/_images/public-transport-new-zealand.webp"
+image: "showcase/public-transport-new-zealand.png"
 url: "https://publictransportforum.nz"
 categories: ["marketing"]
 ---

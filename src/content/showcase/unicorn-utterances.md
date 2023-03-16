@@ -1,6 +1,6 @@
 ---
 title: "Unicorn Utterances"
-image: "/src/content/showcase/_images/unicorn-utterances.webp"
+image: "showcase/unicorn-utterances.png"
 url: "https://unicorn-utterances.com/"
 categories: ["tech"]
 ---

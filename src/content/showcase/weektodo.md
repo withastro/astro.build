@@ -1,6 +1,6 @@
 ---
 title: "WeekToDo"
-image: "/src/content/showcase/_images/weektodo.webp"
+image: "showcase/weektodo.png"
 url: "https://weektodo.me/"
 categories: ["marketing"]
 ---

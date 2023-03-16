@@ -1,6 +1,6 @@
 ---
 title: "Portfolio - Mark Teekman"
-image: "/src/content/showcase/_images/mark-teekman.webp"
+image: "showcase/mark-teekman.png"
 url: "https://www.markteekman.nl/"
 categories: ["portfolio"]
 ---

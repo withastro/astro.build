@@ -1,6 +1,6 @@
 ---
 title: "Cloud Native Quest"
-image: "/src/content/showcase/_images/cloud-native-quest.webp"
+image: "showcase/cloud-native-quest.png"
 url: "https://www.cloudnative.quest/"
 categories: ["tech"]
 ---

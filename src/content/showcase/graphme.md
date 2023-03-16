@@ -1,6 +1,6 @@
 ---
 title: "GraphMe"
-image: "/src/content/showcase/_images/graphme.webp"
+image: "showcase/graphme.png"
 url: "https://graphme.app"
 categories: ["marketing"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Saul Vo"
-image: "/src/content/showcase/_images/saul-vo.webp"
+image: "showcase/saul-vo.png"
 url: "https://saulvo.vercel.app/"
 categories: ["personal"]
 ---

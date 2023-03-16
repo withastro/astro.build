@@ -1,6 +1,6 @@
 ---
 title: "Hung Duong Quang"
-image: "/src/content/showcase/_images/hung-duong-quang.webp"
+image: "showcase/hung-duong-quang.png"
 url: "https://qhungg289.github.io/"
 categories: ["personal"]
 ---

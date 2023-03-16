@@ -1,6 +1,6 @@
 ---
 title: "Westside Pizza"
-image: "/src/content/showcase/_images/westside-pizza.webp"
+image: "showcase/westside-pizza.jpg"
 url: "https://westsidepizza.com/"
 categories: ["landing"]
 ---

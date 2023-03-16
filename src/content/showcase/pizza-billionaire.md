@@ -1,6 +1,6 @@
 ---
 title: "Pizza Billionaire"
-image: "/src/content/showcase/_images/pizza-billionaire.webp"
+image: "showcase/pizza-billionaire.png"
 url: "https://pizzabillionaire.com/"
 categories: ["personal"]
 highlight: true

@@ -1,6 +1,6 @@
 ---
 title: "Lily Black"
-image: "/src/content/showcase/_images/lily-black.webp"
+image: "showcase/lily-black.png"
 url: "https://webslc.com/"
 categories: ["personal"]
 ---

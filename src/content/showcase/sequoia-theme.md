@@ -1,6 +1,6 @@
 ---
 title: "Sequoia Theme"
-image: "/src/content/showcase/_images/sequoia-theme.webp"
+image: "showcase/sequoia-theme.png"
 url: "https://sequoiatheme.com/"
 categories: ["tech"]
 ---

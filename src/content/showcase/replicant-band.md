@@ -1,6 +1,6 @@
 ---
 title: "Replicant Band"
-image: "/src/content/showcase/_images/replicant-band.webp"
+image: "showcase/replicant-band.png"
 url: "https://replicant.band/"
 categories: ["entertainment"]
 highlight: true

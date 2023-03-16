@@ -1,6 +1,6 @@
 ---
 title: "ProAutoma"
-image: "/src/content/showcase/_images/proautoma.webp"
+image: "showcase/proautoma.png"
 url: "https://www.proautoma.com/"
 categories: ["tech"]
 ---

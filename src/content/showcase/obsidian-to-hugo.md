@@ -1,6 +1,6 @@
 ---
 title: "Obsidian to Hugo"
-image: "/src/content/showcase/_images/obsidian-to-hugo.webp"
+image: "showcase/obsidian-to-hugo.png"
 url: "https://obsidian-to-hugo.wolf.gdn/"
 categories: ["tech"]
 ---

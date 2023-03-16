@@ -1,6 +1,6 @@
 ---
 title: "x7md Blog"
-image: "/src/content/showcase/_images/x7md.webp"
+image: "showcase/x7md.png"
 url: "https://x7md.net/posts"
 categories: ["personal"]
 ---

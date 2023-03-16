@@ -1,6 +1,6 @@
 ---
 title: "Hannah Mereana Photography"
-image: "/src/content/showcase/_images/hannah-mereana.webp"
+image: "showcase/hannah-mereana.png"
 url: "https://hannahmereana.co.nz/"
 categories: ["personal"]
 ---

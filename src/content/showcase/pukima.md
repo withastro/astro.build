@@ -1,6 +1,6 @@
 ---
 title: "Pukima's Personal Website"
-image: "/src/content/showcase/_images/pukima.webp"
+image: "showcase/pukima.png"
 url: "https://pukima.site/"
 categories: ["blog"]
 ---

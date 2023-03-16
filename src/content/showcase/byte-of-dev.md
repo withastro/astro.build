@@ -1,6 +1,6 @@
 ---
 title: "Byte of Dev"
-image: "/src/content/showcase/_images/byte-of-dev.webp"
+image: "showcase/byte-of-dev.png"
 url: "https://byteofdev.com/"
 categories: ["tech"]
 ---

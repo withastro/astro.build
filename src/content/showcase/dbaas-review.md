@@ -1,6 +1,6 @@
 ---
 title: "DBaaS Review"
-image: "/src/content/showcase/_images/dbaas-review.webp"
+image: "showcase/dbaas-review.png"
 url: "https://www.dbaasreview.com/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "In this tweet"
-image: "/src/content/showcase/_images/in-this-tweet.webp"
+image: "showcase/in-this-tweet.jpg"
 url: "https://inthistweet.app"
 categories: ["otehr"]
 ---

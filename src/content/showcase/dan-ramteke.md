@@ -1,6 +1,6 @@
 ---
 title: "Dan Ramteke"
-image: "/src/content/showcase/_images/dan-ramteke.webp"
+image: "showcase/dan-ramteke.png"
 url: "https://danramteke.com/"
 categories: ["personal"]
 ---

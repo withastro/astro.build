@@ -1,6 +1,6 @@
 ---
 title: "<div>RIOTS"
-image: "/src/content/showcase/_images/divriots.webp"
+image: "showcase/divriots.png"
 url: "https://divriots.com/"
 categories: ["marketing"]
 ---

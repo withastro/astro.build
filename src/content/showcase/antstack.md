@@ -1,6 +1,6 @@
 ---
 title: "AntStack"
-image: "/src/content/showcase/_images/antstack.webp"
+image: "showcase/antstack.png"
 url: "https://www.antstack.com/"
 categories: ["tech"]
 highlight: true

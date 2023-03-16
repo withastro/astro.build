@@ -1,6 +1,6 @@
 ---
 title: "Scott Kellum"
-image: "/src/content/showcase/_images/scott-kellum.webp"
+image: "showcase/scott-kellum.png"
 url: "https://scottkellum.com/"
 categories: ["personal"]
 highlight: true

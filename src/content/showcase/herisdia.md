@@ -1,6 +1,6 @@
 ---
 title: "🌈 HerIsDia's website"
-image: "/src/content/showcase/_images/herisdia.webp"
+image: "showcase/herisdia.png"
 url: "https://www.herisdia.me/"
 categories: ["personal"]
 ---

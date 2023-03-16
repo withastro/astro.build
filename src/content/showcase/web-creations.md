@@ -1,6 +1,6 @@
 ---
 title: "Adam Wojnicki Web Creations"
-image: "/src/content/showcase/_images/web-creations.webp"
+image: "showcase/web-creations.png"
 url: "https://webcreations.dev/"
 categories: ["personal"]
 ---

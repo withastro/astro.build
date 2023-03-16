@@ -1,6 +1,6 @@
 ---
 title: "PandaSuite"
-image: "/src/content/showcase/_images/panda-suite.webp"
+image: "showcase/panda-suite.png"
 url: "https://pandasuite.com/"
 categories: ["landing"]
 ---

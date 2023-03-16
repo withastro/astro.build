@@ -1,6 +1,6 @@
 ---
 title: "Stardew"
-image: "/src/content/showcase/_images/stardew.webp"
+image: "showcase/stardew.png"
 url: "https://www.stardew.cc/"
 categories: ["personal"]
 ---

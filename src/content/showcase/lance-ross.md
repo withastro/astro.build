@@ -1,6 +1,6 @@
 ---
 title: "Lance Ross"
-image: "/src/content/showcase/_images/lance-ross.webp"
+image: "showcase/lance-ross.png"
 url: "https://lanceross.xyz/"
 categories: ["personal"]
 ---

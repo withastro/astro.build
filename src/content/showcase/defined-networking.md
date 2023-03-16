@@ -1,6 +1,6 @@
 ---
 title: "Defined Networking"
-image: "/src/content/showcase/_images/defined-networking.webp"
+image: "showcase/defined-networking.png"
 url: "https://www.defined.net/"
 categories: ["tech"]
 ---

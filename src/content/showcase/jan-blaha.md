@@ -1,6 +1,6 @@
 ---
 title: "Jan Bláha"
-image: "/src/content/showcase/_images/jan-blaha.webp"
+image: "showcase/jan-blaha.png"
 url: "https://jblaha.art/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Technology Overload"
-image: "/src/content/showcase/_images/technology-overload.webp"
+image: "showcase/technology-overload.png"
 url: "https://technology-overload.netlify.app/"
 categories: ["personal"]
 ---

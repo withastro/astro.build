@@ -1,6 +1,6 @@
 ---
 title: "Julien Dendauw"
-image: "/src/content/showcase/_images/julien-dendauw.webp"
+image: "showcase/julien-dendauw.png"
 url: "https://dendauw.tech/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Reindeere"
-image: "/src/content/showcase/_images/reindeere.webp"
+image: "showcase/reindeere.png"
 url: "https://reindeere.ca/"
 categories: ["marketing"]
 ---

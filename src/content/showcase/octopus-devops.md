@@ -1,6 +1,6 @@
 ---
 title: "DevOps Engineer's Handbook"
-image: "/src/content/showcase/_images/octopus-devops.webp"
+image: "showcase/octopus-devops.png"
 url: "https://octopus.com/devops/"
 categories: ["tech"]
 ---

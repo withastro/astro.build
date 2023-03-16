@@ -1,6 +1,6 @@
 ---
 title: "Liam Macann"
-image: "/src/content/showcase/_images/liam-macann.webp"
+image: "showcase/liam-macann.png"
 url: "https://liam.macann.xyz/"
 categories: ["personal"]
 ---

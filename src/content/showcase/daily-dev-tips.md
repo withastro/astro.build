@@ -1,6 +1,6 @@
 ---
 title: "Daily Dev Tips"
-image: "/src/content/showcase/_images/daily-dev-tips.webp"
+image: "showcase/daily-dev-tips.png"
 url: "https://daily-dev-tips.com/"
 categories: ["tech"]
 ---

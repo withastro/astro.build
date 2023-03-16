@@ -1,6 +1,6 @@
 ---
 title: "Oma Chambers"
-image: "/src/content/showcase/_images/oma-chambers.webp"
+image: "showcase/oma-chambers.png"
 url: "https://www.omarpg.com/blog/"
 categories: ["tech"]
 ---

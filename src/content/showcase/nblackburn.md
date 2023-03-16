@@ -1,6 +1,6 @@
 ---
 title: "Nathaniel Blackburn"
-image: "/src/content/showcase/_images/nblackburn.webp"
+image: "showcase/nblackburn.png"
 url: "https://nblackburn.uk/"
 categories: ["personal"]
 ---

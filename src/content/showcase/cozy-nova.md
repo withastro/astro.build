@@ -1,6 +1,6 @@
 ---
 title: "Cozy Nova"
-image: "/src/content/showcase/_images/cozy-nova.webp"
+image: "showcase/cozy-nova.png"
 url: "https://cozynova.online/"
 categories: ["other"]
 ---

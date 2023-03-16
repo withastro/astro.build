@@ -1,6 +1,6 @@
 ---
 title: "csusb.dev"
-image: "/src/content/showcase/_images/csusb.webp"
+image: "showcase/csusb.png"
 url: "https://csusb.dev/"
 categories: ["tech"]
 highlight: true

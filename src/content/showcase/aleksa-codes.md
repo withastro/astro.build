@@ -1,6 +1,6 @@
 ---
 title: "aleksa.codes"
-image: "/src/content/showcase/_images/aleksa-codes.webp"
+image: "showcase/aleksa-codes.png"
 url: "https://aleksa.codes/"
 categories: ["personal"]
 ---

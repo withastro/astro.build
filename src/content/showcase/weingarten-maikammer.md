@@ -1,6 +1,6 @@
 ---
 title: "Weingarten Maikammer"
-image: "/src/content/showcase/_images/weingarten-maikammer.webp"
+image: "showcase/weingarten-maikammer.jpg"
 url: "https://weingarten-maikammer.de/"
 categories: ["marketing"]
 ---

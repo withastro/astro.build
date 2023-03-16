@@ -1,6 +1,6 @@
 ---
 title: "Alex Streza"
-image: "/src/content/showcase/_images/alex-streza.webp"
+image: "showcase/alex-streza.png"
 url: "https://www.alexstreza.dev/"
 categories: ["personal"]
 ---

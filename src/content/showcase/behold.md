@@ -1,6 +1,6 @@
 ---
 title: "Behold"
-image: "/src/content/showcase/_images/behold.webp"
+image: "showcase/behold.png"
 url: "https://behold.so/"
 categories: ["marketing"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Nafees Nazik"
-image: "/src/content/showcase/_images/nafees-nazik.webp"
+image: "showcase/nafees-nazik.png"
 url: "https://nafeez.xyz/"
 categories: ["personal"]
 ---

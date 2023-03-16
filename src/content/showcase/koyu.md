@@ -1,6 +1,6 @@
 ---
 title: "koyu's personal website"
-image: "/src/content/showcase/_images/koyu.webp"
+image: "showcase/koyu.png"
 url: "https://web.koyu.space/"
 categories: ["personal"]
 ---

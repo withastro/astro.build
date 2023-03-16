@@ -1,6 +1,6 @@
 ---
 title: "Ayanava Karmakar"
-image: "/src/content/showcase/_images/ayanava-karmakar.webp"
+image: "showcase/ayanava-karmakar.png"
 url: "https://ayanavakarmakar.software/"
 categories: ["personal"]
 ---

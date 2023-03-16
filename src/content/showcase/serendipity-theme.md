@@ -1,6 +1,6 @@
 ---
 title: "Serendipity Theme"
-image: "/src/content/showcase/_images/serendipity-theme.webp"
+image: "showcase/serendipity-theme.png"
 url: "https://serendipitytheme.com/"
 categories: ["tech"]
 ---

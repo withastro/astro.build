@@ -1,6 +1,6 @@
 ---
 title: "Rafid Muhymin Wafi"
-image: "/src/content/showcase/_images/rafid-muhymin-wafi.webp"
+image: "showcase/rafid-muhymin-wafi.png"
 url: "https://softhardsystem.com/"
 categories: ["personal"]
 ---

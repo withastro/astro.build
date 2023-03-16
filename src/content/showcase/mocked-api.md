@@ -1,6 +1,6 @@
 ---
 title: "Mocked-API"
-image: "/src/content/showcase/_images/mocked-api.webp"
+image: "showcase/mocked-api.png"
 url: "https://mocked-api.dev/"
 categories: ["tech"]
 ---

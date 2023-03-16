@@ -1,6 +1,6 @@
 ---
 title: "Web-o-Reviews"
-image: "/src/content/showcase/_images/web-o-reviews.webp"
+image: "showcase/web-o-reviews.png"
 url: "https://weboreviews.com/"
 categories: ["personal"]
 ---

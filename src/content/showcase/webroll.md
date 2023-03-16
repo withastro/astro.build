@@ -1,6 +1,6 @@
 ---
 title: "WebRoll"
-image: "/src/content/showcase/_images/webroll.webp"
+image: "showcase/webroll.png"
 url: "https://webroll.io/"
 categories: ["tech"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Bald. Bearded. Builder."
-image: "/src/content/showcase/_images/baldbeardedbuilder.webp"
+image: "showcase/baldbeardedbuilder.png"
 url: "https://baldbeardedbuilder.com/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Stylessh - Portfolios"
-image: "/src/content/showcase/_images/stylessh.webp"
+image: "showcase/stylessh.png"
 url: "https://stylessh-v2.vercel.app/"
 categories: ["personal"]
 ---

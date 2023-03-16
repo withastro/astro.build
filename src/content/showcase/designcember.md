@@ -1,6 +1,6 @@
 ---
 title: "Designcember"
-image: "/src/content/showcase/_images/designcember.webp"
+image: "showcase/designcember.png"
 url: "https://designcember.com/"
 categories: ["marketing"]
 featured: 4

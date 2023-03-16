@@ -1,6 +1,6 @@
 ---
 title: "maryoku-ui"
-image: "/src/content/showcase/_images/maryoku-ui.webp"
+image: "showcase/maryoku-ui.png"
 url: "https://maryoku-ui.deno.dev/"
 categories: ["tech"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Jan Müller"
-image: "/src/content/showcase/_images/jan-mueller.webp"
+image: "showcase/jan-mueller.png"
 url: "https://jan-mueller.at/"
 categories: ["personal"]
 ---

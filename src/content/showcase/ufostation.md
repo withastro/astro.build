@@ -1,6 +1,6 @@
 ---
 title: "UfoStation"
-image: "/src/content/showcase/_images/ufostation.webp"
+image: "showcase/ufostation.png"
 url: "https://ufostation.tech/"
 categories: ["tech"]
 ---

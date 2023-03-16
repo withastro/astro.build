@@ -1,6 +1,6 @@
 ---
 title: "roadmap.sh"
-image: "/src/content/showcase/_images/roadmap-sh.webp"
+image: "showcase/roadmap-sh.jpeg"
 url: "https://roadmap.sh"
 categories: ["tech"]
 ---

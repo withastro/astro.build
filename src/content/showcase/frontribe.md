@@ -1,6 +1,6 @@
 ---
 title: "Frontribe"
-image: "/src/content/showcase/_images/frontribe.webp"
+image: "showcase/frontribe.png"
 url: "https://frontribe.com/"
 categories: ["marketing"]
 highlight: true

@@ -1,6 +1,6 @@
 ---
 title: "Day of the Dead"
-image: "/src/content/showcase/_images/day-of-the-dead.webp"
+image: "showcase/day-of-the-dead.png"
 url: "https://dayofthedead.holiday/"
 categories: ["other"]
 featured: 3

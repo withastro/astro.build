@@ -1,6 +1,6 @@
 ---
 title: "Dodonut"
-image: "/src/content/showcase/_images/dodonut.webp"
+image: "showcase/dodonut.png"
 url: "https://dodonut.com/"
 categories: ["marketing"]
 ---

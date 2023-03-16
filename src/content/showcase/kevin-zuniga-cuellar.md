@@ -1,6 +1,6 @@
 ---
 title: "Kevin Zuniga Cuellar"
-image: "/src/content/showcase/_images/kevin-zuniga-cuellar.webp"
+image: "showcase/kevin-zuniga-cuellar.png"
 url: "https://www.kevinzunigacuellar.com/"
 categories: ["personal"]
 ---

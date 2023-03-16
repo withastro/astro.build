@@ -1,6 +1,6 @@
 ---
 title: "Viko.ai | Digital self-service"
-image: "/src/content/showcase/_images/vikoai.webp"
+image: "showcase/vikoai.png"
 url: "https://www.viko.co.uk/"
 categories: ["marketing"]
 ---

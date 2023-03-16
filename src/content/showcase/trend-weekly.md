@@ -1,6 +1,6 @@
 ---
 title: "Trend Weekly"
-image: "/src/content/showcase/_images/trend-weekly.webp"
+image: "showcase/trend-weekly.png"
 url: "http://weekly.tw93.fun/"
 categories: ["personal"]
 ---

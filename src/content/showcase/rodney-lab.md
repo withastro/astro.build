@@ -1,6 +1,6 @@
 ---
 title: "Rodney Lab"
-image: "/src/content/showcase/_images/rodney-lab.webp"
+image: "showcase/rodney-lab.png"
 url: "https://rodneylab.com/"
 categories: ["personal"]
 ---

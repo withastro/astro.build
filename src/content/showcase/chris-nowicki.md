@@ -1,6 +1,6 @@
 ---
 title: "Chris Nowicki"
-image: "/src/content/showcase/_images/chris-nowicki.webp"
+image: "showcase/chris-nowicki.png"
 url: "https://www.chrisnowicki.io"
 categories: ["personal"]
 ---

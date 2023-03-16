@@ -1,6 +1,6 @@
 ---
 title: "SilveseterParis.de"
-image: "/src/content/showcase/_images/silvesterparis-de.webp"
+image: "showcase/silvesterparis-de.png"
 url: "https://www.silvesterparis.de/"
 categories: ["personal"]
 ---

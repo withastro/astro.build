@@ -1,6 +1,6 @@
 ---
 title: "My Workshops Live"
-image: "/src/content/showcase/_images/my-workshops-live.webp"
+image: "showcase/my-workshops-live.png"
 url: "https://myworkshops.live/"
 categories: ["personal"]
 ---

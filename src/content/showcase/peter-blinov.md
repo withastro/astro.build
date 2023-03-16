@@ -1,6 +1,6 @@
 ---
 title: "Peter Blinov"
-image: "/src/content/showcase/_images/peter-blinov.webp"
+image: "showcase/peter-blinov.png"
 url: "https://blinpete-resume.vercel.app"
 categories: ["personal"]
 ---

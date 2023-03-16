@@ -1,6 +1,6 @@
 ---
 title: "Articoli e Social"
-image: "/src/content/showcase/_images/articoliesocial.webp"
+image: "showcase/articoliesocial.jpg"
 url: "https://www.articoliesocial.it/"
 categories: ["landing"]
 ---

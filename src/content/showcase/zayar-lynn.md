@@ -1,6 +1,6 @@
 ---
 title: "Zayar Lynn"
-image: "/src/content/showcase/_images/zayar-lynn.webp"
+image: "showcase/zayar-lynn.png"
 url: "https://lyneva.netlify.app/"
 categories: ["personal"]
 ---

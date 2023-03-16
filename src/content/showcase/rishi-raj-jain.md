@@ -1,6 +1,6 @@
 ---
 title: "Rishi Raj Jain"
-image: "/src/content/showcase/_images/rishi-raj-jain.webp"
+image: "showcase/rishi-raj-jain.png"
 url: "https://astro.rishi.app/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "FrenchTechLead"
-image: "/src/content/showcase/_images/frenchtechlead.webp"
+image: "showcase/frenchtechlead.png"
 url: "https://frenchtechlead.com/"
 categories: ["marketing"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Ade Pranaya"
-image: "/src/content/showcase/_images/ade-pranaya.webp"
+image: "showcase/ade-pranaya.png"
 url: "https://adepranaya.com/"
 categories: ["personal"]
 ---

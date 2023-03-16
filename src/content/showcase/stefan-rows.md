@@ -1,6 +1,6 @@
 ---
 title: "Stefan Rows"
-image: "/src/content/showcase/_images/stefan-rows.webp"
+image: "showcase/stefan-rows.jpg"
 url: "https://stefanrows.com/"
 categories: ["personal"]
 ---

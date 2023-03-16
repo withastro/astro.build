@@ -1,6 +1,6 @@
 ---
 title: "Stephen Solka"
-image: "/src/content/showcase/_images/stephen-solka.webp"
+image: "showcase/stephen-solka.png"
 url: "https://stephen.solka.dev/"
 categories: ["personal"]
 ---

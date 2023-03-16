@@ -1,6 +1,6 @@
 ---
 title: "Mettā"
-image: "/src/content/showcase/_images/metta.webp"
+image: "showcase/metta.png"
 url: "https://metta.pub/"
 categories: ["marketing"]
 ---

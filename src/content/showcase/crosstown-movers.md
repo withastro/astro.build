@@ -1,6 +1,6 @@
 ---
 title: "Crosstown Movers"
-image: "/src/content/showcase/_images/crosstown-movers.webp"
+image: "showcase/crosstown-movers.jpg"
 url: "https://crosstownmovers.net/"
 categories: ["marketing"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ffbloggen"
-image: "/src/content/showcase/_images/ffbloggen.webp"
+image: "showcase/ffbloggen.png"
 url: "https://ffbloggen.nl/"
 categories: ["personal"]
 ---

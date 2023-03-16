@@ -1,6 +1,6 @@
 ---
 title: "Jordan Webb"
-image: "/src/content/showcase/_images/jordan-webb.webp"
+image: "showcase/jordan-webb.png"
 url: "https://jordemort.dev/"
 categories: ["personal"]
 ---

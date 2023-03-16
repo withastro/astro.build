@@ -1,6 +1,6 @@
 ---
 title: "Techwards"
-image: "/src/content/showcase/_images/techwards.webp"
+image: "showcase/techwards.png"
 url: "https://techwards.co/"
 categories: ["marketing"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ArmahLance: Personal Site"
-image: "/src/content/showcase/_images/discoverlance.webp"
+image: "showcase/discoverlance.png"
 url: "https://discoverlance.com/"
 categories: ["personal"]
 ---

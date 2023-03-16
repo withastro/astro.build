@@ -1,6 +1,6 @@
 ---
 title: "MostlyWhat Systems"
-image: "/src/content/showcase/_images/mostlywhat.webp"
+image: "showcase/mostlywhat.png"
 url: "https://www.mostlywhat.cf/"
 categories: ["marketing"]
 ---

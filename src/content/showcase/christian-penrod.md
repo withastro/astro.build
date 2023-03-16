@@ -1,6 +1,6 @@
 ---
 title: "Christian's Portfolio"
-image: "/src/content/showcase/_images/christian-penrod.webp"
+image: "showcase/christian-penrod.png"
 url: "https://www.christianpenrod.com/"
 categories: ["personal"]
 ---

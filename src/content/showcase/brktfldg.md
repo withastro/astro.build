@@ -1,6 +1,6 @@
 ---
 title: "brktfldg · Bracket Folding"
-image: "/src/content/showcase/_images/brktfldg.webp"
+image: "showcase/brktfldg.png"
 url: "https://brktfldg.netlify.app/"
 categories: ["tech"]
 ---

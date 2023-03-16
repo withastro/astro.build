@@ -1,6 +1,6 @@
 ---
 title: "HiDeoo"
-image: "/src/content/showcase/_images/hideoo.webp"
+image: "showcase/hideoo.png"
 url: "https://hideoo.dev/"
 categories: ["personal"]
 ---

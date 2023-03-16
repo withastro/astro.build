@@ -1,6 +1,6 @@
 ---
 title: "Elian Codes"
-image: "/src/content/showcase/_images/elian-codes.webp"
+image: "showcase/elian-codes.png"
 url: "https://www.elian.codes"
 categories: ["personal"]
 ---

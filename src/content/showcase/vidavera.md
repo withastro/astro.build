@@ -1,6 +1,6 @@
 ---
 title: "VidaVera"
-image: "/src/content/showcase/_images/vidavera.webp"
+image: "showcase/vidavera.png"
 url: "https://vidavera.pt"
 categories: ["marketing"]
 ---

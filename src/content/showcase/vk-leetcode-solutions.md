@@ -1,6 +1,6 @@
 ---
 title: "VK Leetcode Solutions"
-image: "/src/content/showcase/_images/vk-leetcode-solutions.webp"
+image: "showcase/vk-leetcode-solutions.png"
 url: "https://vkleetcodesolutions.netlify.app/contact/"
 categories: ["personal"]
 ---

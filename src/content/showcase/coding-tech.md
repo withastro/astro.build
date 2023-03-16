@@ -1,6 +1,6 @@
 ---
 title: "Coding Tech"
-image: "/src/content/showcase/_images/coding-tech.webp"
+image: "showcase/coding-tech.png"
 url: "https://www.coding-tech.fr/"
 categories: ["tech"]
 ---

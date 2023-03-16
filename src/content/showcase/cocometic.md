@@ -1,6 +1,6 @@
 ---
 title: "CocoMetic"
-image: "/src/content/showcase/_images/cocometic.webp"
+image: "showcase/cocometic.png"
 url: "https://cocometic.com/"
 categories: ["marketing"]
 ---

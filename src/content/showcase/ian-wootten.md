@@ -1,6 +1,6 @@
 ---
 title: "Ian Wootten"
-image: "/src/content/showcase/_images/ian-wootten.webp"
+image: "showcase/ian-wootten.png"
 url: "https://www.ianwootten.co.uk"
 categories: ["personal"]
 ---

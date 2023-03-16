@@ -1,6 +1,6 @@
 ---
 title: "Independent Doctors of Idaho"
-image: "/src/content/showcase/_images/independent-doctors-idaho.webp"
+image: "showcase/independent-doctors-idaho.png"
 url: "https://independentdocsid.com/"
 categories: ["marketing"]
 ---

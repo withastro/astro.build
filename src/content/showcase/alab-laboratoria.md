@@ -1,6 +1,6 @@
 ---
 title: "ALAB Laboratoria"
-image: "/src/content/showcase/_images/alab-laboratoria.webp"
+image: "showcase/alab-laboratoria.png"
 url: "https://sklep.alablaboratoria.pl/covid/"
 categories: ["marketing"]
 ---

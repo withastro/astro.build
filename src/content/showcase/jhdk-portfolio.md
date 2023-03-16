@@ -1,6 +1,6 @@
 ---
 title: "JHDK Portfolio"
-image: "/src/content/showcase/_images/jhdk-portfolio.webp"
+image: "showcase/jhdk-portfolio.png"
 url: "https://jhdoumbek-portfolio.netlify.app/"
 categories: ["personal"]
 ---

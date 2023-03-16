@@ -1,6 +1,6 @@
 ---
 title: "Saturday Quiz"
-image: "/src/content/showcase/_images/saturday-quiz.webp"
+image: "showcase/saturday-quiz.png"
 url: "https://saturdayquiztime.com.au/"
 categories: ["other"]
 ---

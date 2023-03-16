@@ -1,6 +1,6 @@
 ---
 title: "Uzair Ahmed"
-image: "/src/content/showcase/_images/uzair-ahmed.webp"
+image: "showcase/uzair-ahmed.png"
 url: "https://astro-portfolio-uzair.vercel.app/"
 categories: ["personal"]
 ---

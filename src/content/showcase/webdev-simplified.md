@@ -1,6 +1,6 @@
 ---
 title: "Web Dev Simplified"
-image: "/src/content/showcase/_images/webdev-simplified.webp"
+image: "showcase/webdev-simplified.png"
 url: "https://blog.webdevsimplified.com/"
 categories: ["tech"]
 ---

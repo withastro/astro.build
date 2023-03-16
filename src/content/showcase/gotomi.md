@@ -1,6 +1,6 @@
 ---
 title: "Tomasz Gospodarczyk"
-image: "/src/content/showcase/_images/gotomi.webp"
+image: "showcase/gotomi.png"
 url: "https://gotomi.info"
 categories: ["portfolio"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Cantoo"
-image: "/src/content/showcase/_images/cantoo.webp"
+image: "showcase/cantoo.png"
 url: "https://cantoo.app/"
 categories: ["personal"]
 ---

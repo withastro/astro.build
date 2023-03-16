@@ -1,6 +1,6 @@
 ---
 title: "undefinedTea"
-image: "/src/content/showcase/_images/undefined-tea.webp"
+image: "showcase/undefined-tea.png"
 url: "https://www.undefinedtea.dev/"
 categories: ["personal"]
 ---

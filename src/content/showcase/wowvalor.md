@@ -1,6 +1,6 @@
 ---
 title: "Wowvalor"
-image: "/src/content/showcase/_images/wowvalor.webp"
+image: "showcase/wowvalor.png"
 url: "https://wowvalor.app/"
 categories: ["other"]
 ---

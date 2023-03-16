@@ -1,6 +1,6 @@
 ---
 title: "Marijn Kneppers"
-image: "/src/content/showcase/_images/marijn-kneppers.webp"
+image: "showcase/marijn-kneppers.png"
 url: "https://marijnkneppers.dev/"
 categories: ["personal"]
 ---

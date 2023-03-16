@@ -1,6 +1,6 @@
 ---
 title: "Spread Bagelry"
-image: "/src/content/showcase/_images/spread-bagelry.webp"
+image: "showcase/spread-bagelry.png"
 url: "https://spreadbagelry.com/"
 categories: ["marketing", "e-commerce"]
 ---

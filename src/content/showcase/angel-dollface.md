@@ -1,6 +1,6 @@
 ---
 title: "Angel Dollface"
-image: "/src/content/showcase/_images/angel-dollface.webp"
+image: "showcase/angel-dollface.png"
 url: "https://angeldollface.art/"
 categories: ["personal"]
 ---

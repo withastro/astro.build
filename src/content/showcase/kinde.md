@@ -1,6 +1,6 @@
 ---
 title: "Kinde"
-image: "/src/content/showcase/_images/kinde.webp"
+image: "showcase/kinde.png"
 url: "https://kinde.com"
 categories: ["marketing"]
 ---

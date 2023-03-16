@@ -1,6 +1,6 @@
 ---
 title: "melonJS"
-image: "/src/content/showcase/_images/melonjs.webp"
+image: "showcase/melonjs.png"
 url: "https://melonjs.org/"
 categories: ["tech"]
 ---

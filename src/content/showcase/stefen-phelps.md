@@ -1,6 +1,6 @@
 ---
 title: "Stefen Phelps"
-image: "/src/content/showcase/_images/stefen-phelps.webp"
+image: "showcase/stefen-phelps.png"
 url: "https://stefenphelps.com"
 categories: ["personal"]
 ---

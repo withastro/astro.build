@@ -1,6 +1,6 @@
 ---
 title: "Gold Ayan's Blog"
-image: "/src/content/showcase/_images/gold-ayan.webp"
+image: "showcase/gold-ayan.png"
 url: "https://goldayan.netlify.app/"
 categories: ["personal"]
 ---

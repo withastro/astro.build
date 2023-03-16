@@ -1,6 +1,6 @@
 ---
 title: "Adrián UB"
-image: "/src/content/showcase/_images/adrianub.webp"
+image: "showcase/adrianub.png"
 url: "https://adrianub.dev/"
 categories: ["personal"]
 ---

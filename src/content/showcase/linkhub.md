@@ -1,6 +1,6 @@
 ---
 title: "Linkhub - One link for everything"
-image: "/src/content/showcase/_images/linkhub.webp"
+image: "showcase/linkhub.png"
 url: "https://linkhub.online/"
 categories: ["marketing"]
 ---

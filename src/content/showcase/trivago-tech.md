@@ -1,6 +1,6 @@
 ---
 title: "Trivago Tech Blog"
-image: "/src/content/showcase/_images/trivago-tech.webp"
+image: "showcase/trivago-tech.png"
 url: "https://tech.trivago.com/"
 categories: ["tech"]
 featured: 5

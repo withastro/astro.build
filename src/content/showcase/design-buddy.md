@@ -1,6 +1,6 @@
 ---
 title: "Design buddy"
-image: "/src/content/showcase/_images/design-buddy.webp"
+image: "showcase/design-buddy.png"
 url: "https://design-buddy.netlify.app/"
 categories: ["landing"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Carsten Lebek"
-image: "/src/content/showcase/_images/carsten-lebek.webp"
+image: "showcase/carsten-lebek.png"
 url: "https://clebek.dev/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Restaurant Paulette"
-image: "/src/content/showcase/_images/restaurant-paulette.webp"
+image: "showcase/restaurant-paulette.png"
 url: "https://www.paulettehelsinki.fi/"
 categories: ["marketing"]
 ---

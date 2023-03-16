@@ -1,6 +1,6 @@
 ---
 title: "erika.florist"
-image: "/src/content/showcase/_images/erika-florist.webp"
+image: "showcase/erika-florist.png"
 url: "https://erika.florist/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "useKFC"
-image: "/src/content/showcase/_images/usekfc.webp"
+image: "showcase/usekfc.png"
 url: "https://use-kfc.deno.dev"
 categories: ["other"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "CSGOConsole"
-image: "/src/content/showcase/_images/csgo-console.webp"
+image: "showcase/csgo-console.png"
 url: "https://csgoconsole.com/"
 categories: ["tech"]
 ---

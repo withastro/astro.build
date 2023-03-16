@@ -1,6 +1,6 @@
 ---
 title: "Astro Docs"
-image: "/src/content/showcase/_images/astro-docs.webp"
+image: "showcase/astro-docs.png"
 url: "https://docs.astro.build/"
 categories: []
 ---

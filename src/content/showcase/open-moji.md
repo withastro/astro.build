@@ -1,6 +1,6 @@
 ---
 title: "OpenMoji"
-image: "/src/content/showcase/_images/open-moji.webp"
+image: "showcase/open-moji.png"
 url: "https://openmoji.org/"
 categories: ["landing"]
 highlight: true

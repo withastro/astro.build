@@ -1,6 +1,6 @@
 ---
 title: "Alberto Ventafridda"
-image: "/src/content/showcase/_images/alberto-ventafridda.webp"
+image: "showcase/alberto-ventafridda.png"
 url: "https://halb.it/"
 categories: ["personal"]
 ---

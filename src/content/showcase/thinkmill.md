@@ -1,6 +1,6 @@
 ---
 title: "Thinkmill"
-image: "/src/content/showcase/_images/thinkmill.webp"
+image: "showcase/thinkmill.png"
 url: "https://www.thinkmill.com.au/"
 categories: ["marketing"]
 highlight: true

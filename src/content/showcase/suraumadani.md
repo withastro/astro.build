@@ -1,6 +1,6 @@
 ---
 title: "Surau Ka'bah Madani Lamandau"
-image: "/src/content/showcase/_images/suraumadani.webp"
+image: "showcase/suraumadani.jpg"
 url: "https://suraumadani.com/"
 categories: ["personal"]
 ---

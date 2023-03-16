@@ -1,6 +1,6 @@
 ---
 title: "CodingTheSmartWay.com"
-image: "/src/content/showcase/_images/coding-the-smart-way.webp"
+image: "showcase/coding-the-smart-way.png"
 url: "https://www.codingthesmartway.com/"
 categories: ["marketing"]
 ---

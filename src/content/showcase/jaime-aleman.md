@@ -1,6 +1,6 @@
 ---
 title: "Jaime Aleman"
-image: "/src/content/showcase/_images/jaime-aleman.webp"
+image: "showcase/jaime-aleman.png"
 url: "https://jjaimealeman.com/"
 categories: ["personal"]
 ---

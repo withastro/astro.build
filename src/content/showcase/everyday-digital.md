@@ -1,6 +1,6 @@
 ---
 title: "Everyday Digital"
-image: "/src/content/showcase/_images/everyday-digital.webp"
+image: "showcase/everyday-digital.png"
 url: "https://everydaydigital.co.za/"
 categories: ["marketing"]
 highlight: true

@@ -1,6 +1,6 @@
 ---
 title: "Barnabas Kendall"
-image: "/src/content/showcase/_images/barnabas-kendall.webp"
+image: "showcase/barnabas-kendall.png"
 url: "https://barnabas.me/"
 categories: ["personal"]
 ---

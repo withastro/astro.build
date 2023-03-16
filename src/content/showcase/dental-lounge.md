@@ -1,6 +1,6 @@
 ---
 title: "Dental Lounge"
-image: "/src/content/showcase/_images/dental-lounge.webp"
+image: "showcase/dental-lounge.png"
 url: "https://dental-lounge.de/"
 categories: ["marketing"]
 ---
