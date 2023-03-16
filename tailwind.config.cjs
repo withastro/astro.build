@@ -62,6 +62,12 @@ module.exports = {
 			lineHeight: {
 				prose: 1.8125,
 			},
+			zIndex: {
+				"white-button-fill": -1,
+				noise: -2,
+				grid: -3,
+				blur: -4,
+			},
 		},
 	},
 	corePlugins: {
@@ -156,37 +162,6 @@ module.exports = {
 					"&::-webkit-details-marker": {
 						display: "none",
 					},
-				},
-
-				".button-base": {
-					"@apply inline-flex h-14 items-center justify-center gap-4 rounded-full px-10 text-center font-sans text-base font-medium leading-none transition":
-						{},
-				},
-
-				".button-primary": {
-					"@apply button-base bg-blue-purple-gradient text-white hover:brightness-75": {},
-				},
-
-				".button-white": {
-					"@apply button-base": {},
-					"@apply relative bg-blue-purple-gradient bg-clip-text text-transparent": {},
-					"@apply before:absolute before:inset-0 before:rounded-full before:-z-10 before:bg-white before:transition hover:before:bg-astro-gray-200":
-						{},
-				},
-
-				".button-outline": {
-					"@apply button-base": {},
-					"@apply border border-astro-gray-100 text-white hover:bg-white/10": {},
-				},
-
-				".button-small": {
-					"@apply h-10 px-6 text-sm tracking-wide leading-4 gap-2": {},
-				},
-				".button-smaller": {
-					"@apply h-8 px-3 text-sm tracking-wide leading-4 gap-2": {},
-				},
-				".button-xs": {
-					"@apply h-6 px-3 text-xs tracking-wide leading-4 gap-2": {},
 				},
 
 				".heading-1": {
