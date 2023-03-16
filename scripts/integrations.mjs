@@ -3,50 +3,7 @@ import integrations from "./integrations.json" assert { type: "json" }
 
 const NEW_THRESHOLD_DAYS = 14
 
-const KEYWORD_CATEGORIES = {
-	accessibility: {
-		keywords: ["a11y", "accessibility"],
-	},
-	adapters: {
-		keywords: ["astro-adapter"],
-	},
-	analytics: {
-		keywords: ["analytics"],
-	},
-	"css+ui": {
-		keywords: ["css", "ui", "icon", "icons", "renderer"],
-	},
-	frameworks: {
-		keywords: ["renderer"],
-	},
-	"performance+seo": {
-		keywords: ["seo", "performance", "perf", "optimization"],
-	},
-}
-
-const FEATURED = [
-	"@astrojs/tailwind",
-	"astro-imagetools",
-	"@astrojs/partytown",
-	"astro-compress",
-	"@storyblok/astro",
-	"astro-icon",
-	"astro-eleventy-img",
-	"@astrojs/sitemap",
-	"astro-robots-txt",
-	"astro-seo",
-	"astro-xelement",
-	"@astrojs/image",
-	"astro-spa",
-	"astro-katex",
-	"@astrojs/mdx",
-	"accessible-astro-components",
-	"astro-i18next",
-	"@astropub/icons",
-	"astro-json-element",
-]
-
-const keywordToCategories = Object.entries(KEYWORD_CATEGORIES).reduce((acc, [key, value]) => {
+const keywordToCategories = Object.entries(integrations.categories).reduce((acc, [key, value]) => {
 	const { keywords = [] } = value
 
 	for (const keyword of keywords) {
@@ -98,7 +55,7 @@ export function getCategoriesForKeyword(keyword) {
 export function badgesForPackage(pkg) {
 	const badges = new Set()
 
-	if (FEATURED.includes(pkg.name)) {
+	if (integrations.featured.includes(pkg.name)) {
 		badges.add("featured")
 	}
 
@@ -110,6 +67,6 @@ export function badgesForPackage(pkg) {
 }
 
 export function getFeaturedPackagePriority(pkg) {
-	const index = FEATURED.indexOf(pkg) + 1
+	const index = integrations.featured.indexOf(pkg) + 1
 	return index > 0 ? index : undefined
 }
