@@ -8,17 +8,21 @@ The source code for [astro.build](https://astro.build), built with [Astro](https
 
 The [themes catalog](https://astro.build/themes) is based on the [themes content collection](/src/content/themes/). Optimized images should be saved to the collection's [\_images directory](/src/content/themes/_images/), ideally as format with a `{image}.webp` file at 800px wide and `{image}@2x.webp` at 1600px wide.
 
-> TODO: Themes use metadata from GitHub, specifically the stars count for public theme repos. This is updated manually for now but a nightly job will be added to take care of this automatically.
+Theme data is updated weekly by a [GitHub Action](/.github/workflow/weekly.yaml). This action mainly updates the star count in public GitHub repos (used for sorting), but may be updated in the future to update additional theme details.
+
+> TODO: A future PR will migrate to `astro:assets` for image optimization and get away from the manual image optimization shenanigans.
 
 ## Updating the Showcase
 
 The [showcase](https://astro.build/showcase) doesn't depend on any data from GitHub or NPM. All showcase data is pulled from the [content collection](/src/content/showcase/). Similar to themes, optimized images should be saved to the collection's [\_images directory](/src/content/showcase/_images/), ideally as format with a `{image}.webp` file at 800px wide and `{image}@2x.webp` at 1600px wide.
 
+> TODO: A future PR will migrate to `astro:assets` for image optimization and get away from the manual image optimization shenanigans.
+
 ## Updating Integrations
 
 The [integrations catalog](https://atsro.build/integrations) also used a content collection to track known Astro integrations.
 
-> TODO: A nightly or weekly script will also be added here to find new integrations published to NPM.
+Integration data is updated weekly by a [GitHub Action](/.github/workflow/weekly.yaml). This action searches NPM and updates existing integrations, adds newly published integrations, and removes deprecated packages. A [JSON config file](/scripts/integrations.json) is used to allow for manual overrides of data published in NPM, most often this is used for adding icons and tweaking description text.
 
 ## Blog Posts
 
