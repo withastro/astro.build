@@ -19,6 +19,14 @@ function isOfficial(pkg) {
 	return pkg.startsWith("@astrojs/")
 }
 
+function sanitizeGitHubUrl(url) {
+	return url
+		.replace("git+", "")
+		.replace(".git", "")
+		.replace("git:", "https:")
+		.replace("git@github.com:", "https://github.com/")
+}
+
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).map(getCategoriesForKeyword).flat()
 
@@ -33,9 +41,7 @@ function normalizePackageDetails(data, pkg) {
 
 	const npmUrl = `https://www.npmjs.com/package/${pkg}`
 
-	const repoUrl =
-		data.repository?.url &&
-		data.repository.url.replace("git+", "").replace(".git", "").replace("git:", "https:")
+	const repoUrl = data.repository?.url && sanitizeGitHubUrl(data.repository.url)
 
 	const homepageUrl = data.homepage || npmUrl
 
