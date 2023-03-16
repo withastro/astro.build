@@ -11,5 +11,5 @@ categories:
   - "other"
 repoUrl: "https://github.com/AREA44/astro-multiverse"
 demoUrl: "https://astro-multiverse.netlify.app/"
-stars: 14
+stars: 15
 ---

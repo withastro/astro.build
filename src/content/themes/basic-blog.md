@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/lancerossdev/astro-basic-blog"
 demoUrl: "https://basicblog.lanceross.xyz/"
-stars: 28
+stars: 34
 tools:
   - "tailwind"
   - "mdx"

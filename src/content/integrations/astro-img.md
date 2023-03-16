@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-img"
 repoUrl: "https://github.com/Playform/astro-img"
 homepageUrl: "https://github.com/Playform/astro-img#readme"
-downloads: 41
+downloads: 5
 ---
