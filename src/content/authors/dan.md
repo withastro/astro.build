@@ -1,5 +1,5 @@
 ---
 "name": "Dan Jutan"
-"image": "/src/content/authors/_images/dan.webp"
+"image": "authors/dan.jpg"
 "twitter": "https://twitter.com/jutanium"
 ---

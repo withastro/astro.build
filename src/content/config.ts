@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content"
+import { defineCollection, image, z } from "astro:content"
 
 export const IntegrationCategories = new Map<string, string>([
 	["featured", "Featured"],
@@ -79,7 +79,7 @@ export const themeSchema = z
 export const collections = {
 	authors: defineCollection({
 		schema: z.object({
-			image: z.string().optional(),
+			image: image(),
 			name: z.string(),
 			title: z.string().optional(),
 			twitter: z.string().optional(),

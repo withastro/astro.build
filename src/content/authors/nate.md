@@ -1,6 +1,6 @@
 ---
 "name": "Nate Moore"
 "title": "Developer"
-"image": "/src/content/authors/_images/nate.webp"
+"image": "authors/nate.jpg"
 "twitter": "https://twitter.com/n_moore"
 ---

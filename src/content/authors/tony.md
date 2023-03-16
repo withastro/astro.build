@@ -1,6 +1,6 @@
 ---
 "name": "Tony Sullivan"
 "title": "Developer"
-"image": "/src/content/authors/_images/tony.webp"
+"image": "authors/tony.jpg"
 "twitter": "https://twitter.com/tonysull_co"
 ---

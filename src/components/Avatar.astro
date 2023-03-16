@@ -1,24 +1,24 @@
 ---
+import type { ImageMetadata } from "astro"
+import { Image } from "astro:assets"
 import { getEntryBySlug } from "astro:content"
-import { resolveImage } from "~/content/authors/_resolveImage.js"
 
 type Props = {
-	name?: string
-	image?: string
+	name: string
 	lg?: boolean
 }
 
-let { name, image, lg = false } = Astro.props
+let { name, lg = false } = Astro.props
 
-if (!image && name) {
-	const author = await getEntryBySlug("authors", name)
-	image = author && (await resolveImage(author))?.src
-}
+const author = await getEntryBySlug("authors", name)
+
+// TODO: this type cast is fixing a mismatch in the image.format type
+const image = author?.data.image as ImageMetadata
 ---
 
 {
 	image && (
-		<img
+		<Image
 			class:list={[
 				"my-0 inline-block rounded-full border border-astro-gray-100",
 				lg ? "h-8 w-8 md:h-10 md:w-10" : "h-6 w-6",
@@ -26,10 +26,9 @@ if (!image && name) {
 			src={image}
 			alt=""
 			aria-hidden="true"
-			width={48}
-			height={48}
-			loading="lazy"
-			decoding="async"
+			width={96}
+			height={96}
+			format="webp"
 		/>
 	)
 }
