@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/iozcelik/SarissaBlogAstroStarter"
 demoUrl: "https://sarissa-blog-astro-starter.vercel.app/"
-stars: 22
+stars: 23
 tools:
   - "tailwind"
 ---

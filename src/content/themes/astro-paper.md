@@ -15,7 +15,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/satnaing/astro-paper"
 demoUrl: "https://astro-paper.pages.dev/"
-stars: 420
+stars: 471
 featured: 1
 tools:
   - "tailwind"
@@ -23,4 +23,28 @@ tools:
   - "typescript"
 ---
 
-<p>AstroPaper is crafted with best practices and accessibility in mind. If you want a blog with clean design, fully responsiveness, good accessibility (keyboard/VoiceOver navigation, proper landmarks etc), and fast performance, then AstroPaper is for you.</p><h2>Highly Customizable</h2><p>AstroPaper is highly customizable - from color schemes, social links to meta tags for SEO. You can customize AstroPaper according to your taste and requirements.</p><h2>Features</h2><ul><li>Build with TypeScript</li><li>Fuzzy search with React &amp; <a href="https://fusejs.io/" rel="noopener noreferrer" target="_blank">FuseJS</a></li><li>Accessible out of the box</li><li>SEO-friendly</li><li>Light &amp; Dark mode support</li><li>Includes draft posts &amp; pagination</li><li>Provides Sitemap &amp; RSS feed</li><li>Dynamic OG image generation</li><li>Type-safe markdown</li></ul>
+<p>
+  AstroPaper is crafted with best practices and accessibility in mind. If you want a blog with clean
+  design, fully responsiveness, good accessibility (keyboard/VoiceOver navigation, proper landmarks
+  etc), and fast performance, then AstroPaper is for you.
+</p>
+<h2>Highly Customizable</h2>
+<p>
+  AstroPaper is highly customizable - from color schemes, social links to meta tags for SEO. You can
+  customize AstroPaper according to your taste and requirements.
+</p>
+<h2>Features</h2>
+<ul>
+  <li>Build with TypeScript</li>
+  <li>
+    Fuzzy search with React &amp;
+    <a href="https://fusejs.io/" rel="noopener noreferrer" target="_blank">FuseJS</a>
+  </li>
+  <li>Accessible out of the box</li>
+  <li>SEO-friendly</li>
+  <li>Light &amp; Dark mode support</li>
+  <li>Includes draft posts &amp; pagination</li>
+  <li>Provides Sitemap &amp; RSS feed</li>
+  <li>Dynamic OG image generation</li>
+  <li>Type-safe markdown</li>
+</ul>

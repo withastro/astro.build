@@ -12,5 +12,5 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/importantimport/gumori"
 demoUrl: "https://gumori.netlify.app/"
-stars: 14
+stars: 15
 ---

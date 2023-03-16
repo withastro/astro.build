@@ -1,7 +1,7 @@
 ---
 name: "@astrojs/mdx"
 title: "@astrojs/mdx"
-description: "Use MDX within Astro"
+description: "Add support for MDX pages in your Astro site"
 categories:
   - "css+ui"
   - "official"
@@ -11,5 +11,7 @@ image: "/assets/integrations/mdx.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 15
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/mdx/"
-downloads: 60898
+downloads: 66518
+badges:
+  - "featured"
 ---
