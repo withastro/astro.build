@@ -11,5 +11,5 @@ categories:
   - "blog"
 repoUrl: "https://github.com/mesinkasir/astro-website-template-themes-source-code-download"
 demoUrl: "https://astroman.vercel.app/"
-stars: 1
+stars: 3
 ---

@@ -1,7 +1,7 @@
 ---
 name: "@astrojs/sitemap"
 title: "@astrojs/sitemap"
-description: "Generate a sitemap for Astro"
+description: "Generate a sitemap for your Astro site"
 categories:
   - "css+ui"
   - "performance+seo"
@@ -12,5 +12,7 @@ image: "/assets/integrations/sitemap.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 8
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/sitemap/"
-downloads: 92396
+downloads: 100776
+badges:
+  - "featured"
 ---
