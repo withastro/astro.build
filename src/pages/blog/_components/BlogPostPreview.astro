@@ -1,7 +1,8 @@
 ---
-import { type CollectionEntry } from "astro:content"
+import type { ImageMetadata } from "astro"
+import type { CollectionEntry } from "astro:content"
 import { format } from "date-fns"
-import { resolveCoverImage } from "~/content/blog/_resolveImage.js"
+import ResponsiveImage from "~/components/ResponsiveImage.astro"
 
 export type Props = {
 	post: CollectionEntry<"blog">
@@ -9,7 +10,7 @@ export type Props = {
 
 const { post } = Astro.props
 
-const image = await resolveCoverImage(post)
+const image = post.data.coverImage as ImageMetadata
 ---
 
 <article
@@ -24,14 +25,12 @@ const image = await resolveCoverImage(post)
 
 		{
 			image && (
-				<img
-					src={image.src}
-					width={image.width}
-					height={image.height}
+				<ResponsiveImage
+					src={image}
 					alt={post.data.title}
-					class="my-8"
-					loading="lazy"
-					decoding="async"
+					widths={[400, 800, 1600]}
+					sizes="(min-width: 800px) 800px, 100vw"
+					class="my-8 w-full"
 				/>
 			)
 		}

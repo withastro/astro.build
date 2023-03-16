@@ -1,7 +1,8 @@
 ---
 import { ImageMetadata } from "astro"
+import ResponsiveImage from "./ResponsiveImage.astro"
 
-export interface Props {
+export type Props = {
 	src: ImageMetadata
 	alt?: string
 }
@@ -9,12 +10,10 @@ export interface Props {
 const { src, alt = "" } = Astro.props as Props
 ---
 
-<img
-	src={src.src}
+<ResponsiveImage
+	src={src}
 	alt={alt}
-	width={src.width}
-	height={src.height}
+	widths={[400, 800, 1600]}
+	sizes="(min-width: 1280px) 1280px, 100vw"
 	class="mx-auto my-10 w-full max-w-full rounded-lg border border-astro-gray-500"
-	loading="lazy"
-	decoding="async"
 />

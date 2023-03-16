@@ -94,8 +94,8 @@ export const collections = {
 				.or(z.date())
 				.transform((val) => new Date(val)),
 			authors: z.array(z.string()),
-			socialImage: z.string().optional(),
-			coverImage: z.string().optional(),
+			socialImage: image().optional(),
+			coverImage: image().optional(),
 			lang: z.enum(["en"]).default("en"),
 		}),
 	}),

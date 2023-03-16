@@ -1,9 +1,10 @@
 ---
+import type { ImageMetadata } from "astro"
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
 import { format } from "date-fns"
 import Avatar from "~/components/Avatar.astro"
 import Prose from "~/components/Prose.astro"
-import { resolveCoverImage, resolveSocialImage } from "~/content/blog/_resolveImage.js"
+import ResponsiveImage from "~/components/ResponsiveImage.astro"
 import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
 
@@ -27,8 +28,8 @@ const { post } = Astro.props
 const { data, render } = post
 const { Content } = await render()
 
-const coverImage = await resolveCoverImage(post)
-const socialImage = await resolveSocialImage(post)
+const coverImage = data.coverImage as ImageMetadata | undefined
+const socialImage = data.socialImage
 
 const authors = await Promise.all(
 	data.authors.map((author) => getEntryBySlug("authors", author)),
@@ -53,14 +54,12 @@ const placeholderGradient = randomFromArray(gradients)
 	{
 		coverImage ? (
 			<div class="mx-auto w-full max-w-screen-xl md:-mb-10 lg:-mb-12 xl:-mb-16">
-				<img
-					src={coverImage.src}
-					width={coverImage.width}
-					height={coverImage.height}
-					loading="lazy"
-					decoding="async"
+				<ResponsiveImage
+					src={coverImage}
+					widths={[400, 800, 1600]}
 					alt=""
 					class="w-full"
+					sizes="(min-width: 1280px) 1280px, 100vw"
 				/>
 			</div>
 		) : (
