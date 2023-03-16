@@ -12,10 +12,11 @@
     "lint:eslint": "eslint --ignore-path .gitignore --ext js,jsx,ts,tsx,mjs,cjs,astro .",
     "lint:ts": "astro sync && tsc --noEmit",
     "lint:astro": "astro check",
+    "lint:prettier": "prettier --plugin-search-dir=. --check .",
     "format": "run-s format:*",
-    "format:prettier": "prettier -w --plugin-search-dir=. .",
+    "format:imports": "organize-imports-cli ./tsconfig.json",
     "format:eslint": "eslint --ignore-path .gitignore --ext js,jsx,ts,tsx,mjs,cjs,astro --fix .",
-    "format:imports": "organize-imports-cli ./tsconfig.json"
+    "format:prettier": "prettier -w --plugin-search-dir=. ."
   },
   "dependencies": {
     "@astrojs/image": "^0.15.1",
