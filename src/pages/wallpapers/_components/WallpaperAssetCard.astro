@@ -8,8 +8,8 @@ export type Props = {
 	assetName: string
 }
 
-const width = Astro.props.type === "desktop" ? 862 : 270
-const height = Astro.props.type === "desktop" ? 557 : 584
+const width = Astro.props.type === "desktop" ? 546 : 270
+const height = Astro.props.type === "desktop" ? 307 : 584
 ---
 
 <Card>
@@ -17,7 +17,7 @@ const height = Astro.props.type === "desktop" ? 557 : 584
 		<img
 			src={`/assets/wallpapers/${Astro.props.type}/${Astro.props.assetName}.png`}
 			alt=""
-			class="inline"
+			class="inline w-full h-auto"
 			width={width}
 			height={height}
 			loading="lazy"
