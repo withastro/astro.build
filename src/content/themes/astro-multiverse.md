@@ -1,7 +1,7 @@
 ---
 title: "Astro Multiverse"
 description: "Say hello to Multiverse, a slick, one-page gallery design with a fully functional lightbox. Designed by HTML5 UP."
-image: "/src/content/themes/_images/astro-multiverse.webp"
+image: "themes/astro-multiverse.jpeg"
 images: []
 author:
   url: "https://github.com/AREA44"

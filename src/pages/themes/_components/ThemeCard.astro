@@ -1,9 +1,10 @@
 ---
+import type { ImageMetadata } from "astro"
 import type { CollectionEntry } from "astro:content"
 import Card from "~/components/Card.astro"
 import CardBody from "~/components/CardBody.astro"
 import CardFooter from "~/components/CardFooter.astro"
-import { resolveImage } from "~/content/themes/_resolveImage.js"
+import ResponsiveImage from "~/components/ResponsiveImage.astro"
 import Avatar from "./Avatar.astro"
 import Badge from "./Badge.astro"
 
@@ -13,19 +14,17 @@ export type Props = {
 
 const { theme } = Astro.props
 
-const image = await resolveImage(theme)
+const image = theme.data.image as ImageMetadata
 ---
 
 <Card isLink>
 	<a class="flex h-full flex-col" href={`/themes/details/${theme.slug}`} rel="prefetch">
-		<img
-			src={image.src}
-			width={image.width}
-			height={image.height}
+		<ResponsiveImage
+			src={image}
+			widths={[400, 800]}
 			alt=""
+			sizes="(min-width: 640px) 50vw, (min-width: 1280px) 33vw, 100vw"
 			class="aspect-video w-full"
-			loading="lazy"
-			decoding="async"
 		/>
 		<CardBody>
 			<div>

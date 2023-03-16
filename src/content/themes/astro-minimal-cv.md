@@ -1,7 +1,7 @@
 ---
 title: "Astro Minimal CV"
 description: "Minimal, easy customizable and responsive CV built with tailwind and dark support."
-image: "/src/content/themes/_images/astro-minimal-cv.webp"
+image: "themes/astro-minimal-cv.png"
 images: []
 author:
   url: "https://github.com/alexanderhodes"

@@ -1,7 +1,7 @@
 ---
 title: "Astro Portfolio"
 description: "A minimal, opinionated starter that ships with full PWA support out the box. It also comes with TailwindCSS preinstalled as well as sensible ESLint and Prettier configurations."
-image: "/src/content/themes/_images/astro-portfolio.webp"
+image: "themes/astro-portfolio.png"
 images: []
 author:
   url: "https://github.com/uzzii-21"

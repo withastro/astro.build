@@ -1,7 +1,7 @@
 ---
 title: "Astrolus"
 description: "Modern Sass home page template that supports light and dark theme built with tailwindcss using tailus blocks."
-image: "/src/content/themes/_images/astrolus.webp"
+image: "themes/astrolus.png"
 images: []
 author:
   url: "https://github.com/Tailus-UI"

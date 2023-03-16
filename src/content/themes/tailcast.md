@@ -1,7 +1,7 @@
 ---
 title: "Tailcast"
 description: "Dark themed website template designed for saas/startup business."
-image: "/src/content/themes/_images/tailcast.webp"
+image: "themes/tailcast.png"
 images: []
 author:
   url: "https://github.com/matt765"

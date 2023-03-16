@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Astro"
 description: "The official 'Getting Started' template for Astro. Best for learning Astro or starting a new project with best practices built-in."
-image: "/src/content/themes/_images/basics.webp"
+image: "themes/basics.png"
 images: []
 author:
   url: "https://github.com/withastro"

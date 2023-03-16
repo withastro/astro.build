@@ -2,18 +2,18 @@
 import type { ImageMetadata } from "astro"
 import type { HTMLAttributes } from "astro/types"
 import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
-
-export type GalleryImage = {
-	thumbnail: ImageMetadata
-	fullImage: ImageMetadata
-	alt?: string
-}
+import ResponsiveImage from "./ResponsiveImage.astro"
 
 export type Props = HTMLAttributes<"div"> & {
-	images: GalleryImage[]
+	images: {
+		src: ImageMetadata
+		alt: string
+	}[]
 }
 
 const { images, class: className, ...attrs } = Astro.props
+
+console.log(images)
 ---
 
 <image-gallery
@@ -27,18 +27,16 @@ const { images, class: className, ...attrs } = Astro.props
 			class="flex aspect-video h-full w-full flex-shrink-0 snap-x snap-mandatory scroll-p-0 overflow-y-hidden overflow-x-scroll"
 		>
 			{
-				images.map((image, i) => (
+				images.map(({ src, alt }, i) => (
 					<li
 						class="relative flex w-full flex-shrink-0 snap-start snap-always items-center justify-center"
 						id={`gallery-${i + 1}`}
 					>
-						<img
-							src={image.fullImage.src}
-							width={image.fullImage.width}
-							height={image.fullImage.height}
-							alt={image.alt || ""}
-							decoding="async"
-							class="aspect-video max-h-full max-w-full object-cover"
+						<ResponsiveImage
+							src={src}
+							alt={alt}
+							widths={[320, 640, 1280]}
+							class="aspect-video h-full w-full object-cover"
 						/>
 					</li>
 				))
@@ -67,17 +65,14 @@ const { images, class: className, ...attrs } = Astro.props
 	<nav class="w-full sm:h-full sm:overflow-y-auto">
 		<ul class="hidden h-full sm:block">
 			{
-				images.map((image, i) => (
+				images.map(({ src, alt }, i) => (
 					<li>
 						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? "true" : "false"}>
-							<img
-								src={image.thumbnail.src}
-								width={image.thumbnail.width}
-								height={image.thumbnail.height}
-								alt={image.alt || ""}
+							<ResponsiveImage
+								src={src}
+								widths={[275, 550]}
+								alt={alt}
 								class="aspect-video h-full w-full object-cover"
-								decoding="async"
-								loading="lazy"
 							/>
 						</a>
 					</li>

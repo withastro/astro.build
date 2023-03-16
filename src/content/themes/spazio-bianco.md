@@ -1,7 +1,7 @@
 ---
 title: "Spazio Bianco"
 description: "Spazio Bianco is a super cool UI KIT with beautiful and modern layouts."
-image: "/src/content/themes/_images/spazio-bianco-hero.webp"
+image: "themes/spazio-bianco-hero.png"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

@@ -1,7 +1,7 @@
 ---
 title: "Massively"
 description: "A is a free, fully responsive HTML5 + CSS3 site template designed by @ajlkn for HTML5 UP and released for free under the Creative Commons license."
-image: "/src/content/themes/_images/massively.webp"
+image: "themes/massively.png"
 images: []
 author:
   url: "https://github.com/DBozhinovski"

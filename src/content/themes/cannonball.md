@@ -1,7 +1,7 @@
 ---
 title: "Cannonball"
 description: "A modern splash page/coming soon page with a newsletter sign up form."
-image: "/src/content/themes/_images/cannonball.webp"
+image: "themes/cannonball.png"
 images: []
 author:
   url: "https://github.com/littlesticks"

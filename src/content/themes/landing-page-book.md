@@ -1,7 +1,7 @@
 ---
 title: "Landing Page Book"
 description: "Simple landing page to sell your book - Astro + Svelte + Tailwind"
-image: "/src/content/themes/_images/landing-page-book.webp"
+image: "themes/landing-page-book.png"
 images: []
 author:
   url: "https://github.com/candidosales"

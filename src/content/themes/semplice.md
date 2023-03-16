@@ -1,7 +1,7 @@
 ---
 title: "Semplice"
 description: "A modern & clean UI Kit with more than 70 sections, 40 demo pages and 100s of components."
-image: "/src/content/themes/_images/semplice-hero.webp"
+image: "themes/semplice-hero.png"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

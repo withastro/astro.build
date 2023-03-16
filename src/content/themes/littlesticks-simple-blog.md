@@ -1,7 +1,7 @@
 ---
 title: "Simple Blog"
 description: "A fully-responsive modern blog theme with featured images, a dark theme, copy code block buttons, theme-able styles, and more!"
-image: "/src/content/themes/_images/littlesticks-simple-blog.webp"
+image: "themes/littlesticks-simple-blog.png"
 images: []
 author:
   url: "https://github.com/littlesticks"

@@ -1,7 +1,7 @@
 ---
 title: "Astro Minimal Blog"
 description: "A minimal blog using Tailwind CSS and TypeScript. Integrated tags with filtering for posts by tags, RSS support, auto-generated web manifest and SEO readiness."
-image: "/src/content/themes/_images/astro-minimal-blog.webp"
+image: "themes/astro-minimal-blog.png"
 images: []
 author:
   url: "https://github.com/alexanderhodes"

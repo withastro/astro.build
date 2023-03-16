@@ -1,7 +1,7 @@
 ---
 title: "StyleGAN3"
 description: "A simple template with Astro and StyleGAN3 style."
-image: "/src/content/themes/_images/stylegan3.webp"
+image: "themes/stylegan3.png"
 images: []
 author:
   url: "https://github.com/AREA44"

@@ -1,7 +1,7 @@
 ---
 title: "Accessible Astro Dashboard"
 description: "An Accessible Admin Dashboard Theme for Astro with a login page and a dashboard overview. Includes accessibility features such as landmarks, better focus-outline and skip-links navigation."
-image: "/src/content/themes/_images/accessible-astro-dashboard.webp"
+image: "themes/accessible-astro-dashboard.png"
 images: []
 author:
   url: "https://github.com/markteekman"

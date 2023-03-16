@@ -1,7 +1,7 @@
 ---
 title: "Astro Minimal Starter"
 description: "This starter repo gives you a blog website with posts written in Markdown, all powered by Astro."
-image: "/src/content/themes/_images/astro-minimal-starter.webp"
+image: "themes/astro-minimal-starter.png"
 images: []
 author:
   url: "https://github.com/jaydanurwin"

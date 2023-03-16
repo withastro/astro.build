@@ -1,13 +1,13 @@
 ---
 title: "ProFolioX"
 description: "ProFolioX is a website template crafted for developers and designers who code."
-image: "/src/content/themes/_images/profoliox-hero.webp"
+image: "themes/profoliox-hero.png"
 images:
   [
-    "/src/content/themes/_images/profoliox-2.webp",
-    "/src/content/themes/_images/profoliox-3.webp",
-    "/src/content/themes/_images/profoliox-4.webp",
-    "/src/content/themes/_images/profoliox-5.webp",
+    "themes/profoliox-2.png",
+    "themes/profoliox-3.png",
+    "themes/profoliox-4.png",
+    "themes/profoliox-5.png",
   ]
 author:
   url: "https://lexingtonthemes.com/"

@@ -1,16 +1,16 @@
 ---
 title: "Astro Shopify"
 description: "A starter theme to build headless ecommerce websites using Astro and Shopify."
-image: "/src/content/themes/_images/astro-shopify-hero.webp"
+image: "themes/astro-shopify-hero.jpg"
 images:
-  - "/src/content/themes/_images/astro-shopify-2.webp"
-  - "/src/content/themes/_images/astro-shopify-3.webp"
+  - "themes/astro-shopify-2.jpg"
+  - "themes/astro-shopify-3.jpg"
 author:
   url: "https://github.com/thomasKn"
   name: "thomasKn"
   avatar: "https://avatars.githubusercontent.com/u/10447155?v=4"
 categories:
-  - "ecommerce"
+  - "other"
 repoUrl: "https://github.com/thomasKn/astro-shopify"
 demoUrl: "https://astro-shopify.gatto.dev"
 stars: 25

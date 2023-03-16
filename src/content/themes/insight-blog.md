@@ -1,11 +1,11 @@
 ---
 title: "Insight Blog"
 description: "A minimal, accessible, and SEO-friendly theme! Built with Tailwind CSS, MDX, TypeScript, and Sass."
-image: "/src/content/themes/_images/insight-blog-hero.webp"
+image: "themes/insight-blog-hero.png"
 images:
-  - "/src/content/themes/_images/insight-blog-2.webp"
-  - "/src/content/themes/_images/insight-blog-3.webp"
-  - "/src/content/themes/_images/insight-blog-4.webp"
+  - "themes/insight-blog-2.png"
+  - "themes/insight-blog-3.png"
+  - "themes/insight-blog-4.png"
 author:
   url: "https://github.com/TuncAhmet"
   name: "TuncAhmet"

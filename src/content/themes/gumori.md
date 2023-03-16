@@ -1,7 +1,7 @@
 ---
 title: "Gumori"
 description: "Semantic HTML + Microformats/OpenGraph/Schema.org + the smallest possible default stylesheet for designing your own blog or pairing it with a classless CSS framework."
-image: "/src/content/themes/_images/gumori.webp"
+image: "themes/gumori.png"
 images: []
 author:
   url: "https://github.com/importantimport"

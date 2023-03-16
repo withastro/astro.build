@@ -1,9 +1,9 @@
 ---
 title: "Astro Boilerplate"
 description: "A fully responsive template built with Astro, TypeScript and React styled with Tailwind CSS. The perfect boilerplate to build a blog or portfolio."
-image: "/src/content/themes/_images/astro-boilerplate-hero.webp"
+image: "themes/astro-boilerplate-hero.png"
 images:
-  - "/src/content/themes/_images/astro-boilerplate.webp"
+  - "themes/astro-boilerplate.png"
 author:
   url: "https://github.com/ixartz"
   name: "ixartz"

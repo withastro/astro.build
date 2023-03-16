@@ -1,7 +1,7 @@
 ---
 title: "Docs"
 description: "A full-featured documentation theme."
-image: "/src/content/themes/_images/docs.webp"
+image: "themes/docs.png"
 images: []
 author:
   url: "https://github.com/withastro"

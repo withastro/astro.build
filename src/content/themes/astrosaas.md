@@ -1,13 +1,13 @@
 ---
 title: "Astrosaas"
 description: "Astrosaas is a template for your next product."
-image: "/src/content/themes/_images/astrosaas-hero.webp"
+image: "themes/astrosaas-hero.png"
 images:
-  - "/src/content/themes/_images/astrosaas-hero.webp"
-  - "/src/content/themes/_images/astrosaas-2.webp"
-  - "/src/content/themes/_images/astrosaas-3.webp"
-  - "/src/content/themes/_images/astrosaas-4.webp"
-  - "/src/content/themes/_images/astrosaas-5.webp"
+  - "themes/astrosaas-hero.png"
+  - "themes/astrosaas-2.png"
+  - "themes/astrosaas-3.png"
+  - "themes/astrosaas-4.png"
+  - "themes/astrosaas-5.png"
 author:
   url: "https://github.com/michael-andreuzza"
   name: "michael-andreuzza"

@@ -1,7 +1,7 @@
 ---
 title: "No Fuss Astro"
 description: "An Astro Template for blog, docs, or landing page without complicated design and setup."
-image: "/src/content/themes/_images/no-fuss-astro.webp"
+image: "themes/no-fuss-astro.png"
 images: []
 author:
   url: "https://github.com/lancerossdev"

@@ -1,7 +1,7 @@
 ---
 title: "Minecraft Theme"
 description: "Show off your server, document your projects, build with blocks, display items and paintings, create game like GUIs, and tons more!"
-image: "/src/content/themes/_images/minecraft-theme.webp"
+image: "themes/minecraft-theme.png"
 images: []
 author:
   url: "https://github.com/BryceRussell"

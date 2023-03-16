@@ -1,7 +1,7 @@
 ---
 title: "Astro Design System & Docs"
 description: "Astro Design System starter theme is a simple theme to help you document your styleguide, components, patterns and more."
-image: "/src/content/themes/_images/astro-design-system.webp"
+image: "themes/astro-design-system.png"
 images: []
 author:
   url: "https://github.com/jordienr"

@@ -1,7 +1,7 @@
 ---
 title: "AgnosticUI Starter Kit"
 description: "A starter template for leveraging AgnosticUI + Astro to render React, Vue 3, and Svelte. Themable via CSS custom properties."
-image: "/src/content/themes/_images/agnostic-ui.webp"
+image: "themes/agnostic-ui.png"
 images: []
 author:
   url: "https://github.com/AgnosticUI"

@@ -1,7 +1,7 @@
 ---
 title: "Navy"
 description: "Navy is a modern dark elegant UI KIt with attention to details."
-image: "/src/content/themes/_images/navy-hero.webp"
+image: "themes/navy-hero.png"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

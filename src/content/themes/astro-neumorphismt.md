@@ -1,7 +1,7 @@
 ---
 title: "Astro Neumorphismt"
 description: "A simple and responsive template focused on the entire UI design style with neumorphism styles. Built with AstroJS, TypeScript, Preact, and styled with Tailwind CSS."
-image: "/src/content/themes/_images/astro-neumorphismt.webp"
+image: "themes/astro-neumorphismt.png"
 images: []
 author:
   url: "https://github.com/paabloLC"

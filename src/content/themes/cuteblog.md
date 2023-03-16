@@ -1,7 +1,7 @@
 ---
 title: "Cute Blog"
 description: "Blog with simple and unique design to create blog site using Astro, features cute blog with card design, markdown ready, and blog post cover image."
-image: "/src/content/themes/_images/cuteblog.webp"
+image: "themes/cuteblog.jpg"
 images: []
 author:
   url: "https://github.com/mesinkasir"

@@ -1,7 +1,7 @@
 ---
 title: "Astro Boy"
 description: "Astro boy starter blog template for build modern blog with astro build. Features: simple blog, auto SEO from astro, cover image blog, post article, markdown support."
-image: "/src/content/themes/_images/astro-boy.webp"
+image: "themes/astro-boy.jpg"
 images: []
 author:
   url: "https://github.com/mesinkasir"

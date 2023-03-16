@@ -1,8 +1,8 @@
 ---
 title: "Sendit"
 description: "Sendit is a polished and versatile marketing website template for Astro, optimized for visual editing on CloudCannon."
-image: "/src/content/themes/_images/sendit-hero.webp"
-images: ["/src/content/themes/_images/sendit-2.webp"]
+image: "themes/sendit-hero.png"
+images: ["themes/sendit-2.png"]
 author:
   url: "https://cloudcannon.com/"
   name: "CloudCannon"

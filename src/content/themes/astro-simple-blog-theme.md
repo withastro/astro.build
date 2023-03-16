@@ -1,7 +1,7 @@
 ---
 title: "Astro Simple Blog Theme"
 description: "A simple blog is a simple blog theme for Astro."
-image: "/src/content/themes/_images/astro-simple-blog-theme.webp"
+image: "themes/astro-simple-blog-theme.png"
 images: []
 author:
   url: "https://github.com/dofbi"

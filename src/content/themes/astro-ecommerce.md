@@ -1,18 +1,18 @@
 ---
 title: "Astro Ecommerce"
 description: "Introducing Astro Ecommerce, the ultimate starter template for your e-commerce web project. Built on Astro's next-gen island architecture, Astro Ecommerce offers a sleek and modern design with a wide range of components and features to help you create a stunning online store.Introducing Astro Ecommerce, the ultimate starter template for your e-commerce web project. Built on Astro's next-gen island architecture, Astro Ecommerce offers a sleek and modern design with a wide range of components and features to help you create a stunning online store."
-image: "/src/content/themes/_images/astro-ecommerce-hero.webp"
+image: "themes/astro-ecommerce-hero.jpg"
 images:
-  - "/src/content/themes/_images/astro-ecommerce-2.webp"
-  - "/src/content/themes/_images/astro-ecommerce-3.webp"
-  - "/src/content/themes/_images/astro-ecommerce-4.webp"
+  - "themes/astro-ecommerce-2.jpg"
+  - "themes/astro-ecommerce-3.jpg"
+  - "themes/astro-ecommerce-4.jpg"
 author:
   url: "https://www.creative-tim.com/"
   name: "Creative Tim"
   avatar: "/assets/themes/avatars/creative-tim.png"
 categories:
   - "featured"
-  - "ecommerce"
+  - "other"
 repoUrl: "https://github.com/creativetimofficial/astro-ecommerce"
 demoUrl: "https://demos.creative-tim.com/astro-ecommerce/landing/"
 links:

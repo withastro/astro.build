@@ -43,8 +43,8 @@ export const themeSchema = z
 		title: z.string().min(1),
 		description: z.string().min(1),
 		fullDescription: z.string().optional(),
-		image: z.string(),
-		images: z.array(z.string()).default([]),
+		image: image(),
+		images: z.array(image()).default([]),
 		author: z.object({
 			url: z.string(),
 			name: z.string(),

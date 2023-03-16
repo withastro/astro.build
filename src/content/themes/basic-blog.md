@@ -1,7 +1,7 @@
 ---
 title: "Astro Basic Blog Template"
 description: "A fully-responsive basic blog theme made with Tailwind CSS with blog sample, a dark theme and SEO Friendly!"
-image: "/src/content/themes/_images/basic-blog.webp"
+image: "themes/basic-blog.png"
 images: []
 author:
   url: "https://github.com/lancerossdev"

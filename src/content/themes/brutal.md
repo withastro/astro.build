@@ -1,7 +1,7 @@
 ---
 title: "Brutal"
 description: "Brutal is a minimal neobrutalist theme for Astro. It's based on Neobrutalist Web Design, a movement that aims to create websites with a minimalistic and functional design. It has some integrations like Image Optimization, RSS, Sitemap, ready to get your SEO done right."
-image: "/src/content/themes/_images/brutal.webp"
+image: "themes/brutal.png"
 images: []
 author:
   url: "https://github.com/ElianCodes"

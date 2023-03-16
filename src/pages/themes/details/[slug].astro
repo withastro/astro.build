@@ -1,9 +1,10 @@
 ---
+import type { ImageMetadata } from "astro"
 import { CollectionEntry, getCollection } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
 import ImageGallery from "~/components/ImageGallery.astro"
 import Prose from "~/components/Prose.astro"
-import { resolveAllImages } from "~/content/themes/_resolveImage.js"
+import ResponsiveImage from "~/components/ResponsiveImage.astro"
 import { getRelatedThemes } from "~/helpers/relatedThemes.js"
 import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx"
 import MainLayout from "~/layouts/MainLayout.astro"
@@ -28,30 +29,31 @@ const { theme } = Astro.props as { theme: CollectionEntry<"themes"> }
 
 const { Content } = await theme.render()
 const relatedThemes = await getRelatedThemes(theme)
-const images = await resolveAllImages(theme)
+
+const images = [theme.data.image, ...theme.data.images] as ImageMetadata[]
 ---
 
 <MainLayout
 	title={theme.data.title}
 	description={theme.data.description}
-	image={{ src: images[0].fullImage.src, alt: theme.data.title }}
+	image={{ src: images[0].src, alt: theme.data.title }}
 >
 	<div class="grid-container gap-y-0">
 		{
 			images.length > 1 ? (
 				<ImageGallery
-					images={images}
+					images={images.map((src) => ({ src, alt: "" }))}
 					class="bleed-full mx-auto w-full"
 					style="max-width: var(--container-width, 1280px)"
 				/>
 			) : (
-				<img
-					src={images[0].fullImage.src}
-					width={images[0].fullImage.width}
-					height={(images[0].fullImage.width * 7) / 16}
+				<ResponsiveImage
+					src={images[0]}
+					widths={[320, 640, 1280]}
 					alt=""
-					class="mx-auto max-w-full"
-					decoding="async"
+					class="mx-auto w-full object-cover"
+					style={{ aspectRatio: 16 / 7 }}
+					loading="eager"
 				/>
 			)
 		}

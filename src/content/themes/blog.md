@@ -1,7 +1,7 @@
 ---
 title: "Blog"
 description: "An ultra-minimal personal site & blog. Includes a well-documented codebase and built-in best practices for any Astro project."
-image: "/src/content/themes/_images/blog.webp"
+image: "themes/blog.png"
 images: []
 author:
   url: "https://github.com/withastro"

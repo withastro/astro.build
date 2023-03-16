@@ -1,7 +1,7 @@
 ---
 title: "Nebula 🔮"
 description: "Nebula is a template for your iOS apps."
-image: "/src/content/themes/_images/nebula.webp"
+image: "themes/nebula.png"
 images: []
 author:
   url: "https://github.com/zavbala"

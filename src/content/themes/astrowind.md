@@ -1,9 +1,9 @@
 ---
 title: "AstroWind"
 description: "A template to make your website using Astro + Tailwind CSS."
-image: "/src/content/themes/_images/astrowind-hero.webp"
+image: "themes/astrowind-hero.png"
 images:
-  - "/src/content/themes/_images/astrowind.webp"
+  - "themes/astrowind.png"
 author:
   url: "https://github.com/onwidget"
   name: "onwidget"

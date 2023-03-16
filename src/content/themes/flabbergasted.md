@@ -1,7 +1,7 @@
 ---
 title: "Flabbergasted"
 description: "Flabbergasted is a neo brutalist UI Kit that will make you look cool on every screen."
-image: "/src/content/themes/_images/flabbergasted-hero.webp"
+image: "themes/flabbergasted-hero.png"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

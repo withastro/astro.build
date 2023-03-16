@@ -1,7 +1,7 @@
 ---
 title: "Blogster Bubblegum"
 description: "A beautiful, performant and accessible theme built with Tailwind."
-image: "/src/content/themes/_images/blogster-bubblegum-hero.webp"
+image: "themes/blogster-bubblegum-hero.png"
 images: []
 author:
   url: "https://github.com/flexdinesh"

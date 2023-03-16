@@ -1,9 +1,9 @@
 ---
 title: "Odyssey"
 description: "A modern, full-featured theme for a business or startup marketing site."
-image: "/src/content/themes/_images/odyssey-hero.webp"
+image: "themes/odyssey-hero.png"
 images:
-  - "/src/content/themes/_images/odyssey.webp"
+  - "themes/odyssey.png"
 author:
   url: "https://github.com/littlesticks"
   name: "littlesticks"

@@ -1,7 +1,7 @@
 ---
 title: "Simple Blog Template"
 description: "Lightly opinionated starter template for an Astro blog. Organized to keep markdown files separate from Astro pages."
-image: "/src/content/themes/_images/simple-blog-template.webp"
+image: "themes/simple-blog-template.png"
 images: []
 author:
   url: "https://github.com/OnWritingCode"

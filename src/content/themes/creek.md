@@ -1,11 +1,11 @@
 ---
 title: "Creek"
 description: "Creek is an open source blog theme for Astro."
-image: "/src/content/themes/_images/creek-hero.webp"
+image: "themes/creek-hero.png"
 images:
-  - "/src/content/themes/_images/creek.webp"
-  - "/src/content/themes/_images/creek-post-page.webp"
-  - "/src/content/themes/_images/creek-search-page.webp"
+  - "themes/creek.png"
+  - "themes/creek-post-page.png"
+  - "themes/creek-search-page.png"
 author:
   url: "https://github.com/robertguss"
   name: "robertguss"

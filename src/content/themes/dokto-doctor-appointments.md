@@ -1,9 +1,9 @@
 ---
 title: "Dokto - Doctor Appointments Landing Page"
 description: "Dokto is a clean and modern HTML landing page starter built with Tailwind CSS and Alpine JS"
-image: "/src/content/themes/_images/dokto-doctor-appointments.webp"
+image: "themes/dokto-doctor-appointments.png"
 images:
-  - "/src/content/themes/_images/dokto-doctor-appointments-2.webp"
+  - "themes/dokto-doctor-appointments-2.png"
 author:
   url: "https://github.com/cssninjaStudio"
   name: "cssninjaStudio"

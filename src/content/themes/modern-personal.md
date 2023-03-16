@@ -1,7 +1,7 @@
 ---
 title: "Astro Modern Personal Website"
 description: "Modern Personal Website Template with Project Section, CV Section, Paginated Blog, RSS Feed, SEO Friendly, Visual themes and Responsive Desing for Astro framework. Built with Astro, DaisyUI and Tailwind CSS."
-image: "/src/content/themes/_images/modern-personal.webp"
+image: "themes/modern-personal.png"
 images: []
 author:
   url: "https://github.com/manuelernestog"
