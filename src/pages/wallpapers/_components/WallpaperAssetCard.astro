@@ -1,0 +1,39 @@
+---
+import Card from "~/components/Card.astro"
+import DownloadIcon from "~/icons/DownloadIcon.jsx"
+
+export type Props = {
+	name: string
+	type: "desktop" | "mobile"
+	assetName: string
+}
+
+const width = Astro.props.type === "desktop" ? 862 : 270
+const height = Astro.props.type === "desktop" ? 557 : 584
+---
+
+<Card>
+	<div class="text-center">
+		<img
+			src={`/assets/wallpapers/${Astro.props.type}/${Astro.props.assetName}.png`}
+			alt=""
+			class="inline"
+			{width}
+			{height}
+			loading="lazy"
+		/>
+	</div>
+	<div class="w-full flex items-center justify-between px-4 py-4">
+		<h3 class="heading-4 text-white">{Astro.props.name}</h3>
+		<p class="flex gap-2">
+			<a
+				href={`/assets/wallpapers/${Astro.props.type}/${Astro.props.assetName}.png`}
+				class="button-primary button-xs"
+				download=""
+			>
+				Download
+				<DownloadIcon aria-hidden="true" class="w-4" />
+			</a>
+		</p>
+	</div>
+</Card>
