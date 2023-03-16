@@ -1,5 +1,6 @@
 ---
 import matter from "gray-matter"
+import { Blob, File, Request } from "node-fetch"
 import slugify from "slugify"
 import { z } from "zod"
 import { zfd } from "zod-form-data"
@@ -63,7 +64,7 @@ const errorResponse = (formData: FormData, errors: z.typeToFlattenedError<typeof
 }
 
 if (Astro.request.method === "POST") {
-	// convert astro request to a fetch request
+	// convert astro request to a node-fetch request
 	// hopefully we won't have to do this in the future 🥲
 	const formData = await new Request(Astro.request.url, {
 		method: Astro.request.method,
