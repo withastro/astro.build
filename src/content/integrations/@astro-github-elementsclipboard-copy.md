@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-github-elements/clipboard-copy"
 repoUrl: "https://github.com/BryceRussell/astro-github-elements"
 homepageUrl: "https://github.com/BryceRussell/astro-github-elements/tree/main/packages/clipboard-copy#readme"
-downloads: 26
+downloads: 25
 ---

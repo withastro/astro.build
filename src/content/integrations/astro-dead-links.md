@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-dead-links"
 repoUrl: "https://github.com/Playform/astro-dead-links"
 homepageUrl: "https://github.com/Playform/astro-dead-links#readme"
-downloads: 7
+downloads: 4
 ---
