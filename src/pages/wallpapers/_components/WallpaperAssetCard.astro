@@ -18,12 +18,12 @@ const height = Astro.props.type === "desktop" ? 557 : 584
 			src={`/assets/wallpapers/${Astro.props.type}/${Astro.props.assetName}.png`}
 			alt=""
 			class="inline"
-			{width}
-			{height}
+			width={width}
+			height={height}
 			loading="lazy"
 		/>
 	</div>
-	<div class="w-full flex items-end justify-between px-4 py-4">
+	<div class="w-full flex items-end justify-between p-4">
 		<h3 class="heading-4 text-white">{Astro.props.name}</h3>
 		<p class="flex gap-2">
 			<a
