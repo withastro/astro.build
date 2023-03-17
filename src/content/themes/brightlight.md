@@ -3,12 +3,10 @@ title: "Brightlight"
 description: "Brightlight is a an elegant UI Kit for your digital product."
 image: "/src/content/themes/_images/brightlight-hero.webp"
 images:
-  [
-    "/src/content/themes/_images/brightlight-2.webp",
-    "/src/content/themes/_images/brightlight-3.webp",
-    "/src/content/themes/_images/brightlight-4.webp",
-    "/src/content/themes/_images/brightlight-5.webp",
-  ]
+  - "/src/content/themes/_images/brightlight-2.webp"
+  - "/src/content/themes/_images/brightlight-3.webp"
+  - "/src/content/themes/_images/brightlight-4.webp"
+  - "/src/content/themes/_images/brightlight-5.webp"
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"

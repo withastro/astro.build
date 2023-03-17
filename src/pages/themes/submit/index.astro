@@ -87,7 +87,7 @@ if (Astro.request.method === "POST") {
 
 	try {
 		const { SUBMISSION_DISCORD_WEBHOOK_URL, SUBMISSION_DISCORD_WEBHOOK_THREAD_ID } = env()
-		
+
 		const message = await executeDiscordWebhook(SUBMISSION_DISCORD_WEBHOOK_URL, {
 			threadId: SUBMISSION_DISCORD_WEBHOOK_THREAD_ID,
 			content: `**New theme submission!**`,

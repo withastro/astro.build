@@ -6,6 +6,7 @@ module.exports = {
   rules: {
     "tailwindcss/migration-from-tailwind-2": "off",
     "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "off",
   },
   settings: {
     tailwindcss: {

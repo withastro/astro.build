@@ -3,11 +3,9 @@ title: "Manual"
 description: "A feature full documentation template for Astro."
 image: "/src/content/themes/_images/manual-hero.webp"
 images:
-  [
-    "/src/content/themes/_images/manual-2.webp",
-    "/src/content/themes/_images/manual-3.webp",
-    "/src/content/themes/_images/manual-4.webp",
-  ]
+  - "/src/content/themes/_images/manual-2.webp"
+  - "/src/content/themes/_images/manual-3.webp"
+  - "/src/content/themes/_images/manual-4.webp"
 author:
   url: "https://github.com/TheOtterlord"
   name: "TheOtterlord"
@@ -16,7 +14,7 @@ categories:
   - "docs"
 repoUrl: "https://github.com/TheOtterlord/manual"
 demoUrl: "https://manual.otterlord.dev"
-stars: 55
+stars: 2
 tools:
   - "tailwind"
   - "typescript"

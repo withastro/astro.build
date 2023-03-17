@@ -1,12 +1,12 @@
 ---
 name: "@astrojs/markdoc"
 title: "@astrojs/markdoc"
-description: "Use Markdoc within Astro"
+description: "Add support for Markdoc pages in your Astro site"
 categories:
   - "css+ui"
   - "official"
 npmUrl: "https://www.npmjs.com/package/@astrojs/markdoc"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/markdoc/"
-downloads: 306
+downloads: 1282
 ---

@@ -25,4 +25,20 @@ links:
 featured: 12
 ---
 
-<p>Showcase your creative work with a theme full of soft gradients, purple hues, and rounded corners. This theme by the Astro design team features a dynamic landing page for highlighting your skills and recent projects.</p><ul><li><strong>Theme toggle:</strong> Users can easily choose light or dark mode</li><li><strong>Don't miss a lead:</strong> Clear contact call-to-action on all pages</li><li><strong>Type-safe frontmatter:</strong> Projects powered by Astro v2’s <a href="https://docs.astro.build/en/guides/content-collections/">content collections</a></li> <li><strong>Clean icons:</strong> 20 stylish <a href="https://phosphoricons.com/">Phosphor Icons</a> built in</li></ul>
+<p>
+  Showcase your creative work with a theme full of soft gradients, purple hues, and rounded corners.
+  This theme by the Astro design team features a dynamic landing page for highlighting your skills
+  and recent projects.
+</p>
+<ul>
+  <li><strong>Theme toggle:</strong> Users can easily choose light or dark mode</li>
+  <li><strong>Don't miss a lead:</strong> Clear contact call-to-action on all pages</li>
+  <li>
+    <strong>Type-safe frontmatter:</strong> Projects powered by Astro v2’s
+    <a href="https://docs.astro.build/en/guides/content-collections/">content collections</a>
+  </li>
+  <li>
+    <strong>Clean icons:</strong> 20 stylish
+    <a href="https://phosphoricons.com/">Phosphor Icons</a> built in
+  </li>
+</ul>

@@ -11,7 +11,10 @@ categories:
   - "blog"
 repoUrl: "https://github.com/flexdinesh/blogster"
 demoUrl: "https://blogster-minimal.netlify.app"
-stars: 154
+stars: 166
 ---
 
-<p>A light weight theme built with plain old HTML and CSS. No external fonts or icons. Zero JavaScript. You get a full functional nice looking blog that loads super fast.</p>
+<p>
+  A light weight theme built with plain old HTML and CSS. No external fonts or icons. Zero
+  JavaScript. You get a full functional nice looking blog that loads super fast.
+</p>

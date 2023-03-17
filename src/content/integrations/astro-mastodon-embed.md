@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-mastodon-embed"
 repoUrl: "https://github.com/ghall89/astro-mastodon-embed"
 homepageUrl: "https://github.com/ghall89/astro-mastodon-embed"
-downloads: 35
+downloads: 32
 ---
