@@ -1,0 +1,68 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro"
+import WallpaperAssetCard from "./_components/WallpaperAssetCard.astro"
+
+export const prerender = true
+
+const seo = {
+	title: "Wallpapers",
+	description: "Elevate your style with our stellar designs.",
+}
+---
+
+<MainLayout {...seo}>
+	<div class="relative overflow-hidden pb-16">
+		<div class="grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
+			<div class="bleed-full noise-underlay bg-grid absolute inset-0 mask-linear-gradient-to-b">
+			</div>
+			<div class="relative flex flex-col items-center gap-6 text-center">
+				<h1 class="heading-3 mx-auto max-w-screen-lg sm:heading-2 md:heading-1">Wallpapers</h1>
+				<p class="body text-astro-gray-200 md:body-large">
+					Elevate your style with our stellar designs
+				</p>
+			</div>
+		</div>
+
+		<section class="space-y-14">
+			<div>
+				<h2 class="heading-3 text-center" id="desktop">Desktop</h2>
+				<p class="body mt-4 text-center text-astro-gray-200">5120×2880</p>
+			</div>
+			<ul class="mx-auto grid max-w-6xl gap-6 py-8 px-4 md:grid-cols-2">
+				<WallpaperAssetCard name="Arc" type="desktop" assetName="arc" />
+				<WallpaperAssetCard name="Rays" type="desktop" assetName="rays" />
+				<WallpaperAssetCard name="Purple" type="desktop" assetName="purple" />
+				<WallpaperAssetCard name="Rose" type="desktop" assetName="rose" />
+				<WallpaperAssetCard name="Gold" type="desktop" assetName="gold" />
+				<WallpaperAssetCard name="Teal" type="desktop" assetName="teal" />
+			</ul>
+		</section>
+
+		<section class="mt-32 space-y-14">
+			<div>
+				<h2 class="heading-3 text-center" id="mobile">Mobile</h2>
+				<p class="body mt-4 text-center text-astro-gray-200">1170 × 2532</p>
+			</div>
+			<ul class="mx-auto grid max-w-6xl grid-cols-2 gap-6 py-8 px-4 lg:grid-cols-3">
+				<WallpaperAssetCard name="Arc" type="mobile" assetName="arc" />
+				<WallpaperAssetCard name="Rays" type="mobile" assetName="rays" />
+				<WallpaperAssetCard name="Houston" type="mobile" assetName="houston" />
+				<WallpaperAssetCard name="Faces" type="mobile" assetName="faces" />
+				<WallpaperAssetCard name="Dreamer" type="mobile" assetName="dreamer" />
+				<WallpaperAssetCard name="Radio" type="mobile" assetName="radio" />
+				<WallpaperAssetCard name="Hello" type="mobile" assetName="hello" />
+				<WallpaperAssetCard name="Explorer" type="mobile" assetName="explorer" />
+			</ul>
+		</section>
+	</div>
+
+	<div
+		class="noise-underlay pointer-events-none absolute left-0 top-[-150px] h-[800px] w-[70vw] -translate-x-2/3 bg-red-pink-gradient opacity-30 mask-radial-gradient"
+	>
+	</div>
+
+	<div
+		class="noise-underlay pointer-events-none absolute right-0 top-[-150px] h-[800px] w-[70vw] translate-x-2/3 bg-orange-yellow-gradient opacity-30 mask-radial-gradient"
+	>
+	</div>
+</MainLayout>
