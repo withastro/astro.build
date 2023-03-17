@@ -14,7 +14,7 @@ categories:
 repoUrl: "https://github.com/onwidget/astrowind"
 demoUrl: "https://astrowind.vercel.app/"
 stars: 716
-featured: 4
+featured: 5
 tools:
   - "tailwind"
   - "mdx"

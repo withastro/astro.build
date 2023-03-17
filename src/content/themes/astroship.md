@@ -23,7 +23,7 @@ links:
   - text: "Twitter"
     href: "https://twitter.com/surjithctly"
 stars: 399
-featured: 2
+featured: 3
 tools:
   - "tailwind"
   - "alpinejs"

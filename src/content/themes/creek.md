@@ -19,7 +19,7 @@ links:
   - href: "https://howtocode.io/"
     text: "HowToCode.io"
 stars: 89
-featured: 6
+featured: 7
 tools:
   - "tailwind"
 ---
