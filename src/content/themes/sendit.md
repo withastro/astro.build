@@ -18,7 +18,7 @@ tools:
   - "react"
   - "sass"
 stars: 1
-featured: 1
+featured: 9
 ---
 
 <h2>Features</h2>
