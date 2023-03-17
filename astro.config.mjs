@@ -19,7 +19,11 @@ export default defineConfig({
 		image({
 			serviceEntryPoint: "@astrojs/image/sharp",
 		}),
-		tailwind(),
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
 		solidJs(),
 		mdx(),
 		sitemap(),

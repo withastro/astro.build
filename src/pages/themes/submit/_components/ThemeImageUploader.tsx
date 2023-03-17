@@ -120,7 +120,7 @@ function FeaturedImageContent() {
 			<p class="mb-6 text-sm leading-tight text-astro-gray-200">
 				Drag and drop to upload (max 1 image)
 			</p>
-			<p class="button-white button-small">
+			<p class="button button-white button-sm">
 				Or Select File
 				<FileUploadIcon aria-hidden />
 			</p>
@@ -133,7 +133,7 @@ function AdditionalImageContent() {
 		<section class="flex flex-col items-center justify-center p-4 text-center font-light">
 			<h3 class="text-xl">Additional Theme Images</h3>
 			<p class="mb-2 text-sm text-astro-gray-200">Drag and drop to upload (max 8 images)</p>
-			<p class="button-white button-smaller">
+			<p class="button button-sm button button-white h-8 px-3">
 				Or Select Files
 				<FileUploadIcon aria-hidden />
 			</p>

@@ -13,7 +13,7 @@ const { theme, class: className, ...attrs } = Astro.props
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>
 	{
 		theme.data.buyUrl && (
-			<a href={theme.data.buyUrl} class="button-primary" data-analytics-event="PDDOCXCA:1">
+			<a href={theme.data.buyUrl} class="button button-primary" data-analytics-event="PDDOCXCA:1">
 				<span>Buy now</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>
@@ -21,7 +21,7 @@ const { theme, class: className, ...attrs } = Astro.props
 	}
 	{
 		theme.data.repoUrl && (
-			<a href={theme.data.repoUrl} class="button-primary" data-analytics-event="PDDOCXCA:0">
+			<a href={theme.data.repoUrl} class="button button-primary" data-analytics-event="PDDOCXCA:0">
 				<span>Get started</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>
@@ -29,7 +29,7 @@ const { theme, class: className, ...attrs } = Astro.props
 	}
 	{
 		theme.data.demoUrl && (
-			<a href={theme.data.demoUrl} class="button-outline" data-analytics-event="DI9WVRXV:0">
+			<a href={theme.data.demoUrl} class="button" data-analytics-event="DI9WVRXV:0">
 				<span>Live demo</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>
