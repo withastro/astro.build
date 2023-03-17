@@ -6,7 +6,7 @@ export const prerender = true
 
 const seo = {
 	title: "Wallpapers",
-	description: "Elevate your style with these stellar Astro designs.",
+	description: "Elevate your style with our stellar designs.",
 }
 ---
 
@@ -18,13 +18,16 @@ const seo = {
 			<div class="relative flex flex-col items-center gap-6 text-center">
 				<h1 class="heading-3 mx-auto max-w-screen-lg sm:heading-2 md:heading-1">Wallpapers</h1>
 				<p class="body text-astro-gray-200 md:body-large">
-					Elevate your style with these stellar Astro designs
+					Elevate your style with our stellar designs
 				</p>
 			</div>
 		</div>
 
 		<section class="space-y-14">
-			<h2 class="heading-3 text-center" id="desktop">Desktop</h2>
+			<div>
+				<h2 class="heading-3 text-center" id="desktop">Desktop</h2>
+				<p class="body mt-4 text-center text-astro-gray-200 md:body-large">5120×2880</p>
+			</div>
 			<ul class="mx-auto grid max-w-6xl gap-6 py-8 px-4 md:grid-cols-2">
 				<WallpaperAssetCard name="Arc" type="desktop" assetName="arc" />
 				<WallpaperAssetCard name="Rays" type="desktop" assetName="rays" />
@@ -36,7 +39,10 @@ const seo = {
 		</section>
 
 		<section class="mt-32 space-y-14">
-			<h2 class="heading-3 text-center" id="mobile">Mobile</h2>
+			<div>
+				<h2 class="heading-3 text-center" id="mobile">Mobile</h2>
+				<p class="body mt-4 text-center text-astro-gray-200 md:body-large">1170 × 2532</p>
+			</div>
 			<ul class="mx-auto grid max-w-6xl grid-cols-2 gap-6 py-8 px-4 lg:grid-cols-3">
 				<WallpaperAssetCard name="Arc" type="mobile" assetName="arc" />
 				<WallpaperAssetCard name="Rays" type="mobile" assetName="rays" />
