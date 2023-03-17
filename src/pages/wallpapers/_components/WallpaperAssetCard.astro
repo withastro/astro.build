@@ -15,15 +15,15 @@ const height = Astro.props.type === "desktop" ? 307 : 584
 <Card>
 	<div class="text-center">
 		<img
-			src={`/assets/wallpapers/${Astro.props.type}/${Astro.props.assetName}.png`}
+			src={`/assets/wallpapers/thumbs/${Astro.props.type}/${Astro.props.assetName}.webp`}
 			alt=""
-			class="inline w-full h-auto"
+			class="inline h-auto w-full"
 			width={width}
 			height={height}
 			loading="lazy"
 		/>
 	</div>
-	<div class="flex flex-wrap w-full items-end justify-between p-4">
+	<div class="flex w-full flex-wrap items-end justify-between p-4">
 		<h3 class="text-white">{Astro.props.name}</h3>
 		<p class="flex gap-2">
 			<a
