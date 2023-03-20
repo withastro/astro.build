@@ -2,7 +2,6 @@
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
 import { format } from "date-fns"
 import Avatar from "~/components/Avatar.astro"
-import Prose from "~/components/Prose.astro"
 import { resolveCoverImage, resolveSocialImage } from "~/content/blog/_resolveImage.js"
 import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
@@ -97,10 +96,10 @@ const placeholderGradient = randomFromArray(gradients)
 					}
 				</div>
 			</header>
-			<Prose>
+			<article class="prose">
 				<hr />
 				<Content />
-			</Prose>
+			</article>
 		</div>
 	</div>
 </Layout>

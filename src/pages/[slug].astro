@@ -1,6 +1,5 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content"
-import Prose from "~/components/Prose.astro"
 import MainLayout from "~/layouts/MainLayout.astro"
 
 export const prerender = true
@@ -32,8 +31,8 @@ const { Content } = await page.render()
 	</section>
 
 	<section class="grid-container">
-		<Prose>
+		<article class="prose">
 			<Content />
-		</Prose>
+		</article>
 	</section>
 </MainLayout>

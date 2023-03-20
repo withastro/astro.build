@@ -2,7 +2,6 @@
 import { CollectionEntry, getCollection } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
 import ImageGallery from "~/components/ImageGallery.astro"
-import Prose from "~/components/Prose.astro"
 import { resolveAllImages } from "~/content/themes/_resolveImage.js"
 import { getRelatedThemes } from "~/helpers/relatedThemes.js"
 import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx"
@@ -73,9 +72,9 @@ const images = await resolveAllImages(theme)
 					<ThemeStats theme={theme} class="py-4 md:hidden" />
 				</div>
 				<hr class="hidden border-astro-gray-500 md:block" />
-				<Prose class="max-w-full">
+				<article class="prose">
 					<Content />
-				</Prose>
+				</article>
 			</section>
 
 			<aside

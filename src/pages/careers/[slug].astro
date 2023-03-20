@@ -1,6 +1,5 @@
 ---
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
-import Prose from "~/components/Prose.astro"
 import ClockIcon from "~/icons/ClockIcon.jsx"
 import LocationIcon from "~/icons/LocationIcon.jsx"
 import UsersIcon from "~/icons/UsersIcon.jsx"
@@ -60,13 +59,13 @@ const createSEODescription = ({ team, type, location }: CollectionEntry<"careers
 	</section>
 
 	<section class="grid-container">
-		<Prose>
+		<article class="prose">
 			<IntroContent />
 
 			<Content />
 
 			<a href="mailto:jobs@astro.build" class="button button-primary mt-8 w-full">Apply Now</a>
-		</Prose>
+		</article>
 
 		<FeaturesList />
 	</section>
