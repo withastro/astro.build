@@ -1,33 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer components {
-	.button {
-		@apply inline-flex h-14 items-center justify-center gap-4 rounded-full border border-astro-gray-100 px-10 text-center font-sans text-base font-medium leading-none text-white transition hover:bg-white/10;
-	}
-
-	.button.button-primary {
-		@apply border-none bg-blue-purple-gradient text-white hover:bg-blue-purple-gradient hover:brightness-75;
-	}
-
-	.button.button-white {
-		@apply relative border-none bg-blue-purple-gradient bg-clip-text text-transparent;
-	}
-	.button.button-white::before {
-		@apply absolute inset-0 z-white-button-fill rounded-full bg-white transition content-[''];
-	}
-	.button.button-white:hover::before {
-		@apply brightness-75;
-	}
-
-	.button.button-sm {
-		@apply h-10 gap-2 px-6 text-sm tracking-wide;
-	}
-	.button.button-xs {
-		@apply h-6 gap-2 px-3 text-xs tracking-wide;
-	}
-
 	.prose > * + *,
 	.prose blockquote > * + * {
 		@apply my-4 md:my-6;
