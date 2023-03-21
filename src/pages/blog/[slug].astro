@@ -51,7 +51,7 @@ const placeholderGradient = randomFromArray(gradients)
 >
 	{
 		coverImage ? (
-			<div class="mx-auto w-full max-w-screen-xl md:-mb-10 lg:-mb-12 xl:-mb-16">
+			<div class="mx-auto w-full max-w-screen-lg md:-mb-10 lg:-mb-12 xl:-mb-16">
 				<img
 					src={coverImage.src}
 					width={coverImage.width}
@@ -74,10 +74,10 @@ const placeholderGradient = randomFromArray(gradients)
 
 	<div class="grid-container relative mx-auto max-w-screen-lg md:z-10">
 		<div
-			class="noise-container bg-astro-gray-700 py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
+			class="noise-container mx-auto w-fit max-w-full bg-astro-gray-700 py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
 		>
 			<div class="noise"></div>
-			<header class="text-center">
+			<header class="mx-auto w-full max-w-prose text-center">
 				<time class="code text-astro-gray-200" datetime={data.publishDate.toISOString()}>
 					{format(data.publishDate, "MMMM d, yyyy")}
 				</time>

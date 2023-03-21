@@ -62,6 +62,9 @@ module.exports = {
 			lineHeight: {
 				prose: 1.8125,
 			},
+			maxWidth: {
+				prose: "70ch",
+			},
 			zIndex: {
 				"white-button-fill": -1,
 				noise: -2,

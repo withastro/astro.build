@@ -29,7 +29,7 @@
 	}
 
 	.prose {
-		@apply body mx-auto w-full max-w-[85ch] text-astro-gray-200;
+		@apply body mx-auto w-full max-w-prose text-astro-gray-200;
 	}
 
 	.prose > * + *,
@@ -83,6 +83,11 @@
 
 	.prose code {
 		@apply mx-0.5 inline-block rounded-lg bg-astro-gray-500 px-2 align-baseline text-sm leading-6 text-astro-gray-100;
+	}
+
+	.prose :is(h1, h2, h3, h4, h5) > code {
+		font-size: inherit;
+		line-height: inherit;
 	}
 
 	.prose pre {
