@@ -1,7 +1,7 @@
 ---
 name: "astro-navbar"
 title: "astro-navbar"
-description: "Responsive Mobile Navigation with Dropdown in Astro"
+description: "A fully accessible responsive headless navigation bar for Astro. It supports mobile responsive toggle and dropdowns."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-navbar"

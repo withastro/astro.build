@@ -1,7 +1,7 @@
 ---
 name: "astro-color-scheme"
 title: "astro-color-scheme"
-description: "Perfect dark mode for Astro in few lines of code. Theme Toggle for Dark, Light & Auto (system)"
+description: "A fully headless dark mode theme toggle for Astro. it has built in support for both Dark & light mode along with the default System Auto mode."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-color-scheme"

@@ -9,4 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-breadcrumbs"
 repoUrl: "https://github.com/felix-berlin/astro-breadcrumbs"
 homepageUrl: "https://docs.astro-breadcrumbs.kasimir.dev"
 downloads: 394
+image: "/assets/integrations/astro-breadcrumbs.svg"
 ---

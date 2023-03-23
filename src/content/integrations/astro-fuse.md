@@ -10,4 +10,5 @@ homepageUrl: "https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse"
 downloads: 113
 badges:
   - "new"
+image: "/assets/integrations/astro-fuse.png"
 ---

@@ -13,4 +13,5 @@ homepageUrl: "https://github.com/jonasmerlin/astro-seo#readme"
 downloads: 16879
 badges:
   - "featured"
+image: "/assets/integrations/astro-seo.png"
 ---

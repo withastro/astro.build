@@ -10,4 +10,5 @@ homepageUrl: "https://github.com/johnzanussi/astro-mdx-code-blocks#readme"
 downloads: 204
 badges:
   - "new"
+image: "/assets/integrations/astro-mdx-code-blocks.png"
 ---
