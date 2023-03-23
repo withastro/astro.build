@@ -11,10 +11,12 @@ const { links } = Astro.props
 ---
 
 <div class="flex items-center gap-4">
-	{links.map((link) =>(
-		<ExternalLink class="link" href={link.href}>
-			<span class="sr-only">{link.text}</span>
-			<Icon name={link.icon} size={32} aria-hidden="true" />
-		</ExternalLink>
-	))}
+	{
+		links.map((link) => (
+			<ExternalLink class="link" href={link.href}>
+				<span class="sr-only">{link.text}</span>
+				<Icon name={link.icon} size={32} aria-hidden="true" />
+			</ExternalLink>
+		))
+	}
 </div>
