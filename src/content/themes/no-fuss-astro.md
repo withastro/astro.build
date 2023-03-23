@@ -11,7 +11,7 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/lancerossdev/no-fuss-astro"
 demoUrl: "https://nofuss.lanceross.xyz/"
-stars: 31
+stars: 33
 tools:
   - "tailwind"
   - "mdx"

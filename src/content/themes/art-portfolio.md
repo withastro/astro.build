@@ -11,7 +11,7 @@ categories:
   - "portfolio"
 repoUrl: "https://github.com/EmaSuriano/astro-art-portfolio"
 demoUrl: "https://art.emasuriano.com/"
-stars: 32
+stars: 31
 tools:
   - "tailwind"
 ---

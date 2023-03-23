@@ -11,7 +11,7 @@ categories:
   - "other"
 repoUrl: "https://github.com/DBozhinovski/astro-massively"
 demoUrl: "https://astro-massively.darko.io/"
-stars: 5
+stars: 6
 tools:
   - "sass"
   - "mdx"
