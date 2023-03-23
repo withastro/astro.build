@@ -6,7 +6,7 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astrosortfilter"
 homepageUrl: "https://www.npmjs.com/package/astrosortfilter"
-downloads: 151
+downloads: 183
 badges:
   - "new"
 ---

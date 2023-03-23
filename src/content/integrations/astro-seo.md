@@ -10,7 +10,8 @@ npmUrl: "https://www.npmjs.com/package/astro-seo"
 repoUrl: "https://github.com/jonasmerlin/astro-seo"
 featured: 10
 homepageUrl: "https://github.com/jonasmerlin/astro-seo#readme"
-downloads: 15412
+downloads: 16879
 badges:
   - "featured"
+image: "/assets/integrations/astro-seo.png"
 ---

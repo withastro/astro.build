@@ -7,7 +7,8 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-mdx-code-blocks"
 repoUrl: "https://github.com/johnzanussi/astro-mdx-code-blocks"
 homepageUrl: "https://github.com/johnzanussi/astro-mdx-code-blocks#readme"
-downloads: 118
+downloads: 204
 badges:
   - "new"
+image: "/assets/integrations/astro-mdx-code-blocks.png"
 ---

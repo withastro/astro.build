@@ -11,7 +11,7 @@ image: "/assets/integrations/mdx.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 15
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/mdx/"
-downloads: 66518
+downloads: 65222
 badges:
   - "featured"
 ---
