@@ -1,7 +1,10 @@
 ---
+import siteInfo from "~/data/site-info.js"
 import AstroLogo from "./AstroLogo.astro"
 import ResourcesMenu from "./ResourcesMenu.astro"
 import SocialLinks from "./SocialLinks.astro"
+
+const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly)
 ---
 
 <a href="/" rel="prefetch" title="Home" data-home-link>
@@ -27,5 +30,5 @@ import SocialLinks from "./SocialLinks.astro"
 <div class="flex-1"></div>
 
 <div class="hidden sm:block">
-	<SocialLinks />
+	<SocialLinks links={socialLinks} />
 </div>

@@ -1,9 +1,12 @@
 ---
+import siteInfo from "~/data/site-info.js"
 import ChevronIcon from "~/icons/ChevronIcon.jsx"
 import LayersIcon from "~/icons/LayersIcon.jsx"
 import OpenBookIcon from "~/icons/OpenBookIcon.jsx"
 import PaletteIcon from "~/icons/PaletteIcon.jsx"
 import SocialLinks from "./SocialLinks.astro"
+
+const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly)
 ---
 
 <nav
@@ -35,7 +38,7 @@ import SocialLinks from "./SocialLinks.astro"
 	<a href="/about/" rel="prefetch" class="link"> About</a>
 	<a href="/blog/" rel="prefetch" class="link"> Blog</a>
 	<div class="flex flex-col gap-6">
-		<SocialLinks />
+		<SocialLinks links={socialLinks} />
 		<a href="https://docs.astro.build/" class="button button-primary"> Get Started</a>
 	</div>
 </nav>
