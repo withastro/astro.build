@@ -366,6 +366,10 @@ const scraper = new ShowcaseScraper({
 	org: "withastro",
 	repo: "roadmap",
 	discussion: 521,
-	blockedOrigins: ["https://github.com", "https://user-images.githubusercontent.com"],
+	blockedOrigins: [
+		"https://github.com",
+		"https://user-images.githubusercontent.com",
+		"https://astro.build",
+	],
 })
 await scraper.run()
