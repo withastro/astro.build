@@ -18,6 +18,7 @@
     "format:eslint": "eslint --ignore-path .gitignore --ext js,jsx,ts,tsx,mjs,cjs,astro --fix .",
     "format:prettier": "prettier -w --plugin-search-dir=. .",
     "update:integrations": "node -r dotenv/config ./scripts/update-integrations.mjs",
+    "update:showcase": "node -r dotenv/config ./scripts/update-showcase.mjs",
     "update:themes": "node -r dotenv/config ./scripts/update-themes.mjs"
   },
   "dependencies": {
@@ -44,9 +45,11 @@
     "zod-form-data": "^1.3.1"
   },
   "devDependencies": {
+    "@actions/core": "^1.10.0",
     "@astrojs/rss": "^2.1.1",
     "@astrojs/site-kit": "github:withastro/site-kit#f1f73aec5fc32213bc55984af7c1033105a96cbd",
     "@babel/core": "^7.20.12",
+    "@octokit/graphql": "^5.0.5",
     "@playwright/test": "^1.30.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "^18.14.2",
@@ -64,11 +67,13 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-tailwindcss": "^3.8.3",
     "json-to-pretty-yaml": "^1.2.2",
+    "linkedom": "^0.14.25",
     "npm-run-all": "^4.1.5",
     "organize-imports-cli": "^0.10.0",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.8.0",
     "prettier-plugin-tailwindcss": "^0.2.4",
+    "puppeteer": "^19.8.0",
     "smartypants": "^0.1.6",
     "tiny-glob": "^0.2.9",
     "typescript": "^4.9.5"
