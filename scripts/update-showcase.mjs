@@ -4,7 +4,10 @@ import matter from "gray-matter"
 import { parseHTML } from "linkedom"
 import fs from "node:fs/promises"
 import puppeteer from "puppeteer"
+import { downloadBrowser } from "puppeteer/lib/esm/puppeteer/node/install.js"
 import sharp from "sharp"
+
+await downloadBrowser()
 
 class ShowcaseScraper {
 	/** A GraphQL client that uses our authorization token by default. */
