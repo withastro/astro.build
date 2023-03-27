@@ -48,6 +48,9 @@ jobs:
       - name: Check out code using Git
         uses: actions/checkout@v3
 
+      - name: Setup Chromium
+        uses: browser-actions/setup-chrome@v1
+
       - name: Install Tools & Dependencies
         uses: ./.github/actions/install
 
