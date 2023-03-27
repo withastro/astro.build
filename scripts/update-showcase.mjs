@@ -207,8 +207,15 @@ class ShowcaseScraper {
 	 * @param {URL} url URL to test
 	 * @returns {boolean}
 	 */
-	static #isAstroAssetURL(url) {
-		return url.pathname.startsWith("/_astro/")
+	static #isAstroAssetURL({ pathname }) {
+		return (
+			// default Astro v2 assets directory
+			pathname.startsWith("/_astro/") ||
+			// any JS file that matches the `hoisted.{hash}.js` pattern
+			/\/hoisted\.[a-z0-9]+\.js$/.test(pathname) ||
+			// old Astro v1 style hashed files in `/assets/` directory
+			/^\/assets\/.+\.[a-z0-9_]+\.(css|js|jpeg|jpg|webp|avif|png)$/.test(pathname)
+		)
 	}
 
 	/**
