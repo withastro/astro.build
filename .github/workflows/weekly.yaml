@@ -29,7 +29,7 @@ jobs:
 
       - name: Create Pull Request
         id: createpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           branch: ci/docgen-integrations
           token: ${{ secrets.FREDKBOT_GITHUB_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
 
       - name: Create Pull Request
         id: createpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           branch: ci/docgen-showcase
           token: ${{ secrets.FREDKBOT_GITHUB_TOKEN }}
