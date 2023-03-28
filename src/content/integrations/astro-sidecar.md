@@ -7,7 +7,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sidecar"
 repoUrl: "https://github.com/JulianCataldo/astro-sidecar"
 homepageUrl: "https://github.com/JulianCataldo/astro-sidecar#readme"
-downloads: 277
+downloads: 295
 badges:
   - "new"
 ---
