@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-navbar"
 repoUrl: "https://github.com/surjithctly/astro-navbar"
 homepageUrl: "https://github.com/surjithctly/astro-navbar#readme"
-downloads: 2606
+downloads: 2652
 ---

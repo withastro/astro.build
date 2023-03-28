@@ -7,7 +7,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-fuse"
 repoUrl: "https://github.com/johnny-mh/blog2"
 homepageUrl: "https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse"
-downloads: 113
+downloads: 125
 badges:
   - "new"
 image: "/assets/integrations/astro-fuse.png"
