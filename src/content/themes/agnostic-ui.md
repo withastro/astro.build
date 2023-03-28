@@ -10,7 +10,7 @@ author:
 categories:
   - "minimal"
 repoUrl: "https://github.com/AgnosticUI/AstroAgnosticUIStarter"
-stars: 19
+stars: 20
 tools:
   - "react"
   - "svelte"

@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-crank"
 repoUrl: "https://github.com/bikeshaving/crank"
 homepageUrl: "https://github.com/bikeshaving/crank#readme"
-downloads: 5
+downloads: 6
 ---
