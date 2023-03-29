@@ -2,9 +2,7 @@
 title: "Industronix"
 description: "Versatile Business Astro Theme tailored for industrial or factory website"
 image: "/src/content/themes/_images/industronix.webp"
-images:
-  - "/src/content/themes/_images/industronix-3.webp"
-  - "/src/content/themes/_images/industronix-4.webp"
+images: []
 author:
   url: "https://mcstech.dev/"
   name: "McsTechMy"
