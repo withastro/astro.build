@@ -8,7 +8,7 @@ images:
 author:
   url: "https://mcstech.dev/"
   name: "McsTechMy"
-  avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
+  avatar: "https://industronix.mcstech.dev/McsTechMy.png"
 categories:
   - "landing-page"
   - "other"
