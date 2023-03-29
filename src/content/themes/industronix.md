@@ -16,7 +16,6 @@ demoUrl: "https://industronix.mcstech.dev/demo/"
 buyUrl: "https://mcstech.lemonsqueezy.com/checkout/buy/e1b2fbf8-9838-466d-8695-0b80a1793cb6"
 tools:
   - "tailwind"
-  - "reactjs"
   - "typescript"
   - "react"
   - "mdx"
