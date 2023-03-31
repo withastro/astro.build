@@ -137,9 +137,9 @@ export async function getStaticPaths() {
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
-const { slug } = Astro.params
+const { slug } = Astro.params as Params
 //               ^? { slug: string; }
-const { title } = Astro.props
+const { title } = Astro.props as Props
 //                ^? { draft: boolean; title: string; }
 ```
 
