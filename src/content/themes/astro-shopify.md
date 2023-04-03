@@ -13,7 +13,7 @@ categories:
   - "ecommerce"
 repoUrl: "https://github.com/thomasKn/astro-shopify"
 demoUrl: "https://astro-shopify.gatto.dev"
-stars: 43
+stars: 44
 tools:
   - "tailwind"
   - "svelte"

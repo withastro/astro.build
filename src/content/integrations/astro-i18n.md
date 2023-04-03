@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/astro-i18n"
 image: "/assets/integrations/astro-i18n.svg"
 repoUrl: "https://github.com/alexandre-fernandez/astro-i18n"
 homepageUrl: "https://github.com/alexandre-fernandez/astro-i18n"
-downloads: 714
+downloads: 744
 ---

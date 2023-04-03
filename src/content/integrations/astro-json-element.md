@@ -9,7 +9,7 @@ npmUrl: "https://www.npmjs.com/package/astro-json-element"
 repoUrl: "https://github.com/BryceRussell/astro-json-element"
 featured: 19
 homepageUrl: "https://github.com/BryceRussell/astro-json-element#readme"
-downloads: 107
+downloads: 116
 badges:
   - "featured"
 ---

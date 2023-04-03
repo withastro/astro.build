@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astropub/contentful"
 repoUrl: "https://github.com/astro-community/contentful"
 homepageUrl: "https://github.com/astro-community/contentful"
-downloads: 29
+downloads: 17
 ---

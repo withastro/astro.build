@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-plain"
 homepageUrl: "https://github.com/johnhenry/lib/js/astro-plain/0.0.6#readme"
-downloads: 22
+downloads: 24
 ---
