@@ -26,7 +26,6 @@ stars: 419
 featured: 3
 tools:
   - "tailwind"
-  - "alpinejs"
 ---
 
 <h3>Modern tools</h3>
