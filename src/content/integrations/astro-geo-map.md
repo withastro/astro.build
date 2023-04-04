@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-geo-map"
 repoUrl: "https://github.com/JulianCataldo/web-garden"
 homepageUrl: "https://code.juliancataldo.com/component/astro-geo-map"
-downloads: 43
+downloads: 50
 ---
