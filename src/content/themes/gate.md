@@ -15,6 +15,7 @@ tools:
   - "tailwind"
   - "mdx"
   - "typescript"
+stars: 5
 ---
 
 <p>

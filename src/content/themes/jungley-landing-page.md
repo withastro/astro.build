@@ -2,7 +2,8 @@
 title: "Jungley Landing Page"
 description: "A landing page theme that provides a customizable foundation for building fast, modern websites with ease."
 image: "/src/content/themes/_images/jungley-landing-page-hero.webp"
-images: ["/src/content/themes/_images/jungley-landing-page-2.webp"]
+images:
+  - "/src/content/themes/_images/jungley-landing-page-2.webp"
 author:
   url: "https://github.com/Jungley8"
   name: "Jungley"
@@ -15,6 +16,7 @@ tools:
   - "react"
   - "tailwind"
   - "typescript"
+stars: 0
 ---
 
 <p>
