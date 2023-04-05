@@ -11,7 +11,7 @@ lang: "en"
 
 Astro 2.2 is out! Included in this release are:
 
-- **[CDN support for assets](#cdn-support)**: You can now deploy your assets to a CDN external to your site, and Astro will load them from there.
+- **[CDN support for assets](#cdn-support)**: You can now deploy your assets to an external CDN, and Astro will load them from there.
 - **[image() schema helper API change](#image-schema-api-change)**: (experimental) The `image()` helper has been moved to be inline with the schema definition.
 
 Additionally, Astro 2.2 includes **8 patch changes** and was released alongside **8 integrations** with patch releases.
@@ -57,9 +57,9 @@ const blog = defineCollection({
 })
 ```
 
-Previously `image()` was imported directly from `'astro:content'`. This created bugs where Astro was not able to correctly resolve relative image assets defined in the frontmatter.
+Previously, `image()` was imported directly from `'astro:content'`. However, this created bugs where Astro was not able to correctly resolve relative image assets defined in the frontmatter. Providing the helper as a callback aligns with how Zod suggests doing contextual references.
 
-Providing the helper as a callback aligns with how Zod suggests doing contextual references. This new callback-based schema assignment is currently only available behind the assets flag. If you are not using the image() helper you can continue to assign the schemas directly to the `schema` property on the collection.
+This new callback based schema assignment is currently only available behind the `--assets` flag. If you are not using the `image()` helper, you can continue to assign the schemas directly to the `schema` property on the collection.
 
 ## Try Astro 2.2
 
