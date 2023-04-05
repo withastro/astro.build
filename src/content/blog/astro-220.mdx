@@ -57,7 +57,7 @@ const blog = defineCollection({
 })
 ```
 
-Previously, `image()` was imported directly from `'astro:content'`. However, this created bugs where Astro was not able to correctly resolve relative image assets defined in the frontmatter. Providing the helper as a callback aligns with how Zod suggests doing contextual references.
+Previously, `image()` was imported directly from `'astro:content'`. However, this created bugs where Astro was not able to correctly resolve relative image assets defined in the frontmatter. Providing the helper as a callback aligns with how Zod suggests implementing contextual references.
 
 This new callback based schema assignment is currently only available behind the `--assets` flag. If you are not using the `image()` helper, you can continue to assign the schemas directly to the `schema` property on the collection.
 
