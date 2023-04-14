@@ -1,0 +1,12 @@
+---
+name: "@tigrisdata/astro"
+title: "@tigrisdata/astro"
+description: "Access NoSQL data from your Astro site."
+categories:
+  - "css+ui"
+npmUrl: "https://www.npmjs.com/package/@tigrisdata/astro"
+image: "/assets/integrations/tigris.svg"
+repoUrl: "https://github.com/tigrisdata/tigris-astro"
+homepageUrl: "https://github.com/tigrisdata/tigris-astro#readme"
+downloads: 105
+---
