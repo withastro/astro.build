@@ -1,7 +1,7 @@
 ---
 name: "astro-default-prerender"
 title: "astro-default-prerender"
-description: "<h1 align=\"center\">Astro Default Prerender 🚀</h1> <h4 align=\"center\">Prerender all your Astro pages by default</h4>"
+description: "Prerender all your Astro pages by default."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-default-prerender"
