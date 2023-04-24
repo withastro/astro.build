@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@forastro/flow"
 homepageUrl: "https://www.npmjs.com/package/@forastro/flow"
-downloads: 979
+downloads: 194
 ---

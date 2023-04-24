@@ -9,7 +9,7 @@ npmUrl: "https://www.npmjs.com/package/astro-spa"
 repoUrl: "https://github.com/RafidMuhymin/astro-spa"
 featured: 13
 homepageUrl: "https://github.com/RafidMuhymin/astro-spa#readme"
-downloads: 672
+downloads: 596
 badges:
   - "featured"
 ---

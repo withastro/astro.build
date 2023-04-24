@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-single-file"
 repoUrl: "https://github.com/onmax/astro-single-file"
 homepageUrl: "https://github.com/onmax/astro-single-file"
-downloads: 58
+downloads: 119
 ---

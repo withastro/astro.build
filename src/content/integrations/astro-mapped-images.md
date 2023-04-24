@@ -7,7 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-mapped-images"
 repoUrl: "https://github.com/techaurelian/astro-mapped-images"
 homepageUrl: "https://github.com/techaurelian/astro-mapped-images"
-downloads: 120
-badges:
-  - "new"
+downloads: 17
 ---
