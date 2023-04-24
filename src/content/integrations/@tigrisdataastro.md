@@ -8,5 +8,7 @@ npmUrl: "https://www.npmjs.com/package/@tigrisdata/astro"
 image: "/assets/integrations/tigris.svg"
 repoUrl: "https://github.com/tigrisdata/tigris-astro"
 homepageUrl: "https://github.com/tigrisdata/tigris-astro#readme"
-downloads: 105
+downloads: 150
+badges:
+  - "new"
 ---
