@@ -11,7 +11,7 @@ categories:
   - "docs"
 repoUrl: "https://github.com/MicroWebStacks/astro-big-doc"
 demoUrl: "https://microwebstacks.github.io/astro-big-doc/"
-stars: 25
+stars: 26
 tools:
   - "mdx"
 ---
