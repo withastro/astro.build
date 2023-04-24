@@ -1,11 +1,11 @@
 ---
 name: "@jasikpark/astro-svg-loader"
 title: "@jasikpark/astro-svg-loader"
-description: "[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjasikpark%2Fastro-svg-loader.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjasikpark%2Fastro-svg-loader?ref=badge_shield)"
+description: "This package allows you to import SVGs as Astro components, using ultrahtml and Vite's support for raw imports to do the trick."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@jasikpark/astro-svg-loader"
 repoUrl: "https://github.com/jasikpark/astro-svg-loader"
 homepageUrl: "https://github.com/jasikpark/astro-svg-loader#readme"
-downloads: 270
+downloads: 323
 ---

@@ -1,13 +1,11 @@
 ---
 name: "astro-default-prerender"
 title: "astro-default-prerender"
-description: '<h1 align="center">Astro Default Prerender 🚀</h1> <h4 align="center">Prerender all your Astro pages by default</h4>'
+description: "Prerender all your Astro pages by default."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-default-prerender"
 repoUrl: "https://github.com/MoustaphaDev/astro-default-prerender"
 homepageUrl: "https://github.com/MoustaphaDev/astro-default-prerender/tree/main/packages/integration/README.md"
-downloads: 314
-badges:
-  - "new"
+downloads: 369
 ---
