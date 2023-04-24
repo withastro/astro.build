@@ -1,7 +1,7 @@
 ---
 name: "@simpleauthority/astro-icon-ssr"
 title: "@simpleauthority/astro-icon-ssr"
-description: "A straight-forward `Icon` component for [Astro](https://astro.build)."
+description: "A straight-forward `Icon` component for Astro."
 categories:
   - "css+ui"
   - "performance+seo"

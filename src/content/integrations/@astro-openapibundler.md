@@ -1,7 +1,7 @@
 ---
 name: "@astro-openapi/bundler"
 title: "@astro-openapi/bundler"
-description: "See [project documentation](https://github.com/JulianCataldo/astro-openapi/README.md)."
+description: "See project documentation."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-openapi/bundler"

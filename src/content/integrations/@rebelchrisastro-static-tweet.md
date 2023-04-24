@@ -1,7 +1,7 @@
 ---
 name: "@rebelchris/astro-static-tweet"
 title: "@rebelchris/astro-static-tweet"
-description: "This is a open source [Astro](https://astro.build/) component. Astro is a open-source Static Site Generator... But it comes with a bring your own framework approach as well as the option to use components but output fully static websites."
+description: "This is a open source Astro component that allows you to embed a Tweet as static HTML in your Astro site."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@rebelchris/astro-static-tweet"

@@ -13,6 +13,7 @@ import {
 	getFeaturedPackagePriority,
 	getOverrides,
 } from "./integrations.mjs"
+import { stringifyLinks } from "./markdown.mjs"
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs"
 
 function isOfficial(pkg) {
@@ -48,7 +49,7 @@ function normalizePackageDetails(data, pkg) {
 	return {
 		name: data.name,
 		title: data.name,
-		description: data.description,
+		description: stringifyLinks(data.description),
 		categories: uniqCategories,
 		npmUrl,
 		repoUrl,

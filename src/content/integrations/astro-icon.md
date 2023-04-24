@@ -1,7 +1,7 @@
 ---
 name: "astro-icon"
 title: "astro-icon"
-description: "A straight-forward `Icon` component for [Astro](https://astro.build)."
+description: "A straight-forward `Icon` component for Astro."
 categories:
   - "css+ui"
   - "performance+seo"
