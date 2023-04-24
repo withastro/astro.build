@@ -379,6 +379,7 @@ const scraper = new ShowcaseScraper({
 	blockedOrigins: [
 		"https://github.com",
 		"https://user-images.githubusercontent.com",
+		"https://camo.githubusercontent.com",
 		"https://astro.build",
 	],
 })

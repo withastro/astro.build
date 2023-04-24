@@ -11,5 +11,5 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/AREA44/astro-stylegan3"
 demoUrl: "https://area44.github.io/astro-stylegan3/"
-stars: 5
+stars: 3
 ---

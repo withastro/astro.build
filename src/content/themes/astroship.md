@@ -22,18 +22,16 @@ links:
     href: "https://docs.web3templates.com/"
   - text: "Twitter"
     href: "https://twitter.com/surjithctly"
-stars: 411
+stars: 453
 featured: 3
 tools:
   - "tailwind"
-  - "alpinejs"
 ---
 
 <h3>Modern tools</h3>
 <p>
-  Astroship comes preconfigured with <a href="https://astro.build">Astro</a>,
-  <a href="https://tailwindcss.com">TailwindCSS</a>, and
-  <a href="https://alpinejs.dev/">Alpine.js</a> for a modern developer experience out-of-the-box.
+  Astroship comes preconfigured with <a href="https://astro.build">Astro</a> and
+  <a href="https://tailwindcss.com">TailwindCSS</a> for a modern developer experience out-of-the-box.
 </p>
 <h3>Responsive components</h3>
 <p>

@@ -10,7 +10,7 @@ image: "/assets/integrations/storyblok.svg"
 repoUrl: "https://github.com/storyblok/storyblok-astro"
 featured: 5
 homepageUrl: "https://github.com/storyblok/storyblok-astro"
-downloads: 4332
+downloads: 3718
 badges:
   - "featured"
 ---
