@@ -11,7 +11,7 @@ image: "/assets/integrations/image.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 12
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/image/"
-downloads: 50789
+downloads: 52025
 badges:
   - "featured"
 ---

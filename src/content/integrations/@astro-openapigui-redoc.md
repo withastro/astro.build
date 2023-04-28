@@ -6,7 +6,7 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-openapi/gui-redoc"
 homepageUrl: "https://www.npmjs.com/package/@astro-openapi/gui-redoc"
-downloads: 259
+downloads: 271
 badges:
   - "new"
 ---

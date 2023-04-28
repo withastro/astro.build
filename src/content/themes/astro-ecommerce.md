@@ -20,7 +20,7 @@ links:
     href: "https://www.creative-tim.com/learning-lab/astro/overview/astro-ecommerce"
   - text: "All Components"
     href: "https://demos.creative-tim.com/astro-ecommerce/"
-stars: 84
+stars: 88
 featured: 10
 tools:
   - "react"

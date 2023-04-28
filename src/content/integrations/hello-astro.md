@@ -8,5 +8,5 @@ npmUrl: "https://www.npmjs.com/package/hello-astro"
 image: "/assets/integrations/hello-astro.png"
 repoUrl: "https://github.com/Pukimaa/hello-astro"
 homepageUrl: "https://hello-astro.vercel.app/"
-downloads: 26
+downloads: 36
 ---
