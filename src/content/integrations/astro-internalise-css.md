@@ -7,7 +7,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-internalise-css"
 repoUrl: "https://github.com/tobias-edwards/astro-internalise-css"
 homepageUrl: "https://github.com/tobias-edwards/astro-internalise-css#readme"
-downloads: 119
+downloads: 175
 badges:
   - "new"
 ---

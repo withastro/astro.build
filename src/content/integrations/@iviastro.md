@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@ivi/astro"
 repoUrl: "https://github.com/localvoid/ivi"
 homepageUrl: "https://github.com/localvoid/ivi"
-downloads: 286
+downloads: 293
 ---
