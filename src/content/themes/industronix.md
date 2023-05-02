@@ -12,7 +12,7 @@ author:
   avatar: "https://lemonsqueezy.imgix.net/avatars/stores/17941/qtNN0l8zTe1I3TjgffbzL14VrwHgKlU1mui5nAcQ.png?fit=clip&h=100&ixlib=php-3.3.1&w=100&s=04277bba2201d489a1382a4d2b64731a"
 categories:
   - "landing-page"
-buyUrl: "https://mcstech.lemonsqueezy.com/checkout?cart=50bb4810-4237-4e89-9c07-daca068fca35"
+buyUrl: "https://mcstech.lemonsqueezy.com/checkout?cart=aeb36452-43d2-44d2-888c-067a2755a5a3"
 demoUrl: "https://industronix.mcstech.dev"
 tools:
   - "react"
