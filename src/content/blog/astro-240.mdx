@@ -42,9 +42,9 @@ The &lt;Code /&gt; has a few new improvements:
 
 ## SSR in sitemaps
 
-The `@astrojs/sitemaps` package has been updated to include support for server-side rendering. Previously sitemaps were only supported when using `output: 'static'` because all dynamic routes are not known at build time.
+The `@astrojs/sitemaps` package has been updated to include support for server-side rendering. Previously, sitemaps were only supported when using `output: 'static'` because dynamic routes are unknown at build time.
 
-The new version will now output a sitemap for _known_ routes. Dynamic routes are excluded. No changes are needed to your configuration in order to enable this feature.
+The new version can now also be used with `output: 'ssr'` and will output a sitemap for _known_ (i.e. static) routes only. Dynamic routes are excluded. No changes are needed to your configuration in order to enable this feature.
 
 ## Middleware (experimental)
 
