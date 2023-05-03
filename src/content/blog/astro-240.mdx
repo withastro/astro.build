@@ -1,0 +1,122 @@
+---
+title: "Astro 2.4"
+description: ""
+publishDate: "May 4, 2023"
+authors:
+  - matthew
+coverImage: "/src/content/blog/_images/astro-220/blog-hero-2_2-release.jpg"
+socialImage: "/src/content/blog/_images/astro-220/og-image-2_2-release.jpg"
+lang: "en"
+---
+
+Astro 2.4 just dropped, and features:
+
+- **[Stronger scoping for CSS](#scopedstylestrategy)**: A new opt-in flag `scopedStyleStrategy` allows you to configure your Astro components to use a high specificity for its styles.
+- **[Improved &lt;Code /&gt; component](#code--component-improvements)**: Upgraded Shiki and support for inlining.
+- **[SSR support in sitemaps](#ssr-in-sitemaps)**: Known routes are now built into a sitemap during the build.
+- **[Middleware (experimental)](#middleware-experimental)**: Define code that runs before page components and endpoints, to intercept requests and modify responses.
+- **[CSS inlining (experimental)]()**: Allows you to configure when styles should be inlined via a `<style>` tag.
+
+## scopedStyleStrategy
+
+Start in 1.0 Astro uses the `:where` pseudo-selector for scoped Astro component styles. This approach means your styles have the same specificity as if they were written in plain CSS. The downside of this approach is that you need to be conscience of the selectors used in components.
+
+As users _usually_ expect their component styles to override global styles we've added the `scopedStyleStrategy` option which can be used to switch on a high-specificity strategy:
+
+```js
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+	scopedStyleStrategy: "class",
+})
+```
+
+This strategy will likely be used as the default in 3.0.
+
+## &lt;Code /&gt; component improvements
+
+The &lt;Code /&gt; has a few new improvements:
+
+- Upgrade to **Shiki 0.14** - Astro was previously on Shiki 0.11; this upgrade comes with numerous improvements, most notably new themes and language support.
+- new `inline` prop prevents a wrapping `<pre>` from being added. This is useful if you want syntax highlighting inline in a paragraph.
+
+## SSR in sitemaps
+
+The `@astrojs/sitemaps` package has been updated to include support for server-side rendering. Previously sitemaps were only supported when using `output: 'static'` because all dynamic routes are not known at build time.
+
+The new version will now output a sitemap for _known_ routes. Dynamic routes are excluded. No changes are needed to your configuration in order to enable this feature.
+
+## Middleware (experimental)
+
+An early preview of middleware support has landed in 2.4. This allows you to intercept requests and responses and inject behaviors dynamically. To enable experimental middleware support update your configuration's `experimental` flags:
+
+```js
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+	experimental: {
+		middleware: true,
+	},
+})
+```
+
+In additional to modifying the request and response, with middleware you can mutate a `locals` object that is available in all Astro components and API endpoints. Here's an example of an authentication middleware:
+
+```ts
+import type { MiddlewareResponseHandler } from "astro/middleware"
+
+const auth: MiddlewareResponseHandler = async ({ cookies, locals }, next) => {
+	if (!cookies.has("sid")) {
+		return new Response(null, {
+			status: 405, // Not allowed
+		})
+	}
+
+	let sessionId = cookies.get("sid")
+	let user = await getUserFromSession(sessionId)
+	if (!user) {
+		return new Response(null, {
+			status: 405, // Not allowed
+		})
+	}
+
+	locals.user = user
+	return next()
+}
+
+export { auth as onRequest }
+```
+
+Which you can then access via your Astro components:
+
+```astro
+---
+const { user } = Astro.locals
+---
+
+<h1>Hello {user.name}</h1>
+```
+
+This feature will remain experimental as we refine the API and fix bugs found by early adopters.
+
+## CSS inlining (experimental)
+
+You can now configure stylesheets to be inlined into a `<style>` tag by enabling the experimental configuration:
+
+```js
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+	experimental: {
+		inlineStylesheets: "auto",
+	},
+})
+```
+
+With the `'auto'` option, stylesheets that are below the `vite.assetInlineLimit` will be added as a `<style>` tag rather than fetched via `<link>`.
+
+You can also set the option to `'always'` to force inlining. Currently the default is `'never'` but might be changed to `'auto'` in Astro 3.0.
+
+## More
+
+Additional bug fixes and integration features are included in this release. Check out the [release notes](LINK) to learn more.
