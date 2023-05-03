@@ -38,7 +38,7 @@ const { images, class: className, ...attrs } = Astro.props
 							height={image.fullImage.height}
 							alt={image.alt || ""}
 							decoding="async"
-							class="aspect-video max-h-full max-w-full object-cover"
+							class="aspect-video max-h-full max-w-full object-cover object-top"
 						/>
 					</li>
 				))
@@ -75,7 +75,7 @@ const { images, class: className, ...attrs } = Astro.props
 								width={image.thumbnail.width}
 								height={image.thumbnail.height}
 								alt={image.alt || ""}
-								class="aspect-video h-full w-full object-cover"
+								class="aspect-video h-full w-full object-cover object-top"
 								decoding="async"
 								loading="lazy"
 							/>
