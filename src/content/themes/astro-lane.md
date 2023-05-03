@@ -36,26 +36,20 @@ stars: 4
 <h3>Key Features</h3>
 <p>Here are some of the key features of Astro Lane:</p>
 <ul>
-  <li><em>Minimal styling (make it your own!)</em></li>
-  <li><em>Accessible, semantic HTML markup</em></li>
-  <li><em>Blazingly Fast</em></li>
-  <li><em>100/100 Lighthouse performance</em></li>
-  <li><em>Responsive &amp; SEO-friendly with canonical URLs and OpenGraph data</em></li>
-  <li>
-    <em>[</em><em>Astro Image Integration</em><em>](</em
-    ><em>https://docs.astro.build/en/guides/integrations-guide/image/</em
-    ><em>) for optimized images</em>
+  <li>Minimal styling (make it your own!)</li>
+  <li>Accessible, semantic HTML markup</li>
+  <li>Blazingly Fast</li>
+  <li>100/100 Lighthouse performance</li>
+  <li>Responsive &amp; SEO-friendly with canonical URLs and OpenGraph data</li>
+  <li>Astro Image Integration for optimized images</em>
   </li>
-  <li><em>Sitemap support</em></li>
-  <li>
-    <em>Automatic RSS feed support</em><em>](</em><em>https://docs.astro.build/en/guides/rss</em
-    ><em>)</em>
+  <li>Sitemap support</li>
+  <li>Automatic RSS feed support
   </li>
   <li>
-    <em>[</em><em>Satori</em><em>](</em><em>https://github.com/vercel/satori</em
-    ><em>) for creating open graph png images.</em>
+    Satori for creating open graph png images
   </li>
-  <li><em>Markdown &amp; MDX support</em></li>
-  <li><em>Draft Posts and Paginations</em></li>
-  <li><em>Prism code syntax styling using Atom Dark theme.</em></li>
+  <li>Markdown &amp; MDX support</li>
+  <li>Draft Posts and Paginations</li>
+  <li>Prism code syntax styling using Atom Dark theme</li>
 </ul>
