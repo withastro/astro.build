@@ -8,5 +8,5 @@ npmUrl: "https://www.npmjs.com/package/astro-github-stats"
 image: "/assets/integrations/astro-github-stats.png"
 repoUrl: "https://github.com/ayoayco/astro-github-stats"
 homepageUrl: "https://ayco.io/showcase/astro-github-stats"
-downloads: 52
+downloads: 49
 ---
