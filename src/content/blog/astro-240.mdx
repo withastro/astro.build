@@ -19,9 +19,9 @@ Astro 2.4 just dropped, and features:
 
 ## scopedStyleStrategy
 
-Start in 1.0 Astro uses the `:where` pseudo-selector for scoped Astro component styles. This approach means your styles have the same specificity as if they were written in plain CSS. The downside of this approach is that you need to be conscience of the selectors used in components.
+Astro uses the `:where` pseudo-selector for scoped Astro component styles. This approach means your component styles have the same specificity as if they were written in plain CSS. The downside of this approach is that we cannot guarantee that component styles will always override global styles, as is often expected and wanted behavior.
 
-As users _usually_ expect their component styles to override global styles we've added the `scopedStyleStrategy` option which can be used to switch on a high-specificity strategy:
+We've added the `scopedStyleStrategy` option which can be used to switch on a high-specificity strategy using class-based selectors:
 
 ```js
 import { defineConfig } from "astro/config"
