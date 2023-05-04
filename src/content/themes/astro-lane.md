@@ -1,6 +1,6 @@
 ---
 title: "Astro Lane"
-description: "Astro Lane is a customizable blog theme for Astro, designed to provide a personalized touch to your site with ease."
+description: "A customizable blog theme for Astro, designed to provide a personalized touch to your site with ease."
 image: "/src/content/themes/_images/astro-lane-hero.webp"
 author:
   url: "https://github.com/christian-luntok"
