@@ -60,7 +60,7 @@ export default defineConfig({
 })
 ```
 
-In addition to modifying the request and response, with middleware you can mutate a `locals` object that is available in all Astro components and API endpoints. Here's an example of an authentication middleware:
+In addition to modifying the request and response, with middleware you can mutate a `locals` object that is available in all Astro components and API endpoints. Here's an example of an authentication middleware. Create a `src/middlware.ts` file with these contents:
 
 ```ts
 import type { MiddlewareResponseHandler } from "astro/middleware"
@@ -97,7 +97,7 @@ const { user } = Astro.locals
 <h1>Hello {user.name}</h1>
 ```
 
-This feature will remain experimental as we refine the API and fix bugs found by early adopters.
+This feature will remain experimental as we refine the API and fix bugs found by early adopters. See the [middleware guide](https://docs.astro.build/en/guides/middleware/) to learn more.
 
 ## CSS inlining (experimental)
 
