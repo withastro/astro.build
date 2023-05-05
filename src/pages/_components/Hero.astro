@@ -5,12 +5,12 @@ import ExternalLink from "~/components/ExternalLink.astro"
 import PageTitleBlock from "~/components/PageTitleBlock.astro"
 
 const logos = [
-	{ src: "logos/google", alt: "Google Logo" },
+	{ src: "logos/google", alt: "Google Logo", class: "py-1" },
 	{ src: "logos/netlify", alt: "Netlify Logo" },
-	{ src: "logos/nordvpn", alt: "NordVPN Logo" },
-	{ src: "logos/rokt", alt: "Rokt Logo" },
-	{ src: "logos/theguardian", alt: "The Guardian Logo" },
-	{ src: "logos/trivago", alt: "Trivago Logo" },
+	{ src: "logos/nordvpn", alt: "NordVPN Logo", class: "py-1" },
+	{ src: "logos/rokt", alt: "Rokt Logo", class: "py-2" },
+	{ src: "logos/theguardian", alt: "The Guardian Logo", class: "py-1.5" },
+	{ src: "logos/trivago", alt: "Trivago Logo", class: "py-1 my-1" },
 ]
 ---
 
@@ -41,8 +41,8 @@ const logos = [
 		</div>
 	</div>
 
-	<div class="flex flex-col gap-y-8 px-4 md:px-6 lg:flex-row lg:items-center">
-		<p class="body px-8 text-astro-gray-200 lg:max-w-[12rem] lg:px-0 lg:text-left">
+	<div class="flex flex-col gap-y-8 gap-x-6 px-4 md:px-6 lg:flex-row lg:items-center">
+		<p class="body px-8 text-astro-gray-200 lg:max-w-[12rem] lg:px-0 lg:text-left lg:text-lg">
 			Used by over 100,000 developers and teams around the world:
 		</p>
 		<div class="flex flex-wrap justify-center gap-x-8 gap-y-6 px-4">
@@ -52,7 +52,7 @@ const logos = [
 						name={logo.src}
 						aria-label={logo.alt}
 						height={48}
-						class="h-6 object-contain text-white sm:h-8 md:h-10 lg:h-11"
+						class:list={["h-8 object-contain text-white lg:h-9 xl:h-10 2xl:h-11", logo.class]}
 					/>
 				))
 			}
