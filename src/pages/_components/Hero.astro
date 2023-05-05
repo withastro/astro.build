@@ -42,17 +42,17 @@ const logos = [
 	</div>
 
 	<div class="flex flex-col gap-y-8 gap-x-6 px-4 md:px-6 lg:flex-row lg:items-center">
-		<p class="body px-8 text-astro-gray-200 lg:max-w-[12rem] lg:px-0 lg:text-left lg:text-lg">
+		<p class="body px-8 text-astro-gray-200 lg:max-w-[12rem] lg:px-0 lg:text-left xl:text-lg">
 			Used by over 100,000 developers and teams around the world:
 		</p>
-		<div class="flex flex-wrap justify-center gap-x-8 gap-y-6 px-4">
+		<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 px-4">
 			{
 				logos.map((logo) => (
 					<Icon
 						name={logo.src}
 						aria-label={logo.alt}
 						height={48}
-						class:list={["h-8 object-contain text-white lg:h-9 xl:h-10 2xl:h-11", logo.class]}
+						class:list={["h-8 object-contain text-white sm:h-10 lg:h-11 xl:h-12", logo.class]}
 					/>
 				))
 			}
