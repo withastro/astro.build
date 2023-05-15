@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-travelens"
 homepageUrl: "https://github.com/travelens/astro-travelens"
-downloads: 1242
+downloads: 1273
 ---

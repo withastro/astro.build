@@ -6,7 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-openapi/backend"
 homepageUrl: "https://www.npmjs.com/package/@astro-openapi/backend"
-downloads: 265
-badges:
-  - "new"
+downloads: 285
 ---

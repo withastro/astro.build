@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-social-images"
 repoUrl: "https://github.com/Princesseuh/astro-social-images"
 homepageUrl: "https://github.com/Princesseuh/astro-social-images#readme"
-downloads: 60
+downloads: 46
 ---
