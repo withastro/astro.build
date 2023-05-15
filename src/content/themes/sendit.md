@@ -9,7 +9,6 @@ author:
   name: "CloudCannon"
   avatar: "https://avatars.githubusercontent.com/u/9701744?s=200&v=4"
 categories:
-  - "featured"
   - "landing-page"
   - "blog"
 demoUrl: "https://top-quail.cloudvent.net/"
@@ -18,7 +17,6 @@ tools:
   - "react"
   - "sass"
 stars: 23
-featured: 1
 ---
 
 <h2>Features</h2>
