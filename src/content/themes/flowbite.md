@@ -7,12 +7,10 @@ author:
   name: "Themesberg"
   avatar: "https://avatars.githubusercontent.com/u/52166837?s=200&v=4"
 categories:
-  - "featured"
   - "other"
 repoUrl: "https://github.com/themesberg/flowbite-astro-admin-dashboard"
 demoUrl: "https://themesberg.github.io/flowbite-astro-admin-dashboard/"
 stars: 52
-featured: 12
 tools:
   - "tailwind"
   - "typescript"

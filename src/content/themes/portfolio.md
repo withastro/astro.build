@@ -11,6 +11,7 @@ author:
   name: "withastro"
   avatar: "https://avatars.githubusercontent.com/u/44914786?v=4"
 categories:
+  - "featured"
   - "official"
   - "portfolio"
 repoUrl: "https://github.com/withastro/astro/tree/main/examples/portfolio"
@@ -21,6 +22,7 @@ links:
     href: "https://astro.new/basics?on=codesandbox"
   - text: "Open in Gitpod"
     href: "https://astro.new/basics?on=gitpod"
+featured: 12
 ---
 
 <p>
