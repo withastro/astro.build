@@ -6,7 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-openapi/typegen"
 homepageUrl: "https://www.npmjs.com/package/@astro-openapi/typegen"
-downloads: 268
-badges:
-  - "new"
+downloads: 285
 ---
