@@ -23,7 +23,7 @@ links:
     href: "https://github.com/markteekman/accessible-astro-dashboard/"
   - text: "Accessible Astro Components"
     href: "https://github.com/markteekman/accessible-astro-components/"
-stars: 241
+stars: 259
 featured: 9
 tools:
   - "tailwind"

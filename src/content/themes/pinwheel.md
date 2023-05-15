@@ -13,7 +13,7 @@ categories:
 tools:
   - "react"
   - "tailwind"
-stars: 1
+stars: 10
 ---
 
 <h2>Key Features</h2>

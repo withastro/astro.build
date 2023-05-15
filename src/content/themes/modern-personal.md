@@ -12,7 +12,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/manuelernestog/astro-modern-personal-website"
 demoUrl: "https://astro-modern-personal-website.netlify.app/"
-stars: 187
+stars: 193
 tools:
   - "tailwind"
   - "mdx"
