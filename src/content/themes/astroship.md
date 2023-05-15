@@ -23,7 +23,7 @@ links:
   - text: "Twitter"
     href: "https://twitter.com/surjithctly"
 stars: 481
-featured: 3
+featured: 1
 tools:
   - "tailwind"
 ---

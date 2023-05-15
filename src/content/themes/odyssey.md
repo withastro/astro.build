@@ -19,7 +19,7 @@ links:
   - href: "https://littlesticks.lemonsqueezy.com/checkout/buy/9b78751f-6382-442d-ac99-32c2318b70a0"
     text: "Support this theme"
 stars: 271
-featured: 4
+featured: 10
 ---
 
 <h2>Foundation for a Remarkable Website</h2>

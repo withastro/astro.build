@@ -9,11 +9,13 @@ author:
 repoUrl: "https://github.com/themefisher/pinwheel-astro"
 demoUrl: "https://statichunt.com/demo/astro-pinwheel"
 categories:
+  - "featured"
   - "landing-page"
 tools:
   - "react"
   - "tailwind"
 stars: 10
+featured: 9
 ---
 
 <h2>Key Features</h2>

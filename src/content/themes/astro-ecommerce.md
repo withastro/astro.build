@@ -21,7 +21,7 @@ links:
   - text: "All Components"
     href: "https://demos.creative-tim.com/astro-ecommerce/"
 stars: 99
-featured: 10
+featured: 6
 tools:
   - "react"
   - "sass"
