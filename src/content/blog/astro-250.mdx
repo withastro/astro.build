@@ -22,21 +22,26 @@ Astro 2.5 just dropped, and features:
 
 ## Static by default hybrid rendering (experimental)
 
-Enable experimental support for hybrid SSR with pre-rendering enabled by default
+In 2.0 we added the ability to prerender pages in SSR apps. Now in 2.5 you can do the opposite; in a mostly static site you can allow some routes to _not_ be prerendered.
+
+The new `'hybrid'` output option is what enables this. This new option will be marked as experimental for a short period of time as we stabilize edge cases. You can use it today by enabling the `hybridOutput` flag in the `experimental` section of your config and adding an adapter:
 
 **astro.config.mjs**
 
 ```js
-import { defineConfig } from 'astro/config';
-export defaultdefineConfig({
-   output: 'hybrid',
-       experimental: {
-       hybridOutput: true,
-   },
-});
+import { defineConfig } from "astro/config"
+import nodejs from "@astrojs/node"
+
+export default defineConfig({
+	output: "hybrid",
+	adapter: nodejs(),
+	experimental: {
+		hybridOutput: true,
+	},
+})
 ```
 
-Then add `export const prerender =  false` to any page or endpoint you want to opt-out of pre-rendering.
+Once you've done that your static site can not _opt out_ of prerendering by setting the `prerender` export of a page or endpoint to `false`:
 
 **src/pages/contact.astro**
 
