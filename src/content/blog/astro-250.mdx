@@ -210,7 +210,7 @@ This option _will not_ compress HTML produced by framework components. If you'd 
 
 ## Parallelized rendering
 
-When rendering components Astro will now render them in parallel, allowing components that do their own data loading to not be blocked by other components higher in the tree that are also loading data. A simple example:
+Astro will now render components in parallel so that data-loading components higher in the tree will no longer block other components that are also loading data, as in the example below:
 
 ```astro
 <Delayed ms={30} />
