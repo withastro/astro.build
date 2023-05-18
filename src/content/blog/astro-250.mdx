@@ -112,11 +112,13 @@ export default clickDirective
 
 ## HTML minification
 
-Adds an opt-in way to minify the HTML output of Astro components.
+You can now opt-in to minification of the HTML produced by your Astro components.
 
-Using the `compressHTML` option Astro will remove whitespace from Astro components.
+Using the `compressHTML` option Astro will remove all whitespace.
 
-This only applies to components written in `.astro` format and happens in the compiler to maximize performance. You can enable with:
+We wanted to enable minification without sacrificing performance. For server-rendered apps, doing minification on each render could be costly. With `compressHTML` your components are compressed by the Astro compiler, only once and during the build.
+
+You can enable this in your config:
 
 ```js
 import { defineConfig } from "astro/config"
@@ -126,6 +128,8 @@ export default defineConfig({
 ```
 
 Compression occurs both in development mode and in the final build.
+
+This option _will not_ compress HTML produced by framework components. If you'd like that functionality it can easily be achieved by writing a [middleware](https://docs.astro.build/en/guides/middleware/) to compress HTML responses.
 
 ## Parallelized rendering
 
@@ -144,12 +148,16 @@ We attempted to add this optimization in the past but were lacking good benchmar
 
 ## Polymorphic type helper
 
-Added `Polymorphic` type helper to `astro/types` to easily create polymorphic components:
+A new `Polymorphic` type helper to `astro/types` allows you to easily create polymorphic components.
+
+**TODO**: Explaination of what polymorphic components are.
 
 ```astro
 ---
 import { HTMLTag, Polymorphic } from "astro/types"
+
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>
+
 const { as: Tag, ...props } = Astro.props
 ---
 
