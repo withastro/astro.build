@@ -219,7 +219,7 @@ When rendering components Astro will now render them in parallel, allowing compo
 <Delayed ms={10} />
 ```
 
-This `<Delayed />` component waits a number of milliseconds. In the past each component would need to wait for the previous to finish before it started rendering. In 2.5 these will now all render at the same time.
+This `<Delayed />` component waits a number of milliseconds. Previously, each component would need to wait for the previous to finish before it started rendering. In 2.5 these will now all render at the same time.
 
 Fun fact: we attempted to add this optimization in the past but were lacking good benchmarks to ensure that this didn't actually _slow down_ rendering. Recent improvements to our benchmarking CI infrastructure has now allowed us to implement this with confidence.
 
