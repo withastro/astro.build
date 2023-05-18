@@ -60,7 +60,7 @@ const blog = defineCollection({
 export const collections = { blog: blog, authors: authors }
 ```
 
-You may also want to "reference" related entries. A common example is a blog post that references reusable author profiles stored as JSON, or related post URLs stored in the same collection. You can configure these relationships using the new `reference()` function:
+You may also want to "reference" related entries. A common example is a blog post that references reusable author profiles stored as JSON in a data collection, or related post URLs stored in the same collection. You can configure these relationships using the new `reference()` function:
 
 ```ts
 import { defineCollection, reference, z } from "astro:content"
