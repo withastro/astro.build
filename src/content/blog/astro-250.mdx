@@ -105,7 +105,7 @@ Check the [updated content collections guide](https://docs.astro.build/en/guides
 
 In 2.0 we added the ability to prerender pages in SSR apps. Now in 2.5 you can do the opposite; in a mostly static site you can allow some routes to _not_ be prerendered.
 
-The new `'hybrid'` output option is what enables this. This new option will be marked as experimental for a short period of time as we stabilize edge cases. You can use it today by enabling the `hybridOutput` flag in the `experimental` section of your config and adding an adapter:
+This new `'hybrid'` server output option flips the default pre-rendering behaviour of SSR so that you no longer have to mark each and every static routes that you want pre-rendered. This option will be marked as experimental for a short period of time as we stabilize edge cases. You can use it today by enabling the `hybridOutput` flag in the `experimental` section of your config and adding an adapter:
 
 **astro.config.mjs**
 
