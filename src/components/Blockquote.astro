@@ -1,0 +1,13 @@
+---
+import { Icon } from "astro-icon"
+---
+
+<figure class="relative border-y-[3px] border-astro-gray-500 py-4">
+	<Icon name="quote" class="absolute right-[calc(100%+1rem)] top-6 s-10" />
+	<blockquote class="font-obviously text-[32px] font-medium leading-[40px] text-white">
+		<slot name="quote" />
+	</blockquote>
+	<figcaption class="mt-4 text-right font-mono text-sm text-astro-pink-light">
+		<slot name="caption" />
+	</figcaption>
+</figure>
