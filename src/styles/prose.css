@@ -28,19 +28,33 @@
 	}
 
 	.prose ul {
-		@apply my-4 list-inside pl-2;
-		list-style-image: url("../icons/star.svg");
+		@apply my-4 pl-8;
+	}
+
+	/* the ::marker selector doesn't allow customizing the spacing around the marker as easily */
+	.prose ul li::before {
+		content: "";
+		background: url("../icons/star.svg") center no-repeat;
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		margin-right: 8px;
+		margin-left: -18px;
 	}
 
 	.prose ol {
-		@apply my-4 list-inside list-decimal pl-2;
+		@apply my-4 list-inside list-decimal pl-4;
 	}
 	.prose ol ::marker {
-		@apply -mr-2 inline-block font-mono font-bold text-astro-pink-light;
+		@apply inline-block font-mono font-bold text-astro-pink-light;
+	}
+
+	.prose li {
+		@apply my-2;
 	}
 
 	.prose :where(a) {
-		@apply inline-block font-bold text-astro-pink-light underline underline-offset-4 hover:no-underline;
+		@apply inline-block font-bold text-astro-pink-light underline underline-offset-2 hover:no-underline;
 	}
 
 	.prose > p code {
