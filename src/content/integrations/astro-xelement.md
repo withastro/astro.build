@@ -9,7 +9,7 @@ npmUrl: "https://www.npmjs.com/package/astro-xelement"
 repoUrl: "https://github.com/aFuzzyBear/xelement"
 featured: 11
 homepageUrl: "https://github.com/aFuzzyBear/xelement"
-downloads: 113
+downloads: 70
 badges:
   - "featured"
 ---
