@@ -143,7 +143,7 @@ class ShowcaseScraper {
      repository(owner: "${this.#org}", name: "${this.#repo}") {
        discussion(number: ${this.#discussion}) {
          bodyHTML
-         comments(first: ${first}, after: ${after || "null"}) {
+         comments(first: ${first}, after: ${after ? '"' + after + '"' : "null"}) {
            pageInfo {
              startCursor
              endCursor
