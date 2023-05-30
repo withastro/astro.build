@@ -34,7 +34,7 @@ stars: 0
   consistent and responsive.
 </p>
 <h2>Table of contents</h2>
-<p>Secondary headings (`&lt;h2&gt;`) are listed here, so each page is easy to navigate.</p>
+<p>Secondary headings (<code>&lt;h2&gt;</code>) are listed here, so each page is easy to navigate.</p>
 <h2>Search</h2>
 <p>
   I wrote a simple algorithm for the search, and the matching works well. You can write the blog
