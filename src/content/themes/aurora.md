@@ -18,6 +18,7 @@ demoUrl: "https://aurora.thilohohlt.com/"
 tools:
   - "svelte"
   - "typescript"
+stars: 0
 ---
 
 <p>

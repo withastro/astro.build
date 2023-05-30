@@ -18,6 +18,7 @@ tools:
   - "tailwind"
   - "mdx"
   - "typescript"
+stars: 0
 ---
 
 <h2>Key Features:</h2>
