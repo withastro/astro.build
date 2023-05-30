@@ -5,6 +5,7 @@ description: "This package is a package that allows you to use flow components i
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@forastro/flow"
-homepageUrl: "https://www.npmjs.com/package/@forastro/flow"
-downloads: 174
+homepageUrl: "https://github.com/louiss0/forastro#readme"
+downloads: 232
+repoUrl: "https://github.com/louiss0/forastro"
 ---

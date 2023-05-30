@@ -5,6 +5,7 @@ description: "This package is a set of components and functions that make things
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@forastro/utilities"
-homepageUrl: "https://www.npmjs.com/package/@forastro/utilities"
-downloads: 335
+homepageUrl: "https://github.com/louiss0/forastro#readme"
+downloads: 303
+repoUrl: "https://github.com/louiss0/forastro"
 ---
