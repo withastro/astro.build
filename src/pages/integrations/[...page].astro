@@ -143,14 +143,30 @@ const recentlyAdded = showRecentlyAdded
 
 		{
 			integrations.length > 0 ? (
-				<div class="flex flex-col items-center gap-8 pb-10 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:pb-20">
+				<div class="flex flex-col items-center gap-8 pt-8 lg:pt-10 sm:px-4 lg:px-8 xl:px-10 pb-10 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:pb-20">
 					<h2 class="sr-only">Integrations</h2>
 
-					<CardGrid class="w-full max-w-screen-2xl pt-8 sm:grid-cols-2 sm:px-4 lg:px-8 lg:pt-10 xl:grid-cols-3 xl:px-10">
-						{integrations.map((integration) => (
-							<IntegrationCard integration={integration} />
-						))}
-					</CardGrid>
+					{showRecentlyAdded && recentlyAdded.length > 0 && (
+						<section class="flex flex-col gap-4 lg:gap-6">
+							<h3 class="heading-3">Recently Added</h3>
+							<CardGrid class="w-full max-w-screen-2xl m:grid-cols-2 xl:grid-cols-3">
+								{recentlyAdded.map((integration) => (
+									<IntegrationCard integration={integration} />
+								))}
+							</CardGrid>
+						</section>
+					)}
+
+					<section class="flex flex-col gap-4 lg:gap-6">
+						{showRecentlyAdded && recentlyAdded.length > 0 && (
+							<h3 class="heading-3">All Integrations</h3>
+						)}
+						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
+							{integrations.map((integration) => (
+								<IntegrationCard integration={integration} />
+							))}
+						</CardGrid>
+					</section>
 
 					{allPages.length > 1 && (
 						<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
