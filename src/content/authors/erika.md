@@ -1,6 +1,6 @@
 ---
 "name": "Erika"
 "title": "Developer"
-"image": "/src/content/authors/_images/erika.webp"
+"image": "./erika.webp"
 "mastodon": "https://mastodon.gamedevalliance.fr/@erika"
 ---

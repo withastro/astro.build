@@ -1,6 +1,6 @@
 ---
 "name": "Sarah Rainsberger"
 "title": "Docs Lead"
-"image": "/src/content/authors/_images/sarah.webp"
+"image": "./sarah.png"
 "twitter": "https://twitter.com/sarah11918"
 ---

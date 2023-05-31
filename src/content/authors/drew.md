@@ -1,6 +1,6 @@
 ---
 "name": "Drew Powers"
 "title": "Developer"
-"image": "/src/content/authors/_images/drew.webp"
+"image": "./drew.jpg"
 "twitter": "https://twitter.com/drwpow"
 ---

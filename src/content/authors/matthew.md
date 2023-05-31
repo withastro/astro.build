@@ -1,6 +1,6 @@
 ---
 "name": "Matthew Phillips"
 "title": "Developer"
-"image": "/src/content/authors/_images/matthew.webp"
+"image": "./matthew.jpg"
 "twitter": "https://twitter.com/matthewcp"
 ---

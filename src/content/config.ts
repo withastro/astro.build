@@ -38,48 +38,10 @@ export const ThemeTools = new Map<string, string>([
 	["vue", "Vue"],
 ])
 
-export const themeSchema = z
-	.object({
-		title: z.string().min(1),
-		description: z.string().min(1),
-		fullDescription: z.string().optional(),
-		image: z.string(),
-		images: z.array(z.string()).default([]),
-		author: z.object({
-			url: z.string(),
-			name: z.string(),
-			avatar: z.string(),
-		}),
-		categories: z.array(z.enum(Array.from(ThemeCategories.keys()) as [string, ...string[]])),
-		repoUrl: z.string().url().optional(),
-		demoUrl: z.string().url().optional(),
-		buyUrl: z.string().url().optional(),
-		links: z
-			.array(
-				z.object({
-					href: z.string().url(),
-					text: z.string(),
-				}),
-			)
-			.default([]),
-		stars: z.number().min(0).default(0),
-		featured: z.number().min(1).optional(),
-		tools: z.array(z.enum(Array.from(ThemeTools.keys()) as [string, ...string[]])).default([]),
-		related: z.array(z.string()).max(3).default([]),
-	})
-	.transform((theme) => {
-		// computed properties
-		return {
-			...theme,
-			official: theme.categories.includes("official"),
-			paid: !!theme.buyUrl,
-		}
-	})
-
 export const collections = {
 	authors: defineCollection({
-		schema: z.object({
-			image: z.string().optional(),
+		schema: ({ image }) => z.object({
+			image: image().optional(),
 			name: z.string(),
 			title: z.string().optional(),
 			twitter: z.string().optional(),
@@ -186,6 +148,42 @@ export const collections = {
 		}),
 	},
 	themes: {
-		schema: themeSchema,
+		schema: ({ image }) => z
+		.object({
+			title: z.string().min(1),
+			description: z.string().min(1),
+			fullDescription: z.string().optional(),
+			image: z.string(),
+			images: z.array(z.string()).default([]),
+			author: z.object({
+				url: z.string(),
+				name: z.string(),
+				avatar: z.string(),
+			}),
+			categories: z.array(z.enum(Array.from(ThemeCategories.keys()) as [string, ...string[]])),
+			repoUrl: z.string().url().optional(),
+			demoUrl: z.string().url().optional(),
+			buyUrl: z.string().url().optional(),
+			links: z
+				.array(
+					z.object({
+						href: z.string().url(),
+						text: z.string(),
+					}),
+				)
+				.default([]),
+			stars: z.number().min(0).default(0),
+			featured: z.number().min(1).optional(),
+			tools: z.array(z.enum(Array.from(ThemeTools.keys()) as [string, ...string[]])).default([]),
+			related: z.array(z.string()).max(3).default([]),
+		})
+		.transform((theme) => {
+			// computed properties
+			return {
+				...theme,
+				official: theme.categories.includes("official"),
+				paid: !!theme.buyUrl,
+			}
+		}),
 	},
 }

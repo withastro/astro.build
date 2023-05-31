@@ -1,10 +1,10 @@
 ---
+import { Image } from "astro:assets"
 import { getEntryBySlug } from "astro:content"
-import { resolveImage } from "~/content/authors/_resolveImage.js"
 
 type Props = {
 	name?: string
-	image?: string
+	image?: ImageMetadata
 	lg?: boolean
 }
 
@@ -12,24 +12,21 @@ let { name, image, lg = false } = Astro.props
 
 if (!image && name) {
 	const author = await getEntryBySlug("authors", name)
-	image = author && (await resolveImage(author))?.src
+	image = author?.data.image
 }
 ---
 
 {
 	image && (
-		<img
+		<Image
+			src={image}
+			width={48}
+			alt=""
+			aria-hidden="true"
 			class:list={[
 				"my-0 inline-block rounded-full border border-astro-gray-100",
 				lg ? "h-8 w-8 md:h-10 md:w-10" : "h-6 w-6",
 			]}
-			src={image}
-			alt=""
-			aria-hidden="true"
-			width={48}
-			height={48}
-			loading="lazy"
-			decoding="async"
 		/>
 	)
 }

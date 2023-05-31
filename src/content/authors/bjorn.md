@@ -1,6 +1,6 @@
 ---
 "name": "Bjorn Lu"
 "title": "Developer"
-"image": "/src/content/authors/_images/bjorn.webp"
+"image": "./bjorn.webp"
 "twitter": "https://twitter.com/bluwyoo"
 ---

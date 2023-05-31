@@ -1,6 +1,6 @@
 ---
 "name": "Jonathan Neal"
 "title": "Developer"
-"image": "/src/content/authors/_images/jon.webp"
+"image": "./jon.jpg"
 "twitter": "https://twitter.com/jon_neal"
 ---
