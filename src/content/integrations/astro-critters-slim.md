@@ -9,7 +9,8 @@ npmUrl: "https://www.npmjs.com/package/astro-critters-slim"
 image: "/assets/integrations/astro-critters-slim.webp"
 repoUrl: "ssh://git@github.com/Suven/astro-critters"
 homepageUrl: "https://github.com/Suven/astro-critters#readme"
-downloads: 275
+downloads: 277
 badges:
   - "new"
+badge: "new"
 ---

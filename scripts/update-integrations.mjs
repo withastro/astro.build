@@ -7,7 +7,7 @@ import slugify from "slugify"
 import glob from "tiny-glob"
 import {
 	allowlist,
-	badgesForPackage,
+	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
 	getFeaturedPackagePriority,
@@ -62,14 +62,14 @@ async function fetchWithOverrides(pkg) {
 	const integrationOverrides = getOverrides(pkg) || {}
 
 	const downloads = await fetchDownloadsForPackage(pkg)
-	const badges = badgesForPackage(details)
+	const badge = badgeForPackage(details)
 	const featured = getFeaturedPackagePriority(pkg)
 
 	return {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		downloads,
-		badges: badges.length > 0 ? badges : undefined,
+		badge,
 		featured,
 	}
 }

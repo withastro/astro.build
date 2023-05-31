@@ -106,6 +106,12 @@ if (allPages.length && !page) {
 }
 
 const integrations = page.data
+
+const showRecentlyAdded =
+	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
+const recentlyAdded = showRecentlyAdded
+	? allIntegrations.filter((entry) => entry.data.badge === "new")
+	: []
 ---
 
 <MainLayout
@@ -139,6 +145,7 @@ const integrations = page.data
 			integrations.length > 0 ? (
 				<div class="flex flex-col items-center gap-8 pb-10 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:pb-20">
 					<h2 class="sr-only">Integrations</h2>
+
 					<CardGrid class="w-full max-w-screen-2xl pt-8 sm:grid-cols-2 sm:px-4 lg:px-8 lg:pt-10 xl:grid-cols-3 xl:px-10">
 						{integrations.map((integration) => (
 							<IntegrationCard integration={integration} />
@@ -152,7 +159,8 @@ const integrations = page.data
 			) : (
 				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
 					<p>
-						<strong>0</strong> results found for integrations matching <strong>"{search}"</strong>
+						<strong>0</strong> results found for integrations matching{" "}
+						<strong>"{search}"</strong>
 					</p>
 					<a href="/integrations/" rel="prefetch" class="button button-primary">
 						Clear filters

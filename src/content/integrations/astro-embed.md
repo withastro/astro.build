@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-embed"
 repoUrl: "https://github.com/astro-community/astro-embed"
 homepageUrl: "https://github.com/astro-community/astro-embed/tree/main/packages/astro-embed#readme"
-downloads: 2685
+downloads: 2820
 ---

@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import Card from "~/components/Card.astro"
+import CardBadge from "~/components/CardBadge.astro"
 import CardBody from "~/components/CardBody.astro"
 import { randomFromArray } from "~/helpers/random.js"
 import DownloadIcon from "~/icons/DownloadIcon.jsx"
@@ -35,6 +36,7 @@ const IconBackgrounds = [
 ---
 
 <Card isLink>
+	{!!integration.data.badge && <CardBadge position="end">{integration.data.badge}</CardBadge>}
 	<CardBody as="a" href={integration.data.homepageUrl || integration.data.npmUrl} target="_blank">
 		<div>
 			<header class="flex items-center justify-between">

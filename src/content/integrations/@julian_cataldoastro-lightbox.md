@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@julian_cataldo/astro-lightbox"
 repoUrl: "https://github.com/JulianCataldo/web-garden"
 homepageUrl: "https://code.juliancataldo.com/component/astro-lightbox"
-downloads: 118
+downloads: 129
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-magneto"
 repoUrl: "https://github.com/LoStisWorld/astro-magneto"
 homepageUrl: "https://github.com/LoStisWorld/astro-magneto#readme"
-downloads: 7
+downloads: 6
 ---

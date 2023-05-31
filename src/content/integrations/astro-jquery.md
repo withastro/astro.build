@@ -5,7 +5,8 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-jquery"
 homepageUrl: "https://www.npmjs.com/package/astro-jquery"
-downloads: 269
+downloads: 289
 badges:
   - "new"
+badge: "new"
 ---

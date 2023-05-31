@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-cooklang"
 homepageUrl: "https://www.npmjs.com/package/astro-cooklang"
-downloads: 13
+downloads: 12
 ---
