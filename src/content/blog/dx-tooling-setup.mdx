@@ -1,4 +1,14 @@
+---
+title: "Setting-up-the-perfect-Developer-Experience-for-your-Astro-project"
+description: "Benefits of sharpening your tools: better DX, faster iterations!"
+publishDate: "June 02, 2023"
+authors:
+  - juliancataldo
+lang: "en"
+---
 # [](#Setting-up-the-perfect-Developer-Experience-for-your-Astro-project 'Setting-up-the-perfect-Developer-Experience-for-your-Astro-project')Setting up the perfect Developer Experience for your Astro project
+
+# Setting up the perfect Developer Experience for your Astro project
 
 Table of Contents
 
@@ -35,7 +45,7 @@ Although not strictly _needed_ in order to code, it’s worth the learning curve
 
 This topic is so near and dear to me, that I’ve built an entire [Web Garden](https://code.juliancataldo.com/) for sharing tooling configs and web design patterns. Here are some of my top recommended tools to take your Astro DX to the next level!
 
-## [](#Remove-Squiggly-lines-in-Astro-with-ESLint 'Remove-Squiggly-lines-in-Astro-with-ESLint')Remove Squiggly lines in Astro with ESLint
+# Remove Squiggly lines in Astro with ESLint
 
 ESLint preview
 
@@ -43,51 +53,56 @@ For linting, you can count on astro-eslint-parser + Yosuke Ota’s amazing eslin
 
 THIS NEEDS A FILE TITLE SO PEOPLE KNOW WHERE TO TYPE THIS
 
-    module.exports = {
-      overrides: [
-        {
-          files: ['*.astro'],
-          extends: [
-            //
-            'airbnb-base',
-            'plugin:astro/recommended',
-            'prettier',
-          ],
-          parser: 'astro-eslint-parser',
-          parserOptions: {
-            parser: '@typescript-eslint/parser',
-            extraFileExtensions: ['.astro'],
-          },
-        },
-      ],
+```jsonc
+module.exports = {
+  overrides: [
+    {
+      files: ['*.astro'],
       extends: [
-        // …
+        //
+        'airbnb-base',
+        'plugin:astro/recommended',
+        'prettier',
       ],
-      rules: [
-        // …
-      ],
-    };
+      parser: 'astro-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.astro'],
+      },
+    },
+  ],
+  extends: [
+    // …
+  ],
+  rules: [
+    // …
+  ],
+};
+```
 
 ℹ️ Full setup  
 📃 Configuration file
 
 You will also need to configure the Code extension to hook up with Astro files.
 
-    // VS Code's `settings.json`
-    {
-      // …
-      "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "astro",
-        "typescript",
-        "typescriptreact",
-        "mdx"
-      ]
-      // …
-    }
+```jsonc
+// VS Code's `settings.json`
+{
+  // …
+  "eslint.validate": [
+    //…
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "typescript",
+    "typescriptreact",
+    "mdx"
+  ]
+  // …
+}
+```
 
-## [](#Beautify-your-code-with-Prettier 'Beautify-your-code-with-Prettier')Beautify your code with Prettier
+# Beautify your code with Prettier
 
 GIFPrettier preview
 
@@ -95,34 +110,38 @@ Use [`prettier-plugin-astro`](https://github.com/withastro/prettier-plugin-astro
 
 FILE TITLE NEEDED
 
-    module.exports = {
-      plugins: ['./node_modules/prettier-plugin-astro'],
+```jsonc
+module.exports = {
+  plugins: ['./node_modules/prettier-plugin-astro'],
 
-      overrides: [
-        {
-          files: '*.astro',
-          semi: true,
-          options: {
-            parser: 'astro',
-            printWidth: 80,
-          },
-        },
-      ],
-    };
+  overrides: [
+    {
+      files: '*.astro',
+      semi: true,
+      options: {
+        parser: 'astro',
+        printWidth: 80,
+      },
+    },
+  ],
+};
+```
 
 For VS Code: FILE TITLE NEEDED
 
-    {
-      "prettier.documentSelectors": ["**/*.astro"],
-      "[astro]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      }
-    }
+```jsonc
+{
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
 
 ℹ️ Full setup  
 📃 Configuration file
 
-## [](#Ensure-formatting-conventions-with-Editorconfig 'Ensure-formatting-conventions-with-Editorconfig')Ensure formatting conventions with Editorconfig
+# Ensure formatting conventions with Editorconfig
 
 Editorconfig is a standardized way of conveying formatting preferences to your IDE recognized by a wide range of tools (JetBrains, Code, GitHub…) and integrates nicely with Prettier
 
@@ -131,37 +150,41 @@ Once you know about it, you can’t live without it. It might just become the fi
 To get started, create the following file in your workspace root:  
 NAME THE FILE
 
-    touch .editorconfig
+```sh
+touch .editorconfig
+```
 
 DOES THIS GO IN THE SAME FILE? WHERE SHOULD THIS BE ADDED?
 
 This is an example baseline that allows you to specify your desired indentation, line breaks and more:
 
-    [*]
-    indent_style = tab
-    indent_size = 2
-    end_of_line = lf
-    charset = utf-8
-    trim_trailing_whitespace = false
-    insert_final_newline = true
+```ini
+[*]
+indent_style = tab
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = false
+insert_final_newline = true
 
-    [*.md]
-    trim_trailing_whitespace = false
+[*.md]
+trim_trailing_whitespace = false
 
-    [*.yaml]
-    indent_style = space
+[*.yaml]
+indent_style = space
+```
 
 No more overwhelming 8-spaces indentation on GitHub!
 
 Pro tip: `trim_trailing_whitespace` is useful to keep the double “” for End-Of-Lines instead of using “” to force a carriage return.
 
-## [](#Leverage-first-class-Astro-support-for-TypeScript 'Leverage-first-class-Astro-support-for-TypeScript')Leverage first-class Astro support for TypeScript
+# Leverage first-class Astro support for TypeScript
 
 TypeScript support in Astro is first-class, and getting better all the time! There is no need to install anything – it’s built-right in.
 
 Set TypeScript to `strictest` in your `tsconfig.json` and call the CLI type-checker `astro-check` for the tightest type-safety around.
 
-## [](#Remove-wrinkles-from-your-sheets-using-Stylelint 'Remove-wrinkles-from-your-sheets-using-Stylelint')Remove wrinkles from your sheets using Stylelint
+# Remove wrinkles from your sheets using Stylelint
 
 Stylelint is a mighty CSS linter that helps you avoid errors and enforce conventions.
 
@@ -171,18 +194,20 @@ Even if you use Tailwind, you’ll occasionally use some third-party CSS, target
 
 Try these configs in your Astro project:
 
-    'stylelint-config-standard',
-    'stylelint-config-standard-scss',
-    'stylelint-config-prettier',
-    'stylelint-config-recess-order',
-    'stylelint-config-html/astro',
-    'stylelint-config-tailwindcss/scss',
+```js
+'stylelint-config-standard',
+'stylelint-config-standard-scss',
+'stylelint-config-prettier',
+'stylelint-config-recess-order',
+'stylelint-config-html/astro',
+'stylelint-config-tailwindcss/scss',
+```
 
 The Tailwind config makes @apply rules play nicely with SCSS, while Recess ordering organizes your stylesheets, making code much more scannable.
 
 GIF - Recess ordering FTW
 
-# [](#Catch-problems-before-committing-with-lint-staged 'Catch-problems-before-committing-with-lint-staged')Catch problems before committing with lint-staged
+# Catch problems before committing with lint-staged
 
 Use `lint-stage` for linting exactly when and where you need it. It will run a lint process right before committing your code, and only on the files to be committed.
 
@@ -190,20 +215,22 @@ IMAGE: okonet / lint-staged
 
 It can also be (unofficially) configured to run as a pre-commit hook, like [Husky](https://github.com/typicode/husky).
 
-    # yaml-language-server: $schema=https://json.schemastore.org/lintstagedrc.schema.json
+```yaml
+# yaml-language-server: $schema=https://json.schemastore.org/lintstagedrc.schema.json
 
-    '*.{ts,js,cjs,mts,mjs,cts,jsx,tsx,astro,vue}':
-      - eslint --fix
+"*.{ts,js,cjs,mts,mjs,cts,jsx,tsx,astro,vue}":
+  - eslint --fix
 
-    '*.{scss,css,astro,vue}':
-      - stylelint --fix
+"*.{scss,css,astro,vue}":
+  - stylelint --fix
 
-    '*.{ts,js,cjs,mts,mjs,json,yaml,cts,jsx,tsx,astro,md,vue}':
-      - prettier -w
+"*.{ts,js,cjs,mts,mjs,json,yaml,cts,jsx,tsx,astro,md,vue}":
+  - prettier -w
+```
 
 [See this configuration file in my Web Garden](https://github.com/JulianCataldo/web-garden/blob/develop/configs/.lintstagedrc-example.yaml)
 
-## [](#Move-at-light-speed-with-Tailwind-CSS-and-the-Flowbite-design-system 'Move-at-light-speed-with-Tailwind-CSS-and-the-Flowbite-design-system')Move at light speed with Tailwind CSS and the Flowbite design system
+# Move at light speed with Tailwind CSS and the Flowbite design system
 
 Formatting, linting, and TypeScript all are all cool tools for safer, easier and faster building with Astro.
 
@@ -226,7 +253,7 @@ Using Flowbite in Astro was such a great experienced for me, I built an open-sou
 
 If you need a dashboard theme, or just want to see how Flowbite works in Astro, you can visit [the Flowbite Astro Admin Dashboard repo on GitHub](https://github.com/themesberg/flowbite-astro-admin-dashboard). This repo takes advantage of all of the tools mentioned above, and takes Astro DX to the moon! ![:rocket:](https://assets.hackmd.io/build/emojify.js/dist/images/basic/rocket.png)
 
-## [](#Make-it-your-own 'Make-it-your-own')Make it your own
+# Make it your own
 
 Remember: tooling exists to help you think less, not to get in your way!
 
