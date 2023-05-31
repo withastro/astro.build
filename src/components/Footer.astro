@@ -56,31 +56,36 @@ const groups: LinkGroup[] = [
 		],
 	},
 	{
-		title: "Links",
+		title: "About",
 		items: [
 			{
+				text: "Who we are",
 				href: "/about/",
-				text: "About",
 			},
 			{
-				href: "/blog/",
-				text: "Blog",
-			},
-			{
-				href: "/press/",
 				text: "Press",
+				href: "/press/",
 			},
 			{
-				href: "/careers/",
 				text: "Careers",
+				href: "/careers/",
 			},
 			{
-				href: "/partnerships/",
 				text: "Partner with us!",
+				href: "/partnerships/",
+			},
+		],
+	},
+	{
+		title: "More links",
+		items: [
+			{
+				text: "Blog",
+				href: "/blog/",
 			},
 			{
-				href: "/wallpapers/",
 				text: "Wallpapers",
+				href: "/wallpapers/",
 			},
 		],
 	},
@@ -117,7 +122,8 @@ const socialLinks = siteInfo.socialLinks
 		</div>
 	</nav>
 	<hr class="border-astro-gray-500" />
-	<div
+	<nav
+		aria-label="Legal"
 		class="grid grid-cols-[1fr,auto] items-center gap-x-4 gap-y-16 py-8 opacity-60 md:grid-cols-[auto,1fr,auto] md:py-12"
 	>
 		<a class="link" href="/privacy">Privacy Policy</a>
@@ -130,5 +136,5 @@ const socialLinks = siteInfo.socialLinks
 				>Astro Contributors</a
 			>
 		</p>
-	</div>
+	</nav>
 </footer>

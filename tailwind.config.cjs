@@ -41,6 +41,7 @@ module.exports = {
 				},
 				"astro-blue": "#3245FF",
 				"astro-purple": "#BC52EE",
+				"astro-purple-dark": "#3F224D",
 				"astro-red": "#D83333",
 				"astro-pink": {
 					light: "#E8C4F9",
