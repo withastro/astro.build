@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config"
+import { defineConfig, sharpImageService } from "astro/config"
 import fs from "node:fs"
 
 import mdx from "@astrojs/mdx"
@@ -37,6 +37,9 @@ export default defineConfig({
 		ssr: {
 			noExternal: ["smartypants"],
 		},
+	},
+	image: {
+		service: sharpImageService(),
 	},
 	output: "server",
 	adapter: netlify(),
