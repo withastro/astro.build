@@ -5,11 +5,11 @@ import mime from "mime"
 import { uniq } from "~/helpers/uniq.js"
 
 export type Props = {
-    class?: string
-    src: ImageMetadata
-    alt: string
-    widths: number[]
-    sizes?: string
+	class?: string
+	src: ImageMetadata
+	alt: string
+	widths: number[]
+	sizes?: string
 }
 
 const { src, alt, widths, sizes = "100vw", class: className } = Astro.props
@@ -20,37 +20,37 @@ const maxWidth = widths.sort()[widths.length - 1]
 let fallback: GetImageResult | null = null
 
 async function getSource(format: ImageOutputFormat) {
-    const imgs = await Promise.all(
-        widths.map(async (width) => {
-            const img = await getImage({
-                src,
-                alt,
-                width,
-                format,
-            })
+	const imgs = await Promise.all(
+		widths.map(async (width) => {
+			const img = await getImage({
+				src,
+				alt,
+				width,
+				format,
+			})
 
-            if (format === src.format && width === maxWidth) {
-                fallback = img
-            }
+			if (format === src.format && width === maxWidth) {
+				fallback = img
+			}
 
-            return `${img.src} ${width}w`
-        }),
-    )
+			return `${img.src} ${width}w`
+		}),
+	)
 
-    return {
-        type: mime.getType(format) || format,
-        srcset: imgs.join(","),
-    }
+	return {
+		type: mime.getType(format) || format,
+		srcset: imgs.join(","),
+	}
 }
 
 const sources = await Promise.all(formats.map((format) => getSource(format)))
 
 if (!fallback) {
-    throw new Error("Fallback image not found!")
+	throw new Error("Fallback image not found!")
 }
 ---
 
 <picture>
-    {sources.map((attrs) => <source {...attrs} {sizes} />)}
-    <img src={fallback.src} {...fallback.attributes} class={className} />
+	{sources.map((attrs) => <source {...attrs} {sizes} />)}
+	<img src={fallback.src} {...fallback.attributes} class={className} />
 </picture>
