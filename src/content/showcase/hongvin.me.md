@@ -1,5 +1,5 @@
 ---
 title: Hong Vin Koay
-image: /src/content/showcase/_images/hongvin.me.webp
+image: ./_images/hongvin.me.webp
 url: "https://hongvin.me"
 ---

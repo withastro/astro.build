@@ -1,5 +1,5 @@
 ---
 title: CDi - Web Developer
-image: /src/content/showcase/_images/cdi.dev.webp
+image: ./_images/cdi.dev.webp
 url: "https://cdi.dev"
 ---

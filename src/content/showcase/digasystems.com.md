@@ -1,5 +1,5 @@
 ---
 title: Home - Diga Systems
-image: /src/content/showcase/_images/digasystems.com.webp
+image: ./_images/digasystems.com.webp
 url: "https://digasystems.com"
 ---

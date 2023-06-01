@@ -1,5 +1,5 @@
 ---
 title: Lexingtonthemes.com - Home
-image: /src/content/showcase/_images/lexingtonthemes.com.webp
+image: ./_images/lexingtonthemes.com.webp
 url: "https://lexingtonthemes.com/"
 ---

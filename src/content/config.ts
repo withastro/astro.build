@@ -151,13 +151,14 @@ export const collections = {
 		}),
 	},
 	showcase: {
-		schema: z.object({
-			title: z.string().min(1),
-			image: z.string(),
-			url: z.string().url(),
-			featured: z.number().min(1).optional(),
-			highlight: z.boolean().default(false),
-		}),
+		schema: ({ image }) =>
+			z.object({
+				title: z.string().min(1),
+				image: image(),
+				url: z.string().url(),
+				featured: z.number().min(1).optional(),
+				highlight: z.boolean().default(false),
+			}),
 	},
 	themes: {
 		schema: z
