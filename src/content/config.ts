@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content"
+import socialImg from "../assets/og/social.jpg"
 
 export const IntegrationCategories = new Map<string, string>([
 	["featured", "Featured"],
@@ -85,7 +86,7 @@ export const collections = {
 			type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
 			image: z
 				.object({
-					src: z.string().default("/og/social.jpg"),
+					src: z.string().default((socialImg as unknown as ImageMetadata).src),
 					alt: z.string().default("Astro | Build the web you want"),
 				})
 				.default({}),

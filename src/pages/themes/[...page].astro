@@ -1,5 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content"
+import socialImg from "~/assets/og/themes.jpg"
 import CardGrid from "~/components/CardGrid.astro"
 import Pagination from "~/components/Pagination.astro"
 import SearchFilter, { FilterGroup } from "~/components/SearchFilter.astro"
@@ -133,7 +134,7 @@ if (allPages.length && !page) {
 const themes = page.data
 ---
 
-<MainLayout title="Themes" image={{ src: "/og/themes.jpg", alt: "Explore the possibilities" }}>
+<MainLayout title="Themes" image={{ src: socialImg, alt: "Explore the possibilities" }}>
 	<div class="bg-grid relative">
 		<div class="grid-container">
 			<h1
