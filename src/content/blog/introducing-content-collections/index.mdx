@@ -13,6 +13,9 @@ import BlogContentImage from "/src/components/BlogContentImage.astro"
 // Images
 import bannerErrorOverlayOld from "./banner-error-overlay-old.png"
 import bannerErrorOverlay from "./banner-error-overlay.jpg"
+// Videos
+import contentDemo from "./content-demo.mp4"
+import dataDemo from "./data-demo.mp4"
 
 **Working with Markdown/MDX is hard.** Maintaining consistent data across hundreds or even thousands of pieces of local content -- blog posts, newsletters, etc. -- gets more and more difficult as your site grows.
 
@@ -23,7 +26,7 @@ Astro 2.0 introduces the **Content Collections API:** a new way to work with loc
 ## TypeScript for your Markdown
 
 <video autoplay loop muted playsinline>
-	<source src="/assets/blog/introducing-content-collections/data-demo.mp4" type="video/mp4" />
+	<source src={dataDemo} type="video/mp4" />
 	Sorry, your browser doesn't support embedded videos.
 </video>
 
@@ -32,7 +35,7 @@ Content collections work by organizing local content into "collections" inside o
 Built-in query functions provide hints and autocomplete as you type. Fetch and render your content to HTML inside an Astro component with just a few lines of code:
 
 <video autoplay loop muted playsinline>
-	<source src="/assets/blog/introducing-content-collections/content-demo.mp4" type="video/mp4" />
+	<source src={contentDemo} type="video/mp4" />
 	Sorry, your browser doesn't support embedded videos.
 </video>
 
