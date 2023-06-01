@@ -1,15 +1,13 @@
 ---
 import { type CollectionEntry } from "astro:content"
 import { format } from "date-fns"
-import { resolveCoverImage } from "~/content/blog/_resolveImage.js"
+import Picture from "~/components/Picture.astro"
 
 export type Props = {
 	post: CollectionEntry<"blog">
 }
 
 const { post } = Astro.props
-
-const image = await resolveCoverImage(post)
 ---
 
 <article
@@ -23,15 +21,12 @@ const image = await resolveCoverImage(post)
 		</header>
 
 		{
-			image && (
-				<img
-					src={image.src}
-					width={image.width}
-					height={image.height}
+			post.data.coverImage && (
+				<Picture
+					src={post.data.coverImage}
 					alt={post.data.title}
+					widths={[360, 720, 1440]}
 					class="my-8"
-					loading="lazy"
-					decoding="async"
 				/>
 			)
 		}

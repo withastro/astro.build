@@ -1,0 +1,249 @@
+---
+title: "Astro 2.5"
+description: "Data collections • Hybrid rendering • Custom client directives • HTML minification • Parallelized rendering • Polymorphic type helper • More!"
+publishDate: "May 18, 2023"
+authors:
+  - matthew
+  - ben
+  - erika
+  - bjorn
+coverImage: "./blog-hero-2_5-release.jpg"
+socialImage: "./og-image-2_5-release.jpg"
+lang: "en"
+---
+
+We just released Astro 2.5, with a big list of features including:
+
+- **[Data collections and references](#data-collections-and-references)**: Your `src/content/` folder can now include JSON and YAML files to store data. You can reference this data from your other collections.
+- **[Hybrid rendering (experimental)](#static-by-default-hybrid-rendering-experimental)**: Allow server routes in your mostly static sites.
+- **[Custom client directives (experimental)](#custom-client-directives-experimental)**: A new API for integrations to define their own loading mechanics for `client:` directives.
+- **[HTML minification](#html-minification)**: An option to allow you to minify your Astro templates.
+- **[Parallelized rendering](#parallelized-rendering)**: Astro now runs sibling components in parallel, speeding up rendering when you have multiple components doing their own data loading.
+- **[Polymorphic type helper](#polymorphic-type-helper)**: Define a component that accepts the same props as built-in elements.
+
+## Data collections and references
+
+Content collections are Astro's first-class solution to managing and authoring content. Astro 2.5 takes that story even further with **new data formats and collection references.**
+
+First, we've introduced a new `type: 'data'` property to store data formats like JSON and YAML in their own collections. This unlocks using collections for new forms of content including author profiles, reusable image alt text, translation dictionaries, and more.
+
+Create data collections alongside your existing content collections:
+
+```diff
+src/content/
+    blog/
+        week-1.md
+        week-2.md
++    authors/
++        grace-hopper.json
++        alan-turing.json
+```
+
+Configure them using the new `type: 'data'` property:
+
+```ts
+// src/content/config.ts
+import { defineCollection, z } from "astro:content"
+
+const authors = defineCollection({
+	type: "data",
+	schema: z.object({
+		name: z.string(),
+		socialLink: z.string().url(),
+	}),
+})
+
+const blog = defineCollection({
+	type: "content",
+	schema: z.object({
+		/* ... */
+	}),
+})
+
+export const collections = { blog: blog, authors: authors }
+```
+
+You may also want to "reference" related entries. A common example is a blog post that references reusable author profiles stored as JSON in a data collection, or related post URLs stored in the same collection. You can configure these relationships using the new `reference()` function:
+
+```ts
+import { defineCollection, reference, z } from "astro:content"
+
+const blog = defineCollection({
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		// Reference a single author from the `authors` collection by `id`
+		author: reference("authors"),
+		// Reference an array of related posts from the `blog` collection by `slug`
+		relatedPosts: z.array(reference("blog")),
+	}),
+})
+
+const authors = defineCollection({
+	type: "data",
+	schema: z.object({
+		/** ... */
+	}),
+})
+
+export const collections = { blog, authors }
+```
+
+Now, each blog post can reference related entries with type-safe validation:
+
+```yaml
+# src/content/blog/welcome.md
+---
+title: "Welcome to my blog"
+author: ben-holmes # references `src/content/authors/ben-holmes.json`
+relatedPosts:
+  - about-me # references `src/content/blog/about-me.md`
+  - my-year-in-review # references `src/content/blog/my-year-in-review.md`
+---
+```
+
+Check the [updated content collections guide](https://docs.astro.build/en/guides/content-collections/) for in-depth examples.
+
+## Static by default hybrid rendering (experimental)
+
+In 2.0 we added the ability to pre-render individual pages in SSR apps. Now in 2.5 you can also do the opposite; in a mostly static site you can specify some routes to _not_ be prerendered.
+
+This new `'hybrid'` server output option flips the default pre-rendering behaviour of SSR so that you no longer have to mark each and every static routes that you want pre-rendered. This option will be marked as experimental for a short period of time as we stabilize edge cases. You can use it today by enabling the `hybridOutput` flag in the `experimental` section of your config and adding an adapter:
+
+**astro.config.mjs**
+
+```js
+import { defineConfig } from "astro/config"
+import nodejs from "@astrojs/node"
+
+export default defineConfig({
+	output: "hybrid",
+	adapter: nodejs(),
+	experimental: {
+		hybridOutput: true,
+	},
+})
+```
+
+Once you've done that, your entire site will be pre-rendered by default. You can _opt out_ of pre-rendering by setting the `prerender` export of any page or endpoint to `false`:
+
+**src/pages/contact.astro**
+
+```astro
+---
+export const prerender = false
+
+if (Astro.request.method === "POST") {
+	// handle form submission
+}
+---
+
+<form method="POST">
+	<input type="text" name="name" />
+	<input type="email" name="email" />
+	<button type="submit">Submit</button>
+</form>
+```
+
+## Custom client directives (experimental)
+
+Custom client directives allow integration authors to define new `client:` directives to gain greater control over when components load.
+
+Integrations can add these through the `astro:config:setup` hook's new `addClientDirective()` API. To use this API, enable `customClientDirectives` in the `experimental` section of your config.
+
+**astro.config.mjs**
+
+```js
+import { defineConfig } from "astro/config"
+import onClickDirective from "astro-click-directive"
+
+export default defineConfig({
+	integrations: [onClickDirective()],
+	experimental: {
+		customClientDirectives: true,
+	},
+})
+```
+
+**astro-click-directive**
+
+```js
+export default function onClickDirective() {
+	return {
+		hooks: {
+			"astro:config:setup": ({ addClientDirective }) => {
+				addClientDirective({
+					name: "click",
+					entrypoint: "astro-click-directive/click.js",
+				})
+			},
+		},
+	}
+}
+```
+
+Now you can use `client:click` on any of your framework components with full type support.
+
+```astro
+<Counter client:click />
+```
+
+See the [client directives documentation](https://docs.astro.build/en/reference/directives-reference/#custom-client-directives) to learn how to build these types of integrations.
+
+## HTML minification
+
+You can now opt-in to minification of the HTML produced by your Astro components.
+
+Using the `compressHTML` option, Astro will remove all whitespace from your HTML including line breaks.
+
+We wanted to enable minification without sacrificing performance. For server-rendered apps, doing minification on each render could be costly. With `compressHTML` your components are compressed only once by the Astro compiler, and then during the build.
+
+You can enable this in your config:
+
+```js
+import { defineConfig } from "astro/config"
+export default defineConfig({
+	compressHTML: true,
+})
+```
+
+Note: compression occurs both in development mode and in the final build.
+
+While this option _will not_ compress HTML produced by framework component you can write a [middleware](https://docs.astro.build/en/guides/middleware/) to compress HTML responses.
+
+## Parallelized rendering
+
+Astro will now render components in parallel so that data-loading components higher in the tree will no longer block other components that are also loading data, as in the example below:
+
+```astro
+<Delayed ms={30} />
+<Delayed ms={20} />
+<Delayed ms={40} />
+<Delayed ms={10} />
+```
+
+This `<Delayed />` component waits a number of milliseconds. Previously, each component would need to wait for the previous to finish before it started rendering. In 2.5 these will now all render at the same time.
+
+Fun fact: we attempted to add this optimization in the past but were lacking good benchmarks to ensure that this didn't actually _slow down_ rendering. Recent improvements to our benchmarking CI infrastructure has now allowed us to implement this with confidence.
+
+## Polymorphic type helper
+
+Astro now includes a TypeScript helper (`Polymorphic`) to make it easier to build components that can render as different HTML elements with full type safety. This is useful for components like `<Link>` that can render as either `<a>` or `<button>` depending on the props passed to it.
+
+The example below implements a fully-typed, polymorphic component that can render as any HTML element. The HTMLTag type is used to ensure that the `as` prop is a valid HTML element.
+
+```astro
+---
+import { HTMLTag, Polymorphic } from "astro/types"
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>
+
+const { as: Tag, ...props } = Astro.props
+---
+
+<Tag {...props} />
+```
+
+## More
+
+Additional bug fixes and improvements are included in this release. Check out the [release notes](https://github.com/withastro/astro/pull/7090) to learn more.

@@ -1,8 +1,9 @@
 ---
+import { Image } from "astro:assets"
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
 import { format } from "date-fns"
 import Avatar from "~/components/Avatar.astro"
-import { resolveCoverImage, resolveSocialImage } from "~/content/blog/_resolveImage.js"
+import Picture from "~/components/Picture.astro"
 import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
 
@@ -26,8 +27,7 @@ const { post } = Astro.props
 const { data, render } = post
 const { Content } = await render()
 
-const coverImage = await resolveCoverImage(post)
-const socialImage = await resolveSocialImage(post)
+const { coverImage, socialImage } = data
 
 const authors = await Promise.all(
 	data.authors.map((author) => getEntryBySlug("authors", author)),
@@ -52,15 +52,7 @@ const placeholderGradient = randomFromArray(gradients)
 	{
 		coverImage ? (
 			<div class="mx-auto w-full max-w-screen-lg md:-mb-10 lg:-mb-12 xl:-mb-16">
-				<img
-					src={coverImage.src}
-					width={coverImage.width}
-					height={coverImage.height}
-					loading="lazy"
-					decoding="async"
-					alt=""
-					class="w-full"
-				/>
+				<Picture src={coverImage} alt="" class="w-full" widths={[320, 640, 1024, 1920]} />
 			</div>
 		) : (
 			<div
@@ -82,7 +74,9 @@ const placeholderGradient = randomFromArray(gradients)
 					{format(data.publishDate, "MMMM d, yyyy")}
 				</time>
 				<h1 class="heading-3 mt-2 mb-4 md:heading-2 sm:mt-3 sm:mb-5">{data.title}</h1>
-				<div class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200">
+				<div
+					class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200"
+				>
 					<span>By</span>
 					{
 						authors.map((author) => {

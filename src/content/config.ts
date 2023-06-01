@@ -40,6 +40,7 @@ export const ThemeTools = new Map<string, string>([
 
 export const collections = {
 	authors: defineCollection({
+<<<<<<< HEAD
 		schema: ({ image }) => z.object({
 			image: image().optional(),
 			name: z.string(),
@@ -47,20 +48,30 @@ export const collections = {
 			twitter: z.string().optional(),
 			mastodon: z.string().optional(),
 		}),
+=======
+		schema: ({ image }) =>
+			z.object({
+				image: image().optional(),
+				name: z.string(),
+				title: z.string().optional(),
+				twitter: z.string().optional(),
+			}),
+>>>>>>> migrating the blog to astro:assets
 	}),
 	blog: defineCollection({
-		schema: z.object({
-			title: z.string(),
-			description: z.string(),
-			publishDate: z
-				.string()
-				.or(z.date())
-				.transform((val) => new Date(val)),
-			authors: z.array(z.string()),
-			socialImage: z.string().optional(),
-			coverImage: z.string().optional(),
-			lang: z.enum(["en"]).default("en"),
-		}),
+		schema: ({ image }) =>
+			z.object({
+				title: z.string(),
+				description: z.string(),
+				publishDate: z
+					.string()
+					.or(z.date())
+					.transform((val) => new Date(val)),
+				authors: z.array(z.string()),
+				socialImage: image().optional(),
+				coverImage: image().optional(),
+				lang: z.enum(["en"]).default("en"),
+			}),
 	}),
 	careers: defineCollection({
 		schema: z.object({
@@ -148,42 +159,42 @@ export const collections = {
 		}),
 	},
 	themes: {
-		schema: ({ image }) => z
-		.object({
-			title: z.string().min(1),
-			description: z.string().min(1),
-			fullDescription: z.string().optional(),
-			image: z.string(),
-			images: z.array(z.string()).default([]),
-			author: z.object({
-				url: z.string(),
-				name: z.string(),
-				avatar: z.string(),
+		schema: z
+			.object({
+				title: z.string().min(1),
+				description: z.string().min(1),
+				fullDescription: z.string().optional(),
+				image: z.string(),
+				images: z.array(z.string()).default([]),
+				author: z.object({
+					url: z.string(),
+					name: z.string(),
+					avatar: z.string(),
+				}),
+				categories: z.array(z.enum(Array.from(ThemeCategories.keys()) as [string, ...string[]])),
+				repoUrl: z.string().url().optional(),
+				demoUrl: z.string().url().optional(),
+				buyUrl: z.string().url().optional(),
+				links: z
+					.array(
+						z.object({
+							href: z.string().url(),
+							text: z.string(),
+						}),
+					)
+					.default([]),
+				stars: z.number().min(0).default(0),
+				featured: z.number().min(1).optional(),
+				tools: z.array(z.enum(Array.from(ThemeTools.keys()) as [string, ...string[]])).default([]),
+				related: z.array(z.string()).max(3).default([]),
+			})
+			.transform((theme) => {
+				// computed properties
+				return {
+					...theme,
+					official: theme.categories.includes("official"),
+					paid: !!theme.buyUrl,
+				}
 			}),
-			categories: z.array(z.enum(Array.from(ThemeCategories.keys()) as [string, ...string[]])),
-			repoUrl: z.string().url().optional(),
-			demoUrl: z.string().url().optional(),
-			buyUrl: z.string().url().optional(),
-			links: z
-				.array(
-					z.object({
-						href: z.string().url(),
-						text: z.string(),
-					}),
-				)
-				.default([]),
-			stars: z.number().min(0).default(0),
-			featured: z.number().min(1).optional(),
-			tools: z.array(z.enum(Array.from(ThemeTools.keys()) as [string, ...string[]])).default([]),
-			related: z.array(z.string()).max(3).default([]),
-		})
-		.transform((theme) => {
-			// computed properties
-			return {
-				...theme,
-				official: theme.categories.includes("official"),
-				paid: !!theme.buyUrl,
-			}
-		}),
 	},
 }

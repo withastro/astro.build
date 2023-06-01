@@ -1,5 +1,6 @@
 ---
-import { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
+import type { ImageMetadata } from "astro"
+import Picture from "./Picture.astro"
 
 export interface Props {
 	src: ImageMetadata
@@ -9,12 +10,9 @@ export interface Props {
 const { src, alt = "" } = Astro.props as Props
 ---
 
-<img
-	src={src.src}
+<Picture
+	src={src}
 	alt={alt}
-	width={src.width}
-	height={src.height}
 	class="mx-auto w-full max-w-full rounded-lg border border-astro-gray-500"
-	loading="lazy"
-	decoding="async"
+	widths={[360, 720, 1440]}
 />
