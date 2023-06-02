@@ -12,6 +12,7 @@ import {
 	getCategoriesForKeyword,
 	getFeaturedPackagePriority,
 	getOverrides,
+	isNewPackage,
 } from "./integrations.mjs"
 import { stringifyLinks } from "./markdown.mjs"
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs"
@@ -36,6 +37,7 @@ function normalizePackageDetails(data, pkg) {
 	const otherCategories = [
 		isOfficial(pkg) ? "official" : undefined,
 		!!featured ? "featured" : undefined,
+		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean)
 
 	const uniqCategories = Array.from(new Set([...keywordCategories, ...otherCategories]))
@@ -108,6 +110,8 @@ async function main() {
 				...data,
 				...details,
 			})
+
+			delete frontmatter.badges
 
 			fs.writeFileSync(
 				entry,

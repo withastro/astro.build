@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content"
 
 export const IntegrationCategories = new Map<string, string>([
 	["featured", "Featured"],
+	["recent", "Recently Added"],
 	["official", "Official"],
 	["frameworks", "Frameworks"],
 	["adapters", "Adapters"],

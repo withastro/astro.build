@@ -15,7 +15,7 @@ const keywordToCategories = Object.entries(integrations.categories).reduce((acc,
 	return acc
 }, new Map())
 
-function isNewPackage(pkg) {
+export function isNewPackage(pkg) {
 	if (!pkg.time?.created) {
 		return false
 	}

@@ -8,5 +8,5 @@ npmUrl: "https://www.npmjs.com/package/@stylify/astro"
 image: "/assets/integrations/stylify.svg"
 repoUrl: "https://github.com/stylify/packages"
 homepageUrl: "https://stylifycss.com"
-downloads: 448
+downloads: 443
 ---

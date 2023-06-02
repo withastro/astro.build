@@ -112,6 +112,9 @@ const showRecentlyAdded =
 const recentlyAdded = showRecentlyAdded
 	? allIntegrations.filter((entry) => entry.data.badge === "new")
 	: []
+const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
+recentlyAddedSearch.append("categories[]", "recent")
+const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`
 ---
 
 <MainLayout
@@ -148,9 +151,14 @@ const recentlyAdded = showRecentlyAdded
 
 					{showRecentlyAdded && recentlyAdded.length > 0 && (
 						<section class="flex flex-col gap-4 lg:gap-6">
-							<h3 class="heading-3">Recently Added</h3>
-							<CardGrid class="w-full max-w-screen-2xl m:grid-cols-2 xl:grid-cols-3">
-								{recentlyAdded.map((integration) => (
+							<header class="flex items-end justify-between">
+								<h3 class="heading-3">Recently Added</h3>
+								<a class="link" href={recentlyAddedHref}>
+									<span>View all</span>
+								</a>
+							</header>
+							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
+								{recentlyAdded.slice(0, 3).map((integration) => (
 									<IntegrationCard integration={integration} />
 								))}
 							</CardGrid>
