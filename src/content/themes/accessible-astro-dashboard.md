@@ -11,7 +11,7 @@ categories:
   - "other"
 repoUrl: "https://github.com/markteekman/accessible-astro-dashboard"
 demoUrl: "https://dashboard.accessible-astro.dev/login/"
-stars: 75
+stars: 76
 tools:
   - "sass"
 ---

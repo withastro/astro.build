@@ -14,6 +14,7 @@ export const IntegrationCategories = new Map<string, string>([
 
 export const ThemeCategories = new Map<string, string>([
 	["featured", "Featured"],
+	["recent", "Recently Added"],
 	["official", "Official"],
 	["blog", "Blog"],
 	["landing-page", "Landing Page"],
@@ -67,6 +68,8 @@ export const themeSchema = z
 		featured: z.number().min(1).optional(),
 		tools: z.array(z.enum(Array.from(ThemeTools.keys()) as [string, ...string[]])).default([]),
 		related: z.array(z.string()).max(3).default([]),
+		publishDate: z.date({ coerce: true }).optional(),
+		badge: z.string().optional(),
 	})
 	.transform((theme) => {
 		// computed properties

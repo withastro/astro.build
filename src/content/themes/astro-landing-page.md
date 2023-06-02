@@ -16,7 +16,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/mhyfritz/astro-landing-page"
 demoUrl: "https://astro-moon-landing.netlify.app/"
-stars: 232
+stars: 235
 tools:
   - "tailwind"
 ---

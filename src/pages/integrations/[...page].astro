@@ -153,9 +153,11 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 						<section class="flex flex-col gap-4 lg:gap-6">
 							<header class="flex items-end justify-between">
 								<h3 class="heading-3">Recently Added</h3>
-								<a class="link" href={recentlyAddedHref}>
-									<span>View all</span>
-								</a>
+								{recentlyAdded.length > 3 && (
+									<a class="link" href={recentlyAddedHref}>
+										<span>View all</span>
+									</a>
+								)}
 							</header>
 							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 								{recentlyAdded.slice(0, 3).map((integration) => (
