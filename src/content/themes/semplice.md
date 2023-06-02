@@ -4,17 +4,17 @@ description: "A modern & clean UI Kit with more than 70 sections, 40 demo pages 
 image: "/src/content/themes/_images/semplice-hero.webp"
 images: []
 author:
-url: "https://lexingtonthemes.com/"
-name: "Lexington Themes"
-avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
+  url: "https://lexingtonthemes.com/"
+  name: "Lexington Themes"
+  avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
 categories:
-- "landing-page"
-- "other"
+  - "landing-page"
+  - "other"
 demoUrl: "https://lexingtonthemes.com/viewports/semplice/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/59105270-55f2-42b0-9728-3094f40f86f4"
 tools:
-- "tailwind"
-- "alpinejs"
+  - "tailwind"
+  - "alpinejs"
 ---
 
 <p>✺&nbsp;<strong>Semplice UI kit</strong>&nbsp;━&nbsp;Semplice offers an elegant design that enables you to effortlessly create and customise landing pages, settings dashboards, or websites in a matter of hours instead of months.
