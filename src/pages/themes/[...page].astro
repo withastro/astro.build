@@ -168,7 +168,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 
 		{
 			themes.length > 0 ? (
-				<div class="flex flex-col items-center gap-8 pt-8 lg:pt-10 sm:px-4 lg:px-8 xl:px-10 pb-10 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:pb-20">
+				<div class="flex flex-col items-center gap-8 pt-8 pb-10 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pt-10 lg:pb-20 xl:px-10">
 					<h2 class="sr-only">Themes</h2>
 
 					{showRecentlyAdded && recentlyAdded.length > 0 && (
@@ -190,9 +190,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					)}
 
 					<section class="flex flex-col gap-4 lg:gap-6">
-						{showRecentlyAdded && recentlyAdded.length > 0 && (
-							<h3 class="heading-3">All Themes</h3>
-						)}
+						{showRecentlyAdded && recentlyAdded.length > 0 && <h3 class="heading-3">All Themes</h3>}
 						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 							{themes.map((theme) => (
 								<ThemeCard theme={theme} />
@@ -207,8 +205,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 			) : (
 				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
 					<p>
-						<strong>0</strong> results found for themes matching{" "}
-						<strong>"{search}"</strong>
+						<strong>0</strong> results found for themes matching <strong>"{search}"</strong>
 					</p>
 					<a href="/themes/" rel="prefetch" class="button button-primary">
 						Clear filters

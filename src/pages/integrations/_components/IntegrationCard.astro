@@ -38,7 +38,7 @@ const IconBackgrounds = [
 <Card isLink>
 	{!!integration.data.badge && <CardBadge>{integration.data.badge}</CardBadge>}
 	<CardBody as="a" href={integration.data.homepageUrl || integration.data.npmUrl} target="_blank">
-		<div class="flex flex-col h-full">
+		<div class="flex h-full flex-col">
 			<header class="flex items-center justify-between">
 				<div
 					class:list={[
@@ -68,8 +68,8 @@ const IconBackgrounds = [
 				{integration.data.title}
 				{isOfficial && <span class="sr-only">Official</span>}
 			</h3>
-			<p class="line-clamp-2 flex-1">{integration.data.description}</p>
-			<div class="mt-4 subtle flex items-center gap-x-1 justify-self-end text-sm">
+			<p class="flex-1 line-clamp-2">{integration.data.description}</p>
+			<div class="subtle mt-4 flex items-center gap-x-1 justify-self-end text-sm">
 				<DownloadIcon aria-hidden="true" />
 				<span>{downloads}</span>
 				<span class="sr-only">weekly downloads</span>
