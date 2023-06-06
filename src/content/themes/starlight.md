@@ -18,3 +18,34 @@ tools:
   - "mdx"
   - "typescript"
 ---
+
+<h2>Documentation that delights</h2>
+<p>
+  Starlight is a full-featured documentation theme with everything you need to build a stellar
+  documentation website.
+</p>
+<h3>Features include</h3>
+<ul>
+  <li>site navigation</li>
+  <li>search</li>
+  <li>internationalization</li>
+  <li>SEO,</li>
+  <li>easy-to-read typography</li>
+  <li>code highlighting</li>
+  <li>dark &amp; light mode</li>
+</ul>
+<h3>Powered by Astro</h3>
+<p>
+  Leverage the full power and performance of Astro. Extend Starlight with your favorite Astro
+  integrations and libraries.
+</p>
+<h3>Markdown, Markdoc, and MDX</h3>
+<p>
+  Bring your favorite markup language. Starlight gives you built-in frontmatter validation with
+  TypeScript type-safety.
+</p>
+<h3>Bring your own UI components</h3>
+<p>
+  Starlight ships as a framework-agnostic, complete docs solution. Extend with React, Vue, Svelte,
+  Solid, and more.
+</p>
