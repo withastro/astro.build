@@ -106,7 +106,7 @@ export default defineConfig({
 
 Astro's new `"hybrid"` output mode helps bridge the gap between static and dynamic. Hybrid output mode unlocks the same SSR functionality in your project as the original `"server"` output mode, with one key difference: every page will default to static pre-rendering. This more closely matches the behavior of the `"static"` build output, where every page is pre-rendered to HTML for instant responses from the server or CDN. But unlike `"static"` mode, hybrid output mode includes a server in your build output so that you can now add additional dynamic pages and APIs to your site.
 
-For example, an agency could use Astro's new hybrid output mode to add a dynamic "Contact Us" form handler to their static website in just a few steps. Set the `output` option to `"hybrid"` (and add a [deploy adapter](https://docs.astro.build/en/guides/deploy/) if you haven't yet). This will keep the same "static by default" behavior as before, but you can no mark that form's API endpoint as dynamic with `export const prerender = false` so that it runs on every form submission.
+For example, an agency could use Astro's new hybrid output mode to add a dynamic "Contact Us" form handler to their static website in just a few steps. Set the `output` option to `"hybrid"` (and add a [deploy adapter](https://docs.astro.build/en/guides/deploy/) if you haven't yet). This will keep the same "static by default" behavior as before, but you can now mark that form's API endpoint as dynamic with `export const prerender = false` so that it runs on every form submission.
 
 ```ts
 // src/pages/api/form-handler.ts
