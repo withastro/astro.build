@@ -22,8 +22,7 @@ tools:
 
 <h2>Documentation that delights</h2>
 <p>
-  Starlight is a full-featured documentation theme with everything you need to build a stellar
-  documentation website.
+  Starlight is a full-featured, eco-friendly, accessible-by-default documentation theme built on Astro.
 </p>
 <h3>Features include</h3>
 <ul>
@@ -34,6 +33,7 @@ tools:
   <li>easy-to-read typography</li>
   <li>code highlighting</li>
   <li>dark &amp; light mode</li>
+  <li>&mldr; and more!</li>
 </ul>
 <h3>Powered by Astro</h3>
 <p>
