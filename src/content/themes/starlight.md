@@ -13,6 +13,7 @@ author:
 categories:
   - "official"
   - "docs"
+demoUrl: "https://starlight.astro.build"
 repoUrl: "https://github.com/withastro/starlight/tree/main/examples/basics"
 tools:
   - "mdx"
