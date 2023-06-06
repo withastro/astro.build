@@ -1,18 +1,8 @@
 ---
-export type Props = {
-	position?: "start" | "end"
-}
-
-const { position = "start" } = Astro.props
 ---
 
 <p
-	class:list={[
-		"absolute code font-bold text-sm bg-orange-yellow-gradient text-astro-gray-700 tracking-widest px-3 py-1 m-px uppercase",
-		position === "start"
-			? "top-0 left-0 -translate-x-px -translate-y-px rounded-br-md"
-			: "bottom-0 right-0 translate-x-px translate-y-px rounded-tl-md",
-	]}
+	class="absolute code font-bold text-sm bg-orange-yellow-gradient text-astro-gray-700 tracking-widest px-3 py-1 m-px uppercase top-0 right-0 translate-x-px -translate-y-px rounded-b-md"
 >
 	<slot />
 </p>
