@@ -17,7 +17,6 @@ tools:
   - "alpinejs"
 ---
 
-
 <p>✺&nbsp;<strong>Aubergine&nbsp;</strong>━ a cool and stylish landing page for your productized service.</p>
 <p>The template is versatile and can be applied to various types of services, such as marketing, saas, design, development, etc.</p>
 <p><strong>The template includes:</strong></p>
