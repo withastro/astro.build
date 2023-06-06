@@ -30,7 +30,7 @@ tools:
   <li>site navigation</li>
   <li>search</li>
   <li>internationalization</li>
-  <li>SEO,</li>
+  <li>SEO</li>
   <li>easy-to-read typography</li>
   <li>code highlighting</li>
   <li>dark &amp; light mode</li>
