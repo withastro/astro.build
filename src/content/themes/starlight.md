@@ -1,6 +1,6 @@
 ---
-title: "Docs"
-description: "A full-featured documentation theme."
+title: "Starlight"
+description: "Everything you need to build a stellar documentation website. Fast, accessible, and easy-to-use."
 image: "/src/content/themes/_images/docs.webp"
 images: []
 author:
@@ -10,8 +10,8 @@ author:
 categories:
   - "official"
   - "docs"
-repoUrl: "https://github.com/withastro/astro/tree/main/examples/docs"
+repoUrl: "https://github.com/withastro/starlight/tree/main/examples/basics"
 tools:
-  - "preact"
-  - "react"
+  - "mdx"
+  - "typescript"
 ---
