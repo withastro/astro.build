@@ -17,4 +17,32 @@ tools:
   - "alpinejs"
 ---
 
-<p>✺&nbsp;<strong>Aubergine&nbsp;</strong>━ a cool and stylish landing page for your productized service.</p><p>The template is versatile and can be applied to various types of services, such as marketing, saas, design, development, etc.</p><p><strong>The template includes:</strong></p><ul><li>1 Landing page</li><li>FAQ landing page</li><li>Contact page</li><li>Different sections</li><li>Testimonials</li><li>Pricing sections</li><li>Call to Action (CTA)</li></ul><p><strong>The template also includes a</strong></p><ul><li>Custom fonts from fontshare.com</li><li>100%&nbsp;Responsive</li></ul><p>When you purchase the template you get access to a very permissive license that you can read from here</p><p>1 Landing page</p><ul><li><a href="https://lexingtonthemes.com/license/" rel="noopener noreferrer" target="_blank" style="color: rgb(0, 0, 0);">License: lexingtonthemes.com/license</a></li></ul><p><strong>If you have any questions do not hesitate to reach out on:</strong></p><ul><li>Twitter.com/Mike_Andreuzza or&nbsp;Twitter.com/lexingtonthemes</li><li>Email: michael@lexingtonthemes.com</li></ul><p>Thank you so much for reading and showing interest on Semplice, if you need more templates, a bundle that includes all the templates, free updates is also offered on Lexington Themes.&nbsp;</p><ul><li><a href="https://lexingtonthemes.com/pricing/" rel="noopener noreferrer" target="_blank" style="color: rgb(0, 0, 0);">Learn more about the bundle</a></li></ul>
+
+<p>✺&nbsp;<strong>Aubergine&nbsp;</strong>━ a cool and stylish landing page for your productized service.</p>
+<p>The template is versatile and can be applied to various types of services, such as marketing, saas, design, development, etc.</p>
+<p><strong>The template includes:</strong></p>
+<ul>
+ <li><span style="color: var(--tw-prose-bold);">7 Demo pages</span></li>
+  <li><span style="color: var(--tw-prose-bold);">20+ Sections</span></li>
+  <li><span style="color: var(--tw-prose-bold);">60+ Components</span></li>
+  <li>1 Landing page</li>
+  <li>FAQ landing page</li>
+  <li>Contact page</li>
+  <li>Different sections</li>
+  <li>Testimonials</li>
+  <li>Pricing sections</li>
+  <li>Call to Action (CTA)</li>
+</ul>
+<p>When you purchase the template you get access to a very permissive license that you can read from here</p>
+<ul>
+   <li><a href="https://lexingtonthemes.com/license/" rel="noopener noreferrer" target="_blank">License: lexingtonthemes.com/license</a></li>
+</ul>
+<p><strong>If you have any questions do not hesitate to reach out on:</strong></p>
+<ul>
+   <li>Twitter: @Mike_Andreuzza or&nbsp; @lexingtonthemes</li>
+   <li>Email: michael@lexingtonthemes.com</li>
+</ul>
+<p>Thank you so much for reading and showing interest on Aubergine, if you need more templates, a bundle that includes all the templates, free updates is also offered on Lexington Themes.&nbsp;</p>
+<ul>
+   <li><a href="https://lexingtonthemes.com/pricing/" rel="noopener noreferrer" target="_blank" >Learn more about the bundle</a></li>
+</ul>

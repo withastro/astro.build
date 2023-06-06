@@ -19,6 +19,24 @@ demoUrl: "https://astrosaas.vercel.app/"
 stars: 68
 tools:
   - "tailwind"
+  - "alpinejs"
 ---
 
-<p><strong>Built with Astro.js</strong></p><p>Astro is an all-in-one web framework for building fast, content-focused websites.</p><p><strong>Styled with Tailwind CSS</strong></p><p>Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.</p><p><strong>Relived with Alpine.js</strong></p><p>Alpine is a rugged, minimal tool for composing behavior directly in your markup. Think of it like jQuery for the modern web. Plop in a script tag and get going.</p><p><strong>Keyboard accessible</strong></p><p>Everything I build is keyboard accessible, and I meticulously write the markup to deliver the best screenreader experience I can provide.</p><p><strong>Production-ready</strong></p><p>I tested the template in the latest versions of all browsers to handle lots of edge-cases you might encounter.</p><p><strong>Simple deploys</strong></p><p>The template is production-ready and easily deployed anywhere that you can deploy a static wbsites, like Vercel, Netlify, GitHub pages, a bounch of options..</p><p><br></p><h2>Plugins, integrations and stack.</h2><p>Supreme templates are thoughtfully crafted with the latest Astro, Tailwind and Alpine.js integrations and versions to keep it simple and easy to maintain.</p><h2>Uses</h2><ul><li>Tailwind</li><li>@astrojs/alpinejs</li><li>@astrojs/seo</li><li>@astrojs/image</li><li>@astrojs/compress</li><li>@astrojs/sitemap</li><li>@astrojs/partytown</li></ul>
+<p>✺&nbsp;<strong>Astro SAAS</strong>&nbsp;━&nbsp;is and Open source template for your next product</p>
+<p><strong>The template includes:</strong></p>
+<ul>
+   <li><strong>6 Demo pages</strong></li>
+   <li><strong>10+ Sections</strong></li>
+   <li><strong>50+ Components</strong></li>
+   <li>Home</li>
+<li>FAQ</li>
+<li>Terms</li>
+<li>Privacy</li>
+<li>Sign up</li>
+<li>Sign In</li>
+</ul>
+
+<p>Thank you so much for reading and showing interest on Astro SAAS, if you need more templates, a bundle that includes all the templates, free updates is also offered on Lexington Themes.&nbsp;</p>
+<ul>
+   <li><a href="https://lexingtonthemes.com/pricing/" rel="noopener noreferrer" target="_blank" >Learn more about the bundle</a></li>
+</ul>

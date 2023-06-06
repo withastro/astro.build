@@ -1,6 +1,6 @@
 ---
 title: "Semplice"
-description: "A modern & clean UI Kit with more than 70 sections, 40 demo pages and 100s of components."
+description: "A modern & clean UI Kit with more than 50 demo pages and 100s of components."
 image: "/src/content/themes/_images/semplice-hero.webp"
 images: []
 author:
@@ -15,6 +15,7 @@ buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/59105270-55f2-42b
 tools:
   - "tailwind"
   - "alpinejs"
+  - "mdx"
 ---
 
 <p>✺&nbsp;<strong>Semplice UI kit</strong>&nbsp;━&nbsp;Semplice offers an elegant design that enables you to effortlessly create and customise landing pages, settings dashboards, or websites in a matter of hours instead of months.

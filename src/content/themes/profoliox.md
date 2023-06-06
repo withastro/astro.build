@@ -18,7 +18,7 @@ buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/5fcfec43-356f-4f8
 tools:
   - "tailwind"
   - "alpinejs"
-  - "typescript"
+  - "mdx"
 ---
 
 <p>
@@ -35,6 +35,9 @@ tools:
 </p>
 <p>The template includes:</p>
 <ul>
+<li><span style="color: var(--tw-prose-bold);">16 Demo pages</span></li>
+  <li><span style="color: var(--tw-prose-bold);">50+ Sections</span></li>
+  <li><span style="color: var(--tw-prose-bold);">60+ Components</span></li>
   <li>Home</li>
   <li>Work</li>
   <li>Tools in uise</li>
@@ -48,13 +51,7 @@ tools:
   <li>Store</li>
   <li>Prodcut Page</li>
 </ul>
-<p>The template also includes a</p>
-<ul>
-  <li>Style Guide</li>
-  <li>Custom fonts from cdnfonts.com ( Only the CDN )</li>
-  <li>100% Responsive</li>
-  <li>A link to every demo page from the overview page</li>
-</ul>
+
 <p>
   When you purchase the template you get access to a very permissive license that you can read from
   here
@@ -68,7 +65,7 @@ tools:
   <li>Email: michael@lexingtonthemes.com</li>
 </ul>
 <p>
-  Thank you so much for reading and showing interest on Flabbergasted, if you need more templates, a
+  Thank you so much for reading and showing interest on ProFolioX, if you need more templates, a
   bundle that includes all the templates, free updates is also offered on Lexington Themes.
 </p>
 <ul>
