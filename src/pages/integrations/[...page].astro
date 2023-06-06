@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
+import CardGridGroup from "~/components/CardGridGroup.astro"
 import Pagination from "~/components/Pagination.astro"
 import SearchFilter, { FilterGroup } from "~/components/SearchFilter.astro"
 import SidebarLayout from "~/components/SidebarLayout.astro"
@@ -150,33 +151,35 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					<h2 class="sr-only">Integrations</h2>
 
 					{showRecentlyAdded && recentlyAdded.length > 0 && (
-						<section class="flex flex-col gap-4 lg:gap-6">
-							<header class="flex items-end justify-between">
-								<h3 class="heading-3">Recently Added</h3>
-								{recentlyAdded.length > 3 && (
-									<a class="link" href={recentlyAddedHref}>
-										<span>View all</span>
-									</a>
-								)}
-							</header>
+						<CardGridGroup
+							title="RecentlyAdded"
+							cta={
+								recentlyAdded.length > 3
+									? { href: recentlyAddedHref, text: "View all new integrations" }
+									: undefined
+							}
+						>
 							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 								{recentlyAdded.slice(0, 3).map((integration) => (
 									<IntegrationCard integration={integration} />
 								))}
 							</CardGrid>
-						</section>
+						</CardGridGroup>
 					)}
 
-					<section class="flex flex-col gap-4 lg:gap-6">
-						{showRecentlyAdded && recentlyAdded.length > 0 && (
-							<h3 class="heading-3">All Integrations</h3>
-						)}
+					<CardGridGroup
+						title={
+							showRecentlyAdded && recentlyAdded.length > 0
+								? "All Integrations"
+								: undefined
+						}
+					>
 						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 							{integrations.map((integration) => (
 								<IntegrationCard integration={integration} />
 							))}
 						</CardGrid>
-					</section>
+					</CardGridGroup>
 
 					{allPages.length > 1 && (
 						<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
@@ -185,7 +188,8 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 			) : (
 				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
 					<p>
-						<strong>0</strong> results found for integrations matching <strong>"{search}"</strong>
+						<strong>0</strong> results found for integrations matching{" "}
+						<strong>"{search}"</strong>
 					</p>
 					<a href="/integrations/" rel="prefetch" class="button button-primary">
 						Clear filters
