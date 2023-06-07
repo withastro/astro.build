@@ -16,5 +16,5 @@ demoUrl: "https://astro-fe-portfolio.netlify.app/"
 tools:
   - "tailwind"
   - "typescript"
-stars: 0
+stars: 6
 ---
