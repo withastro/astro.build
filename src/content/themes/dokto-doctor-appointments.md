@@ -12,7 +12,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/cssninjaStudio/dokto"
 demoUrl: "https://dokto.cssninja.io/"
-stars: 27
+stars: 28
 tools:
   - "alpinejs"
   - "tailwind"

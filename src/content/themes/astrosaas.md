@@ -16,7 +16,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/michael-andreuzza/astrosaas"
 demoUrl: "https://astrosaas.vercel.app/"
-stars: 69
+stars: 73
 tools:
   - "tailwind"
 ---

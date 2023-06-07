@@ -13,7 +13,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/ixartz/Astro-boilerplate"
 demoUrl: "https://creativedesignsguru.com/demo/astro-boilerplate/"
-stars: 395
+stars: 396
 tools:
   - "react"
   - "tailwind"

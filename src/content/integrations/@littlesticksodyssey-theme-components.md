@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@littlesticks/odyssey-theme-components"
 repoUrl: "ssh://git@github.com/littlesticksdev/odyssey-theme"
 homepageUrl: "https://github.com/littlesticksdev/odyssey-theme#readme"
-downloads: 824
+downloads: 814
 ---
