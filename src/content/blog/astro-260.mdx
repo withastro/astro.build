@@ -57,7 +57,7 @@ Here's an example of how you could implement a basic authentication check inside
 ```ts
 // src/middleware.ts
 // Example: A simple authentication check in middleware.
-export async function onRequest({ cookies, locals }, next) => {
+export async function onRequest({ cookies, locals }, next) {
 	// Check for the "sid" user session ID cookie.
 	// Return a 405 (Not Allowed) if the cookie is missing.
 	const sessionId = cookies.get("sid");
