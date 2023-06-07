@@ -1,0 +1,153 @@
+---
+title: "Better Images in Astro"
+description: "A new feature brings built-in image optimization to Astro. Coming in Astro 3.0, you can opt-in to try it yourself in today. Images in Astro have been completely redesigned with more features, faster performance, and a better end-user experience with automatic layout shift prevention."
+publishDate: "June 7, 2023"
+authors:
+  - erika
+  - fred
+lang: "en"
+coverImage: "/src/content/blog/_images/images/blog-hero-image-updates.jpg"
+socialImage: "/src/content/blog/_images/images/og-image-image-updates.jpg"
+---
+
+import { Image } from "@astrojs/image/components"
+import imageServiceImage from "./_images/images/service-1-image-updates.jpg"
+
+Last year, we published the first Astro image integration ([@astrojs/image](https://docs.astro.build/en/guides/integrations-guide/image/)) alongside [Astro 1.0](https://astro.build/blog/astro-1). The goal was simple: **Make image optimization effortless in Astro.**
+
+Now, 1 year and 2.5 million downloads later, we're ready to share our new vision for working with images in Astro: completely redesigned with new features, faster performance, and a better end-user experience with [automatic layout shift (CLS) prevention](#automatic-layout-shift-prevention).
+
+This new update will be available for all users starting in Astro 3.0, but you can opt-in today by setting the `experimental.assets` flag in your configuration file. You can also enable by passing the `--experimental-assets` flag to the Astro CLI.
+
+```ts
+// astro.config.mjs
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+	experimental: { assets: true },
+})
+```
+
+In this post, we'll go over some of the new features and improvements that will make working with images in Astro even easier. If you prefer to jump right into the docs, read our [Assets](https://docs.astro.build/en/guides/assets/) guide for all of the details.
+
+## How it works
+
+From the start, we knew that we wanted an image API that felt as minimal as possible. We started with the original `<Image />` Component API from the `@astrojs/image` integration, and then built on it with a few new tweaks and changes.
+
+```astro
+---
+// Import the <Image /> component
+import { Image } from "astro:assets"
+// Import a reference to the image itself
+import myImage from "../assets/penguin.png"
+---
+
+<Image src={myImage} alt="A very cool penguin!" />
+```
+
+```html
+<!-- Result: -->
+<img
+	src="/_astro/penguin.XXXXXX.webp"
+	width="300"
+	height="300"
+	loading="lazy"
+	decoding="async"
+	alt="A very cool penguin!"
+/>
+```
+
+But don't let the minimal API fool you:
+
+- Astro optimizes your image using the modern [WebP](https://developers.google.com/speed/webp) file format (by default).
+- For accessibility, the required `alt` prop helps improve your site for screen-readers (and other tooling).
+- For even faster page-load performance, the `loading` and `decoding` attributes are added as defaults.
+- For the user experience, The `width` and `height` attributes are always included to prevent layout shift (more on this later).
+
+Flexibility was another goal. We added the [`getImage()`](https://docs.astro.build/en/guides/assets/#getimage-astroassets) function to optimize an image in your project, on-demand, without using the `<Image />` component. Use this function to build your own custom Image component for any use-case you you have in mind.
+
+```astro
+---
+// Example: Instead of creating an `img` tag,
+// apply an optimized image to a div using CSS.
+import { getImage } from "astro:assets"
+import myImage from "../assets/penguin.png"
+const optimizedBackgroundImage = await getImage({ src: myImage })
+---
+
+<div style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
+```
+
+```html
+<!-- Result: -->
+<div style="background-image: url('/_astro/penguin.XXXXXX.webp')"></div>
+```
+
+## Automatic layout shift prevention
+
+[Cumulative Layout Shift (CLS)](https://web.dev/cls/) is an essential metric to optimize for website performance. It is tracked as one of Google's 3 [Core Web Vitals](https://web.dev/vitals/) and is weighted heavily in the [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) performance score.
+
+**Astro's new `<Image />` component automatically protects your site from layout shift.** It works by inferring an explicit height and width for every image and including them in the generated `<img>` tag. With explicit dimensions, the image can't shift the page layout as it loads onto the page.
+
+The output HTML is always a simple `<img>` element, so you can also apply additional CSS styling for more advanced responsive layouts like `fill` and `cover` without risking layout shift.
+
+```astro
+<Image
+	src={myImage}
+	alt="A very cool penguin!"
+	style="height: 100%; width: 100%; object-fit: cover;"
+/>
+```
+
+## Automatic Markdown & MDX support
+
+One of the biggest improvements made over the original `@astrojs/image` integration is complete support for Markdown, Markdoc, and MDX. You can now reference images using a relative image path in your Markdown content or frontmatter, and Astro will automatically optimize them for you.
+
+```md
+![A starry night sky](../../assets/stars.png)
+```
+
+```html
+<!-- Result: -->
+<img
+	src="/_astro/stars.XXXXXX.webp"
+	width="300"
+	height="300"
+	loading="lazy"
+	decoding="async"
+	alt="A starry night sky"
+/>
+```
+
+That's it! Your `stars.png` image will be optimized automatically in the final HTML, as if you had used the `<Image>` component directly. You can also use the `<Image />` component directly in MDX if you prefer, but in most cases the default settings will be enough to produce an optimized file size with a great image quality.
+
+<Image src={imageServiceImage} />
+
+## Integrating with third-party image services
+
+Some users will inevitably want to use Astro with an external image service, like Cloudinary or Vercel. With extensibility in mind, we built the Astro Image Services API to connect Astro with the third-party image service of your choice.
+
+This API contains a small collection of hooks that can control image handling inside of Astro. Most Astro users will never need to touch this API directly, but integration authors can use these to extend Astro's default behavior with their own image handling logic.
+
+A simple image service exports a `getURL()` function to create the `src` URL for each image that points to the image service domain or custom URL path:
+
+```ts
+// Example: A basic image service that generates custom URLs
+export const service = {
+	getURL({ src, width, height }) {
+		return `https://mywebsitethatgeneratesimages.com/${src}?width=${width}&height=${height}`
+	},
+}
+```
+
+More complex image services can use hooks like `transform()` to directly generate and return an image to be served, at build-time. For a walkthrough of the full API, check out [our Image Services documentation](https://docs.astro.build/en/reference/image-service-reference/).
+
+Vercel users can try this today with the official [Vercel adapter](https://docs.astro.build/en/guides/integrations-guide/vercel/) for Astro. Anyone using this adapter will see their images use the [Vercel-specific URL endpoint](https://vercel.com/docs/concepts/image-optimization) that allows Vercel to handle the image optimization for you.
+
+We're looking forward to seeing our community use this feature to integrate Astro with their favorite services, and [add to the growing list of Astro integrations](https://astro.build/integrations)!
+
+## What next?
+
+We'll continue to gather your feedback as we move closer to an official release in Astro 3.0 later this year. If you find any issues, do not hesitate to let us know, either [by creating an issue](https://github.com/withastro/astro/issues), or on [our Discord](https://astro.build/chat).
+
+There's plenty that we didn't get to cover here, like caching between builds, controlling the file format, and MDX support. For more information on how to use this feature, please [visit our assets documentation](https://docs.astro.build/en/guides/assets/).
