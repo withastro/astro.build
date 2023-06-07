@@ -1,8 +1,11 @@
 ---
-type NoHeaderProps = { title: undefined; cta: never }
-type WithHeaderProps = { title: string; cta?: { text: string; href: string } }
-
-export type Props = NoHeaderProps | WithHeaderProps
+export type Props = {
+    title?: string
+    cta?: {
+        text: string
+        href: string
+    }
+}
 
 const { title, cta } = Astro.props
 ---
