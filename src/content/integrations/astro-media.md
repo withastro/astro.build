@@ -7,7 +7,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-media"
 repoUrl: "https://github.com/gvkhna/astro-media"
 homepageUrl: "https://github.com/gvkhna/astro-media"
-downloads: 509
+downloads: 958
 badges:
   - "new"
 ---

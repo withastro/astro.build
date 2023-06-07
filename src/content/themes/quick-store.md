@@ -13,7 +13,7 @@ categories:
   - "ecommerce"
 repoUrl: "https://github.com/michael-andreuzza/quickstore"
 demoUrl: "https://github.com/michael-andreuzza/quickstore"
-stars: 39
+stars: 40
 tools:
   - "tailwind"
 ---
