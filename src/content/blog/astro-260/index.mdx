@@ -8,8 +8,8 @@ authors:
   - bjorn
   - ben
   - erika
-coverImage: "/src/content/blog/_images/astro-260/blog-hero-astro-2_6.webp"
-socialImage: "/src/content/blog/_images/astro-260/og-image-2_6.webp"
+coverImage: "./blog-hero-astro-2_6.webp"
+socialImage: "./og-image-2_6.webp"
 lang: "en"
 ---
 
@@ -60,21 +60,21 @@ Here's an example of how you could implement a basic authentication check inside
 export async function onRequest({ cookies, locals }, next) {
 	// Check for the "sid" user session ID cookie.
 	// Return a 405 (Not Allowed) if the cookie is missing.
-	const sessionId = cookies.get("sid");
+	const sessionId = cookies.get("sid")
 	if (!sessionId) {
-		return new Response(null, {status: 405});
+		return new Response(null, { status: 405 })
 	}
 	// Use your own `getUser()` function to validate the user.
 	// Return a 405 (Not Allowed) if the user isn't real.
-	const user = await getUser(sessionId);
+	const user = await getUser(sessionId)
 	if (!user) {
-		return new Response(null, {status: 405});
+		return new Response(null, { status: 405 })
 	}
 	// Attach the loaded user to the `locals` object.
 	// Now, it can be read in the page route!
-	locals.user = user;
+	locals.user = user
 	// Return `next()` to return the response.
-	return next();
+	return next()
 }
 ```
 

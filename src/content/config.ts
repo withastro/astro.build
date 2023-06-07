@@ -41,23 +41,14 @@ export const ThemeTools = new Map<string, string>([
 
 export const collections = {
 	authors: defineCollection({
-<<<<<<< HEAD
-		schema: ({ image }) => z.object({
-			image: image().optional(),
-			name: z.string(),
-			title: z.string().optional(),
-			twitter: z.string().optional(),
-			mastodon: z.string().optional(),
-		}),
-=======
 		schema: ({ image }) =>
 			z.object({
 				image: image().optional(),
 				name: z.string(),
 				title: z.string().optional(),
 				twitter: z.string().optional(),
+				mastodon: z.string().optional(),
 			}),
->>>>>>> migrating the blog to astro:assets
 	}),
 	blog: defineCollection({
 		schema: ({ image }) =>
