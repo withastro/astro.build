@@ -5,7 +5,6 @@ description: "Build beautiful, high-performance documentation websites with Astr
 categories:
   - "css+ui"
   - "official"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@astrojs/starlight"
 image: "/assets/integrations/starlight.svg"
 repoUrl: "https://github.com/withastro/starlight"

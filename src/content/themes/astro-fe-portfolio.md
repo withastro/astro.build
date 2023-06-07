@@ -18,4 +18,6 @@ tools:
   - "tailwind"
   - "typescript"
 stars: 6
+publishDate: "May 30, 2023"
+badge: "new"
 ---
