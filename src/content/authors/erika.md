@@ -1,6 +1,6 @@
 ---
-"name": "Erika Moreau"
+"name": "Erika"
 "title": "Developer"
 "image": "/src/content/authors/_images/erika.webp"
-"twitter": "https://twitter.com/_princesseuh"
+"mastodon": "https://mastodon.gamedevalliance.fr/@erika"
 ---
