@@ -15,7 +15,11 @@ import imageServiceImage from "./_images/images/service-1-image-updates.jpg"
 
 Last year, we published the first Astro image integration ([@astrojs/image](https://docs.astro.build/en/guides/integrations-guide/image/)) alongside [Astro 1.0](https://astro.build/blog/astro-1). The goal was simple: **Make image optimization effortless in Astro.**
 
-Now, 1 year and 2.5 million downloads later, we're ready to share our new vision for working with images in Astro: completely redesigned with new features, faster performance, and a better end-user experience with [automatic layout shift (CLS) prevention](#automatic-layout-shift-prevention).
+Now, 1 year and 2.5 million downloads later, we're ready to share our new vision for working with images in Astro: completely redesigned with new features, faster performance, and a better end-user experience with:
+
+- [Automatic layout shift (CLS) prevention](#automatic-layout-shift-prevention).
+- [First-class Markdown, Markdoc & MDX support](#automatic-markdown--mdx-support).
+- [Integration with third-party services](#integrating-with-third-party-image-services).
 
 This new update will be available for all users starting in Astro 3.0, but you can opt-in today by setting the `experimental.assets` flag in your configuration file. You can also enable by passing the `--experimental-assets` flag to the Astro CLI.
 
@@ -60,7 +64,7 @@ import myImage from "../assets/penguin.png"
 But don't let the minimal API fool you:
 
 - Astro optimizes your image using the modern [WebP](https://developers.google.com/speed/webp) file format (by default).
-- For accessibility, the required `alt` prop helps improve your site for screen-readers (and other tooling).
+- For accessibility, the required `alt` prop helps improve your site for screen-readers and other tooling.
 - For even faster page-load performance, the `loading` and `decoding` attributes are added as defaults.
 - For the user experience, The `width` and `height` attributes are always included to prevent layout shift (more on this later).
 
@@ -119,7 +123,7 @@ One of the biggest improvements made over the original `@astrojs/image` integrat
 />
 ```
 
-That's it! Your `stars.png` image will be optimized automatically in the final HTML, as if you had used the `<Image>` component directly. You can also use the `<Image />` component directly in MDX if you prefer, but in most cases the default settings will be enough to produce an optimized file size with a great image quality.
+That's it! Your `stars.png` image will be optimized automatically in the final HTML. You can also use the `<Image />` component directly in MDX if you prefer for finer control over the image attributes, but in most cases the default settings will be enough to produce an optimized file size with a great image quality.
 
 <Image src={imageServiceImage} />
 
