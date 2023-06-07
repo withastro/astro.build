@@ -1,10 +1,11 @@
+@import "./prose.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
 	.button {
-		@apply inline-flex h-14 items-center justify-center gap-4 rounded-full border border-astro-gray-100 px-10 text-center font-sans text-base font-medium leading-none text-white transition hover:bg-white/10;
+		@apply inline-flex h-14 items-center justify-center gap-4 rounded-full border border-astro-gray-100 px-10 text-center font-sans text-base font-medium leading-none tracking-wide text-white no-underline transition hover:bg-white/10;
 	}
 
 	.button.button-primary {
@@ -26,116 +27,5 @@
 	}
 	.button.button-xs {
 		@apply h-6 gap-2 px-3 text-xs tracking-wide;
-	}
-
-	.prose {
-		@apply body mx-auto w-full max-w-prose text-astro-gray-200;
-	}
-
-	.prose > * + *,
-	.prose blockquote > * + * {
-		@apply my-4 md:my-6;
-	}
-
-	.prose :where(h1, h2, h3, h4) {
-		@apply text-astro-gray-100;
-	}
-
-	.prose h2 {
-		@apply heading-4 md:heading-3;
-	}
-
-	.prose h3 {
-		@apply heading-5 md:heading-4;
-	}
-
-	.prose h4 {
-		@apply heading-5;
-	}
-
-	.prose :where(h1, h2, h3, h4):not(:first-child) {
-		@apply pt-8;
-	}
-
-	.prose :where(h1, h2, h3, h4):not(:last-child) {
-		@apply pb-1;
-	}
-
-	.prose hr {
-		@apply my-12 border-astro-gray-400;
-	}
-
-	.prose p {
-		@apply leading-prose text-astro-gray-200;
-	}
-
-	.prose strong {
-		@apply font-medium;
-	}
-
-	.prose a:not([class]) {
-		@apply inline-block font-medium text-astro-pink-light underline;
-	}
-
-	.prose a code {
-		@apply px-1 underline;
-	}
-
-	.prose code {
-		@apply mx-0.5 inline-block rounded-lg bg-astro-gray-500 px-2 align-baseline text-sm leading-6 text-astro-gray-100;
-	}
-
-	.prose :is(h1, h2, h3, h4, h5) > code {
-		font-size: inherit;
-		line-height: inherit;
-	}
-
-	.prose pre {
-		@apply my-6 rounded-md border border-astro-gray-400 px-5 py-3 text-sm;
-	}
-
-	.prose pre code {
-		@apply rounded-none bg-inherit p-0 text-inherit;
-	}
-
-	.prose blockquote {
-		@apply space-y-2 border-l-4 border-astro-gray-400 bg-astro-gray-600 p-6 italic md:space-y-4;
-	}
-
-	.prose ul,
-	ol {
-		@apply pl-6 md:pl-8;
-	}
-
-	.prose ol {
-		@apply list-decimal;
-	}
-
-	.prose ul {
-		@apply list-disc;
-	}
-
-	.prose li > :where(ul, ol) {
-		@apply mt-2;
-	}
-
-	.prose li + li {
-		@apply mt-2;
-	}
-
-	.prose :where(img, video):not([class]) {
-		@apply mx-auto my-10 w-full max-w-full rounded-lg border border-astro-gray-500;
-	}
-
-	.prose video + aside {
-		@apply -my-6 px-3 italic;
-	}
-
-	.prose a :where(img, video):not([class]) {
-		@apply my-0 border-none;
-	}
-
-	.prose iframe {
-		@apply max-w-full;
 	}
 }

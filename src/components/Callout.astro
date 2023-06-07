@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon"
+
+export type Props = {
+	title?: string
+}
+---
+
+<aside class="my-4 border-l-4 border-astro-purple bg-astro-purple-dark py-4 px-6 text-white">
+	<h3 class="mb-2 flex items-center gap-2 font-sans text-lg font-semibold leading-tight">
+		<Icon name="rocket" class="s-6" aria-hidden="true" />
+		{Astro.props.title}
+	</h3>
+	<slot />
+</aside>

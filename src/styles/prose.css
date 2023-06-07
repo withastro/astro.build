@@ -1,103 +1,68 @@
 @layer components {
-	.prose > * + *,
-	.prose blockquote > * + * {
-		@apply my-4 md:my-6;
+	.prose {
+		@apply body mx-auto w-full max-w-prose tracking-wide text-astro-gray-200 lg:text-lg;
+		line-height: 1.75em;
 	}
 
-	.prose :where(h1, h2, h3, h4) {
-		@apply text-astro-gray-100;
+	.prose > p {
+		@apply my-4;
 	}
 
-	.prose h2 {
-		@apply heading-4 md:heading-3;
+	.prose > hr {
+		@apply my-8 border-astro-gray-500;
 	}
 
-	.prose h3 {
-		@apply heading-5 md:heading-4;
+	.prose > h2 {
+		@apply mt-10 mb-4 font-obviously text-[32px] font-normal leading-[38px] text-white;
 	}
 
-	.prose h4 {
-		@apply heading-5;
+	.prose > h3 {
+		@apply mt-10 mb-4 font-obviously text-2xl font-normal leading-tight text-white;
 	}
 
-	.prose :where(h1, h2, h3, h4):not(:first-child) {
-		@apply pt-8;
-	}
-
-	.prose :where(h1, h2, h3, h4):not(:last-child) {
-		@apply pb-1;
-	}
-
-	.prose hr {
-		@apply my-12 border-astro-gray-400;
-	}
-
-	.prose p {
-		@apply leading-prose text-astro-gray-200;
+	.prose > img {
+		@apply my-4;
 	}
 
 	.prose strong {
 		@apply font-medium;
 	}
 
-	.prose a:not([class]) {
-		@apply inline-block font-medium text-astro-pink-light underline;
+	.prose ul {
+		@apply my-4 pl-8;
 	}
 
-	.prose a code {
-		@apply px-1 underline;
-	}
-
-	.prose code {
-		@apply mx-0.5 inline-block rounded-lg bg-astro-gray-500 px-2 align-baseline text-sm leading-6 text-astro-gray-100;
-	}
-
-	.prose pre {
-		@apply my-6 rounded-md border border-astro-gray-400 px-5 py-3 text-sm;
-	}
-
-	.prose pre code {
-		@apply rounded-none bg-inherit p-0 text-inherit;
-	}
-
-	.prose blockquote {
-		@apply space-y-2 border-l-4 border-astro-gray-400 bg-astro-gray-600 p-6 italic md:space-y-4;
-	}
-
-	.prose ul,
-	ol {
-		@apply pl-6 md:pl-8;
+	/* the ::marker selector doesn't allow customizing the spacing around the marker as easily */
+	.prose ul li::before {
+		content: "";
+		background: url("../icons/star.svg") center no-repeat;
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		margin-right: 8px;
+		margin-left: -18px;
 	}
 
 	.prose ol {
-		@apply list-decimal;
+		@apply my-4 list-inside list-decimal pl-4;
+	}
+	.prose ol ::marker {
+		@apply inline-block font-mono font-bold text-astro-pink-light;
 	}
 
-	.prose ul {
-		@apply list-disc;
+	.prose li {
+		@apply my-2;
 	}
 
-	.prose li > :where(ul, ol) {
-		@apply mt-2;
+	.prose :where(a) {
+		@apply inline-block font-bold text-astro-pink-light underline underline-offset-2 hover:no-underline;
 	}
 
-	.prose li + li {
-		@apply mt-2;
+	.prose > p code {
+		@apply mx-0.5 inline-block rounded-lg bg-astro-gray-500 px-2 align-baseline text-sm leading-6 text-astro-gray-100;
 	}
 
-	.prose :where(img, video):not([class]) {
-		@apply mx-auto my-10 w-full max-w-full rounded-lg border border-astro-gray-500;
-	}
-
-	.prose video + aside {
-		@apply -my-6 px-3 italic;
-	}
-
-	.prose a :where(img, video):not([class]) {
-		@apply my-0 border-none;
-	}
-
-	.prose iframe {
-		@apply max-w-full;
+	.prose > pre {
+		@apply my-6 rounded-md border border-astro-gray-400 bg-transparent px-5 py-3 text-sm;
 	}
 }

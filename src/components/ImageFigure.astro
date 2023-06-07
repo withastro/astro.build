@@ -1,0 +1,16 @@
+---
+export type Props = {
+	caption?: string
+}
+---
+
+<figure>
+	<slot />
+	{
+		Astro.props.caption && (
+			<figcaption class="mt-3 font-mono text-sm text-astro-gray-300">
+				{Astro.props.caption}
+			</figcaption>
+		)
+	}
+</figure>
