@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import Card from "~/components/Card.astro"
+import CardBadge from "~/components/CardBadge.astro"
 import CardBody from "~/components/CardBody.astro"
 import CardFooter from "~/components/CardFooter.astro"
 import { resolveImage } from "~/content/themes/_resolveImage.js"
@@ -17,6 +18,7 @@ const image = await resolveImage(theme)
 ---
 
 <Card isLink>
+	{!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>}
 	<a class="flex h-full flex-col" href={`/themes/details/${theme.slug}`} rel="prefetch">
 		<img
 			src={image.src}

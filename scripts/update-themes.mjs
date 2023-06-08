@@ -1,3 +1,4 @@
+import { differenceInDays } from "date-fns"
 import matter from "gray-matter"
 import yaml from "json-to-pretty-yaml"
 import fs from "node:fs"
@@ -6,8 +7,28 @@ import { fileURLToPath } from "node:url"
 import glob from "tiny-glob"
 import { orgApi, parseRepoUrl } from "./github.mjs"
 
+const NEW_THRESHOLD_DAYS = 28
+
 function isOfficial(theme) {
 	return theme.categories.includes("official")
+}
+
+function isNewTheme(theme) {
+	if (!theme.publishDate) {
+		return false
+	}
+
+	const date = new Date(theme.publishDate)
+	const today = new Date()
+	return differenceInDays(today, date) <= NEW_THRESHOLD_DAYS
+}
+
+function badgeForTheme(theme) {
+	if (isNewTheme(theme)) {
+		return "new"
+	}
+
+	return undefined
 }
 
 async function withStars(theme) {
@@ -93,9 +114,16 @@ async function main() {
 		const { data, content } = matter.read(entry)
 
 		const details = await withStarsAndUser(data)
+
+		// update the Recently Added category
+		details.categories = isNewTheme(details)
+			? Array.from(new Set([...details.categories, "recent"]))
+			: details.categories.filter((c) => c !== "recent")
+
 		const frontmatter = yaml.stringify({
 			...data,
 			...details,
+			badge: badgeForTheme(details),
 		})
 
 		fs.writeFileSync(
