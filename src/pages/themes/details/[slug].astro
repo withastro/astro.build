@@ -1,13 +1,14 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
+import CardGridGroup from "~/components/CardGridGroup.astro"
 import ImageGallery from "~/components/ImageGallery.astro"
 import { resolveAllImages } from "~/content/themes/_resolveImage.js"
 import { getRelatedThemes } from "~/helpers/relatedThemes.js"
 import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx"
 import MainLayout from "~/layouts/MainLayout.astro"
-import ThemeCard from "../_components/ThemeCard.astro"
 import ThemeCTAs from "../_components/ThemeCTAs.astro"
+import ThemeCard from "../_components/ThemeCard.astro"
 import ThemeStats from "../_components/ThemeStats.astro"
 
 export const prerender = true
@@ -87,41 +88,33 @@ const images = await resolveAllImages(theme)
 		</div>
 		<div class="related bleed-full relative border-t border-astro-gray-500">
 			<div class="grid-container gap-y-10 pb-0 pt-20">
-				<header
-					class="flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between"
+				<CardGridGroup
+					title="Other themes to consider"
+					cta={{ href: "/themes/", text: "View more themes" }}
 				>
-					<h2 class="heading-4 md:heading-3">Other themes to consider</h2>
-					<a href="/themes/" rel="prefetch" class="button button-sm hidden md:flex">
-						<span>View more</span>
-						<span class="sr-only">themes</span>
-					</a>
-				</header>
-				<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
-					{relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
-				</CardGrid>
-				<a href="/themes/" rel="prefetch" class="button button-sm md:hidden">
-					<span>View more</span>
-					<span class="sr-only">themes</span>
-				</a>
+					<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
+						{relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
+					</CardGrid>
+				</CardGridGroup>
 			</div>
 		</div>
 	</div>
+
+	<style>
+		.grid-container :global(picture) {
+			@apply mx-auto w-full;
+			grid-column: 1 / -1;
+			max-width: var(--container-width, 1280px);
+		}
+
+		.related::before {
+			@apply absolute aspect-square w-full bg-repeat;
+			content: "";
+			background-size: 20px 20px;
+			background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
+				linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
+			mask-image: linear-gradient(to bottom, white, transparent);
+			z-index: -1;
+		}
+	</style>
 </MainLayout>
-
-<style>
-	.grid-container :global(picture) {
-		@apply mx-auto w-full;
-		grid-column: 1 / -1;
-		max-width: var(--container-width, 1280px);
-	}
-
-	.related::before {
-		@apply absolute aspect-square w-full bg-repeat;
-		content: "";
-		background-size: 20px 20px;
-		background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
-			linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
-		mask-image: linear-gradient(to bottom, white, transparent);
-		z-index: -1;
-	}
-</style>

@@ -5,10 +5,10 @@ description: "Astro integration to generate Social Images from Astro Content Col
 categories:
   - "css+ui"
   - "performance+seo"
+  - "recent"
 npmUrl: "https://www.npmjs.com/package/@cyberkoalastudios/og-image-generator"
 repoUrl: "https://github.com/CyberKoalaStudios/og-image-generator"
 homepageUrl: "https://github.com/CyberKoalaStudios/og-image-generator#readme"
 downloads: 1722
-badges:
-  - "new"
+badge: "new"
 ---

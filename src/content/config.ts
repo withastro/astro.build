@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content"
 
 export const IntegrationCategories = new Map<string, string>([
 	["featured", "Featured"],
+	["recent", "Recently Added"],
 	["official", "Official"],
 	["frameworks", "Frameworks"],
 	["adapters", "Adapters"],
@@ -13,6 +14,7 @@ export const IntegrationCategories = new Map<string, string>([
 
 export const ThemeCategories = new Map<string, string>([
 	["featured", "Featured"],
+	["recent", "Recently Added"],
 	["official", "Official"],
 	["blog", "Blog"],
 	["landing-page", "Landing Page"],
@@ -66,6 +68,8 @@ export const themeSchema = z
 		featured: z.number().min(1).optional(),
 		tools: z.array(z.enum(Array.from(ThemeTools.keys()) as [string, ...string[]])).default([]),
 		related: z.array(z.string()).max(3).default([]),
+		publishDate: z.date({ coerce: true }).optional(),
+		badge: z.string().optional(),
 	})
 	.transform((theme) => {
 		// computed properties
@@ -135,6 +139,7 @@ export const collections = {
 			official: z.boolean().default(false),
 			featured: z.number().min(1).optional(),
 			downloads: z.number().min(0).default(0),
+			badge: z.string().optional(),
 		}),
 	},
 	pages: {
