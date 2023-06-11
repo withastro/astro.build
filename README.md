@@ -3,6 +3,7 @@ edit src/data/site-info.ts website name
 
 2.edit src/pages/_components/Hero.astro to change homepage
 
+3. add  microsoft clarity 
 
 
 
