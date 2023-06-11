@@ -1,3 +1,11 @@
+1.
+edit src/data/site-info.ts website name 
+
+2.edit src/pages/_components/Hero.astro to change homepage
+
+
+
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3442658e-265e-48ac-b3bc-e270853129c8/deploy-status)](https://app.netlify.com/sites/astro-build/deploys)
 
 # [astro.build](https://astro.build)
