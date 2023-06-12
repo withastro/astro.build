@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-csv"
 repoUrl: "https://github.com/TheOtterlord/astro-csv"
 homepageUrl: "https://github.com/TheOtterlord/astro-csv"
-downloads: 87
+downloads: 89
 badge: "new"
 ---

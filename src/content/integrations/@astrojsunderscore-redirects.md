@@ -9,7 +9,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs/underscore-redirects"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://github.com/withastro/astro#readme"
-downloads: 444
+downloads: 3840
 badges:
   - "new"
 badge: "new"

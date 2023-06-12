@@ -10,7 +10,7 @@ npmUrl: "https://www.npmjs.com/package/astro-compress"
 repoUrl: "https://github.com/astro-community/astro-compress"
 featured: 4
 homepageUrl: "https://github.com/astro-community/astro-compress#readme"
-downloads: 51687
+downloads: 57458
 badges:
   - "featured"
 ---
