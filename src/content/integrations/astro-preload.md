@@ -1,0 +1,13 @@
+---
+name: "astro-preload"
+title: "astro-preload"
+description: "Download images at build time! Supports Iconify icons and arbitrary images."
+categories:
+  - "css+ui"
+  - "recent"
+npmUrl: "https://www.npmjs.com/package/astro-preload"
+repoUrl: "https://github.com/lyonsyonii/astro-preload"
+homepageUrl: "https://www.npmjs.com/package/astro-preload"
+downloads: 272
+badge: "new"
+---

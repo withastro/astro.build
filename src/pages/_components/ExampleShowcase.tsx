@@ -158,7 +158,7 @@ export default function ExampleShowcase() {
 								"z-index": `calc(${items.length} - var(--position))`,
 							}}
 							class={clsx(
-								"noise-panel top-0 left-0 block w-full",
+								"noise-panel left-0 top-0 block w-full",
 								"translate-y-[var(--translate)] transition-transform md:translate-x-[var(--translate)]",
 								index() === current() ? "relative" : "absolute",
 							)}

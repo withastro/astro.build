@@ -7,11 +7,12 @@ import slugify from "slugify"
 import glob from "tiny-glob"
 import {
 	allowlist,
-	badgesForPackage,
+	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
 	getFeaturedPackagePriority,
 	getOverrides,
+	isNewPackage,
 } from "./integrations.mjs"
 import { stringifyLinks } from "./markdown.mjs"
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs"
@@ -36,6 +37,7 @@ function normalizePackageDetails(data, pkg) {
 	const otherCategories = [
 		isOfficial(pkg) ? "official" : undefined,
 		!!featured ? "featured" : undefined,
+		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean)
 
 	const uniqCategories = Array.from(new Set([...keywordCategories, ...otherCategories]))
@@ -62,14 +64,14 @@ async function fetchWithOverrides(pkg) {
 	const integrationOverrides = getOverrides(pkg) || {}
 
 	const downloads = await fetchDownloadsForPackage(pkg)
-	const badges = badgesForPackage(details)
+	const badge = badgeForPackage(details)
 	const featured = getFeaturedPackagePriority(pkg)
 
 	return {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		downloads,
-		badges: badges.length > 0 ? badges : undefined,
+		badge,
 		featured,
 	}
 }
@@ -108,6 +110,8 @@ async function main() {
 				...data,
 				...details,
 			})
+
+			delete frontmatter.badges
 
 			fs.writeFileSync(
 				entry,
