@@ -1,7 +1,7 @@
 ---
 title: "Spazio Bianco"
 description: "A multipage clean theme with more than 40 ready made pages"
-image: "/src/content/themes/_images/spazio-bianco-hero.webp"
+image: "/src/content/themes/_images/spaziobianco-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"
@@ -15,6 +15,7 @@ buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/99afe682-cc70-4d8
 tools:
   - "tailwind"
   - "alpinejs"
+  - "mdx"
 ---
 
 <p>✺&nbsp;<strong>Spazio Bianco UI kit</strong>&nbsp;━&nbsp;Spaziobianco UI kit is a nice and clean theme that allows you to create landing pages of diverse categories and customize them to your preferences, facilitating the construction of a landing page or website within hours instead of months.</p>

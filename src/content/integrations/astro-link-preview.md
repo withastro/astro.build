@@ -8,7 +8,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-link-preview"
 repoUrl: "ssh://git@github.com/cijiugechu/astro-link-preview"
 homepageUrl: "https://github.com/cijiugechu/astro-link-preview"
-downloads: 843
+downloads: 1077
 badges:
   - "new"
 badge: "new"
