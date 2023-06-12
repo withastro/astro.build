@@ -6,6 +6,26 @@ edit src/data/site-info.ts website name
 3. add  microsoft clarity 
 
 
+Netlify CMS*NEW - Add/Edit/Update all the posts in the /blog directory by visiting your-site.netlify.com/admin ex: astro-ink.netlify.app/admin with your Netlify credentials. It needs Netlify Identity(https://app.netlify.com/sites/your-site/settings/identity#registration ) and Git Gateway(https://app.netlify.com/sites/your-site/settings/identity#services) enabled.
+Future Posts*NEW(with Github Actions) - Create posts in the /src/drafts directory with a future date in the YYYY-MM-DD format, and let a specially crafted Github Action take care of auto-publishing it on your specified date. You can configure the check interval in Github Action.
+Client-Side Search*NEW - Allow your users get to your blog posts quickly with client-side search feat. Lunr.js
+
+
+https://github.com/remotesynth/remotesynthesis-blog
+
+
+
+
+    Content Collections organize Markdown or MDX files, as well as type-checking frontmatter with a schema in src/content/config.ts
+    MDX and Markdown posts
+    Astro Image Integration for optimized images
+    Satori for creating open graph png images
+    Automatic RSS feed
+    Auto-generated sitemap
+
+https://github.com/ajcwebdev/ajcweb.dev
+
+
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3442658e-265e-48ac-b3bc-e270853129c8/deploy-status)](https://app.netlify.com/sites/astro-build/deploys)
 
