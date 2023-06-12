@@ -19,6 +19,7 @@ buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/79cd9a14-394e-497
 tools:
   - "tailwind"
   - "alpinejs"
+  - "mdx"
 ---
 
 <p>
@@ -53,33 +54,16 @@ tools:
   <li>Style Guide</li>
   <li>License</li>
 </ul>
-<p><strong>The template also includes:</strong></p>
+<p>When you purchase the template you get access to a very permissive license that you can read from here</p>
 <ul>
-  <li>Style Guide</li>
-  <li>Icons from Tabler Icons</li>
-  <li>Custom fonts from: Inter</li>
-  <li>100% Responsive</li>
-  <li>A link to every demo page from the overview page</li>
+   <li><a href="https://lexingtonthemes.com/license/" rel="noopener noreferrer" target="_blank">License: lexingtonthemes.com/license</a></li>
 </ul>
-<p>
-  When you purchase the template you get access to a very permissive license that you can read from
-  here
-</p>
+<p><strong>If you have any questions do not hesitate to reach out on:</strong></p>
 <ul>
-  <li><a href="https://lexingtonthemes.com/license/">License: lexingtonthemes.com/license</a></li>
+   <li>Twitter: @Mike_Andreuzza or&nbsp; @lexingtonthemes</li>
+   <li>Email: michael@lexingtonthemes.com</li>
 </ul>
-<p>
-  <strong>If you have any questions do not hesitate to
-  reach out on:</strong>
-</p>
+<p>Thank you so much for reading and showing interest on Brightlight, if you need more templates, a bundle that includes all the templates, free updates is also offered on Lexington Themes.&nbsp;</p>
 <ul>
-  <li>Twitter.com/Mike_Andreuzza or Twitter.com/lexingtonthemes</li>
-  <li>Email: michael@lexingtonthemes.com</li>
-</ul>
-<p>
-  Thank you so much for reading and showing interest on Navy, if you need more templates, a bundle
-  that includes all the templates, free updates is also offered on Lexington Themes.
-</p>
-<ul>
-  <li><a href="https://lexingtonthemes.com/pricing/">Learn more about the bundle</a></li>
+   <li><a href="https://lexingtonthemes.com/pricing/" rel="noopener noreferrer" target="_blank" >Learn more about the bundle</a></li>
 </ul>
