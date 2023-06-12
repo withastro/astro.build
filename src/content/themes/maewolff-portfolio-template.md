@@ -10,10 +10,13 @@ author:
 categories:
   - "portfolio"
   - "blog"
+  - "recent"
 repoUrl: "https://github.com/MaeWolff/astro-portfolio-template"
 demoUrl: "https://demo.maxencewolff.com/"
-stars: 42
+stars: 0
+publishDate: "Jun 12, 2023"
 tools:
   - "tailwind"
   - "typescript"
+badge: "new"
 ---
