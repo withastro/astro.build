@@ -6,6 +6,7 @@ import siteInfo from "~/data/site-info"
 import "~/styles/fonts.css"
 import Favicon from "./Favicon.astro"
 import SEO from "./SEO.astro"
+import { GoogleAnalytics } from 'astro-google-analytics';
 
 export type Props = {
 	title?: string
@@ -14,6 +15,7 @@ export type Props = {
 	canonicalURL?: URL | null
 	pageType?: "website" | "article"
 }
+// <GoogleAnalytics id="G-GPEW2GJGH7" />
 
 const twitterHandle = "astrodotbuild"
 
@@ -42,6 +44,15 @@ const resolvedImage = {
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
+<link rel="manifest" href="/site.webmanifest">
+<!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"> -->
+
+<meta httpEquiv="X-UA-Compatible" content="IE=edge"  />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="msapplication-config" content="/browserconfig.xml"/>
+      
+      
+      
 <title set:html={smartypants(title, 1)} />
 
 <SEO
