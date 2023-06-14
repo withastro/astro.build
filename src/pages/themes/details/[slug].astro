@@ -50,15 +50,13 @@ const images = await resolveAllImages(theme)
 					width={images[0].fullImage.width}
 					height={(images[0].fullImage.width * 7) / 16}
 					alt=""
-					class="mx-auto max-w-full aspect-video object-cover object-top"
+					class="mx-auto aspect-video max-w-full object-cover object-top"
 					decoding="async"
 				/>
 			)
 		}
 		<div class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x">
-			<section
-				class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:px-20 lg:py-10"
-			>
+			<section class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:px-20 lg:py-10">
 				<a
 					href="/themes/"
 					rel="prefetch"
