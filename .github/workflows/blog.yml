@@ -1,0 +1,26 @@
+name: Draft minor release blog post
+description: Drafts a new minor release blog post
+
+on: workflow_dispatch
+
+jobs:
+  draft:
+    name: Draft minor release blog post
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Draft minor release blog post
+        run: node scripts/draft-release-post.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v5

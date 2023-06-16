@@ -3,26 +3,34 @@ import fs from 'node:fs/promises';
 const githubToken = process.env.GITHUB_TOKEN
 
 export async function githubGet({ url, githubToken = undefined }) {
-  const headers = {
-    Accept: 'application/vnd.github.v3+json',
-  };
-  if (githubToken) {
-    headers.Authorization = `token ${githubToken}`;
-  }
-  const response = await fetch(url, { headers });
-  if (response.headers.get('content-type')?.startsWith('application/json') === false) {
-    return await response.text();
-  }
-  const json = await response.json();
+  let retries = 0;
+  while (retries < 3) {
+    try {
+      const headers = {
+        Accept: 'application/vnd.github.v3+json',
+      };
+      if (githubToken) headers.Authorization = `token ${githubToken}`;
+      const response = await fetch(url, { headers });
+      if (response.headers.get('content-type')?.startsWith('application/json') === false) {
+        return await response.text();
+      }
+      const json = await response.json();
 
-  if (!response.ok) {
-    throw new AbortError(
-      `GitHub API call failed: GET "${url}" returned status ${response.status
-      }: ${JSON.stringify(json)}`
-    );
-  }
+      if (!response.ok) {
+        throw new AbortError(
+          `GitHub API call failed: GET "${url}" returned status ${response.status
+          }: ${JSON.stringify(json)}`
+        );
+      }
 
-  return json;
+      return json;
+    } catch (error) {
+      if (error instanceof AbortError) throw error;
+      console.log(`GitHub API call failed: GET "${url}" returned error: ${error.message}`);
+      retries++;
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  }
 }
 
 async function main() {
@@ -35,12 +43,13 @@ async function main() {
     if (changeset.name === 'README.md' || changeset.name === 'config.json') continue
     let rawContent = await githubGet({ url: changeset.download_url, githubToken })
     let [, metadata, content] = rawContent.split('---')
-    let [pkg, increment] = metadata.split(': ')
+    let [pkg, increment] = metadata.split(': ').map(s => s.trim())
 
     let lines = content.split('\n')
     while (lines[0] === '') lines.shift()
     let title = lines[0];
-    lines.shift()
+    if (title.slice(0, -1).includes('.')) title = pkg === 'astro' ? 'New feature' : `${pkg} feature`
+    else lines.shift()
     while (lines[0] === '') lines.shift()
     content = lines.join('\n')
 
@@ -58,7 +67,7 @@ async function main() {
 
   if (version === oldVersion) {
     console.log('Not a new Astro version, skipping')
-    return
+    // return
   }
 
   main.sort((a, b) => a.increment > b.increment ? 1 : -1)
