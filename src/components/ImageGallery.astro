@@ -194,9 +194,7 @@ const { images, class: className, ...attrs } = Astro.props
 		}
 
 		private onHashChange() {
-			this.selected = this.scrollerItems.findIndex((elem) =>
-				elem.matches(window.location.hash),
-			)
+			this.selected = this.scrollerItems.findIndex((elem) => elem.matches(window.location.hash))
 		}
 
 		private onScroll() {
@@ -232,9 +230,7 @@ const { images, class: className, ...attrs } = Astro.props
 		}
 
 		private get navScrollerItems() {
-			return Array.from(
-				this.navScroller?.querySelectorAll<HTMLAnchorElement>(`a[href^="#"]`) || [],
-			)
+			return Array.from(this.navScroller?.querySelectorAll<HTMLAnchorElement>(`a[href^="#"]`) || [])
 		}
 
 		private get scrollIndicator() {
@@ -315,8 +311,7 @@ const { images, class: className, ...attrs } = Astro.props
 			const carouselRect = this.mainScroller.getBoundingClientRect()
 			return this.scrollerItems.findIndex(
 				(elem) =>
-					Math.abs(elem.getBoundingClientRect().left - carouselRect.left) <
-					carouselRect.width / 2,
+					Math.abs(elem.getBoundingClientRect().left - carouselRect.left) < carouselRect.width / 2,
 			)
 		}
 	}
