@@ -18,8 +18,8 @@ const { site } = Astro.props
 		<Picture
 			src={site.data.image}
 			alt=""
-			widths={site.data.featured ? [400, 850, 1700] : [360, 414, 828]}
-			sizes={site.data.featured
+			widths={[350, 700, 1400]}
+			sizes={site.data.highlight
 				? "(min-width: 1024px) 67vw, 100vw"
 				: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"}
 			class="h-full w-full object-cover"
