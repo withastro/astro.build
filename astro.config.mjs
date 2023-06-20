@@ -9,7 +9,10 @@ import solidJs from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
 
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
-const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== "production" && process.env.DEPLOY_PRIME_URL
+const NETLIFY_PREVIEW_SITE =
+	process.env.CONTEXT === "dev"
+		? "http://localhost:3000"
+		: process.env.CONTEXT !== "production" && process.env.DEPLOY_PRIME_URL
 
 // https://astro.build/config
 export default defineConfig({

@@ -54,6 +54,10 @@ const twitter = {
 } satisfies Twitter
 
 const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, "") + "/"
+
+function resolveImage(image: ImageMetadata) {
+	return new URL(image.src, Astro.site).toString()
+}
 ---
 
 <!-- Page Metadata -->
@@ -69,7 +73,7 @@ const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/,
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />
-{og.image && <meta property="og:image" content={og.image.src.src} />}
+{og.image && <meta property="og:image" content={resolveImage(og.image.src)} />}
 {og.image && <meta property="og:image:alt" content={og.image.alt} />}
 
 <!-- Twitter Tags -->
@@ -78,5 +82,5 @@ const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/,
 
 <meta name="twitter:title" content={twitter.title} />
 <meta name="twitter:description" content={twitter.description} />
-{twitter.image && <meta name="twitter:image" content={twitter.image.src.src} />}
+{twitter.image && <meta name="twitter:image" content={resolveImage(twitter.image.src)} />}
 {twitter.image && <meta name="twitter:image:alt" content={twitter.image.alt} />}
