@@ -3,7 +3,11 @@ import MainLayout from "~/layouts/MainLayout.astro"
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
 import { format } from "date-fns"
 import Avatar from "~/components/Avatar.astro"
-import { resolveCoverImage, resolveSocialImage } from "~/content/blog/_resolveImage.js"
+import {
+	resolveBlogImage,
+	resolveCoverImage,
+	resolveSocialImage,
+} from "~/content/blog/_resolveImage.js"
 import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
 
@@ -11,8 +15,6 @@ export const prerender = true
 
 export async function getStaticPaths() {
 	const items = await getCollection("caseStudies")
-	console.log(items)
-
 	return items.map((post) => ({
 		params: { slug: post.slug },
 		props: { post },
@@ -30,6 +32,9 @@ const { Content } = await render()
 
 // const coverImage = await resolveCoverImage(post)
 // const socialImage = await resolveSocialImage(post)
+
+const headerImage = await resolveBlogImage(post.data.headerImage)
+console.log(headerImage)
 
 const authors = await Promise.all(
 	data.authors.map((author) => getEntryBySlug("authors", author)),
@@ -81,22 +86,37 @@ const placeholderGradient = randomFromArray(gradients)
 		]}
 	>
 	</div>
+	{
+		headerImage && (
+			<img
+				src={headerImage.src}
+				width={headerImage.width}
+				height={headerImage.height}
+				loading="lazy"
+				decoding="async"
+				alt=""
+				class="mx-auto mb-20 mt-8 max-w-full"
+			/>
+		)
+	}
 
 	<div class="grid-container relative mx-auto max-w-screen-lg md:z-10">
 		<div
 			class="noise-container mx-auto w-fit max-w-full bg-astro-gray-700 py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
 		>
 			<div class="noise"></div>
-			<header class="mx-auto w-full max-w-prose text-center">
+			<header class="mx-auto w-full max-w-4xl text-center">
 				<p class="code text-astro-gray-200">
 					Case Study &bull;
 					<time datetime={data.publishDate.toISOString()}>
 						{format(data.publishDate, "MMMM d, yyyy")}
 					</time>
 				</p>
-				<h1 class="mb-4 mt-2 sm:mb-5 sm:mt-3">
+				<h1 class="mb-4 mt-2 flex flex-col items-center sm:mb-5 sm:mt-3">
 					<strong class="heading-3 mb-2 block font-normal md:heading-2">{data.title}</strong>
-					<div class="heading-4 font-normal leading-tight md:heading-3">{data.description}</div>
+					<div class="heading-4 max-w-2xl font-normal leading-tight md:heading-3">
+						{data.description}
+					</div>
 				</h1>
 				<div class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200">
 					<span>By</span>

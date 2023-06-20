@@ -116,6 +116,7 @@ export const collections = {
 			socialImage: z.string().optional(),
 			coverImage: z.string().optional(),
 			lang: z.enum(["en"]).default("en"),
+			headerImage: z.string().optional(),
 		}),
 	}),
 	careers: defineCollection({

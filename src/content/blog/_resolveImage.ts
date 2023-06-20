@@ -5,6 +5,18 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/content/blog/_images/**/*.{png,jpg,jpeg,webp}",
 )
 
+export async function resolveBlogImage(url: string | undefined) {
+	if (!url) return
+
+	if (!(url in allImages)) {
+		throw new Error(`[blog] Image "${url}" not found! Is there a typo?`)
+	}
+
+	const { default: image } = await allImages[url]()
+
+	return image
+}
+
 export async function resolveCoverImage(entry: CollectionEntry<"blog">) {
 	if (!entry.data.coverImage) {
 		return undefined
