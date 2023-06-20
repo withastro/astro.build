@@ -104,6 +104,20 @@ export const collections = {
 			lang: z.enum(["en"]).default("en"),
 		}),
 	}),
+	caseStudies: defineCollection({
+		schema: z.object({
+			title: z.string(),
+			description: z.string(),
+			publishDate: z
+				.string()
+				.or(z.date())
+				.transform((val) => new Date(val)),
+			authors: z.array(z.string()),
+			socialImage: z.string().optional(),
+			coverImage: z.string().optional(),
+			lang: z.enum(["en"]).default("en"),
+		}),
+	}),
 	careers: defineCollection({
 		schema: z.object({
 			title: z.string().min(1).describe("Title of the job position"),

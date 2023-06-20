@@ -1,18 +1,33 @@
-import sharePearScreenshot from "./share_pear_screenshot.png"
-import sharePearScreenshot2 from "./share_pear_screenshot_2.png"
-import sharePearExample from "./share-pear-example.mp4"
+---
+title: "Content for Everyone"
+description: "Building Public-Sharing of Blog Drafts in 1 Month"
+publishDate: "June 20, 2023"
+authors:
+  - astro-team
+lang: "en"
+---
+
+import shareFeature from "./share_feature.webp"
+import results from "./results.webp"
 import BlogContentImage from "~/components/BlogContentImage.astro"
 import ImageFigure from "~/components/ImageFigure.astro"
+import Blockquote from "~/components/Blockquote.astro"
 
-# Content for Everyone: Building Public-Sharing of Blog Drafts in 1 Month
-
-[Contenda](https://contenda.co/), an artificial intelligence company that came onto the scene in 2021, has been building towards the ambitious goal of making content for everyone. Their vision starts with being a catalyst for developer advocates by making repurposing content easy for a variety of mediums.
+<div class="text-white space-y-8">
+	<div class="text-2xl leading-normal tracking-normal text-astro-gray-100">
+		[Contenda](https://contenda.co/), an artificial intelligence company that came onto the scene in
+		2021, has been building towards the ambitious goal of making content for everyone. Their vision
+		starts with being a catalyst for developer advocates by making repurposing content easy for a
+		variety of mediums.
+	</div>
 
 Developer advocates are the bridge between software companies and their developer users, often creating content to help educate and raise awareness in the community about particular features. Contenda makes it possible to take, for example, a video tutorial and turning it into a blog. This saves time and can even make it easier for a cross-functional team to collaborate.
 
 Grady Salzman, software engineer, says, “Depending on your team size, Contenda could enable others to make content for you. You could have someone who is spending all their time and effort on recording videos. Someone else could take those videos and write a blog post in their own thoughts, tone, and voice. If you’re a smaller team, it could enable you to release faster.”
 
 However, for all the ways Contenda was theoretically supposed to make collaboration and content creation easier, it needed to cross one practical hurdle: being able to share blog drafts publicly with other people. Contenda solved this by choosing Astro and Netlify as their solution.
+
+</div>
 
 ## Challenges
 
@@ -30,7 +45,20 @@ Contenda also knew they had to use Netlify’s on-demand builders. Astro was the
 
 At first, it was hard for the team to get started because there were barely any written tutorials about using Astro together with Netlify’s on-demand builders let alone just the latter. Their team ended up going into Astro’s Discord to enlist the help of the core team and the community. From there, building was fast for the team at Contenda because the developer experience was good.
 
-“This was my first time using Astro. I would say, getting started with Astro was simpler than other frameworks. It felt like the onboarding time was way smoother and especially the docs are so up-to-date that it’s a 1-to-1 match with your code sometimes,” says Grady.
+Cassidy is Contenda’s CTO. Having previously worked at Netlify plus being an active developer in the Astro community, she saw an opportunity to use Astro with Netlify’s on-demand builders. In addition to meeting their requirements, the main benefit of choosing Astro was its flexibility. With Astro, you can choose to have React or HTML and CSS. The latter enables non-developer team members, such as a product designer, to make changes without requiring developer intervention.
+
+<Blockquote>
+	<Fragment slot="quote">
+		This was my first time using Astro. I would say, getting started with Astro was simpler than
+		other frameworks. It felt like the onboarding time was way smoother and especially the docs are
+		so up-to-date that it’s a 1-to-1 match with your code sometimes.
+	</Fragment>
+	<Fragment slot="caption">— Grady Salzman, Software Engineer @ Contenda</Fragment>
+</Blockquote>
+
+<ImageFigure caption="Contenda’s blog post preview share feature">
+	<BlogContentImage src={shareFeature} />
+</ImageFigure>
 
 ## Results
 
@@ -38,9 +66,7 @@ At first, it was hard for the team to get started because there were barely any 
 
 It took Contenda just one month to build this feature. The team estimates it would have taken them double or triple the time if they had not chosen Astro as their solution.
 
-<ImageFigure caption="A demo of Share Pear">
-	<video src={sharePearExample} controls autoplay loading="lazy" />
-</ImageFigure>
+<BlogContentImage src={results} />
 
 {/* <BlogContentImage src={sharePearScreenshot} alt="Share Pear screenshot" /> */}
 {/* <BlogContentImage src={sharePearScreenshot2} alt="Share Pear screenshot" /> */}
