@@ -10,6 +10,7 @@ import {
 } from "~/content/blog/_resolveImage.js"
 import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
+import houstonWink from "~/assets/houston_wink.webp"
 
 export const prerender = true
 
@@ -136,6 +137,25 @@ const placeholderGradient = randomFromArray(gradients)
 			<article class="prose">
 				<Content />
 			</article>
+			<footer
+				class="mx-auto flex max-w-prose flex-col items-center gap-8 overflow-hidden rounded-lg border border-astro-purple bg-astro-gray-700 px-8 md:flex-row"
+			>
+				<div class="flex flex-1 flex-col gap-2 pt-8 text-center md:my-5 md:pt-0 md:text-left">
+					<h2 class="heading-4">Take Astro for a spin</h2>
+					<p class="text-sm">Discover what our flexible framework can do for you!</p>
+				</div>
+				<a
+					href="https://docs.astro.build"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="button button-primary button-sm">Get Started</a
+				>
+				<img
+					src={houstonWink.src}
+					alt=""
+					class="order-first -mb-px h-24 w-36 object-contain object-bottom md:self-end"
+				/>
+			</footer>
 		</div>
 	</div>
 </Layout>
