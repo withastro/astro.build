@@ -1,4 +1,5 @@
 ---
+import { CollectionEntry } from "astro:content"
 import matter from "gray-matter"
 import { Blob, File, Request } from "node-fetch"
 import slugify from "slugify"
@@ -12,7 +13,7 @@ import FormErrorList from "~/components/form/FormErrorList.astro"
 import FormFieldSet from "~/components/form/FormFieldSet.astro"
 import FormRadioGroup from "~/components/form/FormRadioGroup.astro"
 import RichTextEditor from "~/components/form/RichTextEditor.astro"
-import { ThemeTools, themeSchema } from "~/content/config.js"
+import { ThemeTools } from "~/content/config.js"
 import { editDiscordWebhookMessage, executeDiscordWebhook } from "~/helpers/discord.js"
 import { sanitizeThemeDescription } from "~/helpers/themes.js"
 import MainLayout from "~/layouts/MainLayout.astro"
@@ -47,22 +48,6 @@ const schema = zfd
 
 		return size < 8 * 1000 * 1000
 	}, "Total image size must be less than 8MB")
-
-const errorResponse = (formData: FormData, errors: z.typeToFlattenedError<typeof schema>) => {
-	const stringifiedData = new URLSearchParams()
-	for (const [key, value] of formData) {
-		if (typeof value === "string") {
-			stringifiedData.append(key, value)
-		}
-	}
-
-	const params = new URLSearchParams({
-		errors: btoa(JSON.stringify(errors)),
-		data: btoa(stringifiedData.toString()),
-	})
-
-	return Astro.redirect(`/themes/submit?${params}`)
-}
 
 if (Astro.request.method === "POST") {
 	// convert astro request to a node-fetch request
@@ -104,7 +89,7 @@ if (Astro.request.method === "POST") {
 			})
 		}
 
-		const theme: z.input<typeof themeSchema> = {
+		const theme: CollectionEntry<"themes">["data"] = {
 			title: result.data.themeName,
 			description: result.data.themeShortDescription,
 			fullDescription: result.data.themeFullDescription,
@@ -117,11 +102,17 @@ if (Astro.request.method === "POST") {
 			},
 			categories: [],
 			demoUrl: result.data.themeDemoUrl,
-			tools: result.data.toolsUsed,
+			tools: result.data.toolsUsed || [],
+			paid: false,
+			official: false,
+			links: [],
+			stars: 0,
+			related: [],
 		}
 
 		if (result.data.paidStatus === "paid") {
 			theme.buyUrl = result.data.themeUrl
+			theme.paid = true
 		} else {
 			theme.repoUrl = result.data.themeUrl
 		}

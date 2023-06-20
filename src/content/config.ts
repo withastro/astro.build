@@ -1,5 +1,4 @@
 import { defineCollection, z } from "astro:content"
-import socialImg from "../assets/og/social.jpg"
 
 export const IntegrationCategories = new Map<string, string>([
 	["featured", "Featured"],
@@ -68,22 +67,23 @@ export const collections = {
 			}),
 	}),
 	careers: defineCollection({
-		schema: z.object({
-			title: z.string().min(1).describe("Title of the job position"),
-			published: z.date().describe("Date the job listing was posted"),
-			location: z
-				.string()
-				.min(1)
-				.describe("Location of the job position (eg: 'Remote' or 'San Fransisco, CA'"),
-			team: z.enum(["Engineering", "UI", "DX"]),
-			type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
-			image: z
-				.object({
-					src: z.string().default((socialImg as unknown as ImageMetadata).src),
-					alt: z.string().default("Astro | Build the web you want"),
-				})
-				.default({}),
-		}),
+		schema: ({ image }) =>
+			z.object({
+				title: z.string().min(1).describe("Title of the job position"),
+				published: z.date().describe("Date the job listing was posted"),
+				location: z
+					.string()
+					.min(1)
+					.describe("Location of the job position (eg: 'Remote' or 'San Fransisco, CA'"),
+				team: z.enum(["Engineering", "UI", "DX"]),
+				type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
+				image: z
+					.object({
+						src: image(),
+						alt: z.string().default("Astro | Build the web you want"),
+					})
+					.optional(),
+			}),
 	}),
 	integrations: defineCollection({
 		schema: z.object({
@@ -106,27 +106,28 @@ export const collections = {
 		}),
 	}),
 	pages: defineCollection({
-		schema: z.object({
-			seo: z.object({
-				title: z.string().min(5).max(60),
-				description: z.string().min(15).max(160),
-				image: z
-					.object({
-						src: z.string().default("/og/social.jpg"),
-						alt: z.string().default("Build the web you want"),
-					})
-					.default({}),
-				pageType: z.enum(["website", "article"]).default("website"),
-				robots: z
-					.object({
-						index: z.boolean().default(true),
-						follow: z.boolean().default(true),
-					})
-					.default({}),
+		schema: ({ image }) =>
+			z.object({
+				seo: z.object({
+					title: z.string().min(5).max(60),
+					description: z.string().min(15).max(160),
+					image: z
+						.object({
+							src: image(),
+							alt: z.string().default("Build the web you want"),
+						})
+						.optional(),
+					pageType: z.enum(["website", "article"]).default("website"),
+					robots: z
+						.object({
+							index: z.boolean().default(true),
+							follow: z.boolean().default(true),
+						})
+						.default({}),
+				}),
+				updated_date: z.date().describe("The date this content was last updated."),
+				locale: z.enum(["en"]).default("en"),
 			}),
-			updated_date: z.date().describe("The date this content was last updated."),
-			locale: z.enum(["en"]).default("en"),
-		}),
 	}),
 	partials: defineCollection({
 		schema: z.object({}),

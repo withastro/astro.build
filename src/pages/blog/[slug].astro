@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets"
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
 import { format } from "date-fns"
 import Avatar from "~/components/Avatar.astro"
@@ -47,7 +46,7 @@ const placeholderGradient = randomFromArray(gradients)
 	title={data.title}
 	description={data.description}
 	pageType="article"
-	image={socialImage && { src: socialImage.src, alt: data.title }}
+	image={socialImage && { src: socialImage, alt: data.title }}
 >
 	{
 		coverImage ? (

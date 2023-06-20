@@ -1,6 +1,6 @@
 ---
-import type { GetImageResult, ImageMetadata, ImageOutputFormat } from "astro"
-import { getImage } from "astro:assets"
+import type { ImageMetadata, ImageOutputFormat } from "astro"
+import { Image, getImage } from "astro:assets"
 import mime from "mime"
 import { uniq } from "~/helpers/uniq.js"
 
@@ -15,9 +15,6 @@ export type Props = {
 const { src, alt, widths, sizes = "100vw", class: className } = Astro.props
 
 const formats = uniq("avif", "webp", src.format) as ImageOutputFormat[]
-const maxWidth = widths.sort()[widths.length - 1]
-
-let fallback: GetImageResult | null = null
 
 async function getSource(format: ImageOutputFormat) {
 	const imgs = await Promise.all(
@@ -28,10 +25,6 @@ async function getSource(format: ImageOutputFormat) {
 				width,
 				format,
 			})
-
-			if (format === src.format && width === maxWidth) {
-				fallback = img
-			}
 
 			return `${img.src} ${width}w`
 		}),
@@ -44,13 +37,9 @@ async function getSource(format: ImageOutputFormat) {
 }
 
 const sources = await Promise.all(formats.map((format) => getSource(format)))
-
-if (!fallback) {
-	throw new Error("Fallback image not found!")
-}
 ---
 
 <picture>
 	{sources.map((attrs) => <source {...attrs} {sizes} />)}
-	<img src={fallback.src} {...fallback.attributes} class={className} />
+	<Image src={src} alt={alt} class={className} />
 </picture>
