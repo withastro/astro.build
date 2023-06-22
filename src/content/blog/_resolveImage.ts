@@ -1,5 +1,4 @@
 import type { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
-import { CollectionEntry } from "astro:content"
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/content/blog/_images/**/*.{png,jpg,jpeg,webp}",
@@ -17,7 +16,9 @@ export async function resolveBlogImage(url: string | undefined) {
 	return image
 }
 
-export async function resolveCoverImage(entry: CollectionEntry<"blog">) {
+export async function resolveCoverImage(entry: {
+	data: { title: string; coverImage?: string | undefined }
+}) {
 	if (!entry.data.coverImage) {
 		return undefined
 	}
@@ -33,7 +34,9 @@ export async function resolveCoverImage(entry: CollectionEntry<"blog">) {
 	return image
 }
 
-export async function resolveSocialImage(entry: CollectionEntry<"blog">) {
+export async function resolveSocialImage(entry: {
+	data: { title: string; socialImage?: string | undefined }
+}) {
 	if (!entry.data.socialImage) {
 		return undefined
 	}
