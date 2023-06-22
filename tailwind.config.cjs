@@ -64,7 +64,7 @@ module.exports = {
 				prose: 1.8125,
 			},
 			maxWidth: {
-				prose: "70ch",
+				prose: "768px",
 			},
 			zIndex: {
 				"white-button-fill": -1,
