@@ -80,6 +80,24 @@ export const themeSchema = z
 		}
 	})
 
+const seoSchema = z.object({
+	title: z.string().min(5).max(80),
+	description: z.string().min(15).max(160),
+	image: z
+		.object({
+			src: z.string().default("/og/social.jpg"),
+			alt: z.string().default("Build the web you want"),
+		})
+		.default({}),
+	pageType: z.enum(["website", "article"]).default("website"),
+	robots: z
+		.object({
+			index: z.boolean().default(true),
+			follow: z.boolean().default(true),
+		})
+		.default({}),
+})
+
 export const collections = {
 	authors: defineCollection({
 		schema: z.object({
@@ -106,6 +124,7 @@ export const collections = {
 	}),
 	caseStudies: defineCollection({
 		schema: z.object({
+			seo: seoSchema.optional(),
 			title: z.string(),
 			description: z.string(),
 			publishDate: z
@@ -159,23 +178,7 @@ export const collections = {
 	},
 	pages: {
 		schema: z.object({
-			seo: z.object({
-				title: z.string().min(5).max(60),
-				description: z.string().min(15).max(160),
-				image: z
-					.object({
-						src: z.string().default("/og/social.jpg"),
-						alt: z.string().default("Build the web you want"),
-					})
-					.default({}),
-				pageType: z.enum(["website", "article"]).default("website"),
-				robots: z
-					.object({
-						index: z.boolean().default(true),
-						follow: z.boolean().default(true),
-					})
-					.default({}),
-			}),
+			seo: seoSchema,
 			updated_date: z.date().describe("The date this content was last updated."),
 			locale: z.enum(["en"]).default("en"),
 		}),

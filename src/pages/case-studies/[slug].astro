@@ -35,7 +35,6 @@ const coverImage = await resolveCoverImage(post)
 const socialImage = await resolveSocialImage(post)
 
 const headerImage = await resolveBlogImage(post.data.headerImage)
-console.log(headerImage)
 
 const authors = await Promise.all(
 	data.authors.map((author) => getEntryBySlug("authors", author)),
@@ -43,8 +42,8 @@ const authors = await Promise.all(
 ---
 
 <Layout
-	title={data.title}
-	description={data.description}
+	title={data.seo?.title ?? data.title}
+	description={data.seo?.description ?? data.description}
 	pageType="article"
 	image={socialImage && { src: socialImage.src, alt: data.title }}
 >
