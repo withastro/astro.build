@@ -81,7 +81,7 @@ export const themeSchema = z
 	})
 
 const seoSchema = z.object({
-	title: z.string().min(5).max(80),
+	title: z.string().min(5).max(120),
 	description: z.string().min(15).max(160),
 	image: z
 		.object({
