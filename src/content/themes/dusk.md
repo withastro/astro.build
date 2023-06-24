@@ -19,7 +19,7 @@ tools:
 
 <p>✺&nbsp;<strong>Dusk&nbsp;</strong>━ The minimal productise studio or agency theme.
 
-An MDX powered blog that includes 22 page ready examples for sections such as, landing page, 3 blog different landing pages, Store, Work, Contact, Tags and more. Mix and match sections, and you'll be ready to go.</p>
+Includes MDX powered blog that includes 22 page ready examples for sections such as, landing page, 3 blog different landing pages, Store, Work, Contact, Tags and more. Mix and match sections, and you'll be ready to go.</p>
 
 <p><strong>The template includes:</strong></p>
 <ul>
