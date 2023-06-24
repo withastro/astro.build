@@ -1,7 +1,7 @@
 ---
-title: "Aubergine"
+title: "Dusk"
 description: "A dark and cool landing page for your productized service."
-image: "/src/content/themes/_images/aubergine-hero.webp"
+image: "/src/content/themes/_images/dusk-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"
@@ -10,22 +10,26 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/aubergine/"
+demoUrl: "https://lexingtonthemes.com/viewports/dusk/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/7064a23c-2b0a-45a4-8e4a-8a9227ee8b0c"
 tools:
   - "tailwind"
   - "alpinejs"
 ---
 
-<p>✺&nbsp;<strong>Aubergine&nbsp;</strong>━ The cooles productise studio or agency theme. Includes MDX powered blog that includes 21 page ready examples for sections such as, landing page, 3 blog different landing pages, Work, Case Study, Contact, Tags and more. Mix and match sections, and you'll be ready to go.</p>
+<p>✺&nbsp;<strong>Dusk&nbsp;</strong>━ The minimal productise studio or agency theme.
+
+An MDX powered blog that includes 22 page ready examples for sections such as, landing page, 3 blog different landing pages, Store, Work, Contact, Tags and more. Mix and match sections, and you'll be ready to go.</p>
+
 <p><strong>The template includes:</strong></p>
 <ul>
- <li><span style="color: var(--tw-prose-bold);">21 Demo pages</span></li>
+ <li><span style="color: var(--tw-prose-bold);">22 Demo pages</span></li>
   <li><span style="color: var(--tw-prose-bold);">50+ Sections</span></li>
   <li><span style="color: var(--tw-prose-bold);">50+ Components</span></li>
 
 <li>Home</li>
-<li>Blog</li>
+<li>Team</li>
+<li>Blog pages</li>
 <li>Landing One</li>
 <li>Landing two</li>
 <li>Landing three</li>
@@ -33,13 +37,12 @@ tools:
 <li>All tags</li>
 <li>Tag category</li>
 <li>RSS</li>
-<li>Work</li>
 <li>Work home</li>
-<li>Case study</li>
-<li>FAQ</li>
+<li>Work details</li>
+<li>Store hom</li>e
+<li>Product details</li>
+<li>404</li>
 <li>Contact</li>
-<li>Terms of use</li>
-<li>Privacy policy</li>
 </ul>
 <p><strong>The template also includes a</strong></p>
 <ul>
