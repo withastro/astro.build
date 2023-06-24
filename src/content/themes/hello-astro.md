@@ -12,7 +12,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/hellotham/hello-astro"
 demoUrl: "https://hellotham.github.io/hello-astro"
-stars: 67
+stars: 69
 tools:
   - "tailwind"
   - "mdx"

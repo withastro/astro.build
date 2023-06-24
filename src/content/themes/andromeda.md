@@ -13,12 +13,15 @@ buyUrl: "https://themefisher.com/products/andromeda-astro"
 demoUrl: "https://andromeda-astro.vercel.app/"
 categories:
   - "landing-page"
+  - "recent"
 tools:
   - "react"
   - "tailwind"
   - "mdx"
   - "typescript"
 stars: 0
+publishDate: "May 30, 2023"
+badge: "new"
 ---
 
 <h2>Key Features:</h2>

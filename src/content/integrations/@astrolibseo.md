@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrolib/seo"
 repoUrl: "https://github.com/onwidget/astrolib"
 homepageUrl: "https://github.com/onwidget/astrolib/tree/main/packages/seo"
-downloads: 7092
+downloads: 7015
 ---

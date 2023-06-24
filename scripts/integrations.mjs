@@ -1,7 +1,7 @@
 import { differenceInDays } from "date-fns"
 import integrations from "./integrations.json" assert { type: "json" }
 
-const NEW_THRESHOLD_DAYS = 14
+const NEW_THRESHOLD_DAYS = 28
 
 const keywordToCategories = Object.entries(integrations.categories).reduce((acc, [key, value]) => {
 	const { keywords = [] } = value
@@ -15,7 +15,7 @@ const keywordToCategories = Object.entries(integrations.categories).reduce((acc,
 	return acc
 }, new Map())
 
-function isNewPackage(pkg) {
+export function isNewPackage(pkg) {
 	if (!pkg.time?.created) {
 		return false
 	}
@@ -52,18 +52,12 @@ export function getCategoriesForKeyword(keyword) {
 	return categories.length ? categories : ["css+ui"]
 }
 
-export function badgesForPackage(pkg) {
-	const badges = new Set()
-
-	if (integrations.featured.includes(pkg.name)) {
-		badges.add("featured")
-	}
-
+export function badgeForPackage(pkg) {
 	if (isNewPackage(pkg)) {
-		badges.add("new")
+		return "new"
 	}
 
-	return Array.from(badges)
+	return undefined
 }
 
 export function getFeaturedPackagePriority(pkg) {

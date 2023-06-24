@@ -13,11 +13,14 @@ author:
 categories:
   - "official"
   - "docs"
+  - "recent"
 demoUrl: "https://starlight.astro.build"
 repoUrl: "https://github.com/withastro/starlight/tree/main/examples/basics"
 tools:
   - "mdx"
   - "typescript"
+publishDate: "June 6, 2023"
+badge: "new"
 ---
 
 <h2>Documentation that delights</h2>

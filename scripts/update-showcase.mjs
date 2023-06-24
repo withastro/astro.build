@@ -381,6 +381,8 @@ const scraper = new ShowcaseScraper({
 		"https://user-images.githubusercontent.com",
 		"https://camo.githubusercontent.com",
 		"https://astro.build",
+		"https://pagespeed.web.dev",
+		"https://lighthouse-metrics.com",
 	],
 })
 await scraper.run()
