@@ -8,5 +8,5 @@ npmUrl: "https://www.npmjs.com/package/astro-internalise-css"
 image: "/assets/integrations/astro-internalise-css.svg"
 repoUrl: "https://github.com/tobias-edwards/astro-internalise-css"
 homepageUrl: "https://github.com/tobias-edwards/astro-internalise-css#readme"
-downloads: 39
+downloads: 26
 ---
