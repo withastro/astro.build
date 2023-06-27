@@ -20,7 +20,6 @@ publishDate: "July 27, 2023"
 badge: "new"
 ---
 
-```html
 <h2>Key Features:</h2>
 <ul>
   <li>17+ Unique Pages</li>
@@ -46,4 +45,3 @@ badge: "new"
   <li>Font Awesome icons</li>
   <li>Lifetime free updates</li>
 </ul>
-```
