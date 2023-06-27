@@ -57,9 +57,7 @@ const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/,
 ---
 
 <!-- Page Metadata -->
-<meta name="generator" content={Astro.generator} />
 {canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />}
-<title>{title}</title>
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
