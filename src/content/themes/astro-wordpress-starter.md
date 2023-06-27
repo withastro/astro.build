@@ -11,6 +11,6 @@ categories:
   - "blog"
 repoUrl: "https://github.com/JEverhart383/astro-wordpress-starter"
 demoUrl: "https://hnhcu867jnlofzb7xsfeuta0c.js.wpenginepowered.com/"
-stars: 57
+stars: 58
 tools: []
 ---

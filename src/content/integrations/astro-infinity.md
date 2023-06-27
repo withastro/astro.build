@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-infinity"
 repoUrl: "https://github.com/alteredorange/astro-infinity"
 homepageUrl: "https://github.com/alteredorange/astro-infinity"
-downloads: 48
+downloads: 68
 ---
