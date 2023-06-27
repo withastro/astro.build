@@ -14,7 +14,7 @@ categories:
 tools:
   - "react"
   - "tailwind"
-stars: 17
+stars: 21
 featured: 9
 ---
 

@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-critters"
 repoUrl: "https://github.com/astro-community/astro-critters"
 homepageUrl: "https://github.com/astro-community/astro-critters#readme"
-downloads: 17534
+downloads: 16937
 ---
