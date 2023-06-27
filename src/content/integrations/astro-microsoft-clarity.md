@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-microsoft-clarity"
 repoUrl: "https://github.com/wanghaisheng/astro-microsoft-clarity"
 homepageUrl: "https://xxxx"
-downloads: 0
+downloads: 66
 badge: "new"
 ---
