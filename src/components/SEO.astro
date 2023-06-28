@@ -56,8 +56,9 @@ const twitter = {
 const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, "") + "/"
 ---
 
-<!-- Page Metadata -->
-{canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />}
+<!-- Page Metadata -->{
+	canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
+}
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
