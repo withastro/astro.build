@@ -123,20 +123,23 @@ export const collections = {
 		}),
 	}),
 	caseStudies: defineCollection({
-		schema: z.object({
-			seo: seoSchema.optional(),
-			title: z.string(),
-			description: z.string(),
-			publishDate: z
-				.string()
-				.or(z.date())
-				.transform((val) => new Date(val)),
-			authors: z.array(z.string()),
-			socialImage: z.string().optional(),
-			coverImage: z.string().optional(),
-			lang: z.enum(["en"]).default("en"),
-			headerImage: z.string().optional(),
-		}),
+		schema: z
+			.object({
+				seo: seoSchema.optional(),
+				title: z.string(),
+				description: z.string(),
+				publishDate: z
+					.string()
+					.or(z.date())
+					.transform((val) => new Date(val)),
+				authors: z.array(z.string()),
+				socialImage: z.string().optional(),
+				coverImage: z.string().optional(),
+				lang: z.enum(["en"]).default("en"),
+				headerImage: z.string().optional(),
+			})
+			// adding this extra flag to differentiate it in lists
+			.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
 	careers: defineCollection({
 		schema: z.object({
