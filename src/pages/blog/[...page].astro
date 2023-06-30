@@ -11,19 +11,18 @@ import BlogPostPreview from "./_components/BlogPostPreview.astro"
 export const prerender = true
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	// fetch all showcase sites
-	const posts = await getCollection("blog")
+	const posts = [...(await getCollection("blog")), ...(await getCollection("caseStudies"))]
 
-	// sort featured sites to the front, randomize the rest
 	const sortedPosts = posts.sort(
-		(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
-			b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 	)
 
 	return paginate(sortedPosts, { pageSize: 12 })
 }
 
-const { page } = Astro.props as { page: Page<CollectionEntry<"blog">> }
+const { page } = Astro.props as {
+	page: Page<CollectionEntry<"blog"> | CollectionEntry<"caseStudies">>
+}
 
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
 	return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`
@@ -94,7 +93,7 @@ const featuredPosts = [
 				{
 					page.data.map((post) => (
 						<li>
-							<BlogPostPreview post={post} />
+							<BlogPostPreview post={post} isCaseStudy={"isCaseStudy" in post.data} />
 						</li>
 					))
 				}

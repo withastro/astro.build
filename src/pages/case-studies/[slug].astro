@@ -1,0 +1,138 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro"
+import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
+import { format } from "date-fns"
+import Avatar from "~/components/Avatar.astro"
+import {
+	resolveBlogImage,
+	resolveCoverImage,
+	resolveSocialImage,
+} from "~/content/blog/_resolveImage.js"
+import { randomFromArray } from "~/helpers/random.js"
+import Layout from "~/layouts/MainLayout.astro"
+import houstonWink from "~/assets/houston_wink.webp"
+
+export const prerender = true
+
+export async function getStaticPaths() {
+	const items = await getCollection("caseStudies")
+	return items.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}))
+}
+
+type Props = {
+	post: CollectionEntry<"caseStudies">
+}
+
+const { post } = Astro.props
+
+const { data, render } = post
+const { Content } = await render()
+
+const coverImage = await resolveCoverImage(post)
+const socialImage = await resolveSocialImage(post)
+
+const headerImage = await resolveBlogImage(post.data.headerImage)
+
+const authors = await Promise.all(
+	data.authors.map((author) => getEntryBySlug("authors", author)),
+).then((authors) => authors.filter(Boolean) as CollectionEntry<"authors">[])
+---
+
+<Layout
+	title={data.seo?.title ?? data.title}
+	description={data.seo?.description ?? data.description}
+	pageType="article"
+	image={socialImage && { src: socialImage.src, alt: data.title }}
+>
+	<div
+		class="noise-underlay -mb-56 h-64 w-full opacity-[0.85] md:-mb-52 md:h-64 lg:-mb-80 lg:h-96"
+		style="background-image: linear-gradient(120deg,#6CE486 0%,#4783B5 100%);"
+	>
+	</div>
+	{
+		headerImage && (
+			<img
+				src={headerImage.src}
+				width={headerImage.width}
+				height={headerImage.height}
+				loading="lazy"
+				decoding="async"
+				alt=""
+				class="mx-auto mb-20 mt-8 max-w-full px-8"
+			/>
+		)
+	}
+
+	<div
+		class="noise-container mx-auto max-w-full bg-astro-gray-700 px-8 py-5 sm:py-8 md:z-10 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
+	>
+		<div class="noise"></div>
+
+		<header class="mx-auto w-full max-w-4xl text-center">
+			<p class="code text-astro-gray-200">
+				Case Study &bull;
+				<time datetime={data.publishDate.toISOString()}>
+					{format(data.publishDate, "MMMM d, yyyy")}
+				</time>
+			</p>
+			<h1 class="mb-4 mt-2 flex flex-col items-center sm:mb-5 sm:mt-3">
+				<strong class="heading-3 mb-2 block font-normal md:heading-2">{data.title}</strong>
+				<div class="heading-4 max-w-2xl font-normal leading-tight md:heading-3">
+					{data.description}
+				</div>
+			</h1>
+			<div class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200">
+				<span>By</span>
+				{
+					authors.map((author) => {
+						return (
+							<div class="flex items-center gap-2">
+								<Avatar name={author.slug} lg />
+								<span>{author.data.name}</span>
+							</div>
+						)
+					})
+				}
+			</div>
+		</header>
+
+		<hr class="-mx-16 my-16 border-astro-gray-500" />
+
+		<article class="prose">
+			<Content />
+		</article>
+
+		<footer
+			class="mx-auto mt-8 flex w-full max-w-prose flex-col items-center gap-6 overflow-hidden rounded-lg border border-astro-purple bg-astro-gray-700 px-4 pt-4 md:flex-row md:pt-0"
+		>
+			<div class="flex flex-1 flex-col gap-2 text-center md:my-5 md:pt-0 md:text-left">
+				<h2 class="heading-4">Take Astro for a spin</h2>
+				<p class="text-sm">Discover what our flexible framework can do for you!</p>
+			</div>
+			<a
+				href="https://docs.astro.build"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="button button-primary button-sm mb-3 -mt-3 md:my-0">Get Started</a
+			>
+			<img src={houstonWink.src} alt="" class="-mb-px md:order-first md:self-end md:pt-4" />
+		</footer>
+	</div>
+</Layout>
+
+<script>
+	// Remove autoplay from videos when `prefers-reduced-motion: reduce`
+	const autoplayVideos = document.querySelectorAll("video[autoplay]")
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+	if (prefersReducedMotion) {
+		autoplayVideos.forEach((video) => {
+			video.removeAttribute("autoplay")
+			// Add controls attribute so user can still play the video if they want
+			video.setAttribute("controls", "true")
+		})
+	}
+</script>
