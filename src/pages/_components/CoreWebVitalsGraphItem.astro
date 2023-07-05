@@ -4,7 +4,6 @@ export interface Props {
 	score: number
 	glow?: boolean
 }
-const scoreWidth = (Astro.props.score - 33) * (100 / (100 - 33))
 ---
 
 <div
@@ -21,7 +20,7 @@ const scoreWidth = (Astro.props.score - 33) * (100 / (100 - 33))
 	>
 		<div
 			class="noise-underlay relative flex h-8 rounded bg-astro-gray-400 group-data-[glow]:bg-blue-green-gradient"
-			style={{ width: scoreWidth + "%" }}
+			style={{ width: Astro.props.score + "%" }}
 		>
 		</div>
 		<p class="flex-shrink-0 pr-2 font-mono text-xl group-data-[glow]:text-white">
