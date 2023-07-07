@@ -80,6 +80,24 @@ export const themeSchema = z
 		}
 	})
 
+const seoSchema = z.object({
+	title: z.string().min(5).max(120),
+	description: z.string().min(15).max(160),
+	image: z
+		.object({
+			src: z.string().default("/og/social.jpg"),
+			alt: z.string().default("Build the web you want"),
+		})
+		.default({}),
+	pageType: z.enum(["website", "article"]).default("website"),
+	robots: z
+		.object({
+			index: z.boolean().default(true),
+			follow: z.boolean().default(true),
+		})
+		.default({}),
+})
+
 export const collections = {
 	authors: defineCollection({
 		schema: z.object({
@@ -103,6 +121,25 @@ export const collections = {
 			coverImage: z.string().optional(),
 			lang: z.enum(["en"]).default("en"),
 		}),
+	}),
+	caseStudies: defineCollection({
+		schema: z
+			.object({
+				seo: seoSchema.optional(),
+				title: z.string(),
+				description: z.string(),
+				publishDate: z
+					.string()
+					.or(z.date())
+					.transform((val) => new Date(val)),
+				authors: z.array(z.string()),
+				socialImage: z.string().optional(),
+				coverImage: z.string().optional(),
+				lang: z.enum(["en"]).default("en"),
+				headerImage: z.string().optional(),
+			})
+			// adding this extra flag to differentiate it in lists
+			.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
 	careers: defineCollection({
 		schema: z.object({
@@ -144,23 +181,7 @@ export const collections = {
 	},
 	pages: {
 		schema: z.object({
-			seo: z.object({
-				title: z.string().min(5).max(60),
-				description: z.string().min(15).max(160),
-				image: z
-					.object({
-						src: z.string().default("/og/social.jpg"),
-						alt: z.string().default("Build the web you want"),
-					})
-					.default({}),
-				pageType: z.enum(["website", "article"]).default("website"),
-				robots: z
-					.object({
-						index: z.boolean().default(true),
-						follow: z.boolean().default(true),
-					})
-					.default({}),
-			}),
+			seo: seoSchema,
 			updated_date: z.date().describe("The date this content was last updated."),
 			locale: z.enum(["en"]).default("en"),
 		}),

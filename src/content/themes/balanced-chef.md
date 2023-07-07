@@ -15,7 +15,7 @@ demoUrl: "https://astro-js-iota.vercel.app/"
 tools:
   - "tailwind"
   - "typescript"
-stars: 0
+stars: 2
 publishDate: "Jun 12, 2023"
 badge: "new"
 ---

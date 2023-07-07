@@ -7,7 +7,7 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-preload"
 repoUrl: "https://github.com/lyonsyonii/astro-preload"
-homepageUrl: "https://www.npmjs.com/package/astro-preload"
-downloads: 272
+homepageUrl: "https://github.com/lyonsyonii/astro-preload#readme"
+downloads: 379
 badge: "new"
 ---

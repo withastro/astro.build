@@ -14,7 +14,7 @@ demoUrl: "https://astro-strata.vercel.app/"
 tools:
   - "tailwind"
   - "mdx"
-stars: 0
+stars: 1
 publishDate: "Jun 12, 2023"
 badge: "new"
 ---

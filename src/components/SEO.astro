@@ -56,10 +56,9 @@ const twitter = {
 const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, "") + "/"
 ---
 
-<!-- Page Metadata -->
-<meta name="generator" content={Astro.generator} />
-{canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />}
-<title>{title}</title>
+<!-- Page Metadata -->{
+	canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
+}
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
