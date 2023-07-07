@@ -13,7 +13,7 @@ categories:
   - "recent"
 repoUrl: "https://github.com/MaeWolff/astro-portfolio-template"
 demoUrl: "https://demo.maxencewolff.com/"
-stars: 7
+stars: 14
 publishDate: "Jun 12, 2023"
 tools:
   - "tailwind"

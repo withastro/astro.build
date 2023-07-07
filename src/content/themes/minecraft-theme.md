@@ -11,7 +11,7 @@ categories:
   - "other"
 repoUrl: "https://github.com/BryceRussell/astro-minecraft-theme"
 demoUrl: "https://minecraft-theme.netlify.app/"
-stars: 16
+stars: 15
 tools:
   - "tailwind"
 ---

@@ -11,7 +11,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/48052206?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/veranikabarel/astro-portfolio"
 demoUrl: "https://astro-fe-portfolio.netlify.app/"
 tools:
@@ -19,5 +18,4 @@ tools:
   - "typescript"
 stars: 15
 publishDate: "May 30, 2023"
-badge: "new"
 ---
