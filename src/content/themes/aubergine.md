@@ -58,7 +58,7 @@ tools:
   <li>Twitter.com/Mike_Andreuzza or&nbsp;Twitter.com/lexingtonthemes</li>
   <li>Email: michael@lexingtonthemes.com</li>
 </ul>
-<p>Thank you so much for reading and showing interest on Dusk, if you need more templates, a bundle that includes all the templates, free updates is also offered on Lexington Themes.&nbsp;</p>
+<p>Thank you so much for reading and showing interest on Aubergine, if you need more templates, a bundle that includes all the templates, free updates is also offered on Lexington Themes.&nbsp;</p>
 <ul>
   <li><a href="https://lexingtonthemes.com/pricing/" rel="noopener noreferrer" target="_blank">Learn more about the bundle</a></li>
 </ul>
