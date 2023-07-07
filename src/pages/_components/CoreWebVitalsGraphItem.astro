@@ -19,13 +19,15 @@ export interface Props {
 		class="flex w-full items-center gap-3 rounded-lg border border-astro-gray-400 p-1 group-data-[glow]:border-astro-gray-200"
 	>
 		<div
-			class="noise-underlay relative flex h-8 rounded bg-astro-gray-400 group-data-[glow]:bg-blue-green-gradient items-center justify-end"
-			style={{ width: Astro.props.score + "%" }} 
+			class="noise-underlay relative flex h-8 items-center justify-end rounded bg-astro-gray-400 group-data-[glow]:bg-blue-green-gradient"
+			style={{ width: Astro.props.score + "%" }}
 		>
-		<p class="flex-shrink-0 pr-2 font-mono text-xl text-white group-data-[glow]:text-astro-gray-500 group-data-[glow]:text-bold select-none">
-			<span class="sr-only">Score:</span>
-			{Astro.props.score}
-		</p>
+			<p
+				class="group-data-[glow]:text-bold flex-shrink-0 select-none pr-2 font-mono text-xl text-white group-data-[glow]:text-astro-gray-500"
+			>
+				<span class="sr-only">Score:</span>
+				{Astro.props.score}
+			</p>
 		</div>
 	</dd>
 </div>
