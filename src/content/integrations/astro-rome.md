@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-rome"
 repoUrl: "https://github.com/astro-community/astro-rome"
 homepageUrl: "https://github.com/astro-community/astro-rome#readme"
-downloads: 5133
+downloads: 4215
 ---

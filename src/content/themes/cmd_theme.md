@@ -12,7 +12,7 @@ categories:
   - "blog"
   - "recent"
 repoUrl: "https://github.com/onadrog/cmd_theme"
-stars: 5
+stars: 6
 publishDate: "Jun 12, 2023"
 tools:
   - "sass"
