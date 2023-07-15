@@ -2,11 +2,6 @@
 title: "Brightlight"
 description: "Brightlight is a an elegant UI Kit for your digital product."
 image: "/src/content/themes/_images/brightlight-hero.webp"
-images:
-  - "/src/content/themes/_images/brightlight-2.webp"
-  - "/src/content/themes/_images/brightlight-3.webp"
-  - "/src/content/themes/_images/brightlight-4.webp"
-  - "/src/content/themes/_images/brightlight-5.webp"
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"
@@ -23,36 +18,42 @@ tools:
 ---
 
 <p>
-  ✺ Brightligh UI kit ━ An clean design that empowers you to efficiently create pages across
-  diverse categories and customize them to your preferences, facilitating the construction of a
-  landing page or website within hours instead of months.
+  ✺ Brightligh UI kit ━ The clean and techy light theme on Lexington, designed for those who wants elegant, sleek elements and beautiful websites. Brightlight is made up of hundreds of fully customizable elements, designed blocks, and fully coded pages, enabling you to create outstanding websites with ease.
 </p>
 <p>
-  The template is versatile and can be applied to various types of websites, such as marketing,
-  SaaS, or product websites.
+ It includes 30+ page examples for sections such as Changelog, FAQs, Sign Up and a full MDX Blog, and more. Simply swap sections, and you'll be ready to go.
 </p>
+
 <p><strong>The template includes:</strong></p>
 <ul>
-  <li><strong>30+ Demo pages</strong></li>
-  <li><strong>70+ Sections</strong></li>
+  <li><strong>36 Demo pages</strong></li>
+  <li><strong>80+ Sections</strong></li>
   <li><strong>100+ Components</strong></li>
-  <li>2 Landing page demo</li>
+  <li>3 x Landing page demo</li>
+  <li>3 x Pricing pages + 5 pricing different tables</li>
+  <li>Help center home</li>
+  <li>Help center category</li>
+  <li>Help center details</li>
+  <li>2 Blog landing pages</li>
+  <li>6 x blog post</li>
+  <li>Tag index</li>
+  <li>Tag slug</li>
+  <li>RSS</li>
   <li>About</li>
-  <li>3 Pricing page demo pages</li>
-  <li>2 Blog entries layouts</li>
-  <li>2 Blog posts layouts</li>
+  <li>Status</li>
   <li>Changelog</li>
-  <li>Terms Of use</li>
-  <li>Privacy Policy</li>
-  <li>Coming Soon</li>
+  <li>Terms</li>
+  <li>Privacy</li>
   <li>404</li>
   <li>Contact</li>
   <li>Sign in</li>
   <li>Sign up</li>
-  <li>Forgot Password</li>
-  <li>System Pages</li>
-  <li>Style Guide</li>
-  <li>License</li>
+  <li>Forgot</li>
+  <li>Integrations home</li>
+  <li>Integrations details</li>
+  <li>Overview</li>
+  <li>Style guide</li>
+
 </ul>
 <p>When you purchase the template you get access to a very permissive license that you can read from here</p>
 <ul>
