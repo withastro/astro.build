@@ -20,7 +20,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	// seperate out sites that display with a larger thumbnail
 	const highlighted = sortedShowcase.filter((site) => site.data.highlight)
 
-	// build final showcase array by interleaving 1 highlighted item for every 5 non-highlighted items
+	// build final showcase array by interleaving 1 highlighted item for every 4 non-highlighted items
 	const showcase = sortedShowcase.filter((site) => !site.data.highlight)
 	for (let i = 2; i < showcase.length; i += 5) {
 		const highlight = highlighted.shift()
