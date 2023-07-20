@@ -9,12 +9,15 @@ author:
 categories:
   - "landing-page"
   - "other"
+  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/hirewise"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/9ae54a77-d4ab-456e-8dfd-0f6f69db73ff"
 tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
+publishDate: "Jul 20, 2023"
+badge: "new"
 ---
 
 <p>
