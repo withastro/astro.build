@@ -11,13 +11,11 @@ author:
   avatar: "https://lemonsqueezy.imgix.net/avatars/stores/29461/GTFKPQii1SugVzw9n6WNQXtjwgoEr08gl44DUHfZ.png?fit=clip&h=100&ixlib=php-3.3.1&w=100&s=bfb56482a6d443317eab87e2780f169c"
 categories:
   - "blog"
-  - "recent"
 buyUrl: "https://butterythemes.lemonsqueezy.com/checkout/buy/9a8a2121-31a5-40e0-826b-522f3e43a87b"
 demoUrl: "https://split.butterythemes.com"
 tools:
   - "tailwind"
 publishDate: "Jun 12, 2023"
-badge: "new"
 ---
 
 ```html

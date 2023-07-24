@@ -10,12 +10,10 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/46002955?v=4"
 categories:
   - "blog"
-  - "recent"
 repoUrl: "https://github.com/onadrog/cmd_theme"
-stars: 6
+stars: 11
 publishDate: "Jun 12, 2023"
 tools:
   - "sass"
   - "typescript"
-badge: "new"
 ---

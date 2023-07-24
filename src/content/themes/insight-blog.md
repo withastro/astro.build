@@ -14,7 +14,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/TuncAhmet/Astro-s-Insight"
 demoUrl: "https://astrosinsight.netlify.app/"
-stars: 1
+stars: 2
 tools:
   - "typescript"
   - "tailwind"

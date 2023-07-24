@@ -12,15 +12,13 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/34077176?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/michael-andreuzza/swissfolio"
 demoUrl: "https://swissfolio.vercel.app/"
-stars: 20
+stars: 27
 publishDate: "Jun 12, 2023"
 tools:
   - "tailwind"
   - "alpinejs"
-badge: "new"
 ---
 
 <h2>Uses</h2>

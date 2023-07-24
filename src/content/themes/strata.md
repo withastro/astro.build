@@ -8,7 +8,6 @@ author:
   avatar: "https://html5up.net/assets/icons/apple-touch-icon-precomposed.png"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/netaisllc/astro-strata"
 demoUrl: "https://astro-strata.vercel.app/"
 tools:
@@ -16,7 +15,6 @@ tools:
   - "mdx"
 stars: 1
 publishDate: "Jun 12, 2023"
-badge: "new"
 ---
 
 <p>

@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sst"
 repoUrl: "https://github.com/serverless-stack/sst"
 homepageUrl: "https://github.com/serverless-stack/sst#readme"
-downloads: 8150
+downloads: 10603
 ---

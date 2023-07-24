@@ -11,7 +11,7 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/shaunchander/astro-pwa-starter"
 demoUrl: "https://astro-pwa-starter.vercel.app/"
-stars: 86
+stars: 89
 tools:
   - "tailwind"
 ---
