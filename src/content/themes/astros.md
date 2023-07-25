@@ -8,9 +8,9 @@ images:
   - "/src/content/themes/_images/astros-4.webp"
   - "/src/content/themes/_images/astros-5.webp"
 author:
-  url: "https://github.com/AgnosticUI"
-  name: "AgnosticUI"
-  avatar: "https://avatars.githubusercontent.com/u/70919102?v=4"
+  url: "https://github.com/zankhq"
+  name: "Zank"
+  avatar: "https://avatars.githubusercontent.com/u/54335866?v=4"
 categories:
   - "landing-page"
 repoUrl: "https://github.com/warpsi/astros"
