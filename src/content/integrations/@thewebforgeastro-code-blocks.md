@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@thewebforge/astro-code-blocks"
 repoUrl: "https://github.com/thewebforge/astro-code-blocks"
 homepageUrl: "https://github.com/thewebforge/astro-code-blocks#readme"
-downloads: 189
+downloads: 298
 badge: "new"
 ---

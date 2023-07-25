@@ -5,10 +5,8 @@ description: "Provides microsoft clarity snippet injection."
 categories:
   - "css+ui"
   - "analytics"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-microsoft-clarity"
 repoUrl: "https://github.com/wanghaisheng/astro-microsoft-clarity"
 homepageUrl: "https://xxxx"
-downloads: 68
-badge: "new"
+downloads: 13
 ---

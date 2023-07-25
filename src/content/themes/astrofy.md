@@ -12,13 +12,11 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/53962116?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/manuelernestog/astrofy"
 demoUrl: "https://astrofy-template.netlify.app/"
 tools:
   - "tailwind"
   - "mdx"
-stars: 250
+stars: 281
 publishDate: "Jun 12, 2023"
-badge: "new"
 ---

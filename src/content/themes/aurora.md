@@ -18,7 +18,7 @@ demoUrl: "https://aurora.thilohohlt.com/"
 tools:
   - "svelte"
   - "typescript"
-stars: 2
+stars: 1
 publishDate: "May 30, 2023"
 ---
 

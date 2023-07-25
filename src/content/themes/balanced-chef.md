@@ -9,7 +9,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/90055525?v=4"
 categories:
   - "other"
-  - "recent"
 repoUrl: "https://github.com/fahad0samara/Astro.js-Chef-Project"
 demoUrl: "https://astro-js-iota.vercel.app/"
 tools:
@@ -17,7 +16,6 @@ tools:
   - "typescript"
 stars: 2
 publishDate: "Jun 12, 2023"
-badge: "new"
 ---
 
 <p>

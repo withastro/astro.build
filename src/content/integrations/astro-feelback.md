@@ -7,6 +7,6 @@ categories:
   - "analytics"
 npmUrl: "https://www.npmjs.com/package/astro-feelback"
 repoUrl: "https://github.com/giuseppelt/feelback-integrations"
-homepageUrl: "https://github.com/giuseppelt/feelback-integrations/packages/astro#readme.md"
-downloads: 122
+homepageUrl: "https://www.feelback.dev"
+downloads: 392
 ---
