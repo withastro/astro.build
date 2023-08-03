@@ -1,0 +1,69 @@
+---
+title: "Astro 2.10: Persistent State in View Transitions"
+description: "TODO Astro 2.9 is out with experimental support for View Transitions, allowing smooth page transitions."
+publishDate: "August 3, 2023"
+authors:
+  - matthew
+coverImage: "/src/content/blog/_images/astro-290/blog-hero-2_9-release.jpg"
+socialImage: "/src/content/blog/_images/astro-290/og-image-2_9-release.jpg"
+lang: "en"
+---
+
+Astro 2.10 is out with improvements to our experimental View transitions support. Additionally we've released our first early beta of Astro 3.0. Read on to learn more!
+
+
+- **[Persistent UI in View transitions](#view-transitions-experimental)**
+- **[First Look at Astro 3.0](#astro-3)**
+
+If you already have Astro installed, you can upgrade it to 2.10 by running the upgrade command in your project (using your package manager of choice):
+
+```
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+While you're at it, upgrade any `@astrojs/*` integrations and adapters you have installed, too!
+
+# Persistent UI in View Transitions
+
+With `viewTransitions: true` enabled in your Astro config's experimental section, pages using the `<ViewTransition />` routing component can now access a new `transition:persist` directive.
+
+With this directive, you can keep the state of DOM elements and islands on the old page when transitioning to the new page.
+
+For example, to keep a video playing across page navigation, add `transition:persist` to the element:
+
+```astro
+<video controls="" autoplay="" transition:persist>
+  <source
+    src="https://ia804502.us.archive.org/33/items/GoldenGa1939_3/GoldenGa1939_3_512kb.mp4"
+    type="video/mp4"
+  />
+</video>
+```
+
+This `<video>` element, with its current state, will be moved over to the next page (if the video also exists on that page).
+
+Likewise, this feature works with any client-side framework component island. In this example, a counter's state is preserved and moved to the new page:
+
+```astro
+<Counter count={5} client:load transition:persist />
+```
+
+See our [View Transitions Guide](https://docs.astro.build/en/guides/view-transitions/#maintaining-state) to learn more on usage.
+
+## First Look at Astro 3.0
+
+We've released our first beta of Astro 3.0 as `astro@3.0.0-beta.0`. For those adventurous you can try out the release and see if you have compatibility issues with your app. So far this release contains mostly deprecations and removals of very old patterns. A few changes you might be interested in include:
+
+- HTML is now compressed by default.
+- API routes now used capitalized method names, for example: `export function GET() ...`
+- Adapters can inform Astro of which features they support, such as splitting entrypoints per page and Sharp / Squoosh compatibility.
+
+[See the changelog](https://github.com/withastro/astro/blob/refs/heads/next/packages/astro/CHANGELOG.md#300-beta0) for a full list of the changes. We currently do not have documentation for the breaking changes but are working on a guide. As we approach 3.0 there will be more information about the changes.
+
+Once all of the breaking changes are complete there will be a release candidate and we hope to release the stable 3.0 in late August / early September.
+
+## More
+
+Additional bug fixes and integration features are included in this release. Check out the [release notes](https://github.com/withastro/astro/pull/7714) to learn more.
