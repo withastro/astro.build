@@ -27,7 +27,9 @@ While you're at it, upgrade any `@astrojs/*` integrations and adapters you have 
 
 # Persistent UI in View Transitions
 
-With `viewTransitions: true` enabled in your Astro config's experimental section, pages using the `<ViewTransition />` routing component can now access a new `transition:persist` directive.
+Our first release of the `<ViewTransition />` router allowed for smooth transitions between pages, but any stateful islands or elements you might have had would be rerendered.
+
+In 2.10 we have fixed this with a new `transition:persist` directive.
 
 With this directive, you can keep the state of DOM elements and islands on the old page when transitioning to the new page.
 
