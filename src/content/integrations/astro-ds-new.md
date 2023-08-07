@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-ds-new"
 homepageUrl: "https://www.npmjs.com/package/astro-ds-new"
-downloads: 1978
+downloads: 2197
 badge: "new"
 ---

@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/my-new-component-directory"
 homepageUrl: "https://www.npmjs.com/package/my-new-component-directory"
-downloads: 445
+downloads: 458
 badge: "new"
 ---

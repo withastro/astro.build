@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@ayco/astro-resume"
 homepageUrl: "https://sr.ht/~ayoayco/astro-resume"
-downloads: 1701
+downloads: 1874
 badge: "new"
 ---

@@ -15,7 +15,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/warpsi/astros"
 demoUrl: "https://astros.warps.it"
-stars: 2
+stars: 6
 tools:
   - "alpinejs"
   - "tailwind"

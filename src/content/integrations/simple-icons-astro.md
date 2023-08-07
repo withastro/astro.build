@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/simple-icons-astro"
 repoUrl: "https://github.com/dzeiocom/simple-icons-astro"
 homepageUrl: "https://simple-icons-astro.dzeio.com"
-downloads: 131
+downloads: 231
 badge: "new"
 ---

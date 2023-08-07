@@ -11,7 +11,7 @@ categories:
   - "other"
 repoUrl: "https://github.com/paabloLC/astro-neumorphismt"
 demoUrl: "https://astro-neumorph.deno.dev/"
-stars: 46
+stars: 48
 tools:
   - "preact"
   - "tailwind"

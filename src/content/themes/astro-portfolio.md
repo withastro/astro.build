@@ -11,7 +11,7 @@ categories:
   - "portfolio"
 repoUrl: "https://github.com/uzzii-21/astro-portfolio"
 demoUrl: "https://astro-portfolio-uzair.vercel.app/"
-stars: 48
+stars: 49
 tools:
   - "tailwind"
 ---
