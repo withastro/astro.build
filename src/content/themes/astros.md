@@ -13,9 +13,9 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/54335866?v=4"
 categories:
   - "landing-page"
-repoUrl: "https://github.com/warpsi/astros"
-demoUrl: "https://astros.warps.it"
-stars: 6
+repoUrl: "https://github.com/zankhq/astros"
+demoUrl: "https://astros.zank.studio/"
+stars: 9
 tools:
   - "alpinejs"
   - "tailwind"
