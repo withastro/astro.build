@@ -137,6 +137,8 @@ export const collections = {
 				coverImage: z.string().optional(),
 				lang: z.enum(["en"]).default("en"),
 				headerImage: z.string().optional(),
+				coverGradientFrom: z.string(),
+				coverGradientTo: z.string(),
 			})
 			// adding this extra flag to differentiate it in lists
 			.transform((study) => ({ ...study, isCaseStudy: true })),
