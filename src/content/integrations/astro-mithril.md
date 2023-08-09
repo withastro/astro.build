@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-mithril"
 repoUrl: "https://github.com/pep108/astro-mithril"
 homepageUrl: "https://github.com/pep108/astro-mithril"
-downloads: 53
+downloads: 46
 image: "/assets/integrations/astro-mithril.svg"
 ---

@@ -11,7 +11,7 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/OnWritingCode/simple-blog-template"
 demoUrl: "https://simple-blog-template.netlify.app"
-stars: 9
+stars: 10
 tools:
   - "sass"
 ---

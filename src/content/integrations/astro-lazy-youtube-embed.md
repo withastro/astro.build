@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-lazy-youtube-embed"
 repoUrl: "https://github.com/insin/astro-lazy-youtube-embed"
 homepageUrl: "https://github.com/insin/astro-lazy-youtube-embed#readme"
-downloads: 203
+downloads: 214
 badge: "new"
 ---
