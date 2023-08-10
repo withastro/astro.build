@@ -14,6 +14,7 @@ headerImage: /src/content/blog/_images/firebase/header.webp
 ---
 
 import lighthouseScoreComparison from "./firebase-lighthouse-before-after.webp"
+import videoSrc from "./firebase-blog-animation.mp4"
 import partialHydration from "./partial-hydration.webp"
 import firebaseFeatures from "./firebase-features.webp"
 import BlogContentImage from "~/components/BlogContentImage.astro"
@@ -69,7 +70,15 @@ With Astro, new team members are able to get set up within 30 minutes thanks to 
 
 The Firebase developers were also able to achieve complex and accessible animations with Astro - a feat they could not have done with Blogger due to its limited templating. As an example, the team wanted to create the slice animation that’s on the Firebase blog homepage. However, this slice animation is extremely difficult to create on the web today. Instead, you have to take identical pieces of content on top of each other and remove certain sections on animation, like a curtain. Screen readers will try to read and tab through hidden content which is confusing for users. Firebase was able to build this animation accessibly due to Astro’s flexibility.
 
-TO-DO: INSERT VIDEO HERE
+<figure class="my-10">
+  <video controls class="border border-neutral-600 rounded">
+    <source src={videoSrc} type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+  <figcaption class="text-center text-sm my-4">
+    Layered yellow slice animation.
+  </figcaption>
+</figure>
 
 The parts of the migration related to Astro went quickly. They saw improvements just by being able to take their Google Doc content, converting it to Markdown using a plugin, and then pasting it into an Astro document. Most of the project time was actually spent on perfecting the design of the blog along with building the proof-of-concept itself.
 
