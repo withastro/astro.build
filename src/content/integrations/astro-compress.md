@@ -5,10 +5,13 @@ description: "🗜️ AstroJS compression utilities. Compress HTML, CSS, JavaScr
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
+  - "featured"
 npmUrl: "https://www.npmjs.com/package/astro-compress"
+image: "/assets/integrations/astro-compress.svg"
 repoUrl: "https://github.com/astro-community/astro-compress"
+featured: 1
 homepageUrl: "https://github.com/astro-community/astro-compress#readme"
 downloads: 54091
-badge: "new"
+badges:
+  - "featured"
 ---
