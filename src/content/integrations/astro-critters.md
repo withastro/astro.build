@@ -5,7 +5,6 @@ description: "🦔 AstroJS GoogleChromeLabs critters integration. Inline your cr
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-critters"
 repoUrl: "https://github.com/astro-community/astro-critters"
 homepageUrl: "https://github.com/astro-community/astro-critters#readme"
