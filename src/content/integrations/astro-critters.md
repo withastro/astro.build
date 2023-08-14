@@ -1,14 +1,14 @@
 ---
-name: "astro-compress"
-title: "astro-compress"
-description: "🗜️ AstroJS compression utilities. Compress HTML, CSS, JavaScript and more!"
+name: "astro-critters"
+title: "astro-critters"
+description: "🦔 AstroJS GoogleChromeLabs critters integration. Inline your critical CSS with Astro."
 categories:
   - "css+ui"
   - "performance+seo"
   - "recent"
-npmUrl: "https://www.npmjs.com/package/astro-compress"
-repoUrl: "https://github.com/astro-community/astro-compress"
-homepageUrl: "https://github.com/astro-community/astro-compress#readme"
+npmUrl: "https://www.npmjs.com/package/astro-critters"
+repoUrl: "https://github.com/astro-community/astro-critters"
+homepageUrl: "https://github.com/astro-community/astro-critters#readme"
 downloads: 136
 badge: "new"
 ---
