@@ -90,7 +90,7 @@ export default function ExampleShowcase() {
 
 						const details = (
 							<details
-								class="group noise-panel p-4 text-left"
+								class="group panel p-4 text-left"
 								open={index() === 0}
 								onClick={(event) => {
 									if (event.target.localName === "a") return
@@ -158,7 +158,7 @@ export default function ExampleShowcase() {
 								"z-index": `calc(${items.length} - var(--position))`,
 							}}
 							class={clsx(
-								"noise-panel left-0 top-0 block w-full",
+								"panel left-0 top-0 block w-full",
 								"translate-y-[var(--translate)] transition-transform md:translate-x-[var(--translate)]",
 								index() === current() ? "relative" : "absolute",
 							)}

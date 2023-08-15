@@ -14,43 +14,39 @@ const { ...head } = Astro.props
 
 <!DOCTYPE html>
 <html
-	lang="en"
-	class="overflow-x-hidden break-words bg-astro-gray-700 text-astro-gray-100 [color-scheme:dark] [word-break:break-word]"
+  lang="en"
+  class="overflow-x-hidden break-words bg-astro-gray-700 text-astro-gray-100 [color-scheme:dark] [word-break:break-word]"
 >
-	<head>
-		<BaseHead {...head} />
-	</head>
-	<body>
-		<SkipLink />
-		<div class="isolate flex min-h-screen flex-col overflow-x-hidden">
-			<div id="nav" class="sticky top-0 z-20 max-h-screen">
-				<Header>
-					<HeaderNav />
-					<HeaderDrawerContent slot="drawer" />
-				</Header>
-				<hr class="border-astro-gray-500" />
-			</div>
+  <head>
+    <BaseHead {...head} />
+  </head>
+  <body>
+    <SkipLink />
+    <div class="isolate flex min-h-screen flex-col overflow-x-hidden">
+      <div id="nav" class="sticky top-0 z-20 max-h-screen">
+        <Header>
+          <HeaderNav />
+          <HeaderDrawerContent slot="drawer" />
+        </Header>
+        <hr class="border-astro-gray-500" />
+      </div>
 
-			<main id="main" class="noise-container z-10 flex flex-1 flex-col">
-				<div class="noise"></div>
-				<slot />
-			</main>
+      <main id="main" class="z-10 flex flex-1 flex-col">
+        <slot />
+      </main>
 
-			<hr class="border-astro-gray-500" />
+      <hr class="border-astro-gray-500" />
 
-			<div class="noise-container">
-				<div class="noise"></div>
-				<Footer />
-			</div>
-		</div>
-		<style>
-			:root.disclosure-open {
-				overflow-y: hidden;
-			}
+      <Footer />
+    </div>
+    <style>
+      :root.disclosure-open {
+        overflow-y: hidden;
+      }
 
-			:root.disclosure-open #nav {
-				overflow-y: auto;
-			}
-		</style>
-	</body>
+      :root.disclosure-open #nav {
+        overflow-y: auto;
+      }
+    </style>
+  </body>
 </html>

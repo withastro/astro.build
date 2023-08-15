@@ -12,14 +12,14 @@ import ThemeCard from "../_components/ThemeCard.astro"
 import ThemeStats from "../_components/ThemeStats.astro"
 
 export async function getStaticPaths() {
-	const themes = await getCollection("themes")
+  const themes = await getCollection("themes")
 
-	return themes.map((theme) => {
-		return {
-			params: { slug: theme.slug },
-			props: { theme },
-		}
-	})
+  return themes.map((theme) => {
+    return {
+      params: { slug: theme.slug },
+      props: { theme },
+    }
+  })
 }
 
 const { theme } = Astro.props as { theme: CollectionEntry<"themes"> }
@@ -30,89 +30,88 @@ const images = await resolveAllImages(theme)
 ---
 
 <MainLayout
-	title={theme.data.title}
-	description={theme.data.description}
-	image={{ src: images[0].fullImage.src, alt: theme.data.title }}
+  title={theme.data.title}
+  description={theme.data.description}
+  image={{ src: images[0].fullImage.src, alt: theme.data.title }}
 >
-	<div class="grid-container gap-y-0">
-		{
-			images.length > 1 ? (
-				<ImageGallery
-					images={images}
-					class="bleed-full mx-auto w-full"
-					style="max-width: var(--container-width, 1280px)"
-				/>
-			) : (
-				<img
-					src={images[0].fullImage.src}
-					width={images[0].fullImage.width}
-					height={(images[0].fullImage.width * 7) / 16}
-					alt=""
-					class="mx-auto aspect-video max-w-full object-cover object-top"
-					decoding="async"
-				/>
-			)
-		}
-		<div class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x">
-			<section class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:px-20 lg:py-10">
-				<a
-					href="/themes/"
-					rel="prefetch"
-					class="flex items-center gap-2 self-start text-sm text-astro-gray-200"
-				>
-					<LeftArrowIcon aria-hidden="true" />
-					<span class="pr-2">Back to themes</span>
-				</a>
-				<div>
-					<h1 class="heading-3 mb-4 sm:heading-2">{theme.data.title}</h1>
-					<p class="text-lg text-astro-gray-200 lg:text-xl">{theme.data.description}</p>
-					<ThemeCTAs theme={theme} class="py-6 md:hidden" />
-					<hr class="border-astro-gray-500 md:hidden" />
-					<ThemeStats theme={theme} class="py-4 md:hidden" />
-				</div>
-				<hr class="hidden border-astro-gray-500 md:block" />
-				<article class="prose">
-					<Content />
-				</article>
-			</section>
+  <div class="grid-container gap-y-0">
+    {
+      images.length > 1 ? (
+        <ImageGallery
+          images={images}
+          class="bleed-full mx-auto w-full"
+          style="max-width: var(--container-width, 1280px)"
+        />
+      ) : (
+        <img
+          src={images[0].fullImage.src}
+          width={images[0].fullImage.width}
+          height={(images[0].fullImage.width * 7) / 16}
+          alt=""
+          class="mx-auto aspect-video max-w-full object-cover object-top"
+          decoding="async"
+        />
+      )
+    }
+    <div class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x">
+      <section class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:px-20 lg:py-10">
+        <a
+          href="/themes/"
+          rel="prefetch"
+          class="flex items-center gap-2 self-start text-sm text-astro-gray-200"
+        >
+          <LeftArrowIcon aria-hidden="true" />
+          <span class="pr-2">Back to themes</span>
+        </a>
+        <div>
+          <h1 class="heading-3 mb-4 sm:heading-2">{theme.data.title}</h1>
+          <p class="text-lg text-astro-gray-200 lg:text-xl">{theme.data.description}</p>
+          <ThemeCTAs theme={theme} class="py-6 md:hidden" />
+          <hr class="border-astro-gray-500 md:hidden" />
+          <ThemeStats theme={theme} class="py-4 md:hidden" />
+        </div>
+        <hr class="hidden border-astro-gray-500 md:block" />
+        <article class="prose">
+          <Content />
+        </article>
+      </section>
 
-			<aside
-				class="hidden w-full divide-y divide-astro-gray-500 border-astro-gray-500 md:block md:max-w-md md:border-l"
-			>
-				<ThemeCTAs theme={theme} class="p-6 lg:p-8 xl:p-10" />
-				<hr class="border-astro-gray-500" />
-				<ThemeStats theme={theme} class="p-6 lg:p-8 xl:p-10" />
-			</aside>
-		</div>
-		<div class="related bleed-full relative border-t border-astro-gray-500">
-			<div class="grid-container gap-y-10 pb-0 pt-20">
-				<CardGridGroup
-					title="Other themes to consider"
-					cta={{ href: "/themes/", text: "View more themes" }}
-				>
-					<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
-						{relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
-					</CardGrid>
-				</CardGridGroup>
-			</div>
-		</div>
-	</div>
+      <aside
+        class="hidden w-full divide-y divide-astro-gray-500 border-astro-gray-500 md:block md:max-w-md md:border-l"
+      >
+        <ThemeCTAs theme={theme} class="p-6 lg:p-8 xl:p-10" />
+        <hr class="border-astro-gray-500" />
+        <ThemeStats theme={theme} class="p-6 lg:p-8 xl:p-10" />
+      </aside>
+    </div>
+    <div class="related bleed-full relative border-t border-astro-gray-500">
+      <div class="grid-container gap-y-10 pb-0 pt-20">
+        <CardGridGroup
+          title="Other themes to consider"
+          cta={{ href: "/themes/", text: "View more themes" }}
+        >
+          <CardGrid class="md:grid-cols-2 lg:grid-cols-3">
+            {relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
+          </CardGrid>
+        </CardGridGroup>
+      </div>
+    </div>
+  </div>
 
-	<style>
-		.grid-container :global(picture) {
-			@apply mx-auto w-full;
-			grid-column: 1 / -1;
-			max-width: var(--container-width, 1280px);
-		}
+  <style>
+    .grid-container :global(picture) {
+      @apply mx-auto w-full;
+      grid-column: 1 / -1;
+      max-width: var(--container-width, 1280px);
+    }
 
-		.related::before {
-			@apply absolute aspect-square w-full bg-repeat;
-			content: "";
-			background-size: 20px 20px;
-			background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
-				linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
-			mask-image: linear-gradient(to bottom, white, transparent);
-			z-index: -1;
-		}
-	</style>
+    .related::before {
+      @apply absolute z-grid aspect-square w-full bg-repeat;
+      content: "";
+      background-size: 20px 20px;
+      background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
+      mask-image: linear-gradient(to bottom, white, transparent);
+    }
+  </style>
 </MainLayout>

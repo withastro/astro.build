@@ -2,32 +2,31 @@
 import MenuIcon from "~/icons/MenuIcon.jsx"
 ---
 
-<header class="noise-container shadow-lg">
-	<div class="noise"></div>
-	<nav aria-label="Primary" class="container flex h-header items-center">
-		<slot />
-		<button id="astro-header-drawer-button" type="button" class="link ml-6 lg:hidden">
-			<MenuIcon class="w-6" />
-			<span class="sr-only">Show Menu</span>
-		</button>
-	</nav>
-	<div
-		id="astro-header-drawer"
-		class="-translate-x-4 border-t border-astro-gray-500 opacity-0 transition data-[open]:translate-x-0 data-[open]:opacity-100"
-		style="display: none;"
-	>
-		<slot name="drawer" />
-	</div>
+<header class="shadow-lg">
+  <nav aria-label="Primary" class="container flex h-header items-center">
+    <slot />
+    <button id="astro-header-drawer-button" type="button" class="link ml-6 lg:hidden">
+      <MenuIcon class="w-6" />
+      <span class="sr-only">Show Menu</span>
+    </button>
+  </nav>
+  <div
+    id="astro-header-drawer"
+    class="-translate-x-4 border-t border-astro-gray-500 opacity-0 transition data-[open]:translate-x-0 data-[open]:opacity-100"
+    style="display: none;"
+  >
+    <slot name="drawer" />
+  </div>
 </header>
 
 <script>
-	import { createDisclosure } from "~/helpers/disclosure.js"
+  import { createDisclosure } from "~/helpers/disclosure.js"
 
-	createDisclosure({
-		button: document.querySelector("#astro-header-drawer-button") as HTMLElement,
-		content: document.querySelector("#astro-header-drawer") as HTMLElement,
-		animated: true,
-		/** matches the `lg:hidden` class above */
-		closeAt: 1024,
-	})
+  createDisclosure({
+    button: document.querySelector("#astro-header-drawer-button") as HTMLElement,
+    content: document.querySelector("#astro-header-drawer") as HTMLElement,
+    animated: true,
+    /** matches the `lg:hidden` class above */
+    closeAt: 1024,
+  })
 </script>

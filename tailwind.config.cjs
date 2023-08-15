@@ -68,9 +68,8 @@ module.exports = {
 			},
 			zIndex: {
 				"white-button-fill": -1,
-				noise: -2,
+				blur: -2,
 				grid: -3,
-				blur: -4,
 			},
 		},
 	},
@@ -213,33 +212,6 @@ module.exports = {
 					"@apply py-2 leading-normal": {},
 				},
 
-				".noise-container": {
-					position: "relative",
-					isolation: "isolate",
-					backgroundColor: theme("colors.astro-gray.700"),
-				},
-				".noise-underlay": {
-					zIndex: -30,
-					position: "relative",
-				},
-				".noise": {
-					zIndex: -20,
-					position: "absolute",
-					inset: 0,
-					backgroundImage: `url("/assets/noise.webp")`,
-					opacity: 0.4,
-					mixBlendMode: "overlay",
-					pointerEvents: "none",
-				},
-				".noise-panel": {
-					"@apply relative isolate border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
-					"&::before": {
-						"@apply absolute inset-0 opacity-40 mix-blend-overlay -z-20": {},
-						content: "''",
-						backgroundImage: `url("/assets/noise.webp")`,
-					},
-				},
-
 				".landing-section": {
 					"@apply flex flex-col items-center justify-center overflow-visible text-center": {},
 				},
@@ -254,9 +226,14 @@ module.exports = {
 					)} 1px, transparent 1px)`,
 					backgroundPosition: "top center",
 					imageRendering: "pixelated",
+					zIndex: theme("z.grid"),
 
 					// https://stackoverflow.com/a/9670876/1332403
 					maskImage: `linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)`,
+				},
+
+				".panel": {
+					"@apply border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
 				},
 			})
 		}),
