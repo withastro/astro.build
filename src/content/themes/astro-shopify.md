@@ -12,8 +12,8 @@ author:
 categories:
   - "ecommerce"
 repoUrl: "https://github.com/thomasKn/astro-shopify"
-demoUrl: "https://astro-shopify.gatto.dev"
-stars: 100
+demoUrl: "https://astro-shopify.frontvibe.com/"
+stars: 104
 tools:
   - "tailwind"
   - "svelte"

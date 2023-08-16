@@ -4,10 +4,8 @@ title: "astro-browser-sync"
 description: "Integrate BrowserSync into Astro."
 categories:
   - "css+ui"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-browser-sync"
 repoUrl: "https://github.com/ACP-CODE/astro-browser-sync"
 homepageUrl: "https://github.com/ACP-CODE/astro-browser-sync#readme"
-downloads: 176
-badge: "new"
+downloads: 184
 ---

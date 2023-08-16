@@ -6,6 +6,7 @@ categories:
   - "css+ui"
   - "performance+seo"
 npmUrl: "https://www.npmjs.com/package/astro-rome"
+image: "/assets/integrations/astro-rome.svg"
 repoUrl: "https://github.com/astro-community/astro-rome"
 homepageUrl: "https://github.com/astro-community/astro-rome#readme"
 downloads: 5071

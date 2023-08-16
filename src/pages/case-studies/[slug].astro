@@ -49,7 +49,7 @@ const authors = await Promise.all(
 >
 	<div
 		class="noise-underlay -mb-56 h-64 w-full opacity-[0.85] md:-mb-52 md:h-64 lg:-mb-80 lg:h-96"
-		style="background-image: linear-gradient(120deg,#6CE486 0%,#4783B5 100%);"
+		style={`background-image: linear-gradient(120deg,${data.coverGradientFrom} 0%,${data.coverGradientTo} 100%);`}
 	>
 	</div>
 	{
@@ -61,7 +61,7 @@ const authors = await Promise.all(
 				loading="lazy"
 				decoding="async"
 				alt=""
-				class="mx-auto mb-20 mt-8 max-w-full px-8"
+				class="mx-auto mb-20 mt-8 max-w-full object-contain px-8"
 			/>
 		)
 	}

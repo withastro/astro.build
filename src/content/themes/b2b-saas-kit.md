@@ -1,7 +1,6 @@
 ---
 title: "B2B SaaS Kit"
-description: "B2B SaaS Kit helps teams build applications, not just landing pages, using
-  technologies like React Router, tRPC, Drizzle ORM, auth and payments."
+description: "B2B SaaS Kit helps teams build applications, not just landing pages, using technologies like React Router, tRPC, Drizzle ORM, auth and payments."
 image: "/src/content/themes/_images/b2b-saas-kit-hero.webp"
 images:
   - "/src/content/themes/_images/b2b-saas-kit-2.webp"
@@ -16,7 +15,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/fogbender/b2b-saaskit"
 demoUrl: "https://b2bsaaskit.com/"
-stars: 193
+stars: 225
 tools:
   - "react"
   - "tailwind"

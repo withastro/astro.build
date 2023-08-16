@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@mcpronovost/nx-auth"
 homepageUrl: "https://www.npmjs.com/package/@mcpronovost/nx-auth"
-downloads: 75
+downloads: 94
 badge: "new"
 ---

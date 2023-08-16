@@ -1,0 +1,92 @@
+---
+title: "Release Content Faster"
+description: "How Firebase Cut Blog Publishing From Hours to Minutes with Astro"
+seo:
+  title: "Release Content Faster: How Firebase Cut Blog Publishing From Hours to Minutes with Astro"
+  description: "How Firebase, a Google-backed company, used Astro to improve their blog performance by 71%."
+coverGradientFrom: "#3245FF"
+coverGradientTo: "#BC52EE"
+publishDate: "August 11, 2023"
+authors:
+  - astro-team
+lang: "en"
+socialImage: /src/content/blog/_images/firebase/social-image.webp
+coverImage: /src/content/blog/_images/firebase/cover-image.webp
+headerImage: /src/content/blog/_images/firebase/header.webp
+---
+
+import lighthouseScoreComparison from "./firebase-lighthouse-before-after.webp"
+import videoSrc from "./firebase-blog-animation.mp4"
+import partialHydration from "./partial-hydration.webp"
+import firebaseFeatures from "./firebase-features.webp"
+import BlogContentImage from "~/components/BlogContentImage.astro"
+import ImageFigure from "~/components/ImageFigure.astro"
+import Blockquote from "~/components/Blockquote.astro"
+
+<div class="text-white space-y-8">
+	<div class="text-2xl leading-normal tracking-normal text-astro-gray-100">
+		[Firebase](https://firebase.google.com/) is a mobile and web application development platform. It allows users to easily
+         prototype and scale their applications without having to worry about individual backend services. 
+         Backed by Google, Firebase is trusted by millions of businesses to abstract away backend 
+         infrastructure so users can focus on the core aspects of their day-to-day business.
+	</div>
+
+Having an accessible blog is important to Firebase so that users can stay up-to-date with the latest news and announcements. Astro was able to help Firebase rebuild their blog for 71% performance increase and a decrease in publishing time from hours to minutes.
+
+</div>
+
+<ImageFigure caption="Lighthouse scores for Firebase blog.">
+	<BlogContentImage src={lighthouseScoreComparison} />
+</ImageFigure>
+
+## Challenges
+
+Firebase's team of 10 developers used to host their blog on Blogger. With this CMS, they had to first write a blog post in Google Docs and then convert the draft to a Blogger document. Even a short blog post could easily result in an hour of work before publishing.
+
+The editing experience in Blogger was also problematic:
+
+1. Images and other interactive components required developers to handcraft the HTML.
+2. Blogger did not have profile images. You had to insert HTML and CSS to represent a profile image directly into the blog post.
+3. At times, you could not fix something even if you knew what was wrong! For example, accessibility improvements were hard to control in Blogger. This resulted in a sub-par experience for users.
+
+## Requirements
+
+According to David East, lead engineer on the blog team at Firebase, Firebase required a tool with a modern developer experience. They wanted to maintain a more performant blog and publish blogs faster with less friction on a collaborative developer team of 10.
+
+<ImageFigure caption="Partial hydration.">
+	<BlogContentImage src={partialHydration} />
+</ImageFigure>
+
+## Solution and Implementation
+
+With Astro, new team members are able to get set up within 30 minutes thanks to the docs.
+
+<Blockquote>
+	<Fragment slot="quote">
+		Docs were phenomenal. What I do think was super helpful is that Astro does a very good job of
+		being very strong on convention. So when you’re trying to use it for the job it’s meant for,
+		it’s just painfully clear what you’re doing. You’re never worried the chair will be pulled out
+		from underneath you. You can always develop on these assumptions.
+	</Fragment>
+	<Fragment slot="caption">— David East, Lead Engineer @ Firebase (Blog)</Fragment>
+</Blockquote>
+
+The Firebase developers were also able to achieve complex and accessible animations with Astro - a feat they could not have done with Blogger due to its limited templating. As an example, the team wanted to create the slice animation that’s on the Firebase blog homepage. However, this slice animation is extremely difficult to create on the web today. Instead, you have to take identical pieces of content on top of each other and remove certain sections on animation, like a curtain. Screen readers will try to read and tab through hidden content which is confusing for users. Firebase was able to build this animation accessibly due to Astro’s flexibility.
+
+<figure class="my-10">
+	<video controls class="rounded border border-neutral-600">
+		<source src={videoSrc} type="video/mp4" />
+		Sorry, your browser doesn't support embedded videos.
+	</video>
+	<figcaption class="my-4 text-center text-sm">Layered yellow slice animation.</figcaption>
+</figure>
+
+The parts of the migration related to Astro went quickly. They saw improvements just by being able to take their Google Doc content, converting it to Markdown using a plugin, and then pasting it into an Astro document. Most of the project time was actually spent on perfecting the design of the blog along with building the proof-of-concept itself.
+
+## Results
+
+By switching from Blogger to Astro, the time needed to publish a standard blog post went from hours to minutes. It also used to take them 6 minutes to generate a full site with GitHub Actions. Now, build time with GitHub Actions averages 1.5 minutes, an overall build time reduction of 75%.
+
+<ImageFigure caption="Firebase's backend features.">
+	<BlogContentImage src={firebaseFeatures} />
+</ImageFigure>
