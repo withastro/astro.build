@@ -217,18 +217,11 @@ module.exports = {
 				},
 
 				".bg-grid": {
-					// https://stackoverflow.com/a/32861765/1332403
-					backgroundSize: "20px 20px",
-					backgroundImage: `linear-gradient(to right, ${theme(
-						"colors.astro-gray.600",
-					)} 1px, transparent 1px),\n    linear-gradient(to bottom, ${theme(
-						"colors.astro-gray.600",
-					)} 1px, transparent 1px)`,
-					backgroundPosition: "top center",
-					imageRendering: "pixelated",
-					zIndex: theme("z.grid"),
+					backgroundSize: "100px 100px",
+					zIndex: theme("zIndex.grid"),
+					backgroundImage: `url("/assets/bg-grid.png")`,
+					backgroundPositionY: "-9px",
 
-					// https://stackoverflow.com/a/9670876/1332403
 					maskImage: `linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)`,
 				},
 
