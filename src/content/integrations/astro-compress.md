@@ -9,7 +9,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-compress"
 image: "/assets/integrations/astro-compress.svg"
 repoUrl: "https://github.com/astro-community/astro-compress"
-featured: 1
+featured: 2
 homepageUrl: "https://github.com/astro-community/astro-compress#readme"
 downloads: 54091
 badges:
