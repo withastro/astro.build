@@ -14,31 +14,31 @@ const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== "production" && process.env
 
 // https://astro.build/config
 export default defineConfig({
-	site: NETLIFY_PREVIEW_SITE || "https://astro.build",
-	integrations: [
-		image({
-			serviceEntryPoint: "@astrojs/image/sharp",
-		}),
-		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
-		}),
-		solidJs(),
-		mdx(),
-		sitemap(),
-		prefetch(),
-	],
-	markdown: {
-		shikiConfig: {
-			theme: JSON.parse(fs.readFileSync("./houston.theme.json", { encoding: "utf-8" })),
-		},
-	},
-	vite: {
-		ssr: {
-			noExternal: ["smartypants"],
-		},
-	},
-	output: "server",
-	adapter: netlify(),
+  site: NETLIFY_PREVIEW_SITE || "https://astro.build",
+  integrations: [
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+    tailwind({
+      config: {
+        applyBaseStyles: false
+      }
+    }),
+    solidJs(),
+    mdx(),
+    sitemap(),
+    prefetch(),
+  ],
+  markdown: {
+    shikiConfig: {
+      theme: JSON.parse(fs.readFileSync("./houston.theme.json", { encoding: "utf-8" })),
+    },
+  },
+  vite: {
+    ssr: {
+      noExternal: ["smartypants"],
+    },
+  },
+  output: "server",
+  adapter: netlify(),
 })
