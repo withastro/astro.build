@@ -22,7 +22,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ["InterVariable", "sans-serif"],
-				mono: [`"MD IO 0.5"`, "md-io-fallback", "monospace"],
+				mono: [`"MDIO"`, "md-io-fallback", "monospace"],
 				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
 				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},

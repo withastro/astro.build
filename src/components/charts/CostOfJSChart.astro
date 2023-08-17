@@ -5,66 +5,66 @@ import CardLabel from "../CardLabel.astro"
 ---
 
 <Card className="mx-auto max-w-2xl">
-	<CardBody>
-		<CardLabel>Median KB of JavaScript vs. % Sites Passing CWV</CardLabel>
-		<canvas id="chart-cost-of-js"></canvas>
-	</CardBody>
+  <CardBody>
+    <CardLabel>Median KB of JavaScript vs. % Sites Passing CWV</CardLabel>
+    <canvas id="chart-cost-of-js"></canvas>
+  </CardBody>
 </Card>
 
 <script>
-	import Chart from "chart.js/auto"
+  import Chart from "chart.js/auto"
 
-	Chart.defaults.borderColor = "#545864"
-	Chart.defaults.color = "#bdbfc7"
-	Chart.defaults.font.family = '"MD IO 0.5", monospace'
-	const data = [
-		{ framework: "Astro", cwv: 0.669584245076586, js: 277.4091796875 },
-		{ framework: "SvelteKit", cwv: 0.450248756218906, js: 323.98828125 },
-		{ framework: "Gatsby", cwv: 0.393826359606444, js: 845.80859375 },
-		{ framework: "Remix", cwv: 0.358208955223881, js: 568.810546875 },
-		{ framework: "Next.js", cwv: 0.274950529624025, js: 884.6689453125 },
-		{ framework: "Nuxt", cwv: 0.202006248273224, js: 928.47265625 },
-		// { framework: "Wordpress", cwv: 0.303861022955256, js: 515.69 },
-	]
+  Chart.defaults.borderColor = "#545864"
+  Chart.defaults.color = "#bdbfc7"
+  Chart.defaults.font.family = '"MDIO", monospace'
+  const data = [
+    { framework: "Astro", cwv: 0.669584245076586, js: 277.4091796875 },
+    { framework: "SvelteKit", cwv: 0.450248756218906, js: 323.98828125 },
+    { framework: "Gatsby", cwv: 0.393826359606444, js: 845.80859375 },
+    { framework: "Remix", cwv: 0.358208955223881, js: 568.810546875 },
+    { framework: "Next.js", cwv: 0.274950529624025, js: 884.6689453125 },
+    { framework: "Nuxt", cwv: 0.202006248273224, js: 928.47265625 },
+    // { framework: "Wordpress", cwv: 0.303861022955256, js: 515.69 },
+  ]
 
-	new Chart(document.getElementById("chart-cost-of-js") as HTMLCanvasElement, {
-		type: "bubble",
-		options: {
-			plugins: {
-				legend: {
-					// display: false,
-					position: "left",
-				},
-			},
-			scales: {
-				y: {
-					// max: 1,
-					// min: 0.0,
-					ticks: {
-						format: {
-							style: "percent",
-							minimumFractionDigits: 0,
-							maximumFractionDigits: 1,
-						},
-					},
-				},
-			},
-		},
-		data: {
-			datasets: data.map((row, i) => ({
-				label: row.framework,
-				data: [{ x: row.js, y: row.cwv, r: 10 }],
-				backgroundColor: [
-					"#4bc77e",
-					// "#3abbb3",
-					"#4861ec",
-					"#ec9b22",
-					"#fe6a6a",
-					"#47cfed",
-					"#ffe589",
-					"#ef4e88",
-				][i],
-			})),
-		},
-	})
+  new Chart(document.getElementById("chart-cost-of-js") as HTMLCanvasElement, {
+    type: "bubble",
+    options: {
+      plugins: {
+        legend: {
+          // display: false,
+          position: "left",
+        },
+      },
+      scales: {
+        y: {
+          // max: 1,
+          // min: 0.0,
+          ticks: {
+            format: {
+              style: "percent",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 1,
+            },
+          },
+        },
+      },
+    },
+    data: {
+      datasets: data.map((row, i) => ({
+        label: row.framework,
+        data: [{ x: row.js, y: row.cwv, r: 10 }],
+        backgroundColor: [
+          "#4bc77e",
+          // "#3abbb3",
+          "#4861ec",
+          "#ec9b22",
+          "#fe6a6a",
+          "#47cfed",
+          "#ffe589",
+          "#ef4e88",
+        ][i],
+      })),
+    },
+  })
 </script>
