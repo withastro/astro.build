@@ -2,20 +2,20 @@
 import SidebarPanel, { type Props as PanelProps } from "./SidebarPanel.astro"
 
 export type Props = Omit<PanelProps, "slot"> & {
-	title: string
-	cta: {
-		href: string
-		text: string
-	}
+  title: string
+  cta: {
+    href: string
+    text: string
+  }
 }
 
-const { title, body, cta, ...attrs } = Astro.props
+const { title, cta, ...attrs } = Astro.props
 ---
 
 <SidebarPanel alt {...attrs}>
-	<h2 class="heading-4">{title}</h2>
-	<p class="mb-6 mt-2">
-		<slot />
-	</p>
-	<a href={cta.href} class="button button-primary w-full">{cta.text}</a>
+  <h2 class="heading-4">{title}</h2>
+  <p class="mb-6 mt-2">
+    <slot />
+  </p>
+  <a href={cta.href} class="button button-primary w-full">{cta.text}</a>
 </SidebarPanel>
