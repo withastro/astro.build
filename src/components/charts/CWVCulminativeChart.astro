@@ -5,68 +5,68 @@ import CardLabel from "../CardLabel.astro"
 ---
 
 <Card className="mx-auto max-w-2xl">
-  <CardBody>
-    <CardLabel>% Sites Passing CWV</CardLabel>
-    <canvas id="chart-cwv-culminative"></canvas>
-  </CardBody>
+	<CardBody>
+		<CardLabel>% Sites Passing CWV</CardLabel>
+		<canvas id="chart-cwv-culminative"></canvas>
+	</CardBody>
 </Card>
 
 <script>
-  import Chart from "chart.js/auto"
+	import Chart from "chart.js/auto"
 
-  Chart.defaults.borderColor = "#545864"
-  Chart.defaults.color = "#bdbfc7"
-  Chart.defaults.font.family = '"MDIO", monospace'
-  const data = [
-    { framework: "Astro", val: 0.669584245076586 },
-    { framework: "SvelteKit", val: 0.450248756218906 },
-    // { framework: "All Websites", val: 0.405 },
-    { framework: "Gatsby", val: 0.393826359606444 },
-    { framework: "Remix", val: 0.358208955223881 },
-    { framework: "WordPress", val: 0.303861022955256 },
-    { framework: "Next.js", val: 0.274950529624025 },
-    { framework: "Nuxt", val: 0.202006248273224 },
-  ]
+	Chart.defaults.borderColor = "#545864"
+	Chart.defaults.color = "#bdbfc7"
+	Chart.defaults.font.family = '"MDIO", monospace'
+	const data = [
+		{ framework: "Astro", val: 0.669584245076586 },
+		{ framework: "SvelteKit", val: 0.450248756218906 },
+		// { framework: "All Websites", val: 0.405 },
+		{ framework: "Gatsby", val: 0.393826359606444 },
+		{ framework: "Remix", val: 0.358208955223881 },
+		{ framework: "WordPress", val: 0.303861022955256 },
+		{ framework: "Next.js", val: 0.274950529624025 },
+		{ framework: "Nuxt", val: 0.202006248273224 },
+	]
 
-  new Chart(document.getElementById("chart-cwv-culminative") as HTMLCanvasElement, {
-    type: "bar",
-    options: {
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-      scales: {
-        y: {
-          max: 1,
-          ticks: {
-            format: {
-              style: "percent",
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 1,
-            },
-          },
-        },
-      },
-    },
-    data: {
-      labels: data.map((row) => row.framework),
-      datasets: [
-        {
-          label: "% Sites Passing CWV",
-          data: data.map((row) => row.val),
-          backgroundColor: [
-            "#5283EE",
-            "#5283EE",
-            "#5283EE",
-            "#5283EE",
-            "#66666A",
-            "#5283EE",
-            "#5283EE",
-          ],
-          barPercentage: 0.5,
-        },
-      ],
-    },
-  })
+	new Chart(document.getElementById("chart-cwv-culminative") as HTMLCanvasElement, {
+		type: "bar",
+		options: {
+			plugins: {
+				legend: {
+					display: false,
+				},
+			},
+			scales: {
+				y: {
+					max: 1,
+					ticks: {
+						format: {
+							style: "percent",
+							minimumFractionDigits: 0,
+							maximumFractionDigits: 1,
+						},
+					},
+				},
+			},
+		},
+		data: {
+			labels: data.map((row) => row.framework),
+			datasets: [
+				{
+					label: "% Sites Passing CWV",
+					data: data.map((row) => row.val),
+					backgroundColor: [
+						"#5283EE",
+						"#5283EE",
+						"#5283EE",
+						"#5283EE",
+						"#66666A",
+						"#5283EE",
+						"#5283EE",
+					],
+					barPercentage: 0.5,
+				},
+			],
+		},
+	})
 </script>
