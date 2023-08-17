@@ -5,58 +5,58 @@ import CardLabel from "../CardLabel.astro"
 ---
 
 <Card className="mx-auto max-w-2xl">
-  <CardBody>
-    <CardLabel>Lighthouse Performance Score, Breakdown</CardLabel>
-    <canvas id="chart-lighthouse-percentile"></canvas>
-  </CardBody>
+	<CardBody>
+		<CardLabel>Lighthouse Performance Score, Breakdown</CardLabel>
+		<canvas id="chart-lighthouse-percentile"></canvas>
+	</CardBody>
 </Card>
 
 <script>
-  import Chart from "chart.js/auto"
+	import Chart from "chart.js/auto"
 
-  const data = [
-    { framework: "Astro", val: [0.44, 0.65, 0.87, 0.98, 0.99] },
-    { framework: "SvelteKit", val: [0.3275, 0.52, 0.73, 0.89, 0.9] },
-    { framework: "Gatsby", val: [0.18, 0.32, 0.55, 0.68, 0.78] },
-    { framework: "Remix", val: [0.29, 0.46, 0.5925, 0.8, 0.87] },
-    { framework: "Next.js", val: [0.19, 0.3, 0.47, 0.63, 0.73] },
-    { framework: "Nuxt", val: [0.16, 0.25, 0.37, 0.54, 0.64] },
-  ]
+	const data = [
+		{ framework: "Astro", val: [0.44, 0.65, 0.87, 0.98, 0.99] },
+		{ framework: "SvelteKit", val: [0.3275, 0.52, 0.73, 0.89, 0.9] },
+		{ framework: "Gatsby", val: [0.18, 0.32, 0.55, 0.68, 0.78] },
+		{ framework: "Remix", val: [0.29, 0.46, 0.5925, 0.8, 0.87] },
+		{ framework: "Next.js", val: [0.19, 0.3, 0.47, 0.63, 0.73] },
+		{ framework: "Nuxt", val: [0.16, 0.25, 0.37, 0.54, 0.64] },
+	]
 
-  new Chart(document.getElementById("chart-lighthouse-percentile") as HTMLCanvasElement, {
-    type: "bar",
-    options: {
-      color: "#bdbfc7",
-      borderColor: "#545864",
-      font: {
-        family: '"MDIO", monospace',
-      },
-      plugins: {
-        legend: {
-          align: "end",
-        },
-      },
-      scales: {
-        y: {
-          max: 1,
-          ticks: {
-            format: {
-              style: "percent",
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 1,
-            },
-          },
-        },
-      },
-    },
-    data: {
-      labels: data.map((row) => row.framework),
-      datasets: ["p25", "p50, median", "p75", "p90", "p95"].map((label, i) => ({
-        label,
-        data: data.map((row) => row.val[i]),
-        backgroundColor: ["#BC52EE", "#83EE52", "#EEBD52", "#EE5289", "#5283EE"][i],
-        barPercentage: 0.5,
-      })),
-    },
-  })
+	new Chart(document.getElementById("chart-lighthouse-percentile") as HTMLCanvasElement, {
+		type: "bar",
+		options: {
+			color: "#bdbfc7",
+			borderColor: "#545864",
+			font: {
+				family: '"MDIO", monospace',
+			},
+			plugins: {
+				legend: {
+					align: "end",
+				},
+			},
+			scales: {
+				y: {
+					max: 1,
+					ticks: {
+						format: {
+							style: "percent",
+							minimumFractionDigits: 0,
+							maximumFractionDigits: 1,
+						},
+					},
+				},
+			},
+		},
+		data: {
+			labels: data.map((row) => row.framework),
+			datasets: ["p25", "p50, median", "p75", "p90", "p95"].map((label, i) => ({
+				label,
+				data: data.map((row) => row.val[i]),
+				backgroundColor: ["#BC52EE", "#83EE52", "#EEBD52", "#EE5289", "#5283EE"][i],
+				barPercentage: 0.5,
+			})),
+		},
+	})
 </script>
