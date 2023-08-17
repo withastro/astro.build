@@ -78,8 +78,6 @@ module.exports = {
 		container: false,
 	},
 	plugins: [
-		require("@tailwindcss/line-clamp"),
-
 		// adds a `s-*` utility to apply the same width and height
 		plugin(function sizePlugin(api) {
 			api.matchUtilities(
