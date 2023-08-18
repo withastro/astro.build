@@ -9,101 +9,101 @@ import Layout from "~/layouts/MainLayout.astro"
 import BlogPostPreview from "./_components/BlogPostPreview.astro"
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const posts = [...(await getCollection("blog")), ...(await getCollection("caseStudies"))]
+	const posts = [...(await getCollection("blog")), ...(await getCollection("caseStudies"))]
 
-  const sortedPosts = posts.sort(
-    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
-  )
+	const sortedPosts = posts.sort(
+		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+	)
 
-  return paginate(sortedPosts, { pageSize: 12 })
+	return paginate(sortedPosts, { pageSize: 12 })
 }
 
 const { page } = Astro.props as {
-  page: Page<CollectionEntry<"blog"> | CollectionEntry<"caseStudies">>
+	page: Page<CollectionEntry<"blog"> | CollectionEntry<"caseStudies">>
 }
 
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
-  return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`
+	return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`
 })
 
 const allPosts = await getCollection("blog")
 
 const featuredPosts = [
-  "astro-2",
-  "introducing-content-collections",
-  "astro-webstorm-support",
-  "hybrid-rendering",
+	"astro-2",
+	"introducing-content-collections",
+	"astro-webstorm-support",
+	"hybrid-rendering",
 ]
-  .map((slug) => allPosts.find((post) => post.slug === slug))
-  .filter(Boolean) as CollectionEntry<"blog">[]
+	.map((slug) => allPosts.find((post) => post.slug === slug))
+	.filter(Boolean) as CollectionEntry<"blog">[]
 ---
 
 <Layout
-  title="The Astro Blog"
-  description="Get all the latest news from the Astroverse."
-  image={{ src: "/og/blog.jpg", alt: "What’s new in the Astro ecosystem" }}
+	title="The Astro Blog"
+	description="Get all the latest news from the Astroverse."
+	image={{ src: "/og/blog.jpg", alt: "What’s new in the Astro ecosystem" }}
 >
-  <div class="lg:py-18 grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
-    <div class="bleed-full bg-grid absolute inset-0"></div>
-    <div class="relative flex flex-col items-center gap-6 text-center">
-      <h1 class="heading-2 mx-auto max-w-screen-lg md:heading-1">Welcome, world</h1>
-      <p class="body text-astro-gray-200 md:body-large">
-        Get all the latest news from the Astroverse.
-      </p>
-    </div>
-  </div>
+	<div class="lg:py-18 grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
+		<div class="bleed-full bg-grid absolute inset-0"></div>
+		<div class="relative flex flex-col items-center gap-6 text-center">
+			<h1 class="heading-2 mx-auto max-w-screen-lg md:heading-1">Welcome, world</h1>
+			<p class="body text-astro-gray-200 md:body-large">
+				Get all the latest news from the Astroverse.
+			</p>
+		</div>
+	</div>
 
-  <SidebarLayout columnReverse>
-    <Fragment slot="sidebar">
-      <SidebarPanel>
-        <h2 class="code">Popular posts</h2>
+	<SidebarLayout columnReverse>
+		<Fragment slot="sidebar">
+			<SidebarPanel>
+				<h2 class="code">Popular posts</h2>
 
-        <ul class="mt-4 space-y-4">
-          {
-            featuredPosts.map((post) => (
-              <li>
-                <a
-                  class="body link-underline border-astro-pink-light text-lg text-astro-pink-light"
-                  href={`/blog/${post.slug}/`}
-                  rel="prefetch"
-                >
-                  {post?.data.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </SidebarPanel>
-      <SidebarPanel>
-        <h2 class="code">Subscribe</h2>
-        <p class="body mb-6 mt-4 text-astro-gray-200">
-          Stay up-to-date with news from the Astroverse
-        </p>
-        <a href="/rss.xml" class="button button-sm">
-          <RSSIcon aria-hidden="true" />
-          <span class="code">RSS</span>
-        </a>
-      </SidebarPanel>
-    </Fragment>
+				<ul class="mt-4 space-y-4">
+					{
+						featuredPosts.map((post) => (
+							<li>
+								<a
+									class="body link-underline border-astro-pink-light text-lg text-astro-pink-light"
+									href={`/blog/${post.slug}/`}
+									rel="prefetch"
+								>
+									{post?.data.title}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</SidebarPanel>
+			<SidebarPanel>
+				<h2 class="code">Subscribe</h2>
+				<p class="body mb-6 mt-4 text-astro-gray-200">
+					Stay up-to-date with news from the Astroverse
+				</p>
+				<a href="/rss.xml" class="button button-sm">
+					<RSSIcon aria-hidden="true" />
+					<span class="code">RSS</span>
+				</a>
+			</SidebarPanel>
+		</Fragment>
 
-    <div class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20">
-      <ul class="flex max-w-screen-md flex-col gap-y-4 md:gap-y-6 lg:gap-y-8">
-        {
-          page.data.map((post) => (
-            <li>
-              <BlogPostPreview post={post} isCaseStudy={"isCaseStudy" in post.data} />
-            </li>
-          ))
-        }
-      </ul>
+		<div class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20">
+			<ul class="flex max-w-screen-md flex-col gap-y-4 md:gap-y-6 lg:gap-y-8">
+				{
+					page.data.map((post) => (
+						<li>
+							<BlogPostPreview post={post} isCaseStudy={"isCaseStudy" in post.data} />
+						</li>
+					))
+				}
+			</ul>
 
-      <Pagination restRoute allPages={allPages} page={page} class="mx-auto" />
-    </div>
-  </SidebarLayout>
+			<Pagination restRoute allPages={allPages} page={page} class="mx-auto" />
+		</div>
+	</SidebarLayout>
 </Layout>
 
 <style>
-  .bg-grid {
-    mask-image: linear-gradient(to bottom, white 0%, white 33%, transparent 90%);
-  }
+	.bg-grid {
+		mask-image: linear-gradient(to bottom, white 0%, white 33%, transparent 90%);
+	}
 </style>

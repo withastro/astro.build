@@ -7,14 +7,14 @@ import MainLayout from "~/layouts/MainLayout.astro"
 import FeaturesList from "./_components/FeaturesList.astro"
 
 export async function getStaticPaths() {
-  const careers = await getCollection("careers")
+	const careers = await getCollection("careers")
 
-  return careers.map((career) => {
-    return {
-      params: { slug: career.slug },
-      props: { career },
-    }
-  })
+	return careers.map((career) => {
+		return {
+			params: { slug: career.slug },
+			props: { career },
+		}
+	})
 }
 
 const { career } = Astro.props as { career: CollectionEntry<"careers"> }
@@ -24,55 +24,55 @@ const careersIntro = await getEntryBySlug("partials", "careers-astro-intro")
 const { Content: IntroContent } = await careersIntro.render()
 
 const createSEODescription = ({ team, type, location }: CollectionEntry<"careers">["data"]) =>
-  `${team}, ${type}, ${location} — Join the Astro Technology Company!`
+	`${team}, ${type}, ${location} — Join the Astro Technology Company!`
 ---
 
 <MainLayout
-  title={career.data.title}
-  description={createSEODescription(career.data)}
-  image={career.data.image}
+	title={career.data.title}
+	description={createSEODescription(career.data)}
+	image={career.data.image}
 >
-  <section class="noise-underlay mb-20 bg-blue-purple-gradient sm:mb-24 md:mb-28 lg:mb-32">
-    <div class="mx-auto flex max-w-screen-lg flex-col items-center pb-16 pt-24 text-center">
-      <p class="code">Posted {career.data.published.toDateString()}</p>
-      <h1 class="heading-3 pb-10 pt-3 sm:heading-2">{career.data.title}</h1>
-      <a class="button button-white" href="mailto:jobs@astro.build">Apply Now</a>
-    </div>
-    <footer class="border-t py-10">
-      <div class="container mx-auto flex max-w-screen-md items-center justify-between">
-        <div class="flex items-center gap-2">
-          <LocationIcon />
-          <span class="sm:body-large">{career.data.location}</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <UsersIcon />
-          <span class="sm:body-large">{career.data.team}</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <ClockIcon />
-          <span class="sm:body-large">{career.data.type}</span>
-        </div>
-      </div>
-    </footer>
-  </section>
+	<section class="noise-underlay mb-20 bg-blue-purple-gradient sm:mb-24 md:mb-28 lg:mb-32">
+		<div class="mx-auto flex max-w-screen-lg flex-col items-center pb-16 pt-24 text-center">
+			<p class="code">Posted {career.data.published.toDateString()}</p>
+			<h1 class="heading-3 pb-10 pt-3 sm:heading-2">{career.data.title}</h1>
+			<a class="button button-white" href="mailto:jobs@astro.build">Apply Now</a>
+		</div>
+		<footer class="border-t py-10">
+			<div class="container mx-auto flex max-w-screen-md items-center justify-between">
+				<div class="flex items-center gap-2">
+					<LocationIcon />
+					<span class="sm:body-large">{career.data.location}</span>
+				</div>
+				<div class="flex items-center gap-2">
+					<UsersIcon />
+					<span class="sm:body-large">{career.data.team}</span>
+				</div>
+				<div class="flex items-center gap-2">
+					<ClockIcon />
+					<span class="sm:body-large">{career.data.type}</span>
+				</div>
+			</div>
+		</footer>
+	</section>
 
-  <section class="grid-container">
-    <article class="prose">
-      <IntroContent />
+	<section class="grid-container">
+		<article class="prose">
+			<IntroContent />
 
-      <Content />
+			<Content />
 
-      <a href="mailto:jobs@astro.build" class="button button-primary mt-8 w-full">Apply Now</a>
-    </article>
+			<a href="mailto:jobs@astro.build" class="button button-primary mt-8 w-full">Apply Now</a>
+		</article>
 
-    <FeaturesList />
-  </section>
+		<FeaturesList />
+	</section>
 </MainLayout>
 
 <style>
-  @media (min-width: 640px) {
-    .button button-primary {
-      width: fit-content;
-    }
-  }
+	@media (min-width: 640px) {
+		.button button-primary {
+			width: fit-content;
+		}
+	}
 </style>

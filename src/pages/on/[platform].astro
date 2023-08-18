@@ -2,14 +2,14 @@
 import siteInfo, { type SocialLink } from "~/data/site-info.js"
 
 interface Props {
-  link: SocialLink
+	link: SocialLink
 }
 
 export function getStaticPaths() {
-  return siteInfo.socialLinks.map((link) => ({
-    params: { platform: link.platform },
-    props: { link },
-  }))
+	return siteInfo.socialLinks.map((link) => ({
+		params: { platform: link.platform },
+		props: { link },
+	}))
 }
 
 const mastodon = siteInfo.socialLinks.find((link) => link.platform === "mastodon")

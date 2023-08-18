@@ -7,33 +7,33 @@ import ShowcaseCard from "./_components/ShowcaseCard.astro"
 import SubmitSite from "./_components/SubmitSite.astro"
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const getWeight = (site: CollectionEntry<"showcase">) =>
-    site.data.featured ?? 1000 + Math.random()
+	const getWeight = (site: CollectionEntry<"showcase">) =>
+		site.data.featured ?? 1000 + Math.random()
 
-  // fetch all showcase sites and sort featured sites to the front, randomize the rest
-  const sortedShowcase = (await getCollection("showcase")).sort(
-    (a, b) => getWeight(a) - getWeight(b),
-  )
+	// fetch all showcase sites and sort featured sites to the front, randomize the rest
+	const sortedShowcase = (await getCollection("showcase")).sort(
+		(a, b) => getWeight(a) - getWeight(b),
+	)
 
-  // seperate out sites that display with a larger thumbnail
-  const highlighted = sortedShowcase.filter((site) => site.data.highlight)
+	// seperate out sites that display with a larger thumbnail
+	const highlighted = sortedShowcase.filter((site) => site.data.highlight)
 
-  // build final showcase array by interleaving 1 highlighted item for every 4 non-highlighted items
-  const showcase = sortedShowcase.filter((site) => !site.data.highlight)
-  for (let i = 2; i < showcase.length; i += 5) {
-    const highlight = highlighted.shift()
-    if (!highlight) break
-    showcase.splice(i, 0, highlight)
-  }
+	// build final showcase array by interleaving 1 highlighted item for every 4 non-highlighted items
+	const showcase = sortedShowcase.filter((site) => !site.data.highlight)
+	for (let i = 2; i < showcase.length; i += 5) {
+		const highlight = highlighted.shift()
+		if (!highlight) break
+		showcase.splice(i, 0, highlight)
+	}
 
-  return paginate(showcase, { pageSize: 30 })
+	return paginate(showcase, { pageSize: 30 })
 }
 
 const { page } = Astro.props as { page: Page<CollectionEntry<"showcase">> }
 const showcase = page.data
 
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
-  return `/showcase${num === 0 ? "" : `/${String(num + 1)}`}`
+	return `/showcase${num === 0 ? "" : `/${String(num + 1)}`}`
 })
 
 const title = "Showcase"
@@ -41,91 +41,91 @@ const description = "Explore what's possible with Astro and get inspired for you
 ---
 
 <MainLayout
-  title={title}
-  description={description}
-  image={{ src: "/og/showcase.jpg", alt: "Explore the possibilities" }}
+	title={title}
+	description={description}
+	image={{ src: "/og/showcase.jpg", alt: "Explore the possibilities" }}
 >
-  <div class="hero relative">
-    <div class="grid-container">
-      <h1
-        class="heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
-      >
-        Explore the infinite possibilities of Astro
-      </h1>
-    </div>
-  </div>
+	<div class="hero relative">
+		<div class="grid-container">
+			<h1
+				class="heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
+			>
+				Explore the infinite possibilities of Astro
+			</h1>
+		</div>
+	</div>
 
-  <div class="backgrounds grid-container relative">
-    <ul class="grid gap-5 md:grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3">
-      {
-        showcase.map((site, i) => (
-          <>
-            <li class:list={{ "md:col-span-2 md:row-span-2": site.data.highlight }}>
-              <ShowcaseCard site={site} />
-            </li>
-            {i === 5 && (
-              <li class="md:col-span-2 lg:col-span-3">
-                <SubmitSite />
-              </li>
-            )}
-          </>
-        ))
-      }
-    </ul>
+	<div class="backgrounds grid-container relative">
+		<ul class="grid gap-5 md:grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3">
+			{
+				showcase.map((site, i) => (
+					<>
+						<li class:list={{ "md:col-span-2 md:row-span-2": site.data.highlight }}>
+							<ShowcaseCard site={site} />
+						</li>
+						{i === 5 && (
+							<li class="md:col-span-2 lg:col-span-3">
+								<SubmitSite />
+							</li>
+						)}
+					</>
+				))
+			}
+		</ul>
 
-    <Pagination restRoute allPages={allPages} page={page} class="mx-auto" />
-  </div>
+		<Pagination restRoute allPages={allPages} page={page} class="mx-auto" />
+	</div>
 </MainLayout>
 
 <style>
-  :global(main::before) {
-    @apply absolute aspect-square w-full bg-repeat;
-    content: "";
-    background-size: 20px 20px;
-    background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
-    mask-image: linear-gradient(to bottom, white, transparent);
-    z-index: -1;
-  }
+	:global(main::before) {
+		@apply absolute aspect-square w-full bg-repeat;
+		content: "";
+		background-size: 20px 20px;
+		background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
+			linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
+		mask-image: linear-gradient(to bottom, white, transparent);
+		z-index: -1;
+	}
 
-  .hero::before {
-    @apply absolute;
-    content: "";
-    height: 50vw;
-    width: 100vw;
-    top: 50%;
-    translate: 0 -30%;
-    left: -60vw;
-    background: url(/assets/noise.webp) repeat, linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-    background-blend-mode: overlay;
-    mask-image: radial-gradient(rgba(0, 0, 0, 0.4), transparent 65%);
-    z-index: -1;
-  }
+	.hero::before {
+		@apply absolute;
+		content: "";
+		height: 50vw;
+		width: 100vw;
+		top: 50%;
+		translate: 0 -30%;
+		left: -60vw;
+		background: url(/assets/noise.webp) repeat, linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+		background-blend-mode: overlay;
+		mask-image: radial-gradient(rgba(0, 0, 0, 0.4), transparent 65%);
+		z-index: -1;
+	}
 
-  .hero::after {
-    @apply absolute;
-    content: "";
-    height: 50vw;
-    width: 100vw;
-    top: 50%;
-    translate: 0 -30%;
-    right: -60vw;
-    background: url(/assets/noise.webp) repeat, linear-gradient(247.23deg, #4af2c8 0%, #2f4cb3 100%);
-    background-blend-mode: overlay;
-    mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 65%);
-    z-index: -1;
-  }
+	.hero::after {
+		@apply absolute;
+		content: "";
+		height: 50vw;
+		width: 100vw;
+		top: 50%;
+		translate: 0 -30%;
+		right: -60vw;
+		background: url(/assets/noise.webp) repeat, linear-gradient(247.23deg, #4af2c8 0%, #2f4cb3 100%);
+		background-blend-mode: overlay;
+		mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 65%);
+		z-index: -1;
+	}
 
-  .backgrounds:last-of-type::after {
-    @apply absolute;
-    content: "";
-    height: 50vw;
-    width: 100vw;
-    bottom: 0;
-    translate: 0 70%;
-    background: url(/assets/noise.webp) repeat, linear-gradient(266.93deg, #f8e42e 0%, #ff7d54 100%);
-    background-blend-mode: overlay;
-    mask-image: radial-gradient(rgba(0, 0, 0, 0.8), transparent 60%);
-    z-index: -1;
-  }
+	.backgrounds:last-of-type::after {
+		@apply absolute;
+		content: "";
+		height: 50vw;
+		width: 100vw;
+		bottom: 0;
+		translate: 0 70%;
+		background: url(/assets/noise.webp) repeat, linear-gradient(266.93deg, #f8e42e 0%, #ff7d54 100%);
+		background-blend-mode: overlay;
+		mask-image: radial-gradient(rgba(0, 0, 0, 0.8), transparent 60%);
+		z-index: -1;
+	}
 </style>
