@@ -8,8 +8,6 @@ import RSSIcon from "~/icons/RSSIcon.jsx"
 import Layout from "~/layouts/MainLayout.astro"
 import BlogPostPreview from "./_components/BlogPostPreview.astro"
 
-export const prerender = true
-
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const posts = [...(await getCollection("blog")), ...(await getCollection("caseStudies"))]
 

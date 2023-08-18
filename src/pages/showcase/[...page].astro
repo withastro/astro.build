@@ -6,8 +6,6 @@ import MainLayout from "~/layouts/MainLayout.astro"
 import ShowcaseCard from "./_components/ShowcaseCard.astro"
 import SubmitSite from "./_components/SubmitSite.astro"
 
-export const prerender = true
-
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const getWeight = (site: CollectionEntry<"showcase">) =>
 		site.data.featured ?? 1000 + Math.random()

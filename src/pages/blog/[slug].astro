@@ -10,8 +10,6 @@ export type Props = {
 	post: CollectionEntry<"blog">
 }
 
-export const prerender = true
-
 export async function getStaticPaths() {
 	const blog = await getCollection("blog")
 
