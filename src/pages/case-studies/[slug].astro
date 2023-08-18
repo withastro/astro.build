@@ -1,16 +1,14 @@
 ---
-import MainLayout from "~/layouts/MainLayout.astro"
 import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
 import { format } from "date-fns"
 import Avatar from "~/components/Avatar.astro"
-import {
-	resolveBlogImage,
-	resolveCoverImage,
-	resolveSocialImage,
-} from "~/content/blog/_resolveImage.js"
-import { randomFromArray } from "~/helpers/random.js"
+import { resolveBlogImage, resolveSocialImage } from "~/content/blog/_resolveImage.js"
 import Layout from "~/layouts/MainLayout.astro"
 import houstonWink from "~/assets/houston_wink.webp"
+
+export type Props = {
+	post: CollectionEntry<"caseStudies">
+}
 
 export const prerender = true
 
@@ -22,16 +20,11 @@ export async function getStaticPaths() {
 	}))
 }
 
-type Props = {
-	post: CollectionEntry<"caseStudies">
-}
-
 const { post } = Astro.props
 
 const { data, render } = post
 const { Content } = await render()
 
-const coverImage = await resolveCoverImage(post)
 const socialImage = await resolveSocialImage(post)
 
 const headerImage = await resolveBlogImage(post.data.headerImage)
@@ -116,7 +109,7 @@ const authors = await Promise.all(
 				href="https://docs.astro.build"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="button button-primary button-sm mb-3 -mt-3 md:my-0">Get Started</a
+				class="button button-primary button-sm -mt-3 mb-3 md:my-0">Get Started</a
 			>
 			<img src={houstonWink.src} alt="" class="-mb-px md:order-first md:self-end md:pt-4" />
 		</footer>

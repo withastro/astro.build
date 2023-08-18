@@ -22,7 +22,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ["InterVariable", "sans-serif"],
-				mono: [`"MD IO 0.5"`, "md-io-fallback", "monospace"],
+				mono: [`"MDIO"`, "md-io-fallback", "monospace"],
 				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
 				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},
@@ -78,8 +78,6 @@ module.exports = {
 		container: false,
 	},
 	plugins: [
-		require("@tailwindcss/line-clamp"),
-
 		// adds a `s-*` utility to apply the same width and height
 		plugin(function sizePlugin(api) {
 			api.matchUtilities(

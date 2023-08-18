@@ -6,6 +6,10 @@ import { resolveCoverImage, resolveSocialImage } from "~/content/blog/_resolveIm
 import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
 
+export type Props = {
+	post: CollectionEntry<"blog">
+}
+
 export const prerender = true
 
 export async function getStaticPaths() {
@@ -15,10 +19,6 @@ export async function getStaticPaths() {
 		params: { slug: post.slug },
 		props: { post },
 	}))
-}
-
-type Props = {
-	post: CollectionEntry<"blog">
 }
 
 const { post } = Astro.props
