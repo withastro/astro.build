@@ -7,18 +7,18 @@ import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
 
 export type Props = {
-  post: CollectionEntry<"blog">
+	post: CollectionEntry<"blog">
 }
 
 export const prerender = true
 
 export async function getStaticPaths() {
-  const blog = await getCollection("blog")
+	const blog = await getCollection("blog")
 
-  return blog.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }))
+	return blog.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}))
 }
 
 const { post } = Astro.props
@@ -30,90 +30,90 @@ const coverImage = await resolveCoverImage(post)
 const socialImage = await resolveSocialImage(post)
 
 const authors = await Promise.all(
-  data.authors.map((author) => getEntryBySlug("authors", author)),
+	data.authors.map((author) => getEntryBySlug("authors", author)),
 ).then((authors) => authors.filter(Boolean) as CollectionEntry<"authors">[])
 
 const gradients = [
-  "bg-red-pink-gradient",
-  "bg-blue-green-gradient",
-  "bg-blue-purple-gradient",
-  "bg-orange-yellow-gradient",
+	"bg-red-pink-gradient",
+	"bg-blue-green-gradient",
+	"bg-blue-purple-gradient",
+	"bg-orange-yellow-gradient",
 ]
 
 const placeholderGradient = randomFromArray(gradients)
 ---
 
 <Layout
-  title={data.title}
-  description={data.description}
-  pageType="article"
-  image={socialImage && { src: socialImage.src, alt: data.title }}
+	title={data.title}
+	description={data.description}
+	pageType="article"
+	image={socialImage && { src: socialImage.src, alt: data.title }}
 >
-  {
-    coverImage ? (
-      <div class="mx-auto w-full max-w-screen-lg md:-mb-10 lg:-mb-12 xl:-mb-16">
-        <img
-          src={coverImage.src}
-          width={coverImage.width}
-          height={coverImage.height}
-          loading="lazy"
-          decoding="async"
-          alt=""
-          class="w-full"
-        />
-      </div>
-    ) : (
-      <div
-        class:list={[
-          "w-full h-64 -mb-56 md:h-64 md:-mb-52 lg:h-96 lg:-mb-80 noise-underlay",
-          placeholderGradient,
-        ]}
-      />
-    )
-  }
+	{
+		coverImage ? (
+			<div class="mx-auto w-full max-w-screen-lg md:-mb-10 lg:-mb-12 xl:-mb-16">
+				<img
+					src={coverImage.src}
+					width={coverImage.width}
+					height={coverImage.height}
+					loading="lazy"
+					decoding="async"
+					alt=""
+					class="w-full"
+				/>
+			</div>
+		) : (
+			<div
+				class:list={[
+					"w-full h-64 -mb-56 md:h-64 md:-mb-52 lg:h-96 lg:-mb-80 noise-underlay",
+					placeholderGradient,
+				]}
+			/>
+		)
+	}
 
-  <div class="grid-container relative mx-auto max-w-screen-lg md:z-10">
-    <div
-      class="noise-container mx-auto w-fit max-w-full bg-astro-gray-700 py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
-    >
-      <div class="noise"></div>
-      <header class="mx-auto w-full max-w-prose text-center">
-        <time class="code text-astro-gray-200" datetime={data.publishDate.toISOString()}>
-          {format(data.publishDate, "MMMM d, yyyy")}
-        </time>
-        <h1 class="heading-3 mb-4 mt-2 md:heading-2 sm:mb-5 sm:mt-3">{data.title}</h1>
-        <div class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200">
-          <span>By</span>
-          {
-            authors.map((author) => {
-              return (
-                <div class="flex items-center gap-2">
-                  <Avatar name={author.slug} lg />
-                  <span>{author.data.name}</span>
-                </div>
-              )
-            })
-          }
-        </div>
-      </header>
-      <hr class="-mx-16 my-16 border-astro-gray-500" />
-      <article class="prose">
-        <Content />
-      </article>
-    </div>
-  </div>
+	<div class="grid-container relative mx-auto max-w-screen-lg md:z-10">
+		<div
+			class="noise-container mx-auto w-fit max-w-full bg-astro-gray-700 py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
+		>
+			<div class="noise"></div>
+			<header class="mx-auto w-full max-w-prose text-center">
+				<time class="code text-astro-gray-200" datetime={data.publishDate.toISOString()}>
+					{format(data.publishDate, "MMMM d, yyyy")}
+				</time>
+				<h1 class="heading-3 mb-4 mt-2 md:heading-2 sm:mb-5 sm:mt-3">{data.title}</h1>
+				<div class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200">
+					<span>By</span>
+					{
+						authors.map((author) => {
+							return (
+								<div class="flex items-center gap-2">
+									<Avatar name={author.slug} lg />
+									<span>{author.data.name}</span>
+								</div>
+							)
+						})
+					}
+				</div>
+			</header>
+			<hr class="-mx-16 my-16 border-astro-gray-500" />
+			<article class="prose">
+				<Content />
+			</article>
+		</div>
+	</div>
 </Layout>
 
 <script>
-  // Remove autoplay from videos when `prefers-reduced-motion: reduce`
-  const autoplayVideos = document.querySelectorAll("video[autoplay]")
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+	// Remove autoplay from videos when `prefers-reduced-motion: reduce`
+	const autoplayVideos = document.querySelectorAll("video[autoplay]")
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-  if (prefersReducedMotion) {
-    autoplayVideos.forEach((video) => {
-      video.removeAttribute("autoplay")
-      // Add controls attribute so user can still play the video if they want
-      video.setAttribute("controls", "true")
-    })
-  }
+	if (prefersReducedMotion) {
+		autoplayVideos.forEach((video) => {
+			video.removeAttribute("autoplay")
+			// Add controls attribute so user can still play the video if they want
+			video.setAttribute("controls", "true")
+		})
+	}
 </script>
