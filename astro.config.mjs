@@ -39,6 +39,6 @@ export default defineConfig({
 			noExternal: ["smartypants"],
 		},
 	},
-	output: "server",
+	output: "hybrid",
 	adapter: netlify(),
 })
