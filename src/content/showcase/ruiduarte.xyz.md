@@ -1,5 +1,5 @@
 ---
 title: Rui Duarte – Frontend engineer
-image: /src/content/showcase/_images/ruiduarte.xyz.webp
+image: ~/assets/showcase/ruiduarte.xyz.webp
 url: "https://ruiduarte.xyz"
 ---

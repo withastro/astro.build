@@ -1,5 +1,5 @@
 ---
 title: Home - Beer Tech Group
-image: /src/content/showcase/_images/beertechgroup.net.webp
+image: ~/assets/showcase/beertechgroup.net.webp
 url: "https://beertechgroup.net/"
 ---

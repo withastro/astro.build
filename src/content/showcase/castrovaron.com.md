@@ -1,5 +1,5 @@
 ---
 title: Juan Castro-Varón
-image: /src/content/showcase/_images/castrovaron.com.webp
+image: ~/assets/showcase/castrovaron.com.webp
 url: "https://castrovaron.com"
 ---

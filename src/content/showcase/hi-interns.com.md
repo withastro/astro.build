@@ -1,5 +1,5 @@
 ---
 title: Hi Interns
-image: /src/content/showcase/_images/hi-interns.com.webp
+image: ~/assets/showcase/hi-interns.com.webp
 url: "https://hi-interns.com/"
 ---

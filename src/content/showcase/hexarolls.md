@@ -1,6 +1,6 @@
 ---
 title: "Hexarolls"
-image: "/src/content/showcase/_images/hexarolls.webp"
+image: "~/assets/showcase/hexarolls.webp"
 url: "https://hexarolls.com/"
 categories: ["marketing"]
 ---

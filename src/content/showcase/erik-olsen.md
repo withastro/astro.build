@@ -1,6 +1,6 @@
 ---
 title: "Erik Olsen"
-image: "/src/content/showcase/_images/erik-olsen.webp"
+image: "~/assets/showcase/erik-olsen.webp"
 url: "https://eriksolsen.com/"
 categories: ["personal"]
 ---

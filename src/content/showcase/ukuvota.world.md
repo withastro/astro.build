@@ -1,5 +1,5 @@
 ---
 title: Ukuvota - Home
-image: /src/content/showcase/_images/ukuvota.world.webp
+image: ~/assets/showcase/ukuvota.world.webp
 url: "https://ukuvota.world/"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Sarah Rainsberger"
-image: "/src/content/showcase/_images/sarah-rainsberger.webp"
+image: "~/assets/showcase/sarah-rainsberger.webp"
 url: "https://www.rainsberger.ca/"
 categories: ["personal"]
 ---

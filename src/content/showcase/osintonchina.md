@@ -1,6 +1,6 @@
 ---
 title: "OSINTonChina"
-image: "/src/content/showcase/_images/osintonchina.webp"
+image: "~/assets/showcase/osintonchina.webp"
 url: "https://osintonchina.com/"
 categories: ["marketing"]
 ---

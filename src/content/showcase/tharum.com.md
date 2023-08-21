@@ -1,5 +1,5 @@
 ---
 title: Tharum
-image: /src/content/showcase/_images/tharum.com.webp
+image: ~/assets/showcase/tharum.com.webp
 url: "https://tharum.com/"
 ---

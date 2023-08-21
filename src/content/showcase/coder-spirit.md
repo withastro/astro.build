@@ -1,6 +1,6 @@
 ---
 title: "Coder Spirit"
-image: "/src/content/showcase/_images/coder-spirit.webp"
+image: "~/assets/showcase/coder-spirit.webp"
 url: "https://blog.coderspirit.xyz"
 categories: ["blog"]
 ---

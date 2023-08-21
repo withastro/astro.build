@@ -1,6 +1,6 @@
 ---
 title: LAY’S®
-image: /src/content/showcase/_images/lays.kz.webp
+image: ~/assets/showcase/lays.kz.webp
 url: "https://lays.kz/"
 featured: 20
 ---

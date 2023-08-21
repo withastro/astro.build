@@ -1,6 +1,6 @@
 ---
 title: "Thomas Konings"
-image: "/src/content/showcase/_images/tkon.webp"
+image: "~/assets/showcase/tkon.webp"
 url: "https://tkon.nl/"
 categories: ["personal"]
 ---

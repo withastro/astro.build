@@ -1,6 +1,6 @@
 ---
 title: "meizuflux"
-image: "/src/content/showcase/_images/meizuflux.webp"
+image: "~/assets/showcase/meizuflux.webp"
 url: "https://meizuflux.com/"
 categories: ["personal"]
 ---

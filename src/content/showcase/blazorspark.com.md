@@ -1,5 +1,5 @@
 ---
 title: Build Blazor web apps fast
-image: /src/content/showcase/_images/blazorspark.com.webp
+image: ~/assets/showcase/blazorspark.com.webp
 url: "https://blazorspark.com"
 ---

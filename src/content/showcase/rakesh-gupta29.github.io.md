@@ -1,5 +1,5 @@
 ---
 title: Rakesh Gupta
-image: /src/content/showcase/_images/rakesh-gupta29.github.io.webp
+image: ~/assets/showcase/rakesh-gupta29.github.io.webp
 url: "https://rakesh-gupta29.github.io/"
 ---

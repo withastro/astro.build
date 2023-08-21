@@ -1,5 +1,5 @@
 ---
 title: Internet of Life
-image: /src/content/showcase/_images/internetoflife.org.webp
+image: ~/assets/showcase/internetoflife.org.webp
 url: "https://internetoflife.org/"
 ---

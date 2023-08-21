@@ -1,6 +1,6 @@
 ---
 title: "rescaler"
-image: "/src/content/showcase/_images/rescaler.webp"
+image: "~/assets/showcase/rescaler.webp"
 url: "https://zkrew.red/rescaler/"
 categories: ["tech"]
 ---

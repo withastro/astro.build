@@ -1,5 +1,5 @@
 ---
 title: ASIM
-image: /src/content/showcase/_images/antonsimanov.com.webp
+image: ~/assets/showcase/antonsimanov.com.webp
 url: "https://antonsimanov.com/"
 ---

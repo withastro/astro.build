@@ -1,6 +1,6 @@
 ---
 title: "Unwrapped"
-image: "/src/content/showcase/_images/unwrapped.webp"
+image: "~/assets/showcase/unwrapped.webp"
 url: "https://unwrapped.design/"
 categories: ["tech"]
 ---

@@ -1,5 +1,5 @@
 ---
 title: The local host of Robin Lindner
-image: /src/content/showcase/_images/deeprobin.de.webp
+image: ~/assets/showcase/deeprobin.de.webp
 url: "https://deeprobin.de/"
 ---

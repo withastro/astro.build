@@ -1,6 +1,6 @@
 ---
 title: "Bit Doze"
-image: "/src/content/showcase/_images/bit-doze.webp"
+image: "~/assets/showcase/bit-doze.webp"
 url: "https://www.bitdoze.com/"
 categories: ["tech"]
 ---

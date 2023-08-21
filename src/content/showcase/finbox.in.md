@@ -1,5 +1,5 @@
 ---
 title: FinBox
-image: /src/content/showcase/_images/finbox.in.webp
+image: ~/assets/showcase/finbox.in.webp
 url: "https://finbox.in/"
 ---

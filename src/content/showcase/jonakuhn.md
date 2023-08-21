@@ -1,6 +1,6 @@
 ---
 title: "JONAKUHN"
-image: "/src/content/showcase/_images/jonakuhn.webp"
+image: "~/assets/showcase/jonakuhn.webp"
 url: "https://ionae.de/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "What?!"
-image: "/src/content/showcase/_images/what.webp"
+image: "~/assets/showcase/what.webp"
 url: "https://whatwhat.app/"
 categories: ["tech"]
 highlight: true

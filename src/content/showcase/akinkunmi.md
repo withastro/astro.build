@@ -1,6 +1,6 @@
 ---
 title: "Akinkunmi"
-image: "/src/content/showcase/_images/akinkunmi.webp"
+image: "~/assets/showcase/akinkunmi.webp"
 url: "https://akinkunmi.dev/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: uxinspo
-image: /src/content/showcase/_images/uxinspo.site.webp
+image: ~/assets/showcase/uxinspo.site.webp
 url: "https://uxinspo.site/"
 highlight: true
 ---

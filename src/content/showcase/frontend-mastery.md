@@ -1,6 +1,6 @@
 ---
 title: "Frontend Mastery"
-image: "/src/content/showcase/_images/frontend-mastery.webp"
+image: "~/assets/showcase/frontend-mastery.webp"
 url: "http://frontendmastery.com/"
 categories: ["tech"]
 ---
