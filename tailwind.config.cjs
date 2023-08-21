@@ -67,9 +67,8 @@ module.exports = {
 				prose: "768px",
 			},
 			zIndex: {
-				"white-button-fill": -1,
-				blur: -2,
-				grid: -3,
+				blur: -1,
+				grid: -2,
 			},
 		},
 	},
