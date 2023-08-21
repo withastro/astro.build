@@ -100,13 +100,14 @@ const seoSchema = z.object({
 
 export const collections = {
 	authors: defineCollection({
-		schema: z.object({
-			image: z.string().optional(),
-			name: z.string(),
-			title: z.string().optional(),
-			twitter: z.string().optional(),
-			mastodon: z.string().optional(),
-		}),
+		schema: ({ image }) =>
+			z.object({
+				image: image().optional(),
+				name: z.string(),
+				title: z.string().optional(),
+				twitter: z.string().optional(),
+				mastodon: z.string().optional(),
+			}),
 	}),
 	blog: defineCollection({
 		schema: z.object({

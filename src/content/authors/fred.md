@@ -1,6 +1,6 @@
 ---
 "name": "Fred Schott"
 "title": "Founder & CTO"
-"image": "/src/content/authors/_images/fred.webp"
+"image": "../../assets/authors/fred.jpg"
 "twitter": "https://twitter.com/FredKSchott"
 ---

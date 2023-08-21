@@ -10,7 +10,7 @@ coverImage: "/src/content/blog/_images/images/blog-hero-image-updates.webp"
 socialImage: "/src/content/blog/_images/images/og-image-image-better.jpg"
 ---
 
-import { Image } from "@astrojs/image/components"
+import BlogContentImage from "/src/components/BlogContentImage.astro"
 import imageServiceImage from "./_images/images/service-1-image-updates.webp"
 
 Last year, we published the first Astro image integration ([@astrojs/image](https://docs.astro.build/en/guides/integrations-guide/image/)) alongside [Astro 1.0](https://astro.build/blog/astro-1). The goal was simple: **Make image optimization effortless in Astro.**
@@ -125,7 +125,7 @@ One of the biggest improvements made over the original `@astrojs/image` integrat
 
 That's it! Your `stars.png` image will be optimized automatically in the final HTML. You can also use the `<Image />` component directly in MDX if you prefer for finer control over the image attributes, but in most cases the default settings will be enough to produce an optimized file size with a great image quality.
 
-<Image src={imageServiceImage} />
+<BlogContentImage src={imageServiceImage} />
 
 ## Integrating with third-party image services
 

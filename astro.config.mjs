@@ -1,7 +1,6 @@
-import { defineConfig } from "astro/config"
+import { defineConfig, sharpImageService } from "astro/config"
 import fs from "node:fs"
 
-import image from "@astrojs/image"
 import mdx from "@astrojs/mdx"
 import prefetch from "@astrojs/prefetch"
 import sitemap from "@astrojs/sitemap"
@@ -15,10 +14,13 @@ const VERCEL_PREVIEW_SITE = process.env.VERCEL_ENV !== "production" && process.e
 // https://astro.build/config
 export default defineConfig({
 	site: VERCEL_PREVIEW_SITE || "https://astro.build",
+	experimental: {
+		assets: true,
+	},
+	image: {
+		service: sharpImageService(),
+	},
 	integrations: [
-		image({
-			serviceEntryPoint: "@astrojs/image/sharp",
-		}),
 		tailwind({
 			config: {
 				applyBaseStyles: false,
@@ -40,5 +42,7 @@ export default defineConfig({
 		},
 	},
 	output: "hybrid",
-	adapter: vercel(),
+	adapter: vercel({
+		imageService: true,
+	}),
 })

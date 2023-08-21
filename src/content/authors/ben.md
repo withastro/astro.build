@@ -1,6 +1,6 @@
 ---
 "name": "Ben Holmes"
 "title": "Developer"
-"image": "/src/content/authors/_images/ben.webp"
+"image": "../../assets/authors/ben.jpg"
 "twitter": "https://twitter.com/bholmesdev"
 ---

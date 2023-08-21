@@ -1,6 +1,6 @@
 ---
 "name": "Mark Peck"
 "title": "Designer"
-"image": "/src/content/authors/_images/mark.jpeg"
+"image": "../../assets/authors/mark.jpeg"
 "twitter": "https://twitter.com/doodlemarks"
 ---
