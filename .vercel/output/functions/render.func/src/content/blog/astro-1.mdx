@@ -1,0 +1,174 @@
+---
+title: "Astro 1.0"
+description: "Astro 1.0 is out now! Astro is a web framework for building fast, content-focused websites. Performance powered by Astro next-gen island architecture. Learn more about Astro 1.0 release, our new website, and what people are saying about Astro."
+publishDate: "August 9, 2022"
+authors:
+  - fred
+socialImage: "/src/content/blog/_images/astro-1-release-update/social.webp"
+lang: "en"
+---
+
+import { Icon } from "astro-icon"
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import Note from "/src/components/Note.astro"
+import Testimonial from "/src/components/Testimonial.astro"
+import websiteImg from "/src/content/blog/_images/astro-1/website.webp"
+
+**We are thrilled to announce Astro v1.0: a web framework for building fast, content-focused websites.**
+
+Over the last 16 months, [Astro](https://astro.build/) has grown from an empty repo to over 13,000 stars on [GitHub](https://github.com/withastro/astro) and 30,000 early users around the world. The Astro documentation has been translated into 6 different languages, and Astro has already been deployed at amazing companies such as [Firebase (Google)](https://firebase.blog/), [Trivago](https://tech.trivago.com/), [The Guardian](https://theguardian.engineering/), and **IKEA**.
+
+Astro v1.0 includes a few new features and improvements since our original beta announcement back in April, including:
+
+- [Image Optimization](https://docs.astro.build/en/guides/integrations-guide/image/): New `<Image />` and `<Picture />` components.
+- [MDX Support](https://docs.astro.build/en/guides/integrations-guide/mdx/): A standard syntax for mixing UI components in Markdown.
+- [SSR Builds](https://docs.astro.build/en/guides/server-side-rendering/): Server output is now stable and available for production use.
+- [Vite 3.0](https://vitejs.dev/blog/announcing-vite3.html#dev-improvements): An upgrade to our internal build engine, Vite.
+
+This v1.0 release symbolizes our commitment to API stability and production-readiness going forward. If you have been waiting to give Astro a try, now is a great time to start.
+
+## Get Started with Astro
+
+- To learn more about Astro, visit our new website: [astro.build](https://astro.build).
+- To try Astro 1.0 immediately in your browser, visit [astro.new](https://astro.new).
+- To try Astro on your local machine, run `npm create astro@latest` in any terminal.
+
+```
+# Follow a guided walkthrough of your first Astro project.
+npm create astro@latest
+```
+
+You can also deploy an Astro v1.0 starter template to the web _right now_ using the Netlify deploy button below. Don't have an account? Don't worry: Netlify is free to use for basic sites.
+
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-quickstart">
+	<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify Button" />
+</a>
+
+If you need help migrating an existing Astro project to the new Astro v1.0, check out our updated [Migration Guide](https://docs.astro.build/en/migrate/) and [full documentation website](https://docs.astro.build/).
+
+## A New Website for Astro
+
+To celebrate Astro v1.0, we kicked off a brand-new redesign of our website: [astro.build](https://astro.build).
+
+<BlogContentImage src={websiteImg} alt="The brand new astro.build redesign" />
+
+A lot has changed since we first launched [astro.build](https://astro.build). Astro is no longer just a static-site builder. You can now build Astro to a dynamic, SSR-ready server on any popular hosting platform. Additionally, our ecosystem has exploded into 100+ integrations and keeps growing to cover more and more features and use-cases.
+
+The new website tells our story better, with a fresh can of paint and a focus on content, performance, and community. (Plus, it goes [warp speed](/#warp-speed)).
+
+## What People are Saying
+
+Astro works with the tools you already love, but this requires a lot of effort to get right. Luckily, Astro is supported by some amazing partners across the industry who support our vision for a faster web.
+
+[Netlify](https://www.netlify.com/) -- Astro's Official Hosting Partner and long-time sponsor of the project -- has worked side-by-side with our community for over a year on [learning resources](https://docs.netlify.com/integrations/frameworks/astro/), [starter templates](https://github.com/netlify-templates/astro-quickstart), [blog posts](https://www.netlify.com/blog/how-to-deploy-astro/) and more. They've gone above and beyond to make sure that Astro websites run seamlessly on the Netlify platform.
+
+<Testimonial>
+	<Icon slot="logo" name="logos:netlify" height="48" />
+	<span slot="quote">
+		Astro was a catalyst that caused developers to ask, ‘Do we really need to ship all that
+		JavaScript?’ The reintroduction of multi-page apps (MPAs) in a modern context is a huge
+		opportunity for developers in the Jamstack ecosystem to make the web better for users. This
+		vision of a better web is why Netlify is bullish on Astro — when you combine the performance and
+		developer experience of Astro and Netlify together, you’re setting developers and users up for
+		success.
+	</span>
+	<span slot="cite">Jason Lengstorf, VP of Developer Experience, Netlify</span>
+</Testimonial>
+
+As we began to prepare the Astro 1.0 release, we received even more kind words from some amazing developers across the ecosystem:
+
+<Testimonial>
+	<Icon slot="logo" name="logos:vercel-icon" width="48" class="invert" />
+	<span slot="quote">
+		It’s been a joy to sponsor Astro and help support the project as it now reaches v1.0. The team
+		has done incredible work building an extensible framework that can adapt to any hosting
+		provider, including Vercel.
+	</span>
+	<span slot="cite">Lee Robinson, VP of Developer Experience, Vercel</span>
+</Testimonial>
+
+<Testimonial>
+	<Icon slot="logo" name="logos:solidjs-icon" width="48" />
+	<span slot="quote">
+		Astro has shown we can bring the simplicity of the early web back to modern web development. It
+		unifies the web ecosystem such that no matter if you are using the most popular libraries with
+		React to the newest compiled syntax from Svelte you feel equally at home. And it has been the
+		home for people that care about getting the best load performance out of their Solid
+		applications. That's something that I get excited about.
+	</span>
+	<span slot="cite">Ryan Carniato, Creator of Solid.js</span>
+</Testimonial>
+
+<Testimonial>
+	<Icon slot="logo" name="logos:cloudflare" width="48" />
+	<p slot="quote">
+		I was able to build my documentation site in an hour with Astro. It's simply fast in every way.
+	</p>
+	<span slot="cite">Jacob M-G Evans, Software Developer, Cloudflare</span>
+</Testimonial>
+
+<Testimonial>
+	<Icon slot="logo" name="logos:chrome" width="48" />
+	<span slot="quote">
+		Astro has driven ground-breaking work to lower the friction building a fast experience for the
+		web. If you want a great MPA alternative to SPAs that uses less-JavaScript without taking away
+		modern DX, I strongly recommend trying it out.
+	</span>
+	<span slot="cite">Addy Osmani, Software Engineer, Google Chrome</span>
+</Testimonial>
+
+<Testimonial>
+	<Icon slot="logo" name="logos:deno" width="48" class="invert" />
+	<p slot="quote">
+		Astro’s fast performance is even more noticeable to end users when Astro sites are hosted on the
+		edge with Deno Deploy.
+	</p>
+	<span slot="cite">Ryan Dahl, Creator of Deno</span>
+</Testimonial>
+
+<Testimonial>
+	<Icon slot="logo" name="logos:prismic-icon" width="48" />
+	<span slot="quote">
+		{" "}
+		Astro is the framework that brings me the most joy to work with. I never feel locked in because I
+		can switch from static to dynamic, from React to Svelte, from pre-built to server-rendered, all with
+		minor changes. I've built three sites with Astro and Prismic and the developer experience has been
+		delightful. I keep looking for more reasons to spin up new Astro + Prismic sites because it's such
+		a great pairing.
+	</span>
+	<span slot="cite">Alex Trost, Lead Developer Experience, Prismic</span>
+</Testimonial>
+
+<Testimonial>
+	<Icon slot="logo" name="logos/ping" width="48" style="fill: #e24a8d;" />
+	<p slot="quote">
+		The proliferation of Javascript frameworks has raised the bar for web developer tools. Sadly,
+		it’s also lowered the bar for user experiences. <em>Not all websites need Javascript,</em> but
+		the best frameworks are JS so the best devs find themselves compromising. I know I’m as guilty
+		of that as anyone. Astro is the first web framework to make static as fast as JS for me as a
+		developer.
+	</p>
+	<span slot="cite">Theo Brown, Creator of Ping</span>
+</Testimonial>
+
+Build with your favorite UI framework (React, Preact, Svelte, Vue, Solid, or Lit). Pull from your favorite content source (CMS, Markdown, Databases, and APIs). Deploy to your favorite hosting provider with a single command (Netlify, Vercel, AWS, Docker and more). That's what Astro is all about.
+
+## Acknowledgements
+
+Astro v1.0 is the result of over 5000 commits from 400 different contributors around the world. This release wouldn't have been possible without the effort of this our amazing open source community. Thank you, everyone.
+
+We would like to thank the following people for their standout contributions to Astro over the last year:
+
+- Astro core team members: [@matthewp](https://github.com/matthewp), [@natemoo-re](https://github.com/natemoo-re), [@tony-sull](https://github.com/tony-sull), [@jasikpark](https://github.com/jasikpark), [@sarah11918](https://github.com/sarah11918), [@aFuzzyBear](https://github.com/aFuzzyBear), [@princesseuh](https://github.com/princesseuh), [@bholmesdev](https://github.com/bholmesdev), [@swithinbank](https://github.com/delucis), [@Jutanium](https://github.com/Jutanium)
+- [@sarah11918](https://github.com/sarah11918) for technical writing and being our fearless docs leader
+- [@kevinzunigacuellar](https://github.com/kevinzunigacuellar), [@kecrily](https://github.com/kecrily), [@Kyosuke](https://github.com/Kyosuke) and [@Chrissdroid](https://github.com/Chrissdroid) for their i18n docs contributions
+- [@swithinbank](https://github.com/delucis), [@hippotastic](https://github.com/hippotastic) & [@Yan-Thomas](https://github.com/Yan-Thomas) for their docs site contributions
+- [@aFuzzyBear](https://github.com/aFuzzyBear) for their work on support and hosting This Week in Astro
+- [@princesseuh](https://github.com/princesseuh) for their amazing work on the Astro language tools and the Astro TypeScript extension.
+- [@swithinbank](https://github.com/delucis), [@tony-sull](https://github.com/tony-sull) & [@natemoo-re](https://github.com/natemoo-re) for their work on the new Astro website
+- [@JuanM04](https://github.com/JuanM04) for their work on the [Astro Vercel integration](https://docs.astro.build/en/guides/integrations-guide/vercel/)
+- All of our sponsors, including Netlify, Storyblok, Vercel, Divriots, and Stackup.
+
+## One more thing...
+
+If you've made it this far, I have a favor to ask: Please, [give us a star on GitHub!](https://github.com/withastro/astro) It's one of the easiest ways to support the project. You can also help by resharing this post, and spreading the word about Astro. Thank you!

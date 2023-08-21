@@ -1,0 +1,209 @@
+---
+title: "Astro 2.6: Middleware"
+description: "A handful of experimental features go stable in Astro 2.6 including middleware, hybrid SSR output mode, custom client directives, and CSS inlining. Experimental support for a new redirects API is also introduced."
+publishDate: "June 6, 2023"
+authors:
+  - matthew
+  - ema
+  - bjorn
+  - ben
+  - erika
+coverImage: "/src/content/blog/_images/astro-260/blog-hero-astro-2_6.webp"
+socialImage: "/src/content/blog/_images/astro-260/og-image-2_6.webp"
+lang: "en"
+---
+
+Astro 2.6 is out, and it's a big one! Several experimental features have been marked as stable and are now available in all Astro projects (no "experimental" flag required):
+
+- **[Middleware](#middleware)**
+- **[Hybrid SSR output mode](#hybrid-ssr-output-mode)**
+- **[Custom client directives](#custom-client-directives)**
+- **[CSS inlining](#css-inlining)**
+
+Astro 2.6 also introduces new features and improvements, including a new experimental feature for managing redirects:
+
+- **[Redirects (experimental)](#redirects-experimental)**: Setting individual page redirects in your Astro config.
+- **[Markdoc improvements](#markdoc-improvements)**: Markdoc now has feature parity with MDX in Astro.
+- **[Language tool improvements](#language-tool-improvements)**: The Astro VSCode extension gets an upgrade, powered by Volar.
+
+If you already have Astro installed, you can upgrade it to 2.6 by running the `upgrade` command in your project (using your package manager of choice):
+
+```
+npm install astro@latest
+pnpm upgrade astro@latest
+yarn upgrade astro@latest
+```
+
+While you're at it, upgrade any `@astrojs/*` integrations and adapters you have installed, too!
+
+## Middleware
+
+[Middleware](https://docs.astro.build/en/guides/middleware/) is now stable and available in all projects without an experimental flag. Middleware lets you run code before or after the page is rendered and returned to the user. This brings a new layer of control to Astro projects and unlocks new hooks for authentication, redirects, header modification and more.
+
+```ts
+// src/middleware.ts
+export async function onRequest(context, next) {
+	// Do something before the request is handled.
+	const response = await next()
+	// Or, do something before the response is returned.
+	return response
+}
+```
+
+Astro 2.6 also introduced a new `locals` object to pass down data from middleware. Any data attached to the `locals` object is persisted and available to read from the `Astro.locals` global inside of any Astro page component or API endpoint function.
+
+Here's an example of how you could implement a basic authentication check inside your middleware, passing the loaded user context down to the page route:
+
+```ts
+// src/middleware.ts
+// Example: A simple authentication check in middleware.
+export async function onRequest({ cookies, locals }, next) {
+	// Check for the "sid" user session ID cookie.
+	// Return a 405 (Not Allowed) if the cookie is missing.
+	const sessionId = cookies.get("sid");
+	if (!sessionId) {
+		return new Response(null, {status: 405});
+	}
+	// Use your own `getUser()` function to validate the user.
+	// Return a 405 (Not Allowed) if the user isn't real.
+	const user = await getUser(sessionId);
+	if (!user) {
+		return new Response(null, {status: 405});
+	}
+	// Attach the loaded user to the `locals` object.
+	// Now, it can be read in the page route!
+	locals.user = user;
+	// Return `next()` to return the response.
+	return next();
+}
+```
+
+The `locals.user` object is now guaranteed to exist in your project, and will be available to read inside of any rendered page or API endpoint handler.
+
+```astro
+---
+// src/pages/index.astro
+const { user } = Astro.locals
+---
+
+<h1>Hello {user.name}!</h1>
+```
+
+Middleware was first introduced behind an experimental flag in Astro 2.4. The API is now stable and available to all Astro developers without a flag. Read our [Middleware documentation guide](https://docs.astro.build/en/guides/middleware) to learn more.
+
+## Hybrid SSR Output Mode
+
+Astro's new hybrid SSR output mode is now stable and available to all Astro developers without an experimental flag. Setting `output: "hybrid"` allows you to mix interactive API endpoints and pages into a site while also keeping the overall project static and pre-rendered by default.
+
+```js
+// astro.config.mjs
+
+export default defineConfig({
+	output: "hybrid",
+	adapter: netlify(),
+})
+```
+
+Astro's new `"hybrid"` output mode helps bridge the gap between static and dynamic. Hybrid output mode unlocks the same SSR functionality in your project as the original `"server"` output mode, with one key difference: every page will default to static pre-rendering. This more closely matches the behavior of the `"static"` build output, where every page is pre-rendered to HTML for instant responses from the server or CDN. But unlike `"static"` mode, hybrid output mode includes a server in your build output so that you can now add additional dynamic pages and APIs to your site.
+
+For example, an agency could use Astro's new hybrid output mode to add a dynamic "Contact Us" form handler to their static website in just a few steps. Set the `output` option to `"hybrid"` (and add a [deploy adapter](https://docs.astro.build/en/guides/deploy/) if you haven't yet). This will keep the same "static by default" behavior as before, but you can now mark that form's API endpoint as dynamic with `export const prerender = false` so that it runs on every form submission.
+
+```ts
+// src/pages/api/form-handler.ts
+// Mark the page as `prerender = false` to skip pre-rendering
+// and run the API endpoint in the server on every submission.
+export const prerender = false
+
+export function post({ request }) {
+	// ...
+}
+```
+
+This feature was contributed by Astro community member [@MoustaphaDev](https://github.com/MoustaphaDev) and came out of our [public roadmap](https://github.com/withastro/roadmap) and RFC process. Thank you!
+
+## Custom client directives
+
+Custom client directives are now stable and available to all Astro developers and integration authors without an experimental flag.
+
+Client directives are the cornerstone of Astro's island architecture. They control how interactive UI should load on your page, on a component-by-component level. Astro has many built-in directives like `client:idle` ("Hey Astro, load this button once the page is idle") and `client:visible` ("Hey Astro, only load this image carousel if it becomes visible on the page"). It has never been possible to define your own custom client directives, until now.
+
+For example, you can now define your own `client:hover` directive that will only load and hydrate an interactive component when the user hovers over it:
+
+```js
+// astro.config.mjs
+import { defineConfig } from "astro/config"
+import onHoverDirective from "./directives/client-hover.js"
+
+export default defineConfig({
+	integrations: [onHoverDirective()],
+})
+```
+
+Once added, the integration would define the `client:hover` behavior so that you could begin to use it in your own project:
+
+```astro
+<Counter client:hover />
+```
+
+Create your own client directives, or publish them to npm to share them with others!
+
+Custom client directives were first introduced behind an experimental flag in Astro 2.5. The API is now stable and available to all Astro developers without a flag. Read our [Custom client directives guide](https://docs.astro.build/en/reference/integrations-reference/#addclientdirective-option) to learn more.
+
+## CSS inlining
+
+Astro 2.6 introduces a new config option to automatically inline small snippets of CSS into your HTML. This optimization can speed up most pages (especially on first load) by reducing the number of requests and external stylesheets needed to load the page. You can try it today by setting `inlineStylesheets: "auto"` in your configuration file:
+
+```js
+// astro.config.mjs
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+	build: {
+		inlineStylesheets: "auto",
+	},
+})
+```
+
+Automatic CSS inlining will likely become the default behavior in Astro 3.0. Read our [Configuration Reference](https://docs.astro.build/en/reference/configuration-reference/#buildinlinestylesheets) to learn more about this option and how to configure it for your project.
+
+This feature was contributed by Astro community member [@lilnasy](https://github.com/lilnasy) and came out of our [public roadmap](https://github.com/withastro/roadmap) and RFC process. Thank you!
+
+## Redirects (experimental)
+
+Astro 2.6 introduces an experimental new feature to more easily add redirects in your project. To use it, you'll need to enable the experimental flag `experimental.redirects` in your project configuration file.
+
+```js
+// astro.config.mjs
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+	redirects: {
+		"/old": "/new",
+	},
+	experimental: {
+		redirects: true,
+	},
+})
+```
+
+Traditionally, redirects have been left for developers to figure out for themselves. This creates more work for the developer and can be especially difficult to figure out across different hosts, and in a way that runs consistently across development and production.
+
+Astro's new `redirects` feature solves this with a single API for managing your redirects directly in your Astro config. This works across development and production and can be optimized even further to a specific host using our existing `adapter` API. For example, the Netlify adapter will automatically convert your redirects into a Netlify-specific `_redirects` file for the fastest-possible performance via their CDN.
+
+Our goal is to have a reliable way to configure redirects that works across [all of our supported hosts and adapters](https://docs.astro.build/en/guides/integrations-guide/#official-integrations). We are looking for feedback during this experimental period, so please try it and share your experience with us on [Discord](https://astro.build/chat).
+
+## Markdoc Improvements
+
+[Markdoc](https://docs.astro.build/en/guides/integrations-guide/markdoc/) support in Astro continues to improve with the latest release of `@astrojs/markdoc`. This new release brings full feature parity with Markdown and MDX in Astro, including automatic `id` generation in headings, better syntax highlighting support, and support for config extensions with `extends`.
+
+We have worked closely with the Markdoc team at Stripe to keep improving the content authorship experience in Astro. Seeing the Markdoc ecosystem grow has been exciting, and we are proud to be a part of it!
+
+## Language Tool Improvements
+
+Astro's language tooling received a major upgrade with the 2.0 release of `@astrojs/language-server` and the [2.0 VSCode Extension for Astro](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode&ssr=false#review-details). This release completes a major rewrite and internal migration to [Volar](https://volarjs.github.io/) for improved performance, features and stability.
+
+Volar is a generic framework for language tooling from the Vue team. Using a framework like Volar brings several benefits to our language server, similar to how Astro uses Vite internally. Volar lets us spend less time painstakingly recreating wheels around tooling and more time building features for our users. VSCode, `astro check`, and all other consumers of the Astro language server should benefit from this change.
+
+Volar is quickly becoming a standard framework that all languages can build on top of, and we are excited to support the project. We look forward to continuing to improve Volar for everyone, including Astro developers.
+
+A special thank you to [Johnson Chu](https://twitter.com/johnsoncodehk) (Volar maintainer) for helping us with this project!

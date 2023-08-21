@@ -1,0 +1,159 @@
+---
+title: "Astro 2.9: View Transitions (experimental)"
+description: "Astro 2.9 is out with experimental support for View Transitions, allowing smooth page transitions."
+publishDate: "July 20, 2023"
+authors:
+  - matthew
+coverImage: "/src/content/blog/_images/astro-290/blog-hero-2_9-release.jpg"
+socialImage: "/src/content/blog/_images/astro-290/og-image-2_9-release.jpg"
+lang: "en"
+---
+
+Astro 2.9 is out and features experimental support for [view transitions](https://developer.chrome.com/docs/web-platform/view-transitions/), as well as redirects configuration and improved script bundling.
+
+- **[View Transitions (experimental)](#view-transitions-experimental)**
+- **[Redirects](#redirects)**
+- **[Hoisted script optimization](#hoisted-script-optimization)**
+
+If you already have Astro installed, you can upgrade it to 2.9 by running the upgrade command in your project (using your package manager of choice):
+
+```
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+While you're at it, upgrade any `@astrojs/*` integrations and adapters you have installed, too!
+
+## View Transitions (experimental)
+
+import videoSrc from './_images/astro-290/view-transitions.mp4'
+
+<figure class="my-10">
+  <video controls class="border border-neutral-600 rounded">
+    <source src={videoSrc} type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+  <figcaption class="text-center text-sm my-4">
+    Watch <a href="https://twitter.com/BHolmesDev/status/1682206832423579649">Ben Holmes</a> explain the new View Transitions feature.
+  </figcaption>
+</figure>
+
+Astro now supports [view transitions](https://developer.chrome.com/docs/web-platform/view-transitions/) through the new `<ViewTransitions />` component and the `transition:animate` directive. Enjoy the smoother transitions that previously required client-side routing, without sacrificing the simplicity of an MPA.
+
+Enable support for view transitions in Astro 2.9 by adding the experimental flag to your config:
+
+```js
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    viewTransitions: true,
+  },
+});
+```
+
+### &lt;ViewTransitions /&gt;
+
+This is a component which acts as the _router_ for transitions between pages. Add it to the `<head>` section of each individual page where transitions should occur _in the client_ as you navigate away to another page, instead of causing a full page browser refresh. 
+
+To enable support throughout your entire app (SPA mode), add the component in some common layout or component that targets the `<head>` of every page.
+
+**CommonHead.astro**
+
+```astro
+---
+import { ViewTransitions } from 'astro:transitions';
+---
+
+<meta charset="utf-8" />
+<title>{Astro.props.title}</title>
+<ViewTransitions />
+```
+
+With only this change, your app will now route completely in-client. You can then add transitions to individual elements using the `transition:animate` directive.
+
+### Animations
+
+Add `transition:animate` to any element to use Astro's built-in animations.
+
+```astro
+<header transition:animate="slide"></header>
+```
+
+In the above, Astro's `slide` animation will cause the `<header>` element to slide in from the left, and then slide out to the right when you navigate away from the page.
+
+You can also customize these animations using any CSS animation properties, for example, by specifying a duration:
+
+```astro
+---
+import { slide } from 'astro:transition';
+---
+
+<header transition:animate={slide({ duration: 200 })}></header>
+```
+
+### Continue learning
+
+Check out the [client-side routing docs](https://docs.astro.build/en/guides/client-side-routing/) to learn more.
+
+## Redirects
+
+The `redirects` configuration option is no longer experimental! If you were previously using experimental redirects, remove the following experimental flag:
+
+```js
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    redirects: true,
+  }
+});
+```
+
+If you have been waiting for stabilization before using redirects, wait no longer! You can now safely use redirects in your project. Check out [the docs on redirects](https://docs.astro.build/en/core-concepts/routing/#redirects) to learn how to use this built-in feature.
+
+In your configuration, add a map of old and new paths to redirect from and to:
+
+```js
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  redirects: {
+    '/old-page': '/new-page'
+  }
+});
+```
+
+## Hoisted script optimization
+
+Astro's static analysis to determine which `<script>` tags to bundle together just got a little smarter!
+
+Astro creates bundles that optimize script usage between pages and place them in the head of the document so that they are downloaded as early as possible. One limitation to Astro's existing approach has been that you could not dynamically use hoisted scripts. When using libraries that re-exported components, each page received the same, all-inclusive bundle whether or not every script was needed on that page.
+
+Now, Astro has improved the static analysis to take into account the actual imports used.
+
+For example, Astro would previously bundle the `<script>`s from both the `<Tab>` and `<Accordion>` components for the following library that re-exports multiple components:
+
+**@matthewp/my-astro-lib**
+
+```js
+export { default as Tabs } from './Tabs.astro';
+export { default as Accordion } from './Accordion.astro';
+```
+
+Now, when an Astro page only uses a single component, Astro will send only the necessary script to the page. A page that only imports the `<Accordion>` component will not receive any `<Tab>` component's scripts:
+
+```astro
+---
+import { Accordion } from '@matthewp/my-astro-lib';
+---
+```
+
+You should now see more efficient performance with Astro supporting this common library re-export pattern.
+
+Thanks to [Ottomated](https://ottomated.net/), a community contributor for working on this new feature. 
+
+## More
+
+Additional bug fixes and integration features are included in this release. Check out the [release notes](https://github.com/withastro/astro/pull/7714) to learn more.

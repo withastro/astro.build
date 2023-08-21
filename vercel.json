@@ -1,0 +1,94 @@
+{
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "immutable, max-age=31536000"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/play/:splat*",
+      "destination": "https://play.astro.build/play/:splat"
+    },
+    {
+      "source": "/fonts/:splat*",
+      "destination": "https://fonts-cdn.astro.build/:splat*"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/chat",
+      "destination": "https://discord.gg/grF4GTXXYm"
+    },
+    {
+      "source": "/company",
+      "destination": "/careers/"
+    },
+    {
+      "source": "/parnerships",
+      "destination": "https://astroinc.notion.site/Partner-with-Astro-b05cfd5dcf4248dcbea4a2d81554efed"
+    },
+    {
+      "source": "/showcase/submit",
+      "destination": "https://github.com/withastro/astro.build/issues/new/choose"
+    },
+    {
+      "source": "/issues/site",
+      "destination": "https://github.com/withastro/astro.build/issues/new/choose"
+    },
+    {
+      "source": "/issues",
+      "destination": "https://github.com/withastro/astro/issues/new/choose"
+    },
+    {
+      "source": "/issues/compiler",
+      "destination": "https://github.com/withastro/compiler/issues/new/choose"
+    },
+    {
+      "source": "/releases/:v*",
+      "destination": "https://github.com/withastro/astro/releases/tag/astro@:v*"
+    },
+    {
+      "source": "/code-of-conduct",
+      "destination": "https://github.com/withastro/.github/blob/main/CODE_OF_CONDUCT.md#readme"
+    },
+    {
+      "source": "/governance",
+      "destination": "https://github.com/withastro/.github/blob/main/GOVERNANCE.md#readme"
+    },
+    {
+      "source": "/config",
+      "destination": "https://docs.astro.build/reference/configuration-reference"
+    },
+    {
+      "source": "/deprecated/resolve",
+      "destination": "https://docs.astro.build/en/migrate/#deprecated-astroresolve"
+    },
+    {
+      "source": "/v0.21",
+      "destination": "/blog/astro-021-release/"
+    },
+    {
+      "source": "/hack",
+      "destination": "https://astroinc.notion.site/FRIDAY-Astro-1-0-Hackathon-9fb3499b375e4b01b88b080fd918b184"
+    },
+    {
+      "source": "/resources/image-templates",
+      "destination": "https://www.figma.com/community/file/1182357255394426899"
+    }
+  ]
+}

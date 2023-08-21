@@ -1,0 +1,372 @@
+---
+import matter from "gray-matter"
+import { Blob, File, Request } from "node-fetch"
+import slugify from "slugify"
+import { z } from "zod"
+import { zfd } from "zod-form-data"
+import { DropdownMultiSelect } from "~/components/form/DropdownMultiSelect"
+import Field from "~/components/form/Field.astro"
+import FormError from "~/components/form/FormError.astro"
+import FormErrorList from "~/components/form/FormErrorList.astro"
+import FormFieldSet from "~/components/form/FormFieldSet.astro"
+import FormRadioGroup from "~/components/form/FormRadioGroup.astro"
+import RichTextEditor from "~/components/form/RichTextEditor.astro"
+import { ThemeTools, themeSchema } from "~/content/config.js"
+import { editDiscordWebhookMessage, executeDiscordWebhook } from "~/helpers/discord.js"
+import { sanitizeThemeDescription } from "~/helpers/themes.js"
+import MainLayout from "~/layouts/MainLayout.astro"
+import { env } from "~/process-env.js"
+import BestPractices from "./_components/BestPractices.astro"
+import { ThemeImageUploader } from "./_components/ThemeImageUploader.jsx"
+
+export const prerender = false
+
+const invalidUrlMessage = "Invalid URL, must start with http:// or https://"
+
+const schema = zfd
+	.formData({
+		featuredImage: z.instanceof(File, { message: "Featured image is required" }),
+		additionalImages: zfd.repeatable(
+			z.array(z.instanceof(File)).max(4, "Too many additional images (max 4)"),
+		),
+		authorName: zfd.text(z.string()),
+		authorEmail: zfd.text(
+			z.string().refine((v) => v.includes("@"), "Invalid email address, must include @"),
+		),
+		themeName: zfd.text(z.string()),
+		themeUrl: zfd.text(z.string().url(invalidUrlMessage)),
+		themeDemoUrl: zfd.text(z.string().url(invalidUrlMessage).optional()),
+		paidStatus: zfd.text(z.enum(["free", "paid"])),
+		themeShortDescription: zfd.text(z.string()),
+		themeFullDescription: zfd.text(z.string().transform(sanitizeThemeDescription).optional()),
+		toolsUsed: z.optional(zfd.repeatableOfType(zfd.text())),
+	})
+	.refine((data) => {
+		const size =
+			data.featuredImage.size +
+			data.additionalImages.reduce((total, image) => total + image.size, 0)
+
+		return size < 8 * 1000 * 1000
+	}, "Total image size must be less than 8MB")
+
+const errorResponse = (formData: FormData, errors: z.typeToFlattenedError<typeof schema>) => {
+	const stringifiedData = new URLSearchParams()
+	for (const [key, value] of formData) {
+		if (typeof value === "string") {
+			stringifiedData.append(key, value)
+		}
+	}
+
+	const params = new URLSearchParams({
+		errors: btoa(JSON.stringify(errors)),
+		data: btoa(stringifiedData.toString()),
+	})
+
+	return Astro.redirect(`/themes/submit?${params}`)
+}
+
+if (Astro.request.method === "POST") {
+	// convert astro request to a node-fetch request
+	// hopefully we won't have to do this in the future 🥲
+	const formData = await new Request(Astro.request.url, {
+		method: Astro.request.method,
+		body: Buffer.from(await Astro.request.arrayBuffer()),
+		headers: Astro.request.headers,
+	}).formData()
+
+	// for some reason, a lack of a submission sometimes comes in as an empty file or empty string,
+	// and we don't want empty files anyway
+	for (const [key, value] of formData) {
+		if ((value instanceof Blob && value.size === 0) || value === "") {
+			formData.delete(key)
+		}
+	}
+
+	const result = schema.safeParse(formData)
+	if (!result.success) {
+		return errorResponse(formData, result.error.formErrors)
+	}
+
+	try {
+		const { SUBMISSION_DISCORD_WEBHOOK_URL, SUBMISSION_DISCORD_WEBHOOK_THREAD_ID } = env()
+
+		const message = await executeDiscordWebhook(SUBMISSION_DISCORD_WEBHOOK_URL, {
+			threadId: SUBMISSION_DISCORD_WEBHOOK_THREAD_ID,
+			content: `**New theme submission!**`,
+			files: [result.data.featuredImage, ...result.data.additionalImages],
+		})
+
+		const [image, ...images] = message.attachments
+		if (!image) {
+			console.error("No image found in Discord message")
+			return errorResponse(formData, {
+				formErrors: ["Failed to submit theme, please try again."],
+				fieldErrors: {},
+			})
+		}
+
+		const theme: z.input<typeof themeSchema> = {
+			title: result.data.themeName,
+			description: result.data.themeShortDescription,
+			fullDescription: result.data.themeFullDescription,
+			image: image.url,
+			images: images.map((image) => image.url),
+			author: {
+				name: result.data.authorName,
+				avatar: "",
+				url: "",
+			},
+			categories: [],
+			demoUrl: result.data.themeDemoUrl,
+			tools: result.data.toolsUsed,
+		}
+
+		if (result.data.paidStatus === "paid") {
+			theme.buyUrl = result.data.themeUrl
+		} else {
+			theme.repoUrl = result.data.themeUrl
+		}
+
+		await editDiscordWebhookMessage(SUBMISSION_DISCORD_WEBHOOK_URL, message.id, {
+			threadId: SUBMISSION_DISCORD_WEBHOOK_THREAD_ID,
+			files: [
+				new File(
+					[
+						matter.stringify(
+							"",
+							// clean up undefined values, which gray matter doesn't appreciate
+							JSON.parse(JSON.stringify(theme)),
+						),
+					],
+					slugify(result.data.themeName) + ".md",
+				),
+				new File([JSON.stringify(result.data, undefined, 2)], "submission.json"),
+			],
+		})
+	} catch (error) {
+		console.error(error)
+		return errorResponse(formData, {
+			formErrors: ["Failed to submit theme, please try again."],
+			fieldErrors: {},
+		})
+	}
+
+	return Astro.redirect("/themes/submit/success")
+}
+
+let errors
+errors = Astro.url.searchParams.get("errors")
+if (errors != null) {
+	errors = JSON.parse(atob(errors)) as z.typeToFlattenedError<z.infer<typeof schema>>
+}
+
+let prefilled
+prefilled = Astro.url.searchParams.get("data")
+if (prefilled != null) {
+	prefilled = new URLSearchParams(atob(prefilled))
+}
+---
+
+<MainLayout title="Submit a theme" image={{ src: "/og/themes-submit.jpg", alt: "Submit a theme" }}>
+	<div class="flex items-start">
+		<div class="flex-1 border-astro-gray-600 p-8 lg:border-r">
+			<div class="mx-auto max-w-4xl">
+				<h1 class="heading-3 mb-4 lg:heading-2">Submit a theme</h1>
+				<p class="text-astro-gray-200">
+					Thank you for sharing your themes with the Astro community! Choose to make your theme free
+					or paid. All payments go directly to you, we don't handle the sale or take a cut.
+				</p>
+
+				{
+					errors && (
+						<div class="my-4">
+							<FormError>
+								There were problems with your submission. Please fix the errors below and try again.
+							</FormError>
+							<FormErrorList errors={errors?.formErrors} />
+						</div>
+					)
+				}
+
+				<hr class="my-8 border-astro-gray-600" />
+
+				<div class="lg:hidden">
+					<BestPractices />
+				</div>
+
+				<hr class="my-8 border-astro-gray-600 lg:hidden" />
+
+				<form method="post" enctype="multipart/form-data" class="grid gap-10">
+					<FormFieldSet legend="Images">
+						<p>
+							Theme images should be max 8MB combined, 16:9 aspect ratio, and 1280px wide or larger.
+						</p>
+						<FormErrorList
+							errors={[
+								...(errors?.fieldErrors?.featuredImage ?? []),
+								...(errors?.fieldErrors?.additionalImages ?? []),
+							]}
+						/>
+						<noscript>
+							<input
+								id="featuredImage"
+								name="featuredImage"
+								type="file"
+								accept="image/*"
+								multiple
+								required
+							/>
+						</noscript>
+						<ThemeImageUploader client:only />
+					</FormFieldSet>
+
+					<FormFieldSet legend="Author Info">
+						<Field errors={errors?.fieldErrors.authorName}>
+							<label slot="label" for="authorName">Your name</label>
+							<input
+								id="authorName"
+								name="authorName"
+								placeholder="Sally Ride"
+								required
+								class="input"
+								value={prefilled?.get("authorName")}
+							/>
+						</Field>
+						<Field errors={errors?.fieldErrors.authorEmail}>
+							<label slot="label" for="authorEmail">Your email address</label>
+							<input
+								id="authorEmail"
+								name="authorEmail"
+								type="email"
+								placeholder="sallyride@gmail.com"
+								required
+								class="input"
+								value={prefilled?.get("authorEmail")}
+							/>
+						</Field>
+					</FormFieldSet>
+
+					<FormFieldSet legend="Theme Info">
+						<Field errors={errors?.fieldErrors?.themeName}>
+							<label slot="label" for="themeName">Theme name</label>
+							<input
+								id="themeName"
+								name="themeName"
+								placeholder="My super cool theme"
+								required
+								class="input"
+								value={prefilled?.get("themeName")}
+							/>
+						</Field>
+
+						<script>
+							import { createEffect, createSignal } from "solid-js"
+							import { getElement, getElements } from "~/helpers/dom.js"
+
+							const paidStatusOptions = getElements("[name=paidStatus]", HTMLInputElement)
+							const themeUrlLabel = getElement("[for=themeUrl]", HTMLLabelElement)
+
+							const [paidStatus, setPaidStatus] = createSignal(
+								[...paidStatusOptions].find((el) => el.checked)?.value,
+							)
+
+							for (const el of paidStatusOptions) {
+								el.addEventListener("input", () => {
+									if (el.checked) setPaidStatus(el.value)
+								})
+							}
+
+							createEffect(() => {
+								if (paidStatus() === "free") {
+									themeUrlLabel.textContent = "Public repo URL"
+								} else {
+									themeUrlLabel.textContent = "Purchase URL"
+								}
+							})
+						</script>
+
+						<Field errors={errors?.fieldErrors?.paidStatus}>
+							<p slot="label" id="paidStatusLabel">Is your theme free or paid?</p>
+							<FormRadioGroup
+								name="paidStatus"
+								options={[
+									{ label: "Free", value: "free" },
+									{ label: "Paid", value: "paid" },
+								]}
+								defaultValue={prefilled?.get("paidStatus") ?? "free"}
+								aria-labelledby="paidStatusLabel"
+							/>
+						</Field>
+
+						<div class="grid gap-6 md:grid-cols-2">
+							<Field errors={errors?.fieldErrors?.themeUrl}>
+								<label slot="label" for="themeUrl">Public repo URL / Purchase URL</label>
+								<input
+									id="themeUrl"
+									name="themeUrl"
+									type="url"
+									placeholder="https://github.com/me/my-theme"
+									required
+									class="input"
+									value={prefilled?.get("themeUrl")}
+								/>
+							</Field>
+
+							<Field errors={errors?.fieldErrors?.themeDemoUrl}>
+								<label slot="label" for="themeDemoUrl">Live demo URL</label>
+								<input
+									id="themeDemoUrl"
+									name="themeDemoUrl"
+									type="url"
+									placeholder="https://example.com/my-theme-preview"
+									class="input"
+									value={prefilled?.get("themeDemoUrl")}
+								/>
+							</Field>
+						</div>
+
+						<Field errors={errors?.fieldErrors?.themeShortDescription}>
+							<label slot="label" for="themeShortDescription">Short description</label>
+							<textarea
+								id="themeShortDescription"
+								name="themeShortDescription"
+								placeholder="A short description of your theme. This will be displayed on the theme list page."
+								class="input input-textarea"
+								required>{prefilled?.get("themeShortDescription")}</textarea
+							>
+						</Field>
+
+						<Field errors={errors?.fieldErrors?.themeFullDescription}>
+							<label slot="label" for="themeFullDescription">Full description</label>
+							<RichTextEditor
+								id="themeFullDescription"
+								name="themeFullDescription"
+								placeholder="A full description of your theme. This will be displayed on the theme detail page."
+								class="input input-textarea"
+								value={prefilled?.get("themeFullDescription")}
+							/>
+						</Field>
+
+						<Field errors={errors?.fieldErrors?.toolsUsed}>
+							<p slot="label" id="toolsLabel">Tools used</p>
+							<DropdownMultiSelect
+								client:idle
+								name="toolsUsed"
+								descriptionId="toolsLabel"
+								options={[...ThemeTools]
+									.map(([value, label]) => ({ label, value }))
+									.sort((a, b) => a.label.localeCompare(b.label))}
+								defaultSelected={prefilled?.getAll("toolsUsed") ?? []}
+							/>
+						</Field>
+					</FormFieldSet>
+
+					<button type="submit" class="button button-primary">Submit Theme</button>
+				</form>
+			</div>
+		</div>
+		<div class="hidden basis-[420px] bg-astro-gray-600 p-10 lg:block">
+			<BestPractices />
+		</div>
+	</div>
+</MainLayout>
