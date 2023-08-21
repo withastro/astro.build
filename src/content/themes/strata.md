@@ -1,7 +1,7 @@
 ---
 title: "Strata"
 description: "I am Strata, a super simple responsive site template freebie crafted by HTML5UP and ported to Astro by Netais Technology Management LLC."
-image: "/src/content/themes/_images/strata-hero.webp"
+image: "/src/assets/themes/strata-hero.webp"
 author:
   url: "https://html5up.net/"
   name: "HTML5 UP"

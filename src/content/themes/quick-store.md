@@ -1,10 +1,10 @@
 ---
 title: "Quick Store"
 description: "A simple Astro and Tailwind CSS template for your store. Embed products from services like Gumroad or Lemonsqueezy."
-image: "/src/content/themes/_images/quick-store-hero.webp"
+image: "/src/assets/themes/quick-store-hero.webp"
 images:
-  - "/src/content/themes/_images/quick-store-2.webp"
-  - "/src/content/themes/_images/quick-store-3.webp"
+  - "/src/assets/themes/quick-store-2.webp"
+  - "/src/assets/themes/quick-store-3.webp"
 author:
   url: "https://github.com/michael-andreuzza"
   name: "michael-andreuzza"

@@ -1,11 +1,11 @@
 ---
 title: "Aurora"
 description: "A minimal blog theme built with Astro, Svelte and plain CSS. It is focused on accessibility and usability."
-image: "/src/content/themes/_images/aurora-hero.webp"
+image: "/src/assets/themes/aurora-hero.webp"
 images:
-  - "/src/content/themes/_images/aurora-2.webp"
-  - "/src/content/themes/_images/aurora-3.webp"
-  - "/src/content/themes/_images/aurora-4.webp"
+  - "/src/assets/themes/aurora-2.webp"
+  - "/src/assets/themes/aurora-3.webp"
+  - "/src/assets/themes/aurora-4.webp"
 author:
   url: "https://github.com/thiloho"
   name: "thiloho"

@@ -1,7 +1,7 @@
 ---
 title: "Outkast"
 description: "A dark and cool landing page for your productized service."
-image: "/src/content/themes/_images/outkast-hero.webp"
+image: "/src/assets/themes/outkast-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

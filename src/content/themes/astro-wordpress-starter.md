@@ -1,7 +1,7 @@
 ---
 title: "Astro WordPress Starter"
 description: "A flexible starting point for people interested in using Astro with WordPress as a headless CMS using WPGraphQL."
-image: "/src/content/themes/_images/astro-wordpress-starter.webp"
+image: "/src/assets/themes/astro-wordpress-starter.webp"
 images: []
 author:
   url: "https://github.com/JEverhart383"

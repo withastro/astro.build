@@ -1,12 +1,12 @@
 ---
 title: "B2B SaaS Kit"
 description: "B2B SaaS Kit helps teams build applications, not just landing pages, using technologies like React Router, tRPC, Drizzle ORM, auth and payments."
-image: "/src/content/themes/_images/b2b-saas-kit-hero.webp"
+image: "/src/assets/themes/b2b-saas-kit-hero.webp"
 images:
-  - "/src/content/themes/_images/b2b-saas-kit-2.webp"
-  - "/src/content/themes/_images/b2b-saas-kit-3.webp"
-  - "/src/content/themes/_images/b2b-saas-kit-4.webp"
-  - "/src/content/themes/_images/b2b-saas-kit-5.webp"
+  - "/src/assets/themes/b2b-saas-kit-2.webp"
+  - "/src/assets/themes/b2b-saas-kit-3.webp"
+  - "/src/assets/themes/b2b-saas-kit-4.webp"
+  - "/src/assets/themes/b2b-saas-kit-5.webp"
 author:
   url: "https://github.com/fogbender"
   name: "fogbender"

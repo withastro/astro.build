@@ -1,12 +1,12 @@
 ---
 title: "Super Solstice"
 description: "A sleek and modern personal website for you."
-image: "/src/content/themes/_images/super-solstice-hero.webp"
+image: "/src/assets/themes/super-solstice-hero.webp"
 images:
-  - "/src/content/themes/_images/super-solstice-2.webp"
-  - "/src/content/themes/_images/super-solstice-3.webp"
-  - "/src/content/themes/_images/super-solstice-4.webp"
-  - "/src/content/themes/_images/super-solstice-5.webp"
+  - "/src/assets/themes/super-solstice-2.webp"
+  - "/src/assets/themes/super-solstice-3.webp"
+  - "/src/assets/themes/super-solstice-4.webp"
+  - "/src/assets/themes/super-solstice-5.webp"
 author:
   url: "https://andreisurugiu.com"
   name: "andreisurugiu"

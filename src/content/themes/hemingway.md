@@ -1,12 +1,12 @@
 ---
 title: "Hemingway"
 description: "A fully blown clean blog theme allows you to create layouts for a company, personal or magazine blogs."
-image: "/src/content/themes/_images/hemingway-hero.webp"
+image: "/src/assets/themes/hemingway-hero.webp"
 images:
-  - "/src/content/themes/_images/hemingway-2.webp"
-  - "/src/content/themes/_images/hemingway-3.webp"
-  - "/src/content/themes/_images/hemingway-4.webp"
-  - "/src/content/themes/_images/hemingway-5.webp"
+  - "/src/assets/themes/hemingway-2.webp"
+  - "/src/assets/themes/hemingway-3.webp"
+  - "/src/assets/themes/hemingway-4.webp"
+  - "/src/assets/themes/hemingway-5.webp"
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"

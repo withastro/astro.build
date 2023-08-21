@@ -1,7 +1,7 @@
 ---
 title: "AgenceX"
 description: "A simple agency landing page made with astrojs and tailwindcss."
-image: "/src/content/themes/_images/agencex-hero.webp"
+image: "/src/assets/themes/agencex-hero.webp"
 author:
   url: "https://github.com/Johnkat-Mj"
   name: "Johnkat Mj"

@@ -1,7 +1,7 @@
 ---
 title: "Astro Business Template"
 description: "Business template in Turkish, built with TailwindCSS. Includes Open Graph, Facebook, and Twitter SEO metadata."
-image: "/src/content/themes/_images/astro-business-template.webp"
+image: "/src/assets/themes/astro-business-template.webp"
 images: []
 author:
   url: "https://github.com/netlesh"

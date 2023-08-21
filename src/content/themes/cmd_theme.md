@@ -1,9 +1,9 @@
 ---
 title: "cmd_theme"
 description: 'Personal Blog "cmd_theme"'
-image: "/src/content/themes/_images/cmd_theme-hero.webp"
+image: "/src/assets/themes/cmd_theme-hero.webp"
 images:
-  - "/src/content/themes/_images/cmd_theme-2.webp"
+  - "/src/assets/themes/cmd_theme-2.webp"
 author:
   url: "https://github.com/onadrog"
   name: "onadrog"

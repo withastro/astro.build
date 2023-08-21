@@ -1,9 +1,9 @@
 ---
 title: "Astroplate"
 description: "Astroplate is the ultimate starter template built with Astro, TailwindCSS & TypeScript, providing everything you need to jumpstart your Astro project."
-image: "/src/content/themes/_images/astroplate-hero.webp"
+image: "/src/assets/themes/astroplate-hero.webp"
 images:
-  - "/src/content/themes/_images/astroplate-2.webp"
+  - "/src/assets/themes/astroplate-2.webp"
 author:
   url: "https://zeon.studio/"
   name: "Zeon Studio"

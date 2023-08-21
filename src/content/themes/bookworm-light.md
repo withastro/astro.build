@@ -1,10 +1,10 @@
 ---
 title: "Bookworm Light Astro"
 description: "Bookworm Light is a feature-rich, minimal, highly customizable, easy-to-use free Astro blog theme."
-image: "/src/content/themes/_images/bookworm-light-hero.webp"
+image: "/src/assets/themes/bookworm-light-hero.webp"
 images:
-  - "/src/content/themes/_images/bookworm-light-2.webp"
-  - "/src/content/themes/_images/bookworm-light-3.webp"
+  - "/src/assets/themes/bookworm-light-2.webp"
+  - "/src/assets/themes/bookworm-light-3.webp"
 author:
   url: "https://themefisher.com/"
   name: "Themefisher"

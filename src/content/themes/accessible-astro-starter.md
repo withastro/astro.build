@@ -1,12 +1,12 @@
 ---
 title: "Accessible Astro Starter"
 description: "An Accessible Starter Theme for Astro including many accessibility features and components."
-image: "/src/content/themes/_images/accessible-astro-starter-hero-2.webp"
+image: "/src/assets/themes/accessible-astro-starter-hero-2.webp"
 images:
-  - "/src/content/themes/_images/accessible-astro-starter-5.webp"
-  - "/src/content/themes/_images/accessible-astro-starter-6.webp"
-  - "/src/content/themes/_images/accessible-astro-starter-7.webp"
-  - "/src/content/themes/_images/accessible-astro-starter-8.webp"
+  - "/src/assets/themes/accessible-astro-starter-5.webp"
+  - "/src/assets/themes/accessible-astro-starter-6.webp"
+  - "/src/assets/themes/accessible-astro-starter-7.webp"
+  - "/src/assets/themes/accessible-astro-starter-8.webp"
 author:
   url: "https://github.com/markteekman"
   name: "markteekman"

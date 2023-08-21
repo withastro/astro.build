@@ -1,7 +1,7 @@
 ---
 title: "Spydea"
 description: "Spydea is a beautiful Astro template that is perfect for a wide variety of businesses, including SaaS, startups, and agencies."
-image: "/src/content/themes/_images/spydea-hero.webp"
+image: "/src/assets/themes/spydea-hero.webp"
 author:
   url: "https://themefisher.com/"
   name: "Theme Fisher"

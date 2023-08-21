@@ -1,7 +1,7 @@
 ---
 title: "Navy"
 description: "Navy is a modern dark elegant UI KIt with attention to details and inlcudes more than 40 demo pages and 100s of components."
-image: "/src/content/themes/_images/navy-hero.webp"
+image: "/src/assets/themes/navy-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

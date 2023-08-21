@@ -1,7 +1,7 @@
 ---
 title: "Blogster Sleek"
 description: "A beautiful, performant and accessible theme built with Tailwind."
-image: "/src/content/themes/_images/blogster-sleek-hero.webp"
+image: "/src/assets/themes/blogster-sleek-hero.webp"
 images: []
 author:
   url: "https://github.com/flexdinesh"

@@ -1,7 +1,7 @@
 ---
 title: "Astrobrew"
 description: "An elegant landing page for Micro SaaS products built with Astro & Skeleton CSS"
-image: "/src/content/themes/_images/astrobrew-hero.webp"
+image: "/src/assets/themes/astrobrew-hero.webp"
 author:
   url: "https://github.com/anthonylan"
   name: "anthonylan"

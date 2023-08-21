@@ -1,11 +1,11 @@
 ---
 title: "Starlight"
 description: "Everything you need to build a stellar documentation website. Fast, accessible, and easy-to-use."
-image: "/src/content/themes/_images/starlight-hero.webp"
+image: "/src/assets/themes/starlight-hero.webp"
 images:
-  - "/src/content/themes/_images/starlight-2.webp"
-  - "/src/content/themes/_images/starlight-3.webp"
-  - "/src/content/themes/_images/starlight-4.webp"
+  - "/src/assets/themes/starlight-2.webp"
+  - "/src/assets/themes/starlight-3.webp"
+  - "/src/assets/themes/starlight-4.webp"
 author:
   url: "https://github.com/withastro"
   name: "withastro"

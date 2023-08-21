@@ -1,7 +1,7 @@
 ---
 title: "Bob's Blog"
 description: "Bob's blog is a simple blog template created with Astro & Tailwindcss"
-image: "/src/content/themes/_images/bobs-blog.webp"
+image: "/src/assets/themes/bobs-blog.webp"
 images: []
 author:
   url: "https://github.com/MoofyWoofy"

@@ -1,7 +1,7 @@
 ---
 title: "Galaxy "
 description: "Ship Fast Website To The User With Just A Sprinkle Of Javascript"
-image: "/src/content/themes/_images/galaxy-hero.webp"
+image: "/src/assets/themes/galaxy-hero.webp"
 images: []
 author:
   url: "https://github.com/TomEverson"

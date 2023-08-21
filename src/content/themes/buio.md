@@ -1,7 +1,7 @@
 ---
 title: "Buio"
 description: "Buio is dark, modern, beautiful and egocentric UI Kit for those with personality! Includes more than 40 demo pages and 100s of components."
-image: "/src/content/themes/_images/buio-hero.webp"
+image: "/src/assets/themes/buio-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

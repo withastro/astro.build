@@ -1,10 +1,10 @@
 ---
 title: "Bigspring Light Astro"
 description: "Bigspring is a highly customizable Astro theme designed specifically for SaaS & marketing websites."
-image: "/src/content/themes/_images/bigspring-light-hero.webp"
+image: "/src/assets/themes/bigspring-light-hero.webp"
 images:
-  - "/src/content/themes/_images/bigspring-light-2.webp"
-  - "/src/content/themes/_images/bigspring-light-3.webp"
+  - "/src/assets/themes/bigspring-light-2.webp"
+  - "/src/assets/themes/bigspring-light-3.webp"
 author:
   url: "https://themefisher.com/"
   name: "Themefisher"

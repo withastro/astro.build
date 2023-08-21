@@ -1,7 +1,7 @@
 ---
 title: "Astro Cube"
 description: "A tiny & minimal Astro starter template set-up with CUBE CSS 🧑‍🚀 🧊"
-image: "/src/content/themes/_images/astro-cube-hero.webp"
+image: "/src/assets/themes/astro-cube-hero.webp"
 images: []
 author:
   url: "https://github.com/williamhzo"

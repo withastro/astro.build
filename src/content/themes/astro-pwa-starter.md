@@ -1,7 +1,7 @@
 ---
 title: "Astro PWA Starter"
 description: "A minimal, opinionated starter that ships with full PWA support out the box. It also comes with TailwindCSS preinstalled as well as sensible ESLint and Prettier configurations."
-image: "/src/content/themes/_images/astro-pwa-starter.webp"
+image: "/src/assets/themes/astro-pwa-starter.webp"
 images: []
 author:
   url: "https://github.com/shaunchander"

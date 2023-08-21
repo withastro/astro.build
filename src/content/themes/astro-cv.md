@@ -1,7 +1,7 @@
 ---
 title: "Astro CV"
 description: "CV theme for Astro 🚀"
-image: "/src/content/themes/_images/astro-cv.webp"
+image: "/src/assets/themes/astro-cv.webp"
 images: []
 author:
   url: "https://github.com/dofbi"

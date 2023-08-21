@@ -1,7 +1,7 @@
 ---
 title: "Brightlight"
 description: "Brightlight is a an elegant UI Kit for your digital product."
-image: "/src/content/themes/_images/brightlight-hero.webp"
+image: "/src/assets/themes/brightlight-hero.webp"
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"

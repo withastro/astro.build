@@ -1,7 +1,7 @@
 ---
 title: "Portfolio with a blog"
 description: "A minimal portfolio template with a blog part, built with Astro and Tailwindcss."
-image: "/src/content/themes/_images/maewolff-portfolio-template-hero.webp"
+image: "/src/assets/themes/maewolff-portfolio-template-hero.webp"
 images: []
 author:
   url: "https://github.com/MaeWolff"

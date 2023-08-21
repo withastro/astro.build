@@ -1,7 +1,7 @@
 ---
 title: "Pinwheel"
 description: "Pinwheel Astro is a multipurpose SaaS theme."
-image: "/src/content/themes/_images/pinwheel-hero.webp"
+image: "/src/assets/themes/pinwheel-hero.webp"
 author:
   url: "https://themefisher.com/"
   name: "Theme Fisher"

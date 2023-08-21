@@ -1,7 +1,7 @@
 ---
 title: "Dusk"
 description: "A dark and cool landing page for your productized service."
-image: "/src/content/themes/_images/dusk-hero.webp"
+image: "/src/assets/themes/dusk-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

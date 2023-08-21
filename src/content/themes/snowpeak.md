@@ -1,7 +1,7 @@
 ---
 title: "Snowpeak"
 description: "Snowpeak is a colorful, modern and simple UI Kit."
-image: "/src/content/themes/_images/snowpeak-hero.webp"
+image: "/src/assets/themes/snowpeak-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

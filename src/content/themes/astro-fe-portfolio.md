@@ -1,10 +1,10 @@
 ---
 title: "Astro portfolio template"
 description: "A free template for creating portfolio website using Astro 2.0 and Tailwind CSS."
-image: "/src/content/themes/_images/astro-fe-portfolio-hero.webp"
+image: "/src/assets/themes/astro-fe-portfolio-hero.webp"
 images:
-  - "/src/content/themes/_images/astro-fe-portfolio-2.webp"
-  - "/src/content/themes/_images/astro-fe-portfolio-3.webp"
+  - "/src/assets/themes/astro-fe-portfolio-2.webp"
+  - "/src/assets/themes/astro-fe-portfolio-3.webp"
 author:
   url: "https://github.com/veranikabarel"
   name: "veranikabarel"

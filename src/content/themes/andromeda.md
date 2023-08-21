@@ -1,10 +1,10 @@
 ---
 title: "Andromeda"
 description: "Andromeda is a multipurpose SaaS landing page theme designed to showcase SaaS products and services."
-image: "/src/content/themes/_images/andromeda-hero.webp"
+image: "/src/assets/themes/andromeda-hero.webp"
 images:
-  - "/src/content/themes/_images/andromeda-2.webp"
-  - "/src/content/themes/_images/andromeda-3.webp"
+  - "/src/assets/themes/andromeda-2.webp"
+  - "/src/assets/themes/andromeda-3.webp"
 author:
   url: "https://themefisher.com/"
   name: "Theme Fisher"

@@ -1,10 +1,10 @@
 ---
 title: "Nimbus Narratives"
 description: "A free, minimal, accessible, and SEO-friendly personal blog theme built using Astro 2.0 and TailwindCSS."
-image: "/src/content/themes/_images/nimbus-narratives-hero.webp"
+image: "/src/assets/themes/nimbus-narratives-hero.webp"
 images:
-  - "/src/content/themes/_images/nimbus-narratives-2.webp"
-  - "/src/content/themes/_images/nimbus-narratives-3.webp"
+  - "/src/assets/themes/nimbus-narratives-2.webp"
+  - "/src/assets/themes/nimbus-narratives-3.webp"
 author:
   url: "https://github.com/algorizr"
   name: "algorizr"

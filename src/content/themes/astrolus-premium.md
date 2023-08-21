@@ -1,11 +1,11 @@
 ---
 title: "Astrolus Premium"
 description: "Modern Sass landing page, supports both light and dark mode, built with TailwindCSS."
-image: "/src/content/themes/_images/astrolus-premium-hero.webp"
+image: "/src/assets/themes/astrolus-premium-hero.webp"
 images:
-  - "/src/content/themes/_images/astrolus-premium-2.webp"
-  - "/src/content/themes/_images/astrolus-premium-3.webp"
-  - "/src/content/themes/_images/astrolus-premium-4.webp"
+  - "/src/assets/themes/astrolus-premium-2.webp"
+  - "/src/assets/themes/astrolus-premium-3.webp"
+  - "/src/assets/themes/astrolus-premium-4.webp"
 author:
   url: "https://tailus.gumroad.com/"
   name: "Tailus UI"

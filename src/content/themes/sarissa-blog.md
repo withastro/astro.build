@@ -1,7 +1,7 @@
 ---
 title: "Sarissa Blog"
 description: "Responsive, functional, personal blog theme for Astro."
-image: "/src/content/themes/_images/sarissa-blog.webp"
+image: "/src/assets/themes/sarissa-blog.webp"
 images: []
 author:
   url: "https://github.com/iozcelik"

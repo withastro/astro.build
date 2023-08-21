@@ -1,7 +1,7 @@
 ---
 title: "Engineering Blog"
 description: "A template for creating engineering blogs with multiple authors, co-authoring, topics, search, and more."
-image: "/src/content/themes/_images/engineering-blog-hero.webp"
+image: "/src/assets/themes/engineering-blog-hero.webp"
 author:
   url: "https://github.com/EddyVinck"
   name: "EddyVinck"

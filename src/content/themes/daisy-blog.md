@@ -1,7 +1,7 @@
 ---
 title: "Daisy Blog"
 description: "Simple blog template with Astro, Tailwind CSS, daisyUI."
-image: "/src/content/themes/_images/daisy-blog.webp"
+image: "/src/assets/themes/daisy-blog.webp"
 images: []
 author:
   url: "https://github.com/saadeghi"
