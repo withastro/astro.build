@@ -4,9 +4,7 @@ title: "astro-ds-new"
 description: "``` npm i astro-ds-new ```"
 categories:
   - "css+ui"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-ds-new"
 homepageUrl: "https://www.npmjs.com/package/astro-ds-new"
-downloads: 2197
-badge: "new"
+downloads: 612
 ---

@@ -7,5 +7,5 @@ categories:
   - "adapters"
 npmUrl: "https://www.npmjs.com/package/@common-web/astro-lambda-edge"
 homepageUrl: "https://www.npmjs.com/package/@common-web/astro-lambda-edge"
-downloads: 461
+downloads: 409
 ---
