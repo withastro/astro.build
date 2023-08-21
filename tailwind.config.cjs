@@ -21,7 +21,7 @@ module.exports = {
 				lg: "0px 25px 7px rgba(24, 24, 27, 0.01), 0px 16px 6px rgba(24, 24, 27, 0.04), 0px 9px 5px rgba(24, 24, 27, 0.15), 0px 4px 4px rgba(24, 24, 27, 0.26), 0px 1px 2px rgba(24, 24, 27, 0.29), 0px 0px 0px rgba(24, 24, 27, 0.3);",
 			},
 			fontFamily: {
-				sans: ["InterVariable", "sans-serif"],
+				sans: ["Inter Variable", "sans-serif"],
 				mono: [`"MDIO"`, "md-io-fallback", "monospace"],
 				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
 				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
