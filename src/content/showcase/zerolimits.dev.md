@@ -1,5 +1,5 @@
 ---
 title: ZeroLimits.dev
-image: /src/content/showcase/_images/zerolimits.dev.webp
+image: ~/assets/showcase/zerolimits.dev.webp
 url: "https://zerolimits.dev"
 ---

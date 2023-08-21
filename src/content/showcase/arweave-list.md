@@ -1,6 +1,6 @@
 ---
 title: "ArweaveList"
-image: "/src/content/showcase/_images/arweave-list.webp"
+image: "~/assets/showcase/arweave-list.webp"
 url: "https://list.weavescan.com/"
 categories: ["tech"]
 ---

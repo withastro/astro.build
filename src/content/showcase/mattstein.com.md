@@ -1,5 +1,5 @@
 ---
 title: Matt Stein
-image: /src/content/showcase/_images/mattstein.com.webp
+image: ~/assets/showcase/mattstein.com.webp
 url: "https://mattstein.com"
 ---

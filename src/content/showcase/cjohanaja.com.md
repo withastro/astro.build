@@ -1,5 +1,5 @@
 ---
 title: CJ Ohanaja
-image: /src/content/showcase/_images/cjohanaja.com.webp
+image: ~/assets/showcase/cjohanaja.com.webp
 url: "https://cjohanaja.com/"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Behrouz's Personal Website"
-image: "/src/content/showcase/_images/behrouz.webp"
+image: "~/assets/showcase/behrouz.webp"
 url: "https://www.behrouz.nl/"
 categories: ["personal"]
 ---

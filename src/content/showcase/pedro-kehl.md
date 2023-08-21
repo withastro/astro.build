@@ -1,6 +1,6 @@
 ---
 title: "Pedro Kehl"
-image: "/src/content/showcase/_images/pedro-kehl.webp"
+image: "~/assets/showcase/pedro-kehl.webp"
 url: "https://pedrokehl.net/"
 categories: ["personal"]
 ---

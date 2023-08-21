@@ -1,5 +1,5 @@
 ---
 title: Home
-image: /src/content/showcase/_images/michaels.studio.webp
+image: ~/assets/showcase/michaels.studio.webp
 url: "https://michaels.studio/"
 ---

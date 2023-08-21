@@ -1,5 +1,5 @@
 ---
 title: New Impact ‣ Content creators
-image: /src/content/showcase/_images/newimpact.be.webp
+image: ~/assets/showcase/newimpact.be.webp
 url: "https://newimpact.be/"
 ---

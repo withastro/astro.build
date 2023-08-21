@@ -1,5 +1,5 @@
 ---
 title: Unwrapped
-image: /src/content/showcase/_images/unwrapped.studio.webp
+image: ~/assets/showcase/unwrapped.studio.webp
 url: "https://unwrapped.studio/"
 ---

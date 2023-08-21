@@ -1,6 +1,6 @@
 ---
 title: "RégioLangues"
-image: "/src/content/showcase/_images/regiolangues.webp"
+image: "~/assets/showcase/regiolangues.webp"
 url: "https://www.regiolangues.fr"
 categories: ["other"]
 ---

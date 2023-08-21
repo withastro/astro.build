@@ -1,5 +1,5 @@
 ---
 title: Homepage
-image: /src/content/showcase/_images/terrasymposium.com.webp
+image: ~/assets/showcase/terrasymposium.com.webp
 url: "https://terrasymposium.com/"
 ---

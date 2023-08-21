@@ -1,6 +1,6 @@
 ---
 title: "Alex Kuznetsov"
-image: "/src/content/showcase/_images/alex-kuznetsov.webp"
+image: "~/assets/showcase/alex-kuznetsov.webp"
 url: "https://alex-porfolio.vercel.app/"
 categories: ["personal"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "OrienteSalud"
-image: "/src/content/showcase/_images/oriente-salud.webp"
+image: "~/assets/showcase/oriente-salud.webp"
 url: "https://orientesalud.co/"
 categories: ["marketing"]
 ---

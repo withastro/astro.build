@@ -1,5 +1,5 @@
 ---
 title: Docker-based local development environments in minutes. | DDEV
-image: /src/content/showcase/_images/ddev.com.webp
+image: ~/assets/showcase/ddev.com.webp
 url: "https://ddev.com"
 ---

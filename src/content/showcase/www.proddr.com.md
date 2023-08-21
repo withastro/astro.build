@@ -1,5 +1,5 @@
 ---
 title: Welcome to proddr - Your Product Management companion
-image: /src/content/showcase/_images/www.proddr.com.webp
+image: ~/assets/showcase/www.proddr.com.webp
 url: "http://www.proddr.com"
 ---

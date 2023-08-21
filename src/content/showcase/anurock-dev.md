@@ -1,6 +1,6 @@
 ---
 title: "AnuRock.dev"
-image: "/src/content/showcase/_images/anurock-dev.webp"
+image: "~/assets/showcase/anurock-dev.webp"
 url: "https://anurock.dev"
 categories: ["personal"]
 ---

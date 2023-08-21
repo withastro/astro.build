@@ -1,6 +1,6 @@
 ---
 title: "Steve Fenton"
-image: "/src/content/showcase/_images/stevefenton.webp"
+image: "~/assets/showcase/stevefenton.webp"
 url: "https://www.stevefenton.co.uk/"
 categories: ["personal"]
 ---

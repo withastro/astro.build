@@ -1,6 +1,6 @@
 ---
 title: "Arian Architects"
-image: "/src/content/showcase/_images/arian-architects.webp"
+image: "~/assets/showcase/arian-architects.webp"
 url: "https://arian-architects.github.io/"
 categories: ["marketing"]
 ---

@@ -1,5 +1,5 @@
 ---
 title: Reywins - Infinitum Potentiale
-image: /src/content/showcase/_images/reywins.com.webp
+image: ~/assets/showcase/reywins.com.webp
 url: "https://reywins.com"
 ---

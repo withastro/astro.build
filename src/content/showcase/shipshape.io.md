@@ -1,5 +1,5 @@
 ---
 title: Just a moment...
-image: /src/content/showcase/_images/shipshape.io.webp
+image: ~/assets/showcase/shipshape.io.webp
 url: "https://shipshape.io/"
 ---

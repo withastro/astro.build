@@ -1,6 +1,6 @@
 ---
 title: "DaniDiazTech"
-image: "/src/content/showcase/_images/danidiaztech.webp"
+image: "~/assets/showcase/danidiaztech.webp"
 url: "https://danidiaztech.com/"
 categories: ["personal"]
 ---

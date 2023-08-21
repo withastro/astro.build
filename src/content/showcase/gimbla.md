@@ -1,6 +1,6 @@
 ---
 title: "Gimbla"
-image: "/src/content/showcase/_images/gimbla.webp"
+image: "~/assets/showcase/gimbla.webp"
 url: "https://gimbla.com/"
 categories: ["landing"]
 ---

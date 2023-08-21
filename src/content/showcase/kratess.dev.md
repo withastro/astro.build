@@ -1,5 +1,5 @@
 ---
 title: kratess.dev — Fullstack Developer
-image: /src/content/showcase/_images/kratess.dev.webp
+image: ~/assets/showcase/kratess.dev.webp
 url: "https://kratess.dev/"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Hekky Shader Docs"
-image: "/src/content/showcase/_images/hekky-shader.webp"
+image: "~/assets/showcase/hekky-shader.webp"
 url: "https://docs.hyblocker.dev/en/"
 categories: ["docs"]
 ---

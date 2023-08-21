@@ -1,5 +1,5 @@
 ---
 title: kainoa.us
-image: /src/content/showcase/_images/kainoa.us.webp
+image: ~/assets/showcase/kainoa.us.webp
 url: "https://kainoa.us/"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Killed by *"
-image: "/src/content/showcase/_images/killedbytech.webp"
+image: "~/assets/showcase/killedbytech.webp"
 url: "https://killedby.tech/"
 categories: ["tech"]
 ---

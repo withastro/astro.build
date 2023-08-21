@@ -1,5 +1,5 @@
 ---
 title: Business Card - Yumi Izumi
-image: /src/content/showcase/_images/yumiizumi.com.webp
+image: ~/assets/showcase/yumiizumi.com.webp
 url: "https://yumiizumi.com/card"
 ---

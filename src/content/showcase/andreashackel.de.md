@@ -1,5 +1,5 @@
 ---
 title: Andreas Hackel
-image: /src/content/showcase/_images/andreashackel.de.webp
+image: ~/assets/showcase/andreashackel.de.webp
 url: "https://andreashackel.de"
 ---

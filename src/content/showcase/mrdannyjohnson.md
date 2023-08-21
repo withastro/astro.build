@@ -1,6 +1,6 @@
 ---
 title: "Mr Danny Johnson"
-image: "/src/content/showcase/_images/mrdannyjohnson.webp"
+image: "~/assets/showcase/mrdannyjohnson.webp"
 url: "https://www.mrdannyjohnson.co.uk/"
 categories: ["personal"]
 ---

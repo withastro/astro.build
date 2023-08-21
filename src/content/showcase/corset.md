@@ -1,6 +1,6 @@
 ---
 title: "Corset"
-image: "/src/content/showcase/_images/corset.webp"
+image: "~/assets/showcase/corset.webp"
 url: "https://corset.dev/"
 categories: ["tech"]
 ---

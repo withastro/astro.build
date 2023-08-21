@@ -1,5 +1,5 @@
 ---
 title: John Zanussi
-image: /src/content/showcase/_images/johnzanussi.com.webp
+image: ~/assets/showcase/johnzanussi.com.webp
 url: "https://johnzanussi.com"
 ---

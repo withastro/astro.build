@@ -1,6 +1,6 @@
 ---
 title: "Hrishikesh Pathak"
-image: "/src/content/showcase/_images/hrishikesh-pathak.webp"
+image: "~/assets/showcase/hrishikesh-pathak.webp"
 url: "https://hrishikeshpathak.com"
 categories: ["personal"]
 ---
