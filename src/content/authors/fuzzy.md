@@ -1,6 +1,6 @@
 ---
 "name": "Fuzzy"
 "title": "Community Manager"
-"image": "/src/content/authors/_images/fuzzy.webp"
+"image": "../../assets/authors/fuzzy.png"
 "twitter": "https://twitter.com/aFuzzyBear2"
 ---

@@ -1,7 +1,6 @@
-import { defineConfig } from "astro/config"
+import { defineConfig, sharpImageService } from "astro/config"
 import fs from "node:fs"
 
-import image from "@astrojs/image"
 import mdx from "@astrojs/mdx"
 import netlify from "@astrojs/netlify/functions"
 import prefetch from "@astrojs/prefetch"
@@ -15,10 +14,13 @@ const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== "production" && process.env
 // https://astro.build/config
 export default defineConfig({
 	site: NETLIFY_PREVIEW_SITE || "https://astro.build",
+	experimental: {
+		assets: true,
+	},
+	image: {
+		service: sharpImageService(),
+	},
 	integrations: [
-		image({
-			serviceEntryPoint: "@astrojs/image/sharp",
-		}),
 		tailwind({
 			config: {
 				applyBaseStyles: false,
