@@ -1,56 +1,56 @@
 ---
 import XIcon from "~/icons/XIcon.jsx"
 export type Props = {
-  uid: string
+	uid: string
 }
 const { uid } = Astro.props
 ---
 
 <aside
-  id="notification-banner"
-  data-uid={uid}
-  class="body relative w-full bg-blue-purple-gradient py-2 text-center text-white"
+	id="notification-banner"
+	data-uid={uid}
+	class="body relative w-full bg-blue-purple-gradient py-2 text-center text-white"
 >
-  <slot />
-  <button class="absolute right-0 top-0 flex aspect-square h-full items-center justify-center">
-    <span class="sr-only">Hide banner</span>
-    <XIcon class="h-5" aria-hidden="true" />
-  </button>
+	<slot />
+	<button class="absolute right-0 top-0 flex aspect-square h-full items-center justify-center">
+		<span class="sr-only">Hide banner</span>
+		<XIcon class="h-5" aria-hidden="true" />
+	</button>
 </aside>
 
 <style>
-  aside :global(a) {
-    @apply underline hover:text-astro-gray-200;
-  }
+	aside :global(a) {
+		@apply underline hover:text-astro-gray-200;
+	}
 </style>
 
 <script is:inline>
-// inline function to ensure it executes immediately
-; (function () {
-	const banner = document.getElementById("notification-banner")
-	if (!banner) {
-		return
-	}
-	const uid = banner.dataset.uid
-	if (!uid) {
-		return
-	}
-	const key = `astro-banner-${uid}`
-	const removeBanner = () => banner.parentElement.removeChild(banner)
-	if (localStorage.getItem(key) === "closed") {
-		// banner was already closed previously
-		removeBanner()
-	} else {
-		const button = banner.querySelector("button")
-		button.addEventListener(
-			"click",
-			() => {
-				// save the close preference and remove the banner
-				localStorage.setItem(key, "closed")
-				removeBanner()
-			},
-			{ once: true },
-		)
-	}
-})()
+	// inline function to ensure it executes immediately
+	;(function () {
+		const banner = document.getElementById("notification-banner")
+		if (!banner) {
+			return
+		}
+		const uid = banner.dataset.uid
+		if (!uid) {
+			return
+		}
+		const key = `astro-banner-${uid}`
+		const removeBanner = () => banner.parentElement.removeChild(banner)
+		if (localStorage.getItem(key) === "closed") {
+			// banner was already closed previously
+			removeBanner()
+		} else {
+			const button = banner.querySelector("button")
+			button.addEventListener(
+				"click",
+				() => {
+					// save the close preference and remove the banner
+					localStorage.setItem(key, "closed")
+					removeBanner()
+				},
+				{ once: true },
+			)
+		}
+	})()
 </script>

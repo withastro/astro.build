@@ -9,120 +9,120 @@ import MainLayout from "~/layouts/MainLayout.astro"
 import PressAssetCard from "./_components/PressAssetCard.astro"
 
 const seo = {
-  title: "Press",
-  description: "Download Astro logos and other assets for media and press usage.",
+	title: "Press",
+	description: "Download Astro logos and other assets for media and press usage.",
 }
 
 const socialLinks = [
-  {
-    text: "@astrodotbuild",
-    icon: TwitterIcon,
-    href: "https://twitter.com/astrodotbuild",
-  },
-  {
-    text: "Astro Lounge",
-    icon: DiscordIcon,
-    href: "https://astro.build/chat",
-  },
-  {
-    text: "/withastro",
-    icon: GitHubIcon,
-    href: "https://github.com/withastro/",
-  },
-  {
-    text: "@astrodotbuild",
-    icon: YouTubeIcon,
-    href: "https://www.youtube.com/@astrodotbuild",
-  },
-  {
-    text: "press@astro.build",
-    icon: EmailIcon,
-    href: "mailto:press@astro.build",
-  },
+	{
+		text: "@astrodotbuild",
+		icon: TwitterIcon,
+		href: "https://twitter.com/astrodotbuild",
+	},
+	{
+		text: "Astro Lounge",
+		icon: DiscordIcon,
+		href: "https://astro.build/chat",
+	},
+	{
+		text: "/withastro",
+		icon: GitHubIcon,
+		href: "https://github.com/withastro/",
+	},
+	{
+		text: "@astrodotbuild",
+		icon: YouTubeIcon,
+		href: "https://www.youtube.com/@astrodotbuild",
+	},
+	{
+		text: "press@astro.build",
+		icon: EmailIcon,
+		href: "mailto:press@astro.build",
+	},
 ]
 ---
 
 <MainLayout {...seo}>
-  <div class="relative overflow-hidden">
-    <div class="grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
-      <div class="bleed-full bg-grid absolute inset-0 mask-linear-gradient-to-b"></div>
-      <div class="relative flex flex-col items-center gap-6 text-center">
-        <h1 class="heading-2 mx-auto max-w-screen-lg md:heading-1">Press Resources</h1>
-        <p class="body text-astro-gray-200 md:body-large">Brand resources for all things Astro</p>
-      </div>
-    </div>
+	<div class="relative overflow-hidden">
+		<div class="grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
+			<div class="bleed-full bg-grid absolute inset-0 mask-linear-gradient-to-b"></div>
+			<div class="relative flex flex-col items-center gap-6 text-center">
+				<h1 class="heading-2 mx-auto max-w-screen-lg md:heading-1">Press Resources</h1>
+				<p class="body text-astro-gray-200 md:body-large">Brand resources for all things Astro</p>
+			</div>
+		</div>
 
-    <div class="grid-container overflow-hidden border-t border-astro-gray-500 pt-16">
-      <div class="flex flex-col gap-16 md:flex-row md:items-start">
-        <section class="space-y-4">
-          <h2 class="heading-3">This is Astro</h2>
-          <p class="body-large text-astro-gray-200">
-            Astro is a web framework that takes the best from the early internet (think HTML and
-            CSS) and puts it to work in a next-gen architecture to make every Astro site, and the
-            whole web, faster. Whereas most frameworks today are designed for web apps, Astro is
-            built for content-rich sites where performance matters most. Pull content from anywhere,
-            deploy everywhere, and let's build the web we want, together.
-          </p>
-        </section>
-        <section class="shrink-0">
-          <Card>
-            <div class="space-y-4 px-10 py-8 text-white">
-              <h3 class="heading-3">Get in touch</h3>
-              <ul class="flex flex-wrap gap-x-4 gap-y-3 md:flex-col">
-                {
-                  socialLinks.map((link) => (
-                    <li>
-                      <a href={link.href} class="flex items-center gap-2 font-medium underline">
-                        {link.icon && <link.icon class="s-6" />}
-                        {link.text}
-                      </a>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </Card>
-        </section>
-      </div>
-      <section class="space-y-14">
-        <h2 class="heading-3 text-center" id="assets">Brand Assets</h2>
-        <ul class="grid gap-6 sm:grid-cols-2">
-          <PressAssetCard
-            name="Full logo on light"
-            instructions="Please use this logo in most circumstances on light backgrounds."
-            background="light"
-            assetName="astro-logo-dark"
-          />
-          <PressAssetCard
-            name="Full logo on dark"
-            instructions="Please use this logo in most circumstances on dark backgrounds."
-            background="dark"
-            assetName="astro-logo-light"
-          />
-          <PressAssetCard
-            name="Logomark on light"
-            instructions="Please only use the logomark for very small representations of Astro and in illustrations with written consent by Astro."
-            background="light"
-            assetName="astro-icon-dark"
-          />
-          <PressAssetCard
-            name="Logomark on dark"
-            instructions="Please only use the logomark for very small representations of Astro and in illustrations with written consent by Astro."
-            background="dark"
-            assetName="astro-icon-light"
-          />
-        </ul>
-      </section>
-    </div>
+		<div class="grid-container overflow-hidden border-t border-astro-gray-500 pt-16">
+			<div class="flex flex-col gap-16 md:flex-row md:items-start">
+				<section class="space-y-4">
+					<h2 class="heading-3">This is Astro</h2>
+					<p class="body-large text-astro-gray-200">
+						Astro is a web framework that takes the best from the early internet (think HTML and
+						CSS) and puts it to work in a next-gen architecture to make every Astro site, and the
+						whole web, faster. Whereas most frameworks today are designed for web apps, Astro is
+						built for content-rich sites where performance matters most. Pull content from anywhere,
+						deploy everywhere, and let's build the web we want, together.
+					</p>
+				</section>
+				<section class="shrink-0">
+					<Card>
+						<div class="space-y-4 px-10 py-8 text-white">
+							<h3 class="heading-3">Get in touch</h3>
+							<ul class="flex flex-wrap gap-x-4 gap-y-3 md:flex-col">
+								{
+									socialLinks.map((link) => (
+										<li>
+											<a href={link.href} class="flex items-center gap-2 font-medium underline">
+												{link.icon && <link.icon class="s-6" />}
+												{link.text}
+											</a>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</Card>
+				</section>
+			</div>
+			<section class="space-y-14">
+				<h2 class="heading-3 text-center" id="assets">Brand Assets</h2>
+				<ul class="grid gap-6 sm:grid-cols-2">
+					<PressAssetCard
+						name="Full logo on light"
+						instructions="Please use this logo in most circumstances on light backgrounds."
+						background="light"
+						assetName="astro-logo-dark"
+					/>
+					<PressAssetCard
+						name="Full logo on dark"
+						instructions="Please use this logo in most circumstances on dark backgrounds."
+						background="dark"
+						assetName="astro-logo-light"
+					/>
+					<PressAssetCard
+						name="Logomark on light"
+						instructions="Please only use the logomark for very small representations of Astro and in illustrations with written consent by Astro."
+						background="light"
+						assetName="astro-icon-dark"
+					/>
+					<PressAssetCard
+						name="Logomark on dark"
+						instructions="Please only use the logomark for very small representations of Astro and in illustrations with written consent by Astro."
+						background="dark"
+						assetName="astro-icon-light"
+					/>
+				</ul>
+			</section>
+		</div>
 
-    <div
-      class="absolute left-0 top-[-150px] h-[800px] w-[70vw] -translate-x-2/3 bg-red-pink-gradient opacity-30 mask-radial-gradient"
-    >
-    </div>
+		<div
+			class="absolute left-0 top-[-150px] h-[800px] w-[70vw] -translate-x-2/3 bg-red-pink-gradient opacity-30 mask-radial-gradient"
+		>
+		</div>
 
-    <div
-      class="absolute right-0 top-[-150px] h-[800px] w-[70vw] translate-x-2/3 bg-orange-yellow-gradient opacity-30 mask-radial-gradient"
-    >
-    </div>
-  </div>
+		<div
+			class="absolute right-0 top-[-150px] h-[800px] w-[70vw] translate-x-2/3 bg-orange-yellow-gradient opacity-30 mask-radial-gradient"
+		>
+		</div>
+	</div>
 </MainLayout>
