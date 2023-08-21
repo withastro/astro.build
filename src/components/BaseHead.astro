@@ -10,7 +10,7 @@ import SEO from "./SEO.astro"
 export type Props = {
 	title?: string
 	description?: string
-	image?: { src: string; alt: string }
+	image?: { src: ImageMetadata; alt: string }
 	canonicalURL?: URL | null
 	pageType?: "website" | "article"
 }
@@ -25,10 +25,6 @@ const {
 } = Astro.props as Props
 
 const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ")
-const resolvedImage = {
-	src: new URL(image.src, Astro.site).toString(),
-	alt: image.alt,
-}
 ---
 
 <!-- High Priority Global Metadata -->
@@ -70,7 +66,7 @@ const resolvedImage = {
 	name={siteInfo.name}
 	title={title}
 	description={description}
-	image={resolvedImage}
+	image={image}
 	twitter={{ handle: twitterHandle }}
 	og={{ type: pageType }}
 	canonicalURL={canonicalURL}

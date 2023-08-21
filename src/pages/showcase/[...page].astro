@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPathsOptions, Page } from "astro"
 import { CollectionEntry, getCollection } from "astro:content"
+import socialImg from "~/assets/og/showcase.jpg"
 import Pagination from "~/components/Pagination.astro"
 import MainLayout from "~/layouts/MainLayout.astro"
 import ShowcaseCard from "./_components/ShowcaseCard.astro"
@@ -43,7 +44,7 @@ const description = "Explore what's possible with Astro and get inspired for you
 <MainLayout
 	title={title}
 	description={description}
-	image={{ src: "/og/showcase.jpg", alt: "Explore the possibilities" }}
+	image={{ src: socialImg, alt: "Explore the possibilities" }}
 >
 	<div class="hero relative">
 		<div class="grid-container">

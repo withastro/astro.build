@@ -3,8 +3,8 @@ import { Image } from "astro:assets"
 import { getEntryBySlug } from "astro:content"
 
 type Props = {
-  name?: string
-  lg?: boolean
+	name?: string
+	lg?: boolean
 }
 
 let { name, lg = false } = Astro.props
@@ -15,19 +15,17 @@ const image = author?.data.image
 ---
 
 {
-  image && (
-    <Image
-      class:list={[
-        "my-0 inline-block rounded-full border border-astro-gray-100",
-        lg ? "h-8 w-8 md:h-10 md:w-10" : "h-6 w-6",
-      ]}
-      src={image}
-      alt=""
-      aria-hidden="true"
-      width={96}
-      height={96}
-      loading="eager"
-      format="webp"
-    />
-  )
+	image && (
+		<Image
+			src={image}
+			alt=""
+			aria-hidden="true"
+			width={96}
+			height={96}
+			class:list={[
+				"my-0 inline-block rounded-full border border-astro-gray-100",
+				lg ? "h-8 w-8 md:h-10 md:w-10" : "h-6 w-6",
+			]}
+		/>
+	)
 }

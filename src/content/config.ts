@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content"
+import { defineCollection, ImageFunction, z } from "astro:content"
+import socialImg from "~/assets/og/social.jpg"
 
 export const IntegrationCategories = new Map<string, string>([
 	["featured", "Featured"],
@@ -80,23 +81,24 @@ export const themeSchema = z
 		}
 	})
 
-const seoSchema = z.object({
-	title: z.string().min(5).max(120),
-	description: z.string().min(15).max(160),
-	image: z
-		.object({
-			src: z.string().default("/og/social.jpg"),
-			alt: z.string().default("Build the web you want"),
-		})
-		.default({}),
-	pageType: z.enum(["website", "article"]).default("website"),
-	robots: z
-		.object({
-			index: z.boolean().default(true),
-			follow: z.boolean().default(true),
-		})
-		.default({}),
-})
+const seoSchema = ({ image }: { image: ImageFunction }) =>
+	z.object({
+		title: z.string().min(5).max(120),
+		description: z.string().min(15).max(160),
+		image: z
+			.object({
+				src: image().default(socialImg),
+				alt: z.string().default("Build the web you want"),
+			})
+			.optional(),
+		pageType: z.enum(["website", "article"]).default("website"),
+		robots: z
+			.object({
+				index: z.boolean().default(true),
+				follow: z.boolean().default(true),
+			})
+			.default({}),
+	})
 
 export const collections = {
 	authors: defineCollection({
@@ -128,7 +130,7 @@ export const collections = {
 		schema: ({ image }) =>
 			z
 				.object({
-					seo: seoSchema.optional(),
+					seo: seoSchema({ image }).optional(),
 					title: z.string(),
 					description: z.string(),
 					publishDate: z
@@ -147,22 +149,23 @@ export const collections = {
 				.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
 	careers: defineCollection({
-		schema: z.object({
-			title: z.string().min(1).describe("Title of the job position"),
-			published: z.date().describe("Date the job listing was posted"),
-			location: z
-				.string()
-				.min(1)
-				.describe("Location of the job position (eg: 'Remote' or 'San Fransisco, CA'"),
-			team: z.enum(["Engineering", "UI", "DX"]),
-			type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
-			image: z
-				.object({
-					src: z.string().default("/og/social.jpg"),
-					alt: z.string().default("Astro | Build the web you want"),
-				})
-				.default({}),
-		}),
+		schema: ({ image }) =>
+			z.object({
+				title: z.string().min(1).describe("Title of the job position"),
+				published: z.date().describe("Date the job listing was posted"),
+				location: z
+					.string()
+					.min(1)
+					.describe("Location of the job position (eg: 'Remote' or 'San Fransisco, CA'"),
+				team: z.enum(["Engineering", "UI", "DX"]),
+				type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
+				image: z
+					.object({
+						src: image().optional(),
+						alt: z.string().default("Astro | Build the web you want"),
+					})
+					.default({}),
+			}),
 	}),
 	integrations: {
 		schema: z.object({
@@ -185,11 +188,12 @@ export const collections = {
 		}),
 	},
 	pages: {
-		schema: z.object({
-			seo: seoSchema,
-			updated_date: z.date().describe("The date this content was last updated."),
-			locale: z.enum(["en"]).default("en"),
-		}),
+		schema: ({ image }) =>
+			z.object({
+				seo: seoSchema({ image }),
+				updated_date: z.date().describe("The date this content was last updated."),
+				locale: z.enum(["en"]).default("en"),
+			}),
 	},
 	partials: {
 		schema: z.object({}),

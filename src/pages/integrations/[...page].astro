@@ -1,5 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content"
+import socialImg from "~/assets/og/integrations.jpg"
 import CardGrid from "~/components/CardGrid.astro"
 import CardGridGroup from "~/components/CardGridGroup.astro"
 import Pagination from "~/components/Pagination.astro"
@@ -120,10 +121,7 @@ recentlyAddedSearch.append("categories[]", "recent")
 const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`
 ---
 
-<MainLayout
-	title="Integrations"
-	image={{ src: "/og/integrations.jpg", alt: "Discover our integrations" }}
->
+<MainLayout title="Integrations" image={{ src: socialImg, alt: "Discover our integrations" }}>
 	<div class="bg-grid relative">
 		<div class="grid-container">
 			<h1

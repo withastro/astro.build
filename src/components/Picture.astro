@@ -1,0 +1,39 @@
+---
+import type { ImageMetadata, ImageOutputFormat } from "astro"
+import { Image, getImage } from "astro:assets"
+import mime from "mime"
+import { uniq } from "~/helpers/uniq.js"
+export type Props = {
+	class?: string
+	src: ImageMetadata
+	alt: string
+	widths: number[]
+	sizes?: string
+}
+const { src, alt, widths, sizes = "100vw", class: className } = Astro.props
+const formats = uniq("avif", "webp", src.format)
+
+async function getSource(format: ImageOutputFormat) {
+	const imgs = await Promise.all(
+		widths.map(async (width) => {
+			const img = await getImage({
+				src,
+				alt,
+				width,
+				format,
+			})
+			return `${img.src} ${width}w`
+		}),
+	)
+	return {
+		type: mime.getType(format) || format,
+		srcset: imgs.join(","),
+	}
+}
+const sources = await Promise.all(formats.map((format) => getSource(format)))
+---
+
+<picture>
+	{sources.map((attrs) => <source {...attrs} {sizes} />)}
+	<Image src={src} alt={alt} class={className} />
+</picture>

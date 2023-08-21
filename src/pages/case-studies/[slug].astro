@@ -34,7 +34,7 @@ const authors = await Promise.all(
   title={data.seo?.title ?? data.title}
   description={data.seo?.description ?? data.description}
   pageType="article"
-  image={socialImage && { src: socialImage.src, alt: data.title }}
+  image={socialImage && { src: socialImage, alt: data.title }}
 >
   <div
     class="z-blur -mb-56 h-64 w-full opacity-[0.85] md:-mb-52 md:h-64 lg:-mb-80 lg:h-96"
