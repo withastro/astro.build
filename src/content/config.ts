@@ -159,12 +159,7 @@ export const collections = {
 					.describe("Location of the job position (eg: 'Remote' or 'San Fransisco, CA'"),
 				team: z.enum(["Engineering", "UI", "DX"]),
 				type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
-				image: z
-					.object({
-						src: image().optional(),
-						alt: z.string().default("Astro | Build the web you want"),
-					})
-					.default({}),
+				seo: seoSchema({ image }),
 			}),
 	}),
 	integrations: defineCollection({
