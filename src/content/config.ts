@@ -167,7 +167,7 @@ export const collections = {
 					.default({}),
 			}),
 	}),
-	integrations: {
+	integrations: defineCollection({
 		schema: z.object({
 			name: z.string().describe("Name of the package as it is published to NPM"),
 			title: z
@@ -186,18 +186,18 @@ export const collections = {
 			downloads: z.number().min(0).default(0),
 			badge: z.string().optional(),
 		}),
-	},
-	pages: {
+	}),
+	pages: defineCollection({
 		schema: ({ image }) =>
 			z.object({
 				seo: seoSchema({ image }),
 				updated_date: z.date().describe("The date this content was last updated."),
 				locale: z.enum(["en"]).default("en"),
 			}),
-	},
-	partials: {
+	}),
+	partials: defineCollection({
 		schema: z.object({}),
-	},
+	}),
 	quotes: {
 		schema: z.object({
 			author: z.object({
@@ -211,7 +211,7 @@ export const collections = {
 			published: z.date(),
 		}),
 	},
-	showcase: {
+	showcase: defineCollection({
 		schema: ({ image }) =>
 			z.object({
 				title: z.string().min(1),
@@ -220,8 +220,8 @@ export const collections = {
 				featured: z.number().min(1).optional(),
 				highlight: z.boolean().default(false),
 			}),
-	},
-	themes: {
+	}),
+	themes: defineCollection({
 		schema: themeSchema,
-	},
+	}),
 }
