@@ -1,7 +1,7 @@
 ---
 title: "SuperStore"
 description: "SuperStore is the cool ecommerce theme on  Lexington"
-image: "/src/content/themes/_images/superstore-hero.webp"
+image: "/src/assets/themes/superstore-hero.webp"
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"

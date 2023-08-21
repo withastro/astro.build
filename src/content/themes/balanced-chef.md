@@ -1,7 +1,7 @@
 ---
 title: "The Balanced Chef"
 description: "Simplify meal planning and recipe management with this this application built with Astro and Sanity."
-image: "/src/content/themes/_images/balanced-chef-hero.webp"
+image: "/src/assets/themes/balanced-chef-hero.webp"
 images: []
 author:
   url: "https://github.com/fahad0samara"

@@ -1,10 +1,10 @@
 ---
 title: "Astro-Vitae"
 description: "A Curriculum Vitae (CV) with a simple single-page layout. Just update your details in javascript variables and objects, and your CV is live."
-image: "/src/content/themes/_images/astro-vitae-hero.webp"
+image: "/src/assets/themes/astro-vitae-hero.webp"
 images:
-  - "/src/content/themes/_images/astro-vitae-2.webp"
-  - "/src/content/themes/_images/astro-vitae-3.webp"
+  - "/src/assets/themes/astro-vitae-2.webp"
+  - "/src/assets/themes/astro-vitae-3.webp"
 author:
   url: "https://github.com/USKhokhar"
   name: "USKhokhar"

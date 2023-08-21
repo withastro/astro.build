@@ -1,10 +1,10 @@
 ---
 title: "Astro Shopify"
 description: "A starter theme to build headless ecommerce websites using Astro and Shopify."
-image: "/src/content/themes/_images/astro-shopify-hero.webp"
+image: "/src/assets/themes/astro-shopify-hero.webp"
 images:
-  - "/src/content/themes/_images/astro-shopify-2.webp"
-  - "/src/content/themes/_images/astro-shopify-3.webp"
+  - "/src/assets/themes/astro-shopify-2.webp"
+  - "/src/assets/themes/astro-shopify-3.webp"
 author:
   url: "https://github.com/thomasKn"
   name: "thomasKn"

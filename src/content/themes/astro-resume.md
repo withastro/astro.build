@@ -1,7 +1,7 @@
 ---
 title: "Astro Resume"
 description: "Resume builder based on Markdown and Tailwind CSS. Built with Astro, and inspired by Standard Resume."
-image: "/src/content/themes/_images/astro-resume.webp"
+image: "/src/assets/themes/astro-resume.webp"
 images: []
 author:
   url: "https://github.com/EmaSuriano"

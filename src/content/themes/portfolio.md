@@ -1,11 +1,11 @@
 ---
 title: "Portfolio"
 description: "Share your hard work with this portfolio starter from the Astro team."
-image: "/src/content/themes/_images/portfolio.webp"
+image: "/src/assets/themes/portfolio.webp"
 images:
-  - "/src/content/themes/_images/portfolio-1.webp"
-  - "/src/content/themes/_images/portfolio-2.webp"
-  - "/src/content/themes/_images/portfolio-3.webp"
+  - "/src/assets/themes/portfolio-1.webp"
+  - "/src/assets/themes/portfolio-2.webp"
+  - "/src/assets/themes/portfolio-3.webp"
 author:
   url: "https://github.com/withastro"
   name: "withastro"

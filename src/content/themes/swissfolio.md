@@ -1,11 +1,11 @@
 ---
 title: "Swissfolio"
 description: "A modern Astro and Tailwind CSS template for your your links, information, projects, and more."
-image: "/src/content/themes/_images/swissfolio-hero.webp"
+image: "/src/assets/themes/swissfolio-hero.webp"
 images:
-  - "/src/content/themes/_images/swissfolio-2.webp"
-  - "/src/content/themes/_images/swissfolio-3.webp"
-  - "/src/content/themes/_images/swissfolio-4.webp"
+  - "/src/assets/themes/swissfolio-2.webp"
+  - "/src/assets/themes/swissfolio-3.webp"
+  - "/src/assets/themes/swissfolio-4.webp"
 author:
   url: "https://github.com/michael-andreuzza"
   name: "michael-andreuzza"

@@ -1,9 +1,9 @@
 ---
 title: "Gate"
 description: "Static API documentation with Astro and OpenAPI/Swagger."
-image: "/src/content/themes/_images/gate-hero.webp"
+image: "/src/assets/themes/gate-hero.webp"
 images:
-  - "/src/content/themes/_images/gate-2.webp"
+  - "/src/assets/themes/gate-2.webp"
 author:
   url: "https://github.com/sarasate"
   name: "sarasate"

@@ -1,10 +1,10 @@
 ---
 title: "Split"
 description: "A clean & simple mobile app landing page with smooth animations & a perfect lighthouse score."
-image: "/src/content/themes/_images/split-hero.webp"
+image: "/src/assets/themes/split-hero.webp"
 images:
-  - "/src/content/themes/_images/split-2.webp"
-  - "/src/content/themes/_images/split-3.webp"
+  - "/src/assets/themes/split-2.webp"
+  - "/src/assets/themes/split-3.webp"
 author:
   url: "https://butterythemes.lemonsqueezy.com/"
   name: "Buttery Themes"

@@ -1,7 +1,7 @@
 ---
 title: "Astro Vanilla TypeScript — Template"
 description: "This Astro template lets you focus on coding, not configuring. TypeScript, TailwindCSS, PostCSS, ESLint and Prettier are all set up for you."
-image: "/src/content/themes/_images/astro-vanilla-ts-template-hero.webp"
+image: "/src/assets/themes/astro-vanilla-ts-template-hero.webp"
 author:
   url: "https://github.com/doinel1a"
   name: "doinel1a"

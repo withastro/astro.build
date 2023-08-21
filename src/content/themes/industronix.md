@@ -1,11 +1,11 @@
 ---
 title: "Industronix"
 description: "A performant multi-author markdown website template that can be used for engineering, industrial, etc company website."
-image: "/src/content/themes/_images/industronix-hero.webp"
+image: "/src/assets/themes/industronix-hero.webp"
 images:
-  - "/src/content/themes/_images/industronix-2.webp"
-  - "/src/content/themes/_images/industronix-3.webp"
-  - "/src/content/themes/_images/industronix-4.webp"
+  - "/src/assets/themes/industronix-2.webp"
+  - "/src/assets/themes/industronix-3.webp"
+  - "/src/assets/themes/industronix-4.webp"
 author:
   url: "https://mcstech.dev/"
   name: "MCS Tech"

@@ -1,7 +1,7 @@
 ---
 title: "Hirewise"
 description: "Hirewise is the cool ecommerce theme on  Lexington"
-image: "/src/content/themes/_images/hirewise-hero.webp"
+image: "/src/assets/themes/hirewise-hero.webp"
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"

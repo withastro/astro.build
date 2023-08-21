@@ -1,7 +1,7 @@
 ---
 title: "Blogster Minimal"
 description: "A lightweight, minimal Astro theme that looks great and loads fast."
-image: "/src/content/themes/_images/blogster-minimal-hero.webp"
+image: "/src/assets/themes/blogster-minimal-hero.webp"
 images: []
 author:
   url: "https://github.com/flexdinesh"

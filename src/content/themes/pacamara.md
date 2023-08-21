@@ -1,7 +1,7 @@
 ---
 title: "Pacamara"
 description: "Pacamara is a simple blog theme for Astro that uses md and mdx files to store your content."
-image: "/src/content/themes/_images/pacamara-hero.webp"
+image: "/src/assets/themes/pacamara-hero.webp"
 author:
   url: "https://github.com/palmiak"
   name: "Maciek Palmowski"

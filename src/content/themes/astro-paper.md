@@ -1,11 +1,11 @@
 ---
 title: "AstroPaper"
 description: "A minimal, accessible and SEO-friendly Astro blog theme."
-image: "/src/content/themes/_images/astro-paper-hero.webp"
+image: "/src/assets/themes/astro-paper-hero.webp"
 images:
-  - "/src/content/themes/_images/astro-paper.webp"
-  - "/src/content/themes/_images/astro-paper-2.webp"
-  - "/src/content/themes/_images/astro-paper-3.webp"
+  - "/src/assets/themes/astro-paper.webp"
+  - "/src/assets/themes/astro-paper-2.webp"
+  - "/src/assets/themes/astro-paper-3.webp"
 author:
   url: "https://github.com/satnaing"
   name: "satnaing"

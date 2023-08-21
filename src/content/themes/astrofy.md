@@ -1,11 +1,11 @@
 ---
 title: "Astrofy | Personal Porfolio Website Template"
 description: "A template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed."
-image: "/src/content/themes/_images/astrofy-hero.webp"
+image: "/src/assets/themes/astrofy-hero.webp"
 images:
-  - "/src/content/themes/_images/astrofy-2.webp"
-  - "/src/content/themes/_images/astrofy-3.webp"
-  - "/src/content/themes/_images/astrofy-4.webp"
+  - "/src/assets/themes/astrofy-2.webp"
+  - "/src/assets/themes/astrofy-3.webp"
+  - "/src/assets/themes/astrofy-4.webp"
 author:
   url: "https://github.com/manuelernestog"
   name: "manuelernestog"

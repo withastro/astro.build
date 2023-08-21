@@ -1,7 +1,7 @@
 ---
 title: "Spazio Bianco"
 description: "A multipage clean theme with more than 40 ready made pages"
-image: "/src/content/themes/_images/spaziobianco-hero.webp"
+image: "/src/assets/themes/spaziobianco-hero.webp"
 images: []
 author:
   url: "https://lexingtonthemes.com/"

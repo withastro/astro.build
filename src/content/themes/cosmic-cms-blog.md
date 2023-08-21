@@ -1,7 +1,7 @@
 ---
 title: "Astro Headless CMS Blog"
 description: "A statically generated blog built with Astro, Tailwind CSS, and Cosmic. Utilize the Cosmic headless CMS to store blog posts and media content."
-image: "/src/content/themes/_images/cosmic-cms-blog.webp"
+image: "/src/assets/themes/cosmic-cms-blog.webp"
 images: []
 author:
   url: "https://github.com/cosmicjs"

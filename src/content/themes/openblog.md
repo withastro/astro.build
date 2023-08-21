@@ -1,7 +1,7 @@
 ---
 title: "OpenBlog"
 description: "An open-source blog template."
-image: "/src/content/themes/_images/openblog-hero.webp"
+image: "/src/assets/themes/openblog-hero.webp"
 images: []
 author:
   url: "https://github.com/danielcgilibert"

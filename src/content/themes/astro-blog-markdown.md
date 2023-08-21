@@ -1,7 +1,7 @@
 ---
 title: "Astro Blog Markdown"
 description: "Starter for accessible, fast and SEO friendly Astro blog using a spot of Svelte."
-image: "/src/content/themes/_images/astro-blog-markdown.webp"
+image: "/src/assets/themes/astro-blog-markdown.webp"
 images: []
 author:
   url: "https://github.com/rodneylab"

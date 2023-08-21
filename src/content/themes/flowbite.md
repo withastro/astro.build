@@ -1,7 +1,7 @@
 ---
 title: "Flowbite"
 description: "A free and open-source admin dashboard template built by the core Flowbite team that gives you access to UI components like charts, widgets, tables, CRUD layouts based on the Flowbite design system."
-image: "/src/content/themes/_images/flowbite-hero.webp"
+image: "/src/assets/themes/flowbite-hero.webp"
 author:
   url: "https://themesberg.com/"
   name: "Themesberg"

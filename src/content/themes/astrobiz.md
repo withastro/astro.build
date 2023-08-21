@@ -1,7 +1,7 @@
 ---
 title: "Astrobiz"
 description: "Simple business theme built with TailwindCSS."
-image: "/src/content/themes/_images/astrobiz-hero.webp"
+image: "/src/assets/themes/astrobiz-hero.webp"
 author:
   url: "https://github.com/FriendlyUser"
   name: "David Li"

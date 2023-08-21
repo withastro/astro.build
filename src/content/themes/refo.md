@@ -1,7 +1,7 @@
 ---
 title: "Refo"
 description: "A static site and resume example with styled components."
-image: "/src/content/themes/_images/refo-hero.webp"
+image: "/src/assets/themes/refo-hero.webp"
 author:
   url: "https://github.com/kireerik"
   name: "kireerik"

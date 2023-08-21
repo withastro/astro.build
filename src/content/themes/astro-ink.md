@@ -1,9 +1,9 @@
 ---
 title: "Astro Ink"
 description: "Crisp, minimal, personal blog theme for Astro."
-image: "/src/content/themes/_images/astro-ink-hero.webp"
+image: "/src/assets/themes/astro-ink-hero.webp"
 images:
-  - "/src/content/themes/_images/astro-ink.webp"
+  - "/src/assets/themes/astro-ink.webp"
 author:
   url: "https://github.com/one-aalam"
   name: "one-aalam"

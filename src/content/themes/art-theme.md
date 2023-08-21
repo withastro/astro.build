@@ -1,7 +1,7 @@
 ---
 title: "Art Theme"
 description: "Beautiful blog template with Astro."
-image: "/src/content/themes/_images/art-theme.webp"
+image: "/src/assets/themes/art-theme.webp"
 images: []
 author:
   url: "https://github.com/npmrun"

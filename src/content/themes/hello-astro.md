@@ -1,7 +1,7 @@
 ---
 title: "Hello Astro"
 description: "A full featured corporate/marketing/blog starter theme written in Typescript, TailwindCSS and Astro. It supports Markdown and MDX based pages and blog posts."
-image: "/src/content/themes/_images/hello-astro.webp"
+image: "/src/assets/themes/hello-astro.webp"
 images: []
 author:
   url: "https://github.com/hellotham"

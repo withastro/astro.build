@@ -1,12 +1,12 @@
 ---
 title: "Astros"
 description: "A clean starter template made with Tailwind css and AlpineJS."
-image: "/src/content/themes/_images/astros-hero.webp"
+image: "/src/assets/themes/astros-hero.webp"
 images:
-  - "/src/content/themes/_images/astros-2.webp"
-  - "/src/content/themes/_images/astros-3.webp"
-  - "/src/content/themes/_images/astros-4.webp"
-  - "/src/content/themes/_images/astros-5.webp"
+  - "/src/assets/themes/astros-2.webp"
+  - "/src/assets/themes/astros-3.webp"
+  - "/src/assets/themes/astros-4.webp"
+  - "/src/assets/themes/astros-5.webp"
 author:
   url: "https://github.com/zankhq"
   name: "Zank"

@@ -1,7 +1,7 @@
 ---
 title: "Tiny Rocket"
 description: "A minimal Astro theme to build a website + blog using Tailwind CSS. Highly customisable."
-image: "/src/content/themes/_images/tiny-rocket.webp"
+image: "/src/assets/themes/tiny-rocket.webp"
 images: []
 author:
   url: "https://github.com/slamethendry"

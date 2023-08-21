@@ -1,9 +1,9 @@
 ---
 title: "Pro File"
 description: "Pro File is a website template for a portfolio website that is centered around beautiful imagery."
-image: "/src/content/themes/_images/pro-file-hero.webp"
+image: "/src/assets/themes/pro-file-hero.webp"
 images:
-  - "/src/content/themes/_images/pro-file-hero.webp"
+  - "/src/assets/themes/pro-file-hero.webp"
 author:
   url: "https://littlesticks.dev/"
   name: "littlesticks"

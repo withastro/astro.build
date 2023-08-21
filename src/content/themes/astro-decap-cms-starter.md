@@ -1,7 +1,7 @@
 ---
 title: "Astro Decap CMS Starter"
 description: "A starter theme for Astro and Decap CMS. It is fully compatible with SEO and has amazing UI/UX, as well as a great developer experience."
-image: "/src/content/themes/_images/astro-decap-cms-starter-hero.webp"
+image: "/src/assets/themes/astro-decap-cms-starter-hero.webp"
 author:
   url: "https://github.com/gxanshu/"
   name: "Ai Anshu"

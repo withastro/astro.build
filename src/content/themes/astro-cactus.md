@@ -1,7 +1,7 @@
 ---
 title: "Astro Cactus"
 description: "A simple opinionated Astro theme. Use it to create your blog or website."
-image: "/src/content/themes/_images/astro-cactus.webp"
+image: "/src/assets/themes/astro-cactus.webp"
 images: []
 author:
   url: "https://github.com/chrismwilliams"

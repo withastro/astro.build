@@ -1,11 +1,11 @@
 ---
 title: "Astroship"
 description: "Astroship is a starter template for startups, marketing websites, landing pages & blogs."
-image: "/src/content/themes/_images/astroship-hero.webp"
+image: "/src/assets/themes/astroship-hero.webp"
 images:
-  - "/src/content/themes/_images/astroship.webp"
-  - "/src/content/themes/_images/astroship-2.webp"
-  - "/src/content/themes/_images/astroship-3.webp"
+  - "/src/assets/themes/astroship.webp"
+  - "/src/assets/themes/astroship-2.webp"
+  - "/src/assets/themes/astroship-3.webp"
 author:
   url: "https://github.com/surjithctly"
   name: "surjithctly"

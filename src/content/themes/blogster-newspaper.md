@@ -1,7 +1,7 @@
 ---
 title: "Blogster Newspaper"
 description: "A beautiful, performant and accessible theme built with Tailwind."
-image: "/src/content/themes/_images/blogster-newspaper-hero.webp"
+image: "/src/assets/themes/blogster-newspaper-hero.webp"
 images: []
 author:
   url: "https://github.com/flexdinesh"

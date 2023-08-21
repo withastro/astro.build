@@ -1,7 +1,7 @@
 ---
 title: "astro-art-portfolio"
 description: "Art portfolio built with Astro and using Notion API."
-image: "/src/content/themes/_images/art-portfolio.webp"
+image: "/src/assets/themes/art-portfolio.webp"
 images: []
 author:
   url: "https://github.com/EmaSuriano"

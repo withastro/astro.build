@@ -1,12 +1,12 @@
 ---
 title: "Astro Landing Page"
 description: "An Astro + Tailwind CSS starter kit for landing pages."
-image: "/src/content/themes/_images/astro-landing-page-hero.webp"
+image: "/src/assets/themes/astro-landing-page-hero.webp"
 images:
-  - "/src/content/themes/_images/astro-landing-page.webp"
-  - "/src/content/themes/_images/astro-landing-page-2.webp"
-  - "/src/content/themes/_images/astro-landing-page-3.webp"
-  - "/src/content/themes/_images/astro-landing-page-4.webp"
+  - "/src/assets/themes/astro-landing-page.webp"
+  - "/src/assets/themes/astro-landing-page-2.webp"
+  - "/src/assets/themes/astro-landing-page-3.webp"
+  - "/src/assets/themes/astro-landing-page-4.webp"
 author:
   url: "https://github.com/mhyfritz"
   name: "mhyfritz"

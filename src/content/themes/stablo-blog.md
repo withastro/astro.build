@@ -1,9 +1,9 @@
 ---
 title: "Stablo Blog Template"
 description: "Stablo is a free and open-source blog template that is designed to be minimal and easy to use. It is built using Astro, Tailwind CSS, and MDX."
-image: "/src/content/themes/_images/stablo-blog-hero.webp"
+image: "/src/assets/themes/stablo-blog-hero.webp"
 images:
-  - "/src/content/themes/_images/stablo-blog-2.webp"
+  - "/src/assets/themes/stablo-blog-2.webp"
 author:
   url: "https://github.com/web3templates"
   name: "web3templates"

@@ -1,7 +1,7 @@
 ---
 title: "Astro Big Doc"
 description: "Astro Theme that can scale for big documentation websites. Includes an unimited depth config menu that starts with a top appbar for sections navigation, then continues on a tree left menu for pages."
-image: "/src/content/themes/_images/astro-big-doc.webp"
+image: "/src/assets/themes/astro-big-doc.webp"
 images: []
 author:
   url: "https://github.com/MicroWebStacks"

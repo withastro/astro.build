@@ -1,7 +1,7 @@
 ---
 title: "Nutritrack"
 description: "A customizable landing page starter theme built in AstroJS with TailwindCSS."
-image: "/src/content/themes/_images/nutritrack-hero.webp"
+image: "/src/assets/themes/nutritrack-hero.webp"
 images: []
 author:
   url: "https://github.com/christian-luntok"

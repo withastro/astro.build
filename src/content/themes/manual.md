@@ -1,11 +1,11 @@
 ---
 title: "Manual"
 description: "A feature full documentation template for Astro."
-image: "/src/content/themes/_images/manual-hero.webp"
+image: "/src/assets/themes/manual-hero.webp"
 images:
-  - "/src/content/themes/_images/manual-2.webp"
-  - "/src/content/themes/_images/manual-3.webp"
-  - "/src/content/themes/_images/manual-4.webp"
+  - "/src/assets/themes/manual-2.webp"
+  - "/src/assets/themes/manual-3.webp"
+  - "/src/assets/themes/manual-4.webp"
 author:
   url: "https://github.com/TheOtterlord"
   name: "TheOtterlord"
