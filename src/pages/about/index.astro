@@ -1,9 +1,10 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content"
-import CardGrid from "~/components//CardGrid.astro"
+import socialImg from "~/assets/og/about.jpg"
 import TwoUp from "~/components//TwoUp.astro"
 import Card from "~/components/Card.astro"
 import CardBody from "~/components/CardBody.astro"
+import CardGrid from "~/components/CardGrid.astro"
 import CardHeading from "~/components/CardHeading.astro"
 import CardLabel from "~/components/CardLabel.astro"
 import PageSection from "~/components/PageSection.astro"
@@ -50,7 +51,7 @@ const quotes = await Promise.all(
 
 <MainLayout
 	title="The web is what we make it"
-	image={{ src: "/og/about.jpg", alt: "Astro is for everyone" }}
+	image={{ src: socialImg, alt: "Astro is for everyone" }}
 >
 	<section class="grid-container">
 		<TwoUp class="py-32 lg:bleed-end 2xl:bleed-none" threshold="lg">

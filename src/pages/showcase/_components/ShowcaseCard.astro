@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content"
-import ResponsiveImage from "~/components/ResponsiveImage.astro"
+import Picture from "~/components/Picture.astro"
 import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx"
 
 export type Props = { site: CollectionEntry<"showcase"> }
@@ -12,27 +12,27 @@ const image = site.data.image as ImageMetadata
 const widths = site.data.featured ? [400, 800, 1600] : [400, 800]
 
 const sizes = site.data.featured
-  ? "(min-width: 1024px) 67vw, 100vw"
-  : "(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
+	? "(min-width: 1024px) 67vw, 100vw"
+	: "(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
 ---
 
 <article
-  class:list={[
-    "group relative flex flex-col w-full h-full overflow-hidden bg-astro-gray-600 aspect-video cursor-pointer",
-  ]}
+	class:list={[
+		"group relative flex flex-col w-full h-full overflow-hidden bg-astro-gray-600 aspect-video cursor-pointer",
+	]}
 >
-  <a href={site.data.url} rel="noopener" target="_blank" class="h-full w-full">
-    <span class="sr-only">{site.data.title}</span>
-    <ResponsiveImage src={image} {widths} {sizes} alt="" class="h-full w-full object-cover" />
+	<a href={site.data.url} rel="noopener" target="_blank" class="h-full w-full">
+		<span class="sr-only">{site.data.title}</span>
+		<Picture src={image} alt="" {widths} {sizes} alt="" class="h-full w-full object-cover" />
 
-    <footer
-      class="noise-panel pointer-events-none absolute bottom-0 z-10 flex w-full flex-col gap-2 bg-astro-gray-500/95 p-4 opacity-0 transition-opacity duration-300 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
-    >
-      <h2 class="heading-5">{site.data.title}</h2>
-      <p class="body flex flex-row items-center gap-2">
-        <span>{site.data.url}</span>
-        <ExternalLinkIcon />
-      </p>
-    </footer>
-  </a>
+		<footer
+			class="noise-panel pointer-events-none absolute bottom-0 z-10 flex w-full flex-col gap-2 bg-astro-gray-500/95 p-4 opacity-0 transition-opacity duration-300 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
+		>
+			<h2 class="heading-5">{site.data.title}</h2>
+			<p class="body flex flex-row items-center gap-2">
+				<span>{site.data.url}</span>
+				<ExternalLinkIcon />
+			</p>
+		</footer>
+	</a>
 </article>

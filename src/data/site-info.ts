@@ -1,3 +1,5 @@
+import socialImg from "~/assets/og/social.jpg"
+
 export type SocialLink = {
 	platform: string
 	href: string
@@ -12,7 +14,7 @@ export type SiteInfo = {
 	title: string
 	description: string
 	image: {
-		src: string
+		src: ImageMetadata
 		alt: string
 	}
 	socialLinks: SocialLink[]
@@ -24,7 +26,7 @@ const siteInfo: SiteInfo = {
 	description:
 		"Astro is an all-in-one framework for building fast websites faster. Grab content from anywhere, deploy everywhere, and show the web what you've got.",
 	image: {
-		src: "/og/social.jpg",
+		src: socialImg,
 		alt: "Build the web you want",
 	},
 	socialLinks: [

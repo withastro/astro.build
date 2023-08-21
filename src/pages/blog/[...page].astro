@@ -1,6 +1,7 @@
 ---
 import { GetStaticPathsOptions, Page } from "astro"
 import { CollectionEntry, getCollection } from "astro:content"
+import socialImg from "~/assets/og/blog.jpg"
 import Pagination from "~/components/Pagination.astro"
 import SidebarLayout from "~/components/SidebarLayout.astro"
 import SidebarPanel from "~/components/SidebarPanel.astro"
@@ -41,7 +42,7 @@ const featuredPosts = [
 <Layout
 	title="The Astro Blog"
 	description="Get all the latest news from the Astroverse."
-	image={{ src: "/og/blog.jpg", alt: "What’s new in the Astro ecosystem" }}
+	image={{ src: socialImg, alt: "What’s new in the Astro ecosystem" }}
 >
 	<div class="lg:py-18 grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
 		<div class="bleed-full bg-grid absolute inset-0"></div>

@@ -4,6 +4,7 @@ import { Blob, File, Request } from "node-fetch"
 import slugify from "slugify"
 import { z } from "zod"
 import { zfd } from "zod-form-data"
+import socialImg from "~/assets/og/themes-submit.jpg"
 import { DropdownMultiSelect } from "~/components/form/DropdownMultiSelect"
 import Field from "~/components/form/Field.astro"
 import FormError from "~/components/form/FormError.astro"
@@ -167,7 +168,7 @@ if (prefilled != null) {
 }
 ---
 
-<MainLayout title="Submit a theme" image={{ src: "/og/themes-submit.jpg", alt: "Submit a theme" }}>
+<MainLayout title="Submit a theme" image={{ src: socialImg, alt: "Submit a theme" }}>
 	<div class="flex items-start">
 		<div class="flex-1 border-astro-gray-600 p-8 lg:border-r">
 			<div class="mx-auto max-w-4xl">

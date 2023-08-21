@@ -1,18 +1,17 @@
 ---
-import ResponsiveImage from "./ResponsiveImage.astro"
+import Picture from "./Picture.astro"
 
 export type Props = {
-  src: ImageMetadata
-  alt?: string
+	src: ImageMetadata
+	alt?: string
 }
 
 const { src, alt = "" } = Astro.props as Props
 ---
 
-<ResponsiveImage
-  src={src}
-  alt={alt}
-  widths={[400, 800, 1600]}
-  sizes="(min-width: 1280px) 1280px, 100vw"
-  class="mx-auto w-full max-w-full rounded-lg border border-astro-gray-500"
+<Picture
+	{src}
+	{alt}
+	class="mx-auto w-full max-w-full rounded-lg border border-astro-gray-500"
+	widths={[360, 720, 1440]}
 />

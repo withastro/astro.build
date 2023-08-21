@@ -30,7 +30,7 @@ const createSEODescription = ({ team, type, location }: CollectionEntry<"careers
 <MainLayout
 	title={career.data.title}
 	description={createSEODescription(career.data)}
-	image={career.data.image}
+	image={career.data.image && { src: career.data.image, alt: career.data.title }}
 >
 	<section class="noise-underlay mb-20 bg-blue-purple-gradient sm:mb-24 md:mb-28 lg:mb-32">
 		<div class="mx-auto flex max-w-screen-lg flex-col items-center pb-16 pt-24 text-center">
