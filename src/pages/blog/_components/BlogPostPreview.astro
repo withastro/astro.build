@@ -1,56 +1,55 @@
 ---
 import { format } from "date-fns"
-import { resolveCoverImage } from "~/content/blog/_resolveImage.js"
 
 export type Props = {
-	isCaseStudy: boolean
-	post: {
-		slug: string
-		data: {
-			title: string
-			description: string
-			publishDate: Date
-			coverImage?: string
-		}
-	}
+  isCaseStudy: boolean
+  post: {
+    slug: string
+    data: {
+      title: string
+      description: string
+      publishDate: Date
+      coverImage?: ImageMetadata
+    }
+  }
 }
 
 const { post, isCaseStudy } = Astro.props
 
-const image = await resolveCoverImage(post)
+const image = post.data.coverImage
 ---
 
 <article
-	class="border border-astro-gray-500 bg-astro-gray-600 p-5 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
+  class="border border-astro-gray-500 bg-astro-gray-600 p-5 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
 >
-	<a
-		href={isCaseStudy ? `/case-studies/${post.slug}/` : `/blog/${post.slug}/`}
-		rel="prefetch"
-		class="block outline-none"
-	>
-		<header>
-			<time class="code text-astro-gray-200" datetime={post.data.publishDate.toISOString()}>
-				{format(post.data.publishDate, "MMMM d, yyyy")}
-			</time>
-		</header>
+  <a
+    href={isCaseStudy ? `/case-studies/${post.slug}/` : `/blog/${post.slug}/`}
+    rel="prefetch"
+    class="block outline-none"
+  >
+    <header>
+      <time class="code text-astro-gray-200" datetime={post.data.publishDate.toISOString()}>
+        {format(post.data.publishDate, "MMMM d, yyyy")}
+      </time>
+    </header>
 
-		{
-			image && (
-				<img
-					src={image.src}
-					width={image.width}
-					height={image.height}
-					alt={post.data.title}
-					class="my-8"
-					loading="lazy"
-					decoding="async"
-				/>
-			)
-		}
+    {
+      image && (
+        <img
+          src={image.src}
+          width={image.width}
+          height={image.height}
+          alt={post.data.title}
+          class="my-8"
+          loading="lazy"
+          decoding="async"
+        />
+      )
+    }
 
-		<div class="mt-6 grid gap-x-16 gap-y-4 md:grid-cols-2">
-			<h3 class="heading-4 md:heading-3">{post.data.title}</h3>
-			<p class="text-astro-gray-200">{post.data.description}</p>
-		</div></a
-	>
+    <div class="mt-6 grid gap-x-16 gap-y-4 md:grid-cols-2">
+      <h3 class="heading-4 md:heading-3">{post.data.title}</h3>
+      <p class="text-astro-gray-200">{post.data.description}</p>
+    </div></a
+  >
 </article>

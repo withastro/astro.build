@@ -1,4 +1,3 @@
-import type { ImageMetadata } from "astro"
 import { CollectionEntry } from "astro:content"
 import { srcToDensity } from "~/helpers/images.js"
 
