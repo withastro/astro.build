@@ -32,6 +32,6 @@ Integration data is updated weekly by a [GitHub Action](/.github/workflows/weekl
 
 ## Blog Posts
 
-The [blog collection](/src/content/blog/) is setup to support MDX blog posts with all images being pulled from the collection's [\_images directory](/src/content/blog/_images/). Images should be a `webp` format of a reasonable width, something in the 800-1600px range is ideal.
+The [blog collection](/src/content/blog/) is setup to support MDX blog posts with all images being pulled from the collection's [\_images directory](~/assets/blog/). Images should be a `webp` format of a reasonable width, something in the 800-1600px range is ideal.
 
-Blog post cover and social images are set as frontmatter properties and should point reference the `_images` directory, ex: `coverImage: "/src/content/blog/_images/post-1/cover.webp"`.
+Blog post cover and social images are set as frontmatter properties and should point reference the `_images` directory, ex: `coverImage: "~/assets/blog/post-1/cover.webp"`.

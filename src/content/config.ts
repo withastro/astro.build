@@ -110,23 +110,8 @@ export const collections = {
 			}),
 	}),
 	blog: defineCollection({
-		schema: z.object({
-			title: z.string(),
-			description: z.string(),
-			publishDate: z
-				.string()
-				.or(z.date())
-				.transform((val) => new Date(val)),
-			authors: z.array(z.string()),
-			socialImage: z.string().optional(),
-			coverImage: z.string().optional(),
-			lang: z.enum(["en"]).default("en"),
-		}),
-	}),
-	caseStudies: defineCollection({
-		schema: z
-			.object({
-				seo: seoSchema.optional(),
+		schema: ({ image }) =>
+			z.object({
 				title: z.string(),
 				description: z.string(),
 				publishDate: z
@@ -134,15 +119,32 @@ export const collections = {
 					.or(z.date())
 					.transform((val) => new Date(val)),
 				authors: z.array(z.string()),
-				socialImage: z.string().optional(),
-				coverImage: z.string().optional(),
+				socialImage: image().optional(),
+				coverImage: image().optional(),
 				lang: z.enum(["en"]).default("en"),
-				headerImage: z.string().optional(),
-				coverGradientFrom: z.string(),
-				coverGradientTo: z.string(),
-			})
-			// adding this extra flag to differentiate it in lists
-			.transform((study) => ({ ...study, isCaseStudy: true })),
+			}),
+	}),
+	caseStudies: defineCollection({
+		schema: ({ image }) =>
+			z
+				.object({
+					seo: seoSchema.optional(),
+					title: z.string(),
+					description: z.string(),
+					publishDate: z
+						.string()
+						.or(z.date())
+						.transform((val) => new Date(val)),
+					authors: z.array(z.string()),
+					socialImage: image().optional(),
+					coverImage: image().optional(),
+					lang: z.enum(["en"]).default("en"),
+					headerImage: image().optional(),
+					coverGradientFrom: z.string(),
+					coverGradientTo: z.string(),
+				})
+				// adding this extra flag to differentiate it in lists
+				.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
 	careers: defineCollection({
 		schema: z.object({
