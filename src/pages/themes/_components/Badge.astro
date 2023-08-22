@@ -1,40 +1,40 @@
 ---
 export type Props = {
-  theme: "primary" | "secondary"
-  class?: string
+	theme: "primary" | "secondary"
+	class?: string
 }
 
 const { theme, class: className } = Astro.props
 ---
 
 <p class:list={["relative code text-sm text-white px-2 py-1 rounded-md m-px", theme, className]}>
-  <slot />
+	<slot />
 </p>
 
 <style>
-  p::before {
-    @apply absolute inset-0;
-    content: "";
-    margin: -1px;
-    border-radius: inherit;
-    background: linear-gradient(247.23deg, rgba(74, 242, 200, 1) 0%, rgba(47, 76, 179, 1) 100%);
-    z-index: -2;
-  }
+	p::before {
+		@apply absolute inset-0;
+		content: "";
+		margin: -1px;
+		border-radius: inherit;
+		background: linear-gradient(247.23deg, rgba(74, 242, 200, 1) 0%, rgba(47, 76, 179, 1) 100%);
+		z-index: -2;
+	}
 
-  p::after {
-    @apply absolute inset-0 z-blur;
-    content: "";
-    border-radius: inherit;
-    background: rgb(35, 38, 45)
-      linear-gradient(247.23deg, rgba(74, 242, 200, 0.2) 0%, rgba(47, 76, 179, 0.2) 100%);
-  }
+	p::after {
+		@apply absolute inset-0 z-blur;
+		content: "";
+		border-radius: inherit;
+		background: rgb(35, 38, 45)
+			linear-gradient(247.23deg, rgba(74, 242, 200, 0.2) 0%, rgba(47, 76, 179, 0.2) 100%);
+	}
 
-  p.primary::before {
-    background: linear-gradient(270deg, rgb(248, 228, 46), rgb(255, 125, 84));
-  }
+	p.primary::before {
+		background: linear-gradient(270deg, rgb(248, 228, 46), rgb(255, 125, 84));
+	}
 
-  p.primary::after {
-    background: rgba(35, 37, 45)
-      linear-gradient(270deg, rgba(248, 228, 46, 0.2), rgba(255, 125, 84, 0.2));
-  }
+	p.primary::after {
+		background: rgba(35, 37, 45)
+			linear-gradient(270deg, rgba(248, 228, 46, 0.2), rgba(255, 125, 84, 0.2));
+	}
 </style>

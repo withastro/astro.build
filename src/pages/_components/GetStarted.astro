@@ -5,75 +5,75 @@ import houston from "../_assets/houston.webp"
 ---
 
 <section
-  class="relative mx-auto flex w-full max-w-screen-xl flex-col items-center justify-end overflow-hidden px-4 pb-0"
+	class="relative mx-auto flex w-full max-w-screen-xl flex-col items-center justify-end overflow-hidden px-4 pb-0"
 >
-  <AstroLogomark class="block h-20" />
-  <div class="my-6 md:my-8">
-    <h2 class="heading-3 max-w-2xl text-center lg:heading-2">Start building with Astro today</h2>
-  </div>
-  <a data-get-started href="https://docs.astro.build/" class="button button-white">Get Started</a>
-  <div data-houston-signal class="relative top-32 h-px w-full"></div>
-  <div class="overflow-hidden">
-    <img
-      data-houston
-      data-enter
-      data-src={houston.src}
-      data-src-hover={houstonHappy.src}
-      src={houston.src}
-      width={houston.width}
-      height={houston.height}
-      loading="lazy"
-      decoding="async"
-      alt=""
-      class="max-w-[50vw] translate-y-full drop-shadow-lg transition-transform duration-500 data-[enter]:translate-y-1/4"
-    />
-  </div>
+	<AstroLogomark class="block h-20" />
+	<div class="my-6 md:my-8">
+		<h2 class="heading-3 max-w-2xl text-center lg:heading-2">Start building with Astro today</h2>
+	</div>
+	<a data-get-started href="https://docs.astro.build/" class="button button-white">Get Started</a>
+	<div data-houston-signal class="relative top-32 h-px w-full"></div>
+	<div class="overflow-hidden">
+		<img
+			data-houston
+			data-enter
+			data-src={houston.src}
+			data-src-hover={houstonHappy.src}
+			src={houston.src}
+			width={houston.width}
+			height={houston.height}
+			loading="lazy"
+			decoding="async"
+			alt=""
+			class="max-w-[50vw] translate-y-full drop-shadow-lg transition-transform duration-500 data-[enter]:translate-y-1/4"
+		/>
+	</div>
 </section>
 
 <style>
-  section::before {
-    @apply absolute z-blur;
-    content: "";
-    top: 25%;
-    height: 150%;
-    width: 150%;
-    left: -25%;
-    background: linear-gradient(247.23deg, #4af2c8 0%, #2f4cb3 100%);
-    mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 70%);
-  }
-  @media screen(lg) {
-    section::before {
-      left: 0%;
-      width: 100%;
-      mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 60%);
-    }
-  }
+	section::before {
+		@apply absolute z-blur;
+		content: "";
+		top: 25%;
+		height: 150%;
+		width: 150%;
+		left: -25%;
+		background: linear-gradient(247.23deg, #4af2c8 0%, #2f4cb3 100%);
+		mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 70%);
+	}
+	@media screen(lg) {
+		section::before {
+			left: 0%;
+			width: 100%;
+			mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 60%);
+		}
+	}
 </style>
 
 <script>
-  import { getElement } from "~/helpers/dom.js"
-  import { raise } from "~/helpers/errors.js"
+	import { getElement } from "~/helpers/dom.js"
+	import { raise } from "~/helpers/errors.js"
 
-  const houston = getElement("[data-houston]", HTMLImageElement)
-  const getStartedButton = getElement("[data-get-started]", HTMLAnchorElement)
-  const scrollSignal = getElement("[data-houston-signal]", HTMLDivElement)
+	const houston = getElement("[data-houston]", HTMLImageElement)
+	const getStartedButton = getElement("[data-get-started]", HTMLAnchorElement)
+	const scrollSignal = getElement("[data-houston-signal]", HTMLDivElement)
 
-  getStartedButton.addEventListener("mouseenter", () => {
-    houston.src = houston.dataset.srcHover ?? raise("hover image missing")
-  })
-  getStartedButton.addEventListener("mouseleave", () => {
-    houston.src = houston.dataset.src ?? raise("default image missing")
-  })
+	getStartedButton.addEventListener("mouseenter", () => {
+		houston.src = houston.dataset.srcHover ?? raise("hover image missing")
+	})
+	getStartedButton.addEventListener("mouseleave", () => {
+		houston.src = houston.dataset.src ?? raise("default image missing")
+	})
 
-  // start out hidden
-  delete houston.dataset.enter
+	// start out hidden
+	delete houston.dataset.enter
 
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      houston.dataset.enter = ""
-    } else {
-      delete houston.dataset.enter
-    }
-  })
-  observer.observe(scrollSignal)
+	const observer = new IntersectionObserver(([entry]) => {
+		if (entry.isIntersecting) {
+			houston.dataset.enter = ""
+		} else {
+			delete houston.dataset.enter
+		}
+	})
+	observer.observe(scrollSignal)
 </script>
