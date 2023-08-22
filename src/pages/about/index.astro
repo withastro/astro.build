@@ -17,194 +17,197 @@ import iconWebsite from "./_assets/icon-website.png"
 import burst from "./_assets/illustration-burst.png"
 
 const beliefs = [
-	{
-		label: "Belief 01",
-		heading: "It should be easier to build fast websites than a slow one",
-		icon: iconFast.src,
-	},
-	{
-		label: "Belief 02",
-		heading: "It should be easier to build with code than without it",
-		icon: iconCode.src,
-	},
-	{
-		label: "Belief 03",
-		heading: "It should be easy to build a great website, period.",
-		icon: iconWebsite.src,
-	},
+  {
+    label: "Belief 01",
+    heading: "It should be easier to build fast websites than a slow one",
+    icon: iconFast.src,
+  },
+  {
+    label: "Belief 02",
+    heading: "It should be easier to build with code than without it",
+    icon: iconCode.src,
+  },
+  {
+    label: "Belief 03",
+    heading: "It should be easy to build a great website, period.",
+    icon: iconWebsite.src,
+  },
 ]
 
 const allQuotes = await getCollection("quotes")
 
 const quoteSlugs = [
-	"adrianmg-no-brainer",
-	"theo-holy-shit",
-	"still_scripts-feel-like-thanos",
-	"thomasreggi-feels-like-php",
+  "adrianmg-no-brainer",
+  "theo-holy-shit",
+  "still_scripts-feel-like-thanos",
+  "thomasreggi-feels-like-php",
 ]
 
 const quotes = await Promise.all(
-	quoteSlugs.map((slug) => allQuotes.find((entry) => entry.slug === slug)),
+  quoteSlugs.map((slug) => allQuotes.find((entry) => entry.slug === slug)),
 ).then((entries) => entries.filter(Boolean) as CollectionEntry<"quotes">[])
 ---
 
 <MainLayout
-	title="The web is what we make it"
-	image={{ src: "/og/about.jpg", alt: "Astro is for everyone" }}
+  title="The web is what we make it"
+  image={{ src: "/og/about.jpg", alt: "Astro is for everyone" }}
 >
-	<section class="grid-container">
-		<TwoUp class="py-32 lg:bleed-end 2xl:bleed-none" threshold="lg">
-			<div slot="start" class="lg:py-20">
-				<h1 class="heading-2 mb-10">The web is what we make it</h1>
-				<p class="body pb-4 text-astro-gray-200 sm:body-large">
-					We think a lot about the early days of the internet. It was weird, it was wonderful, and
-					it was ours for the making.
-				</p>
-				<p class="body pb-4 text-astro-gray-200 sm:body-large">
-					A lot has changed since then—a lot of it for the better. Building a great website has
-					never been easier. But choosing the right tool for the job is, somehow, harder than ever.
-				</p>
-				<p class="body text-astro-gray-200 sm:body-large">
-					We built Astro to bring out the best of the web.
-				</p>
-			</div>
-			<div slot="end" class="flex items-center">
-				<div
-					class="hero-graphic relative scale-150 md:scale-125 lg:translate-x-16 xl:translate-x-32"
-				>
-					<EcosystemIllustration class="h-full w-full" />
-					<AstroLogomark class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-				</div>
-			</div>
-		</TwoUp>
+  <section class="grid-container">
+    <TwoUp class="py-32 lg:bleed-end 2xl:bleed-none" threshold="lg">
+      <div slot="start" class="lg:py-20">
+        <h1 class="heading-2 mb-10">The web is what we make it</h1>
+        <p class="body pb-4 text-astro-gray-200 sm:body-large">
+          We think a lot about the early days of the internet. It was weird, it was wonderful, and
+          it was ours for the making.
+        </p>
+        <p class="body pb-4 text-astro-gray-200 sm:body-large">
+          A lot has changed since then—a lot of it for the better. Building a great website has
+          never been easier. But choosing the right tool for the job is, somehow, harder than ever.
+        </p>
+        <p class="body text-astro-gray-200 sm:body-large">
+          We built Astro to bring out the best of the web.
+        </p>
+      </div>
+      <div slot="end" class="z-blur flex items-center">
+        <div
+          class="hero-graphic relative scale-150 md:scale-125 lg:translate-x-16 xl:translate-x-32"
+        >
+          <EcosystemIllustration class="h-full w-full" />
+          <AstroLogomark class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+        </div>
+      </div>
+    </TwoUp>
 
-		<PageSection title="Our core beliefs">
-			<CardGrid class="lg:grid-cols-3">
-				{
-					beliefs.map((item) => (
-						<Card>
-							<CardBody>
-								<div class="flex h-full flex-col justify-between">
-									<CardLabel>{item.label}</CardLabel>
-									<img
-										src={item.icon}
-										alt=""
-										width="200"
-										height="100"
-										class="object-fit mx-auto my-6"
-									/>
-									<CardHeading>{item.heading}</CardHeading>
-								</div>
-							</CardBody>
-						</Card>
-					))
-				}
-			</CardGrid>
-		</PageSection>
+    <PageSection title="Our core beliefs">
+      <CardGrid class="lg:grid-cols-3">
+        {
+          beliefs.map((item) => (
+            <Card>
+              <CardBody>
+                <div class="flex h-full flex-col justify-between">
+                  <CardLabel>{item.label}</CardLabel>
+                  <img
+                    src={item.icon}
+                    alt=""
+                    width="200"
+                    height="100"
+                    class="object-fit mx-auto my-6"
+                  />
+                  <CardHeading>{item.heading}</CardHeading>
+                </div>
+              </CardBody>
+            </Card>
+          ))
+        }
+      </CardGrid>
+    </PageSection>
 
-		<TwoUp class="lg:bleed-start 2xl:bleed-none" mobileReverse threshold="lg">
-			<div slot="start" class="graphic -mt-8 flex scale-150 items-center lg:mt-0 lg:scale-125">
-				<img src={burst.src} alt="" />
-			</div>
-			<div slot="end" class="flex flex-col gap-8 sm:gap-10 md:gap-12">
-				<h2 class="heading-3 sm:heading-2">Astro is for everyone</h2>
-				<p class="body text-astro-gray-200 sm:body-large">
-					The web is for everyone, so Astro is, too. Whether this is your first web project or
-					you’ve lost count, Astro is the easiest way to build a lightning-fast website. Keep
-					working with the tools you love, in an environment that’s easy to use. That’s Astro.
-				</p>
-			</div>
-		</TwoUp>
+    <TwoUp class="lg:bleed-start 2xl:bleed-none" mobileReverse threshold="lg">
+      <div
+        slot="start"
+        class="graphic z-blur -mt-8 flex scale-150 items-center lg:mt-0 lg:scale-125"
+      >
+        <img src={burst.src} alt="" />
+      </div>
+      <div slot="end" class="flex flex-col gap-8 sm:gap-10 md:gap-12">
+        <h2 class="heading-3 sm:heading-2">Astro is for everyone</h2>
+        <p class="body text-astro-gray-200 sm:body-large">
+          The web is for everyone, so Astro is, too. Whether this is your first web project or
+          you’ve lost count, Astro is the easiest way to build a lightning-fast website. Keep
+          working with the tools you love, in an environment that’s easy to use. That’s Astro.
+        </p>
+      </div>
+    </TwoUp>
 
-		<TwoUp threshold="lg">
-			<div slot="start" class="flex flex-col items-start gap-6">
-				<h2 class="heading-3 pb-2 sm:heading-2">Open source is in our DNA</h2>
-				<p class="body text-astro-gray-200 sm:body-large">
-					Astro is a free, open source project with an active, supportive, and wildly entertaining
-					community around it. Come on over to Discord to join the fun.
-				</p>
-				<a href="/careers" rel="prefetch" class="button button-primary">Join us</a>
-			</div>
-			<div slot="end" class="quotes relative flex flex-col items-center lg:items-start">
-				{
-					quotes.map((quote, i) => (
-						<QuoteCard
-							quote={quote}
-							class={
-								[
-									"ml-16 -translate-y-4 scale-90",
-									"z-20 ml-6",
-									"z-10 ml-24 -translate-y-6 scale-90",
-									"-translate-y-12",
-								][i]
-							}
-						/>
-					))
-				}
-			</div>
-		</TwoUp>
-	</section>
+    <TwoUp threshold="lg">
+      <div slot="start" class="flex flex-col items-start gap-6">
+        <h2 class="heading-3 pb-2 sm:heading-2">Open source is in our DNA</h2>
+        <p class="body text-astro-gray-200 sm:body-large">
+          Astro is a free, open source project with an active, supportive, and wildly entertaining
+          community around it. Come on over to Discord to join the fun.
+        </p>
+        <a href="/careers" rel="prefetch" class="button button-primary">Join us</a>
+      </div>
+      <div slot="end" class="quotes relative flex flex-col items-center lg:items-start">
+        {
+          quotes.map((quote, i) => (
+            <QuoteCard
+              quote={quote}
+              class={
+                [
+                  "ml-16 -translate-y-4 scale-90",
+                  "z-20 ml-6",
+                  "z-10 ml-24 -translate-y-6 scale-90",
+                  "-translate-y-12",
+                ][i]
+              }
+            />
+          ))
+        }
+      </div>
+    </TwoUp>
+  </section>
 
-	<section class="company grid-container relative overflow-hidden">
-		<PageSection title="The Astro Technology Company" class="relative z-10">
-			<p class="body mx-auto max-w-screen-md text-center text-astro-gray-200 sm:body-large">
-				We formed the Astro Technology Company to support the open source project and its community
-				for the long haul. If you want to build the world’s best platform for web development with
-				us, we’re hiring!
-			</p>
-			<a href="/careers" rel="prefetch" class="button button-white self-center">See Open Roles</a>
-		</PageSection>
-	</section>
+  <section class="company grid-container relative overflow-hidden">
+    <PageSection title="The Astro Technology Company" class="relative z-10">
+      <p class="body mx-auto max-w-screen-md text-center text-astro-gray-200 sm:body-large">
+        We formed the Astro Technology Company to support the open source project and its community
+        for the long haul. If you want to build the world’s best platform for web development with
+        us, we’re hiring!
+      </p>
+      <a href="/careers" rel="prefetch" class="button button-white self-center">See Open Roles</a>
+    </PageSection>
+  </section>
 </MainLayout>
 
 <style>
-	.hero-graphic::after {
-		@apply absolute z-blur bg-blue-purple-gradient;
-		content: "";
-		width: 150%;
-		height: 150%;
-		top: 50%;
-		left: 50%;
-		translate: -50% -50%;
-		mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 65%);
-	}
+  .hero-graphic::after {
+    @apply absolute z-blur bg-blue-purple-gradient;
+    content: "";
+    width: 150%;
+    height: 150%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 65%);
+  }
 
-	.quotes::before {
-		@apply absolute bg-blue-purple-gradient;
-		content: "";
-		width: 200%;
-		height: 150%;
-		left: -50%;
-		top: -35%;
-		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 70%);
-	}
+  .quotes::before {
+    @apply absolute bg-blue-purple-gradient;
+    content: "";
+    width: 200%;
+    height: 150%;
+    left: -50%;
+    top: -35%;
+    background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+    mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 70%);
+  }
 
-	.company::before {
-		@apply absolute right-0 w-full bg-orange-yellow-gradient;
-		content: "";
-		top: 25%;
-		height: 150%;
-		width: 150%;
-		left: -25%;
-		background: linear-gradient(266.93deg, #f8e42e 0%, #ff7d54 100%);
-		mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 70%);
-	}
+  .company::before {
+    @apply absolute right-0 w-full bg-orange-yellow-gradient;
+    content: "";
+    top: 25%;
+    height: 150%;
+    width: 150%;
+    left: -25%;
+    background: linear-gradient(266.93deg, #f8e42e 0%, #ff7d54 100%);
+    mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 70%);
+  }
 
-	@media screen(lg) {
-		.quotes::before {
-			height: 175%;
-			width: 160%;
-			left: -20%;
-			top: -50%;
-			background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-			mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 60%);
-		}
+  @media screen(lg) {
+    .quotes::before {
+      height: 175%;
+      width: 160%;
+      left: -20%;
+      top: -50%;
+      background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+      mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 60%);
+    }
 
-		.company::before {
-			left: 0%;
-			width: 100%;
-			mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 60%);
-		}
-	}
+    .company::before {
+      left: 0%;
+      width: 100%;
+      mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 60%);
+    }
+  }
 </style>

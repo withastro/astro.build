@@ -144,7 +144,7 @@ export default function ExampleShowcase() {
 			<section
 				aria-label="Example Previews"
 				style={{ "padding-bottom": `calc(${titleHeight}px * ${items.length - 1})` }}
-				class="relative isolate md:w-1/2"
+				class="relative md:w-1/2"
 			>
 				<For each={items}>
 					{(item, index) => (
