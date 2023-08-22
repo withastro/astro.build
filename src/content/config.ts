@@ -159,7 +159,7 @@ export const collections = {
 					.describe("Location of the job position (eg: 'Remote' or 'San Fransisco, CA'"),
 				team: z.enum(["Engineering", "UI", "DX"]),
 				type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
-				seo: seoSchema({ image }),
+				seo: seoSchema({ image }).optional(),
 			}),
 	}),
 	integrations: defineCollection({
