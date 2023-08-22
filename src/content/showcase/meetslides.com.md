@@ -1,5 +1,5 @@
 ---
 title: Create new presentation
-image: /src/content/showcase/_images/meetslides.com.webp
+image: ~/assets/showcase/meetslides.com.webp
 url: "https://meetslides.com/"
 ---
