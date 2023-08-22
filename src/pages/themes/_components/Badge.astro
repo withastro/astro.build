@@ -1,12 +1,13 @@
 ---
 export type Props = {
 	theme: "primary" | "secondary"
+	class?: string
 }
 
-const { theme } = Astro.props
+const { theme, class: className } = Astro.props
 ---
 
-<p class:list={["relative code text-sm text-white px-2 py-1 rounded-md m-px", theme]}>
+<p class:list={["relative code text-sm text-white px-2 py-1 rounded-md m-px", theme, className]}>
 	<slot />
 </p>
 
@@ -21,10 +22,9 @@ const { theme } = Astro.props
 	}
 
 	p::after {
-		@apply absolute inset-0;
+		@apply absolute inset-0 z-blur;
 		content: "";
 		border-radius: inherit;
-		z-index: -1;
 		background: rgb(35, 38, 45)
 			linear-gradient(247.23deg, rgba(74, 242, 200, 0.2) 0%, rgba(47, 76, 179, 0.2) 100%);
 	}

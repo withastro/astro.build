@@ -48,7 +48,7 @@ const images = await resolveAllImages(theme)
 					width={images[0].fullImage.width}
 					height={(images[0].fullImage.width * 7) / 16}
 					alt=""
-					class="mx-auto aspect-video max-w-full object-cover object-top"
+					class="mx-auto aspect-video w-full object-cover object-top"
 					decoding="async"
 				/>
 			)
@@ -106,13 +106,9 @@ const images = await resolveAllImages(theme)
 		}
 
 		.related::before {
-			@apply absolute aspect-square w-full bg-repeat;
+			@apply bg-grid absolute aspect-square w-full;
 			content: "";
-			background-size: 20px 20px;
-			background-image: linear-gradient(to right, rgb(35 38 45) 1px, transparent 1px),
-				linear-gradient(to bottom, rgb(35 38 45) 1px, transparent 1px);
 			mask-image: linear-gradient(to bottom, white, transparent);
-			z-index: -1;
 		}
 	</style>
 </MainLayout>
