@@ -67,6 +67,7 @@ module.exports = {
 				prose: "768px",
 			},
 			zIndex: {
+				badge: 1,
 				blur: -1,
 				grid: -2,
 			},
