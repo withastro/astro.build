@@ -10,6 +10,6 @@ author:
 categories:
   - "other"
 repoUrl: "https://github.com/AREA44/astro-multiverse"
-demoUrl: "https://astro-multiverse.netlify.app/"
+demoUrl: "https://astro-multiverse.vercel.app/"
 stars: 24
 ---
