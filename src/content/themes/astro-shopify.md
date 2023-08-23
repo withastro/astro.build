@@ -13,7 +13,7 @@ categories:
   - "ecommerce"
 repoUrl: "https://github.com/thomasKn/astro-shopify"
 demoUrl: "https://astro-shopify.frontvibe.com/"
-stars: 104
+stars: 117
 tools:
   - "tailwind"
   - "svelte"

@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@otterlord/astro-critters"
 repoUrl: "https://github.com/astro-community/astro-critters"
 homepageUrl: "https://github.com/astro-community/astro-critters#readme"
-downloads: 116
+downloads: 323
 badge: "new"
 ---
