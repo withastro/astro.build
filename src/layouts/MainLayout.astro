@@ -22,7 +22,7 @@ const { ...head } = Astro.props
 	</head>
 	<body>
 		<SkipLink />
-		<div class="isolate flex min-h-screen flex-col overflow-x-hidden">
+		<div class="flex min-h-screen flex-col overflow-x-hidden">
 			<div id="nav" class="sticky top-0 z-20 max-h-screen">
 				<Header>
 					<HeaderNav />
@@ -31,17 +31,13 @@ const { ...head } = Astro.props
 				<hr class="border-astro-gray-500" />
 			</div>
 
-			<main id="main" class="noise-container z-10 flex flex-1 flex-col">
-				<div class="noise"></div>
+			<main id="main" class="relative z-10 flex flex-1 flex-col">
 				<slot />
 			</main>
 
 			<hr class="border-astro-gray-500" />
 
-			<div class="noise-container">
-				<div class="noise"></div>
-				<Footer />
-			</div>
+			<Footer />
 		</div>
 		<style>
 			:root.disclosure-open {

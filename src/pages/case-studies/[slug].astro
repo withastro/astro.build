@@ -39,7 +39,7 @@ const authors = await Promise.all(
 	image={socialImage && { src: socialImage.src, alt: data.title }}
 >
 	<div
-		class="noise-underlay -mb-56 h-64 w-full opacity-[0.85] md:-mb-52 md:h-64 lg:-mb-80 lg:h-96"
+		class="z-blur -mb-56 h-64 w-full opacity-[0.85] md:-mb-52 md:h-64 lg:-mb-80 lg:h-96"
 		style={`background-image: linear-gradient(120deg,${data.coverGradientFrom} 0%,${data.coverGradientTo} 100%);`}
 	>
 	</div>
@@ -58,10 +58,8 @@ const authors = await Promise.all(
 	}
 
 	<div
-		class="noise-container mx-auto max-w-full bg-astro-gray-700 px-8 py-5 sm:py-8 md:z-10 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
+		class="mx-auto max-w-full bg-astro-gray-700 px-8 py-5 sm:py-8 md:z-10 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
 	>
-		<div class="noise"></div>
-
 		<header class="mx-auto w-full max-w-4xl text-center">
 			<p class="code text-astro-gray-200">
 				Case Study &bull;

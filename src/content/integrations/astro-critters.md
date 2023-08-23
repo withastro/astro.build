@@ -7,7 +7,7 @@ categories:
   - "performance+seo"
 npmUrl: "https://www.npmjs.com/package/astro-critters"
 image: "/assets/integrations/astro-critters.svg"
-repoUrl: "https://github.com/astro-community/astro-critters"
-homepageUrl: "https://github.com/astro-community/astro-critters#readme"
-downloads: 16937
+repoUrl: "https://github.com/astro-community/AstroCritters"
+homepageUrl: "https://github.com/astro-community/AstroCritters#readme"
+downloads: 13220
 ---

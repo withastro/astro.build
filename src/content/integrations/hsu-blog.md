@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/hsu-blog"
 homepageUrl: "https://github.com/charles-hsuz/HsuBlog#readme"
-downloads: 67
+downloads: 79
 badge: "new"
 ---
