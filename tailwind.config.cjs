@@ -21,7 +21,7 @@ module.exports = {
 				lg: "0px 25px 7px rgba(24, 24, 27, 0.01), 0px 16px 6px rgba(24, 24, 27, 0.04), 0px 9px 5px rgba(24, 24, 27, 0.15), 0px 4px 4px rgba(24, 24, 27, 0.26), 0px 1px 2px rgba(24, 24, 27, 0.29), 0px 0px 0px rgba(24, 24, 27, 0.3);",
 			},
 			fontFamily: {
-				sans: ["InterVariable", "sans-serif"],
+				sans: ["Inter Variable", "sans-serif"],
 				mono: [`"MDIO"`, "md-io-fallback", "monospace"],
 				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
 				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
@@ -67,10 +67,8 @@ module.exports = {
 				prose: "768px",
 			},
 			zIndex: {
-				"white-button-fill": -1,
-				noise: -2,
-				grid: -3,
-				blur: -4,
+				blur: -1,
+				grid: -2,
 			},
 		},
 	},
@@ -213,50 +211,21 @@ module.exports = {
 					"@apply py-2 leading-normal": {},
 				},
 
-				".noise-container": {
-					position: "relative",
-					isolation: "isolate",
-					backgroundColor: theme("colors.astro-gray.700"),
-				},
-				".noise-underlay": {
-					zIndex: -30,
-					position: "relative",
-				},
-				".noise": {
-					zIndex: -20,
-					position: "absolute",
-					inset: 0,
-					backgroundImage: `url("/assets/noise.webp")`,
-					opacity: 0.4,
-					mixBlendMode: "overlay",
-					pointerEvents: "none",
-				},
-				".noise-panel": {
-					"@apply relative isolate border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
-					"&::before": {
-						"@apply absolute inset-0 opacity-40 mix-blend-overlay -z-20": {},
-						content: "''",
-						backgroundImage: `url("/assets/noise.webp")`,
-					},
-				},
-
 				".landing-section": {
 					"@apply flex flex-col items-center justify-center overflow-visible text-center": {},
 				},
 
 				".bg-grid": {
-					// https://stackoverflow.com/a/32861765/1332403
-					backgroundSize: "20px 20px",
-					backgroundImage: `linear-gradient(to right, ${theme(
-						"colors.astro-gray.600",
-					)} 1px, transparent 1px),\n    linear-gradient(to bottom, ${theme(
-						"colors.astro-gray.600",
-					)} 1px, transparent 1px)`,
-					backgroundPosition: "top center",
-					imageRendering: "pixelated",
+					backgroundSize: "100px 100px",
+					zIndex: theme("zIndex.grid"),
+					backgroundImage: `url("/assets/bg-grid.png")`,
+					backgroundPositionY: "-9px",
 
-					// https://stackoverflow.com/a/9670876/1332403
 					maskImage: `linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)`,
+				},
+
+				".panel": {
+					"@apply border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
 				},
 			})
 		}),

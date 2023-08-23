@@ -93,10 +93,9 @@ const collapsedPages = collapseRange(page, pages)
 		}
 
 		[aria-current="page"]::after {
-			@apply absolute inset-0;
+			@apply absolute inset-0 z-blur;
 			content: "";
 			border-radius: inherit;
-			z-index: -1;
 			background: rgb(35 38 45)
 				linear-gradient(247.23deg, rgba(74, 242, 200, 0.2) 0%, rgba(47, 76, 179, 0.2) 100%);
 		}
