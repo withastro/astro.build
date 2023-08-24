@@ -3,18 +3,18 @@ import fs from "node:fs"
 
 import image from "@astrojs/image"
 import mdx from "@astrojs/mdx"
-import netlify from "@astrojs/netlify/functions"
 import prefetch from "@astrojs/prefetch"
 import sitemap from "@astrojs/sitemap"
 import solidJs from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
+import vercel from "@astrojs/vercel/serverless"
 
-/* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
-const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== "production" && process.env.DEPLOY_PRIME_URL
+/* https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables */
+const VERCEL_PREVIEW_SITE = process.env.VERCEL_ENV !== "production" && process.env.VERCEL_URL
 
 // https://astro.build/config
 export default defineConfig({
-	site: NETLIFY_PREVIEW_SITE || "https://astro.build",
+	site: VERCEL_PREVIEW_SITE || "https://astro.build",
 	integrations: [
 		image({
 			serviceEntryPoint: "@astrojs/image/sharp",
@@ -40,5 +40,5 @@ export default defineConfig({
 		},
 	},
 	output: "hybrid",
-	adapter: netlify(),
+	adapter: vercel(),
 })
