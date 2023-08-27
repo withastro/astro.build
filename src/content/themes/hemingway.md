@@ -61,7 +61,7 @@ tools:
 <p>The template also includes a</p>
 <ul>
   <li>Style Guide</li>
-  <li>Custom fonts from cdnfonts.com ( Only the CDN )</li>
+  <li>Custom fonts from Font Share or Google Fonts</li>
   <li>100% Responsive</li>
   <li>A link to every demo page from the overview page</li>
 </ul>
