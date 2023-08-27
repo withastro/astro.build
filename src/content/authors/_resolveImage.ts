@@ -1,7 +1,6 @@
-import type { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
 import { CollectionEntry } from "astro:content"
 
-const allImages = import.meta.glob<{ default: ImageMetadata }>(
+const allImages = import.meta.glob<{ default: any }>(
 	"/src/content/authors/_images/*.{png,jpg,jpeg,webp}",
 )
 
