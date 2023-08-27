@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/starlight-package-managers"
 repoUrl: "https://github.com/HiDeoo/starlight-package-managers"
 homepageUrl: "https://github.com/HiDeoo/starlight-package-managers"
-downloads: 57
+downloads: 68
 badge: "new"
 ---

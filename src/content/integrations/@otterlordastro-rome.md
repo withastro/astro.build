@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@otterlord/astro-rome"
 repoUrl: "https://github.com/astro-community/astro-rome"
 homepageUrl: "https://github.com/astro-community/astro-rome#readme"
-downloads: 65
+downloads: 111
 badge: "new"
 ---

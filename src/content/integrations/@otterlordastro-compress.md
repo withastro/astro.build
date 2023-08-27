@@ -7,8 +7,8 @@ categories:
   - "performance+seo"
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@otterlord/astro-compress"
-repoUrl: "https://github.com/astro-community/astro-compress"
-homepageUrl: "https://github.com/astro-community/astro-compress#readme"
-downloads: 136
+repoUrl: "https://github.com/TheOtterlord/astro-compress"
+homepageUrl: "https://github.com/TheOtterlord/astro-compress#readme"
+downloads: 2892
 badge: "new"
 ---

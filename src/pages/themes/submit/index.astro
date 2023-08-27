@@ -11,13 +11,15 @@ import FormErrorList from "~/components/form/FormErrorList.astro"
 import FormFieldSet from "~/components/form/FormFieldSet.astro"
 import FormRadioGroup from "~/components/form/FormRadioGroup.astro"
 import RichTextEditor from "~/components/form/RichTextEditor.astro"
-import { themeSchema, ThemeTools } from "~/content/config.js"
+import { ThemeTools, themeSchema } from "~/content/config.js"
 import { editDiscordWebhookMessage, executeDiscordWebhook } from "~/helpers/discord.js"
 import { sanitizeThemeDescription } from "~/helpers/themes.js"
 import MainLayout from "~/layouts/MainLayout.astro"
 import { env } from "~/process-env.js"
 import BestPractices from "./_components/BestPractices.astro"
 import { ThemeImageUploader } from "./_components/ThemeImageUploader.jsx"
+
+export const prerender = false
 
 const invalidUrlMessage = "Invalid URL, must start with http:// or https://"
 

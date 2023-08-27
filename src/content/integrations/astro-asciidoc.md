@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-asciidoc"
 repoUrl: "https://github.com/shishkin/astro-asciidoc"
 homepageUrl: "https://github.com/shishkin/astro-asciidoc"
-downloads: 285
+downloads: 363
 badge: "new"
 ---

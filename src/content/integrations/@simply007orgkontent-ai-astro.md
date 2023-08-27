@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@simply007org/kontent-ai-astro"
 homepageUrl: "https://github.com/Simply007/kontent-ai-astro#readme"
-downloads: 216
+downloads: 269
 badge: "new"
 ---

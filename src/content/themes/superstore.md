@@ -9,7 +9,6 @@ author:
 categories:
   - "ecommerce"
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/superstore"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/eeabd0af-0234-4610-9fb3-7427486d89f0"
 tools:
@@ -17,7 +16,6 @@ tools:
   - "alpinejs"
   - "mdx"
 publishDate: "Jul 20, 2023"
-badge: "new"
 ---
 
 <p>

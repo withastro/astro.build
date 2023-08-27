@@ -15,7 +15,6 @@ const logos = [
 ---
 
 <section class="landing-section relative overflow-x-hidden pb-40 pt-14 sm:pt-20 lg:pt-32">
-	<div class="noise-underlay absolute inset-0"></div>
 	<PageTitleBlock
 		lg
 		body="Astro is the all-in-one web framework designed for speed. Pull your content from anywhere and deploy everywhere, all powered by your favorite UI components and libraries."
@@ -30,9 +29,7 @@ const logos = [
 		</h1>
 	</PageTitleBlock>
 
-	<div
-		class="isolate mb-14 mt-8 flex w-full justify-center gap-6 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28"
-	>
+	<div class="mb-14 mt-8 flex w-full justify-center gap-6 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28">
 		<ExternalLink href="https://docs.astro.build/" class="button button-white">
 			Get Started
 		</ExternalLink>
@@ -62,15 +59,13 @@ const logos = [
 
 <style>
 	section::before {
-		position: absolute;
+		@apply absolute z-blur;
 		content: "";
-		z-index: -1;
 		top: 0%;
 		bottom: 10%;
 		width: 150%;
 		left: -25%;
-		background: url(/assets/noise.webp) repeat, linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		background-blend-mode: overlay;
-		mask-image: radial-gradient(rgba(0, 0, 0, 0.5), transparent 70%);
+		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+		mask-image: radial-gradient(rgba(0, 0, 0, 0.45), transparent 70%);
 	}
 </style>
