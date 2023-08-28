@@ -8,5 +8,5 @@ npmUrl: "https://www.npmjs.com/package/astro-uno"
 image: "/assets/integrations/astro-uno.svg"
 repoUrl: "https://github.com/AllanChain/astro-uno"
 homepageUrl: "https://github.com/AllanChain/astro-uno"
-downloads: 38
+downloads: 26
 ---

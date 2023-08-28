@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@otterlord/astro-compress"
 repoUrl: "https://github.com/TheOtterlord/astro-compress"
 homepageUrl: "https://github.com/TheOtterlord/astro-compress#readme"
-downloads: 2892
+downloads: 3635
 badge: "new"
 ---
