@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-footers"
 repoUrl: "https://github.com/warpsio/astro-footers"
 homepageUrl: "https://github.com/warpsio/astro-footers"
-downloads: 8
+downloads: 5
 ---

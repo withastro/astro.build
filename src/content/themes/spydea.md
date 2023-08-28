@@ -10,14 +10,12 @@ buyUrl: "https://themefisher.com/products/spydea-astro"
 demoUrl: "https://spydea-astro.vercel.app/"
 categories:
   - "landing-page"
-  - "recent"
 tools:
   - "react"
   - "tailwind"
   - "mdx"
   - "typescript"
 publishDate: "July 27, 2023"
-badge: "new"
 ---
 
 <h2>Key Features:</h2>
