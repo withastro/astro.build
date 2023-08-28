@@ -53,13 +53,13 @@ The Astro CLI does not track, collect, or store personally identifiable informat
 
 ## How do I opt out?
 
-You can always opt-out by running `astro telemetry disable` in the root of any Astro project directory:
+You can always opt-out by running `astro telemetry disable` in the root of any Astro project directory. This will disable telemetry across your entire machine, not just the project directory that you run it in:
 
 ```bash
 npx astro telemetry disable
 ```
 
-You can re-enable telemetry at any time by running `astro telemetry enable` in the root of any Astro project directory:
+You can re-enable telemetry at any time by running `astro telemetry enable` in the root of any Astro project directory. This will enable telemetry across your entire machine, not just the project that you run it in:
 
 ```bash
 npx astro telemetry enable
