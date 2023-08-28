@@ -1,0 +1,92 @@
+---
+title: "Vercel is our Official Hosting Partner"
+authors:
+  - thuy
+  - fred
+description: |
+  Vercel is Astro's new official hosting partner. To celebrate, we're launching new features for Astro users who deploy to Vercel's frontend cloud.
+publishDate: "August 28, 2023"
+socialImage: "/src/content/blog/_images/astro-vercel-social.png"
+coverImage: "/src/content/blog/_images/astro-vercel-header.webp"
+lang: "en"
+---
+
+import { Icon } from "astro-icon"
+import { YouTube } from "@astro-community/astro-embed-youtube"
+import Note from "/src/components/Note.astro"
+import Blockquote from "/src/components/Blockquote.astro"
+
+We are thrilled to announce [Vercel](https://vercel.com/) as Astro's new official hosting partner!
+
+Astro is a JavaScript web framework for building content-focused websites. Astro's [next-gen frontend architecture](https://docs.astro.build/en/concepts/islands/) automatically reduces unused JavaScript on the page while maximizing [Core Web Vitals](https://web.dev/vitals/) and other performance metrics. 
+
+Thousands of Astro developers are already taking advantage of Vercel's [frontend cloud](https://vercel.com/resources/the-frontend-cloud-advantage) platform and [generous free tier](https://vercel.com/pricing) for hosting. This new partnership will guarantee more collaboration, more features, and an even better experience for Astro developers on Vercel. 
+
+Vercel will also be sponsoring $5,000 each month towards the ongoing open source maintenance and development of Astro. The new sponsorship funding will be invested directly back into our open source community and maintenance, benefiting everyone.
+
+Here's what Lee Robinson of Vercel had to say about the news:
+
+<Blockquote>
+	<Fragment slot="quote" >
+		Vercel believes in supporting open-source and all web frameworks. We've loved backing Astro for the past two years and are excited to take our partnership even further after seeing the continued growth of Astro on Vercel.
+	</Fragment>
+	<Fragment slot="caption">
+		— [Lee Robinson](https://twitter.com/leerob), VP of Developer Experience
+	</Fragment>
+</Blockquote>
+
+Lee and [Fred K. Schott](https://twitter.com/FredKSchott) (Astro co-creator & project steward) had a chance to sit down for a conversation about the future of Astro, Vercel, and what this new partnership means for the web.
+
+<YouTube id="9196iQJtK4s" class="mx-auto my-12" />
+
+## Unlocking Astro on Vercel
+
+[Vercel](https://vercel.com/docs) has always been a great choice for Astro developers. Last year, Vercel launched [automatic framework detection](https://vercel.com/blog/build-output-api) with zero-configuration setup for new Astro projects. This simple change saved Astro users countless hours and improved default performance with an optimized site configuration for everyone.
+
+We're excited to announce a new suite of features for Astro users who deploy to Vercel, available today. These features were made possible thanks to our ongoing collaboration with and sponsorship by Vercel.
+
+### Edge Middleware
+
+Astro [middleware](https://docs.astro.build/en/guides/middleware/) now runs on the edge with Vercel's [Edge Middleware](https://vercel.com/docs/concepts/functions/edge-middleware). Edge middleware runs as close to your users as possible, which means faster response times for your users. Edge middleware also lets you customize every request and response that runs through your server, potentially reducing the traffic sent to your origin servers.
+
+Astro users can now:
+
+- Support multi-region URL schemes, redirecting users to their localized URL.
+- Verifying the user token and blocking unauthenticated traffic to the server.
+- Load data from an [edge-distributed global database](https://vercel.com/docs/storage/edge-config).
+- Define caching strategies in code, instead of config.
+- Minify response HTML as it streams back from the server.
+
+Edge middleware can be enabled by adding [`{edgeMiddleware: true}`](https://docs.astro.build/en/guides/integrations-guide/vercel/#vercel-edge-middleware) to the Vercel adapter in your Astro configuration file. In a future version, this option may become the default behavior. Check out the [Vercel documentation](https://vercel.com/docs/functions/edge-middleware) to learn more about how Edge Middleware works on Vercel.
+
+### Serverless Code Splitting
+
+Astro server applications now runs faster on Vercel thanks to serverless code splitting on each route.
+
+Previously, Astro would build your entire server application into a single JavaScript file. This simplified our deployments, but at the expense of poor serverless performance. By bundling your entire application in a single JavaScript file, response time (specifically, cold start time) would get weighed down by unused code as your codebase grew.
+
+Splitting your application into smaller functions improves response time by removing unused code that isn't needed for each route. Deploying individual routes also allows hosts like Vercel to better distribute your workload across multiple, smaller functions.
+
+You can enable this feature today by specifying [`{ functionPerRoute: true }`](https://docs.astro.build/en/guides/integrations-guide/vercel/#per-page-functions) in your Astro configuration file. In a few days, this option will become the default along with the upcoming release of Astro 3.0.
+
+### Image Optimization on Vercel
+
+Astro sites can now connect to Vercel's built-in image optimization service to power on-demand image optimization in Astro 3.0 (also available in Astro 2.x [behind an experimental flag](https://docs.astro.build/en/guides/images/)).
+
+Image optimization is available on all platforms through Astro's built-in `<Image />` component and lower-level image APIs.  Astro developers can use images on their website without the fear of accidentally forgetting to optimize an image. Cumulative Layout Shift is also prevented automatically with smart height & width attribute annotation on the `img` tag.
+
+Static sites will already optimize your images ahead-of-time, as a part of your build. But Astro server applications normally need to also ship Astro's built-in image optimization library [Sharp](https://sharp.pixelplumbing.com/) to production for on-demand image optimization. By leveraging  Vercel's built-in image optimization service instead, developers can simplify deployment complexity, improve image performance, and reduce compute costs.
+
+You can enable this feature today by specifying [`{ imageService: true }`](https://docs.astro.build/en/guides/integrations-guide/vercel/#imageservice) in your Astro configuration file. In a future version, this option may become the default behavior.
+
+### Improving Astro for Everyone
+
+We've built all three of these features in collaboration with Vercel by leveraging their [Build Output API](https://vercel.com/docs/build-output-api/v3). Our goal is to bring them to more hosting platforms in the future. Everything mentioned in this post has been designed in a platform-agnostic way so that anyone can take these same features and enable them on their own hosting platform.
+
+If you are interested in enabling these features for your hosting platform, you can [reach out on Discord](https://astro.build/chat).
+
+## Astro ❤️ Vercel
+
+Astro is honored to have Vercel joining as our new official hosting partner. We are grateful to Lee Robinson and the entire Vercel team for their support and evangelism of Astro. It's because of support from companies like Vercel that we are able to receive ongoing maintenance and keep developing Astro as an open, financially-sustainable open source project.
+
+You can learn more about how we use our sponsorship funds from our [FUNDING.md](https://github.com/withastro/.github/blob/main/FUNDING.md) document on GitHub. If you or your company use Astro in production, consider supporting Astro's development by sponsoring us on [Open Collective](https://opencollective.com/astrodotbuild) or [GitHub Sponsors](https://github.com/sponsors/withastro).
