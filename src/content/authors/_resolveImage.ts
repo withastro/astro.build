@@ -1,4 +1,4 @@
-import { CollectionEntry } from "astro:content"
+import type { CollectionEntry } from "astro:content"
 
 const allImages = import.meta.glob<{ default: any }>(
 	"/src/content/authors/_images/*.{png,jpg,jpeg,webp}",

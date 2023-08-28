@@ -1,7 +1,7 @@
-import type { EndpointOutput } from "astro"
+import type { APIRoute } from "astro"
 import { getCollection } from "astro:content"
 
-export async function get(): Promise<EndpointOutput> {
+export const GET = (async () => {
 	const showcase = await getCollection("showcase")
 
 	const result = showcase.map((site) => ({
@@ -10,7 +10,5 @@ export async function get(): Promise<EndpointOutput> {
 		slug: site.slug,
 	}))
 
-	return {
-		body: JSON.stringify(result),
-	}
-}
+	return new Response(JSON.stringify(result))
+}) satisfies APIRoute

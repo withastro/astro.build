@@ -1,3 +1,4 @@
+import type { ImageMetadata } from "astro"
 import clsx from "clsx"
 import { createEffect, createSignal, For } from "solid-js"
 import Collapse from "~/components/Collapse.jsx"

@@ -1,4 +1,4 @@
-import { ImageMetadata } from "astro"
+import type { ImageMetadata } from "astro"
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/content/blog/_images/**/*.{png,jpg,jpeg,webp}",
