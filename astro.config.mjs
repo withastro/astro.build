@@ -14,7 +14,7 @@ const VERCEL_PREVIEW_SITE = process.env.VERCEL_ENV !== "production" && process.e
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://astro.build",
+	site: VERCEL_PREVIEW_SITE || "https://astro.build",
 	integrations: [
 		image({
 			serviceEntryPoint: "@astrojs/image/sharp",
