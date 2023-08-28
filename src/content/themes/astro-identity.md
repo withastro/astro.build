@@ -4,7 +4,7 @@ description: "Embrace your web presence with ease. A calming succulent and seaml
 image: "/src/content/themes/_images/astro-identity-hero.webp"
 author:
   url: "https://gavn.in/"
-  name: "Gain Pereira"
+  name: "Gavin Pereira"
   avatar: "https://gavn.in/img/fav/mstile-150x150.png"
 categories:
   - "portfolio"
