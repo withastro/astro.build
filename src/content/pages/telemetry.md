@@ -1,7 +1,7 @@
 ---
 seo:
-    title: Telemetry
-    description: Astro collects anonymous telemetry data about general usage to help inform our roadmap. Participation is optional and you may opt-out at any time.
+  title: Telemetry
+  description: Astro collects anonymous telemetry data about general usage to help inform our roadmap. Participation is optional and you may opt-out at any time.
 updated_date: 2023-03-01
 ---
 

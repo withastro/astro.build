@@ -3,146 +3,146 @@ import siteInfo from "~/data/site-info.js"
 import SocialLinks from "./SocialLinks.astro"
 
 type Link = {
-  href: string
-  text: string
+	href: string
+	text: string
 }
 
 type LinkGroup = {
-  title: string
-  items: Link[]
+	title: string
+	items: Link[]
 }
 
 const groups: LinkGroup[] = [
-  {
-    title: "Resources",
-    items: [
-      {
-        href: "https://docs.astro.build/en/getting-started/",
-        text: "Documentation",
-      },
-      {
-        href: "https://astro.new/",
-        text: "Starter templates",
-      },
-      {
-        href: "/themes/",
-        text: "Themes",
-      },
-      {
-        href: "/integrations/",
-        text: "Integrations",
-      },
-    ],
-  },
-  {
-    title: "Community",
-    items: [
-      {
-        href: "/showcase/",
-        text: "Showcase",
-      },
-      {
-        href: "https://github.com/withastro/astro/blob/main/CONTRIBUTING.md",
-        text: "Contributing",
-      },
-      {
-        href: "https://opencollective.com/astrodotbuild",
-        text: "Open Collective",
-      },
-      {
-        href: "/chat",
-        text: "Join our Discord",
-      },
-    ],
-  },
-  {
-    title: "About",
-    items: [
-      {
-        text: "Who we are",
-        href: "/about/",
-      },
-      {
-        text: "Press",
-        href: "/press/",
-      },
-      {
-        text: "Careers",
-        href: "/careers/",
-      },
-      {
-        text: "Telemetry",
-        href: "/telemetry/",
-      },
-      {
-        text: "Partner with us!",
-        href: "/partnerships/",
-      },
-    ],
-  },
-  {
-    title: "More links",
-    items: [
-      {
-        text: "Blog",
-        href: "/blog/",
-      },
-      {
-        text: "Swag Shop",
-        href: "https://shop.astro.build",
-      },
-      {
-        text: "Wallpapers",
-        href: "/wallpapers/",
-      },
-    ],
-  },
+	{
+		title: "Resources",
+		items: [
+			{
+				href: "https://docs.astro.build/en/getting-started/",
+				text: "Documentation",
+			},
+			{
+				href: "https://astro.new/",
+				text: "Starter templates",
+			},
+			{
+				href: "/themes/",
+				text: "Themes",
+			},
+			{
+				href: "/integrations/",
+				text: "Integrations",
+			},
+		],
+	},
+	{
+		title: "Community",
+		items: [
+			{
+				href: "/showcase/",
+				text: "Showcase",
+			},
+			{
+				href: "https://github.com/withastro/astro/blob/main/CONTRIBUTING.md",
+				text: "Contributing",
+			},
+			{
+				href: "https://opencollective.com/astrodotbuild",
+				text: "Open Collective",
+			},
+			{
+				href: "/chat",
+				text: "Join our Discord",
+			},
+		],
+	},
+	{
+		title: "About",
+		items: [
+			{
+				text: "Who we are",
+				href: "/about/",
+			},
+			{
+				text: "Press",
+				href: "/press/",
+			},
+			{
+				text: "Careers",
+				href: "/careers/",
+			},
+			{
+				text: "Telemetry",
+				href: "/telemetry/",
+			},
+			{
+				text: "Partner with us!",
+				href: "/partnerships/",
+			},
+		],
+	},
+	{
+		title: "More links",
+		items: [
+			{
+				text: "Blog",
+				href: "/blog/",
+			},
+			{
+				text: "Swag Shop",
+				href: "https://shop.astro.build",
+			},
+			{
+				text: "Wallpapers",
+				href: "/wallpapers/",
+			},
+		],
+	},
 ]
 
 const socialLinks = siteInfo.socialLinks
 ---
 
 <footer class="container">
-  <nav
-    aria-label="Secondary"
-    class="flex flex-col items-start justify-between gap-12 py-8 sm:flex-row-reverse md:py-12"
-  >
-    <SocialLinks links={socialLinks} />
-    <div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
-      {
-        groups.map(({ title, items }, index) => (
-          <section class="group flex flex-col">
-            <h2 id={`footerHeading${index}`} class="code mb-4 text-base leading-none opacity-50">
-              {title}
-            </h2>
-            <ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
-              {items.map(({ href, text }) => (
-                <li>
-                  <a href={href} class="link whitespace-nowrap">
-                    {text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
-      }
-    </div>
-  </nav>
-  <hr class="border-astro-gray-500" />
-  <nav
-    aria-label="Legal"
-    class="grid grid-cols-[1fr,auto] items-center gap-x-4 gap-y-16 py-8 opacity-60 md:grid-cols-[auto,1fr,auto] md:py-12"
-  >
-    <a class="link" href="/privacy">Privacy Policy</a>
-    <a class="link mr-auto" href="/terms">Terms of Service</a>
-    <p class="col-span-2 text-center md:col-span-1">
-      <a href="https://github.com/withastro/astro/blob/main/LICENSE" target="_blank" class="link"
-        >MIT License</a
-      > &copy; {new Date().getFullYear()}
-      <a href="https://github.com/withastro/astro/graphs/contributors" class="link" target="_blank"
-        >Astro Contributors</a
-      >
-    </p>
-  </nav>
+	<nav
+		aria-label="Secondary"
+		class="flex flex-col items-start justify-between gap-12 py-8 sm:flex-row-reverse md:py-12"
+	>
+		<SocialLinks links={socialLinks} />
+		<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
+			{
+				groups.map(({ title, items }, index) => (
+					<section class="group flex flex-col">
+						<h2 id={`footerHeading${index}`} class="code mb-4 text-base leading-none opacity-50">
+							{title}
+						</h2>
+						<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
+							{items.map(({ href, text }) => (
+								<li>
+									<a href={href} class="link whitespace-nowrap">
+										{text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</section>
+				))
+			}
+		</div>
+	</nav>
+	<hr class="border-astro-gray-500" />
+	<nav
+		aria-label="Legal"
+		class="grid grid-cols-[1fr,auto] items-center gap-x-4 gap-y-16 py-8 opacity-60 md:grid-cols-[auto,1fr,auto] md:py-12"
+	>
+		<a class="link" href="/privacy">Privacy Policy</a>
+		<a class="link mr-auto" href="/terms">Terms of Service</a>
+		<p class="col-span-2 text-center md:col-span-1">
+			<a href="https://github.com/withastro/astro/blob/main/LICENSE" target="_blank" class="link"
+				>MIT License</a
+			> &copy; {new Date().getFullYear()}
+			<a href="https://github.com/withastro/astro/graphs/contributors" class="link" target="_blank"
+				>Astro Contributors</a
+			>
+		</p>
+	</nav>
 </footer>
