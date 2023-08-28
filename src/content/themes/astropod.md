@@ -1,5 +1,5 @@
 ---
-title: Astropod | Free Serverless Podcast
+title: "Astropod | Free Serverless Podcast"
 description: "Astropod is a free and open-source self-hosting serverless podcast solution."
 image: "/src/content/themes/_images/astropod-hero.webp"
 images:
@@ -23,18 +23,3 @@ tools:
 stars: 22
 badge: "new"
 ---
-
-<p>
-  From the
-  <a href="https://blog.pianopronto.com/steal-this-blog-part-1/">Steal This Blog!</a> series of
-  articles, this blog theme is inspired by the Casper theme for Ghost CMS. It has some common blog
-  features such as filtering by tags and dedicated author pages, as well as some other helpful
-  features such as scheduled posts.
-</p>
-<p>
-  Keep tuned as more features are added, such as search using&nbsp;<a
-    href="https://github.com/oramasearch/orama"
-    >orama</a
-  >, meta images using <a href="https://github.com/vercel/satori">satori</a>, and possibly even a
-  comment system.
-</p>
