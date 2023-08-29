@@ -4,6 +4,7 @@ import Footer from "~/components/Footer.astro"
 import Header from "~/components/Header.astro"
 import HeaderDrawerContent from "~/components/HeaderDrawerContent.astro"
 import HeaderNav from "~/components/HeaderNav.astro"
+import NotificationBanner from "~/components/NotificationBanner.astro"
 import SkipLink from "~/components/SkipLink.astro"
 import "~/styles/tailwind.css"
 
@@ -23,6 +24,11 @@ const { ...head } = Astro.props
 	<body>
 		<SkipLink />
 		<div class="flex min-h-screen flex-col overflow-x-hidden">
+			<NotificationBanner uid="starlight-product-hunt">
+				Hello Astronauts! We're live on Product Hunt today with Starlight. <a
+					href="https://www.producthunt.com/posts/starlight-by-astro">Check it out!</a
+				>
+			</NotificationBanner>
 			<div id="nav" class="sticky top-0 z-20 max-h-screen">
 				<Header>
 					<HeaderNav />

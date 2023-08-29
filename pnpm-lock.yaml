@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@astro-community/astro-embed-youtube':
+    specifier: ^0.4.1
+    version: 0.4.1(astro@2.10.9)
   '@astrojs/mdx':
     specifier: ^0.19.7
     version: 0.19.7(astro@2.10.9)
@@ -201,6 +204,15 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.19
+
+  /@astro-community/astro-embed-youtube@0.4.1(astro@2.10.9):
+    resolution: {integrity: sha512-sS3zp3JpCkQl0yl5iCZSuCcankz0Ownjg0Ju5KdON4BJVZUh2gHySCCvqKpsNWwto2VESKi9v7KHi1/R386FZg==}
+    peerDependencies:
+      astro: ^2.0.0 || ^3.0.0-beta
+    dependencies:
+      astro: 2.10.9(@types/node@18.14.2)(sharp@0.32.5)
+      lite-youtube-embed: 0.2.0
+    dev: false
 
   /@astrojs/compiler@0.31.4:
     resolution: {integrity: sha512-6bBFeDTtPOn4jZaiD3p0f05MEGQL9pw2Zbfj546oFETNmjJFWO3nzHz6/m+P53calknCvyVzZ5YhoBLIvzn5iw==}
@@ -4417,6 +4429,10 @@ packages:
       htmlparser2: 8.0.2
       uhyphen: 0.2.0
     dev: true
+
+  /lite-youtube-embed@0.2.0:
+    resolution: {integrity: sha512-XXXAk5sbvtjjwbie3XG+6HppgTm1HTGL/Uk9z9NkJH53o7puZLur434heHzAjkS60hZB3vT4ls25zl5rMiX4EA==}
+    dev: false
 
   /load-json-file@4.0.0:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}

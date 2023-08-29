@@ -19,9 +19,11 @@
     "format:prettier": "prettier -w --plugin-search-dir=. .",
     "update:integrations": "node -r dotenv/config ./scripts/update-integrations.mjs",
     "update:showcase": "node -r dotenv/config ./scripts/update-showcase.mjs",
-    "update:themes": "node -r dotenv/config ./scripts/update-themes.mjs"
+    "update:themes": "node -r dotenv/config ./scripts/update-themes.mjs",
+    "audit:showcase": "node -r dotenv/config .scripts/audit-showcase.mjs"
   },
   "dependencies": {
+    "@astro-community/astro-embed-youtube": "^0.4.1",
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/prefetch": "^0.3.0",
     "@astrojs/rss": "^2.4.4",
