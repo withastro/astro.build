@@ -1,7 +1,7 @@
 ---
 title: "Milky Way"
 description: "An open-source, MIT-licensed portfolio template using CSS, HTML, and JavaScript to create personalized portfolio websites."
-image: "/src/content/themes/_images/milky-way-hero.webp"
+image: "/src/assets/themes/milky-way-hero.webp"
 author:
   url: "https://github.com/ttomczak3"
   name: "Tristen Tomczak"

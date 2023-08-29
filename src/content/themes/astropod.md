@@ -1,12 +1,12 @@
 ---
 title: "Astropod | Free Serverless Podcast"
 description: "Astropod is a free and open-source self-hosting serverless podcast solution."
-image: "/src/content/themes/_images/astropod-hero.webp"
+image: "/src/assets/themes/astropod-hero.webp"
 images:
-  - "/src/content/themes/_images/astropod-2.webp"
-  - "/src/content/themes/_images/astropod-3.webp"
-  - "/src/content/themes/_images/astropod-4.webp"
-  - "/src/content/themes/_images/astropod-5.webp"
+  - "/src/assets/themes/astropod-2.webp"
+  - "/src/assets/themes/astropod-3.webp"
+  - "/src/assets/themes/astropod-4.webp"
+  - "/src/assets/themes/astropod-5.webp"
 author:
   url: "https://github.com/manuelernestog"
   name: "manuelernestog"

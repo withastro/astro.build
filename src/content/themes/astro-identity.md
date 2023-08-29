@@ -1,7 +1,7 @@
 ---
 title: "Astro Identity"
 description: "Embrace your web presence with ease. A calming succulent and seamless design elevate your portfolio, showcasing your brilliance in style."
-image: "/src/content/themes/_images/astro-identity-hero.webp"
+image: "/src/assets/themes/astro-identity-hero.webp"
 author:
   url: "https://gavn.in/"
   name: "Gavin Pereira"

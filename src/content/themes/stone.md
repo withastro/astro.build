@@ -1,7 +1,7 @@
 ---
 title: "Stone"
 description: "Free Astro theme specially designed for Business, Marketing, SaaS and Startup websites."
-image: "/src/content/themes/_images/stone-hero.webp"
+image: "/src/assets/themes/stone-hero.webp"
 author:
   url: "https://github.com/m6v3l9"
   name: "m6v3l9"

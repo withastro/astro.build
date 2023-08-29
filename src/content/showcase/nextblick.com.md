@@ -1,5 +1,5 @@
 ---
 title: Digitalagentur Frankfurt - Design & Entwicklung - NEXTBLICK
-image: /src/content/showcase/_images/nextblick.com.webp
+image: ~/assets/showcase/nextblick.com.webp
 url: "https://nextblick.com/"
 ---
