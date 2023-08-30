@@ -13,6 +13,9 @@ lang: "en"
 
 import BlogContentImage from "/src/components/BlogContentImage.astro"
 import translatorBadges from "/src/content/blog/_images/astro-i18n/translator-badges.webp"
+import trackerSummary from "/src/content/blog/_images/astro-i18n/translation-tracker-summary.webp"
+import trackerTable from "/src/content/blog/_images/astro-i18n/translation-tracker-table.webp"
+import translationReviews from "/src/content/blog/_images/astro-i18n/translations-needing-reviews.webp"
 
 **Welcome, World.**
 
@@ -72,9 +75,15 @@ Led by beloved Astro maintainer Hippo, our docs team built a custom [Translation
 - needing an update to match the English documentation;
 - or, not yet translated.
 
+<BlogContentImage src={trackerTable} alt="" />
+
 Internally, it uses the git history to compare changes between languages, defines the status of each page through some checks, and also generates a GitHub link with all the commits a page needs to be in sync with the English version. It’s powered by GitHub Actions, right out of our docs repo.
 
+<BlogContentImage src={trackerSummary} alt="" />
+
 Our Translation Tracker also uses GitHub data to list open translation PRs in need of reviews from native speakers, which are a great way to get started without the pressure of opening your own PR!
+
+<BlogContentImage src={translationReviews} alt="" />
 
 **With a clear picture of what our translation needs are, we are able to quickly welcome and onboard new i18n contributors who already know which contributions are wanted.**
 
