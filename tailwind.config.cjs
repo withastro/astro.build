@@ -27,7 +27,7 @@ module.exports = {
 				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},
 			colors: {
-				black: "#17191E",
+				black: "#0D0F14",
 				// TODO: replace with brand off-white color
 				white: "#ffffff",
 				"astro-gray": {

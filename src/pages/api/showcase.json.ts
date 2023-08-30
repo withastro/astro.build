@@ -7,6 +7,7 @@ export async function get(): Promise<EndpointOutput> {
 	const result = showcase.map((site) => ({
 		title: site.data.title,
 		url: site.data.url,
+		slug: site.slug,
 	}))
 
 	return {
