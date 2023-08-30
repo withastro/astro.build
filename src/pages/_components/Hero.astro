@@ -3,6 +3,7 @@ import { Icon } from "astro-icon"
 import CodeBlock from "~/components/CodeBlock.astro"
 import ExternalLink from "~/components/ExternalLink.astro"
 import PageTitleBlock from "~/components/PageTitleBlock.astro"
+import PillLink from "./PillLink.astro"
 
 const logos = [
 	{ src: "logos/google", alt: "Google Logo", class: "py-1 -mb-1 md:-mb-2 lg:-mb-2.5" },
@@ -15,7 +16,7 @@ const logos = [
 ---
 
 <section class="landing-section relative overflow-x-hidden pb-40 pt-14 sm:pt-20 lg:pt-32">
-	<!--<PillLink title="Astro 3.0 is here!" subtitle="Learn more" href="/blog/astro-3" class="mb-8" /> -->
+	<PillLink title="Astro 3.0 is here!" subtitle="Learn more" href="/blog/astro-3" class="mb-8" />
 	<PageTitleBlock
 		lg
 		body="Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between."

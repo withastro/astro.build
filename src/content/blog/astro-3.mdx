@@ -1,0 +1,200 @@
+---
+title: "Astro 3.0"
+description: "30% faster and more powerful than ever, Astro 3.0 is here! Includes new features and enhancements around View Transitions, Image Optimization, Fast Refresh JSX and more."
+publishDate: "August 30, 2023"
+authors:
+  - matthew
+  - erika
+  - ema
+  - bjorn
+  - nate
+coverImage: "/src/content/blog/_images/astro-3/blog-hero-post-header.webp"
+socialImage: "/src/content/blog/_images/astro-3/blog-social.webp"
+lang: "en"
+---
+
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import bannerViewTransitions from "/src/content/blog/_images/astro-3/post-asset-1.webp"
+import bannerRenderPerformance from "/src/content/blog/_images/astro-3/post-asset-2.webp"
+import bannerImageOptimization from "/src/content/blog/_images/astro-3/post-asset-3.webp"
+import bannerSsrEnhancements from "/src/content/blog/_images/astro-3/post-asset-4.webp"
+import bannerHmrEnhancements from "/src/content/blog/_images/astro-3/post-asset-5.webp"
+import bannerBuildEnhancements from "/src/content/blog/_images/astro-3/post-asset-6.webp"
+import bannerTryAstro from "/src/content/blog/_images/astro-3/post-asset-7.webp"
+
+**Introducing Astro 3.0!** 
+
+**Astro 3.0 is the first major web framework to support the View Transitions API.** Fade, slide, morph, and even persist stateful elements across page navigation with ease. Until recently this had only been possible inside of JavaScript Single Page Applications (SPAs). But thanks to advances in the web platform, these features are now available for everyone in Astro 3.0.
+
+Other release highlights include:
+
+- **Image Optimization (stable)**: Unflagged and better than ever.
+- **Faster Rendering Performance:** Astro components render 30-75% faster.
+- **SSR Enhancements for Serverless:** New ways to connect to your hosting platform.
+- **HMR Enhancements for JSX:** Fast Refresh support for React and Preact.
+- **Optimized Build Output**: Cleaner and more performant HTML.
+
+Astro 3.0 is available now on npm. Visit [astro.new](https://astro.new/) to try out Astro 3.0 in your browser, or run the following command in your terminal to get started in a new project:
+
+```shell
+# Create a new Astro 3.0 project:
+npm create astro@latest
+```
+
+Upgrading an existing project to Astro 3.0? Check out the [v3.0 Upgrade Guide](https://docs.astro.build/en/guides/upgrade-to/v3/) for full details and individual upgrade guidance for each change.
+
+
+## Astro View Transitions
+
+<BlogContentImage src={bannerViewTransitions} alt="" />
+
+View Transitions are a set of new platform APIs that unlock native browser transition effects between pages. Historically this has only been possible in Single Page Applications (SPAs), but web browsers and spec authors have been working hard over the last few years to bring native page transitions to the platform, and Astro 3.0 is the first web framework to bring them to the mainstream.
+
+With Astro View Transitions, you can:
+
+- **Morph** persistent elements from one page to another
+- **Fade** content on and off the page, for a less jarring navigation effect
+- **Slide** content on and off the page, for a bit more personality
+- **Persist** common UI across pages, with or without a refresh
+
+The best part about View Transitions in Astro is how simple they are to use. With just 2 lines of code, you can add a subtle — yet tasteful! — fade animation to your site. To try it yourself, import the `ViewTransitions` component and add to inside any page's `<head>` element:
+
+```astro
+---
+// src/pages/index.astro
+// Note: Make sure you add the "<ViewTransitions />" component
+// to other pages as well, and not just one.
+import {ViewTransitions} from 'astro:components';
+---
+<head>
+  <title>My View Transition Demo</title>
+  <ViewTransitions />
+</head>
+<body>
+  <!-- -->
+</body>
+```
+
+Astro users have had early access to View Transitions since Astro 2.9. Our community has been experimenting ever since, providing early feedback that helped shape this final API you see today. Here are a few of our favorite demos from the community, to give you a sense of what is now possible:
+
+<div class="flex flex-col md:grid grid-cols-2 gap-6 my-10 items-end">
+	<figure class="col-span-2">
+		<video autoplay loop muted playsinline class="border border-neutral-600 rounded">
+			<source src="/assets/blog/astro-3/demo-2.mp4" type="video/mp4" />
+			Sorry, your browser doesn't support embedded videos.
+		</video>
+		<figcaption class="text-center text-sm my-4">
+			Watch <a href="https://twitter.com/joebell_/status/1688167865961037825">Joe Bell</a> demo the new View Transitions feature.
+		</figcaption>
+	</figure>
+	<figure>
+		<video autoplay loop muted playsinline class="border border-neutral-600 rounded md:mb-8">
+			<source src="/assets/blog/astro-3/demo-1.mp4 " type="video/mp4" />
+			Sorry, your browser doesn't support embedded videos.
+		</video>
+		<figcaption class="text-center text-sm my-4">
+			Coming soon: <a href="https://twitter.com/astrodotbuild/status/1683514985115426817">zero-javascript page transitions</a>
+		</figcaption>
+	</figure>
+	<figure>
+		<video autoplay loop muted playsinline class="border border-neutral-600 rounded">
+			<source src="/assets/blog/astro-3/demo-3.mp4" type="video/mp4" />
+			Sorry, your browser doesn't support embedded videos.
+		</video>
+		<figcaption class="text-center text-sm my-4">
+			Try out this <a href="https://astro-records.pages.dev/">live demo</a> by <a href="https://twitter.com/charca">Maxi Ferreira</a>.
+		</figcaption>
+	</figure>
+</div>
+
+**Each demo feels like a native, client-side application. But they are not.** It's all server-rendered HTML, brought to life with Astro 3.0 and the new View Transitions API.
+
+We've put a ton of effort in to make View Transitions work great across all browsers, even those that [don't yet support](https://caniuse.com/view-transitions) the native View Transition APIs. Astro 3.0 includes fallbacks for most browsers, in the form of a small, ~3kb script that Astro adds to your page automatically.
+
+Learn more about View Transitions in our handy [View Transitions guide](https://docs.astro.build/en/guides/view-transitions/), or [this great article](https://developer.chrome.com/docs/web-platform/view-transitions/)  about the browser APIs by the Chrome team.
+
+## Faster Rendering Performance
+
+<BlogContentImage src={bannerRenderPerformance} alt="" />
+
+Rendering performance saw a major lift in Astro 3.0, with most components rendering 30% faster (vs. Astro 2.9). In [complex benchmarks](https://gist.github.com/bluwy/0cf63b46915244477cea91c7b34e90ec), the speed improvement can be as high as 75%.
+
+Achieving this kind of speed-up was the result of a dedicated refactoring effort that was kicked off in Astro 2.10 and carried over the line for Astro 3.0. We removed as much unnecessary code as possible from hot paths in our build pipeline and optimized what remained. Unnecessary generators and async code were two of the biggest culprits. Every millisecond counts!
+
+
+## **Image Optimization (stable)**
+
+<BlogContentImage src={bannerImageOptimization} alt="" />
+
+Image optimization is now stable in Astro 3.0 and available in all projects.
+
+You can import images from your codebase and place them on the page with the new built-in `<Image>` component. Astro will handle the rest: the build pipeline will automatically detect and optimize each image for you. The final rendered image tag will have an inferred width & height added for you, to prevent layout shift with automatic [Cumulative Layout Shift (CLS)](https://web.dev/cls/) protection.
+
+```astro
+---
+// Import the <Image /> component
+import { Image } from "astro:assets"
+// Import a reference to the image itself
+import myImage from "../assets/penguin.png"
+---
+
+<Image src={myImage} alt="A very cool penguin!" />
+```
+
+We last wrote about [image optimization](https://astro.build/blog/images/) back in June. Since then, we've landed several important improvements including:
+
+- Full support for [Vercel's built-in image service](https://vercel.com/docs/concepts/image-optimization). Add `imageService: true` to your Vercel integration configuration to see your production images optimized through their global CDN.
+- Migrating to [Sharp](https://sharp.pixelplumbing.com/) as our new default optimization library. Sharp replaces our previous default `@squoosh/lib` which is [no longer maintained.](https://www.npmjs.com/package/@squoosh/lib)
+- Support for optimizing remote images. Content teams can continue to manage their images using their existing workflows and CMS tools.
+
+Learn more about Image Optimization in our new [Images guide](https://docs.astro.build/en/guides/images/).
+
+## **SSR Enhancements for Serverless**
+
+<BlogContentImage src={bannerSsrEnhancements} alt="" />
+
+On Monday we announced a new, [official hosting partnership](https://astro.build/blog/vercel-official-hosting-partner/) with [Vercel](https://vercel.com/). Collaboration with Vercel allowed us to make significant enhancements to our SSR story in Astro 3.0. These new features benefit all users, regardless of where they choose to host their website:
+
+- **Per-Route Code Splitting** - Create smaller, individual server files for each route in your website. Serverless users (Vercel, Netlify, Cloudflare, etc.) can now see improved performance by reducing the loading of unused code on every request.
+- **Edge Middleware** - Astro can now bundle your middleware for deployment on the edge. Edge middleware is distributed globally and runs on servers that are as close to your users as possible.
+- **Host Customization:** Since no two hosting providers are alike, we've added an API to Astro that helps users better understand these differences. Hosting adapters (like `@astrojs/node` and `@astrojs/vercel`) can now tell Astro which features they support. Astro can use this information to surface more useful, informative warnings during development and prevent unexpected production errors.
+
+These features are all available today on Vercel, but any hosting adapter can be upgraded to add support. Over the coming months, we'll be working with our community maintainers to help bring these features to any hosting platforms that can support them.
+
+
+## **HMR Enhancements for JSX**
+
+<BlogContentImage src={bannerHmrEnhancements} alt="" />
+
+[React Fast Refresh](https://reactnative.dev/docs/fast-refresh) now works in Astro 3.0 thanks to a major refactoring of our internal JSX build support. React, Preact, and Solid.js users should all see a significant improvement to Hot Module Reloading (HMR) and overall dev server stability in Astro 3.0.
+
+Fast Refresh is a modern development feature where local changes are intelligently pushed to the browser without a page refresh. What makes Fast Refresh unique (vs. regular HMR) is that these updates are pushed to the browser *****************************************without changing the current state of the UI.***************************************** 
+
+In the demo below, pay attention to how the page never refreshes and the counter never resets to zero, despite the developer updating the template itself. That's Fast Refresh.
+
+![https://www.snowpack.dev/img/guides/react/react-fast-refresh.gif](https://www.snowpack.dev/img/guides/react/react-fast-refresh.gif)
+
+If you've ever built a modal or some other multi-step UI, then you probably have experienced the common frustration of seeing your page state refresh and reset after every change. Fast Refresh solves this problem, speeding up your development workflow.
+
+## **Optimized Build Output**
+
+<BlogContentImage src={bannerBuildEnhancements} alt="" />
+
+We've made several improvements to the overall build output in 3.0, including:
+
+- **HTML Minification:** Astro 3.0 will now minify all HTML output automatically. Minified HTML results in a smaller payload over the wire and a faster overall response time.
+- **Component IDs:** Those noisy `astro-XXXXXX` class names have been replaced with a new, dedicated `data-astro-cid-hash` HTML attribute. This change leaves your `class=""` attributes more readable, with a more organized HTML output overall.
+- **CSS Inlining:** Astro 3.0 will now automatically inline small chunks of CSS into your HTML. This improves page load performance vs. older versions of Astro where a page might load many smaller CSS files as separate requests from the browser.
+
+## Try Astro 3.0 Today
+
+<BlogContentImage src={bannerTryAstro} alt="" />
+
+Astro 3.0 is available now on npm. Visit [https://astro.new/](https://astro.new/) to try out Astro 3.0 in your browser, or run the following command in your terminal to get started in a new project:
+
+```shell
+# Create a new Astro 3.0 project:
+npm create astro@latest
+```
+
+Upgrading an existing project to Astro 3.0? Check out the [v3.0 Upgrade Guide](https://docs.astro.build/en/guides/upgrade-to/v3/) for full details and individual upgrade guidance for each change.
