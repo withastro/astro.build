@@ -22,7 +22,7 @@ const siteInfo: SiteInfo = {
 	name: "Astro",
 	title: "Build the web you want",
 	description:
-		"Astro is an all-in-one framework for building fast websites faster. Grab content from anywhere, deploy everywhere, and show the web what you've got.",
+		"Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between.",
 	image: {
 		src: "/og/social.jpg",
 		alt: "Build the web you want",
