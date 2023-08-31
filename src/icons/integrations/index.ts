@@ -1,5 +1,5 @@
-import { CollectionEntry } from "astro:content"
-import { JSX } from "solid-js"
+import type { CollectionEntry } from "astro:content"
+import type { JSX } from "solid-js"
 import { randomFromArray } from "~/helpers/random.js"
 import ApproveUserIcon from "./ApproveUserIcon.jsx"
 import CheckCircleIcon from "./CheckCircleIcon.jsx"

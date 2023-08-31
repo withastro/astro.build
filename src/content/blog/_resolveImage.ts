@@ -1,5 +1,3 @@
-import type { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
-
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/content/blog/_images/**/*.{png,jpg,jpeg,webp}",
 )

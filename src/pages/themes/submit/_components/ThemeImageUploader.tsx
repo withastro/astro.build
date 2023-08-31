@@ -1,5 +1,5 @@
 import { createSignal, For, onMount, Show } from "solid-js"
-import { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime"
 import FileUploadIcon from "~/icons/FileUploadIcon.jsx"
 
 export function ThemeImageUploader() {

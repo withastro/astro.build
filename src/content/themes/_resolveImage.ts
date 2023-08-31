@@ -1,5 +1,4 @@
-import type { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
-import { CollectionEntry } from "astro:content"
+import type { CollectionEntry } from "astro:content"
 import { srcToDensity } from "~/helpers/images.js"
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(

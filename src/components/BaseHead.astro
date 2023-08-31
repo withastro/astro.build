@@ -22,7 +22,7 @@ const {
 	image = siteInfo.image,
 	canonicalURL = new URL(Astro.request.url, Astro.site),
 	pageType = "website",
-} = Astro.props as Props
+} = Astro.props 
 
 const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ")
 const resolvedImage = {
