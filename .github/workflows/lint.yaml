@@ -8,24 +8,45 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     env:
       NODE_OPTIONS: "--max_old_space_size=4096"
     steps:
-      - name: Check out code using Git
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2.2.1
+
+      - name: Cache
+        uses: actions/cache@v3
         with:
-          version: 7
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            node_modules
+            .eslintcache
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: pnpm
+
       - name: Install dependencies
         run: pnpm install
-      - name: Run lint
-        run: pnpm lint
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "ci: apply formatting changes"
