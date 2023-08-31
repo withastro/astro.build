@@ -15,5 +15,5 @@ export function env() {
 		)
 	}
 
-	return result.data
+	return result  .         data
 }
