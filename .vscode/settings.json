@@ -1,13 +1,10 @@
 {
   // adds tailwind autocomplete in other places
+  "tailwindCSS.classAttributes": ["class", "className", "class:list"],
   "tailwindCSS.experimental.classRegex": [
     ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:')((?:\\'|[^'])*)(?:')"],
     ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:\")((?:\\\"|[^\"])*)(?:\")"],
-    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:`)((?:\\`|[^`])*)(?:`)"],
-    // match strings inside of astro's `class:list={[...]}` syntax
-    ["(?:class:list\\s*=\\s*\\{\\[)([^\\]]*)(?:\\]\\})", "(?:')((?:\\'|[^'])*)(?:')"],
-    ["(?:class:list\\s*=\\s*\\{\\[)([^\\]]*)(?:\\]\\})", "(?:\")((?:\\\"|[^\"])*)(?:\")"],
-    ["(?:class:list\\s*=\\s*\\{\\[)([^\\]]*)(?:\\]\\})", "(?:`)((?:\\`|[^`])*)(?:`)"]
+    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:`)((?:\\`|[^`])*)(?:`)"]
   ],
 
   // define rulers to match the prettier config length of 100
@@ -22,6 +19,5 @@
   "typescript.preferences.importModuleSpecifierEnding": "js",
 
   // use local typescript version
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName} ${separator} [Branch: main]${separator}[Branch: main]"
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
