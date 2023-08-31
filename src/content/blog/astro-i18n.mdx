@@ -16,6 +16,8 @@ import translatorBadges from "/src/content/blog/_images/astro-i18n/translator-ba
 import trackerSummary from "/src/content/blog/_images/astro-i18n/translation-tracker-summary.webp"
 import trackerTable from "/src/content/blog/_images/astro-i18n/translation-tracker-table.webp"
 import translationReviews from "/src/content/blog/_images/astro-i18n/translations-needing-reviews.webp"
+import langPicker from "/src/content/blog/_images/astro-i18n/langpicker.webp"
+import githubPulls from "/src/content/blog/_images/astro-i18n/github-pulls.webp"
 
 **Welcome, World.**
 
@@ -27,6 +29,8 @@ import translationReviews from "/src/content/blog/_images/astro-i18n/translation
 If Astro is truly meant to be for everyone, then you must include the majority of the planet (83%) that does not speak English! 18 months ago, we decided to get serious and invest in our overhauling our documentation, and this included a major internationalization (i18n) initiative.
 
 Today, Astro docs has been officially translated into 12 different languages with over 1000 pages translated in total. Even our full introductory tutorial (32 pages in total) has been translated into six different languages. These languages cover billions of people across more than 50 countries, opening the door to many who would otherwise struggle to use Astro reliably.
+
+<BlogContentImage src={langPicker} alt="Astro docs homepage with the language picker drop down menu of available languages" />
 
 Our translations are almost entirely made up of open source contributions, submitted by volunteers all over the world. We are so, so grateful to everyone who has contributed so far.
 
@@ -53,6 +57,8 @@ Not all potential contributors will be familiar with GitHub’s workflow involvi
 
 **This means every contributor, for every kind of contribution, uses the same platform and has the same contributing experience.** Instead of thinking of internationalization as some “other” thing, it’s a part of documentation. Our list of open PRs includes translations along with content updates and site infrastructure code fixes.
 
+<BlogContentImage src={githubPulls} alt="A selection of Astro docs open PRs on GitHub, showing translation PRs next to a PR to add new CMS guide content." />
+
 To help people feel comfortable jumping in, and give them some clear direction on how to get started, we created a full Translation Guide in addition to our regular CONTRIBUTING.md. This contains not only the technical details about how our translations work but is also full of advice and tips for any beginner who might feel overwhelmed at the prospect of contributing.
 
 ## Communication
@@ -75,15 +81,15 @@ Led by beloved Astro maintainer Hippo, our docs team built a custom [Translation
 - needing an update to match the English documentation;
 - or, not yet translated.
 
-<BlogContentImage src={trackerTable} alt="" />
+<BlogContentImage src={trackerTable} alt="The Translation Tracker table, showing languages across the top, individual pages down the side, and various symbols in each cell, such as an X for missing content or a green check for up-to-date." />
 
 Internally, it uses the git history to compare changes between languages, defines the status of each page through some checks, and also generates a GitHub link with all the commits a page needs to be in sync with the English version. It’s powered by GitHub Actions, right out of our docs repo.
 
-<BlogContentImage src={trackerSummary} alt="" />
+<BlogContentImage src={trackerSummary} alt="A small selection of the Translation Tracker's summary by language, showing one language expanded to list the translations needed for that language." />
 
 Our Translation Tracker also uses GitHub data to list open translation PRs in need of reviews from native speakers, which are a great way to get started without the pressure of opening your own PR!
 
-<BlogContentImage src={translationReviews} alt="" />
+<BlogContentImage src={translationReviews} alt="A list of open PRs needing reviews, for example 'i18n(ko) translate rss.mdx'" />
 
 **With a clear picture of what our translation needs are, we are able to quickly welcome and onboard new i18n contributors who already know which contributions are wanted.**
 
