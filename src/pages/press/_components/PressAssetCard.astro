@@ -3,42 +3,42 @@ import Card from "~/components/Card.astro"
 import DownloadIcon from "~/icons/DownloadIcon.jsx"
 
 export type Props = {
-  name: string
-  instructions: string
-  assetName: string
-  background: "light" | "dark"
+	name: string
+	instructions: string
+	assetName: string
+	background: "light" | "dark"
 }
 ---
 
 <Card>
-  <div
-    data-bg={Astro.props.background}
-    class="py-12 text-center data-[bg=dark]:bg-astro-gray-700 data-[bg=light]:bg-white"
-  >
-    <img src={`/assets/press/${Astro.props.assetName}.svg`} alt="" class="inline" />
-  </div>
-  <div class="space-y-4 px-6 py-4">
-    <h3 class="heading-5 text-white">{Astro.props.name}</h3>
-    <div class="space-y-4">
-      <p>{Astro.props.instructions}</p>
-      <p class="flex gap-2">
-        <a
-          href={`/assets/press/${Astro.props.assetName}.png`}
-          class="button button-primary button-xs"
-          download=""
-        >
-          PNG
-          <DownloadIcon aria-hidden="true" class="w-4" />
-        </a>
-        <a
-          href={`/assets/press/${Astro.props.assetName}.svg`}
-          class="button button-primary button-xs"
-          download=""
-        >
-          SVG
-          <DownloadIcon aria-hidden="true" class="w-4" />
-        </a>
-      </p>
-    </div>
-  </div>
+	<div
+		data-bg={Astro.props.background}
+		class="py-12 text-center data-[bg=dark]:bg-astro-gray-700 data-[bg=light]:bg-white"
+	>
+		<img src={`/assets/press/${Astro.props.assetName}.svg`} alt="" class="inline" />
+	</div>
+	<div class="space-y-4 px-6 py-4">
+		<h3 class="heading-5 text-white">{Astro.props.name}</h3>
+		<div class="space-y-4">
+			<p>{Astro.props.instructions}</p>
+			<p class="flex gap-2">
+				<a
+					href={`/assets/press/${Astro.props.assetName}.png`}
+					class="button button-primary button-xs"
+					download=""
+				>
+					PNG
+					<DownloadIcon aria-hidden="true" class="w-4" />
+				</a>
+				<a
+					href={`/assets/press/${Astro.props.assetName}.svg`}
+					class="button button-primary button-xs"
+					download=""
+				>
+					SVG
+					<DownloadIcon aria-hidden="true" class="w-4" />
+				</a>
+			</p>
+		</div>
+	</div>
 </Card>
