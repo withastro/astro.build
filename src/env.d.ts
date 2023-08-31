@@ -1,2 +1,3 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference types="astro/client" />
-import "../.astro/types.d.ts"
+/// <reference path="../.astro/types.d.ts" />
