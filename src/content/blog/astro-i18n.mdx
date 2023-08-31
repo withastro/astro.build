@@ -26,32 +26,32 @@ import githubPulls from "/src/content/blog/_images/astro-i18n/github-pulls.webp"
 
 ## Astro is for everyone
 
-If Astro is truly meant to be for everyone, then you must include the majority of the planet (83%) that does not speak English! 18 months ago, we decided to get serious and invest in our overhauling our documentation, and this included a major internationalization (i18n) initiative.
+If Astro is truly meant to be for everyone, then you must include the majority of the planet (83%) that does not speak English! 18 months ago, we decided to get serious and invest in overhauling our documentation, and this included a major internationalization (i18n) initiative.
 
 Today, Astro docs has been officially translated into 12 different languages with over 1000 pages translated in total. Even our full introductory tutorial (32 pages in total) has been translated into six different languages. These languages cover billions of people across more than 50 countries, opening the door to many who would otherwise struggle to use Astro reliably.
 
 <BlogContentImage src={langPicker} alt="Astro docs homepage with the language picker drop down menu of available languages" />
 
-Our translations are almost entirely made up of open source contributions, submitted by volunteers all over the world. We are so, so grateful to everyone who has contributed so far.
+Our translations are almost entirely made up of open-source contributions, submitted by volunteers all over the world. We are so, so grateful to everyone who has contributed so far.
 
-Today is our official Community Day celebration, so I wanted to share how we built this internationalization engine at Astro. We are lucky to have one of the best communities in open source, and I’d like to share some of our successes — and challenges — with you in this post.
+Today is our official Community Day celebration, so I wanted to share how we built this internationalization engine at Astro. We are lucky to have one of the best communities in open-source, and I’d like to share some of our successes — and challenges — with you in this post.
 
 ## Recognizing Non-Code Contributions
 
-Often, open source projects focus too heavily on code contributions (issues, pull requests, bug fixes, new features) and ignore other forms of support. One of the most important, early decisions that we made with Astro was to change this, and to specifically call out and recognize non-code contributions from day one. 
+Often, open-source projects focus too heavily on code contributions (issues, pull requests, bug fixes, new features) and ignore other forms of support. One of the most important, early decisions that we made with Astro was to change this, and to specifically call out and recognize non-code contributions from day one. 
 
 This was explicitly written into our [GOVERNANCE.md](https://github.com/withastro/.github/blob/main/GOVERNANCE.md#get-involved) document, which stated that someone could become a maintainer of Astro by any measure and form of contribution, not just lines of code. 
 
 Today, some of our best new maintainers get their start through non-code contributions:
 
 - Documentation
-- Translations and i18n
+- Translations 
 - Support
 - Community-building and advocacy
 
 ## Contributor Onboarding
 
-Successfully completing your very first open source contribution is sometimes the hardest part. With that in mind, we carefully constructed our i18n contributors’ journey with as little friction and barriers to entry as possible. 
+Successfully completing your very first open-source contribution is sometimes the hardest part. With that in mind, we carefully constructed our i18n contributors’ journey with as little friction and barriers to entry as possible. 
 
 Not all potential contributors will be familiar with GitHub’s workflow involving git, branching, merge conflicts, etc. It might seem like an odd choice to throw non-code contributors into such a code-heavy environment. However, with our code stored on GitHub, we can keep our content on an open platform, while also keeping the translated content close to the code of the docs site itself. 
 
@@ -59,7 +59,7 @@ Not all potential contributors will be familiar with GitHub’s workflow involvi
 
 <BlogContentImage src={githubPulls} alt="A selection of Astro docs open PRs on GitHub, showing translation PRs next to a PR to add new CMS guide content." />
 
-To help people feel comfortable jumping in, and give them some clear direction on how to get started, we created a full Translation Guide in addition to our regular CONTRIBUTING.md. This contains not only the technical details about how our translations work but is also full of advice and tips for any beginner who might feel overwhelmed at the prospect of contributing.
+To help people feel comfortable jumping in, and give them some clear direction on how to get started, we created a full [Translation Guide](https://github.com/withastro/docs/blob/main/contributor-guides/translating-astro-docs.md) in addition to our regular [CONTRIBUTING.md](https://github.com/withastro/docs/blob/main/CONTRIBUTING.md). This contains not only the technical details about how our translations work but is also full of advice and tips for any beginner who might feel overwhelmed at the prospect of contributing.
 
 ## Communication
 
@@ -97,17 +97,17 @@ Our Translation Tracker also uses GitHub data to list open translation PRs in ne
 
 Initially, we made translation decisions (e.g. which languages to support in docs) based solely on our community’s excitement and availability to help us. This proved to be a good strategy when we were just getting started. But as Astro docs grew, we needed to make more informed decisions.
 
-One of the difficult calls we had to make early on was to decide which languages we would officially support with translations. Or rather, which ones we would not. Officially supporting a language is quite a large committment, which unfortunately means that we cannot accept every language proposed to us. Our goal was to find a balance between languages easier for us to maintain and the ones that would make the most impact. Access to quality information and education isn’t the same everywhere — and as the ones with the privilege of English proficiency ourselves, we are in a position of strength to address these inequities and advocate for the communities who need translations the most.
+One of the difficult calls we had to make early on was to decide which languages we would officially support with translations. Or rather, which ones we would not. Officially supporting a language is quite a large commitment, which unfortunately means that we cannot accept every language proposed to us. Our goal was to find a balance between languages easier for us to maintain and the ones that would make the most impact. Access to quality information and education isn’t the same everywhere — and as the ones with the privilege of English proficiency ourselves, we are in a position of strength to address these inequities and advocate for the communities who need translations the most.
 
 To help us make these difficult decisions, we analyzed several data points such as the number of members for each language in our Discord, a list of countries per language, demographics of several developer surveys, and [EF’s English Proficiency Index](https://www.ef.com/wwpt/epi/). By starting with clear goals, we could choose languages that helped keep us focused on meeting the needs of the global developer community.
 
 ## Supporting our contributors
 
-The last couple of months in particular have been dedicated to supporting and recognizing the massive work done by our internationalization teams. While Astro Docs has long had a “Face Pile” of the GitHub avatars of every contributor to the repository, we now display a [dedicated translators’ face pile](https://docs.astro.build/es/getting-started/#traducir) on each translated version of the site. Our popular community [Astro Badges](https://astro.badg.es/v1/achievements/) also now display dedicated contributions to acknowledge both translations and translation reviews.
+The last couple of months in particular have been focused on supporting and recognizing the massive work done by our internationalization teams. While Astro Docs has long had a “Face Pile” of the GitHub avatars of every contributor to the repository, we now display a [dedicated translators’ face pile](https://docs.astro.build/es/getting-started/#traducir) on each translated version of the site. Our popular community [Astro Badges](https://astro.badg.es/v1/achievements/) also now displays unique i18n contributions to acknowledge both translations and translation reviews.
 
 <BlogContentImage src={translatorBadges} alt="Four Astro badges, displaying various achievement levels for community members, such as Universal Translator for merging 40 i18n PRs or Rosetta Stone for reviewing 40 i18n PRs" />
 
-Thanks to the Astro open-source project having so many generous sponsors and backers, we are able to issue regular monetary Community Awards. At the time of posting, we have already given more than $4000 Open Collective funds directly to our international community. Other forms of rewards include limited edition swag items from the [Astro Swag Shop](https://shop.astro.build/) (all proceed go directly back into our Open Collective), stipends and sponsorships.
+Thanks to the Astro open-source project having so many generous sponsors and backers, we are able to issue regular monetary Community Awards. At the time of posting, we have already given more than $4000 Open Collective funds directly to our international community. Other forms of rewards include limited edition swag items from the [Astro Swag Shop](https://shop.astro.build/) (all proceeds go directly back into our Open Collective), stipends, and sponsorships.
 
 ## Going forward
 
