@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@altano/astro-html-to-image"
 repoUrl: "https://github.com/altano/npm-packages"
 homepageUrl: "https://github.com/altano/npm-packages/tree/main/packages/astro-html-to-image"
-downloads: 268
+downloads: 297
 badge: "new"
 ---
