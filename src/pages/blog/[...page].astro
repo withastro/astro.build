@@ -29,10 +29,10 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 const allPosts = await getCollection("blog")
 
 const featuredPosts = [
-	"astro-2",
-	"introducing-content-collections",
-	"astro-webstorm-support",
+	"images",
+	"2023-web-framework-performance-report",
 	"hybrid-rendering",
+	"vercel-official-hosting-partner",
 ]
 	.map((slug) => allPosts.find((post) => post.slug === slug))
 	.filter(Boolean) as CollectionEntry<"blog">[]

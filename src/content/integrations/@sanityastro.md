@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@sanity/astro"
 repoUrl: "ssh://git@github.com/sanity-io/sanity-astro"
 homepageUrl: "https://www.sanity.io/plugins/sanity-astro"
-downloads: 1196
+downloads: 1499
 badge: "new"
 ---
