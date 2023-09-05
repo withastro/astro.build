@@ -1,4 +1,3 @@
-import type { APIRoute } from "astro"
 import { getCollection } from "astro:content"
 
 export const GET = (async () => {
