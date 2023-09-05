@@ -5,9 +5,11 @@ description: "🏛️ AstroJS Rome tools. Format, lint and check your Astro webs
 categories:
   - "css+ui"
   - "performance+seo"
+  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-rome"
 image: "/assets/integrations/astro-rome.svg"
 repoUrl: "https://github.com/astro-community/AstroRome"
 homepageUrl: "https://github.com/astro-community/AstroRome#readme"
-downloads: 6873
+downloads: 5142
+badge: "new"
 ---

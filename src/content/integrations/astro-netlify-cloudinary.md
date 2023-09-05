@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-netlify-cloudinary"
 homepageUrl: "https://www.npmjs.com/package/astro-netlify-cloudinary"
-downloads: 2421
+downloads: 2800
 badge: "new"
 ---
