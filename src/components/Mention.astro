@@ -1,5 +1,5 @@
 ---
-import { getEntryBySlug } from "astro:content"
+import { getEntry } from "astro:content"
 import Avatar from "./Avatar.astro"
 
 export type Props = {
@@ -8,7 +8,7 @@ export type Props = {
 
 const { name } = Astro.props
 
-const mention = await getEntryBySlug("authors", name)
+const mention = await getEntry("authors", name)
 ---
 
 {

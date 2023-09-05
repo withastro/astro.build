@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
+import { type CollectionEntry, getCollection, getEntry } from "astro:content"
 import { format } from "date-fns"
 import Avatar from "~/components/Avatar.astro"
 import { resolveCoverImage, resolveSocialImage } from "~/content/blog/_resolveImage.js"
@@ -28,7 +28,7 @@ const coverImage = await resolveCoverImage(post)
 const socialImage = await resolveSocialImage(post)
 
 const authors = await Promise.all(
-	data.authors.map((author) => getEntryBySlug("authors", author)),
+	data.authors.map((author) => getEntry("authors", author)),
 ).then((authors) => authors.filter(Boolean) as CollectionEntry<"authors">[])
 
 const gradients = [

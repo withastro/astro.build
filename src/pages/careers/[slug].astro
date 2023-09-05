@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection, getEntryBySlug } from "astro:content"
+import { getCollection, getEntry, type CollectionEntry } from "astro:content"
 import ClockIcon from "~/icons/ClockIcon.jsx"
 import LocationIcon from "~/icons/LocationIcon.jsx"
 import UsersIcon from "~/icons/UsersIcon.jsx"
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 const { career } = Astro.props as { career: CollectionEntry<"careers"> }
 const { Content } = await career.render()
 
-const careersIntro = await getEntryBySlug("partials", "careers-astro-intro")
+const careersIntro = await getEntry("partials", "careers-astro-intro")
 const { Content: IntroContent } = await careersIntro.render()
 
 const createSEODescription = ({ team, type, location }: CollectionEntry<"careers">["data"]) =>
