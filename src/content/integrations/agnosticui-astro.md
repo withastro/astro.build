@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/agnosticui-astro"
 repoUrl: "https://github.com/AgnosticUI/agnosticui"
 homepageUrl: "https://astro.build"
-downloads: 10
+downloads: 5
 ---

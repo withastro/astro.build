@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/nativelatex"
 homepageUrl: "https://www.npmjs.com/package/nativelatex"
-downloads: 2
+downloads: 8
 ---

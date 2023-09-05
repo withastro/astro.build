@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/my-new-component-directory"
 homepageUrl: "https://www.npmjs.com/package/my-new-component-directory"
-downloads: 55
+downloads: 38
 ---

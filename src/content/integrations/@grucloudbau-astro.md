@@ -5,10 +5,8 @@ description: "Use Bau within Astro"
 categories:
   - "css+ui"
   - "frameworks"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@grucloud/bau-astro"
 repoUrl: "https://github.com/grucloud/bau"
 homepageUrl: "https://github.com/grucloud/bau/bau-astro"
-downloads: 811
-badge: "new"
+downloads: 465
 ---

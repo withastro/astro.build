@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-carousel"
 homepageUrl: "https://www.npmjs.com/package/astro-carousel"
-downloads: 144
+downloads: 164
 badge: "new"
 ---

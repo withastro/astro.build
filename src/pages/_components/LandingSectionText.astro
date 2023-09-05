@@ -1,6 +1,26 @@
-<h2 class="heading-2 mb-8 max-w-3xl px-4 text-center md:mb-10">
+---
+type Props = {
+	wide?: boolean
+}
+
+const { wide } = Astro.props
+---
+
+<h2
+	class:list={[
+		"heading-3 md:heading-2 mb-8 px-4 text-center font-semibold",
+		wide ? "max-w-5xl" : "max-w-3xl",
+	]}
+	style="text-wrap: balance;"
+>
 	<slot name="title" />
 </h2>
-<p class="body max-w-3xl px-8 text-center text-astro-gray-200 sm:body-large">
+<p
+	class:list={[
+		"body px-8 text-center text-astro-gray-200 sm:body-large",
+		wide ? "max-w-5xl" : "max-w-3xl",
+	]}
+	style="text-wrap: balance;"
+>
 	<slot name="body" />
 </p>

@@ -1,0 +1,52 @@
+---
+import ChevronIcon from "~/icons/ChevronIcon.jsx"
+
+type Props = {
+	title: string
+	subtitle: string
+	href: string
+	class?: string
+}
+
+const { title, subtitle, href, class: className } = Astro.props
+---
+
+<aside
+	class:list={[
+		"relative flex gap-2 rounded-full text-xs md:text-sm transition-colors duration-150 hover:bg-black/20 hover:text-astro-gray-200",
+		className,
+	]}
+>
+	<a {href} class="flex items-center gap-2 pr-3">
+		<span class="pill relative m-px rounded-full px-3 py-1">{title}</span>
+		<div class="flex items-center gap-1">
+			<span>{subtitle}</span>
+			<ChevronIcon class="inline h-3 w-3 -rotate-90" aria-hidden="true" />
+		</div>
+	</a>
+</aside>
+
+<style>
+	aside::before {
+		@apply absolute inset-0 border border-astro-gray-300;
+		content: "";
+		border-radius: inherit;
+		z-index: -2;
+	}
+
+	.pill::before {
+		@apply absolute inset-0;
+		content: "";
+		margin: -1px;
+		border-radius: inherit;
+		background: linear-gradient(45deg, rgba(216, 51, 51, 1) 0%, rgba(240, 65, 255, 1) 100%);
+		z-index: -2;
+	}
+
+	.pill::after {
+		@apply absolute inset-0 bg-black/50;
+		content: "";
+		z-index: -1;
+		border-radius: inherit;
+	}
+</style>
