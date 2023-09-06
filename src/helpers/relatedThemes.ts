@@ -1,4 +1,4 @@
-import { CollectionEntry, getCollection } from "astro:content"
+import { getCollection, type CollectionEntry } from "astro:content"
 
 export async function getRelatedThemes(theme: CollectionEntry<"themes">, count = 3) {
 	// removing the current theme here makes sure a theme never recommends itself

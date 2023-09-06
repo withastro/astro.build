@@ -1,7 +1,7 @@
-const plugin = require("tailwindcss/plugin")
+import type { Config } from "tailwindcss"
+import plugin from "tailwindcss/plugin"
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
 		extend: {
@@ -61,14 +61,14 @@ module.exports = {
 				header: "5rem",
 			},
 			lineHeight: {
-				prose: 1.8125,
+				prose: "1.8125",
 			},
 			maxWidth: {
 				prose: "768px",
 			},
 			zIndex: {
-				blur: -1,
-				grid: -2,
+				blur: "-1",
+				grid: "-2",
 			},
 		},
 	},
@@ -104,7 +104,7 @@ module.exports = {
 		plugin(function astroComponentsPlugin({ addComponents, theme }) {
 			addComponents({
 				"b, strong": {
-					fontWeight: 700,
+					fontWeight: "700",
 				},
 
 				":focus-visible": {
@@ -241,4 +241,4 @@ module.exports = {
 			})
 		}),
 	],
-}
+} satisfies Config

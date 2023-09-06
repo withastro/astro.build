@@ -1,4 +1,4 @@
-import { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime"
 export default function TwitterIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	return (
 		<svg viewBox="0 0 24 24" height={24} width={24}>

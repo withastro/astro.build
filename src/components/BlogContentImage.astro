@@ -1,12 +1,10 @@
 ---
-import { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
-
 export interface Props {
 	src: ImageMetadata
 	alt?: string
 }
 
-const { src, alt = "" } = Astro.props as Props
+const { src, alt = "" } = Astro.props 
 ---
 
 <img

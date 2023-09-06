@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content"
+import { defineCollection } from "astro:content"
+import { z } from "zod"
 
 export const IntegrationCategories = new Map<string, string>([
 	["featured", "Featured"],

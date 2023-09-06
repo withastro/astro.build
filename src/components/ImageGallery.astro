@@ -1,5 +1,4 @@
 ---
-import type { ImageMetadata } from "@astrojs/image/dist/vite-plugin-astro-image.js"
 import type { HTMLAttributes } from "astro/types"
 import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
 
@@ -18,7 +17,7 @@ const { images, class: className, ...attrs } = Astro.props
 
 <image-gallery
 	selected="0"
-	class:list={["sm:aspect-[16/7] pb-4 sm:pb-0 grid sm:grid-cols-[77.75%,22.25%]", className]}
+	class:list={["grid pb-4 sm:aspect-[16/7] sm:grid-cols-[77.75%,22.25%] sm:pb-0", className]}
 	{...attrs}
 >
 	<div class="relative max-w-full">

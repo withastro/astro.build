@@ -36,7 +36,7 @@ function normalizePackageDetails(data, pkg) {
 
 	const otherCategories = [
 		isOfficial(pkg) ? "official" : undefined,
-		!!featured ? "featured" : undefined,
+		featured ? "featured" : undefined,
 		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean)
 

@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config"
 import fs from "node:fs"
 
-import image from "@astrojs/image"
 import mdx from "@astrojs/mdx"
 import prefetch from "@astrojs/prefetch"
 import sitemap from "@astrojs/sitemap"
@@ -21,13 +20,8 @@ console.log("[VERCEL_PREVIEW_SITE]", VERCEL_PREVIEW_SITE)
 export default defineConfig({
 	site: VERCEL_PREVIEW_SITE || "https://astro.build",
 	integrations: [
-		image({
-			serviceEntryPoint: "@astrojs/image/sharp",
-		}),
 		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
+			applyBaseStyles: false,
 		}),
 		solidJs(),
 		mdx(),
@@ -45,5 +39,7 @@ export default defineConfig({
 		},
 	},
 	output: "hybrid",
-	adapter: vercel(),
+	adapter: vercel({
+		functionPerRoute: false,
+	}),
 })
