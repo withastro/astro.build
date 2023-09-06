@@ -41,7 +41,7 @@ From the start, we knew that we wanted an image API that felt as minimal as poss
 ```astro
 ---
 // Import the <Image /> component
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets"
 // Import a reference to the image itself
 import myImage from "../assets/penguin.png"
 ---
@@ -74,7 +74,7 @@ Flexibility was another goal. We added the [`getImage()`](https://docs.astro.bui
 ---
 // Example: Instead of creating an `img` tag,
 // apply an optimized image to a div using CSS.
-import { getImage } from "@astrojs/image"
+import { getImage } from "astro:assets"
 import myImage from "../assets/penguin.png"
 const optimizedBackgroundImage = await getImage({ src: myImage })
 ---
