@@ -29,7 +29,7 @@ const {
 	image,
 	locale = "en",
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
-} = Astro.props 
+} = Astro.props
 
 const og = {
 	name,
@@ -53,18 +53,25 @@ const twitter = {
 	...Astro.props.twitter,
 } satisfies Twitter
 
-const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, "") + "/"
+function ensureTrailingSlashWithQueryParams(url: string | URL) {
+	const [path, queryParams] = url.toString().split("?")
+	return `${path.replace(/\/?$/, "/")}${queryParams ? `?${queryParams}` : ""}`
+}
 ---
 
 <!-- Page Metadata -->{
-	canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
+	canonicalURL && <link rel="canonical" href={ensureTrailingSlashWithQueryParams(canonicalURL)} />
 }
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={og.title} />
 <meta property="og:type" content={og.type} />
-{og.canonicalURL && <meta property="og:url" content={ensureTrailingSlash(og.canonicalURL)} />}
+{
+	og.canonicalURL && (
+		<meta property="og:url" content={ensureTrailingSlashWithQueryParams(og.canonicalURL)} />
+	)
+}
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />
