@@ -6,7 +6,7 @@ categories:
   - "css+ui"
   - "adapters"
 npmUrl: "https://www.npmjs.com/package/astro-sst"
-repoUrl: "https://github.com/serverless-stack/sst"
-homepageUrl: "https://github.com/serverless-stack/sst#readme"
-downloads: 11455
+repoUrl: "https://github.com/sst/sst"
+homepageUrl: "https://github.com/sst/sst#readme"
+downloads: 10366
 ---

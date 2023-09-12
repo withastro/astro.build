@@ -9,10 +9,12 @@ const { uid } = Astro.props
 <aside
 	id="notification-banner"
 	data-uid={uid}
-	class="body noise-underlay relative w-full bg-blue-purple-gradient py-2 text-center text-white"
+	class="body relative hidden w-full bg-blue-purple-gradient p-2 text-center text-white"
 >
-	<slot />
-	<button class="absolute right-0 top-0 flex aspect-square h-full items-center justify-center">
+	<p class="mr-6">
+		<slot />
+	</p>
+	<button class="absolute right-0 top-0 flex h-10 w-10 items-center justify-center">
 		<span class="sr-only">Hide banner</span>
 		<XIcon class="h-5" aria-hidden="true" />
 	</button>
@@ -41,6 +43,8 @@ const { uid } = Astro.props
 			// banner was already closed previously
 			removeBanner()
 		} else {
+			// can safely remove the hidden class to make the banner visible
+			banner.classList.remove("hidden")
 			const button = banner.querySelector("button")
 			button.addEventListener(
 				"click",

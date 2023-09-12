@@ -5,10 +5,8 @@ description: "Deploy your site to a Deno server"
 categories:
   - "css+ui"
   - "adapters"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/deno-astro-adapter"
 repoUrl: "https://github.com/kwhinnery/deno-astro-adapter"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/deno/"
-downloads: 269
-badge: "new"
+downloads: 190
 ---

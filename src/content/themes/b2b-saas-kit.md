@@ -15,7 +15,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/fogbender/b2b-saaskit"
 demoUrl: "https://b2bsaaskit.com/"
-stars: 225
+stars: 273
 tools:
   - "react"
   - "tailwind"

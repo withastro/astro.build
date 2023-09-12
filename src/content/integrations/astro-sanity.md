@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sanity"
 repoUrl: "https://github.com/littlesticks/astro-sanity"
 homepageUrl: "https://github.com/littlesticks/astro-sanity#readme"
-downloads: 1820
+downloads: 1652
 ---

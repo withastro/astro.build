@@ -12,6 +12,8 @@ import MainLayout from "~/layouts/MainLayout.astro"
 import IntegrationCard from "./_components/IntegrationCard.astro"
 import SubmitIntegration from "./_components/SubmitIntegration.astro"
 
+export const prerender = false
+
 // Sorting priority: featured first, then compare downloads, then sort alphabetically
 function sortIntegrations(a: CollectionEntry<"integrations">, b: CollectionEntry<"integrations">) {
 	if (a.data.featured && b.data.featured) {

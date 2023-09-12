@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-imagekit"
 homepageUrl: "https://www.npmjs.com/package/astro-imagekit"
-downloads: 20
+downloads: 21
 ---

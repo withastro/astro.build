@@ -18,7 +18,7 @@ demoUrl: "https://astro-theme-creek.netlify.app/"
 links:
   - href: "https://howtocode.io/"
     text: "HowToCode.io"
-stars: 139
+stars: 148
 featured: 7
 tools:
   - "tailwind"

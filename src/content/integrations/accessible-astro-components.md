@@ -11,7 +11,7 @@ image: "/assets/integrations/accessible-astro-components.png"
 repoUrl: "https://github.com/markteekman/accessible-astro-components"
 featured: 16
 homepageUrl: "https://accessible-astro.netlify.app/accessible-components/"
-downloads: 1284
+downloads: 2449
 url: "https://components.accessible-astro.dev/"
 badges:
   - "featured"

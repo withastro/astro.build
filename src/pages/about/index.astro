@@ -16,8 +16,6 @@ import iconFast from "./_assets/icon-fast.png"
 import iconWebsite from "./_assets/icon-website.png"
 import burst from "./_assets/illustration-burst.png"
 
-export const prerender = true
-
 const beliefs = [
 	{
 		label: "Belief 01",
@@ -70,7 +68,7 @@ const quotes = await Promise.all(
 					We built Astro to bring out the best of the web.
 				</p>
 			</div>
-			<div slot="end" class="noise-underlay flex items-center">
+			<div slot="end" class="z-blur flex items-center">
 				<div
 					class="hero-graphic relative scale-150 md:scale-125 lg:translate-x-16 xl:translate-x-32"
 				>
@@ -107,7 +105,7 @@ const quotes = await Promise.all(
 		<TwoUp class="lg:bleed-start 2xl:bleed-none" mobileReverse threshold="lg">
 			<div
 				slot="start"
-				class="graphic noise-underlay -mt-8 flex scale-150 items-center lg:mt-0 lg:scale-125"
+				class="graphic z-blur -mt-8 flex scale-150 items-center lg:mt-0 lg:scale-125"
 			>
 				<img src={burst.src} alt="" />
 			</div>
@@ -164,7 +162,7 @@ const quotes = await Promise.all(
 
 <style>
 	.hero-graphic::after {
-		@apply absolute bg-blue-purple-gradient;
+		@apply absolute z-blur bg-blue-purple-gradient;
 		content: "";
 		width: 150%;
 		height: 150%;
@@ -172,7 +170,6 @@ const quotes = await Promise.all(
 		left: 50%;
 		translate: -50% -50%;
 		mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 65%);
-		z-index: -1;
 	}
 
 	.quotes::before {
@@ -182,22 +179,18 @@ const quotes = await Promise.all(
 		height: 150%;
 		left: -50%;
 		top: -35%;
-		z-index: -1;
-		background: url(/assets/noise.webp) repeat, linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		background-blend-mode: overlay;
+		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
 		mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 70%);
 	}
 
 	.company::before {
 		@apply absolute right-0 w-full bg-orange-yellow-gradient;
 		content: "";
-		z-index: -1;
 		top: 25%;
 		height: 150%;
 		width: 150%;
 		left: -25%;
-		background: url(/assets/noise.webp) repeat, linear-gradient(266.93deg, #f8e42e 0%, #ff7d54 100%);
-		background-blend-mode: overlay;
+		background: linear-gradient(266.93deg, #f8e42e 0%, #ff7d54 100%);
 		mask-image: radial-gradient(rgba(0, 0, 0, 0.7), transparent 70%);
 	}
 
@@ -207,9 +200,7 @@ const quotes = await Promise.all(
 			width: 160%;
 			left: -20%;
 			top: -50%;
-			background: url(/assets/noise.webp) repeat,
-				linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-			background-blend-mode: overlay;
+			background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
 			mask-image: radial-gradient(rgba(0, 0, 0, 1), transparent 60%);
 		}
 

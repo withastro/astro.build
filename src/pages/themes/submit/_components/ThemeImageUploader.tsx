@@ -92,7 +92,7 @@ export function ThemeImageUploader() {
 
 function ImagePlaceholder(props: { children?: JSX.Element; previewSrc?: string }) {
 	return (
-		<div class="group noise-panel relative flex aspect-video flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-astro-gray-300 bg-astro-gray-600 ring-2 ring-transparent transition focus-within:ring-purple-500 hover:brightness-90">
+		<div class="group relative flex aspect-video flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-astro-gray-300 bg-astro-gray-600 ring-2 ring-transparent transition focus-within:ring-purple-500 hover:brightness-90">
 			{props.children}
 			<Show when={props.previewSrc} keyed>
 				{(src) => (

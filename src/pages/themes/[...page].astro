@@ -12,6 +12,8 @@ import MainLayout from "~/layouts/MainLayout.astro"
 import SubmitTheme from "./_components/SubmitTheme.astro"
 import ThemeCard from "./_components/ThemeCard.astro"
 
+export const prerender = false
+
 // Sorting priority: featured first, then compare downloads, then sort alphabetically
 function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
 	if (a.data.featured && b.data.featured) {

@@ -15,15 +15,15 @@ const { ...head } = Astro.props
 <!DOCTYPE html>
 <html
 	lang="en"
-	class="overflow-x-hidden break-words bg-astro-gray-700 text-astro-gray-100 [color-scheme:dark] [word-break:break-word]"
+	class="astro-gray-700 overflow-x-hidden break-words bg-black text-astro-gray-100 [color-scheme:dark] [word-break:break-word]"
 >
 	<head>
 		<BaseHead {...head} />
 	</head>
 	<body>
-		<SkipLink />
-		<div class="isolate flex min-h-screen flex-col overflow-x-hidden">
-			<div id="nav" class="sticky top-0 z-20 max-h-screen">
+		<div class="flex min-h-screen flex-col overflow-x-hidden">
+			<SkipLink />
+			<div id="nav" class="sticky top-0 z-20 max-h-screen bg-black">
 				<Header>
 					<HeaderNav />
 					<HeaderDrawerContent slot="drawer" />
@@ -31,26 +31,23 @@ const { ...head } = Astro.props
 				<hr class="border-astro-gray-500" />
 			</div>
 
-			<main id="main" class="noise-container z-10 flex flex-1 flex-col">
-				<div class="noise"></div>
+			<main id="main" class="relative z-10 flex flex-1 flex-col">
 				<slot />
 			</main>
 
 			<hr class="border-astro-gray-500" />
 
-			<div class="noise-container">
-				<div class="noise"></div>
-				<Footer />
-			</div>
-		</div>
-		<style>
-			:root.disclosure-open {
-				overflow-y: hidden;
-			}
+			<Footer />
 
-			:root.disclosure-open #nav {
-				overflow-y: auto;
-			}
-		</style>
+			<style>
+				:root.disclosure-open {
+					overflow-y: hidden;
+				}
+
+				:root.disclosure-open #nav {
+					overflow-y: auto;
+				}
+			</style>
+		</div>
 	</body>
 </html>

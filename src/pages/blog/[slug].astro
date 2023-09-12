@@ -6,7 +6,9 @@ import { resolveCoverImage, resolveSocialImage } from "~/content/blog/_resolveIm
 import { randomFromArray } from "~/helpers/random.js"
 import Layout from "~/layouts/MainLayout.astro"
 
-export const prerender = true
+export type Props = {
+	post: CollectionEntry<"blog">
+}
 
 export async function getStaticPaths() {
 	const blog = await getCollection("blog")
@@ -15,10 +17,6 @@ export async function getStaticPaths() {
 		params: { slug: post.slug },
 		props: { post },
 	}))
-}
-
-type Props = {
-	post: CollectionEntry<"blog">
 }
 
 const { post } = Astro.props
@@ -65,7 +63,7 @@ const placeholderGradient = randomFromArray(gradients)
 		) : (
 			<div
 				class:list={[
-					"w-full h-64 -mb-56 md:h-64 md:-mb-52 lg:h-96 lg:-mb-80 noise-underlay",
+					"z-blur w-full h-64 -mb-56 md:h-64 md:-mb-52 lg:h-96 lg:-mb-80",
 					placeholderGradient,
 				]}
 			/>
@@ -74,9 +72,8 @@ const placeholderGradient = randomFromArray(gradients)
 
 	<div class="grid-container relative mx-auto max-w-screen-lg md:z-10">
 		<div
-			class="noise-container mx-auto w-fit max-w-full bg-astro-gray-700 py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
+			class="mx-auto w-fit max-w-full bg-black py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
 		>
-			<div class="noise"></div>
 			<header class="mx-auto w-full max-w-prose text-center">
 				<time class="code text-astro-gray-200" datetime={data.publishDate.toISOString()}>
 					{format(data.publishDate, "MMMM d, yyyy")}

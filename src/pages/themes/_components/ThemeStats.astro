@@ -10,10 +10,10 @@ export type Props = HTMLAttributes<"div"> & {
 
 const { theme, class: className, ...attrs } = Astro.props
 
-const netlifyUrl =
+const vercelUrl =
 	theme.data.repoUrl &&
 	typeof theme.data.stars !== "undefined" &&
-	`https://app.netlify.com/start/deploy?repository=${theme.data.repoUrl}`
+	`https://vercel.com/new/clone?repository-url=${theme.data.repoUrl}`
 ---
 
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>
@@ -31,17 +31,17 @@ const netlifyUrl =
 		</a>
 	</div>
 	{
-		netlifyUrl && (
+		vercelUrl && (
 			<>
 				<hr class="border-astro-gray-500" />
-				<a href={netlifyUrl} class="link flex flex-row items-center gap-2" target="_blank">
+				<a href={vercelUrl} class="link flex flex-row items-center gap-2" target="_blank">
 					<img
-						src="/assets/integrations/netlify-dark.svg"
-						width="28"
-						height="28"
-						alt="Netlify logo"
+						src="/assets/integrations/vercel-dark.svg"
+						width="20"
+						height="20"
+						alt="Vercel logo"
 					/>
-					Deploy to Netlify
+					Deploy to Vercel
 				</a>
 			</>
 		)
