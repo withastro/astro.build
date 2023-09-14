@@ -74,7 +74,7 @@ tools:
 </p>
 <ul>
 	<li>
-		<a href='\"https://lexingtonthemes.com/license/\"'>License: lexingtonthemes.com/license</a>
+		<a href="https://lexingtonthemes.com/license/">License: lexingtonthemes.com/license</a>
 	</li>
 </ul>
 <p>If you have any questions do not hesitate to reach out on:</p>
@@ -89,5 +89,5 @@ tools:
 	bundle that includes all the templates, free updates is also offered on Lexington Themes.&nbsp;
 </p>
 <ul>
-	<li><a href='\"https://lexingtonthemes.com/pricing/\"'>Learn more about the bundle</a></li>
+	<li><a href="https://lexingtonthemes.com/pricing/">Learn more about the bundle</a></li>
 </ul>
