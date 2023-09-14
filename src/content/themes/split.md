@@ -20,7 +20,7 @@ publishDate: "Jun 12, 2023"
 
 <p>A clean &amp; simple mobile app landing page with smooth animations &amp;&nbsp;<a href="https://lighthouse-metrics.com/lighthouse/checks/2a64498d-80d2-4b09-8a11-de038b4e52d7">perfect lighthouse scores</a>&nbsp;for improved SEO.</p>
 
-<p>Built using Astro,&nbsp;<a href="http://tailwindcss.com/">Tailwind CSS</a>&nbsp;&amp;&nbsp;<a href="https://typescriptlang.org/">TypeScript</a>.</p>
+<p>Built using Astro,&nbsp;<a href="https://tailwindcss.com/">Tailwind CSS</a>&nbsp;&amp;&nbsp;<a href="https://typescriptlang.org/">TypeScript</a>.</p>
 
 <h3>What do I get when I purchase this?</h3>
 
