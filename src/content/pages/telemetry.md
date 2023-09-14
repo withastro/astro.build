@@ -21,7 +21,7 @@ We track general usage information about Astro and different configuration optio
 - General configuration information (Integrations, adapters, markdown options, etc.)
 - Sanitized error information
 
-This list is regularly audited to ensure its accuracy. You can audit telemetry yourself locally by settings the `DEBUG=”astro:telemetry”` environment variable when running the Astro CLI. While in debug mode, telemetry events ares only logged to the console.
+This list is regularly audited to ensure its accuracy. You can audit telemetry yourself locally by settings the `DEBUG=”astro:telemetry”` environment variable when running the Astro CLI. While in debug mode, telemetry events are only logged to the console.
 
 An example telemetry event might look like this:
 
