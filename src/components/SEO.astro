@@ -53,25 +53,29 @@ const twitter = {
 	...Astro.props.twitter,
 } satisfies Twitter
 
-function ensureTrailingSlashWithQueryParams(url: string | URL) {
-	const [path, queryParams] = url.toString().split("?")
-	return `${path.replace(/\/?$/, "/")}${queryParams ? `?${queryParams}` : ""}`
+/**
+ * Enforce some standard canonical URL formatting across the site.
+ */
+function formatCanonicalURL(url: string | URL) {
+	const path = url.toString();
+	const hasQueryParams = path.includes('?');
+	// If there are query params, make sure the URL has no trailing slash
+	if (hasQueryParams) {
+		path.replace(/\/?$/, "");
+	}
+	// otherwise, canonical URL always has a trailing slash
+	return path.replace(/\/?$/, hasQueryParams ? "" : '/');
 }
 ---
 
-<!-- Page Metadata -->{
-	canonicalURL && <link rel="canonical" href={ensureTrailingSlashWithQueryParams(canonicalURL)} />
-}
+<!-- Page Metadata -->
+{canonicalURL && <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />}
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={og.title} />
 <meta property="og:type" content={og.type} />
-{
-	og.canonicalURL && (
-		<meta property="og:url" content={ensureTrailingSlashWithQueryParams(og.canonicalURL)} />
-	)
-}
+{og.canonicalURL && <meta property="og:url" content={formatCanonicalURL(og.canonicalURL)} />}
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />
