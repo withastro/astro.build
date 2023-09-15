@@ -46,7 +46,7 @@ tools:
   Besides adapting its layout to the available viewport, Astro Landing Page also ships with
   responsive images (via
   <a
-    href="https://docs.astro.build/guides/integrations-guide/image/"
+    href="https://docs.astro.build/en/guides/integrations-guide/image/"
     rel="noopener noreferrer"
     target="_blank"
     >@astrojs/image</a

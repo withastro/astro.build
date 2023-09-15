@@ -28,7 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Format generated files
-        run: pnpm format
+        run: pnpm lint:prettier
 
       - name: Create Pull Request
         id: createpr
@@ -61,7 +61,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Format generated files
-        run: pnpm format
+        run: pnpm lint:prettier
 
       - name: Create Pull Request
         id: createpr
