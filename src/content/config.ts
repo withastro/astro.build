@@ -144,24 +144,6 @@ export const collections = {
 			// adding this extra flag to differentiate it in lists
 			.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
-	careers: defineCollection({
-		schema: z.object({
-			title: z.string().min(1).describe("Title of the job position"),
-			published: z.date().describe("Date the job listing was posted"),
-			location: z
-				.string()
-				.min(1)
-				.describe("Location of the job position (eg: 'Remote' or 'San Fransisco, CA'"),
-			team: z.enum(["Engineering", "UI", "DX"]),
-			type: z.enum(["Full Time", "Part Time", "Contract", "Internship"]),
-			image: z
-				.object({
-					src: z.string().default("/og/social.jpg"),
-					alt: z.string().default("Astro | Build the web you want"),
-				})
-				.default({}),
-		}),
-	}),
 	integrations: {
 		schema: z.object({
 			name: z.string().describe("Name of the package as it is published to NPM"),
