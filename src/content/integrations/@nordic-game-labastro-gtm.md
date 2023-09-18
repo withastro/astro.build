@@ -5,10 +5,8 @@ description: "Provides snippets injection for Google Tag manager"
 categories:
   - "css+ui"
   - "analytics"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@nordic-game-lab/astro-gtm"
 repoUrl: "https://github.com/nordic-game-lab/nordic-game-lab"
 homepageUrl: "https://wiki.nordicgamelab.org/astro-gtm"
-downloads: 136
-badge: "new"
+downloads: 15
 ---

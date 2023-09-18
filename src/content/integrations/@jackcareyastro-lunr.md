@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@jackcarey/astro-lunr"
 repoUrl: "https://github.com/jackcarey/astro-lunr"
 homepageUrl: "https://github.com/jackcarey/astro-lunr"
-downloads: 16
+downloads: 2
 ---

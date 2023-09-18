@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/datakata-design"
 homepageUrl: "https://www.npmjs.com/package/datakata-design"
-downloads: 904
+downloads: 953
 badge: "new"
 ---
