@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/flexdinesh/blogster"
 demoUrl: "https://blogster-minimal.netlify.app"
-stars: 324
+stars: 336
 ---
 
 <p>

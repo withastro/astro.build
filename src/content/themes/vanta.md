@@ -10,12 +10,15 @@ author:
 categories:
   - "landing-page"
   - "other"
+  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/vanta"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/f0a11cac-e5c4-4cee-9a11-631749fd6647"
 tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
+publishDate: "September 19, 2023"
+badge: "new"
 ---
 
 <p>✺&nbsp;<strong>Vanta </strong>&nbsp;━&nbsp;The sleekest e-learning platform theme around. For those who want to have a modern and dark theme. Vanta is made up of clean and fully customizable elements and layouts, enabling you to create great a productised service website with ease.

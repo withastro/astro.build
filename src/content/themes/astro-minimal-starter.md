@@ -11,5 +11,5 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/jaydanurwin/astro-minimal-starter"
 demoUrl: "https://astro-minimal-starter.netlify.app/"
-stars: 50
+stars: 51
 ---

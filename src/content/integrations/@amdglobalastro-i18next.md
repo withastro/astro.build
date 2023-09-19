@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@amdglobal/astro-i18next"
 repoUrl: "https://github.com/amdglobal/astro-i18next"
 homepageUrl: "https://astro-i18next.yassinedoghri.com/"
-downloads: 146
+downloads: 192
 badge: "new"
 ---

@@ -9,9 +9,9 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs/mdx"
 image: "/assets/integrations/mdx.svg"
 repoUrl: "https://github.com/withastro/astro"
-featured: 15
+featured: 14
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/mdx/"
-downloads: 97736
+downloads: 113565
 badges:
   - "featured"
 ---
