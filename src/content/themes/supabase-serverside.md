@@ -8,10 +8,13 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/4067487?v=4"
 categories:
   - "other"
+  - "recent"
 repoUrl: "https://github.com/fracalo/astro-supabase-ss"
 tools:
   - "typescript"
 publishDate: "September 19, 2023"
+stars: 0
+badge: "new"
 ---
 
 <p>

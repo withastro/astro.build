@@ -11,12 +11,15 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/137146930?v=4"
 categories:
   - "blog"
+  - "recent"
 repoUrl: "https://github.com/isooosi/VisVrs"
 demoUrl: "https://visvrs.vercel.app/"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "September 19, 2023"
+stars: 5
+badge: "new"
 ---
 
 <ul>

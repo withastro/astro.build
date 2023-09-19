@@ -1,7 +1,6 @@
 ---
 title: "Nebulix"
-description: "A Fast & Green Theme Based on Astro + Static CMS. with a Universe of
-  Possibilities: Blogs, Portfolios, Restaurant Menus, Online Store, and Beyond."
+description: "A Fast & Green Theme Based on Astro + Static CMS. with a Universe of Possibilities: Blogs, Portfolios, Restaurant Menus, Online Store, and Beyond."
 image: "/src/content/themes/_images/nebulix-hero.webp"
 images:
   - "/src/content/themes/_images/nebulix-2.webp"
@@ -14,9 +13,12 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/144011171?s=200&v=4"
 categories:
   - "blog"
+  - "recent"
 repoUrl: "https://github.com/unfolding-io/nebulix"
 demoUrl: "https://nebulix.unfolding.io/"
 publishDate: "September 19, 2023"
+stars: 6
+badge: "new"
 ---
 
 <h2>Optimized Speed and Accessibility</h2>

@@ -12,9 +12,12 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/386582?v=4"
 categories:
   - "landing-page"
+  - "recent"
 repoUrl: "https://github.com/eavinti/astro-landing"
 demoUrl: "https://astro-01.eavinti.com/"
 tools:
   - "tailwind"
 publishDate: "September 19, 2023"
+stars: 0
+badge: "new"
 ---

@@ -9,6 +9,7 @@ author:
 categories:
   - "landing-page"
   - "other"
+  - "recent"
 demoUrl: "https://www.creative-tim.com/astro/launch-ui/"
 repoUrl: "https://github.com/creativetimofficial/astro-launch-ui"
 tools:
@@ -16,6 +17,8 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "September 19, 2023"
+stars: 2
+badge: "new"
 ---
 
 <p>
