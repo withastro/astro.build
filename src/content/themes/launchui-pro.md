@@ -11,7 +11,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-repoUrl: "https://www.creative-tim.com/astro/launch-ui-pro/"
+demoUrl: "https://www.creative-tim.com/astro/launch-ui-pro/"
 buyUrl: "https://www.creative-tim.com/astro/launch-ui-pro/#pricing"
 tools:
   - "react"
