@@ -8,7 +8,7 @@ images:
   - "/src/content/themes/_images/planetario-4.webp"
 author:
   url: "https://github.com/eavinti"
-  name: " eavinti"
+  name: "eavinti"
   avatar: "https://avatars.githubusercontent.com/u/386582?v=4"
 categories:
   - "landing-page"
