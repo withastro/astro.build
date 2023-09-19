@@ -107,7 +107,7 @@ export function orgApi(org) {
 			return fetchJson(url.toString())
 				.then((res) => res.stargazers_count)
 				.catch((error) => {
-					console.warn("fetchStars::", error.message)
+					console.warn(`[fetchStars] ${org}/${repo}`, error.message)
 					return 0
 				})
 		}
