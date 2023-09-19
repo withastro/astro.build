@@ -17,6 +17,7 @@ tools:
   - "solidjs"
   - "tailwind"
   - "typescript"
+publishDate: "September 19, 2023"
 ---
 
 <p>
