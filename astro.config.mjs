@@ -14,8 +14,6 @@ const VERCEL_PREVIEW_SITE =
 	process.env.VERCEL_URL &&
 	`https://${process.env.VERCEL_URL}`
 
-console.log("[VERCEL_PREVIEW_SITE]", VERCEL_PREVIEW_SITE)
-
 // https://astro.build/config
 export default defineConfig({
 	site: VERCEL_PREVIEW_SITE || "https://astro.build",
