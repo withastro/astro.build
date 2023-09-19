@@ -72,7 +72,7 @@ tools:
 <ul>
   <li>Style Guide</li>
   <li>Icons from Tabler Icons</li>
-  <li>Custom fonts from cdnfonts.com ( Only the CDN )</li>
+  <li>Custom fonts from Font Share or Google Fonts</li>
   <li>100%&nbsp;Responsive</li>
   <li>A link to every demo page from the overview page</li>
 </ul>
