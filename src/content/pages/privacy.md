@@ -5,7 +5,7 @@ seo:
 updated_date: 2023-03-01
 ---
 
-_In addition to this Privacy Policy, Astro also has [Terms of Service](/terms)._
+_In addition to this Privacy Policy, Astro also has [Terms of Service](/terms/)._
 
 The Astro Privacy Policy describes the privacy practices of Astro website and services. The laws of California and the laws of the United States apply. If you are a resident of EU/EEA, the European Commission-approved Standard Contractual Clauses (also referred to as Model Contracts) apply to Trans-Atlantic data transfers.
 
@@ -13,7 +13,7 @@ The Astro Privacy Policy describes the privacy practices of Astro website and se
 
 We collect very limited personally identifiable information described below (the “data”) from [GitHub](https://help.github.com/articles/github-privacy-policy/) and of those who communicate with us directly via e-mail, aggregate information on what pages consumers access or visit, and information volunteered by the consumer (such as survey information and/or site registrations). The information we collect is used to provide our services, and to improve the quality of our services, and is not shared with or sold to other organizations for commercial purposes, except to provide products or services you've requested when we have your permission, or under the following circumstances:
 
-- It is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of [Terms of Service](/terms), or as otherwise required by law.
+- It is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of [Terms of Service](/terms/), or as otherwise required by law.
 - We transfer information about you if Astro is acquired by or merged with another company. In this event, Astro will notify you before information about you is transferred and becomes subject to a different privacy policy.
 
 ### Information Gathering and Usage
