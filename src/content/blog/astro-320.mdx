@@ -1,0 +1,69 @@
+---
+title: "Astro 3.2: View Transitions improvements"
+description: "Astro 3.2 is out with several improvements to View Transitions, including the ability to control the history stack, and a JavaScript navigation API"
+publishDate: "September 28, 2023"
+authors:
+  - matthew
+  - martrapp
+coverImage: "/src/content/blog/_images/astro-320/blog-hero-3_2-release.jpg"
+socialImage: "/src/content/blog/_images/astro-290/og-image-2_9-release.jpg"
+lang: "en"
+---
+
+Astro 3.2 is out and several new improvments for [view transitions](https://docs.astro.build/en/guides/view-transitions/), 
+
+- **[History Replacement on Links](#todo)
+- **[JavaScript Navigation API](#todo)
+- **[Route announcer for screen readers](#todo)
+
+If you already have Astro installed, you can upgrade it to 3.2 by running the upgrade command in your project (using your package manager of choice):
+
+```
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## History Replacement on Links
+
+You can now configure your links to prevent a new history entry from being added to the browser stack. Using the `data-astro-history="replace"` attribute, Astro will instead use the underlying `history.replaceState` API. This means the user won't have to use the back button as many times for use-cases where lots of clicks are expected.
+
+```html
+<a href="/toggle" data-astro-history="replace">Toggle me</a>
+```
+
+## JavaScript Navigation API
+
+You can now trigger navigations from your client-side JavaScript via the new `navigate()` API. Previously transitions only occurred when the user clicked anchor links. With the new navigation API you have complete control over when navigation occurs. 
+
+```js
+import { navigate } from 'astro:transitions/client';
+
+// Navigate to the selected option automatically.
+document.querySelector('select').onchange = (ev) => {
+  let href = ev.target.value;
+  navigate(href);
+};
+```
+
+Additionally you have control over the history stack with this method via the `history` option. This is the same use-case as the `data-astro-history` attribute:
+
+```js
+import { navigate } from 'astro:transitions/client';
+
+navigate(href, {
+  history: 'replace'
+});
+```
+
+## Route Announcer in `<ViewTransitions />`
+
+The View Transitions router now does route announcement. When transitioning between pages with a traditional MPA approach, assistive technologies will announce the page title when the page finishes loading. This does not automatically happen during client-side routing, so visitors relying on these technologies to announce routes are not aware when a page has changed.
+
+The view transitions route announcer runs after the `astro:page-load` event, looking for the page `<title>` to announce. If one cannot be found, the announcer falls back to the first `<h1>` it finds, or otherwise announces the pathname. We recommend you always include a `<title>` in each page for accessibility.
+
+See the [View Transitions docs](https://docs.astro.build/en/guides/view-transitions/) for more on how accessibility is handled.
+
+## More
+
+Additional bug fixes and integration features are included in this release. Check out the [release notes](https://github.com/withastro/astro/pull/8671) to learn more.
