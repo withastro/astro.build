@@ -26,7 +26,7 @@ yarn upgrade astro --latest
 
 ## History Replacement on Links
 
-You can now configure your links to prevent a new history entry from being added to the browser stack. Using the `data-astro-history="replace"` attribute, Astro will instead use the underlying `history.replaceState` API. This means the user won't have to use the back button as many times for use cases where lots of clicks are expected.
+You can now configure individual links to prevent a new history entry from being added to the browser stack on navigation. Add the `data-astro-history="replace"` attribute to any `<a>` tag and Astro will instead use the underlying `history.replaceState` API.  Use this for fewer back button clicks, or to avoid sending readers back to pages like form submission confirmations.
 
 ```html
 <a href="/toggle" data-astro-history="replace">Toggle me</a>
@@ -46,7 +46,7 @@ document.querySelector('select').onchange = (ev) => {
 };
 ```
 
-Additionally, you have control over the history stack with this method via the `history` option. This is the same use case as the `data-astro-history` attribute:
+Additionally, you have control over the history stack with this method via the `history` option, which works just like  the `data-astro-history` attribute:
 
 ```js
 import { navigate } from 'astro:transitions/client';
