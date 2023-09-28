@@ -5,16 +5,18 @@ publishDate: "September 28, 2023"
 authors:
   - matthew
   - martrapp
+  - chris
 coverImage: "/src/content/blog/_images/astro-320/blog-hero-3_2-release.webp"
 socialImage: "/src/content/blog/_images/astro-320/og-image-3_2-release.webp"
 lang: "en"
 ---
 
-Astro 3.2 is out and brings several new improvements for [view transitions](https://docs.astro.build/en/guides/view-transitions/):
+Astro 3.2 is out and brings several new improvements for [view transitions](https://docs.astro.build/en/guides/view-transitions/) and nested integrations:
 
 - **[Control the browser history stack](#history-replacement-on-links)**
 - **[Trigger page navigation via JavaScript](#javascript-navigation-api)**
 - **[Route announcer for screen readers](#route-announcer)**
+- **[Dynamically add integrations](#dynamically-added-integrations)**
 
 To take advantage of the latest view transitions features, make sure you're running the latest version of Astro. You can upgrade to Astro 3.2 by running the upgrade command for your package manager of choice:
 
@@ -63,6 +65,37 @@ The View Transitions router now does route announcements. When transitioning bet
 The view transitions route announcer runs after the `astro:page-load` event, looking for the page `<title>` to announce. If one cannot be found, the announcer falls back to the first `<h1>` it finds or otherwise announces the pathname. We recommend you always include a `<title>` on each page for accessibility.
 
 See the [View Transitions docs](https://docs.astro.build/en/guides/view-transitions/) for more on how accessibility is handled.
+
+## Dynamically Added Integrations
+
+Integrations can now themselves dynamically add and configure additional integrations during set-up. This makes it possible for integration authors to bundle integrations more intelligently for their users.
+
+In the following example, a custom integration checks whether `@astrojs/sitemap` is already configured. If not, the integration adds Astro's sitemap integration, passing any desired configuration options:
+
+```ts
+import sitemap from '@astrojs/sitemap';
+import type { AstroIntegration } from 'astro';
+
+const MyIntegration = (): AstroIntegration => {
+  return {
+    name: 'my-integration',
+
+    'astro:config:setup': ({ config, updateConfig }) => {
+      // Look for sitemap in user-configured integrations.
+      const userSitemap = config.integrations.find(
+        ({ name }) => name === '@astrojs/sitemap'
+      );
+
+      if (!userSitemap) {
+        // If sitemap wasn’t found, add it.
+        updateConfig({
+          integrations: [sitemap({ /* opts */ }],
+        });
+      }
+    },
+  };
+};
+```
 
 ## More
 
