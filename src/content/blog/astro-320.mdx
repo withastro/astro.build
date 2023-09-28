@@ -1,0 +1,102 @@
+---
+title: "Astro 3.2: View Transitions improvements"
+description: "Astro 3.2 is out with several improvements to View Transitions, including the ability to control the history stack, and a JavaScript navigation API"
+publishDate: "September 28, 2023"
+authors:
+  - matthew
+  - martrapp
+  - chris
+coverImage: "/src/content/blog/_images/astro-320/blog-hero-3_2-release.webp"
+socialImage: "/src/content/blog/_images/astro-320/og-image-3_2-release.webp"
+lang: "en"
+---
+
+Astro 3.2 is out with several new improvements that make [view transitions](https://docs.astro.build/en/guides/view-transitions/) and integrations even easier to use:
+
+- **[Control the browser history stack](#history-replacement-on-links)**
+- **[Trigger page navigation via JavaScript](#javascript-navigation-api)**
+- **[Route announcer for screen readers](#route-announcer)**
+- **[Dynamically add integrations](#dynamically-added-integrations)**
+
+To take advantage of the latest view transitions features, make sure you're running the latest version of Astro. You can upgrade to Astro 3.2 by running the upgrade command for your package manager of choice:
+
+```
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## History Replacement on Links
+
+You can now configure individual links to prevent a new history entry from being added to the browser stack on navigation. Add the `data-astro-history="replace"` attribute to any `<a>` tag and Astro will instead use the underlying `history.replaceState` API.  Use this for fewer back button clicks, or to avoid sending readers back to pages like form submission confirmations.
+
+```html
+<a href="/toggle" data-astro-history="replace">Toggle me</a>
+```
+
+## JavaScript Navigation API
+
+You can now trigger navigations from your client-side JavaScript via the new `navigate()` API. Previously transitions only occurred when the user clicked anchor links. With the new navigation API you have complete control over when navigation occurs. 
+
+```js
+import { navigate } from 'astro:transitions/client';
+
+// Navigate to the selected option automatically.
+document.querySelector('select').onchange = (ev) => {
+  let href = ev.target.value;
+  navigate(href);
+};
+```
+
+Additionally, you have control over the history stack with this method via the `history` option, which works just like  the `data-astro-history` attribute:
+
+```js
+import { navigate } from 'astro:transitions/client';
+
+navigate(href, {
+  history: 'replace'
+});
+```
+
+## Route Announcer
+
+The View Transitions router now does route announcements. When transitioning between pages with a traditional MPA approach, assistive technologies will announce the page title when the page finishes loading. This does not automatically happen during client-side routing, so visitors relying on these technologies to announce routes are not aware when a page has changed.
+
+The view transitions route announcer runs after the `astro:page-load` event, looking for the page `<title>` to announce. If one cannot be found, the announcer falls back to the first `<h1>` it finds or otherwise announces the pathname. We recommend you always include a `<title>` on each page for accessibility.
+
+See the [View Transitions docs](https://docs.astro.build/en/guides/view-transitions/) for more on how accessibility is handled.
+
+## Dynamically Added Integrations
+
+Integrations themselves can now dynamically add and configure additional integrations during set-up. This makes it possible for integration authors to bundle integrations more intelligently for their users.
+
+In the following example, a custom integration checks whether `@astrojs/sitemap` is already configured. If not, the integration adds Astro's sitemap integration, passing any desired configuration options:
+
+```ts
+import sitemap from '@astrojs/sitemap';
+import type { AstroIntegration } from 'astro';
+
+const MyIntegration = (): AstroIntegration => {
+  return {
+    name: 'my-integration',
+
+    'astro:config:setup': ({ config, updateConfig }) => {
+      // Look for sitemap in user-configured integrations.
+      const userSitemap = config.integrations.find(
+        ({ name }) => name === '@astrojs/sitemap'
+      );
+
+      if (!userSitemap) {
+        // If sitemap wasn’t found, add it.
+        updateConfig({
+          integrations: [sitemap({ /* opts */ }],
+        });
+      }
+    },
+  };
+};
+```
+
+## More
+
+Additional bug fixes and integration features are included in this release. Check out the [release notes](https://github.com/withastro/astro/pull/8671) to learn more.
