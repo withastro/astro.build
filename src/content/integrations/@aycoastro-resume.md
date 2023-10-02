@@ -1,7 +1,7 @@
 ---
 name: "@ayco/astro-resume"
 title: "@ayco/astro-resume"
-description: "> **>>> TL;DR:** This facilitates the *creation* and *usage* of global, immutable data for Astro apps"
+description: "This facilitates the creation and usage of global, immutable data for Astro apps."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@ayco/astro-resume"
