@@ -47,15 +47,15 @@ Don’t miss the talks and panel discussions with members of the Astro core team
 	},
 ].map(({ image, speaker, title, time, tagline }) => (
 	<li class="border border-astro-gray-500 bg-astro-gray-700 p-4 gap-4 shadow flex before:!hidden">
-		<div class="flex-shrink-0 hidden sm:block">
-			<img src={image.src} alt="" class="s-16 rounded-full" />
+		<div hidden class="flex-shrink-0 sm:block">
+			<img src={image.src} alt="" class="rounded-full" width="64" height="64" />
 		</div>
 		<div class="flex flex-col gap-1.5">
 			<h4 class="flex flex-col gap-1">
 				<span class="inline-flex gap-2">
-					<img src={image.src} alt="" class="s-6 rounded-full sm:hidden" />
+					<img src={image.src} alt="" class="rounded-full sm:hidden" width="24" height="24" />{" "}
 					{speaker}
-				</span>
+				</span>{" "}
 				<span class="heading-5 sm:heading-4 text-white">{title}</span>
 			</h4>
 			{tagline && <p class="text-sm sm:text-base">{tagline}</p>}
