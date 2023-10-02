@@ -7,5 +7,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-out-proxy"
 repoUrl: "https://github.com/Elod-T/astro-out-proxy"
 homepageUrl: "https://github.com/Elod-T/astro-out-proxy"
-downloads: 16
+downloads: 23
+image: "/assets/integrations/astro-out-proxy.png"
 ---

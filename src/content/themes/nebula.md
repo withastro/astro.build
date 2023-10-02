@@ -11,7 +11,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/zavbala/nebula"
 demoUrl: "https://nebulla.vercel.app"
-stars: 0
+stars: 1
 tools:
   - "react"
   - "tailwind"

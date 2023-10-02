@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-graphql-plugin"
 homepageUrl: "https://www.npmjs.com/package/astro-graphql-plugin"
-downloads: 821
+downloads: 1767
 badge: "new"
 ---

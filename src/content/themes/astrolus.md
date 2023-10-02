@@ -11,7 +11,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/Tailus-UI/astro-theme"
 demoUrl: "https://astrolus.netlify.app/"
-stars: 94
+stars: 101
 tools:
   - "tailwind"
 ---

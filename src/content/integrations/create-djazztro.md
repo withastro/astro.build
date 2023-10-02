@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/create-djazztro"
 repoUrl: "https://github.com/Bwc9876/djazztro"
 homepageUrl: "https://bwc9876.github.io/Djazztro"
-downloads: 189
+downloads: 81
 ---
