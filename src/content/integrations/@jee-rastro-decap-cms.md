@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@jee-r/astro-decap-cms"
 repoUrl: "https://github.com/jee-r/astro-decap-cms"
 homepageUrl: "https://github.com/jee-r/astro-decap-cms"
-downloads: 114
+downloads: 133
 badge: "new"
 ---

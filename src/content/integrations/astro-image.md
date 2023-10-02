@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-image"
 repoUrl: "https://github.com/warpsio/astro-image"
 homepageUrl: "https://github.com/warpsio/astro-image"
-downloads: 14
+downloads: 22
 ---

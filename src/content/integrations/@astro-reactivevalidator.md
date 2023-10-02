@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-reactive/validator"
 repoUrl: "https://github.com/astro-reactive/astro-reactive"
 homepageUrl: "https://astro-reactive.dev"
-downloads: 363
+downloads: 652
 ---

@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/mesinkasir/cute-blog"
 demoUrl: "https://cuteblog.netlify.app/"
-stars: 7
+stars: 8
 tools:
   - "preact"
 ---

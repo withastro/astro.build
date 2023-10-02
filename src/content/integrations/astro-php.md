@@ -6,5 +6,5 @@ categories:
   - "frameworks"
 npmUrl: "https://www.npmjs.com/package/astro-php"
 homepageUrl: "https://www.npmjs.com/package/astro-php"
-downloads: 36
+downloads: 138
 ---

@@ -13,7 +13,7 @@ repoUrl: "https://github.com/fracalo/astro-supabase-ss"
 tools:
   - "typescript"
 publishDate: "September 19, 2023"
-stars: 0
+stars: 2
 badge: "new"
 ---
 

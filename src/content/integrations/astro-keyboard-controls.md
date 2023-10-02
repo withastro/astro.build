@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-keyboard-controls"
 repoUrl: "https://github.com/lirantal/astro-keyboard-controls"
 homepageUrl: "https://github.com/lirantal/astro-keyboard-controls#readme"
-downloads: 10
+downloads: 18
 ---
