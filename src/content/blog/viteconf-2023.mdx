@@ -1,0 +1,68 @@
+---
+title: "Astro @ ViteConf 2023"
+description: "See you at ViteConf! Hear from members of the Astro core team, alongside an amazing lineup of projects from the Vite ecosystem."
+publishDate: "October 2, 2023"
+authors:
+  - chris
+socialImage: "/src/content/blog/_images/viteconf-2023/og-image-viteconf.webp"
+coverImage: "/src/content/blog/_images/viteconf-2023/post-header-viteconf.webp"
+lang: "en"
+---
+
+import erika from '../authors/_images/erika.webp'
+import fred from '../authors/_images/fred.webp'
+import sarah from '../authors/_images/sarah.webp'
+
+**ViteConf is this week: October 5-6!** [Grab your FREE ticket](https://viteconf.org/23/ecosystem/astro) today and hear about amazing projects from across the Vite ecosystem.
+
+Don’t miss the talks and panel discussions with members of the Astro core team:
+
+<ul class="flex flex-col !p-0">
+{[
+	{
+		image: erika,
+		speaker: 'Erika Moreau',
+		title: 'Introducing Volar',
+		tagline: 'A common framework for language tooling',
+		time: 'October 5, 8:34 AM PST',
+	},
+	{
+		image: sarah,
+		speaker: 'Sarah Rainsberger',
+		title: 'Stop writing docs; Start helping',
+		time: 'October 5, 2:07 PM PST',
+	},
+	{
+		image: sarah,
+		speaker: 'Sarah Rainsberger',
+		tagline: 'with Brittney Postma, Tracy Lee, Anthony Fu & Matias Capeletto',
+		title: 'Community Panel',
+		time: 'October 5, 2:48 PM PST',
+	},
+	{
+		image: fred,
+		speaker: 'Fred K. Schott',
+		title: 'View Transitions: Fact vs. Fiction',
+		time: 'October 5, 3:30 PM PST',
+	},
+].map(({ image, speaker, title, time, tagline }) => (
+	<li class="border border-astro-gray-500 bg-astro-gray-700 p-4 gap-4 shadow flex before:!hidden">
+		<div hidden class="flex-shrink-0 sm:block">
+			<img src={image.src} alt="" class="rounded-full" width="64" height="64" />
+		</div>
+		<div class="flex flex-col gap-1.5">
+			<h4 class="flex flex-col gap-1">
+				<span class="inline-flex gap-2">
+					<img src={image.src} alt="" class="rounded-full sm:hidden" width="24" height="24" />{" "}
+					{speaker}
+				</span>{" "}
+				<span class="heading-5 sm:heading-4 text-white">{title}</span>
+			</h4>
+			{tagline && <p class="text-sm sm:text-base">{tagline}</p>}
+			<p class="text-sm font-mono mt-2">{time}</p>
+		</div>
+	</li>
+))}
+</ul>
+
+The event is 100% remote and **free**! So what are you waiting for? [Grab your Astro-branded ticket now](https://viteconf.org/23/ecosystem/astro) and we'll see you there.
