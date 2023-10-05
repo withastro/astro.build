@@ -2,11 +2,7 @@
 title: "Simplexity"
 description: "The ultimate blog template for anyone looking to own a clean, elegant and fully-functional blog website that supports dark mode with multiple demo pages."
 image: "/src/content/themes/_images/simplexity-hero.webp"
-images:
-  - "/src/content/themes/_images/simplexity-2.webp"
-  - "/src/content/themes/_images/simplexity-3.webp"
-  - "/src/content/themes/_images/simplexity-4.webp"
-  - "/src/content/themes/_images/simplexity-5.webp"
+images: []
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"
@@ -14,7 +10,7 @@ author:
 categories:
   - "landing-page"
 demoUrl: "https://lexingtonthemes.com/info/simplexity/"
-buyUrl: "https://lexingtonthemes.com/viewports/simplexity/"
+buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/efff7e1e-e8fe-4efc-afcb-c51907eae41c"
 tools:
   - "tailwind"
   - "alpinejs"
