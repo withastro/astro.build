@@ -41,6 +41,11 @@ export const ThemeTools = new Map<string, string>([
 	["vue", "Vue"],
 ])
 
+export const ThemePricing = new Map<string, string>([
+	["free", "Free"],
+	["paid", "Paid"],
+])
+
 export const themeSchema = z
 	.object({
 		title: z.string().min(1),
