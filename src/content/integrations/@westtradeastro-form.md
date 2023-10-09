@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@westtrade/astro-form"
 repoUrl: "https://github.com/westtrade/astro-form"
 homepageUrl: "https://github.com/westtrade/astro-form#readme"
-downloads: 141
+downloads: 162
 badge: "new"
 ---

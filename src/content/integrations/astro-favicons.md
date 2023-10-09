@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-favicons"
 repoUrl: "https://github.com/ACP-CODE/astro-favicons"
 homepageUrl: "https://github.com/ACP-CODE/astro-favicons#readme"
-downloads: 165
+downloads: 202
 badge: "new"
 ---

@@ -10,5 +10,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-aws/adapter"
 repoUrl: "ssh://git@github.com/lukeshay/astro-aws"
 homepageUrl: "https://astro-aws.org/"
-downloads: 1907
+downloads: 1922
 ---

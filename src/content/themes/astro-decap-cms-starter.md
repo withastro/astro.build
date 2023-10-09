@@ -14,7 +14,7 @@ demoUrl: "https://astro-decapcms-starter.netlify.app/"
 tools:
   - "tailwind"
   - "typescript"
-stars: 10
+stars: 11
 ---
 
 <p>
