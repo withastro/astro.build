@@ -18,4 +18,5 @@ tools:
   - "tailwind"
   - "typescript"
   - "mdx"
+publishDate: "Oct 9, 2023"
 ---

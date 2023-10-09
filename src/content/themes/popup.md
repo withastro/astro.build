@@ -15,6 +15,7 @@ buyUrl: "https://theartandcraftco.lemonsqueezy.com/checkout/buy/b11aa27d-9c71-4e
 demoUrl: "https://www.theartandcraft.co/gallery/popup"
 tools:
   - "tailwind"
+publishDate: "Oct 9, 2023"
 ---
 
 <p>
