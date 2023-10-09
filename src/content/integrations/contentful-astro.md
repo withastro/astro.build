@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/contentful-astro"
 homepageUrl: "https://github.com/ajsummerfield/contentful-astro#readme"
-downloads: 17
+downloads: 31
 ---

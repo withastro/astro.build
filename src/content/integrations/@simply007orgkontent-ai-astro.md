@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@simply007org/kontent-ai-astro"
 homepageUrl: "https://github.com/Simply007/kontent-ai-astro#readme"
-downloads: 109
+downloads: 157
 ---
