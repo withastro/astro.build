@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sw"
 repoUrl: "https://github.com/pedra/astro-sw"
 homepageUrl: "https://github.com/pedra/astro-sw#readme"
-downloads: 193
+downloads: 268
 badge: "new"
 ---

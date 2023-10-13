@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-redirect-from"
 repoUrl: "https://github.com/kremalicious/astro-redirect-from"
 homepageUrl: "https://kremalicious.com/astro-redirect-from"
-downloads: 700
+downloads: 966
 badge: "new"
 ---
