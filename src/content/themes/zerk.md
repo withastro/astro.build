@@ -14,7 +14,7 @@ repoUrl: "https://github.com/Jamship-io/zerk"
 demoUrl: "https:/zerk.vercel.app"
 tools:
   - "tailwind"
-publishDate: "Oct 9, 2023"
+publishDate: "Oct 13, 2023"
 ---
 
 <p>
