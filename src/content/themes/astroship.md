@@ -11,7 +11,6 @@ author:
   name: "surjithctly"
   avatar: "https://avatars.githubusercontent.com/u/1884712?v=4"
 categories:
-  - "featured"
   - "landing-page"
 repoUrl: "https://github.com/surjithctly/astroship"
 demoUrl: "https://astroship.web3templates.com/"
@@ -23,7 +22,6 @@ links:
   - text: "Twitter"
     href: "https://twitter.com/surjithctly"
 stars: 724
-featured: 1
 tools:
   - "tailwind"
 ---
