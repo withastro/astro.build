@@ -8,6 +8,7 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/10554486?v=4"
 categories:
   - "blog"
+  - "recent"
 repoUrl: "https://github.com/gndx/ev0-astro-theme"
 demoUrl: "https://ev0.gndx.io/"
 tools:
@@ -15,6 +16,8 @@ tools:
   - "typescript"
   - "mdx"
 publishDate: "Oct 13, 2023"
+stars: 35
+badge: "new"
 ---
 
 <p>
