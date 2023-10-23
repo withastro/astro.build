@@ -1,10 +1,11 @@
 ---
 name: "@ayco/astro-resume"
 title: "@ayco/astro-resume"
-description: "Utilities for serializing data from server for use in the client."
+description: "This facilitates the creation and usage of global, immutable data for Astro apps."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@ayco/astro-resume"
 homepageUrl: "https://sr.ht/~ayoayco/astro-resume"
-downloads: 321
+downloads: 1082
+repoUrl: "https://git.sr.ht/~ayoayco/astro-resume"
 ---

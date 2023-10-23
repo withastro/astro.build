@@ -11,5 +11,5 @@ categories:
   - "blog"
 repoUrl: "https://github.com/dofbi/astro-simple-blog-theme"
 demoUrl: "https://astro-simple-blog.netlify.app/"
-stars: 3
+stars: 5
 ---

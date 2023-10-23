@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content"
+import { getCollection, type CollectionEntry } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
 import CardGridGroup from "~/components/CardGridGroup.astro"
 import ImageGallery from "~/components/ImageGallery.astro"
@@ -39,7 +39,7 @@ const images = await resolveAllImages(theme)
 			images.length > 1 ? (
 				<ImageGallery
 					images={images}
-					class="bleed-full mx-auto w-full"
+					class="bleed-full mx-auto w-full border-astro-gray-500 xl:border-x xl:border-b"
 					style="max-width: var(--container-width, 1280px)"
 				/>
 			) : (
@@ -48,7 +48,7 @@ const images = await resolveAllImages(theme)
 					width={images[0].fullImage.width}
 					height={(images[0].fullImage.width * 7) / 16}
 					alt=""
-					class="mx-auto aspect-video w-full object-cover object-top"
+					class="mx-auto aspect-video w-full border-astro-gray-500 object-cover object-top xl:border-x xl:border-b"
 					decoding="async"
 				/>
 			)

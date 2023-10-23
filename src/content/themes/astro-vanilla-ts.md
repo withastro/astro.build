@@ -13,5 +13,5 @@ demoUrl: "https://astro-vanilla-ts.d1a.app"
 tools:
   - "tailwind"
   - "typescript"
-stars: 0
+stars: 3
 ---

@@ -5,10 +5,8 @@ description: "Deploy your Astro site to Vercel Edge Functions"
 categories:
   - "css+ui"
   - "adapters"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-vercel-edge"
 repoUrl: "https://github.com/mayank99/astro-vercel-edge"
 homepageUrl: "https://github.com/mayank99/astro-vercel-edge#readme"
-downloads: 142
-badge: "new"
+downloads: 186
 ---

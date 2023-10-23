@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-remark-eleventy-image"
 repoUrl: "https://github.com/ChrisOh431/astro-remark-eleventy-image"
 homepageUrl: "https://github.com/ChrisOh431/astro-remark-eleventy-image#readme"
-downloads: 69
+downloads: 147
 ---

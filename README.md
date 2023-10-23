@@ -4,7 +4,7 @@ The source code for [astro.build](https://astro.build), built with [Astro](https
 
 ## Updating Themes
 
-The [themes catalog](https://astro.build/themes) is based on the [themes content collection](/src/content/themes/). Optimized images should be saved to the collection's [\_images directory](/src/content/themes/_images/), ideally as format with a `{image}.webp` file at 800px wide and `{image}@2x.webp` at 1600px wide.
+The [themes catalog](https://astro.build/themes/) is based on the [themes content collection](/src/content/themes/). Optimized images should be saved to the collection's [\_images directory](/src/content/themes/_images/), ideally as format with a `{image}.webp` file at 800px wide and `{image}@2x.webp` at 1600px wide.
 
 Theme data is updated weekly by a [GitHub Action](/.github/workflows/weekly.yaml). This action mainly updates the star count in public GitHub repos (used for sorting), but may be updated in the future to update additional theme details.
 
@@ -24,7 +24,7 @@ pnpm update:showcase
 
 ## Updating Integrations
 
-The [integrations catalog](https://atsro.build/integrations) also used a content collection to track known Astro integrations.
+The [integrations catalog](https://astro.build/integrations) also used a content collection to track known Astro integrations.
 
 Integration data is updated weekly by a [GitHub Action](/.github/workflows/weekly.yaml). This action searches NPM and updates existing integrations, adds newly published integrations, and removes deprecated packages. A [JSON config file](/scripts/integrations.json) is used to allow for manual overrides of data published in NPM, most often this is used for adding icons and tweaking description text.
 

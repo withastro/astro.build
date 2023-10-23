@@ -9,9 +9,9 @@ categories:
 npmUrl: "https://www.npmjs.com/package/accessible-astro-components"
 image: "/assets/integrations/accessible-astro-components.png"
 repoUrl: "https://github.com/markteekman/accessible-astro-components"
-featured: 16
+featured: 15
 homepageUrl: "https://accessible-astro.netlify.app/accessible-components/"
-downloads: 3559
+downloads: 3499
 url: "https://components.accessible-astro.dev/"
 badges:
   - "featured"

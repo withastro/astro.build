@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content"
+import { getCollection, type CollectionEntry } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
 import CardGridGroup from "~/components/CardGridGroup.astro"
 import Pagination from "~/components/Pagination.astro"
@@ -33,6 +33,17 @@ function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) 
 	}
 
 	return b.data.stars - a.data.stars
+}
+
+function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
+	const aTime = a.data.publishDate?.getTime()
+	const bTime = b.data.publishDate?.getTime()
+
+	if (!aTime || !bTime) {
+		return sortThemes(a, b)
+	}
+
+	return aTime - bTime
 }
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
@@ -138,7 +149,7 @@ const themes = page.data
 const showRecentlyAdded =
 	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
 const recentlyAdded = showRecentlyAdded
-	? allThemes.filter((entry) => entry.data.badge === "new")
+	? allThemes.filter((entry) => entry.data.badge === "new").sort(sortRecentThemes)
 	: []
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
 recentlyAddedSearch.append("categories[]", "recent")
@@ -160,7 +171,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 		<Fragment slot="sidebar">
 			<SidebarPanel>
 				<SearchFilter
-					indexRoute="/themes"
+					indexRoute="/themes/"
 					groups={[categoryFilter, toolFilter]}
 					search={search}
 					searchPlaceholder="Search for a theme"
