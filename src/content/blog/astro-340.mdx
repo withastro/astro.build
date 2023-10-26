@@ -5,10 +5,14 @@ publishDate: "October 26, 2023"
 authors:
   - erika
   - matthew
-coverImage: "/src/content/blog/_images/astro-330/blog-hero-3_3-release.webp"
-socialImage: "/src/content/blog/_images/astro-330/og-image-3_3-release.webp"
+coverImage: "/src/content/blog/_images/astro-340/post-header-3.4.webp"
+socialImage: "/src/content/blog/_images/astro-340/og-image-3.4.webp"
 lang: "en"
 ---
+
+
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import devOverlay from "/src/content/blog/_images/astro-340/dev-overlay-3.4.webp"
 
 Astro 3.4 is out and features support for page partials, a new experimental dev overlay, and more.
 
@@ -57,6 +61,8 @@ Astro now generates optimized images *concurrently* at build time for static sit
 No code changes are required to take advantage of these improvements.
 
 ## Dev Overlay (experimental)
+
+<BlogContentImage src={devOverlay} alt="The dev overlay showing x-ray mode with a client component highlighted. It shows the client directive being used, and the props passed to the component." />
 
 A new experimental __dev overlay__ is available in 3.4 that allows you to inspect your page islands, see helpful audits on performance and accessibility, and more. A Dev Overlay Plugin API is also included to allow you to add new features and third-party integrations to it.
 
