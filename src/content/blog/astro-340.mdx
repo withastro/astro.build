@@ -1,0 +1,88 @@
+---
+title: "Astro 3.4: Page Partials"
+description: "Astro 3.4 is now released with support for page partials, improved image optimization performance, and an early preview of a new dev overlay."
+publishDate: "October 26, 2023"
+authors:
+  - erika
+  - matthew
+coverImage: "/src/content/blog/_images/astro-340/post-header-3.4.webp"
+socialImage: "/src/content/blog/_images/astro-340/og-image-3.4.webp"
+lang: "en"
+---
+
+
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import devOverlay from "/src/content/blog/_images/astro-340/dev-overlay-3.4.webp"
+
+Astro 3.4 is out and features support for page partials, a new experimental dev overlay, and more.
+
+- **[Page partials](#page-partials)**
+- **[Image optimization performance](#image-component-performance)**
+- **[Dev overlay (experimental)](#dev-overlay-experimental)**
+
+To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 3.4 by running the upgrade command for your package manager of choice:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Page Partials
+
+A page component can now be identified as a **partial** page, which will render its HTML content without including a `<! DOCTYPE html>` declaration nor any `<head>` content.
+
+Partials are best used in conjunction with a rendering library, like [htmx](https://htmx.org/) or [Stimulus](https://stimulus.hotwired.dev/) that is built around fetching HTML fragments.
+
+You can mark any page as a partial by setting the `partial` option in the component frontmatter.
+
+
+```astro
+---
+export const partial = true;
+---
+<li>This is a single list item.</li>
+```
+
+This will result in the following HTML output:
+
+```html
+<li>This is a single list item.</li>
+```
+
+`.astro` files as well as any other page file type that can export a value (e.g. `.mdx`) can be marked as partials.
+
+Read more about [page partials](https://docs.astro.build/en/core-concepts/astro-pages/#partials) in our documentation, and check out this [TodoMVC example](https://github.com/tony-sull/todomvc-astro-htmx) using Astro page partials and htmx.
+
+## Image Component Performance
+
+Astro now generates optimized images *concurrently* at build time for static sites, which can significantly speed up build times for sites with many images.
+
+Additionally, Astro will now reuse the same buffer for all variants of an image. This should improve performance for websites with many variants of the same image, especially when using remote images.
+
+No code changes are required to take advantage of these improvements.
+
+## Dev Overlay (experimental)
+
+<BlogContentImage src={devOverlay} alt="The dev overlay showing x-ray mode with a client component highlighted. It shows the client directive being used, and the props passed to the component." />
+
+A new experimental __dev overlay__ is available in 3.4 that allows you to inspect your page islands, see helpful audits on performance and accessibility, and more. A Dev Overlay Plugin API is also included to allow you to add new features and third-party integrations to it.
+
+This release is focused on the plugin API so that integration authors can begin testing it out and provide feedback. The built-in features are limited at the moment, but be on the lookout for expanded capabilities in upcoming releases!
+
+You can enable access to the dev overlay and its API by adding the following flag to your Astro config:
+
+```ts
+// astro.config.mjs
+export default {
+  experimental: {
+    devOverlay: true
+  }
+};
+```
+
+Read the [Dev Overlay Plugin API documentation](https://docs.astro.build/en/reference/dev-overlay-plugin-reference/) for information about building your own plugins to integrate with Astro's dev overlay.
+
+## Bug Fixes
+
+Additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/pull/8917) to learn more.
