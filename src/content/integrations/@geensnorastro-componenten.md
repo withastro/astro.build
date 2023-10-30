@@ -1,7 +1,7 @@
 ---
 name: "@geensnor/astro-componenten"
 title: "@geensnor/astro-componenten"
-description: "Paar prachtige Astro componenten in Geensnor stijl"
+description: "Pair of beautiful Astro components in Geensnor style"
 categories:
   - "css+ui"
   - "recent"
