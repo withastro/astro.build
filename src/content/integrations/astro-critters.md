@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-critters"
 image: "/assets/integrations/astro-critters.svg"
 repoUrl: "https://github.com/astro-community/AstroCritters"
 homepageUrl: "https://github.com/astro-community/AstroCritters#readme"
-downloads: 8544
+downloads: 12854
 ---

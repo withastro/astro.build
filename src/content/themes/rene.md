@@ -8,7 +8,6 @@ author:
   avatar: "https://d29lra7z8g0m3a.cloudfront.net/5c360fa7-0788-4365-852b-0460eb492096/img/favicon.png"
 categories:
   - "blog"
-  - "recent"
 buyUrl: "https://uipetal.lemonsqueezy.com/checkout/buy/fb3b54dd-be9e-489c-8bc3-80753cf44649"
 demoUrl: "https://rene-astro-react.onrender.com"
 tools:
@@ -17,7 +16,6 @@ tools:
   - "typescript"
   - "mdx"
 publishDate: "September 19, 2023"
-badge: "new"
 ---
 
 <p>

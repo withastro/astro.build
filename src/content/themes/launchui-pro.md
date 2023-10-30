@@ -11,7 +11,6 @@ author:
 categories:
   - "landing-page"
   - "other"
-  - "recent"
 demoUrl: "https://www.creative-tim.com/astro/launch-ui-pro/"
 buyUrl: "https://www.creative-tim.com/astro/launch-ui-pro/#pricing"
 tools:
@@ -19,7 +18,6 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "September 19, 2023"
-badge: "new"
 ---
 
 <p>

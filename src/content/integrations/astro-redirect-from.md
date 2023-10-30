@@ -5,10 +5,8 @@ description: "🎯 Set redirect urls in your frontmatter within your Astro site'
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-redirect-from"
 repoUrl: "https://github.com/kremalicious/astro-redirect-from"
 homepageUrl: "https://kremalicious.com/astro-redirect-from"
-downloads: 966
-badge: "new"
+downloads: 539
 ---

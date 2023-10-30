@@ -10,7 +10,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/anthonylan/astrobrew"
 demoUrl: "https://gentle-liger-f28974.netlify.app"
-stars: 3
+stars: 4
 ---
 
 <p>

@@ -20,6 +20,6 @@ tools:
   - "typescript"
   - "mdx"
 publishDate: "Oct 13, 2023"
-stars: 1
+stars: 8
 badge: "new"
 ---
