@@ -6,7 +6,8 @@ categories:
   - "css+ui"
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-i18n-plus"
-homepageUrl: "https://github.com/jianghong008/astro-i18n-plus"
-downloads: 324
+homepageUrl: "https://github.com/jianghong008/astro-i18n-plus/tree/master/packages/astro-i18n-plus"
+downloads: 74
 badge: "new"
+repoUrl: "https://github.com/jianghong008/astro-i18n-plus"
 ---

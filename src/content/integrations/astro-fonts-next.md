@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-fonts-next"
 repoUrl: "https://github.com/dc7290/astro-fonts-next"
 homepageUrl: "https://github.com/dc7290/astro-fonts-next#readme"
-downloads: 278
+downloads: 312
 ---

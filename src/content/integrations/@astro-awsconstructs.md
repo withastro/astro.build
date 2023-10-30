@@ -10,5 +10,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-aws/constructs"
 repoUrl: "ssh://git@github.com/lukeshay/astro-aws"
 homepageUrl: "https://astro-aws.org/"
-downloads: 375
+downloads: 157
 ---

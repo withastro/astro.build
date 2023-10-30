@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/gd_ui_components"
 homepageUrl: "https://github.com/owner/project#readme"
-downloads: 106
+downloads: 136
 badge: "new"
 ---
