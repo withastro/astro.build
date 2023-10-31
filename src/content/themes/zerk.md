@@ -12,7 +12,7 @@ categories:
   - "portfolio"
   - "recent"
 repoUrl: "https://github.com/Jamship-io/zerk"
-demoUrl: "https:/zerk.vercel.app"
+demoUrl: "https://zerk.vercel.app"
 tools:
   - "tailwind"
 publishDate: "Oct 13, 2023"
