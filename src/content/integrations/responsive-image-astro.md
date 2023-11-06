@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/responsive-image-astro"
 repoUrl: "https://github.com/MrAmericanMike/responsive-image-astro"
 homepageUrl: "https://github.com/MrAmericanMike/responsive-image-astro#readme"
-downloads: 529
+downloads: 533
 badge: "new"
 ---

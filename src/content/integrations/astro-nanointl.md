@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-nanointl"
 repoUrl: "https://github.com/e3stpavel/astro-nanointl"
 homepageUrl: "https://github.com/e3stpavel/astro-nanointl#readme"
-downloads: 108
+downloads: 34
 ---
