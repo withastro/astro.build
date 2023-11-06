@@ -201,8 +201,13 @@ class ShowcaseScraper {
 	async #filterHrefs(hrefs) {
 		const currentSites = await ShowcaseScraper.#getLiveShowcaseUrls()
 		return hrefs.filter((href) => {
-			const { origin } = new URL(href)
-			return !this.#blocklist.has(origin) && !currentSites.has(origin)
+			try {
+				const { origin } = new URL(href)
+				return !this.#blocklist.has(origin) && !currentSites.has(origin)
+			} catch (error) {
+				console.error(`Error parsing URL: ${href}`)
+				return false
+			}
 		})
 	}
 
