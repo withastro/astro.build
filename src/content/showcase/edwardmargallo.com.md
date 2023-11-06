@@ -4,4 +4,5 @@ title: >-
   Lead
 image: /src/content/showcase/_images/edwardmargallo.com.webp
 url: "https://edwardmargallo.com/"
+featured: 30
 ---
