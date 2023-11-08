@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@betahero-org/astro-snipcart-theme"
 repoUrl: "https://github.com/betahero-org/astro-snipcart-theme"
 homepageUrl: "https://github.com/betahero-org/astro-snipcart-theme#readme"
-downloads: 485
+downloads: 494
 badge: "new"
 ---

@@ -4,10 +4,8 @@ title: "astro-social-share"
 description: "Social media share buttons for your Astro site"
 categories:
   - "css+ui"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-social-share"
 repoUrl: "https://github.com/silent1mezzo/astro-social-share"
 homepageUrl: "https://github.com/silent1mezzo/astro-social-share#readme"
-downloads: 1022
-badge: "new"
+downloads: 781
 ---

@@ -10,6 +10,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-tabs"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://xexiu.dev"
-downloads: 2828
+downloads: 3063
 badge: "new"
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-blog"
 repoUrl: "https://github.com/warpsio/astro-blog"
 homepageUrl: "https://github.com/warpsio/astro-blog"
-downloads: 19
+downloads: 7
 ---

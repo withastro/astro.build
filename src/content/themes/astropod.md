@@ -20,6 +20,6 @@ publishDate: "August 28, 2024"
 tools:
   - "tailwind"
   - "mdx"
-stars: 71
+stars: 73
 badge: "new"
 ---

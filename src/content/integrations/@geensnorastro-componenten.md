@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@geensnor/astro-componenten"
 homepageUrl: "https://github.com/geensnor/astro-componenten#readme"
-downloads: 254
+downloads: 257
 badge: "new"
 ---

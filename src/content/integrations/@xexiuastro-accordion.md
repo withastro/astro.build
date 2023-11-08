@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-accordion"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://xexiu.dev"
-downloads: 645
+downloads: 760
 badge: "new"
 ---

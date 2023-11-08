@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-file-icon"
 repoUrl: "https://github.com/hsnfirdaus/astro-file-icon"
 homepageUrl: "https://github.com/hsnfirdaus/astro-file-icon#readme"
-downloads: 47
+downloads: 13
 ---
