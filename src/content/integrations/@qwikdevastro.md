@@ -10,6 +10,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@qwikdev/astro"
 repoUrl: "https://github.com/QwikDev/astro"
 homepageUrl: "https://github.com/QwikDev/astro#readme"
+image: "/assets/integrations/qwik.png"
 downloads: 257
 badge: "new"
 ---
