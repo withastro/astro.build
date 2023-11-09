@@ -91,7 +91,7 @@ Read more about Astro's [experimental i18n routing](https://docs.astro.build/en/
 
 In Astro, in the past prefetch has been available via an official integration (`@astrojs/prefetch`). Today we are bringing pretech into core and expanding what it can do.
 
-You can enable prefetching for your site with the `prefetch: true` config. It is enabled by default when using [View Transitions](https://docs.astro.build/en/guides/view-transitions/) and can also be used to configure the `prefetch` behaviour used by View Transitions.
+You can enable prefetching for your site with the `prefetch: true` config. It is enabled by default when using [View Transitions](https://docs.astro.build/en/guides/view-transitions/) and can also be used to configure the `prefetch` behavior used by View Transitions.
 
 You can enable prefetching by setting `prefetch:true` in your Astro config:
 
@@ -106,7 +106,7 @@ export default defineConfig({
 
 In addition to being a core feature, the new prefetch also comes with more flexibility:
 
-- You can define if prefetch occurs on `tap` (a touch that's not a full click), `hover` and `viewport` (when the element is in view).
+- You can define if prefetch occurs on `tap` (a touch that's not a full click), `hover`, or `viewport` (when the element is in view).
 - You can define which strategy is used on a per-link basis using the `data-astro-prefetch` attribute.
 - You can specify that *all links* are prefetched by default (the existing behavior when using `<ViewTransitions />`).
 - The new prefetch will ignore hovers/scroll that occur quickly, to prevent overfetching content the user is not likely to click.
@@ -164,7 +164,7 @@ Form support works on post `method="get"` and `method="post"` forms.
 Astro assets has continued to under go improvements and in 3.5 we now have:
 
 - Original images are deleted from the final build that are not used outside of the optimization pipeline. For users with a large number of these images (e.g. thumbnails), this should reduce storage consumption and deployment times.
-- A new property, `propertiesToHash`, has been added to allow specifying which properties of `getImage()` / `<Image />` / `<Picture />` should be used for hashing the result files when doing local transformations. For most services, this will include properties such as `src`, `width` or `quality` that directly changes the content of the generated image.
+- A new property, `propertiesToHash`, has been added to allow specifying which properties of `getImage()` / `<Image />` / `<Picture />` should be used for hashing the result files when doing local transformations. For most services, this will include properties such as `src`, `width`, or `quality` that directly change the content of the generated image.
 - The `<Picture />` component will now use `jpg` and `jpeg` respectively as fallback formats when the original image is in those formats. 
 
 ## Integration Hooks to add Middleware
@@ -227,7 +227,7 @@ export default defineConfig({
     shikiConfig: {
       experimentalThemes: {
         light: 'github-light',
-				dark: 'github-dark'
+        dark: 'github-dark'
       }
     }
   }
