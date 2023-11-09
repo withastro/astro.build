@@ -17,15 +17,17 @@ lang: "en"
 import BlogContentImage from "/src/components/BlogContentImage.astro"
 import devOverlay from "/src/content/blog/_images/astro-340/dev-overlay-3.4.webp"
 
-Astro 3.5 is out and features i18n routing, prefetch, and much more! This is one of the biggest minor releases in Astro history. You'll want to get it immediately.
+Astro 3.5 is out today and features new i18n routing, prefetch optimization, and more. This may be one of the biggest minor releases in Astro history!
+
+Release highlights include:
 
 - **[i18n Routing (experimental)](#i18n-routing-experimental)**
 - **[Prefetch](#prefetch)**
-- **[`<form>` support in ViewTransitions](#form-support-in-view-transitions-router)**
+- **[`<form>` support in View Transitions](#form-support-in-view-transitions)**
 - **[Image optimization improvements](#image-optimization-improvements)**
 - **[Integration hooks to add middleware](#integration-hooks-to-add-middleware)**
-- **[Multiple shiki themes (experimental)](#multiple-shiki-themes-experimental)**
-- **[Community Notes](#community-notes)**
+- **[Multiple code themes (experimental)](#multiple-code-themes-experimental)**
+- **[Qwik Support](#qwik-support)**
 
 To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 3.5 by running the upgrade command for your package manager of choice:
 
@@ -117,7 +119,7 @@ Prefetch is enabled by default when using [View Transitions](https://docs.astro.
 
 Visit the [Prefetch guide](https://docs.astro.build/en/guides/prefetch/) for more information.
 
-## Form support in View Transitions router
+## Form support in View Transitions
 
 The `<ViewTransitions />` router can now handle form submissions, allowing the same animated transitions and stateful UI retention on form posts that are already available on `<a>` links. With this addition, your Astro project can have animations in all of these scenarios:
 
@@ -125,7 +127,7 @@ The `<ViewTransitions />` router can now handle form submissions, allowing the s
 - Making stateful changes in forms (e.g. updating site preferences).
 - Manually triggering navigation via the `navigate()` API.
 
-This feature is opt-in for semver reasons and can be enabled by adding the `handleForms` prop to the `<ViewTransitions />` component:
+This feature is currently opt-in, but will be enabled by default starting in Astro 4.0. To enable, add the `handleForms` prop to the `<ViewTransitions />` component on your page:
 
 ```astro
 ---
@@ -159,7 +161,7 @@ Form support works on post `method="get"` and `method="post"` forms.
 
 ## Image optimization improvements
 
-Astro assets has continued to under go improvements and in 3.5 we now have:
+Astro assets has continued to undergo improvements and in 3.5 we now have:
 
 - Original images are deleted from the final build that are not used outside of the optimization pipeline. For users with a large number of these images (e.g. thumbnails), this should reduce storage consumption and deployment times.
 - A new property, `propertiesToHash`, has been added to allow specifying which properties of `getImage()` / `<Image />` / `<Picture />` should be used for hashing the result files when doing local transformations. For most services, this will include properties such as `src`, `width`, or `quality` that directly change the content of the generated image.
@@ -210,7 +212,7 @@ export function myIntegration() {
 }
 ```
 
-## Multiple shiki themes (experimental)
+## Multiple code themes (experimental)
 
 Astro recently upgraded to use the [shikiji](https://github.com/antfu/shikiji) library for syntax highlighting, and we've now added the ability to support multiple themes via a new  `markdown.shikiConfig.experimentalThemes` option.
 
@@ -232,17 +234,15 @@ export default defineConfig({
 });
 ```
 
-## Community notes
+## Qwik Integration
 
-[Qwik](https://qwik.builder.io/), a framework focused on performance, now has an Astro integration! This means you can use Qwik components in your Astro apps and get the benefits of resumability and minimal JavaScript.
-
-You can install the Qwik integration by running:
+From our community, there is now an Astro integration for using [Qwik](https://qwik.builder.io/) with Astro! You can install the Qwik integration by running:
 
 ```shell
 npx astro add @qwikdev/astro
 ```
 
-Or you can install separately and update your config:
+Or you can install the integration yourself, and update your config:
 
 ```js
 // astro.config.mjs
