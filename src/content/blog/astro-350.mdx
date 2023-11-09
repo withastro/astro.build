@@ -87,11 +87,9 @@ Read more about Astro's [experimental i18n routing](https://docs.astro.build/en/
 
 ## Prefetch
 
-[Prefetch](https://developer.mozilla.org/en-US/docs/Glossary/Prefetch) is a browser feature where you can fetch a page that you think your user is likely to visit, and when they go to navigate to that page it will be (partially loaded). For multi-page apps, prefetch is an important part of keeping your site speedy.
+[Prefetch](https://developer.mozilla.org/en-US/docs/Glossary/Prefetch) is a browser feature to fetch pages in advance for your visitors so that they are partially-loaded even before navigation. For multi-page apps, prefetch is an important part of keeping your site speedy.
 
-In Astro, in the past prefetch has been available via an official integration (`@astrojs/prefetch`). Today we are bringing pretech into core and expanding what it can do.
-
-You can enable prefetching for your site with the `prefetch: true` config. It is enabled by default when using [View Transitions](https://docs.astro.build/en/guides/view-transitions/) and can also be used to configure the `prefetch` behavior used by View Transitions.
+Prefetch in Astro had previously been available via an official integration (`@astrojs/prefetch`). Today we are bringing prefetch into core as an opt-in feature, and expanding what it can do.
 
 You can enable prefetching by setting `prefetch:true` in your Astro config:
 
@@ -104,14 +102,14 @@ export default defineConfig({
 })
 ```
 
-In addition to being a core feature, the new prefetch also comes with more flexibility:
+In addition to now being a core feature, the new prefetch also comes with more flexibility:
 
-- You can define if prefetch occurs on `tap` (a touch that's not a full click), `hover`, or `viewport` (when the element is in view).
-- You can define which strategy is used on a per-link basis using the `data-astro-prefetch` attribute.
-- You can specify that *all links* are prefetched by default (the existing behavior when using `<ViewTransitions />`).
-- The new prefetch will ignore hovers/scroll that occur quickly, to prevent overfetching content the user is not likely to click.
+- Configure whether prefetching occurs on `tap` (a touch that's not a full click), `hover`, or upon entering the `viewport`.
+- Define which strategy is used on a per-link basis using the `data-astro-prefetch` attribute.
+- Set prefetching on *all links* by default (the existing behavior when using `<ViewTransitions />`).
+- Ignore hover and scroll events that occur quickly, to prevent overfetching content your visitor is not likely to click.
 
-For `<ViewTransitions />`, the new prefetch also makes it possible to opt-out of prefetch on a per-link basis, something that was not previously possible:
+Prefetch is enabled by default when using [View Transitions](https://docs.astro.build/en/guides/view-transitions/) and the new implementation now makes it possible to opt out of prefetch on a per-link basis:
 
 ```js
 <a href="/logout" data-astro-prefetch="false">Logout</a>
