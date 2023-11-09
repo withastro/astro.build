@@ -1,0 +1,246 @@
+---
+title: "Astro 3.5: i18n Routing"
+description: "Astro 3.5 is out! It includes experimental support for i18n routing, prefetch for speedier page loads, form support with ViewTransitions, image optimization improvements, and more."
+publishDate: "November 8, 2023"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-340/post-header-3.4.webp"
+socialImage: "/src/content/blog/_images/astro-340/og-image-3.4.webp"
+lang: "en"
+---
+
+
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import devOverlay from "/src/content/blog/_images/astro-340/dev-overlay-3.4.webp"
+
+Astro 3.5 is out and features i18n routing, prefetch, and much more! This is one of the biggest minor releases in Astro history. You'll want to get it immediately.
+
+- **[i18n Routing (experimental)](#i18n-routing-experimental)**
+- **[Prefetch](#prefetch-in-astro-core)**
+- **[`<form>` support in ViewTransitions](#form-support-in-view-transitions-router)**
+- **[Image optimization improvements](image-optimization-improvements)**
+- **[Integration hooks to add middleware](#integration-hooks-to-add-middleware)**
+- **[Multiple shiki themes (experimental)](#multiple-shiki-themes-experimental)**
+- **[Community Notes](#community)**
+
+To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 3.5 by running the upgrade command for your package manager of choice:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## i18n Routing (experimental)
+
+It's now easier than ever to build multilingual apps with Astro.
+
+Astro's experimental i18n routing API allows you to add your multilingual content with support for configuring a default language, computing relative page URLs, and accepting preferred languages provided by your visitor's browser. You can also specify fallback languages on a per-language basis so that your visitors can always be directed to existing content on your site.
+
+Enable the experimental routing option by adding an `i18n` object to your Astro configuration with a default location and a list of all languages to support:
+
+```js
+// astro.config.mjs
+import {defineConfig} from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    i18n: {
+      defaultLocale: "en",
+      locales: ["en", "es", "pt-br"]
+    }
+  }
+})
+```
+
+Organize your content folders by locale depending on your `i18n.routingStrategy`, and Astro will handle generating your routes and showing your preferred URLs to your visitors.
+```
+├── src
+│   ├── pages
+│   │   ├── about.astro
+│   │   ├── index.astro
+│   │   ├── es
+│   │   │   ├── about.astro
+│   │   │   ├── index.astro
+│   │   ├── pt-br
+│   │   │   ├── about.astro
+│   │   │   ├── index.astro
+```
+
+Compute relative URLs for your links with `getLocaleRelativeURL` from the new `astro:i18n` module:
+
+```astro
+---
+import {getLocaleRelativeUrl} from "astro:i18n";
+const aboutUrl = getLocaleRelativeUrl("pt-br", "about");
+---
+<p>Learn more <a href={aboutURL}>About</a> this site!</p>
+```
+
+Enabling i18n routing also provides two new properties for browser language detection: `Astro.preferredLocale` and `Astro.preferredLocaleList`. These combine the browser's `Accept-Language` header, and your site's list of supported languages and can be used to automatically respect your visitor's preferred languages.
+
+Read more about Astro's [experimental i18n routing](https://docs.astro.build/en/guides/internationalization/) in our documentation.
+
+## Prefetch
+
+[Prefetch](https://developer.mozilla.org/en-US/docs/Glossary/Prefetch) is a browser feature where you can fetch a page that you think your user is likely to visit, and when they go to navigate to that page it will be (partially loaded). For multi-page apps, prefetch is an important part of keeping your site speedy.
+
+In Astro, in the past prefetch has been available via an official integration (`@astrojs/prefetch`). Today we are bringing pretech into core and expanding what it can do.
+
+You can enable prefetching for your site with the `prefetch: true` config. It is enabled by default when using [View Transitions](https://docs.astro.build/en/guides/view-transitions/) and can also be used to configure the `prefetch` behaviour used by View Transitions.
+
+You can enable prefetching by setting `prefetch:true` in your Astro config:
+
+```js 
+// astro.config.js
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  prefetch: true
+})
+```
+
+In addition to being a core feature, the new prefetch also comes with more flexibility:
+
+- You can define if prefetch occurs on `tap` (a touch that's not a full click), `hover` and `viewport` (when the element is in view).
+- You can define which strategy is used on a per-link basis using the `data-astro-prefetch` attribute.
+- You can specify that *all links* are prefetched by default (the existing behavior when using `<ViewTransitions />`).
+- The new prefetch will ignore hovers/scroll that occur quickly, to prevent overfetching content the user is not likely to click.
+
+For `<ViewTransitions />`, the new prefetch also makes it possible to opt-out of prefetch on a per-link basis, something that was not previously possible:
+
+```js
+<a href="/logout" data-astro-prefetch="false">Logout</a>
+```
+
+Visit the [Prefetch guide](https://docs.astro.build/en/guides/prefetch/) for more information.
+
+## Form support in View Transitions router
+
+The `<ViewTransitions />` router can now handle form submissions, allowing the same animated transitions and stateful UI retention on form posts that are already available on `<a>` links. With this addition, your Astro project can have animations in all of these scenarios:
+
+- Clicking links between pages.
+- Making stateful changes in forms (e.g. updating site preferences).
+- Manually triggering navigation via the `navigate()` API.
+
+This feature is opt-in for semver reasons and can be enabled by adding the `handleForms` prop to the `<ViewTransitions />` component:
+
+```astro
+---
+// src/layouts/MainLayout.astro
+import { ViewTransitions } from 'astro:transitions';
+---
+
+<html>
+  <head>
+    <!-- ... -->
+    <ViewTransitions handleForms />
+  </head>
+  <body>
+    <!-- ... -->
+  </body>
+</html>
+```
+
+Just as with links, if you don't want the routing handling a form submission, you can opt out on a per-form basis with the `data-astro-reload` property:
+
+```astro
+---
+// src/components/Contact.astro
+---
+<form class="contact-form" action="/request" method="post" data-astro-reload>
+  <!-- ...-->
+</form>
+```
+
+Form support works on post `method="get"` and `method="post"` forms.
+
+## Image optimization improvements
+
+Astro assets has continued to under go improvements and in 3.5 we now have:
+
+- Original images are deleted from the final build that are not used outside of the optimization pipeline. For users with a large number of these images (e.g. thumbnails), this should reduce storage consumption and deployment times.
+- A new property, `propertiesToHash`, has been added to allow specifying which properties of `getImage()` / `<Image />` / `<Picture />` should be used for hashing the result files when doing local transformations. For most services, this will include properties such as `src`, `width` or `quality` that directly changes the content of the generated image.
+- The `<Picture />` component will now use `jpg` and `jpeg` respectively as fallback formats when the original image is in those formats. 
+
+## Integration Hooks to add Middleware
+
+It's now possible in Astro for an integration to add middleware on behalf of the user. Previously when a third party wanted to provide middleware, the user would need to create a `src/middleware.ts` file themselves. Now, adding third-party middleware is as easy as adding a new integration.
+
+For integration authors, there is a new `addMiddleware` function in the `astro:config:setup` hook. This function allows you to specify a middleware module and the order in which it should be applied:
+
+```js
+// my-package/middleware.js
+import { defineMiddleware } from 'astro:middleware';
+
+export const onRequest = defineMiddleware(async (context, next) => {
+  const response = await next();
+
+  if(response.headers.get('content-type') === 'text/html') {
+    let html = await response.text();
+    html = minify(html);
+    return new Response(html, {
+      status: response.status,
+      headers: response.headers
+    });
+  }
+
+  return response;
+});
+```
+
+You can now add your integration's middleware and specify that it runs either before or after the application's own defined middleware (defined in `src/middleware.{js,ts}`)
+
+```js
+// my-package/integration.js
+export function myIntegration() {
+  return {
+    name: 'my-integration',
+    hooks: {
+      'astro:config:setup': ({ addMiddleware }) => {
+        addMiddleware({
+          entrypoint: 'my-package/middleware',
+          order: 'pre'
+        });
+      }
+    }
+  };
+}
+```
+
+## Multiple shiki themes (experimental)
+
+Astro recently upgraded to use the [shikiji](https://github.com/antfu/shikiji) library for syntax highlighting, and we've now added the ability to support multiple themes via a new  `markdown.shikiConfig.experimentalThemes` option.
+
+This enables you to more easily define a light and dark mode theme for syntax highlighted code blocks. You might use it like this:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      experimentalThemes: {
+        light: 'github-light',
+				dark: 'github-dark'
+      }
+    }
+  }
+});
+```
+
+## Community notes
+
+[Qwik](https://qwik.builder.io/), a framework focused on performance, now has an Astro integration! This means you can use Qwik components in your Astro apps and get the benefits of an optimized frontend experience.
+
+TODO need links to their announcement
+
+
+## Bug Fixes
+
+Additional bug fixes are included in this release. Check out the [release notes]() to learn more.
