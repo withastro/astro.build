@@ -20,7 +20,6 @@ stars: 3
 badge: "new"
 ---
 
-```html
 <p>
   Jamy Page is a meticulously designed website that embodies modern web development excellence.
   Crafted using Astro and Tailwind, it adheres to best practices, delivering a visually appealing,
@@ -45,4 +44,3 @@ badge: "new"
   In summary, Jamy Page excels in design, performance, and user experience, thanks to its use of
   Astro and Tailwind along with industry best practices.
 </p>
-```
