@@ -13,6 +13,7 @@ demoUrl: "https://astrostarter.zank.studio"
 tools:
   - "alpinejs"
   - "tailwind"
+publishDate: "Nov 9, 2023"
 ---
 
 <h3>Features</h3>

@@ -12,13 +12,14 @@ author:
   name: "PriscaTonia"
   avatar: "https://avatars.githubusercontent.com/u/60774343?v=4"
 categories:
-  - "blog"
+  - "landing"
 repoUrl: "https://github.com/PriscaTonia/interior-design-website"
 demoUrl: "https://interior-design-website-ntb.vercel.app"
 tools:
   - "react"
   - "tailwind"
   - "typescript"
+publishDate: "Nov 9, 2023"
 ---
 
 <p>This lovely website was made with love, as well as Astro, React Js,
