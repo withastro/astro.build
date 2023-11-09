@@ -1,6 +1,6 @@
 ---
 title: "cmd_theme"
-description: 'Personal Blog "cmd_theme"'
+description: "Personal Blog \"cmd_theme\""
 image: "/src/content/themes/_images/cmd_theme-hero.webp"
 images:
   - "/src/content/themes/_images/cmd_theme-2.webp"
@@ -11,7 +11,7 @@ author:
 categories:
   - "blog"
 repoUrl: "https://github.com/onadrog/cmd_theme"
-stars: 24
+stars: 25
 publishDate: "Jun 12, 2023"
 tools:
   - "sass"

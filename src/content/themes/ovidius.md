@@ -1,7 +1,6 @@
 ---
 title: "Ovidius"
-description: "A minimal single-author blog theme made to put content in the first
-  place without any clutter, distraction, and noise.."
+description: "A minimal single-author blog theme made to put content in the first place without any clutter, distraction, and noise."
 image: "/src/content/themes/_images/ovidius-hero.webp"
 images:
   - "/src/content/themes/_images/ovidius-2.webp"
@@ -20,6 +19,7 @@ tools:
   - "mdx"
 publishDate: "Nov 9, 2023"
 badge: "new"
+stars: 6
 ---
 
 <h3>Theme Features</h3>

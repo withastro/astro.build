@@ -18,4 +18,5 @@ tools:
   - "typescript"
 publishDate: "Nov 9, 2023"
 badge: "new"
+stars: 1
 ---
