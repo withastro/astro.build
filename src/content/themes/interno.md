@@ -12,7 +12,7 @@ author:
   name: "PriscaTonia"
   avatar: "https://avatars.githubusercontent.com/u/60774343?v=4"
 categories:
-  - "landing"
+  - "landing-page"
 repoUrl: "https://github.com/PriscaTonia/interior-design-website"
 demoUrl: "https://interior-design-website-ntb.vercel.app"
 tools:
