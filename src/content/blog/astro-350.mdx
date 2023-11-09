@@ -240,6 +240,24 @@ export default defineConfig({
 
 TODO need links to their announcement
 
+You can install the Qwik integration by running:
+
+```shell
+npx astro add @qwikdev/astro
+```
+
+Or you can install separately and update your config:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import qwikdev from '@qwikdev/astro';
+
+export default defineConfig({
+  integrations: [qwikdev()],
+});
+```
+
 
 ## Bug Fixes
 
