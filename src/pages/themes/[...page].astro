@@ -38,12 +38,13 @@ function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) 
 function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
 	const aTime = a.data.publishDate?.getTime()
 	const bTime = b.data.publishDate?.getTime()
+	console.log(a.data.title, aTime, b.data.title, bTime)
 
 	if (!aTime || !bTime) {
 		return sortThemes(a, b)
 	}
 
-	return aTime - bTime
+	return bTime - aTime
 }
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1

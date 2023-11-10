@@ -8,12 +8,10 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/78294042?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/ttomczak3/Milky-Way"
 demoUrl: "https://astro-milky-way.netlify.app/"
-publishDate: "August 28, 2024"
+publishDate: "August 28, 2023"
 stars: 27
-badge: "new"
 ---
 
 <p>
