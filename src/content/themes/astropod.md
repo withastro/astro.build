@@ -13,13 +13,11 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/53962116?v=4"
 categories:
   - "other"
-  - "recent"
 repoUrl: "https://github.com/manuelernestog/astropod"
 demoUrl: "https://getastropod.netlify.app/"
-publishDate: "August 28, 2024"
+publishDate: "August 28, 2023"
 tools:
   - "tailwind"
   - "mdx"
 stars: 73
-badge: "new"
 ---

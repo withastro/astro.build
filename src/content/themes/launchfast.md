@@ -9,7 +9,7 @@ author:
 categories:
   - "landing-page"
   - "recent"
-buyUrl: "https://www.launchfa.st/"
+buyUrl: "https://www.launchfa.st/api/stripe/checkout?template=astro"
 demoUrl: "https://www.launchfa.st/"
 tools:
   - "tailwind"
@@ -50,7 +50,7 @@ badge: "new"
 </ul>
 <p>If you have any questions do not hesitate to reach out on:</p>
 <ul>
-  <li>Twitter.com/rishi_raj_jain_</li>
-  <li>Email: rishi18304@iiitd.ac.in</li>
+  <li>Twitter: <a href="https://twitter.com/rishi_raj_jain_">@rishi_raj_jain_</a></li>
+  <li>Email: <a href="mailto:rishi18304@iiitd.ac.in">rishi18304@iiitd.ac.in</a></li>
 </ul>
 <p>Thank you so much for reading and showing interest on LaunchFast!</p>
