@@ -14,8 +14,8 @@ import ThemeCard from "./_components/ThemeCard.astro"
 
 export const prerender = false
 
-// Sorting priority: featured first, then compare downloads, then sort alphabetically
-function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
+// Sorting priority: featured first, then published date for new themes, then compare downloads, then sort alphabetically
+function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
 	if (a.data.featured && b.data.featured) {
 		return a.data.featured - b.data.featured
 	}
@@ -28,6 +28,10 @@ function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) 
 		return 1
 	}
 
+	if (a.data.badge === "new" && b.data.badge === "new") {
+		return sortRecentThemes(a, b)
+	}
+
 	if (a.data.stars === b.data.stars) {
 		return b.data.title.localeCompare(a.data.title)
 	}
@@ -35,10 +39,9 @@ function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) 
 	return b.data.stars - a.data.stars
 }
 
-function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
+function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
 	const aTime = a.data.publishDate?.getTime()
 	const bTime = b.data.publishDate?.getTime()
-	console.log(a.data.title, aTime, b.data.title, bTime)
 
 	if (!aTime || !bTime) {
 		return sortThemes(a, b)
