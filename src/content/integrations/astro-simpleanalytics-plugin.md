@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-simpleanalytics-plugin"
 repoUrl: "https://github.com/ViorelMocanu/astro-simpleanalytics-plugin"
 homepageUrl: "https://simpleanalytics.com/"
-downloads: 615
+downloads: 728
 badge: "new"
 ---

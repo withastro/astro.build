@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@jcblw/astro-site-integration"
 repoUrl: "ssh://git@github.com/jcblw/astro-vercel-image"
 homepageUrl: "https://github.com/jcblw/astro-vercel-image"
-downloads: 41
+downloads: 51
 ---

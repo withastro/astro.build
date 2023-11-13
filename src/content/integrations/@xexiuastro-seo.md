@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-seo"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://xexiu.dev"
-downloads: 980
+downloads: 1019
 badge: "new"
 ---

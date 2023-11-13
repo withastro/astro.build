@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-tweet"
 homepageUrl: "https://www.npmjs.com/package/astro-tweet"
-downloads: 64
+downloads: 189
 badge: "new"
 ---

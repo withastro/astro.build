@@ -5,10 +5,8 @@ description: "Astro middleware for chinese md page."
 categories:
   - "css+ui"
   - "accessibility"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-middleware-cn"
 repoUrl: "https://github.com/liruifengv/astro-middleware-cn"
 homepageUrl: "https://github.com/liruifengv/astro-middleware-cn#readme"
-downloads: 134
-badge: "new"
+downloads: 17
 ---

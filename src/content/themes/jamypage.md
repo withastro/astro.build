@@ -10,14 +10,12 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/109045797?v=4"
 categories:
   - "ecommerce"
-  - "recent"
 repoUrl: "https://github.com/MINOTAURO18/JamyPage"
 demoUrl: "https://jamy-page.vercel.app/"
 tools:
   - "tailwind"
 publishDate: "Oct 13, 2023"
-stars: 3
-badge: "new"
+stars: 4
 ---
 
 <p>
