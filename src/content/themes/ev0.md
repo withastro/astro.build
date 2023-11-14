@@ -10,7 +10,7 @@ categories:
   - "blog"
   - "recent"
 repoUrl: "https://github.com/gndx/ev0-astro-theme"
-demoUrl: "https://ev0.gndx.io/"
+demoUrl: "https://ev0.gndx.dev/"
 tools:
   - "tailwind"
   - "typescript"
