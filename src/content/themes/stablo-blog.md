@@ -12,7 +12,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/web3templates/stablo-astro"
 demoUrl: "https://stablo-astro.web3templates.com/"
-stars: 65
+stars: 68
 ---
 
 <p>

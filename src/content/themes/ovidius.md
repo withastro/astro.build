@@ -19,7 +19,7 @@ tools:
   - "mdx"
 publishDate: "Nov 9, 2023"
 badge: "new"
-stars: 6
+stars: 8
 ---
 
 <h3>Theme Features</h3>

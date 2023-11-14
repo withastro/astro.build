@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/asmarss"
 repoUrl: "https://github.com/yplog/asmarss"
 homepageUrl: "https://github.com/yplog/asmarss#readme"
-downloads: 60
+downloads: 76
 badge: "new"
 ---

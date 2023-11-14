@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-zod-to-json-schema"
 homepageUrl: "https://www.npmjs.com/package/astro-zod-to-json-schema"
-downloads: 168
+downloads: 175
 badge: "new"
 ---

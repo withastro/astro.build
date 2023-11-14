@@ -12,7 +12,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/6537167?v=4"
 categories:
   - "blog"
-  - "recent"
 repoUrl: "https://github.com/wanoo21/tailwind-astro-starting-blog"
 demoUrl: "https://tasb.yon.fun/"
 tools:
@@ -20,6 +19,5 @@ tools:
   - "typescript"
   - "mdx"
 publishDate: "Oct 13, 2023"
-stars: 10
-badge: "new"
+stars: 15
 ---
