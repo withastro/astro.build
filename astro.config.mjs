@@ -38,6 +38,6 @@ export default defineConfig({
 	},
 	output: "hybrid",
 	adapter: vercel({
-		functionPerRoute: false
+		functionPerRoute: false,
 	}),
 })
