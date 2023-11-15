@@ -1,6 +1,10 @@
 import type { APIRoute } from "astro"
 import { integrations as LAST_MODIFIED } from "~/data/last-modified.json"
-import { getFilteredIntegrations, validateCategories, validCategories } from "~/helpers/integrations.ts"
+import {
+	getFilteredIntegrations,
+	validateCategories,
+	validCategories,
+} from "~/helpers/integrations.ts"
 import { paginate } from "~/helpers/paginate.ts"
 
 export const prerender = false
@@ -12,7 +16,7 @@ const headers = {
 }
 
 export const HEAD: APIRoute = (ctx) => {
-	const modified = ctx.request.headers.get("If-Modified-Since");
+	const modified = ctx.request.headers.get("If-Modified-Since")
 	if (modified === LAST_MODIFIED) {
 		return new Response(null, { status: 304 })
 	}
@@ -20,7 +24,7 @@ export const HEAD: APIRoute = (ctx) => {
 }
 
 export const GET: APIRoute = async (ctx) => {
-	const modified = ctx.request.headers.get("If-Modified-Since");
+	const modified = ctx.request.headers.get("If-Modified-Since")
 	if (modified === LAST_MODIFIED) {
 		return new Response(null, { status: 304 })
 	}

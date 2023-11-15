@@ -34,10 +34,10 @@ function updateLastModified() {
 		path.dirname(fileURLToPath(import.meta.url)),
 		"../src/data/last-modified.json",
 	)
-	const json = fs.readFileSync(pathname, { encoding: 'utf8' })
-	const data = JSON.parse(json);
-	data['integrations'] = new Date().toUTCString();
-	fs.writeFileSync(pathname, JSON.stringify(data, null, '\t'), { encoding: 'utf8' });
+	const json = fs.readFileSync(pathname, { encoding: "utf8" })
+	const data = JSON.parse(json)
+	data["integrations"] = new Date().toUTCString()
+	fs.writeFileSync(pathname, JSON.stringify(data, null, "\t"), { encoding: "utf8" })
 }
 
 function normalizePackageDetails(data, pkg) {

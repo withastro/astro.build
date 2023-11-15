@@ -1,51 +1,58 @@
-
-import { getCollection, type CollectionEntry } from "astro:content";
-import { IntegrationCategories } from "~/content/config.js";
-import type { MapKeys } from "./types.ts";
+import { getCollection, type CollectionEntry } from "astro:content"
+import { IntegrationCategories } from "~/content/config.js"
+import type { MapKeys } from "./types.ts"
 
 export interface IntegrationOptions {
-    search?: string | null;
-    categories?: MapKeys<typeof IntegrationCategories> | null;
+	search?: string | null
+	categories?: MapKeys<typeof IntegrationCategories> | null
 }
 
 export async function getFilteredIntegrations(options: IntegrationOptions = {}) {
-    const { categories: selectedCategories = [], search } = options;
-    const searchRegex = search && new RegExp(search, "i")
-    function integrationsFilter(integration: CollectionEntry<"integrations">) {
-        // if at least one category filter is applied, hide integrations that don't match
-        if (selectedCategories && selectedCategories.length > 0) {
-            if (!integration.data.categories.some((c) => selectedCategories.includes(c as typeof selectedCategories[number]))) {
-                return false
-            }
-        }
+	const { categories: selectedCategories = [], search } = options
+	const searchRegex = search && new RegExp(search, "i")
+	function integrationsFilter(integration: CollectionEntry<"integrations">) {
+		// if at least one category filter is applied, hide integrations that don't match
+		if (selectedCategories && selectedCategories.length > 0) {
+			if (
+				!integration.data.categories.some((c) =>
+					selectedCategories.includes(c as (typeof selectedCategories)[number]),
+				)
+			) {
+				return false
+			}
+		}
 
-        // if a search term was used, filter down checking name/title/description
-        if (searchRegex) {
-            return (
-                searchRegex.test(integration.data.name) ||
-                searchRegex.test(integration.data.title) ||
-                (integration.data.description && searchRegex.test(integration.data.description))
-            )
-        }
+		// if a search term was used, filter down checking name/title/description
+		if (searchRegex) {
+			return (
+				searchRegex.test(integration.data.name) ||
+				searchRegex.test(integration.data.title) ||
+				(integration.data.description && searchRegex.test(integration.data.description))
+			)
+		}
 
-        return true
-    }
+		return true
+	}
 
-    // get integrations, filtered by the applied search & filter, then sort the matches
-    return await getCollection("integrations", integrationsFilter).then((entries) =>
-        entries.sort(sortIntegrations),
-    )
+	// get integrations, filtered by the applied search & filter, then sort the matches
+	return await getCollection("integrations", integrationsFilter).then((entries) =>
+		entries.sort(sortIntegrations),
+	)
 }
 
-export const validCategories = Array.from(IntegrationCategories.keys());
+export const validCategories = Array.from(IntegrationCategories.keys())
 
-export function validateCategories(selectedCategories: string[]): selectedCategories is MapKeys<typeof IntegrationCategories> {
-    for (const selectedCategory of selectedCategories) {
-        if (!validCategories.includes(selectedCategory as MapKeys<typeof IntegrationCategories>[number])) {
-            return false;
-        }
-    }
-    return true;
+export function validateCategories(
+	selectedCategories: string[],
+): selectedCategories is MapKeys<typeof IntegrationCategories> {
+	for (const selectedCategory of selectedCategories) {
+		if (
+			!validCategories.includes(selectedCategory as MapKeys<typeof IntegrationCategories>[number])
+		) {
+			return false
+		}
+	}
+	return true
 }
 
 // Sorting priority: featured first, then compare downloads, then sort alphabetically
