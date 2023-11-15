@@ -1,7 +1,7 @@
 import { defineCollection } from "astro:content"
 import { z } from "zod"
 
-export const IntegrationCategories = new Map<string, string>([
+export const IntegrationCategories = new Map([
 	["featured", "Featured"],
 	["recent", "Recently Added"],
 	["official", "Official"],
@@ -11,9 +11,9 @@ export const IntegrationCategories = new Map<string, string>([
 	["performance+seo", "Performance + SEO"],
 	["analytics", "Analytics"],
 	["accessibility", "Accessibility"],
-])
+] as const)
 
-export const ThemeCategories = new Map<string, string>([
+export const ThemeCategories = new Map([
 	["featured", "Featured"],
 	["recent", "Recently Added"],
 	["official", "Official"],
@@ -24,9 +24,9 @@ export const ThemeCategories = new Map<string, string>([
 	["docs", "Docs"],
 	["minimal", "Minimal"],
 	["other", "Other"],
-])
+] as const)
 
-export const ThemeTools = new Map<string, string>([
+export const ThemeTools = new Map([
 	["alpinejs", "Alpine.js"],
 	["lit", "Lit"],
 	["mdx", "MDX"],
@@ -39,7 +39,7 @@ export const ThemeTools = new Map<string, string>([
 	["tailwind", "Tailwind"],
 	["typescript", "TypeScript"],
 	["vue", "Vue"],
-])
+] as const)
 
 export const themeSchema = z
 	.object({
