@@ -32,7 +32,9 @@ export const GET: APIRoute = async (ctx) => {
 	const getParam = createParamGetter(ctx.url.searchParams)
 	const search = getParam("search")
 	// Replace spaces with `+` because the "+" character is decoded as " "
-	const categories = (getParam("categories[]") ?? []).map(category => category.trim().replace(/\s+/g, '+'))
+	const categories = (getParam("categories[]") ?? []).map((category) =>
+		category.trim().replace(/\s+/g, "+"),
+	)
 
 	// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 	// otherwise, try to parse the page number from the URL
