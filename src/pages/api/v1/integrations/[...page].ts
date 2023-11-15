@@ -1,43 +1,38 @@
----
-import type { CollectionEntry } from "astro:content"
+import type { APIRoute } from "astro"
 import { integrations as LAST_MODIFIED } from "~/data/last-modified.json"
-import { getFilteredIntegrations, validateCategories } from "~/helpers/integrations.ts"
+import { getFilteredIntegrations, validateCategories, validCategories } from "~/helpers/integrations.ts"
 import { paginate } from "~/helpers/paginate.ts"
-import IntegrationCard from "~/pages/integrations/_components/IntegrationCard.astro"
-import "~/styles/tailwind.css"
 
 export const prerender = false
-export const partial = true
 
-const method = Astro.request.method
-const accept = Astro.request.headers.get("Accept") ?? "text/html"
-const modified = Astro.request.headers.get("If-Modified-Since")
 const headers = {
 	accept: "application/json",
 	"cache-control": "public,max-age=604800,s-max-age=604800,stale-while-revalidate=86400",
 	"last-modified": LAST_MODIFIED,
 }
-let integrations: CollectionEntry<"integrations">[] = []
 
-if (method === "HEAD") {
+export const HEAD: APIRoute = (ctx) => {
+	const modified = ctx.request.headers.get("If-Modified-Since");
 	if (modified === LAST_MODIFIED) {
 		return new Response(null, { status: 304 })
 	}
 	return Response.json(null, { headers })
 }
 
-if (method === "GET") {
+export const GET: APIRoute = async (ctx) => {
+	const modified = ctx.request.headers.get("If-Modified-Since");
 	if (modified === LAST_MODIFIED) {
 		return new Response(null, { status: 304 })
 	}
-	const getParam = createParamGetter(Astro.url.searchParams)
+
+	const getParam = createParamGetter(ctx.url.searchParams)
 	const search = getParam("search")
 	const categories = getParam("categories[]") ?? []
 
 	// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 	// otherwise, try to parse the page number from the URL
-	const currentPage = typeof Astro.params.page === "undefined" ? 1 : parseInt(Astro.params.page)
-	const limit = Astro.url.searchParams.get("limit")
+	const currentPage = typeof ctx.params.page === "undefined" ? 1 : parseInt(ctx.params.page)
+	const limit = ctx.url.searchParams.get("limit")
 	let pageSize = 25
 
 	if (limit) {
@@ -68,13 +63,12 @@ if (method === "GET") {
 		pageSize,
 		currentPage,
 		route: "/api/v1/integrations/[...page]",
-		searchParams: Astro.url.searchParams,
+		searchParams: ctx.url.searchParams,
 	})
 
 	const { page, allPages } = paginatedResults
-	integrations = page.data
 
-	// make sure the requested page number is valid, if not redirect to the first page of results
+	// make sure the requested page number is valid
 	if (allPages.length && !page) {
 		return Response.json(
 			{ error: `Invalid request: page ${currentPage} does not exist` },
@@ -82,28 +76,19 @@ if (method === "GET") {
 		)
 	}
 
-	if (accept?.includes("application/json")) {
-		const responseData = {
-			...page,
-			data: page.data.map(({ data }) => {
-				if (data.image) data.image = new URL(data.image, Astro.url).toString()
-				return data
-			}),
-		}
-
-		return Response.json(responseData, { headers })
+	const responseData = {
+		...page,
+		data: page.data.map(({ data }) => {
+			if (data.image) data.image = new URL(data.image, ctx.url).toString()
+			return data
+		}),
 	}
+
+	return Response.json(responseData, { headers })
 }
 
-if (method !== "GET") {
-	return Response.json({ error: `${method} not allowed` }, { status: 405 })
-}
-
-if (!accept?.includes("text/html")) {
-	return Response.json(
-		{ error: `Invalid request: "Accept: ${accept}" is not supported` },
-		{ status: 400 },
-	)
+export const ALL: APIRoute = ({ request }) => {
+	return Response.json({ error: `${request.method} not allowed` }, { status: 405 })
 }
 
 function toInt(str: string): number {
@@ -123,8 +108,3 @@ function createParamGetter(searchParams: URLSearchParams) {
 	}
 	return getter
 }
----
-
-<div>
-	{integrations.map((integration) => <IntegrationCard integration={integration} />)}
-</div>
