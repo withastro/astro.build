@@ -24,7 +24,7 @@ pnpm update:showcase
 
 ## Updating Integrations
 
-The [integrations catalog](https://atsro.build/integrations) also used a content collection to track known Astro integrations.
+The [integrations catalog](https://astro.build/integrations) also used a content collection to track known Astro integrations.
 
 Integration data is updated weekly by a [GitHub Action](/.github/workflows/weekly.yaml). This action searches NPM and updates existing integrations, adds newly published integrations, and removes deprecated packages. A [JSON config file](/scripts/integrations.json) is used to allow for manual overrides of data published in NPM, most often this is used for adding icons and tweaking description text.
 

@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/@astrojs/vercel"
 image: "/assets/integrations/vercel.svg"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/vercel/"
-downloads: 45890
+downloads: 39844
 ---

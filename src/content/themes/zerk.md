@@ -10,14 +10,12 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/145068783?s=200&v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/Jamship-io/zerk"
-demoUrl: "https:/zerk.vercel.app"
+demoUrl: "https://zerk.vercel.app"
 tools:
   - "tailwind"
 publishDate: "Oct 13, 2023"
-stars: 5
-badge: "new"
+stars: 6
 ---
 
 <p>

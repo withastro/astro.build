@@ -1,0 +1,114 @@
+---
+title: "Web Pages in Half The Time"
+description: "Why Microsoft Chose Astro to Build Their Fluent 2 Design System Website"
+seo:
+  title: "Web Pages in Half the Time: Why Microsoft Chose Astro to Build Their Fluent 2 Design System Website"
+  description: "How Microsoft, a household name, made large performance gains using Astro for their Fluent 2 design system website."
+coverGradientFrom: "#4783B5"
+coverGradientTo: "#6CE486"
+publishDate: "October 22, 2023"
+authors:
+  - astro-team
+lang: "en"
+socialImage: /src/content/blog/_images/microsoft/social-image.webp
+coverImage: /src/content/blog/_images/microsoft/cover-image.webp
+headerImage: /src/content/blog/_images/microsoft/header.webp
+---
+
+import microsoftProducts from "./microsoft-products.webp"
+import microsoftFigma from "./microsoft-figma-workflow.webp"
+import videoSrc from "./microsoft-fluent-2-animation.mp4"
+import BlogContentImage from "~/components/BlogContentImage.astro"
+import ImageFigure from "~/components/ImageFigure.astro"
+import Blockquote from "~/components/Blockquote.astro"
+
+<div class="space-y-8 text-white">
+	<div class="text-2xl leading-normal tracking-normal text-astro-gray-100">
+		[Microsoft](https://www.microsoft.com/en-ca) is a household name, creator of such popular tools
+		like the Microsoft Office suite. Their product line includes desktop, web, and mobile products
+		e.g. SDKs for Android and iOS. To keep their visual branding consistent across these products,
+		they rely on their design system [Fluent 2](https://fluent2.microsoft.design/).
+	</div>
+</div>
+
+Their Office Engineering and Experiences teams created the first version of Fluent 3-4 years ago.
+Over the the past 2 years, they have been hard at work on the latest version, Fluent 2. Astro was
+the best framework for the Fluent 2 website due to performance gains with island architecture.
+They were looking for something lightweight that fit in with their existing workflow and tools.
+Astro allowed Microsoft to be agile, helping content editors create and edit content pain-free.
+
+<ImageFigure caption="Logos for Microsoft's products including PowerPoint, Excel and more.">
+	<BlogContentImage src={microsoftProducts} />
+</ImageFigure>
+
+## Challenges
+
+Microsoft made several attempts to build their design docs using other frameworks and CMS. They found
+that these tools were either too rigid, hard to maintain, or migrating was painful. Others did not
+integrate well with their Figma workflow and the design stories they wanted to tell.
+
+The team took a step back to reassess their priorities and determined that they should focus on the
+design system and what architecture they actually needed. It turns out their content and designs
+weren’t suited for a CMS because they had a lot of custom components that they could not reuse.
+They were unique and required engineering input.
+
+<ImageFigure caption="Figma to Markdown workflow.">
+	<BlogContentImage src={microsoftFigma} />
+</ImageFigure>
+
+## Requirements
+
+The team wanted something lightweight and low maintenance on the DevOps side for the Fluent 2 website.
+This tool would have to support their design system library, which had a React version published.
+Extensibility was also important i.e. they wanted to be able to add CMS or DocSearch e.g. Algolia
+later on if they wanted to. Lastly, they wanted to be able to support legacy Storybook iframes to
+share code examples but be able to migrate off them eventually.
+
+## Solution and Implementation
+
+Astro ships zero JavaScript by default, making it perfectly lightweight and performant for Microsoft.
+Being tool agnostic, Astro also supports other frameworks which meant Microsoft could continue to
+support their design system library built with React. In the future, they hope to improve the content
+editing experience by re-adding a CMS. Some of the [CMS’ supported by the Astro ecosystem](https://docs.astro.build/en/guides/cms/) are
+[Storyblok](https://www.storyblok.com/?utm_source=astro&utm_medium=display&utm_campaign=AWA_SPON_ASTR_TRA&utm_content=astro_collab), [CloudCannon](https://cloudcannon.com/astro-cms/?utm_campaign=Astro%20out-of-beta&utm_source=astro-sponsorship), and [Sanity](https://www.sanity.io/guides/sanity-astro-blog).
+
+When asked what was the most advantageous part of choosing Astro, Tudor said the following:
+
+<Blockquote>
+	<Fragment slot="quote">
+		“It’s very important to us that Astro is able to generate fully static files. This is very
+		advantageous for us because we want to be protected from multiple things such as DDoS attacks.
+		So, having a product that relies a lot on a back-end service might cause issues. In these times,
+		having a fully static website, and hosting it on Azure, is very advantageous for security and
+		scalability.”
+	</Fragment>
+	<Fragment slot="caption">— Tudor Popa, Engineering Manager @ Microsoft (Fluent 2)</Fragment>
+</Blockquote>
+
+Astro also made it possible for Microsoft to continue supporting legacy Storybook iframes until the
+team was ready to migrate away. This allowed Microsoft to maintain a good experience for external
+and internal users while they changed their technology stack under the hood.
+
+Microsoft designed and built the new Fluent 2 website with Astro over the course of 10 months,
+including over 200 pages of new content.
+
+## Results
+
+Astro helped the Fluent team build new pages in half the time compared to their previous stack.
+Astro also helped developers and designers on the team stay aligned with the full power of HTML,
+CSS, and JavaScript.
+
+Use of the Fluent 2 design system has since been used across many products in the company including
+Office products, Windows, and Teams. With this setup, Microsoft is able to implement Figma designs
+for a simple page in 20-30 minutes.
+
+<figure class="my-10">
+	<video controls class="rounded border border-neutral-600">
+		<source src={videoSrc} type="video/mp4" />
+		Sorry, your browser doesn't support embedded videos.
+	</video>
+	<figcaption class="my-4 text-center text-sm">
+		Animation showing a word changing from the following words to the next: ideas, creativity,
+		tasks, imagination, and innovation.
+	</figcaption>
+</figure>

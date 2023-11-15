@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@cyberkoalastudios/og-image-generator"
 repoUrl: "https://github.com/CyberKoalaStudios/og-image-generator"
 homepageUrl: "https://github.com/CyberKoalaStudios/og-image-generator#readme"
-downloads: 636
+downloads: 179
 ---

@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-auth/client"
 homepageUrl: "https://www.npmjs.com/package/@astro-auth/client"
-downloads: 200
+downloads: 92
 ---

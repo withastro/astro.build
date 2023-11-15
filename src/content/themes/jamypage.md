@@ -10,17 +10,14 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/109045797?v=4"
 categories:
   - "ecommerce"
-  - "recent"
 repoUrl: "https://github.com/MINOTAURO18/JamyPage"
 demoUrl: "https://jamy-page.vercel.app/"
 tools:
   - "tailwind"
 publishDate: "Oct 13, 2023"
-stars: 0
-badge: "new"
+stars: 4
 ---
 
-```html
 <p>
   Jamy Page is a meticulously designed website that embodies modern web development excellence.
   Crafted using Astro and Tailwind, it adheres to best practices, delivering a visually appealing,
@@ -45,4 +42,3 @@ badge: "new"
   In summary, Jamy Page excels in design, performance, and user experience, thanks to its use of
   Astro and Tailwind along with industry best practices.
 </p>
-```

@@ -7,7 +7,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@sitebender/components"
 repoUrl: "https://github.com/site-bender/components"
 homepageUrl: "https://github.com/site-bender/components#readme"
-downloads: 2288
+downloads: 4166
 badges:
   - "new"
 ---

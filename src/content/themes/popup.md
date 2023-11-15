@@ -11,13 +11,11 @@ author:
   avatar: "https://lemonsqueezy.imgix.net/avatars/stores/43552/3saVQwKcZ5OzwOYRGyUhjmJRhUe6TiyyycMfETvu.png"
 categories:
   - "ecommerce"
-  - "recent"
 buyUrl: "https://theartandcraftco.lemonsqueezy.com/checkout/buy/b11aa27d-9c71-4e0a-8d27-ea0d7208383d"
 demoUrl: "https://www.theartandcraft.co/gallery/popup"
 tools:
   - "tailwind"
 publishDate: "Oct 13, 2023"
-badge: "new"
 ---
 
 <p>

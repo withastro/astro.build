@@ -10,15 +10,13 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/100656622?v=4"
 categories:
   - "blog"
-  - "recent"
 repoUrl: "https://github.com/joackob/nipon-astro-theme"
 demoUrl: "https://joackob.github.io/demo-nipon-theme/"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "September 19, 2023"
-stars: 2
-badge: "new"
+stars: 3
 ---
 
 <p>

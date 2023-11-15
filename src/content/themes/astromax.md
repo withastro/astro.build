@@ -11,7 +11,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/34077176?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/michael-andreuzza/astromax"
 demoUrl: "https://astromax.vercel.app/"
 tools:
@@ -19,8 +18,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "September 19, 2023"
-stars: 16
-badge: "new"
+stars: 31
 ---
 
 <p>

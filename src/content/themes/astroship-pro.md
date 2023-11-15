@@ -14,7 +14,6 @@ author:
 categories:
   - "featured"
   - "landing-page"
-  - "recent"
 buyUrl: "https://web3templates.com/templates/astroship-pro-astro-saas-website-template"
 demoUrl: "https://astroship-pro.web3templates.com/"
 links:
@@ -26,7 +25,6 @@ tools:
 related:
   - "astroship"
 publishDate: "Oct 13, 2023"
-badge: "new"
 ---
 
 <p>

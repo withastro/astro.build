@@ -10,7 +10,6 @@ author:
 categories:
   - "landing-page"
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/riflesso"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/91ad4062-e859-4d98-9e67-5331bb4d095c"
 tools:
@@ -18,7 +17,6 @@ tools:
   - "alpinejs"
   - "mdx"
 publishDate: "September 19, 2023"
-badge: "new"
 ---
 
 <p>✺&nbsp;<strong>Riflesso </strong>&nbsp;━&nbsp;The elegant and minimal agency theme. For those who want to have a modern, dark and badass studio. riflesso is made up of clean and fully customizable elements and layouts, and fully coded pages, enabling you to create great a productised agency website with ease.

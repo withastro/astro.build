@@ -29,6 +29,17 @@ function sanitizeGitHubUrl(url) {
 		.replace("git@github.com:", "https://github.com/")
 }
 
+function updateLastModified() {
+	const pathname = path.resolve(
+		path.dirname(fileURLToPath(import.meta.url)),
+		"../src/data/last-modified.json",
+	)
+	const json = fs.readFileSync(pathname, { encoding: "utf8" })
+	const data = JSON.parse(json)
+	data["integrations"] = new Date().toUTCString()
+	fs.writeFileSync(pathname, JSON.stringify(data, null, "\t"), { encoding: "utf8" })
+}
+
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).map(getCategoriesForKeyword).flat()
 
@@ -143,6 +154,8 @@ ${frontmatter}---\n`,
 ${frontmatter}---\n`,
 		)
 	}
+
+	updateLastModified()
 
 	// logging in case we need to audit the nightly job
 	let stats = `\n--- Update Integrations ---

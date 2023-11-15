@@ -10,7 +10,6 @@ author:
 categories:
   - "landing-page"
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/enlightr/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/e332cf8e-8275-40ad-8888-60ccaea02c0b"
 tools:
@@ -18,7 +17,6 @@ tools:
   - "alpinejs"
   - "mdx"
 publishDate: "September 19, 2023"
-badge: "new"
 ---
 
 <p>The superfun e-learning platform theme around. For those who want to have a modern and dark theme. enlightr is made up of clean and fully customizable elements and layouts, enabling you to create great a productised service website with ease.

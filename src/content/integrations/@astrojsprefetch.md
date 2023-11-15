@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs/prefetch"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/prefetch/"
-downloads: 77714
+downloads: 69853
 ---
