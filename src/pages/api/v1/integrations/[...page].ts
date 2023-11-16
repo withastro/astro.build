@@ -13,6 +13,11 @@ const headers = {
 	accept: "application/json",
 	"cache-control": "public,max-age=604800,s-max-age=604800,stale-while-revalidate=86400",
 	"last-modified": LAST_MODIFIED,
+	"Access-Control-Allow-Credentials": "true",
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "GET,OPTIONS,HEAD",
+	"Access-Control-Allow-Headers":
+		"X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, If-Modified-Since, X-Api-Version",
 }
 
 export const HEAD: APIRoute = (ctx) => {
