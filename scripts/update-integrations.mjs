@@ -13,7 +13,7 @@ import {
 	getFeaturedPackagePriority,
 	getOverlayPackagePriority,
 	getOverrides,
-	isNewPackage
+	isNewPackage,
 } from "./integrations.mjs"
 import { stringifyLinks } from "./markdown.mjs"
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs"
@@ -45,7 +45,7 @@ function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).map(getCategoriesForKeyword).flat()
 
 	const featured = getFeaturedPackagePriority(pkg)
-	const overlay = getOverlayPackagePriority(pkg);
+	const overlay = getOverlayPackagePriority(pkg)
 
 	const otherCategories = [
 		isOfficial(pkg) ? "official" : undefined,
@@ -88,7 +88,7 @@ async function fetchWithOverrides(pkg) {
 		downloads,
 		badge,
 		featured,
-		overlay
+		overlay,
 	}
 }
 
