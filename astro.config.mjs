@@ -17,7 +17,7 @@ const VERCEL_PREVIEW_SITE =
 // https://astro.build/config
 export default defineConfig({
 	site: VERCEL_PREVIEW_SITE || "https://astro.build",
-	trailingSlash: 'always',
+	trailingSlash: "always",
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
