@@ -11,8 +11,9 @@ import {
 	blocklist,
 	getCategoriesForKeyword,
 	getFeaturedPackagePriority,
+	getOverlayPackagePriority,
 	getOverrides,
-	isNewPackage,
+	isNewPackage
 } from "./integrations.mjs"
 import { stringifyLinks } from "./markdown.mjs"
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs"
@@ -44,10 +45,12 @@ function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).map(getCategoriesForKeyword).flat()
 
 	const featured = getFeaturedPackagePriority(pkg)
+	const overlay = getOverlayPackagePriority(pkg);
 
 	const otherCategories = [
 		isOfficial(pkg) ? "official" : undefined,
 		featured ? "featured" : undefined,
+		overlay ? "overlay" : undefined,
 		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean)
 
@@ -77,6 +80,7 @@ async function fetchWithOverrides(pkg) {
 	const downloads = await fetchDownloadsForPackage(pkg)
 	const badge = badgeForPackage(details)
 	const featured = getFeaturedPackagePriority(pkg)
+	const overlay = getOverlayPackagePriority(pkg)
 
 	return {
 		...normalizePackageDetails(details, pkg),
@@ -84,6 +88,7 @@ async function fetchWithOverrides(pkg) {
 		downloads,
 		badge,
 		featured,
+		overlay
 	}
 }
 

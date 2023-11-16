@@ -11,6 +11,7 @@ export const IntegrationCategories = new Map([
 	["performance+seo", "Performance + SEO"],
 	["analytics", "Analytics"],
 	["accessibility", "Accessibility"],
+	["devtools", "Developer Tools"]
 ] as const)
 
 export const ThemeCategories = new Map([

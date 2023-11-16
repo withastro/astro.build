@@ -64,3 +64,8 @@ export function getFeaturedPackagePriority(pkg) {
 	const index = integrations.featured.indexOf(pkg) + 1
 	return index > 0 ? index : undefined
 }
+
+export function getOverlayPackagePriority(pkg) {
+	const index = integrations['overlay'].indexOf(pkg) + 1
+	return index > 0 ? index : undefined
+}
