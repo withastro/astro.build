@@ -8,7 +8,6 @@ categories:
   - "performance+seo"
   - "official"
   - "featured"
-  - "devtools"
 npmUrl: "https://www.npmjs.com/package/@astrojs/partytown"
 image: "/assets/integrations/partytown.svg"
 repoUrl: "https://github.com/withastro/astro"
@@ -17,5 +16,4 @@ homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/partytown/"
 downloads: 53278
 badges:
   - "featured"
-overlay: 3
 ---
