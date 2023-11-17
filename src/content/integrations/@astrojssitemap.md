@@ -7,6 +7,7 @@ categories:
   - "performance+seo"
   - "official"
   - "featured"
+  - "devtools"
 npmUrl: "https://www.npmjs.com/package/@astrojs/sitemap"
 image: "/assets/integrations/sitemap.svg"
 repoUrl: "https://github.com/withastro/astro"
@@ -15,4 +16,5 @@ homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/sitemap/"
 downloads: 185031
 badges:
   - "featured"
+overlay: 2
 ---
