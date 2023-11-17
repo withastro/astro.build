@@ -50,7 +50,7 @@ function normalizePackageDetails(data, pkg) {
 	const otherCategories = [
 		isOfficial(pkg) ? "official" : undefined,
 		featured ? "featured" : undefined,
-		overlay ? "overlay" : undefined,
+		overlay ? "devtools" : undefined,
 		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean)
 
