@@ -29,9 +29,10 @@ export const GET: APIRoute = async (ctx) => {
 		return new Response(null, { status: 304 })
 	}
 	const filteredIntegrations = await getFilteredIntegrations({ overlay: true })
+	const sortedIntegrations = filteredIntegrations.sort((a, b) => a.data.overlay! - b.data.overlay!);
 
 	const responseData = {
-		data: filteredIntegrations.map(({ data }) => {
+		data: sortedIntegrations.map(({ data }) => {
 			if (data.image) data.image = new URL(data.image, ctx.url).toString()
 			return data
 		}),

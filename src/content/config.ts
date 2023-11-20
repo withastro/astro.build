@@ -166,6 +166,7 @@ export const collections = {
 			homepageUrl: z.string().url().optional(),
 			official: z.boolean().default(false),
 			featured: z.number().min(1).optional(),
+			overlay: z.number().min(1).optional(),
 			downloads: z.number().min(0).default(0),
 			badge: z.string().optional(),
 		}),
