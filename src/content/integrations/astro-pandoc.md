@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-pandoc"
 repoUrl: "https://github.com/trashhalo/astro-pandoc"
 homepageUrl: "https://github.com/trashhalo/astro-pandoc#readme"
-downloads: 12
+downloads: 5
 ---

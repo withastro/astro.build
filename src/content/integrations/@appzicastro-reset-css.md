@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@appzic/astro-reset-css"
 repoUrl: "https://github.com/appzic/astro-reset-css"
 homepageUrl: "https://github.com/appzic/astro-reset-css#readme"
-downloads: 187
+downloads: 86
 ---

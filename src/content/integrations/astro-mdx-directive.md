@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-mdx-directive"
 repoUrl: "https://github.com/tetracalibers/astro-mdx-directive"
 homepageUrl: "https://github.com/tetracalibers/astro-mdx-directive#readme"
-downloads: 153
+downloads: 154
 badge: "new"
 ---
