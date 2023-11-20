@@ -15,7 +15,7 @@ tools:
   - "react"
   - "tailwind"
   - "typescript"
-stars: 6
+stars: 7
 ---
 
 <p>
