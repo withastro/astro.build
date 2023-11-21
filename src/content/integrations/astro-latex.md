@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-latex"
 repoUrl: "https://github.com/Destiner/astro-latex"
 homepageUrl: "https://github.com/Destiner/astro-latex#readme"
-downloads: 50
+downloads: 24
 ---

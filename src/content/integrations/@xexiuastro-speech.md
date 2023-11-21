@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-speech"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://xexiu.dev"
-downloads: 1013
+downloads: 1026
 badge: "new"
 ---

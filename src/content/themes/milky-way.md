@@ -11,7 +11,7 @@ categories:
 repoUrl: "https://github.com/ttomczak3/Milky-Way"
 demoUrl: "https://astro-milky-way.netlify.app/"
 publishDate: "August 28, 2023"
-stars: 32
+stars: 34
 ---
 
 <p>

@@ -6,10 +6,8 @@ categories:
   - "css+ui"
   - "performance+seo"
   - "accessibility"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-tabs"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://xexiu.dev"
-downloads: 3146
-badge: "new"
+downloads: 3178
 ---
