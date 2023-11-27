@@ -11,7 +11,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/matt765/Tailcast"
 demoUrl: "https://tailcastsite.netlify.app/"
-stars: 196
+stars: 199
 tools:
   - "react"
   - "tailwind"

@@ -5,10 +5,8 @@ description: "Astro Accordion - HTML, CSS and a bit of javascript made with Cust
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-accordion"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://xexiu.dev"
-downloads: 801
-badge: "new"
+downloads: 812
 ---

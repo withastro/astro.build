@@ -5,10 +5,8 @@ description: "SEO builder with jsonLDGenerator for Astro"
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-seo"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://xexiu.dev"
-downloads: 1219
-badge: "new"
+downloads: 1070
 ---

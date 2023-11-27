@@ -23,6 +23,7 @@ tools:
   - "sass"
 publishDate: "Nov 21, 2023"
 badge: "new"
+stars: 0
 ---
 
 <p><em>Save weeks of time and get a SaaS landing page and blog running in a snap.</em></p>

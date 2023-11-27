@@ -15,7 +15,7 @@ tools:
   - "alpinejs"
   - "tailwind"
 publishDate: "Nov 9, 2023"
-stars: 5
+stars: 12
 badge: "new"
 ---
 

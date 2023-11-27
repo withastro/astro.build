@@ -16,7 +16,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Nov 20, 2023"
-stars: 0
+stars: 8
 badge: "new"
 ---
 

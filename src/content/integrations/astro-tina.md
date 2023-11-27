@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-tina"
 homepageUrl: "https://www.npmjs.com/package/astro-tina"
-downloads: 175
+downloads: 191
 badge: "new"
 ---
