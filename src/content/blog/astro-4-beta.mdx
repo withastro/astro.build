@@ -55,7 +55,7 @@ Check out [this demo](https://events-3bg.pages.dev/) which shows what is possibl
 
 ### Prefetch fallback
 
-Previously when a user was on a slow connection or had the data saver preference enabled there would be no prefetch. In 3.6 we've changed it so that instead prefetch occurs on `tap`. A `tap` occurs when the user begins clicking a link, but before they have released. This gives us just a little bit of a head start on fetching the next page, but only when we're pretty sure the user intends to click.
+Previously when a user was on a slow connection or had the data saver preference enabled, prefetching was entirely disabled. In 3.6 we've changed the prefetch strategy to occur on `tap`: when the user begins clicking a link, but before they have released. This gives us just a little bit of a head start on fetching the next page, but only when we're pretty sure the user intends to click.
 
 ### Bug Fixes
 
