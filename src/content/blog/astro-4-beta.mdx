@@ -1,0 +1,62 @@
+---
+title: "Astro 4.0 Beta Release"
+description: "The first Astro 4.0 beta release is now available for you to try out in any existing Astro project! Stay tuned for more information about the upcoming Astro 4."
+publishDate: "November 27, 2023"
+authors:
+  - matthew
+coverImage: "/src/content/blog/_images/astro-4beta/post-header-4.0beta.webp"
+socialImage: "/src/content/blog/_images/astro-4beta/og-astro4beta.webp"
+lang: "en"
+---
+
+Today we've released the first beta of Astro 4! Those feeling adventurous can install the new beta, review our in-progress upgrade docs, and report any bugs you find to the [Astro discord](https://astro.build/chat).
+
+## What to expect in Astro 4
+
+We are releasing Astro 4 to stay up to date with [Vite](https://vitejs.dev/), our internal build tool. Astro 4 includes the latest version of [Vite 5](https://vitejs.dev/blog/announcing-vite5), which was just released last month.
+
+As Vite 5 is *also* a small major, most projects will be able to upgrade to Astro 4 with only minimal changes to your code if any at all.
+
+Additionally, in Astro 4 we are planning to bring some of the new features we have been working on over the last few months out of experimental status and mark them as stable. Stay tuned for more!
+
+## Trying out the beta
+
+You can try out the new beta in your existing app by installing the `astro@beta` package with your favorite package manager.
+
+```sh
+npm install astro@beta
+pnpm install astro@beta
+yarn install astro@beta
+```
+
+If starting a new project you can also try out the beta by running:
+
+```sh
+npm init astro@beta
+```
+
+Again, substitute with your favorite package manager. We have not completed the upgrade guide yet, but you can already find the most significant changes in the [Astro 4.0 upgrade guide pull request](https://github.com/withastro/docs/pull/5481). You can also follow its related issue which is tracking all breaking changes.
+
+## Astro 3.6
+
+Additionally, we've recently released Astro 3.6 which comes with new events in the `<ViewTransitions />` router as well as fallback for `prefetch` in reduced data scenarios.
+
+### View Transition events
+
+Astro 3.6 adds these three new events as part of the `<ViewTransitions />` router's lifecycle:
+
+`astro:before-preparation` runs immediately before the *preparation* step, where the content of the new page is loaded. This can be used to override the behavior of loading the new page, for example, to show a loading spinner.
+
+`astro:after-preparation` runs after the content has been loaded. This can be used to *stop* a loading spinner if one was added as part of `astro:before-preparation`.
+
+`astro:before-swap` runs immediately before the *swap* step, where the contents of the old page are swapped out in favor of the contents of the new page. This event includes the `event.newDocument` property, a `Document` that you can mutate. One use-case for this event is to set dark mode class names if using `localStorage` to store light/dark mode preferences.
+
+Check out [this demo](https://events-3bg.pages.dev/) which shows what is possible using the new events and see the docs for more information about [all five lifecycle events](https://docs.astro.build/en/guides/view-transitions/#lifecycle-events).
+
+### Prefetch fallback
+
+Previously when a user was on a slow connection or had the data saver preference enabled, prefetching was entirely disabled. In 3.6 we've changed the prefetch strategy to occur on `tap`: when the user begins clicking a link, but before they have released. This gives us just a little bit of a head start on fetching the next page, but only when we're pretty sure the user intends to click.
+
+### Bug Fixes
+
+Additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md#360) to learn more.
