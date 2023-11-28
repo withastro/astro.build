@@ -21,7 +21,15 @@ Additionally, in Astro 4 we are planning to bring some of the new features we ha
 
 ## Trying out the beta
 
-You can try out the new beta in your existing app by installing the `astro@beta` package with your favorite package manager.
+You can try out the beta in your existing app by running our new `@astrojs/upgrade` package. This CLI tool will automatically install the correct version of Astro as well as any official Astro integrations you have installed.
+
+```sh
+npx @astrojs/upgrade beta
+pnpm dlx @astrojs/upgrade beta
+yarn dlx @astrojs/upgrade beta
+```
+
+Alternatively, you can manually install the `astro@beta` package. Be sure to also update any `@astrojs/*` integrations you have installed!
 
 ```sh
 npm install astro@beta
@@ -32,7 +40,7 @@ yarn install astro@beta
 If starting a new project you can also try out the beta by running:
 
 ```sh
-npm init astro@beta
+npm create astro@latest -- --ref next
 ```
 
 Again, substitute with your favorite package manager. We have not completed the upgrade guide yet, but you can already find the most significant changes in the [Astro 4.0 upgrade guide pull request](https://github.com/withastro/docs/pull/5481). You can also follow its related issue which is tracking all breaking changes.
