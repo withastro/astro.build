@@ -111,7 +111,7 @@ class ShowcaseScraper {
 				"",
 				"We couldn’t detect that these sites were built with Astro. You might want to check manually.",
 				"",
-				sites.nonAstro.join(", "),
+				sites.nonAstro.map((site) => `[${new URL(site).host}](${site})`).join(", "),
 			)
 		}
 
