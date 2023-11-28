@@ -111,7 +111,7 @@ class ShowcaseScraper {
 				"",
 				"We couldn’t detect that these sites were built with Astro. You might want to check manually.",
 				"",
-				sites.nonAstro.join(", "),
+				sites.nonAstro.map((site) => `[${new URL(site).host}](${site})`).join(", "),
 			)
 		}
 
@@ -385,6 +385,7 @@ const scraper = new ShowcaseScraper({
 		"https://github.com",
 		"https://user-images.githubusercontent.com",
 		"https://camo.githubusercontent.com",
+		"https://private-user-images.githubusercontent.com",
 		"https://astro.build",
 		"https://pagespeed.web.dev",
 		"https://lighthouse-metrics.com",
