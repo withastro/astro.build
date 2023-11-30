@@ -1,0 +1,162 @@
+---
+title: "What's new in Astro - November 2023"
+description: ""
+publishDate: "November 30, 2023"
+authors:
+  - elian
+coverImage: "/src/content/blog/_images/whats-new-shared.webp"
+socialImage: "/src/content/blog/_images/whats-new-november-2023/og.webp"
+lang: "en"
+---
+
+## Astro releases
+
+### Astro 3.5
+
+- i18n Routing (experimental)
+- Prefetch
+- Content Collections build cache (experimental)
+- `<form>` support in View Transitions
+- Image optimization improvements
+- Integration hooks to add middleware
+- Multiple code themes (experimental)
+- [Qwik integration](https://www.builder.io/blog/astro-qwik)
+
+### Astro 3.6
+
+Three new events now complement the existing `astro:after-swap` and `astro:page-load` events:
+
+```jsx
+astro: before - preparation; // Control how the DOM and other resources of the target page are loaded
+astro: after - preparation; // Last changes before taking off? Remove that loading indicator? Here you go!
+astro: before - swap; // Control how the DOM is updated to match the new page
+```
+
+## Docs
+
+The Docs team is working really hard to migrate the Astro Documentation to Starlight! We have very good news for you! It’s coming next week!
+
+On GitHub, new labels were added to issues and PRs
+
+For issues, you'll still find your old faves `good first issue` and `help wanted`.
+
+But, we've added `help - confirm behaviour` and `help-leave feedback` to our list of labels on PRs.
+All our PRs and issues have been freshly triaged, so if you are looking for ways to contribute, now you have even more guidance! If you think there's a label we're missing that would help you better know how you can help, please us know.
+
+We have a new community-led initiative: building a glossary. [See this issue if you want to participate](https://github.com/withastro/docs/issues/5035)
+
+Our weekly show on Discord called Talking and Doc’ing this month, included:
+
+- Test driving the new Astro Docs in Starlight
+- Reviewing and merging the completed French tutorial
+- Rebuilding the [astro.build](http://astro.build) footer so we could link our new community website
+- Building the Astro v3 to v4 upgrade guide
+
+## Starlight
+
+### Releases & new features
+
+[Starlight](https://starlight.astro.build/) released three minor versions this month! Here are some of the headline features:
+
+- Built-in support for [Expressive Code](https://github.com/hippotastic/expressive-code) code block features.
+- A brand new [plugin API](https://starlight.astro.build/reference/plugins/).
+- Big i18n improvements including in Starlight’s asides, component overrides, and language support for Galician, Hindi, and Romanian.
+- Full compatibility with Astro’s `trailingSlash` amd `build.format` options.
+- Official support for [Algolia DocSearch](https://starlight.astro.build/guides/site-search/).
+
+If you want to know about all the goodies and bug fixes released in Starlight this past month, read the [release notes over on GitHub](https://github.com/withastro/starlight/releases).
+
+### Starlight in the wild
+
+- [react-awesome-reveal.morello.dev](https://react-awesome-reveal.morello.dev/)
+- [notes.alphasoundz.app](https://notes.alphasoundz.app/)
+- [bookshelf.docs.joss.dev](https://bookshelf.docs.joss.dev/)
+- [docs.no550.com](https://docs.no550.com/)
+- [knope.tech](https://knope.tech/)
+- [rec.danmuji.org](https://rec.danmuji.org/)
+- [setup.md](https://www.setup.md/)
+- [syncpack](https://jamiemason.github.io/syncpack/)
+- [suzza.dev](https://www.suzza.dev/)
+- [mysql-to-zod](https://mysql-to-zod.pages.dev/)
+- [Platzi Fake Store API](https://fakeapi.platzi.com/)
+- [TypeSQL](https://typesql.pages.dev/)
+- [WP Engine Atlas Platform](https://developers.wpengine.com/docs/)
+- [Easydev](https://easydev-library.qa.aspirity.com/getting-started/introduction/)
+- [Shelter Protocol](https://shelterprotocol.net/)
+- [Knip](https://knip.dev/)
+- [Ratatui](https://ratatui.rs/)
+- [Chamaeleon](https://chamaeleon-docs.vercel.app/)
+- [Sarah personal site](https://rainsberger.ca/)
+- [Signals.dart](https://rodydavis.github.io/signals.dart/)
+- [Dusa](https://dusa.rocks/docs/)
+
+## Community
+
+### Community Awards October
+
+- 🌟 $500 awarded to Martin for significant core code contributions to the View Transitions feature.
+- 🥳 $250 awarded to JsPark for their work translating the Astro Documentation and Starlight into Korean.
+- 🎉 $250 awarded to Kevin for feature and documentation contributions to Starlight, and other community projects.
+- 🍾 $250 awarded to Florian  for a significant presence and impact in Discord support.
+- 🎊 $250 awarded to Marijn for significant contributions to enhancing the Astro Discord bots.
+
+## Showcase
+
+### Conferences & Videos
+
+- [Elian at CityJS Berlin](https://youtu.be/jOZonLbLfsE?t=28365)
+- [Storyblok x Astro workshop at CityJS Berlin](https://youtu.be/fwSxIbezWzM?t=7714)
+- [Baptiste](https://twitter.com/BDevessier/status/1722734749951672702) did [a talk on Astro & e-commerce](https://www.youtube.com/watch?v=YG8bsKwf9ZU)
+- Kathleen on Astro & MDX and migrating from Gatsby
+    - https://podrocket.logrocket.com/astro-mdx-kathleen-mcmahon
+    - https://www.youtube.com/watch?v=B3qWq_7RwlQ
+
+[Using RESEND (email API) with Astro](https://www.youtube.com/watch?v=HyDwVN1AFwY&t=2s) by Chris Pennington
+
+Rachel Nabors gave our docs team and Starlight a shout out! 💜 https://fxtwitter.com/astrodotbuild/status/1724934718745915558
+
+### Themes
+
+- [Cosmic Themes](https://cosmicthemes.com/) by @lastchaos
+- [Astro Party](https://github.com/hola-soy-milk/astro-party) by @hola_soy_milk
+
+### Websites
+
+- [alexi.sh](https://alexi.sh/) by @alexi.sh
+- [charl.sh](https://charl.sh/) by @aczw
+- [pikhosh.surge.sh](https://pikhosh.surge.sh/) by @pikhosh
+- [espadeiro.pt](https://espadeiro.pt/) by @edswordsmith
+- [lego-demonstration-lloyd.netlify.app](https://lego-demonstration-lloyd.netlify.app/) by @lloyd1000
+- [calpa.me](https://calpa.me/) by @calpaliu.eth
+- [drackwolf.com](https://drackwolf.com/) by @drackwolf
+- [circus-real.vercel.app](https://circus-real.vercel.app/) by @circus_real
+- [garpunkal.dev](https://garpunkal.dev/) by @garpunkal
+- [neta-astrosl.vercel.app](https://neta-astrosl.vercel.app/) by @massv
+- [melos.church](https://melos.church/) by @cameronpak
+- [paperdave.net](https://paperdave.net/) by @paperdave.net
+- [joselove2code.com](https://joselove2code.com/) by @joselove2code
+- [westeroscraft.com](https://westeroscraft.com/) by @geeberry
+- [labs.leaningtech.com](https://labs.leaningtech.com/) by @nanaian
+- [flayks.com](https://flayks.com/) by @flayks
+- [ownclock.app](https://ownclock.app/) by @igloczek.
+- [lucfreelance.com](https://www.lucfreelance.com/) by @lucfreelance
+- [eastgatedigital.co.uk](https://eastgatedigital.co.uk/) by @.neilbee
+- [animeif.netlify.app](https://animeif.netlify.app/) by @infinite_programmer
+- [kievhorst.netlify.app](https://kievhorst.netlify.app/) by @preetam_nl
+- [tucker.xxx](https://www.tucker.xxx/) by @6x17
+- [mstill.dev](https://mstill.dev/) by @klltk
+- [palingenae.github.io](https://palingenae.github.io/) by @aliqqae
+- [shadizx.com](https://www.shadizx.com/) by @shadizx
+- [venger.me](https://venger.me/) by @eugenevenger
+- [pumpkin-kooba.netlify.app](https://pumpkin-kooba.netlify.app/) by @Sean_Smyth
+- [U2 Space Baby GitHub project](https://www.chrsgrrtt.com/u2-space-baby) by @chrsgrrtt
+- [new.aroxbilling.com](https://new.aroxbilling.com/) by @toxin141
+- [florian-lefebvre.dev](https://florian-lefebvre.dev/) by @florian_lefebvre
+- [potatodeveloper.online](https://www.potatodeveloper.online/) by @badh_rush#0730
+- [kreativan.dev](https://kreativan.dev/) by @kreativan.
+
+## The “State of JS” Survey!
+
+It’s a survey to help understand what’s new, what's old, and what async/awaits us in the years to come in the world of JavaScript and its ecosystem.
+
+Fill out the survey here: https://survey.devographics.com/en-US/survey/state-of-js/2023
