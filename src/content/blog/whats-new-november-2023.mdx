@@ -9,28 +9,13 @@ socialImage: "/src/content/blog/_images/whats-new-november-2023/og.webp"
 lang: "en"
 ---
 
-## Astro releases
+## Releases
 
-### Astro 3.5
-
-- i18n Routing (experimental)
-- Prefetch
-- Content Collections build cache (experimental)
-- `<form>` support in View Transitions
-- Image optimization improvements
-- Integration hooks to add middleware
-- Multiple code themes (experimental)
-- [Qwik integration](https://www.builder.io/blog/astro-qwik)
-
-### Astro 3.6
-
-Three new events now complement the existing `astro:after-swap` and `astro:page-load` events:
-
-```jsx
-astro: before - preparation; // Control how the DOM and other resources of the target page are loaded
-astro: after - preparation; // Last changes before taking off? Remove that loading indicator? Here you go!
-astro: before - swap; // Control how the DOM is updated to match the new page
-```
+- [Astro 3.5](https://github.com/withastro/astro/releases/tag/astro%403.5.0): Intergrations can now add other integrations, added `<form>` support and Prefetch. You can also try out the experimental i18n!
+- [Astro 3.6](https://github.com/withastro/astro/releases/tag/astro%403.6.0): This release added three new events to view transitions
+- [Starlight 0.12](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.12.0): Override Starlight’s UI with custom components and a lot of improvements
+- [Starlight 0.13](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.13.0): Built-in support for [Expressive Code](https://github.com/hippotastic/expressive-code) code block features.
+- [Starlight 0.14](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.14.0): Adds a new [plugin API](https://starlight.astro.build/reference/plugins/) and launches official support for [Algolia DocSearch](https://starlight.astro.build/guides/site-search/).
 
 ## Docs
 
@@ -52,44 +37,6 @@ Our weekly show on Discord called Talking and Doc’ing this month, included:
 - Rebuilding the [astro.build](http://astro.build) footer so we could link our new community website
 - Building the Astro v3 to v4 upgrade guide
 
-## Starlight
-
-### Releases & new features
-
-[Starlight](https://starlight.astro.build/) released three minor versions this month! Here are some of the headline features:
-
-- Built-in support for [Expressive Code](https://github.com/hippotastic/expressive-code) code block features.
-- A brand new [plugin API](https://starlight.astro.build/reference/plugins/).
-- Big i18n improvements including in Starlight’s asides, component overrides, and language support for Galician, Hindi, and Romanian.
-- Full compatibility with Astro’s `trailingSlash` amd `build.format` options.
-- Official support for [Algolia DocSearch](https://starlight.astro.build/guides/site-search/).
-
-If you want to know about all the goodies and bug fixes released in Starlight this past month, read the [release notes over on GitHub](https://github.com/withastro/starlight/releases).
-
-### Starlight in the wild
-
-- [react-awesome-reveal.morello.dev](https://react-awesome-reveal.morello.dev/)
-- [notes.alphasoundz.app](https://notes.alphasoundz.app/)
-- [bookshelf.docs.joss.dev](https://bookshelf.docs.joss.dev/)
-- [docs.no550.com](https://docs.no550.com/)
-- [knope.tech](https://knope.tech/)
-- [rec.danmuji.org](https://rec.danmuji.org/)
-- [setup.md](https://www.setup.md/)
-- [syncpack](https://jamiemason.github.io/syncpack/)
-- [suzza.dev](https://www.suzza.dev/)
-- [mysql-to-zod](https://mysql-to-zod.pages.dev/)
-- [Platzi Fake Store API](https://fakeapi.platzi.com/)
-- [TypeSQL](https://typesql.pages.dev/)
-- [WP Engine Atlas Platform](https://developers.wpengine.com/docs/)
-- [Easydev](https://easydev-library.qa.aspirity.com/getting-started/introduction/)
-- [Shelter Protocol](https://shelterprotocol.net/)
-- [Knip](https://knip.dev/)
-- [Ratatui](https://ratatui.rs/)
-- [Chamaeleon](https://chamaeleon-docs.vercel.app/)
-- [Sarah personal site](https://rainsberger.ca/)
-- [Signals.dart](https://rodydavis.github.io/signals.dart/)
-- [Dusa](https://dusa.rocks/docs/)
-
 ## Community
 
 ### Community Awards October
@@ -110,10 +57,9 @@ If you want to know about all the goodies and bug fixes released in Starlight th
 - Kathleen on Astro & MDX and migrating from Gatsby
     - https://podrocket.logrocket.com/astro-mdx-kathleen-mcmahon
     - https://www.youtube.com/watch?v=B3qWq_7RwlQ
-
-[Using RESEND (email API) with Astro](https://www.youtube.com/watch?v=HyDwVN1AFwY&t=2s) by Chris Pennington
-
-Rachel Nabors gave our docs team and Starlight a shout out! 💜 https://fxtwitter.com/astrodotbuild/status/1724934718745915558
+- Ben did a had a chat at Monthly Dev about [Eventbrite from Scratch with Astro x Cloudflare workers](https://www.youtube.com/live/KrauQRdMQLY?si=1xkB4-BxTzGQrxH5&t=2305)
+- [Using RESEND (email API) with Astro](https://www.youtube.com/watch?v=HyDwVN1AFwY&t=2s) by Chris Pennington
+- Rachel Nabors gave our docs team and Starlight a shout out! 💜 https://fxtwitter.com/astrodotbuild/status/1724934718745915558
 
 ### Themes
 
@@ -154,6 +100,30 @@ Rachel Nabors gave our docs team and Starlight a shout out! 💜 https://fxtwitt
 - [florian-lefebvre.dev](https://florian-lefebvre.dev/) by @florian_lefebvre
 - [potatodeveloper.online](https://www.potatodeveloper.online/) by @badh_rush#0730
 - [kreativan.dev](https://kreativan.dev/) by @kreativan.
+
+### Starlight in the wild
+
+- [react-awesome-reveal.morello.dev](https://react-awesome-reveal.morello.dev/)
+- [notes.alphasoundz.app](https://notes.alphasoundz.app/)
+- [bookshelf.docs.joss.dev](https://bookshelf.docs.joss.dev/)
+- [docs.no550.com](https://docs.no550.com/)
+- [knope.tech](https://knope.tech/)
+- [rec.danmuji.org](https://rec.danmuji.org/)
+- [setup.md](https://www.setup.md/)
+- [syncpack](https://jamiemason.github.io/syncpack/)
+- [suzza.dev](https://www.suzza.dev/)
+- [mysql-to-zod](https://mysql-to-zod.pages.dev/)
+- [Platzi Fake Store API](https://fakeapi.platzi.com/)
+- [TypeSQL](https://typesql.pages.dev/)
+- [WP Engine Atlas Platform](https://developers.wpengine.com/docs/)
+- [Easydev](https://easydev-library.qa.aspirity.com/getting-started/introduction/)
+- [Shelter Protocol](https://shelterprotocol.net/)
+- [Knip](https://knip.dev/)
+- [Ratatui](https://ratatui.rs/)
+- [Chamaeleon](https://chamaeleon-docs.vercel.app/)
+- [Sarah personal site](https://rainsberger.ca/)
+- [Signals.dart](https://rodydavis.github.io/signals.dart/)
+- [Dusa](https://dusa.rocks/docs/)
 
 ## The “State of JS” Survey!
 
