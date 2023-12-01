@@ -38,6 +38,7 @@ export const ThemeTools = new Map([
 	["solidjs", "SolidJS"],
 	["svelte", "Svelte"],
 	["tailwind", "Tailwind"],
+	["unocss", "Unocss"],
 	["typescript", "TypeScript"],
 	["vue", "Vue"],
 ] as const)
