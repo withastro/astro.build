@@ -67,4 +67,3 @@ publishDate: "Dec 1, 2023"
   <li>Privacy policy</li>
   <li>Elements</li>
 </ol>
-```

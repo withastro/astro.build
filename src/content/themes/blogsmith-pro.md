@@ -28,7 +28,7 @@ publishDate: "Dec 1, 2023"
   fully featured with things you might want in a blog, such as category and tag support, share
   buttons, related posts, table of contents, SEO, and more.
 </p>
-<p>Key features:</p>
+<h3>Key features</h3>
 <ul>
   <li>MDX Blog</li>
   <li>Categories and category pages</li>
@@ -57,11 +57,11 @@ publishDate: "Dec 1, 2023"
   release, and all future updates. Read more at
   <a href="https://cosmicthemes.com/all-access/">Cosmic Themes All Access</a>
 </p>
-<p>Other Cosmic Themes resources:</p>
+<h3>Other Cosmic Themes resources</h3>
 <ul>
-<li><a href="https://cosmicthemes.com/license/">License</a></li>
-<li><a href="https://cosmicthemes.com/docs/">Documentation</a></li>
-<li><a href="https://cosmicthemes.com/faq/">FAQ</a></li>
+  <li><a href="https://cosmicthemes.com/license/">License</a></li>
+  <li><a href="https://cosmicthemes.com/docs/">Documentation</a></li>
+  <li><a href="https://cosmicthemes.com/faq/">FAQ</a></li>
 </ul>
 <p>
   There is also a free version of this theme available here:
