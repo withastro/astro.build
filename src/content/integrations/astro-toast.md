@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-toast"
 homepageUrl: "https://github.com/julian428/astro-toast"
-downloads: 305
+downloads: 316
 badge: "new"
 ---

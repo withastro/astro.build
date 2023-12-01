@@ -11,7 +11,7 @@ categories:
 repoUrl: "https://github.com/m6v3l9/astro-theme-stone"
 demoUrl: "https://astro-theme-stone.vercel.app/"
 publishDate: "August 28, 2023"
-stars: 62
+stars: 63
 ---
 
 <h2>Key Features:</h2>

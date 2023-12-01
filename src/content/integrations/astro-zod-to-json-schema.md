@@ -5,9 +5,7 @@ description: "Auto-generate JSON schemas from your Astro's Content Collections Z
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-zod-to-json-schema"
 homepageUrl: "https://www.npmjs.com/package/astro-zod-to-json-schema"
-downloads: 180
-badge: "new"
+downloads: 27
 ---
