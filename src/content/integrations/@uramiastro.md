@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@urami/astro"
 repoUrl: "https://github.com/rayriffy/urami"
 homepageUrl: "https://urami.dev/guide/astro"
-downloads: 228
+downloads: 238
 badge: "new"
 ---

@@ -5,10 +5,8 @@ description: "Use the Astro Simple Analytics Plugin to quickly integrate Simple 
 categories:
   - "css+ui"
   - "analytics"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-simpleanalytics-plugin"
 repoUrl: "https://github.com/ViorelMocanu/astro-simpleanalytics-plugin"
 homepageUrl: "https://simpleanalytics.com/"
-downloads: 833
-badge: "new"
+downloads: 610
 ---

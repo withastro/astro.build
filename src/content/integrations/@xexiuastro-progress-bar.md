@@ -5,10 +5,8 @@ description: "HTML, CSS and a bit of javascript made with Custom Elements progre
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-progress-bar"
 repoUrl: "https://github.com/xexiu/astro-components"
-homepageUrl: "https://xexiu.dev"
-downloads: 1123
-badge: "new"
+homepageUrl: "https://github.com/xexiu/astro-components"
+downloads: 959
 ---

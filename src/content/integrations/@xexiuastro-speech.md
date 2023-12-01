@@ -5,10 +5,8 @@ description: "HTML, CSS and a bit of javascript made with Custom Elements astro-
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-speech"
 repoUrl: "https://github.com/xexiu/astro-components"
-homepageUrl: "https://xexiu.dev"
-downloads: 1026
-badge: "new"
+homepageUrl: "https://github.com/xexiu/astro-components"
+downloads: 913
 ---

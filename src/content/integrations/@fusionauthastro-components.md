@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@fusionauth/astro-components"
 repoUrl: "https://github.com/FusionAuth/fusionauth-astro-components"
 homepageUrl: "https://github.com/FusionAuth/fusionauth-astro-components#readme"
-downloads: 231
+downloads: 276
 badge: "new"
 ---
