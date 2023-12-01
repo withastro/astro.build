@@ -7,6 +7,6 @@ categories:
   - "performance+seo"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-accordion"
 repoUrl: "https://github.com/xexiu/astro-components"
-homepageUrl: "https://xexiu.dev"
+homepageUrl: "https://github.com/xexiu/astro-components"
 downloads: 812
 ---
