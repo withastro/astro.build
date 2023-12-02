@@ -148,11 +148,9 @@ import bgImage from "../assets/community_day_2023/bg.png"
 <div class="grid grid-cols-1">
 	{
 		maintainerProjects.map((project) => (
-			<div class="prose mt-4">
-				<p>{project.description}</p>
-
+			<div class="prose my-8">
 				<div class="relative overflow-clip">
-					<div class="absolute z-10 flex w-full items-center justify-between border-b-[0.15px] border-gray-500 px-8 py-4">
+					<div class="absolute z-20 flex w-full items-center justify-between border-b-[0.15px] border-gray-500 px-8 py-4">
 						<p class="font-obviously text-lg font-medium text-white">{project.name}</p>
 						<span class="flex items-center gap-2">
 							<svg
@@ -169,7 +167,8 @@ import bgImage from "../assets/community_day_2023/bg.png"
 								/>
 							</svg>
 							<a
-								class="overflow-clip font-mono text-sm font-normal text-[#BFC1C9] no-underline"
+								target="_blank"
+								class="font-mono text-sm font-normal text-[#BFC1C9] no-underline"
 								href={project.link}
 							>
 								{project.link}
@@ -187,11 +186,8 @@ import bgImage from "../assets/community_day_2023/bg.png"
 					) : null}
 					<Image class="relative z-0" src={bgImage} alt="" />
 				</div>
-
-				<blockquote>{project.fact}</blockquote>
-				<a href={project.link} target="_blank">
-					Read More
-				</a>
+				<p>{project.description}</p>
+				<blockquote class="border-l pl-2">{project.fact}</blockquote>
 			</div>
 		))
 	}
