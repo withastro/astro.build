@@ -15,5 +15,5 @@ homepageUrl: "https://github.com/astro-community/AstroCompress#readme"
 downloads: 36381
 badges:
   - "featured"
-overlay: 4
+toolbar: 4
 ---

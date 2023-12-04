@@ -15,5 +15,5 @@ homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/mdx/"
 downloads: 166293
 badges:
   - "featured"
-overlay: 3
+toolbar: 3
 ---

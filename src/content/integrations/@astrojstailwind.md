@@ -15,5 +15,5 @@ homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/tailwind/"
 downloads: 274509
 badges:
   - "featured"
-overlay: 1
+toolbar: 1
 ---

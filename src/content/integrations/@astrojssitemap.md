@@ -16,5 +16,5 @@ homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/sitemap/"
 downloads: 180835
 badges:
   - "featured"
-overlay: 2
+toolbar: 2
 ---

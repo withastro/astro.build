@@ -14,5 +14,5 @@ homepageUrl: "https://github.com/storyblok/storyblok-astro"
 downloads: 6142
 badges:
   - "featured"
-overlay: 5
+toolbar: 5
 ---
