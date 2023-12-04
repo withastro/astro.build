@@ -6,7 +6,6 @@ categories:
   - "css+ui"
   - "performance+seo"
   - "featured"
-  - "devtools"
 npmUrl: "https://www.npmjs.com/package/astro-compress"
 image: "/assets/integrations/astro-compress.svg"
 repoUrl: "https://github.com/astro-community/AstroCompress"
@@ -15,5 +14,4 @@ homepageUrl: "https://github.com/astro-community/AstroCompress#readme"
 downloads: 36381
 badges:
   - "featured"
-toolbar: 4
 ---
