@@ -5,16 +5,16 @@ import type { MapKeys } from "./types.ts"
 export interface IntegrationOptions {
 	search?: string | null
 	categories?: MapKeys<typeof IntegrationCategories> | null
-	overlay?: boolean
+	toolbar?: boolean
 }
 
 export async function getFilteredIntegrations(options: IntegrationOptions = {}) {
-	const { categories: selectedCategories = [], overlay = false, search } = options
+	const { categories: selectedCategories = [], toolbar = false, search } = options
 	const searchRegex = search && new RegExp(search, "i")
 	function integrationsFilter(integration: CollectionEntry<"integrations">) {
 		// Overlay doesn't support categories or search (for now)
-		if (overlay) {
-			return integration.data.overlay !== undefined
+		if (toolbar) {
+			return integration.data.toolbar !== undefined
 		}
 		// if at least one category filter is applied, hide integrations that don't match
 		if (selectedCategories && selectedCategories.length > 0) {
