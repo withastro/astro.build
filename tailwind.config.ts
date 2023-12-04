@@ -165,15 +165,15 @@ export default {
 				},
 
 				".heading-1": {
-					"@apply font-obviously text-7xl leading-tight": {},
-				},
-
-				".heading-2": {
 					"@apply font-obviously text-6xl leading-tight": {},
 				},
 
+				".heading-2": {
+					"@apply font-obviously text-5xl leading-tight": {},
+				},
+
 				".heading-3": {
-					"@apply font-obviously text-4xl leading-tight": {},
+					"@apply font-obviously text-3xl leading-tight": {},
 					fontSize: "32px",
 				},
 
