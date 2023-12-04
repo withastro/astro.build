@@ -1,3 +1,3 @@
-export * from '../dev-toolbar/[...page].ts';
+export * from "../dev-toolbar/[...page].ts"
 
-export const prerender = false;
+export const prerender = false
