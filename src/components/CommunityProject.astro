@@ -10,9 +10,10 @@ export interface Props {
 	description: string
 	fact: string
 	img?: ImageMetadata
+	linkTextOverride?: string
 }
 
-const { creator, github, name, link, description, fact, img } = Astro.props
+const { creator, github, name, link, description, fact, img, linkTextOverride } = Astro.props
 ---
 
 <div class="grid grid-cols-1">
@@ -40,7 +41,7 @@ const { creator, github, name, link, description, fact, img } = Astro.props
 						class="font-mono text-xs font-normal text-[#BFC1C9] no-underline xl:text-sm"
 						href={link}
 					>
-						{link}
+						{linkTextOverride || link}
 					</a>
 				</span>
 			</div>
