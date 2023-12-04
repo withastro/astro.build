@@ -46,11 +46,12 @@ function normalizePackageDetails(data, pkg) {
 
 	const featured = getFeaturedPackagePriority(pkg)
 	const toolbar = getToolbarPackagePriority(pkg)
+	const official = isOfficial(pkg)
 
 	const otherCategories = [
-		isOfficial(pkg) ? "official" : undefined,
+		official ? "official" : undefined,
 		featured ? "featured" : undefined,
-		toolbar ? "devtools" : undefined,
+		toolbar ? "toolbar" : undefined,
 		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean)
 
@@ -70,6 +71,7 @@ function normalizePackageDetails(data, pkg) {
 		npmUrl,
 		repoUrl,
 		homepageUrl,
+		official: official === true ? true : undefined,
 	}
 }
 
