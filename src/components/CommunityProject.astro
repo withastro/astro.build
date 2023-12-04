@@ -19,12 +19,12 @@ const { creator, github, name, link, description, fact, img } = Astro.props
 	<div class="prose my-8">
 		<div class="relative overflow-clip">
 			<div
-				class="absolute z-20 flex w-full items-center justify-between border-b-[0.15px] border-gray-500 px-8 py-4"
+				class="absolute z-20 flex w-full items-center justify-between border-b-[0.15px] border-gray-500 px-2 py-2 xl:px-8 xl:py-4"
 			>
-				<p class="font-obviously text-lg font-medium text-white">{name}</p>
+				<p class="font-obviously text-sm font-medium text-white xl:text-lg">{name}</p>
 				<span class="flex items-center gap-2">
 					<svg
-						class="h-4 w-4"
+						class="h-2 w-2 xl:h-4 xl:w-4"
 						width="25"
 						height="24"
 						viewBox="0 0 25 24"
@@ -37,7 +37,7 @@ const { creator, github, name, link, description, fact, img } = Astro.props
 					</svg>
 					<a
 						target="_blank"
-						class="font-mono text-sm font-normal text-[#BFC1C9] no-underline"
+						class="font-mono text-xs font-normal text-[#BFC1C9] no-underline xl:text-sm"
 						href={link}
 					>
 						{link}
@@ -46,7 +46,13 @@ const { creator, github, name, link, description, fact, img } = Astro.props
 			</div>
 			{
 				img ? (
-					<Image alt="" class="absolute z-10 px-32 pt-24" src={img} width={1600} height={900} />
+					<Image
+						alt=""
+						class="absolute z-10 px-10 pt-12 xl:px-32 xl:pt-24"
+						src={img}
+						width={1600}
+						height={900}
+					/>
 				) : null
 			}
 			<Image class="relative z-0" src={bgImage} alt="" />
