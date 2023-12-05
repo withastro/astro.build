@@ -14,7 +14,7 @@ categories:
   - "portfolio"
 repoUrl: "https://github.com/michael-andreuzza/swissfolio"
 demoUrl: "https://swissfolio.vercel.app/"
-stars: 40
+stars: 41
 publishDate: "Jun 12, 2023"
 tools:
   - "tailwind"

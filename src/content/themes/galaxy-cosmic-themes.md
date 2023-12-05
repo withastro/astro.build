@@ -1,11 +1,12 @@
 ---
 title: "Galaxy"
-description: "A stunning SaaS theme for Astro to introduce your next startup. Build with Astro and Tailwind CSS."
+description: "A stunning SaaS theme for Astro using Tailwind CSS, with a blog. Multiple landing pages and sections to make it yours."
 image: "/src/content/themes/_images/galaxy-cosmic-themes-hero.webp"
 images:
   - "/src/content/themes/_images/galaxy-cosmic-themes-2.webp"
   - "/src/content/themes/_images/galaxy-cosmic-themes-3.webp"
   - "/src/content/themes/_images/galaxy-cosmic-themes-4.webp"
+  - "/src/content/themes/_images/galaxy-cosmic-themes-5.webp"
 author:
   url: "https://cosmicthemes.com/"
   name: "Cosmic Themes"
@@ -23,6 +24,7 @@ tools:
   - "sass"
 publishDate: "Nov 21, 2023"
 badge: "new"
+stars: 0
 ---
 
 <p><em>Save weeks of time and get a SaaS landing page and blog running in a snap.</em></p>
@@ -53,7 +55,7 @@ badge: "new"
     <a href="https://twitter.com/BowTiedWebReapr">x.com/bowtiedwebreapr</a> or
     <a href="https://twitter.com/cosmic_themes">x.com/cosmic_themes</a>
   </li>
-  <li>email: creator@cosmicthemes.com</li>
+  <li><a href="mailto:creator@cosmicthemes.com">creator@cosmicthemes.com</a></li>
 </ul>
 <p>
   On Cosmic Themes, there is also a bundle that includes all existing themes, all new themes that

@@ -1,6 +1,6 @@
 ---
 title: "Astro Big Doc"
-description: "Astro Theme that can scale for big documentation websites. Includes an unimited depth config menu that starts with a top appbar for sections navigation, then continues on a tree left menu for pages."
+description: "Astro Theme for big doc websites. Hierarchical pages menu from files structure, table of content, Markdown rendered as CMS with Astro components for panzoom, 3D, links, interactive tables and more."
 image: "/src/content/themes/_images/astro-big-doc.webp"
 images: []
 author:
@@ -10,8 +10,6 @@ author:
 categories:
   - "docs"
 repoUrl: "https://github.com/MicroWebStacks/astro-big-doc"
-demoUrl: "https://microwebstacks.github.io/astro-big-doc/"
+demoUrl: "https://astro-big-doc.netlify.app"
 stars: 33
-tools:
-  - "mdx"
 ---

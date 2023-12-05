@@ -8,6 +8,6 @@ categories:
   - "accessibility"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-modal"
 repoUrl: "https://github.com/xexiu/astro-components"
-homepageUrl: "https://xexiu.dev"
-downloads: 2434
+homepageUrl: "https://github.com/xexiu/astro-components"
+downloads: 965
 ---

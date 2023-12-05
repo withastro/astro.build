@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-dev-only-routes"
 repoUrl: "https://github.com/MoustaphaDev/astro-dev-only-routes"
 homepageUrl: "https://github.com/MoustaphaDev/astro-dev-only-routes/tree/main/packages/integration/readme.md"
-downloads: 13
+downloads: 17
 ---

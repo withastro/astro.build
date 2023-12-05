@@ -8,6 +8,6 @@ categories:
   - "accessibility"
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-tabs"
 repoUrl: "https://github.com/xexiu/astro-components"
-homepageUrl: "https://xexiu.dev"
-downloads: 3178
+homepageUrl: "https://github.com/xexiu/astro-components"
+downloads: 1146
 ---
