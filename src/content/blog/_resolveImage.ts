@@ -1,5 +1,5 @@
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
-	"/src/content/blog/_images/**/*.{png,jpg,jpeg,webp}",
+	"/src/content/{blog,caseStudies}/_images/**/*.{png,jpg,jpeg,webp}",
 )
 
 export async function resolveBlogImage(url: string | undefined) {
