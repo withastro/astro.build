@@ -27,9 +27,9 @@ const { Content } = await render()
 const coverImage = await resolveCoverImage(post)
 const socialImage = await resolveSocialImage(post)
 
-const authors = await Promise.all(
-	data.authors.map((author) => getEntry("authors", author)),
-).then((authors) => authors.filter(Boolean) as CollectionEntry<"authors">[])
+const authors = await Promise.all(data.authors.map((author) => getEntry("authors", author))).then(
+	(authors) => authors.filter(Boolean) as CollectionEntry<"authors">[],
+)
 
 const gradients = [
 	"bg-red-pink-gradient",
@@ -57,13 +57,13 @@ const placeholderGradient = randomFromArray(gradients)
 					loading="lazy"
 					decoding="async"
 					alt=""
-					class="w-full"
+					class="min-h-[240px] w-full object-cover"
 				/>
 			</div>
 		) : (
 			<div
 				class:list={[
-					"z-blur w-full h-64 -mb-56 md:h-64 md:-mb-52 lg:h-96 lg:-mb-80",
+					"z-blur -mb-56 h-64 w-full md:-mb-52 md:h-64 lg:-mb-80 lg:h-96",
 					placeholderGradient,
 				]}
 			/>
@@ -72,14 +72,16 @@ const placeholderGradient = randomFromArray(gradients)
 
 	<div class="grid-container relative mx-auto max-w-screen-lg md:z-10">
 		<div
-			class="mx-auto w-fit max-w-full bg-black py-5 sm:py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
+			class="mx-auto w-fit max-w-full bg-black py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
 		>
 			<header class="mx-auto w-full max-w-prose text-center">
 				<time class="code text-astro-gray-200" datetime={data.publishDate.toISOString()}>
 					{format(data.publishDate, "MMMM d, yyyy")}
 				</time>
 				<h1 class="heading-3 mb-4 mt-2 md:heading-2 sm:mb-5 sm:mt-3">{data.title}</h1>
-				<div class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200">
+				<div
+					class="code flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-astro-gray-200 md:gap-y-4"
+				>
 					<span>By</span>
 					{
 						authors.map((author) => {
@@ -93,7 +95,7 @@ const placeholderGradient = randomFromArray(gradients)
 					}
 				</div>
 			</header>
-			<hr class="-mx-16 my-16 border-astro-gray-500" />
+			<hr class="-mx-16 my-8 border-astro-gray-500 lg:my-16" />
 			<article class="prose">
 				<Content />
 			</article>
