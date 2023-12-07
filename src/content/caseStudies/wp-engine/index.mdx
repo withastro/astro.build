@@ -1,0 +1,95 @@
+---
+title: "Slashing Development Costs"
+description: "How WP Engine Lowered Development Costs by Over 50% with Astro’s Starlight"
+seo:
+  title: "Slashing Development Costs: How WP Engine Lowered Development Costs by Over 50% with Astro’s Starlight"
+  description: "How Microsoft, a household name, made large performance gains using Astro for their Fluent 2 design system website."
+coverGradientFrom: "#3245FF"
+coverGradientTo: "#BC52EE"
+publishDate: "December 7, 2023"
+authors:
+  - astro-team
+lang: "en"
+socialImage: /src/content/blog/_images/wp-engine/social-image.webp
+coverImage: /src/content/blog/_images/wp-engine/cover-image.webp
+headerImage: /src/content/blog/_images/wp-engine/header.webp
+---
+
+import wpEngineResults from "./wp-engine-results-summary.webp"
+import starlightHomepage from "./starlight-homepage.webp"
+import starlightDocsExample from "./starlight-docs-example.webp"
+import dependabotBeforeAfter from "./dependabot-before-after.webp"
+import BlogContentImage from "~/components/BlogContentImage.astro"
+import ImageFigure from "~/components/ImageFigure.astro"
+import Blockquote from "~/components/Blockquote.astro"
+
+<div class="space-y-8 text-white">
+	<div class="text-2xl leading-normal tracking-normal text-astro-gray-100">
+		WP Engine is the world’s largest managed WordPress hosting provider. [8% of all humans online
+		visit a WP Engine site each day](https://wpengine.com/blog/all-hands-2021-one-day-day-one/).
+		Maintaining good documentation is essential at that scale. But the WP Engine team had a problem:
+		they were spending more time maintaining their docs codebase than writing actual documentation.
+		Something had to change.
+	</div>
+</div>
+
+[Starlight](https://starlight.astro.build/) is a full-featured, eco-friendly, accessible-by-default documentation theme built on [Astro](https://astro.build/). WP Engine chose Starlight to build their new documentation site for [Atlas](https://developers.wpengine.com/docs/atlas/overview/), WP Engine's hosting solution for Headless WordPress apps. The results speak for themselves.
+
+Starlight enabled the Atlas team to move twice as fast and lowered development costs by over 50%. Today, the team spends 95% of their time on content and almost zero time on code maintenance and configuration.
+
+<ImageFigure caption="Content operations are twice as fast while development costs have reduced by over 50%.">
+	<BlogContentImage src={wpEngineResults} />
+</ImageFigure>
+
+## Challenges
+
+There were three main issues WP Engine had with their previous docs site.
+
+First, their docs used to be kept in a separate GitHub MDX repo from the Next.js shell that ingested those files. Every time MDX files were changed, it did not trigger automatic site rebuilds or previews. To work around this, the team had a dedicated development environment where they tested changes before deploying. However, this meant additional Git branch management.
+
+Second, both visual and functional changes to the docs site took a long time. On top of that, the previous docs site did not look great and did not have all features they wanted users to have.
+
+Third, because of the MDX to React solution, only developers could contribute. This prevented key docs contributors such as PMs or customer support folks from making changes themselves.
+
+## Requirements
+
+To solve WP Engine’s three major challenges, they needed a low barrier-to-entry solution that improved ease of use for both docs maintainers and contributors. It needed to be something that removed unnecessary time spent on front-end development as a barrier to good docs.
+
+Thankfully for the team, Jeff Everhart, a developer advocate at WP Engine, knew of a solution.
+
+## Solution and Implementation
+
+In August 2023, Astro had launched Starlight on Product Hunt to provide an open-source web framework for building modern documentation websites. Jeff was familiar with Astro but hadn’t had a good reason to use it yet. Starlight provided the perfect opportunity.
+
+<ImageFigure caption="Homepage for Starlight.">
+	<BlogContentImage src={starlightHomepage} />
+</ImageFigure>
+
+Starlight was perfect for WP Engine because it came with every repeatable element they needed. It came with navigation, search, i18n, syntax highlighting, dark mode, and more out of the box. What’s more, every single element looked good! There were also many customization options including being able to easily specify light and dark mode logos. This was all possible without having to write much custom CSS, if at all. This would make it possible for WP Engine to focus primarily on writing content instead of spending several sprints building user interfaces.
+
+<ImageFigure caption="Docs example for Starlight.">
+	<BlogContentImage src={starlightDocsExample} />
+</ImageFigure>
+
+The Starlight framework was also a fully static solution shipping only HTML. This lowered the onboarding time for both docs maintainers and contributors when making changes to the site because both parties did not have to learn Javascript nor React to ship something.
+
+Migrating off their previous solution and into Astro was virtually painless. All Jeff’s team had to do was copy the existing folder of ~100 MDX files into the Starlight template and they had a live site. They could manage everything they needed through a config and a simple CSS stylesheet. It took minimal training for their docs team to onboard onto Starlight because of how easy it was to use.
+
+## Results
+
+With WP engine’s previous solution, their team spent more time managing the docs site than working with actual content. If the ratio of writing content vs. managing the site was 30:70 before, it was now closer to 95:5. Astro’s Starlight framework reduced friction by such an order of magnitude that a PM on WP Engine’s team had this to say about the new web framework:
+
+<Blockquote>
+	<Fragment slot="quote">
+		“It's just so much better in terms of experience for our customers but it also saved SO MANY
+		HOURS of my life that I'd otherwise have to spend meticulously testing and shaping new pages to
+		Atlas docs.”
+	</Fragment>
+	<Fragment slot="caption">— Product Manager at WP Engine</Fragment>
+</Blockquote>
+
+WP Engine’s content operations is **more than 2x faster** as a result of removing so many Git procedures and manual testing steps. Because the process is easier, people are also more willing to contribute. Starlight also helped **lower their development costs by more than 50%** because it provided all of the UI elements WP Engine needed out of the box. Keeping their solution up-to-date is also significantly easier than before. Previously, they would have to manage several dependencies related to different UI elements i.e. drop downs. As a result, they had much more Dependabot tickets to resolve. With Starlight, they only have to update a single framework.
+
+<ImageFigure caption="Before: many Dependabot tickets. After: 0 open tickets.">
+	<BlogContentImage src={dependabotBeforeAfter} />
+</ImageFigure>
