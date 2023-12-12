@@ -23,9 +23,6 @@ export default defineConfig({
 		mdx(),
 		sitemap(),
 	],
-	prefetch: {
-		defaultStrategy: "hover",
-	},
 	markdown: {
 		shikiConfig: {
 			theme: JSON.parse(fs.readFileSync("./houston.theme.json", { encoding: "utf-8" })),
