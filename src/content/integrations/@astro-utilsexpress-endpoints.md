@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-utils/express-endpoints"
 repoUrl: "https://github.com/withastro-utils/utils"
 homepageUrl: "https://withastro-utils.github.io/docs/"
-downloads: 308
+downloads: 337
 badge: "new"
 ---

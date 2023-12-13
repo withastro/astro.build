@@ -8,14 +8,12 @@ author:
   avatar: "https://www.launchfa.st/purple-icon.png"
 categories:
   - "landing-page"
-  - "recent"
 buyUrl: "https://www.launchfa.st/api/stripe/checkout?template=astro"
 demoUrl: "https://www.launchfa.st/"
 tools:
   - "tailwind"
   - "postcss"
 publishDate: "Nov 9, 2023"
-badge: "new"
 ---
 
 <p>
