@@ -1,0 +1,95 @@
+---
+title: "No More Bottlenecks"
+description: "How Thinkmill Reduced Dependencies on Senior Developers with Astro"
+seo:
+  title: "No More Bottlenecks: How Thinkmill Reduced Dependencies on Senior Developers with Astro"
+  description: "How Thinkmill made their website so easy to work with that total repo contributors increased from 1 to 15."
+coverGradientFrom: "#4783B5"
+coverGradientTo: "#6CE486"
+publishDate: "December 11, 2023"
+authors:
+  - astro-team
+lang: "en"
+socialImage: /src/content/blog/_images/thinkmill/social-image.webp
+coverImage: /src/content/blog/_images/thinkmill/cover-image.webp
+headerImage: /src/content/blog/_images/thinkmill/header.webp
+---
+
+import thinkmillResults from "./thinkmill-results-summary.webp"
+import thinkmillHomepage from "./thinkmill-homepage.webp"
+import astroBenefits from "./astro-benefits.webp"
+import unlighthouseResults from "./unlighthouse-results.webp"
+import BlogContentImage from "~/components/BlogContentImage.astro"
+import ImageFigure from "~/components/ImageFigure.astro"
+import Blockquote from "~/components/Blockquote.astro"
+
+<div class="space-y-8 text-white">
+	<div class="text-2xl leading-normal tracking-normal text-astro-gray-100">
+		[Thinkmill](https://www.thinkmill.com.au/) is a design consultancy based in Sydney, Australia.
+		They specialize in building design systems and UIs with notable clients such as Atlassian and
+		Westpac (one of Australia’s Big Four banks).
+	</div>
+</div>
+
+Astro enabled Thinkmill to increase their team productivity by removing complexity and avoiding over-engineering. Astro’s HTML-friendly approach to modern web development meant that developers could contribute changes more easily without over-relying on Javascript. With Astro, Thinkmill was able to remove bottlenecks and increased the total number of contributors on a project from 1 to 15.
+
+<ImageFigure caption="Before: Senior developer is needed to make changes to website and is a bottleneck for process. After: Technology is much simpler so more people can make changes without needing a senior developer.">
+	<BlogContentImage src={thinkmillResults} />
+</ImageFigure>
+
+## Challenges
+
+Thinkmill is a slightly unconventional agency. They have no project managers and are instead made up of a collective of designers and developers that like working together. Under this structure, it’s not uncommon for folks in different disciplines to be working together on the same parts of a project - even if it’s not their forte. Herein lay Thinkmill’s major challenge.
+
+The team wanted designers and content editors to be able to autonomously contribute to the codebase. However, their previous tech stack often had Next.js because of the team liking React. This made it difficult for non-developers and less experienced developers to contribute. As a result, updating the website required the team to enlist the help of a senior developer. This would take the developer out of their flow state and into an entirely different context - one that would take time for them to gather enough data on to deliver the work. It would also halt the work of whichever person was initially responsible for the work because they needed to get unblocked.
+
+## Requirements
+
+In order to maintain a website that was easy to use for both less experienced developers as well as folks that were not familiar with code, Thinkmill needed a solution that was simple.
+
+<ImageFigure caption="Astro is extremely well documented and has a friendly community.">
+	<BlogContentImage src={astroBenefits} />
+</ImageFigure>
+
+Simon Swiss, Developer Advocate at Thinkmill, strongly advocated for the team to use Astro because it was extremely well documented. Anyone that wanted to jump into the website could easily upskill themselves to start contributing. Non-senior developers could manage the site with only HTML and CSS while senior developers who favoured React could feel at home with the JSX syntax. Astro also came with highly desirable content features such as MDX support, syntax highlighting and pagination out of the box so Thinkmill did not have to build those features.
+
+<Blockquote>
+	<Fragment slot="quote">
+		“Astro seemed to hit that sweet spot of simplicity of use without compromising on the power it
+		gives to developers. The documentation and friendly community were two big factors that made us
+		choose Astro.”
+	</Fragment>
+	<Fragment slot="caption">— Simon Swiss, Developer Advocate</Fragment>
+</Blockquote>
+
+The team was also not sure if they were going to stick with the solution they chose. This made it absolutely necessary for the solution to be flexible in case they needed to swap it out later on. Astro allowed Thinkmill to support their legacy MDX files straight out of the box. At the same time, if Thinkmill ever wanted to move to a headless CMS or even use an API, they could.
+
+Astro ended up being such a simple and flexible tool that the team made it a permanent solution.
+
+<ImageFigure caption="Thinkmill homepage.">
+	<BlogContentImage src={thinkmillHomepage} />
+</ImageFigure>
+
+## Solution and Implementation
+
+When asked what the two most advantageous things about Astro were, Simon cited strong documentation and ease of entry for non-senior engineers.
+
+According to Simon, Astro was easy to explain to both sides. React engineers found Astro familiar because of the JSX syntax and it wasn’t that much of a reach for developers that only knew HTML and CSS. Astro felt like using HTML with JSX capabilities, which the entire team loved.
+
+The team heavily leveraged Astro components in their site - treating it almost like a React project but without any of the complexity that React can bring. As soon as [content collections](https://docs.astro.build/en/guides/content-collections/) released, Simon’s team started using them. Content collections even allowed Thinkmill to pair Astro with [Keystatic](https://keystatic.com/) - their content management tool - to make content collections editable in a GUI.
+
+## Results
+
+### Reduced Friction
+
+Thinkmill went from needing a senior developer to make changes to the website to 4 non-senior design engineers actively managing the site today. In addition, close to 15 people have contributed to the source code of the Thinkmill website - designers and developers inclusive.
+
+Prior to Astro, it was absolutely unheard of for people to join a project for several days due to the time needed to gain enough context to contribute. However, with Astro, the tool is so simple, well documented, and flexible that people can join an Astro project and be productive in 3-4 days.
+
+### Performance Gains
+
+Thinkmill ran their Astro site through [Unlighthouse](https://unlighthouse.dev/), which runs every page through [Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?pli=1). Almost every page scored 100 for performance, best practices, SEO, and accessibility.
+
+<ImageFigure caption="Unlighthouse performance scores of 100 for 4 different categories.">
+	<BlogContentImage src={unlighthouseResults} />
+</ImageFigure>

@@ -10,12 +10,12 @@ const { background = "neutral", isLink = false, className } = Astro.props
 
 <article
 	class:list={[
-		"panel flex flex-col min-w-0 relative",
+		"panel relative flex min-w-0 flex-col",
 		background === "blue-purple" && "bg-blue-purple-gradient",
 		background === "blue-green" && "bg-blue-green-gradient",
 		background === "red-pink" && "bg-red-pink-gradient",
 		background === "neutral" ? "text-astro-gray-200" : "text-astro-gray-100",
-		isLink && "hover:scale-[1.03] transition-transform duration-300 ease-out",
+		isLink && "transition-transform duration-300 ease-out hover:scale-[1.03]",
 		className,
 	]}
 >

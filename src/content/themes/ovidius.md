@@ -11,6 +11,7 @@ author:
   avatar: "https://justgoodui.com/favicon.svg"
 categories:
   - "landing-page"
+  - "blog"
   - "recent"
 repoUrl: "https://github.com/JustGoodUI/ovidius-astro-theme"
 demoUrl: "https://ovidius-astro-theme.netlify.app/"

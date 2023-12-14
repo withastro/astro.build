@@ -57,19 +57,20 @@ const twitter = {
  * Enforce some standard canonical URL formatting across the site.
  */
 function formatCanonicalURL(url: string | URL) {
-	const path = url.toString();
-	const hasQueryParams = path.includes('?');
+	const path = url.toString()
+	const hasQueryParams = path.includes("?")
 	// If there are query params, make sure the URL has no trailing slash
 	if (hasQueryParams) {
-		path.replace(/\/?$/, "");
+		path.replace(/\/?$/, "")
 	}
 	// otherwise, canonical URL always has a trailing slash
-	return path.replace(/\/?$/, hasQueryParams ? "" : '/');
+	return path.replace(/\/?$/, hasQueryParams ? "" : "/")
 }
 ---
 
-<!-- Page Metadata -->
-{canonicalURL && <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />}
+<!-- Page Metadata -->{
+	canonicalURL && <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
+}
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
