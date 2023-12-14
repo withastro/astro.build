@@ -1,0 +1,194 @@
+---
+title: "Building a community of builders"
+description: "Today, we launch our newest initiative to recognize people in our community who go above and beyond, including our very own maintainers."
+publishDate: "December 7, 2023"
+coverImage: "/src/content/blog/_images/community-day-2023/header.webp"
+socialImage: "/src/content/blog/_images/community-day-2023/og.webp"
+lang: "en"
+authors:
+  - sarah
+  - elian
+---
+
+import CommunityProject from '../../components/CommunityProject.astro'
+
+Astro continues to evolve how it works with and for its community. 
+
+Our community awards allow us to give back to those who volunteer their time submitting code and bug fixes, being welcoming and helpful in support threads, translating the docs, and enriching everyone's Astro experience.
+
+Previously a quarterly event, Astro recently committed to issuing these awards on a monthly basis. We also changed from peer-nominated awards to recipients chosen by our core maintainers.
+
+This might sound less democratic, but we think of it like maintainer gratitude journaling: **we ensure that our core maintainers are actively reflecting and on the lookout for the next crop of up-and-comers**. We are proud to say that we dedicate time to our open-source community's health, growth, and sustainability.
+
+A community award is nice, but until now, this recognition has mostly stayed within our community. We wanted a better, more public, and more permanent place for community recognition. Somewhere you could show off to friends and family, maybe to explain where all those nights and weekends went!
+
+We are thrilled to announce the launch of our first public community space: https://community.astro.build built by our first Community Engineer, Elian van Cutsem.
+
+
+Today, you can visit and celebrate the people who helped make Astro the project you love to use. Stay tuned for more exciting community initiatives that will find a home there as we grow and extend the site!
+
+![A screenshot of the Astro Community Microsite](./_images/community-day-2023/community-microsite.webp)
+
+## Maintainer Projects
+
+Each week in our community calls we highlight and celebrate all the things our community builds *with* Astro. Today, we want to recognize a very special kind of community contribution that you might not normally see: the personal experiments and side projects that our own maintainers build for *working on* and *contributing to* Astro 
+
+Maintaining an open-source project means spending a lot of time in our code editors, in PRs, and on GitHub, looking things up in docs, keeping track of work-in-progress, and collaborating with others.
+
+We'd like to showcase some of these tools we've built for our *own* use as we build Astro for (and with!) you. Some of these make routine tasks easier, and some just make them more fun... because that's part of the point, too!
+
+## Maintainer Projects Showcase
+
+<CommunityProject
+    creator="Sarah"
+		github="https://github.com/sarah11918"
+		name="Astro Docs Docs (AD²)"
+		link="https://contribute.docs.astro.build/"
+    linkTextOverride="contribute.docs.astro.build"
+		description="Doc’ing Astro Docs! An entire site full of guides and resources for contributing to Astro Docs."
+		fact="I have a Starlight problem! This project started as an easier way to organize and write than updating our existing guides as plain Markdown files in the GitHub repo. Every time I need to organize information, I create a new Starlight project. Shout out to Yan Thomas for providing all of our i18n content. Special thanks to Chris Swithinbank for his encouragement and support, and for insisting that this should actually be a deployed site for the Astro project!"
+    img={import('./_images/community-day-2023/sarah.webp')}
+/>
+
+<CommunityProject
+  creator="Elian"
+  github="https://github.com/eliancodes"
+  name="Raycast Extension"
+  link="https://www.raycast.com/ElianCodes/search-astro-docs"
+  linkTextOverride="Raycast Store"
+  description="Reach and search the Astro Documentation in an instant right from Raycast without any hassle. Supports all languages that Astro Documentation supports & has all sidebar links that Astro Documentation has."
+  fact="As a docs editor, I found myself constantly having to manually navigate to Astro Documentation and search for the right pages. I use Raycast all the time, so it seemed like a good solution to create an extension that sped up my docs writing & reviewing process."
+  img={import('./_images/community-day-2023/elian.webp')}
+/>
+
+<CommunityProject 
+  creator="Marijn Kneppers"
+  github="https://github.com/mandar1jn"
+  name="Houston Bot"
+  link="https://github.com/withastro/houston-discord"
+  linkTextOverride="github.com/withastro/houston-discord"
+  description="Let the bot do it for you! From creating a PTAL request to browsing the docs, Houston Bot is there to make the life of everyone working on/with Astro easier"
+  fact="As a support squad member, I got annoyed with having to switch over to a browser to search the docs, so I wrote a bot with a /docs command which allowed me to browse the docs from within Discord. This led to a /ptal (Please Take A Look) command to give maintainers an easier overview of the status of a pull request."
+  img={import('./_images/community-day-2023/marijn.webp')}
+/>
+
+<CommunityProject 
+  creator="HiDeoo"
+  github="https://github.com/HiDeoo"
+  name="Starlight i18n"
+  link="https://marketplace.visualstudio.com/items?itemName=hideoo.starlight-i18n"
+  linkTextOverride="VSCode Marketplace"
+  description="Visual Studio Code extension to easily translate Starlight documentation pages using the built-in support for multilingual sites and git."
+  fact="Being able to choose a supported language to translate from a Starlight configuration in a workspace repo and having side-by-side editors with the missing changes and the translated page seemed like a good idea, and I have been using it for all the translations I have submitted to the Starlight documentation so far."
+  img={import('./_images/community-day-2023/hideoo.gif')}
+/>
+
+<CommunityProject 
+  creator="Hippotastic"
+  github="https://github.com/hippotastic"
+  name="Expressive Code"
+  link="https://github.com/expressive-code/expressive-code"
+  linkTextOverride="github.com/expressive-code"
+  description="Expressive Code is an engine for presenting source code on the web, aiming to make your code easy to understand and visually stunning. On top of accurate syntax highlighting powered by the same engine as VS Code, Expressive Code allows you to annotate code blocks using text markers, diff highlighting, code editor & terminal window frames, and more."
+  fact="After I initially built these features into Astro Docs, users kept asking us how they could use our code snippets in their own projects. This led me to create Expressive Code as a standalone project, which actually became my first published set of NPM packages! I’m really happy that it’s already being used by Astro Docs, Starlight, and many individual websites."
+  img={import('./_images/community-day-2023/hippo.webp')}
+/>
+
+<CommunityProject 
+  creator="Yan Thomas"
+  github="https://github.com/Yan-Thomas/"
+  name="Lunaria"
+  link="https://lunaria.dev/"
+  linkTextOverride="lunaria.dev"
+  description="Lunaria is a localization management toolchain for open-source projects, allowing maintainers and contributors to keep track of their localization projects' progress sustainably and for free."
+  fact="Lunaria came out of a desire to share the Astro Docs custom i18n translation status tracker, originally built by @hippotastic, with the wider open-source community. Lunaria was built for general compatibility and is suitable for a wide range of different content strategies, frameworks, and even git hosting platforms."
+  img={import('./_images/community-day-2023/yan.webp')}
+/>
+
+<CommunityProject 
+  creator="Kevin & Otterlord"
+  github="https://github.com/kevinzunigacuellar/coauthor-generator"
+  name="Co-author generator"
+  link="https://coauthor.kevinzunigacuellar.com/"
+  linkTextOverride="coauthor.kevinzunigacuellar.com"
+  description="Create co-author messages to credit contributors 💜. This tool collects PR participants and creates a formatted co-author string for git commits."
+  fact="At Astro, we highly value acknowledging our contributors. Our previous method involved quite a bit of manual work to search for an individual's git signature on GitHub so we could add them to a PR commit. Occasionally, this process took longer than the actual PR, but it was a worthwhile effort to show appreciation to our community."
+  img={import('./_images/community-day-2023/kevin.webp')}
+/>
+
+<CommunityProject 
+  creator="Alexander Niebuhr"
+  github="https://github.com/alexanderniebuhr"
+  name="Astropix"
+  link="https://docs.a.stro.pictures/"
+  linkTextOverride="docs.a.stro.pictures"
+  description="Brand-new integration which adds an external remote image service to `astro:assets`. Your images will get a remote URL that optimizes them, similar to paid digital asset management services... but for free, if you have an Astro project! It works with every Astro adapter and hosting provider."
+  fact="External Remote Image Optimization is either complex to set up or costs too much. Making this available to all Astro users for free makes Astro's Image story a lot better. The most complex thing to get right is authorization: how to make sure only Astro users can use it for free and having a fair-use policy in place."
+  img={import('./_images/community-day-2023/alex.webp')}
+/>
+
+<CommunityProject 
+  creator="Erika"
+  github="https://github.com/Princesseuh/astro-issues"
+  name="Astro Issues"
+  link="https://astro-issues.vercel.app/"
+  linkTextOverride="astro-issues.vercel.app"
+  description="A dashboard showing stats about all the issues on every Astro repo. The idea is that by being able to visualize the total issue count as a graphical thing, it’ll “gamify” the act of bringing down the issue count."
+  fact="After seeing the issue dashboard, Docs and Starlight felt the pressure to triage their issues and accepted the challenge. This brought down Astro's total issue count by 50 only a week after I released the website. (*Editor's note: Well played, Erika.)"
+  img={import('./_images/community-day-2023/erika.webp')}
+/>
+
+<CommunityProject 
+  creator="Otterlord"
+  github="https://github.com/TheOtterlord/semver"
+  name="Semver"
+  link="https://semver.otterlord.dev/"
+  linkTextOverride="semver.otterlord.dev"
+  description="View NPM package versions, and calculate a semver range. Useful for calculating ranges for compatible peer dependencies."
+  fact="You can view the usage across packages on the public Plausible dashboard."
+  img={import('./_images/community-day-2023/otterlord.webp')}
+/>
+
+<CommunityProject 
+  creator="Nate & Chris"
+  github="https://github.com/withastro/automation"
+  name="Astro Automation"
+  link="https://github.com/withastro/automation"
+  linkTextOverride="github.com/withastro/automation"
+  description="A centralized repository for reusable GitHub Action workflows. These actions help us automate common workflows across many different repositories in the withastro GitHub organization. The major benefit of having common workflows in a single location is that maintenance happens in one spot and is automatically rolled out to all of our repositories. Centralized workflows also make it much easier to set up automated workflows for brand new repositories."
+  fact="When we first started building Astro, we had one central Astro monorepo for all of our code and documentation. This made it easy to share tooling and configuration but it became increasingly difficult to collaborate on many different focus areas as the project grew. While copying and pasting workflow files works for a small handful of repositories, the number of repositories began to grow in the summer of 2023. This automation repository is used by all of our repositories to share merge notifications in our Discord (congratsbot), format our source code with Prettier (format), and automate issue labeling (issue-opened and issue-labeled)"
+  img={import('./_images/community-day-2023/automation.webp')}
+/>
+
+<CommunityProject 
+  creator="Nate Moore"
+  github="https://github.com/natemoo-re"
+  name="Houston Theme"
+  link="https://github.com/withastro/houston-vscode"
+  linkTextOverride="github.com/withastro/houston-vscode"
+  description="An Astro-branded Visual Studio Code theme featuring cool blues, minty greens, and soft purples and Astro’s mascot Houston."
+  fact="Astro’s brand colors were begging to be turned into a syntax highlighting theme. With some adjustments for contrast and legibility, I am quite happy that this little experiment turned out so well. This theme has been downloaded by 12.5K people on the Visual Studio Code marketplace* and is the default theme for Astro’s Starlight documentation framework. (*Editors note: and 169 on the OpenVSX registry! 😉)"
+  img={import('./_images/community-day-2023/nate.webp')}
+/>
+
+<CommunityProject 
+  creator="happydev"
+  github="https://github.com/moustaphadev"
+  name="Live Astro Compiler"
+  link="https://live-astro-compiler.vercel.app/"
+  linkTextOverride="live-astro-compiler.vercel.app"
+  description="A playground for the Astro compiler that generates insightful previews of the compiled output of Astro components."
+  fact="Sparked by the struggle of quickly spotting compiler bugs, I built this to save time on issue troubleshooting. Instead of diving straight into writing tests, now we can just toss some code into the playground, check out the output, and easily spot and show others what’s going wrong — making the whole debugging dance way smoother!"
+  img={import('./_images/community-day-2023/happydev.webp')}
+/>
+
+<CommunityProject 
+  creator="Chris"
+  github="https://github.com/delucis/"
+  name="Astro Badges"
+  link="https://astro.badg.es/"
+  linkTextOverride="astro.badg.es"
+  description="Astro Badges celebrates Astro contributors with embeddable images featuring achievements unlocked by GitHub activity in the withastro organization. From Little Green Bug to Constellation Crafter, every one of Astro’s almost 3,500 contributors is here!"
+  fact="Astro Badges started as a weekend project after I noticed the badg.es domain was available. It’s grown a lot since then, including a full redesign in collaboration with Astro’s designer, @doodlemarks. Probably the most challenging thing about maintaining it is coming up with fun achievement names, although @sarah11918 is always game to workshop them! My favorite recent addition is probably the SSRsly achievement for people working on Astro’s serverless adapters. Shout out to @Yan-Thomas, @ElianCodes, @natemoo-re, @mayank99, @torn4dom4n, @jacobthesheep, and @TheOtterlord for contributing along the way 🙌"
+  img={import('./_images/community-day-2023/chris.webp')}
+/>

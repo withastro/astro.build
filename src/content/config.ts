@@ -11,7 +11,7 @@ export const IntegrationCategories = new Map([
 	["performance+seo", "Performance + SEO"],
 	["analytics", "Analytics"],
 	["accessibility", "Accessibility"],
-	["devtools", "Developer Tools"],
+	["toolbar", "Dev Toolbar"],
 ] as const)
 
 export const ThemeCategories = new Map([
@@ -166,7 +166,7 @@ export const collections = {
 			homepageUrl: z.string().url().optional(),
 			official: z.boolean().default(false),
 			featured: z.number().min(1).optional(),
-			overlay: z.number().min(1).optional(),
+			toolbar: z.number().min(1).optional(),
 			downloads: z.number().min(0).default(0),
 			badge: z.string().optional(),
 		}),
