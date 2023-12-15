@@ -21,11 +21,11 @@ const image = await resolveCoverImage(post)
 ---
 
 <article
-	class="border border-astro-gray-500 bg-astro-gray-600 p-5 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
+	class="border border-astro-gray-500 bg-astro-gray-600 p-4 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
 >
 	<a
 		href={isCaseStudy ? `/case-studies/${post.slug}/` : `/blog/${post.slug}/`}
-		rel="prefetch"
+		data-astro-prefetch
 		class="block outline-none"
 	>
 		<header>
@@ -33,20 +33,21 @@ const image = await resolveCoverImage(post)
 				{format(post.data.publishDate, "MMMM d, yyyy")}
 			</time>
 		</header>
-
-		{
-			image && (
-				<img
-					src={image.src}
-					width={image.width}
-					height={image.height}
-					alt={post.data.title}
-					class="my-8"
-					loading="lazy"
-					decoding="async"
-				/>
-			)
-		}
+		<div class="-mx-4">
+			{
+				image && (
+					<img
+						src={image.src}
+						width={image.width}
+						height={image.height}
+						alt={post.data.title}
+						class="my-4"
+						loading="lazy"
+						decoding="async"
+					/>
+				)
+			}
+		</div>
 
 		<div class="mt-6 grid gap-x-16 gap-y-4 md:grid-cols-2">
 			<h3 class="heading-4 md:heading-3">{post.data.title}</h3>
