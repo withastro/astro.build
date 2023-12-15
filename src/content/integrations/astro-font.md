@@ -1,13 +1,13 @@
 ---
 name: "astro-font"
 title: "astro-font"
-description: "An Astro integration to optimize Local & Google fonts inspired by @next/font"
+description: "Automatically optimize your custom fonts, local fonts, fonts over any CDN, and Google fonts for performance."
 categories:
   - "css+ui"
   - "performance+seo"
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-font"
-homepageUrl: "https://github.com/rishi-raj-jain/astro-font"
+homepageUrl: "https://launchfa.st/features/astro-font"
 downloads: 241
 badge: "new"
 ---
