@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-particles"
 repoUrl: "https://github.com/tsparticles/astro"
 homepageUrl: "https://github.com/tsparticles/astro#readme"
-downloads: 870
+downloads: 772
 ---

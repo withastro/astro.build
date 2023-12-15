@@ -21,6 +21,7 @@ tools:
   - "tailwind"
   - "mdx"
 publishDate: "Dec 1, 2023"
+badge: "new"
 ---
 
 <p>

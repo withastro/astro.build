@@ -20,6 +20,7 @@ tools:
   - "mdx"
   - "typescript"
 publishDate: "Dec 1, 2023"
+badge: "new"
 ---
 
 <p><em>Save weeks of time and get a blog up and running in a snap.</em></p>

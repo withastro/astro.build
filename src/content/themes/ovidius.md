@@ -12,15 +12,13 @@ author:
 categories:
   - "landing-page"
   - "blog"
-  - "recent"
 repoUrl: "https://github.com/JustGoodUI/ovidius-astro-theme"
 demoUrl: "https://ovidius-astro-theme.netlify.app/"
 tools:
   - "tailwind"
   - "mdx"
 publishDate: "Nov 9, 2023"
-badge: "new"
-stars: 17
+stars: 24
 ---
 
 <h3>Theme Features</h3>

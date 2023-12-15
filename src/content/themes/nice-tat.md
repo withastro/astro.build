@@ -20,7 +20,7 @@ tools:
   - "typescript"
 publishDate: "Nov 21, 2023"
 badge: "new"
-stars: 3
+stars: 6
 ---
 
 <p>Astro Site Template inspired by Casey Neistat’s ultra minimal personal site.</p>
