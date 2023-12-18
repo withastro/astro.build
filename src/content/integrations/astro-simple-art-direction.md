@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-simple-art-direction"
 repoUrl: "https://github.com/hollyteds/astro-simple-art-direction"
 homepageUrl: "https://github.com/hollyteds/astro-simple-art-direction/#readme"
-downloads: 334
+downloads: 350
 badge: "new"
 ---

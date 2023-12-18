@@ -18,7 +18,7 @@ tools:
   - "tailwind"
   - "mdx"
 publishDate: "Nov 9, 2023"
-stars: 24
+stars: 25
 ---
 
 <h3>Theme Features</h3>

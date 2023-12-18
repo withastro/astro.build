@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-dynamic-import"
 repoUrl: "https://github.com/lilnasy/gratelets"
 homepageUrl: "https://github.com/lilnasy/gratelets/tree/main/packages/dynamic-import"
-downloads: 322
+downloads: 379
 badge: "new"
 ---

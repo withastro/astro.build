@@ -15,7 +15,7 @@ demoUrl: "https://jamy-page.vercel.app/"
 tools:
   - "tailwind"
 publishDate: "Oct 13, 2023"
-stars: 4
+stars: 5
 ---
 
 <p>

@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-vtbot"
 repoUrl: "https://github.com/martrapp/astro-vt-bot"
 homepageUrl: "https://github.com/martrapp/astro-vt-bot#readme"
-downloads: 52
+downloads: 78
 badge: "new"
 ---
