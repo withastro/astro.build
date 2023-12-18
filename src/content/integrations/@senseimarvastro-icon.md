@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@senseimarv/astro-icon"
 repoUrl: "https://github.com/natemoo-re/astro-icon"
 homepageUrl: "https://github.com/natemoo-re/astro-icon#readme"
-downloads: 4
+downloads: 1
 ---

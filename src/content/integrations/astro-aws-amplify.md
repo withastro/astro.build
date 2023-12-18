@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-aws-amplify"
 homepageUrl: "https://github.com/alexnguyennz/astro-aws-amplify"
-downloads: 207
+downloads: 348
 badge: "new"
 ---
