@@ -11,7 +11,7 @@ categories:
   - "other"
 repoUrl: "https://github.com/candidosales/landing-page-book-astro-svelte-tailwind"
 demoUrl: "https://landing-page-book-astro-svelte-tailwind.vercel.app/"
-stars: 11
+stars: 13
 tools:
   - "svelte"
   - "tailwind"

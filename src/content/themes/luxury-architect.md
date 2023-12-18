@@ -10,13 +10,11 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/122698712?v=4"
 categories:
   - "landing-page"
-  - "recent"
 repoUrl: "https://github.com/Numonu/Luxury-Architect"
 demoUrl: "https://numonu.github.io/Luxury-Architect/"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "Nov 9, 2023"
-badge: "new"
-stars: 2
+stars: 4
 ---
