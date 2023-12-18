@@ -1,6 +1,6 @@
 ---
 title: "cmd_theme"
-description: 'Personal Blog "cmd_theme"'
+description: "Personal Blog \"cmd_theme\""
 image: "/src/content/themes/_images/cmd_theme-hero.webp"
 images:
   - "/src/content/themes/_images/cmd_theme-2.webp"
