@@ -5,6 +5,8 @@ import ExternalLink from "~/components/ExternalLink.astro"
 import PageTitleBlock from "~/components/PageTitleBlock.astro"
 import PillLink from "./PillLink.astro"
 
+import { getLatestReleasePost } from "~/helpers/releasePost.ts"
+
 const logos = [
 	{ src: "logos/google", alt: "Google Logo", class: "py-1 -mb-1 md:-mb-2 lg:-mb-2.5" },
 	{ src: "logos/microsoft", alt: "Microsoft Logo", class: "py-2" },
@@ -13,19 +15,21 @@ const logos = [
 	{ src: "logos/theguardian", alt: "The Guardian Logo", class: "py-1.5" },
 	{ src: "logos/trivago", alt: "Trivago Logo", class: "py-1" },
 ]
+
+const announcement = await getLatestReleasePost()
 ---
 
 <section class="landing-section relative overflow-x-hidden pb-40 pt-14 sm:pt-20 lg:pt-32">
-	<PillLink title="Astro 3.0 is here!" subtitle="Learn more" href="/blog/astro-3/" class="mb-8" />
+	{announcement && <PillLink {...announcement} class="mb-8" />}
 	<PageTitleBlock
 		lg
-		body="Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between."
+		body="Astro powers the world's fastest websites, client-side web apps, dynamic API endpoints, and everything in-between."
 	>
 		<h1
 			slot="title"
-			class="mb-10 max-w-[18ch] px-4 text-center font-obviously text-5xl/[1.1] font-semibold md:text-6xl/[1.1] lg:text-7xl/[1.1]"
+			class="mb-10 max-w-[24ch] px-4 text-center font-obviously text-5xl/[1.1] font-semibold md:text-6xl/[1.1]"
 		>
-			The web framework that scales with you
+			The web framework for content-driven websites
 		</h1>
 	</PageTitleBlock>
 

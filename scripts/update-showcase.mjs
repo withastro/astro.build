@@ -111,7 +111,7 @@ class ShowcaseScraper {
 				"",
 				"We couldn’t detect that these sites were built with Astro. You might want to check manually.",
 				"",
-				sites.nonAstro.join(", "),
+				sites.nonAstro.map((site) => `[${new URL(site).host}](${site})`).join(", "),
 			)
 		}
 
@@ -201,8 +201,13 @@ class ShowcaseScraper {
 	async #filterHrefs(hrefs) {
 		const currentSites = await ShowcaseScraper.#getLiveShowcaseUrls()
 		return hrefs.filter((href) => {
-			const { origin } = new URL(href)
-			return !this.#blocklist.has(origin) && !currentSites.has(origin)
+			try {
+				const { origin } = new URL(href)
+				return !this.#blocklist.has(origin) && !currentSites.has(origin)
+			} catch (error) {
+				console.error(`Error parsing URL: ${href}`)
+				return false
+			}
 		})
 	}
 
@@ -380,6 +385,7 @@ const scraper = new ShowcaseScraper({
 		"https://github.com",
 		"https://user-images.githubusercontent.com",
 		"https://camo.githubusercontent.com",
+		"https://private-user-images.githubusercontent.com",
 		"https://astro.build",
 		"https://pagespeed.web.dev",
 		"https://lighthouse-metrics.com",

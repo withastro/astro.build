@@ -7,7 +7,7 @@ import SocialLinks from "./SocialLinks.astro"
 const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly)
 ---
 
-<a href="/" rel="prefetch" title="Home" data-home-link>
+<a href="/" data-astro-prefetch title="Home" data-home-link>
 	<AstroLogo />
 </a>
 
@@ -21,9 +21,9 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly)
 
 <div class="ml-16 hidden shrink flex-row items-center gap-16 lg:flex">
 	<a href="https://docs.astro.build" class="link">Documentation</a>
-	<a href="/showcase/" rel="prefetch" class="link">Showcase</a>
+	<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
 	<ResourcesMenu />
-	<a href="/blog/" rel="prefetch" class="link">Blog</a>
+	<a href="/blog/" data-astro-prefetch class="link">Blog</a>
 </div>
 
 <div class="flex-1"></div>

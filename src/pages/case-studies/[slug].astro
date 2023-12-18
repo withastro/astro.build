@@ -27,9 +27,9 @@ const socialImage = await resolveSocialImage(post)
 
 const headerImage = await resolveBlogImage(post.data.headerImage)
 
-const authors = await Promise.all(
-	data.authors.map((author) => getEntry("authors", author)),
-).then((authors) => authors.filter(Boolean) as CollectionEntry<"authors">[])
+const authors = await Promise.all(data.authors.map((author) => getEntry("authors", author))).then(
+	(authors) => authors.filter(Boolean) as CollectionEntry<"authors">[],
+)
 ---
 
 <Layout

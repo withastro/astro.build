@@ -1,0 +1,122 @@
+---
+title: "Astro 3.3: Picture component"
+description: "Astro 3.3 is out with a brand new, experimental Picture component, improved compatibility for syntax highlighting, and package provenance."
+publishDate: "October 12, 2023"
+authors:
+  - nate
+  - erika
+  - bjorn
+  - ema
+coverImage: "/src/content/blog/_images/astro-330/blog-hero-3_3-release.webp"
+socialImage: "/src/content/blog/_images/astro-330/og-image-3_3-release.webp"
+lang: "en"
+---
+
+Astro 3.3 is out with a brand new, experimental `<Picture />` component, improved compatibility for syntax highlighting, package provenance, and a handful of other quality of life improvements.
+
+- **[New `<Picture />` component](#picture-component)**
+- **[Syntax Highlighting improvements](#syntax-highlighting)**
+- **[Package Provenance](#package-provenance)**
+- **[Quality of Life Improvements](#quality-of-life-improvements)**
+
+To take advantage of the latest features, make sure you’re running the latest version of Astro. You can upgrade to Astro 3.3 by running the upgrade command for your package manager of choice:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Picture Component
+
+When we announced [Better Images in Astro](/blog/images/) with our built-in image optimization feature, we were proud to share our new vision for working with images. In 3.0 we removed our old image integration, and along with it some existing features we know you were using. We decided to build back better, with a stronger image story that was only getting started.
+
+After [a comprehensive RFC](https://github.com/withastro/roadmap/pull/715) and [the most highly upvoted PR](https://github.com/withastro/astro/pull/8620) in Astro's history, we are incredibly excited to introduce a built-in `<Picture />` component!
+
+The new, experimental `<Picture />` component can be used to generate a `<picture>` element with multiple `<source>` elements.
+
+The example below uses the `formats` property to generate a `<source>` in each of the specified image formats:
+
+```astro
+---
+import { Picture } from 'astro:assets';
+import myImage from './my-image.jpg';
+---
+
+<Picture src={myImage} formats={['avif', 'webp']} alt="My super image in multiple formats!" />
+```
+
+The above code will generate the following HTML, and allow the browser to determine the best image to display:
+
+```html
+<picture>
+  <source srcset="..." type="image/avif" />
+  <source srcset="..." type="image/webp" />
+  <img src="..." alt="My super image in multiple formats!" />
+</picture>
+```
+
+The `Picture` component takes all the same props as the `Image` component, including the new `densities` and `widths` properties.
+
+## `srcset` support
+
+In addition to the `<Picture />` element, two new properties have been added to `Image` and `getImage()`: `densities` and `widths`.
+
+These properties can be used to generate a `srcset` attribute, either based on absolute widths in pixels (e.g. [300, 600, 900]) or pixel density descriptors (e.g. `["2x"]` or `[1.5, 2]`).
+
+```astro
+---
+import { Image } from 'astro';
+import myImage from './my-image.jpg';
+---
+
+<Image src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt="My cool image" />
+```
+
+```html
+<img
+  src="/_astro/my_image.hash.webp"
+  srcset="/_astro/my_image.hash.webp 1.5x, /_astro/my_image.hash.webp 2x"
+  alt="My cool image"
+/>
+```
+
+## Syntax Highlighting
+
+We migrated Astro’s internal syntax highlighter library from `shiki` to `shikiji`, an ESM-focused alternative that simplifies bundling and maintenance.
+
+There are no new options and no changes to how you author code blocks and syntax highlighting.
+
+While this refactor should be transparent for most projects, `shikiji` does come with one **potentially breaking change**. Since `shikiji` attempts to produce smaller HTML markup, color styles are added to `pre` or `code` elements rather than directly to a token's `span`. For example:
+
+Before:
+
+```html
+<code class="astro-code" style="background-color: #24292e">
+  <pre>
+    <span class="line" style="color: #e1e4e8">my code</span>
+  </pre>
+</code>
+```
+
+After:
+
+```html
+<code class="astro-code" style="background-color: #24292e; color: #e1e4e8">
+  <pre>
+    <span class="line">my code<span>
+  </pre>
+</code>
+```
+
+This does not affect the colors as the span will inherit the color from the parent, but if you're relying on a specific HTML markup, please check your site carefully after upgrading to verify the styles.
+
+## Package Provenance
+
+[NPM](https://npmjs.com), the registry which hosts Astro packages, has introduced optional [provenance attestations](https://docs.npmjs.com/generating-provenance-statements) to improve supply-chain security and transparency. These attestations allow developers to verify where and how packages are built.
+
+With the release of Astro 3.3, the `astro` package and all `@astrojs/` integrations are published with a provenance statement. If you maintain an Astro integration, we encourage you to [enable provenance attestations](https://docs.npmjs.com/generating-provenance-statements) when publishing your integration.
+
+## Quality of Life Improvements
+
+Additional bug fixes and quality of life improvements are included in this release. Check out the [release notes](https://github.com/withastro/astro/pull/8796) to learn more.

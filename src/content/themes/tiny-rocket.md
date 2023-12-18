@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/slamethendry/tinyrocket"
 demoUrl: "https://tinyrocket.pages.dev/"
-stars: 20
+stars: 23
 tools:
   - "preact"
   - "tailwind"

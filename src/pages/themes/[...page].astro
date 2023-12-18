@@ -6,7 +6,7 @@ import Pagination from "~/components/Pagination.astro"
 import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro"
 import SidebarLayout from "~/components/SidebarLayout.astro"
 import SidebarPanel from "~/components/SidebarPanel.astro"
-import { ThemeCategories, ThemeTools } from "~/content/config.js"
+import { ThemeCategories, ThemePricing, ThemeTools } from "~/content/config.js"
 import { paginate } from "~/helpers/paginate.js"
 import MainLayout from "~/layouts/MainLayout.astro"
 import SubmitTheme from "./_components/SubmitTheme.astro"
@@ -14,8 +14,8 @@ import ThemeCard from "./_components/ThemeCard.astro"
 
 export const prerender = false
 
-// Sorting priority: featured first, then compare downloads, then sort alphabetically
-function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
+// Sorting priority: featured first, then published date for new themes, then compare downloads, then sort alphabetically
+function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
 	if (a.data.featured && b.data.featured) {
 		return a.data.featured - b.data.featured
 	}
@@ -28,6 +28,10 @@ function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) 
 		return 1
 	}
 
+	if (a.data.badge === "new" && b.data.badge === "new") {
+		return sortRecentThemes(a, b)
+	}
+
 	if (a.data.stars === b.data.stars) {
 		return b.data.title.localeCompare(a.data.title)
 	}
@@ -35,7 +39,7 @@ function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) 
 	return b.data.stars - a.data.stars
 }
 
-function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">) {
+function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
 	const aTime = a.data.publishDate?.getTime()
 	const bTime = b.data.publishDate?.getTime()
 
@@ -43,7 +47,7 @@ function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"them
 		return sortThemes(a, b)
 	}
 
-	return aTime - bTime
+	return bTime - aTime
 }
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
@@ -94,6 +98,24 @@ const toolFilter: FilterGroup = {
 	})),
 }
 
+// get a list of all supported tools, this is the same list used by the zod schema
+const pricing = Array.from(ThemePricing.keys())
+
+// get a list of tool filters applied to the request
+const selectedPricing = Astro.url.searchParams.getAll("price[]")
+
+// massage tool data for the Filter components
+const priceFilter: FilterGroup = {
+	title: "Pricing",
+	options: pricing.map((t) => ({
+		id: t,
+		name: "price[]",
+		value: t,
+		label: ThemePricing.get(t)!,
+		selected: selectedPricing.includes(t),
+	})),
+}
+
 const searchRegex = search && new RegExp(search, "i")
 
 function themeFilter(theme: CollectionEntry<"themes">) {
@@ -107,6 +129,17 @@ function themeFilter(theme: CollectionEntry<"themes">) {
 	// if at least one tool filter is applied, hide themes that don't match
 	if (selectedTools.length > 0) {
 		if (!theme.data.tools.some((c: string) => selectedTools.includes(c))) {
+			return false
+		}
+	}
+
+	// if at least one price filter is applied, hide themes that don't match
+	// if multiple price filters are applied, skip this check
+	if (selectedPricing.length > 0 && selectedPricing.length < 2) {
+		if (
+			(selectedPricing.includes("free") && !theme.data.repoUrl) ||
+			(selectedPricing.includes("paid") && !theme.data.buyUrl)
+		) {
 			return false
 		}
 	}
@@ -172,7 +205,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 			<SidebarPanel>
 				<SearchFilter
 					indexRoute="/themes/"
-					groups={[categoryFilter, toolFilter]}
+					groups={[categoryFilter, toolFilter, priceFilter]}
 					search={search}
 					searchPlaceholder="Search for a theme"
 				/>
@@ -221,7 +254,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					<p>
 						<strong>0</strong> results found for themes matching <strong>"{search}"</strong>
 					</p>
-					<a href="/themes/" rel="prefetch" class="button button-primary">
+					<a href="/themes/" data-astro-prefetch class="button button-primary">
 						Clear filters
 					</a>
 				</div>

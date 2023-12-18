@@ -8,7 +8,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/31326058?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/Ladvace/Grid-astro-portfolio"
 demoUrl: "https://gianmarco.xyz/"
 tools:
@@ -16,6 +15,5 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "September 19, 2023"
-stars: 9
-badge: "new"
+stars: 46
 ---

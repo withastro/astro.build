@@ -1,12 +1,10 @@
-import { defineConfig } from "astro/config"
-import fs from "node:fs"
-
 import mdx from "@astrojs/mdx"
-import prefetch from "@astrojs/prefetch"
 import sitemap from "@astrojs/sitemap"
 import solidJs from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/serverless"
+import { defineConfig } from "astro/config"
+import fs from "node:fs"
 
 /* https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables */
 const VERCEL_PREVIEW_SITE =
@@ -24,7 +22,6 @@ export default defineConfig({
 		solidJs(),
 		mdx(),
 		sitemap(),
-		prefetch(),
 	],
 	markdown: {
 		shikiConfig: {

@@ -1,0 +1,68 @@
+---
+title: "Sentry: Our Official Monitoring Partner"
+authors:
+  - thuy
+  - fred
+description: |
+  Sentry is Astro's new official monitoring partner. To celebrate, we're featuring Spotlight, a rich debug overlay from Sentry.
+publishDate: "December 6, 2023"
+socialImage: "/src/content/blog/_images/sentry-official-monitoring-partner/astro-sentry-social.png"
+coverImage: "/src/content/blog/_images/sentry-official-monitoring-partner/astro-sentry-header.webp"
+lang: "en"
+---
+
+import Blockquote from "/src/components/Blockquote.astro"
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import CodeBlock from "/src/components/CodeBlock.astro"
+import bannerSpotlightImage from "/src/content/blog/_images/sentry-official-monitoring-partner/spotlight-inline-banner.png"
+// import CodeBlock from "/src/components/CodeBlock.astro"
+
+We are thrilled to announce [Sentry](https://sentry.io/welcome/?utm_medium=partner&utm_source=astro&utm_campaign=astro-spotlight) 
+as Astro's new **Official Monitoring Partner**, which includes a new $5,000 monthly donation towards 
+the ongoing open-source maintenance and development of Astro.
+
+**Astro is the web framework for building content-driven websites including blogs, marketing, and 
+e-commerce.** When you go to deploy an Astro website, it's a good idea to set up live monitoring for 
+insights into performance issues and JavaScript errors that your users might encounter. That's where Sentry comes in.
+
+David Cramer, Founder and CTO of Sentry, had this to say:
+
+<Blockquote>
+	<Fragment slot="quote" >
+		Astro is one of the most promising technologies we've seen in the last few years, and we're excited to be working more closely with the Astro community. With the launch of @sentry/astro, integration is now plug n' play, and we're thrilled to count Astro as a launch partner for Spotlight.
+	</Fragment>
+	<Fragment slot="caption">
+		— [David Cramer](https://twitter.com/zeeg), Founder and CTO
+	</Fragment>
+</Blockquote>
+
+The Astro core team has even relied on Sentry in the past to help find and fix difficult bugs in production. 
+[This console warning](https://github.com/withastro/astro/pull/8981), for example, would only appear 
+in very specific circumstances on mobile Safari once a user had scrolled for longer than 30 seconds. 
+Apparently, this happens more often than you would think! Thanks to a Sentry user the warning was 
+identified, reported, and fixed in Astro for the benefit of everyone.
+
+## Introducing Spotlight: A Better Local Debugging Experience, Designed for Astro
+
+[Astro 4.0](https://astro.build/blog/astro-4/) introduced the new [Dev Toolbar](https://astro.build/blog/astro-4/#the-astro-dev-toolbar) — a new way to enhance and extend your local development experience with browser tooling. As part of this new partnership, we are excited to feature Spotlight as a launch-day app from Sentry.
+
+<video autoplay loop muted playsinline controls>
+	<source src="/assets/blog/spotlight-by-sentry.mp4" type="video/mp4" />
+	Sorry, your browser doesn't support embedded videos.
+</video>
+
+Spotlight brings a rich debug overlay into your Astro development environment. Spotlight shows errors, traces, and important context right in your browser during local development. 
+
+<BlogContentImage src={bannerSpotlightImage} alt="" />
+
+To use Spotlight, run `astro add` in the terminal to add it to your project. Then, start up your Astro development environment and click the new “Spotlight” logo in your Dev Toolbar to open the new Spotlight app.
+
+<CodeBlock>npx astro add @sentry/astro @spotlightjs/astro</CodeBlock>
+
+## Astro ❤️ Sentry
+
+Astro is honored and excited to have [Sentry](https://sentry.io/welcome/?utm_medium=partner&utm_source=astro&utm_campaign=astro-spotlight) as our new official monitoring partner. We are grateful for the support of David Cramer and the entire Sentry team for their help and evangelism of open-source software. It's because of support from companies like Sentry that we are able to receive ongoing maintenance and keep developing Astro in an open, financially sustainable way.
+
+You can learn more about how we use these funds by reading our [FUNDING.md](https://github.com/withastro/.github/blob/main/FUNDING.md) document on GitHub.
+
+Thanks, Sentry!

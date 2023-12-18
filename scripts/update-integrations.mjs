@@ -12,6 +12,7 @@ import {
 	getCategoriesForKeyword,
 	getFeaturedPackagePriority,
 	getOverrides,
+	getToolbarPackagePriority,
 	isNewPackage,
 } from "./integrations.mjs"
 import { stringifyLinks } from "./markdown.mjs"
@@ -29,14 +30,28 @@ function sanitizeGitHubUrl(url) {
 		.replace("git@github.com:", "https://github.com/")
 }
 
+function updateLastModified() {
+	const pathname = path.resolve(
+		path.dirname(fileURLToPath(import.meta.url)),
+		"../src/data/last-modified.json",
+	)
+	const json = fs.readFileSync(pathname, { encoding: "utf8" })
+	const data = JSON.parse(json)
+	data["integrations"] = new Date().toUTCString()
+	fs.writeFileSync(pathname, JSON.stringify(data, null, "\t"), { encoding: "utf8" })
+}
+
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).map(getCategoriesForKeyword).flat()
 
 	const featured = getFeaturedPackagePriority(pkg)
+	const toolbar = getToolbarPackagePriority(pkg)
+	const official = isOfficial(pkg)
 
 	const otherCategories = [
-		isOfficial(pkg) ? "official" : undefined,
+		official ? "official" : undefined,
 		featured ? "featured" : undefined,
+		toolbar ? "toolbar" : undefined,
 		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean)
 
@@ -56,6 +71,7 @@ function normalizePackageDetails(data, pkg) {
 		npmUrl,
 		repoUrl,
 		homepageUrl,
+		official: official === true ? true : undefined,
 	}
 }
 
@@ -66,6 +82,7 @@ async function fetchWithOverrides(pkg) {
 	const downloads = await fetchDownloadsForPackage(pkg)
 	const badge = badgeForPackage(details)
 	const featured = getFeaturedPackagePriority(pkg)
+	const toolbar = getToolbarPackagePriority(pkg)
 
 	return {
 		...normalizePackageDetails(details, pkg),
@@ -73,6 +90,7 @@ async function fetchWithOverrides(pkg) {
 		downloads,
 		badge,
 		featured,
+		toolbar,
 	}
 }
 
@@ -143,6 +161,8 @@ ${frontmatter}---\n`,
 ${frontmatter}---\n`,
 		)
 	}
+
+	updateLastModified()
 
 	// logging in case we need to audit the nightly job
 	let stats = `\n--- Update Integrations ---

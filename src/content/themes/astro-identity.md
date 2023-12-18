@@ -8,11 +8,9 @@ author:
   avatar: "https://gavn.in/img/fav/mstile-150x150.png"
 categories:
   - "portfolio"
-  - "recent"
 buyUrl: "https://i.gavn.in/identity"
 demoUrl: "https://astro-indentity.gavn.in/"
-publishDate: "August 28, 2024"
-badge: "new"
+publishDate: "August 28, 2023"
 ---
 
 <p>🌌 Astro Identity, where stars align, a cosmic web presence, a realm divine.</p>

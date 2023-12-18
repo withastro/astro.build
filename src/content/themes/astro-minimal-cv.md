@@ -11,7 +11,7 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/alexanderhodes/astro-minimal-cv"
 demoUrl: "https://astro-minimal-cv.netlify.app/"
-stars: 14
+stars: 17
 tools:
   - "tailwind"
 ---

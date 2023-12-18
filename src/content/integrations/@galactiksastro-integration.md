@@ -4,11 +4,10 @@ title: "@galactiks/astro-integration"
 description: "Galactiks Astro integration"
 categories:
   - "css+ui"
+  - "analytics"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@galactiks/astro-integration"
 repoUrl: "https://github.com/thegalactiks/explorer"
 homepageUrl: "https://www.galactiks.com"
-downloads: 320
-badge: "new"
+downloads: 102
 ---

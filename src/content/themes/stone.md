@@ -8,12 +8,10 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/75279345?v=4"
 categories:
   - "landing-page"
-  - "recent"
 repoUrl: "https://github.com/m6v3l9/astro-theme-stone"
 demoUrl: "https://astro-theme-stone.vercel.app/"
-publishDate: "August 28, 2024"
-stars: 44
-badge: "new"
+publishDate: "August 28, 2023"
+stars: 71
 ---
 
 <h2>Key Features:</h2>

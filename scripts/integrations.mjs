@@ -64,3 +64,8 @@ export function getFeaturedPackagePriority(pkg) {
 	const index = integrations.featured.indexOf(pkg) + 1
 	return index > 0 ? index : undefined
 }
+
+export function getToolbarPackagePriority(pkg) {
+	const index = integrations.toolbar.indexOf(pkg) + 1
+	return index > 0 ? index : undefined
+}

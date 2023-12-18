@@ -4,10 +4,8 @@ title: "astro-favicons"
 description: "A Multi-platform, All Browser Favicon generator for Astro Project."
 categories:
   - "css+ui"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-favicons"
 repoUrl: "https://github.com/ACP-CODE/astro-favicons"
 homepageUrl: "https://github.com/ACP-CODE/astro-favicons#readme"
-downloads: 165
-badge: "new"
+downloads: 794
 ---

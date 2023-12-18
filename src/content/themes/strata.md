@@ -13,7 +13,7 @@ demoUrl: "https://astro-strata.vercel.app/"
 tools:
   - "tailwind"
   - "mdx"
-stars: 4
+stars: 6
 publishDate: "Jun 12, 2023"
 ---
 

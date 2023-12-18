@@ -13,14 +13,12 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/144011171?s=200&v=4"
 categories:
   - "blog"
-  - "recent"
   - "ecommerce"
   - "portfolio"
 repoUrl: "https://github.com/unfolding-io/nebulix"
 demoUrl: "https://nebulix.unfolding.io/"
 publishDate: "September 19, 2023"
-stars: 46
-badge: "new"
+stars: 127
 ---
 
 <h2>Optimized Speed and Accessibility</h2>

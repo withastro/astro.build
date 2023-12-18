@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/cosmicjs/simple-astro-blog"
 demoUrl: "https://simple-astro-blog.vercel.app/"
-stars: 30
+stars: 33
 tools:
   - "react"
   - "tailwind"
