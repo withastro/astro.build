@@ -19,7 +19,7 @@ const image = await resolveImage(theme)
 
 <Card isLink>
 	{!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>}
-	<a class="flex h-full flex-col" href={`/themes/details/${theme.slug}`} rel="prefetch">
+	<a class="flex h-full flex-col" href={`/themes/details/${theme.slug}`} data-astro-prefetch>
 		<img
 			src={image.src}
 			width={image.width}

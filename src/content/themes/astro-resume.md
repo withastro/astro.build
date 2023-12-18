@@ -11,7 +11,7 @@ categories:
   - "other"
 repoUrl: "https://github.com/EmaSuriano/astro-resume"
 demoUrl: "https://astro-resume.netlify.app/"
-stars: 49
+stars: 52
 tools:
   - "tailwind"
 ---

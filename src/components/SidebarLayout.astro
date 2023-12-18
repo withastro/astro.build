@@ -10,7 +10,7 @@ const { class: className, columnReverse = false, ...attrs } = Astro.props
 
 <div
 	class:list={[
-		"flex lg:flex-row border-t border-astro-gray-500",
+		"flex border-t border-astro-gray-500 lg:flex-row",
 		columnReverse ? "flex-col-reverse" : "flex-col",
 		className,
 	]}
@@ -18,7 +18,7 @@ const { class: className, columnReverse = false, ...attrs } = Astro.props
 >
 	<aside
 		class:list={[
-			"border-inherit min-w-[30ch] lg:max-w-xs xl:max-w-sm lg:border-r",
+			"min-w-[30ch] border-inherit lg:max-w-xs lg:border-r xl:max-w-sm",
 			columnReverse ? "border-t lg:border-t-0" : "border-b lg:border-b-0",
 		]}
 	>
