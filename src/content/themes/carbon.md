@@ -11,6 +11,7 @@ categories:
   - "other"
 demoUrl: "https://lexingtonthemes.com/viewports/carbon/"
 buyUrl: "https://carbon.lexingtonthemes.com/system/style-guide"
+publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"

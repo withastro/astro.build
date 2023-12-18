@@ -11,6 +11,7 @@ categories:
   - "landing-page"
 demoUrl: "https://lexingtonthemes.com/info/simplexity/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/efff7e1e-e8fe-4efc-afcb-c51907eae41c"
+publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"

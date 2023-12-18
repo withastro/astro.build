@@ -12,6 +12,7 @@ categories:
   - "other"
 demoUrl: "https://lexingtonthemes.com/viewports/carriera/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/0618db8c-ffa9-43da-a152-eb4b744716d6"
+publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"
