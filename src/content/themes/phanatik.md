@@ -10,12 +10,15 @@ author:
 categories:
   - "blog"
   - "other"
+  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/phanatik/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/cd4e7a6a-f165-43e1-a971-2f54570d88ca?aff_ref=wZDMbor3"
+publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
+badge: "new"
 ---
 
 <p>

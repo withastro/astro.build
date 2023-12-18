@@ -9,12 +9,15 @@ author:
   avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
 categories:
   - "other"
+  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/carriera/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/2c490f1d-6e5c-4690-9ade-038b802e07a0?aff_ref=W3GzrpMZ"
+publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
+badge: "new"
 ---
 
 <p>
