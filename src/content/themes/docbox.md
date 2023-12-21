@@ -11,7 +11,7 @@ author:
 categories:
   - "docs"
   - "recent"
-repoUrl: "https://docbox-astro.vercel.app/"
+demoUrl: "https://docbox-astro.vercel.app/"
 buyUrl: "https://themefisher.com/products/docbox-astro"
 tools:
   - "react"
