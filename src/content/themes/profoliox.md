@@ -2,23 +2,22 @@
 title: "ProFolioX"
 description: "ProFolioX is a website template crafted for developers and designers who code."
 image: "/src/content/themes/_images/profoliox-hero.webp"
-images:
-  - "/src/content/themes/_images/profoliox-2.webp"
-  - "/src/content/themes/_images/profoliox-3.webp"
-  - "/src/content/themes/_images/profoliox-4.webp"
-  - "/src/content/themes/_images/profoliox-5.webp"
+images: []
 author:
   url: "https://lexingtonthemes.com/"
   name: "Lexington Themes"
   avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
 categories:
   - "portfolio"
+  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/profoliox"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/5fcfec43-356f-4f81-9a20-90d9539ed9b0"
+publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
+badge: "new"
 ---
 
 <p>

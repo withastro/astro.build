@@ -8,15 +8,13 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/54335866?v=4"
 categories:
   - "blog"
-  - "recent"
 repoUrl: "https://github.com/zankhq/astro-starter"
 demoUrl: "https://astrostarter.zank.studio"
 tools:
   - "alpinejs"
   - "tailwind"
 publishDate: "Nov 9, 2023"
-stars: 12
-badge: "new"
+stars: 18
 ---
 
 <h3>Features</h3>

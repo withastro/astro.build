@@ -389,6 +389,7 @@ const scraper = new ShowcaseScraper({
 		"https://astro.build",
 		"https://pagespeed.web.dev",
 		"https://lighthouse-metrics.com",
+		"https://calckey.org",
 	],
 })
 await scraper.run()

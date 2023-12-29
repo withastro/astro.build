@@ -5,11 +5,9 @@ description: "An Astro component for optimizing, reformatting, and caching image
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@picperf/astro"
 repoUrl: "https://github.com/alexmacarthur/picperf-javascript"
 homepageUrl: "https://picperf.io"
 image: "/assets/integrations/picperf.svg"
-downloads: 485
-badge: "new"
+downloads: 21
 ---
