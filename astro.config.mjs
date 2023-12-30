@@ -28,6 +28,9 @@ export default defineConfig({
 			theme: JSON.parse(fs.readFileSync("./houston.theme.json", { encoding: "utf-8" })),
 		},
 	},
+	image: {
+		domains: ["v1.screenshot.11ty.dev"],
+	},
 	vite: {
 		ssr: {
 			noExternal: ["smartypants"],

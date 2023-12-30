@@ -95,68 +95,79 @@ With the release of the Astro Dev Toolbar, we also have Dev Toolbar apps to show
 
 Websites submitted to our Discord `#showcase` channel and featured on community calls this month.
 
-- [playstormgate.com](https://playstormgate.com/) by @robbietron
-- [monicaandandy.com](https://monicaandandy.com/) by @joshuaiz
-- [flowsstudio.com](https://flowsstudio.com/) by @marvinkr
-- [lucasjouin.com](https://lucasjouin.com/) by @itshaunt
-- [ngc.pages.dev](https://ngc.pages.dev/) by @erkan59
-- [eldenlord.cskl.pl](https://eldenlord.cskl.pl/) by @konrad_32301
-- [cskl.pl](https://cskl.pl/) by @konrad_32301
-- [salam.app](https://salam.app/) by @golam71
-- [ltree.darko.io](https://ltree.darko.io/) by @_seiryuu_
-- [birksovskiy.vercel.app](https://birksovskiy.vercel.app/) by @birksovskiy
-- [tomgraafmans.com](https://tomgraafmans.com/) by @varvino
-- [erfianugrah.com](https://www.erfianugrah.com/) by @stoicopa
-- [hamza127.vercel.app](https://hamza127.vercel.app/) by @hamza12700
-- [app.malachidaily.com](https://app.malachidaily.com/) by @cameronpak
-- [sayings.cc](https://sayings.cc/) by @k16e.co
-- [new.aroxbilling.com](https://new.aroxbilling.com/) by @toxin141
-- [florian-lefebvre.dev](https://florian-lefebvre.dev/) by @florian_lefebvre
-- [potatodeveloper.online](https://www.potatodeveloper.online/) by @badh_rush#0730
-- [kreativan.dev](https://kreativan.dev/) by @kreativan.
-- [astratechz.com](https://astratechz.com/) by @engagepy
-- [hookdeck.com](https://hookdeck.com/) by @ernie9316
-- [sannajammeh.com](https://sannajammeh.com/) by @chiefkoshi
-- [events-3bg.pages.dev](https://events-3bg.pages.dev/demos/) by @martrapp
-- [greendream21.github.io](https://greendream21.github.io/) by @lovebee_
-- [pagepanda.vercel.app](https://pagepanda.vercel.app/) by @varvino
-- [hideoo.dev](https://hideoo.dev/notes) by @hideoo
-- [amigosdelretiro.com](https://www.amigosdelretiro.com/) by @suhaylmv
-- [caoutchou.vercel.app](https://caoutchou.vercel.app/) by @karel5743
-- [agency-git-new-flurium.vercel.app](https://agency-git-new-flurium.vercel.app/) by @koshchei.
-- [sahaja.bad.al](https://sahaja.bad.al/) by @theblapse
-- [calaisrespire.com](https://calaisrespire.com/) by @.kamalito
-- [johnzanussi.com](https://johnzanussi.com/) by @johnzanussi
-- [minirampfoundation.org](https://minirampfoundation.org/) by @johnzanussi
-- [switchcase.xyz](https://switchcase.xyz/) by @hellohithisme
-- [mmbu2023.vercel.app](https://mmbu2023.vercel.app/) by @heunha
-- [blog.memos.land](https://blog.memos.land/en/) by @oscarbustos
-- [trailbuddy-astro-view-transition-demo.netlify.app](https://trailbuddy-astro-view-transition-demo.netlify.app/) by @ekfuhrmann
-- [xn--berlandpost-shb.ch](https://xn--berlandpost-shb.ch/) by @meintest_26190
-- [caiodeveloper.ca](https://www.caiodeveloper.ca/) by @caiomarcellus
-- [offeringinspiration.com](https://offeringinspiration.com/Crafts/) by @randombits.dev
-- [lalospirits.com](https://lalospirits.com/) by @bigskillet0521
-- [clerk-astro-demo](https://github.com/vin-e/clerk-astro-demo) by @vinny_code
-- [belief.gg](https://belief.gg/) by @t1c.dev
-- [grafoma.se](https://grafoma.se/) by @.hydde
+import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
+
+export const sites = [
+  { url: 'https://playstormgate.com/', title: '@robbietron' },
+  { url: 'https://monicaandandy.com/', title: '@joshuaiz' },
+  { url: 'https://flowsstudio.com/', title: '@marvinkr' },
+  { url: 'https://lucasjouin.com/', title: '@itshaunt' },
+  { url: 'https://ngc.pages.dev/', title: '@erkan59' },
+  { url: 'https://eldenlord.cskl.pl/', title: '@konrad_32301' },
+  { url: 'https://cskl.pl/', title: '@konrad_32301' },
+  { url: 'https://salam.app/', title: '@golam71' },
+  { url: 'https://ltree.darko.io/', title: '@_seiryuu_' },
+  { url: 'https://birksovskiy.vercel.app/', title: '@birksovskiy' },
+  { url: 'https://tomgraafmans.com/', title: '@varvino' },
+  { url: 'https://www.erfianugrah.com/', title: '@stoicopa' },
+  { url: 'https://hamza127.vercel.app/', title: '@hamza12700' },
+  { url: 'https://app.malachidaily.com/', title: '@cameronpak' },
+  { url: 'https://sayings.cc/', title: '@k16e.co' },
+  // Commented out this site as it’s broken in my testing:
+  // { url: 'https://new.aroxbilling.com/', title: '@toxin141' },
+  { url: 'https://florian-lefebvre.dev/', title: '@florian_lefebvre' },
+  { url: 'https://www.potatodeveloper.online/', title: '@badh_rush#0730' },
+  { url: 'https://kreativan.dev/', title: '@kreativan.' },
+  { url: 'https://astratechz.com/', title: '@engagepy' },
+  { url: 'https://hookdeck.com/', title: '@ernie9316' },
+  { url: 'https://sannajammeh.com/', title: '@chiefkoshi' },
+  { url: 'https://events-3bg.pages.dev/demos/', title: '@martrapp' },
+  { url: 'https://greendream21.github.io/', title: '@lovebee_' },
+  { url: 'https://pagepanda.vercel.app/', title: '@varvino' },
+  { url: 'https://hideoo.dev/notes', title: '@hideoo' },
+  { url: 'https://www.amigosdelretiro.com/', title: '@suhaylmv' },
+  { url: 'https://caoutchou.vercel.app/', title: '@karel5743' },
+  { url: 'https://agency-git-new-flurium.vercel.app/', title: '@koshchei.' },
+  { url: 'https://sahaja.bad.al/', title: '@theblapse' },
+  { url: 'https://calaisrespire.com/', title: '@.kamalito' },
+  { url: 'https://johnzanussi.com/', title: '@johnzanussi' },
+  { url: 'https://minirampfoundation.org/', title: '@johnzanussi' },
+  { url: 'https://switchcase.xyz/', title: '@hellohithisme' },
+  { url: 'https://mmbu2023.vercel.app/', title: '@heunha' },
+  { url: 'https://blog.memos.land/en/', title: '@oscarbustos' },
+  { url: 'https://trailbuddy-astro-view-transition-demo.netlify.app/', title: '@ekfuhrmann' },
+  { url: 'https://xn--berlandpost-shb.ch/', title: '@meintest_26190' },
+  { url: 'https://www.caiodeveloper.ca/', title: '@caiomarcellus' },
+  { url: 'https://offeringinspiration.com/Crafts/', title: '@randombits.dev' },
+  { url: 'https://lalospirits.com/', title: '@bigskillet0521' },
+  { url: 'https://github.com/vin-e/clerk-astro-demo', title: '@vinny_code' },
+  { url: 'https://belief.gg/', title: '@t1c.dev' },
+  { url: 'https://grafoma.se/', title: '@.hydde' },
+];
+
+<ShowcaseGrid items={sites} />
 
 ### Starlight in the wild
 
 Take a peek at the new Starlight sites that we discovered this month.
 
-- [Svelte Tweakpane UI](https://kitschpatrol.com/svelte-tweakpane-ui)
-- [New Horizons](https://nh.outerwildsmods.com/)
-- [Spotlight](https://spotlightjs.com/)
-- [secco](https://secco.lekoarts.de/)
-- [Astro Docs](https://docs.astro.build/)
-- [Ratatui](https://ratatui.rs/)
-- [Chamaeleon](https://chamaeleon-docs.vercel.app)
-- [Sarah's Starlight Blog](https://rainsberger.ca/)
-- [Signals.dart](https://rodydavis.github.io/signals.dart/)
-- [Dusa](https://dusa.rocks/docs/)
-- [csmos](https://csmos.space/)
-- [SiteOne](https://crawler.siteone.io/)
-- [Mr. Robøt](https://docs.mrrobot.app/)
-- [Progressively](https://progressively.app/)
-- [TACO project](https://taco-api.netlify.app/about/)
-- [Origami for Everyone](https://origami-for-everyone.ft.com/)
+export const starlightSites = [
+  { url: 'https://kitschpatrol.com/svelte-tweakpane-ui', title: 'Svelte Tweakpane UI' },
+  { url: 'https://nh.outerwildsmods.com/', title: 'New Horizons' },
+  { url: 'https://spotlightjs.com/', title: 'Spotlight' },
+  { url: 'https://secco.lekoarts.de/', title: 'secco' },
+  { url: 'https://docs.astro.build/', title: 'Astro Docs' },
+  { url: 'https://ratatui.rs/', title: 'Ratatui' },
+  { url: 'https://chamaeleon-docs.vercel.app', title: 'Chamaeleon' },
+  { url: 'https://rainsberger.ca/', title: 'Sarah\'s Starlight Blog' },
+  { url: 'https://rodydavis.github.io/signals.dart/', title: 'Signals.dart' },
+  { url: 'https://dusa.rocks/docs/', title: 'Dusa' },
+  { url: 'https://csmos.space/', title: 'csmos' },
+  { url: 'https://crawler.siteone.io/', title: 'SiteOne' },
+  { url: 'https://docs.mrrobot.app/', title: 'Mr. Robøt' },
+  { url: 'https://progressively.app/', title: 'Progressively' },
+  { url: 'https://taco-api.netlify.app/about/', title: 'TACO project' },
+  { url: 'https://origami-for-everyone.ft.com/', title: 'Origami for Everyone' },
+];
+
+<ShowcaseGrid items={starlightSites} />
