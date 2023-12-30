@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets"
-import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx"
+import ExternalLinkIcon from "~/icons/ExternalLinkIcon"
 
 export interface Props {
 	url: string
-	title?: string
+	title: string
 }
 
 const { url, title } = Astro.props
@@ -17,7 +17,7 @@ const { url, title } = Astro.props
 		"!m-0 before:!hidden",
 	]}
 >
-	<a href={url} class="h-full w-full text-astro-gray-100">
+	<a href={url} class="h-full w-full text-astro-gray-100" target="_blank">
 		<Image
 			src={`https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/_wait:3`}
 			width={450}
@@ -29,7 +29,7 @@ const { url, title } = Astro.props
 		<span
 			class="pointer-events-none absolute bottom-0 z-10 flex w-full flex-col gap-2 bg-astro-gray-500/95 p-4 opacity-0 transition-opacity duration-300 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
 		>
-			{title && <span class="heading-5">{title}</span>}
+			<span class="heading-5">{title}</span>
 			<span class="body flex flex-row items-center gap-2">
 				<span>{url}</span>
 				<ExternalLinkIcon />
