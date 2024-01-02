@@ -56,7 +56,7 @@ const items: Item[] = [
 		title: "E-Commerce",
 		description:
 			"Time is money. Give your customers a better shopping experience and grow your business faster.",
-		liveUrl: new URL("https://www.enjoyyearof.com/"),
+		liveUrl: new URL("https://happyplates.com/"),
 		image: eCommerceImage,
 		cta: {
 			text: "E-Commerce themes",
