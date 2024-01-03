@@ -1,0 +1,85 @@
+---
+title: "Astro 4.1"
+description: "Astro 4.1, our first release of the new year, is here! This release includes"
+publishDate: "January 4, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-410/post-header-4.1.webp"
+socialImage: "/src/content/blog/_images/astro-410/og-image-4.1.webp"
+lang: "en"
+---
+
+After a small break for the holidays, we're back with a new release of Astro! Astro 4.1 includes a number of bug fixes and improvements. As we're all getting back into the swing of things, this release is a bit smaller than usual, but we're all excited to get back to work on Astro and have some exciting things planned for 2024!
+
+Highlights include:
+
+- **[New a11y audits rules](#new-audits-rules)**
+- **[Ability to set `rootMargin` for `client:visible`](#extended-client-visible-directive)**
+- **[Custom cookie encoding and decoding](#custom-cookie-encoding-and-decoding)**
+
+To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 4.1 by running the `@astrojs/upgrade` command:
+
+```sh
+npx @astrojs/upgrade
+```
+
+or by running the upgrade command for your package manager:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## New a11y audits rules
+
+We've added two new audit rules for the dev toolbar:
+
+- Unsupported ARIA attribute
+- Missing attributes required for ARIA role
+
+These rules both help ensure that the elements on your page have correct and valid ARIA roles.
+
+## Extended `client:visible` directive
+
+The `client:visible` client directive now accepts a `rootMargin` option, which allows you to specify a margin around the viewport for the purposes of calculating visibility. This allows a component to be hydrated when it is close to the viewport instead of waiting for it to become actually visible.
+
+```astro
+<!-- Load component when it's within 200px away from entering the viewport -->
+<Component client:visible={{rootMargin: "200px"}} />
+```
+
+## Custom cookie encoding and decoding
+
+Cookie encoding / decoding can now be customized through the new `encode` and `decode` functions that can be passed to `Astro.cookies.set` and `Astro.cookies.get` respectively.
+
+For example, you can bypass the default encoding via encodeURIComponent when adding a URL as part of a cookie:
+
+```astro
+---
+import { encodeCookieValue } from './cookies';
+Astro.cookies.set('url', Astro.url.toString(), {
+  // Override the default encoding so that URI components are not encoded
+  encode: (value) => encodeCookieValue(value),
+});
+---
+```
+
+Later, you can decode the URL in the same way:
+
+```astro
+---
+import { decodeCookieValue } from './cookies';
+const url = Astro.cookies.get('url', {
+  decode: (value) => decodeCookieValue(value),
+});
+---
+```
+
+## Bug Fixes
+
+Additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md#350) to learn more.
