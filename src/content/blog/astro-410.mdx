@@ -35,9 +35,9 @@ pnpm upgrade astro --latest
 yarn upgrade astro --latest
 ```
 
-## New a11y audits rules
+## New accessibility audit rules
 
-We've added two new audit rules for the dev toolbar:
+We've added two new audit rules for the dev toolbar. You will now be warned about:
 
 - Unsupported ARIA attribute
 - Missing attributes required for ARIA role
@@ -55,7 +55,7 @@ The `client:visible` client directive now accepts a `rootMargin` option, which a
 
 ## Custom cookie encoding and decoding
 
-Cookie encoding / decoding can now be customized through the new `encode` and `decode` functions that can be passed to `Astro.cookies.set` and `Astro.cookies.get` respectively.
+Cookie encoding / decoding can now be customized through new `encode` and `decode` functions when setting and getting cookies.
 
 For example, you can bypass the default encoding via encodeURIComponent when adding a URL as part of a cookie:
 
