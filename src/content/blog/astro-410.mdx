@@ -39,14 +39,14 @@ yarn upgrade astro --latest
 
 We've added two new audit rules for the dev toolbar. You will now be warned about:
 
-- Unsupported ARIA attribute
+- Unsupported ARIA attributes
 - Missing attributes required for ARIA role
 
-These rules both help ensure that the elements on your page have correct and valid ARIA roles.
+Both these rules help ensure that the elements on your page have correct and valid ARIA roles.
 
 ## Extended `client:visible` directive
 
-The `client:visible` client directive now accepts a `rootMargin` option, which allows you to specify a margin around the viewport to calculate visibility. This allows a component to be hydrated when it is close to the viewport instead of waiting for it to become visible.
+The `client:visible` directive now accepts a `rootMargin` option, which allows you to specify a margin around the viewport to calculate visibility. This allows a component to be hydrated when it is close to the viewport instead of waiting for it to become visible.
 
 ```astro
 <!-- Load component when it's within 200px away from entering the viewport -->
