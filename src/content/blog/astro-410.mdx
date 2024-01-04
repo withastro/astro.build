@@ -46,7 +46,7 @@ These rules both help ensure that the elements on your page have correct and val
 
 ## Extended `client:visible` directive
 
-The `client:visible` client directive now accepts a `rootMargin` option, which allows you to specify a margin around the viewport for the purposes of calculating visibility. This allows a component to be hydrated when it is close to the viewport instead of waiting for it to become actually visible.
+The `client:visible` client directive now accepts a `rootMargin` option, which allows you to specify a margin around the viewport to calculate visibility. This allows a component to be hydrated when it is close to the viewport instead of waiting for it to become visible.
 
 ```astro
 <!-- Load component when it's within 200px away from entering the viewport -->
@@ -55,9 +55,9 @@ The `client:visible` client directive now accepts a `rootMargin` option, which a
 
 ## Custom cookie encoding and decoding
 
-Cookie encoding / decoding can now be customized through new `encode` and `decode` functions when setting and getting cookies.
+Cookie encoding/decoding can now be customized through new `encode` and `decode` functions when setting and getting cookies.
 
-For example, you can bypass the default encoding via encodeURIComponent when adding a URL as part of a cookie:
+For example, you can bypass the default encoding via `encodeURIComponent` when adding a URL as part of a cookie:
 
 ```astro
 ---
