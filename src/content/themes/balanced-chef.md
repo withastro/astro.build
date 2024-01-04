@@ -10,7 +10,6 @@ author:
 categories:
   - "other"
 repoUrl: "https://github.com/fahad0samara/Astro.js-Chef-Project"
-demoUrl: "https://astro-js-iota.vercel.app/"
 tools:
   - "tailwind"
   - "typescript"
