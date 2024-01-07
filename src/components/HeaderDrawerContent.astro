@@ -1,9 +1,6 @@
 ---
 import siteInfo from "~/data/site-info.js"
-import ChevronIcon from "~/icons/ChevronIcon.jsx"
-import LayersIcon from "~/icons/LayersIcon.jsx"
-import OpenBookIcon from "~/icons/OpenBookIcon.jsx"
-import PaletteIcon from "~/icons/PaletteIcon.jsx"
+import ResourcesDropdown from "./ResourcesDropdown.tsx"
 import SocialLinks from "./SocialLinks.astro"
 
 const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly)
@@ -15,26 +12,7 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly)
 >
 	<a href="https://docs.astro.build/" class="link"> Docs</a>
 	<a href="/showcase/" data-astro-prefetch class="link"> Showcase</a>
-	<details class="group">
-		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
-			Resources
-			<ChevronIcon class="inline-block rotate-0 transition-transform group-open:-rotate-180" />
-		</summary>
-		<div class="mt-4 flex flex-col gap-4 text-2xl font-light">
-			<a href="/themes/" data-astro-prefetch class="link flex items-center gap-4">
-				<PaletteIcon /> Themes
-			</a>
-			<a href="/integrations/" data-astro-prefetch class="link flex items-center gap-4">
-				<LayersIcon /> Integrations
-			</a>
-			<a
-				href="https://docs.astro.build/en/tutorial/0-introduction/"
-				class="link flex items-center gap-4"
-			>
-				<OpenBookIcon /> Tutorials
-			</a>
-		</div>
-	</details>
+	<ResourcesDropdown client:idle />
 	<a href="/blog/" data-astro-prefetch class="link"> Blog</a>
 	<div class="flex flex-col gap-6">
 		<SocialLinks links={socialLinks} />
