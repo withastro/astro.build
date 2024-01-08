@@ -1,7 +1,7 @@
 ---
 name: "astro-icon"
 title: "astro-icon"
-description: "This **Astro integration](https://docs.astro.build/en/guides/integrations-guide/)** provides a straight-forward `Icon` component for [Astro."
+description: "This Astro integration provides a straight-forward `Icon` component for Astro."
 categories:
   - "css+ui"
   - "performance+seo"
