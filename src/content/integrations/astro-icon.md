@@ -1,7 +1,7 @@
 ---
 name: "astro-icon"
 title: "astro-icon"
-description: "A straight-forward `Icon` component for Astro."
+description: "This **Astro integration](https://docs.astro.build/en/guides/integrations-guide/)** provides a straight-forward `Icon` component for [Astro."
 categories:
   - "css+ui"
   - "performance+seo"
@@ -11,7 +11,7 @@ image: "/assets/integrations/astro-icon.svg"
 repoUrl: "https://github.com/natemoo-re/astro-icon"
 featured: 6
 homepageUrl: "https://github.com/natemoo-re/astro-icon#readme"
-downloads: 64341
+downloads: 53745
 badges:
   - "featured"
 ---

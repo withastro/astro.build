@@ -19,5 +19,5 @@ tools:
   - "typescript"
   - "mdx"
 publishDate: "Oct 13, 2023"
-stars: 32
+stars: 42
 ---

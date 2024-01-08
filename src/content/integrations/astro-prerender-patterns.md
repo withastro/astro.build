@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-prerender-patterns"
 repoUrl: "https://github.com/lilnasy/gratelets"
 homepageUrl: "https://github.com/lilnasy/gratelets/tree/main/packages/prerender-patterns"
-downloads: 23
+downloads: 6
 ---

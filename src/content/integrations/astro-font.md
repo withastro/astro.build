@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-font"
 homepageUrl: "https://launchfa.st/features/astro-font"
-downloads: 913
+downloads: 4404
 badge: "new"
 ---

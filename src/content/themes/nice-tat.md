@@ -12,15 +12,13 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/2830379?v=4"
 categories:
   - "minimal"
-  - "recent"
 repoUrl: "https://github.com/ThatGuySam/nice-tat"
 demoUrl: "https://nice-tat.netlify.app/"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "Nov 21, 2023"
-badge: "new"
-stars: 6
+stars: 7
 ---
 
 <p>Astro Site Template inspired by Casey Neistat’s ultra minimal personal site.</p>

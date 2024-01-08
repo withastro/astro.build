@@ -15,6 +15,7 @@ tools:
   - "tailwind"
 publishDate: "Dec 21, 2023"
 badge: "new"
+stars: 1
 ---
 
 <p>See <a href="https://mambaui.com/">https://mambaui.com/</a> for the source assets</p>

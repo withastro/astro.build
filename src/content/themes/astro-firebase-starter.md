@@ -8,7 +8,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/92813718?v=4"
 categories:
   - "minimal"
-  - "recent"
 repoUrl: "https://github.com/Porter-smith/astro-firebase-svelte-tailwind-starter"
 demoUrl: "https://astro-firebase-svelte-tailwind-starter.vercel.app/"
 tools:
@@ -16,8 +15,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Dec 1, 2023"
-stars: 6
-badge: "new"
+stars: 10
 ---
 
 <p>

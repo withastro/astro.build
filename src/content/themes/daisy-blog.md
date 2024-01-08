@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/saadeghi/daisy-blog"
 demoUrl: "https://daisy-blog.netlify.app/"
-stars: 54
+stars: 55
 tools:
   - "tailwind"
 ---

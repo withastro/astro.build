@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-netlify-cloudinary"
 homepageUrl: "https://www.npmjs.com/package/astro-netlify-cloudinary"
-downloads: 102
+downloads: 8
 ---

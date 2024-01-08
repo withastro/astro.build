@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/flexdinesh/blogster"
 demoUrl: "https://blogster-sleek.netlify.app"
-stars: 433
+stars: 454
 tools:
   - "tailwind"
 ---

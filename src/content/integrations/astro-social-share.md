@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-social-share"
 repoUrl: "https://github.com/silent1mezzo/astro-social-share"
 homepageUrl: "https://github.com/silent1mezzo/astro-social-share#readme"
-downloads: 289
+downloads: 232
 ---
