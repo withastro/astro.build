@@ -18,6 +18,7 @@ repoUrl: "https://github.com/unfolding-io/StarFunnel"
 demoUrl: "https://starfunnel.unfolding.io/"
 publishDate: "Dec 18, 2023"
 badge: "new"
+stars: 27
 ---
 
 <p>

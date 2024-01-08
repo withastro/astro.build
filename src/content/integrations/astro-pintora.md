@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-pintora"
 homepageUrl: "https://www.npmjs.com/package/astro-pintora"
-downloads: 140
+downloads: 161
 badge: "new"
 ---

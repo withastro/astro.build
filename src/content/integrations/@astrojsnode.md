@@ -10,6 +10,6 @@ npmUrl: "https://www.npmjs.com/package/@astrojs/node"
 image: "/assets/integrations/node.svg"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/node/"
-downloads: 84636
+downloads: 81748
 official: true
 ---

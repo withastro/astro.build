@@ -12,7 +12,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/92813718?v=4"
 categories:
   - "portfolio"
-  - "recent"
 buyUrl: "https://acquaint.gumroad.com/l/astro-resume01"
 demoUrl: "https://resume01-rho.vercel.app/"
 tools:
@@ -21,7 +20,6 @@ tools:
   - "tailwind"
   - "mdx"
 publishDate: "Dec 1, 2023"
-badge: "new"
 ---
 
 <p>

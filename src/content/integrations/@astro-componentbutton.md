@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-component/button"
 repoUrl: "https://github.com/astro-component/button"
 homepageUrl: "https://github.com/astro-component/button#readme"
-downloads: 1
+downloads: 4
 ---

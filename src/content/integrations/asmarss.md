@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/asmarss"
 repoUrl: "https://github.com/yplog/asmarss"
 homepageUrl: "https://github.com/yplog/asmarss#readme"
-downloads: 21
+downloads: 31
 ---

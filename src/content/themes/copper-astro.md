@@ -8,7 +8,6 @@ author:
   avatar: "https://themefisher.com/images/logo/favicon.png"
 categories:
   - "landing-page"
-  - "recent"
 buyUrl: "https://themefisher.com/products/copper-astro"
 demoUrl: "https://copper-astro.vercel.app/"
 tools:
@@ -16,7 +15,6 @@ tools:
   - "tailwind"
   - "mdx"
 publishDate: "Dec 1, 2023"
-badge: "new"
 ---
 
 <p>

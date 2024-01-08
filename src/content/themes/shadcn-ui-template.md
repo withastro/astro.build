@@ -8,7 +8,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/45186712?s=200&v=4"
 categories:
   - "minimal"
-  - "recent"
 repoUrl: "https://github.com/AREA44/astro-shadcn-ui-template"
 demoUrl: "https://astro-shadcn-ui-template.vercel.app"
 tools:
@@ -16,8 +15,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Nov 20, 2023"
-stars: 31
-badge: "new"
+stars: 38
 ---
 
 <p>This template helps you build apps with Astro, Tailwind CSS, and

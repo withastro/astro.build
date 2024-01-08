@@ -14,7 +14,6 @@ author:
 categories:
   - "landing-page"
   - "blog"
-  - "recent"
 repoUrl: "https://cosmicthemes.com/themes/demo/galaxy/"
 buyUrl: "https://cosmicthemes.com/themes/galaxy/"
 tools:
@@ -23,7 +22,6 @@ tools:
   - "mdx"
   - "sass"
 publishDate: "Nov 21, 2023"
-badge: "new"
 stars: 0
 ---
 
