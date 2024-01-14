@@ -1,6 +1,6 @@
 ---
 title: "Simplexity"
-description: "The ultimate blog template for anyone looking to own a clean, elegant and fully-functional blog website that supports dark mode with multiple demo pages."
+description: "Simplexity - A blog website theme built with Astrojs and Talwind CSS for a blor or your personal website"
 image: "/src/content/themes/_images/simplexity-hero.webp"
 images: []
 author:
@@ -25,7 +25,7 @@ badge: "new"
 	life. The template is versatile and can be applied to various types of websites, such as marketing,
 	SaaS, or product websites.
 </p>
-<p>Pages included</p>
+<p><strong>The template includes:</strong></p>
 <p>Pages</p>
 <ul>
 	<li>Home</li>

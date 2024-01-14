@@ -1,6 +1,6 @@
 ---
 title: "Hemingway"
-description: "A super minimal template, designed for those who likes clean details on simplicity."
+description: "Hemingway - A blog and literary website theme built with Astrojs and Talwind CSS for a blor or your personal website"
 image: "/src/content/themes/_images/hemingway-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "blog"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/hemingway/"
+demoUrl: "https://lexingtonthemes.com/info/hemingway/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/ec4dba6c-b32d-4990-9e08-d7cc7024349d"
 tools:
   - "tailwind"
@@ -18,14 +18,11 @@ tools:
   - "mdx"
 ---
 
-<p>
-  A super minimal template, designed for those who likes clean details on simplicity. Hemingway is made up of fully customizable elements, magazine designed layouts, enabling you to create great magazine or blog website with ease.
+A blog and literary website theme with a clean, sophisticated layout that combines a gray background with contrasting white and orange text. It features column-based text alignment for articles and an author's photo, creating an elegant reading experience that mimics traditional print media.
 
-An MDX powered blog and includes 27 page examples for sections such as, 3 different landing pages, three different blog landing pages, RSS,Memebership pages, Sign In, Tags and more. Swap sections, and you'll be ready to go.
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-</p>
-
-<p>Main Pages</p>
+<p><strong>The template includes:</strong></p>
 <ul>
   <li>3 x Landing Pages</li>
   <li>Simple memebership</li>

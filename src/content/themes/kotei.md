@@ -1,6 +1,6 @@
 ---
 title: "Kotei"
-description: "An elegant and minimal theme for your agency"
+description: "Kotei - Japan inspired studio theme built with Astrojs and Talwind CSS for your agency or studio"
 image: "/src/content/themes/_images/kotei-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "other"
   - "recent"
-demoUrl: "https://lexingtonthemes.com/viewports/kotei/"
+demoUrl: "https://lexingtonthemes.com/info/kotei/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/2813ea13-f8f9-41e3-8f02-e5ac0cffefaa?aff_ref=y3KrGoPZ"
 publishDate: "Dec 18, 2023"
 tools:
@@ -20,15 +20,12 @@ tools:
 badge: "new"
 ---
 
-<p>
-An elegant and minimal theme for your agency. For those who want to have a modern, clean and stylish. Kotei is made up of clean and fully customizable elements and layouts, and fully coded pages, enabling you to create great a agenc website with ease.
+A minimalist and clean design, ideal for a studio or agency seeking a modern and elegant aesthetic to showcase their brand and work.
 
-An MDX powered blog and includes 21 page ready examples for sections such as, landing page, 2 blog different landing pages, Work, Case Study Contact, Tags and more. Mix and match sections, and you'll be ready to go.
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-</p>
 <p><strong>The template includes:</strong></p>
 
-<p><strong>The template also includes a</strong></p>
 <ul>
   <li>Pages
     <ul>

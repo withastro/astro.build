@@ -1,6 +1,6 @@
 ---
 title: "Spazio Bianco"
-description: "A multipage clean theme with more than 40 ready made pages"
+description: "Spazio Bianco - A clean, modern and techy theme built with Astrojs and Talwind CSS for your next project"
 image: "/src/content/themes/_images/spaziobianco-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/spaziobianco/"
+demoUrl: "https://lexingtonthemes.com/info/spaziobianco/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/99afe682-cc70-4d85-b19a-debb968441b1"
 tools:
   - "tailwind"
@@ -18,7 +18,9 @@ tools:
   - "mdx"
 ---
 
-<p>✺&nbsp;<strong>Spazio Bianco UI kit</strong>&nbsp;━&nbsp;Spaziobianco UI kit is a nice and clean theme that allows you to create landing pages of diverse categories and customize them to your preferences, facilitating the construction of a landing page or website within hours instead of months.</p>
+A clean, modern theme for a SaaS companies, featuring a bright and airy design with blue accents, offering a mix of interface elements suitable for building responsive and engaging landing pages
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
 <p><strong>The template includes:</strong></p>
 <ul>

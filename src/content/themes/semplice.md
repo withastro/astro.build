@@ -1,6 +1,6 @@
 ---
 title: "Semplice"
-description: "A modern & clean UI Kit with more than 50 demo pages and 100s of components."
+description: "Semplice - An elegant and clean multipage theme built with Astrojs and Talwind CSS for your next project"
 image: "/src/content/themes/_images/semplice-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/semplice/"
+demoUrl: "https://lexingtonthemes.com/info/semplice/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/59105270-55f2-42b0-9728-3094f40f86f4"
 tools:
   - "tailwind"
@@ -18,9 +18,10 @@ tools:
   - "mdx"
 ---
 
-<p>✺&nbsp;<strong>Semplice UI kit</strong>&nbsp;━&nbsp;Semplice offers an elegant design that enables you to effortlessly create and customise landing pages, settings dashboards, or websites in a matter of hours instead of months.
+A clean, modern theme for a SAAS, decentralized platform, blockchain or cryptocurrency service. It combines a white background with purple highlights, featuring a simple, user-friendly layout for a technology-focused platform
 
-</p>
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
+
 <p><strong>The template includes:</strong></p>
 <ul>
   <li> <strong>50+ Demo pages</strong></li>

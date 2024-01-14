@@ -1,6 +1,6 @@
 ---
 title: "Phanatik"
-description: "A fun and classic blog theme"
+description: "Phanatik - A fun and classic theme built with Astrojs and Talwind CSS for a blor or your personal website"
 image: "/src/content/themes/_images/phanatik-hero.webp"
 images: []
 author:
@@ -11,7 +11,7 @@ categories:
   - "blog"
   - "other"
   - "recent"
-demoUrl: "https://lexingtonthemes.com/viewports/phanatik/"
+demoUrl: "https://lexingtonthemes.com/info/phanatik/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/cd4e7a6a-f165-43e1-a971-2f54570d88ca?aff_ref=wZDMbor3"
 publishDate: "Dec 18, 2023"
 tools:
@@ -21,15 +21,12 @@ tools:
 badge: "new"
 ---
 
-<p>
-The fun and classic blog theme on Lexington, designed for those who likes clean details on elements and layouts. Phantik is made up of hundreds of fully customizable elements, magazine designed layouts, enabling you to create great magazine or blog website with ease.
+A light and vibrant theme, featuring a colorful palette with orange and blue accents. It’s playful yet clean layout that allows to play with graphical elements and illustrations, lending a friendly and engaging user interface, for a blog or an educational website.
 
-An MDX powered blog and includes 25 page examples for sections such as, 5 different landing pages,RSS, Pricing pages, Sign In,Team, Tags and more. Swap between sections, and you'll be ready to go.
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-</p>
 <p><strong>The template includes:</strong></p>
 
-<p><strong>The template also includes a</strong></p>
 <ul>
   <li>Pages
     <ul>

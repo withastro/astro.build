@@ -1,6 +1,6 @@
 ---
 title: "Dusk"
-description: "A dark and cool landing page for your productized service."
+description: "Dusk - A minimal dark theme built with Astrojs and Talwind CSS for your agency or studio"
 image: "/src/content/themes/_images/dusk-hero.webp"
 images: []
 author:
@@ -10,22 +10,22 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/dusk/"
+demoUrl: "https://lexingtonthemes.com/info/dusk/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/7064a23c-2b0a-45a4-8e4a-8a9227ee8b0c"
 tools:
   - "tailwind"
   - "alpinejs"
 ---
 
-<p>✺&nbsp;<strong>Dusk&nbsp;</strong>━ The minimal productise studio or agency theme.
+A dark, contemporary design with high-contrast text and image placements, suitable for showcasing creative work or design portfolios. It uses a grid-based layout for a structured yet dynamic presentation
 
-Includes MDX powered blog that includes 22 page ready examples for sections such as, landing page, 3 blog different landing pages, Store, Work, Contact, Tags and more. Mix and match sections, and you'll be ready to go.</p>
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
 <p><strong>The template includes:</strong></p>
 <ul>
  <li><span style="color: var(--tw-prose-bold);">22 Demo pages</span></li>
   <li><span style="color: var(--tw-prose-bold);">50+ Sections</span></li>
-  <li><span style="color: var(--tw-prose-bold);">50+ Components</span></li>
+  <li><span style="color: var(--tw-prose-bold);">60+ Components</span></li>
 
 <li>Home</li>
 <li>Team</li>

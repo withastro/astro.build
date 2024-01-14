@@ -1,6 +1,6 @@
 ---
 title: "Williamsburg"
-description: "A modern and elegant ecommerce theme."
+description: "Williamsburg - A brutalis theme built with Astrojs and Talwind CSS for your next ecommerce project"
 image: "/src/content/themes/_images/williamsburg-hero.webp"
 images: []
 author:
@@ -11,7 +11,7 @@ categories:
   - "ecommerce"
   - "other"
   - "recent"
-demoUrl: "https://lexingtonthemes.com/viewports/carriera/"
+demoUrl: "https://lexingtonthemes.com/info/williamsburg/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/0618db8c-ffa9-43da-a152-eb4b744716d6"
 publishDate: "Dec 18, 2023"
 tools:
@@ -21,11 +21,11 @@ tools:
 badge: "new"
 ---
 
-<p>A modern and elegant ecommerce theme. Williamsburg is made up of clean and fully customizable elements and layouts, enabling you to create great e commerce store with ease.
+A brutalist and clean theme focused on presenting products in a clear and organized manner for an e-commerce website suggesting a user-friendly online shopping experience.
 
-Includes an MDX powered blog, includes 24 page ready examples for sections such as, 2 landing pages, 2 product pages, blog, Help Center, Pricing and more. Mix and match sections, and you'll be ready to go.
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-</p>
+
 <p><strong>The template includes:</strong></p>
 <ul>
   <li>Pages

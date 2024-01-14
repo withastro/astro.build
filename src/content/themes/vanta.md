@@ -1,6 +1,6 @@
 ---
 title: "Vanta"
-description: "The sleekest e-learning platform theme around. For those who want to have a modern and dark theme."
+description: "Vanta - An elegant dark theme built with Astrojs and Talwind CSS for your next e-learning project"
 image: "/src/content/themes/_images/vanta-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/vanta"
+demoUrl: "https://lexingtonthemes.com/info/vanta"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/f0a11cac-e5c4-4cee-9a11-631749fd6647"
 tools:
   - "tailwind"
@@ -19,11 +19,11 @@ tools:
 publishDate: "September 19, 2023"
 ---
 
-<p>✺&nbsp;<strong>Vanta </strong>&nbsp;━&nbsp;The sleekest e-learning platform theme around. For those who want to have a modern and dark theme. Vanta is made up of clean and fully customizable elements and layouts, enabling you to create great a productised service website with ease.
+A dark-mode educational platform theme, emphasizing a sleek and modern interface for online learning. It offers features like course page, teachers, and lessons, all in a coherent, dark aesthetic designed to enhance user focus and interaction.
 
-</p>
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
+
 <p><strong>The template includes:</strong></p>
-
 <ul>
   <li>Pages
     <ul>

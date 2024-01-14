@@ -1,6 +1,6 @@
 ---
 title: "Aubergine"
-description: "A dark and cool landing page for your productized service."
+description: "Aubergine - An elegant dark theme built with Astrojs and Talwind CSS for your agency or studio"
 image: "/src/content/themes/_images/aubergine-hero.webp"
 images: []
 author:
@@ -10,14 +10,17 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/aubergine/"
+demoUrl: "https://lexingtonthemes.com/info/aubergine/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/7064a23c-2b0a-45a4-8e4a-8a9227ee8b0c"
 tools:
   - "tailwind"
   - "alpinejs"
 ---
 
-<p>✺&nbsp;<strong>Aubergine&nbsp;</strong>━ The cooles productise studio or agency theme. Includes MDX powered blog that includes 21 page ready examples for sections such as, landing page, 3 blog different landing pages, Work, Case Study, Contact, Tags and more. Mix and match sections, and you'll be ready to go.</p>
+A dark sophisticated design with a focus on textual content, organized into sections for easy navigation and reading, suitable for studios, agencies sites or platforms requiring a detailed presentation of content
+
+Explore Lexington's versatile multipage themes, featuring an MDX Blog and customizable sections for easy personalization. Our themes let you quickly set up a unique site in just a few hours.
+
 <p><strong>The template includes:</strong></p>
 <ul>
  <li><span style="color: var(--tw-prose-bold);">21 Demo pages</span></li>
