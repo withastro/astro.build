@@ -1,0 +1,118 @@
+---
+title: "Astro 4.2"
+description: "Astro 4.2 is out now! This release includes two new experimental features to try out, improvements to accessibility rules, and more."
+publishDate: "January 18, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-420/post-header-4.2.webp"
+socialImage: "/src/content/blog/_images/astro-420/og-image-4.2.webp"
+lang: "en"
+---
+
+Astro 4.2 is now available! This release includes new experimental features to try out, improvements to accessibility rules, the ability for remark plugins to customize image optimization in Markdown and many more improvements and bug fixes.
+
+Highlights include:
+
+- **[(Experimental) Support for prerendering pages using the Speculation Rules API](#experimental-prerendering-pages-using-the-speculation-rules-api)**
+- **[(Experimental) Reworked routing priority for injected routes](#experimental-reworked-routing-priority-for-injected-routes)**
+- **[Improved accessibility rules](#improved-accessibility-rules)**
+- **[Customizable image optimization in Markdown](#customizable-image-optimization-in-markdown)**
+
+As a side note, this is the first release of Astro to include no highlights from core team members! This is a huge milestone for us, as it means that Astro is now big enough to have a thriving community of contributors capable of spearheading releases. Thank you to everyone who contributed to this release!
+
+## How to upgrade
+
+To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 4.2 by running the `@astrojs/upgrade` command:
+
+```sh
+npx @astrojs/upgrade
+```
+
+or by running the upgrade command for your package manager:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## (Experimental) Prerendering pages using the Speculation Rules API
+
+Thanks to [Ross Robino](https://github.com/rossrobino), Astro's prefetch feature now has experimental support for prerendering pages using the currently Chromium-exclusive [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API). This API allows you to prerender and even run client-side JavaScript on pages that the user is likely to visit next, allowing for a faster browsing experience.
+
+To enable this feature, add the following to your `astro.config.mjs` file:
+
+```diff
+import { defineConfig } from 'astro/config';
+
+// https://astro.build/config
+export default defineConfig({
++    prefetch: true,
++    experimental: {
++        clientPrerender: true,
++    },
+});
+```
+
+and then in script tags, you can use the `document.prerendering` property to check if the page is being prerendered:
+
+```html
+<script>
+		if (document.prerendering) {
+				// prerendering is enabled
+		}
+</script>
+```
+
+## (Experimental) Reworked routing priority for injected routes
+
+Previously, routes injected using the [`injectRoute() API`](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) would be given the highest priority, meaning that they would be matched before any other routes. While this seemed like a good idea at the time, it unfortunately caused a lot of hard-to-debug issues where routes wouldn't be matched as expected.
+
+We've been historically hesitant to change this behaviour due to how much unintended issues changes to the routing system can cause. However, thanks to [Luiz Ferraz](https://github.com/Fryuni) carefully implementing a fix, this is now fixed in Astro 4.2! Routes injected using the `injectRoute()` API will now follow the same priority that routes from the filesystem do, following [the routing priority rules outlined in our documentation](https://docs.astro.build/en/core-concepts/routing/#route-priority-order).
+
+As this is a breaking change, we've added a new `experimental` option to the `astro.config.mjs` file to opt-in to the new behaviour:
+
+```diff
+import { defineConfig } from 'astro/config';
+
+// https://astro.build/config
+export default defineConfig({
++    experimental: {
++        stableRoutingPriority: true,
++    },
+});
+```
+
+## Improved accessibility rules
+
+The accessibility rules added to the Astro Dev Toolbar in 4.0 have been improved to be more accurate. Thanks to [Oliver Speir](https://github.com/OliverSpeir) for meticulously reading through the WCAG guidelines and improving these rules! If you had any accessibility issues wrongfully reported by the Dev Toolbar in previous releases, you may want to check again to see if they've been fixed after this update.
+
+## Customizable image optimization in Markdown
+
+Also by Oliver, remark plugins can now customize how images are optimized in Markdown files. Previously, every image included in Markdown files using the native syntax (`![alt](src)`) would use the default settings for image optimization. After this update, remark plugins can now add properties to `image` nodes to customize how they're optimized.
+
+For example, the following remark plugin will set the `width` and `height` properties of every image to `100`:
+
+```js
+import { visit } from "unist-util-visit";
+
+export default function remarkPlugin() {
+	return (tree) => {
+		visit(tree, 'image', (node) => {
+			node.data.hProperties = node.data.hProperties || {};
+			node.data.hProperties.width = "100";
+			node.data.hProperties.height = "100";
+		});
+	};
+}
+```
+
+This is currently exclusive to Markdown files, but we're hoping to add support for MDX as well in a future release.
+
+## Bug Fixes
+
+As always, additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#TODO) to learn more.
