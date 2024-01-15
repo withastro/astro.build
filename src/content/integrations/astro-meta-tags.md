@@ -7,7 +7,8 @@ categories:
   - "toolbar"
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-meta-tags"
-homepageUrl: "https://www.npmjs.com/package/astro-meta-tags"
-downloads: 0
+homepageUrl: "https://github.com/patrick91/astro-meta-tags#readme"
+downloads: 545
 badge: "new"
+repoUrl: "https://github.com/patrick91/astro-meta-tags"
 ---

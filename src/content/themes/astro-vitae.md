@@ -16,7 +16,7 @@ demoUrl: "https://astro-vitae.vercel.app/"
 tools:
   - "alpinejs"
   - "tailwind"
-stars: 19
+stars: 21
 ---
 
 <p>
