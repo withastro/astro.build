@@ -51,10 +51,10 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-+    prefetch: true,
-+    experimental: {
-+        clientPrerender: true,
-+    },
++  prefetch: true,
++  experimental: {
++    clientPrerender: true,
++  },
 });
 ```
 
@@ -64,9 +64,9 @@ Additionally, you can use the `document.prerendering` property in `<script>` tag
 
 ```html
 <script>
-		if (document.prerendering) {
-				// prerendering is enabled
-		}
+  if (document.prerendering) {
+    // prerendering is enabled
+  }
 </script>
 ```
 
@@ -86,13 +86,13 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-+    experimental: {
-+        globalRoutePriority: true,
-+    },
++  experimental: {
++    globalRoutePriority: true,
++  },
 });
 ```
 
-Additional logging has also been added to inform you of any route collisions where two routes are attempting to build the same URL. 
+Additional logging has also been added to inform you of any route collisions where two routes are attempting to build the same URL.
 
 Please see [the `experimental.globalRoutePriority` documentation](https://docs.astro.build/en/reference/configuration-reference/#experimentalglobalroutepriority) for more details.
 ## Improved accessibility rules
@@ -109,13 +109,13 @@ For example, the following remark plugin will set the `width` and `height` prope
 import { visit } from "unist-util-visit";
 
 export default function remarkPlugin() {
-	return (tree) => {
-		visit(tree, 'image', (node) => {
-			node.data.hProperties = node.data.hProperties || {};
-			node.data.hProperties.width = "100";
-			node.data.hProperties.height = "100";
-		});
-	};
+  return (tree) => {
+    visit(tree, 'image', (node) => {
+      node.data.hProperties = node.data.hProperties || {};
+      node.data.hProperties.width = "100";
+      node.data.hProperties.height = "100";
+    });
+  };
 }
 ```
 
