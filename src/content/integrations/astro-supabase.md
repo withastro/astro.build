@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-supabase"
 homepageUrl: "https://github.com/alexnguyennz/astro-supabase"
-downloads: 76
+downloads: 97
 badge: "new"
 ---

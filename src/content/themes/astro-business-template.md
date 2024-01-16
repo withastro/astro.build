@@ -11,7 +11,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/netlesh/astro-business-template"
 demoUrl: "https://is-site-sablonu.netlify.app/"
-stars: 6
+stars: 5
 tools:
   - "tailwind"
 ---

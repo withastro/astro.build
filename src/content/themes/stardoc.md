@@ -17,6 +17,7 @@ tools:
   - "mdx"
 publishDate: "Jan 8, 2024"
 badge: "new"
+stars: 2
 ---
 
 <p>Landing page website design for starlight documentation site.</p>

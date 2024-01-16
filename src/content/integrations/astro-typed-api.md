@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-typed-api"
 repoUrl: "https://github.com/lilnasy/gratelets"
 homepageUrl: "https://github.com/lilnasy/gratelets/tree/main/packages/typed-api"
-downloads: 170
+downloads: 329
 badge: "new"
 ---

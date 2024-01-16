@@ -18,5 +18,5 @@ publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
 badge: "new"
-stars: 4
+stars: 5
 ---

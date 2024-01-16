@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-font-picker"
 homepageUrl: "https://github.com/randombits-dev/astro-font-picker"
-downloads: 313
+downloads: 443
 badge: "new"
 ---
