@@ -58,7 +58,9 @@ export default defineConfig({
 });
 ```
 
-Then, in script tags, you can use the `document.prerendering` property to check if the page is being prerendered:
+This will respect your existing `prefetch` configuration options, but will now prerender all links with the `data-astro-prefetch` attribute on the client, instead. A built-in fallback is provided for browsers that do not yet support the Speculation Rules API.
+
+Additionally, you can use the `document.prerendering` property in `<script>` tags to check whether the page is being prerendered:
 
 ```html
 <script>
@@ -68,6 +70,7 @@ Then, in script tags, you can use the `document.prerendering` property to check 
 </script>
 ```
 
+For more about this experimental feature, see the [`experimental.clientPrerender` documentation](https://docs.astro.build/en/reference/configuration-reference/#experimentalclientprerenter).
 ## (Experimental) Reworked routing priority for injected routes
 
 Previously, routes injected using the [`injectRoute()` API](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) would be given the highest priority, meaning that they would be matched before any other routes. While this seemed like a good idea at the time, it unfortunately caused a lot of hard-to-debug issues where routes wouldn't be matched as expected.
