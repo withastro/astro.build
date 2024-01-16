@@ -58,7 +58,7 @@ export default defineConfig({
 });
 ```
 
-and then in script tags, you can use the `document.prerendering` property to check if the page is being prerendered:
+Then, in script tags, you can use the `document.prerendering` property to check if the page is being prerendered:
 
 ```html
 <script>
@@ -70,11 +70,11 @@ and then in script tags, you can use the `document.prerendering` property to che
 
 ## (Experimental) Reworked routing priority for injected routes
 
-Previously, routes injected using the [`injectRoute() API`](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) would be given the highest priority, meaning that they would be matched before any other routes. While this seemed like a good idea at the time, it unfortunately caused a lot of hard-to-debug issues where routes wouldn't be matched as expected.
+Previously, routes injected using the [`injectRoute()` API](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) would be given the highest priority, meaning that they would be matched before any other routes. While this seemed like a good idea at the time, it unfortunately caused a lot of hard-to-debug issues where routes wouldn't be matched as expected.
 
-We've been historically hesitant to change this behaviour due to how much unintended issues changes to the routing system can cause. However, thanks to [Luiz Ferraz](https://github.com/Fryuni) carefully implementing a fix, this is now fixed in Astro 4.2! Routes injected using the `injectRoute()` API will now follow the same priority that routes from the filesystem do, following [the routing priority rules outlined in our documentation](https://docs.astro.build/en/core-concepts/routing/#route-priority-order).
+Historically, we've been hesitant to change this behavior due to how many unintended issues changes to the routing system can cause. However, thanks to [Luiz Ferraz](https://github.com/Fryuni) carefully implementing a fix, this is now solved in Astro 4.2! Routes injected using the `injectRoute()` API will now follow the same priority that routes from the filesystem do, following [the routing priority rules outlined in our documentation](https://docs.astro.build/en/core-concepts/routing/#route-priority-order).
 
-As this is a breaking change, we've added a new `experimental` option to the `astro.config.mjs` file to opt-in to the new behaviour:
+As this is a breaking change, we've added a new `experimental` option to the `astro.config.mjs` file to opt-in to the new behavior:
 
 ```diff
 import { defineConfig } from 'astro/config';
