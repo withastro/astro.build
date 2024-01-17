@@ -19,10 +19,11 @@ Highlights include:
 
 - **[(Experimental) Support for prerendering pages using the Speculation Rules API](#experimental-prerendering-pages-using-the-speculation-rules-api)**
 - **[(Experimental) Reworked routing priority for injected routes](#experimental-reworked-routing-priority-for-injected-routes)**
+- **[New `redirectToDefaultLocale` config option](#new-redirecttodefaultlocale-config-option)**
 - **[Improved accessibility rules](#improved-accessibility-rules)**
 - **[Customizable image optimization in Markdown](#customizable-image-optimization-in-markdown)**
 
-As a side note, this is the first release of Astro to include no highlights from core team members! This is a huge milestone for us, as it means that Astro is now big enough to have a thriving community of contributors capable of spearheading releases. Thank you to everyone who contributed to this release!
+As a side note, this is the first release of Astro to majorly consist of outside contributions, with all but one highlights of this release being from contributors. This is a huge milestone for us, as it means that Astro is now big enough to have a thriving community of contributors capable of spearheading releases. Thank you to everyone who contributed to this release!
 
 ## How to upgrade
 
@@ -71,6 +72,7 @@ Additionally, you can use the `document.prerendering` property in `<script>` tag
 ```
 
 For more about this experimental feature, see the [`experimental.clientPrerender` documentation](https://docs.astro.build/en/reference/configuration-reference/#experimentalclientprerenter).
+
 ## (Experimental) Reworked routing priority for injected routes
 
 Previously, routes injected using the [`injectRoute()` API](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) would be given the highest priority, meaning that they would be matched before any other routes. While this seemed like a good idea at the time, it unfortunately caused a lot of hard-to-debug issues where routes wouldn't be matched as expected.
@@ -95,6 +97,31 @@ export default defineConfig({
 Additional logging has also been added to inform you of any route collisions where two routes are attempting to build the same URL.
 
 Please see [the `experimental.globalRoutePriority` documentation](https://docs.astro.build/en/reference/configuration-reference/#experimentalglobalroutepriority) for more details.
+
+## New `redirectToDefaultLocale` config option
+
+A common request since the introduction of [internationalization support in Astro 4.0](https://astro.build/blog/astro-4/#internationalization-i18n-routing) has been the ability to disable automatic redirects of the root URL (`/`) to the default locale when `prefixDefaultLocale: true` is set.
+
+This is now possible with the new `redirectToDefaultLocale` option:
+
+```diff
+import { defineConfig } from 'astro/config';
+
+// https://astro.build/config
+export default defineConfig({
+  i18n:{
+    defaultLocale: "en",
+    locales: ["en", "fr"],
+    routing: {
+      prefixDefaultLocale: true,
++     redirectToDefaultLocale: false
+    }
+  }
+});
+```
+
+Redirect away, or don't! It's up to you now. This option is enabled by default.
+
 ## Improved accessibility rules
 
 The accessibility rules added to the Astro Dev Toolbar in 4.0 have been improved to be more accurate. Thanks to [Oliver Speir](https://github.com/OliverSpeir) for meticulously reading through the WCAG guidelines and improving these rules! Accessibility issues wrongfully reported as false positives by the Dev Toolbar in previous releases are fixed in this update, and more improvements are in active development.
@@ -123,4 +150,4 @@ This is currently exclusive to Markdown files, but we're hoping to add support f
 
 ## Bug Fixes
 
-As always, additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#TODO) to learn more.
+As always, additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#420) to learn more.
