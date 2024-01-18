@@ -15,7 +15,7 @@ categories:
   - "blog"
   - "portfolio"
   - "recent"
-repoUrl: https://github.com/vratskyi/vratskyi.github.io"
+repoUrl: "https://github.com/vratskyi/vratskyi.github.io"
 demoUrl: "https://indieastrotemplate.netlify.app/"
 tools:
   - "tailwind"
