@@ -1,6 +1,6 @@
 ---
 title: "Accessible Astro Starter"
-description: "An Accessible Starter Theme for Astro including many accessibility features and components."
+description: "An Accessible Starter Theme for Astro 4.0 including accessibility features such as landmarks, better focus-outline and skip-links navigation. Ships with Tailwind, Prettier and ESLint support. "
 image: "/src/content/themes/_images/accessible-astro-starter-hero-2.webp"
 images:
   - "/src/content/themes/_images/accessible-astro-starter-5.webp"
@@ -15,10 +15,10 @@ categories:
   - "featured"
   - "blog"
 repoUrl: "https://github.com/markteekman/accessible-astro-starter"
-demoUrl: "https://www.accessible-astro.dev/"
+demoUrl: "https://accessible-astro.netlify.app/"
 links:
   - text: "Documentation"
-    href: "https://accessible-astro.dev/"
+    href: "https://accessible-astro.netlify.app/"
   - text: "Accessible Astro Dashboard"
     href: "https://github.com/markteekman/accessible-astro-dashboard/"
   - text: "Accessible Astro Components"
@@ -41,6 +41,7 @@ tools:
 </p>
 <h2><span>(Accessibility) Features</span></h2>
 <ul>
+  <li>Astro 4.0</li>
   <li>Tailwind CSS support</li>
   <li>
     Prettier integration with
@@ -116,4 +117,6 @@ tools:
     A collection of utility classes such as breakpoints, button classes, font settings, resets and
     outlines in src/assets/scss/base
   </li>
+  <li>View Transitions (⚠️ see [astro-docs](https://docs.astro.build/en/guides/view-transitions/#accessibility) for accessibility considerations)
+</li>
 </ul>
