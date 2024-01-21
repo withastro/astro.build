@@ -1,6 +1,6 @@
 ---
 title: "Accessible Astro Starter"
-description: "An Accessible Starter Theme for Astro 4.0 including accessibility features such as landmarks, better focus-outline and skip-links navigation. Ships with Tailwind, Prettier and ESLint support. "
+description: "An Accessible Starter Theme for Astro 4.0 including accessibility features such as landmarks, better focus-outline, and skip-links navigation. Ships with Tailwind, Prettier, and ESLint support. "
 image: "/src/content/themes/_images/accessible-astro-starter-hero-2.webp"
 images:
   - "/src/content/themes/_images/accessible-astro-starter-5.webp"
