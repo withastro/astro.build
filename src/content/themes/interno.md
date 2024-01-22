@@ -20,7 +20,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Nov 9, 2023"
-stars: 2
+stars: 3
 ---
 
 <p>This lovely website was made with love, as well as Astro, React Js,

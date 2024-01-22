@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@jackcarey/astro-filter-content"
 repoUrl: "https://github.com/jackcarey/astro-filter-content"
 homepageUrl: "https://github.com/jackcarey/astro-filter-content#readme"
-downloads: 14
+downloads: 13
 ---

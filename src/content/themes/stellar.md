@@ -8,7 +8,6 @@ author:
   avatar: "https://cosmicthemes.com/favicons/favicon-32x32.png"
 categories:
   - "landing-page"
-  - "recent"
 buyUrl: "https://cosmicthemes.com/themes/stellar/"
 demoUrl: "https://cosmicthemes.com/themes/demo/stellar/"
 publishDate: "Dec 18, 2023"
@@ -16,7 +15,6 @@ tools:
   - "tailwind"
   - "mdx"
   - "typescript"
-badge: "new"
 ---
 
 <p>

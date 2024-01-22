@@ -10,15 +10,13 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/271746?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/DBozhinovski/astro-theme-ltree"
 demoUrl: "https://ltree.darko.io"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "Dec 21, 2023"
-badge: "new"
-stars: 13
+stars: 14
 ---
 
 <p>

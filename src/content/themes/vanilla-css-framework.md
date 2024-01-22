@@ -8,14 +8,12 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/4899678?v=4"
 categories:
   - "minimal"
-  - "recent"
 demoUrl: "https://www.christophermarkus.com/astro-vanilla-framework/"
 buyUrl: "https://github.com/getmarkus/astro-vanilla-framework"
 tools:
   - "alpinejs"
   - "typescript"
 publishDate: "Dec 21, 2023"
-badge: "new"
 ---
 
 <p>
