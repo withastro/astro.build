@@ -41,6 +41,7 @@ export const ThemeTools = new Map([
 	["unocss", "Unocss"],
 	["typescript", "TypeScript"],
 	["vue", "Vue"],
+	["vanillacss", "Vanilla CSS"],
 ] as const)
 
 export const ThemePricing = new Map<string, string>([
