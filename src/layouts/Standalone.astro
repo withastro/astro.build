@@ -1,0 +1,46 @@
+---
+import BaseHead, { type Props as HeadProps } from "~/components/BaseHead.astro"
+import Header from "~/components/Header.astro"
+import HeaderDrawerContent from "~/components/HeaderDrawerContent.astro"
+import HeaderNav from "~/components/HeaderNav.astro"
+import SkipLink from "~/components/SkipLink.astro"
+import "~/styles/tailwind.css"
+export type Props = HeadProps
+const { ...head } = Astro.props
+---
+
+<!doctype html>
+<html
+	lang="en"
+	class="astro-gray-700 overflow-x-hidden break-words bg-black text-astro-gray-100 [color-scheme:dark] [word-break:break-word]"
+>
+	<head>
+		<BaseHead {...head} />
+	</head>
+	<body>
+		<div class="flex min-h-screen flex-col overflow-x-hidden">
+			<SkipLink />
+			<div id="nav" class="sticky top-0 z-20 max-h-screen bg-black">
+				<Header>
+					<HeaderNav />
+					<HeaderDrawerContent slot="drawer" />
+				</Header>
+				<hr class="border-astro-gray-500" />
+			</div>
+
+			<main id="main" class="relative z-10 flex flex-1 flex-col">
+				<slot />
+			</main>
+
+			<style>
+				:root.disclosure-open {
+					overflow-y: hidden;
+				}
+
+				:root.disclosure-open #nav {
+					overflow-y: auto;
+				}
+			</style>
+		</div>
+	</body>
+</html>

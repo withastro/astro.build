@@ -1,0 +1,36 @@
+---
+interface Props {
+	skipText?: boolean
+}
+const { skipText = false } = Astro.props
+---
+
+<div class={`${skipText ? "mx-auto" : ""} flex flex-col self-center md:max-w-sm`}>
+	{
+		!skipText && (
+			<>
+				<p class="font-obviously text-2xl font-light">Let's keep in Touch</p>
+				<p class="mb-4 pt-2 text-astro-gray-200">
+					Enter your email to keep in the know with the latest updates from Astro.
+				</p>
+			</>
+		)
+	}
+	<form
+		action="https://buttondown.email/api/emails/embed-subscribe/withastro"
+		method="post"
+		target="popupwindow"
+		onsubmit="window.open('https://buttondown.email/withastro', 'popupwindow')"
+		class="flex flex-col justify-between"
+	>
+		<input
+			class="mb-4 h-10 rounded-lg border border-astro-gray-600 bg-astro-gray-500 px-3 py-1 text-astro-gray-100"
+			type="email"
+			placeholder="your@email.com"
+			name="email"
+			id="bd-email"
+			required
+		/>
+		<input type="submit" value="Submit" class="button !h-10 border-none bg-blue-purple-gradient" />
+	</form>
+</div>
