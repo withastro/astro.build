@@ -62,7 +62,12 @@
 		@apply mx-0.5 inline-block rounded-lg bg-astro-gray-500 px-2 align-baseline text-sm leading-6 text-astro-gray-100;
 	}
 
-	.prose > pre {
-		@apply my-6 rounded-md border border-astro-gray-400 bg-transparent px-5 py-3 text-sm;
+	.prose > p a > code {
+		@apply text-inherit;
+		text-decoration: inherit;
+	}
+
+	.prose > .expressive-code pre {
+		@apply my-6 rounded-md border border-astro-gray-400;
 	}
 }

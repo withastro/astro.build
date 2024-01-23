@@ -19,7 +19,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A monochromed dark-themed structured for content creators, featuring areas for blog posts, author profiles, and a mailing list sign-up. The layout is clean and modern, with well-defined sections for text and images, making it suitable for a personal blog or professional portfolio.

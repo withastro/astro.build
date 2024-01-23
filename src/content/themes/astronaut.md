@@ -9,14 +9,12 @@ author:
 categories:
   - "landing-page"
   - "portfolio"
-  - "recent"
 demoUrl: "https://astro-naut-template.vercel.app/"
 repoUrl: "https://github.com/stevefrenzel/astro-naut"
 tools:
   - "typescript"
 publishDate: "Dec 21, 2023"
-badge: "new"
-stars: 3
+stars: 7
 ---
 
 <p>This is my go-to template for starting fresh projects and comes with the following features:</p>

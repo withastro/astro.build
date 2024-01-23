@@ -11,12 +11,10 @@ author:
 categories:
   - "portfolio"
   - "minimal"
-  - "recent"
 repoUrl: "https://github.com/0xShapeShifter/essentialist"
 demoUrl: "https://productized.vercel.app/essentialist"
 publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
-badge: "new"
-stars: 4
+stars: 6
 ---

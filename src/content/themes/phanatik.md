@@ -18,7 +18,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A light and vibrant theme, featuring a colorful palette with orange and blue accents. It’s playful yet clean layout that allows to play with graphical elements and illustrations, lending a friendly and engaging user interface, for a blog or an educational website.

@@ -8,13 +8,11 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/4899678?v=4"
 categories:
   - "landing-page"
-  - "recent"
 repoUrl: "https://github.com/getmarkus/astro-tailwind-mambaui-template"
 demoUrl: "https://www.christophermarkus.com/astro-tailwind-mambaui-template/"
 tools:
   - "tailwind"
 publishDate: "Dec 21, 2023"
-badge: "new"
 stars: 1
 ---
 

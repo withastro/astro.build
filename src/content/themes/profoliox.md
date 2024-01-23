@@ -17,7 +17,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A light and dark and light themed for a blog or personal portfolio designed with a left-hand navigation sidebar. The main content area is dedicated to articles, featuring a clean, typographic layout that highlights headings and body text for readability. The aesthetic is modern and content-focused, with a structured, user-friendly interface.

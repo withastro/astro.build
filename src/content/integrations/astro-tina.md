@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-tina"
 homepageUrl: "https://www.npmjs.com/package/astro-tina"
-downloads: 10
+downloads: 32
 ---

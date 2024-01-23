@@ -14,7 +14,7 @@ author:
 categories:
   - "landing-page"
   - "blog"
-repoUrl: "https://cosmicthemes.com/themes/demo/galaxy/"
+demoUrl: "https://cosmicthemes.com/themes/demo/galaxy/"
 buyUrl: "https://cosmicthemes.com/themes/galaxy/"
 tools:
   - "tailwind"
@@ -22,7 +22,6 @@ tools:
   - "mdx"
   - "sass"
 publishDate: "Nov 21, 2023"
-stars: 0
 ---
 
 <p><em>Save weeks of time and get a SaaS landing page and blog running in a snap.</em></p>

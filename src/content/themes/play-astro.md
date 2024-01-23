@@ -8,7 +8,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/91002014?s=200&v=4"
 categories:
   - "landing-page"
-  - "recent"
 demoUrl: "https://play-astro.tailgrids.com/"
 repoUrl: "https://github.com/TailGrids/play-astro"
 tools:
@@ -16,8 +15,7 @@ tools:
   - "tailwind"
   - "mdx"
 publishDate: "Dec 21, 2023"
-badge: "new"
-stars: 27
+stars: 41
 ---
 
 <p>

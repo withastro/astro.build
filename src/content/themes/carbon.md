@@ -17,7 +17,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 An energetic, dark layout with vibrant orange accents, designed for a creative directory site. It features bold typographic elements and dynamic visuals.

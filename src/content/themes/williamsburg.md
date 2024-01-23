@@ -18,7 +18,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A brutalist and clean theme focused on presenting products in a clear and organized manner for an e-commerce website suggesting a user-friendly online shopping experience.

@@ -18,7 +18,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A dark and modern web design layout, which includes elements like text in different typography sizes. Design for a portfolio or a professional services website, emphasizing a clean, stylish presentation with a focus on content and user experience.

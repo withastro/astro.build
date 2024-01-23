@@ -17,7 +17,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A dark-themed design with a clean, structured layout, employing white text for contrast. It's a professional and modern aesthetic, for a job listing or career-oriented platform.

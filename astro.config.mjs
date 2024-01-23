@@ -3,8 +3,9 @@ import sitemap from "@astrojs/sitemap"
 import solidJs from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/serverless"
+import astroExpressiveCode from "astro-expressive-code"
 import { defineConfig } from "astro/config"
-import fs from "node:fs"
+import houston from "./houston.theme.json"
 
 /* https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables */
 const VERCEL_PREVIEW_SITE =
@@ -20,14 +21,13 @@ export default defineConfig({
 			applyBaseStyles: false,
 		}),
 		solidJs(),
+		astroExpressiveCode({
+			themes: [houston],
+			frames: false,
+		}),
 		mdx(),
 		sitemap(),
 	],
-	markdown: {
-		shikiConfig: {
-			theme: JSON.parse(fs.readFileSync("./houston.theme.json", { encoding: "utf-8" })),
-		},
-	},
 	image: {
 		domains: ["v1.screenshot.11ty.dev"],
 	},

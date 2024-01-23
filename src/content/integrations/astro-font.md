@@ -5,9 +5,8 @@ description: "Automatically optimize your custom fonts, local fonts, fonts over 
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-font"
 homepageUrl: "https://launchfa.st/features/astro-font"
-downloads: 4404
-badge: "new"
+downloads: 5896
+repoUrl: "https://github.com/rishi-raj-jain/astro-font"
 ---

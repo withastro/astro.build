@@ -17,7 +17,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A minimalist and clean design, ideal for a studio or agency seeking a modern and elegant aesthetic to showcase their brand and work.

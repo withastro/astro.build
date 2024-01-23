@@ -11,7 +11,7 @@ categories:
   - "docs"
 repoUrl: "https://github.com/jordienr/astro-design-system"
 demoUrl: "https://astro-design-system.vercel.app/"
-stars: 85
+stars: 89
 tools:
   - "vue"
   - "tailwind"
