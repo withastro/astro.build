@@ -9,13 +9,11 @@ author:
 categories:
   - "portfolio"
   - "minimal"
-  - "recent"
 repoUrl: "https://github.com/iamnyasha/minimma"
 demoUrl: "https://minimma.vercel.app"
 publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
-badge: "new"
 stars: 1
 ---
 

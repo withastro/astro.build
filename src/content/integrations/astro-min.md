@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-min"
 homepageUrl: "https://www.npmjs.com/package/astro-min"
-downloads: 537
+downloads: 641
 badge: "new"
 ---

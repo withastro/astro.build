@@ -8,12 +8,10 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/113918140?v=4"
 categories:
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/0xShapeShifter/solo"
 demoUrl: "https://productized.vercel.app/solo"
 tools:
   - "tailwind"
 publishDate: "Dec 18, 2023"
-badge: "new"
 stars: 2
 ---

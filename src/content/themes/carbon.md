@@ -9,7 +9,6 @@ author:
   avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
 categories:
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/viewports/carbon/"
 buyUrl: "https://carbon.lexingtonthemes.com/system/style-guide"
 publishDate: "Dec 18, 2023"
@@ -17,7 +16,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 <p>

@@ -10,7 +10,6 @@ author:
   avatar: "https://themefisher.com/images/logo/favicon.png"
 categories:
   - "docs"
-  - "recent"
 demoUrl: "https://docbox-astro.vercel.app/"
 buyUrl: "https://themefisher.com/products/docbox-astro"
 tools:
@@ -19,7 +18,6 @@ tools:
   - "typescript"
   - "mdx"
 publishDate: "Dec 21, 2023"
-badge: "new"
 ---
 
 <p>
