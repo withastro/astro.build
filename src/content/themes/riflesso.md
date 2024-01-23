@@ -1,6 +1,6 @@
 ---
 title: "Riflesso"
-description: "The elegant and minimal agency theme. For those who want to have a modern, dark and badass studio."
+description: "Riflesso - A minimal and elegant theme built with Astrojs and Talwind CSS for your agency or studio"
 image: "/src/content/themes/_images/riflesso-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/riflesso"
+demoUrl: "https://lexingtonthemes.com/info/riflesso"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/91ad4062-e859-4d98-9e67-5331bb4d095c"
 tools:
   - "tailwind"
@@ -19,9 +19,10 @@ tools:
 publishDate: "September 19, 2023"
 ---
 
-<p>✺&nbsp;<strong>Riflesso </strong>&nbsp;━&nbsp;The elegant and minimal agency theme. For those who want to have a modern, dark and badass studio. riflesso is made up of clean and fully customizable elements and layouts, and fully coded pages, enabling you to create great a productised agency website with ease.
+A monochromatic design with a sophisticated and clean layout, ideal for a portfolio or professional services website. It combines grayscale photography with minimalist text for an elegant and modern look.
 
-</p>
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
+
 <p><strong>The template includes:</strong></p>
 <ul>
 <ul>

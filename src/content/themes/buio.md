@@ -1,6 +1,6 @@
 ---
 title: "Buio"
-description: "Buio is dark, modern, beautiful and egocentric UI Kit for those with personality! Includes more than 40 demo pages and 100s of components."
+description: "Buio - A badass dark theme built with Astrojs and Talwind CSS for your next project"
 image: "/src/content/themes/_images/buio-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/buio/"
+demoUrl: "https://lexingtonthemes.com/info/buio/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/7c47adfc-931d-44b3-ba34-7eea96f43121"
 tools:
   - "tailwind"
@@ -18,11 +18,14 @@ tools:
   - "mdx"
 ---
 
-<p>✺&nbsp;<strong>Buio UI kit</strong>&nbsp;━&nbsp;Buio is a fun and modern UI Kit that allows you to put togheter pages from different categories and customize them to your needs to create a landing page or a whole website in hours, not months.</p>
+Buio features a professional dark theme for SaaS, showcasing chart images and logos. It's perfect for SaaS companies focused on innovation and user engagement.
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
+
 <p><strong>The template includes:</strong></p>
 <ul>
-   <li><strong>40+ Demo pages</strong></li>
-   <li><strong>10+ Sections</strong></li>
+   <li><strong>34+ Demo pages</strong></li>
+   <li><strong>80+ Sections</strong></li>
    <li><strong>100+ Components</strong></li>
   <li>4 x Landing pages</li>
   <li>3 x Pricing pages</li>

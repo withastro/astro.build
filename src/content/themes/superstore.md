@@ -1,6 +1,6 @@
 ---
 title: "SuperStore"
-description: "SuperStore is the cool ecommerce theme on  Lexington"
+description: "Super Store - A minimalist and modern ecommerce theme"
 image: "/src/content/themes/_images/superstore-hero.webp"
 author:
   url: "https://lexingtonthemes.com/"
@@ -9,7 +9,7 @@ author:
 categories:
   - "ecommerce"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/superstore"
+demoUrl: "https://lexingtonthemes.com/info/superstore/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/eeabd0af-0234-4610-9fb3-7427486d89f0"
 tools:
   - "tailwind"
@@ -18,12 +18,9 @@ tools:
 publishDate: "Jul 20, 2023"
 ---
 
-<p>
-  ✺ SuperStore  ━ The cool ecommerce theme. For those who want to have a modern, minimal site. Super Store is made up of clean and fully customizable elements, and layouts, and fully coded pages, enabling you to create great a productised service website with ease.
-</p>
-<p>
- Includes an MDX powered blog, includes 24 page ready examples for sections such as, 2 landing pages, 2 product pages, blog, Help Center, Pricing and more. Mix and match sections, and you'll be ready to go.
-</p>
+A clean and modern e-commerce website theme. It uses a predominantly white background with black text for clarity and readability. The layout is organized and well-spaced, facilitating a straightforward shopping experience.
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
 <p><strong>The template includes:</strong></p>
 <ul>

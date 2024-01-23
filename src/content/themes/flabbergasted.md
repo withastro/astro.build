@@ -1,6 +1,6 @@
 ---
-title: "Flabbergasted"
-description: "Flabbergasted is a neo brutalist UI Kit that will make you look cool on every screen."
+title: "Flabbergasted UI Kit"
+description: "Flabbergasted UI Kit - A neobrutalist theme built with Astrojs and Talwind CSS for your next project"
 image: "/src/content/themes/_images/flabbergasted-hero.webp"
 images: []
 author:
@@ -10,19 +10,22 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/flabbergasted/"
+demoUrl: "https://lexingtonthemes.com/info/flabbergasted/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/645ac44b-ee66-4368-bb58-be869569fb88"
 tools:
   - "tailwind"
   - "alpinejs"
 ---
 
-<p>✺&nbsp;<strong>Flabbergasted UI kit</strong>&nbsp;━&nbsp;boasts an neo brutalists design that will allow you to stand out of from other landing pages, it empower you to efficiently create pages across diverse categories and customize them to your preferences, facilitating the construction of a landing page or website within hours instead of months.</p>
+A colorful, brutalist and playful theme, likely designed for a SaaS. It features a vibrant mix of pastel colors, friendly graphics, and a clear layout to present various services. The design is inviting and user-friendly, aiming to make the complex world of crypto more accessible to users
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
+
 <p><strong>The template includes:</strong></p>
 <ul>
-  <li><strong>44+ Demo pages</strong></li>
+  <li><strong>40 Demo pages</strong></li>
   <li><strong>100+ Sections</strong></li>
-  <li><strong>100+ Components</strong></li>
+  <li><strong>300+ Components</strong></li>
   <li>Pages</li>
 <li>2x Landing pages</li>
 <li>About</li>
@@ -55,6 +58,22 @@ tools:
 <li>Sign up</li>
 <li>Forgot Password</li>
 </ul>
+p>Extended Components</p>
+<ul><li>Tabs</li>
+<li>Badges</li>
+<li>Tables</li>
+<li>Modals</li>
+<li>Alerts</li>
+<li>Forms</li>
+<li>Buttons</li>
+<li>Tooltips</li>
+<li>Sliders</li>
+<li>Accordion</li>
+<li>Timelines</li>
+<li>Dropdowns</li>
+<li>Paginations</li>
+<li>Breadcrumbs</li>
+<li>Notifications</li></ul>
 <p>When you purchase the template you get access to a very permissive license that you can read from here</p>
 <ul>
    <li><a href="https://lexingtonthemes.com/license/" rel="noopener noreferrer" target="_blank">License: lexingtonthemes.com/license</a></li>

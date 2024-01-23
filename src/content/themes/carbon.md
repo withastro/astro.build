@@ -1,6 +1,6 @@
 ---
 title: "Carbon"
-description: "A fully blown clean blog theme allows you to create layouts for a company, personal or magazine blogs."
+description: "Carbon - A cool theme for your directory project"
 image: "/src/content/themes/_images/carbon-hero.webp"
 images: []
 author:
@@ -9,7 +9,8 @@ author:
   avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
 categories:
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/carbon/"
+  - "recent"
+demoUrl: "https://lexingtonthemes.com/info/carbon/"
 buyUrl: "https://carbon.lexingtonthemes.com/system/style-guide"
 publishDate: "Dec 18, 2023"
 tools:
@@ -18,13 +19,11 @@ tools:
   - "mdx"
 ---
 
-<p>
- A super modern and cool theme for directory project. For those who want to have a modern, dark and badass theme. Carbon is made up of clean and fully customizable elements and layouts, and fully coded pages, enabling you to create great a direcory website with ease.
+An energetic, dark layout with vibrant orange accents, designed for a creative directory site. It features bold typographic elements and dynamic visuals.
 
-Inlcudes an MDX powered blog, 26 pages with ready examples for sections such as, landing page, account dashboard, modals, , Work, Case Study Contact,Auth, Tags and more. Mix and match sections, and you'll be ready to go.
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-</p>
-
+<p><strong>The template includes:</strong></p>
 <p>Main Pages</p>
 <ul>
   <li>Home</li>

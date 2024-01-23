@@ -1,6 +1,6 @@
 ---
 title: "Brightlight"
-description: "Brightlight is a an elegant UI Kit for your digital product."
+description: "Brightlight - A clean and techy light theme built with Astrojs and Talwind CSS for your next project"
 image: "/src/content/themes/_images/brightlight-hero.webp"
 author:
   url: "https://lexingtonthemes.com/"
@@ -9,7 +9,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/brightlight"
+demoUrl: "https://lexingtonthemes.com/info/brightlight"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/79cd9a14-394e-497d-a62f-ab7f5ab2531b"
 tools:
   - "tailwind"
@@ -17,12 +17,9 @@ tools:
   - "mdx"
 ---
 
-<p>
-  ✺ Brightligh UI kit ━ The clean and techy light theme on Lexington, designed for those who wants elegant, sleek elements and beautiful websites. Brightlight is made up of hundreds of fully customizable elements, designed blocks, and fully coded pages, enabling you to create outstanding websites with ease.
-</p>
-<p>
- It includes 30+ page examples for sections such as Changelog, FAQs, Sign Up and a full MDX Blog, and more. Simply swap sections, and you'll be ready to go.
-</p>
+Introducing aa light, modern design with orange accents theme designed for SaaS businesses, showcasing a clean and organized layout for a SaaS website
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
 <p><strong>The template includes:</strong></p>
 <ul>

@@ -1,6 +1,7 @@
 ---
 title: "Author"
-description: "A fun and classic blog theme"
+description: "Author - A minimal, elegant and dark theme theme built with Astrojs and Talwind CSS for a blor or your personal website
+"
 image: "/src/content/themes/_images/author-hero.webp"
 images: []
 author:
@@ -10,7 +11,8 @@ author:
 categories:
   - "blog"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/phanatik/"
+  - "recent"
+demoUrl: "https://lexingtonthemes.com/info/phanatik/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/957cc6ab-7ae2-42f9-863a-ebcdebbfa855?aff_ref=nB1nx7ma"
 publishDate: "Dec 18, 2023"
 tools:
@@ -19,16 +21,12 @@ tools:
   - "mdx"
 ---
 
-<p>
-The minimal and dark chocolate blog theme on Lexington, designed for those who likes minimalism and a dark theme on elements and websites. Author is made up of hundreds of fully customizable elements, designed layouts, enabling you to create lovely websites with ease.
+A monochromed dark-themed structured for content creators, featuring areas for blog posts, author profiles, and a mailing list sign-up. The layout is clean and modern, with well-defined sections for text and images, making it suitable for a personal blog or professional portfolio.
 
-An MDX powered blog and includes 20 page ready examples for sections such as, 3 different landing pages, Pricing tables, Projects Sing Up, Sign In, Tags and more. Mix and match sections, and you'll be ready to go.
-
-</p>
-<p><strong>The template includes:</strong></p>
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
 <p><strong>The template also includes a</strong></p>
-<<ul>
+<ul>
   <li>Pages
     <ul>
       <li>Home</li>

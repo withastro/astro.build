@@ -1,6 +1,6 @@
 ---
 title: "Flaco"
-description: "The modern and sleek dark theme for your blog, personnal sire or and store"
+description: "Flaco - A dark and sleek theme built with Astrojs and Talwind CSS for a blor or your personal website"
 image: "/src/content/themes/_images/flaco-hero.webp"
 images: []
 author:
@@ -10,7 +10,8 @@ author:
 categories:
   - "blog"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/flaco/"
+  - "recent"
+demoUrl: "https://lexingtonthemes.com/info/flaco/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/2813ea13-f8f9-41e3-8f02-e5ac0cffefaa?aff_ref=y3KrGoPZ"
 publishDate: "Dec 18, 2023"
 tools:
@@ -19,15 +20,11 @@ tools:
   - "mdx"
 ---
 
-<p>
-The modern and sleek dark theme on Lexington, designed for those who want to showcase their work on an unconvencial way with hundreds elements and layouts. Flaco is made up of hundreds of fully customizable elements and layouts, enabling you to create great personal or blog website with ease.
+A dark and modern web design layout, which includes elements like text in different typography sizes. Design for a portfolio or a professional services website, emphasizing a clean, stylish presentation with a focus on content and user experience.
 
-An MDX powered blog and includes 14 ready pages such as, Work, Case study, Contact, Tags and more. Swap sections, and you'll be ready to go.
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-</p>
 <p><strong>The template includes:</strong></p>
-
-<p><strong>The template also includes a</strong></p>
 <ul>
   <li>Pages
     <ul>

@@ -1,6 +1,6 @@
 ---
 title: "Hirewise"
-description: "Hirewise is the cool ecommerce theme on  Lexington"
+description: "Hirewise - A clean and fully featured theme for job platforms built with Astrojs and Talwind CSS for your job platform"
 image: "/src/content/themes/_images/hirewise-hero.webp"
 author:
   url: "https://lexingtonthemes.com/"
@@ -9,7 +9,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/hirewise"
+demoUrl: "https://lexingtonthemes.com/info/hirewise"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/9ae54a77-d4ab-456e-8dfd-0f6f69db73ff"
 tools:
   - "tailwind"
@@ -18,13 +18,9 @@ tools:
 publishDate: "Jul 20, 2023"
 ---
 
-<p>
-  ✺ Hirewise  The job board theme. For those who want to own a clean, modern and striagh tot he point platoform and help people find their next adventure. Hirewise is made up of clean and fully customizable elements, and layouts, and fully coded pages, enabling you have a jobs platform service website very quickly..
-</p>
-<p>
- It also includes an MDX powered blog and includes 25 page ready examples for sections such as, landing page, jobs list, companies and more. All you need to b uild your platformin hours, not days.
+A professional, clean design with purple accents, tailored for a job board or corporate platform. It provides a structured layout for company storytelling, job listings, user testimonials and more
 
-</p>
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
 <p><strong>The template includes:</strong></p>
 <ul>
