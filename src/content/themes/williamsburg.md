@@ -24,7 +24,6 @@ A brutalist and clean theme focused on presenting products in a clear and organi
 
 Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-
 <p><strong>The template includes:</strong></p>
 <ul>
   <li>Pages
