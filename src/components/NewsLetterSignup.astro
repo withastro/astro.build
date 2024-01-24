@@ -10,7 +10,7 @@ const { skipText = false, tag } = Astro.props
 	{
 		!skipText && (
 			<>
-				<p class="font-obviously md:text-2xl font-light">Let's keep in Touch</p>
+				<p class="font-obviously font-light md:text-2xl">Let's keep in Touch</p>
 				<p class="mb-4 pt-2 text-astro-gray-200">
 					Enter your email to keep in the know with the latest updates from Astro.
 				</p>
@@ -18,10 +18,12 @@ const { skipText = false, tag } = Astro.props
 		)
 	}
 	<form
-		action='https://buttondown.email/api/emails/embed-subscribe/withastro'
+		action="https://buttondown.email/api/emails/embed-subscribe/withastro"
 		method="post"
 		target="popupwindow"
-		onsubmit={`window.open('https://buttondown.email/withastro${tag ? `?tag=${tag}` : ``}', 'popupwindow')`}
+		onsubmit={`window.open('https://buttondown.email/withastro${
+			tag ? `?tag=${tag}` : ``
+		}', 'popupwindow')`}
 		class="flex flex-col justify-between"
 	>
 		<input
