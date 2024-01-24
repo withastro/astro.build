@@ -21,7 +21,7 @@ const { skipText = false, tag } = Astro.props
 		action='https://buttondown.email/api/emails/embed-subscribe/withastro'
 		method="post"
 		target="popupwindow"
-		onsubmit=`window.open('https://buttondown.email/withastro${tag ? `?tag=${tag}` : ''}', 'popupwindow')`
+		onsubmit={`window.open('https://buttondown.email/withastro${tag ? `?tag=${tag}` : ``}', 'popupwindow')`}
 		class="flex flex-col justify-between"
 	>
 		<input
