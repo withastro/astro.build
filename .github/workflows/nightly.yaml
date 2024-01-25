@@ -1,0 +1,36 @@
+name: Nightly
+
+on:
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+
+jobs:
+  integrations:
+    name: Update Themes & Integrations
+    if: github.repository_owner == 'withastro'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code using Git
+        uses: actions/checkout@v3
+
+      - name: Install Tools & Dependencies
+        uses: ./.github/actions/install
+
+      - name: Search NPM for new and deprecated integrations
+        run: pnpm run update:integrations
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update theme download counts and recent category
+        run: pnpm run update:themes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Format generated files
+        run: pnpm lint:prettier
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "ci: safe update for existing themes & integrations"

@@ -17,13 +17,8 @@ jobs:
       - name: Install Tools & Dependencies
         uses: ./.github/actions/install
 
-      - name: Run update:integrations script
-        run: pnpm run update:integrations
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Run update:themes script
-        run: pnpm run update:themes
+      - name: Search NPM for new and deprecated integrations
+        run: pnpm run update:integrations --unsafe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
