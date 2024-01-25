@@ -13,12 +13,10 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/144011171?s=200&v=4"
 categories:
   - "landing-page"
-  - "recent"
 repoUrl: "https://github.com/unfolding-io/StarFunnel"
 demoUrl: "https://starfunnel.unfolding.io/"
 publishDate: "Dec 18, 2023"
-badge: "new"
-stars: 31
+stars: 32
 ---
 
 <p>

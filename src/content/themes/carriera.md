@@ -1,6 +1,6 @@
 ---
 title: "Carriera"
-description: "A minimal and dark theme for your job board platform."
+description: "Carriera - An elegant dark theme for job platforms built with Astrojs and Talwind CSS for your job platform"
 image: "/src/content/themes/_images/carriera-hero.webp"
 images: []
 author:
@@ -10,25 +10,21 @@ author:
 categories:
   - "other"
   - "recent"
-demoUrl: "https://lexingtonthemes.com/viewports/carriera/"
+demoUrl: "https://lexingtonthemes.com/info/carriera/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/2c490f1d-6e5c-4690-9ade-038b802e07a0?aff_ref=W3GzrpMZ"
 publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
-<p>
-A minimal and dark theme for your job board platform. Carriera is made up of modern and fully customizable elements and layouts, enabling you have a jobs platform service website very quickly..
+A dark-themed design with a clean, structured layout, employing white text for contrast. It's a professional and modern aesthetic, for a job listing or career-oriented platform.
 
-It also includes an MDX powered blog and includes 29 page ready examples for sections such as, 2x landing pages, jobs list, job categories, company profile and more. All you need to build your platformin hours, not days.
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
-</p>
 <p><strong>The template includes:</strong></p>
 
-<p><strong>The template also includes a</strong></p>
 <ul>
   <li>Pages
     <ul>

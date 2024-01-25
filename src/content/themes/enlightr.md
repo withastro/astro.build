@@ -1,6 +1,6 @@
 ---
 title: "Enlightr"
-description: "The superfun e-learning platform theme around. For those who want to have a modern and dark theme."
+description: "Enlightr - A fun and colorful for an ecommerce theme built with Astrojs and Talwind CSS for your next e-learning project"
 image: "/src/content/themes/_images/enlightr-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/enlightr/"
+demoUrl: "https://lexingtonthemes.com/info/enlightr/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/e332cf8e-8275-40ad-8888-60ccaea02c0b"
 tools:
   - "tailwind"
@@ -19,8 +19,9 @@ tools:
 publishDate: "September 19, 2023"
 ---
 
-<p>The superfun e-learning platform theme around. For those who want to have a modern and dark theme. enlightr is made up of clean and fully customizable elements and layouts, enabling you to create great a productised service website with ease.
-</p>
+A bright and inviting design with a mix of pastel colors, tailored for an e-learning platform, providing a friendly and approachable feel.
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
 
 <p><strong>The template includes:</strong></p>
 <ul>

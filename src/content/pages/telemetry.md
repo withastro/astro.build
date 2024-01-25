@@ -2,7 +2,7 @@
 seo:
   title: Telemetry
   description: Astro collects anonymous telemetry data about general usage to help inform our roadmap. Participation is optional and you may opt-out at any time.
-updated_date: 2023-08-28
+updated_date: 2024-01-24
 ---
 
 The `astro` CLI collects **anonymous telemetry data** about general usage. Participation is optional, and you may opt-out at any time.
@@ -20,6 +20,7 @@ We track general usage information about Astro and different configuration optio
 - General machine information (e.g. number of CPUs, macOS/Windows/Linux, CI environment, etc.)
 - General configuration information (Integrations, adapters, markdown options, etc.)
 - Sanitized error information
+- Toolbar usage (e.g. built-in apps being used)
 
 This list is regularly audited to ensure its accuracy. You can audit telemetry yourself locally by settings the `DEBUG=”astro:telemetry”` environment variable when running the Astro CLI. While in debug mode, telemetry events are only logged to the console.
 

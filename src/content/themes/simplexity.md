@@ -1,6 +1,6 @@
 ---
 title: "Simplexity"
-description: "The ultimate blog template for anyone looking to own a clean, elegant and fully-functional blog website that supports dark mode with multiple demo pages."
+description: "Simplexity - A blog website theme built with Astrojs and Talwind CSS for a blor or your personal website"
 image: "/src/content/themes/_images/simplexity-hero.webp"
 images: []
 author:
@@ -9,14 +9,12 @@ author:
   avatar: "https://lexingtonthemes.com/images/favicons/apple-touch-icon.png"
 categories:
   - "landing-page"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/info/simplexity/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/efff7e1e-e8fe-4efc-afcb-c51907eae41c"
 publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
   - "alpinejs"
-badge: "new"
 ---
 
 <p>
@@ -25,7 +23,7 @@ badge: "new"
 	life. The template is versatile and can be applied to various types of websites, such as marketing,
 	SaaS, or product websites.
 </p>
-<p>Pages included</p>
+<p><strong>The template includes:</strong></p>
 <p>Pages</p>
 <ul>
 	<li>Home</li>

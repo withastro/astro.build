@@ -1,6 +1,6 @@
 ---
 title: "Snowpeak"
-description: "Snowpeak is a colorful, modern and simple UI Kit."
+description: "Snowpeak - A fun and classic theme theme built with Astrojs and Talwind CSS for a blor or your personal website"
 image: "/src/content/themes/_images/snowpeak-hero.webp"
 images: []
 author:
@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/snowpeak/"
+demoUrl: "https://lexingtonthemes.com/info/snowpeak/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/e2d91f04-5944-495e-a679-b3df5c08b196"
 tools:
   - "tailwind"
@@ -18,7 +18,10 @@ tools:
   - "mdx"
 ---
 
-<p>✺&nbsp;<strong>Snowpeak UI kit</strong>&nbsp;━&nbsp;Snowpeak is a fun and colorfull UI Kit that allows you to put togheter pages from different categories and customize them to your needs.</p>
+A theme with a fresh and modern look, utilizing a bright teal and white color scheme with pink accents. The layout is clean and organized, featuring sections for product features, and articles, which could be used for a technology product, SaaS company, or a digital platform promoting a modern and efficient user experience.
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
+
 <p><strong>The template includes:</strong></p>
 <ul>
   <li><strong>38 Demo pages</strong></li>

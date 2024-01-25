@@ -1,6 +1,6 @@
 ---
 title: "Outkast"
-description: "A dark and cool landing page for your productized service."
+description: "Outkast - A super cool and different theme built with Astrojs and Talwind CSS for your agency or studio"
 image: "/src/content/themes/_images/outkast-hero.webp"
 images: []
 author:
@@ -10,14 +10,17 @@ author:
 categories:
   - "landing-page"
   - "other"
-demoUrl: "https://lexingtonthemes.com/viewports/outkast/"
+demoUrl: "https://lexingtonthemes.com/info/outkast/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/7064a23c-2b0a-45a4-8e4a-8a9227ee8b0c"
 tools:
   - "tailwind"
   - "alpinejs"
 ---
 
-<p>✺&nbsp;<strong>Outkast&nbsp;</strong>━ A cool studio or agency theme. For those who want to have a modern theme. Outkast is made up of clean and fully customizable elements, and layouts, and fully coded pages, enabling you to create great a agency website with ease.</p>
+A high-contrast color scheme, primarily using white backgrounds with bright yellow, blue and black accents. The design is energetic and bold, suitable for a digital agency or creative studio looking to showcase its brand, work, and updates in a lively and visually engaging manner.
+
+Discover the adaptability of Lexington's multipage themes, each equipped with a dynamic MDX Blog and flexible sections for effortless customization. Offering the freedom to uniquely tailor your site, all our themes ensure you're up and running in hours, not days.
+
 <p><strong>The template includes:</strong></p>
 <ul>
  <li><span style="color: var(--tw-prose-bold);">21 Demo pages</span></li>
