@@ -23,7 +23,7 @@ const PAGE_SIZE = 100
  * Gets the number of weekly downloads for an npm package.
  *
  * @param {String} pkg Name of the package published on npm
- * @returns {Number} The number of weekly downloads for the package
+ * @returns {Promise<Number>} The number of weekly downloads for the package
  */
 export function fetchDownloadsForPackage(pkg) {
 	return fetchJson(`${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`)

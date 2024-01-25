@@ -75,26 +75,30 @@ function normalizePackageDetails(data, pkg) {
 	}
 }
 
-async function fetchWithOverrides(pkg) {
+async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const details = await fetchDetailsForPackage(pkg)
 	const integrationOverrides = getOverrides(pkg) || {}
 
-	const downloads = await fetchDownloadsForPackage(pkg)
 	const badge = badgeForPackage(details)
 	const featured = getFeaturedPackagePriority(pkg)
 	const toolbar = getToolbarPackagePriority(pkg)
 
-	return {
+	const newData = {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
-		downloads,
 		badge,
 		featured,
 		toolbar,
 	}
+
+	if (includeDownloads) {
+		newData.downloads = await fetchDownloadsForPackage(pkg)
+	}
+
+	return newData
 }
 
-async function main() {
+async function unsafeUpdateAllIntegrations() {
 	const keyword = "astro-component,withastro"
 
 	const packagesMap = await searchByKeyword(keyword)
@@ -122,7 +126,9 @@ async function main() {
 			fs.rmSync(entry)
 		} else {
 			// fetch the latest NPM data, keeping any local overrides like description or icon
-			const details = await fetchWithOverrides(data.name)
+			// skipping download counts here since existing integrations will be updated
+			// automatically in a separate GitHub Action.
+			const details = await fetchWithOverrides(data.name, false)
 
 			const frontmatter = yaml.stringify({
 				...data,
@@ -181,4 +187,40 @@ Updated: ${existingIntegrations.size - deprecatedIntegrations.length} integratio
 	console.info(stats)
 }
 
-main()
+async function safeUpdateExistingIntegrations() {
+	const pathname = path.resolve(
+		path.dirname(fileURLToPath(import.meta.url)),
+		"../src/content/integrations/*.md",
+	)
+	const entries = await glob(pathname)
+
+	for (const entry of entries) {
+		const { data } = matter.read(entry)
+
+		// only override NPM download stats for safe updates
+		const downloads = await fetchDownloadsForPackage(data.name)
+
+		const frontmatter = yaml.stringify({
+			...data,
+			downloads,
+		})
+
+		delete frontmatter.badges
+
+		fs.writeFileSync(
+			entry,
+			`---
+${frontmatter}---\n`,
+		)
+	}
+}
+
+const args = process.argv.slice(2)
+
+// only fetch unsafe changes like new and deprecated integrations
+// if the --unsafe CLI flag was provided
+if (args.includes("--unsafe")) {
+	await unsafeUpdateAllIntegrations()
+} else {
+	await safeUpdateExistingIntegrations()
+}
