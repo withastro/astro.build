@@ -197,12 +197,12 @@ async function safeUpdateExistingIntegrations() {
 	for (const entry of entries) {
 		const { data } = matter.read(entry)
 
-		// fetch the latest NPM data, keeping any local overrides like description or icon
-		const details = await fetchWithOverrides(data.name)
+		// only override NPM download stats for safe updates
+		const downloads = await fetchDownloadsForPackage(data.name)
 
 		const frontmatter = yaml.stringify({
 			...data,
-			...details,
+			downloads,
 		})
 
 		delete frontmatter.badges
