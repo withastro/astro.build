@@ -1,5 +1,6 @@
 ---
 import siteInfo from "~/data/site-info.js"
+import NewsLetterSignup from "./NewsLetterSignup.astro"
 import SocialLinks from "./SocialLinks.astro"
 
 type Link = {
@@ -99,7 +100,7 @@ const socialLinks = siteInfo.socialLinks
 		aria-label="Secondary"
 		class="flex flex-col items-start justify-between gap-12 py-8 sm:flex-row-reverse md:py-12"
 	>
-		<SocialLinks links={socialLinks} />
+		<NewsLetterSignup tag="footer" />
 		<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
 			{
 				groups.map(({ title, items }, index) => (
@@ -124,17 +125,22 @@ const socialLinks = siteInfo.socialLinks
 	<hr class="border-astro-gray-500" />
 	<nav
 		aria-label="Legal"
-		class="grid grid-cols-[1fr,auto] items-center gap-x-4 gap-y-16 py-8 opacity-60 md:grid-cols-[auto,1fr,auto] md:py-12"
+		class="flex flex-col-reverse gap-x-8 gap-y-4 py-8 md:flex-row md:items-center md:justify-between md:py-12"
 	>
-		<a class="link" href="/privacy/">Privacy Policy</a>
-		<a class="link mr-auto" href="/terms/">Terms of Service</a>
-		<p class="col-span-2 text-center md:col-span-1">
-			<a href="https://github.com/withastro/astro/blob/main/LICENSE" target="_blank" class="link"
-				>MIT License</a
-			> &copy; {new Date().getFullYear()}&nbsp;
-			<a href="https://github.com/withastro/astro/graphs/contributors" class="link" target="_blank"
-				>Astro Contributors</a
-			>
-		</p>
+		<div class="mt-6 flex flex-col gap-x-8 gap-y-4 md:mt-0 md:flex-row">
+			<a class="link opacity-80" href="/privacy/">Privacy Policy</a>
+			<a class="link opacity-80" href="/terms/">Terms of Service</a>
+			<p class="mr-auto mt-6 font-mono opacity-50 md:mt-0">
+				<a href="https://github.com/withastro/astro/blob/main/LICENSE" target="_blank" class="link"
+					>MIT License</a
+				> &copy; {new Date().getFullYear()}&nbsp;
+				<a
+					href="https://github.com/withastro/astro/graphs/contributors"
+					class="link"
+					target="_blank">Astro Contributors</a
+				>
+			</p>
+		</div>
+		<SocialLinks links={socialLinks} />
 	</nav>
 </footer>
