@@ -1,0 +1,113 @@
+---
+title: "Astro 4.3"
+description: "Astro 4.3 is out now! This release includes support for domain routing in i18n, better support for relative images in Markdown, a new `ComponentProps` type export, and more."
+publishDate: "February 2, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-430/post-header-4.3.webp"
+socialImage: "/src/content/blog/_images/astro-430/og-image-4.3.webp"
+lang: "en"
+---
+
+Astro 4.3 is now available! This release
+
+Highlights include:
+
+- **[Add domain support for i18n](#experimental-add-domain-support-for-i18n)**
+- **[Add support for `build.format: 'preserve'`](#add-support-for-buildformat-preserve)**
+- **[Add `ComponentProps` type utility](#add-componentprops-type-utility)**
+- **[Better support for relative images in Markdown](#fix-using-images-in-markdown-without-a-relative-specifier)**
+
+## How to upgrade
+
+To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 4.2 by running the `@astrojs/upgrade` command:
+
+```sh
+npx @astrojs/upgrade
+```
+
+or by running the upgrade command for your package manager:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## (Experimental) Add domain support for i18n
+
+Astro now supports adding a domain to your i18n configuration. This allows you to specify a domain for each locale, which allows you to use different domains or subdomains for different locales. For example, you can now use `example.com` for your English site, and `example.es` for your Spanish site.
+
+To add a domain to your i18n configuration, add the following to your `astro.config.mjs` file:
+
+```diff lang="js"
+// astro.config.mjs
+import {defineConfig} from "astro/config"
+
+export default defineConfig({
+    site: "https://example.com",
+    output: "server",
+    i18n: {
+        defaultLocaLe: 'en',
+        locales: ['en', 'es', 'pt_BR', 'pt', 'fr'],
++        domains: {
++            fr: "https://fr.example.com",
++            es: "https://example.es"
++        },
+        routing: {
+          prefixDefaultLocale: true,
++          strategy: "domains"
+        }
+    },
++    experimental: {
++        i18nDomains: true
++    },
+})
+```
+
+TOOD: Add proper link to final documentation, perhaps some fluff on how this feature requires SSR?
+
+For more information, check out the [i18n documentation](https://docs.astro.build/reference/configuration#i18n).
+
+## Add support for `build.format: 'preserve'`
+
+This release adds support for a new `build.format` option, called `preserve`. In this mode, Astro will preserve how the filesystem is structured and make sure that is mirrored over to production. For example, using this option:
+
+- `page.astro` becomes `page.html`
+- `page/index.astro` becomes `page/index.html`
+
+What you see is what you get! This feature unlocks better compatibility with certain server softwares who have strict requirements on how files are structured.
+
+For more information on the `build.format` option, check out the [configuration documentation](https://docs.astro.build/en/reference/configuration-reference/#buildformat).
+
+## Add `ComponentProps` type utility
+
+Astro now includes a new `ComponentProps` type export from `astro/types` to get the props type of an Astro component. For users of other frameworks, this is similar to `React.ComponentProps` or Svelte's `ComponentProps`. Simple enough!
+
+```astro
+---
+import type { ComponentProps } from 'astro/types';
+import { Button } from "./Button.astro";
+
+type myButtonProps = ComponentProps<typeof Button>;
+---
+```
+
+## Fix using images in Markdown without a relative specifier
+
+Previously, using images in Markdown without using a relative specifier (such as `./` or `../`) would cause Astro to throw an error. This release fixes that issue, and now allows you to use images in Markdown without a relative specifier, as the Markdown spec intended.
+
+```md
+![A cute dog](dog.jpg)
+<!-- This dog lives in the same folder as my article! -->
+```
+
+Thanks to [Oliver Speir](https://github.com/OliverSpeir) for contributing this fix!
+
+## Bug Fixes
+
+As always, additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#430) to learn more.
