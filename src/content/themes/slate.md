@@ -17,7 +17,7 @@ tools:
   - "typescript"
 publishDate: "Jan 16, 2024"
 badge: "new"
-stars: 1
+stars: 2
 ---
 
 <h3>Features</h3>

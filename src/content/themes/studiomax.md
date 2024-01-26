@@ -10,7 +10,6 @@ author:
 categories:
   - "blog"
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/info/studiomax/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/5ec41ae8-e3c0-4400-aab3-7f5f6848d1f5?aff_ref=la8WR6MB"
 publishDate: "Dec 18, 2023"
@@ -18,7 +17,6 @@ tools:
   - "tailwind"
   - "alpinejs"
   - "mdx"
-badge: "new"
 ---
 
 A dark-themed website design template with colorful, gradient header sections, suitable for web development or design services. Comes with a sleek and contemporary layout with sections for project showcases, service descriptions, and educational blog, ideal for professionals or agencies in the creative industry.

@@ -10,7 +10,6 @@ author:
 categories:
   - "blog"
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/info/flaco/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/2813ea13-f8f9-41e3-8f02-e5ac0cffefaa?aff_ref=y3KrGoPZ"
 publishDate: "Dec 18, 2023"

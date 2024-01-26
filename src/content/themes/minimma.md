@@ -14,7 +14,7 @@ demoUrl: "https://minimma.vercel.app"
 publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
-stars: 1
+stars: 2
 ---
 
 <p>

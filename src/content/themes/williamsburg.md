@@ -10,7 +10,6 @@ author:
 categories:
   - "ecommerce"
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/info/williamsburg/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/0618db8c-ffa9-43da-a152-eb4b744716d6"
 publishDate: "Dec 18, 2023"

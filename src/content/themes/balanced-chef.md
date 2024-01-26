@@ -13,7 +13,7 @@ repoUrl: "https://github.com/fahad0samara/Astro.js-Chef-Project"
 tools:
   - "tailwind"
   - "typescript"
-stars: 3
+stars: 4
 publishDate: "Jun 12, 2023"
 ---
 

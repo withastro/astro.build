@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-pintora"
 homepageUrl: "https://www.npmjs.com/package/astro-pintora"
-downloads: 29
+downloads: 100
 ---

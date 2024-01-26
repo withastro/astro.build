@@ -1,7 +1,6 @@
 ---
 title: "Author"
-description: "Author - A minimal, elegant and dark theme theme built with Astrojs and Talwind CSS for a blor or your personal website
-"
+description: "Author - A minimal, elegant and dark theme theme built with Astrojs and Talwind CSS for a blor or your personal website "
 image: "/src/content/themes/_images/author-hero.webp"
 images: []
 author:
@@ -11,7 +10,6 @@ author:
 categories:
   - "blog"
   - "other"
-  - "recent"
 demoUrl: "https://lexingtonthemes.com/info/phanatik/"
 buyUrl: "https://lexingtonthemes.lemonsqueezy.com/checkout/buy/957cc6ab-7ae2-42f9-863a-ebcdebbfa855?aff_ref=nB1nx7ma"
 publishDate: "Dec 18, 2023"

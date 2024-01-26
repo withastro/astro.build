@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-bun-adapter"
 repoUrl: "https://github.com/ido-pluto/astro-bun-adapter"
 homepageUrl: "https://github.com/ido-pluto/astro-bun-adapter.git#readme"
-downloads: 393
+downloads: 137
 badge: "new"
 ---
