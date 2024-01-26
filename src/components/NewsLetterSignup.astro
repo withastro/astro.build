@@ -1,9 +1,9 @@
 ---
 interface Props {
 	skipText?: boolean
-	tag?: string
 }
-const { skipText = false, tag } = Astro.props
+
+const { skipText = false } = Astro.props
 ---
 
 <div class={`${skipText ? "mx-auto" : ""} flex flex-col self-center md:max-w-sm`}>
@@ -21,9 +21,7 @@ const { skipText = false, tag } = Astro.props
 		action="https://buttondown.email/api/emails/embed-subscribe/withastro"
 		method="post"
 		target="popupwindow"
-		onsubmit={`window.open('https://buttondown.email/withastro${
-			tag ? `?tag=${tag}` : ``
-		}', 'popupwindow')`}
+		onsubmit="window.open('https://buttondown.email/withastro', 'popupwindow')"
 		class="flex flex-col justify-between"
 	>
 		<input
