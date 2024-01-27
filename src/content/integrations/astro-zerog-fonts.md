@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-zerog-fonts"
 homepageUrl: "https://www.npmjs.com/package/astro-zerog-fonts"
-downloads: 71
+downloads: 72
 badge: "new"
 ---

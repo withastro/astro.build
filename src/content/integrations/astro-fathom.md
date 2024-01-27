@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-fathom"
 repoUrl: "https://github.com/tony-sull/astro-fathom"
 homepageUrl: "https://github.com/tony-sull/astro-fathom#readme"
-downloads: 296
+downloads: 292
 ---
