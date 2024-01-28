@@ -17,6 +17,6 @@ demoUrl: "https://astrofy-template.netlify.app/"
 tools:
   - "tailwind"
   - "mdx"
-stars: 542
+stars: 544
 publishDate: "Jun 12, 2023"
 ---

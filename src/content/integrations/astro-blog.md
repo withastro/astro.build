@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-blog"
 homepageUrl: "https://github.com/futurethemes/astro-blog"
-downloads: 813
+downloads: 819
 badge: "new"
 ---
