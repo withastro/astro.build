@@ -11,7 +11,7 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/williamhzo/astro-cube"
 demoUrl: "https://astro-cube.vercel.app//"
-stars: 55
+stars: 57
 ---
 
 <p>

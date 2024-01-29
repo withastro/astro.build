@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-modal"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://github.com/xexiu/astro-components"
-downloads: 133
+downloads: 139
 ---

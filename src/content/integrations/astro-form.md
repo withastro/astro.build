@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-form"
 repoUrl: "https://github.com/warpsio/astro-form"
 homepageUrl: "https://github.com/warpsio/astro-form"
-downloads: 12
+downloads: 15
 ---

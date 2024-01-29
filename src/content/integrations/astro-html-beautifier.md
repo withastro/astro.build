@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-html-beautifier"
 repoUrl: "https://github.com/bangkitdev/astro-html-beautifier"
 homepageUrl: "https://github.com/bangkitdev/astro-html-beautifier#readme"
-downloads: 170
+downloads: 164
 ---
