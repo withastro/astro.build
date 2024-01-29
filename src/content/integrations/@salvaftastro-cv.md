@@ -7,7 +7,7 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@salvaft/astro-cv"
 repoUrl: "https://github.com/salvaft/astro-sft"
-homepageUrl: "https://github.com/salvaft/astro-sft#readme"
+homepageUrl: "https://github.com/salvaft/astro-sft/tree/main/packages/astro-cv"
 badge: "new"
 downloads: 48
 ---
