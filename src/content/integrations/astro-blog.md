@@ -6,7 +6,8 @@ categories:
   - "css+ui"
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-blog"
-homepageUrl: "https://github.com/futurethemes/astro-blog"
+homepageUrl: "https://astro-blog.futurethemes.io/"
 downloads: 823
 badge: "new"
+repoUrl: "https://github.com/futurethemes/astro-blog"
 ---
