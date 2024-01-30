@@ -251,7 +251,12 @@ class ShowcaseScraper {
 		if (
 			document.querySelector("astro-island") ||
 			document.querySelector('[class*="astro-"]') ||
-			document.querySelector("[astro-script]")
+			document.querySelector("[astro-script]") ||
+			document.querySelector("[astro-icon]") ||
+			document.querySelector("[data-astro-prefetch]") ||
+			document.querySelector("[data-astro-reload]") ||
+			document.querySelector("[data-astro-history]") ||
+			document.querySelector('meta[name="astro-view-transitions-fallback"]')
 		) {
 			return true
 		}
@@ -390,6 +395,8 @@ const scraper = new ShowcaseScraper({
 		"https://pagespeed.web.dev",
 		"https://lighthouse-metrics.com",
 		"https://calckey.org",
+		"https://twitter.com",
+		"https://youtu.be",
 	],
 })
 await scraper.run()
