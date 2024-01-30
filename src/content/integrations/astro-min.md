@@ -7,7 +7,8 @@ categories:
   - "performance+seo"
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-min"
-homepageUrl: "https://www.npmjs.com/package/astro-min"
+homepageUrl: "https://github.com/advanced-astro/astro-min#readme"
 downloads: 932
 badge: "new"
+repoUrl: "https://github.com/advanced-astro/astro-min"
 ---
