@@ -14,7 +14,7 @@ tools:
   - "alpinejs"
   - "tailwind"
 publishDate: "Nov 9, 2023"
-stars: 27
+stars: 28
 ---
 
 <h3>Features</h3>

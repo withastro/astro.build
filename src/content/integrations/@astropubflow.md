@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astropub/flow"
 repoUrl: "https://github.com/astro-community/flow"
 homepageUrl: "https://github.com/astro-community/flow"
-downloads: 96
+downloads: 84
 ---
