@@ -1,7 +1,7 @@
 ---
 name: "astro-scope"
 title: "astro-scope"
-description: "This **[Astro integration][astro-integration]** allows you get the hash used by the astro compiler to scope css rules."
+description: "Get the hash used by the Astro compiler to scope css rules."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-scope"

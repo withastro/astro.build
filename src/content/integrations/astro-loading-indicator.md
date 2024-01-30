@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-loading-indicator"
 homepageUrl: "https://github.com/florian-lefebvre/astro-loading-indicator"
-downloads: 277
+downloads: 280
 badge: "new"
 ---

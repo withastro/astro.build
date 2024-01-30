@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-satori"
 repoUrl: "ssh://git@github.com/cijiugechu/astro-satori"
 homepageUrl: "https://github.com/cijiugechu/astro-satori"
-downloads: 54
+downloads: 52
 ---

@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astroid"
 image: "/assets/integrations/astroid.png"
 homepageUrl: "https://www.npmjs.com/package/astroid"
-downloads: 14
+downloads: 12
 url: "https://github.com/xisli/astroid"
 ---

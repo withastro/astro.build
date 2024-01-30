@@ -5,6 +5,6 @@ description: "An Astro component for Pintora diagrams"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-pintora"
-homepageUrl: "https://www.npmjs.com/package/astro-pintora"
-downloads: 119
+homepageUrl: "https://github.com/tex0l/astro-pintora"
+downloads: 114
 ---

@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-env"
 homepageUrl: "https://github.com/florian-lefebvre/astro-env"
-downloads: 348
+downloads: 364
 badge: "new"
 ---
