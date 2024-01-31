@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@rtech-public/astro-fluid-design"
 repoUrl: "https://github.com/RolginRoman/rtech"
 homepageUrl: "https://github.com/RolginRoman/rtech/"
-downloads: 6
+downloads: 5
 ---

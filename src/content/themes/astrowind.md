@@ -13,7 +13,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/onwidget/astrowind"
 demoUrl: "https://astrowind.vercel.app/"
-stars: 1922
+stars: 1924
 featured: 5
 tools:
   - "tailwind"
