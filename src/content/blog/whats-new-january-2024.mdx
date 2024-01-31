@@ -8,6 +8,8 @@ coverImage: "/src/content/blog/_images/whats-new-shared.webp"
 socialImage: "/src/content/blog/_images/whats-new-january-2024/og.webp"
 lang: "en"
 ---
+import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
+import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
 
 2023 was a huge year for Astro, and 2024 is already shaping up to be even bigger. Let's dive into the updates!
 
@@ -19,7 +21,7 @@ The first month of the year already started strong 💪!
 - [Astro 4.2](https://astro.build/blog/astro-420/) 
 - [Starlight 0.16](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.16.0) 
 - [Starlight 0.17](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.17.0)
-  
+
 ## Docs
 
 Our weekly Discord call “Talking and Doc’ing” is a chance for you to watch Team Docs work in public, jump in a codespace, and contribute to the docs. This month’s topics included:
@@ -110,6 +112,28 @@ Want to build your own Astro integration? Take a look at 🛠️ [florian-lefebv
 
 A lot of new Astro themes were added & released this month. Try them out!
 
+export const themes = [
+  { url: 'https://chartley-template.vercel.app/', author: '@chartley', title: 'Chartley', github: 'https://github.com' },
+  { url: 'https://indieastrotemplate.netlify.app/', author: 'Petitpois', title: 'Indie Astro Template' },
+  { url: 'https://cosmicthemes.com/themes/demo/the-void/', author: '@lastchaos.', title: 'The Void' },
+  { url: 'https://astrofy-template.netlify.app/', author: '@manuelernestog', title: 'Astrofy' },
+  { url: 'https://github.com/kslstn/astro-i18n-blog-starter', author: '@Koos', title: 'Astro i18n starter', github: 'https://github.com/kslstn/astro-i18n-blog-starter' },
+  { url: 'https://astro.build/themes/details/starlog/', title: "Starlog", author: '@doodlemarks', github: 'https://github.com/withastro/astro/tree/main/examples/starlog' },
+  { url: 'https://github.com/alamguardin/astrodev', author: '@alamguardin', title: 'astrodev', github: 'https://github.com/alamguardin/astrodev' },
+  { url: 'https://justgoodui.com/astro-themes/dante/', author: '@tomas_ba', title: 'Dante' },
+  { url: 'https://vervetheme.vercel.app/', author: '@aryanjha', title: 'Verve' },
+  { url: 'https://galaxy.futurethemes.io/blog', author: '@Jumper#8174', title: 'Galaxy Blog' },
+  { url: 'https://biztrox-astro.vercel.app/', author: '@tffahim', title: 'Biztrox' },
+  { url: 'https://github.com/siegerts/astro-lucia-auth-neon', author: '@siegerts_', title: 'astro-lucia-auth-neon', github: 'https://github.com/siegerts/astro-lucia-auth-neon' },
+  { url: 'https://astro-minimal.netlify.app/', author: '@prerad', title: 'Astro Minimal' },
+  { url: 'https://astro-spotlight-ten.vercel.app/', author: '@androidak0r', title: 'astro-spotlight', github: 'https://github.com/ak0r/astro-spotlight' },
+  { url: 'https://github.com/hyddeos/Mallen', author: '@.hydde', title: 'Mallen', github: 'ttps://github.com/hyddeos/Mallen' },
+  { url: 'https://github.com/AlejandroMar/CaribeSky', author: '@alejostereo', title: 'CaribeSky', github: 'https://github.com/AlejandroMar/CaribeSky' },
+  { url: 'https://drab.robino.dev/', author: '@rossrobino', title: 'drab', github: 'https://github.com/rossrobino/drab' },
+];
+
+<ThemeGrid items={themes} />
+
 - [chartley-template.vercel.app](https://chartley-template.vercel.app/) by @chartley
 - [indieastrotemplate.netlify.app](https://indieastrotemplate.netlify.app/)
 - [cosmicthemes.com/themes/demo/the-void](https://cosmicthemes.com/themes/demo/the-void/) by @lastchaos.
@@ -131,8 +155,6 @@ A lot of new Astro themes were added & released this month. Try them out!
 ### Websites
 
 Websites submitted to our Discord `#showcase` channel and featured on community calls this month.
-
-import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
 
 export const sites = [
   { url: 'https://migueljm.vercel.app/', title: '@koe4202' },

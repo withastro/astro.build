@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets"
+import ExternalLinkIcon from "~/icons/ExternalLinkIcon.tsx"
+
+export interface Props {
+	url: string
+	author: string
+	title: string
+	github: string
+}
+
+const { url, title, github, author } = Astro.props
+---
+
+<li class="!m-0 !my-4 before:!hidden">
+	<div
+		class:list={[
+			"group relative flex aspect-[1200/630] h-full w-full cursor-pointer flex-col overflow-hidden bg-astro-gray-600",
+		]}
+	>
+		<a href={github} class="h-full w-full text-astro-gray-100">
+			<Image
+				src={`https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/_wait:3`}
+				width={450}
+				height={236}
+				alt=""
+				class="h-full w-full object-cover object-top"
+			/>
+
+			<span
+				class="pointer-events-none absolute bottom-0 z-10 flex w-full flex-col gap-2 bg-astro-gray-500/95 p-4 opacity-0 transition-opacity duration-300 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
+			>
+				<span class="heading-5">{title}</span>
+				<span class="body flex flex-row items-center gap-2">
+					by {author}
+				</span>
+			</span>
+		</a>
+	</div>
+	<div class="flex justify-around text-sm mt-2">
+		<a class="flex items-center" href={github}>Github<ExternalLinkIcon class="h-4 w-4" /></a>
+		<a class="flex items-center" href={url}>Demo<ExternalLinkIcon class="h-4 w-4" /></a>
+	</div>
+</li>
