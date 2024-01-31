@@ -1,15 +1,14 @@
 ---
-import ThemeCard, { type Props as CardProps } from "./ThemeCard.astro"
+import type { CollectionEntry } from "astro:content"
+import ThemeCard from "./ThemeCard.astro"
 
 interface Props {
-	items: CardProps[]
+	themes: CollectionEntry<"themes">["slug"][]
 }
-
-const { items } = Astro.props
 ---
 
 <ul
 	class="grid gap-5 !p-0 md:grid-flow-row-dense md:grid-cols-2 lg:-mx-16 lg:!mb-16 lg:!mt-8 lg:grid-cols-3 xl:-mx-32"
 >
-	{items.map(({ github, url, title, author }) => <ThemeCard {author} {github} {url} {title} />)}
+	{Astro.props.themes.map((theme) => <ThemeCard slug={theme} />)}
 </ul>
