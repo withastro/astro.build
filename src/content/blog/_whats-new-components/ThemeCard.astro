@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets"
-import { getEntryBySlug, type CollectionEntry } from "astro:content"
+import { getEntry, type CollectionEntry } from "astro:content"
 
 export interface Props {
 	slug: CollectionEntry<"themes">["slug"]
 }
 
 const { slug } = Astro.props
-const entry = await getEntryBySlug("themes", slug)
+const entry = await getEntry("themes", slug)
 if (!entry) throw new Error(`Could not find theme with slug "${slug}"`)
 
 const { author, title, image } = entry.data
