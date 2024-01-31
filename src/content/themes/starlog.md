@@ -12,12 +12,10 @@ author:
 categories:
   - "official"
   - "docs"
-  - "recent"
 repoUrl: "https://github.com/withastro/astro/tree/main/examples/starlog"
 tools:
   - "sass"
 publishDate: "Jan 2, 2024"
-badge: "new"
 ---
 
 <h2>Out of this world release notes</h2>

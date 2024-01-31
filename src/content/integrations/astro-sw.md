@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-sw"
 repoUrl: "https://github.com/pedra/astro-sw"
 homepageUrl: "https://github.com/pedra/astro-sw#readme"
 image: "/assets/integrations/astro-sw.png"
-downloads: 84
+downloads: 80
 ---
