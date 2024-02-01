@@ -1,0 +1,127 @@
+---
+title: "Astro 4.3"
+description: "Astro 4.3 is out now! This release includes support for domain routing in i18n, better support for relative images in Markdown, a new `ComponentProps` type export, and more."
+publishDate: "February 2, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-430/post-header-4.3.webp"
+socialImage: "/src/content/blog/_images/astro-430/og-image-4.3.webp"
+lang: "en"
+---
+
+Astro 4.3 is now available! This release includes a new experimental i18n feature to try out, and improvements to working with your build output, component prop types, Markdown images, and more.
+
+Highlights include:
+
+- **[Experimental: Add domain support for i18n](#experimental-add-domain-support-for-i18n)**
+- **[More control over your HTML file output](#more-control-over-your-html-file-output)**
+- **[Add `ComponentProps` type utility](#add-componentprops-type-utility)**
+- **[Better support for relative images in Markdown](#fix-using-images-in-markdown-without-a-relative-specifier)**
+
+## How to upgrade
+
+To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 4.3 by running the `@astrojs/upgrade` command:
+
+```sh
+npx @astrojs/upgrade
+```
+
+or by running the upgrade command for your package manager:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: Add domain support for i18n
+
+Astro 4.3 adds an experimental `domains` i18n configuration. This allows you to specify different domains or subdomains for different supported locales.
+
+For example, you could now use `example.com` for your English site, `fr.example.com` for your French site, and `example.es` for your Spanish site.
+Enable the experimental flag `i18nDomains` and map any or all of your locales to domains using `i18n.domains` in your `astro.config.mjs` file:
+
+```diff lang="js"
+// astro.config.mjs
+import {defineConfig} from "astro/config"
+
+export default defineConfig({
+    site: "https://example.com",
+    output: "server", // required, with no prerendered pages
+    adapter: node({
+      mode: 'standalone',
+    }),
+    i18n: {
+        defaultLocaLe: 'en',
+        locales: ['en', 'es', 'pt_BR', 'pt', 'fr'],
++        domains: {
++            fr: "https://fr.example.com",
++            es: "https://example.es"
++        },
+        routing: {
+          prefixDefaultLocale: true,
+        }
+    },
++    experimental: {
++        i18nDomains: true
++    },
+})
+```
+
+Note that this feature requires an entirely server-rendered site with no prerendered pages. Currently, the `@astrojs/node` and `@astrojs/vercel` adapters are supported with more adapter compatibility to come!
+
+See more in our [internationalization documentation](https://docs.astro.build/en/guides/internationalization/#domains-experimental) for more details and limitations on this experimental routing feature.
+
+## More control over your HTML file output
+
+This release adds a new `build.format` option called `preserve` to give you more control over the resulting HTML files in your production build.
+
+The current configuration options (`file` and `directory`) either build all of your HTML pages as files matching the route name (e.g. `/about.html`) or build all of your files as `index.html` within a nested directory structure (e.g. `/about/index.html`), respectively. It is not possible to create individual index pages (e.g. `/about/index.html`) when using the `file` configuration option.
+
+Rather than introduce a breaking change to `file`,  we added the new `preserve` format which will preserve how the filesystem is structured and make sure that is mirrored over to production:
+
+- `about.astro` becomes `about.html`
+- `about/index.astro` becomes `about/index.html`
+
+What you see is what you get! This feature unlocks better compatibility with certain web servers who have strict requirements on how files are structured.
+
+See the [`build.format` configuration options reference](https://docs.astro.build/en/reference/configuration-reference/#buildformat) for more details.
+
+## Add `ComponentProps` type utility
+
+Astro now includes a new `ComponentProps` type export from `astro/types` to get the props type of an Astro component. This is similar to `React.ComponentProps` or Svelte's `ComponentProps`. 
+
+This type export allows you to reference the `Props` accepted by another component, even if that component doesn't export that `Props` type directly.
+
+```astro
+---
+import type { ComponentProps } from 'astro/types';
+import { Button } from "./Button.astro";
+
+type MyButtonProps = ComponentProps<typeof Button>;
+---
+```
+
+## Fix using images in Markdown without a relative specifier
+
+Previously, using images in Markdown without using a relative specifier (such as `./` or `../`) would cause Astro to throw an error. 
+
+Now, you can use the standard `![](img.png)` syntax in Markdown files for images colocated in the same folder: no relative specifier required!
+
+There is no need to update your project; your existing images will still continue to work. However, you can safely remove any relative specifiers from these Markdown images as they are no longer necessary... as the Markdown spec intended!
+
+```diff
+- ![A cute dog](./dog.jpg)
++ ![A cute dog](dog.jpg)
+<!-- This dog lives in the same folder as my article! -->
+```
+
+Thanks to [Oliver Speir](https://github.com/OliverSpeir) for contributing this fix!
+
+## Bug Fixes
+
+As always, additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#430) to learn more.
