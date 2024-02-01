@@ -17,8 +17,8 @@ Astro 4.3 is now available! This release includes a new experimental i18n featur
 
 Highlights include:
 
-- **[Add domain support for i18n](#experimental-add-domain-support-for-i18n)**
-- **[Add support for `build.format: 'preserve'`](#add-support-for-buildformat-preserve)**
+- **[Experimental: Add domain support for i18n](#experimental-add-domain-support-for-i18n)**
+- **[More control over your HTML file output](#more-control-over-your-html-file-output)**
 - **[Add `ComponentProps` type utility](#add-componentprops-type-utility)**
 - **[Better support for relative images in Markdown](#fix-using-images-in-markdown-without-a-relative-specifier)**
 
@@ -38,11 +38,11 @@ pnpm upgrade astro --latest
 yarn upgrade astro --latest
 ```
 
-## (Experimental) Add domain support for i18n
+## Experimental: Add domain support for i18n
 
 Astro 4.3 adds an experimental `domains` i18n configuration. This allows you to specify different domains or subdomains for different supported locales.
 
-For example, you can now use `example.com` for your English site, `fr.example.com` for your French site, and `example.es` for your Spanish site.
+For example, you could now use `example.com` for your English site, `fr.example.com` for your French site, and `example.es` for your Spanish site.
 Enable the experimental flag `i18nDomains` and map any or all of your locales to domains using `i18n.domains` in your `astro.config.mjs` file:
 
 ```diff lang="js"
@@ -76,7 +76,7 @@ Note that this feature requires an entirely server-rendered site with no prerend
 
 See more in our [internationalization documentation](https://docs.astro.build/en/guides/internationalization/#domains-experimental) for more details and limitations on this experimental routing feature.
 
-## Add support for `build.format: 'preserve'`
+## More control over your HTML file output
 
 This release adds a new `build.format` option called `preserve` to give you more control over the resulting HTML files in your production build.
 
@@ -102,7 +102,7 @@ This type export allows you to reference the `Props` accepted by another compone
 import type { ComponentProps } from 'astro/types';
 import { Button } from "./Button.astro";
 
-type myButtonProps = ComponentProps<typeof Button>;
+type MyButtonProps = ComponentProps<typeof Button>;
 ---
 ```
 
