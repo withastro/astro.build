@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/rodneylab/astro-blog-markdown"
 demoUrl: "https://rodneylab.com/astro-blog-markdown/"
-stars: 27
+stars: 28
 tools:
   - "svelte"
   - "postcss"

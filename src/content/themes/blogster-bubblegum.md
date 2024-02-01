@@ -12,7 +12,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/flexdinesh/blogster"
 demoUrl: "https://blogster-bubblegum.netlify.app"
-stars: 470
+stars: 471
 featured: 4
 tools:
   - "tailwind"
