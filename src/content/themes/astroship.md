@@ -21,7 +21,7 @@ links:
     href: "https://docs.web3templates.com/"
   - text: "Twitter"
     href: "https://twitter.com/surjithctly"
-stars: 919
+stars: 921
 tools:
   - "tailwind"
 ---
