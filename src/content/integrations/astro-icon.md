@@ -11,7 +11,7 @@ image: "/assets/integrations/astro-icon.svg"
 repoUrl: "https://github.com/natemoo-re/astro-icon"
 featured: 6
 homepageUrl: "https://github.com/natemoo-re/astro-icon#readme"
-downloads: 86395
+downloads: 86792
 badges:
   - "featured"
 ---
