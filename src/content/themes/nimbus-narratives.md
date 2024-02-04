@@ -18,7 +18,7 @@ tools:
   - "tailwind"
   - "typescript"
   - "mdx"
-stars: 29
+stars: 28
 ---
 
 <h2>Features</h2>

@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/MoofyWoofy/Bob-blog"
 demoUrl: "https://moofywoofy.github.io/Bob-blog/"
-stars: 17
+stars: 16
 tools:
   - "tailwind"
 ---

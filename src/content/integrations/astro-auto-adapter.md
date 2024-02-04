@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-auto-adapter"
 repoUrl: "https://github.com/okikio/astro-auto-adapter"
 homepageUrl: "https://github.com/okikio/astro-auto-adapter"
-downloads: 221
+downloads: 224
 ---

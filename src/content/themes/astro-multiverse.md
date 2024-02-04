@@ -11,5 +11,5 @@ categories:
   - "other"
 repoUrl: "https://github.com/AREA44/astro-multiverse"
 demoUrl: "https://astro-multiverse.vercel.app/"
-stars: 43
+stars: 44
 ---

@@ -17,7 +17,7 @@ tools:
   - "typescript"
 publishDate: "Jan 16, 2024"
 badge: "new"
-stars: 29
+stars: 31
 ---
 
 <p>A simple status page built with Astro, fully optimized for SEO.</p>
