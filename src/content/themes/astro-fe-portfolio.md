@@ -16,6 +16,6 @@ demoUrl: "https://astro-fe-portfolio.netlify.app/"
 tools:
   - "tailwind"
   - "typescript"
-stars: 42
+stars: 43
 publishDate: "May 30, 2023"
 ---

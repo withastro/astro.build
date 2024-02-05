@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sections"
 repoUrl: "https://github.com/warpsio/astro-sections"
 homepageUrl: "https://github.com/warpsio/astro-sections"
-downloads: 16
+downloads: 17
 ---

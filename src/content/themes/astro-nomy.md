@@ -22,7 +22,7 @@ tools:
   - "tailwind"
 publishDate: "Jan 8, 2024"
 badge: "new"
-stars: 122
+stars: 123
 ---
 
 <h2>Astronomy</h2>

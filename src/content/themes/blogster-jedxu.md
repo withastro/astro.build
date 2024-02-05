@@ -17,7 +17,7 @@ tools:
   - "tailwind"
 publishDate: "Jan 8, 2024"
 badge: "new"
-stars: 7
+stars: 8
 ---
 
 <h2>Jed's log</h2>
