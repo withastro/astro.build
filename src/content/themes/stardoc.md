@@ -10,13 +10,11 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/52827888?v=4"
 categories:
   - "docs"
-  - "recent"
 demoUrl: "https://stardoc.pages.dev/"
 repoUrl: "https://github.com/mesinkasir/stardoc"
 tools:
   - "mdx"
 publishDate: "Jan 8, 2024"
-badge: "new"
 stars: 5
 ---
 

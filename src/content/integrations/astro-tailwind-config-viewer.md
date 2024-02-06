@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-tailwind-config-viewer"
 homepageUrl: "https://github.com/florian-lefebvre/astro-tailwind-config-viewer"
-downloads: 444
+downloads: 447
 badge: "new"
 ---

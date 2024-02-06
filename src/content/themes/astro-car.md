@@ -8,14 +8,12 @@ author:
   avatar: "https://public-files.gumroad.com/xg8jvfr27fqkak27qswbbl52dstt"
 categories:
   - "other"
-  - "recent"
 demoUrl: "https://astrocar.pages.dev/"
 buyUrl: "https://creativitaz.gumroad.com/l/astro-js-car"
 tools:
   - "mdx"
   - "preact"
 publishDate: "Jan 8, 2024"
-badge: "new"
 ---
 
 <p>

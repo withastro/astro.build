@@ -8,13 +8,11 @@ author:
   avatar: "https://public-files.gumroad.com/xg8jvfr27fqkak27qswbbl52dstt"
 categories:
   - "docs"
-  - "recent"
 demoUrl: "https://astrodoc.pages.dev/"
 buyUrl: "https://creativitaz.gumroad.com/l/starlightastrodocus"
 tools:
   - "mdx"
 publishDate: "Jan 8, 2024"
-badge: "new"
 ---
 
 <p>Docus is a Complete starlight documentation themes with blog features for documentation website project</p>

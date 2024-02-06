@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-cloudinary-image"
 repoUrl: "https://github.com/ericrisco/astro-cloudinary-image"
 homepageUrl: "https://github.com/ericrisco/astro-cloudinary-image#readme"
-downloads: 101
+downloads: 97
 ---

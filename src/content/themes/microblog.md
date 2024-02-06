@@ -8,7 +8,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/34077176?v=4"
 categories:
   - "blog"
-  - "recent"
 demoUrl: "https://microblog-theta.vercel.app/"
 repoUrl: "https://github.com/michael-andreuzza/microblog"
 tools:
@@ -16,7 +15,6 @@ tools:
   - "mdx"
   - "tailwind"
 publishDate: "Jan 8, 2024"
-badge: "new"
 stars: 12
 ---
 

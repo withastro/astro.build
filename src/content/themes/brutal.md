@@ -13,7 +13,7 @@ categories:
   - "minimal"
 repoUrl: "https://github.com/eliancodes/brutal"
 demoUrl: "https://brutal.elian.codes"
-stars: 173
+stars: 176
 tools:
   - "typescript"
 ---

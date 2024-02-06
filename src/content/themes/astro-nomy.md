@@ -13,7 +13,6 @@ categories:
   - "blog"
   - "docs"
   - "other"
-  - "recent"
 demoUrl: "https://astro-nomy.vercel.app/"
 repoUrl: "https://github.com/mickasmt/astro-nomy"
 tools:
@@ -21,8 +20,7 @@ tools:
   - "mdx"
   - "tailwind"
 publishDate: "Jan 8, 2024"
-badge: "new"
-stars: 123
+stars: 124
 ---
 
 <h2>Astronomy</h2>

@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/danielcgilibert/blog-template"
 demoUrl: "https://blog-template-gray.vercel.app/"
-stars: 259
+stars: 260
 tools:
   - "tailwind"
   - "typescript"

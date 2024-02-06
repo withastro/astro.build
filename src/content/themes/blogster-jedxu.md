@@ -8,7 +8,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/44160015?v=4"
 categories:
   - "blog"
-  - "recent"
 demoUrl: "https://jedxu.info/"
 repoUrl: "https://github.com/JedediahXu/Jed-blog"
 tools:
@@ -16,7 +15,6 @@ tools:
   - "vue"
   - "tailwind"
 publishDate: "Jan 8, 2024"
-badge: "new"
 stars: 8
 ---
 
