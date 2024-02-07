@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@ryandejaegher/my-astro-component"
 homepageUrl: "https://www.npmjs.com/package/@ryandejaegher/my-astro-component"
-downloads: 5
+downloads: 4
 ---

@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-supabase"
 homepageUrl: "https://github.com/alexnguyennz/astro-supabase"
-downloads: 27
+downloads: 21
 ---

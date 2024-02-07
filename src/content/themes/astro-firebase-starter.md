@@ -15,7 +15,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Dec 1, 2023"
-stars: 12
+stars: 13
 ---
 
 <p>
