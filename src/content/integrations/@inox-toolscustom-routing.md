@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@inox-tools/custom-routing"
 repoUrl: "https://github.com/Fryuni/inox-tools"
 homepageUrl: "https://github.com/Fryuni/inox-tools#readme"
 badge: "new"
-downloads: 114
+downloads: 116
 ---

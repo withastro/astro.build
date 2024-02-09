@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@matthiesenxyz/astro-ghostcms"
 repoUrl: "https://github.com/MatthiesenXYZ/astro-ghostcms"
 homepageUrl: "https://astro-ghostcms.xyz/"
-downloads: 3372
+downloads: 3458
 badge: "new"
 ---

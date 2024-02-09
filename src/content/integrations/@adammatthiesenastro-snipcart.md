@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@adammatthiesen/astro-snipcart"
 repoUrl: "https://github.com/Adammatthiesen/astro-snipcart"
 homepageUrl: "https://github.com/Adammatthiesen/astro-snipcart"
-downloads: 313
+downloads: 176
 badge: "new"
 ---

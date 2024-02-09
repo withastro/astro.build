@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@gemini-ui-astro/components"
 homepageUrl: "https://www.npmjs.com/package/@gemini-ui-astro/components"
-downloads: 190
+downloads: 155
 badge: "new"
 ---
