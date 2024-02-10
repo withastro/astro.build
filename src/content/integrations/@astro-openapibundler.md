@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-openapi/bundler"
 homepageUrl: "https://www.npmjs.com/package/@astro-openapi/bundler"
-downloads: 34
+downloads: 30
 ---

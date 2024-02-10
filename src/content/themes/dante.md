@@ -19,7 +19,7 @@ tools:
   - "tailwind"
 publishDate: "Jan 16, 2024"
 badge: "new"
-stars: 40
+stars: 41
 ---
 
 <p>

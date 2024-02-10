@@ -11,7 +11,7 @@ image: "/assets/integrations/tailwind.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 1
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/tailwind/"
-downloads: 341159
+downloads: 329371
 badges:
   - "featured"
 official: true

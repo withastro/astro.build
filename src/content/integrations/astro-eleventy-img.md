@@ -10,7 +10,7 @@ npmUrl: "https://www.npmjs.com/package/astro-eleventy-img"
 repoUrl: "https://github.com/Princesseuh/astro-eleventy-img"
 featured: 7
 homepageUrl: "https://github.com/Princesseuh/astro-eleventy-img#readme"
-downloads: 540
+downloads: 536
 badges:
   - "featured"
 ---
