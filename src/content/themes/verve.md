@@ -19,7 +19,7 @@ tools:
   - "typescript"
 publishDate: "Jan 16, 2024"
 badge: "new"
-stars: 6
+stars: 7
 ---
 
 <p>
