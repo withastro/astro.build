@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-rollup"
 repoUrl: "https://github.com/shadichy/astro-rollup"
 homepageUrl: "https://github.com/shadichy/astro-rollup#readme"
-downloads: 10
+downloads: 8
 ---

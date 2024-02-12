@@ -18,7 +18,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Nov 21, 2023"
-stars: 7
+stars: 8
 ---
 
 <p>Astro Site Template inspired by Casey Neistat’s ultra minimal personal site.</p>
