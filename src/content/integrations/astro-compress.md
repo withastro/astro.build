@@ -1,7 +1,7 @@
 ---
 name: "astro-compress"
 title: "astro-compress"
-description: "🗜️ AstroJS compression utilities. Compress HTML, CSS, JavaScript and more!"
+description: "AstroJS compression utilities. 🗜️ Compress HTML, CSS, JavaScript and more!"
 categories:
   - "css+ui"
   - "performance+seo"

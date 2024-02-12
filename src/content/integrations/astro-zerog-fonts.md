@@ -5,9 +5,7 @@ description: "> Privacy-friendly drop-in replacement for Google Fonts by Bunny C
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-zerog-fonts"
 homepageUrl: "https://www.npmjs.com/package/astro-zerog-fonts"
 downloads: 74
-badge: "new"
 ---
