@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-openapi/gui-elements"
 homepageUrl: "https://www.npmjs.com/package/@astro-openapi/gui-elements"
-downloads: 22
+downloads: 21
 ---

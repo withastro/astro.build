@@ -12,5 +12,5 @@ repoUrl: "https://github.com/Johnkat-Mj/agencex-astro"
 demoUrl: "https://agencex-astro.vercel.app/"
 tools:
   - "tailwind"
-stars: 117
+stars: 118
 ---

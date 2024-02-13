@@ -15,7 +15,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/satnaing/astro-paper"
 demoUrl: "https://astro-paper.pages.dev/"
-stars: 1652
+stars: 1655
 featured: 2
 tools:
   - "tailwind"

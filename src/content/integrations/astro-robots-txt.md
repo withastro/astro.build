@@ -10,7 +10,7 @@ npmUrl: "https://www.npmjs.com/package/astro-robots-txt"
 repoUrl: "https://github.com/alextim/astro-lib"
 featured: 9
 homepageUrl: "https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt#readme"
-downloads: 29094
+downloads: 28628
 badges:
   - "featured"
 ---

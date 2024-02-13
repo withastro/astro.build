@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@xexiu/astro-progress-bar"
 repoUrl: "https://github.com/xexiu/astro-components"
 homepageUrl: "https://github.com/xexiu/astro-components"
-downloads: 39
+downloads: 36
 ---
