@@ -54,7 +54,7 @@ Starting from Astro 4.4, the dev toolbar's audit app includes a small UI showing
 
 ## Improved streaming performance
 
-This release includes performance improvements for streaming. We discovered recently that `ReadableStream`s were slower than expected on Node, and migrated Astro to use `AsyncIterable` instead when running on Node. Notably, this change reduced the build time of Starlight websites with large sidebars by up to 47% in extreme cases. For more technical details, check out the [pull request](https://github.com/withastro/astro/pull/9614) for this change.
+This release includes performance improvements for streaming. We discovered recently that `ReadableStream`s were slower than expected on Node.js, and migrated Astro to use `AsyncIterable` instead when running on Node.js. Notably, this change reduced the build time of Starlight websites with large sidebars by up to 47% in extreme cases. For more technical details, check out the [pull request](https://github.com/withastro/astro/pull/9614) for this change.
 
 No changes are required to take advantage of these improvements, which benefits both static builds and runtime performance, but you may notice faster build times and improved runtime performance, as a treat.
 
