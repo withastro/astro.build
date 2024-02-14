@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astropub/context"
 repoUrl: "https://github.com/astro-community/context"
 homepageUrl: "https://github.com/astro-community/context"
-downloads: 26
+downloads: 22
 badge: "new"
 ---

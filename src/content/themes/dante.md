@@ -12,14 +12,12 @@ categories:
   - "blog"
   - "minimal"
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/JustGoodUI/dante-astro-theme"
 demoUrl: "https://dante-astro-theme.netlify.app/"
 tools:
   - "tailwind"
 publishDate: "Jan 16, 2024"
-badge: "new"
-stars: 45
+stars: 48
 ---
 
 <p>

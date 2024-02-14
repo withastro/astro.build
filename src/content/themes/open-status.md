@@ -8,7 +8,6 @@ author:
   avatar: "https://avatars.githubusercontent.com/u/136892265?s=200&v=4"
 categories:
   - "other"
-  - "recent"
 repoUrl: "https://github.com/openstatusHQ/astro-status-page"
 demoUrl: "https://astro.openstat.us/"
 tools:
@@ -16,8 +15,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Jan 16, 2024"
-badge: "new"
-stars: 34
+stars: 35
 ---
 
 <p>A simple status page built with Astro, fully optimized for SEO.</p>

@@ -14,14 +14,12 @@ author:
 categories:
   - "blog"
   - "portfolio"
-  - "recent"
 repoUrl: "https://github.com/vratskyi/vratskyi.github.io"
 demoUrl: "https://indieastrotemplate.netlify.app/"
 tools:
   - "tailwind"
   - "postcss"
 publishDate: "Jan 16, 2024"
-badge: "new"
 stars: 10
 ---
 

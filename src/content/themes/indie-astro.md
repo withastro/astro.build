@@ -11,14 +11,12 @@ author:
 categories:
   - "blog"
   - "other"
-  - "recent"
 buyUrl: "https://petitpois.gumroad.com/l/indie-astro"
 demoUrl: "https://indieastrotemplate.netlify.app/"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "Jan 16, 2024"
-badge: "new"
 ---
 
 <p>

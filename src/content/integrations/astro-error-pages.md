@@ -5,7 +5,7 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-error-pages"
 homepageUrl: "https://www.npmjs.com/package/astro-error-pages"
-downloads: 7
+downloads: 6
 badges:
   - "new"
 ---

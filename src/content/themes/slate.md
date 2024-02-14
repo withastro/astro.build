@@ -9,14 +9,12 @@ author:
 categories:
   - "blog"
   - "minimal"
-  - "recent"
 repoUrl: "https://github.com/jaytyrrell13/astro-template-slate"
 demoUrl: "https://slate-astro-theme.netlify.app/"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "Jan 16, 2024"
-badge: "new"
 stars: 2
 ---
 

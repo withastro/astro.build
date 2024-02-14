@@ -11,14 +11,12 @@ author:
 categories:
   - "blog"
   - "minimal"
-  - "recent"
 repoUrl: "https://github.com/aryanjha256/verve"
 demoUrl: "https://vervetheme.vercel.app/"
 tools:
   - "tailwind"
   - "typescript"
 publishDate: "Jan 16, 2024"
-badge: "new"
 stars: 7
 ---
 
