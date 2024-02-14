@@ -1,0 +1,85 @@
+---
+title: "Astro 4.4"
+description: "Astro 4.4 is now available! This release includes the addition of performance audits for the dev toolbar, performance upgrades, the ability to automatically infer the dimensions of remote images, and more."
+publishDate: "February 15, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-440/post-header-4.4.webp"
+socialImage: "/src/content/blog/_images/astro-440/og-image-4.4.webp"
+lang: "en"
+---
+
+import perfAuditImage from "./_images/astro-440/perf-audit.webp"
+
+Astro 4.4 is now available! This release includes performance audits for the dev toolbar, performance upgrades, the ability to automatically infer the dimensions of remote images, and more.
+
+Highlights include:
+
+- [**Performance Audits**](#performance-audits)
+- [**Audit list**](#audit-list)
+- [**Improved streaming performance**](#improved-streaming-performance)
+- [**New `inferSize` properties for remote images**](#automatically-infer-dimensions-of-remote-images)
+
+
+## How to upgrade
+
+To take advantage of the latest features, make sure you're running the latest version of Astro. You can upgrade to Astro 4.4 by running the `@astrojs/upgrade` command:
+
+```sh
+npx @astrojs/upgrade
+```
+
+or by running the upgrade command for your package manager:
+
+```sh
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Performance audits
+
+Astro 4.4 includes the addition of performance audits for the dev toolbar. Much like the accessibility audits currently available, performance audits will help you identify and fix performance issues in your Astro site. For example, the dev toolbar will now warn you when a lazy-loaded image is above the fold, recommending instead that you use eager loading for better performance.
+
+<Image src={perfAuditImage} alt="Shows a tooltip telling the user to use loading='lazy' on an image below the fold." />
+
+## Audit list
+
+Starting from Astro 4.4, the dev toolbar's audit app includes a small UI showing the list of problems that have been detected. This list is a great way to quickly see what issues need to be addressed, and to jump to the relevant part of the page to fix them. In the future, we'll be expanding this UI to show more information about each issue, and to provide more guidance on how to fix them.
+
+## Improved streaming performance
+
+This release includes performance improvements for streaming. We discovered recently that `ReadableStream`s were slower than expected on Node, and migrated Astro to use `AsyncIterable` instead when running on Node. Notably, this change reduced the build time of Starlight websites with large sidebars by up to 47% in extreme cases. For more technical details, check out the [pull request](https://github.com/withastro/astro/pull/9614) for this change.
+
+No changes are required to take advantage of these improvements, which benefits both static builds and runtime performance, but you may notice faster build times and improved runtime performance, as a treat.
+
+## Automatically infer dimensions of remote images
+
+Thanks to [Oliver Speir](https://github.com/OliverSpeir), Astro 4.4 can now automatically infer the dimensions of remote images, which means you no longer need to specify the `width` and `height` attributes for remote images. This is especially useful when working with images from a CMS or other external sources where the dimensions of the image are not known at build time.
+
+To enable this feature, set the `inferSize` prop to `true` on the `Image` component:
+
+```astro
+---
+import { Image } from "astro:assets";
+---
+
+<Image src="https://example.com/image.jpg" alt="A cool image" inferSize={true} />
+```
+
+or as a parameter to `getImage`:
+
+```ts
+import { getImage } from "astro:assets";
+const processedImage = await getImage({ src: "https://example.com/image.jpg", inferSize: true });
+```
+
+Note that this feature comes with a performance cost, notably in SSR, as it requires a partial download of the image to infer its dimensions before the rest of the page can be rendered. We recommend using this feature only when necessary, and instead manually specifying the `width` and `height` attributes when possible.
+
+## Bug Fixes
+
+As always, additional bug fixes are included in this release. Check out the [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#440) to learn more.
