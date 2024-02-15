@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-reactive/form"
 repoUrl: "https://github.com/astro-reactive/astro-reactive"
 homepageUrl: "https://astro-reactive.js.org"
-downloads: 42
+downloads: 47
 ---

@@ -7,5 +7,5 @@ categories:
   - "performance+seo"
 npmUrl: "https://www.npmjs.com/package/astro-zod-to-json-schema"
 homepageUrl: "https://www.npmjs.com/package/astro-zod-to-json-schema"
-downloads: 8
+downloads: 7
 ---

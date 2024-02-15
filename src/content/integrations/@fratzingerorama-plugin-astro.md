@@ -7,7 +7,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@fratzinger/orama-plugin-astro"
 repoUrl: "https://github.com/oramasearch/orama"
 homepageUrl: "https://github.com/oramasearch/orama#readme"
-downloads: 45
+downloads: 29
 badges:
   - "new"
 ---

@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/wwwastro"
 homepageUrl: "https://www.npmjs.com/package/wwwastro"
-downloads: 63
+downloads: 66
 badge: "new"
 ---

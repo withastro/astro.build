@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/simple-stack-stream"
 repoUrl: "https://github.com/bholmesdev/simple-stack"
 homepageUrl: "https://github.com/bholmesdev/simple-stack#readme"
-downloads: 261
+downloads: 339
 badge: "new"
 ---

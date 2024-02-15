@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs-aws/adapter"
 repoUrl: "https://github.com/helbing/astrojs-aws"
 homepageUrl: "https://github.com/helbing/astrojs-aws/tree/main/packages/adapter"
-downloads: 79
+downloads: 77
 ---

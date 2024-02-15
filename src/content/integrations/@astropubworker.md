@@ -11,6 +11,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astropub/worker"
 repoUrl: "https://github.com/astro-community/worker"
 homepageUrl: "https://github.com/astro-community/worker"
-downloads: 67
+downloads: 70
 badge: "new"
 ---
