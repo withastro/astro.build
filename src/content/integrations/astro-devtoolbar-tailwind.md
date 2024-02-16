@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-devtoolbar-tailwind"
 homepageUrl: "https://github.com/futurethemes/astro-devtoolbar-tailwind"
 badge: "new"
-downloads: 483
+downloads: 497
 ---

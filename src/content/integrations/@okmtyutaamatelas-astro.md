@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@okmtyuta/amatelas-astro"
 homepageUrl: "https://www.npmjs.com/package/@okmtyuta/amatelas-astro"
-downloads: 1281
+downloads: 1341
 badge: "new"
 ---

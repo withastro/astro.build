@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@cosmicui/components"
 repoUrl: "https://github.com/juanpa77/CosmicUI"
 homepageUrl: "https://github.com/juanpa77/CosmicUI#readme"
-downloads: 68
+downloads: 70
 badge: "new"
 ---

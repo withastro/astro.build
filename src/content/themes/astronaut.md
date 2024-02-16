@@ -14,7 +14,7 @@ repoUrl: "https://github.com/stevefrenzel/astro-naut"
 tools:
   - "typescript"
 publishDate: "Dec 21, 2023"
-stars: 8
+stars: 9
 ---
 
 <p>This is my go-to template for starting fresh projects and comes with the following features:</p>

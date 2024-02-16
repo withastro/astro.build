@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-tei/react"
 repoUrl: "https://github.com/raffazizzi/astro-tei"
 homepageUrl: "https://github.com/raffazizzi/astro-tei#readme"
-downloads: 3
+downloads: 2
 ---
