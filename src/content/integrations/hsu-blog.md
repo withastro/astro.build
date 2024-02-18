@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/hsu-blog"
 homepageUrl: "https://github.com/charles-hsuz/HsuBlog#readme"
-downloads: 4
+downloads: 3
 ---
