@@ -9,6 +9,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs/cloudflare"
 repoUrl: "https://github.com/withastro/adapters"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/cloudflare/"
-downloads: 54458
+downloads: 53741
 official: true
 ---

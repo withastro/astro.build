@@ -13,7 +13,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/one-aalam/astro-ink"
 demoUrl: "https://astro-ink.vercel.app/"
-stars: 475
+stars: 476
 featured: 11
 tools:
   - "svelte"

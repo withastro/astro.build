@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-mdoc"
 homepageUrl: "https://www.npmjs.com/package/astro-mdoc"
-downloads: 8
+downloads: 6
 ---
