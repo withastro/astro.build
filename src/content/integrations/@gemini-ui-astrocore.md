@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@gemini-ui-astro/core"
 homepageUrl: "https://www.npmjs.com/package/@gemini-ui-astro/core"
 badge: "new"
-downloads: 293
+downloads: 304
 ---

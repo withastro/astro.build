@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-lottie"
 repoUrl: "https://github.com/warpsio/astro-lottie"
 homepageUrl: "https://github.com/warpsio/astro-lottie"
-downloads: 4
+downloads: 3
 ---

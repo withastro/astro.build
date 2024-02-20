@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-thumbor-image"
 repoUrl: "https://github.com/KreischerPanoptic/astro-thumbor-image"
 homepageUrl: "https://github.com/KreischerPanoptic/astro-thumbor-image#readme"
-downloads: 45
+downloads: 33
 ---
