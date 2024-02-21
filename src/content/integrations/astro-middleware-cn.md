@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-middleware-cn"
 repoUrl: "https://github.com/liruifengv/astro-middleware-cn"
 homepageUrl: "https://github.com/liruifengv/astro-middleware-cn#readme"
-downloads: 63
+downloads: 57
 ---

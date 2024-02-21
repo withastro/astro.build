@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-htmx"
 repoUrl: "https://github.com/xstevenyung/astro-htmx"
 homepageUrl: "https://github.com/xstevenyung/astro-htmx#readme"
-downloads: 2112
+downloads: 2065
 ---
