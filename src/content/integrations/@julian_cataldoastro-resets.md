@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@julian_cataldo/astro-resets"
 repoUrl: "https://github.com/JulianCataldo/web-garden"
 homepageUrl: "https://code.juliancataldo.com/component/astro-resets"
-downloads: 34
+downloads: 37
 ---

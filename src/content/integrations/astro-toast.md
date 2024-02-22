@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-toast"
 homepageUrl: "https://github.com/julian428/astro-toast"
-downloads: 27
+downloads: 32
 ---

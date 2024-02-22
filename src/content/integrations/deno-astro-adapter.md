@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/deno-astro-adapter"
 repoUrl: "https://github.com/kwhinnery/deno-astro-adapter"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/deno/"
-downloads: 125
+downloads: 128
 ---

@@ -9,7 +9,7 @@ npmUrl: "https://www.npmjs.com/package/@astropub/icons"
 repoUrl: "https://github.com/astro-community/icons"
 featured: 17
 homepageUrl: "https://github.com/astro-community/icons#readme"
-downloads: 196
+downloads: 221
 badges:
   - "featured"
 ---
