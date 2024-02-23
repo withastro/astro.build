@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@unpic/astro"
 repoUrl: "https://github.com/ascorbic/unpic-img"
 homepageUrl: "https://unpic.pics/img/astro"
-downloads: 4790
+downloads: 4816
 ---

@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-integration-kit"
 homepageUrl: "https://github.com/florian-lefebvre/astro-integration-kit"
-downloads: 2014
+downloads: 2005
 badge: "new"
 ---
