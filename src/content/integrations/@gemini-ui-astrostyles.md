@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@gemini-ui-astro/styles"
 homepageUrl: "https://www.npmjs.com/package/@gemini-ui-astro/styles"
 badge: "new"
-downloads: 290
+downloads: 267
 ---

@@ -15,5 +15,5 @@ tools:
   - "unocss"
   - "typescript"
 publishDate: "September 19, 2023"
-stars: 87
+stars: 88
 ---

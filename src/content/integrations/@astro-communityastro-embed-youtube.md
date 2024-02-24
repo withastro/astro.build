@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-community/astro-embed-youtube"
 repoUrl: "https://github.com/delucis/astro-embed"
 homepageUrl: "https://github.com/delucis/astro-embed/tree/main/packages/astro-embed-youtube#readme"
-downloads: 14453
+downloads: 14561
 ---

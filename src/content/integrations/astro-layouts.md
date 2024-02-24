@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-layouts"
 repoUrl: "https://github.com/kevinzunigacuellar/astro-layouts"
 homepageUrl: "https://github.com/kevinzunigacuellar/astro-layouts#README"
-downloads: 39
+downloads: 40
 ---

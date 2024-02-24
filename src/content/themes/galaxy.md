@@ -10,7 +10,7 @@ author:
 categories:
   - "landing-page"
 repoUrl: "https://github.com/TomEverson/galaxy"
-stars: 32
+stars: 33
 tools:
   - "preact"
   - "tailwind"

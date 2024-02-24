@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-rome"
 image: "/assets/integrations/astro-rome.svg"
 repoUrl: "https://github.com/astro-community/AstroRome"
 homepageUrl: "https://github.com/astro-community/AstroRome#readme"
-downloads: 3552
+downloads: 3496
 ---
