@@ -8,6 +8,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-wordpress"
 homepageUrl: "https://www.npmjs.com/package/astro-wordpress"
-downloads: 10
+downloads: 8
 badge: "new"
 ---

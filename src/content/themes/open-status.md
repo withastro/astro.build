@@ -15,7 +15,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Jan 16, 2024"
-stars: 36
+stars: 37
 ---
 
 <p>A simple status page built with Astro, fully optimized for SEO.</p>

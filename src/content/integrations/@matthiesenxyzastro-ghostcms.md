@@ -9,6 +9,6 @@ image: "/assets/integrations/astro-ghostcms.png"
 npmUrl: "https://www.npmjs.com/package/@matthiesenxyz/astro-ghostcms"
 repoUrl: "https://github.com/MatthiesenXYZ/astro-ghostcms"
 homepageUrl: "https://astro-ghostcms.xyz/"
-downloads: 2530
+downloads: 2317
 badge: "new"
 ---
