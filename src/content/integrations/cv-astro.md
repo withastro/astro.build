@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/cv-astro"
 repoUrl: "https://github.com/tribal2/cv-astro"
 homepageUrl: "https://github.com/tribal2/cv-astro"
-downloads: 14
+downloads: 12
 badge: "new"
 ---

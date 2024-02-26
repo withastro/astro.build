@@ -7,6 +7,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-bootstrap"
 repoUrl: "https://github.com/astro-bootstrap/astro-bootstrap"
 homepageUrl: "https://astro-bootstrap.github.io"
-downloads: 1092
+downloads: 1115
 image: "/assets/integrations/astro-bootstrap.png"
 ---
