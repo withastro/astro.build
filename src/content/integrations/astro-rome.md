@@ -1,7 +1,7 @@
 ---
 name: "astro-rome"
 title: "astro-rome"
-description: "🏛️ AstroJS Rome tools. Format, lint and check your Astro website with Rome."
+description: "AstroJS Rome tools. 🏛️ Format, lint and check your Astro website with Rome."
 categories:
   - "css+ui"
   - "performance+seo"

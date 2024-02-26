@@ -5,9 +5,7 @@ description: "Explore your Tailwind config visually directly in your browser whi
 categories:
   - "css+ui"
   - "toolbar"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-tailwind-config-viewer"
 homepageUrl: "https://github.com/florian-lefebvre/astro-tailwind-config-viewer"
 downloads: 157
-badge: "new"
 ---

@@ -1,7 +1,7 @@
 ---
 name: "astro-critters"
 title: "astro-critters"
-description: "🦔 AstroJS GoogleChromeLabs critters integration. Inline your critical CSS with Astro."
+description: "AstroJS GoogleChromeLabs Critters integration. 🦔 Inline your critical CSS with Astro."
 categories:
   - "css+ui"
   - "performance+seo"

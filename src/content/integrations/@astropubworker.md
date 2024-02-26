@@ -7,10 +7,8 @@ categories:
   - "analytics"
   - "performance+seo"
   - "frameworks"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@astropub/worker"
 repoUrl: "https://github.com/astro-community/worker"
 homepageUrl: "https://github.com/astro-community/worker"
 downloads: 17
-badge: "new"
 ---
