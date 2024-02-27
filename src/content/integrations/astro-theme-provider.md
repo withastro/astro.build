@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-theme-provider"
 repoUrl: "https://github.com/brycerussell/astro-theme-provider"
 homepageUrl: "https://github.com/brycerussell/astro-theme-provider"
-downloads: 56
+downloads: 62
 ---

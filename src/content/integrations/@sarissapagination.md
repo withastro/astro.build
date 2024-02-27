@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@sarissa/pagination"
 repoUrl: "https://github.com/iozcelik/SarissaPagination"
 homepageUrl: "https://github.com/iozcelik/SarissaPagination"
-downloads: 77
+downloads: 78
 url: "https://github.com/iozcelik/SarissaPagination"
 ---

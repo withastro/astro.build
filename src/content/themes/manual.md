@@ -14,7 +14,7 @@ categories:
   - "docs"
 repoUrl: "https://github.com/TheOtterlord/manual"
 demoUrl: "https://manual.otterlord.dev"
-stars: 34
+stars: 35
 tools:
   - "tailwind"
   - "typescript"

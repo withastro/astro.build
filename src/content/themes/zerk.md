@@ -15,7 +15,7 @@ demoUrl: "https://zerk.vercel.app"
 tools:
   - "tailwind"
 publishDate: "Oct 13, 2023"
-stars: 10
+stars: 0
 ---
 
 <p>
