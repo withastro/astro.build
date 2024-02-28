@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-vanilla-extract"
 repoUrl: "https://github.com/codiume/orbit"
 homepageUrl: "https://github.com/codiume/orbit"
-downloads: 169
+downloads: 174
 ---

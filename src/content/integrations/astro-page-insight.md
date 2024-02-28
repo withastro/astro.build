@@ -11,5 +11,5 @@ npmUrl: "https://www.npmjs.com/package/astro-page-insight"
 repoUrl: "https://github.com/ktym4a/astro-page-insight"
 homepageUrl: "https://github.com/ktym4a/astro-page-insight"
 badge: "new"
-downloads: 1207
+downloads: 1241
 ---
