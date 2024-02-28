@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content"
 import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx"
 
 export type Props = HTMLAttributes<"div"> & {
-	theme: CollectionEntry<"themes">
+	theme: any
 }
 
 const { theme, class: className, ...attrs } = Astro.props
@@ -12,24 +12,24 @@ const { theme, class: className, ...attrs } = Astro.props
 
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>
 	{
-		theme.data.buyUrl && (
-			<a href={theme.data.buyUrl} class="button button-primary" data-analytics-event="PDDOCXCA:1">
+		theme.Theme.buyUrl && (
+			<a href={theme.Theme.buyUrl} class="button button-primary" data-analytics-event="PDDOCXCA:1">
 				<span>Buy now</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>
 		)
 	}
 	{
-		theme.data.repoUrl && (
-			<a href={theme.data.repoUrl} class="button button-primary" data-analytics-event="PDDOCXCA:0">
+		theme.Theme.repoUrl && (
+			<a href={theme.Theme.repoUrl} class="button button-primary" data-analytics-event="PDDOCXCA:0">
 				<span>Get started</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>
 		)
 	}
 	{
-		theme.data.demoUrl && (
-			<a href={theme.data.demoUrl} class="button" data-analytics-event="DI9WVRXV:0">
+		theme.Theme.demoUrl && (
+			<a href={theme.Theme.demoUrl} class="button" data-analytics-event="DI9WVRXV:0">
 				<span>Live demo</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>

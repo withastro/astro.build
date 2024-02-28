@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content"
+import { type CollectionEntry } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
 import CardGridGroup from "~/components/CardGridGroup.astro"
 import Pagination from "~/components/Pagination.astro"
@@ -15,33 +15,33 @@ import ThemeCard from "./_components/ThemeCard.astro"
 export const prerender = false
 
 // Sorting priority: featured first, then published date for new themes, then compare downloads, then sort alphabetically
-function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
-	if (a.data.featured && b.data.featured) {
-		return a.data.featured - b.data.featured
+function sortThemes(a, b): number {
+	if (a.Theme.featured && b.Theme.featured) {
+		return a.Theme.featured - b.Theme.featured
 	}
 
-	if (a.data.featured && !b.data.featured) {
+	if (a.Theme.featured && !b.Theme.featured) {
 		return -1
 	}
 
-	if (!a.data.featured && b.data.featured) {
+	if (!a.Theme.featured && b.Theme.featured) {
 		return 1
 	}
 
-	if (a.data.badge === "new" && b.data.badge === "new") {
-		return sortRecentThemes(a, b)
-	}
+	// if (a.data.badge === "new" && b.data.badge === "new") {
+	// 	return sortRecentThemes(a, b)
+	// }
 
-	if (a.data.stars === b.data.stars) {
+	if (a.Theme.stars === b.Theme.stars) {
 		return b.data.title.localeCompare(a.data.title)
 	}
 
-	return b.data.stars - a.data.stars
+	return b.Theme.stars - a.Theme.stars
 }
 
-function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
-	const aTime = a.data.publishDate?.getTime()
-	const bTime = b.data.publishDate?.getTime()
+function sortRecentThemes(a, b): number {
+	const aTime = new Date(a.Theme.publishDate).getTime()
+	const bTime = new Date(b.Theme.publishDate).getTime()
 
 	if (!aTime || !bTime) {
 		return sortThemes(a, b)
@@ -157,9 +157,11 @@ function themeFilter(theme: CollectionEntry<"themes">) {
 }
 
 // get themes, filtered by the applied search & filter, then sort the matches
-const allThemes = await getCollection("themes", themeFilter).then((entries) =>
-	entries.sort(sortThemes),
-)
+// const allThemes = await getCollection("themes", themeFilter).then((entries) =>
+// 	entries.sort(sortThemes),
+// )
+
+const allThemes = await fetch("http://localhost:4321/api/themes").then((res) => res.json())
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
@@ -182,7 +184,7 @@ const themes = page.data
 const showRecentlyAdded =
 	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
 const recentlyAdded = showRecentlyAdded
-	? allThemes.filter((entry) => entry.data.badge === "new").sort(sortRecentThemes)
+	? await fetch("http://localhost:4321/api/themes/recent").then((res) => res.json()) 
 	: []
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
 recentlyAddedSearch.append("categories[]", "recent")
