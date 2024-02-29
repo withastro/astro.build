@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/satori-astro"
 homepageUrl: "https://github.com/florian-lefebvre/satori-astro"
 badge: "new"
-downloads: 65
+downloads: 66
 ---
