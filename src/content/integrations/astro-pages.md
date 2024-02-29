@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-pages"
 repoUrl: "https://github.com/brycerussell/astro-pages"
 homepageUrl: "https://github.com/brycerussell/astro-pages"
 badge: "new"
-downloads: 539
+downloads: 540
 ---
