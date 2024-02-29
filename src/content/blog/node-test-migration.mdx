@@ -31,9 +31,15 @@ The idea of the PoC was to understand:
 
 ### How we started
 
-We started by migrating only **one** of our packages that didn't use `astro`'s integration suite, `astro-create`. This was a good opportunity to play with the built-in assertion library `node:assert`, to learn about the options, and how fast was compared to Mocha.
+We started by migrating only **one** of our packages that didn't use `astro`'s integration suite, `create-astro`. This was a good opportunity to play with the built-in assertion library `node:assert`, to learn about the options, and its performance compared to Mocha.
 
-[//]: # (Here Bjorn can talk about the PoC: why we created the astro-script test, and maybe a small explanation )
+Since `create-astro` only had a handful of tests, it was relatively easy to migrate the test files to use `node:test` and `node:assert`, instead of `mocha` and `chai`. After that, the only thing left is to update the `mocha` command to `node --test` to execute the tests. However, we quickly ran into issues using the `node --test` command, including:
+
+1. It had trouble parsing the glob syntax when passing multiple arguments, e.g. `node --test "test/*.test.js" --test-name-pattern="foo"`.
+2. It wasn't possible to pass the `--test-concurrency` flag (only available in Node.js 21 and above), but can be worked around by using the [programmatic API](https://nodejs.org/api/test.html#testname-options-fn) `concurrency` option.
+3. Nitpicking, but the argument names were verbose, e.g. `--test-name-pattern` instead of `--match, -m` arguments, `--test-timeout` instead of `--timeout, -t` arguments, etc. 
+
+Hence to solve these issues, we created a [custom script](https://github.com/withastro/astro/blob/3757a212c01cee03b8e96e1e9697a187ae7cc290/scripts/cmd/test.js) which can be called with the `astro-scripts test` command. This decision also proved to be useful to enable more workarounds as we'll see later.
 
 As a second step, we attempted to migrate the testing suites of the `@astrojs/node` package. This integration is one of our most downloaded integrations, so we have plenty of tests. Plus, the tests of this package all have **integration tests**, so it was a good opportunity to check the performance of the test runner.
 
@@ -41,13 +47,11 @@ As a second step, we attempted to migrate the testing suites of the `@astrojs/no
 
 Once the PR was ready, we noticed that _Node.js test runner_ **was way slower** than Mocha. We investigated, and we discovered that Node.js spawns a new process for each test file to assure that each testing suite is run in **isolation**. Running a testing suite in isolation is, generally, a good practice, because it assures that tests run in an unpolluted environment.
 
-However, our testing suites are already isolated, in fact we were able to run our testing suites using the main thread with Mocha, without running into issues: side effects, polluted environments, etc. Unfortunately, Node.js _doesn't_ provide an option to _run all tests in the same thread_, so we have to come up with a solution (aren't we engineers, after all? we solve problems!).
+However, our testing suites are already isolated, in fact we were able to run our testing suites using the main thread with Mocha, without running into issues: side effects, polluted environments, etc. Unfortunately, Node.js didn't provide an option to _run all tests in the same thread_, so we have to come up with a solution (aren't we engineers, after all? we solve problems!).
 
-Using our internal `astro-scripts test`, we create a _temporary file that **imports** all testing suites_, and we let Node.js test that single file: we pay the cost of spawning only one process, and we reach the same level of performance as if we were using the main process.
+Using our internal `astro-scripts test` command, we are able to workaround this by creating a _temporary file that **imports** all the testing suites_, and we let Node.js test that single file. This way, only one process is spawned for the file, and we reach the same level of performance as if we were using the main process.
 
-However, this **comes with a downside**: if there's a test failure or a timeout, we aren't able to tell which test is the cause. We are still able to run tests in **parallel** - each test suite executed by a process - although we don't do that in the CI.
-
-This is one of the quirks we found, and we accepted the trade-off. After all, we also accepted Mocha's trade-offs!
+However, this **came with a downside**: if there's a test failure or a timeout, we aren't able to tell which test is the cause. This was the main quirk we found, and we accepted the trade-off. After all, we also accepted Mocha's trade-offs!
 
 ### Node.js `assert` and `chai`
 
