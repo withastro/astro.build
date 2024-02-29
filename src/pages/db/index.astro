@@ -1,0 +1,21 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro"
+import Features from "./_components/Features.astro"
+import Hero from "./_components/Hero.astro"
+import IntroSection from "./_components/IntroSection.astro"
+import Pricing from "./_components/Pricing.astro"
+import UseCases from "./_components/UseCases.astro"
+---
+
+<MainLayout image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}>
+	<Hero />
+	<div class="relative">
+		<div class="bg-grid absolute inset-0 z-grid"></div>
+		<div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
+			<IntroSection />
+			<UseCases />
+			<Features />
+			<Pricing />
+		</div>
+	</div>
+</MainLayout>

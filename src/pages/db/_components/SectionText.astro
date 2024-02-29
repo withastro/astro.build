@@ -1,0 +1,17 @@
+---
+type Props = {
+	wide?: boolean
+}
+
+const { wide } = Astro.props
+---
+
+<h2
+	class:list={["heading-3 mb-8 max-w-3xl px-4 font-semibold md:heading-2"]}
+	style="text-wrap: balance;"
+>
+	<slot name="eyebrow" />
+</h2>
+<h3 class:list={["heading-3 max-w-3xl"]} style="text-wrap: balance;">
+	<slot name="title" />
+</h3>
