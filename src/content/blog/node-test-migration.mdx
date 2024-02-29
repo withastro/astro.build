@@ -1,0 +1,115 @@
+---
+title: "Migration to Node.js test runner: a retrospective"
+description: "A retrospective of how Astro migrated more than 500 test suites from Mocha to Node.js test runner."
+publishDate: "February 15, 2024"
+authors:
+  - ema
+  - bjorn
+lang: "en"
+---
+
+Over a month ago, we discussed a possible migration to the Node.js test runner. While we were sufficiently happy with Mocha, we are always looking to make our CI jobs faster.
+
+Relying on a test runner baked inside our runtime had some advantages for our main monorepo:
+- two fewer dependencies to install and maintain in our monorepo: `mocha` and `chai`;
+- maintainability, there are way more people involved in the Node.js project (hence the Node.js test runner);
+- we believe that the test runner will get better and better with the time, and eventually save some time in our CI workflows.
+
+## From an idea to a PoC
+
+The Astro monorepo has more than 500 testing suites: between integration tests and unit tests, we have 664 suites, with a total of 1603 tests. Tha majority of these tests are **integration** tests.
+
+An integration test, in our monorepo, means the creation of tiny Astro project, building a project with a specific environment - development, static generation (SSG) or dynamic generation (SSR), and run assertions over the **built** pages. That's right, each integration test requires `vite` to build and bundle the project.
+
+We didn't start the migration right away. Before taking a final decision, we wanted to make sure that moving away from Mocha was a mistake. Despite its quirks, Mocha is a **fine** test runner, it's been around for a long time, it is battle-tested. If you use Mocha, you are in good hands.
+
+The idea of the PoC was to understand:
+- the flexibility of the Node.js CLI arguments and how customisable can be the test reporters;
+- the speed of execution of the testing suites;
+- the overall developer experience;
+
+
+### How we started
+
+We started by migrating only **one** of our packages that didn't use `astro`'s integration suite, `astro-create`. This was a good opportunity to play with the built-in assertion library `node:assert`, to learn about the options, and how fast was compared to Mocha.
+
+[//]: # (Here Bjorn can talk about the PoC: why we created the astro-script test, and maybe a small explanation )
+
+As a second step, we attempted to migrate the testing suites of the `@astrojs/node` package. This integration is one of our most downloaded integrations, so we have plenty of tests. Plus, the tests of this package all have **integration tests**, so it was a good opportunity to check the performance of the test runner.
+
+### The pandora box
+
+Once the PR was ready, we noticed that _Node.js test runner_ **was way slower** than Mocha. We investigated, and we discovered that Node.js spawns a new process for each test file to assure that each testing suite is run in **isolation**. Running a testing suite in isolation is, generally, a good practice, because it assures that tests run in an unpolluted environment.
+
+However, our testing suites are already isolated, in fact we were able to run our testing suites using the main thread with Mocha, without running into issues: side effects, polluted environments, etc. Unfortunately, Node.js _doesn't_ provide an option to _run all tests in the same thread_, so we have to come up with a solution (aren't we engineers, after all? we solve problems!).
+
+Using our internal `astro-scripts test`, we create a _temporary file that **imports** all testing suites_, and we let Node.js test that single file: we pay the cost of spawning only one process, and we reach the same level of performance as if we were using the main process.
+
+However, this **comes with a downside**: if there's a test failure or a timeout, we aren't able to tell which test is the cause. We are still able to run tests in **parallel** - each test suite executed by a process - although we don't do that in the CI.
+
+This is one of the quirks we found, and we accepted the trade-off. After all, we also accepted Mocha's trade-offs!
+
+### Node.js `assert` and `chai`
+
+During the migration, we had to remove the `chai` library for `node:assert/strict`. This task uncovered that with `chai`, you can execute the same check in different ways. For example, you can run an equality check at least in **four** different ways:
+
+```js
+import { expect } from "chai";
+
+expect("foo").to.eq("foo")
+expect("foo").to.be.eq("foo")
+expect("foo").to.equal("foo")
+expect("foo").to.be.equal("foo")
+```
+
+From one point of view, it's good to have this kind of flexibility, but on the other hand the code of the tests becomes inconsistent. With the Node.js assertion module, you do this kind of check only in one way:
+
+```js
+import { assert } from "node:assert/strict";
+
+assert.equal("foo", "foo")
+```
+
+The Node.js assertion module **provides almost all functionalities** we required, so the migration from `chai` wasn't as painful as we thought. Our usage of `chai` was very minimal. However, **we miss** the `.includes` shortcut of `chai`:
+
+```js
+import { expect } from "chai";
+
+expect("It's a fine day").includes("fine")
+```
+
+The Node.js assertion module doesn't provide such utility, so we ended up using the equality assertion with the `String#includes` function:
+
+```js
+import assert from "node:assert/strict";
+
+assert.equal("It's a fine day".includes("fine"), true)
+```
+
+### Here comes the dragons
+
+As mentioned before, we have a lot of test files, and we add new tests almost every day. Opening a one-off PR that does the migration of the whole monorepo is unfeasible, it would require a lot of work from one person, and keeping the branch updated can be stressful.
+
+So we came up with a simple plan:
+1. Migrate first the small packages inside the monorepo
+2. Slowly migrate the main package - `astro` - by having Mocha and Node.js test runner in the same CI
+3. Remove Mocha
+
+In order to achieve that, we **asked help to our community**. We thought this was the **perfect** opportunity to let people that **aren't familiar** with Astro business logic to contribute to the project, and we could make the migration way faster.
+
+We created and pinned an [umbrella issue](https://github.com/withastro/astro/issues/9873) to coordinate the efforts. We used this issue as a coordination hub. Each contributor **took ownership** of the migration of each package, and they opened a PR for each package. Two new first-contributor joined the efforts. It was a fantastic thing to see. In **one week**, we were able to migrate all packages!
+
+Migrating the main package `astro` was a feat. It's the package that contains the highest number of tests. In order to slowly migrate the tests, we had to come up with an out-of-the-box solution. We set up the Node.js test runner to test only the files called `*.nodetest.js`. Doing so, it allowed us to keep testing all files in the CI. Then, the rest was just a matter of coordination a delivering:
+1. use the umbrella issue to tell other contributors which files a contributor wanted to migrate;
+2. rename the files to migrate from `*.test.js` to `*.nodetest.js`;
+3. migrate the files;
+4. open a PR, wait for a review and merge the PR.
+
+With the help of [@log101](https://github.com/log101), [@mingjunlu](https://github.com/mingjunlu), [@VoxelMC](https://github.com/VoxelMC), [@alexnguyennz](https://github.com/alexnguyennz), [@xMohamd](https://github.com/xMohamd), [@shoaibkh4n](https://github.com/shoaibkh4n), [@marwan-mohamed12](https://github.com/marwan-mohamed12), we migrated almost 300 test suites in **one week**!
+
+### The results
+
+We are quite **happy** with the results. We **haven't seen** any significant **regression in the performance** of our tests. The assertion module that Node.js provides has all utilities we needed, and the `describe`/`it` pattern supported, so the migration was Mocha was smooth.
+
+The Node.js project is [**evaluating**](https://github.com/nodejs/node/pull/51579) running tests using the main process, after we [voiced](https://github.com/nodejs/node/issues/51548) our use case. In a sense, we can say that our efforts will make the Node.js system better!
+
