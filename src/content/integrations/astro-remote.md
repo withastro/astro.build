@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-remote"
 repoUrl: "https://github.com/natemoo-re/astro-remote"
 homepageUrl: "https://github.com/natemoo-re/astro-remote#README"
-downloads: 4933
+downloads: 4877
 ---
