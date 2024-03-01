@@ -28,7 +28,6 @@ The idea of the PoC was to understand:
 - the speed of execution of the testing suites;
 - the overall developer experience;
 
-
 ### How we started
 
 We started by migrating only **one** of our packages that didn't use `astro`'s integration suite, `create-astro`. This was a good opportunity to play with the built-in assertion library `node:assert`, to learn about the options, and its performance compared to Mocha.
@@ -39,11 +38,11 @@ Since `create-astro` only had a handful of tests, it was relatively easy to migr
 2. It wasn't possible to pass the `--test-concurrency` flag (only available in Node.js 21 and above), but can be worked around by using the [programmatic API](https://nodejs.org/api/test.html#testname-options-fn) `concurrency` option.
 3. Nitpicking, but the argument names were verbose, e.g. `--test-name-pattern` instead of `--match, -m` arguments, `--test-timeout` instead of `--timeout, -t` arguments, etc. 
 
-Hence to solve these issues, we created a [custom script](https://github.com/withastro/astro/blob/3757a212c01cee03b8e96e1e9697a187ae7cc290/scripts/cmd/test.js) which can be called with the `astro-scripts test` command. This decision also proved to be useful to enable more workarounds as we'll see later.
-
-As a second step, we attempted to migrate the testing suites of the `@astrojs/node` package. This integration is one of our most downloaded integrations, so we have plenty of tests. Plus, the tests of this package all have **integration tests**, so it was a good opportunity to check the performance of the test runner.
+Hence, to solve these issues, we created a [custom script](https://github.com/withastro/astro/blob/3757a212c01cee03b8e96e1e9697a187ae7cc290/scripts/cmd/test.js) which can be called with the `astro-scripts test` command. This decision also proved to be useful to enable more workarounds as we'll see later.
 
 ### The pandora box
+
+In a second step, we attempted to migrate the testing suites of the `@astrojs/node` package. This integration is one of our most downloaded integrations, so we have plenty of tests. Plus, the tests of this package all have **integration tests**, so it was a good opportunity to check the performance of the test runner.
 
 Once the PR was ready, we noticed that _Node.js test runner_ **was way slower** than Mocha. We investigated, and we discovered that Node.js spawns a new process for each test file to assure that each testing suite is run in **isolation**. Running a testing suite in isolation is, generally, a good practice, because it assures that tests run in an unpolluted environment.
 
@@ -114,6 +113,13 @@ With the help of [@log101](https://github.com/log101), [@mingjunlu](https://gith
 ### The results
 
 We are quite **happy** with the results. We **haven't seen** any significant **regression in the performance** of our tests. The assertion module that Node.js provides has all utilities we needed, and the `describe`/`it` pattern supported, so the migration was Mocha was smooth.
+
+There are still few hiccups regarding then developer experience, when comparing it to Mocha. For example for running *one* single test suite, with Mocha just a `it.only` is enough. With Node.js test runner you have to:
+1. run the CLI using the `--test-only` argument
+2. add the `.only` to the `describe` that contains the `it.only` you want to run
+3. if there are multiple `describe`, all of them needs to be marked with `.only`
+
+Node.js test runner is still **young**, and it has all the right cards to become better.
 
 The Node.js project is [**evaluating**](https://github.com/nodejs/node/pull/51579) running tests using the main process, after we [voiced](https://github.com/nodejs/node/issues/51548) our use case. In a sense, we can say that our efforts will make the Node.js system better!
 
