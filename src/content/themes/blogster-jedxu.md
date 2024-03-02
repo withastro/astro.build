@@ -15,7 +15,7 @@ tools:
   - "vue"
   - "tailwind"
 publishDate: "Jan 8, 2024"
-stars: 8
+stars: 9
 ---
 
 <h2>Jed's log</h2>

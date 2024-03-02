@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sveltia-cms"
 repoUrl: "https://github.com/majesticostudio/astro-sveltia-cms"
 homepageUrl: "https://github.com/majesticostudio/astro-sveltia-cms"
-downloads: 91
+downloads: 90
 ---

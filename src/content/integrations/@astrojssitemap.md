@@ -12,7 +12,7 @@ image: "/assets/integrations/sitemap.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 8
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/sitemap/"
-downloads: 269385
+downloads: 272436
 badges:
   - "featured"
 official: true

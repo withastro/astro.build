@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@advanced-astro/toast"
 homepageUrl: "https://github.com/advenced-astro/toast"
 badge: "new"
-downloads: 64
+downloads: 68
 ---

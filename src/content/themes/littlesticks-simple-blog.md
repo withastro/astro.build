@@ -16,7 +16,7 @@ links:
     text: "Get help on Discord"
   - href: "https://littlesticks.lemonsqueezy.com/checkout/buy/c632f31b-a4ea-405b-ab81-97e8cdc90b06"
     text: "Support this theme"
-stars: 74
+stars: 75
 tools:
   - "lit"
   - "mdx"

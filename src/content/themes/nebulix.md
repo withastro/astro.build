@@ -18,7 +18,7 @@ categories:
 repoUrl: "https://github.com/unfolding-io/nebulix"
 demoUrl: "https://nebulix.unfolding.io/"
 publishDate: "September 19, 2023"
-stars: 185
+stars: 186
 ---
 
 <h2>Optimized Speed and Accessibility</h2>
