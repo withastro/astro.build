@@ -16,7 +16,7 @@ repoUrl: "https://github.com/CloudCannon/sendit-astro-template"
 tools:
   - "react"
   - "sass"
-stars: 63
+stars: 64
 ---
 
 <h2>Features</h2>

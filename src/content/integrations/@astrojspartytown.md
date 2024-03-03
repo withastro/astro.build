@@ -13,7 +13,7 @@ image: "/assets/integrations/partytown.svg"
 repoUrl: "https://github.com/withastro/astro"
 featured: 3
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/partytown/"
-downloads: 59638
+downloads: 58929
 badges:
   - "featured"
 official: true

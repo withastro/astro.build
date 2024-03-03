@@ -13,5 +13,5 @@ demoUrl: "https://productized.vercel.app/solo"
 tools:
   - "tailwind"
 publishDate: "Dec 18, 2023"
-stars: 2
+stars: 3
 ---
