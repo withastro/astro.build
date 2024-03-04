@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-command"
 repoUrl: "https://github.com/trashhalo/astro-command"
 homepageUrl: "https://github.com/trashhalo/astro-command#readme"
-downloads: 7
+downloads: 9
 ---

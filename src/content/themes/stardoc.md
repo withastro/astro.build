@@ -15,7 +15,7 @@ repoUrl: "https://github.com/mesinkasir/stardoc"
 tools:
   - "mdx"
 publishDate: "Jan 8, 2024"
-stars: 5
+stars: 6
 ---
 
 <p>Landing page website design for starlight documentation site.</p>
