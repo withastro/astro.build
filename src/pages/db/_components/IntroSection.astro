@@ -1,10 +1,42 @@
 ---
-import SectionText from "./SectionText.astro"
+import { Icon } from "astro-icon"
+import IntroSectionPoint from "./IntroSectionPoint.astro"
 ---
 
-<section class="landing-section relative overflow-hidden">
-	<SectionText>
-		<Fragment slot="eyebrow">What is Astro DB?</Fragment>
-		<Fragment slot="title">An optimized SQL database designed exclusively for Astro</Fragment>
-	</SectionText>
+<section class="mx-auto max-w-screen-xl space-y-14 p-4 sm:p-8">
+	<h2 class="text-balance font-obviously text-xl font-bold md:text-2xl xl:text-4xl">
+		Astro DB is a fully managed SQL database designed exclusively for Astro
+	</h2>
+
+	<dl class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+		<IntroSectionPoint bgGradient="bg-blue-green-gradient" from="[#4AF2C8]/20" to="[#2F4CB3]/20">
+			<Fragment slot="icon">
+				<Icon name="ri:line-chart-line" size={24} />
+			</Fragment>
+			<Fragment slot="title">Scale with confidence</Fragment>
+			<Fragment slot="description">
+				Astro DB’s automatically scales up to meet demand and scales down to $0 when inactive.
+			</Fragment>
+		</IntroSectionPoint>
+
+		<IntroSectionPoint bgGradient="bg-red-pink-gradient" from="[#D83333]" to="[#F041FF]">
+			<Fragment slot="icon">
+				<Icon name="libSQL-icon" size={24} />
+			</Fragment>
+			<Fragment slot="title">Powered by LibSQL</Fragment>
+			<Fragment slot="description">
+				LibSQL balanced lightweight efficiency with proven enterprise-grade performance.
+			</Fragment>
+		</IntroSectionPoint>
+
+		<IntroSectionPoint bgGradient="bg-orange-yellow-gradient" from="#F8E42E" to="#FF7D54">
+			<Fragment slot="icon">
+				<Icon name="ri:timer-flash-line" size={24} />
+			</Fragment>
+			<Fragment slot="title">Automatically configured</Fragment>
+			<Fragment slot="description">
+				Everything is setup for you, like a TypeScript ORM with full type-safety out of the box.
+			</Fragment>
+		</IntroSectionPoint>
+	</dl>
 </section>

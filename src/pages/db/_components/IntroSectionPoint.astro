@@ -1,0 +1,17 @@
+---
+const { from, to, bgGradient } = Astro.props
+---
+
+<div class="space-y-2">
+	<div class={`h-fit w-fit rounded-full p-0.5 ${bgGradient}`}>
+		<div class="rounded-full bg-black">
+			<div class={`landing-section size-10 rounded-full bg-gradient-to-bl from-${from} to-${to}`}>
+				<slot name="icon" />
+			</div>
+		</div>
+	</div>
+	<dt class="text-balance text-lg text-white"><slot name="title" /></dt>
+	<dd class="text-balance text-base font-extralight text-astro-gray-200">
+		<slot name="description" />
+	</dd>
+</div>
