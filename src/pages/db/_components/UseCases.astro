@@ -1,20 +1,15 @@
 ---
 import SectionText from "./SectionText.astro"
+import UseCasesTabs from "./UseCasesTabs"
 ---
 
-<section class="landing-section relative">
+<section class="mx-auto w-full max-w-screen-xl space-y-10 p-4 sm:p-8">
 	<SectionText>
 		<Fragment slot="eyebrow">Use Cases</Fragment>
-		<Fragment slot="title">What will you build?</Fragment>
+		<Fragment slot="title">Unlimited possibilities</Fragment>
 	</SectionText>
 
-	<ul>
-		<li>Authentication</li>
-		<li>Forms</li>
-		<li>Image Uploads</li>
-		<li>E-Commerce</li>
-		<li>Blog</li>
-		<li>Feedback Widget</li>
-		<li>Comments</li>
-	</ul>
+	<div>
+		<UseCasesTabs client:load />
+	</div>
 </section>

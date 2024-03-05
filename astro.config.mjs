@@ -1,6 +1,6 @@
 import mdx from "@astrojs/mdx"
 import sitemap from "@astrojs/sitemap"
-import solidJs from "@astrojs/solid-js"
+import solid from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/serverless"
 import astroExpressiveCode from "astro-expressive-code"
@@ -20,7 +20,7 @@ export default defineConfig({
 		tailwind({
 			applyBaseStyles: false,
 		}),
-		solidJs(),
+		solid(),
 		astroExpressiveCode({
 			themes: [houston],
 			frames: false,
