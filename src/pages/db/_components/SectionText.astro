@@ -8,13 +8,13 @@ const { wide } = Astro.props
 
 <div class="space-y-1">
 	<h2
-	class:list={[
-		"w-fit text-balance bg-red-pink-gradient bg-clip-text font-semibold text-transparent",
-	]}
->
-	<slot name="eyebrow" />
-</h2>
-<h3 class:list={["heading-3 max-w-3xl text-balance font-bold"]}>
-	<slot name="title" />
-</h3>
+		class:list={[
+			"text-balance w-fit bg-red-pink-gradient bg-clip-text font-semibold text-transparent",
+		]}
+	>
+		<slot name="eyebrow" />
+	</h2>
+	<h3 class:list={["text-balance heading-3 max-w-3xl font-bold"]}>
+		<slot name="title" />
+	</h3>
 </div>

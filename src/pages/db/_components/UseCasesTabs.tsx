@@ -1,12 +1,12 @@
 import type { JSX } from "solid-js"
-import { createSignal, Switch, Match, For } from "solid-js"
+import { createSignal, For, Match, Switch } from "solid-js"
 
-import BlogIcon from "./icons/BlogIcon.tsx"
 import AuthIcon from "./icons/AuthIcon.tsx"
-import FormsIcon from "./icons/FormsIcon.tsx"
-import FeedbackIcon from "./icons/FeedbackIcon.tsx"
+import BlogIcon from "./icons/BlogIcon.tsx"
 import CommentsIcon from "./icons/CommentsIcon.tsx"
 import EcommerceIcon from "./icons/EcommerceIcon.tsx"
+import FeedbackIcon from "./icons/FeedbackIcon.tsx"
+import FormsIcon from "./icons/FormsIcon.tsx"
 import ImageUploadIcon from "./icons/ImageUploadIcon.tsx"
 
 type Tab = {
@@ -29,7 +29,7 @@ export default function UseCasesTabs() {
 
 	return (
 		<div class="w-full space-y-4">
-			<ul class="inline-flex w-full overflow-x-auto no-scrollbar gap-4 whitespace-nowrap border-b border-astro-gray-400">
+			<ul class="no-scrollbar inline-flex w-full gap-4 overflow-x-auto whitespace-nowrap border-b border-astro-gray-400">
 				<For each={tabs}>
 					{({ label, icon }) => (
 						<button
