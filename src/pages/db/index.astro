@@ -8,7 +8,12 @@ import FooterCTA from "./_components/FooterCTA.astro"
 import IntroSection from "./_components/IntroSection.astro"
 ---
 
-<MainLayout image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}>
+<MainLayout
+	image={{
+		src: "/og/astro.jpg",
+		alt: "Astro DB - The database platform for content-driven websites.",
+	}}
+>
 	<Hero />
 
 	<div class="mb-8 space-y-12">
@@ -18,4 +23,16 @@ import IntroSection from "./_components/IntroSection.astro"
 		<Pricing />
 		<FooterCTA />
 	</div>
+
+	<style is:global>
+		.font-obviously,
+		[class*="heading-"] {
+			font-family: "Obviously Variable", sans-serif;
+			font-feature-settings: "ss01";
+			font-variation-settings:
+				"wght" 400,
+				"wdth" 490;
+			font-feature-settings: "ss01", "ss06";
+		}
+	</style>
 </MainLayout>
