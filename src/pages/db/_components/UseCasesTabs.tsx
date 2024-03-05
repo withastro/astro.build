@@ -1,5 +1,5 @@
 import type { JSX } from "solid-js"
-import { createSignal, For, Match, Switch } from "solid-js"
+import { For, createEffect, createSignal } from "solid-js"
 
 import AuthIcon from "./icons/AuthIcon.tsx"
 import BlogIcon from "./icons/BlogIcon.tsx"
@@ -10,65 +10,96 @@ import FormsIcon from "./icons/FormsIcon.tsx"
 import ImageUploadIcon from "./icons/ImageUploadIcon.tsx"
 
 type Tab = {
+	id: string
 	label: string
 	icon: JSX.Element
+	content: JSX.Element
+}
+
+const tabs: Tab[] = [
+	{ id: 'forms', label: "Forms", icon: <FormsIcon aria-hidden class="w-4" />, content: <><p>Forms</p></> },
+	{ id: 'feedback', label: "Feedback", icon: <FeedbackIcon aria-hidden class="w-4" />, content: <><p>Feedback</p></> },
+	{ id: 'comments', label: "Comments", icon: <CommentsIcon aria-hidden class="w-4" />, content: <><p>Comments</p></> },
+	{ id: 'blog', label: "Blog", icon: <BlogIcon aria-hidden class="w-4" />, content: <><p>Blog</p></> },
+	{ id: 'auth', label: "Authentication", icon: <AuthIcon aria-hidden class="w-4" />, content: <><p>Authentication</p></> },
+	{ id: 'ecomm', label: "E-commerce", icon: <EcommerceIcon aria-hidden class="w-4" />, content: <><p>E-commerce</p></> },
+	{ id: 'media', label: "Uploads", icon: <ImageUploadIcon aria-hidden class="w-4" />, content: <><p>Uploads</p></> },
+]
+
+function UseCasesTabPanel(props: { tab: Tab }) {
+	return (
+		<div id="usecases-tabpanel" role="tabpanel" aria-labelledby={`usecases-tabpanel-${props.tab.id}`}>
+				<div id={`usecase-tabpanel-${props.tab.id}`} role="tabpanel" aria-labelledby={`usecase-tab-${props.tab.id}`}>
+					{props.tab.content}
+				</div>
+			</div>	
+	)
 }
 
 export default function UseCasesTabs() {
-	const [selectedTab, setSelectedTab] = createSignal("Authentication")
+	const [currentIndex, setCurrentIndex] = createSignal(0);
+	function next() {
+		setCurrentIndex(i => i === tabs.length - 1 ? 0 : i + 1);
+	}
+	function prev() {
+		setCurrentIndex(i => i === 0 ? tabs.length - 1 : i - 1);
+	}
+	const currentTab = () => tabs[currentIndex()];
+	const [focusVisible, setFocusVisible] = createSignal(false);
 
-	const tabs: Tab[] = [
-		{ label: "Authentication", icon: <AuthIcon class="size-6" /> },
-		{ label: "Forms", icon: <FormsIcon class="size-6" /> },
-		{ label: "Image Uploads", icon: <ImageUploadIcon class="size-6" /> },
-		{ label: "E-Commerce", icon: <EcommerceIcon class="size-6" /> },
-		{ label: "Blog", icon: <BlogIcon class="size-6" /> },
-		{ label: "Feedback Widgets", icon: <FeedbackIcon class="size-6" /> },
-		{ label: "Comments", icon: <CommentsIcon class="size-6" /> },
-	]
+	createEffect(() => {
+		const tab = tabs[currentIndex()];
+		const el = document.querySelector(`#usecase-tab-${tab.id}`) as HTMLButtonElement;
+		el.focus();
+	})
+
+	function handleKeyDown(event: KeyboardEvent) {
+		if (!focusVisible()) return;
+		switch (event.key) {
+			case 'ArrowRight': return next();
+			case 'ArrowLeft': return prev();
+		}
+		console.log(event.key);
+	}
+
+	createEffect(() => {
+
+	})
 
 	return (
-		<div class="w-full space-y-4">
-			<ul class="no-scrollbar inline-flex w-full gap-4 overflow-x-auto whitespace-nowrap border-b border-astro-gray-400">
+		<div class="w-full space-y-4" onfocusin={() => setFocusVisible(true)} onfocusout={() => setFocusVisible(false)} onKeyDown={handleKeyDown}>
+			<ul class="no-scrollbar inline-flex w-full gap-2 overflow-x-auto whitespace-nowrap border-b border-astro-gray-400" role="tablist" aria-labelledby="use-cases">
 				<For each={tabs}>
-					{({ label, icon }) => (
-						<button
-							class={
-								selectedTab() === label
-									? "flex w-full items-center gap-2 border-b border-white px-4 py-2 text-white "
-									: "flex w-full items-center gap-2 border-b border-transparent px-4 py-2 text-astro-gray-300 hover:border-astro-gray-200 hover:text-astro-gray-200"
-							}
-							onClick={() => setSelectedTab(label)}
-						>
-							{icon} <span>{label}</span>
-						</button>
-					)}
+					{(tab, index) => {
+						const active = () => currentIndex() === index();
+
+						const tabindex = () => {
+							if (focusVisible()) return 0;
+							return active() ? 0 : -1;
+						}
+						return (
+							<button
+								role="tab"
+								aria-selected={active()}
+								id={`usecase-tab-${tab.id}`}
+								aria-controls={`usecase-tabpanel-${tab.id}`}
+								class={[
+									"flex items-center gap-2 -mx-2 border-b px-4 py-2 text-astro-gray-300 hover:border-astro-gray-200 hover:text-astro-gray-200 focus:border-white focus:text-white focus:outline-none focus-visible:bg-gray-900",
+									active() ? 'text-white' : 'border-transparent'
+								].join(' ')}
+								tabindex={tabindex()}
+								onClick={() => setCurrentIndex(index())}
+							>
+								{tab.icon} <span>{tab.label}</span>
+							</button>
+						)
+					}}
 				</For>
 			</ul>
 
-			<Switch>
-				<Match when={selectedTab() === "Authentication"}>
-					<div>Auth</div>
-				</Match>
-				<Match when={selectedTab() === "Forms"}>
-					<div>Forms</div>
-				</Match>
-				<Match when={selectedTab() === "Image Uploads"}>
-					<div>Image Uploads</div>
-				</Match>
-				<Match when={selectedTab() === "E-Commerce"}>
-					<div>E-Commerce</div>
-				</Match>
-				<Match when={selectedTab() === "Blog"}>
-					<div>Blog</div>
-				</Match>
-				<Match when={selectedTab() === "Feedback Widgets"}>
-					<div>Feedback Widgets</div>
-				</Match>
-				<Match when={selectedTab() === "Comments"}>
-					<div>Comments</div>
-				</Match>
-			</Switch>
+			<UseCasesTabPanel tab={currentTab()} />
 		</div>
 	)
 }
+
+
