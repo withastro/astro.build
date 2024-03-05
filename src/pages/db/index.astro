@@ -10,14 +10,12 @@ import IntroSection from "./_components/IntroSection.astro"
 
 <MainLayout image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}>
 	<Hero />
-	<div class="relative">
-		<div class="absolute inset-0 z-grid"></div>
-		<div class="relative grid gap-32 sm:gap-40 md:gap-24 ">
-			<IntroSection />
-			<UseCases />
-			<Features />
-			<Pricing />
-			<FooterCTA />
-		</div>
+
+	<div class="mb-8 space-y-12">
+		<IntroSection />
+		<UseCases />
+		<Features />
+		<Pricing />
+		<FooterCTA />
 	</div>
 </MainLayout>
