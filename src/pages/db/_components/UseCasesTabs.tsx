@@ -29,7 +29,7 @@ export default function UseCasesTabs() {
 
 	return (
 		<div class="w-full space-y-4">
-			<ul class="inline-flex w-full overflow-x-auto gap-4 whitespace-nowrap border-b border-astro-gray-400">
+			<ul class="inline-flex w-full overflow-x-auto no-scrollbar gap-4 whitespace-nowrap border-b border-astro-gray-400">
 				<For each={tabs}>
 					{({ label, icon }) => (
 						<button
