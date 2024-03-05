@@ -16,5 +16,5 @@ demoUrl: "https://productized.vercel.app/essentialist"
 publishDate: "Dec 18, 2023"
 tools:
   - "tailwind"
-stars: 9
+stars: 10
 ---

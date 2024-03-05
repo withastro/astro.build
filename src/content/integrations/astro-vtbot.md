@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-vtbot"
 repoUrl: "https://github.com/martrapp/astro-vtbot"
 homepageUrl: "https://github.com/martrapp/astro-vtbot#readme"
-downloads: 496
+downloads: 480
 ---
