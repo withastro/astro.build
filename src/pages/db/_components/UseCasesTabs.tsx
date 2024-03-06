@@ -8,6 +8,13 @@ import EcommerceIcon from "./icons/EcommerceIcon.tsx"
 import FeedbackIcon from "./icons/FeedbackIcon.tsx"
 import FormsIcon from "./icons/FormsIcon.tsx"
 import ImageUploadIcon from "./icons/ImageUploadIcon.tsx"
+import Auth from "./tab-content/Auth.tsx"
+import Forms from "./tab-content/Forms.tsx"
+import Feedback from "./tab-content/Feedback.tsx"
+import Comments from "./tab-content/Comments.tsx"
+import Blog from "./tab-content/Blog.tsx"
+import Ecommerce from "./tab-content/E-Commerce.tsx"
+import Uploads from "./tab-content/Uploads.tsx"
 
 type Tab = {
 	id: string
@@ -21,71 +28,43 @@ const tabs: Tab[] = [
 		id: "forms",
 		label: "Forms",
 		icon: <FormsIcon aria-hidden class="w-4" />,
-		content: (
-			<>
-				<p>Forms</p>
-			</>
-		),
+		content: <Forms />,
 	},
 	{
 		id: "feedback",
 		label: "Feedback",
 		icon: <FeedbackIcon aria-hidden class="w-4" />,
-		content: (
-			<>
-				<p>Feedback</p>
-			</>
-		),
+		content: <Feedback />,
 	},
 	{
 		id: "comments",
 		label: "Comments",
 		icon: <CommentsIcon aria-hidden class="w-4" />,
-		content: (
-			<>
-				<p>Comments</p>
-			</>
-		),
+		content: <Comments />,
 	},
 	{
 		id: "blog",
 		label: "Blog",
 		icon: <BlogIcon aria-hidden class="w-4" />,
-		content: (
-			<>
-				<p>Blog</p>
-			</>
-		),
+		content: <Blog />,
 	},
 	{
 		id: "auth",
 		label: "Authentication",
 		icon: <AuthIcon aria-hidden class="w-4" />,
-		content: (
-			<>
-				<p>Authentication</p>
-			</>
-		),
+		content: <Auth />,
 	},
 	{
 		id: "ecomm",
 		label: "E-commerce",
 		icon: <EcommerceIcon aria-hidden class="w-4" />,
-		content: (
-			<>
-				<p>E-commerce</p>
-			</>
-		),
+		content: <Ecommerce />,
 	},
 	{
 		id: "media",
 		label: "Uploads",
 		icon: <ImageUploadIcon aria-hidden class="w-4" />,
-		content: (
-			<>
-				<p>Uploads</p>
-			</>
-		),
+		content: <Uploads />,
 	},
 ]
 
