@@ -6,7 +6,7 @@ export default function Feedback() {
 			illustration={
 				<img
 					class="h-fit w-auto"
-					src="src/pages/db/_assets/forms-tab-illustration.png"
+					src="src/pages/db/_assets/feedback-tab-illustration.png"
 					alt="Image illustration of the Feedback Widget Use Case with Astro DB"
 				/>
 			}
@@ -45,7 +45,6 @@ export const POST: APIRoute = async ({ request }) => {
   }
   return Response.json({ success: true });
 }
-
 `}
 						</code>
 					</pre>
