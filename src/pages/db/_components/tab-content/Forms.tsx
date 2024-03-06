@@ -26,7 +26,7 @@ export default function Forms() {
 						responses in Astro DB.
 					</p>
 
-					<pre class="overflow-x-auto p-2 bg-[#07040F] border border-[#272831] rounded-lg">
+					<pre class="overflow-x-auto rounded-lg border border-[#272831] bg-[#07040F] p-2">
 						<code class="text-sm text-astro-gray-200">
 							{`import type { APIRoute } from 'astro';
 import { db, Feedback, sql, eq } from 'astro:db';

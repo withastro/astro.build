@@ -8,15 +8,14 @@ type Props = {
 export default function TabLayout(props: Props) {
 	return (
 		<div class=" grid grid-cols-1 gap-2 lg:grid-cols-3">
-			<div class="lg:min-h-[560px] px-6 py-3 lg:col-span-2 space-y-2 rounded-xl border border-[#272831] bg-[#03000A]">
+			<div class="space-y-2 rounded-xl border border-[#272831] bg-[#03000A] px-6 py-3 lg:col-span-2 lg:min-h-[560px]">
 				{props.children}
 			</div>
 
-			<div class="lg:min-h-[560px] order-first lg:order-last rounded-xl border border-[#272831] bg-[#03000A]">
-                <div class="p-16 lg:p-8 h-full landing-section bg-[url('src/pages/db/_assets/tab-illustration-grid.png')] bg-cover bg-no-repeat">
-				{props.illustration}
-
-                </div>
+			<div class="order-first rounded-xl border border-[#272831] bg-[#03000A] lg:order-last lg:min-h-[560px]">
+				<div class="landing-section h-full bg-[url('src/pages/db/_assets/tab-illustration-grid.png')] bg-cover bg-no-repeat p-16 lg:p-8">
+					{props.illustration}
+				</div>
 			</div>
 		</div>
 	)

@@ -5,14 +5,14 @@ export default function Feedback() {
 		<TabLayout
 			illustration={
 				<img
-					class="w-auto h-fit"
+					class="h-fit w-auto"
 					src="src/pages/db/_assets/feedback-tab-illustration.png"
 					alt="Image illustration of the Authentication Use Case with Astro DB"
 				/>
 			}
 		>
 			<>
-				<h3 class="text-lg text-astro-gray-200 font-medium">Feedback</h3>
+				<h3 class="text-lg font-medium text-astro-gray-200">Feedback</h3>
 				<div class="border-b border-[#272831]"></div>
 			</>
 		</TabLayout>
