@@ -10,9 +10,65 @@ import FeatureCard from "./FeatureCard.astro"
 	</SectionText>
 
 	<ul class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
-		<li>Designed for Astro</li>
-		<li>SQL</li>
-		<li>TypeScript ORM</li>
+		<li
+			class="landing-section space-y-3 rounded-2xl border border-white/15 bg-[url('src/pages/db/_assets/astro-ecosystem.png')] bg-cover bg-no-repeat"
+		>
+			<img
+				class="h-fit w-auto"
+				src="https://astro.build/assets/press/astro-icon-light-gradient.svg"
+				alt="Astro Logo"
+			/>
+
+			<h3 class="text-balance text-lg text-astro-gray-100">Designed for the Astro ecosystem</h3>
+			<p class="body w-2/3 text-balance text-astro-gray-200">
+				A deeply integrated, unified developer experience.
+			</p>
+		</li>
+
+		<div class="grid gap-2">
+			<FeatureCard>
+				<Fragment slot="title">SQL</Fragment>
+				<Fragment slot="description">
+					Why reinvent the wheel? Astro DB speaks the familiar, universal database language: SQL.
+				</Fragment>
+				<Fragment slot="illustration">
+					<!-- <img
+						class="h-full w-auto"
+						src="src/pages/db/_assets/global-distribution.png"
+						alt="Webhooks illustration"
+					/> -->
+				</Fragment>
+			</FeatureCard>
+
+			<FeatureCard>
+				<Fragment slot="title">TypeScript ORM</Fragment>
+				<Fragment slot="description">
+					Includes a modern, TypeScript ORM with type-safety and autocomplete on every query.
+				</Fragment>
+				<Fragment slot="illustration">
+					<!-- <img
+						class="h-full w-auto"
+						src="src/pages/db/_assets/global-distribution.png"
+						alt="Webhooks illustration"
+					/> -->
+				</Fragment>
+			</FeatureCard>
+		</div>
+
+		<FeatureCard removePadding="true">
+			<Fragment slot="title">Global Distribution</Fragment>
+			<Fragment slot="description">
+				Create databases in 8 different regions around the world, including the EU and Japan.
+			</Fragment>
+			<Fragment slot="illustration">
+				<img
+					class="h-full w-auto"
+					src="src/pages/db/_assets/global-distribution.png"
+					alt="Webhooks illustration"
+				/>
+			</Fragment>
+		</FeatureCard>
+
 		<FeatureCard>
 			<Fragment slot="title">Webhooks</Fragment>
 			<Fragment slot="description">
