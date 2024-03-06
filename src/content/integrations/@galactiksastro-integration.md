@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@galactiks/astro-integration"
 repoUrl: "https://github.com/thegalactiks/explorer"
 homepageUrl: "https://www.galactiks.com"
-downloads: 708
+downloads: 719
 ---

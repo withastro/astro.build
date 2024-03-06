@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@gemini-ui-astro/components-blog"
 homepageUrl: "https://www.npmjs.com/package/@gemini-ui-astro/components-blog"
-downloads: 192
+downloads: 197
 ---

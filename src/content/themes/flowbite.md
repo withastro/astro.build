@@ -11,7 +11,7 @@ categories:
   - "other"
 repoUrl: "https://github.com/themesberg/flowbite-astro-admin-dashboard"
 demoUrl: "https://themesberg.github.io/flowbite-astro-admin-dashboard/"
-stars: 375
+stars: 377
 featured: 8
 tools:
   - "tailwind"

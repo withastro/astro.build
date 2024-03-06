@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs/markdoc"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/markdoc/"
-downloads: 5587
+downloads: 5659
 official: true
 ---

@@ -15,7 +15,7 @@ tools:
   - "tailwind"
   - "mdx"
 publishDate: "Dec 21, 2023"
-stars: 59
+stars: 60
 ---
 
 <p>

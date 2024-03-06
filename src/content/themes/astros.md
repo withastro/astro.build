@@ -15,7 +15,7 @@ categories:
   - "landing-page"
 repoUrl: "https://github.com/zankhq/astros"
 demoUrl: "https://astros.zank.studio/"
-stars: 136
+stars: 137
 tools:
   - "alpinejs"
   - "tailwind"
