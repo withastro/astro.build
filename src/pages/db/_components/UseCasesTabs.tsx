@@ -137,20 +137,22 @@ export default function UseCasesTabs() {
 							return active() ? 0 : -1
 						}
 						return (
-							<button
-								role="tab"
-								aria-selected={active()}
-								id={`usecase-tab-${tab.id}`}
-								aria-controls={`usecase-tabpanel-${tab.id}`}
-								class={[
-									"-mx-2 flex items-center gap-2 border-b px-4 py-2 text-astro-gray-300 hover:border-astro-gray-200 hover:text-astro-gray-200 focus:border-white focus:text-white focus:outline-none focus-visible:bg-gray-900",
-									active() ? "text-white" : "border-transparent",
-								].join(" ")}
-								tabindex={tabindex()}
-								onClick={() => setCurrentIndex(index())}
-							>
-								{tab.icon} <span>{tab.label}</span>
-							</button>
+							<li>
+								<button
+									role="tab"
+									aria-selected={active()}
+									id={`usecase-tab-${tab.id}`}
+									aria-controls={`usecase-tabpanel-${tab.id}`}
+									class={[
+										"-mx-2 flex items-center gap-2 border-b px-4 py-2 text-astro-gray-300 hover:border-astro-gray-200 hover:text-astro-gray-200 focus:border-white focus:text-white focus:outline-none focus-visible:bg-gray-900",
+										active() ? "text-white" : "border-transparent",
+									].join(" ")}
+									tabindex={tabindex()}
+									onClick={() => setCurrentIndex(index())}
+								>
+									{tab.icon} <span>{tab.label}</span>
+								</button>
+							</li>
 						)
 					}}
 				</For>

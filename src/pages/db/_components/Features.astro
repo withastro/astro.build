@@ -1,20 +1,58 @@
 ---
 import SectionText from "./SectionText.astro"
+import FeatureCard from "./FeatureCard.astro"
 ---
 
-<section class="landing-section relative">
+<section class="mx-auto w-full max-w-screen-xl space-y-10 p-4 sm:p-8">
 	<SectionText>
 		<Fragment slot="eyebrow">Features</Fragment>
 		<Fragment slot="title">Everything you need, included</Fragment>
 	</SectionText>
 
-	<ul>
+	<ul class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
 		<li>Designed for Astro</li>
 		<li>SQL</li>
 		<li>TypeScript ORM</li>
-		<li>Lightweight DX</li>
-		<li>Webhooks</li>
-		<li>GitHub Automation</li>
-		<li>Managed by Astro Studio</li>
+		<FeatureCard>
+			<Fragment slot="title">Webhooks</Fragment>
+			<Fragment slot="description">
+				Data changes trigger webhooks that can integrate with any third-party tools.
+			</Fragment>
+			<Fragment slot="illustration">
+				<img
+					class="h-fit w-auto"
+					src="src/pages/db/_assets/webhooks.png"
+					alt="Webhooks illustration"
+				/>
+			</Fragment>
+		</FeatureCard>
+
+		<FeatureCard>
+			<Fragment slot="title">GitHub Automation</Fragment>
+			<Fragment slot="description">
+				The official GitHub Action automates schema management directly inside of your workflow.
+			</Fragment>
+			<Fragment slot="illustration">
+				<img
+					class="h-fit w-auto"
+					src="src/pages/db/_assets/github-actions.png"
+					alt="Webhooks illustration"
+				/>
+			</Fragment>
+		</FeatureCard>
+
+		<FeatureCard>
+			<Fragment slot="title">Visual Data Views</Fragment>
+			<Fragment slot="description">
+				Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
+			</Fragment>
+			<Fragment slot="illustration">
+				<img
+					class="h-fit w-auto"
+					src="src/pages/db/_assets/studio-datatable.png"
+					alt="Webhooks illustration"
+				/>
+			</Fragment>
+		</FeatureCard>
 	</ul>
 </section>

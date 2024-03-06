@@ -8,7 +8,7 @@ type Props = {
 export default function TabLayout(props: Props) {
 	return (
 		<div class=" grid grid-cols-1 gap-2 lg:grid-cols-3">
-			<div class="space-y-2 rounded-xl border border-[#272831] bg-[#03000A] px-6 py-3 lg:col-span-2 lg:min-h-[560px]">
+			<div class="space-y-2 rounded-xl border border-[#272831] bg-[#03000A] px-6 pb-6 pt-3 lg:col-span-2 lg:min-h-[560px]">
 				{props.children}
 			</div>
 

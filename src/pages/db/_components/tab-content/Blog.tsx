@@ -6,8 +6,8 @@ export default function Blog() {
 			illustration={
 				<img
 					class="h-fit w-auto"
-					src="src/pages/db/_assets/auth-tab-illustration.png"
-					alt="Image illustration of the Authentication Use Case with Astro DB"
+					src="src/pages/db/_assets/blog-tab-illustration.png"
+					alt="Image illustration of the Blog Use Case with Astro DB"
 				/>
 			}
 		>
