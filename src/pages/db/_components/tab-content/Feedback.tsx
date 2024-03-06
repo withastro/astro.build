@@ -22,7 +22,8 @@ export default function Feedback() {
 					</p>
 
 					<p class="body w-full text-astro-gray-200">
-					The  <code>{`/api/feedback`}</code> route should be a simple POST API endpoint that stores the feedback in Astro DB.
+						The <code>{`/api/feedback`}</code> route should be a simple POST API endpoint that
+						stores the feedback in Astro DB.
 					</p>
 
 					<pre class="overflow-x-auto rounded-lg border border-[#272831] bg-[#07040F] p-2">
