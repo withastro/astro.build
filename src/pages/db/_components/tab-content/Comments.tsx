@@ -6,7 +6,7 @@ export default function Comments() {
 			illustration={
 				<img
 					class="h-fit w-auto"
-					src="src/pages/db/_assets/forms-tab-illustration.png"
+					src="src/pages/db/_assets/comments-tab-illustration.png"
 					alt="Image illustration of the Comments Use Case with Astro DB"
 				/>
 			}
