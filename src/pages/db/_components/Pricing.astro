@@ -1,16 +1,98 @@
 ---
+import { Icon } from "astro-icon"
 import SectionText from "./SectionText.astro"
+import ExternalLink from "~/components/ExternalLink.astro"
+import PricingFeaturePoint from "./PricingFeaturePoint.astro"
 ---
 
-<section class="landing-section relative">
-	<SectionText>
+<section class="mx-auto w-full max-w-screen-xl space-y-10 p-4 sm:p-8">
+	<SectionText center>
 		<Fragment slot="eyebrow">Pricing</Fragment>
-		<Fragment slot="title">Pay as you go</Fragment>
+		<Fragment slot="title">Get started for free, then pay as you grow.</Fragment>
 	</SectionText>
 
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. At magnam eius earum praesentium
-		tenetur perferendis error hic odit delectus libero velit unde assumenda, labore facilis neque
-		fuga eligendi minima inventore.
+	<div class="mx-auto lg:w-2/4 rounded-2xl bg-blue-purple-gradient p-[1px]">
+		<div class="overflow-hidden rounded-2xl bg-black">
+			<div
+				class="grid grid-cols-1 gap-4 bg-gradient-to-tr from-[#3245FF]/25 to-[#B845ED]/25 p-4 md:grid-cols-2 md:gap-8 md:p-8 lg:grid-cols-3 lg:gap-12"
+			>
+				<h4 class="heading-4 font-medium md:p-4 whitespace-nowrap">Base Plan</h4>
+				<div class="space-y-4 lg:col-span-2">
+					<h5 class="heading-2 font-medium text-white">
+						$0 <span class="body text-astro-gray-200">/ month</span>
+					</h5>
+
+					<ul class="body space-y-2 text-astro-gray-200">
+						<li class="flex items-center gap-2">
+							<Icon class="text-astro-gray-300" name="ri:check-line" size={16} /> Pay as you grow
+						</li>
+						<li class="flex items-center gap-2">
+							<Icon class="text-astro-gray-300" name="ri:check-line" size={16} /> No credit card required
+						</li>
+						<li class="flex items-center gap-2">
+							<Icon class="text-astro-gray-300" name="ri:check-line" size={16} /> Everything you need
+							to get started
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<ul class="space-y-6 py-4 sm:py-8 divide-y divide-gray-800 mx-4 sm:mx-0 sm:divide-y-0">
+				<PricingFeaturePoint>
+					<Fragment slot="title">
+						<Icon class="text-astro-gray-300" name="ri:database-2-line" size={18} />
+						Database
+					</Fragment>
+
+					<Fragment slot="description">Unlimited</Fragment>
+				</PricingFeaturePoint>
+
+				<PricingFeaturePoint>
+					<Fragment slot="title">
+						<Icon class="text-astro-gray-300" name="ri:apps-2-line" size={18} />
+						Applications
+					</Fragment>
+
+					<Fragment slot="description">Unlimited</Fragment>
+				</PricingFeaturePoint>
+
+				<PricingFeaturePoint>
+					<Fragment slot="title">
+						<Icon class="text-astro-gray-300" name="ri:save-2-line" size={18} />
+						Storage
+					</Fragment>
+
+					<Fragment slot="description">100 MB included, per month</Fragment>
+					<Fragment slot="pricing-details">$1.00 per each additional 1GB</Fragment>
+				</PricingFeaturePoint>
+
+				<PricingFeaturePoint>
+					<Fragment slot="title">
+						<Icon class="text-astro-gray-300" name="ri:download-line" size={18} />
+						Row Reads
+					</Fragment>
+
+					<Fragment slot="description">One billion included, per month</Fragment>
+					<Fragment slot="pricing-details">$0.001 per each additional 1M</Fragment>
+				</PricingFeaturePoint>
+
+				<PricingFeaturePoint>
+					<Fragment slot="title">
+						<Icon class="text-astro-gray-300" name="ri:upload-line" size={18} />
+						Row Writes
+					</Fragment>
+
+					<Fragment slot="description">One million included, per month</Fragment>
+					<Fragment slot="pricing-details">$1.000 per each additional 1M</Fragment>
+				</PricingFeaturePoint>
+
+			</ul>
+
+			<div class="m-4 sm:m-8">
+				<ExternalLink href="#" class="button button-sm button-white w-full ">Get started for free</ExternalLink>
+			</div>
+
+
+		</div>
 	</div>
 </section>
