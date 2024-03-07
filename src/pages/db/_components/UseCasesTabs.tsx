@@ -144,7 +144,7 @@ export default function UseCasesTabs() {
 									id={`usecase-tab-${tab.id}`}
 									aria-controls={`usecase-tabpanel-${tab.id}`}
 									class={[
-										"-mx-2 flex items-center gap-2 border-b px-4 py-2 text-astro-gray-300 hover:border-astro-gray-200 hover:text-astro-gray-200 focus:border-white focus:text-white focus:outline-none transition-colors duration-500",
+										"-mx-2 flex items-center gap-2 border-b px-4 py-2 text-astro-gray-300 transition-colors duration-500 hover:border-astro-gray-200 hover:text-astro-gray-200 focus:border-white focus:text-white focus:outline-none",
 										active() ? "text-white" : "border-transparent",
 									].join(" ")}
 									tabindex={tabindex()}
