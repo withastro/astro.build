@@ -199,13 +199,15 @@ export default {
 					"@apply font-sans text-base": {},
 					fontWeight: "300",
 					fontVariationSettings: "'opsz' 16",
-					fontFeatureSettings: "'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on"
+					fontFeatureSettings:
+						"'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on",
 				},
 				".body-large": {
 					"@apply font-sans text-2xl leading-normal": {},
 					fontWeight: "200",
 					fontVariationSettings: "'opsz' 32",
-					fontFeatureSettings: "'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on"
+					fontFeatureSettings:
+						"'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on",
 				},
 
 				".code": {
