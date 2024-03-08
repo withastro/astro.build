@@ -208,7 +208,7 @@ export default {
 					"@apply font-sans text-2xl leading-normal": {},
 					fontWeight: "200",
 					fontVariationSettings: "'opsz' 14",
-					letterSpacing: '-0.011em',
+					letterSpacing: "-0.011em",
 					"-webkit-font-smoothing": "subpixel-antialiased",
 					fontFeatureSettings:
 						"'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on",
