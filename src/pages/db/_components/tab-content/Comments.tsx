@@ -15,9 +15,11 @@ export default function Comments() {
 				<h3 class="text-lg font-medium text-astro-gray-200">Comments System</h3>
 				<div class="border-b border-[#272831]"></div>
 
-				<div class="space-y-3 body w-full text-astro-gray-200">
+				<div class="body w-full space-y-3 text-astro-gray-200">
 					<p>
-						You can build a simple comment system on your website to accompany any kind of content. To get started, create a simple POST API endpoint that receives a new comment from the frontend and attach it to the correct author and post IDs: 
+						You can build a simple comment system on your website to accompany any kind of content.
+						To get started, create a simple POST API endpoint that receives a new comment from the
+						frontend and attach it to the correct author and post IDs:
 					</p>
 
 					<pre class="overflow-x-auto rounded-lg border border-[#272831] bg-[#07040F] p-2">
