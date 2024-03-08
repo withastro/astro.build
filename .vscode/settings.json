@@ -1,28 +1,13 @@
 {
   // adds tailwind autocomplete in other places
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "class:list"
-  ],
+  "tailwindCSS.classAttributes": ["class", "className", "class:list"],
   "tailwindCSS.experimental.classRegex": [
-    [
-      "(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)",
-      "(?:')((?:\\'|[^'])*)(?:')"
-    ],
-    [
-      "(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)",
-      "(?:\")((?:\\\"|[^\"])*)(?:\")"
-    ],
-    [
-      "(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)",
-      "(?:`)((?:\\`|[^`])*)(?:`)"
-    ]
+    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:')((?:\\'|[^'])*)(?:')"],
+    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:\")((?:\\\"|[^\"])*)(?:\")"],
+    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:`)((?:\\`|[^`])*)(?:`)"]
   ],
   // define rulers to match the prettier config length of 100
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   // organize imports (removes unused), then eslint fix on save
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {

@@ -167,43 +167,45 @@ export default {
 				".heading-1": {
 					"@apply font-obviously text-6xl leading-tight": {},
 					fontVariationSettings: '"wdth" 490, "wght" 290',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on"
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-2": {
 					"@apply font-obviously text-5xl leading-tight": {},
 					fontVariationSettings: '"wdth" 490, "wght" 290',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on"
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-3": {
 					"@apply font-obviously text-3xl leading-tight": {},
 					fontSize: "32px",
 					fontVariationSettings: '"wdth" 490, "wght" 290',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on"
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-4": {
 					"@apply font-obviously text-2xl leading-tight": {},
 					fontVariationSettings: '"wdth" 490, "wght" 290',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on"
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-5": {
 					"@apply font-obviously text-xl leading-tight": {},
 					fontVariationSettings: '"wdth" 490, "wght" 290',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on"
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".body": {
 					"@apply font-sans text-base": {},
 					fontWeight: "300",
-					fontFeatureSettings: "'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on"
+					fontFeatureSettings:
+						"'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on",
 				},
 				".body-large": {
 					"@apply font-sans text-2xl leading-normal": {},
 					fontWeight: "200",
-					fontFeatureSettings: "'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on"
+					fontFeatureSettings:
+						"'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on",
 				},
 
 				".code": {
