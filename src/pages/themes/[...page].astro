@@ -161,7 +161,10 @@ function themeFilter(theme: CollectionEntry<"themes">) {
 // 	entries.sort(sortThemes),
 // )
 
-const allThemes = await fetch("http://localhost:4321/api/themes").then((res) => res.json())
+const allThemes = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes`).then((res) =>
+	res.json(),
+)
+console.log(allThemes)
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
@@ -184,7 +187,7 @@ const themes = page.data
 const showRecentlyAdded =
 	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
 const recentlyAdded = showRecentlyAdded
-	? await fetch("http://localhost:4321/api/themes/recent").then((res) => res.json()) 
+	? await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/recent`).then((res) => res.json())
 	: []
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
 recentlyAddedSearch.append("categories[]", "recent")
