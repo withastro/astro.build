@@ -24,7 +24,12 @@ export default {
 				sans: ["Inter", "sans-serif"],
 				mono: [`"MDIO"`, "md-io-fallback", "monospace"],
 				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
-				"obviously-variable": ["Obviously Variable", "Obviously", "obviously-regular-fallback", "sans-serif"],
+				"obviously-variable": [
+					"Obviously Variable",
+					"Obviously",
+					"obviously-regular-fallback",
+					"sans-serif",
+				],
 				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},
 			colors: {
@@ -259,12 +264,12 @@ export default {
 
 		plugin(function makeDBTypographyPlugin(api) {
 			api.addUtilities({
-				'.heading-db': {
+				".heading-db": {
 					"@apply font-obviously-variable": {},
-					'font-feature-settings': `"ss01", "ss06"`,
+					"font-feature-settings": `"ss01", "ss06"`,
 					"font-variation-settings": `"wght" 350, "wdth" 490`,
-				}
-			});
+				},
+			})
 		}),
 
 		plugin(function maskGradientPlugin(api) {
