@@ -197,13 +197,13 @@ export default {
 
 				".body": {
 					"@apply font-sans text-base": {},
-					fontWeight: "400",
+					fontWeight: "300",
 					fontFeatureSettings: "'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on"
 				},
 				".body-large": {
 					"@apply font-sans text-2xl leading-normal": {},
-					fontWeight: "300",
-					fontFeatureSettings: "'ss03' on"
+					fontWeight: "200",
+					fontFeatureSettings: "'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on"
 				},
 
 				".code": {
