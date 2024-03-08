@@ -4,11 +4,13 @@ export default function Blog() {
 	return (
 		<TabLayout
 			illustration={
-				<img
-					class="h-fit w-auto"
-					src="src/pages/db/_assets/blog-tab-illustration.png"
-					alt="Image illustration of the Blog Use Case with Astro DB"
-				/>
+				<div class="landing-section h-full p-16 lg:p-8">
+					<img
+						class="h-full max-h-[16rem] w-auto"
+						src="src/pages/db/_assets/blog-tab-illustration.png"
+						alt="Image illustration of the Blog Use Case with Astro DB"
+					/>
+				</div>
 			}
 		>
 			<>

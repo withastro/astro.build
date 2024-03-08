@@ -4,11 +4,13 @@ export default function Uploads() {
 	return (
 		<TabLayout
 			illustration={
-				<img
-					class="h-fit w-auto"
-					src="src/pages/db/_assets/image-upload-illustration.png"
-					alt="Image illustration of the Authentication Use Case with Astro DB"
-				/>
+				<div class="landing-section h-full p-16 lg:p-8">
+					<img
+						class="h-fit max-h-[20rem] w-auto"
+						src="src/pages/db/_assets/image-upload-illustration.png"
+						alt="Image illustration of the Authentication Use Case with Astro DB"
+					/>
+				</div>
 			}
 		>
 			<>

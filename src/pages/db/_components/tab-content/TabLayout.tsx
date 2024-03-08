@@ -13,7 +13,7 @@ export default function TabLayout(props: Props) {
 			</div>
 
 			<div class="order-first h-full rounded-xl border border-[#272831] bg-[#03000A] sm:max-h-[32rem] lg:order-last">
-				<div class="landing-section flex h-full bg-[url('src/pages/db/_assets/tab-illustration-grid.png')] bg-cover bg-no-repeat p-16 lg:p-8">
+				<div class="h-full bg-[url('src/pages/db/_assets/tab-illustration-grid.png')] bg-cover bg-no-repeat">
 					{props.illustration}
 				</div>
 			</div>

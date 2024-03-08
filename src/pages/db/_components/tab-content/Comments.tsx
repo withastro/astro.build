@@ -4,11 +4,13 @@ export default function Comments() {
 	return (
 		<TabLayout
 			illustration={
-				<img
-					class="h-fit w-auto"
-					src="src/pages/db/_assets/comments-tab-illustration.png"
-					alt="Image illustration of the Comments Use Case with Astro DB"
-				/>
+				<div class="landing-section h-full p-16 lg:p-8">
+					<img
+						class="h-fit max-h-[24rem] w-auto"
+						src="src/pages/db/_assets/comments-tab-illustration.png"
+						alt="Image illustration of the Comments Use Case with Astro DB"
+					/>
+				</div>
 			}
 		>
 			<>
