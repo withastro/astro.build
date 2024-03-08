@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/chrismwilliams/astro-theme-cactus"
 demoUrl: "https://astro-theme-cactus.netlify.app/"
-stars: 591
+stars: 595
 tools:
   - "mdx"
   - "tailwind"
