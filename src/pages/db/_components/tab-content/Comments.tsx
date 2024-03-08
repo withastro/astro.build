@@ -15,15 +15,9 @@ export default function Comments() {
 				<h3 class="text-lg font-medium text-astro-gray-200">Comments System</h3>
 				<div class="border-b border-[#272831]"></div>
 
-				<div class="space-y-3">
-					<p class="body w-full text-astro-gray-200">
-						Collect user feedback directly on your documentation. Add a <code>{`<form>`}</code> to
-						your page that tracks the current URL with a hidden input.
-					</p>
-
-					<p class="body w-full text-astro-gray-200">
-						The <code>{`/api/feedback`}</code> route should be a simple POST API endpoint that
-						stores the feedback in Astro DB.
+				<div class="space-y-3 body w-full text-astro-gray-200">
+					<p>
+						You can build a simple comment system on your website to accompany any kind of content. To get started, create a simple POST API endpoint that receives a new comment from the frontend and attach it to the correct author and post IDs: 
 					</p>
 
 					<pre class="overflow-x-auto rounded-lg border border-[#272831] bg-[#07040F] p-2">

@@ -2,14 +2,14 @@
 const { bgGradient } = Astro.props
 ---
 
-<div class="space-y-2">
+<div>
 	<div class={`h-fit w-fit rounded-full p-0.5 ${bgGradient}`}>
 		<div class="rounded-full bg-black">
 			<slot name="icon" />
 		</div>
 	</div>
-	<dt class="text-balance text-lg text-white"><slot name="title" /></dt>
-	<dd class="text-balance body text-astro-gray-200">
+	<h3 class="text-balance mt-4 text-lg text-white"><slot name="title" /></h3>
+	<p class="text-balance body mt-1 text-astro-gray-200">
 		<slot name="description" />
-	</dd>
+	</p>
 </div>

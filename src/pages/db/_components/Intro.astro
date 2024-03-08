@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon"
+import IntroPoint from "./IntroPoint.astro"
+---
+
+<section class="xs:p-6 mx-auto w-full max-w-screen-xl space-y-24 p-4 sm:p-8">
+	<h2
+		class="text-balance font-obviously text-3xl leading-snug md:text-4xl md:leading-normal xl:text-5xl xl:leading-normal"
+	>
+		<strong>Astro DB</strong> is a fully managed SQL&nbsp;database designed&nbsp;exclusively
+		for&nbsp;Astro
+	</h2>
+
+	<dl class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
+		<IntroPoint bgGradient="bg-blue-green-gradient">
+			<Fragment slot="icon">
+				<div
+					class="size-10 landing-section rounded-full bg-gradient-to-bl from-[#4AF2C8]/20 to-[#2F4CB3]/20 p-4"
+				>
+					<Icon class="text-2xl" name="ri:line-chart-line" size={32} />
+				</div>
+			</Fragment>
+			<Fragment slot="title">Scale with confidence</Fragment>
+			<Fragment slot="description">
+				Astro DB’s automatically scales up to meet demand and scales down to $0 when inactive.
+			</Fragment>
+		</IntroPoint>
+
+		<IntroPoint bgGradient="bg-red-pink-gradient">
+			<Fragment slot="icon">
+				<div
+					class="size-10 landing-section rounded-full bg-gradient-to-bl from-[#D83333]/20 to-[#F041FF]/20 p-4"
+				>
+					<Icon class="text-2xl" name="libSQL-icon" size={32} />
+				</div>
+			</Fragment>
+			<Fragment slot="title">Powered by LibSQL</Fragment>
+			<Fragment slot="description">
+				LibSQL balanced lightweight efficiency with proven enterprise-grade performance.
+			</Fragment>
+		</IntroPoint>
+
+		<IntroPoint bgGradient="bg-orange-yellow-gradient">
+			<Fragment slot="icon">
+				<div
+					class="size-10 landing-section rounded-full bg-gradient-to-bl from-[#F8E42E]/20 to-[#FF7D54]/20 p-4"
+				>
+					<Icon class="text-2xl" name="ri:timer-flash-line" size={32} />
+				</div>
+			</Fragment>
+			<Fragment slot="title">Automatically configured</Fragment>
+			<Fragment slot="description">
+				Everything is setup for you, like a TypeScript ORM with full type-safety out of the box.
+			</Fragment>
+		</IntroPoint>
+	</dl>
+</section>
+
+<style>
+	h2 {
+		font-variation-settings:
+			"wght" 320,
+			"wdth" 490;
+	}
+
+	h2 strong {
+		font-variation-settings:
+			"wght" 475,
+			"wdth" 490;
+	}
+</style>
