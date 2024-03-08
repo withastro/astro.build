@@ -198,7 +198,6 @@ export default {
 				".body": {
 					"@apply font-sans text-base": {},
 					fontWeight: "300",
-					fontVariationSettings: "'opsz' 14",
 					letterSpacing: "-0.011em",
 					"-webkit-font-smoothing": "subpixel-antialiased",
 					fontFeatureSettings:
