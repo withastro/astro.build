@@ -1,8 +1,8 @@
 ---
-import SectionText from "./SectionText.astro"
+import Icon from "astro-icon"
 import FeatureCard from "./FeatureCard.astro"
 import FeatureMicroCard from "./FeatureMicroCard.astro"
-import Icon from "astro-icon"
+import SectionText from "./SectionText.astro"
 ---
 
 <section class="mx-auto w-full max-w-screen-xl space-y-10 p-4 sm:p-8">
@@ -13,7 +13,7 @@ import Icon from "astro-icon"
 
 	<ul class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
 		<li
-			class="border-white/15 landing-section min-h-[480px] space-y-3 rounded-2xl border bg-[url('src/pages/db/_assets/astro-ecosystem.png')] bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
+			class="border-white/15 landing-section min-h-[480px] space-y-3 rounded-2xl border bg-[url('/assets/db/astro-ecosystem.png')] bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
 		>
 			<img
 				class="h-fit w-auto"
@@ -32,7 +32,7 @@ import Icon from "astro-icon"
 				<Fragment slot="illustration">
 					<img
 						class="h-full w-auto"
-						src="src/pages/db/_assets/sql-commands.png"
+						src="/assets/db/sql-commands.png"
 						alt="Webhooks illustration"
 					/>
 				</Fragment>
@@ -46,7 +46,7 @@ import Icon from "astro-icon"
 				<Fragment slot="illustration">
 					<img
 						class="h-full w-auto"
-						src="src/pages/db/_assets/sql-commands.png"
+						src="/assets/db/sql-commands.png"
 						alt="Webhooks illustration"
 					/>
 				</Fragment>
@@ -65,7 +65,7 @@ import Icon from "astro-icon"
 			<Fragment slot="illustration">
 				<img
 					class="h-full w-auto"
-					src="src/pages/db/_assets/global-distribution.png"
+					src="/assets/db/global-distribution.png"
 					alt="Global Distribution illustration"
 				/>
 			</Fragment>
@@ -77,11 +77,7 @@ import Icon from "astro-icon"
 				Data changes trigger webhooks that can integrate with any third-party tools.
 			</Fragment>
 			<Fragment slot="illustration">
-				<img
-					class="h-fit w-auto"
-					src="src/pages/db/_assets/webhooks.png"
-					alt="Webhooks illustration"
-				/>
+				<img class="h-fit w-auto" src="/assets/db/webhooks.png" alt="Webhooks illustration" />
 			</Fragment>
 		</FeatureCard>
 
@@ -93,7 +89,7 @@ import Icon from "astro-icon"
 			<Fragment slot="illustration">
 				<img
 					class="h-fit w-auto"
-					src="src/pages/db/_assets/github-actions.png"
+					src="/assets/db/github-actions.png"
 					alt="GitHub Automation illustration"
 				/>
 			</Fragment>
@@ -107,7 +103,7 @@ import Icon from "astro-icon"
 			<Fragment slot="illustration">
 				<img
 					class="h-fit w-auto"
-					src="src/pages/db/_assets/studio-datatable.png"
+					src="/assets/db/studio-datatable.png"
 					alt="Visual Data Views illustration"
 				/>
 			</Fragment>

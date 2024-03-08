@@ -7,7 +7,7 @@ export default function Ecommerce() {
 				<div class="landing-section h-full p-16 lg:p-8">
 					<img
 						class="h-fit max-h-[32rem] w-auto"
-						src="src/pages/db/_assets/e-commerce-tab-illustration.png"
+						src="/assets/db/e-commerce-tab-illustration.png"
 						alt="Image illustration of the Authentication Use Case with Astro DB"
 					/>
 				</div>

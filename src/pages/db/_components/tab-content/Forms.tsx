@@ -7,7 +7,7 @@ export default function Forms() {
 				<div class="landing-section h-full p-16 lg:p-8">
 					<img
 						class="h-fit max-h-[24rem] w-auto"
-						src="src/pages/db/_assets/forms-tab-illustration.png"
+						src="/assets/db/forms-tab-illustration.png"
 						alt="Image illustration of the Authentication Use Case with Astro DB"
 					/>
 				</div>

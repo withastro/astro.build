@@ -7,7 +7,7 @@ export default function Feedback() {
 				<div class="landing-section h-full p-16 lg:p-8">
 					<img
 						class="h-fit max-h-[10rem] w-auto"
-						src="src/pages/db/_assets/feedback-tab-illustration.png"
+						src="/assets/db/feedback-tab-illustration.png"
 						alt="Image illustration of the Feedback Widget Use Case with Astro DB"
 					/>
 				</div>

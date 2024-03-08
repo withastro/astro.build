@@ -7,7 +7,7 @@ export default function Uploads() {
 				<div class="landing-section h-full p-16 lg:p-8">
 					<img
 						class="h-fit max-h-[20rem] w-auto"
-						src="src/pages/db/_assets/image-upload-illustration.png"
+						src="/assets/db/image-upload-illustration.png"
 						alt="Image illustration of the Authentication Use Case with Astro DB"
 					/>
 				</div>

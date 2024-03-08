@@ -7,7 +7,7 @@ export default function Blog() {
 				<div class="landing-section h-full p-16 lg:p-8">
 					<img
 						class="h-full max-h-[16rem] w-auto"
-						src="src/pages/db/_assets/blog-tab-illustration.png"
+						src="/assets/db/blog-tab-illustration.png"
 						alt="Image illustration of the Blog Use Case with Astro DB"
 					/>
 				</div>
