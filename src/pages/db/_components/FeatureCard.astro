@@ -2,7 +2,7 @@
 const { removePadding = false } = Astro.props
 ---
 
-<li class="space-y-8 rounded-xl border border-[#858B98]/20 bg-[#0C0F19]">
+<li class:list={["rounded-xl border border-[#858B98]/20 bg-[#0C0F19]", removePadding ? 'flex flex-col justify-between' : 'space-y-8']}>
 	<div class="space-y-2 p-4">
 		<h3 class="text-lg text-astro-gray-200">
 			<slot name="title" />
