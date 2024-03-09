@@ -14,7 +14,7 @@ export default function Auth() {
 			}
 		>
 			<>
-				<h3 class="text-lg font-medium text-astro-gray-200">Authentication</h3>
+				<h3 class="body-large font-medium text-astro-gray-200">Authentication</h3>
 				<div class="border-b border-[#272831]"></div>
 			</>
 		</TabLayout>

@@ -14,7 +14,7 @@ export default function Comments() {
 			}
 		>
 			<>
-				<h3 class="text-lg font-medium text-astro-gray-200">Comments System</h3>
+				<h3 class="body-large font-medium text-astro-gray-200">Comments System</h3>
 				<div class="border-b border-[#272831]"></div>
 
 				<div class="body w-full space-y-3 text-astro-gray-200">

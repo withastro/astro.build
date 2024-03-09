@@ -5,12 +5,12 @@ const { isCentered = false } = Astro.props
 <div class:list={["space-y-1", isCentered && "sm:landing-section"]}>
 	<h2
 		class:list={[
-			"text-balance w-fit bg-red-pink-gradient bg-clip-text font-semibold text-transparent",
+			"text-balance body w-fit bg-red-pink-gradient bg-clip-text font-semibold uppercase tracking-widest text-transparent",
 		]}
 	>
 		<slot name="eyebrow" />
 	</h2>
-	<h3 class:list={["text-balance heading-3 max-w-3xl font-bold"]}>
+	<h3 class:list={["text-balance heading heading-3 max-w-3xl font-bold"]}>
 		<slot name="title" />
 	</h3>
 </div>

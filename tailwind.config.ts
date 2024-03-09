@@ -264,10 +264,10 @@ export default {
 
 		plugin(function makeDBTypographyPlugin(api) {
 			api.addUtilities({
-				".heading-db": {
-					"@apply font-obviously-variable": {},
-					"font-feature-settings": `"ss01", "ss06"`,
-					"font-variation-settings": `"wght" 350, "wdth" 490`,
+				".db .heading": {
+					"@apply font-obviously": {},
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
+					"font-variation-settings": `"wght" 475, "wdth" 490`,
 				},
 			})
 		}),

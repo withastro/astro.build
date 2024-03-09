@@ -1,23 +1,25 @@
 ---
 import { Icon } from "astro-icon"
-import SectionText from "./SectionText.astro"
 import ExternalLink from "~/components/ExternalLink.astro"
 import PricingFeaturePoint from "./PricingFeaturePoint.astro"
+import SectionText from "./SectionText.astro"
 ---
 
 <section class="mx-auto w-full max-w-screen-xl space-y-10 p-4 sm:p-8">
 	<SectionText isCentered>
 		<Fragment slot="eyebrow">Pricing</Fragment>
-		<Fragment slot="title">Get started for free, then pay as you grow.</Fragment>
+		<Fragment slot="title">
+			Get started for free,<br />then pay as you grow.
+		</Fragment>
 	</SectionText>
 
-	<div class="mx-auto rounded-2xl bg-blue-purple-gradient p-[1px] lg:w-2/4">
+	<div class="mx-auto rounded-2xl bg-blue-purple-gradient p-[1px]" style="max-width: 60rem;">
 		<div class="overflow-hidden rounded-2xl bg-black">
 			<div
-				class="grid grid-cols-1 gap-4 bg-gradient-to-tr from-[#3245FF]/25 to-[#B845ED]/25 p-4 md:grid-cols-2 md:gap-8 md:p-8 lg:grid-cols-3 lg:gap-12"
+				class="grid grid-cols-1 gap-4 bg-gradient-to-tr from-[#3245FF]/25 to-[#B845ED]/25 p-4 py-6 md:grid-cols-2 md:gap-8 md:px-16 lg:gap-12 lg:px-24"
 			>
-				<h4 class="heading-4 whitespace-nowrap font-medium md:p-4">Base Plan</h4>
-				<div class="space-y-4 lg:col-span-2">
+				<h4 class="heading-4 whitespace-nowrap pt-6 font-medium">Base Plan</h4>
+				<div class="space-y-4">
 					<h5 class="heading-2 font-medium text-white">
 						$0 <span class="body text-astro-gray-200">/ month</span>
 					</h5>
@@ -38,7 +40,9 @@ import PricingFeaturePoint from "./PricingFeaturePoint.astro"
 				</div>
 			</div>
 
-			<ul class="mx-4 space-y-6 divide-y divide-gray-800 py-4 sm:mx-0 sm:divide-y-0 sm:py-8">
+			<ul
+				class="mx-4 space-y-6 divide-y divide-gray-800 p-2 sm:mx-0 sm:divide-y-0 sm:p-6 md:px-16 lg:px-24"
+			>
 				<PricingFeaturePoint>
 					<Fragment slot="title">
 						<Icon class="text-astro-gray-300" name="ri:database-2-line" size={18} />
