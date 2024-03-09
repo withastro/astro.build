@@ -1,0 +1,199 @@
+---
+import { Icon } from "astro-icon"
+import { Code } from "astro-expressive-code/components"
+---
+
+<astro-db-tabs>
+	<ul class="mt-16 flex max-w-full overflow-x-auto text-astro-gray-200">
+		<li>
+			<button
+				role="tab"
+				aria-selected="true"
+				class="relative block flex flex-col items-center p-4"
+				data-tab="comments"
+			>
+				<Icon class="text-current" name="uil:comments-alt" width="40" />
+				<p class="text-lg">Comments</p>
+			</button>
+		</li>
+		<li>
+			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="forms">
+				<Icon class="text-current" name="uil:document-layout-left" width="40" />
+				<p class="text-lg">Forms</p>
+			</button>
+		</li>
+		<li>
+			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="feedback">
+				<Icon class="text-current" name="uil:question-circle" width="40" />
+				<p class="text-lg">Feedback</p>
+			</button>
+		</li>
+		<li>
+			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="blog">
+				<Icon class="text-current" name="uil:notes" width="40" />
+				<p class="text-lg">Blog</p>
+			</button>
+		</li>
+		<li>
+			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="auth">
+				<Icon class="text-current" name="uil:users-alt" width="40" />
+				<p class="text-lg">Authorization</p>
+			</button>
+		</li>
+	</ul>
+
+	<ul>
+		<li data-tab="comments">
+			<div class="example">
+				<h2>Comments</h2>
+			</div>
+			<div>
+				<Code lang="js" code="console.log('ahhhh')" />
+			</div>
+		</li>
+		<li class="hidden" data-tab="forms">
+			<div class="example">
+				<h2>Forms</h2>
+			</div>
+			<div>
+				<Code lang="js" code="console.log('ahhhh')" />
+			</div>
+		</li>
+		<li class="hidden" data-tab="feedback">
+			<div class="example">
+				<h2>Feedback</h2>
+			</div>
+			<div>
+				<Code lang="js" code="console.log('ahhhh')" />
+			</div>
+		</li>
+		<li class="hidden" data-tab="blog">
+			<div class="example">
+				<h2>Blog</h2>
+			</div>
+			<div>
+				<Code lang="js" code="console.log('ahhhh')" />
+			</div>
+		</li>
+		<li class="hidden" data-tab="auth">
+			<div class="example">
+				<h2>Authentication</h2>
+			</div>
+			<div>
+				<Code lang="js" code="console.log('ahhhh')" />
+			</div>
+		</li>
+	</ul>
+</astro-db-tabs>
+
+<style>
+	button[data-tab] {
+		opacity: 0.5;
+		min-width: 8rem;
+	}
+	button[aria-selected="true"] {
+		opacity: 1;
+	}
+	[aria-selected="true"]::before,
+	[aria-selected="true"]::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		@apply bg-blue-purple-gradient;
+		z-index: 0;
+		border-radius: 8px;
+	}
+	button > * {
+		z-index: 1;
+	}
+	[aria-selected="true"]::after {
+		top: 1px;
+		right: 1px;
+		bottom: 1px;
+		left: 1px;
+		background: #060913
+			linear-gradient(83.21deg, rgba(50, 70, 255, 0.2) 0%, rgba(184, 69, 237, 0.2) 100%);
+	}
+</style>
+<script>
+	const bind = (instance, proto) => {
+		if (proto == null) {
+			proto = Object.getPrototypeOf(instance)
+		}
+		let propertyNames = Object.getOwnPropertyNames(proto)
+		for (let name of propertyNames) {
+			let value = proto[name]
+			if (typeof value === "function") {
+				instance[name] = proto[name].bind(instance)
+			}
+		}
+	}
+	class Tabs extends HTMLElement {
+		static is = "astro-db-tabs"
+
+		constructor() {
+			super()
+			bind(this)
+		}
+
+		button(name) {
+			return this.querySelector(`button[data-tab="${name}"]`)
+		}
+		buttons() {
+			return this.querySelectorAll(`button[data-tab]`)
+		}
+		content(name) {
+			return this.querySelector(`li[data-tab="${name}"]`)
+		}
+		contents() {
+			return this.querySelectorAll(`li[data-tab]`)
+		}
+
+		connectedCallback() {
+			this.addEventListener("click", this.handleClick)
+		}
+
+		disconnectedCallback() {
+			this.removeEventListener("click", this.handleClick)
+		}
+
+		resetElements() {
+			for (const button of this.buttons()) {
+				button.removeAttribute("aria-selected")
+			}
+			for (const content of this.contents()) {
+				content.classList.add("hidden")
+			}
+		}
+
+		setActive(name) {
+			const button = this.button(name)
+			const content = this.content(name)
+
+			console.log({ button, content })
+
+			button.setAttribute("aria-selected", "true")
+			content.classList.remove("hidden")
+		}
+
+		handleClick(event: Event) {
+			const name = event.target.closest("button[data-tab]")?.dataset.tab
+			if (!name) return
+
+			if ("startViewTransition" in document) {
+				document.startViewTransition(() => {
+					this.resetElements()
+					this.setActive(name)
+				})
+			} else {
+				this.resetElements()
+				this.setActive(name)
+			}
+		}
+	}
+
+	customElements.define(Tabs.is, Tabs)
+</script>
