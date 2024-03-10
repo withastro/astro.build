@@ -24,6 +24,7 @@ export default defineConfig({
 		astroExpressiveCode({
 			themes: [houston],
 			frames: false,
+			
 		}),
 		mdx(),
 		sitemap(),

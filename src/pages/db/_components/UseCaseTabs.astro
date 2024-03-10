@@ -1,10 +1,21 @@
 ---
 import { Icon } from "astro-icon"
-import { Code } from "astro-expressive-code/components"
+
+import Comments from "./use-cases/Comments.astro"
+import Forms from "./use-cases/Forms.astro"
+import Feedback from "./use-cases/Feedback.astro"
+import Blog from "./use-cases/Blog.astro"
+import Auth from "./use-cases/Auth.astro"
 ---
 
-<astro-db-tabs>
-	<ul class="mt-16 flex max-w-full overflow-x-auto text-astro-gray-200">
+<astro-db-tabs class="relative">
+	<ul class="mt-16 flex max-w-full overflow-x-auto pb-1 text-astro-gray-200">
+		<li>
+			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="blog">
+				<Icon class="text-current" name="uil:notes" width="40" />
+				<p class="text-lg">Blog</p>
+			</button>
+		</li>
 		<li>
 			<button
 				role="tab"
@@ -29,60 +40,19 @@ import { Code } from "astro-expressive-code/components"
 			</button>
 		</li>
 		<li>
-			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="blog">
-				<Icon class="text-current" name="uil:notes" width="40" />
-				<p class="text-lg">Blog</p>
-			</button>
-		</li>
-		<li>
 			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="auth">
 				<Icon class="text-current" name="uil:users-alt" width="40" />
-				<p class="text-lg">Authorization</p>
+				<p class="text-lg">Auth</p>
 			</button>
 		</li>
 	</ul>
 
-	<ul>
-		<li data-tab="comments">
-			<div class="example">
-				<h2>Comments</h2>
-			</div>
-			<div>
-				<Code lang="js" code="console.log('ahhhh')" />
-			</div>
-		</li>
-		<li class="hidden" data-tab="forms">
-			<div class="example">
-				<h2>Forms</h2>
-			</div>
-			<div>
-				<Code lang="js" code="console.log('ahhhh')" />
-			</div>
-		</li>
-		<li class="hidden" data-tab="feedback">
-			<div class="example">
-				<h2>Feedback</h2>
-			</div>
-			<div>
-				<Code lang="js" code="console.log('ahhhh')" />
-			</div>
-		</li>
-		<li class="hidden" data-tab="blog">
-			<div class="example">
-				<h2>Blog</h2>
-			</div>
-			<div>
-				<Code lang="js" code="console.log('ahhhh')" />
-			</div>
-		</li>
-		<li class="hidden" data-tab="auth">
-			<div class="example">
-				<h2>Authentication</h2>
-			</div>
-			<div>
-				<Code lang="js" code="console.log('ahhhh')" />
-			</div>
-		</li>
+	<ul class="mt-20">
+		<Blog />
+		<Comments />
+		<Forms />
+		<Feedback />
+		<Auth />
 	</ul>
 </astro-db-tabs>
 

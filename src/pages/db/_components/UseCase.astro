@@ -1,0 +1,29 @@
+---
+interface Props {
+	tab: string
+	class?: string
+}
+
+const { tab, class: className } = Astro.props
+---
+
+<li
+	class:list={["mx-auto flex flex-col gap-4 lg:flex-row lg:items-start", className]}
+	data-tab={tab}
+>
+	<div class="flex-1 basis-1/2 flex-col overflow-hidden rounded-2xl bg-[#0C0F19] lg:mr-8">
+		<div class="flex-0 whitespace-no-wrap px-4 pb-3 pt-4 text-sm">
+			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
+			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
+			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
+		</div>
+		<div class="max-h-fit p-4 pb-8">
+			<slot name="example" />
+		</div>
+	</div>
+	<div
+		class="block max-h-fit basis-1/2 overflow-hidden rounded-2xl bg-[#0C0F19] p-8 lg:-mt-16 lg:mr-0"
+	>
+		<slot name="code" />
+	</div>
+</li>

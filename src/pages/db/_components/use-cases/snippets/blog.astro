@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Main.astro"
+import { db, Posts, asc } from "astro:db"
+
+const posts = await db
+	.select()
+	.from(Posts)
+	.orderBy(
+		asc(Posts.publishedAt)
+	)
+---
+
+<Layout>
+	<ul>
+		{
+			posts.map((post) => (
+				<li>
+					<a href={`/blog/${post.slug}/`}>
+						<h4 class="title">{post.title}</h4>
+						<p class="excerpt">{post.excerpt}</p>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</Layout>

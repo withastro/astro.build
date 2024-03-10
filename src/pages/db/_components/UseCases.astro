@@ -3,20 +3,64 @@ import SectionText from "./SectionText.astro"
 import UseCaseTabs from "./UseCaseTabs.astro"
 ---
 
-<section
-	class="mx-auto w-full max-w-screen-xl space-y-10 bg-cover bg-center bg-no-repeat p-4 sm:p-8"
->
-	<SectionText>
-		<span slot="eyebrow" id="use-cases">Use Cases</span>
-		<Fragment slot="title">Unlimited possibilities</Fragment>
-
-		<p>
-			Stop worrying about configuration, provisioning, and setup—just start building. Unlock a
-			universe of new site features with the only drop-in database designed exclusively for Astro.
-		</p>
-	</SectionText>
-
-	<div>
-		<UseCaseTabs />
+<div class="container relative w-screen">
+	<div class="absolute inset-0 z-0 mx-auto w-full max-w-screen-xl">
+		<div class="pattern-grid"></div>
 	</div>
-</section>
+	<section
+		class="mx-auto w-full max-w-screen-xl space-y-10 bg-cover bg-center bg-no-repeat p-4 sm:p-8"
+	>
+		<SectionText>
+			<span slot="eyebrow" id="use-cases">Use Cases</span>
+			<Fragment slot="title">Unlimited possibilities</Fragment>
+
+			<p>
+				Stop worrying about configuration, provisioning, and setup—just start building. Unlock a
+				universe of new site features with the only drop-in database designed exclusively for Astro.
+			</p>
+		</SectionText>
+
+		<UseCaseTabs />
+	</section>
+</div>
+
+<style>
+	.container {
+		min-height: 64rem;
+	}
+	.pattern-grid {
+		pointer-events: none;
+		--width: 400rem;
+		--offset: calc(var(--width) / -2);
+		--grid-size: 2em;
+		--grid-lg-size: calc(var(--grid-size) * 4);
+		--line-width: 1px;
+		--line-width-offset: calc(var(--line-width) + (var(--line-width) / 2));
+		--pos: calc(var(--line-width) * -1);
+		--line-color: #0c0f19;
+		position: absolute;
+		left: 0;
+		top: 24rem;
+		width: var(--width);
+		transform: translateX(var(--offset));
+		height: 40rem;
+		border: var(--line-width) solid var(--line-color);
+		background-image: linear-gradient(
+				var(--line-color) var(--line-width),
+				transparent var(--line-width)
+			),
+			linear-gradient(90deg, var(--line-color) var(--line-width), transparent var(--line-width)),
+			linear-gradient(var(--line-color) var(--line-width), transparent var(--line-width)),
+			linear-gradient(90deg, var(--line-color) var(--line-width), transparent var(--line-width));
+		background-position:
+			var(--pos) var(--pos),
+			var(--pos) var(--pos),
+			var(--pos) var(--pos),
+			var(--pos) var(--pos);
+		background-size:
+			var(--grid-lg-size) var(--grid-lg-size),
+			var(--grid-lg-size) var(--grid-lg-size),
+			var(--grid-size) var(--grid-size),
+			var(--grid-size) var(--grid-size);
+	}
+</style>

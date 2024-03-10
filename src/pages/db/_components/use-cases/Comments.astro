@@ -1,0 +1,76 @@
+---
+import { Code } from "astro-expressive-code/components"
+import UseCase from "../UseCase.astro"
+import code from "./snippets/comments.ts?raw"
+---
+
+<UseCase tab="comments">
+	<div slot="example" class="relative isolate mx-auto max-w-xl py-12 lg:max-w-lg">
+		<ul class="flex flex-col space-y-4">
+			<li>
+				<figure class="rounded-md text-sm leading-6">
+					<figcaption class="flex items-center gap-x-4">
+						<span class="h-10 w-10 rounded-full bg-[#141825]"></span>
+						<div>
+							<div class="mb-2 h-4 w-48 rounded-full bg-[#141825]"></div>
+							<div class="h-4 w-32 rounded-full bg-[#141825]"></div>
+						</div>
+					</figcaption>
+					<blockquote class="mt-6">
+						<div class="flex flex-col gap-2">
+							<div class="h-4 max-w-[360px] rounded-full bg-[#141825]"></div>
+							<div class="h-4 max-w-[300px] rounded-full bg-[#141825]"></div>
+							<div class="h-4 max-w-[330px] rounded-full bg-[#141825]"></div>
+						</div>
+					</blockquote>
+				</figure>
+			</li>
+			<li>
+				<figure class="border-1 ml-16 py-4 text-sm leading-6">
+					<figcaption class="flex items-center gap-x-4">
+						<span class="h-10 w-10 rounded-full bg-[#141825]"></span>
+						<div>
+							<div class="mb-2 h-4 w-52 rounded-full bg-[#141825]"></div>
+							<div class="h-4 w-24 rounded-full bg-[#141825]"></div>
+						</div>
+					</figcaption>
+					<blockquote class="mt-6">
+						<div class="flex flex-col gap-2">
+							<div class="h-4 max-w-[350px] rounded-full bg-[#141825]"></div>
+							<div class="h-4 max-w-[320px] rounded-full bg-[#141825]"></div>
+						</div>
+					</blockquote>
+				</figure>
+			</li>
+		</ul>
+		<div class="mt-8">
+			<form action="#" method="POST" novalidate autocomplete="off">
+				<div class="mx-auto max-w-xl lg:max-w-lg">
+					<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+						<div class="sm:col-span-2">
+							<label for="message" class="block text-sm font-semibold leading-6 text-white"
+								><span class="block h-4 w-32 rounded-full bg-[#141825]"></span></label
+							>
+							<div class="mt-2.5">
+								<textarea
+									name="comment"
+									id="comment"
+									rows="2"
+									class="min-h-8 block w-full rounded-md border-0 bg-[#141825] px-3.5 py-2 text-white ring-1 ring-astro-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+								></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="mt-4 flex justify-end">
+						<button
+							type="submit"
+							class="h-12 w-40 rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+						>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
+</UseCase>
