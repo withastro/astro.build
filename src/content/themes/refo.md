@@ -13,5 +13,5 @@ repoUrl: "https://github.com/kireerik/refo"
 demoUrl: "https://kireerik.github.io/refo/"
 tools:
   - "solidjs"
-stars: 4
+stars: 5
 ---

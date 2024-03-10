@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@flyo/nitro-astro"
 repoUrl: "https://github.com/flyocloud/nitro-astro"
 homepageUrl: "https://github.com/flyocloud/nitro-astro#readme"
-downloads: 348
+downloads: 295
 ---

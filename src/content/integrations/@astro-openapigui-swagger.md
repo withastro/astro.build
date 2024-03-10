@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-openapi/gui-swagger"
 homepageUrl: "https://www.npmjs.com/package/@astro-openapi/gui-swagger"
-downloads: 29
+downloads: 30
 ---
