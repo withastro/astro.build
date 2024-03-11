@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@barnabask/astro-minisearch"
 repoUrl: "https://github.com/Barnabas/astro-minisearch"
 homepageUrl: "https://github.com/Barnabas/astro-minisearch/"
-downloads: 219
+downloads: 220
 ---
