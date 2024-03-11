@@ -1,85 +1,29 @@
 ---
-const arithmeticOperators = ["avg", "min", "max", "count", "sum"]
+const arithmetic = ["avg", "min", "max", "count", "sum"]
+const data = ["null", "integer", "real", "text", "blob"]
 const joins = ["left", "inner", "cross", "outer", "right"]
 const operators = ["distinct", "order by", "where", "limit", "between"]
 const queries = ["select", "insert", "update", "delete"]
-const dataTypes = ["null", "integer", "real", "text", "blob"]
-
-//added - not in the original figma design
 const keys = ["primary", "foreign", "unique", "composite", "alternate"]
 const constraints = ["not null", "check", "index", "default", "unique"]
+
+const a = [...arithmetic, ...data]
+const b = [...queries, ...joins, ...operators]
+const c = [...keys, ...constraints]
+
+const all = [a, b, c]
 ---
 
-<div
-	class="body flex flex-col items-center gap-2 overflow-hidden whitespace-nowrap text-astro-gray-400"
->
-	<div class="flex w-fit gap-2">
-		{
-			arithmeticOperators.map((operator) => (
-				<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-					{operator}
-				</div>
-			))
-		}
-	</div>
-
-	<div class="flex w-fit gap-2">
-		{
-			joins.map((join) => (
-				<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-					{join}
-				</div>
-			))
-		}
-	</div>
-
-	<div class="flex w-fit gap-2">
-		{
-			operators.map((operator) => (
-				<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-					{operator}
-				</div>
-			))
-		}
-	</div>
-
-	<div class="flex w-fit gap-2">
-		{
-			queries.map((query) => (
-				<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-					{query}
-				</div>
-			))
-		}
-	</div>
-
-    <div class="flex w-fit gap-2">
-		{
-			keys.map((key) => (
-				<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-					{key}
-				</div>
-			))
-		}
-	</div>
-
-	<div class="flex w-fit gap-2">
-		{
-			constraints.map((constraint) => (
-				<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-					{constraint}
-				</div>
-			))
-		}
-	</div>
-
-	<div class="flex w-fit gap-2">
-		{
-			dataTypes.map((type) => (
-				<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-					{type}
-				</div>
-			))
-		}
-	</div>
+<div class="body flex flex-col items-center gap-2 whitespace-nowrap text-astro-gray-400">
+	{
+		all.map((group) => (
+			<div class="flex w-fit gap-2">
+				{group.map((operator) => (
+					<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
+						{operator}
+					</div>
+				))}
+			</div>
+		))
+	}
 </div>
