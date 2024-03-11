@@ -164,7 +164,7 @@ function themeFilter(theme: CollectionEntry<"themes">) {
 // 	entries.sort(sortThemes),
 // )
 
-const allThemes = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes`).then((res) =>
+const allThemes = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes?${Astro.url.searchParams}`).then((res) =>
 	res.json(),
 )
 
