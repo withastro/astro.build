@@ -6,7 +6,7 @@ import Pagination from "~/components/Pagination.astro"
 import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro"
 import SidebarLayout from "~/components/SidebarLayout.astro"
 import SidebarPanel from "~/components/SidebarPanel.astro"
-import { ThemeCategories, ThemePricing, ThemeTools } from "~/content/config.js"
+import { ThemePricing } from "~/content/config.js"
 import { paginate } from "~/helpers/paginate.js"
 import MainLayout from "~/layouts/MainLayout.astro"
 import SubmitTheme from "./_components/SubmitTheme.astro"
@@ -14,41 +14,41 @@ import ThemeCard from "./_components/ThemeCard.astro"
 
 export const prerender = false
 
-// Sorting priority: featured first, then published date for new themes, then compare downloads, then sort alphabetically
-function sortThemes(a, b): number {
-	if (a.Theme.featured && b.Theme.featured) {
-		return a.Theme.featured - b.Theme.featured
-	}
+// // Sorting priority: featured first, then published date for new themes, then compare downloads, then sort alphabetically
+// function sortThemes(a, b): number {
+// 	if (a.Theme.featured && b.Theme.featured) {
+// 		return a.Theme.featured - b.Theme.featured
+// 	}
 
-	if (a.Theme.featured && !b.Theme.featured) {
-		return -1
-	}
+// 	if (a.Theme.featured && !b.Theme.featured) {
+// 		return -1
+// 	}
 
-	if (!a.Theme.featured && b.Theme.featured) {
-		return 1
-	}
+// 	if (!a.Theme.featured && b.Theme.featured) {
+// 		return 1
+// 	}
 
-	// if (a.data.badge === "new" && b.data.badge === "new") {
-	// 	return sortRecentThemes(a, b)
-	// }
+// 	// if (a.data.badge === "new" && b.data.badge === "new") {
+// 	// 	return sortRecentThemes(a, b)
+// 	// }
 
-	if (a.Theme.stars === b.Theme.stars) {
-		return b.data.title.localeCompare(a.data.title)
-	}
+// 	if (a.Theme.stars === b.Theme.stars) {
+// 		return b.data.title.localeCompare(a.data.title)
+// 	}
 
-	return b.Theme.stars - a.Theme.stars
-}
+// 	return b.Theme.stars - a.Theme.stars
+// }
 
-function sortRecentThemes(a, b): number {
-	const aTime = new Date(a.Theme.publishDate).getTime()
-	const bTime = new Date(b.Theme.publishDate).getTime()
+// function sortRecentThemes(a, b): number {
+// 	const aTime = new Date(a.Theme.publishDate).getTime()
+// 	const bTime = new Date(b.Theme.publishDate).getTime()
 
-	if (!aTime || !bTime) {
-		return sortThemes(a, b)
-	}
+// 	if (!aTime || !bTime) {
+// 		return sortThemes(a, b)
+// 	}
 
-	return bTime - aTime
-}
+// 	return bTime - aTime
+// }
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
@@ -63,8 +63,9 @@ if (!currentPage || isNaN(currentPage)) {
 const search = Astro.url.searchParams.get("search")
 
 // get a list of all supported categories, this is the same list used by the zod schema
-const categories = Array.from(ThemeCategories.keys())
-
+const categories = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
+	res.json().then((data) => data.themeCategories),
+)
 // get a list of category filters applied to the request
 const selectedCategories = Astro.url.searchParams.getAll("categories[]")
 
@@ -72,16 +73,18 @@ const selectedCategories = Astro.url.searchParams.getAll("categories[]")
 const categoryFilter: FilterGroup = {
 	title: "Categories",
 	options: categories.map((c) => ({
-		id: c,
+		id: c.id,
 		name: "categories[]",
-		value: c,
-		label: ThemeCategories.get(c)!,
+		value: c.value,
+		label: c.name,
 		selected: selectedCategories.includes(c),
 	})),
 }
 
 // get a list of all supported tools, this is the same list used by the zod schema
-const tools = Array.from(ThemeTools.keys())
+const tools = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
+	res.json().then((data) => data.themeTools),
+)
 
 // get a list of tool filters applied to the request
 const selectedTools = Astro.url.searchParams.getAll("technology[]")
@@ -90,10 +93,10 @@ const selectedTools = Astro.url.searchParams.getAll("technology[]")
 const toolFilter: FilterGroup = {
 	title: "Technology",
 	options: tools.map((t) => ({
-		id: t,
+		id: t.id,
 		name: "technology[]",
-		value: t,
-		label: ThemeTools.get(t)!,
+		value: t.value,
+		label: t.name,
 		selected: selectedTools.includes(t),
 	})),
 }
@@ -164,7 +167,6 @@ function themeFilter(theme: CollectionEntry<"themes">) {
 const allThemes = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes`).then((res) =>
 	res.json(),
 )
-console.log(allThemes)
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
