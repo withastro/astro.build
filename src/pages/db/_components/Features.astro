@@ -13,9 +13,9 @@ import ZeroLockin from "./features/ZeroLockin.astro"
 		<Fragment slot="title">Everything you need, included</Fragment>
 	</SectionText>
 
-	<div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+	<div class="grid grid-cols-1 gap-2 pt-8 md:grid-cols-2 lg:grid-cols-3">
 		<div
-			class="border-white/15 landing-section min-h-[480px] space-y-3 rounded-2xl border bg-[url('/assets/db/astro-ecosystem.png')] bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
+			class="landing-section min-h-[480px] space-y-3 rounded-2xl border border-white/20 bg-[url('/assets/db/astro-ecosystem.png')] bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +67,10 @@ import ZeroLockin from "./features/ZeroLockin.astro"
 				</div>
 				<p class="sr-only">List of common SQL keywords such as SELECT and JOIN</p>
 				<figcaption class="p-4">
-					<h3 class="text-lg text-astro-gray-200">Zero lock-in</h3>
-					<p class="text-balance body text-astro-gray-300">Export your data anytime.</p>
+					<h3 class="text-lg text-astro-gray-200">SQL</h3>
+					<p class="text-balance body text-astro-gray-300">
+						Why reinvent the wheel? Astro DB speaks the familiar, universal database language: SQL.
+					</p>
 				</figcaption>
 			</figure>
 
@@ -76,55 +78,65 @@ import ZeroLockin from "./features/ZeroLockin.astro"
 				<div class="illustration pointer-events-none isolate select-none" aria-hidden="true">
 					<ORM />
 				</div>
-				<p class="sr-only">Code snippet demonstrating TypeScript intellisense for a User schema</p>
-
+				<p class="sr-only">
+					Code snippet demonstrating TypeScript autocompletion for a User schema
+				</p>
 				<figcaption>
 					<h3 class="text-lg text-astro-gray-200">TypeScript ORM</h3>
-					<p class="text-balance body text-astro-gray-300">
+					<p class="body text-astro-gray-300">
 						Includes a modern, TypeScript ORM with type-safety and autocomplete on every query.
 					</p>
 				</figcaption>
 			</figure>
 		</div>
 
-		<div
+		<figure
 			class="flex flex-col justify-between gap-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4 md:max-lg:col-span-2"
 		>
 			<div class="illustration pointer-events-none isolate select-none" aria-hidden="true">
 				<ZeroLockin />
 			</div>
-
-			<div>
+			<p class="sr-only">
+				"Export data" button with a dropdown that says "Export as SQL" and "Export as CSV"
+			</p>
+			<figcaption>
 				<h3 class="text-lg text-astro-gray-200">Zero lock-in</h3>
-
-				<p class="text-balance body text-astro-gray-300">
-					It's your data. Export it anytime, in any format.
+				<p class="body min-h-[2lh] min-h-[3rem] text-astro-gray-300">
+					It's your data. Export it anytime, in the format you need.
 				</p>
-			</div>
-		</div>
+			</figcaption>
+		</figure>
 	</div>
 
 	<div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-		<div class="space-y-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19]">
-			<div class="mb-4 space-y-2 p-4">
+		<figure
+			class="max-h-[24rem] space-y-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19]"
+		>
+			<figcaption class="mb-4 space-y-2 p-4">
 				<h3 class="text-lg text-astro-gray-200">Visual Data Views</h3>
 				<p class="text-balance body text-astro-gray-300">
 					Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
 				</p>
-			</div>
-			<div class="pl-4">
+			</figcaption>
+			<p class="sr-only">Illustration of a bable-based user interface, similar to that of Excel</p>
+			<div class="illustration pointer-events-none isolate select-none pl-4" aria-hidden="true">
 				<DataView />
 			</div>
-		</div>
+		</figure>
 
-		<div class="rounded-xl border border-[#858B98]/20 bg-[#0C0F19]">
-			<div class="mb-4 space-y-2 p-4">
+		<figure
+			class="max-h-[24rem] overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19]"
+		>
+			<figcaption class="mb-4 space-y-2 p-4">
 				<h3 class="text-lg text-astro-gray-200">Global Distribution</h3>
 				<p class="text-balance body text-astro-gray-300">
 					Create databases in 8 different regions around the world, including the EU and Japan.
 				</p>
-			</div>
-			<div class="flex justify-end overflow-hidden">
+			</figcaption>
+			<p class="sr-only">A spinning globe</p>
+			<div
+				class="illustration pointer-events-none isolate flex select-none justify-end overflow-hidden"
+			>
 				<!-- <GlobalDistribution /> -->
 				<img
 					class="h-full max-h-[28rem] w-auto"
@@ -132,7 +144,7 @@ import ZeroLockin from "./features/ZeroLockin.astro"
 					alt="Global Distribution illustration"
 				/>
 			</div>
-		</div>
+		</figure>
 	</div>
 
 	<div class="grid grid-cols-1 gap-2 pt-8 sm:pt-12 md:grid-cols-2 lg:grid-cols-3">
