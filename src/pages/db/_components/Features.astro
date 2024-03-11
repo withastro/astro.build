@@ -3,11 +3,13 @@ import Icon from "astro-icon"
 import ORM from "./features/ORM.astro"
 import SectionText from "./SectionText.astro"
 import FeatureCard from "./FeatureCard.astro"
+import DataView from './features/DataView.astro'
 import ZeroLockin from "./features/ZeroLockin.astro"
 import SQLCommands from "./features/SQLCommands.astro"
+import GlobalDistribution from "./features/GlobalDistribution.astro"
 ---
 
-<section class="mx-auto w-full max-w-screen-xl space-y-10 p-4 sm:p-8">
+<section class="mx-auto w-full max-w-screen-xl space-y-2 p-4 sm:p-8">
 	<SectionText>
 		<Fragment slot="eyebrow">Features</Fragment>
 		<Fragment slot="title">Everything you need, included</Fragment>
@@ -80,9 +82,9 @@ import SQLCommands from "./features/SQLCommands.astro"
 		</div>
 
 		<div
-			class="md:max-lg:col-span-2 flex flex-col justify-between gap-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4"
+			class="flex flex-col justify-between gap-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4 md:max-lg:col-span-2"
 		>
-			<div class="flex justify-center h-full items-center">
+			<div class="flex h-full items-center justify-center">
 				<SQLCommands />
 			</div>
 
@@ -97,37 +99,39 @@ import SQLCommands from "./features/SQLCommands.astro"
 	</div>
 
 	<div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-		<FeatureCard>
-			<Fragment slot="title">Visual Data Views</Fragment>
-			<Fragment slot="description">
-				Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
-			</Fragment>
 
-			<Fragment slot="illustration">
-				<img
-					class="h-fit w-auto"
-					src="/assets/db/visual-data-view-illustration.png"
-					alt="Visual Data Views illustration"
-				/>
-			</Fragment>
-		</FeatureCard>
+		<div class="rounded-xl space-y-4 border border-[#858B98]/20 bg-[#0C0F19]">
+			<div class="p-4 mb-4 space-y-2">
+				<h3 class="text-lg text-astro-gray-200">Visual Data Views</h3>
+				<p class="text-balance body text-astro-gray-300">
+					Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
+				</p>
+			</div>
+			<div class="pl-4">
+				<DataView />
+			</div>
+		</div>
 
-		<FeatureCard removePadding>
-			<Fragment slot="title">Global Distribution</Fragment>
-			<Fragment slot="description">
-				Create databases in 8 different regions around the world, including the EU and Japan.
-			</Fragment>
-			<Fragment slot="illustration">
+		<div class="rounded-xl border border-[#858B98]/20 bg-[#0C0F19]">
+			<div class="p-4 mb-4 space-y-2">
+				<h3 class="text-lg text-astro-gray-200">Global Distribution</h3>
+				<p class="text-balance body text-astro-gray-300">
+					Create databases in 8 different regions around the world, including the EU and Japan.
+				</p>
+			</div>
+			<div class=" overflow-hidden flex justify-end">
+				<!-- <GlobalDistribution /> -->
 				<img
-					class="h-full w-auto"
+					class="h-full max-h-[28rem] w-auto"
 					src="/assets/db/global-distribution.png"
 					alt="Global Distribution illustration"
 				/>
-			</Fragment>
-		</FeatureCard>
+			</div>
+		</div>
+
 	</div>
 
-	<div class="mt-8 grid grid-cols-1 gap-2 sm:mt-12 md:grid-cols-2 lg:grid-cols-3">
+	<div class="pt-8 grid grid-cols-1 gap-2 sm:pt-12 md:grid-cols-2 lg:grid-cols-3">
 		<div class="space-y-1 text-white">
 			<Icon name="ri:download-2-line" size={20} />
 			<h3 class="text-base">Zero lock-in.</h3>
