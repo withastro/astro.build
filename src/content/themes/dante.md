@@ -17,7 +17,7 @@ demoUrl: "https://dante-astro-theme.netlify.app/"
 tools:
   - "tailwind"
 publishDate: "Jan 16, 2024"
-stars: 57
+stars: 65
 ---
 
 <p>

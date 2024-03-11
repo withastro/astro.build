@@ -11,7 +11,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/npmrun/art-theme"
 demoUrl: "https://art-theme.netlify.app/"
-stars: 20
+stars: 22
 tools:
   - "vue"
   - "tailwind"

@@ -10,6 +10,6 @@ npmUrl: "https://www.npmjs.com/package/@astrojs/lit"
 image: "/assets/integrations/lit.svg"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/lit/"
-downloads: 12320
+downloads: 11763
 official: true
 ---

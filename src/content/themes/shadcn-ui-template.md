@@ -15,7 +15,7 @@ tools:
   - "tailwind"
   - "typescript"
 publishDate: "Nov 20, 2023"
-stars: 50
+stars: 56
 ---
 
 <p>This template helps you build apps with Astro, Tailwind CSS, and

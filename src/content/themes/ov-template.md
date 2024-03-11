@@ -20,7 +20,7 @@ tools:
   - "tailwind"
   - "postcss"
 publishDate: "Jan 16, 2024"
-stars: 12
+stars: 16
 ---
 
 <p>

@@ -11,5 +11,5 @@ categories:
   - "docs"
 repoUrl: "https://github.com/MicroWebStacks/astro-big-doc"
 demoUrl: "https://astro-big-doc.netlify.app"
-stars: 44
+stars: 45
 ---
