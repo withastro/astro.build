@@ -1,8 +1,10 @@
 ---
 import Icon from "astro-icon"
-import FeatureCard from "./FeatureCard.astro"
-import FeatureMicroCard from "./FeatureMicroCard.astro"
+import ORM from "./features/ORM.astro"
 import SectionText from "./SectionText.astro"
+import FeatureCard from "./FeatureCard.astro"
+import ZeroLockin from "./features/ZeroLockin.astro"
+import SQLCommands from "./features/SQLCommands.astro"
 ---
 
 <section class="mx-auto w-full max-w-screen-xl space-y-10 p-4 sm:p-8">
@@ -11,8 +13,8 @@ import SectionText from "./SectionText.astro"
 		<Fragment slot="title">Everything you need, included</Fragment>
 	</SectionText>
 
-	<ul class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
-		<li
+	<div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+		<div
 			class="landing-section min-h-[480px] space-y-3 rounded-2xl border border-white/15 bg-[url('/assets/db/astro-ecosystem.png')] bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
 		>
 			<svg
@@ -53,40 +55,35 @@ import SectionText from "./SectionText.astro"
 			<p class="body w-2/3 text-balance text-astro-gray-200">
 				A deeply integrated, unified developer experience.
 			</p>
-		</li>
-
-		<div class="grid gap-2">
-			<FeatureMicroCard>
-				<img
-					slot="illustration"
-					class="h-full w-auto"
-					src="/assets/db/zero-lockin.png"
-					alt="Zero lockin illustration"
-				/>
-				<Fragment slot="title">Zero Lockin</Fragment>
-				<Fragment slot="description">Export your data anytime.</Fragment>
-			</FeatureMicroCard>
-
-			<FeatureMicroCard>
-				<Fragment slot="illustration">
-					<img
-						class="h-full w-auto py-4"
-						src="/assets/db/typescript-orm.png"
-						alt="TypeScript ORM illustration"
-					/>
-				</Fragment>
-				<Fragment slot="title">TypeScript ORM</Fragment>
-				<Fragment slot="description">
-					Includes a modern, TypeScript ORM with type-safety and autocomplete on every query.
-				</Fragment>
-			</FeatureMicroCard>
 		</div>
 
-		<li
-			class="flex flex-col justify-between gap-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4"
+		<div class="grid gap-2">
+			<div class="space-y-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4">
+				<ZeroLockin />
+
+				<div>
+					<h3 class="text-lg text-astro-gray-200">Zero Lockin</h3>
+					<p class="body text-balance text-astro-gray-300">Export your data anytime.</p>
+				</div>
+			</div>
+
+			<div class="space-y-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4">
+				<ORM />
+
+				<div>
+					<h3 class="text-lg text-astro-gray-200">TypeScript ORM</h3>
+					<p class="body text-balance text-astro-gray-300">
+						Includes a modern, TypeScript ORM with type-safety and autocomplete on every query.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="md:max-lg:col-span-2 flex flex-col justify-between gap-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4"
 		>
-			<div class="flex h-full items-center">
-				<img class="h-fit w-auto" src="/assets/db/all-sql-commands.png" alt="SQL illustration" />
+			<div class="flex justify-center h-full items-center">
+				<SQLCommands />
 			</div>
 
 			<div>
@@ -96,39 +93,39 @@ import SectionText from "./SectionText.astro"
 					Why reinvent the wheel? Astro DB speaks the familiar, universal database language: SQL.
 				</p>
 			</div>
-		</li>
-
-		<div class="col-span-3 grid grid-cols-1 gap-2 lg:grid-cols-2">
-			<FeatureCard>
-				<Fragment slot="title">Visual Data Views</Fragment>
-				<Fragment slot="description">
-					Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
-				</Fragment>
-
-				<Fragment slot="illustration">
-					<img
-						class="h-fit w-auto"
-						src="/assets/db/visual-data-view-illustration.png"
-						alt="Visual Data Views illustration"
-					/>
-				</Fragment>
-			</FeatureCard>
-
-			<FeatureCard removePadding>
-				<Fragment slot="title">Global Distribution</Fragment>
-				<Fragment slot="description">
-					Create databases in 8 different regions around the world, including the EU and Japan.
-				</Fragment>
-				<Fragment slot="illustration">
-					<img
-						class="h-full w-auto"
-						src="/assets/db/global-distribution.png"
-						alt="Global Distribution illustration"
-					/>
-				</Fragment>
-			</FeatureCard>
 		</div>
-	</ul>
+	</div>
+
+	<div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+		<FeatureCard>
+			<Fragment slot="title">Visual Data Views</Fragment>
+			<Fragment slot="description">
+				Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
+			</Fragment>
+
+			<Fragment slot="illustration">
+				<img
+					class="h-fit w-auto"
+					src="/assets/db/visual-data-view-illustration.png"
+					alt="Visual Data Views illustration"
+				/>
+			</Fragment>
+		</FeatureCard>
+
+		<FeatureCard removePadding>
+			<Fragment slot="title">Global Distribution</Fragment>
+			<Fragment slot="description">
+				Create databases in 8 different regions around the world, including the EU and Japan.
+			</Fragment>
+			<Fragment slot="illustration">
+				<img
+					class="h-full w-auto"
+					src="/assets/db/global-distribution.png"
+					alt="Global Distribution illustration"
+				/>
+			</Fragment>
+		</FeatureCard>
+	</div>
 
 	<div class="mt-8 grid grid-cols-1 gap-2 sm:mt-12 md:grid-cols-2 lg:grid-cols-3">
 		<div class="space-y-1 text-white">

@@ -1,0 +1,39 @@
+---
+const arithmeticOperators = ["avg", "min", "max", "count", "sum"]
+const joins = ["left", "inner", "cross", "outer", "right"]
+const operators = ["distinct", "order by", "where", "limit", "between"]
+const queries = ["select", "insert", "update", "delete"]
+const dataTypes = ["null", "integer", "real", "text", "blob"]
+---
+
+<div class="flex flex-col gap-2 items-center overflow-hidden whitespace-nowrap text-astro-gray-400 body">
+    <div class="flex w-fit gap-2">
+        {arithmeticOperators.map(operator => (
+            <div class="py-2 px-4 uppercase rounded-full bg-[#2C2C2C]/20 border border-[#4B4B4B]/30 ">{operator}</div>
+        ))}
+    </div>
+
+    <div class="flex w-fit gap-2">
+        {joins.map(join => (
+            <div class="py-2 px-4 uppercase rounded-full bg-[#2C2C2C]/20 border border-[#4B4B4B]/30 ">{join}</div>
+        ))}
+    </div>
+
+    <div class="flex  w-fit gap-2">
+        {operators.map(operator => (
+            <div class="py-2 px-4 uppercase rounded-full bg-[#2C2C2C]/20 border border-[#4B4B4B]/30 ">{operator}</div>
+        ))}
+    </div>
+
+    <div class="flex  w-fit gap-2">
+        {queries.map(query => (
+            <div class="py-2 px-4 uppercase rounded-full bg-[#2C2C2C]/20 border border-[#4B4B4B]/30 ">{query}</div>
+        ))}
+    </div>
+
+    <div class="flex  w-fit gap-2">
+        {dataTypes.map(type => (
+            <div class="py-2 px-4 uppercase rounded-full bg-[#2C2C2C]/20 border border-[#4B4B4B]/30 ">{type}</div>
+        ))}
+    </div>
+</div>
