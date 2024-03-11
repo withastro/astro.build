@@ -1,0 +1,148 @@
+---
+title: "Astro 4.5"
+description: "Astro 4.5 is out! This release includes the addition of performance audits for the dev toolbar, performance upgrades, the ability to automatically infer the dimensions of remote images, and more."
+publishDate: "March 11, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-450/post-header-4.5.webp"
+socialImage: "/src/content/blog/_images/astro-450/og-image-4.5.webp"
+lang: "en"
+---
+
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import BlogSummary from "/src/components/BlogSummary.astro"
+import auditPanel from "/src/content/blog/_images/astro-450/audit-panel.webp"
+
+<BlogSummary>Astro 4.5 is now available! This release improves the developer experience with a new, first-of-its-kind [Dev Audit UI](#improved-audit-list). Automatically identify site performance and accessibility issues during development--without ever leaving your browser.</BlogSummary>
+
+Full release highlights include:
+
+- [Dev Audit UI](#dev-audit-ui)
+- [View Transitions: Re-render islands](#view-transitions-re-render-islands)
+- [View Transitions: Re-run scripts](#view-transitions-re-run-scripts)
+- [Shiki 1.0](#shiki-10)
+- [Multi-CDN asset prefixing](#multi-cdn-asset-prefixing)
+- [Experimental: JSON Schemas for Data Collections](#experimental-json-schemas-for-data-collections)
+- [Experimental: New script detection algorithm](#experimental-new-script-detection-algorithm)
+
+Visit [astro.new](https://astro.new) to start a new project with Astro 4.5 today!
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. You can also upgrade all of your Astro dependencies manually with `npm install`.
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Dev Audit UI
+
+Some web performance and accessibility problems can only be caught in the browser. Testing for these issues can be cumbersome and slow, and many developers end up skipping -- or forgetting -- altogether. 
+
+Astro is bridging the gap between power and convenience with the brand-new Dev Audit UI. Visualize and navigate audits in a new, neatly organized UI panel. Browse issues by category and click to see more details, all from inside your dev browser and visible in line with the actual UI elements on your page.
+
+<BlogContentImage src={auditPanel} alt="The new audit panel in Astro 4.5. Shows the problem title, a short message explaining the problem, and a longer description as to why this is a problem." />
+
+This is especially useful when trying to understand *why* something on your page is flagged as an issue. Click any issue, and you'll be instantly scrolled to that element on the page. In addition, each item comes with an explainer and detailed guidance.
+
+The new Dev Audit UI was first previewed in [Astro 4.4](https://astro.build/blog/astro-440/#audit-list). Thank you to everyone who tested and provided feedback ahead of this release!
+
+## View Transitions: Re-render islands
+
+When using View Transitions, [Astro islands persisted using the `transition:persist` property](https://docs.astro.build/en/guides/view-transitions/#maintaining-state) can now be updated with new props when the page changes.
+
+This can be useful for instance for a product list, where you might want user-set filters to stay the same between page changes, but the list of products to update based on the current page. Previously, you would have to build your component to update the product list manually. After this update, the component will now automatically re-render with the new props when the page changes, while still keeping the same state.
+
+This feature does not require any configuration and is enabled by default. If needed, the `transition:persist-props` property can be used to opt out of this behavior.
+
+## View Transitions: Re-run scripts
+
+A common surprise when using View Transitions is that inlined scripts do not automatically rerun when the page changes. This caused us to link to [our documentation on script behavior during page navigation](https://docs.astro.build/en/guides/view-transitions/#script-behavior-with-view-transitions) multiple times per day.
+
+To make it easier for our users, Astro 4.5 now includes a `data-astro-rerun` attribute that can be added to inlined script tags to automatically rerun the script whenever the page changes:
+
+```astro
+<script data-astro-rerun is:inline>
+	console.log('This script will rerun when the page changes!');
+</script>
+```
+
+## Shiki 1.0
+
+In a previous release, we migrated Astro's syntax highlighting to use a fork of [Shiki](https://shiki.style/) called [Shikiji](https://github.com/antfu/shikiji). Shikiji was recently merged back into Shiki. As such, we're going back to Shiki too!
+
+This change should be completely transparent to users, and should not require any changes to your code. However, Astro 4.5 comes with several other benefits to syntax highlighting, including:
+
+- The `markdown.shikiConfig.experimentalThemes` option has also been stabilized as `markdown.shikiConfig.themes`, allowing easier dual-theme support.
+- The [`<Code />` component](https://docs.astro.build/en/reference/api-reference/#code-) now accepts arbitrary attribute names that will be passed to the inner `pre` or `code` element. This allows easier styling and flexibility when rendering a code block. Thanks to [StandardGage](https://github.com/StandardGage) for contributing this feature.
+
+## Multi-CDN asset prefixing
+
+Astro 4.5 introduces the ability to specify different CDN prefixes for different file extensions. This can be useful when you want to serve different types of assets from different CDNs, for example, serving images from a separate CDN with an optimized caching strategy.
+
+To use this feature, add the `build.assetsPrefix` option to your `astro.config.mjs`, with the file extensions as keys and the CDN prefix as values:
+
+```js
+// astro.config.mjs
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+    build: {
+        assetsPrefix: {
+            'js': "https://js.cdn.example.com",
+            'png': "https://images.cdn.example.com",
+            'fallback': "https://generic.cdn.example.com"
+        }
+    }
+})
+```
+
+Thanks to [Zhang Zhipeng](https://github.com/peng) for contributing this feature. For more information on `build.assetsPrefix`, see our [configuration reference](https://docs.astro.build/en/reference/configuration-reference/#buildassetsprefix).
+
+## Experimental: JSON Schemas for Data Collections
+
+Astro 4.5 introduces experimental support for automatically generating [JSON schemas](https://json-schema.org/) for data collections. JSON schemas are a powerful way to describe the shape of your data and can be used to provide validation, autocompletion, and documentation for your data collections directly in your editor. To enable this feature, add the following to your `astro.config.mjs`:
+
+```diff
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
++		contentCollectionJsonSchema: true
+	}
+});
+```
+
+For now, these schemas need to be manually linked to your data collection entries, but we're hoping to make this process automatic in future releases. See [the documentation for this experimental flag](https://docs.astro.build/en/reference/configuration-reference/#experimentalcontentcollectionjsonschema) for more details on how to use this feature.
+
+## Experimental: New script detection algorithm
+
+In Astro 2.10.4, an experimental option called `optimizeHoistedScript` was added to help fix an old-standing issue where scripts could get included in pages despite being unused. In Astro 4.5, we are replacing `optimizeHoistedScript` with a new experimental option called `directRenderScript` that should now cover all cases and be more reliable.
+
+To try out this new feature, remove the `optimizeHoistedScript` option if you have it and add the `directRenderScript` option to your `astro.config.mjs`:
+
+```diff
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
+-		optimizeHoistedScript: true,
++		directRenderScript: true
+	}
+});
+```
+
+We're hoping to make this feature the default in a future major release. For more information on this feature, see our [configuration reference](https://docs.astro.build/en/reference/configuration-reference/#experimentaldirectrenderscript).
+
+## Bug Fixes
+
+As always, Astro 4.5 includes more bug fixes and smaller improvements that couldn't make it into this release post. Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#450) to learn more.
