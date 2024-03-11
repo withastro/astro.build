@@ -4,49 +4,32 @@ import PageTitleBlock from "~/components/PageTitleBlock.astro"
 import bg from "../_assets/hero-bg.png"
 import CTA from "../_components/CTA.astro"
 
-const background = await getImage({ src: bg, format: "webp", width: 1280 })
+const background = await getImage({ src: bg, format: "webp", width: 2560 })
 ---
 
 <section
 	style={{ "background-image": `url(${background.src})` }}
-	class="landing-section relative overflow-x-hidden bg-cover bg-no-repeat px-4 pb-16 pt-14 sm:px-8 sm:pt-20 lg:pt-32"
+	class="align-center landing-section relative flex min-h-[calc(100dvh-5rem)] content-center items-center overflow-x-hidden bg-[#6628C6] bg-cover bg-no-repeat px-4 py-16 md:px-8"
 >
-	<div class="z-20">
+	<div
+		class="size-full from-67% pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-[transparent] to-[#080B14]/100 to-100%"
+	>
+	</div>
+
+	<div class="z-20 m-auto">
 		<PageTitleBlock
+			wide
 			lg
 			body="Astro DB is a fully-managed SQL database that is fast, lightweight, and ridiculously easy-to-use."
 		>
 			<h1
 				slot="title"
-				class="heading text-balance mb-10 max-w-[24ch] px-4 text-center text-2xl/[1.1] font-bold md:text-4xl/[1.1] lg:text-5xl/[1.1]"
+				class="text-balance mb-4 text-center text-3xl/[1.1] font-bold heading sm:max-w-[24ch] md:text-4xl/[1.1] lg:text-5xl/[1.1]"
 			>
 				The database platform for content-driven websites
 			</h1>
 		</PageTitleBlock>
-	</div>
-
-	<div class="z-20 mb-14 mt-8 flex w-full justify-center gap-6 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28">
-		<CTA />
-	</div>
-
-	<div
-		class="demo-video z-20 max-w-screen-xl overflow-hidden rounded-[17px] p-[1px] backdrop-blur-lg"
-	>
-		<div class="rounded-2xl bg-gradient-to-b from-[#53466C]/95 to-[#393B43]/80 p-1 sm:p-2">
-			<video class="aspect-video w-full max-w-screen-xl rounded-xl object-cover" controls loop>
-				<source
-					src="/assets/db/a_new_kind_of_database.mp4"
-					type="video/mp4"
-					width="1200"
-					height="630"
-				/>
-			</video>
-		</div>
-	</div>
-
-	<div
-		class="size-full absolute bottom-0 z-10 bg-gradient-to-b from-[#6628C6]/0 from-10% to-[#080B14] to-90%"
-	>
+		<CTA class="mt-8" />
 	</div>
 </section>
 

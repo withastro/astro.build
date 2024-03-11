@@ -1,8 +1,10 @@
 ---
 import ExternalLink from "~/components/ExternalLink.astro"
+
+const { class: classList } = Astro.props
 ---
 
-<div class="flex w-full justify-center gap-4">
+<div class:list={["flex w-full flex-col justify-center gap-4 sm:flex-row", classList]}>
 	<ExternalLink href="#" class="button button-white">Get started for free</ExternalLink>
 	<ExternalLink href="#" class="button border-0 bg-[#222636]/20">Sign In</ExternalLink>
 </div>
