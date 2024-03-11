@@ -13,7 +13,7 @@ import SectionText from "./SectionText.astro"
 
 	<ul class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
 		<li
-			class="border-white/15 landing-section min-h-[480px] space-y-3 rounded-2xl border bg-[url('/assets/db/astro-ecosystem.png')] bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
+			class="landing-section min-h-[480px] space-y-3 rounded-2xl border border-white/15 bg-[url('/assets/db/astro-ecosystem.png')] bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ import SectionText from "./SectionText.astro"
 			</svg>
 
 			<h3 class="text-balance text-lg text-astro-gray-100">Designed for the Astro ecosystem</h3>
-			<p class="text-balance body w-2/3 text-astro-gray-200">
+			<p class="body w-2/3 text-balance text-astro-gray-200">
 				A deeply integrated, unified developer experience.
 			</p>
 		</li>
@@ -60,21 +60,19 @@ import SectionText from "./SectionText.astro"
 				<img
 					slot="illustration"
 					class="h-full w-auto"
-					src="/assets/db/sql-commands.png"
-					alt="Webhooks illustration"
+					src="/assets/db/zero-lockin.png"
+					alt="Zero lockin illustration"
 				/>
-				<Fragment slot="title">SQL</Fragment>
-				<Fragment slot="description">
-					Why reinvent the wheel? Astro DB speaks the familiar, universal database language: SQL.
-				</Fragment>
+				<Fragment slot="title">Zero Lockin</Fragment>
+				<Fragment slot="description">Export your data anytime.</Fragment>
 			</FeatureMicroCard>
 
 			<FeatureMicroCard>
 				<Fragment slot="illustration">
 					<img
-						class="h-full w-auto"
-						src="/assets/db/sql-commands.png"
-						alt="Webhooks illustration"
+						class="h-full w-auto py-4"
+						src="/assets/db/typescript-orm.png"
+						alt="TypeScript ORM illustration"
 					/>
 				</Fragment>
 				<Fragment slot="title">TypeScript ORM</Fragment>
@@ -84,77 +82,73 @@ import SectionText from "./SectionText.astro"
 			</FeatureMicroCard>
 		</div>
 
-		<FeatureCard removePadding>
-			<Fragment slot="title">Global Distribution</Fragment>
-			<Fragment slot="description">
-				Create databases in 8 different regions around the world, including the EU and Japan.
-			</Fragment>
-			<Fragment slot="illustration">
-				<img
-					class="h-full w-auto"
-					src="/assets/db/global-distribution.png"
-					alt="Global Distribution illustration"
-				/>
-			</Fragment>
-		</FeatureCard>
+		<li
+			class="flex flex-col justify-between gap-4 rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4"
+		>
+			<div class="flex h-full items-center">
+				<img class="h-fit w-auto" src="/assets/db/all-sql-commands.png" alt="SQL illustration" />
+			</div>
 
-		<FeatureCard>
-			<Fragment slot="title">Webhooks</Fragment>
-			<Fragment slot="description">
-				Data changes trigger webhooks that can integrate with any third-party tools.
-			</Fragment>
-			<Fragment slot="illustration">
-				<img class="h-fit w-auto" src="/assets/db/webhooks.png" alt="Webhooks illustration" />
-			</Fragment>
-		</FeatureCard>
+			<div>
+				<h3 class="text-lg text-astro-gray-200">SQL</h3>
 
-		<FeatureCard>
-			<Fragment slot="title">GitHub Automation</Fragment>
-			<Fragment slot="description">
-				The official GitHub Action automates schema management directly inside of your workflow.
-			</Fragment>
-			<Fragment slot="illustration">
-				<img
-					class="h-fit w-auto"
-					src="/assets/db/github-actions.png"
-					alt="GitHub Automation illustration"
-				/>
-			</Fragment>
-		</FeatureCard>
+				<p class="body text-balance text-astro-gray-300">
+					Why reinvent the wheel? Astro DB speaks the familiar, universal database language: SQL.
+				</p>
+			</div>
+		</li>
 
-		<FeatureCard>
-			<Fragment slot="title">Visual Data Views</Fragment>
-			<Fragment slot="description">
-				Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
-			</Fragment>
-			<Fragment slot="illustration">
-				<img
-					class="h-fit w-auto"
-					src="/assets/db/studio-datatable.png"
-					alt="Visual Data Views illustration"
-				/>
-			</Fragment>
-		</FeatureCard>
+		<div class="col-span-3 grid grid-cols-1 gap-2 lg:grid-cols-2">
+			<FeatureCard>
+				<Fragment slot="title">Visual Data Views</Fragment>
+				<Fragment slot="description">
+					Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
+				</Fragment>
+
+				<Fragment slot="illustration">
+					<img
+						class="h-fit w-auto"
+						src="/assets/db/visual-data-view-illustration.png"
+						alt="Visual Data Views illustration"
+					/>
+				</Fragment>
+			</FeatureCard>
+
+			<FeatureCard removePadding>
+				<Fragment slot="title">Global Distribution</Fragment>
+				<Fragment slot="description">
+					Create databases in 8 different regions around the world, including the EU and Japan.
+				</Fragment>
+				<Fragment slot="illustration">
+					<img
+						class="h-full w-auto"
+						src="/assets/db/global-distribution.png"
+						alt="Global Distribution illustration"
+					/>
+				</Fragment>
+			</FeatureCard>
+		</div>
 	</ul>
+
 	<div class="mt-8 grid grid-cols-1 gap-2 sm:mt-12 md:grid-cols-2 lg:grid-cols-3">
 		<div class="space-y-1 text-white">
 			<Icon name="ri:download-2-line" size={20} />
-			<h3>Zero lock-in.</h3>
-			<p class="text-balance text-astro-gray-200">Export your data anytime</p>
+			<h3 class="text-base">Zero lock-in.</h3>
+			<p class="body text-balance text-astro-gray-300">Export your data anytime</p>
 		</div>
 
 		<div class="space-y-1 text-white">
 			<Icon name="ri:code-s-slash-fill" size={20} />
-			<h3>Instant local development.</h3>
-			<p class="text-balance text-astro-gray-200">
+			<h3 class="text-base">Instant local development.</h3>
+			<p class="body text-balance text-astro-gray-300">
 				Develop locally with zero dependencies. No Docker? No problem.
 			</p>
 		</div>
 
 		<div class="space-y-1 text-white">
 			<Icon name="ri:dashboard-line" size={20} />
-			<h3>Schema management.</h3>
-			<p class="text-balance text-astro-gray-200">
+			<h3 class="text-base">Schema management.</h3>
+			<p class="body text-balance text-astro-gray-300">
 				Your schema lives in your codebase, with automatic schema diffing and migrations.
 			</p>
 		</div>
