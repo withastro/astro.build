@@ -6,6 +6,10 @@ import UseCaseTabs from "./UseCaseTabs.astro"
 <div class="container relative w-screen">
 	<div class="absolute inset-0 z-0 mx-auto w-full max-w-screen-xl">
 		<div class="pattern-grid"></div>
+		<div
+			class="pattern-overlay pointer-events-none absolute inset-0 bg-gradient-to-b from-[transparent] from-0% to-[#080B14] to-100%"
+		>
+		</div>
 	</div>
 	<section
 		class="mx-auto w-full max-w-screen-xl space-y-10 bg-cover bg-center bg-no-repeat p-4 sm:p-8"
@@ -34,6 +38,12 @@ import UseCaseTabs from "./UseCaseTabs.astro"
 	.container {
 		min-height: 64rem;
 	}
+	.pattern-overlay {
+		position: absolute;
+		left: 0;
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+	}
 	.pattern-grid {
 		pointer-events: none;
 		--width: 400rem;
@@ -43,7 +53,7 @@ import UseCaseTabs from "./UseCaseTabs.astro"
 		--line-width: 1px;
 		--line-width-offset: calc(var(--line-width) + (var(--line-width) / 2));
 		--pos: calc(var(--line-width) * -1);
-		--line-color: #0c0f19;
+		--line-color: #242832;
 		position: absolute;
 		left: 0;
 		top: 24rem;
