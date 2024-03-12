@@ -13,12 +13,12 @@ export const prerender = false
 
 const slug = Astro.params.slug as string
 
-const theme = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?id=${slug}`).then(
+const theme = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
 	(res) => res.json(),
 )
 
-const relatedThemes = await fetch(
-	`${import.meta.env.THEMES_API_URL}/api/themes/related?id=${slug}`,
+const relatedThemes: Array<any> = await fetch(
+	`${import.meta.env.THEMES_API_URL}/api/themes/related?slug=${slug}`,
 ).then((res) => res.json())
 ---
 
@@ -73,18 +73,24 @@ const relatedThemes = await fetch(
 				<ThemeStats theme={theme} class="p-6 lg:p-8 xl:p-10" />
 			</aside>
 		</div>
-		<div class="related bleed-full relative border-t border-astro-gray-500">
-			<div class="grid-container gap-y-10 pb-0 pt-20">
-				<CardGridGroup
-					title="Other themes to consider"
-					cta={{ href: "/themes/", text: "View more themes" }}
-				>
-					<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
-						{relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
-					</CardGrid>
-				</CardGridGroup>
-			</div>
-		</div>
+		{
+			relatedThemes.length > 0 && (
+				<div class="related bleed-full relative border-t border-astro-gray-500">
+					<div class="grid-container gap-y-10 pb-0 pt-20">
+						<CardGridGroup
+							title="Other themes to consider"
+							cta={{ href: "/themes/", text: "View more themes" }}
+						>
+							<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
+								{relatedThemes.map((theme) => (
+									<ThemeCard theme={theme} />
+								))}
+							</CardGrid>
+						</CardGridGroup>
+					</div>
+				</div>
+			)
+		}
 	</div>
 
 	<style>
