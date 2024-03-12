@@ -11,12 +11,6 @@ import Auth from "./use-cases/Auth.astro"
 <astro-db-tabs class="relative">
 	<ul class="mt-16 flex max-w-full overflow-x-auto pb-1 text-astro-gray-200">
 		<li>
-			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="blog">
-				<Icon class="text-current" name="uil:notes" width="40" />
-				<p class="text-lg">Blog</p>
-			</button>
-		</li>
-		<li>
 			<button
 				role="tab"
 				aria-selected="true"
@@ -25,6 +19,12 @@ import Auth from "./use-cases/Auth.astro"
 			>
 				<Icon class="text-current" name="uil:comments-alt" width="40" />
 				<p class="text-lg">Comments</p>
+			</button>
+		</li>
+		<li>
+			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="blog">
+				<Icon class="text-current" name="uil:notes" width="40" />
+				<p class="text-lg">Blog</p>
 			</button>
 		</li>
 		<li>
