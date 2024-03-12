@@ -24,6 +24,12 @@ export default {
 				sans: ["Inter", "sans-serif"],
 				mono: [`"MDIO"`, "md-io-fallback", "monospace"],
 				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
+				"obviously-variable": [
+					"Obviously Variable",
+					"Obviously",
+					"obviously-regular-fallback",
+					"sans-serif",
+				],
 				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},
 			colors: {
@@ -252,6 +258,16 @@ export default {
 
 				".panel": {
 					"@apply border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
+				},
+			})
+		}),
+
+		plugin(function makeDBTypographyPlugin(api) {
+			api.addUtilities({
+				".db .heading": {
+					"@apply font-obviously": {},
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
+					"font-variation-settings": `"wght" 475, "wdth" 490`,
 				},
 			})
 		}),

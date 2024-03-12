@@ -1,0 +1,63 @@
+---
+import { Icon } from "astro-icon"
+
+interface Props {
+	title: string
+	icon: string
+	active?: boolean
+}
+
+const { icon, title, active = false } = Astro.props
+---
+
+<li>
+	<button
+		role="tab"
+		aria-selected={active ? "true" : undefined}
+		class="md:min-w-16 relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:min-w-[8rem] md:flex-col md:rounded-lg md:p-4 md:px-6"
+		data-tab={title.toLowerCase()}
+	>
+		<Icon class="text-current" name={icon} width="20" />
+		<p>{title}</p>
+	</button>
+</li>
+
+<style>
+	button[data-tab] {
+		opacity: 0.5;
+	}
+	button[aria-selected="true"] {
+		opacity: 1;
+		color: white;
+	}
+	@screen md {
+		button svg {
+			--size: 2.5rem;
+			width: var(--size);
+			height: var(--size);
+		}
+	}
+	[aria-selected="true"]::before,
+	[aria-selected="true"]::after {
+		content: "";
+		position: absolute;
+		border-radius: inherit;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		@apply bg-blue-purple-gradient;
+		z-index: 0;
+	}
+	button > * {
+		z-index: 1;
+	}
+	[aria-selected="true"]::after {
+		top: 1px;
+		right: 1px;
+		bottom: 1px;
+		left: 1px;
+		background: #060913
+			linear-gradient(83.21deg, rgba(50, 70, 255, 0.2) 0%, rgba(184, 69, 237, 0.2) 100%);
+	}
+</style>

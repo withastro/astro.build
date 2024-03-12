@@ -1,0 +1,161 @@
+---
+import Icon from "astro-icon"
+import AstroIcon from "./AstroLogo.astro"
+import HeroVideo from "./HeroVideo.astro"
+import SectionText from "./SectionText.astro"
+import DataView from "./features/DataView.astro"
+import GlobalDistribution from "./features/GlobalDistribution.astro"
+import ORM from "./features/ORM.astro"
+import SQLCommands from "./features/SQLCommands.astro"
+import ZeroLockin from "./features/ZeroLockin.astro"
+---
+
+<section class="mx-auto w-full max-w-screen-xl space-y-2 p-4 sm:p-8">
+	<SectionText>
+		<Fragment slot="eyebrow">Features</Fragment>
+		<Fragment slot="title">Everything you need, included</Fragment>
+	</SectionText>
+
+	<div class="grid grid-cols-1 gap-2 pt-8 md:grid-cols-2 lg:grid-cols-3">
+		<figure
+			class="landing-section relative min-h-[30rem] space-y-3 overflow-hidden rounded-2xl border border-white/30 bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
+		>
+			<HeroVideo height="480" aria-hidden="true" />
+			<div
+				class="illustration pointer-events-none isolate select-none overflow-hidden pt-4"
+				aria-hidden="true"
+			>
+				<AstroIcon />
+			</div>
+			<p class="sr-only">Astro logo</p>
+
+			<figcaption class="static z-10 flex flex-col items-center space-y-1 p-4">
+				<h3 class="text-balance text-lg font-semibold text-astro-gray-100">
+					Designed for the Astro ecosystem
+				</h3>
+				<p class="text-balance body w-2/3 text-astro-gray-200">
+					A deeply integrated, unified developer experience.
+				</p>
+			</figcaption>
+		</figure>
+
+		<div class="grid gap-2">
+			<figure
+				class="flex flex-col space-y-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19]"
+			>
+				<div class="illustration pointer-events-none isolate select-none pt-4" aria-hidden="true">
+					<SQLCommands />
+				</div>
+				<p class="sr-only">List of common SQL keywords such as SELECT and JOIN</p>
+				<figcaption class="p-4">
+					<h3 class="text-lg font-semibold text-astro-gray-100">SQL</h3>
+					<p class="text-balance body text-astro-gray-200">
+						Why reinvent the wheel? Astro DB speaks the familiar, universal database language: SQL.
+					</p>
+				</figcaption>
+			</figure>
+
+			<figure
+				class="space-y-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4"
+			>
+				<div class="illustration pointer-events-none isolate select-none" aria-hidden="true">
+					<ORM />
+				</div>
+				<p class="sr-only">
+					Code snippet demonstrating TypeScript autocompletion for a User schema
+				</p>
+				<figcaption>
+					<h3 class="font-semibold text-astro-gray-100">TypeScript ORM</h3>
+					<p class="body text-astro-gray-200">
+						Includes a modern, TypeScript ORM with type-safety and autocomplete on every query.
+					</p>
+				</figcaption>
+			</figure>
+		</div>
+
+		<figure
+			class="flex flex-col justify-between gap-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4 md:max-lg:col-span-2"
+		>
+			<div class="illustration pointer-events-none isolate my-auto select-none" aria-hidden="true">
+				<ZeroLockin />
+			</div>
+			<p class="sr-only">
+				"Export data" button with a dropdown that says "Export as SQL" and "Export as CSV"
+			</p>
+			<figcaption>
+				<h3 class="font-semibold text-astro-gray-100">Zero lock-in</h3>
+				<p class="body min-h-[3rem] text-astro-gray-200">
+					It's your data. Export it anytime, in the format you need.
+				</p>
+			</figcaption>
+		</figure>
+	</div>
+
+	<div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+		<figure
+			class="max-h-[24rem] space-y-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19]"
+		>
+			<figcaption class="p-4">
+				<h3 class="font-semibold text-astro-gray-100">Visual Data Viewers</h3>
+				<p class="text-balance body text-astro-gray-200">
+					Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
+				</p>
+			</figcaption>
+			<p class="sr-only">Illustration of a bable-based user interface, similar to that of Excel</p>
+			<div class="illustration pointer-events-none isolate select-none pl-4" aria-hidden="true">
+				<DataView />
+			</div>
+		</figure>
+
+		<figure
+			class="relative h-[24rem] overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19]"
+		>
+			<figcaption class="p-4">
+				<h3 class="font-semibold text-astro-gray-100">Global Distribution</h3>
+				<p class="text-balance body text-astro-gray-200">
+					Create databases in 8 different regions around the world, including the EU and Japan.
+				</p>
+			</figcaption>
+			<p class="sr-only">A spinning globe with markers in 8 regions around the world</p>
+			<div
+				class="illustration pointer-events-none isolate flex select-none justify-end overflow-hidden"
+			>
+				<GlobalDistribution />
+			</div>
+		</figure>
+	</div>
+
+	<div class="grid grid-cols-1 gap-8 pt-8 sm:pt-12 md:grid-cols-2 lg:grid-cols-4">
+		<div class="space-y-1 text-white">
+			<Icon name="ri:dashboard-line" size={24} />
+			<h3 class="text-base">Schema management</h3>
+			<p class="text-balance body text-astro-gray-200">
+				Your schema lives in your codebase, with automatic schema diffing and migrations.
+			</p>
+		</div>
+
+		<div class="space-y-1 text-white">
+			<Icon name="ri:code-s-slash-line" size={24} />
+			<h3 class="text-base">Instant local development</h3>
+			<p class="text-balance body text-astro-gray-200">
+				Develop locally with zero dependencies. No Docker? No problem.
+			</p>
+		</div>
+
+		<div class="space-y-1 text-white">
+			<Icon name="ri:apps-2-line" size={24} />
+			<h3 class="text-base">Webhooks</h3>
+			<p class="text-balance body text-astro-gray-200">
+				Changes to data trigger webhooks that can integrate with most third-party tools.
+			</p>
+		</div>
+
+		<div class="space-y-1 text-white">
+			<Icon name="ri:github-fill" size={24} />
+			<h3 class="text-base">GitHub Automation</h3>
+			<p class="text-balance body text-astro-gray-200">
+				Easy-to-use simplicity meets powerful scalability, with a visual UI that will save you time.
+			</p>
+		</div>
+	</div>
+</section>

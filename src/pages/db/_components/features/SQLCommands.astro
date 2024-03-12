@@ -1,0 +1,29 @@
+---
+const arithmetic = ["avg", "min", "max", "count", "sum"]
+const data = ["null", "integer", "real", "text", "blob"]
+const joins = ["left", "inner", "cross", "outer", "right"]
+const operators = ["distinct", "order by", "where", "limit", "between"]
+const queries = ["select", "insert", "update", "delete"]
+const keys = ["primary", "foreign", "unique", "composite", "alternate"]
+const constraints = ["not null", "check", "index", "default", "unique"]
+
+const a = [...arithmetic, ...data]
+const b = [...queries, ...joins, ...operators]
+const c = [...keys, ...constraints]
+
+const all = [a, b, c]
+---
+
+<div class="body -ml-8 flex flex-col items-start gap-2 whitespace-nowrap text-astro-gray-400">
+	{
+		all.map((group) => (
+			<div class="flex w-fit gap-2">
+				{group.map((operator) => (
+					<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
+						{operator}
+					</div>
+				))}
+			</div>
+		))
+	}
+</div>

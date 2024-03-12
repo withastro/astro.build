@@ -1,0 +1,23 @@
+---
+const { removePadding = false } = Astro.props
+---
+
+<li class="space-y-2 rounded-xl border border-[#858B98]/20 bg-[#0C0F19]">
+	<div
+		class:list={[
+			"flex h-1/2 w-full justify-center overflow-hidden",
+			removePadding ? "px-0" : "px-4",
+		]}
+	>
+		<slot name="illustration" />
+	</div>
+	<div class="p-4">
+		<h3 class="text-lg text-astro-gray-200">
+			<slot name="title" />
+		</h3>
+
+		<p class="text-balance body text-astro-gray-300">
+			<slot name="description" />
+		</p>
+	</div>
+</li>

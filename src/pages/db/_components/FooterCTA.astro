@@ -1,0 +1,21 @@
+---
+import { getImage } from "astro:assets"
+import CodeBlock from "~/components/CodeBlock.astro"
+import bg from "../_assets/footer-bg.png"
+
+const background = await getImage({ src: bg, format: "webp", width: 1280 })
+---
+
+<section class="mx-auto mb-12 w-full max-w-screen-xl p-4 sm:p-8">
+	<div
+		class="overflow-hidden rounded-2xl border border-[#272831] bg-cover bg-center"
+		style={{ "background-image": `url(${background.src})` }}
+	>
+		<div class="landing-section min-h-[20rem] gap-8 px-4 py-8 sm:py-0 lg:min-h-[36rem] lg:p-24">
+			<h2 class="text-balance text-2xl font-bold heading sm:text-4xl">
+				Start building with <br /> Astro DB today
+			</h2>
+			<CodeBlock>astro add db</CodeBlock>
+		</div>
+	</div>
+</section>

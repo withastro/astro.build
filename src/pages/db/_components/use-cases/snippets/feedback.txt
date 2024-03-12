@@ -1,0 +1,13 @@
+// Configure your database schema
+const Reactions = defineTable({
+	columns: {
+		postId: column.number({ references: () => Post.columns.id }),
+		emoji: column.text()
+	}
+})
+
+// Insert a new post reaction
+await db.insert(Reactions).values({
+	postId: "12345",
+	emoji: "🔥"
+})
