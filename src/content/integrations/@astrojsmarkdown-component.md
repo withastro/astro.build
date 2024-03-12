@@ -8,6 +8,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs/markdown-component"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/migrate/#markdown--component-removed"
-downloads: 8668
+downloads: 8723
 official: true
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-remark-description"
 repoUrl: "https://github.com/BryceRussell/astro-remark-description"
 homepageUrl: "https://github.com/BryceRussell/astro-remark-description#readme"
-downloads: 588
+downloads: 624
 ---

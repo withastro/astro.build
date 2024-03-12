@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@wticons/astro"
 repoUrl: "ssh://git@github.com/OzzyCzech/wticons"
 homepageUrl: "https://github.com/OzzyCzech/wticons#readme"
 badge: "new"
-downloads: 258
+downloads: 266
 ---

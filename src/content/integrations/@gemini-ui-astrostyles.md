@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@gemini-ui-astro/styles"
 homepageUrl: "https://www.npmjs.com/package/@gemini-ui-astro/styles"
-downloads: 169
+downloads: 170
 ---
