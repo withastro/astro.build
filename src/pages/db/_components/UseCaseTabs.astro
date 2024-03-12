@@ -5,6 +5,10 @@ import Forms from "./use-cases/Forms.astro"
 import Feedback from "./use-cases/Feedback.astro"
 import Blog from "./use-cases/Blog.astro"
 import Auth from "./use-cases/Auth.astro"
+
+import { getImage } from "astro:assets"
+import blob from "../_assets/uses-bg.png"
+const bg = await getImage({ src: blob, format: "webp", width: 1280 })
 ---
 
 <astro-db-tabs class="relative">
@@ -18,7 +22,26 @@ import Auth from "./use-cases/Auth.astro"
 		<Tab title="Auth" icon="uil:users-alt" />
 	</ul>
 
-	<ul class="mt-20">
+	<div style={{ "--bg-offset": "3rem", "z-index": -1 }} class="absolute">
+		<div class="user-select-none pointer-events-none absolute mx-auto w-full max-w-screen-xl">
+			<div class="pattern-grid"></div>
+			<div
+				class="pattern-overlay absolute bg-gradient-to-b from-[transparent] from-0% to-[#080B14] to-100%"
+			>
+			</div>
+		</div>
+		<div
+			style={{
+				"background-image": `url(${bg.src})`,
+				"background-position-y": "calc(var(--bg-offset) * -1)",
+				transform: "translateY(var(--bg-offset))",
+			}}
+			class="user-select-none bg-fill pointer-events-none absolute inset-0 bg-no-repeat"
+		>
+		</div>
+	</div>
+
+	<ul class="z-100 mt-20">
 		<Blog />
 		<Comments />
 		<Forms />
@@ -26,6 +49,53 @@ import Auth from "./use-cases/Auth.astro"
 		<Auth />
 	</ul>
 </astro-db-tabs>
+
+<style>
+	.container {
+		min-height: 64rem;
+	}
+	.pattern-overlay {
+		position: absolute;
+		left: 0;
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+	}
+	.pattern-grid {
+		pointer-events: none;
+		--width: 400rem;
+		--offset: calc(var(--width) / -2);
+		--grid-size: 2em;
+		--grid-lg-size: calc(var(--grid-size) * 4);
+		--line-width: 1px;
+		--line-width-offset: calc(var(--line-width) + (var(--line-width) / 2));
+		--pos: calc(var(--line-width) * -1);
+		--line-color: #242832;
+		position: absolute;
+		left: 0;
+		top: var(--bg-offset);
+		width: var(--width);
+		transform: translateX(var(--offset));
+		height: 40rem;
+		border: var(--line-width) solid var(--line-color);
+		background-image: linear-gradient(
+				var(--line-color) var(--line-width),
+				transparent var(--line-width)
+			),
+			linear-gradient(90deg, var(--line-color) var(--line-width), transparent var(--line-width)),
+			linear-gradient(var(--line-color) var(--line-width), transparent var(--line-width)),
+			linear-gradient(90deg, var(--line-color) var(--line-width), transparent var(--line-width));
+		background-position:
+			var(--pos) var(--pos),
+			var(--pos) var(--pos),
+			var(--pos) var(--pos),
+			var(--pos) var(--pos);
+		background-size:
+			var(--grid-lg-size) var(--grid-lg-size),
+			var(--grid-lg-size) var(--grid-lg-size),
+			var(--grid-size) var(--grid-size),
+			var(--grid-size) var(--grid-size);
+	}
+</style>
 
 <script>
 	// @ts-nocheck
