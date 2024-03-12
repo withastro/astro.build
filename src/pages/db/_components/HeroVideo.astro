@@ -1,13 +1,15 @@
 ---
 import { Image } from "astro:assets"
 import bg from "../_assets/hero-bg.png"
+
+const { class: classList, ...props } = Astro.props
 ---
 
 <Image
-	class="height-auto absolute inset-y-0 max-w-[none] object-cover object-left lg:w-full"
+	{...props}
+	class:list={["height-auto absolute inset-y-0 max-w-[none] object-cover object-left", classList]}
 	src={bg}
 	alt="Atmospheric illustration of a nebulous, breathing space scene"
 	format="webp"
 	width={1600}
-	{...Astro.props}
 />
