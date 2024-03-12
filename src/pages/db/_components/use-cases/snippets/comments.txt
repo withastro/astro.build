@@ -1,14 +1,16 @@
-import type { APIRoute } from "astro"
-import { db, Comments } from "astro:db"
+// Configure your database schema
+const Comments = defineTable({
+	columns: {
+		authorId: column.text(),
+		postId: column.text(),
+		body: column.text(),
+		published: column.date({ default: NOW }),
+	}
+})
 
-export const POST: APIRoute = async ({ request }) => {
-	const { body, blogPostId } = await request.json()
-
-	await db.insert(Comments).values({
-		authorId: "12345",
-		postId: blogPostId,
-		body,
-	})
-
-	return Response.json({ success: true })
-}
+// Insert a new comment record
+await db.insert(Comments).values({
+	authorId: "12345",
+	postId: blogPostId,
+	body,
+})

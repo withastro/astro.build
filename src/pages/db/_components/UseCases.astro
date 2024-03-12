@@ -1,15 +1,30 @@
 ---
 import SectionText from "./SectionText.astro"
 import UseCaseTabs from "./UseCaseTabs.astro"
+
+import { getImage } from "astro:assets"
+import blob from "../_assets/uses-bg.png"
+const bg = await getImage({ src: blob, format: "webp", width: 1280 })
 ---
 
-<div class="container relative w-screen">
-	<div class="absolute inset-0 z-0 mx-auto w-full max-w-screen-xl">
+<div class="container relative w-screen overflow-hidden">
+	<div
+		class="user-select-none pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-screen-xl"
+	>
 		<div class="pattern-grid"></div>
 		<div
-			class="pattern-overlay pointer-events-none absolute inset-0 bg-gradient-to-b from-[transparent] from-0% to-[#080B14] to-100%"
+			class="pattern-overlay absolute inset-0 bg-gradient-to-b from-[transparent] from-0% to-[#080B14] to-100%"
 		>
 		</div>
+	</div>
+	<div
+		style={{
+			"background-image": `url(${bg.src})`,
+			"background-position-y": "-24rem",
+			transform: "translateY(24rem)",
+		}}
+		class="user-select-none bg-fill pointer-events-none absolute inset-0 bg-no-repeat"
+	>
 	</div>
 	<section
 		class="mx-auto w-full max-w-screen-xl space-y-10 bg-cover bg-center bg-no-repeat p-4 sm:p-8"
@@ -17,7 +32,6 @@ import UseCaseTabs from "./UseCaseTabs.astro"
 		<SectionText>
 			<span slot="eyebrow" id="use-cases">Use Cases</span>
 			<Fragment slot="title">Unlimited possibilities</Fragment>
-
 			<p>
 				Stop worrying about configuration, provisioning, and setup—just start building. Unlock a
 				universe of new site features with the only drop-in database designed exclusively for Astro.

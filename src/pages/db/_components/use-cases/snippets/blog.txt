@@ -1,26 +1,13 @@
----
-import Layout from "../layouts/Main.astro"
-import { db, Posts, asc } from "astro:db"
+// Define your Posts table
+const Posts = defineTable({
+	columns: {
+		author: column.text(),
+		title: column.text()
+		content: column.text(),
+	}
+});
 
-const posts = await db
-	.select()
+// Retrieve all post titles by author
+await db.select({ title: Posts.title })
 	.from(Posts)
-	.orderBy(
-		asc(Posts.publishedAt)
-	)
----
-
-<Layout>
-	<ul>
-		{
-			posts.map((post) => (
-				<li>
-					<a href={`/blog/${post.slug}/`}>
-						<h4 class="title">{post.title}</h4>
-						<p class="excerpt">{post.excerpt}</p>
-					</a>
-				</li>
-			))
-		}
-	</ul>
-</Layout>
+	.where(eq(Posts.author, "James"))

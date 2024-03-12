@@ -1,16 +1,13 @@
-import type { APIRoute } from "astro"
-import { db, Feedback, sql } from "astro:db"
-
-export const POST: APIRoute = async ({ request }) => {
-	const formData = await request.formData()
-	const { url, feedback: key } = Object.fromEntries(formData.entries())
-
-	if (key === "positive" || key === "negative") {
-		const feedback = { url, [key]: sql`${Feedback[key]} + 1` }
-		await db.insert(Feedback)
-			.values(feedback)
-			.onConflictDoUpdate({ target: Feedback.url, set: feedback })
+// Configure your database schema
+const Reactions = defineTable({
+	columns: {
+		postId: column.number({ references: () => Post.columns.id }),
+		emoji: column.text()
 	}
-	
-	return Response.json({ success: true })
-}
+})
+
+// Insert a new post reaction
+await db.insert(Reactions).values({
+	postId: "12345",
+	emoji: "🔥"
+})
