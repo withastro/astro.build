@@ -9,40 +9,58 @@ import Auth from "./use-cases/Auth.astro"
 ---
 
 <astro-db-tabs class="relative">
-	<ul class="mt-16 flex max-w-full overflow-x-auto pb-1 text-astro-gray-200">
+	<ul
+		class="align-start -ml-4 mt-4 flex flex-wrap items-start justify-start gap-4 pt-8 text-astro-gray-200 sm:min-h-[10rem]"
+	>
 		<li>
 			<button
 				role="tab"
 				aria-selected="true"
-				class="relative block flex flex-col items-center p-4"
+				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
 				data-tab="comments"
 			>
-				<Icon class="text-current" name="uil:comments-alt" width="40" />
-				<p class="text-lg">Comments</p>
+				<Icon class="text-current" name="uil:comments-alt" width="20" />
+				<p>Comments</p>
 			</button>
 		</li>
 		<li>
-			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="blog">
-				<Icon class="text-current" name="uil:notes" width="40" />
-				<p class="text-lg">Blog</p>
+			<button
+				role="tab"
+				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
+				data-tab="blog"
+			>
+				<Icon class="text-current" name="uil:notes" width="20" />
+				<p>Blog</p>
 			</button>
 		</li>
 		<li>
-			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="forms">
-				<Icon class="text-current" name="uil:document-layout-left" width="40" />
-				<p class="text-lg">Forms</p>
+			<button
+				role="tab"
+				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
+				data-tab="forms"
+			>
+				<Icon class="text-current" name="uil:document-layout-left" width="20" />
+				<p>Forms</p>
 			</button>
 		</li>
 		<li>
-			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="feedback">
-				<Icon class="text-current" name="uil:question-circle" width="40" />
-				<p class="text-lg">Feedback</p>
+			<button
+				role="tab"
+				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
+				data-tab="feedback"
+			>
+				<Icon class="text-current" name="uil:question-circle" width="20" />
+				<p>Feedback</p>
 			</button>
 		</li>
 		<li>
-			<button role="tab" class="relative block flex flex-col items-center p-4" data-tab="auth">
-				<Icon class="text-current" name="uil:users-alt" width="40" />
-				<p class="text-lg">Auth</p>
+			<button
+				role="tab"
+				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
+				data-tab="auth"
+			>
+				<Icon class="text-current" name="uil:users-alt" width="20" />
+				<p>Auth</p>
 			</button>
 		</li>
 	</ul>
@@ -59,7 +77,6 @@ import Auth from "./use-cases/Auth.astro"
 <style>
 	button[data-tab] {
 		opacity: 0.5;
-		min-width: 8rem;
 	}
 	button[aria-selected="true"] {
 		opacity: 1;
@@ -68,13 +85,13 @@ import Auth from "./use-cases/Auth.astro"
 	[aria-selected="true"]::after {
 		content: "";
 		position: absolute;
+		border-radius: inherit;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
 		@apply bg-blue-purple-gradient;
 		z-index: 0;
-		border-radius: 8px;
 	}
 	button > * {
 		z-index: 1;
