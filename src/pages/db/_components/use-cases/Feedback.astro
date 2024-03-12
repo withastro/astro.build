@@ -5,29 +5,25 @@ import code from "./snippets/feedback.txt?raw"
 ---
 
 <UseCase class="hidden" tab="feedback">
-	<div slot="example" class="relative isolate mx-auto grid max-w-7xl grid-cols-1 p-8 py-12">
-		<div class="mx-auto flex max-w-xl flex-col content-center items-center lg:max-w-lg">
-			<div class="mb-2 h-6 w-64 rounded-full bg-[#141825]"></div>
-			<div class="h-4 w-48 rounded-full bg-[#141825]"></div>
-		</div>
-		<form
-			action="#"
-			method="POST"
-			novalidate
-			autocomplete="off"
-			class="mt-16 flex w-full items-center justify-center gap-8"
+	<div
+		slot="example"
+		class="align-center relative isolate mx-auto flex max-w-7xl justify-center gap-8 p-8 py-12 text-3xl"
+	>
+		<button class="aspect-square w-16 rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
+			>👍</button
 		>
-			<button
-				type="submit"
-				class="h-12 w-40 rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-			>
-			</button>
-			<button
-				type="submit"
-				class="h-12 w-40 rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-			>
-			</button>
-		</form>
+		<button class="aspect-square w-16 rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
+			>👎</button
+		>
+		<button class="aspect-square w-16 rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
+			>🎉</button
+		>
+		<button class="aspect-square w-16 rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
+			>🔥</button
+		>
+		<button class="aspect-square w-16 rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
+			>🚀</button
+		>
 	</div>
 	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
 </UseCase>
