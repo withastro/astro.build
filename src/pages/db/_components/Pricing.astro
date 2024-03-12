@@ -18,23 +18,27 @@ import SectionText from "./SectionText.astro"
 			<div
 				class="grid grid-cols-1 gap-4 bg-gradient-to-tr from-[#3245FF]/25 to-[#B845ED]/25 p-4 py-6 md:grid-cols-2 md:gap-8 md:px-16 lg:gap-12 lg:px-24"
 			>
-				<h4 class="heading-4 whitespace-nowrap pt-6 font-medium">Base Plan</h4>
+				<div>
+					<h4 class="whitespace-nowrap pt-6 text-3xl font-semibold">Base Plan</h4>
+
+					<div class="mt-4">
+						<ExternalLink href="#" class="button button-sm button-white">
+							Get started for free
+						</ExternalLink>
+					</div>
+				</div>
 				<div class="space-y-4">
-					<h5 class="heading-2 font-medium text-white">
+					<h5 class="text-6xl font-semibold text-white">
 						$0 <span class="body text-astro-gray-200">/ month</span>
 					</h5>
 
 					<ul class="body space-y-2 text-astro-gray-200">
 						<li class="flex items-center gap-2">
-							<Icon class="text-astro-gray-300" name="ri:check-line" size={16} /> Pay as you grow
+							<Icon class="text-astro-gray-300" name="ri:check-line" size={16} /> Generous free tier
 						</li>
 						<li class="flex items-center gap-2">
 							<Icon class="text-astro-gray-300" name="ri:check-line" size={16} /> No credit card
 							required
-						</li>
-						<li class="flex items-center gap-2">
-							<Icon class="text-astro-gray-300" name="ri:check-line" size={16} /> Everything you
-							need to get started
 						</li>
 					</ul>
 				</div>
@@ -91,12 +95,6 @@ import SectionText from "./SectionText.astro"
 					<Fragment slot="pricing-details">$1.00 per each additional 1M</Fragment>
 				</PricingFeaturePoint>
 			</ul>
-
-			<div class="m-4 sm:m-8">
-				<ExternalLink href="#" class="button button-sm button-white w-full">
-					Get started for free
-				</ExternalLink>
-			</div>
 		</div>
 	</div>
 </section>

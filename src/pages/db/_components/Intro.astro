@@ -3,29 +3,15 @@ import { Icon } from "astro-icon"
 import IntroPoint from "./IntroPoint.astro"
 ---
 
-<section class="xs:p-6 mx-auto w-full max-w-screen-xl space-y-24 p-4 sm:p-8">
+<section class="xs:p-6 mx-auto w-full max-w-screen-xl space-y-8 p-4 sm:p-8">
 	<h2
-		class="text-balance my-4 text-3xl leading-snug heading md:my-16 md:mt-32 md:text-4xl md:leading-normal xl:text-5xl xl:leading-normal"
+		class="my-4 max-w-screen-lg text-3xl font-light heading md:my-8 md:mt-24 md:text-4xl xl:text-[3.0rem] xl:leading-tight"
+		style="text-wrap: balance;"
 	>
-		<strong>Astro DB</strong> is a fully managed SQL&nbsp;database designed&nbsp;exclusively
-		for&nbsp;Astro
+		<strong>Astro DB</strong> is a fully-managed SQL database designed exclusively for Astro.
 	</h2>
 
 	<dl class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
-		<IntroPoint bgGradient="bg-blue-green-gradient">
-			<Fragment slot="icon">
-				<div
-					class="size-10 landing-section rounded-full bg-gradient-to-bl from-[#4AF2C8]/20 to-[#2F4CB3]/20 p-2"
-				>
-					<Icon class="text-2xl" name="ri:line-chart-line" size={32} />
-				</div>
-			</Fragment>
-			<Fragment slot="title">Scale with confidence</Fragment>
-			<Fragment slot="description">
-				Astro DB’s automatically scales up to meet demand and scales down to $0 when inactive.
-			</Fragment>
-		</IntroPoint>
-
 		<IntroPoint bgGradient="bg-red-pink-gradient">
 			<Fragment slot="icon">
 				<div
@@ -37,6 +23,20 @@ import IntroPoint from "./IntroPoint.astro"
 			<Fragment slot="title">Powered by LibSQL</Fragment>
 			<Fragment slot="description">
 				LibSQL balanced lightweight efficiency with proven enterprise-grade performance.
+			</Fragment>
+		</IntroPoint>
+
+		<IntroPoint bgGradient="bg-blue-green-gradient">
+			<Fragment slot="icon">
+				<div
+					class="size-10 landing-section rounded-full bg-gradient-to-bl from-[#4AF2C8]/20 to-[#2F4CB3]/20 p-2"
+				>
+					<Icon class="text-2xl" name="ri:line-chart-line" size={32} />
+				</div>
+			</Fragment>
+			<Fragment slot="title">Scale with confidence</Fragment>
+			<Fragment slot="description">
+				Astro DB’s automatically scales up to meet demand and scales down to $0 when inactive.
 			</Fragment>
 		</IntroPoint>
 

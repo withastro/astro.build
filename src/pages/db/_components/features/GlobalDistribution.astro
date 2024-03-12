@@ -6,9 +6,17 @@
 
 <script>
 	import createGlobe from "cobe"
+	let isHover = false
 
 	let phi = 2.5
 	let canvas = document.getElementById("cobe") as HTMLCanvasElement
+
+	canvas.onmouseover = () => {
+		isHover = true
+	}
+	canvas.onmouseout = () => {
+		isHover = false
+	}
 
 	const rgb = (r: number, g: number, b: number) => {
 		console.log([r, g, b].map((n) => n / 255))
@@ -23,8 +31,8 @@
 		}
 		const { devicePixelRatio = 1 } = window
 		const { width: w, height: h } = canvas.getBoundingClientRect()
-		const width = w * devicePixelRatio
-		const height = h * devicePixelRatio
+		const width = w * devicePixelRatio * 2
+		const height = h * devicePixelRatio * 2
 		const size = 0.1
 		globe = createGlobe(canvas, {
 			devicePixelRatio,
@@ -36,12 +44,12 @@
 			diffuse: 3,
 			scale: 1.125,
 			mapSamples: 10240,
-			mapBrightness: 7.5,
+			mapBrightness: 5,
 			mapBaseBrightness: 0,
-			baseColor: [1, 1, 1],
-			markerColor: rgb(99, 102, 241),
-			glowColor: rgb(26, 29, 39),
-			offset: [0, height * 0.5],
+			baseColor: rgb(92, 46, 154),
+			markerColor: rgb(200, 200, 241),
+			glowColor: rgb(30, 20, 50),
+			offset: [width * -0.3, height * 1.05],
 			markers: [
 				{ location: [50.1109, 8.6821], size },
 				{ location: [40.0583, -74.4057], size },
@@ -53,7 +61,7 @@
 			opacity: 1,
 			onRender: (state) => {
 				state.phi = phi
-				phi += 0.001
+				phi += 0.00025
 			},
 		})
 		ro = new ResizeObserver(() => {
