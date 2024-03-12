@@ -9,6 +9,7 @@ const background = await getImage({ src: bg, format: "webp", width: 2560 })
 	loop
 	autoplay
 	muted
+	playsinline
 	preload="auto"
 	onerror={`this.parent.style.backgroundImage = "${background.src}"`}
 	{...Astro.props}
