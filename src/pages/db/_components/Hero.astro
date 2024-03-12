@@ -1,16 +1,13 @@
 ---
-import { getImage } from "astro:assets"
 import PageTitleBlock from "~/components/PageTitleBlock.astro"
-import bg from "../_assets/hero-bg.png"
 import CTA from "../_components/CTA.astro"
-
-const background = await getImage({ src: bg, format: "webp", width: 2560 })
+import HeroVideo from "./HeroVideo.astro"
 ---
 
 <section
-	style={{ "background-image": `url(${background.src})` }}
-	class="align-center landing-section relative flex min-h-[calc(100dvh-5rem)] content-center items-center overflow-x-hidden bg-[#6628C6] bg-cover bg-no-repeat px-4 py-16 md:px-8"
+	class="align-center landing-section relative flex h-[calc(100dvh-5rem)] max-h-[40rem] content-center items-center overflow-hidden overflow-x-hidden bg-[#6628C6] bg-cover bg-no-repeat px-4 py-16 md:px-8"
 >
+	<HeroVideo />
 	<div
 		class="size-full from-67% pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-[transparent] to-[#080B14]/100 to-100%"
 	>
