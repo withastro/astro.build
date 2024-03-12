@@ -6,10 +6,8 @@
     ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:\")((?:\\\"|[^\"])*)(?:\")"],
     ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:`)((?:\\`|[^`])*)(?:`)"]
   ],
-
   // define rulers to match the prettier config length of 100
   "editor.rulers": [100],
-
   // organize imports (removes unused), then eslint fix on save
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
@@ -17,12 +15,13 @@
     "source.fixAll": "explicit"
   },
   "editor.formatOnSave": true,
-
   // prefer .js extension on imports
   "javascript.preferences.importModuleSpecifierEnding": "js",
   "typescript.preferences.importModuleSpecifierEnding": "js",
-
   // use local typescript version
   "typescript.tsdk": "node_modules/typescript/lib",
-  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}[Branch: main]"
+  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}[Branch: main]",
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }
