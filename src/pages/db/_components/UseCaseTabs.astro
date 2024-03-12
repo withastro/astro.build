@@ -1,6 +1,5 @@
 ---
-import { Icon } from "astro-icon"
-
+import Tab from "./UseCaseTab.astro"
 import Comments from "./use-cases/Comments.astro"
 import Forms from "./use-cases/Forms.astro"
 import Feedback from "./use-cases/Feedback.astro"
@@ -12,57 +11,11 @@ import Auth from "./use-cases/Auth.astro"
 	<ul
 		class="align-start -ml-4 mt-4 flex flex-wrap items-start justify-start gap-4 pt-8 text-astro-gray-200 sm:min-h-[10rem]"
 	>
-		<li>
-			<button
-				role="tab"
-				aria-selected="true"
-				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
-				data-tab="comments"
-			>
-				<Icon class="text-current" name="uil:comments-alt" width="20" />
-				<p>Comments</p>
-			</button>
-		</li>
-		<li>
-			<button
-				role="tab"
-				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
-				data-tab="blog"
-			>
-				<Icon class="text-current" name="uil:notes" width="20" />
-				<p>Blog</p>
-			</button>
-		</li>
-		<li>
-			<button
-				role="tab"
-				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
-				data-tab="forms"
-			>
-				<Icon class="text-current" name="uil:document-layout-left" width="20" />
-				<p>Forms</p>
-			</button>
-		</li>
-		<li>
-			<button
-				role="tab"
-				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
-				data-tab="feedback"
-			>
-				<Icon class="text-current" name="uil:question-circle" width="20" />
-				<p>Feedback</p>
-			</button>
-		</li>
-		<li>
-			<button
-				role="tab"
-				class="relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:text-2xl"
-				data-tab="auth"
-			>
-				<Icon class="text-current" name="uil:users-alt" width="20" />
-				<p>Auth</p>
-			</button>
-		</li>
+		<Tab title="Comments" icon="uil:comments-alt" active />
+		<Tab title="Blog" icon="uil:notes" />
+		<Tab title="Forms" icon="uil:document-layout-left" />
+		<Tab title="Feedback" icon="uil:question-circle" />
+		<Tab title="Auth" icon="uil:users-alt" />
 	</ul>
 
 	<ul class="mt-20">
@@ -74,37 +27,6 @@ import Auth from "./use-cases/Auth.astro"
 	</ul>
 </astro-db-tabs>
 
-<style>
-	button[data-tab] {
-		opacity: 0.5;
-	}
-	button[aria-selected="true"] {
-		opacity: 1;
-	}
-	[aria-selected="true"]::before,
-	[aria-selected="true"]::after {
-		content: "";
-		position: absolute;
-		border-radius: inherit;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		@apply bg-blue-purple-gradient;
-		z-index: 0;
-	}
-	button > * {
-		z-index: 1;
-	}
-	[aria-selected="true"]::after {
-		top: 1px;
-		right: 1px;
-		bottom: 1px;
-		left: 1px;
-		background: #060913
-			linear-gradient(83.21deg, rgba(50, 70, 255, 0.2) 0%, rgba(184, 69, 237, 0.2) 100%);
-	}
-</style>
 <script>
 	// @ts-nocheck
 	const bind = (instance, proto) => {
