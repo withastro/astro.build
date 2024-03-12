@@ -1,4 +1,4 @@
-import xss from "xss";
+import xss from "xss"
 
 export const sanitizeThemeDescription = (text: string) =>
 	xss(text, {
@@ -18,4 +18,4 @@ export const sanitizeThemeDescription = (text: string) =>
 			a: ["href"],
 			span: [],
 		},
-	});
+	})
