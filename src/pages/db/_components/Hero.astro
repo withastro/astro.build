@@ -2,6 +2,7 @@
 import PageTitleBlock from "~/components/PageTitleBlock.astro"
 import CTA from "../_components/CTA.astro"
 import HeroVideo from "./HeroVideo.astro"
+import Pill from "./Pill.astro"
 ---
 
 <section
@@ -13,7 +14,8 @@ import HeroVideo from "./HeroVideo.astro"
 	>
 	</div>
 
-	<div class="z-20 m-auto">
+	<div class="z-20 m-auto flex flex-col">
+		<Pill class="mx-auto mb-4" title="Astro DB" subtitle="Early Preview" />
 		<PageTitleBlock
 			wide
 			lg
@@ -27,7 +29,7 @@ import HeroVideo from "./HeroVideo.astro"
 			</h1>
 		</PageTitleBlock>
 		<CTA class="mb-4 mt-8" />
-		<p class="text-astro-gray-300">No credit card required. Cancel anytime.</p>
+		<p class="text-white/60">No credit card required. Cancel anytime.</p>
 	</div>
 </section>
 
