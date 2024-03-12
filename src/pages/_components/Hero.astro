@@ -5,8 +5,6 @@ import ExternalLink from "~/components/ExternalLink.astro"
 import PageTitleBlock from "~/components/PageTitleBlock.astro"
 import PillLink from "./PillLink.astro"
 
-import { getLatestReleasePost } from "~/helpers/releasePost.ts"
-
 const logos = [
 	{ src: "logos/google", alt: "Google Logo", class: "py-1 -mb-1 md:-mb-2 lg:-mb-2.5" },
 	{ src: "logos/microsoft", alt: "Microsoft Logo", class: "py-2" },
@@ -15,12 +13,10 @@ const logos = [
 	{ src: "logos/theguardian", alt: "The Guardian Logo", class: "py-1.5" },
 	{ src: "logos/trivago", alt: "Trivago Logo", class: "py-1" },
 ]
-
-const announcement = await getLatestReleasePost()
 ---
 
 <section class="landing-section relative overflow-x-hidden pb-40 pt-14 sm:pt-20 lg:pt-32">
-	{announcement && <PillLink {...announcement} class="mb-8" />}
+	<PillLink title="Astro DB is finally here!" subtitle="Learn more" href="/db" class="mb-8" />
 	<PageTitleBlock
 		lg
 		body="Astro powers the world's fastest websites, client-side web apps, dynamic API endpoints, and everything in-between."
