@@ -104,11 +104,11 @@ export default {
 		plugin(function astroComponentsPlugin({ addComponents, theme }) {
 			addComponents({
 				"i, em": {
-					fontSynthesis: 'none',
+					fontSynthesis: "none",
 				},
-				
+
 				"b, strong": {
-					fontSynthesis: 'none',
+					fontSynthesis: "none",
 					fontWeight: "700",
 				},
 
