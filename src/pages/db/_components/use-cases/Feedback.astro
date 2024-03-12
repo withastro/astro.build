@@ -10,26 +10,31 @@ import code from "./snippets/feedback.txt?raw"
 		class="align-center relative isolate mx-auto flex max-w-7xl justify-center gap-8 p-8 py-12 text-3xl"
 		style={{ "--size": "5rem" }}
 	>
-		<button
+		<div
 			class="flex aspect-square items-center justify-center rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
-			>👍</button
 		>
-		<button
+			👍
+		</div>
+		<div
 			class="flex aspect-square items-center justify-center rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
-			>👎</button
 		>
-		<button
+			👎
+		</div>
+		<div
 			class="flex aspect-square items-center justify-center rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
-			>🎉</button
 		>
-		<button
+			🎉
+		</div>
+		<div
 			class="flex aspect-square items-center justify-center rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
-			>🔥</button
 		>
-		<button
+			🔥
+		</div>
+		<div
 			class="flex aspect-square items-center justify-center rounded-full bg-astro-gray-500 p-4 hover:bg-astro-gray-400"
-			>🚀</button
 		>
+			🚀
+		</div>
 	</div>
 	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
 </UseCase>
