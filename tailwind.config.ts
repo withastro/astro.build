@@ -103,7 +103,12 @@ export default {
 
 		plugin(function astroComponentsPlugin({ addComponents, theme }) {
 			addComponents({
+				"i, em": {
+					fontSynthesis: 'none',
+				},
+				
 				"b, strong": {
+					fontSynthesis: 'none',
 					fontWeight: "700",
 				},
 
@@ -166,23 +171,33 @@ export default {
 
 				".heading-1": {
 					"@apply font-obviously text-6xl leading-tight": {},
+					fontVariationSettings: '"wdth" 490, "wght" 430, "slnt" 0',
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-2": {
 					"@apply font-obviously text-5xl leading-tight": {},
+					fontVariationSettings: '"wdth" 490, "wght" 430, "slnt" 0',
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-3": {
 					"@apply font-obviously text-3xl leading-tight": {},
 					fontSize: "32px",
+					fontVariationSettings: '"wdth" 490, "wght" 370, "slnt" 0',
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-4": {
 					"@apply font-obviously text-2xl leading-tight": {},
+					fontVariationSettings: '"wdth" 490, "wght" 370, "slnt" 0',
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".heading-5": {
 					"@apply font-obviously text-xl leading-tight": {},
+					fontVariationSettings: '"wdth" 490, "wght" 370, "slnt" 0',
+					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 				},
 
 				".body": {
