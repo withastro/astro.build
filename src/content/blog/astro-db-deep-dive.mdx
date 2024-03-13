@@ -44,8 +44,8 @@ Astro DB gives you a fully-local libSQL database as soon as you start up your de
 When you run `astro dev`, Astro DB will:
 
 - Create an empty database at `.astro/data.db`
-- Your schema is read from `db/config.ts`
-- The database is seeded from `db/seed.ts`
+- Read your schema from `db/config.ts`
+- Seed the database from `db/seed.ts`
 - Your database client is now ready
 
 The workflow largely mirrors the Content Collections workflow that Astro users already love. Importantly, the database itself (`data.db`) is *not* *persistent*. It's created new from scratch every time you start up the dev server. This gives you *simple, reproducible* one-off databases.
