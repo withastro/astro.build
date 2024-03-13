@@ -1,6 +1,6 @@
 ---
 title: "The Astro Developer Portal"
-description: "Today, we’re launching the Astro Developer Portal, a platform where theme authors and creators can create, own and update their themes built for Astro."
+description: "Today, we’re launching the Astro Developer Portal, a platform where theme authors and creators can create, own, and update their themes built for Astro."
 publishDate: "March 13, 2024"
 authors:
   - elian
@@ -17,14 +17,14 @@ import dashboard from "/src/content/blog/_images/dev-portal/dashboard.webp"
 Today, we're launching [the Astro Developer Portal](https://portal.astro.build), a platform where theme authors and creators can submit, manage, and promote their themes built for Astro.
 </BlogSummary>
 
-At Astro, we're dedicated to crafting solutions that not only benefit our community that builds *with* Astro, but also those who build *for* Astro... all while addressing our own internal challenges building Astro itself. One such solution is the new Developer Portal, which will serve as the future home for all community Astro developers. Our aim with the Developer Portal is to provide a centralized platform where theme authors, and eventually integration builders, can have full control over managing their listings in Astro's official directories. Another goal of the portal was to test drive Astro Studio: to help define its capabilities, identify bugs early and provide feedback to our platform team.
+At Astro, we're dedicated to crafting solutions that not only benefit our community that builds *with* Astro but also those who build *for* Astro... all while addressing our own internal challenges building Astro itself. One such solution is the new Developer Portal, which will serve as the future home for all community Astro developers. Our aim with the Developer Portal is to provide a centralized platform where theme authors, and eventually integration builders, can have full control over managing their listings in Astro's official directories. Another goal of the portal was to test drive Astro Studio: to help define its capabilities, identify bugs early, and provide feedback to our platform team.
 
 
 Today, the new Astro Developer Portal goes live! Check it out at [portal.astro.build](https://portal.astro.build).
 
 <BlogContentImage src={dashboard} alt="" />
 
-## Problems in our current setup
+## Problems with our past setup
 
 The old method of adding themes to the Astro catalog was a very time-consuming and inefficient process. Theme creators were required to fill out a form, which triggered a manual process for the Astro core team. Images and content had to be extracted from Discord messages, formatted, and integrated into our theme content collection catalog. Updating themes was equally cumbersome, requiring manual repository forks and PR submissions by theme authors.
 
@@ -36,13 +36,13 @@ After taking stock of our problems and challenges, listing all the pain points f
 
 ## Dogfooding Astro Studio
 
-What could be more powerful then using the tool you're building to build the tool you're building? It's a great way to identify bugs and issues early on, and to test the limits of the tool. Building with Astro Studio began in earnest.
+What could be more powerful than using the tool you're building to build the tool you're building? It's a great way to identify bugs and issues early on and to test the limits of the tool. Building with Astro Studio began in earnest.
 
 In particular, we had two feature requirements shared by many of our own Astro users: authentication and image storage. There are several popular options available that work well with Astro projects, but this was the first chance to test drive them with Astro Studio.
 
 To prototype authentication, we first built a proof-of-concept using Supabase, leveraging its OAuth with GitHub for streamlined access. Yet, we realized the benefit of a unified solution that would leverage the power of Astro Studio and transitioned to [Lucia](https://lucia-auth.com/). Whatever your own project's authentication needs are, we are confident you'll find an Astro Studio-compatible solution that works for you!
 
-For image storage, we set up a very simple cloud storage bucket with Google Cloud that will handle all storage and image processing without any manual intervention. This proved to be sufficient for our needs handling theme screenshots and thumbnails, and again showcases how powerful an Astro-powered application and database can be.
+For image storage, we set up a very simple cloud storage bucket with Google Cloud that will handle all storage and image processing without any manual intervention. This proved to be sufficient for our needs handling theme screenshots and thumbnails, again showcasing how powerful an Astro-powered application and database can be.
 
 ## What's next
 
