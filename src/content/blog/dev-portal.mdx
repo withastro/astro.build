@@ -14,33 +14,35 @@ import BlogSummary from "/src/components/BlogSummary.astro"
 import dashboard from "/src/content/blog/_images/dev-portal/dashboard.webp"
 
 <BlogSummary>
-Today, we’re launching the Astro Developer Portal. A platform, where theme authors and creators, can fully create, own and update their themes built for Astro.
+Today, we're launching [the Astro Developer Portal](https://portal.astro.build). A platform, where theme authors and creators, can fully create, own and update their themes built for Astro.
 </BlogSummary>
 
-At Astro, we're dedicated to crafting solutions that not only benefit our users but also address our internal challenges. One such solution is the new Developer Portal, the new and future home for all Astro developers. Our aim with the Developer Portal is to provide a centralised platform where theme creators, and eventually integration creators, can have full control over their creations. Another goal was to test drive Astro Studio and its capabilities and identify bugs early.
+At Astro, we're dedicated to crafting solutions that not only benefit our users but also address our internal challenges. One such solution is the new Developer Portal, the new and future home for all Astro developers. Our aim with the Developer Portal is to provide a centralised platform where theme creators, and eventually integration creators, can have full control over their creations. Another goal was to test drive Astro Studio, its capabilities, and identify bugs early.
 
-So, today, we’re launching the Astro Developer Portal. A platform, where theme authors and creators, can fully create, own and update their themes built for Astro.
+Today, we're taking the new Astro Developer Portal in use. A platform, where theme authors and creators, can fully create, own and update their themes built for Astro.
 
-Check it out at [portal.astro.build](https://portal.astro.build)
+Check it out at [portal.astro.build](https://portal.astro.build).
 
 <BlogContentImage src={dashboard} alt="" />
 
-## Identifying the problem with our current setup
+## Problems in our current setup
 
-The old method of adding themes to the Astro catalog was time-consuming and inefficient. Theme creators were required to fill out a form, which then triggered a manual process for our core team. Images and content had to be extracted from Discord messages, formatted, and integrated into our theme content collection. Updating themes was equally cumbersome, requiring manual repository forks and PR submissions by theme authors.
+The old method of adding themes to the Astro catalog was a very time-consuming and inefficient process. Theme creators were required to fill out a form, which triggered a manual process for the Astro core team. Images and content had to be extracted from Discord messages, formatted, and integrated into our theme content collection catalog. Updating themes was equally cumbersome, requiring manual repository forks and PR submissions by theme authors.
 
-You probably get that that is not the most ideal way of handling that, right?
+You probably get that it's not the most ideal way of handling that, right?
 
-## Solving the problem
+## Solution
 
-Out of identifying those problems, we came up with a new idea. A portal where theme authors can upload, update, and manage their themes. A core member only has to step in once, to approve a new theme, but that also can be just a click of a button. Next to that, the administration experience for our core members could also be significantly improved, since we have a centralised place with all assets, details, and information.
+Out of identifying those problems and challenges, we came up with a new idea. A digital portal where theme creators can upload, update, and manage their themes. A core member only has to step in once, to approve a new theme, but that also can be just a click of a button.
 
-## initial problems identified by the dev portal -> need new subtitle
+## Dogfooding Astro Studio
 
-As we delved deeper into Astro Studio and building the Dev Portal powered bit, we encountered two significant challenges using Astro Studio: authentication and image storage. To address authentication, we integrated Supabase, leveraging its OAuth with GitHub for streamlined access. Yet, we realised the need for a unified solution and transitioned to Lucia, seamlessly integrating authentication with Astro Studio.
+As we delved deeper into Astro Studio and building the Dev Portal, we encountered two significant challenges using Astro Studio: authentication and image storage. To address authentication, we integrated Supabase, leveraging its OAuth with GitHub for streamlined access. Yet, we realised the need for a unified solution and transitioned to [Lucia](https://lucia-auth.com/), seamlessly integrating authentication with Astro Studio.
 
-## What’s next
+## What's next
 
-Looking ahead, there's still much to be done to enhance the Developer Portal. Our focus remains on refining the platform and incorporating user feedback. While we have exciting ideas in the pipeline, our primary goal is to continue dogfooding Astro Studio to deliver the best possible experience for Astro developers.
+Looking ahead, there's still much to be done to enhance the Developer Portal experience. Our focus remains on refining the platform and incorporating user feedback. While we have exciting ideas in the pipeline, our primary goal is to continue dogfooding Astro Studio to deliver the best possible experience for Astro developers using Astro Studio.
 
-Join us on this journey as we strive to make the theme creation and management process smoother and more enjoyable for all. See you in space, Astronauts!
+Join us on this journey as we strive to make the theme creation and management process smoother and more enjoyable for all.
+
+See you in space, Astronauts!
