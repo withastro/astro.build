@@ -1,15 +1,10 @@
 ---
 import type { HTMLAttributes } from "astro/types"
+import { Image } from "astro:assets"
 import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
 
-export type GalleryImage = {
-	thumbnail: ImageMetadata
-	fullImage: ImageMetadata
-	alt?: string
-}
-
 export type Props = HTMLAttributes<"div"> & {
-	images: GalleryImage[]
+	images: string[]
 }
 
 const { images, class: className, ...attrs } = Astro.props
@@ -32,10 +27,8 @@ const { images, class: className, ...attrs } = Astro.props
 						id={`gallery-${i + 1}`}
 					>
 						<img
-							src={image.fullImage.src}
-							width={image.fullImage.width}
-							height={image.fullImage.height}
-							alt={image.alt || ""}
+							src={image}
+							alt=""
 							decoding="async"
 							class="aspect-video h-full w-full object-cover object-top"
 						/>
@@ -70,10 +63,8 @@ const { images, class: className, ...attrs } = Astro.props
 					<li>
 						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? "true" : "false"}>
 							<img
-								src={image.thumbnail.src}
-								width={image.thumbnail.width}
-								height={image.thumbnail.height}
-								alt={image.alt || ""}
+								src={image}
+								alt=""
 								class="aspect-video h-full w-full object-cover object-top"
 								decoding="async"
 								loading="lazy"

@@ -1,54 +1,17 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
 import CardGridGroup from "~/components/CardGridGroup.astro"
 import Pagination from "~/components/Pagination.astro"
 import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro"
 import SidebarLayout from "~/components/SidebarLayout.astro"
 import SidebarPanel from "~/components/SidebarPanel.astro"
-import { ThemeCategories, ThemePricing, ThemeTools } from "~/content/config.js"
+import { ThemePricing } from "~/content/config.js"
 import { paginate } from "~/helpers/paginate.js"
 import MainLayout from "~/layouts/MainLayout.astro"
 import SubmitTheme from "./_components/SubmitTheme.astro"
 import ThemeCard from "./_components/ThemeCard.astro"
 
 export const prerender = false
-
-// Sorting priority: featured first, then published date for new themes, then compare downloads, then sort alphabetically
-function sortThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
-	if (a.data.featured && b.data.featured) {
-		return a.data.featured - b.data.featured
-	}
-
-	if (a.data.featured && !b.data.featured) {
-		return -1
-	}
-
-	if (!a.data.featured && b.data.featured) {
-		return 1
-	}
-
-	if (a.data.badge === "new" && b.data.badge === "new") {
-		return sortRecentThemes(a, b)
-	}
-
-	if (a.data.stars === b.data.stars) {
-		return b.data.title.localeCompare(a.data.title)
-	}
-
-	return b.data.stars - a.data.stars
-}
-
-function sortRecentThemes(a: CollectionEntry<"themes">, b: CollectionEntry<"themes">): number {
-	const aTime = a.data.publishDate?.getTime()
-	const bTime = b.data.publishDate?.getTime()
-
-	if (!aTime || !bTime) {
-		return sortThemes(a, b)
-	}
-
-	return bTime - aTime
-}
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
@@ -63,25 +26,28 @@ if (!currentPage || isNaN(currentPage)) {
 const search = Astro.url.searchParams.get("search")
 
 // get a list of all supported categories, this is the same list used by the zod schema
-const categories = Array.from(ThemeCategories.keys())
-
+const categories = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
+	res.json().then((data) => data.themeCategories),
+)
 // get a list of category filters applied to the request
 const selectedCategories = Astro.url.searchParams.getAll("categories[]")
 
 // massage category data for the Filter components
 const categoryFilter: FilterGroup = {
 	title: "Categories",
-	options: categories.map((c) => ({
-		id: c,
+	options: categories.map((c: any) => ({
+		id: c.id,
 		name: "categories[]",
-		value: c,
-		label: ThemeCategories.get(c)!,
+		value: c.value,
+		label: c.name,
 		selected: selectedCategories.includes(c),
 	})),
 }
 
 // get a list of all supported tools, this is the same list used by the zod schema
-const tools = Array.from(ThemeTools.keys())
+const tools = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
+	res.json().then((data) => data.themeTools),
+)
 
 // get a list of tool filters applied to the request
 const selectedTools = Astro.url.searchParams.getAll("technology[]")
@@ -89,11 +55,11 @@ const selectedTools = Astro.url.searchParams.getAll("technology[]")
 // massage tool data for the Filter components
 const toolFilter: FilterGroup = {
 	title: "Technology",
-	options: tools.map((t) => ({
-		id: t,
+	options: tools.map((t: any) => ({
+		id: t.id,
 		name: "technology[]",
-		value: t,
-		label: ThemeTools.get(t)!,
+		value: t.value,
+		label: t.name,
 		selected: selectedTools.includes(t),
 	})),
 }
@@ -116,50 +82,9 @@ const priceFilter: FilterGroup = {
 	})),
 }
 
-const searchRegex = search && new RegExp(search, "i")
-
-function themeFilter(theme: CollectionEntry<"themes">) {
-	// if at least one category filter is applied, hide themes that don't match
-	if (selectedCategories.length > 0) {
-		if (!theme.data.categories.some((c: string) => selectedCategories.includes(c))) {
-			return false
-		}
-	}
-
-	// if at least one tool filter is applied, hide themes that don't match
-	if (selectedTools.length > 0) {
-		if (!theme.data.tools.some((c: string) => selectedTools.includes(c))) {
-			return false
-		}
-	}
-
-	// if at least one price filter is applied, hide themes that don't match
-	// if multiple price filters are applied, skip this check
-	if (selectedPricing.length > 0 && selectedPricing.length < 2) {
-		if (
-			(selectedPricing.includes("free") && !theme.data.repoUrl) ||
-			(selectedPricing.includes("paid") && !theme.data.buyUrl)
-		) {
-			return false
-		}
-	}
-
-	// if a search term was used, filter down checking name/title/description
-	if (searchRegex) {
-		return (
-			searchRegex.test(theme.data.title) ||
-			searchRegex.test(theme.data.description) ||
-			searchRegex.test(theme.body)
-		)
-	}
-
-	return true
-}
-
-// get themes, filtered by the applied search & filter, then sort the matches
-const allThemes = await getCollection("themes", themeFilter).then((entries) =>
-	entries.sort(sortThemes),
-)
+const allThemes = await fetch(
+	`${import.meta.env.THEMES_API_URL}/api/themes?${Astro.url.searchParams}`,
+).then((res) => res.json())
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
@@ -182,7 +107,7 @@ const themes = page.data
 const showRecentlyAdded =
 	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
 const recentlyAdded = showRecentlyAdded
-	? allThemes.filter((entry) => entry.data.badge === "new").sort(sortRecentThemes)
+	? await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/recent`).then((res) => res.json())
 	: []
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
 recentlyAddedSearch.append("categories[]", "recent")
@@ -228,7 +153,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 							}
 						>
 							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
-								{recentlyAdded.slice(0, 3).map((theme) => (
+								{recentlyAdded.slice(0, 3).map((theme: any) => (
 									<ThemeCard theme={theme} />
 								))}
 							</CardGrid>

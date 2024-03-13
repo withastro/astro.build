@@ -1,52 +1,43 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content"
 import CardGrid from "~/components/CardGrid.astro"
 import CardGridGroup from "~/components/CardGridGroup.astro"
 import ImageGallery from "~/components/ImageGallery.astro"
-import { resolveAllImages } from "~/content/themes/_resolveImage.js"
-import { getRelatedThemes } from "~/helpers/relatedThemes.js"
+import { sanitizeThemeDescription } from "~/helpers/themes.ts"
 import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx"
 import MainLayout from "~/layouts/MainLayout.astro"
 import ThemeCTAs from "../_components/ThemeCTAs.astro"
 import ThemeCard from "../_components/ThemeCard.astro"
 import ThemeStats from "../_components/ThemeStats.astro"
 
-export async function getStaticPaths() {
-	const themes = await getCollection("themes")
+export const prerender = false
 
-	return themes.map((theme) => {
-		return {
-			params: { slug: theme.slug },
-			props: { theme },
-		}
-	})
-}
+const slug = Astro.params.slug as string
 
-const { theme } = Astro.props as { theme: CollectionEntry<"themes"> }
+const theme = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
+	(res) => res.json(),
+)
 
-const { Content } = await theme.render()
-const relatedThemes = await getRelatedThemes(theme)
-const images = await resolveAllImages(theme)
+const relatedThemes: Array<any> = await fetch(
+	`${import.meta.env.THEMES_API_URL}/api/themes/related?slug=${slug}`,
+).then((res) => res.json())
 ---
 
 <MainLayout
-	title={theme.data.title}
-	description={theme.data.description}
-	image={{ src: images[0].fullImage.src, alt: theme.data.title }}
+	title={theme.Theme.title}
+	description={theme.Theme.description}
+	image={{ src: theme.Theme.image, alt: theme.Theme.title }}
 >
 	<div class="grid-container gap-y-0">
 		{
-			images.length > 1 ? (
+			theme.Theme.images.length > 1 ? (
 				<ImageGallery
-					images={images}
+					images={theme.Theme.images}
 					class="bleed-full mx-auto w-full border-astro-gray-500 xl:border-x xl:border-b"
 					style="max-width: var(--container-width, 1280px)"
 				/>
 			) : (
 				<img
-					src={images[0].fullImage.src}
-					width={images[0].fullImage.width}
-					height={(images[0].fullImage.width * 7) / 16}
+					src={theme.Theme.image}
 					alt=""
 					class="mx-auto aspect-video w-full border-astro-gray-500 object-cover object-top xl:border-x xl:border-b"
 					decoding="async"
@@ -64,16 +55,14 @@ const images = await resolveAllImages(theme)
 					<span class="pr-2">Back to themes</span>
 				</a>
 				<div>
-					<h1 class="heading-3 mb-4 sm:heading-2">{theme.data.title}</h1>
-					<p class="text-lg text-astro-gray-200 lg:text-xl">{theme.data.description}</p>
+					<h1 class="heading-3 mb-4 sm:heading-2">{theme.Theme.title}</h1>
+					<p class="text-lg text-astro-gray-200 lg:text-xl">{theme.Theme.description}</p>
 					<ThemeCTAs theme={theme} class="py-6 md:hidden" />
 					<hr class="border-astro-gray-500 md:hidden" />
 					<ThemeStats theme={theme} class="py-4 md:hidden" />
 				</div>
 				<hr class="hidden border-astro-gray-500 md:block" />
-				<article class="prose">
-					<Content />
-				</article>
+				<article class="prose" set:html={sanitizeThemeDescription(theme.Theme.body)} />
 			</section>
 
 			<aside
@@ -84,18 +73,24 @@ const images = await resolveAllImages(theme)
 				<ThemeStats theme={theme} class="p-6 lg:p-8 xl:p-10" />
 			</aside>
 		</div>
-		<div class="related bleed-full relative border-t border-astro-gray-500">
-			<div class="grid-container gap-y-10 pb-0 pt-20">
-				<CardGridGroup
-					title="Other themes to consider"
-					cta={{ href: "/themes/", text: "View more themes" }}
-				>
-					<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
-						{relatedThemes.map((theme) => <ThemeCard theme={theme} />)}
-					</CardGrid>
-				</CardGridGroup>
-			</div>
-		</div>
+		{
+			relatedThemes.length > 0 && (
+				<div class="related bleed-full relative border-t border-astro-gray-500">
+					<div class="grid-container gap-y-10 pb-0 pt-20">
+						<CardGridGroup
+							title="Other themes to consider"
+							cta={{ href: "/themes/", text: "View more themes" }}
+						>
+							<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
+								{relatedThemes.map((theme) => (
+									<ThemeCard theme={theme} />
+								))}
+							</CardGrid>
+						</CardGridGroup>
+					</div>
+				</div>
+			)
+		}
 	</div>
 
 	<style>
