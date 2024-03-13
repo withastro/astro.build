@@ -1,0 +1,77 @@
+---
+title: "Astro DB: A Deep Dive"
+description: "Yesterday we launched a fully-managed SQL database service designed exclusively for the Astro web framework. Let's dive into the implementation details of Astro DB: how it works, why we built it, and why we're adopting libSQL."
+publishDate: "March 13, 2024"
+authors:
+  - matthew
+coverImage: "/src/content/blog/_images/astro-db-deep-dive/header-astro-db-deep-dive.webp"
+socialImage: "/src/content/blog/_images/astro-db-deep-dive/og-astro-db-deep-dive.webp"
+lang: "en"
+---
+
+**Yesterday we launched a fully-managed SQL database service designed exclusively for the Astro web framework. Let's dive into the implementation details of [Astro DB](https://astro.build/db/): how it works, why we built it, and why we're adopting libSQL.**
+
+## How we got here
+
+Astro is unique for its focus on building **content-driven websites.** The center of this is, of course, content, which is why in Astro 2.0 we shipped [Content Collections.](https://astro.build/blog/introducing-content-collections/) Our users loved it as a way to manage their local content.
+
+Wordpress has always been a huge inspiration for us. One of the things that makes Wordpress so special is its **built-in** **database**. You're not just managing your article content, you're managing data, pages, blocks, images, and an entire ecosystem of plugins.
+
+We wanted something like this for Astro, but we quickly realized that we'd reached the limits of how far static repo data could take us.
+
+## Finding (and losing) SQLite
+
+In an effort to evolve Content Collections with data collections and references, we realized what we were doing was building a database-like ORM from the filesystem, and we ran into several challenges doing so. Core team member Erika Moreau brought up the idea: why don't we just use a database, [SQLite](https://www.sqlite.org/)?
+
+We fell in love with the idea of a lightweight database built into Astro itself. SQLite was perfect for the read-heavy workloads of most content-driven websites. 
+
+We prototyped the idea but ran into a few blockers. SQLite is a C library, so it needs native add-ons to run in Node.js. This is ok for local development, but native add-ons are difficult to deploy to serverless hosts and the startup time was worrisome. Additionally key environments like [StackBlitz](https://stackblitz.com/) would fail to run it entirely.
+
+Defeated, we put the idea on the back burner to focus on other things. It was Spring, 2023. 
+
+## Finding (and falling in love with) libSQL
+
+At this same time — halfway around the world and completely unknown to us — another team was working on this exact problem. That team was Turso and their solution was [libSQL](https://github.com/tursodatabase/libsql).
+
+libSQL is a fork of SQLite that introduces a collection of improvements to the runtime while maintaining compatibility with classic SQLite. libSQL featured a modern database client for JavaScript/TypeScript that avoided the native bindings and compilation steps that plagued the rest of the ecosystem. It could even run on [StackBlitz](https://stackblitz.com/) via WASM.
+
+Turso also offered hosting for libSQL databases with a specific focus on the kind of scale we needed (more on this in a bit). A vision was starting to come together for Astro DB, but it wasn't until December 2023 that all of the pieces would finally snap into place.
+
+## Designing a local database the Astro Way
+
+Astro DB gives you a fully-local libSQL database as soon as you start up your dev server. With our background as a static-site generator it was important that the database could be built from scratch on startup so that in the future it can power a content layer where the data is sourced from a variety of places, including the filesystem.
+
+When you run `astro dev`, Astro DB will:
+
+- Create an empty database at `.astro/data.db`
+- Your schema is read from `db/config.ts`
+- The database is seeded from `db/seed.ts`
+- Your database client is now ready
+
+The workflow largely mirrors the Content Collections workflow that Astro users already love. Importantly, the database itself (`data.db`) is *not* *persistent*. It's created new from scratch every time you start up the dev server. This gives you *simple, reproducible* one-off databases.
+
+Astro DB brings together the web framework, the schema, the seed file, and the database itself all into a single cohesive story. We even include an ORM for you: Drizzle. We selected Drizzle because it is a type-safe ORM that lets you get as close to the metal as you want, and is also pluggable which allowed us to add our own behaviors on top.
+
+## Going remote with a hosted database
+
+Astro DB includes a hosted libSQL database that you can connect to during local development and in production. Everything is managed for you through our Astro Studio platform. You can create a new database for your project in ~30 seconds.
+
+To achieve the kind of scale we knew we'd need on our platform, we partnered with Turso who maintain libSQL and operate the largest libSQL hosting platform. Their commitment to a “database per tenant” model was a perfect fit for our need to spin up hundreds of thousands of databases, all on-demand.
+
+We also spent some time last year prototyping Cloudflare's D1 product. We liked the vision of the project, but struggled with the added abstraction layer of workers and worker bindings when all we needed was the database. We were also hesitant to build on a proprietary database technology (D1) especially if it meant bundling that tech into Astro itself. Ultimately, we found that D1 wasn't a good fit for our use-case.
+
+## Zero-downtime schema migrations
+
+Your database schema is defined in the project `db/config.ts` file. When you make changes to your schema, you need to push them to your hosted database in a way that eliminates risk of data loss and downtime. So we built `astro db push`
+
+The `push` command was designed to balance ease-of-use while still encouraging best practices that work on production large-scale projects. In Astro DB there are no migration files to manage. Instead, when you run `push` your schema is automatically compared against your hosted production database and any new changes are applied. If those changes can't be added safely or risk any data loss in any way, the changes will not be applied.
+
+This encourages the  ["expand and contract" migration](https://planetscale.com/blog/safely-making-database-schema-changes) strategy in Astro DB applications. Of course, if you're doing rapid development and don't mind resetting your database as needed, you can run `astro db --force-reset` to push up any schema changes you'd like resetting the database as needed. 
+
+We went through a few different iterations on our schema migration system before landing on this final version. At one time we even had a `migrations/` folder where you would manually create and check explicit migration plan files into your repo. While some people prefer this model, we found it an annoying extra steps for most users to remember to go and create a migration any time they changed their schema.
+
+## Wrapping Up
+
+We're happy with the balance we've found in the first iteration of Astro DB in laying the roots for future local use-cases while providing an easy way to deploy production databases today. One detail left out of this article is how integrations are able to provide their own tables and data as well, which we hope to explore more as we continue down the path towards building out the next iteration of content and plugins in Astro.
+
+To get started integrating your app, check out the [docs](https://docs.astro.build/en/guides/astro-db/).
