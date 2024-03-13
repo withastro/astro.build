@@ -33,11 +33,15 @@ You probably get that it's not the most ideal way of handling that, right?
 
 ## Solution
 
-Out of identifying those problems and challenges, we came up with a new idea. A digital portal where theme creators can upload, update, and manage their themes. A core member only has to step in once, to approve a new theme, but that also can be just a click of a button.
+Out of identifying those problems and challenges, we came up with a new idea. A digital portal where theme creators can upload, update, and manage their themes. A core member only has to step in once, to approve a new theme, but that also can be just a click of a button. Using Astro Studio and Astro DB, we are able to handle the entire process using a web application, instead of requiring manual steps, such as creating PRs and managing content.
 
 ## Dogfooding Astro Studio
 
-As we delved deeper into Astro Studio and building the Dev Portal, we encountered two significant challenges using Astro Studio: authentication and image storage. To address authentication, we integrated Supabase, leveraging its OAuth with GitHub for streamlined access. Yet, we realised the need for a unified solution and transitioned to [Lucia](https://lucia-auth.com/), seamlessly integrating authentication with Astro Studio.
+As we delved deeper into building the Developer Portal, we started dogfooding Astro Studio. What could be more powerful then using the tool you're building to build the tool you're building? It's a great way to identify bugs and issues early on, and to test the limits of the tool.
+
+Initially, we encountered two significant challenges using Astro Studio: authentication and image storage. To address authentication, we integrated Supabase, leveraging its OAuth with GitHub for streamlined access. Yet, we realised the need for a unified solution that would leverage the power of Astro Studio and transitioned to [Lucia](https://lucia-auth.com/).
+
+For image storage, we set up a very simple cloud storage bucket with Google Cloud that will handle all storage and image processing without any manual intervention. Again, showcasing how powerful an Astro powered application and database can be.
 
 ## What's next
 
