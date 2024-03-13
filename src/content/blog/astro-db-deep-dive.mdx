@@ -66,7 +66,7 @@ Your database schema is defined in the project `db/config.ts` file. When you mak
 
 The `push` command was designed to balance ease-of-use while still encouraging best practices that work on production large-scale projects. In Astro DB there are no migration files to manage. Instead, when you run `push` your schema is automatically compared against your hosted production database and any new changes are applied. If those changes can't be added safely or risk any data loss in any way, the changes will not be applied.
 
-This encourages the  ["expand and contract" migration](https://planetscale.com/blog/safely-making-database-schema-changes) strategy in Astro DB applications. Of course, if you're doing rapid development and don't mind resetting your database as needed, you can run `astro db --force-reset` to push up any schema changes you'd like resetting the database as needed. 
+This encourages the ["expand and contract" migration](https://planetscale.com/blog/safely-making-database-schema-changes) strategy in Astro DB applications. Of course, if you're doing rapid development and don't mind resetting your database as needed, you can run `astro db --force-reset` to push up any schema changes you'd like, including a database reset.
 
 We went through a few different iterations on our schema migration system before landing on this final version. At one time we even had a `migrations/` folder where you would manually create and check explicit migration plan files into your repo. While some people prefer this model, we found it an annoying extra step for most users to remember to go and create a migration any time they changed their schema.
 
