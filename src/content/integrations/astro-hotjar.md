@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-hotjar"
 repoUrl: "https://github.com/COQUARD-Cyrille-Freelance/astro-hotjar"
 homepageUrl: "https://github.com/COQUARD-Cyrille-Freelance/astro-hotjar#readme"
-downloads: 11
+downloads: 12
 ---

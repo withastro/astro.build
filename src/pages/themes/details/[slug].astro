@@ -31,7 +31,7 @@ const relatedThemes: Array<any> = await fetch(
 		{
 			theme.Theme.images.length > 1 ? (
 				<ImageGallery
-					images={theme.Theme.images}
+					images={[theme.Theme.image, ...theme.Theme.images]}
 					class="bleed-full mx-auto w-full border-astro-gray-500 xl:border-x xl:border-b"
 					style="max-width: var(--container-width, 1280px)"
 				/>

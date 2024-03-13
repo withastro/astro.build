@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astro-utils/context"
 repoUrl: "https://github.com/withastro-utils/utils"
 homepageUrl: "https://withastro-utils.github.io/docs/"
-downloads: 60
+downloads: 58
 ---
