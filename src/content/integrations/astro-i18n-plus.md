@@ -6,6 +6,6 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-i18n-plus"
 homepageUrl: "https://github.com/jianghong008/astro-i18n-plus/tree/master/packages/astro-i18n-plus"
-downloads: 9
+downloads: 11
 repoUrl: "https://github.com/jianghong008/astro-i18n-plus"
 ---

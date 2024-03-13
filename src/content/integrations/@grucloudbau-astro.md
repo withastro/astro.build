@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@grucloud/bau-astro"
 repoUrl: "https://github.com/grucloud/bau"
 homepageUrl: "https://github.com/grucloud/bau/bau-astro"
-downloads: 27
+downloads: 31
 ---
