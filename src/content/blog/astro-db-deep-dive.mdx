@@ -9,6 +9,8 @@ socialImage: "/src/content/blog/_images/astro-db-deep-dive/og-astro-db-deep-dive
 lang: "en"
 ---
 
+import Mention from "/src/components/Mention.astro"
+
 **Yesterday we launched a fully managed SQL database service designed exclusively for the Astro web framework. Let's dive into the implementation details of [Astro DB](https://astro.build/db/): how it works, why we built it, and why we're adopting libSQL.**
 
 ## How we got here
@@ -21,7 +23,7 @@ We wanted something like this for Astro, but we quickly realized that we'd reach
 
 ## Finding (and losing) SQLite
 
-In an effort to evolve Content Collections with data collections and references, we realized what we were doing was building a database-like ORM from the filesystem, and we ran into several challenges doing so. Core team member Erika brought up the idea: why don't we just use a database, [SQLite](https://www.sqlite.org/)?
+In an effort to evolve Content Collections with data collections and references, we realized what we were doing was building a database-like ORM from the filesystem, and we ran into several challenges doing so. Core team member <Mention name="erika" /> brought up the idea: why don't we just use a database, [SQLite](https://www.sqlite.org/)?
 
 We fell in love with the idea of a lightweight database built into Astro itself. SQLite was perfect for the read-heavy workloads of most content-driven websites. 
 
