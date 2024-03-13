@@ -62,7 +62,7 @@ We also spent some time last year prototyping Cloudflare's D1 product. We liked 
 
 ## Zero-downtime schema migrations
 
-Your database schema is defined in the project `db/config.ts` file. When you make changes to your schema, you need to push them to your hosted database in a way that eliminates risk of data loss and downtime. So we built `astro db push`
+Your database schema is defined in the project `db/config.ts` file. When you make changes to your schema, you need to push them to your hosted database in a way that eliminates the risk of data loss and downtime. So we built `astro db push`
 
 The `push` command was designed to balance ease-of-use while still encouraging best practices that work on production large-scale projects. In Astro DB there are no migration files to manage. Instead, when you run `push` your schema is automatically compared against your hosted production database and any new changes are applied. If those changes can't be added safely or risk any data loss in any way, the changes will not be applied.
 
