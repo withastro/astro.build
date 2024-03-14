@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-tooltips"
 repoUrl: "https://github.com/JulianCataldo/web-garden"
 homepageUrl: "https://code.juliancataldo.com/component/astro-tooltips"
-downloads: 266
+downloads: 279
 ---
