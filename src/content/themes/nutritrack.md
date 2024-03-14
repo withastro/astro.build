@@ -1,16 +1,16 @@
 ---
 title: "Nutritrack"
-description: "A customizable landing page starter theme built in AstroJS with TailwindCSS."
+description: "A simple customizable landing page starter theme built in AstroJS with TailwindCSS."
 image: "/src/content/themes/_images/nutritrack-hero.webp"
 images: []
 author:
   url: "https://github.com/christian-luntok"
-  name: "Christian Luntok"
+  name: "chrstnl"
   avatar: "https://avatars.githubusercontent.com/u/54312759?v=4"
 categories:
   - "landing-page"
 repoUrl: "https://github.com/christian-luntok/astro-nutritrack"
-demoUrl: "https://astro-nutritrack.avenuelabs.co/"
+demoUrl: "https://astro-nutritrack.chrstnl.com/"
 tools:
   - "react"
   - "tailwind"
@@ -19,12 +19,10 @@ stars: 13
 ---
 
 <p>
-  Getting started with Astro NutriTrack is easy. The theme comes with clear instructions on how to
-  install and configure it on your landing page. This theme empowers you to create a stunning and
-  personalized landing page for your Products with ease.
+A simple landing page template built with AstroJS and TailwindCSS, specifically designed for Notion creators.
 </p>
 <h3>Key Features</h3>
-<p>Here are some of the key features of Astro Lane:</p>
+<p>Here are some of the key features of Astro Nutritrack:</p>
 <ul>
   <li>Minimal styling (make it your own!)</li>
   <li>Accessible, semantic HTML markup</li>
