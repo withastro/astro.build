@@ -36,11 +36,11 @@ const selectedCategories = Astro.url.searchParams.getAll("categories[]")
 const categoryFilter: FilterGroup = {
 	title: "Categories",
 	options: categories.map((c: any) => ({
-		id: c.id,
+		id: c.value,
 		name: "categories[]",
 		value: c.value,
 		label: c.name,
-		selected: selectedCategories.includes(c),
+		selected: selectedCategories.includes(c.value),
 	})),
 }
 
@@ -56,11 +56,11 @@ const selectedTools = Astro.url.searchParams.getAll("technology[]")
 const toolFilter: FilterGroup = {
 	title: "Technology",
 	options: tools.map((t: any) => ({
-		id: t.id,
+		id: t.value,
 		name: "technology[]",
 		value: t.value,
 		label: t.name,
-		selected: selectedTools.includes(t),
+		selected: selectedTools.includes(t.value),
 	})),
 }
 
