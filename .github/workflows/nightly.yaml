@@ -7,7 +7,7 @@ on:
 
 jobs:
   integrations:
-    name: Update Themes & Integrations
+    name: Update Integrations
     if: github.repository_owner == 'withastro'
     runs-on: ubuntu-latest
     steps:
@@ -19,11 +19,6 @@ jobs:
 
       - name: Search NPM for new and deprecated integrations
         run: pnpm run update:integrations
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update theme download counts and recent category
-        run: pnpm run update:themes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
