@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-monetization"
 repoUrl: "https://github.com/devcer/astro-monetization"
 homepageUrl: "https://github.com/devcer/astro-monetization#readme"
-downloads: 5
+downloads: 4
 ---

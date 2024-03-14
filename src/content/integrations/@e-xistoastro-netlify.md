@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@e-xisto/astro-netlify"
 repoUrl: "https://github.com/e-xisto/astro-netlify"
 homepageUrl: "https://github.com/e-xisto/astro-netlify#readme"
-downloads: 2
+downloads: 3
 ---
