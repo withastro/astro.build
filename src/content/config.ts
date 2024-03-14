@@ -1,5 +1,5 @@
-import { defineCollection } from "astro:content";
-import { z } from "zod";
+import { defineCollection } from "astro:content"
+import { z } from "zod"
 
 export const IntegrationCategories = new Map([
 	["featured", "Featured"],
@@ -12,7 +12,7 @@ export const IntegrationCategories = new Map([
 	["analytics", "Analytics"],
 	["accessibility", "Accessibility"],
 	["toolbar", "Dev Toolbar"],
-] as const);
+] as const)
 
 const seoSchema = z.object({
 	title: z.string().min(5).max(120),
@@ -30,7 +30,7 @@ const seoSchema = z.object({
 			follow: z.boolean().default(true),
 		})
 		.default({}),
-});
+})
 
 export const collections = {
 	authors: defineCollection({
@@ -79,20 +79,14 @@ export const collections = {
 	}),
 	integrations: {
 		schema: z.object({
-			name: z
-				.string()
-				.describe("Name of the package as it is published to NPM"),
+			name: z.string().describe("Name of the package as it is published to NPM"),
 			title: z
 				.string()
-				.describe(
-					"Title of the integration as it should be shown in the Integrations catalog",
-				),
+				.describe("Title of the integration as it should be shown in the Integrations catalog"),
 			description: z.string().optional(),
 			image: z.string().optional(),
 			categories: z.array(
-				z.enum(
-					Array.from(IntegrationCategories.keys()) as [string, ...string[]],
-				),
+				z.enum(Array.from(IntegrationCategories.keys()) as [string, ...string[]]),
 			),
 			repoUrl: z.string().url().optional(),
 			npmUrl: z.string().url(),
@@ -107,9 +101,7 @@ export const collections = {
 	pages: {
 		schema: z.object({
 			seo: seoSchema,
-			updated_date: z
-				.date()
-				.describe("The date this content was last updated."),
+			updated_date: z.date().describe("The date this content was last updated."),
 			locale: z.enum(["en"]).default("en"),
 		}),
 	},
@@ -138,4 +130,4 @@ export const collections = {
 			highlight: z.boolean().default(false),
 		}),
 	},
-};
+}

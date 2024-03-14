@@ -12,25 +12,25 @@ const { Author: author } = entry
 
 <li
 	class:list={[
-		'group relative flex aspect-[1200/630] h-full w-full cursor-pointer flex-col overflow-hidden bg-astro-gray-600',
+		"group relative flex aspect-[1200/630] h-full w-full cursor-pointer flex-col overflow-hidden bg-astro-gray-600",
 		// Override default Markdown content styles
-		'!m-0 before:!hidden',
+		"!m-0 before:!hidden",
 	]}
 >
-	<a href={`/themes/details/${slug}/`} class='h-full w-full text-astro-gray-100'>
+	<a href={`/themes/details/${slug}/`} class="h-full w-full text-astro-gray-100">
 		<img
 			src={image}
 			width={450}
 			height={236}
-			alt=''
-			class='h-full w-full object-cover object-top'
+			alt=""
+			class="h-full w-full object-cover object-top"
 		/>
 
 		<span
-			class='pointer-events-none absolute bottom-0 z-10 flex w-full flex-col gap-2 bg-astro-gray-500/95 p-4 opacity-0 transition-opacity duration-300 ease-out group-focus-within:opacity-100 group-hover:opacity-100'
+			class="pointer-events-none absolute bottom-0 z-10 flex w-full flex-col gap-2 bg-astro-gray-500/95 p-4 opacity-0 transition-opacity duration-300 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
 		>
-			<span class='heading-5'>{title}</span>
-			<span class='body flex flex-row items-center gap-2'>
+			<span class="heading-5">{title}</span>
+			<span class="body flex flex-row items-center gap-2">
 				by {author.name}
 			</span>
 		</span>
