@@ -8,7 +8,7 @@ const Users = defineTable({
 const Sessions = defineTable({
 	columns: {
 		id: column.number({ primaryKey: true }),
-		userId: id: column.number({ references: () => User.columns.id }),
+		userId: column.number({ references: () => User.columns.id }),
 		expiresAt: column.number(),
 	}
 })
