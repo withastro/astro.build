@@ -1,42 +1,42 @@
 ---
-import CardGrid from '~/components/CardGrid.astro'
-import CardGridGroup from '~/components/CardGridGroup.astro'
-import Pagination from '~/components/Pagination.astro'
-import SearchFilter, { type FilterGroup } from '~/components/SearchFilter.astro'
-import SidebarLayout from '~/components/SidebarLayout.astro'
-import SidebarPanel from '~/components/SidebarPanel.astro'
-import { paginate } from '~/helpers/paginate.js'
-import MainLayout from '~/layouts/MainLayout.astro'
-import SubmitTheme from './_components/SubmitTheme.astro'
-import ThemeCard from './_components/ThemeCard.astro'
+import CardGrid from "~/components/CardGrid.astro"
+import CardGridGroup from "~/components/CardGridGroup.astro"
+import Pagination from "~/components/Pagination.astro"
+import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro"
+import SidebarLayout from "~/components/SidebarLayout.astro"
+import SidebarPanel from "~/components/SidebarPanel.astro"
+import { paginate } from "~/helpers/paginate.js"
+import MainLayout from "~/layouts/MainLayout.astro"
+import SubmitTheme from "./_components/SubmitTheme.astro"
+import ThemeCard from "./_components/ThemeCard.astro"
 
 export const prerender = false
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
-const currentPage = typeof Astro.params.page === 'undefined' ? 1 : parseInt(Astro.params.page)
+const currentPage = typeof Astro.params.page === "undefined" ? 1 : parseInt(Astro.params.page)
 
 // invalid page number!
 if (!currentPage || isNaN(currentPage)) {
-	return Astro.redirect('/404')
+	return Astro.redirect("/404")
 }
 
 // search term from the search/filter panel
-const search = Astro.url.searchParams.get('search')
+const search = Astro.url.searchParams.get("search")
 
 // get a list of all supported categories, this is the same list used by the zod schema
 const categories = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
 	res.json().then((data) => data.themeCategories),
 )
 // get a list of category filters applied to the request
-const selectedCategories = Astro.url.searchParams.getAll('categories[]')
+const selectedCategories = Astro.url.searchParams.getAll("categories[]")
 
 // massage category data for the Filter components
 const categoryFilter: FilterGroup = {
-	title: 'Categories',
+	title: "Categories",
 	options: categories.map((c: any) => ({
 		id: c.id,
-		name: 'categories[]',
+		name: "categories[]",
 		value: c.value,
 		label: c.name,
 		selected: selectedCategories.includes(c),
@@ -49,14 +49,14 @@ const tools = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).
 )
 
 // get a list of tool filters applied to the request
-const selectedTools = Astro.url.searchParams.getAll('technology[]')
+const selectedTools = Astro.url.searchParams.getAll("technology[]")
 
 // massage tool data for the Filter components
 const toolFilter: FilterGroup = {
-	title: 'Technology',
+	title: "Technology",
 	options: tools.map((t: any) => ({
 		id: t.id,
-		name: 'technology[]',
+		name: "technology[]",
 		value: t.value,
 		label: t.name,
 		selected: selectedTools.includes(t),
@@ -64,22 +64,22 @@ const toolFilter: FilterGroup = {
 }
 
 const ThemePricing = new Map<string, string>([
-	['free', 'Free'],
-	['paid', 'Paid'],
+	["free", "Free"],
+	["paid", "Paid"],
 ])
 
 // get a list of all supported tools, this is the same list used by the zod schema
 const pricing = Array.from(ThemePricing.keys())
 
 // get a list of tool filters applied to the request
-const selectedPricing = Astro.url.searchParams.getAll('price[]')
+const selectedPricing = Astro.url.searchParams.getAll("price[]")
 
 // massage tool data for the Filter components
 const priceFilter: FilterGroup = {
-	title: 'Pricing',
+	title: "Pricing",
 	options: pricing.map((t) => ({
 		id: t,
-		name: 'price[]',
+		name: "price[]",
 		value: t,
 		label: ThemePricing.get(t)!,
 		selected: selectedPricing.includes(t),
@@ -95,7 +95,7 @@ const paginatedResults = paginate({
 	data: allThemes,
 	pageSize: 12,
 	currentPage,
-	route: '/themes/[...page]',
+	route: "/themes/[...page]",
 	searchParams: Astro.url.searchParams,
 })
 
@@ -114,15 +114,15 @@ const recentlyAdded = showRecentlyAdded
 	? await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/recent`).then((res) => res.json())
 	: []
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
-recentlyAddedSearch.append('categories[]', 'recent')
+recentlyAddedSearch.append("categories[]", "recent")
 const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`
 ---
 
-<MainLayout title='Themes' image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}>
-	<div class='bg-grid relative'>
-		<div class='grid-container'>
+<MainLayout title="Themes" image={{ src: "/og/themes.jpg", alt: "Explore the possibilities" }}>
+	<div class="bg-grid relative">
+		<div class="grid-container">
 			<h1
-				class='heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40'
+				class="heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
 			>
 				Jumpstart your next project with a theme
 			</h1>
@@ -130,33 +130,33 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 	</div>
 
 	<SidebarLayout>
-		<Fragment slot='sidebar'>
+		<Fragment slot="sidebar">
 			<SidebarPanel>
 				<SearchFilter
-					indexRoute='/themes/'
+					indexRoute="/themes/"
 					groups={[categoryFilter, toolFilter, priceFilter]}
 					search={search}
-					searchPlaceholder='Search for a theme'
+					searchPlaceholder="Search for a theme"
 				/>
 			</SidebarPanel>
-			<SubmitTheme class='hidden lg:block' />
+			<SubmitTheme class="hidden lg:block" />
 		</Fragment>
 
 		{
 			themes.length > 0 ? (
-				<div class='flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10'>
-					<h2 class='sr-only'>Themes</h2>
+				<div class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10">
+					<h2 class="sr-only">Themes</h2>
 
 					{showRecentlyAdded && recentlyAdded.length > 0 && (
 						<CardGridGroup
-							title='Recently Added'
+							title="Recently Added"
 							cta={
 								recentlyAdded.length > 3
-									? { href: recentlyAddedHref, text: 'View all new themes' }
+									? { href: recentlyAddedHref, text: "View all new themes" }
 									: undefined
 							}
 						>
-							<CardGrid class='w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3'>
+							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 								{recentlyAdded.slice(0, 3).map((theme: any) => (
 									<ThemeCard theme={theme} />
 								))}
@@ -165,9 +165,9 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					)}
 
 					<CardGridGroup
-						title={showRecentlyAdded && recentlyAdded.length > 0 ? 'All Themes' : undefined}
+						title={showRecentlyAdded && recentlyAdded.length > 0 ? "All Themes" : undefined}
 					>
-						<CardGrid class='w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3'>
+						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 							{themes.map((theme) => (
 								<ThemeCard theme={theme} />
 							))}
@@ -175,21 +175,21 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					</CardGridGroup>
 
 					{allPages.length > 1 && (
-						<Pagination restRoute page={page} allPages={allPages} class='mx-auto' />
+						<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
 					)}
 				</div>
 			) : (
-				<div class='flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10'>
+				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
 					<p>
 						<strong>0</strong> results found for themes matching <strong>"{search}"</strong>
 					</p>
-					<a href='/themes/' data-astro-prefetch class='button button-primary'>
+					<a href="/themes/" data-astro-prefetch class="button button-primary">
 						Clear filters
 					</a>
 				</div>
 			)
 		}
 
-		<SubmitTheme class='lg:hidden' />
+		<SubmitTheme class="lg:hidden" />
 	</SidebarLayout>
 </MainLayout>
