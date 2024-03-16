@@ -267,7 +267,7 @@ export default {
 				".db .heading": {
 					"@apply font-obviously": {},
 					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
-					"font-variation-settings": `"wght" 475, "wdth" 490`,
+					fontVariationSettings: `"wght" 475, "wdth" 490, "slnt" 0`,
 				},
 			})
 		}),
