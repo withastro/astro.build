@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-cached-icon"
 homepageUrl: "https://www.npmjs.com/package/astro-cached-icon"
 badge: "new"
-downloads: 44
+downloads: 37
 ---
