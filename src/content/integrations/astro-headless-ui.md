@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-headless-ui"
 repoUrl: "https://github.com/BryceRussell/astro-headless-ui"
 homepageUrl: "https://github.com/BryceRussell/astro-headless-ui#readme"
-downloads: 47
+downloads: 51
 ---

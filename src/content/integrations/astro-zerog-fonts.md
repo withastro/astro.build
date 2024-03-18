@@ -7,5 +7,5 @@ categories:
   - "performance+seo"
 npmUrl: "https://www.npmjs.com/package/astro-zerog-fonts"
 homepageUrl: "https://www.npmjs.com/package/astro-zerog-fonts"
-downloads: 24
+downloads: 26
 ---

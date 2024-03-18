@@ -9,6 +9,6 @@ npmUrl: "https://www.npmjs.com/package/@astrojs/starlight"
 image: "/assets/integrations/starlight.svg"
 repoUrl: "https://github.com/withastro/starlight"
 homepageUrl: "https://starlight.astro.build"
-downloads: 53379
+downloads: 52128
 official: true
 ---
