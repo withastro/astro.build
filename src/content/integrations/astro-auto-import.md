@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-auto-import"
 repoUrl: "https://github.com/delucis/astro-auto-import"
 homepageUrl: "https://github.com/delucis/astro-auto-import#readme"
-downloads: 16486
+downloads: 16951
 ---
