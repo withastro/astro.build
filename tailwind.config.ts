@@ -207,27 +207,27 @@ export default {
 
 				".heading-1": {
 					"@apply font-heading text-6xl leading-tight": {},
-					fontWeight: 'var(--heading-weight-normal)'
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-2": {
 					"@apply font-heading text-5xl leading-tight": {},
-					fontWeight: 'var(--heading-weight-normal)'
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-3": {
 					"@apply font-heading text-3xl leading-tight": {},
-					fontWeight: 'var(--heading-weight-normal)'
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-4": {
 					"@apply font-heading text-2xl leading-tight": {},
-					fontWeight: 'var(--heading-weight-normal)'
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-5": {
 					"@apply font-heading text-xl leading-tight": {},
-					fontWeight: 'var(--heading-weight-normal)'
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".body": {
