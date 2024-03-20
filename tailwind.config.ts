@@ -4,6 +4,7 @@ import plugin from "tailwindcss/plugin"
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
+		fontFamily: {},
 		extend: {
 			animation: {
 				float: "float 6s ease-in-out infinite",
@@ -70,6 +71,33 @@ export default {
 		container: false,
 	},
 	plugins: [
+		plugin(function fontPlugin({ addBase }) {
+			addBase({
+				"font-sans": {
+					fontFamily: ["Inter", "system-ui", "sans-serif"],
+					fontVariationSettings: "var(--sans-wght)",
+					fontFeatureSettings: ["var(--sans-case)", "var(--sans-ss03)", "var(--sans-cpsp)", "var(--sans-cv03)", "var(--cv04)", "var(--cv05)", "var(--cv06)"],
+				},
+				"font-mono": {
+					fontFamily: ["MDIO", "md-io-fallback", "monospace"],
+					fontVariationSettings: "var(--mono-ital)",
+					fontFeatureSettings: ["var(--mono-calt)", "var(--mono-ital)", "var(--mono-zero)"],
+				},
+				"font-heading": {
+					fontFamily: ["Obviously", "obviously-regular-fallback", "system-ui", "sans-serif"],
+					fontVariationSettings: ["var(--heading-wdth)", "var(--heading-wght)", "var(--heading-slnt)"],
+					fontFeatureSettings: [
+						"var(--heading-salt)",
+						"var(--heading-ss06)",
+						"var(--heading-ss11)",
+						"var(--heading-cv09)",
+						"var(--heading-liga)",
+						"var(--heading-calt)",
+					],
+				},
+			})
+		}),
+
 		// adds a `s-*` utility to apply the same width and height
 		plugin(function sizePlugin(api) {
 			api.matchUtilities(
@@ -189,13 +217,11 @@ export default {
 				".body": {
 					"@apply font-sans text-base": {},
 					fontWeight: "300",
-					letterSpacing: "-0.011em",
 					"-webkit-font-smoothing": "subpixel-antialiased",
 				},
 				".body-large": {
 					"@apply font-sans text-2xl leading-normal": {},
 					fontWeight: "200",
-					letterSpacing: "-0.011em",
 					"-webkit-font-smoothing": "subpixel-antialiased",
 				},
 

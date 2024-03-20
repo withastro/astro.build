@@ -5,7 +5,7 @@
 
 @layer components {
 	.button {
-		@apply inline-flex h-14 items-center justify-center gap-4 rounded-full border border-astro-gray-100 px-10 text-center font-sans text-base font-medium leading-none tracking-wide text-white no-underline transition hover:bg-white/10;
+		@apply font-sans inline-flex h-14 items-center justify-center gap-4 rounded-full border border-astro-gray-100 px-10 text-center text-base font-medium leading-none tracking-wide text-white no-underline transition hover:bg-white/10;
 	}
 
 	.button.button-primary {
@@ -49,8 +49,8 @@
 		--sans-cv05: "cv05" on;
 		--sans-cv06: "cv06" on;
 
-		--mono-style-italic: "ital" 0;
-		--mono-style-normal: "ital" 1;
+		--mono-style-italic: "ital" 1;
+		--mono-style-normal: "ital" 0;
 		--mono-calt: "calt" on;
 		--mono-zero: "zero" on;
 		--mono-style: var(--mono-style-normal);
@@ -64,8 +64,6 @@
 		--heading-weight: var(--heading-weight-light);
 		--heading-style: var(--heading-style-normal);
 		--heading-wght: "wght" var(--heading-weight);
-		--heading-slnt: var(--heading-style);
-		--heading-wdth: "wdth" 490;
 		--heading-salt: "salt" on;
 		--heading-ss06: "ss06" on;
 		--heading-ss11: "ss11" on;
@@ -94,7 +92,7 @@
 	.font-mono {
 		font-family: MDIO, md-io-fallback, monospace;
 		font-variation-settings: var(--mono-ital);
-		font-feature-settings: var(--mono-calt), var(--mono-ital), var(--mono-zero);
+		font-feature-settings: var(--mono-calt), var(--mono-zero);
 	}
 
 	.font-heading {
