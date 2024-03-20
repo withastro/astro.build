@@ -74,7 +74,7 @@ export default {
 		plugin(function fontPlugin({ addBase }) {
 			addBase({
 				"font-sans": {
-					fontFamily: ["Inter", "system-ui", "sans-serif"],
+					fontFamily: ["Inter", "inter-fallback", "system-ui", "sans-serif"],
 					fontVariationSettings: "var(--sans-wght)",
 					fontFeatureSettings: [
 						"var(--sans-case)",
