@@ -92,7 +92,7 @@ export default {
 					fontFeatureSettings: ["var(--mono-calt)", "var(--mono-ital)", "var(--mono-zero)"],
 				},
 				"font-heading": {
-					fontFamily: ["Obviously", "obviously-regular-fallback", "system-ui", "sans-serif"],
+					fontFamily: ["Obviously", "obviously-fallback", "system-ui", "sans-serif"],
 					fontVariationSettings: [
 						"var(--heading-wdth)",
 						"var(--heading-wght)",
