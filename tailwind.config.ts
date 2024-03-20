@@ -76,7 +76,15 @@ export default {
 				"font-sans": {
 					fontFamily: ["Inter", "system-ui", "sans-serif"],
 					fontVariationSettings: "var(--sans-wght)",
-					fontFeatureSettings: ["var(--sans-case)", "var(--sans-ss03)", "var(--sans-cpsp)", "var(--sans-cv03)", "var(--cv04)", "var(--cv05)", "var(--cv06)"],
+					fontFeatureSettings: [
+						"var(--sans-case)",
+						"var(--sans-ss03)",
+						"var(--sans-cpsp)",
+						"var(--sans-cv03)",
+						"var(--cv04)",
+						"var(--cv05)",
+						"var(--cv06)",
+					],
 				},
 				"font-mono": {
 					fontFamily: ["MDIO", "md-io-fallback", "monospace"],
@@ -85,7 +93,11 @@ export default {
 				},
 				"font-heading": {
 					fontFamily: ["Obviously", "obviously-regular-fallback", "system-ui", "sans-serif"],
-					fontVariationSettings: ["var(--heading-wdth)", "var(--heading-wght)", "var(--heading-slnt)"],
+					fontVariationSettings: [
+						"var(--heading-wdth)",
+						"var(--heading-wght)",
+						"var(--heading-slnt)",
+					],
 					fontFeatureSettings: [
 						"var(--heading-salt)",
 						"var(--heading-ss06)",
