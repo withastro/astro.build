@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/astro-devtool-breakpoints"
 repoUrl: "https://github.com/bryanschuetz/astro-breakpoints"
 homepageUrl: "https://github.com/bryanschuetz/astro-breakpoints#readme"
 badge: "new"
-downloads: 393
+downloads: 403
 ---

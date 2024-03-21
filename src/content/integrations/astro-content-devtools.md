@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-content-devtools"
 repoUrl: "https://github.com/HiDeoo/astro-content-devtools"
 homepageUrl: "https://github.com/HiDeoo/astro-content-devtools"
-downloads: 27
+downloads: 54
 ---

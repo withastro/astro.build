@@ -10,7 +10,7 @@ categories:
   - "blog"
 repoUrl: "https://github.com/palmiak/pacamara-astro"
 demoUrl: "https://pacamara-astro-6y7xr.kinsta.page/"
-stars: 33
+stars: 34
 tools:
   - "tailwind"
   - "mdx"

@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/auth-astro"
 repoUrl: "https://github.com/nowaythatworked/auth-astro"
 homepageUrl: "https://www.npmjs.com/package/auth-astro"
-downloads: 3478
+downloads: 3718
 ---
