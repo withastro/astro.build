@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/og-images-generator"
 repoUrl: "https://github.com/JulianCataldo/og-images-generator"
 homepageUrl: "https://github.com/JulianCataldo/og-images-generator#readme"
 badge: "new"
-downloads: 225
+downloads: 228
 ---
