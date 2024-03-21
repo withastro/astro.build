@@ -5,7 +5,7 @@
 
 @layer components {
 	.button {
-		@apply inline-flex h-14 items-center justify-center gap-4 rounded-full border border-astro-gray-100 px-10 text-center font-sans text-base font-medium leading-none tracking-wide text-white no-underline transition hover:bg-white/10;
+		@apply font-sans inline-flex h-14 items-center justify-center gap-4 rounded-full border border-astro-gray-100 px-10 text-center text-base font-medium leading-none tracking-wide text-white no-underline transition hover:bg-white/10;
 	}
 
 	.button.button-primary {
@@ -33,5 +33,72 @@
 	.no-scrollbar {
 		-ms-overflow-style: none; /* IE and Edge */
 		scrollbar-width: none; /* Firefox */
+	}
+}
+
+@layer typography {
+	:root {
+		--sans-weight-normal: 200;
+		--sans-weight-bold: 600;
+		--sans-wght: "wght" var(--sans-weight);
+		--sans-case: "case" on;
+		--sans-ss03: "ss03" on;
+		--sans-cpsp: "cpsp" on;
+		--sans-cv03: "cv03" on;
+		--sans-cv04: "cv04" on;
+		--sans-cv05: "cv05" on;
+		--sans-cv06: "cv06" on;
+
+		--mono-style-italic: "ital" 1;
+		--mono-style-normal: "ital" 0;
+		--mono-calt: "calt" on;
+		--mono-zero: "zero" on;
+		--mono-style: var(--mono-style-normal);
+		--mono-ital: var(--mono-style);
+
+		--heading-style-normal: "slnt" 0;
+		--heading-style-italic: "slnt" 8;
+		--heading-weight-light: 290;
+		--heading-weight-normal: 380;
+		--heading-weight-bold: 475;
+		--heading-weight: var(--heading-weight-light);
+		--heading-style: var(--heading-style-normal);
+		--heading-wght: "wght" var(--heading-weight);
+		--heading-salt: "salt" on;
+		--heading-ss06: "ss06" on;
+		--heading-ss11: "ss11" on;
+		--heading-cv09: "cv09" on;
+		--heading-liga: "liga" on;
+		--heading-calt: "calt" on;
+	}
+
+	.font-italic {
+		--mono-style: var(--mono-style-italic);
+		--heading-style: var(--mono-style-normal);
+	}
+
+	.font-strong {
+		--sans-weight: var(--sans-weight-bold);
+		--heading-weight: var(--heading-weight-bold);
+	}
+
+	.font-sans {
+		font-family: Inter, inter-fallback, system-ui, sans-serif;
+		font-variation-settings: var(--sans-wght);
+		font-feature-settings: var(--sans-case), var(--sans-ss03), var(--sans-cpsp), var(--sans-cv03),
+			var(--cv04), var(--cv05), var(--cv06);
+	}
+
+	.font-mono {
+		font-family: MDIO, md-io-fallback, monospace;
+		font-variation-settings: var(--mono-ital);
+		font-feature-settings: var(--mono-calt), var(--mono-zero);
+	}
+
+	.font-heading {
+		font-family: Obviously, obviously-fallback, system-ui, sans-serif;
+		font-variation-settings: var(--heading-wdth), var(--heading-wght), var(--heading-slnt);
+		font-feature-settings: var(--heading-salt), var(--heading-ss06), var(--heading-ss11),
+			var(--heading-cv09), var(--heading-liga), var(--heading-calt);
 	}
 }

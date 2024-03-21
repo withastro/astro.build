@@ -22,7 +22,9 @@ import UseCaseTabs from "./UseCaseTabs.astro"
 
 <style>
 	:global(.expressive-code) {
-		--ec-codeFontFml: theme(fontFamily.mono);
+		--ec-codeFontFml: MDIO, md-io-fallback, monospace;
+		font-variation-settings: var(--mono-ital);
+		font-feature-settings: var(--mono-calt), var(--mono-zero);
 		--ec-codePadBlk: 0;
 		--ec-codePadInl: 0;
 		--ec-codeBg: transparent;
