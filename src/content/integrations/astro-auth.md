@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-auth"
 homepageUrl: "TODO:"
 badge: "new"
-downloads: 183
+downloads: 190
 ---
