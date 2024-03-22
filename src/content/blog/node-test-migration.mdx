@@ -36,9 +36,9 @@ We started by migrating only **one** of our packages that didn't use `astro`'s i
 
 Since `create-astro` only had a handful of tests, it was relatively easy to migrate the test files to use `node:test` and `node:assert`, instead of `mocha` and `chai`. After that, the only thing left is to update the `mocha` command to `node --test` to execute the tests. However, we quickly ran into issues using the `node --test` command, including:
 
-1. It had trouble parsing the glob syntax when passing multiple arguments, e.g. `node --test "test/*.test.js" --test-name-pattern="foo"`.
-2. It wasn't possible to pass the `--test-concurrency` flag (only available in Node.js 21 and above), but can be worked around by using the [programmatic API](https://nodejs.org/api/test.html#testname-options-fn) `concurrency` option.
-3. Nitpicking, but the argument names were verbose, e.g. `--test-name-pattern` instead of `--match, -m` arguments, `--test-timeout` instead of `--timeout, -t` arguments, etc. 
+- It had trouble parsing the glob syntax when passing multiple arguments, e.g. `node --test "test/*.test.js" --test-name-pattern="foo"`.
+- It wasn't possible to pass the `--test-concurrency` flag (only available in Node.js 21 and above), but can be worked around by using the [programmatic API](https://nodejs.org/api/test.html#testname-options-fn) `concurrency` option.
+- Nitpicking, but the argument names were verbose, e.g. `--test-name-pattern` instead of `--match, -m` arguments, `--test-timeout` instead of `--timeout, -t` arguments, etc.
 
 Hence, to solve these issues, we created a [custom script](https://github.com/withastro/astro/blob/3757a212c01cee03b8e96e1e9697a187ae7cc290/scripts/cmd/test.js) which can be called with the `astro-scripts test` command. This decision also proved to be useful to enable more workarounds as we'll see later.
 
@@ -96,19 +96,19 @@ assert.equal("It's a fine day".includes("fine"), true)
 As mentioned before, we have a lot of test files, and we add new tests almost every day. Opening a one-off PR that does the migration of the whole monorepo is unfeasible, it would require a lot of work from one person, and keeping the branch updated can be stressful.
 
 So we came up with a simple plan:
-1. Migrate first the small packages inside the monorepo
-2. Slowly migrate the main package - `astro` - by having Mocha and Node.js test runner in the same CI
-3. Remove Mocha
+- Migrate first the small packages inside the monorepo
+- Slowly migrate the main package - `astro` - by having Mocha and Node.js test runner in the same CI
+- Remove Mocha
 
 In order to achieve that, we **asked help to our community**. We thought this was the **perfect** opportunity to let people that **aren't familiar** with Astro business logic to contribute to the project, and we could make the migration way faster.
 
 We created and pinned an [umbrella issue](https://github.com/withastro/astro/issues/9873) to coordinate the efforts. We used this issue as a coordination hub. Each contributor **took ownership** of the migration of each package, and they opened a PR for each package. Two new first-contributor joined the efforts. It was a fantastic thing to see. In **one week**, we were able to migrate all packages!
 
 Migrating the main package `astro` was a feat. It's the package that contains the highest number of tests. In order to slowly migrate the tests, we had to come up with an out-of-the-box solution. We set up the Node.js test runner to test only the files called `*.nodetest.js`. Doing so, it allowed us to keep testing all files in the CI. Then, the rest was just a matter of coordination a delivering:
-1. use the umbrella issue to tell other contributors which files a contributor wanted to migrate;
-2. rename the files to migrate from `*.test.js` to `*.nodetest.js`;
-3. migrate the files;
-4. open a PR, wait for a review and merge the PR.
+- use the umbrella issue to tell other contributors which files a contributor wanted to migrate;
+- rename the files to migrate from `*.test.js` to `*.nodetest.js`;
+- migrate the files;
+- open a PR, wait for a review and merge the PR.
 
 With the help of [@log101](https://github.com/log101), [@mingjunlu](https://github.com/mingjunlu), [@VoxelMC](https://github.com/VoxelMC), [@alexnguyennz](https://github.com/alexnguyennz), [@xMohamd](https://github.com/xMohamd), [@shoaibkh4n](https://github.com/shoaibkh4n), [@marwan-mohamed12](https://github.com/marwan-mohamed12), [@at-the-vr](https://github.com/at-the-vr) and [@ktym4a](https://github.com/ktym4a) we migrated almost 300 test suites in **one week**!
 
@@ -119,9 +119,9 @@ We are quite **happy** with the results. We **haven't seen** any significant **r
 There are still few hiccups regarding the developer experience, when comparing it to Mocha.
 
 For example for running *one* single test suite, with Mocha just a `it.only` is enough. With Node.js test runner you have to:
-1. run the CLI using the `--test-only` argument
-2. add the `.only` to the `describe` that contains the `it.only` you want to run
-3. if there are multiple `describe`, all of them needs to be marked with `.only`
+- run the CLI using the `--test-only` argument
+- add the `.only` to the `describe` that contains the `it.only` you want to run
+- if there are multiple `describe`, all of them needs to be marked with `.only`
 
 Another example is the use of the `--test-name-patterns`, which could be improved. This argument is used to run only the tests that match a particular name pattern. The DX isn't great, because the CLI litters the terminal with messages about **tests that don't match** (which aren't run), which makes difficult  to understand which tests are actually run. Plus, the command **is really slow**, just for running tests that match some pattern.
 
