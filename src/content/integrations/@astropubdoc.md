@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astropub/doc"
 repoUrl: "https://github.com/astro-community/doc"
 homepageUrl: "https://github.com/astro-community/doc"
-downloads: 4
+downloads: 5
 ---

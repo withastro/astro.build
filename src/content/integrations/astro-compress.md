@@ -11,7 +11,7 @@ image: "/assets/integrations/astro-compress.svg"
 repoUrl: "https://github.com/astro-community/AstroCompress"
 featured: 4
 homepageUrl: "https://github.com/astro-community/AstroCompress#readme"
-downloads: 56826
+downloads: 57462
 badges:
   - "featured"
 ---

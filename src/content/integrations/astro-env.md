@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-env"
 homepageUrl: "https://github.com/florian-lefebvre/astro-env"
-downloads: 229
+downloads: 308
 ---
