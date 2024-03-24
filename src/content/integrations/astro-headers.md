@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-headers"
 repoUrl: "https://github.com/warpsio/astro-headers"
 homepageUrl: "https://github.com/warpsio/astro-headers"
-downloads: 11
+downloads: 10
 ---
