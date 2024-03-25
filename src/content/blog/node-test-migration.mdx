@@ -12,10 +12,10 @@ socialImage: "/src/content/blog/_images/test-migration/header_astro_test_migrati
 
 Over a month ago, we discussed a possible migration to the Node.js test runner. While we were sufficiently happy with Mocha, we are always looking to make our CI jobs faster.
 
-The prospective move to relying on a test runner baked inside our runtime had some advantages for our main monorepo:
-- two fewer dependencies to install and maintain in our monorepo: `mocha` and `chai`;
-- maintainability: there are more people involved in the Node.js project to maintain the Node.js test runner;
-- future benefits: we believe that the test runner will only get better and better, and eventually save some time in our CI workflows.
+Relying on a test runner baked inside our runtime had some advantages for our main monorepo:
+- Two fewer dependencies to install and maintain in our monorepo: `mocha` and `chai`.
+- Maintainability: there are more people involved in the Node.js project to maintain the Node.js test runner.
+- Future benefits: we believe the test runner will improve with time, and eventually save some time in our CI workflows.
 
 ## From an idea to a PoC
 
@@ -26,9 +26,9 @@ An integration test, in our monorepo, means creating a tiny Astro project, build
 Before deciding to undertake this migration, we wanted to make sure that moving away from Mocha was not a mistake. Despite its quirks, Mocha is a very capable test runner! It's been around for a long time and is battle-tested. If you use Mocha, you are in good hands.
 
 The idea of the PoC was to understand:
-- the flexibility of the Node.js CLI arguments and how customisable the test reporters could be;
-- the speed of execution of the testing suites;
-- the overall developer experience;
+- The flexibility of the Node.js CLI arguments and how customizable the test reporters could be.
+- The speed of execution of the testing suites.
+- The overall developer experience.
 
 ### How we started
 
@@ -46,13 +46,13 @@ Hence, to solve these issues, we created a [custom script](https://github.com/wi
 
 After successfully migrating the first package, we then attempted to migrate the testing suites of the `@astrojs/node` package. This integration is one of our most downloaded integrations, so we have plenty of tests. Plus, the tests of this package all have **integration tests**, so it was a good opportunity to check the performance of the test runner.
 
-Once the PR was ready, we noticed that _Node.js test runner_ **was significantly slower** than Mocha. We investigated, and we discovered that Node.js spawns a new process for each test file to assure that each testing suite is run in **isolation**. Running a testing suite in isolation is, generally, a good practice because it assures that tests run in an unpolluted environment.
+Once the PR was ready, we noticed that _Node.js test runner_ **was significantly slower** than Mocha. We investigated, and we discovered that Node.js spawns a new process for each test file to ensure that each testing suite is run in **isolation**. Running a testing suite in isolation is, generally, a good practice because it assures that tests run in an unpolluted environment.
 
 However, our testing suites were already isolated. In fact, we were able to run our testing suites with Mocha using the main thread without running into any of the typical issues: side effects, polluted environments, etc. Unfortunately, Node.js didn't provide an option to _run all tests in the same thread_. So, we had to come up with a solution to the slow test runs. (Aren't we engineers, after all? We solve problems!)
 
-Using our internal `astro-scripts test` command, we were able to workaround this by creating a _temporary file that **imports** all the testing suites_, and we let Node.js test that single file. This way, only one process is spawned for the file and we reach the same level of performance as if we were using the main process.
+Using our internal `astro-scripts test` command, we were able to work around this by creating a _temporary file that **imports** all the testing suites_, and we let Node.js test that single file. This way, only one process is spawned for the file and we reach the same level of performance as if we were using the main process.
 
-However, this **came with its own downside**: if there's a test failure or a timeout, we weren't able to tell which test was the cause. This was the main quirk we found, and while not every team may have made this choice, we accepted this trade-off in order to give us the benefits mentioned earlier. After all, we had previously accepted Mocha's quirks!
+However, this **came with its own downside**: if there was a test failure or a timeout, we weren't able to tell which test was the cause. This was the main quirk we found, and while not every team may have made this choice, we accepted this trade-off in order to give us the benefits mentioned earlier. After all, we had previously accepted Mocha's quirks!
 
 ### Node.js `assert` and `chai`
 
@@ -91,7 +91,7 @@ import assert from "node:assert/strict";
 assert.equal("It's a fine day".includes("fine"), true)
 ```
 
-### Here comes the dragons
+### Here come the dragons
 
 As mentioned before, we have a lot of test files and we add new tests almost every day. Opening a one-off PR that does the migration of the whole monorepo is unfeasible. It would require a lot of work from one person, and keeping the branch updated would be stressful.
 
@@ -100,7 +100,7 @@ So we came up with a simple plan:
 - Slowly migrate the main package - `astro` - by having Mocha and Node.js test runner in the same CI.
 - Remove Mocha.
 
-In order to achieve that, we **asked for help from our community**. We thought this was the **perfect** opportunity to let people that **aren't familiar** with Astro's business logic to contribute to the project. And, we could make the migration process go more quickly.
+In order to achieve that, we **asked for help from our community**. We thought this was the **perfect** opportunity to let people that **aren't familiar** with Astro's business logic contribute to the project. And, we could make the migration process go more quickly.
 
 We created and pinned an [umbrella issue](https://github.com/withastro/astro/issues/9873) to coordinate the efforts. Each contributor **took ownership** of the migration of an individual package, opening a separate PR for each one. Two new first-time contributors to the project even joined the efforts. It was a fantastic thing to see. In **one week**, we were able to migrate all packages!
 
