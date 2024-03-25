@@ -20,7 +20,7 @@ tools:
   - "mdx"
   - "tailwind"
 publishDate: "Jan 8, 2024"
-stars: 228
+stars: 230
 ---
 
 <h2>Astronomy</h2>
