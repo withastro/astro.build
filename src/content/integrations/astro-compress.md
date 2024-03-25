@@ -1,16 +1,16 @@
 ---
 name: "astro-compress"
 title: "astro-compress"
-description: "AstroJS compression utilities. 🗜️ Compress HTML, CSS, JavaScript and more!"
+description: "🗜️ Compress Astro."
 categories:
   - "css+ui"
   - "performance+seo"
   - "featured"
 npmUrl: "https://www.npmjs.com/package/astro-compress"
 image: "/assets/integrations/astro-compress.svg"
-repoUrl: "https://github.com/astro-community/AstroCompress"
+repoUrl: "https://github.com/Playform/AstroCompress"
 featured: 4
-homepageUrl: "https://github.com/astro-community/AstroCompress#readme"
+homepageUrl: "https://github.com/Playform/AstroCompress#readme"
 downloads: 58254
 badges:
   - "featured"
