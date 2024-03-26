@@ -29,7 +29,7 @@ export const GET: APIRoute = async (ctx) => {
 		return new Response(null, { status: 304 })
 	}
 	const filteredIntegrations = await getFilteredIntegrations({ toolbar: true })
-	const sortedIntegrations = filteredIntegrations.sort((a, b) => a.data.toolbar! - b.data.toolbar!)
+	const sortedIntegrations = filteredIntegrations.sort((a, b) => (a.data.toolbar??0) - (b.data.toolbar??0))
 
 	const responseData = {
 		data: sortedIntegrations.map(({ data }) => {

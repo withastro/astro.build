@@ -27,19 +27,17 @@ const categoryIcons = new Map([
 
 export function iconForCategory(
 	category: string,
-): (props: JSX.SvgSVGAttributes<SVGSVGElement>) => JSX.Element {
+){
 	return randomFromArray(
-		categoryIcons.has(category) ? categoryIcons.get(category)! : categoryIcons.get("other")!,
+		categoryIcons.get(category) ?? categoryIcons.get("other") ?? []
 	)
 }
 
 export function iconForIntegration(
 	integration: CollectionEntry<"integrations">,
-): (props: JSX.SvgSVGAttributes<SVGSVGElement>) => JSX.Element {
+){
 	const icons = integration.data.categories
-		.filter((category: string) => categoryIcons.has(category))
-		.map((category: string) => categoryIcons.get(category)!)
-		.flat()
+		.flatMap((category) => categoryIcons.get(category) ?? [])
 
 	return randomFromArray(icons)
 }

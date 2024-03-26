@@ -1,8 +1,8 @@
+import fs from "node:fs/promises"
 import ghActions from "@actions/core"
 import octokit from "@octokit/graphql"
 import matter from "gray-matter"
 import { parseHTML } from "linkedom"
-import fs from "node:fs/promises"
 import puppeteer from "puppeteer"
 import { downloadBrowser } from "puppeteer/lib/esm/puppeteer/node/install.js"
 import sharp from "sharp"
@@ -143,7 +143,7 @@ class ShowcaseScraper {
      repository(owner: "${this.#org}", name: "${this.#repo}") {
        discussion(number: ${this.#discussion}) {
          bodyHTML
-         comments(first: ${first}, after: ${after ? '"' + after + '"' : "null"}) {
+         comments(first: ${first}, after: ${after ? `"${after}"` : "null"}) {
            pageInfo {
              startCursor
              endCursor
@@ -174,7 +174,9 @@ class ShowcaseScraper {
 			// Add main discussion comment on first run
 			if (!after) allCommentsHTML.push(bodyHTML)
 
-			comments.nodes.forEach((node) => allCommentsHTML.push(node.bodyHTML))
+			for (const { bodyHTML } of comments.nodes) {
+				allCommentsHTML.push(bodyHTML)
+			}
 
 			hasNextPage = comments.pageInfo.hasNextPage
 			after = comments.pageInfo.endCursor
@@ -244,7 +246,7 @@ class ShowcaseScraper {
 		const { document } = parseHTML(raw)
 
 		const generator = document.querySelector('meta[name="generator"]')
-		if (generator && generator.getAttribute("content")?.startsWith("Astro")) {
+		if (generator?.getAttribute("content")?.startsWith("Astro")) {
 			return true
 		}
 

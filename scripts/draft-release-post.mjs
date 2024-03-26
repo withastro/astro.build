@@ -35,21 +35,21 @@ export async function githubGet({ url, githubToken = undefined }) {
 }
 
 async function main() {
-	let changesets = await githubGet({
+	const changesets = await githubGet({
 		url: "https://api.github.com/repos/withastro/astro/contents/.changeset",
 		githubToken,
 	})
 
-	let main = []
-	let others = []
+	const main = []
+	const others = []
 
 	for (const changeset of changesets) {
 		if (changeset.name === "README.md" || changeset.name === "config.json") continue
-		let rawContent = await githubGet({ url: changeset.download_url, githubToken })
+		const rawContent = await githubGet({ url: changeset.download_url, githubToken })
 		let [, metadata, content] = rawContent.split("---")
-		let [pkg, increment] = metadata.split(": ").map((s) => s.trim())
+		const [pkg, increment] = metadata.split(": ").map((s) => s.trim())
 
-		let lines = content.split("\n")
+		const lines = content.split("\n")
 		while (lines[0] === "") lines.shift()
 		let title = lines[0]
 		if (title.slice(0, -1).includes(".")) title = pkg === "astro" ? "New feature" : `${pkg} feature`
@@ -67,19 +67,19 @@ async function main() {
 	)
 		.then((res) => res.json())
 		.then((json) => json.version)
-	let oldVersion = version
+	const oldVersion = version
 	if (main.find((item) => item.increment === "major"))
 		version = version
 			.split(".")
-			.map((v, i) => (i === 0 ? parseInt(v) + 1 : 0))
+			.map((v, i) => (i === 0 ? Number.parseInt(v) + 1 : 0))
 			.join(".")
 	else if (main.find((item) => item.increment === "minor"))
 		version = version
 			.split(".")
-			.map((v, i) => (i === 1 ? parseInt(v) + 1 : 0))
+			.map((v, i) => (i === 1 ? Number.parseInt(v) + 1 : 0))
 			.join(".")
-	let versionSlug = version.split(".").join("")
-	let versionShort = version.split(".").slice(0, 2).join(".")
+	const versionSlug = version.split(".").join("")
+	const versionShort = version.split(".").slice(0, 2).join(".")
 
 	if (version === oldVersion) {
 		console.log("Not a new Astro version, skipping")
@@ -89,7 +89,7 @@ async function main() {
 	main.sort((a, b) => (a.increment > b.increment ? 1 : -1))
 	others.sort((a, b) => (a.increment > b.increment ? 1 : -1))
 
-	let body = `---
+	const body = `---
 title: "Astro ${versionShort}"
 description: ""
 publishDate: ""

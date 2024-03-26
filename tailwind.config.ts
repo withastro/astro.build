@@ -272,7 +272,7 @@ export default {
 					backgroundImage: `url("/assets/bg-grid.png")`,
 					backgroundPositionY: "-9px",
 
-					maskImage: `linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)`,
+					maskImage: "linear-gradient(to bottom, transparent, 10%, white, 90%, transparent)",
 				},
 
 				".panel": {

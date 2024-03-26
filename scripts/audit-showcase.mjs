@@ -100,7 +100,7 @@ class ShowcaseAuditor {
 		const { document } = parseHTML(raw)
 
 		const generator = document.querySelector('meta[name="generator"]')
-		if (generator && generator.getAttribute("content")?.startsWith("Astro")) {
+		if (generator?.getAttribute("content")?.startsWith("Astro")) {
 			return true
 		}
 

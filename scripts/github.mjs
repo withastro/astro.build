@@ -5,7 +5,7 @@ if (!process.env.GITHUB_TOKEN) {
 function fetchJson(url) {
 	return fetch(url, {
 		headers: {
-			Authorization: "token " + process.env.GITHUB_TOKEN,
+			Authorization: `token ${process.env.GITHUB_TOKEN}`,
 			"User-Agent": "chrome",
 		},
 	}).then((res) => {

@@ -43,7 +43,7 @@ export const GET: APIRoute = async (ctx) => {
 
 	// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 	// otherwise, try to parse the page number from the URL
-	const currentPage = typeof ctx.params.page === "undefined" ? 1 : parseInt(ctx.params.page)
+	const currentPage = typeof ctx.params.page === "undefined" ? 1 : Number.parseInt(ctx.params.page)
 	const limit = ctx.url.searchParams.get("limit")
 	let pageSize = 25
 
@@ -62,7 +62,7 @@ export const GET: APIRoute = async (ctx) => {
 			{
 				error: `Invalid "categories[]" parameter: supported values are ${validCategories
 					.map((v: string) => `"${v}"`)
-					.join(` | `)}`,
+					.join(" | ")}`,
 			},
 			{ status: 400 },
 		)

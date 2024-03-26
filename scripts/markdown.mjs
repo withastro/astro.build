@@ -5,7 +5,5 @@ export function stringifyLinks(content) {
 		return undefined
 	}
 
-	return content.replace(LINK_REGEX, function (matched) {
-		return LINK_REGEX.exec(matched).groups?.text || matched
-	})
+	return content.replace(LINK_REGEX, (matched) => LINK_REGEX.exec(matched).groups?.text || matched)
 }
