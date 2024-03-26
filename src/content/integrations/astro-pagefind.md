@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-pagefind"
 repoUrl: "https://github.com/shishkin/astro-pagefind"
 homepageUrl: "https://github.com/shishkin/astro-pagefind"
-downloads: 4513
+downloads: 4737
 ---

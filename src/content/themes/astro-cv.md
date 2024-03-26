@@ -11,5 +11,5 @@ categories:
   - "other"
 repoUrl: "https://github.com/dofbi/astro-cv-theme"
 demoUrl: "https://astro-cv-theme.netlify.app/"
-stars: 18
+stars: 19
 ---
