@@ -24,34 +24,32 @@ const { class: classList, ...head } = Astro.props
 	<head>
 		<BaseHead {...head} />
 	</head>
-	<body>
-		<div class="flex min-h-screen flex-col overflow-x-hidden">
-			<SkipLink />
-			<div id="nav" class="sticky top-0 z-20 max-h-screen bg-black">
-				<Header>
-					<HeaderNav />
-					<HeaderDrawerContent slot="drawer" />
-				</Header>
-				<hr class="border-astro-gray-500" />
-			</div>
-
-			<main id="main" class="relative z-10 flex flex-1 flex-col">
-				<slot />
-			</main>
-
+	<body class="relative flex min-h-screen flex-col overflow-x-hidden">
+		<SkipLink />
+		<div id="nav" class="sticky top-0 z-20 max-h-screen bg-black">
+			<Header>
+				<HeaderNav />
+				<HeaderDrawerContent slot="drawer" />
+			</Header>
 			<hr class="border-astro-gray-500" />
-
-			<Footer />
-
-			<style>
-				:root.disclosure-open {
-					overflow-y: hidden;
-				}
-
-				:root.disclosure-open #nav {
-					overflow-y: auto;
-				}
-			</style>
 		</div>
+
+		<main id="main" class="relative z-10 flex flex-1 flex-col">
+			<slot />
+		</main>
+
+		<hr class="border-astro-gray-500" />
+
+		<Footer />
+
+		<style>
+			:root.disclosure-open {
+				overflow-y: hidden;
+			}
+
+			:root.disclosure-open #nav {
+				overflow-y: auto;
+			}
+		</style>
 	</body>
 </html>

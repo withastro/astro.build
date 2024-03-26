@@ -5,6 +5,7 @@ import FooterCTA from "./_components/FooterCTA.astro"
 import Hero from "./_components/Hero.astro"
 import Intro from "./_components/Intro.astro"
 import Pricing from "./_components/Pricing.astro"
+import Subnav from "./_components/Subnav.astro"
 import UseCases from "./_components/UseCases.astro"
 
 export const prerender = true
@@ -21,8 +22,8 @@ const description = "The SQL database platform for content-driven websites."
 		alt: "Astro DB - the SQL database platform for content-driven websites.",
 	}}
 >
+	<Subnav />
 	<Hero />
-
 	<div class="mb-16 space-y-32">
 		<Intro />
 		<UseCases />
@@ -32,8 +33,9 @@ const description = "The SQL database platform for content-driven websites."
 	</div>
 </MainLayout>
 
-<style>
+<style is:global>
 	.db {
 		background-color: #060913 !important;
+		scroll-padding-top: 7.5rem;
 	}
 </style>
