@@ -1,5 +1,5 @@
-import fetch, { FormData, Headers, type Response } from "node-fetch";
 import { posix } from "node:path";
+import fetch, { FormData, Headers, type Response } from "node-fetch";
 import { z } from "zod";
 
 const discordMessageAttachmentSchema = z.object({

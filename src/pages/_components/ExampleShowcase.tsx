@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { createEffect, createSignal, For } from "solid-js";
+import { For, createEffect, createSignal } from "solid-js";
 import Collapse from "~/components/Collapse.jsx";
 import { positiveMod } from "~/helpers/math.js";
 import agenciesImage from "../_assets/example-agencies.png";
