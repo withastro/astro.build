@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-font-picker"
 homepageUrl: "https://github.com/randombits-dev/astro-font-picker"
-downloads: 102
+downloads: 113
 ---

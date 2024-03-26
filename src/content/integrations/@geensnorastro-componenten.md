@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@geensnor/astro-componenten"
 homepageUrl: "https://github.com/geensnor/astro-componenten#readme"
-downloads: 21
+downloads: 6
 ---

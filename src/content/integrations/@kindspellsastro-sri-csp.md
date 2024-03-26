@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@kindspells/astro-sri-csp"
 repoUrl: "https://github.com/KindSpells/astro-sri-csp"
 homepageUrl: "https://github.com/kindspells/astro-sri-csp?tab=readme-ov-file#readme"
 badge: "new"
-downloads: 331
+downloads: 73
 ---

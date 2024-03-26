@@ -4,6 +4,7 @@ import plugin from "tailwindcss/plugin"
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
+		fontFamily: {},
 		extend: {
 			animation: {
 				float: "float 6s ease-in-out infinite",
@@ -19,18 +20,6 @@ export default {
 				sm: "0px 2px 1px rgba(24, 24, 27, 0.01), 0px 1px 1px rgba(24, 24, 27, 0.05), 0px 1px 1px rgba(24, 24, 27, 0.09), 0px 0px 0px rgba(24, 24, 27, 0.1), 0px 0px 0px rgba(24, 24, 27, 0.1);",
 				md: "0px 5px 2px rgba(24, 24, 27, 0.03), 0px 3px 2px rgba(24, 24, 27, 0.1), 0px 1px 1px rgba(24, 24, 27, 0.17), 0px 0px 1px rgba(24, 24, 27, 0.2), 0px 0px 0px rgba(24, 24, 27, 0.2);",
 				lg: "0px 25px 7px rgba(24, 24, 27, 0.01), 0px 16px 6px rgba(24, 24, 27, 0.04), 0px 9px 5px rgba(24, 24, 27, 0.15), 0px 4px 4px rgba(24, 24, 27, 0.26), 0px 1px 2px rgba(24, 24, 27, 0.29), 0px 0px 0px rgba(24, 24, 27, 0.3);",
-			},
-			fontFamily: {
-				sans: ["Inter", "sans-serif"],
-				mono: [`"MDIO"`, "md-io-fallback", "monospace"],
-				obviously: ["Obviously", "obviously-regular-fallback", "sans-serif"],
-				"obviously-variable": [
-					"Obviously Variable",
-					"Obviously",
-					"obviously-regular-fallback",
-					"sans-serif",
-				],
-				"obviously-wide": [`"Obviously Wide", "obviously-wide-fallback", "sans-serif"`],
 			},
 			colors: {
 				black: "#0D0F14",
@@ -82,6 +71,45 @@ export default {
 		container: false,
 	},
 	plugins: [
+		plugin(function fontPlugin({ addBase }) {
+			addBase({
+				"font-sans": {
+					fontFamily: ["Inter", "inter-fallback", "system-ui", "sans-serif"],
+					fontVariationSettings: "var(--sans-wght)",
+					fontFeatureSettings: [
+						"var(--sans-case)",
+						"var(--sans-ss03)",
+						"var(--sans-cpsp)",
+						"var(--sans-cv03)",
+						"var(--cv04)",
+						"var(--cv05)",
+						"var(--cv06)",
+					],
+				},
+				"font-mono": {
+					fontFamily: ["MDIO", "md-io-fallback", "monospace"],
+					fontVariationSettings: "var(--mono-ital)",
+					fontFeatureSettings: ["var(--mono-calt)", "var(--mono-ital)", "var(--mono-zero)"],
+				},
+				"font-heading": {
+					fontFamily: ["Obviously", "obviously-fallback", "system-ui", "sans-serif"],
+					fontVariationSettings: [
+						"var(--heading-wdth)",
+						"var(--heading-wght)",
+						"var(--heading-slnt)",
+					],
+					fontFeatureSettings: [
+						"var(--heading-salt)",
+						"var(--heading-ss06)",
+						"var(--heading-ss11)",
+						"var(--heading-cv09)",
+						"var(--heading-liga)",
+						"var(--heading-calt)",
+					],
+				},
+			})
+		}),
+
 		// adds a `s-*` utility to apply the same width and height
 		plugin(function sizePlugin(api) {
 			api.matchUtilities(
@@ -110,10 +138,12 @@ export default {
 		plugin(function astroComponentsPlugin({ addComponents, theme }) {
 			addComponents({
 				"i, em": {
+					"@apply font-italic": {},
 					fontSynthesis: "none",
 				},
 
 				"b, strong": {
+					"@apply font-strong": {},
 					fontSynthesis: "none",
 					fontWeight: "700",
 				},
@@ -176,52 +206,41 @@ export default {
 				},
 
 				".heading-1": {
-					"@apply font-obviously text-6xl leading-tight": {},
-					fontVariationSettings: '"wdth" 490, "wght" 430, "slnt" 0',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
+					"@apply font-heading text-6xl leading-tight": {},
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-2": {
-					"@apply font-obviously text-5xl leading-tight": {},
-					fontVariationSettings: '"wdth" 490, "wght" 430, "slnt" 0',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
+					"@apply font-heading text-5xl leading-tight": {},
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-3": {
-					"@apply font-obviously text-3xl leading-tight": {},
-					fontSize: "32px",
-					fontVariationSettings: '"wdth" 490, "wght" 370, "slnt" 0',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
+					"@apply font-heading text-3xl leading-tight": {},
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-4": {
-					"@apply font-obviously text-2xl leading-tight": {},
-					fontVariationSettings: '"wdth" 490, "wght" 370, "slnt" 0',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
+					"@apply font-heading text-2xl leading-tight": {},
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".heading-5": {
-					"@apply font-obviously text-xl leading-tight": {},
-					fontVariationSettings: '"wdth" 490, "wght" 370, "slnt" 0',
-					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
+					"@apply font-heading text-xl leading-tight": {},
+					fontWeight: "var(--heading-weight-normal)",
 				},
 
 				".body": {
 					"@apply font-sans text-base": {},
+					"--sans-wght": "300",
 					fontWeight: "300",
-					letterSpacing: "-0.011em",
 					"-webkit-font-smoothing": "subpixel-antialiased",
-					fontFeatureSettings:
-						"'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on",
 				},
 				".body-large": {
 					"@apply font-sans text-2xl leading-normal": {},
+					"--sans-wght": "200",
 					fontWeight: "200",
-					fontVariationSettings: "'opsz' 14",
-					letterSpacing: "-0.011em",
 					"-webkit-font-smoothing": "subpixel-antialiased",
-					fontFeatureSettings:
-						"'ss03' on, 'case' on, 'cpsp' on, 'cv01' on, 'cv03' on, 'cv04' on, 'cv05' on, 'cv06' on",
 				},
 
 				".code": {
@@ -265,7 +284,7 @@ export default {
 		plugin(function makeDBTypographyPlugin(api) {
 			api.addUtilities({
 				".db .heading": {
-					"@apply font-obviously": {},
+					"@apply font-heading": {},
 					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 					"font-variation-settings": `"wght" 475, "wdth" 490`,
 				},

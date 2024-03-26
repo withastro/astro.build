@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@ryandejaegher/my-component"
 homepageUrl: "https://www.npmjs.com/package/@ryandejaegher/my-component"
-downloads: 9
+downloads: 8
 ---
