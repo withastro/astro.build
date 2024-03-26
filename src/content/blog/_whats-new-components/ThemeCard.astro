@@ -1,17 +1,13 @@
 ---
-import { getEntry, type CollectionEntry } from "astro:content"
-import { resolveImage } from "~/content/themes/_resolveImage.js"
-
-export interface Props {
-	slug: CollectionEntry<"themes">["slug"]
-}
-
 const { slug } = Astro.props
-const entry = await getEntry("themes", slug)
+
+const entry = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
+	(res) => res.json(),
+)
 if (!entry) throw new Error(`Could not find theme with slug "${slug}"`)
 
-const { author, title } = entry.data
-const resolvedImage = await resolveImage(entry)
+const { title, image } = entry.Theme
+const { Author: author } = entry
 ---
 
 <li
@@ -23,7 +19,7 @@ const resolvedImage = await resolveImage(entry)
 >
 	<a href={`/themes/details/${slug}/`} class="h-full w-full text-astro-gray-100">
 		<img
-			src={resolvedImage.src}
+			src={image}
 			width={450}
 			height={236}
 			alt=""
