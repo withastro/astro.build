@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-biome"
 repoUrl: "https://github.com/NikolaRHristov/AstroBiome"
 homepageUrl: "https://github.com/NikolaRHristov/AstroBiome#readme"
-downloads: 5664
+downloads: 5983
 ---
