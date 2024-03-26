@@ -1,27 +1,32 @@
 {
-  // adds tailwind autocomplete in other places
-  "tailwindCSS.classAttributes": ["class", "className", "class:list"],
-  "tailwindCSS.experimental.classRegex": [
-    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:')((?:\\'|[^'])*)(?:')"],
-    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:\")((?:\\\"|[^\"])*)(?:\")"],
-    ["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:`)((?:\\`|[^`])*)(?:`)"]
-  ],
-  // define rulers to match the prettier config length of 100
-  "editor.rulers": [100],
-  // organize imports (removes unused), then eslint fix on save
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll": "explicit"
-  },
-  "editor.formatOnSave": true,
-  // prefer .js extension on imports
-  "javascript.preferences.importModuleSpecifierEnding": "js",
-  "typescript.preferences.importModuleSpecifierEnding": "js",
-  // use local typescript version
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}[Branch: main]",
-  "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  }
+	// adds tailwind autocomplete in other places
+	"tailwindCSS.classAttributes": ["class", "className", "class:list"],
+	"tailwindCSS.experimental.classRegex": [
+		["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:')((?:\\'|[^'])*)(?:')"],
+		["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:\")((?:\\\"|[^\"])*)(?:\")"],
+		["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:`)((?:\\`|[^`])*)(?:`)"]
+	],
+
+	// organize imports and fix on save
+	"[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[javascriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[json]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[astro]": { "editor.defaultFormatter": "astro-build.astro-vscode" },
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "never",
+		"source.organizeImports.biome": "explicit",
+		"source.fixAll": "never",
+		"quickfix.biome": "explicit"
+	},
+
+	// prefer .js extension on imports
+	"javascript.preferences.importModuleSpecifierEnding": "js",
+	"typescript.preferences.importModuleSpecifierEnding": "js",
+
+	// use local typescript version
+	"typescript.tsdk": "node_modules/typescript/lib"
 }
