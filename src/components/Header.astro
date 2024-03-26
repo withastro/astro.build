@@ -1,8 +1,14 @@
 ---
 import MenuIcon from "~/icons/MenuIcon.jsx"
+
+export interface Props {
+	header?: "default" | "transparent"
+}
+
+const { header = "default" } = Astro.props
 ---
 
-<header class="shadow-lg">
+<header class:list={{ "shadow-lg": header === "default" }}>
 	<nav aria-label="Primary" class="container flex h-header items-center">
 		<slot />
 		<button id="astro-header-drawer-button" type="button" class="link ml-6 lg:hidden">
