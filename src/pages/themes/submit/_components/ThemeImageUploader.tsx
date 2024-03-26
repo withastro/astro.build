@@ -1,10 +1,10 @@
-import { createSignal, For, onMount, Show } from "solid-js"
-import type { JSX } from "solid-js/jsx-runtime"
-import FileUploadIcon from "~/icons/FileUploadIcon.jsx"
+import { createSignal, For, onMount, Show } from "solid-js";
+import type { JSX } from "solid-js/jsx-runtime";
+import FileUploadIcon from "~/icons/FileUploadIcon.jsx";
 
 export function ThemeImageUploader() {
-	const [featuredImageSource, setFeaturedImageSource] = createSignal<string>()
-	const [additionalImageSources, setAdditionalImageSources] = createSignal<string[]>([])
+	const [featuredImageSource, setFeaturedImageSource] = createSignal<string>();
+	const [additionalImageSources, setAdditionalImageSources] = createSignal<string[]>([]);
 
 	const featuredImageInput = (
 		<input
@@ -15,13 +15,13 @@ export function ThemeImageUploader() {
 			required
 			class="absolute inset-0 cursor-pointer opacity-0 s-full"
 			onInput={(event) => {
-				const file = event.currentTarget.files?.[0]
-				if (!file) return
+				const file = event.currentTarget.files?.[0];
+				if (!file) return;
 
-				setFeaturedImageSource(URL.createObjectURL(file))
+				setFeaturedImageSource(URL.createObjectURL(file));
 			}}
 		/>
-	)
+	);
 
 	const additionalImagesInput = (
 		<input
@@ -32,25 +32,25 @@ export function ThemeImageUploader() {
 			multiple
 			class="absolute inset-0 cursor-pointer opacity-0 s-full"
 			onInput={(event) => {
-				const files = event.currentTarget.files
-				if (!files?.length) return
+				const files = event.currentTarget.files;
+				if (!files?.length) return;
 
-				setAdditionalImageSources([...files].map((file) => URL.createObjectURL(file)))
+				setAdditionalImageSources([...files].map((file) => URL.createObjectURL(file)));
 			}}
 		/>
-	)
+	);
 
 	// the inputs might be populated from the user going back
 	onMount(() => {
 		if (featuredImageInput instanceof HTMLInputElement && featuredImageInput.files?.[0]) {
-			setFeaturedImageSource(URL.createObjectURL(featuredImageInput.files[0]))
+			setFeaturedImageSource(URL.createObjectURL(featuredImageInput.files[0]));
 		}
 		if (additionalImagesInput instanceof HTMLInputElement && additionalImagesInput.files?.length) {
 			setAdditionalImageSources(
 				[...additionalImagesInput.files].map((file) => URL.createObjectURL(file)),
-			)
+			);
 		}
-	})
+	});
 
 	return (
 		<div class="grid gap-4 fluid-cols-64">
@@ -69,7 +69,7 @@ export function ThemeImageUploader() {
 						class="rounded-2xl ring-2 ring-transparent transition focus:outline-none focus:ring-purple-500"
 						onClick={() => {
 							if (additionalImagesInput instanceof HTMLInputElement) {
-								additionalImagesInput.click()
+								additionalImagesInput.click();
 							}
 						}}
 					>
@@ -87,7 +87,7 @@ export function ThemeImageUploader() {
 				</ImagePlaceholder>
 			</div>
 		</div>
-	)
+	);
 }
 
 function ImagePlaceholder(props: { children?: JSX.Element; previewSrc?: string }) {
@@ -104,7 +104,7 @@ function ImagePlaceholder(props: { children?: JSX.Element; previewSrc?: string }
 				)}
 			</Show>
 		</div>
-	)
+	);
 }
 
 function FeaturedImageContent() {
@@ -125,7 +125,7 @@ function FeaturedImageContent() {
 				<FileUploadIcon aria-hidden />
 			</p>
 		</section>
-	)
+	);
 }
 
 function AdditionalImageContent() {
@@ -138,7 +138,7 @@ function AdditionalImageContent() {
 				<FileUploadIcon aria-hidden />
 			</p>
 		</section>
-	)
+	);
 }
 
 function FeaturedImageGraphic(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
@@ -168,16 +168,8 @@ function FeaturedImageGraphic(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 					color-interpolation-filters="sRGB"
 				>
 					<feFlood flood-opacity="0" result="BackgroundImageFix" />
-					<feBlend
-						mode="normal"
-						in="SourceGraphic"
-						in2="BackgroundImageFix"
-						result="shape"
-					/>
-					<feGaussianBlur
-						stdDeviation="2"
-						result="effect1_foregroundBlur_773_2923"
-					/>
+					<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+					<feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_773_2923" />
 				</filter>
 				<linearGradient
 					id="paint0_linear_773_2923"
@@ -192,5 +184,5 @@ function FeaturedImageGraphic(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 				</linearGradient>
 			</defs>
 		</svg>
-	)
+	);
 }

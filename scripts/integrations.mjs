@@ -1,32 +1,32 @@
-import { differenceInDays } from "date-fns"
-import integrations from "./integrations.json" assert { type: "json" }
+import { differenceInDays } from "date-fns";
+import integrations from "./integrations.json" assert { type: "json" };
 
-const NEW_THRESHOLD_DAYS = 28
+const NEW_THRESHOLD_DAYS = 28;
 
 const keywordToCategories = Object.entries(integrations.categories).reduce((acc, [key, value]) => {
-	const { keywords = [] } = value
+	const { keywords = [] } = value;
 
 	for (const keyword of keywords) {
-		const set = acc.has(keyword) ? acc.get(keyword) : new Set()
-		set.add(key)
-		acc.set(keyword, set)
+		const set = acc.has(keyword) ? acc.get(keyword) : new Set();
+		set.add(key);
+		acc.set(keyword, set);
 	}
 
-	return acc
-}, new Map())
+	return acc;
+}, new Map());
 
 export function isNewPackage(pkg) {
 	if (!pkg.time?.created) {
-		return false
+		return false;
 	}
 
-	const date = new Date(pkg.time.created)
-	const today = new Date()
-	return differenceInDays(today, date) <= NEW_THRESHOLD_DAYS
+	const date = new Date(pkg.time.created);
+	const today = new Date();
+	return differenceInDays(today, date) <= NEW_THRESHOLD_DAYS;
 }
 
-export const allowlist = integrations.allowlist
-export const blocklist = integrations.blocklist
+export const allowlist = integrations.allowlist;
+export const blocklist = integrations.blocklist;
 
 /**
  * Gets the overridden integration properties for an npm package, or undefined if not found.
@@ -35,7 +35,7 @@ export const blocklist = integrations.blocklist
  * @returns {Partial<AppendMode.Integration> | undefined}
  */
 export function getOverrides(packageName) {
-	return packageName in integrations.overrides ? integrations.overrides[packageName] : undefined
+	return packageName in integrations.overrides ? integrations.overrides[packageName] : undefined;
 }
 
 /**
@@ -47,25 +47,25 @@ export function getOverrides(packageName) {
 export function getCategoriesForKeyword(keyword) {
 	const categories = keywordToCategories.has(keyword)
 		? Array.from(keywordToCategories.get(keyword))
-		: []
+		: [];
 
-	return categories.length ? categories : ["css+ui"]
+	return categories.length ? categories : ["css+ui"];
 }
 
 export function badgeForPackage(pkg) {
 	if (isNewPackage(pkg)) {
-		return "new"
+		return "new";
 	}
 
-	return undefined
+	return undefined;
 }
 
 export function getFeaturedPackagePriority(pkg) {
-	const index = integrations.featured.indexOf(pkg) + 1
-	return index > 0 ? index : undefined
+	const index = integrations.featured.indexOf(pkg) + 1;
+	return index > 0 ? index : undefined;
 }
 
 export function getToolbarPackagePriority(pkg) {
-	const index = integrations.toolbar.indexOf(pkg) + 1
-	return index > 0 ? index : undefined
+	const index = integrations.toolbar.indexOf(pkg) + 1;
+	return index > 0 ? index : undefined;
 }

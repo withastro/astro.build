@@ -1,23 +1,23 @@
-import clsx from "clsx"
-import { createEffect, createSignal, For } from "solid-js"
-import Collapse from "~/components/Collapse.jsx"
-import { positiveMod } from "~/helpers/math.js"
-import agenciesImage from "../_assets/example-agencies.png"
-import blogsImage from "../_assets/example-blogs.png"
-import eCommerceImage from "../_assets/example-e-commerce.webp"
-import marketingImage from "../_assets/example-marketing.webp"
-import portfolioImage from "../_assets/example-portfolio.webp"
+import clsx from "clsx";
+import { createEffect, createSignal, For } from "solid-js";
+import Collapse from "~/components/Collapse.jsx";
+import { positiveMod } from "~/helpers/math.js";
+import agenciesImage from "../_assets/example-agencies.png";
+import blogsImage from "../_assets/example-blogs.png";
+import eCommerceImage from "../_assets/example-e-commerce.webp";
+import marketingImage from "../_assets/example-marketing.webp";
+import portfolioImage from "../_assets/example-portfolio.webp";
 
 type Item = {
-	title: string
-	description: string
-	liveUrl: URL
-	image: ImageMetadata
+	title: string;
+	description: string;
+	liveUrl: URL;
+	image: ImageMetadata;
 	cta: {
-		text: string
-		href: string
-	}
-}
+		text: string;
+		href: string;
+	};
+};
 
 const items: Item[] = [
 	{
@@ -74,11 +74,11 @@ const items: Item[] = [
 			href: "/themes/?categories%5B%5D=portfolio",
 		},
 	},
-]
+];
 
-const titleHeight = 32
+const titleHeight = 32;
 
-const [current, setCurrent] = createSignal<number | undefined>(0)
+const [current, setCurrent] = createSignal<number | undefined>(0);
 
 export default function ExampleShowcase() {
 	return (
@@ -86,21 +86,21 @@ export default function ExampleShowcase() {
 			<section aria-label="Examples" class="mb-4 grid gap-4 md:mx-auto md:w-[380px]">
 				<For each={items}>
 					{(item, index) => {
-						const [open, setOpen] = createSignal(current() === index())
+						const [open, setOpen] = createSignal(current() === index());
 
 						const details = (
 							<details
 								class="group panel p-4 text-left"
 								open={index() === 0}
 								onClick={(event) => {
-									if (event.target.localName === "a") return
-									event.preventDefault()
-									setCurrent(index())
+									if (event.target.localName === "a") return;
+									event.preventDefault();
+									setCurrent(index());
 								}}
 								onKeyDown={(event) => {
-									if (event.target.localName === "a") return
-									event.preventDefault()
-									setCurrent(index())
+									if (event.target.localName === "a") return;
+									event.preventDefault();
+									setCurrent(index());
 								}}
 							>
 								<summary class="accordion heading-4 flex w-full cursor-pointer select-none items-center justify-between">
@@ -115,7 +115,7 @@ export default function ExampleShowcase() {
 									isOpen={open()}
 									onTransitionEnd={() => {
 										if (details.open && !open()) {
-											details.open = false
+											details.open = false;
 										}
 									}}
 								>
@@ -130,18 +130,18 @@ export default function ExampleShowcase() {
 									</p>
 								</Collapse>
 							</details>
-						) as HTMLDetailsElement
+						) as HTMLDetailsElement;
 
 						createEffect(() => {
 							if (current() === index()) {
-								setOpen(true)
-								details.open = true
+								setOpen(true);
+								details.open = true;
 							} else {
-								setOpen(false)
+								setOpen(false);
 							}
-						})
+						});
 
-						return details
+						return details;
 					}}
 				</For>
 			</section>
@@ -167,7 +167,8 @@ export default function ExampleShowcase() {
 								"translate-y-[var(--translate)] transition-transform md:translate-x-[var(--translate)]",
 								index() === current() ? "relative" : "absolute",
 							)}
-							data-card rel="noreferrer"
+							data-card
+							rel="noreferrer"
 						>
 							<p class="code flex items-center justify-center py-1 text-sm" aria-hidden="true">
 								{item.liveUrl.hostname}
@@ -186,5 +187,5 @@ export default function ExampleShowcase() {
 				</For>
 			</section>
 		</div>
-	)
+	);
 }

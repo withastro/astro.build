@@ -1,4 +1,4 @@
-import type { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime";
 
 export default function EcosystemIllustration(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	return (
@@ -155,5 +155,5 @@ export default function EcosystemIllustration(props: JSX.SvgSVGAttributes<SVGSVG
 				</linearGradient>
 			</defs>
 		</svg>
-	)
+	);
 }

@@ -1,5 +1,5 @@
-import { defineCollection } from "astro:content"
-import { z } from "zod"
+import { defineCollection } from "astro:content";
+import { z } from "zod";
 
 export const IntegrationCategories = new Map([
 	["featured", "Featured"],
@@ -12,7 +12,7 @@ export const IntegrationCategories = new Map([
 	["analytics", "Analytics"],
 	["accessibility", "Accessibility"],
 	["toolbar", "Dev Toolbar"],
-] as const)
+] as const);
 
 const seoSchema = z.object({
 	title: z.string().min(5).max(120),
@@ -30,7 +30,7 @@ const seoSchema = z.object({
 			follow: z.boolean().default(true),
 		})
 		.default({}),
-})
+});
 
 export const collections = {
 	authors: defineCollection({
@@ -130,4 +130,4 @@ export const collections = {
 			highlight: z.boolean().default(false),
 		}),
 	},
-}
+};

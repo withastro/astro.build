@@ -1,8 +1,8 @@
-import type { APIRoute } from "astro"
-import { integrations as LAST_MODIFIED } from "~/data/last-modified.json"
-import { getFilteredIntegrations } from "~/helpers/integrations.ts"
+import type { APIRoute } from "astro";
+import { integrations as LAST_MODIFIED } from "~/data/last-modified.json";
+import { getFilteredIntegrations } from "~/helpers/integrations.ts";
 
-export const prerender = false
+export const prerender = false;
 
 const headers = {
 	accept: "application/json",
@@ -13,34 +13,36 @@ const headers = {
 	"Access-Control-Allow-Methods": "GET,OPTIONS,HEAD",
 	"Access-Control-Allow-Headers":
 		"X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, If-Modified-Since, X-Api-Version",
-}
+};
 
 export const HEAD: APIRoute = (ctx) => {
-	const modified = ctx.request.headers.get("If-Modified-Since")
+	const modified = ctx.request.headers.get("If-Modified-Since");
 	if (modified === LAST_MODIFIED) {
-		return new Response(null, { status: 304 })
+		return new Response(null, { status: 304 });
 	}
-	return Response.json(null, { headers })
-}
+	return Response.json(null, { headers });
+};
 
 export const GET: APIRoute = async (ctx) => {
-	const modified = ctx.request.headers.get("If-Modified-Since")
+	const modified = ctx.request.headers.get("If-Modified-Since");
 	if (modified === LAST_MODIFIED) {
-		return new Response(null, { status: 304 })
+		return new Response(null, { status: 304 });
 	}
-	const filteredIntegrations = await getFilteredIntegrations({ toolbar: true })
-	const sortedIntegrations = filteredIntegrations.sort((a, b) => (a.data.toolbar??0) - (b.data.toolbar??0))
+	const filteredIntegrations = await getFilteredIntegrations({ toolbar: true });
+	const sortedIntegrations = filteredIntegrations.sort(
+		(a, b) => (a.data.toolbar ?? 0) - (b.data.toolbar ?? 0),
+	);
 
 	const responseData = {
 		data: sortedIntegrations.map(({ data }) => {
-			if (data.image) data.image = new URL(data.image, ctx.url).toString()
-			return data
+			if (data.image) data.image = new URL(data.image, ctx.url).toString();
+			return data;
 		}),
-	}
+	};
 
-	return Response.json(responseData, { headers })
-}
+	return Response.json(responseData, { headers });
+};
 
 export const ALL: APIRoute = ({ request }) => {
-	return Response.json({ error: `${request.method} not allowed` }, { status: 405 })
-}
+	return Response.json({ error: `${request.method} not allowed` }, { status: 405 });
+};

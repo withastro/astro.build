@@ -1,4 +1,4 @@
-import { raise } from "./errors.js"
+import { raise } from "./errors.js";
 
 /**
  * Find a DOM element and validate its type.
@@ -10,11 +10,11 @@ export function getElement<E extends Element>(
 	Constructor: new (...args: unknown[]) => E,
 	parent: ParentNode = document,
 ): E {
-	const element = parent.querySelector(selector) ?? raise(`Element not found: ${selector}`)
+	const element = parent.querySelector(selector) ?? raise(`Element not found: ${selector}`);
 	if (!(element instanceof Constructor)) {
-		raise(`Element is not of type ${Constructor.name}: ${selector}`)
+		raise(`Element is not of type ${Constructor.name}: ${selector}`);
 	}
-	return element
+	return element;
 }
 
 /**
@@ -27,11 +27,11 @@ export function getElements<E extends Element>(
 	Constructor: new (...args: unknown[]) => E,
 	parent: ParentNode = document,
 ): NodeListOf<E> {
-	const elements = parent.querySelectorAll(selector)
+	const elements = parent.querySelectorAll(selector);
 	for (const element of elements) {
 		if (!(element instanceof Constructor)) {
-			raise(`Element is not of type ${Constructor.name}: ${selector}`)
+			raise(`Element is not of type ${Constructor.name}: ${selector}`);
 		}
 	}
-	return elements as NodeListOf<E>
+	return elements as NodeListOf<E>;
 }

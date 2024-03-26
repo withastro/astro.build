@@ -1,22 +1,22 @@
 export type SocialLink = {
-	platform: string
-	href: string
-	me?: string
-	text: string
-	icon: string
-	footerOnly?: boolean
-}
+	platform: string;
+	href: string;
+	me?: string;
+	text: string;
+	icon: string;
+	footerOnly?: boolean;
+};
 
 export type SiteInfo = {
-	name: string
-	title: string
-	description: string
+	name: string;
+	title: string;
+	description: string;
 	image: {
-		src: string
-		alt: string
-	}
-	socialLinks: SocialLink[]
-}
+		src: string;
+		alt: string;
+	};
+	socialLinks: SocialLink[];
+};
 
 const siteInfo: SiteInfo = {
 	name: "Astro",
@@ -57,6 +57,6 @@ const siteInfo: SiteInfo = {
 			icon: "social/mastodon",
 		},
 	],
-}
+};
 
-export default siteInfo
+export default siteInfo;

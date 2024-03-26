@@ -1,4 +1,4 @@
-import type { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime";
 
 export default function EmailIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	return (
@@ -15,5 +15,5 @@ export default function EmailIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 				fill="currentColor"
 			/>
 		</svg>
-	)
+	);
 }
