@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 export const themeSchema = z.object({
 	Theme: z.object({
@@ -16,6 +16,6 @@ export const themeSchema = z.object({
 	Author: z.object({
 		url: z.string(),
 	}),
-});
+})
 
-export type Theme = z.output<typeof themeSchema>;
+export type Theme = z.output<typeof themeSchema>
