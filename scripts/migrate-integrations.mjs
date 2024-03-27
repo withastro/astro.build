@@ -1,6 +1,6 @@
-import yaml from "json-to-pretty-yaml";
 import fs from "node:fs";
 import path from "node:path";
+import yaml from "json-to-pretty-yaml";
 import slugify from "slugify";
 
 function main() {

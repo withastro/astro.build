@@ -14,8 +14,8 @@ jobs:
       - name: Check out code using Git
         uses: actions/checkout@v4
 
-      - name: Install Tools & Dependencies
-        uses: ./.github/actions/install
+      - name: Setup Node.js & install dependencies
+        uses: ./.github/actions/setup-node-pnpm
 
       - name: Search NPM for new and deprecated integrations
         run: pnpm run update:integrations

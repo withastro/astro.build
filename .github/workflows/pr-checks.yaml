@@ -1,0 +1,28 @@
+name: PR Checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        script: [lint, typecheck]
+      fail-fast: false
+    env:
+      NODE_OPTIONS: "--max_old_space_size=4096"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js & install dependencies
+        uses: ./.github/actions/setup-node-pnpm
+
+      - name: Run ${{ matrix.script }}
+        run: pnpm run ${{ matrix.script }}

@@ -1,4 +1,4 @@
-import { createSignal, For, type JSX } from "solid-js";
+import { For, type JSX, createSignal } from "solid-js";
 import { getElement, getElements } from "~/helpers/dom.js";
 import ChevronIcon from "~/icons/ChevronIcon.jsx";
 import CheckCircleIcon from "~/icons/integrations/CheckCircleIcon.jsx";

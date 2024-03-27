@@ -26,7 +26,9 @@ const categoryIcons = new Map([
 ]);
 
 export function iconForCategory(category: string) {
-	return randomFromArray(categoryIcons.get(category) ?? categoryIcons.get("other") ?? []);
+	return (
+		randomFromArray(categoryIcons.get(category) ?? categoryIcons.get("other") ?? []) ?? PuzzleIcon
+	);
 }
 
 export function iconForIntegration(integration: CollectionEntry<"integrations">) {
@@ -34,5 +36,5 @@ export function iconForIntegration(integration: CollectionEntry<"integrations">)
 		(category) => categoryIcons.get(category) ?? [],
 	);
 
-	return randomFromArray(icons);
+	return randomFromArray(icons) ?? PuzzleIcon;
 }

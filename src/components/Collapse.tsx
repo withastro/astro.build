@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { createEffect, createSignal, onCleanup, onMount, splitProps, type JSX } from "solid-js";
+import { type JSX, createEffect, createSignal, onCleanup, onMount, splitProps } from "solid-js";
 
 export default function Collapse(
 	props: { children: JSX.Element; isOpen: boolean } & JSX.IntrinsicElements["div"],
