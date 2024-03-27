@@ -1,5 +1,5 @@
-import type { Config } from "tailwindcss"
-import plugin from "tailwindcss/plugin"
+import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -107,7 +107,7 @@ export default {
 						"var(--heading-calt)",
 					],
 				},
-			})
+			});
 		}),
 
 		// adds a `s-*` utility to apply the same width and height
@@ -115,7 +115,7 @@ export default {
 			api.matchUtilities(
 				{ s: (value) => ({ width: value, height: value }) },
 				{ values: api.theme("width") },
-			)
+			);
 		}),
 
 		// adds `fluid-cols-*`, `fluid-cols-fit`, and `fluid-cols-fill` utilities
@@ -127,12 +127,12 @@ export default {
 					}),
 				},
 				{ values: api.theme("width") },
-			)
+			);
 
 			api.addUtilities({
 				".fluid-cols-fit": { "--fluid-cols-repeat": "auto-fit" },
 				".fluid-cols-fill": { "--fluid-cols-repeat": "auto-fill" },
-			})
+			});
 		}),
 
 		plugin(function astroComponentsPlugin({ addComponents, theme }) {
@@ -278,7 +278,7 @@ export default {
 				".panel": {
 					"@apply border border-astro-gray-500 bg-astro-gray-600 shadow-xl": {},
 				},
-			})
+			});
 		}),
 
 		plugin(function makeDBTypographyPlugin(api) {
@@ -288,7 +288,7 @@ export default {
 					fontFeatureSettings: "'salt' on, 'ss06' on, 'ss11' on, 'cv09' on, 'liga' on, 'calt' on",
 					"font-variation-settings": `"wght" 475, "wdth" 490`,
 				},
-			})
+			});
 		}),
 
 		plugin(function maskGradientPlugin(api) {
@@ -299,7 +299,7 @@ export default {
 				".mask-linear-gradient-to-b": {
 					maskImage: "linear-gradient(to bottom, white 0%, white 33%, transparent 90%)",
 				},
-			})
+			});
 		}),
 	],
-} satisfies Config
+} satisfies Config;

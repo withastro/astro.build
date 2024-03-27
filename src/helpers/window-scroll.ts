@@ -1,13 +1,13 @@
-import { createSignal } from "solid-js"
+import { createSignal } from "solid-js";
 
-const [windowScroll, setWindowScroll] = createSignal(window.scrollY)
+const [windowScroll, setWindowScroll] = createSignal(window.scrollY);
 
 window.addEventListener(
 	"scroll",
 	() => {
-		setWindowScroll(window.scrollY)
+		setWindowScroll(window.scrollY);
 	},
 	{ passive: true },
-)
+);
 
-export { windowScroll }
+export { windowScroll };

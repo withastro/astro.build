@@ -1,4 +1,4 @@
-import type { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime";
 export default function MenuIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	return (
 		<svg
@@ -13,5 +13,5 @@ export default function MenuIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 			<line y1="8.5" x2="24" y2="8.5" stroke="currentColor" />
 			<line y1="16.5" x2="24" y2="16.5" stroke="currentColor" />
 		</svg>
-	)
+	);
 }

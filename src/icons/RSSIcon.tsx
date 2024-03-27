@@ -1,4 +1,4 @@
-import type { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime";
 export default function RSSIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	return (
 		<svg
@@ -14,5 +14,5 @@ export default function RSSIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 				fill="currentColor"
 			/>
 		</svg>
-	)
+	);
 }

@@ -1,23 +1,23 @@
-import { format, subDays } from "date-fns"
+import { format, subDays } from "date-fns";
 
 async function fetchJson(url) {
-	const res = await fetch(url)
+	const res = await fetch(url);
 
 	if (!res.ok) {
-		console.error(`[${url}] ${res.status} ${res.statusText}`)
-		throw new Error()
+		console.error(`[${url}] ${res.status} ${res.statusText}`);
+		throw new Error();
 	}
 
-	return await res.json()
+	return await res.json();
 }
 
-const API_BASE_URL = "https://api.npmjs.org/"
-const REGISTRY_BASE_URL = "https://registry.npmjs.org/"
+const API_BASE_URL = "https://api.npmjs.org/";
+const REGISTRY_BASE_URL = "https://registry.npmjs.org/";
 
-const END_DATE = format(new Date(), "yyyy-MM-dd")
-const START_DATE = format(subDays(new Date(), 30), "yyyy-MM-dd")
+const END_DATE = format(new Date(), "yyyy-MM-dd");
+const START_DATE = format(subDays(new Date(), 30), "yyyy-MM-dd");
 
-const PAGE_SIZE = 100
+const PAGE_SIZE = 100;
 
 /**
  * Gets the number of weekly downloads for an npm package.
@@ -28,7 +28,7 @@ const PAGE_SIZE = 100
 export function fetchDownloadsForPackage(pkg) {
 	return fetchJson(`${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`)
 		.then((res) => res.downloads)
-		.catch(() => 0)
+		.catch(() => 0);
 }
 
 /**
@@ -38,7 +38,7 @@ export function fetchDownloadsForPackage(pkg) {
  * @returns {Object} JSON data as returned by the npm registry
  */
 export function fetchDetailsForPackage(pkg) {
-	return fetchJson(`${REGISTRY_BASE_URL}${pkg}`)
+	return fetchJson(`${REGISTRY_BASE_URL}${pkg}`);
 }
 
 /**
@@ -49,27 +49,27 @@ export function fetchDetailsForPackage(pkg) {
  * @returns {Map} Map of search results, keyed by package name
  */
 export async function searchByKeyword(keyword, ranking = "quality") {
-	const objects = []
-	let total = -1
-	let page = 0
+	const objects = [];
+	let total = -1;
+	let page = 0;
 
 	do {
-		const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`)
-		url.searchParams.set("text", `keywords:${keyword}`)
-		url.searchParams.set("ranking", ranking)
-		url.searchParams.set("size", PAGE_SIZE)
-		url.searchParams.set("from", page++ * PAGE_SIZE)
+		const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`);
+		url.searchParams.set("text", `keywords:${keyword}`);
+		url.searchParams.set("ranking", ranking);
+		url.searchParams.set("size", PAGE_SIZE);
+		url.searchParams.set("from", page++ * PAGE_SIZE);
 
-		const results = await fetchJson(url.toString())
+		const results = await fetchJson(url.toString());
 
 		// just in case, bail if no objects were returned for the page
 		if (results.objects.length === 0) {
-			break
+			break;
 		}
 
-		objects.push(...results.objects)
-		total = results.total
-	} while (total > objects.length)
+		objects.push(...results.objects);
+		total = results.total;
+	} while (total > objects.length);
 
 	return objects
 		.filter(({ package: pkg }) => {
@@ -77,10 +77,10 @@ export async function searchByKeyword(keyword, ranking = "quality") {
 			return (
 				pkg.links.repository !== "https://github.com/withastro/astro" ||
 				pkg.name.startsWith("@astrojs/")
-			)
+			);
 		})
 		.reduce((acc, next) => {
-			acc.set(next.package.name, next)
-			return acc
-		}, new Map())
+			acc.set(next.package.name, next);
+			return acc;
+		}, new Map());
 }
