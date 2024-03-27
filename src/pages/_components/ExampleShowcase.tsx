@@ -86,7 +86,7 @@ export default function ExampleShowcase() {
 			<section aria-label="Examples" class="mb-4 grid gap-4 md:mx-auto md:w-[380px]">
 				<For each={items}>
 					{(item, index) => {
-						const [open, setOpen] = createSignal(current() == index())
+						const [open, setOpen] = createSignal(current() === index())
 
 						const details = (
 							<details
@@ -97,13 +97,18 @@ export default function ExampleShowcase() {
 									event.preventDefault()
 									setCurrent(index())
 								}}
+								onKeyDown={(event) => {
+									if (event.target.localName === "a") return
+									event.preventDefault()
+									setCurrent(index())
+								}}
 							>
 								<summary class="accordion heading-4 flex w-full cursor-pointer select-none items-center justify-between">
 									<span>{item.title}</span>
 									<div
 										aria-hidden="true"
 										class="leading-none after:content-['+'] group-open:after:content-['-']"
-									></div>
+									/>
 								</summary>
 
 								<Collapse
@@ -162,7 +167,7 @@ export default function ExampleShowcase() {
 								"translate-y-[var(--translate)] transition-transform md:translate-x-[var(--translate)]",
 								index() === current() ? "relative" : "absolute",
 							)}
-							data-card
+							data-card rel="noreferrer"
 						>
 							<p class="code flex items-center justify-center py-1 text-sm" aria-hidden="true">
 								{item.liveUrl.hostname}
@@ -171,7 +176,7 @@ export default function ExampleShowcase() {
 								src={item.image.src}
 								width={item.image.width}
 								height={item.image.height}
-								alt={`Example image for ${item.title}`}
+								alt={`Example for ${item.title}`}
 								class="w-full object-cover object-left-top"
 								loading="lazy"
 								decoding="async"

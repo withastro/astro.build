@@ -20,7 +20,7 @@ export const GET: APIRoute = async (context) => {
 		title: "The Astro Blog",
 		// See "Styling" section below
 		description: "News and updates about Astro.",
-		site: context.site!.href,
+		site: (context.site as URL).href,
 		// The list of items for your RSS feed, sorted.
 		items: posts.map((item) => ({
 			title: item.data.title,

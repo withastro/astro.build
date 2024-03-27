@@ -49,7 +49,7 @@ export function fetchDetailsForPackage(pkg) {
  * @returns {Map} Map of search results, keyed by package name
  */
 export async function searchByKeyword(keyword, ranking = "quality") {
-	let objects = []
+	const objects = []
 	let total = -1
 	let page = 0
 

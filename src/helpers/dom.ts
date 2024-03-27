@@ -7,7 +7,7 @@ import { raise } from "./errors.js"
  */
 export function getElement<E extends Element>(
 	selector: string,
-	Constructor: new (...args: any[]) => E,
+	Constructor: new (...args: unknown[]) => E,
 	parent: ParentNode = document,
 ): E {
 	const element = parent.querySelector(selector) ?? raise(`Element not found: ${selector}`)
@@ -24,7 +24,7 @@ export function getElement<E extends Element>(
  */
 export function getElements<E extends Element>(
 	selector: string,
-	Constructor: new (...args: any[]) => E,
+	Constructor: new (...args: unknown[]) => E,
 	parent: ParentNode = document,
 ): NodeListOf<E> {
 	const elements = parent.querySelectorAll(selector)

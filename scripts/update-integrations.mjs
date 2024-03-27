@@ -37,12 +37,12 @@ function updateLastModified() {
 	)
 	const json = fs.readFileSync(pathname, { encoding: "utf8" })
 	const data = JSON.parse(json)
-	data["integrations"] = new Date().toUTCString()
+	data.integrations = new Date().toUTCString()
 	fs.writeFileSync(pathname, JSON.stringify(data, null, "\t"), { encoding: "utf8" })
 }
 
 function normalizePackageDetails(data, pkg) {
-	const keywordCategories = (data.keywords ?? []).map(getCategoriesForKeyword).flat()
+	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword)
 
 	const featured = getFeaturedPackagePriority(pkg)
 	const toolbar = getToolbarPackagePriority(pkg)
@@ -135,7 +135,7 @@ async function unsafeUpdateAllIntegrations() {
 				...details,
 			})
 
-			delete frontmatter.badges
+			frontmatter.badges = undefined
 
 			fs.writeFileSync(
 				entry,
@@ -205,7 +205,7 @@ async function safeUpdateExistingIntegrations() {
 			downloads,
 		})
 
-		delete frontmatter.badges
+		frontmatter.badges = undefined
 
 		fs.writeFileSync(
 			entry,
