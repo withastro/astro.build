@@ -4,7 +4,7 @@ The source code for [astro.build](https://astro.build), built with [Astro](https
 
 ## Updating Themes
 
-The [themes catalog](https://astro.build/themes/) is now powered by the [Astro Developer Portal](https://portal.astro.build), where you can log in, submit and update your own themes. The themes catalog automatically updated every day with the latest data from the portal.
+The [themes catalog](https://astro.build/themes/) is now powered by the [Astro Developer Portal](https://portal.astro.build), where you can log in, submit and update your own themes. The themes catalog automatically updates every day with the latest data from the portal.
 
 ## Updating the Showcase
 
