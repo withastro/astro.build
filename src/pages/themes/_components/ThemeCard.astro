@@ -4,6 +4,8 @@ import CardBody from "~/components/CardBody.astro"
 import CardFooter from "~/components/CardFooter.astro"
 import Avatar from "./Avatar.astro"
 import Badge from "./Badge.astro"
+import { Image } from 'astro:assets';
+
 export type Props = {
 	theme: any
 }
@@ -16,8 +18,9 @@ const image = theme.Theme.image
 <Card isLink>
 	<!-- {!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>} -->
 	<a class="flex h-full flex-col" href={`/themes/details/${theme.Theme.slug}`} data-astro-prefetch>
-		<img
+		<Image
 			src={image}
+			inferSize
 			alt=""
 			class="aspect-video w-full object-cover"
 			loading="lazy"
