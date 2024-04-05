@@ -30,6 +30,7 @@ export default function Reactions() {
 		<div class="mt-4 flex items-center justify-start gap-4 text-astro-gray-300">
 			{reactions().map((reaction) => (
 				<button
+					type="button"
 					aria-selected={selected() && reaction.isClicked}
 					onClick={() => handleReactionClick(reaction.id)}
 					class="flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100"
