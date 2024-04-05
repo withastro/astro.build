@@ -41,6 +41,12 @@ function updateLastModified() {
 	fs.writeFileSync(pathname, JSON.stringify(data, null, "\t"), { encoding: "utf8" });
 }
 
+async function getIntegrationFiles() {
+	return await glob("src/content/integrations/*.md", {
+		cwd: path.resolve(fileURLToPath(import.meta.url), "../.."),
+	});
+}
+
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
@@ -106,11 +112,7 @@ async function unsafeUpdateAllIntegrations() {
 		[...packagesMap.keys(), ...allowlist].filter((pkg) => !blocklist.includes(pkg)),
 	);
 
-	const pathname = path.resolve(
-		path.dirname(fileURLToPath(import.meta.url)),
-		"../src/content/integrations/*.md",
-	);
-	const entries = await glob(pathname);
+	const entries = await getIntegrationFiles();
 
 	const existingIntegrations = new Set();
 	const deprecatedIntegrations = [];
@@ -133,9 +135,8 @@ async function unsafeUpdateAllIntegrations() {
 			const frontmatter = yaml.stringify({
 				...data,
 				...details,
+				badges: undefined,
 			});
-
-			frontmatter.badges = undefined;
 
 			fs.writeFileSync(
 				entry,
@@ -188,11 +189,7 @@ Updated: ${existingIntegrations.size - deprecatedIntegrations.length} integratio
 }
 
 async function safeUpdateExistingIntegrations() {
-	const pathname = path.resolve(
-		path.dirname(fileURLToPath(import.meta.url)),
-		"../src/content/integrations/*.md",
-	);
-	const entries = await glob(pathname);
+	const entries = await getIntegrationFiles();
 
 	for (const entry of entries) {
 		const { data } = matter.read(entry);
@@ -203,9 +200,8 @@ async function safeUpdateExistingIntegrations() {
 		const frontmatter = yaml.stringify({
 			...data,
 			downloads,
+			badges: undefined,
 		});
-
-		frontmatter.badges = undefined;
 
 		fs.writeFileSync(
 			entry,
