@@ -19,7 +19,7 @@ const { class: classList, header = "default", ...head } = Astro.props
 	lang="en"
 	class:list={[
 		"astro-gray-700 overflow-x-hidden break-words text-astro-gray-100 [color-scheme:dark] [word-break:break-word]",
-		classList ? classList : "bg-black",
+		classList || "bg-black",
 	]}
 >
 	<head>
