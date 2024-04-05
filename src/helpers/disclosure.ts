@@ -95,6 +95,7 @@ export function createDisclosure({
 	};
 
 	createEffect(() => {
+		emitter.emit('toggle', { visible: visible() });
 		if (visible()) {
 			window.addEventListener("click", handleClickOutside);
 			window.addEventListener("focusin", handleFocusLost);
