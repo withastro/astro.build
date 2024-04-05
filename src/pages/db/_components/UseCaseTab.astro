@@ -12,17 +12,29 @@ const { icon, title, active = false } = Astro.props
 
 <li>
 	<button
-		role="tab"
-		aria-selected={active ? "true" : undefined}
-		class="md:min-w-16 relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:min-w-[8rem] md:flex-col md:rounded-lg md:p-4 md:px-6"
+		role='tab'
 		data-tab={title.toLowerCase()}
+		aria-selected={active ? "true" : undefined}
+		class={`relative flex items-center gap-3 whitespace-nowrap rounded-full px-4 py-1 text-lg sm:text-xl md:min-w-[8rem] md:flex-col md:rounded-lg md:p-4 md:px-6`}
 	>
-		<Icon class="text-current" name={icon} width="20" />
-		<p>{title}</p>
+		<div
+			data-tab-icon={title.toLowerCase()}
+			aria-selected={active ? "true" : undefined}
+			class='landing-section rounded-full border-[3px] border-astro-gray-300 bg-astro-gray-300/20 from-[#D83333]/10 to-[#F041FF]/10 p-3 aria-selected:border-astro-pink aria-selected:bg-gradient-to-bl aria-selected:text-white'
+		>
+			<Icon name={icon} size={32} />
+		</div>
+		<p
+			data-tab-title={title.toLowerCase()}
+			aria-selected={active ? "true" : undefined}
+			class='font-medium text-astro-gray-300 aria-selected:bg-gradient-to-bl aria-selected:from-[#D83333] aria-selected:to-[#F041FF] aria-selected:bg-clip-text aria-selected:text-transparent'
+		>
+			{title}
+		</p>
 	</button>
 </li>
 
-<style>
+<!-- <style>
 	button[data-tab] {
 		opacity: 0.5;
 	}
@@ -60,4 +72,4 @@ const { icon, title, active = false } = Astro.props
 		background: #060913
 			linear-gradient(83.21deg, rgba(50, 70, 255, 0.2) 0%, rgba(184, 69, 237, 0.2) 100%);
 	}
-</style>
+</style> -->
