@@ -1,201 +1,226 @@
 ---
-import Tab from "./UseCaseTab.astro"
-import Comments from "./use-cases/Comments.astro"
-import Forms from "./use-cases/Forms.astro"
-import Feedback from "./use-cases/Feedback.astro"
-import Blog from "./use-cases/Blog.astro"
-import Auth from "./use-cases/Auth.astro"
-
 import { getImage } from "astro:assets"
 import blob from "../_assets/uses-bg.png"
+
+import Tab from "./UseCaseTab.astro"
+import Blog from "./use-cases/Blog.astro"
+import Auth from "./use-cases/Auth.astro"
+import Forms from "./use-cases/Forms.astro"
+import Feedback from "./use-cases/Feedback.astro"
+import Comments from "./use-cases/Comments.astro"
+
 const bg = await getImage({ src: blob, format: "webp", width: 1280 })
 ---
 
-<astro-db-tabs class="relative">
-	<ul
-		class="align-start -ml-4 mt-4 flex flex-wrap items-start justify-start gap-4 pt-8 text-astro-gray-200 sm:min-h-[10rem]"
-	>
-		<Tab title="Comments" icon="uil:comments-alt" active />
-		<Tab title="Blog" icon="uil:notes" />
-		<Tab title="Forms" icon="uil:document-layout-left" />
-		<Tab title="Feedback" icon="uil:question-circle" />
-		<Tab title="Auth" icon="uil:users-alt" />
-	</ul>
+<astro-db-tabs class='relative'>
+  <ul
+    class='align-start -ml-4 flex flex-wrap items-start justify-start gap-4 pt-8 text-astro-gray-200 sm:min-h-[10rem]'
+  >
+    <Tab title='Comments' icon='uil:comments-alt' active />
+    <Tab title='Blog' icon='uil:notes' />
+    <Tab title='Forms' icon='uil:document-layout-left' />
+    <Tab title='Feedback' icon='uil:question-circle' />
+    <Tab title='Auth' icon='uil:users-alt' />
+  </ul>
 
-	<div style={{ "--bg-offset": "3rem", "z-index": -1 }} class="absolute">
-		<div class="user-select-none pointer-events-none absolute mx-auto w-full max-w-screen-xl">
-			<div class="pattern-grid"></div>
-			<div
-				class="pattern-overlay absolute bg-gradient-to-b from-[transparent] from-0% to-[#080B14] to-100%"
-			>
-			</div>
-		</div>
-		<div
-			style={{
-				"background-image": `url(${bg.src})`,
-				"background-position-y": "calc(var(--bg-offset) * -1)",
-				transform: "translateY(var(--bg-offset))",
-			}}
-			class="user-select-none bg-fill pointer-events-none absolute inset-0 bg-no-repeat"
-		>
-		</div>
-	</div>
+  <div style={{ "--bg-offset": "3rem", "z-index": -1 }} class='absolute'>
+    <div
+      class='user-select-none pointer-events-none absolute mx-auto w-full max-w-screen-xl'
+    >
+      <div class='pattern-grid'></div>
+      <div
+        class='pattern-overlay absolute bg-gradient-to-b from-[transparent] from-0% to-[#080B14] to-100%'
+      >
+      </div>
+    </div>
+    <div
+      style={{
+        "background-image": `url(${bg.src})`,
+        "background-position-y": "calc(var(--bg-offset) * -1)",
+        transform: "translateY(var(--bg-offset))",
+      }}
+      class='user-select-none bg-fill pointer-events-none absolute inset-0 bg-no-repeat'
+    >
+    </div>
+  </div>
 
-	<ul class="z-100 mt-20">
-		<Blog />
-		<Comments />
-		<Forms />
-		<Feedback />
-		<Auth />
-	</ul>
+  <ul class='z-100 mt-20'>
+    <Blog />
+    <Comments />
+    <Forms />
+    <Feedback />
+    <Auth />
+  </ul>
 </astro-db-tabs>
 
 <style>
-	.container {
-		min-height: 64rem;
-	}
-	.pattern-overlay {
-		position: absolute;
-		left: 0;
-		width: 100vw;
-		margin-left: calc(50% - 50vw);
-	}
-	.pattern-grid {
-		pointer-events: none;
-		--width: 400rem;
-		--offset: calc(var(--width) / -2);
-		--grid-size: 2em;
-		--grid-lg-size: calc(var(--grid-size) * 4);
-		--line-width: 1px;
-		--line-width-offset: calc(var(--line-width) + (var(--line-width) / 2));
-		--pos: calc(var(--line-width) * -1);
-		--line-color: #242832;
-		position: absolute;
-		left: 0;
-		top: var(--bg-offset);
-		width: var(--width);
-		transform: translateX(var(--offset));
-		height: 40rem;
-		border: var(--line-width) solid var(--line-color);
-		background-image: linear-gradient(
-				var(--line-color) var(--line-width),
-				transparent var(--line-width)
-			),
-			linear-gradient(90deg, var(--line-color) var(--line-width), transparent var(--line-width)),
-			linear-gradient(var(--line-color) var(--line-width), transparent var(--line-width)),
-			linear-gradient(90deg, var(--line-color) var(--line-width), transparent var(--line-width));
-		background-position:
-			var(--pos) var(--pos),
-			var(--pos) var(--pos),
-			var(--pos) var(--pos),
-			var(--pos) var(--pos);
-		background-size:
-			var(--grid-lg-size) var(--grid-lg-size),
-			var(--grid-lg-size) var(--grid-lg-size),
-			var(--grid-size) var(--grid-size),
-			var(--grid-size) var(--grid-size);
-	}
+  .container {
+    min-height: 64rem;
+  }
+  .pattern-overlay {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+  .pattern-grid {
+    pointer-events: none;
+    --width: 400rem;
+    --offset: calc(var(--width) / -2);
+    --grid-size: 2em;
+    --grid-lg-size: calc(var(--grid-size) * 4);
+    --line-width: 1px;
+    --line-width-offset: calc(var(--line-width) + (var(--line-width) / 2));
+    --pos: calc(var(--line-width) * -1);
+    --line-color: #242832;
+    position: absolute;
+    left: 0;
+    top: var(--bg-offset);
+    width: var(--width);
+    transform: translateX(var(--offset));
+    height: 40rem;
+    border: var(--line-width) solid var(--line-color);
+    background-image: linear-gradient(
+        var(--line-color) var(--line-width),
+        transparent var(--line-width)
+      ),
+      linear-gradient(
+        90deg,
+        var(--line-color) var(--line-width),
+        transparent var(--line-width)
+      ),
+      linear-gradient(
+        var(--line-color) var(--line-width),
+        transparent var(--line-width)
+      ),
+      linear-gradient(
+        90deg,
+        var(--line-color) var(--line-width),
+        transparent var(--line-width)
+      );
+    background-position:
+      var(--pos) var(--pos),
+      var(--pos) var(--pos),
+      var(--pos) var(--pos),
+      var(--pos) var(--pos);
+    background-size:
+      var(--grid-lg-size) var(--grid-lg-size),
+      var(--grid-lg-size) var(--grid-lg-size),
+      var(--grid-size) var(--grid-size),
+      var(--grid-size) var(--grid-size);
+  }
 </style>
 
 <script>
-	// @ts-nocheck
-	const bind = (instance, proto) => {
-		if (proto == null) {
-			proto = Object.getPrototypeOf(instance)
-		}
-		let propertyNames = Object.getOwnPropertyNames(proto)
-		for (let name of propertyNames) {
-			let value = proto[name]
-			if (typeof value === "function") {
-				instance[name] = proto[name].bind(instance)
-			}
-		}
-	}
-	class Tabs extends HTMLElement {
-		static is = "astro-db-tabs"
+  // @ts-nocheck
+  const bind = (instance, proto) => {
+    if (proto == null) {
+      proto = Object.getPrototypeOf(instance)
+    }
+    let propertyNames = Object.getOwnPropertyNames(proto)
+    for (let name of propertyNames) {
+      let value = proto[name]
+      if (typeof value === "function") {
+        instance[name] = proto[name].bind(instance)
+      }
+    }
+  }
+  class Tabs extends HTMLElement {
+    static is = "astro-db-tabs"
 
-		constructor() {
-			super()
-			bind(this)
-		}
+    constructor() {
+      super()
+      bind(this)
+    }
 
-		button(name) {
-			return this.querySelector(`button[data-tab="${name}"]`)
-		}
-		buttons() {
-			return this.querySelectorAll(`button[data-tab]`)
-		}
-		content(name) {
-			return this.querySelector(`li[data-tab="${name}"]`)
-		}
-		contents() {
-			return this.querySelectorAll(`li[data-tab]`)
-		}
-		icon(name) {
-			return this.querySelector(`div[data-tab-icon="${name}"]`)
-		}
-		icons() {
-			return this.querySelectorAll(`div[data-tab-icon]`)
-		}
-		title(name) {
-			return this.querySelector(`p[data-tab-title="${name}"]`)
-		}
-		titles() {
-			return this.querySelectorAll(`p[data-tab-title]`)
-		}
+    button(name) {
+      return this.querySelector(`button[data-tab="${name}"]`)
+    }
+    buttons() {
+      return this.querySelectorAll(`button[data-tab]`)
+    }
+    content(name) {
+      return this.querySelector(`li[data-tab="${name}"]`)
+    }
+    contents() {
+      return this.querySelectorAll(`li[data-tab]`)
+    }
+    icon(name) {
+      return this.querySelector(`div[data-tab-icon="${name}"]`)
+    }
+    icons() {
+      return this.querySelectorAll(`div[data-tab-icon]`)
+    }
+    iconContainer(name) {
+      return this.querySelector(`div[data-tab-icon-container="${name}"]`)
+    }
+    iconContainers() {
+      return this.querySelectorAll(`div[data-tab-icon-container]`)
+    }
+    title(name) {
+      return this.querySelector(`p[data-tab-title="${name}"]`)
+    }
+    titles() {
+      return this.querySelectorAll(`p[data-tab-title]`)
+    }
 
-		connectedCallback() {
-			this.addEventListener("click", this.handleClick)
-		}
+    connectedCallback() {
+      this.addEventListener("click", this.handleClick)
+    }
 
-		disconnectedCallback() {
-			this.removeEventListener("click", this.handleClick)
-		}
+    disconnectedCallback() {
+      this.removeEventListener("click", this.handleClick)
+    }
 
-		resetElements() {
-			for (const button of this.buttons()) {
-				button.removeAttribute("aria-selected")
-			}
-			for (const content of this.contents()) {
-				content.classList.add("hidden")
-			}
-			for (const icon of this.icons()) {
-				icon.removeAttribute("aria-selected")
-			}
-			for (const title of this.titles()) {
-				title.removeAttribute("aria-selected")
-			}
-		}
+    resetElements() {
+      for (const button of this.buttons()) {
+        button.removeAttribute("aria-selected")
+      }
+      for (const content of this.contents()) {
+        content.classList.add("hidden")
+      }
+      for (const icon of this.icons()) {
+        icon.removeAttribute("aria-selected")
+      }
+      for (const iconContainer of this.iconContainers()) {
+        iconContainer.removeAttribute("aria-selected")
+      }
+      for (const title of this.titles()) {
+        title.removeAttribute("aria-selected")
+      }
+    }
 
-		setActive(name) {
-			const button = this.button(name)
-			const content = this.content(name)
-			const icon = this.icon(name)
-			const title = this.title(name)
+    setActive(name) {
+      const icon = this.icon(name)
+      const title = this.title(name)
+      const button = this.button(name)
+      const content = this.content(name)
+      const iconContainer = this.iconContainer(name)
 
-			console.log({ button, content })
+      console.log({ button, content })
 
-			button.setAttribute("aria-selected", "true")
-			content.classList.remove("hidden")
-			icon.setAttribute("aria-selected", "true")
-			title.setAttribute("aria-selected", "true")
-		}
+      content.classList.remove("hidden")
+      button.setAttribute("aria-selected", "true")
+      icon.setAttribute("aria-selected", "true")
+      title.setAttribute("aria-selected", "true")
+      iconContainer.setAttribute("aria-selected", "true")
+    }
 
-		handleClick(event: Event) {
-			const name = event.target.closest("button[data-tab]")?.dataset.tab
-			if (!name) return
+    handleClick(event: Event) {
+      const name = event.target.closest("button[data-tab]")?.dataset.tab
+      if (!name) return
 
-			if ("startViewTransition" in document) {
-				document.startViewTransition(() => {
-					this.resetElements()
-					this.setActive(name)
-				})
-			} else {
-				this.resetElements()
-				this.setActive(name)
-			}
-		}
-	}
+      if ("startViewTransition" in document) {
+        document.startViewTransition(() => {
+          this.resetElements()
+          this.setActive(name)
+        })
+      } else {
+        this.resetElements()
+        this.setActive(name)
+      }
+    }
+  }
 
-	customElements.define(Tabs.is, Tabs)
+  customElements.define(Tabs.is, Tabs)
 </script>
