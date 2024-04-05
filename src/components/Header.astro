@@ -28,11 +28,24 @@ const { header = "default" } = Astro.props
 <script>
 	import { createDisclosure } from "~/helpers/disclosure.js"
 
-	createDisclosure({
+	const main = document.querySelector("main")
+	const footer = document.querySelector("footer")
+
+	const emitter = createDisclosure({
 		button: document.querySelector("#astro-header-drawer-button") as HTMLElement,
 		content: document.querySelector("#astro-header-drawer") as HTMLElement,
 		animated: true,
 		/** matches the `lg:hidden` class above */
 		closeAt: 1024,
+	})
+
+	emitter.on("toggle", ({ visible }) => {
+		// Possible that these elements don't exist (but they almost always do)
+		if (main) {
+			main.inert = visible
+		}
+		if (footer) {
+			footer.inert = visible
+		}
 	})
 </script>
