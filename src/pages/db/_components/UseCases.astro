@@ -1,0 +1,32 @@
+---
+import SectionText from "./SectionText.astro"
+import UseCaseTabs from "./UseCaseTabs.astro"
+---
+
+<div class="container relative w-screen overflow-hidden">
+	<section
+		class="mx-auto w-full max-w-screen-xl space-y-10 bg-cover bg-center bg-no-repeat p-4 sm:p-8"
+	>
+		<SectionText>
+			<span slot="eyebrow" id="use-cases">Use Cases</span>
+			<Fragment slot="title">Unlimited possibilities</Fragment>
+			<p>
+				Stop worrying about configuration, provisioning, and setup—just start building. Unlock a
+				universe of new site features with the only drop-in database designed exclusively for Astro.
+			</p>
+		</SectionText>
+
+		<UseCaseTabs />
+	</section>
+</div>
+
+<style>
+	:global(.expressive-code) {
+		--ec-codeFontFml: MDIO, md-io-fallback, monospace;
+		font-variation-settings: var(--mono-ital);
+		font-feature-settings: var(--mono-calt), var(--mono-zero);
+		--ec-codePadBlk: 0;
+		--ec-codePadInl: 0;
+		--ec-codeBg: transparent;
+	}
+</style>

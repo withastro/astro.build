@@ -7,10 +7,7 @@ const { wide } = Astro.props
 ---
 
 <h2
-	class:list={[
-		"heading-3 mb-8 px-4 text-center font-semibold md:heading-2",
-		wide ? "max-w-5xl" : "max-w-3xl",
-	]}
+	class:list={["heading-3 mb-8 px-4 text-center md:heading-2", wide ? "max-w-5xl" : "max-w-3xl"]}
 	style="text-wrap: balance;"
 >
 	<slot name="title" />

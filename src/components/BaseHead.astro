@@ -1,6 +1,4 @@
 ---
-import Inter from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"
-import "@fontsource-variable/inter"
 import smartypants from "smartypants"
 import siteInfo from "~/data/site-info"
 import "~/styles/fonts.css"
@@ -9,6 +7,7 @@ import SEO from "./SEO.astro"
 
 export type Props = {
 	title?: string
+	rawTitle?: string
 	description?: string
 	image?: { src: string; alt: string }
 	canonicalURL?: URL | null
@@ -18,13 +17,14 @@ export type Props = {
 const twitterHandle = "astrodotbuild"
 
 const {
+	rawTitle,
 	description = siteInfo.description,
 	image = siteInfo.image,
 	canonicalURL = new URL(Astro.request.url, Astro.site),
 	pageType = "website",
 } = Astro.props
 
-const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ")
+const title = rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ")
 const resolvedImage = {
 	src: new URL(image.src, Astro.site).toString(),
 	alt: image.alt,
@@ -39,26 +39,11 @@ const resolvedImage = {
 <meta name="theme-color" content="#8D46E7" />
 
 <!-- Fathom - beautiful, simple website analytics -->
-<script src="https://cdn.usefathom.com/script.js" data-site="EZBHTSIG" defer></script>
+<script is:inline src="https://cdn.usefathom.com/script.js" data-site="EZBHTSIG" defer></script>
 
-<!-- Font preloads -->
-<link
-	rel="preload"
-	href="/fonts/Obviously/Obviously Normal/Web/Obviously-Regular.woff2"
-	as="font"
-	type="font/woff2"
-	crossorigin
-/>
-
-<link
-	rel="preload"
-	href="/fonts/MDIO/Web/MDIO0.6-Regular.woff2"
-	as="font"
-	type="font/woff2"
-	crossorigin
-/>
-
-<link rel="preload" href={Inter} as="font" type="font/woff2" crossorigin />
+<!-- Font preloads, omit MDIO to improve initial load -->
+<link rel="preload" href="/fonts/Obviously.woff2?v=1" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/Inter.woff2?v=1" as="font" type="font/woff2" crossorigin />
 
 <!-- Low Priority Global Metadata -->
 <Favicon />

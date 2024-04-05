@@ -7,15 +7,19 @@ import HeaderNav from "~/components/HeaderNav.astro"
 import SkipLink from "~/components/SkipLink.astro"
 import "~/styles/tailwind.css"
 
-export type Props = HeadProps
+/* eslint-disable-next-line */
+export type Props = HeadProps & { class?: string }
 
-const { ...head } = Astro.props
+const { class: classList, ...head } = Astro.props
 ---
 
 <!doctype html>
 <html
 	lang="en"
-	class="astro-gray-700 overflow-x-hidden break-words bg-black text-astro-gray-100 [color-scheme:dark] [word-break:break-word]"
+	class:list={[
+		"astro-gray-700 overflow-x-hidden break-words bg-black text-astro-gray-100 [color-scheme:dark] [word-break:break-word]",
+		classList,
+	]}
 >
 	<head>
 		<BaseHead {...head} />

@@ -1,21 +1,21 @@
 if (!process.env.GITHUB_TOKEN) {
-	throw new Error("GITHUB_TOKEN env variable must be set to run.")
+	throw new Error("GITHUB_TOKEN env variable must be set to run.");
 }
 
 function fetchJson(url) {
 	return fetch(url, {
 		headers: {
-			Authorization: "token " + process.env.GITHUB_TOKEN,
+			Authorization: `token ${process.env.GITHUB_TOKEN}`,
 			"User-Agent": "chrome",
 		},
 	}).then((res) => {
 		if (res.status >= 400) {
-			console.error(res.status, res.statusText)
-			throw new Error(res.statusText)
+			console.error(res.status, res.statusText);
+			throw new Error(res.statusText);
 		}
 
-		return res.json()
-	})
+		return res.json();
+	});
 }
 
 /**
@@ -28,8 +28,8 @@ function fetchJson(url) {
  */
 export function loginIsUniq(...lists) {
 	return function withUser(user) {
-		return !lists.some((list) => list.some((a) => a.login === user.login))
-	}
+		return !lists.some((list) => list.some((a) => a.login === user.login));
+	};
 }
 
 /**
@@ -41,15 +41,15 @@ export function loginIsUniq(...lists) {
  */
 export function parseRepoUrl(repoUrl) {
 	try {
-		const url = new URL(repoUrl)
-		const parts = url.pathname.split("/").filter(Boolean)
+		const url = new URL(repoUrl);
+		const parts = url.pathname.split("/").filter(Boolean);
 		return {
 			org: parts[0],
 			repo: parts[1],
-		}
+		};
 	} catch (err) {
-		console.error(repoUrl, err)
-		return []
+		console.error(repoUrl, err);
+		return [];
 	}
 }
 
@@ -68,17 +68,17 @@ export function orgApi(org) {
 		 * @returns {Promise} JSON list of github members
 		 */
 		function fetchMembers(count) {
-			const url = new URL(`https://api.github.com/orgs/${org}/teams/${team}/members`)
+			const url = new URL(`https://api.github.com/orgs/${org}/teams/${team}/members`);
 			if (count) {
-				url.searchParams.set("per_page", count)
+				url.searchParams.set("per_page", count);
 			}
 
-			return fetchJson(url.toString())
+			return fetchJson(url.toString());
 		}
 
 		return {
 			fetchMembers,
-		}
+		};
 	}
 
 	function repoApi(repo) {
@@ -88,12 +88,12 @@ export function orgApi(org) {
 		 * @returns {Promise} JSON list of github members
 		 */
 		function fetchContributors(count) {
-			const url = new URL(`https://api.github.com/repos/${org}/${repo}/contributors`)
+			const url = new URL(`https://api.github.com/repos/${org}/${repo}/contributors`);
 			if (count) {
-				url.searchParams.set("per_page", count)
+				url.searchParams.set("per_page", count);
 			}
 
-			return fetchJson(url.toString())
+			return fetchJson(url.toString());
 		}
 
 		/**
@@ -102,20 +102,20 @@ export function orgApi(org) {
 		 * @returns {Promise} number of stars for the github repo
 		 */
 		async function fetchStars() {
-			const url = new URL(`https://api.github.com/repos/${org}/${repo}`)
+			const url = new URL(`https://api.github.com/repos/${org}/${repo}`);
 
 			return fetchJson(url.toString())
 				.then((res) => res.stargazers_count)
 				.catch((error) => {
-					console.warn(`[fetchStars] ${org}/${repo}`, error.message)
-					return 0
-				})
+					console.warn(`[fetchStars] ${org}/${repo}`, error.message);
+					return 0;
+				});
 		}
 
 		return {
 			fetchContributors,
 			fetchStars,
-		}
+		};
 	}
 
 	function userApi() {
@@ -124,24 +124,24 @@ export function orgApi(org) {
 		 * @returns {Promise} JSON data for the github user or org account
 		 */
 		function fetchUser() {
-			const url = new URL(`https://api.github.com/users/${org}`)
-			return fetchJson(url.toString())
+			const url = new URL(`https://api.github.com/users/${org}`);
+			return fetchJson(url.toString());
 		}
 
 		return {
 			fetchUser,
-		}
+		};
 	}
 
 	function orgApi() {
 		function fetchOrg() {
-			const url = new URL(`https://api.github.com/orgs/${org}`)
-			return fetchJson(url.toString())
+			const url = new URL(`https://api.github.com/orgs/${org}`);
+			return fetchJson(url.toString());
 		}
 
 		return {
 			fetchOrg,
-		}
+		};
 	}
 
 	return {
@@ -149,5 +149,5 @@ export function orgApi(org) {
 		repo: repoApi,
 		user: userApi,
 		org: orgApi,
-	}
+	};
 }

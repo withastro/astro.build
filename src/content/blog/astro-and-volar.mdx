@@ -1,0 +1,55 @@
+---
+title: "Astro + Volar = 💖"
+description: "Astro relies on the hard work and dedication of several open-source projects, and we are extremely thankful to the maintainers of each and every one. In this article, we'd like to highlight one specific project that made a significant impact to the Astro experience: Volar."
+publishDate: "March 11, 2024"
+authors:
+  - erika
+coverImage: "/src/content/blog/_images/astro-ecosystem-love/post-header.webp"
+socialImage: "/src/content/blog/_images/astro-ecosystem-love/social-og.webp"
+lang: "en"
+---
+
+import volarPRImage from "./_images/astro-ecosystem-love/volar-pr.webp"
+import volarLogo from "./_images/astro-ecosystem-love/volar.svg"
+import Blockquote from "/src/components/Blockquote.astro"
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+import { Image } from "astro:assets";
+import ImageFigure from "/src/components/ImageFigure.astro"
+import xkcdComic from "./_images/astro-ecosystem-love/dependency_2x.webp"
+
+**At Astro, we want you to be able to build websites using the tools that you prefer. Supporting such a wide variety of developer choices requires an enormous amount of work, and it is an understatement to say that we wouldn't be able to do it all without a little help from our friends.**
+
+From the small utilities like [`kleur`](https://github.com/lukeed/kleur) (to provide cute colors in the terminal) and [`tsconfck`](https://github.com/dominikg/tsconfck) (to load your `tsconfig.json`), to the larger, more well-known dependencies like [`sharp`](https://github.com/lovell/sharp) (to process and optimize images) and [`shiki`](https://github.com/shikijs/shiki) (to provide syntax highlighting), Astro is built on the shoulders of giants, and we are extremely thankful for the work that the maintainers of these projects have done.
+
+In this article, we'd like to highlight one specific project that we have been able to benefit from: [Volar](https://volarjs.dev/).
+
+<ImageFigure caption="Volar: The Embedded Language Tooling Framework" centered>
+<Image src={volarLogo} alt="Volar's logo" width="256" style="margin: 0 auto;" />
+</ImageFigure>
+
+[Last year, the Vue team announced that they would transform their language server into a framework-agnostic set of tools called Volar](https://blog.vuejs.org/posts/volar-a-new-beginning). Similar to Vite, the goal of Volar is to provide a reliable base for frameworks to build upon.
+
+We quickly started to work on migrating Astro's language server to Volar, knowing it would improve the developer experience for Astro users.
+
+<a href="https://github.com/withastro/language-tools/pull/502">
+	<BlogContentImage src={volarPRImage} alt="Shows the pull request where the Volar migration was merged. 325 files were modified, 5823 additions, and 17238 deletions." />
+</a>
+
+After only a few weeks, we merged the pull request and received more benefits than just a revamped language server: we also removed a huge amount of code, closed a lot of issues, and have now significantly reduced our maintenance cost.
+
+[Today, we announced that we are giving a 10,000$ grant to the Volar team](https://twitter.com/astrodotbuild/status/1767230851287306722) as a thank you for the work they have done, and to help them continue to provide a great experience for their users, Astro users, and the wider ecosystem.
+
+Since Volar is also already used by Vue and MDX, with more frameworks considering it, we believe that this grant will benefit the entire ecosystem. It's a win-win for everyone involved!
+
+## A big thank you to everyone
+
+Open-source is very often a thankless job. Most projects are maintained by a very small group of people (if not a single person!), often in their spare time. From staying on top of GitHub comments, to merging pull requests, writing documentation, and maybe even actually writing some code, it's a ... well, it's a lot.
+
+
+<a href="https://xkcd.com/2347/">
+	<ImageFigure caption="The state of the industry, as we know. Comic by xkcd." centered>
+	<Image src={xkcdComic} width="256" style="margin: 0 auto;" alt="A vaguely stable tower of blocks representing dependencies, a small block keeping the entire thing together is highlighted with the text 'A project some random person in Nebraska has been thanklessly maintaining since 2003'"  />
+	</ImageFigure>
+</a>
+
+We at Astro are extremely thankful for the tireless efforts of the maintainers of all the projects we depend on and will continue to do our best to support them in any way we can.

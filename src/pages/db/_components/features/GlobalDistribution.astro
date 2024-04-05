@@ -1,0 +1,72 @@
+---
+
+---
+
+<canvas class="absolute inset-0 z-0 h-[24rem] w-full" id="cobe" width="604" height="384"></canvas>
+
+<script>
+	import createGlobe from "cobe"
+	let isHover = false
+
+	let phi = 2.5
+	let canvas = document.getElementById("cobe") as HTMLCanvasElement
+
+	canvas.onmouseover = () => {
+		isHover = true
+	}
+	canvas.onmouseout = () => {
+		isHover = false
+	}
+
+	const rgb = (r: number, g: number, b: number): [number, number, number] =>
+		[r, g, b].map((n) => n / 255) as any
+
+	let ro: ResizeObserver
+	let globe: ReturnType<typeof createGlobe>
+	function render() {
+		if (ro) {
+			ro.disconnect()
+		}
+		const { devicePixelRatio = 1 } = window
+		const { width: w, height: h } = canvas.getBoundingClientRect()
+		const width = w * devicePixelRatio * 2
+		const height = h * devicePixelRatio * 2
+		const size = 0.1
+		globe = createGlobe(canvas, {
+			devicePixelRatio,
+			width,
+			height,
+			phi,
+			theta: 0,
+			dark: 1,
+			diffuse: 3,
+			scale: 1.125,
+			mapSamples: 10240,
+			mapBrightness: 5,
+			mapBaseBrightness: 0,
+			baseColor: rgb(92, 46, 154),
+			markerColor: rgb(200, 200, 241),
+			glowColor: rgb(30, 20, 50),
+			offset: [width * -0.3, height * 1.05],
+			markers: [
+				{ location: [50.1109, 8.6821], size },
+				{ location: [40.0583, -74.4057], size },
+				{ location: [-23.5558, -46.6396], size },
+				{ location: [35.6938, 139.7034], size },
+				{ location: [1.3521, 103.8198], size },
+				{ location: [-33.8688, 151.2093], size },
+			],
+			opacity: 1,
+			onRender: (state) => {
+				state.phi = phi
+				phi += 0.00025
+			},
+		})
+		ro = new ResizeObserver(() => {
+			globe.resize()
+		})
+		ro.observe(canvas)
+	}
+
+	render()
+</script>

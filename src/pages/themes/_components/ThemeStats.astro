@@ -5,28 +5,28 @@ import Avatar from "./Avatar.astro"
 import Badge from "./Badge.astro"
 
 export type Props = HTMLAttributes<"div"> & {
-	theme: CollectionEntry<"themes">
+	theme: any
 }
 
 const { theme, class: className, ...attrs } = Astro.props
 
 const vercelUrl =
-	theme.data.repoUrl &&
-	typeof theme.data.stars !== "undefined" &&
-	`https://vercel.com/new/clone?repository-url=${theme.data.repoUrl}`
+	theme.Theme.repoUrl &&
+	typeof theme.Theme.stars !== "undefined" &&
+	`https://vercel.com/new/clone?repository-url=${theme.Theme.repoUrl}`
 ---
 
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>
 	<div class="flex items-center justify-between">
 		<small class="code text-astro-gray-200">Cost</small>
-		<Badge theme={theme.data.paid ? "primary" : "secondary"}>
-			{theme.data.paid ? "Paid" : "Free"}
+		<Badge theme={theme.Theme.paid ? "primary" : "secondary"}>
+			{theme.Theme.paid ? "Paid" : "Free"}
 		</Badge>
 	</div>
 	<hr class="border-astro-gray-500" />
 	<div class="flex items-center justify-between">
 		<small class="code text-astro-gray-200">Created by</small>
-		<a href={theme.data.author.url} target="_blank" class="link">
+		<a href={theme.Author.url} target="_blank" class="link">
 			<Avatar theme={theme} />
 		</a>
 	</div>

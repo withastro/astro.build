@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@matthiesenxyz/astro-gists"
 homepageUrl: "https://github.com/MatthiesenXYZ/astro-gists"
 badge: "new"
-downloads: 335
+downloads: 1341
 ---

@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@adammatthiesen/astro-commercejs"
 homepageUrl: "https://github.com/adammatthiesen/astro-commercejs"
 badge: "new"
-downloads: 233
+downloads: 15
 ---

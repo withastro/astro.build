@@ -1,0 +1,39 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro"
+import Features from "./_components/Features.astro"
+import FooterCTA from "./_components/FooterCTA.astro"
+import Hero from "./_components/Hero.astro"
+import Intro from "./_components/Intro.astro"
+import Pricing from "./_components/Pricing.astro"
+import UseCases from "./_components/UseCases.astro"
+
+export const prerender = true
+const title = "Astro DB"
+const description = "The SQL database platform for content-driven websites."
+---
+
+<MainLayout
+	class="db"
+	rawTitle={title}
+	description={description}
+	image={{
+		src: "/og/astro-db.jpg",
+		alt: "Astro DB - the SQL database platform for content-driven websites.",
+	}}
+>
+	<Hero />
+
+	<div class="mb-16 space-y-32">
+		<Intro />
+		<UseCases />
+		<Features />
+		<Pricing />
+		<FooterCTA />
+	</div>
+</MainLayout>
+
+<style>
+	.db {
+		background-color: #060913 !important;
+	}
+</style>

@@ -1,0 +1,13 @@
+// Define your Posts table
+const Posts = defineTable({
+	columns: {
+		author: column.text(),
+		title: column.text()
+		content: column.text(),
+	}
+});
+
+// Retrieve all post titles by author
+await db.select({ title: Posts.title })
+	.from(Posts)
+	.where(eq(Posts.author, "James"))

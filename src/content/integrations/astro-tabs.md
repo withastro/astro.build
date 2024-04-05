@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-tabs"
 repoUrl: "https://github.com/JulianCataldo/web-garden"
 homepageUrl: "https://code.juliancataldo.com/component/astro-tabs"
-downloads: 1184
+downloads: 622
 ---

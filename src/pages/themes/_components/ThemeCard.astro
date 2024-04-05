@@ -1,29 +1,23 @@
 ---
-import type { CollectionEntry } from "astro:content"
 import Card from "~/components/Card.astro"
-import CardBadge from "~/components/CardBadge.astro"
 import CardBody from "~/components/CardBody.astro"
 import CardFooter from "~/components/CardFooter.astro"
-import { resolveImage } from "~/content/themes/_resolveImage.js"
 import Avatar from "./Avatar.astro"
 import Badge from "./Badge.astro"
-
 export type Props = {
-	theme: CollectionEntry<"themes">
+	theme: any
 }
 
 const { theme } = Astro.props
 
-const image = await resolveImage(theme)
+const image = theme.Theme.image
 ---
 
 <Card isLink>
-	{!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>}
-	<a class="flex h-full flex-col" href={`/themes/details/${theme.slug}`} data-astro-prefetch>
+	<!-- {!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>} -->
+	<a class="flex h-full flex-col" href={`/themes/details/${theme.Theme.slug}`} data-astro-prefetch>
 		<img
-			src={image.src}
-			width={image.width}
-			height={image.height}
+			src={image}
 			alt=""
 			class="aspect-video w-full object-cover"
 			loading="lazy"
@@ -31,18 +25,19 @@ const image = await resolveImage(theme)
 		/>
 		<CardBody>
 			<div>
-				<h3 class:list={["heading-5 mb-2 text-white", { official: theme.data.official }]}>
-					{theme.data.title}
+				<!-- <h3 class:list={["heading-5 mb-2 text-white", { official: theme.data.official }]}> -->
+				<h3 class:list={["heading-5 mb-2 text-white"]}>
+					{theme.Theme.title}
 				</h3>
-				<p class="line-clamp-3">{theme.data.description}</p>
+				<p class="line-clamp-3">{theme.Theme.description}</p>
 			</div>
 			<CardFooter
 				class="grid grid-cols-[1fr,auto] items-center justify-between gap-2 overflow-hidden border-t border-astro-gray-400 pt-6"
 			>
 				<Avatar theme={theme} />
 
-				<Badge theme={theme.data.paid ? "primary" : "secondary"} class="z-10">
-					{theme.data.paid ? "Paid" : "Free"}
+				<Badge theme={theme.Theme.paid ? "primary" : "secondary"} class="z-10">
+					{theme.Theme.paid ? "Paid" : "Free"}
 				</Badge>
 			</CardFooter>
 		</CardBody>
