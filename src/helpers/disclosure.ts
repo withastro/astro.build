@@ -1,4 +1,5 @@
 import { createEffect, createSignal } from "solid-js";
+import { EventEmitter } from './emitter.ts';
 
 export function createDisclosure({
 	button,
@@ -25,10 +26,11 @@ export function createDisclosure({
 		});
 	}
 
-	const [visible, setVisible] = createSignal(false);
+	const emitter = new EventEmitter<{ toggle: { visible: boolean } }>();
+	const [visible, setVisible] = createSignal(false)
 
 	createEffect(() => {
-		button.setAttribute("aria-expanded", String(visible()));
+		button.setAttribute("aria-expanded", String(visible()))
 
 		if (visible()) {
 			content.style.removeProperty("display");
@@ -95,6 +97,7 @@ export function createDisclosure({
 	};
 
 	createEffect(() => {
+		emitter.emit('toggle', { visible: visible() });
 		if (visible()) {
 			window.addEventListener("click", handleClickOutside);
 			window.addEventListener("focusin", handleFocusLost);
@@ -103,4 +106,6 @@ export function createDisclosure({
 			window.removeEventListener("focusin", handleFocusLost);
 		}
 	});
+
+	return emitter;
 }
