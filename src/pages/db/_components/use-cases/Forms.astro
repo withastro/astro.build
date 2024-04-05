@@ -1,59 +1,70 @@
 ---
-import { Code } from "astro-expressive-code/components"
 import UseCase from "../UseCase.astro"
 import code from "./snippets/forms.txt?raw"
+import { Code } from "astro-expressive-code/components"
 ---
 
-<UseCase class="hidden" tab="forms">
-	<div slot="example" class="relative isolate mx-auto grid max-w-7xl grid-cols-1 py-12">
-		<form action="#" method="POST" novalidate autocomplete="off">
-			<div class="mx-auto max-w-xl lg:max-w-lg">
-				<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-					<div>
-						<label for="full-name" class="mb-2 block text-sm font-semibold leading-6 text-white"
-							><span class="block h-4 w-32 rounded-full bg-astro-gray-400"></span></label
-						>
-						<div>
-							<div
-								id="full-name"
-								class="min-h-8 block w-full rounded-md border-0 bg-astro-gray-400 px-3.5 py-2 text-white ring-1 ring-astro-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-							>
-							</div>
-						</div>
-					</div>
-					<div>
-						<label for="email" class="mb-2 block text-sm font-semibold leading-6 text-white"
-							><span class="block h-4 w-20 rounded-full bg-astro-gray-400"></span></label
-						>
-						<div class="mt-2.5">
-							<div
-								id="email"
-								class="min-h-8 block w-full rounded-md border-0 bg-astro-gray-400 px-3.5 py-2 text-white ring-1 ring-astro-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-							>
-							</div>
-						</div>
-					</div>
-					<div class="sm:col-span-2">
-						<label for="message" class="mb-2 block text-sm font-semibold leading-6 text-white"
-							><span class="block h-4 w-32 rounded-full bg-astro-gray-400"></span></label
-						>
-						<div class="mt-2.5">
-							<div
-								id="message"
-								class="min-h-8 block w-full rounded-md border-0 bg-astro-gray-400 px-3.5 py-2 text-white ring-1 ring-astro-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-							>
-							</div>
-						</div>
+<UseCase class='hidden' tab='forms'>
+	<div slot='example' class='space-y-4 md:space-y-8'>
+		<div class='mt-1 space-y-1'>
+			<h3 class='text-lg text-[#9FA5B3]'>Contact Form</h3>
+			<p class='text-base text-astro-gray-300/60'>
+				Fill the contact form to get in touch with our customer care team
+			</p>
+		</div>
+
+		<form action='#' method='POST' novalidate autocomplete='off' class='space-y-6 caret-astro-gray-200'>
+			<div class='flex w-full gap-4'>
+				<div class='w-full'>
+					<label for='name' class='block text-sm font-medium text-astro-gray-400'>Full Name</label>
+					<div class='mt-1'>
+						<input
+							type='text'
+							name='email'
+							id='name'
+							class='block w-full rounded-lg border border-[#202432] bg-[#0C0F19] px-3 py-2.5 placeholder:text-astro-gray-400 shadow-sm text-astro-gray-300 focus:border-astro-gray-400 focus:outline-none focus:ring-astro-gray-400 sm:text-sm'
+							placeholder='Full Name'
+						/>
 					</div>
 				</div>
-				<div class="mt-4 flex justify-end">
-					<div
-						class="h-12 w-40 rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+
+				<div class='w-full'>
+					<label for='email' class='block text-sm font-medium text-astro-gray-400'
+						>Email Address</label
 					>
+					<div class='mt-1'>
+						<input
+							type='email'
+							name='email'
+							id='email'
+							class='block w-full rounded-lg border border-[#202432] bg-[#0C0F19] px-3 py-2.5 placeholder:text-astro-gray-400 shadow-sm text-astro-gray-300 focus:border-astro-gray-400 focus:outline-none focus:ring-astro-gray-400 sm:text-sm'
+							placeholder='Email Address'
+						/>
 					</div>
 				</div>
 			</div>
+
+			<div class='w-full'>
+				<label for='name' class='block text-sm font-medium text-astro-gray-400'
+					>How can we help you?</label
+				>
+				<div class='mt-1'>
+					<textarea
+						rows='6'
+						name='email'
+						id='name'
+						class='block w-full rounded-lg border border-[#202432] bg-[#0C0F19] px-3 py-2 placeholder:text-astro-gray-400 shadow-sm text-astro-gray-300 focus:border-astro-gray-400 focus:outline-none focus:ring-astro-gray-400 sm:text-sm'
+						placeholder='Message'></textarea>
+				</div>
+			</div>
+
+			<button
+				type='submit'
+				class='flex w-full justify-center rounded-lg bg-[#343841] px-3 py-1.5 text-sm font-medium leading-6 text-astro-gray-200 shadow-sm hover:bg-[#343841]/50'
+			>
+				Send Message
+			</button>
 		</form>
 	</div>
-	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
+	<Code slot='code' lang='ts' code={code.replaceAll("\t", "  ")} />
 </UseCase>
