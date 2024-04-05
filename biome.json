@@ -1,0 +1,36 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.6.3/schema.json",
+	"files": {
+		"ignore": ["**/*.astro"]
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"noSvgWithoutTitle": "off"
+			}
+		}
+	},
+	"json": {
+		"parser": {
+			"allowComments": true,
+			"allowTrailingCommas": true
+		}
+	},
+	"vcs": {
+		"clientKind": "git",
+		"enabled": true,
+		"useIgnoreFile": true
+	},
+	"formatter": {
+		"formatWithErrors": true,
+		"lineWidth": 100
+	},
+	"javascript": {
+		"globals": ["Astro"]
+	}
+}

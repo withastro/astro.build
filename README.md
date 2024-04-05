@@ -4,11 +4,7 @@ The source code for [astro.build](https://astro.build), built with [Astro](https
 
 ## Updating Themes
 
-The [themes catalog](https://astro.build/themes/) is based on the [themes content collection](/src/content/themes/). Optimized images should be saved to the collection's [\_images directory](/src/content/themes/_images/), ideally as format with a `{image}.webp` file at 800px wide and `{image}@2x.webp` at 1600px wide.
-
-Theme data is updated weekly by a [GitHub Action](/.github/workflows/weekly.yaml). This action mainly updates the star count in public GitHub repos (used for sorting), but may be updated in the future to update additional theme details.
-
-> TODO: A future PR will migrate to `astro:assets` for image optimization and get away from the manual image optimization shenanigans.
+The [themes catalog](https://astro.build/themes/) is now powered by the [Astro Developer Portal](https://portal.astro.build), where you can log in, submit and update your own themes. The themes catalog automatically updates every day with the latest data from the portal.
 
 ## Updating the Showcase
 

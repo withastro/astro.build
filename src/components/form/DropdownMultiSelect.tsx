@@ -1,28 +1,28 @@
-import { createSignal, For, type JSX } from "solid-js"
-import { getElement, getElements } from "~/helpers/dom.js"
-import ChevronIcon from "~/icons/ChevronIcon.jsx"
-import CheckCircleIcon from "~/icons/integrations/CheckCircleIcon.jsx"
+import { For, type JSX, createSignal } from "solid-js";
+import { getElement, getElements } from "~/helpers/dom.js";
+import ChevronIcon from "~/icons/ChevronIcon.jsx";
+import CheckCircleIcon from "~/icons/integrations/CheckCircleIcon.jsx";
 
 /** modulo, but it loops on negatives */
-const negativeMod = (a: number, b: number) => ((a % b) + b) % b
+const negativeMod = (a: number, b: number) => ((a % b) + b) % b;
 
 export function DropdownMultiSelect(props: {
-	name?: string
-	descriptionId?: string
-	options: { label: string; value: string }[]
-	defaultSelected?: string[]
+	name?: string;
+	descriptionId?: string;
+	options: { label: string; value: string }[];
+	defaultSelected?: string[];
 }) {
-	const [values, setValues] = createSignal(new Set(props.defaultSelected ?? []))
+	const [values, setValues] = createSignal(new Set(props.defaultSelected ?? []));
 
 	const handleKeyDown: JSX.EventHandler<HTMLDetailsElement, KeyboardEvent> = (event) => {
-		const toggle = getElement("[data-toggle]", HTMLElement, event.currentTarget)
+		const toggle = getElement("[data-toggle]", HTMLElement, event.currentTarget);
 
 		// close the dropdown and focus the toggle if the user presses escape
 		if (event.key === "Escape") {
-			event.preventDefault()
-			event.currentTarget.open = false
-			toggle?.focus()
-			return
+			event.preventDefault();
+			event.currentTarget.open = false;
+			toggle?.focus();
+			return;
 		}
 
 		// open the dropdown if the toggle is focused and the user presses down or up
@@ -30,21 +30,21 @@ export function DropdownMultiSelect(props: {
 			document.activeElement === toggle &&
 			(event.key === "ArrowDown" || event.key === "ArrowUp")
 		) {
-			event.preventDefault()
-			event.currentTarget.open = true
+			event.preventDefault();
+			event.currentTarget.open = true;
 		}
 
 		// cycle through focus targets with up and down
-		const targets = getElements("[data-focus-target]", HTMLElement, event.currentTarget)
-		const focusedIndex = [...targets].findIndex((option) => option === document.activeElement)
+		const targets = getElements("[data-focus-target]", HTMLElement, event.currentTarget);
+		const focusedIndex = [...targets].findIndex((option) => option === document.activeElement);
 		if (event.key === "ArrowDown") {
-			event.preventDefault()
-			targets[negativeMod(focusedIndex + 1, targets.length)]?.focus()
+			event.preventDefault();
+			targets[negativeMod(focusedIndex + 1, targets.length)]?.focus();
 		} else if (event.key === "ArrowUp") {
-			event.preventDefault()
-			targets[negativeMod(focusedIndex - 1, targets.length)]?.focus()
+			event.preventDefault();
+			targets[negativeMod(focusedIndex - 1, targets.length)]?.focus();
 		}
-	}
+	};
 
 	return (
 		<details
@@ -84,19 +84,19 @@ export function DropdownMultiSelect(props: {
 								class="peer absolute inset-0 cursor-pointer appearance-none rounded outline-none ring-astro-gray-200 focus-visible:ring-2"
 								onInput={(event) => {
 									setValues((values) => {
-										const newValues = new Set(values)
+										const newValues = new Set(values);
 										if (event.currentTarget.checked) {
-											newValues.add(event.currentTarget.value)
+											newValues.add(event.currentTarget.value);
 										} else {
-											newValues.delete(event.currentTarget.value)
+											newValues.delete(event.currentTarget.value);
 										}
-										return newValues
-									})
+										return newValues;
+									});
 								}}
 								onKeyDown={(event) => {
 									if (event.key === "Enter") {
-										event.preventDefault()
-										event.currentTarget.click()
+										event.preventDefault();
+										event.currentTarget.click();
 									}
 								}}
 							/>
@@ -109,5 +109,5 @@ export function DropdownMultiSelect(props: {
 				</For>
 			</div>
 		</details>
-	)
+	);
 }

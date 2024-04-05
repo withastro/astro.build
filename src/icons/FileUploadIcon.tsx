@@ -1,4 +1,4 @@
-import type { JSX } from "solid-js"
+import type { JSX } from "solid-js";
 
 export default function FileUploadIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	return (
@@ -28,5 +28,5 @@ export default function FileUploadIcon(props: JSX.SvgSVGAttributes<SVGSVGElement
 				</linearGradient>
 			</defs>
 		</svg>
-	)
+	);
 }

@@ -1,16 +1,7 @@
 @font-face {
-	font-family: "MDIO";
-	src: url("/fonts/MDIO.woff2") format("woff2-variations");
-	src: url("/fonts/MDIO.woff2") format("woff2") tech("variations");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
 	font-family: "Obviously";
-	src: url("/fonts/Obviously.woff2") format("woff2-variations");
-	src: url("/fonts/Obviously.woff2") format("woff2") tech("variations");
+	src: url("/fonts/Obviously.woff2?v=1") format("woff2-variations");
+	src: url("/fonts/Obviously.woff2?v=1") format("woff2") tech("variations");
 	font-style: normal;
 	font-display: swap;
 	font-weight: 100 1000;
@@ -19,10 +10,21 @@
 
 @font-face {
 	font-family: "Inter";
-	src: url("/fonts/Inter.woff2") format("woff2-variations");
-	src: url("/fonts/Inter.woff2") format("woff2") tech("variations");
+	src: url("/fonts/Inter.woff2?v=1") format("woff2-variations");
+	src: url("/fonts/Inter.woff2?v=1") format("woff2") tech("variations");
 	font-style: normal;
 	font-display: swap;
+	font-weight: 300 600;
+}
+
+@font-face {
+	font-family: "MDIO";
+	src: url("/fonts/MDIO.woff2?v=1") format("woff2-variations");
+	src: url("/fonts/MDIO.woff2?v=1") format("woff2") tech("variations");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	font-weight: 400;
 }
 
 /* == FALLBACK FONT CONFIG == */
@@ -33,16 +35,17 @@
 }
 
 @font-face {
-	font-family: obviously-regular-fallback;
+	font-family: obviously-fallback;
 	src: local("Verdana");
 	size-adjust: 112%;
 	line-gap-override: 19%;
 }
 
 @font-face {
-	font-family: obviously-wide-fallback;
-	src: local("Arial Black");
-	size-adjust: 134%;
-	ascent-override: 96%;
-	descent-override: 27%;
+	font-family: inter-fallback;
+	ascent-override: 90.2%;
+	descent-override: 22.48%;
+	line-gap-override: 0%;
+	size-adjust: 107.4%;
+	src: local("Arial");
 }
