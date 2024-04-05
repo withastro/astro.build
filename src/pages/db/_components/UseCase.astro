@@ -12,21 +12,21 @@ const { tab, class: className } = Astro.props
 	data-tab={tab}
 >
 	<div
-		class="-m-1 hidden flex-1 basis-1/2 flex-col overflow-hidden rounded-2xl border border-[#272831] bg-astro-gray-700 shadow-xl sm:flex lg:mr-8"
+		class='-m-1 hidden flex-1 basis-1/2 flex-col overflow-hidden rounded-2xl border border-[#272831] bg-astro-gray-700 shadow-xl sm:flex lg:mr-8'
 	>
-		<div class="flex-0 whitespace-no-wrap pointer-events-none select-none px-4 pb-3 pt-4 text-sm">
+		<!-- <div class="flex-0 whitespace-no-wrap pointer-events-none select-none px-4 pb-3 pt-4 text-sm">
 			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
 			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
 			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
-		</div>
-		<div class="max-h-fit p-4 pb-8" inert>
-			<slot name="example" />
+		</div> -->
+		<div class='max-h-fit md:h-[28rem] bg-[#141825] px-6 py-3'>
+			<slot name='example' />
 		</div>
 	</div>
 	<div
-		class="code-sample -mt-8 block max-h-fit basis-1/2 overflow-hidden rounded-2xl border-[#272831] bg-[#0C0F19] p-4 sm:mt-8 sm:p-8 lg:-mt-16 lg:mr-0"
+		class='code-sample -mt-8 block max-h-fit basis-1/2 no-scrollbar overflow-auto rounded-2xl border-[#272831] bg-[#0C0F19] p-4 sm:mt-8 sm:p-8 md:h-[32rem] lg:-mt-16 lg:mr-0'
 	>
-		<slot name="code" />
+		<slot name='code' />
 	</div>
 </li>
 
