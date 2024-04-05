@@ -30,7 +30,7 @@ export function createDisclosure({
 	const [visible, setVisible] = createSignal(false);
 
 	createEffect(() => {
-		button.setAttribute("aria-expanded", String(visible()));
+		button.setAttribute("aria-expanded", String(visible()))
 
 		if (visible()) {
 			content.style.removeProperty("display");
