@@ -23,7 +23,7 @@ const { tab, class: className } = Astro.props
   </div>
 
   <div
-    class='-mt-8 sm:mt-8 lg:-mt-[4.5rem] block md:h-[32.4rem] max-h-fit basis-1/2 bg-[#0C0F19] border border-[#272831] rounded-2xl'
+    class='-mt-8 sm:mt-8 lg:-mt-[4.5rem] block md:h-[32.4rem] max-h-fit basis-1/2 bg-[#0C0F19] border border-[#272831] rounded-2xl no-scrollbar overflow-auto'
   >
     <div
       class='h-10 px-3 flex items-center whitespace-no-wrap pointer-events-none select-none border-b border-b-[#272831]'
@@ -32,16 +32,12 @@ const { tab, class: className } = Astro.props
       <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
       <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
     </div>
+
     <div class='sm:p-6'>
       <slot name='code' />
     </div>
   </div>
 
-  <!-- <div
-		class='code-sample -mt-8 block max-h-fit basis-1/2 no-scrollbar overflow-auto rounded-2xl border-[#272831] bg-[#0C0F19] p-4 sm:mt-8 sm:p-8 md:h-[32rem] lg:-mt-16 lg:mr-0'
-	>
-		<slot name='code' />
-	</div> -->
 </li>
 
 <style>
