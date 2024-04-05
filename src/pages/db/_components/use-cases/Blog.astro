@@ -1,37 +1,17 @@
 ---
-import { Code } from "astro-expressive-code/components"
 import UseCase from "../UseCase.astro"
+import BlogFilters from "./BlogFilters.tsx"
 import code from "./snippets/blog.txt?raw"
+import { Code } from "astro-expressive-code/components"
 ---
 
-<UseCase class="hidden" tab="blog">
-	<div slot="example" class="relative isolate mx-auto grid max-w-7xl grid-cols-1 px-4 py-12">
-		<ul class="flex flex-col space-y-4">
-			<li class="rounded-md bg-astro-gray-400 p-8">
-				<div>
-					<span class="block h-6 w-52 rounded-full bg-astro-gray-600"></span>
-				</div>
-				<div class="mt-6">
-					<div class="flex flex-col gap-2">
-						<div class="h-4 max-w-[360px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[300px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[330px] rounded-full bg-astro-gray-600"></div>
-					</div>
-				</div>
-			</li>
-			<li class="rounded-md bg-astro-gray-400 p-8">
-				<div>
-					<span class="block h-6 w-64 rounded-full bg-astro-gray-600"></span>
-				</div>
-				<div class="mt-6">
-					<div class="flex flex-col gap-2">
-						<div class="h-4 max-w-[310px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[350px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[330px] rounded-full bg-astro-gray-600"></div>
-					</div>
-				</div>
-			</li>
-		</ul>
+<UseCase class='hidden' tab='blog'>
+	<div slot='example'>
+		<div class='py-2'>
+			<h3 class='text-xl text-[#9FA5B3]'>The Blog</h3>
+
+			<BlogFilters client:load />
+		</div>
 	</div>
-	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
+	<Code slot='code' lang='ts' code={code.replaceAll("\t", "  ")} />
 </UseCase>
