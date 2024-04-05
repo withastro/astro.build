@@ -131,6 +131,18 @@ const bg = await getImage({ src: blob, format: "webp", width: 1280 })
 		contents() {
 			return this.querySelectorAll(`li[data-tab]`)
 		}
+		icon(name) {
+			return this.querySelector(`div[data-tab-icon="${name}"]`)
+		}
+		icons() {
+			return this.querySelectorAll(`div[data-tab-icon]`)
+		}
+		title(name) {
+			return this.querySelector(`p[data-tab-title="${name}"]`)
+		}
+		titles() {
+			return this.querySelectorAll(`p[data-tab-title]`)
+		}
 
 		connectedCallback() {
 			this.addEventListener("click", this.handleClick)
@@ -147,16 +159,26 @@ const bg = await getImage({ src: blob, format: "webp", width: 1280 })
 			for (const content of this.contents()) {
 				content.classList.add("hidden")
 			}
+			for (const icon of this.icons()) {
+				icon.removeAttribute("aria-selected")
+			}
+			for (const title of this.titles()) {
+				title.removeAttribute("aria-selected")
+			}
 		}
 
 		setActive(name) {
 			const button = this.button(name)
 			const content = this.content(name)
+			const icon = this.icon(name)
+			const title = this.title(name)
 
 			console.log({ button, content })
 
 			button.setAttribute("aria-selected", "true")
 			content.classList.remove("hidden")
+			icon.setAttribute("aria-selected", "true")
+			title.setAttribute("aria-selected", "true")
 		}
 
 		handleClick(event: Event) {
