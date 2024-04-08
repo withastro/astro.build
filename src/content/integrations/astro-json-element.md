@@ -10,6 +10,4 @@ repoUrl: "https://github.com/BryceRussell/astro-json-element"
 featured: 18
 homepageUrl: "https://github.com/BryceRussell/astro-json-element#readme"
 downloads: 65
-badges:
-  - "featured"
 ---

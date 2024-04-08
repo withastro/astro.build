@@ -12,7 +12,5 @@ repoUrl: "https://github.com/withastro/astro"
 featured: 14
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/mdx/"
 downloads: 240192
-badges:
-  - "featured"
 official: true
 ---

@@ -1,7 +1,7 @@
 ---
 name: "@astro-utils/forms"
 title: "@astro-utils/forms"
-description: "React-like web forms hooks for Astro (server + client validation)"
+description: "Server component for Astro (call server functions from client side with validation and state management)"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-utils/forms"

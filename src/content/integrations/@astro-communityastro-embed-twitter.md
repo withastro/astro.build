@@ -6,6 +6,6 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro-community/astro-embed-twitter"
 repoUrl: "https://github.com/delucis/astro-embed"
-homepageUrl: "https://github.com/delucis/astro-embed/tree/main/packages/astro-embed-twitter#readme"
+homepageUrl: "https://astro-embed.netlify.app/components/twitter/"
 downloads: 10576
 ---

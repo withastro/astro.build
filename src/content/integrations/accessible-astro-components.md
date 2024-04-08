@@ -13,6 +13,4 @@ featured: 15
 homepageUrl: "https://accessible-astro.netlify.app/accessible-components/"
 downloads: 4156
 url: "https://components.accessible-astro.dev/"
-badges:
-  - "featured"
 ---

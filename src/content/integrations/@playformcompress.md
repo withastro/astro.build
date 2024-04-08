@@ -6,12 +6,12 @@ categories:
   - "css+ui"
   - "performance+seo"
   - "featured"
+  - "recent"
 npmUrl: "https://www.npmjs.com/package/@playform/compress"
 image: "/assets/integrations/@playform/compress.svg"
 repoUrl: "https://github.com/Playform/Compress"
 featured: 4
 homepageUrl: "https://github.com/Playform/Compress#ReadMe"
 downloads: 61737
-badges:
-  - "featured"
+badge: "new"
 ---
