@@ -13,7 +13,5 @@ repoUrl: "https://github.com/withastro/astro"
 featured: 8
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/sitemap/"
 downloads: 307829
-badges:
-  - "featured"
 official: true
 ---

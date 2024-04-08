@@ -1,10 +1,11 @@
 ---
 name: "@gemini-ui-astro/core"
 title: "@gemini-ui-astro/core"
-description: "This is a template for an Astro component library. Use this template for writing components to use in multiple projects or publish to NPM."
+description: "Core utilities for the Gemini UI Astro integration."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@gemini-ui-astro/core"
-homepageUrl: "https://www.npmjs.com/package/@gemini-ui-astro/core"
+homepageUrl: "https://github.com/gemini-ui/gemini-ui-monorepo#readme"
 downloads: 327
+repoUrl: "https://github.com/gemini-ui/gemini-ui-monorepo"
 ---

@@ -10,6 +10,4 @@ repoUrl: "https://github.com/RafidMuhymin/astro-spa"
 featured: 12
 homepageUrl: "https://github.com/RafidMuhymin/astro-spa#readme"
 downloads: 510
-badges:
-  - "featured"
 ---
