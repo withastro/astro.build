@@ -15,9 +15,9 @@ const useCasesBg = await getImage({ src: background, format: "webp", width: 1280
 ---
 
 <astro-db-tabs class='relative'>
-  <div class="mx-auto w-full max-w-screen-xl p-4">
+  <div class="mx-auto w-full max-w-screen-xl">
     <ul
-      class='w-full flex items-center overflow-x-auto no-scrollbar gap-10 sm:gap-1 pt-8 text-astro-gray-200 sm:min-h-[10rem]'
+      class='w-full flex items-center overflow-x-auto no-scrollbar gap-10 p-4 sm:p-0 sm:gap-1 text-astro-gray-200 sm:min-h-[10rem]'
     >
       <Tab title='Comments' icon='uil:comments-alt' active />
       <Tab title='Blog' icon='uil:notes' />
@@ -27,7 +27,8 @@ const useCasesBg = await getImage({ src: background, format: "webp", width: 1280
     </ul>
   </div>
 
-  <div class="z-100 mt-16 sm:mt-20 pt-[1.95rem] border-t border-t-astro-gray-600 bg-cover bg-center bg-no-repeat bg-opacity-0" style={{"background-image": `url(${useCasesBg.src})`,}}>
+  <div class="z-100 mt-16 sm:mt-10 pt-[1.95rem] border-t border-t-astro-gray-600 bg-cover bg-center bg-no-repeat" 
+  style={{backgroundImage: `url(${useCasesBg.src})`}}>
 
     <ul class='mx-auto w-full max-w-screen-xl px-4 sm:px-8'>
       <Blog />
