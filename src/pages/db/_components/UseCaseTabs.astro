@@ -1,6 +1,7 @@
 ---
 import { getImage } from "astro:assets"
 import blob from "../_assets/uses-bg.png"
+import background from "../_assets/use-cases-bg.png"
 
 import Tab from "./UseCaseTab.astro"
 import Blog from "./use-cases/Blog.astro"
@@ -10,20 +11,21 @@ import Feedback from "./use-cases/Feedback.astro"
 import Comments from "./use-cases/Comments.astro"
 
 const bg = await getImage({ src: blob, format: "webp", width: 1280 })
+const useCasesBg = await getImage({ src: background, format: "webp", width: 1280 })
 ---
 
 <astro-db-tabs class='relative'>
-  <ul
-    class='align-start -ml-4 flex flex-wrap items-start justify-start gap-4 pt-8 text-astro-gray-200 sm:min-h-[10rem]'
-  >
-    <Tab title='Comments' icon='uil:comments-alt' active />
-    <Tab title='Blog' icon='uil:notes' />
-    <Tab title='Forms' icon='uil:document-layout-left' />
-    <Tab title='Feedback' icon='uil:question-circle' />
-    <Tab title='Auth' icon='uil:users-alt' />
-  </ul>
-
-  <div style={{ "--bg-offset": "3rem", "z-index": -1 }} class='absolute'>
+  <div class="mx-auto w-full max-w-screen-xl p-4">
+    <ul
+      class='w-full flex items-center overflow-x-auto no-scrollbar gap-10 sm:gap-4 pt-8 text-astro-gray-200 sm:min-h-[10rem]'
+    >
+      <Tab title='Comments' icon='uil:comments-alt' active />
+      <Tab title='Blog' icon='uil:notes' />
+      <Tab title='Forms' icon='uil:document-layout-left' />
+      <Tab title='Feedback' icon='uil:question-circle' />
+      <Tab title='Auth' icon='uil:users-alt' />
+    </ul>
+  </div>
     <div
       class='user-select-none pointer-events-none absolute mx-auto w-full max-w-screen-xl'
     >
@@ -42,74 +44,20 @@ const bg = await getImage({ src: blob, format: "webp", width: 1280 })
       class='user-select-none bg-fill pointer-events-none absolute inset-0 bg-no-repeat'
     >
     </div>
+  </div> -->
+
+  <div class="z-100 mt-16 sm:mt-20 pt-[1.95rem] border-t border-t-astro-gray-600 bg-cover bg-center bg-no-repeat bg-opacity-0" style={{"background-image": `url(${useCasesBg.src})`,}}>
+
+    <ul class='mx-auto w-full max-w-screen-xl px-4 sm:px-8'>
+      <Blog />
+      <Comments />
+      <Forms />
+      <Feedback />
+      <Auth />
+    </ul>
   </div>
 
-  <ul class='z-100 mt-20'>
-    <Blog />
-    <Comments />
-    <Forms />
-    <Feedback />
-    <Auth />
-  </ul>
 </astro-db-tabs>
-
-<style>
-  .container {
-    min-height: 64rem;
-  }
-  .pattern-overlay {
-    position: absolute;
-    left: 0;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-  }
-  .pattern-grid {
-    pointer-events: none;
-    --width: 400rem;
-    --offset: calc(var(--width) / -2);
-    --grid-size: 2em;
-    --grid-lg-size: calc(var(--grid-size) * 4);
-    --line-width: 1px;
-    --line-width-offset: calc(var(--line-width) + (var(--line-width) / 2));
-    --pos: calc(var(--line-width) * -1);
-    --line-color: #242832;
-    position: absolute;
-    left: 0;
-    top: var(--bg-offset);
-    width: var(--width);
-    transform: translateX(var(--offset));
-    height: 40rem;
-    border: var(--line-width) solid var(--line-color);
-    background-image: linear-gradient(
-        var(--line-color) var(--line-width),
-        transparent var(--line-width)
-      ),
-      linear-gradient(
-        90deg,
-        var(--line-color) var(--line-width),
-        transparent var(--line-width)
-      ),
-      linear-gradient(
-        var(--line-color) var(--line-width),
-        transparent var(--line-width)
-      ),
-      linear-gradient(
-        90deg,
-        var(--line-color) var(--line-width),
-        transparent var(--line-width)
-      );
-    background-position:
-      var(--pos) var(--pos),
-      var(--pos) var(--pos),
-      var(--pos) var(--pos),
-      var(--pos) var(--pos);
-    background-size:
-      var(--grid-lg-size) var(--grid-lg-size),
-      var(--grid-lg-size) var(--grid-lg-size),
-      var(--grid-size) var(--grid-size),
-      var(--grid-size) var(--grid-size);
-  }
-</style>
 
 <script>
   // @ts-nocheck
