@@ -1,8 +1,17 @@
 ---
 import Icon from "astro-icon"
 import UseCase from "../UseCase.astro"
+import { getImage } from "astro:assets"
 import code from "./snippets/comments.txt?raw"
 import { Code } from "astro-expressive-code/components"
+
+import wadePic from "../../_assets/wade-warren.png"
+import jacobPic from "../../_assets/jacob-jones.png"
+import marvinPic from "../../_assets/marvin-mckinney.png"
+
+const wadeProfilePicture = await getImage({ src: wadePic, format: "webp", width: 40 })
+const marvinProfilePicture = await getImage({ src: marvinPic, format: "webp", width: 40 })
+const jacobProfilePicture = await getImage({ src: jacobPic, format: "webp", width: 40 })
 
 const comments = [
 	{
@@ -11,7 +20,7 @@ const comments = [
 		publishedAt: "30 minutes",
 		comment:
 			"I agree, the TypeScript ORM support really improved DX. I also love how Astro DB seamlessly integrates with other libraries too!",
-		authorPic: "src/pages/db/_assets/wade-warren.png",
+		authorPic: wadeProfilePicture.src,
 	},
 	{
 		id: 1,
@@ -19,7 +28,7 @@ const comments = [
 		publishedAt: "2 hours",
 		comment:
 			"I agree, the TypeScript ORM support really improved DX. I also love how Astro DB seamlessly integrates with other libraries too!",
-		authorPic: "src/pages/db/_assets/marvin-mckinney.png",
+		authorPic: marvinProfilePicture.src,
 	},
 ]
 ---
@@ -38,7 +47,7 @@ const comments = [
 							<img
 								src={post.authorPic}
 								alt={`${post.authorPic} Profile Picture`}
-								class='h-10 w-10'
+								class='h-10 w-10 object-cover object-center'
 							/>
 							<figcaption class='text-lg text-[#9FA5B3]'>{post.author}</figcaption>
 						</figure>
@@ -55,11 +64,11 @@ const comments = [
 		}
 
 		<div class='mt-4 flex items-center gap-4'>
-			<div>
+			<div class="w-12">
 				<img
-					src='src/pages/db/_assets/jacob-jones.png'
+					src={jacobProfilePicture.src}
 					alt='Jacob Jones Profile Picture'
-					class='h-10 w-10'
+					class='h-10 w-10 object-cover object-center'
 				/>
 			</div>
 
@@ -76,7 +85,7 @@ const comments = [
 					/>
 					<div class='flex-shrink-0'>
 						<button
-							type='submit'
+							type='button'
 							class='mr-1 inline-flex items-center rounded-lg p-2 text-[#2B3244] hover:text-astro-gray-300'
 						>
 							<Icon name='ri:send-plane-fill' size={24} />
