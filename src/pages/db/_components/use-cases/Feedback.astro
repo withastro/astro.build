@@ -1,55 +1,55 @@
 ---
-import UseCase from "../UseCase.astro"
-import code from "./snippets/feedback.txt?raw"
-import { Code } from "astro-expressive-code/components"
+import UseCase from "../UseCase.astro";
+import code from "./snippets/feedback.txt?raw";
+import { Code } from "astro-expressive-code/components";
 ---
 
-<UseCase class='hidden' tab='feedback'>
-  <div slot='example'>
-    <div class='space-y-5 py-2'>
-      <nav class='flex' aria-label='Breadcrumb'>
-        <ol role='list' class='flex items-center space-x-2'>
+<UseCase class="hidden" tab="feedback">
+  <div slot="example">
+    <div class="space-y-5 py-2">
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol role="list" class="flex items-center space-x-2">
           <li>
             <div>
               <a
-                href='#use-cases'
-                class='ml-2 text-sm text-astro-gray-300 hover:text-astro-gray-200'
+                href="#use-cases"
+                class="ml-2 text-sm text-astro-gray-300 hover:text-astro-gray-200"
                 >Home</a
               >
             </div>
           </li>
 
           <li>
-            <div class='flex items-center'>
+            <div class="flex items-center">
               <svg
-                class='h-5 w-5 flex-shrink-0 text-gray-300'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                aria-hidden='true'
+                class="h-5 w-5 flex-shrink-0 text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
               >
-                <path d='M5.555 17.776l8-16 .894.448-8 16-.894-.448z'></path>
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z"></path>
               </svg>
               <a
-                href='#use-cases'
-                class='ml-2 text-sm text-astro-gray-300 hover:text-astro-gray-200'
+                href="#use-cases"
+                class="ml-2 text-sm text-astro-gray-300 hover:text-astro-gray-200"
                 >Articles</a
               >
             </div>
           </li>
 
           <li>
-            <div class='flex items-center'>
+            <div class="flex items-center">
               <svg
-                class='h-5 w-5 flex-shrink-0 text-gray-300'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                aria-hidden='true'
+                class="h-5 w-5 flex-shrink-0 text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
               >
-                <path d='M5.555 17.776l8-16 .894.448-8 16-.894-.448z'></path>
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z"></path>
               </svg>
-              <a href='#use-cases' class='ml-2 text-sm text-astro-gray-400'
+              <a href="#use-cases" class="ml-2 text-sm text-astro-gray-400"
                 >Astro DB: A Deep Dive</a
               >
             </div>
@@ -57,11 +57,11 @@ import { Code } from "astro-expressive-code/components"
         </ol>
       </nav>
 
-      <h3 class='text-xl text-[#9FA5B3]'>Astro DB: A Deep Dive</h3>
+      <h3 class="text-xl text-[#9FA5B3]">Astro DB: A Deep Dive</h3>
 
-      <div class='space-y-4 text-balance text-base text-[#6E7584]'>
+      <div class="space-y-4 text-balance text-base text-[#6E7584]">
         <p>
-          Astro DB brings together the web framework, the schema, the seed file,
+          Astro DB brings together the web framework, the schema, the seed file,
           and the database itself all into a single cohesive story. We even
           include an ORM for you: Drizzle. We selected Drizzle because it is a
           type-safe ORM that lets you get as close to the metal as you want, and
@@ -77,75 +77,87 @@ import { Code } from "astro-expressive-code/components"
       </div>
 
       <div
-        class='mt-4 flex items-center justify-start gap-4 text-astro-gray-300'
+        class="mt-4 flex items-center justify-start gap-4 text-astro-gray-300"
       >
         <button
-          type='button'
-          id='fire-btn'
-          class='flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100'
+          type="button"
+          id="fire-btn"
+          class="flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100"
         >
           🔥 1121
         </button>
 
         <button
-          type='button'
-          id='thumbs-up-btn'
-          class='flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100'
+          type="button"
+          id="thumbs-up-btn"
+          class="flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100"
         >
           👍 459
         </button>
 
         <button
-          type='button'
-          id='thumbs-down-btn'
-          class='flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100'
+          type="button"
+          id="thumbs-down-btn"
+          class="flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100"
         >
           👎 301
         </button>
 
         <button
-          type='button'
-          id='rocket-launch-btn'
-          class='flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100'
+          type="button"
+          id="rocket-launch-btn"
+          class="flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100"
         >
           🚀 275
         </button>
 
         <button
-          type='button'
-          id='celebration-btn'
-          class='flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100'
+          type="button"
+          id="celebration-btn"
+          class="flex w-fit rounded-full bg-[#222636]/80 px-3 py-1.5 tabular-nums hover:bg-[#222636]/50 aria-selected:bg-[#32384F] aria-selected:text-astro-gray-100"
         >
           🎉 137
         </button>
       </div>
     </div>
   </div>
-  <Code slot='code' lang='ts' code={code.replaceAll("\t", "  ")} />
+  <Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
 </UseCase>
 
 <script>
-  const fireReactionButton = document.getElementById("fire-btn") as HTMLButtonElement
-  const thumbsUpReactionButton = document.getElementById("thumbs-up-btn") as HTMLButtonElement
-  const thumbsDownReactionButton = document.getElementById("thumbs-down-btn") as HTMLButtonElement
-  const celebrationReactionButton = document.getElementById("celebration-btn") as HTMLButtonElement
-  const rocketLaunchReactionButton = document.getElementById("rocket-launch-btn") as HTMLButtonElement
+  const fireReactionButton = document.getElementById(
+    "fire-btn",
+  ) as HTMLButtonElement;
+  const thumbsUpReactionButton = document.getElementById(
+    "thumbs-up-btn",
+  ) as HTMLButtonElement;
+  const thumbsDownReactionButton = document.getElementById(
+    "thumbs-down-btn",
+  ) as HTMLButtonElement;
+  const celebrationReactionButton = document.getElementById(
+    "celebration-btn",
+  ) as HTMLButtonElement;
+  const rocketLaunchReactionButton = document.getElementById(
+    "rocket-launch-btn",
+  ) as HTMLButtonElement;
 
-
-  function createToggleButton(count: number, emoji: string, button: HTMLButtonElement) {
-    let enabled = false
+  function createToggleButton(
+    count: number,
+    emoji: string,
+    button: HTMLButtonElement,
+  ) {
+    let enabled = false;
     button.addEventListener("click", () => {
-      enabled = !enabled
-      const shownCount = count + (enabled ? 1 : 0)
-      button.innerText = `${emoji} ${shownCount}`
-      button.setAttribute("aria-selected", String(enabled))
+      enabled = !enabled;
+      const shownCount = count + (enabled ? 1 : 0);
+      button.innerText = `${emoji} ${shownCount}`;
+      button.setAttribute("aria-selected", String(enabled));
     });
   }
 
-  createToggleButton(1121, '🔥', fireReactionButton)
-  createToggleButton(459, '👍', thumbsUpReactionButton)
-  createToggleButton(301, '👎', thumbsDownReactionButton)
-  createToggleButton(137, '🎉', celebrationReactionButton)
-  createToggleButton(275, '🚀', rocketLaunchReactionButton)
-
+  createToggleButton(1121, "🔥", fireReactionButton);
+  createToggleButton(459, "👍", thumbsUpReactionButton);
+  createToggleButton(301, "👎", thumbsDownReactionButton);
+  createToggleButton(137, "🎉", celebrationReactionButton);
+  createToggleButton(275, "🚀", rocketLaunchReactionButton);
 </script>
