@@ -125,81 +125,27 @@ import { Code } from "astro-expressive-code/components"
 </UseCase>
 
 <script>
-  let fire = 1121
-  let thumbsUp = 459
-  let thumbsDown = 301
-  let celebration = 137
-  let rocketLaunch = 275
+  const fireReactionButton = document.getElementById("fire-btn") as HTMLButtonElement
+  const thumbsUpReactionButton = document.getElementById("thumbs-up-btn") as HTMLButtonElement
+  const thumbsDownReactionButton = document.getElementById("thumbs-down-btn") as HTMLButtonElement
+  const celebrationReactionButton = document.getElementById("celebration-btn") as HTMLButtonElement
+  const rocketLaunchReactionButton = document.getElementById("rocket-launch-btn") as HTMLButtonElement
 
-  const fireReactionButton = document.getElementById("fire-btn") as unknown as HTMLButtonElement
-  const thumbsUpReactionButton = document.getElementById("thumbs-up-btn") as unknown as HTMLButtonElement
-  const thumbsDownReactionButton = document.getElementById("thumbs-down-btn") as unknown as HTMLButtonElement
-  const celebrationReactionButton = document.getElementById("celebration-btn") as unknown as HTMLButtonElement
-  const rocketLaunchReactionButton = document.getElementById("rocket-launch-btn") as unknown as HTMLButtonElement
 
-  function toggleFire() {
-    if (fireReactionButton.innerText === "🔥 1121") {
-      fire++
-      fireReactionButton.innerText = `🔥 ${fire}`
-      fireReactionButton.setAttribute("aria-selected", "true")
-    } else {
-      fire--
-      fireReactionButton.innerText = `🔥 ${fire}`
-      fireReactionButton.removeAttribute("aria-selected")
-    }
+  function createToggleButton(count: number, emoji: string, button: HTMLButtonElement) {
+    let enabled = false
+    button.addEventListener("click", () => {
+      enabled = !enabled
+      const shownCount = count + (enabled ? 1 : 0)
+      button.innerText = `${emoji} ${shownCount}`
+      button.setAttribute("aria-selected", String(enabled))
+    });
   }
 
-  function toggleThumbsUp() {
-    if (thumbsUpReactionButton.innerText === "👍 459") {
-      thumbsUp++
-      thumbsUpReactionButton.innerText = `👍 ${thumbsUp}`
-      thumbsUpReactionButton.setAttribute("aria-selected", "true")
-    } else {
-      thumbsUp--
-      thumbsUpReactionButton.innerText = `👍 ${thumbsUp}`
-      thumbsUpReactionButton.removeAttribute("aria-selected")
-    }
-  }
+  createToggleButton(1121, '🔥', fireReactionButton)
+  createToggleButton(459, '👍', thumbsUpReactionButton)
+  createToggleButton(301, '👎', thumbsDownReactionButton)
+  createToggleButton(137, '🎉', celebrationReactionButton)
+  createToggleButton(275, '🚀', rocketLaunchReactionButton)
 
-  function toggleThumbsDown() {
-    if (thumbsDownReactionButton.innerText === "👎 301") {
-      thumbsDown++
-      thumbsDownReactionButton.innerText = `👎 ${thumbsDown}`
-      thumbsDownReactionButton.setAttribute("aria-selected", "true")
-    } else {
-      thumbsDown--
-      thumbsDownReactionButton.innerText = `👎 ${thumbsDown}`
-      thumbsDownReactionButton.removeAttribute("aria-selected")
-    }
-  }
-
-  function toggleRocketLaunch() {
-    if (rocketLaunchReactionButton.innerText === "🚀 275") {
-      rocketLaunch++
-      rocketLaunchReactionButton.innerText = `🚀 ${rocketLaunch}`
-      rocketLaunchReactionButton.setAttribute("aria-selected", "true")
-    } else {
-      rocketLaunch--
-      rocketLaunchReactionButton.innerText = `🚀 ${rocketLaunch}`
-      rocketLaunchReactionButton.removeAttribute("aria-selected")
-    }
-  }
-
-  function toggleCelebration() {
-    if (celebrationReactionButton.innerText === "🎉 137") {
-      celebration++
-      celebrationReactionButton.innerText = `🚀 ${celebration}`
-      celebrationReactionButton.setAttribute("aria-selected", "true")
-    } else {
-      celebration--
-      celebrationReactionButton.innerText = `🚀 ${celebration}`
-      celebrationReactionButton.removeAttribute("aria-selected")
-    }
-  }
-
-  fireReactionButton.addEventListener("click", toggleFire)
-  thumbsUpReactionButton.addEventListener("click", toggleThumbsUp)
-  thumbsDownReactionButton.addEventListener("click", toggleThumbsDown)
-  celebrationReactionButton.addEventListener("click", toggleCelebration)
-  rocketLaunchReactionButton.addEventListener("click", toggleRocketLaunch)
 </script>
