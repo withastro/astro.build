@@ -10,7 +10,7 @@ lang: "en"
 ---
 import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
 import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
-import { YouTube } from '@astro-community/astro-embed-youtube';
+
 
 A month full of releases, TKPTKPTKP Let's dive in!
 
@@ -65,14 +65,28 @@ Because you can never get tired of watching and reading Astro Content, here's ev
 
 - 📄 [Extend Astro Syntax Highlighting](https://jorgeglz.io/blog/extend-astro-syntax-highlighting/) by @iksaku
 - 📺 [Let's Build a Blog with Astro!](https://www.youtube.com/watch?v=XWBlpeTdwoo) (docs tutorial live onstream) by @schalkneethling
+- 📄 [Astro DB: Migrating my analytics data from Vercel Postgres](https://www.thomasledoux.be/blog/astro-db-migrating-analytics-postgres) by @tledoux
+- 📄 [The View Transitions API](https://frontendmasters.com/blog/the-view-transition-api/) by @cassidoo
+- 📄 [Astro + PhotoSwipe](https://dev.to/petrovicz/astro-photoswipe-549a) by @Petrovicz
+- 📄 [Fetching Latest YouTube Videos with RSS](https://techsquidtv.com/blog/astro-fetching-youtube-videos-with-rss/) by ?
+- 📄 [Thoughtworks 2024 Technology Rader](https://www.thoughtworks.com/radar/languages-and-frameworks/summary/astro) by thoughtworks
+- 📄 [How to use Astro-Font](https://banneryear.notion.site/How-to-Use-Astro-Font-to-Optimize-Local-Font-Loading-in-Astro-and-Tailwind-Projects-d5ddc5f4e13e4182b81208f81a0c61ff) by ?
+- 📄 [Step-by-step guide to a custom newsletter form with Astro, React, and ConvertKit](https://www.robcipolla.co.uk/blog/step-by-step-guide-to-building-a-custom-newsletter-subscription-form-with-astro-react-and-convertkit) by @robcipolla
+- 📄 [Django to Astro: Migrating a Django Portfolio to Astro.js](https://blogthedata.com/post/migrating-portfolio-from-django-to-astro-js/) by @jsolly
+- 📄 [How to create a Tab component with Tailwind CSS and AlpineJS](https://lexingtonthemes.com/tutorials/how-to-create-a-tab-component-with-tailwind-css-and-alpinejs/) by @mike_andreuzza
+- 📄 [How to create a Theme toggle with Tailwind CSS and AlpineJS](https://lexingtonthemes.com/tutorials/how-to-create-a-theme-toggle-with-tailwind-css-and-alpine-js/) by @mike_andreuzza
+- 📄 [How to deploy Astro to AWS Elastic Beanstalk](https://www.launchfa.st/blog/deploy-astro-aws-elastic-beanstalk) by @rishirajjain
 
 ### Tips & Tools
 
 The latest community-built utilities and integrations to help you build with Astro.
 
 - [Bag of Tricks for Astro's View Transitions](https://events-3bg.pages.dev/jotter/) by @martin
-    - v1.7.0 released with an entire Starlight docs site
-    - now with experimental Starlight view transitions components
+  - v1.7.0 released with an entire Starlight docs site
+  - now with experimental Starlight view transitions components
+
+- [`astro-turnstile`](https://github.com/hkbertoson/astro-turnstile) by @chaosbite
+  - (early preview) a simple way to add a turnstile to your Astro site
 
 ### Themes & Templates
 
@@ -82,22 +96,40 @@ Several new Astro themes were added to the [Astro theme directory](https://astro
 
 More themes and templates:
 
-- [Agency 01](https://elevatemind.gumroad.com/l/astro-agency01/LAUNCH) by @alpesh
+- [Agency 01](https://elevatemind.gumroad.com/l/astro-agency01/LAUNCH) by @alpeshnakrani
 - [Galaxy](https://galaxy.futurethemes.io/) by @jumper
+- [Agency 02](https://astro.build/themes/details/agency02/) by @alpeshnakrani
 
 
 ### Websites
 
 Looking for some inspiration? See all the community member websites submitted to our Discord `#showcase` channel and featured on community calls this month.
 
-export const sites = [{ url: 'https://blog-one-murex.vercel.app/', title:'@Jes015'},
+export const sites = [
+{ url: 'https://blog-one-murex.vercel.app/', title:'@Jes015'},
 { url: 'https://web-vault.vercel.app/', title:'@Jes015'},
 { url: 'https://dns.surf/', title:'@ccbikai'},
 { url: 'https://tali-tails.com/', title: '@jamesbb'},
 { url: 'https://captainofphb.me/', title: '@CaptainofPhB'},
-{ url: 'https://astro-cn.com/', title:'@liruifengv'}, // An Astro showcase site of all Chinese Astro sites!
-{ url: 'https://fujocoded.com/', title: '@ms.boba'}, // teaching an online community how to create their own online spaces vs depending on apps
-{ url: 'https://www.producthunt.com/posts/career-vault', title: 'Product Hunt'}, // Job board built with Astro, launched on Product Hunt
+{ url: 'https://astro-cn.com/', title:'@liruifengv'},
+{ url: 'https://fujocoded.com/', title: '@ms.boba'}, 
+{ url: 'https://www.producthunt.com/posts/career-vault', title: 'Product Hunt'}, 
+{ url: 'https://www.siddharth.codes', title: '@siddharthsuresh'},
+{ url: 'https://e-csoport.hu/', title: '@petrovicz'},
+{ url: 'https://vrtuedigital.com/', title: '@nenadvr'},
+{ url: 'https://teneightstudios.net/', title: '@hallux'},
+{ url: 'https://space.rolandfranke.nl/' title: '@rol4nd909'},
+{ url: 'https://www.sweenystudio.com/', title: '@mac.dev'},
+{ url: 'https://www.sobstvennoai.dev/', title: '@soslan117'},
+{ url: 'https://sbirb.netlify.app/', title: '@sarah11918'},
+{ url: 'https://shankarux.com/', title: '@shankarux'},
+{ url: 'https://portfolio.quinck.io/', title: '@samuvello'},
+{ url: 'https://vanitysuds.com/', title: '@e92jonah'},
+{ url: 'https://textquery.app/tools/visualize/', title: '@ShubhamJain'},
+{ url: 'https://lets-play-alpha.netlify.app/', title: '@ryanjames1729'}, 
+{ url: 'https://www.launchfa.st/free-tools/markdown-live-preview-generator', title: '@rishirajjain'},
+{ url: 'https://deno.re/', title: '@boywithkeyboard'},
+{ url: 'https://faith.tools/', title: '@cameronpak'},
 ];
 
 <ShowcaseGrid items={sites} />
@@ -109,6 +141,9 @@ export const starlightSites = [
   { url: 'https://events-3bg.pages.dev/jotter/', title: 'Bag of Tricks' },
   { url: 'https://docs.futurethemes.io/', title: 'FutureThemes'},
   { url: 'https://docs.xtdb.com/index.html', title: 'XTDB' },
+  { url: 'https://docs.fontawesome.com/', title: 'Fontawesome'},
+  { url: 'https://schematics.pbuilder.dev/frameworks/astro/', title: 'Schematic Docs'},
+  { url: 'https://schalkneethling.github.io/html-comprehensive-guide/', title: '@schalkneethling'},
 ];
 
 <ShowcaseGrid items={starlightSites} />
