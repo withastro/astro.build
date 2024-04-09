@@ -1,6 +1,6 @@
 ---
 title: "Astro 4.6"
-description: "Astro 4.6 is here! This release includes a new manual routing strategy for internationalization, the ability to move the dev toolbar, experimental support for CSRF protection and more."
+description: "Astro 4.6 is here! This release includes a new manual routing strategy for internationalization, the ability to move the dev toolbar, experimental support for CSRF protection, and more."
 publishDate: "April 11, 2024"
 authors:
   - erika
@@ -21,10 +21,11 @@ import BlogSummary from "/src/components/BlogSummary.astro";
 
 Full release highlights include:
 
-- [**Manual routing strategy for internationalization**](#manual-routing-strategy-for-internationalization)
+- [**Manual i18n routing strategy**](#manual-routing-strategy-for-internationalization)
 - [**Ability to move the dev toolbar**](#ability-to-move-the-dev-toolbar)
 - [**Experimental: Support for CSRF protection**](#experimental-support-for-csrf-protection)
 - [**Cookies improvements**](#cookies-improvements)
+- [**Deprecated support for older versions of Node](#deprecated-support-for-older-versions-of-node)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -83,7 +84,7 @@ Check out the [internationalization documentation](https://docs.astro.build/en/g
 
 ## Ability to move the dev toolbar
 
-Astro 4.6 introduces the ability to move the dev toolbar to different positions around the screen. This can be useful if you have a sticky header that covers the bottom of the screen, or if you just prefer the toolbar to be somewhere else. Thanks to [Ming-jun Lu](https://github.com/mingjunlu) for contributing this feature!
+Astro 4.6 introduces the ability to move the dev toolbar to different positions at the bottom of your screen. This can be useful if you have a sticky header that covers the bottom of the screen, or if you just prefer the toolbar to be somewhere else. The dev toolbar is there to help you, not get in your way! Thanks to [Ming-jun Lu](https://github.com/mingjunlu) for contributing this requested feature!
 
 ## Experimental: Support for CSRF protection
 
@@ -109,7 +110,7 @@ Note that this feature is only available for pages that are rendered on-demand (
 
 ## Cookies improvements
 
-Thanks to [Farzard](https://github.com/fshafiee), Astro's Cookie helper for deleting cookies (`Astro.cookies.delete`) now allowing setting all the standard cookie attributes instead of just the `path` and `domain` attributes. Perhaps small change, but definitely a useful one!
+Thanks to [Farzard](https://github.com/fshafiee), Astro's helper for deleting cookies (`Astro.cookies.delete`) now allowing setting even more cookie attributes instead of just the `path` and `domain` attributes. Perhaps a "bite-sized" change, but definitely one you can sink your teeth into!
 
 ## Bug Fixes
 
