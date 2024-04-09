@@ -24,6 +24,7 @@ Full release highlights include:
 - [**Manual routing strategy for internationalization**](#manual-routing-strategy-for-internationalization)
 - [**Ability to move the dev toolbar**](#ability-to-move-the-dev-toolbar)
 - [**Experimental: Support for CSRF protection**](#experimental-support-for-csrf-protection)
+- [**Cookies improvements**](#cookies-improvements)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -51,15 +52,15 @@ To enable manual routing, set the `i18n.strategy` option in your `astro.config.m
 
 ```js
 // astro.config.mjs
-import { defineConfig } from "astro/config"
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-    i18n: {
-        locales: ["en", "fr"],
-        defaultLocale: "fr",
-        routing: "manual"
-    }
-})
+  i18n: {
+    locales: ["en", "fr"],
+    defaultLocale: "fr",
+    routing: "manual",
+  },
+});
 ```
 
 and then [add a middleware](https://docs.astro.build/en/guides/middleware/) to your project to handle the routing:
@@ -70,12 +71,12 @@ import { redirectToDefaultLocale } from "astro:i18n";
 
 // Example middleware that redirects all requests to the default locale apart for the /about page
 export const onRequest = defineMiddleware(async (context, next) => {
-    if (context.url.startsWith("/about")) {
-        return next()
-    } else {
-        return redirectToDefaultLocale(context, 302);
-    }
-})
+  if (context.url.startsWith("/about")) {
+    return next();
+  } else {
+    return redirectToDefaultLocale(context, 302);
+  }
+});
 ```
 
 Check out the [internationalization documentation](https://docs.astro.build/en/guides/internationalization/) for more information on how to use manual routing with internationalization.
@@ -90,21 +91,25 @@ Astro 4.6 adds experimental partial support for [CSRF protection](https://develo
 
 ```js
 // astro.config.mjs
-import { defineConfig } from "astro/config"
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
   security: {
     csrfProtection: {
-      origin: true
-    }
+      origin: true,
+    },
   },
   experimental: {
-    csrfProtection: true
-  }
-})
+    csrfProtection: true,
+  },
+});
 ```
 
 Note that this feature is only available for pages that are rendered on-demand (also known as Server Side Rendering).
+
+## Cookies improvements
+
+Thanks to [Farzard](https://github.com/fshafiee), Astro's Cookie helper for deleting cookies (`Astro.cookies.delete`) now allowing setting all the standard cookie attributes instead of just the `path` and `domain` attributes. Perhaps small change, but definitely a useful one!
 
 ## Bug Fixes
 
