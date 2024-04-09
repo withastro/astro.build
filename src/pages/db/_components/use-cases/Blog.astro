@@ -80,22 +80,22 @@ const tags = ["all articles", "engineering", "community", "changelog"]
     if (filteredPosts.length <= 0) {
       const noArticlesResponse = document.createElement("p")
       noArticlesResponse.innerHTML = `
-		<p class="mt-4 text-balance text-sm text-[#6E7584]">
-			No articles available about this topic
-		</p>
-		`
+        <p class="mt-4 text-balance text-sm text-[#6E7584]">
+          No articles available on this topic
+        </p>
+      `
       return articlesList.appendChild(noArticlesResponse)
     }
 
     filteredPosts.forEach((post) => {
       const article = document.createElement("li")
       article.innerHTML = `
-      <li class="space-y-2 pt-4">
-			<h4 class="text-lg text-[#9FA5B3]">${post.title}</h4>
-			<p class="text-balance text-sm text-[#6E7584]">${post.summary}</p>
-			<p class="text-sm text-astro-gray-400">${post.publishedOn}</p>
-		</li>
-    `
+        <li class="space-y-2 pt-4">
+          <h4 class="text-lg text-[#9FA5B3]">${post.title}</h4>
+          <p class="text-balance text-sm text-[#6E7584]">${post.summary}</p>
+          <p class="text-sm text-astro-gray-400">${post.publishedOn}</p>
+        </li>
+      `
       articlesList.appendChild(article)
     })
   }
