@@ -1,10 +1,10 @@
 ---
 interface Props {
-  tab: string
-  class?: string
+  tab: string;
+  class?: string;
 }
 
-const { tab, class: className } = Astro.props
+const { tab, class: className } = Astro.props;
 ---
 
 <li
@@ -13,31 +13,31 @@ const { tab, class: className } = Astro.props
     className,
   ]}
   data-tab={tab}
+  inert
 >
   <div
-    class='-m-1 hidden flex-1 basis-1/2 flex-col overflow-hidden rounded-2xl border border-[#272831] bg-astro-gray-700 shadow-xl sm:flex'
+    class="-m-1 hidden flex-1 basis-1/2 flex-col overflow-hidden rounded-2xl border border-[#272831] bg-astro-gray-700 shadow-xl sm:flex"
   >
-    <div class='max-h-fit md:h-[28rem] bg-[#141825] px-6 py-3'>
-      <slot name='example' />
+    <div class="max-h-fit md:h-[28rem] bg-[#141825] px-6 py-3">
+      <slot name="example" />
     </div>
   </div>
 
   <div
-    class='-mt-[4.5rem] sm:mt-8 lg:-mt-[4.5rem] block md:h-[32.4rem] max-h-fit basis-1/2 bg-[#0C0F19] border border-[#272831] rounded-2xl overflow-auto'
+    class="-mt-[4.5rem] sm:mt-8 lg:-mt-[4.5rem] block md:h-[32.4rem] max-h-fit basis-1/2 bg-[#0C0F19] border border-[#272831] rounded-2xl overflow-auto"
   >
     <div
-      class='h-10 px-3 flex items-center whitespace-no-wrap pointer-events-none select-none bg-[#0C0F19] border-b border-b-[#272831]'
+      class="h-10 px-3 flex items-center whitespace-no-wrap pointer-events-none select-none bg-[#0C0F19] border-b border-b-[#272831]"
     >
-      <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
-      <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
-      <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
+      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]"></span>
+      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]"></span>
+      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]"></span>
     </div>
 
-    <div class='p-4 sm:p-6'>
-      <slot name='code' />
+    <div class="p-4 sm:p-6">
+      <slot name="code" />
     </div>
   </div>
-
 </li>
 
 <style>

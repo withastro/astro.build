@@ -1,17 +1,29 @@
 ---
-import Icon from "astro-icon"
-import UseCase from "../UseCase.astro"
-import { getImage } from "astro:assets"
-import code from "./snippets/comments.txt?raw"
-import { Code } from "astro-expressive-code/components"
+import Icon from "astro-icon";
+import UseCase from "../UseCase.astro";
+import { getImage } from "astro:assets";
+import code from "./snippets/comments.txt?raw";
+import { Code } from "astro-expressive-code/components";
 
-import wadePic from "../../_assets/wade-warren.png"
-import jacobPic from "../../_assets/jacob-jones.png"
-import marvinPic from "../../_assets/marvin-mckinney.png"
+import wadePic from "../../_assets/wade-warren.png";
+import jacobPic from "../../_assets/jacob-jones.png";
+import marvinPic from "../../_assets/marvin-mckinney.png";
 
-const wadeProfilePicture = await getImage({ src: wadePic, format: "webp", width: 40 })
-const marvinProfilePicture = await getImage({ src: marvinPic, format: "webp", width: 40 })
-const jacobProfilePicture = await getImage({ src: jacobPic, format: "webp", width: 40 })
+const wadeProfilePicture = await getImage({
+	src: wadePic,
+	format: "webp",
+	width: 40,
+});
+const marvinProfilePicture = await getImage({
+	src: marvinPic,
+	format: "webp",
+	width: 40,
+});
+const jacobProfilePicture = await getImage({
+	src: jacobPic,
+	format: "webp",
+	width: 40,
+});
 
 const comments = [
 	{
@@ -19,7 +31,7 @@ const comments = [
 		author: "Wade Warren",
 		publishedAt: "30 minutes",
 		comment:
-			"I agree, the TypeScript ORM support really improved DX. I also love how Astro DB seamlessly integrates with other libraries too!",
+			"I spent the weekend rebuilding our website with Astro DB. The documentation is fantastic, DX is incredible, and the results are impressive. Tons of joy!",
 		authorPic: wadeProfilePicture.src,
 	},
 	{
@@ -27,68 +39,72 @@ const comments = [
 		author: "Marvin McKinney",
 		publishedAt: "2 hours",
 		comment:
-			"I agree, the TypeScript ORM support really improved DX. I also love how Astro DB seamlessly integrates with other libraries too!",
+			"Astro DB is awesome! The DX this provides is great, very easy to set up.",
 		authorPic: marvinProfilePicture.src,
 	},
-]
+];
 ---
 
-<UseCase tab='comments'>
-	<div slot='example'>
-		<div class='border-b border-b-astro-gray-600 pb-3'>
-			<h3 class='text-lg text-astro-gray-300'>Latest Comments</h3>
+<UseCase tab="comments">
+	<div slot="example">
+		<div class="border-b border-b-astro-gray-600 pb-3">
+			<h3 class="text-lg text-astro-gray-300">Latest Comments</h3>
 		</div>
 
 		{
 			comments.map((post) => (
-				<div class='space-y-2 border-b border-b-astro-gray-600 py-4'>
-					<div class='flex items-center justify-between'>
-						<figure class='flex items-center gap-4'>
+				<div class="space-y-2 border-b border-b-astro-gray-600 py-4">
+					<div class="flex items-center justify-between">
+						<figure class="flex items-center gap-4">
 							<img
 								src={post.authorPic}
 								alt={`${post.authorPic} Profile Picture`}
-								class='h-10 w-10 object-cover object-center'
+								class="h-10 w-10 object-cover object-center"
 							/>
-							<figcaption class='text-lg text-[#9FA5B3]'>{post.author}</figcaption>
+							<figcaption class="text-lg text-[#9FA5B3]">
+								{post.author}
+							</figcaption>
 						</figure>
-						<p class='text-[#525866]'>{post.publishedAt}</p>
+						<p class="text-[#525866]">{post.publishedAt}</p>
 					</div>
-					<p class='text-base text-astro-gray-300'>{post.comment}</p>
+					<p class="text-base text-astro-gray-300">{post.comment}</p>
 
-					<div class='flex gap-2 text-[#2B3244]'>
-						<Icon name='ri:heart-3-fill' size={20} />
-						<Icon name='ri:chat-smile-3-fill' size={20} />
+					<div class="flex gap-2 text-[#2B3244]">
+						<Icon name="ri:heart-3-fill" size={20} />
+						<Icon name="ri:chat-smile-3-fill" size={20} />
 					</div>
 				</div>
 			))
 		}
 
-		<div class='mt-4 flex items-center gap-4'>
+		<div class="mt-4 flex items-center gap-4">
 			<div class="w-12">
 				<img
 					src={jacobProfilePicture.src}
-					alt='Jacob Jones Profile Picture'
-					class='h-10 w-10 object-cover object-center'
+					alt="Jacob Jones Profile Picture"
+					class="h-10 w-10 object-cover object-center"
 				/>
 			</div>
 
-			<form action='#' class='relative w-full'>
+			<form action="#" class="relative w-full">
 				<div
-					class='flex items-center gap-0 overflow-hidden rounded-lg border border-[#202432] bg-[#0C0F19] shadow-sm focus-within:border-astro-gray-500 focus-within:ring-1 focus-within:ring-astro-gray-500'
+					class="flex items-center gap-0 overflow-hidden rounded-lg border border-[#202432] bg-[#0C0F19] shadow-sm focus-within:border-astro-gray-500 focus-within:ring-1 focus-within:ring-astro-gray-500"
 				>
-					<label for='comment' class='sr-only'> Add your comment</label>
+					<label for="comment" class="sr-only">
+						Add your comment</label
+					>
 					<input
-						name='comment'
-						id='comment'
-						class='block w-full resize-none bg-transparent p-3 text-base focus:ring-0 sm:text-sm placeholder:text-astro-gray-400'
-						placeholder='Add your comment...'
+						name="comment"
+						id="comment"
+						class="block w-full resize-none bg-transparent p-3 text-base focus:ring-0 sm:text-sm placeholder:text-astro-gray-400"
+						placeholder="Add your comment..."
 					/>
-					<div class='flex-shrink-0'>
+					<div class="flex-shrink-0">
 						<button
-							type='button'
-							class='mr-1 inline-flex items-center rounded-lg p-2 text-[#2B3244] hover:text-astro-gray-300'
+							type="button"
+							class="mr-1 inline-flex items-center rounded-lg p-2 text-[#2B3244] hover:text-astro-gray-300"
 						>
-							<Icon name='ri:send-plane-fill' size={24} />
+							<Icon name="ri:send-plane-fill" size={24} />
 						</button>
 					</div>
 				</div>
@@ -96,5 +112,5 @@ const comments = [
 		</div>
 	</div>
 
-	<Code slot='code' lang='ts' code={code.replaceAll("\t", "  ")} />
+	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
 </UseCase>
