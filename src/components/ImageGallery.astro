@@ -1,13 +1,13 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import { Image } from "astro:assets"
-import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
+import { Image } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+import RightArrowIcon from "~/icons/RightArrowIcon.jsx";
 
 export type Props = HTMLAttributes<"div"> & {
-	images: string[]
-}
+	images: string[];
+};
 
-const { images, class: className, ...attrs } = Astro.props
+const { images, class: className, ...attrs } = Astro.props;
 ---
 
 <image-gallery

@@ -1,26 +1,26 @@
 ---
-import CardGrid from "~/components/CardGrid.astro"
-import CardGridGroup from "~/components/CardGridGroup.astro"
-import ImageGallery from "~/components/ImageGallery.astro"
-import { sanitizeThemeDescription } from "~/helpers/themes.ts"
-import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx"
-import MainLayout from "~/layouts/MainLayout.astro"
-import ThemeCTAs from "../_components/ThemeCTAs.astro"
-import ThemeCard from "../_components/ThemeCard.astro"
-import ThemeStats from "../_components/ThemeStats.astro"
-import { Image } from "astro:assets"
+import { Image } from "astro:assets";
+import CardGrid from "~/components/CardGrid.astro";
+import CardGridGroup from "~/components/CardGridGroup.astro";
+import ImageGallery from "~/components/ImageGallery.astro";
+import { sanitizeThemeDescription } from "~/helpers/themes.ts";
+import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx";
+import MainLayout from "~/layouts/MainLayout.astro";
+import ThemeCTAs from "../_components/ThemeCTAs.astro";
+import ThemeCard from "../_components/ThemeCard.astro";
+import ThemeStats from "../_components/ThemeStats.astro";
 
-export const prerender = false
+export const prerender = false;
 
-const slug = Astro.params.slug as string
+const slug = Astro.params.slug as string;
 
 const theme = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
 	(res) => res.json(),
-)
+);
 
 const relatedThemes: Array<any> = await fetch(
 	`${import.meta.env.THEMES_API_URL}/api/themes/related?slug=${slug}`,
-).then((res) => res.json())
+).then((res) => res.json());
 ---
 
 <MainLayout

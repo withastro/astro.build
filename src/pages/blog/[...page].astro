@@ -1,32 +1,32 @@
 ---
-import type { GetStaticPathsOptions, Page } from "astro"
-import { type CollectionEntry, getCollection } from "astro:content"
-import Pagination from "~/components/Pagination.astro"
-import SidebarLayout from "~/components/SidebarLayout.astro"
-import SidebarPanel from "~/components/SidebarPanel.astro"
-import RSSIcon from "~/icons/RSSIcon.jsx"
-import Layout from "~/layouts/MainLayout.astro"
-import BlogPostPreview from "./_components/BlogPostPreview.astro"
+import { type CollectionEntry, getCollection } from "astro:content";
+import type { GetStaticPathsOptions, Page } from "astro";
+import Pagination from "~/components/Pagination.astro";
+import SidebarLayout from "~/components/SidebarLayout.astro";
+import SidebarPanel from "~/components/SidebarPanel.astro";
+import RSSIcon from "~/icons/RSSIcon.jsx";
+import Layout from "~/layouts/MainLayout.astro";
+import BlogPostPreview from "./_components/BlogPostPreview.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const posts = [...(await getCollection("blog")), ...(await getCollection("caseStudies"))]
+	const posts = [...(await getCollection("blog")), ...(await getCollection("caseStudies"))];
 
 	const sortedPosts = posts.sort(
 		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
-	)
+	);
 
-	return paginate(sortedPosts, { pageSize: 12 })
+	return paginate(sortedPosts, { pageSize: 12 });
 }
 
 const { page } = Astro.props as {
-	page: Page<CollectionEntry<"blog"> | CollectionEntry<"caseStudies">>
-}
+	page: Page<CollectionEntry<"blog"> | CollectionEntry<"caseStudies">>;
+};
 
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
-	return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`
-})
+	return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`;
+});
 
-const allPosts = await getCollection("blog")
+const allPosts = await getCollection("blog");
 
 const featuredPosts = [
 	"images",
@@ -35,7 +35,7 @@ const featuredPosts = [
 	"vercel-official-hosting-partner",
 ]
 	.map((slug) => allPosts.find((post) => post.slug === slug))
-	.filter(Boolean) as CollectionEntry<"blog">[]
+	.filter(Boolean) as CollectionEntry<"blog">[];
 ---
 
 <Layout

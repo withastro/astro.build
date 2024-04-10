@@ -1,13 +1,13 @@
 ---
+import { getImage } from "astro:assets";
+import { Code } from "astro-expressive-code/components";
 import Icon from "astro-icon";
 import UseCase from "../UseCase.astro";
-import { getImage } from "astro:assets";
 import code from "./snippets/comments.txt?raw";
-import { Code } from "astro-expressive-code/components";
 
-import wadePic from "../../_assets/wade-warren.png";
 import jacobPic from "../../_assets/jacob-jones.png";
 import marvinPic from "../../_assets/marvin-mckinney.png";
+import wadePic from "../../_assets/wade-warren.png";
 
 const wadeProfilePicture = await getImage({
 	src: wadePic,
@@ -38,8 +38,7 @@ const comments = [
 		id: 1,
 		author: "Marvin McKinney",
 		publishedAt: "2 hours",
-		comment:
-			"Astro DB is awesome! The DX this provides is great, very easy to set up.",
+		comment: "Astro DB is awesome! The DX this provides is great, very easy to set up.",
 		authorPic: marvinProfilePicture.src,
 	},
 ];

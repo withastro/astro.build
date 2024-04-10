@@ -1,12 +1,12 @@
 ---
-import type { HTMLAttributes } from "astro/types"
+import type { HTMLAttributes } from "astro/types";
 
 export type Props = HTMLAttributes<"section"> & {
-	title: string
-	body?: string
-}
+	title: string;
+	body?: string;
+};
 
-const { title, body, class: className, ...attrs } = Astro.props
+const { title, body, class: className, ...attrs } = Astro.props;
 ---
 
 <section class:list={["flex flex-col gap-y-8 md:gap-y-12 lg:gap-y-16", className]} {...attrs}>

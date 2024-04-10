@@ -1,20 +1,20 @@
 ---
-import smartypants from "smartypants"
-import siteInfo from "~/data/site-info"
-import "~/styles/fonts.css"
-import Favicon from "./Favicon.astro"
-import SEO from "./SEO.astro"
+import smartypants from "smartypants";
+import siteInfo from "~/data/site-info";
+import "~/styles/fonts.css";
+import Favicon from "./Favicon.astro";
+import SEO from "./SEO.astro";
 
 export type Props = {
-	title?: string
-	rawTitle?: string
-	description?: string
-	image?: { src: string; alt: string }
-	canonicalURL?: URL | null
-	pageType?: "website" | "article"
-}
+	title?: string;
+	rawTitle?: string;
+	description?: string;
+	image?: { src: string; alt: string };
+	canonicalURL?: URL | null;
+	pageType?: "website" | "article";
+};
 
-const twitterHandle = "astrodotbuild"
+const twitterHandle = "astrodotbuild";
 
 const {
 	rawTitle,
@@ -22,13 +22,13 @@ const {
 	image = siteInfo.image,
 	canonicalURL = new URL(Astro.request.url, Astro.site),
 	pageType = "website",
-} = Astro.props
+} = Astro.props;
 
-const title = rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ")
+const title = rawTitle ?? [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ");
 const resolvedImage = {
 	src: new URL(image.src, Astro.site).toString(),
 	alt: image.alt,
-}
+};
 ---
 
 <!-- High Priority Global Metadata -->

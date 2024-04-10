@@ -1,23 +1,23 @@
 ---
-import { format } from "date-fns"
-import { resolveCoverImage } from "~/content/blog/_resolveImage.js"
+import { format } from "date-fns";
+import { resolveCoverImage } from "~/content/blog/_resolveImage.js";
 
 export type Props = {
-	isCaseStudy: boolean
+	isCaseStudy: boolean;
 	post: {
-		slug: string
+		slug: string;
 		data: {
-			title: string
-			description: string
-			publishDate: Date
-			coverImage?: string
-		}
-	}
-}
+			title: string;
+			description: string;
+			publishDate: Date;
+			coverImage?: string;
+		};
+	};
+};
 
-const { post, isCaseStudy } = Astro.props
+const { post, isCaseStudy } = Astro.props;
 
-const image = await resolveCoverImage(post)
+const image = await resolveCoverImage(post);
 ---
 
 <article

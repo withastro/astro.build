@@ -1,15 +1,15 @@
 ---
-import Card from "~/components/Card.astro"
-import DownloadIcon from "~/icons/DownloadIcon.jsx"
+import Card from "~/components/Card.astro";
+import DownloadIcon from "~/icons/DownloadIcon.jsx";
 
 export type Props = {
-	name: string
-	type: "desktop" | "mobile"
-	assetName: string
-}
+	name: string;
+	type: "desktop" | "mobile";
+	assetName: string;
+};
 
-const width = Astro.props.type === "desktop" ? 546 : 270
-const height = Astro.props.type === "desktop" ? 307 : 584
+const width = Astro.props.type === "desktop" ? 546 : 270;
+const height = Astro.props.type === "desktop" ? 307 : 584;
 ---
 
 <Card>

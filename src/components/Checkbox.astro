@@ -1,12 +1,12 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import type { RequireSome } from "~/helpers/types.js"
+import type { HTMLAttributes } from "astro/types";
+import type { RequireSome } from "~/helpers/types.js";
 
 export type Props = RequireSome<HTMLAttributes<"input">, "id" | "name"> & {
-	label: string
-}
+	label: string;
+};
 
-const { id, name, label, class: className, ...attrs } = Astro.props
+const { id, name, label, class: className, ...attrs } = Astro.props;
 ---
 
 <label

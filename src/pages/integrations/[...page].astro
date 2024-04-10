@@ -1,37 +1,38 @@
 ---
-import CardGrid from "~/components/CardGrid.astro"
-import CardGridGroup from "~/components/CardGridGroup.astro"
-import Pagination from "~/components/Pagination.astro"
-import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro"
-import SidebarLayout from "~/components/SidebarLayout.astro"
-import SidebarPanel from "~/components/SidebarPanel.astro"
-import { IntegrationCategories } from "~/content/config.js"
-import { getFilteredIntegrations } from "~/helpers/integrations.ts"
-import { paginate } from "~/helpers/paginate.js"
-import type { MapKeys } from "~/helpers/types.ts"
-import MainLayout from "~/layouts/MainLayout.astro"
-import IntegrationCard from "./_components/IntegrationCard.astro"
-import SubmitIntegration from "./_components/SubmitIntegration.astro"
+import CardGrid from "~/components/CardGrid.astro";
+import CardGridGroup from "~/components/CardGridGroup.astro";
+import Pagination from "~/components/Pagination.astro";
+import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro";
+import SidebarLayout from "~/components/SidebarLayout.astro";
+import SidebarPanel from "~/components/SidebarPanel.astro";
+import { IntegrationCategories } from "~/content/config.js";
+import { getFilteredIntegrations } from "~/helpers/integrations.ts";
+import { paginate } from "~/helpers/paginate.js";
+import type { MapKeys } from "~/helpers/types.ts";
+import MainLayout from "~/layouts/MainLayout.astro";
+import IntegrationCard from "./_components/IntegrationCard.astro";
+import SubmitIntegration from "./_components/SubmitIntegration.astro";
 
-export const prerender = false
+export const prerender = false;
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
-const currentPage = typeof Astro.params.page === "undefined" ? 1 : parseInt(Astro.params.page)
+const currentPage =
+	typeof Astro.params.page === "undefined" ? 1 : Number.parseInt(Astro.params.page);
 
 // invalid page number!
-if (!currentPage || isNaN(currentPage)) {
-	return Astro.redirect("/404")
+if (!currentPage || Number.isNaN(currentPage)) {
+	return Astro.redirect("/404");
 }
 
 // search term from the search/filter panel
-const search = Astro.url.searchParams.get("search")
+const search = Astro.url.searchParams.get("search");
 
 // get a list of all supported categories, this is the same list used by the zod schema
-const categories = Array.from(IntegrationCategories.keys())
+const categories = Array.from(IntegrationCategories.keys());
 
 // get a list of category filters applied to the request
-const selectedCategories = Astro.url.searchParams.getAll("categories[]")
+const selectedCategories = Astro.url.searchParams.getAll("categories[]");
 
 // massage category data for the Filter components
 const categoryFilter: FilterGroup = {
@@ -43,12 +44,12 @@ const categoryFilter: FilterGroup = {
 		label: IntegrationCategories.get(c)!,
 		selected: selectedCategories.includes(c),
 	})),
-}
+};
 
 const allIntegrations = await getFilteredIntegrations({
 	search,
 	categories: selectedCategories as unknown as MapKeys<typeof IntegrationCategories>,
-})
+});
 
 // take all matching integrations and create a paginated list of results
 const paginatedResults = paginate({
@@ -57,25 +58,25 @@ const paginatedResults = paginate({
 	currentPage,
 	route: "/integrations/[...page]",
 	searchParams: Astro.url.searchParams,
-})
+});
 
-const { page, allPages } = paginatedResults
+const { page, allPages } = paginatedResults;
 
 // make sure the requested page number is valid, if not redirect to the first page of results
 if (allPages.length && !page) {
-	return Astro.redirect(allPages[0])
+	return Astro.redirect(allPages[0]);
 }
 
-const integrations = page.data
+const integrations = page.data;
 
 const showRecentlyAdded =
-	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
+	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value);
 const recentlyAdded = showRecentlyAdded
 	? allIntegrations.filter((entry) => entry.data.badge === "new")
-	: []
-const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
-recentlyAddedSearch.append("categories[]", "recent")
-const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`
+	: [];
+const recentlyAddedSearch = new URLSearchParams(Astro.url.search);
+recentlyAddedSearch.append("categories[]", "recent");
+const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`;
 ---
 
 <MainLayout

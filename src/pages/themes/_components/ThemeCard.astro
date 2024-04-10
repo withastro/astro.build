@@ -1,18 +1,18 @@
 ---
-import Card from "~/components/Card.astro"
-import CardBody from "~/components/CardBody.astro"
-import CardFooter from "~/components/CardFooter.astro"
-import Avatar from "./Avatar.astro"
-import Badge from "./Badge.astro"
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
+import Card from "~/components/Card.astro";
+import CardBody from "~/components/CardBody.astro";
+import CardFooter from "~/components/CardFooter.astro";
+import Avatar from "./Avatar.astro";
+import Badge from "./Badge.astro";
 
 export type Props = {
-	theme: any
-}
+	theme: any;
+};
 
-const { theme } = Astro.props
+const { theme } = Astro.props;
 
-const image = theme.Theme.image
+const image = theme.Theme.image;
 ---
 
 <Card isLink>
