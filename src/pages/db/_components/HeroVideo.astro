@@ -7,10 +7,24 @@ const { class: classList, ...props } = Astro.props
 
 <Image
 	{...props}
-	class:list={["height-auto absolute inset-y-0 max-w-[none] object-cover object-left", classList]}
+	class:list={[
+		"height-auto absolute inset-y-0 max-w-[none] scale-125 object-cover object-left opacity-0",
+		classList,
+	]}
 	src={bg}
 	alt="Atmospheric illustration of a nebulous, breathing space scene"
 	format="webp"
 	loading="eager"
-	width={1600}
+	width={1800}
+	quality="high"
+	onload="this.style.opacity = 1; this.style.transform = 'scale(1)'"
 />
+
+<style>
+	img {
+		transform-origin: center center;
+		transition:
+			opacity 400ms cubic-bezier(0.785, 0.135, 0.15, 0.86),
+			transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+	}
+</style>
