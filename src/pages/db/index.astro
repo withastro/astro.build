@@ -14,7 +14,7 @@ const description = "The SQL database platform for content-driven websites.";
 ---
 
 <MainLayout
-  class="bg-[#060913] scroll-pt-[7.5rem]"
+  class="bg-[#060913] scroll-pt-[7.5rem] scroll-smooth"
   header="transparent"
   rawTitle={title}
   description={description}
@@ -23,9 +23,9 @@ const description = "The SQL database platform for content-driven websites.";
     alt: "Astro DB - the SQL database platform for content-driven websites.",
   }}
 >
-  <Subnav />
-  <Hero />
-  <div class="mb-16 space-y-32">
+  <Hero class="z-20" />
+  <div class="mb-16 space-y-32 z-10">
+    <Subnav />
     <Intro />
     <UseCases />
     <Features />

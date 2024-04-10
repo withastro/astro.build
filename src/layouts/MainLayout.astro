@@ -25,35 +25,32 @@ const { class: classList, header = "default", ...head } = Astro.props;
   <head>
     <BaseHead {...head} />
   </head>
-  <body>
-    <div class="flex min-h-screen flex-col overflow-x-hidden">
-      <SkipLink />
-      <div
-        id="nav"
-        class:list={{
-          "left-0 right-0 top-0 z-20 max-h-screen": true,
-          "sticky bg-black": header === "default",
-          absolute: header === "transparent",
-        }}
-      >
-        <Header {header}>
-          <HeaderNav />
-          <HeaderDrawerContent slot="drawer" />
-        </Header>
-        {header === "default" && <hr class="border-astro-gray-500" />}
-      </div>
-
-      <main id="main" class="relative z-10 flex flex-1 flex-col">
-        <slot />
-      </main>
-
-      <hr class="border-astro-gray-500" />
+  <body class="flex min-h-screen max-w-screen flex-col overflow-x-hidden">
+    <SkipLink />
+    <div
+      id="nav"
+      class:list={{
+        "left-0 right-0 top-0 z-20 max-h-screen": true,
+        "sticky bg-black": header === "default",
+        absolute: header === "transparent",
+      }}
+    >
+      <Header {header}>
+        <HeaderNav />
+        <HeaderDrawerContent slot="drawer" />
+      </Header>
+      {header === "default" && <hr class="border-astro-gray-500" />}
     </div>
+
+    <slot name="subnav" />
 
     <main id="main" class="relative z-10 flex flex-1 flex-col">
       <slot />
     </main>
 
+    <hr class="border-astro-gray-500" />
+
+    <Footer />
     <style>
       :root.disclosure-open {
         overflow-y: hidden;
@@ -74,10 +71,6 @@ const { class: classList, header = "default", ...head } = Astro.props;
       }
       :root.disclosure-open body::before {
         opacity: 1;
-      }
-
-      <Footer / > <style > :root.disclosure-open {
-        overflow-y: hidden;
       }
 
       :root.disclosure-open #nav {
