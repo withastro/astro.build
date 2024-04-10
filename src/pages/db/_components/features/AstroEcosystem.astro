@@ -1,0 +1,113 @@
+---
+import AstroIcon from "../AstroLogo.astro"
+import HeroVideo from "../HeroVideo.astro"
+---
+
+<figure
+  id='astro-ecosystem-card'
+  class='landing-section relative min-h-[30rem] space-y-3 overflow-hidden rounded-2xl border border-white/30 bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0'
+>
+  <HeroVideo height='480' aria-hidden='true' />
+  <div
+    class='illustration pointer-events-none isolate select-none overflow-hidden pt-4'
+    aria-hidden='true'
+  >
+    <AstroIcon />
+  </div>
+  <p class='sr-only'>Astro logo</p>
+
+  <figcaption class='static z-10 flex flex-col items-center space-y-1 p-4'>
+    <h3 class='text-balance text-lg text-astro-gray-100'>
+      Designed for the Astro ecosystem
+    </h3>
+    <p class='text-balance body w-2/3 text-astro-gray-200'>
+      A deeply integrated, unified developer experience.
+    </p>
+  </figcaption>
+</figure>
+
+<style>
+  #astro-ecosystem-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    mask: linear-gradient(135deg, #000c 40%, #000, #000c 60%) 100% 100%/250%
+      250%;
+  }
+
+  #astro-ecosystem-card:hover {
+    mask-position: 0 0;
+    /* transform: translateZ(50px); */
+    /* transform: perspective(1000px) rotateY(8deg) rotateX(-5deg); */
+  }
+</style>
+
+<!-- <script>
+    // @ts-nocheck
+  const tiltEffectSettings = {
+    max: 10,
+    scale: 1.03,
+    speed: 1500,
+    perspective: 1000,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+  }
+
+  const card = document.getElementById("astro-ecosystem-card") as HTMLElement
+
+  card.addEventListener("mouseenter", cardMouseEnter)
+  card.addEventListener("mousemove", cardMouseMove)
+  card.addEventListener("mouseleave", cardMouseLeave)
+
+  function cardMouseEnter(event) {
+    setTransition(event)
+  }
+
+  function cardMouseMove(event) {
+    // const card = event.currentTarget
+    const cardWidth = card.offsetWidth
+    const cardHeight = card.offsetHeight
+
+
+    const centerX = card.offsetLeft + cardWidth / 2
+    const centerY = card.offsetTop + cardHeight / 2
+    // console.log(mouseX, mouseY)
+
+    const mouseX = event.clientX - centerX
+    const mouseY = event.clientY - centerY
+    console.log(mouseX, mouseY)
+
+    const rotateXUncapped =
+      (+1 * tiltEffectSettings.max * mouseY) / (cardHeight / 2)
+    const rotateYUncapped =
+      (-1 * tiltEffectSettings.max * mouseX) / (cardWidth / 2)
+    const rotateX =
+      rotateXUncapped < -tiltEffectSettings.max
+        ? -tiltEffectSettings.max
+        : rotateXUncapped > tiltEffectSettings.max
+          ? tiltEffectSettings.max
+          : rotateXUncapped
+    const rotateY =
+      rotateYUncapped < -tiltEffectSettings.max
+        ? -tiltEffectSettings.max
+        : rotateYUncapped > tiltEffectSettings.max
+          ? tiltEffectSettings.max
+          : rotateYUncapped
+
+    card.style.transform = `perspective(${tiltEffectSettings.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) 
+                          scale3d(${tiltEffectSettings.scale}, ${tiltEffectSettings.scale}, ${tiltEffectSettings.scale})`
+  }
+
+  function cardMouseLeave(event) {
+    event.currentTarget.style.transform = `perspective(${tiltEffectSettings.perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
+    setTransition(event)
+  }
+
+  function setTransition(event) {
+    const card = event.currentTarget
+    clearTimeout(card.transitionTimeoutId)
+    card.style.transition = `transform ${tiltEffectSettings.speed}ms ${tiltEffectSettings.easing}`
+    card.transitionTimeoutId = setTimeout(() => {
+      card.style.transition = ""
+    }, tiltEffectSettings.speed)
+  }
+</script> -->

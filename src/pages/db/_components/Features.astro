@@ -1,13 +1,12 @@
 ---
 import Icon from "astro-icon"
-import AstroIcon from "./AstroLogo.astro"
-import HeroVideo from "./HeroVideo.astro"
+import ORM from "./features/ORM.astro"
 import SectionText from "./SectionText.astro"
 import DataView from "./features/DataView.astro"
-import GlobalDistribution from "./features/GlobalDistribution.astro"
-import ORM from "./features/ORM.astro"
-import SQLCommands from "./features/SQLCommands.astro"
 import ZeroLockin from "./features/ZeroLockin.astro"
+import SQLCommands from "./features/SQLCommands.astro"
+import GlobalDistribution from "./features/GlobalDistribution.astro"
+import AstroEcosystem from "./features/AstroEcosystem.astro"
 ---
 
 <section class="mx-auto w-full max-w-screen-xl space-y-2 p-4 sm:p-8">
@@ -17,25 +16,8 @@ import ZeroLockin from "./features/ZeroLockin.astro"
 	</SectionText>
 
 	<div class="grid grid-cols-1 gap-2 pt-8 md:grid-cols-2 lg:grid-cols-3">
-		<figure
-			class="landing-section relative min-h-[30rem] space-y-3 overflow-hidden rounded-2xl border border-white/30 bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0"
-		>
-			<HeroVideo height="480" aria-hidden="true" />
-			<div
-				class="illustration pointer-events-none isolate select-none overflow-hidden pt-4"
-				aria-hidden="true"
-			>
-				<AstroIcon />
-			</div>
-			<p class="sr-only">Astro logo</p>
 
-			<figcaption class="static z-10 flex flex-col items-center space-y-1 p-4">
-				<h3 class="text-balance text-lg text-astro-gray-100">Designed for the Astro ecosystem</h3>
-				<p class="text-balance body w-2/3 text-astro-gray-200">
-					A deeply integrated, unified developer experience.
-				</p>
-			</figcaption>
-		</figure>
+		<AstroEcosystem />
 
 		<div class="grid gap-2">
 			<figure
