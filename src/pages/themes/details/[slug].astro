@@ -8,6 +8,7 @@ import MainLayout from "~/layouts/MainLayout.astro"
 import ThemeCTAs from "../_components/ThemeCTAs.astro"
 import ThemeCard from "../_components/ThemeCard.astro"
 import ThemeStats from "../_components/ThemeStats.astro"
+import { Image } from "astro:assets"
 
 export const prerender = false
 
@@ -36,8 +37,9 @@ const relatedThemes: Array<any> = await fetch(
 					style="max-width: var(--container-width, 1280px)"
 				/>
 			) : (
-				<img
+				<Image
 					src={theme.Theme.image}
+					inferSize
 					alt=""
 					class="mx-auto aspect-video w-full border-astro-gray-500 object-cover object-top xl:border-x xl:border-b"
 					decoding="async"
