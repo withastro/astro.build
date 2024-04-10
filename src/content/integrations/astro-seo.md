@@ -11,7 +11,5 @@ repoUrl: "https://github.com/jonasmerlin/astro-seo"
 featured: 10
 homepageUrl: "https://github.com/jonasmerlin/astro-seo#readme"
 downloads: 64849
-badges:
-  - "featured"
 image: "/assets/integrations/astro-seo.png"
 ---

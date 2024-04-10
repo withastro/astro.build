@@ -1,37 +1,117 @@
 ---
-import { Code } from "astro-expressive-code/components"
 import UseCase from "../UseCase.astro"
 import code from "./snippets/blog.txt?raw"
+import { Code } from "astro-expressive-code/components"
+
+const tags = ["all articles", "engineering", "community", "changelog"]
 ---
 
-<UseCase class="hidden" tab="blog">
-	<div slot="example" class="relative isolate mx-auto grid max-w-7xl grid-cols-1 px-4 py-12">
-		<ul class="flex flex-col space-y-4">
-			<li class="rounded-md bg-astro-gray-400 p-8">
-				<div>
-					<span class="block h-6 w-52 rounded-full bg-astro-gray-600"></span>
-				</div>
-				<div class="mt-6">
-					<div class="flex flex-col gap-2">
-						<div class="h-4 max-w-[360px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[300px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[330px] rounded-full bg-astro-gray-600"></div>
-					</div>
-				</div>
-			</li>
-			<li class="rounded-md bg-astro-gray-400 p-8">
-				<div>
-					<span class="block h-6 w-64 rounded-full bg-astro-gray-600"></span>
-				</div>
-				<div class="mt-6">
-					<div class="flex flex-col gap-2">
-						<div class="h-4 max-w-[310px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[350px] rounded-full bg-astro-gray-600"></div>
-						<div class="h-4 max-w-[330px] rounded-full bg-astro-gray-600"></div>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
+<UseCase class='hidden' tab='blog'>
+  <div slot='example'>
+    <div class='py-2'>
+      <h3 class='text-xl text-[#9FA5B3]'>The Blog</h3>
+
+      <div
+        class='flex items-center justify-start gap-2 border-b border-b-astro-gray-600 pb-4 pt-4'
+      >
+        {
+          tags.map((tag) => (
+            <button
+              id='filter-btn'
+              data-tag={tag}
+			  aria-selected="false"
+              class='flex w-fit rounded-full px-3 py-1.5 text-sm bg-transparent hover:bg-[#222636]/50 text-astro-gray-300 capitalize aria-selected:bg-[#222636]/80 aria-selected:text-astro-gray-200'
+            >
+              {tag}
+            </button>
+          ))
+        }
+      </div>
+
+      <ul id='articles-list' class='space-y-4 divide-y divide-astro-gray-600'> </ul>
+    </div>
+  </div>
+  <Code slot='code' lang='ts' code={code.replaceAll("\t", "  ")} />
 </UseCase>
+
+<script>
+  type Post = {
+    id: number
+    tag: string
+    title: string
+    summary: string
+    publishedOn: string
+  }
+
+  const posts: Post[] = [
+    {
+      id: 1,
+      tag: "engineering",
+      publishedOn: "March 13, 2024",
+      title: "Astro DB: A Deep Dive",
+      summary:
+        "Astro DB gives you a fully local libSQL database as soon as you start up your dev server. With our background as a static-site generator, it was important that the database could be built...",
+    },
+    {
+      id: 2,
+      tag: "community",
+      publishedOn: "March 12, 2024",
+      title: "The Astro Developer Portal",
+      summary:
+        "Our aim with the Developer Portal is to provide a centralized platform where theme authors, and eventually integration builders, can have full control over managing their listings in Astro’s...",
+    },
+  ]
+
+  const articlesList = document.getElementById( "articles-list") as unknown as HTMLUListElement
+  const filterButtons = document.querySelectorAll("#filter-btn") as unknown as HTMLButtonElement[]
+  const activefilterButton = document.getElementById( "filter-btn") as unknown as HTMLButtonElement
+
+  function renderPosts(tag: string) {
+    articlesList.innerHTML = ""
+
+	if(activefilterButton.dataset.tag === "all articles"){
+		activefilterButton.setAttribute("aria-selected", "true")
+	} else{
+		activefilterButton.removeAttribute("aria-selected")
+	}
+
+    const filteredPosts = tag === "all articles" ? posts : posts.filter((post) => post.tag === tag)
+
+    if (filteredPosts.length <= 0) {
+      const noArticlesResponse = document.createElement("p")
+      noArticlesResponse.innerHTML = `
+        <p class="mt-4 text-balance text-sm text-[#6E7584]">
+          No articles available on this topic
+        </p>
+      `
+      return articlesList.appendChild(noArticlesResponse)
+    }
+
+    filteredPosts.forEach((post) => {
+      const article = document.createElement("li")
+      article.innerHTML = `
+        <li class="space-y-2 pt-4">
+          <h4 class="text-lg text-[#9FA5B3]">${post.title}</h4>
+          <p class="text-balance text-sm text-[#6E7584]">${post.summary}</p>
+          <p class="text-sm text-astro-gray-400">${post.publishedOn}</p>
+        </li>
+      `
+      articlesList.appendChild(article)
+    })
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const selectedTag = this.getAttribute("data-tag")!
+      renderPosts(selectedTag)
+
+	  filterButtons.forEach(btn => {
+      btn.removeAttribute("aria-selected")
+    });
+    
+    this.setAttribute("aria-selected", "true")
+    })
+  })
+
+  renderPosts("all articles")
+</script>

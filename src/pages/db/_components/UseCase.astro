@@ -1,42 +1,52 @@
 ---
 interface Props {
-	tab: string
-	class?: string
+  tab: string
+  class?: string
 }
 
 const { tab, class: className } = Astro.props
 ---
 
 <li
-	class:list={["mx-auto flex flex-col gap-4 lg:flex-row lg:items-start", className]}
-	data-tab={tab}
+  class:list={[
+    "mx-auto flex flex-col gap-2 lg:gap-8 lg:flex-row lg:items-start",
+    className,
+  ]}
+  data-tab={tab}
 >
-	<div
-		class="-m-1 hidden flex-1 basis-1/2 flex-col overflow-hidden rounded-2xl border border-[#272831] bg-astro-gray-700 shadow-xl sm:flex lg:mr-8"
-	>
-		<div class="flex-0 whitespace-no-wrap pointer-events-none select-none px-4 pb-3 pt-4 text-sm">
-			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
-			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
-			<span class="mx-1 inline-block h-4 w-4 rounded-full bg-[#03000A]"></span>
-		</div>
-		<div class="max-h-fit p-4 pb-8" inert>
-			<slot name="example" />
-		</div>
-	</div>
-	<div
-		class="code-sample -mt-8 block max-h-fit basis-1/2 overflow-hidden rounded-2xl border-[#272831] bg-[#0C0F19] p-4 sm:mt-8 sm:p-8 lg:-mt-16 lg:mr-0"
-	>
-		<slot name="code" />
-	</div>
+  <div
+    class='-m-1 hidden flex-1 basis-1/2 flex-col overflow-hidden rounded-2xl border border-[#272831] bg-astro-gray-700 shadow-xl sm:flex'
+  >
+    <div class='max-h-fit md:h-[28rem] bg-[#141825] px-6 py-3'>
+      <slot name='example' />
+    </div>
+  </div>
+
+  <div
+    class='-mt-[4.5rem] sm:mt-8 lg:-mt-[4.5rem] block md:h-[32.4rem] max-h-fit basis-1/2 bg-[#0C0F19] border border-[#272831] rounded-2xl overflow-auto'
+  >
+    <div
+      class='h-10 px-3 flex items-center whitespace-no-wrap pointer-events-none select-none bg-[#0C0F19] border-b border-b-[#272831]'
+    >
+      <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
+      <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
+      <span class='mx-1 inline-block h-3 w-3 rounded-full bg-[#312F37]'></span>
+    </div>
+
+    <div class='p-4 sm:p-6'>
+      <slot name='code' />
+    </div>
+  </div>
+
 </li>
 
 <style>
-	.code-sample {
-		box-shadow:
-			0px 3.435px 4.671px 0px rgba(50, 69, 255, 0.11),
-			0px 8.687px 11.814px 0px rgba(50, 69, 255, 0.08),
-			0px 17.721px 24.1px 0px rgba(50, 69, 255, 0.06),
-			0px 36.502px 49.642px 0px rgba(50, 69, 255, 0.05),
-			0px 100px 136px 0px rgba(50, 69, 255, 0.03);
-	}
+  .code-sample {
+    box-shadow:
+      0px 3.435px 4.671px 0px rgba(50, 69, 255, 0.11),
+      0px 8.687px 11.814px 0px rgba(50, 69, 255, 0.08),
+      0px 17.721px 24.1px 0px rgba(50, 69, 255, 0.06),
+      0px 36.502px 49.642px 0px rgba(50, 69, 255, 0.05),
+      0px 100px 136px 0px rgba(50, 69, 255, 0.03);
+  }
 </style>
