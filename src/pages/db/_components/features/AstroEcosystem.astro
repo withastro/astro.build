@@ -51,94 +51,16 @@ import HeroVideo from "../HeroVideo.astro"
   })
 
   function rotateElement(event: MouseEvent, element: HTMLElement) {
-    // get mouse position
     const x = event.clientX
     const y = event.clientY
-    // console.log(x, y)
 
-    // find the middle
     const middleX = window.innerWidth / 2
     const middleY = window.innerHeight / 2
-    // console.log(middleX, middleY)
 
-    // get offset from middle as a percentage
-    // and tone it down a little
     const offsetX = ((x - middleX) / middleX) * 20
     const offsetY = ((y - middleY) / middleY) * 20
-    // console.log(offsetX, offsetY);
 
-    // set rotation
     element.style.setProperty("--rotateX", offsetX + "deg")
     element.style.setProperty("--rotateY", -1 * offsetY + "deg")
   }
 </script>
-
-<!-- <script>
-    // @ts-nocheck
-  const tiltEffectSettings = {
-    max: 10,
-    scale: 1.03,
-    speed: 1500,
-    perspective: 1000,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-  }
-
-  const card = document.getElementById("astro-ecosystem-card") as HTMLElement
-
-  card.addEventListener("mouseenter", cardMouseEnter)
-  card.addEventListener("mousemove", cardMouseMove)
-  card.addEventListener("mouseleave", cardMouseLeave)
-
-  function cardMouseEnter(event) {
-    setTransition(event)
-  }
-
-  function cardMouseMove(event) {
-    // const card = event.currentTarget
-    const cardWidth = card.offsetWidth
-    const cardHeight = card.offsetHeight
-
-
-    const centerX = card.offsetLeft + cardWidth / 2
-    const centerY = card.offsetTop + cardHeight / 2
-    // console.log(mouseX, mouseY)
-
-    const mouseX = event.clientX - centerX
-    const mouseY = event.clientY - centerY
-    console.log(mouseX, mouseY)
-
-    const rotateXUncapped =
-      (+1 * tiltEffectSettings.max * mouseY) / (cardHeight / 2)
-    const rotateYUncapped =
-      (-1 * tiltEffectSettings.max * mouseX) / (cardWidth / 2)
-    const rotateX =
-      rotateXUncapped < -tiltEffectSettings.max
-        ? -tiltEffectSettings.max
-        : rotateXUncapped > tiltEffectSettings.max
-          ? tiltEffectSettings.max
-          : rotateXUncapped
-    const rotateY =
-      rotateYUncapped < -tiltEffectSettings.max
-        ? -tiltEffectSettings.max
-        : rotateYUncapped > tiltEffectSettings.max
-          ? tiltEffectSettings.max
-          : rotateYUncapped
-
-    card.style.transform = `perspective(${tiltEffectSettings.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) 
-                          scale3d(${tiltEffectSettings.scale}, ${tiltEffectSettings.scale}, ${tiltEffectSettings.scale})`
-  }
-
-  function cardMouseLeave(event) {
-    event.currentTarget.style.transform = `perspective(${tiltEffectSettings.perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
-    setTransition(event)
-  }
-
-  function setTransition(event) {
-    const card = event.currentTarget
-    clearTimeout(card.transitionTimeoutId)
-    card.style.transition = `transform ${tiltEffectSettings.speed}ms ${tiltEffectSettings.easing}`
-    card.transitionTimeoutId = setTimeout(() => {
-      card.style.transition = ""
-    }, tiltEffectSettings.speed)
-  }
-</script> -->
