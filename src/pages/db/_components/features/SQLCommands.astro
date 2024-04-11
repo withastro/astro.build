@@ -62,16 +62,17 @@ const allCommands = [
 
 <style>
   .marquee-container {
-    animation: marquee 20s linear infinite forwards;
-  }
-
-  .marquee-container:hover {
     animation-play-state: paused;
+    animation: marquee 20s linear infinite alternate;
+  }
+  
+  .reverse-marquee-container {
+    animation-play-state: paused;
+    animation: marquee 20s linear infinite alternate-reverse;
   }
 
-  .reverse-marquee-container {
-    animation-direction: reverse;
-    animation: marquee 15s linear infinite forwards;
+  .marquee-container:hover .reverse-marquee-container:hover {
+    animation-play-state: running;
   }
 
   @keyframes marquee {
