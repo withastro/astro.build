@@ -5,7 +5,7 @@ import HeroVideo from "../HeroVideo.astro"
 
 <figure
   id='astro-ecosystem-card'
-  class='landing-section relative min-h-[30rem] space-y-3 overflow-hidden rounded-2xl border border-white/30 bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0'
+  class='landing-section relative min-h-[30rem] space-y-3 overflow-hidden rounded-2xl border border-white/30 bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0 hover:drop-shadow-2xl hover:shadow-white'
 >
   <HeroVideo height='480' aria-hidden='true' />
   <div
@@ -28,6 +28,7 @@ import HeroVideo from "../HeroVideo.astro"
 
 <style>
   #astro-ecosystem-card {
+    position: relative;
     transform-style: preserve-3d;
     transform: perspective(1000px);
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -37,10 +38,40 @@ import HeroVideo from "../HeroVideo.astro"
 
   #astro-ecosystem-card:hover {
     mask-position: 0 0;
-    /* transform: translateZ(50px); */
-    /* transform: perspective(1000px) rotateY(8deg) rotateX(-5deg); */
+    transform: perspective(5000px) rotateY(var(--rotateX))
+      rotateX(var(--rotateY));
   }
 </style>
+
+<script>
+  const pre = document.getElementById("astro-ecosystem-card")
+
+  document.addEventListener("mousemove", (e) => {
+    rotateElement(e, pre!)
+  })
+
+  function rotateElement(event: MouseEvent, element: HTMLElement) {
+    // get mouse position
+    const x = event.clientX
+    const y = event.clientY
+    // console.log(x, y)
+
+    // find the middle
+    const middleX = window.innerWidth / 2
+    const middleY = window.innerHeight / 2
+    // console.log(middleX, middleY)
+
+    // get offset from middle as a percentage
+    // and tone it down a little
+    const offsetX = ((x - middleX) / middleX) * 20
+    const offsetY = ((y - middleY) / middleY) * 20
+    // console.log(offsetX, offsetY);
+
+    // set rotation
+    element.style.setProperty("--rotateX", offsetX + "deg")
+    element.style.setProperty("--rotateY", -1 * offsetY + "deg")
+  }
+</script>
 
 <!-- <script>
     // @ts-nocheck
