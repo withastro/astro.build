@@ -16,7 +16,7 @@ lang: "en"
 import BlogSummary from "/src/components/BlogSummary.astro";
 
 <BlogSummary>
-  After a short break post-launch week, Astro 4.6 is now here and we're back to our regular schedule! This release includes a new manual routing strategy for internationalization, experimental support for CSRF protection, a new feature for the dev toolbar and more.
+  After a short break post-launch week, Astro 4.6 is now here and we're back to our regular schedule! This release includes a new manual routing strategy for internationalization, experimental support for CSRF protection, a new feature for the dev toolbar, and more.
 </BlogSummary>
 
 Full release highlights include:
@@ -41,9 +41,9 @@ yarn upgrade astro --latest
 
 ## Manual routing strategy for internationalization
 
-Astro 4.6 introduces a new manual routing strategy for internationalization. This new strategy allows you to take total control over the routing of your internationalized Astro website, for cases where the default routing strategy doesn't quite meet your needs.
+Astro 4.6 introduces a manual routing strategy for internationalization. This new strategy allows you to take total control over the routing of your internationalized Astro website, for cases where the default routing strategy doesn't quite meet your needs.
 
-To enable manual routing, set the `i18n.strategy` option in your `astro.config.mjs` to `manual`:
+To enable manual routing, set the `i18n.routing` option in your `astro.config.mjs` to `manual`:
 
 ```js
 // astro.config.mjs
@@ -75,7 +75,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 });
 ```
 
-Alternatively, you can import `middleware` from `astro:i18n` to build upon the default routing strategy:
+Alternatively, you can import Astro's own middleware logic using the new `middleware` function from `astro:i18n` to build upon the default routing strategy:
 
 ```js title="src/middleware.js"
 import { defineMiddleware, sequence } from "astro:middleware";
@@ -102,7 +102,9 @@ Astro 4.6 introduces the ability to move the dev toolbar to different positions 
 
 ## Experimental: Support for CSRF protection
 
-Astro 4.6 adds experimental partial support for [CSRF protection](https://developer.mozilla.org/en-US/docs/Glossary/CSRF). This feature is currently under an experimental flag and may change in future releases. To enable it, set the `experimental.security.csrfProtection` option in your `astro.config.mjs`:
+Astro 4.6 adds experimental partial support for [CSRF protection](https://developer.mozilla.org/en-US/docs/Glossary/CSRF). This feature is currently under an experimental flag and may change in future releases. 
+
+To enable it, set the `experimental.security.csrfProtection` option in your `astro.config.mjs`:
 
 ```js
 // astro.config.mjs
@@ -119,13 +121,13 @@ export default defineConfig({
 });
 ```
 
-Enabling this setting make Astro perform a check that the "origin" header, automatically passed by all modern browsers, matches the URL sent by each `Request`. If it doesn't, Astro will respond with a `403 Forbidden` status code.
+Enabling this setting makes Astro perform a check that the "origin" header, automatically passed by all modern browsers, matches the URL sent by each `Request`. If it doesn't, Astro will respond with a `403 Forbidden` status code.
 
-Note that this feature is only available for pages that are rendered on-demand (also known as Server Side Rendering).
+Note that this feature is only available for pages that are rendered on-demand (also known as server-side rendering).
 
 ## Cookies improvements
 
-Thanks to [Farzard](https://github.com/fshafiee), Astro's helper for deleting cookies (`Astro.cookies.delete`) now allowing setting even more cookie attributes instead of just the `path` and `domain` attributes. Perhaps a "bite-sized" change, but definitely one you can sink your teeth into!
+Thanks to [Farzard](https://github.com/fshafiee), Astro's helper for deleting cookies (`Astro.cookies.delete`) now allows setting even more cookie attributes instead of just the `path` and `domain` attributes. Perhaps a "bite-sized" change, but definitely one you can sink your teeth into!
 
 ## Deprecated support for older versions of Node.js
 
@@ -141,4 +143,4 @@ Support for these older versions of Node.js will continue until the next major v
 
 ## Bug Fixes
 
-You know it, Astro 4.6 includes more bug fixes and smaller improvements that couldn't make it into this release post. Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#460) to learn more.
+You know it, Astro 4.6 includes more bug fixes and smaller improvements that couldn't make it into this release post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#460) to learn more.
