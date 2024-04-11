@@ -6,7 +6,10 @@ import Pill from "./Pill.astro";
 ---
 
 <section
-  class="align-center landing-section relative flex h-[calc(100dvh-5rem)] max-h-[48rem] content-center items-center overflow-hidden bg-[#6628C6] bg-cover bg-no-repeat px-4 py-16 md:px-8"
+  class:list={[
+    "align-center landing-section relative flex h-[calc(100dvh-5rem)] max-h-[48rem] content-center items-center overflow-hidden bg-[#6628C6] bg-cover bg-no-repeat px-4 py-16 md:px-8",
+    Astro.props.class,
+  ]}
 >
   <HeroVideo class="lg:w-full" />
   <div
