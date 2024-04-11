@@ -5,8 +5,8 @@ import SectionText from "./SectionText.astro"
 import DataView from "./features/DataView.astro"
 import ZeroLockin from "./features/ZeroLockin.astro"
 import SQLCommands from "./features/SQLCommands.astro"
-import GlobalDistribution from "./features/GlobalDistribution.astro"
 import AstroEcosystem from "./features/AstroEcosystem.astro"
+import GlobalDistribution from "./features/GlobalDistribution.astro"
 ---
 
 <section class="mx-auto w-full max-w-screen-xl space-y-2 p-4 sm:p-8">
@@ -27,7 +27,7 @@ import AstroEcosystem from "./features/AstroEcosystem.astro"
 					<SQLCommands />
 				</div>
 				<p class="sr-only">List of common SQL keywords such as SELECT and JOIN</p>
-				<figcaption class="p-4">
+				<figcaption class="p-4 space-y-2">
 					<h3 class="text-lg text-astro-gray-100">SQL</h3>
 					<p class="text-balance body text-astro-gray-200">
 						Why reinvent the wheel? Astro DB speaks the familiar, universal database language: SQL.
@@ -38,13 +38,13 @@ import AstroEcosystem from "./features/AstroEcosystem.astro"
 			<figure
 				class="space-y-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4"
 			>
-				<div class="illustration" aria-hidden="true">
+				<div aria-hidden="true">
 					<ORM />
 				</div>
 				<p class="sr-only">
 					Code snippet demonstrating TypeScript autocompletion for a User schema
 				</p>
-				<figcaption>
+				<figcaption class="space-y-2">
 					<h3 class="text-astro-gray-100">TypeScript ORM</h3>
 					<p class="body text-astro-gray-200">
 						Includes a modern, TypeScript ORM with type-safety and autocomplete on every query.
@@ -56,13 +56,13 @@ import AstroEcosystem from "./features/AstroEcosystem.astro"
 		<figure
 			class="flex flex-col justify-between gap-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19] p-4 md:max-lg:col-span-2"
 		>
-			<div class="illustration pointer-events-none isolate my-auto select-none" aria-hidden="true">
+			<div class="h-full" aria-hidden="true">
 				<ZeroLockin />
 			</div>
 			<p class="sr-only">
 				"Export data" button with a dropdown that says "Export as SQL" and "Export as CSV"
 			</p>
-			<figcaption>
+			<figcaption class="space-y-2">
 				<h3 class="text-astro-gray-100">Zero lock-in</h3>
 				<p class="body min-h-[3rem] text-astro-gray-200">
 					It's your data. Export it anytime, in the format you need.
@@ -75,14 +75,14 @@ import AstroEcosystem from "./features/AstroEcosystem.astro"
 		<figure
 			class="max-h-[32rem] space-y-4 overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19]"
 		>
-			<figcaption class="p-4">
+			<figcaption class="p-4 space-y-2">
 				<h3 class="text-astro-gray-100">Visual Data Viewers</h3>
 				<p class="text-balance body text-astro-gray-200">
 					Explore your data in a visual spreadsheet, a rich-text editor, or raw SQL console.
 				</p>
 			</figcaption>
 			<p class="sr-only">Illustration of a bable-based user interface, similar to that of Excel</p>
-			<div class="illustration pointer-events-none isolate select-none pl-4" aria-hidden="true">
+			<div class="pl-4" aria-hidden="true">
 				<DataView />
 			</div>
 		</figure>
@@ -90,16 +90,14 @@ import AstroEcosystem from "./features/AstroEcosystem.astro"
 		<figure
 			class="relative max-h-[32rem] overflow-hidden rounded-xl border border-[#858B98]/20 bg-[#0C0F19]"
 		>
-			<figcaption class="p-4">
+			<figcaption class="p-4 space-y-2">
 				<h3 class="text-astro-gray-100">Global Distribution</h3>
 				<p class="text-balance body text-astro-gray-200">
 					Create databases in 6 different regions around the world, including the EU and Japan.
 				</p>
 			</figcaption>
 			<p class="sr-only">A spinning globe with markers in 8 regions around the world</p>
-			<div
-				class="isolate flex justify-end overflow-hidden"
-			>
+			<div class="isolate flex justify-end overflow-hidden">
 				<GlobalDistribution />
 			</div>
 		</figure>

@@ -16,8 +16,8 @@ import HeroVideo from "../HeroVideo.astro"
   </div>
   <p class='sr-only'>Astro logo</p>
 
-  <figcaption class='static z-10 flex flex-col items-center space-y-1 p-4'>
-    <h3 class='text-balance text-lg text-astro-gray-100'>
+  <figcaption class='static z-10 flex flex-col items-center space-y-2 p-4'>
+    <h3 class='text-balance text-lg text-white'>
       Designed for the Astro ecosystem
     </h3>
     <p class='text-balance body w-2/3 text-astro-gray-200'>
@@ -44,10 +44,10 @@ import HeroVideo from "../HeroVideo.astro"
 </style>
 
 <script>
-  const pre = document.getElementById("astro-ecosystem-card")
+  const card = document.getElementById("astro-ecosystem-card")
 
   document.addEventListener("mousemove", (e) => {
-    rotateElement(e, pre!)
+    rotateElement(e, card!)
   })
 
   function rotateElement(event: MouseEvent, element: HTMLElement) {

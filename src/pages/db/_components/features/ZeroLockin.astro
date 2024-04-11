@@ -1,38 +1,148 @@
 ---
 import Icon from "astro-icon"
+import { getImage } from "astro:assets"
+import background from "../../_assets/zero-lockin-bg.png"
+
+const zeroLockInBg = await getImage({
+  src: background,
+  format: "webp",
+  width: 10,
+})
 ---
 
-<div class="m-auto flex w-full scale-110 flex-col items-center justify-center gap-2 p-4 pb-8">
-	<div class="mt-4 w-3/4">
-		<button class="flex w-fit items-center gap-3 rounded-lg bg-[#343841] px-3 py-2 text-white">
-			<span class="ml-2">Export database</span>
-			<Icon name="ri:arrow-down-s-line" size={24} />
-		</button>
-	</div>
+<div
+  class='m-auto flex w-full h-full scale-110 flex-col items-center justify-center gap-2 p-4 pb-8 bg-cover bg-center bg-no-repeat'
+  style={{ backgroundImage: `url(${zeroLockInBg.src})` }}
+>
+  <div id='container'>
+    <div class='mt-4 w-3/4'>
+      <div
+        id='export-db-dropdown'
+        class='flex w-fit items-center gap-3 rounded-lg bg-[#343841] px-3 py-2 text-white'
+      >
+        <span class='ml-2'>Export database</span>
+        <Icon name='ri:arrow-down-s-line' size={24} />
+      </div>
+    </div>
 
-	<div class="w-3/4 space-y-1 rounded-lg bg-[#111520] p-1">
-		<button
-			class="flex w-full items-center gap-3 whitespace-nowrap rounded-lg bg-gradient-to-r from-white/5 to-transparent px-3 py-2 text-astro-gray-300"
-		>
-			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-				><path
-					fill="currentColor"
-					d="m12 1l9.5 5.5v11L12 23l-9.5-5.5v-11zM5.494 7.078L12 10.844l6.506-3.766L12 3.31zM4.5 8.813v7.534L11 20.11v-7.533zM13 20.11l6.5-3.763V8.813L13 12.576z"
-				></path></svg
-			>
-			<span>Export as SQL</span>
-		</button>
+    <div
+      class='mt-2 w-full space-y-1 rounded-lg bg-[#111520] p-1 border border-[#4B4B4B]/10'
+    >
+      <button
+        id='export-as-sql-btn'
+        class='flex w-full items-center gap-3 whitespace-nowrap rounded-lg hover:bg-gradient-to-r from-white/5 to-transparent px-3 py-2 text-astro-gray-300'
+      >
+        <Icon name='ri:file-code-line' size={20} />
+        <span>Export as SQL</span>
+      </button>
 
-		<button
-			class="flex w-full items-center gap-3 whitespace-nowrap rounded-lg from-white/5 to-transparent px-3 py-2 text-astro-gray-300 hover:bg-gradient-to-r"
-		>
-			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-				><path
-					fill="currentColor"
-					d="m12 1l9.5 5.5v11L12 23l-9.5-5.5v-11zM5.494 7.078L12 10.844l6.506-3.766L12 3.31zM4.5 8.813v7.534L11 20.11v-7.533zM13 20.11l6.5-3.763V8.813L13 12.576z"
-				></path></svg
-			>
-			<span>Export as CSV</span>
-		</button>
-	</div>
+      <button
+        disabled
+        class='group flex w-full items-center gap-3 whitespace-nowrap rounded-lg from-gray-800/50 to-transparent px-3 py-2 text-astro-gray-300 hover:text-astro-gray-400 hover:bg-gradient-to-r disabled:cursor-not-allowed transition-all ease-in-out duration-700 delay-150'
+      >
+        <Icon name='ri:file-text-line' size={20} />
+        <span>Export as CSV</span>
+        <span
+          class='text-xs opacity-0 group-hover:opacity-100 ease-in duration-700 text-astro-gray-300'
+        >
+          (coming soon)
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id='downloading-db-div'
+    class='hidden w-fit whitespace-nowrap bg-[#343841] rounded-lg tabular-nums'
+  >
+    <div class='px-4 py-2 flex items-center justify-between gap-4'>
+      <p class='text-white font-medium'>
+        <span id='db-tables'>0</span>
+        <span>/ 121 downloaded tables</span>
+      </p>
+
+      <span id='loader' class='w-6 h-6 inline-block box-border'></span>
+    </div>
+  </div>
+
+  <div
+    id='download-complete-div'
+    class='w-fit hidden flex flex-col items-center justify-center text-astro-gray-200 border border-[#4B4B4B]/10 bg-[#111520] rounded-lg p-4 sm:p-8 gap-4'
+  >
+    <Icon name='ri:download-cloud-2-line' size={48} />
+    <span class='text-center'>
+      All tables in the <code>`Interstellar`</code>
+      <br /> database downloaded successfully
+    </span>
+  </div>
 </div>
+
+<style>
+  #loader {
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: white;
+    animation: rotation 1s linear infinite;
+  }
+
+  #download-complete-div {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<script>
+  import { animate, inView } from "motion"
+
+  const dbTables = document.getElementById("db-tables") as HTMLSpanElement
+  const container = document.getElementById("container") as HTMLDivElement
+  const exportDbButton = document.getElementById(
+    "export-as-sql-btn"
+  ) as HTMLButtonElement
+  const downloadingDbContainer = document.getElementById(
+    "downloading-db-div"
+  ) as HTMLDivElement
+  const downloadedDbContainer = document.getElementById(
+    "download-complete-div"
+  ) as HTMLDivElement
+
+  async function downloadDatabase() {
+    container.classList.add("hidden")
+    downloadingDbContainer.classList.remove("hidden")
+
+    console.log(dbTables.innerHTML)
+
+    animate(
+      (progress) => (dbTables.innerHTML = String(Math.round(progress * 121))),
+      {
+        duration: 5,
+        easing: "ease-out",
+      }
+    )
+
+    setTimeout(() => {
+      downloadingDbContainer.classList.add("hidden")
+      downloadedDbContainer.classList.remove("hidden")
+
+      inView("div", () => {
+        animate(
+          downloadedDbContainer,
+          { opacity: 1, transform: "none" },
+          { delay: 0.2, duration: 1, easing: "ease-out" }
+        )
+      })
+
+    }, 5000)
+  }
+
+  exportDbButton.addEventListener("click", downloadDatabase)
+</script>
