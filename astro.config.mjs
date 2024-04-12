@@ -38,6 +38,7 @@ export default defineConfig({
 	},
 	output: "hybrid",
 	adapter: vercel({
+		isr: true,
 		imageService: true,
 		functionPerRoute: false,
 	}),
