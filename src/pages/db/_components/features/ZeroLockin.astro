@@ -11,10 +11,11 @@ const zeroLockInBg = await getImage({
 ---
 
 <div
+  id='container'
   class='m-auto flex w-full h-full scale-110 flex-col items-center justify-center gap-2 p-4 pb-8 bg-cover bg-center bg-no-repeat'
   style={{ backgroundImage: `url(${zeroLockInBg.src})` }}
 >
-  <div id='container'>
+  <div>
     <div class='mt-4 w-3/4'>
       <div
         id='export-db-dropdown'
@@ -50,21 +51,34 @@ const zeroLockInBg = await getImage({
       </button>
     </div>
   </div>
+</div>
 
-  <div
-    id='downloading-db-div'
-    class='hidden w-fit whitespace-nowrap bg-[#343841] rounded-lg tabular-nums'
-  >
-    <div class='px-4 py-2 flex items-center justify-between gap-4'>
-      <p class='text-white font-medium'>
-        <span id='db-tables'>0</span>
-        <span>/ 121 downloaded tables</span>
-      </p>
+<div id='downloading-db-div' class='absolute hidden w-full'>
+  <div class='relative flex flex-col h-[28rem] items-center justify-center bg-black'>
+    <div class='absolute inset-0 overflow-hidden'>
+      <div
+        id='northern-lights'
+        class='absolute -inset-[10px] opacity-10 pointer-events-none'
+      >
+      </div>
+    </div>
 
-      <span id='loader' class='w-6 h-6 inline-block box-border'></span>
+    <div
+      class='absolute z-100 h-fit w-fit whitespace-nowrap bg-[#343841] rounded-lg tabular-nums'
+    >
+      <div class='px-4 py-2 flex items-center justify-between gap-4'>
+        <p class='text-white font-medium'>
+          <span id='db-tables'>0</span>
+          <span>/ 121 downloaded tables</span>
+        </p>
+
+        <span id='loader' class='w-6 h-6 inline-block box-border'></span>
+      </div>
     </div>
   </div>
+</div>
 
+<div class='h-full w-full flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${zeroLockInBg.src})` }}>
   <div
     id='download-complete-div'
     class='w-fit hidden flex flex-col items-center justify-center text-astro-gray-200 border border-[#4B4B4B]/10 bg-[#111520] rounded-lg p-4 sm:p-8 gap-4'
@@ -98,6 +112,56 @@ const zeroLockInBg = await getImage({
       transform: rotate(360deg);
     }
   }
+
+  @keyframes northern-lights-animation {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+
+  #northern-lights {
+    --stripes: repeating-linear-gradient(
+      100deg,
+      #0c0f19 0%,
+      #0c0f19 7%,
+      transparent 10%,
+      transparent 12%,
+      #0c0f19 16%
+    );
+    --rainbow: repeating-linear-gradient(
+      100deg,
+      #3245ff 10%,
+      #bc52ee 15%,
+      #4af2c8 20%,
+      #2f4cb3 35%,
+      #ff7d54 20%
+    );
+    filter: blur(10px);
+    background-size: 300%, 200%;
+    background-position:
+      50% 50%,
+      50% 50%;
+    background-image: var(--stripes), var(--rainbow);
+    mask-image: linear-gradient(#0c0f19 10%, transparent);
+  }
+
+  #northern-lights::after {
+    inset: 0;
+    content: "";
+    position: absolute;
+    mix-blend-mode: hard-light;
+    background-size: 200%, 100%;
+    background-attachment: fixed;
+    background-image: var(--stripes), var(--rainbow);
+    animation: northern-lights-animation 40s linear infinite;
+  }
 </style>
 
 <script>
@@ -105,21 +169,13 @@ const zeroLockInBg = await getImage({
 
   const dbTables = document.getElementById("db-tables") as HTMLSpanElement
   const container = document.getElementById("container") as HTMLDivElement
-  const exportDbButton = document.getElementById(
-    "export-as-sql-btn"
-  ) as HTMLButtonElement
-  const downloadingDbContainer = document.getElementById(
-    "downloading-db-div"
-  ) as HTMLDivElement
-  const downloadedDbContainer = document.getElementById(
-    "download-complete-div"
-  ) as HTMLDivElement
+  const exportDbButton = document.getElementById("export-as-sql-btn") as HTMLButtonElement
+  const downloadingDbContainer = document.getElementById("downloading-db-div") as HTMLDivElement
+  const downloadedDbContainer = document.getElementById("download-complete-div") as HTMLDivElement
 
   async function downloadDatabase() {
     container.classList.add("hidden")
     downloadingDbContainer.classList.remove("hidden")
-
-    console.log(dbTables.innerHTML)
 
     animate(
       (progress) => (dbTables.innerHTML = String(Math.round(progress * 121))),
@@ -140,9 +196,9 @@ const zeroLockInBg = await getImage({
           { delay: 0.2, duration: 1, easing: "ease-out" }
         )
       })
-
     }, 5000)
   }
 
   exportDbButton.addEventListener("click", downloadDatabase)
+
 </script>
