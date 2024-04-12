@@ -7,10 +7,13 @@
   class='mx-auto flex w-full h-40 items-start justify-start gap-2 p-2'
 >
   <div class='mt-2 w-[48px] whitespace-nowrap text-astro-gray-100'>
-    <p id="animate-typing-effect" class='animated-text'>User.</p>
+    <p id='animate-typing-effect' class='animated-text'>User.</p>
   </div>
 
-  <div id="intellisense-container" class='group hidden w-full space-y-1 rounded-lg bg-[#111520] border border-[#4B4B4B]/10 p-1'>
+  <div
+    id='intellisense-container'
+    class='group hidden w-full space-y-1 rounded-lg bg-[#111520] border border-[#4B4B4B]/10 p-1'
+  >
     <button
       type='button'
       class='flex w-full items-center justify-between gap-3 whitespace-nowrap rounded-lg px-3 py-2 text-astro-gray-300 hover:bg-gradient-to-r hover:from-white/5 hover:to-transparent'
@@ -87,14 +90,23 @@
     animation:
       typewriter 1500ms steps(15) 50ms 1 normal both,
       blinkTextCursor 750ms steps(15) infinite normal;
+      animation-play-state: paused;
   }
   @keyframes typewriter {
-    from { width: 0; }
-    to { width: 2.5em; }
+    from {
+      width: 0;
+    }
+    to {
+      width: 2.5em;
+    }
   }
   @keyframes blinkTextCursor {
-    from {  border-right-color: rgba(255, 255, 255, 0.75); }
-    to { border-right-color: transparent; }
+    from {
+      border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+      border-right-color: transparent;
+    }
   }
 
   #intellisense-container {
@@ -104,20 +116,31 @@
 
   @keyframes fadeInAnimation {
     0% {
-        opacity: 0;
+      opacity: 0;
     }
     100% {
-        opacity: 1;
+      opacity: 1;
     }
-}
-
+  }
 </style>
 
 <script>
-  const mainContainer = document.getElementById('animate-typing-effect') as HTMLDivElement
-  const intellisenseContainer = document.getElementById('intellisense-container') as HTMLDivElement
+  const mainContainer = document.getElementById("animate-typing-effect") as HTMLDivElement
+  const intellisenseContainer = document.getElementById("intellisense-container") as HTMLDivElement
 
-  mainContainer.addEventListener('animationend', () => {
-    intellisenseContainer.classList.remove('hidden')
+  const observer = new IntersectionObserver((entries) => {
+      const intersecting = entries[0].isIntersecting
+
+      if (intersecting) {
+        mainContainer.style.animationPlayState = "running"
+      }
+    },
+  )
+
+  observer.observe(mainContainer)
+
+  mainContainer.addEventListener("animationend", () => {
+    intellisenseContainer.classList.remove("hidden")
+    observer.unobserve(mainContainer)
   })
 </script>
