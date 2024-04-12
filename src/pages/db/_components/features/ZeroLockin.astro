@@ -3,11 +3,7 @@ import Icon from "astro-icon"
 import { getImage } from "astro:assets"
 import background from "../../_assets/zero-lockin-bg.png"
 
-const zeroLockInBg = await getImage({
-  src: background,
-  format: "webp",
-  width: 10,
-})
+const zeroLockInBg = await getImage({ src: background, format: "webp", width: 10 })
 ---
 
 <div
@@ -193,7 +189,7 @@ const zeroLockInBg = await getImage({
         animate(
           downloadedDbContainer,
           { opacity: 1, transform: "none" },
-          { delay: 0.2, duration: 1, easing: "ease-out" }
+          { delay: 0.02, duration: 0.7, easing: "ease-out" }
         )
       })
     }, 5000)

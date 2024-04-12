@@ -7,15 +7,10 @@ const queries = ["select", "insert", "update", "delete"]
 const keys = ["primary", "foreign", "unique", "composite", "alternate"]
 const constraints = ["not null", "check", "index", "default", "unique"]
 
-const arithmeticAndData = [...arithmetic, ...data]
-const queriesJoinsAndOperators = [...queries, ...joins, ...operators]
-const keysAndContraints = [...keys, ...constraints]
+const arithmeticAndData = [...arithmetic, ...data, ...arithmetic, ...data]
+const queriesJoinsAndOperators = [...queries, ...joins, ...operators, ...joins]
+const keysAndContraints = [...keys, ...constraints, ...keys, ...constraints]
 
-const allCommands = [
-  arithmeticAndData,
-  queriesJoinsAndOperators,
-  keysAndContraints,
-]
 ---
 
 <section
@@ -63,12 +58,12 @@ const allCommands = [
 <style>
   .marquee-container {
     animation-play-state: paused;
-    animation: marquee 20s linear infinite alternate;
+    animation: marquee 30s linear infinite alternate;
   }
   
   .reverse-marquee-container {
     animation-play-state: paused;
-    animation: marquee 20s linear infinite alternate-reverse;
+    animation: marquee 30s linear infinite alternate-reverse;
   }
 
   .marquee-container:hover .reverse-marquee-container:hover {
