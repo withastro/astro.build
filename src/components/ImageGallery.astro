@@ -26,8 +26,9 @@ const { images, class: className, ...attrs } = Astro.props
 						class="relative flex w-full flex-shrink-0 snap-start snap-always items-center justify-center"
 						id={`gallery-${i + 1}`}
 					>
-						<img
+						<Image
 							src={image}
+							inferSize
 							alt=""
 							decoding="async"
 							class="aspect-video h-full w-full object-cover object-top"
@@ -62,8 +63,9 @@ const { images, class: className, ...attrs } = Astro.props
 				images.map((image, i) => (
 					<li>
 						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? "true" : "false"}>
-							<img
+							<Image
 								src={image}
+								inferSize
 								alt=""
 								class="aspect-video h-full w-full object-cover object-top"
 								decoding="async"
