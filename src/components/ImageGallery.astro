@@ -1,8 +1,9 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
+import type { HTMLAttributes } from 'astro/types'
+import { Image } from 'astro:assets'
+import RightArrowIcon from '~/icons/RightArrowIcon.jsx'
 
-export type Props = HTMLAttributes<"div"> & {
+export type Props = HTMLAttributes<'div'> & {
 	images: string[]
 }
 
@@ -11,7 +12,10 @@ const { images, class: className, ...attrs } = Astro.props
 
 <image-gallery
 	selected="0"
-	class:list={["grid pb-4 sm:aspect-[16/7] sm:grid-cols-[77.75%,22.25%] sm:pb-0", className]}
+	class:list={[
+		'grid pb-4 sm:aspect-[16/7] sm:grid-cols-[77.75%,22.25%] sm:pb-0',
+		className,
+	]}
 	{...attrs}
 >
 	<div class="relative max-w-full">
@@ -62,7 +66,10 @@ const { images, class: className, ...attrs } = Astro.props
 			{
 				images.map((image, i) => (
 					<li>
-						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? "true" : "false"}>
+						<a
+							href={`#gallery-${i + 1}`}
+							aria-current={i === 0 ? 'true' : 'false'}
+						>
 							<Image
 								src={image}
 								height={900}
@@ -78,12 +85,15 @@ const { images, class: className, ...attrs } = Astro.props
 			}
 		</ul>
 
-		<div class="mt-3 flex items-center justify-center gap-2 sm:hidden" aria-hidden="true">
+		<div
+			class="mt-3 flex items-center justify-center gap-2 sm:hidden"
+			aria-hidden="true"
+		>
 			{
 				images.map((_, i) => (
 					<div
 						class="pill h-2.5 w-2.5 rounded-full bg-astro-gray-100 transition-all duration-200 ease-in-out"
-						aria-current={i === 0 ? "true" : "false"}
+						aria-current={i === 0 ? 'true' : 'false'}
 					/>
 				))
 			}
@@ -92,8 +102,8 @@ const { images, class: className, ...attrs } = Astro.props
 </image-gallery>
 
 <style>
-	image-gallery [aria-current="false"]:empty,
-	image-gallery [aria-current="false"] img {
+	image-gallery [aria-current='false']:empty,
+	image-gallery [aria-current='false'] img {
 		@apply opacity-50;
 	}
 
@@ -111,7 +121,7 @@ const { images, class: className, ...attrs } = Astro.props
 		-webkit-user-drag: none;
 	}
 
-	.pill[aria-current="true"] {
+	.pill[aria-current='true'] {
 		@apply w-5;
 	}
 
@@ -154,18 +164,18 @@ const { images, class: className, ...attrs } = Astro.props
 			this.enhance()
 			this.update()
 
-			window.addEventListener("hashchange", () => this.onHashChange())
+			window.addEventListener('hashchange', () => this.onHashChange())
 			this.mainScroller?.addEventListener(
-				"scroll",
-				throttle(() => this.onScroll()),
+				'scroll',
+				throttle(() => this.onScroll())
 			)
 
-			this.next?.addEventListener("click", () => {
+			this.next?.addEventListener('click', () => {
 				this.selected = (this.selected + 1) % this.scrollerItems.length
 				this.scrollToItem(this.selected)
 			})
 
-			this.previous?.addEventListener("click", () => {
+			this.previous?.addEventListener('click', () => {
 				if (this.selected === 0) {
 					this.selected = this.scrollerItems.length - 1
 				} else {
@@ -176,11 +186,11 @@ const { images, class: className, ...attrs } = Astro.props
 		}
 
 		static get observedAttributes() {
-			return ["selected"]
+			return ['selected']
 		}
 
 		attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-			if (name !== "selected" || oldValue === newValue) {
+			if (name !== 'selected' || oldValue === newValue) {
 				return
 			}
 
@@ -188,7 +198,9 @@ const { images, class: className, ...attrs } = Astro.props
 		}
 
 		private onHashChange() {
-			this.selected = this.scrollerItems.findIndex((elem) => elem.matches(window.location.hash))
+			this.selected = this.scrollerItems.findIndex(elem =>
+				elem.matches(window.location.hash)
+			)
 		}
 
 		private onScroll() {
@@ -196,51 +208,61 @@ const { images, class: className, ...attrs } = Astro.props
 		}
 
 		private get selected() {
-			return safeParse(this.getAttribute("selected")) || 0
+			return safeParse(this.getAttribute('selected')) || 0
 		}
 
 		private set selected(value: number) {
-			this.setAttribute("selected", String(value))
+			this.setAttribute('selected', String(value))
 		}
 
 		private get next() {
-			return this.querySelector<HTMLButtonElement>("#gallery-next")
+			return this.querySelector<HTMLButtonElement>('#gallery-next')
 		}
 
 		private get previous() {
-			return this.querySelector<HTMLButtonElement>("#gallery-prev")
+			return this.querySelector<HTMLButtonElement>('#gallery-prev')
 		}
 
 		private get mainScroller() {
-			return this.querySelector<HTMLUListElement>("#gallery")
+			return this.querySelector<HTMLUListElement>('#gallery')
 		}
 
 		private get scrollerItems() {
-			return Array.from(this.mainScroller?.querySelectorAll<HTMLLIElement>("li") || [])
+			return Array.from(
+				this.mainScroller?.querySelectorAll<HTMLLIElement>('li') || []
+			)
 		}
 
 		private get navScroller() {
-			return this.querySelector<HTMLUListElement>("nav")
+			return this.querySelector<HTMLUListElement>('nav')
 		}
 
 		private get navScrollerItems() {
-			return Array.from(this.navScroller?.querySelectorAll<HTMLAnchorElement>(`a[href^="#"]`) || [])
+			return Array.from(
+				this.navScroller?.querySelectorAll<HTMLAnchorElement>(`a[href^="#"]`) ||
+					[]
+			)
 		}
 
 		private get scrollIndicator() {
-			return this.querySelector<HTMLDivElement>("nav > div")
+			return this.querySelector<HTMLDivElement>('nav > div')
 		}
 
 		private get scrollIndicatorPills() {
-			return Array.from(this.scrollIndicator?.querySelectorAll<HTMLDivElement>("div") || [])
+			return Array.from(
+				this.scrollIndicator?.querySelectorAll<HTMLDivElement>('div') || []
+			)
 		}
 
 		private update() {
 			for (let i = 0; i < this.scrollerItems.length; i++) {
 				const current = i === this.selected
 
-				this.navScrollerItems[i].setAttribute("aria-current", String(current))
-				this.scrollIndicatorPills[i].setAttribute("aria-current", String(current))
+				this.navScrollerItems[i].setAttribute('aria-current', String(current))
+				this.scrollIndicatorPills[i].setAttribute(
+					'aria-current',
+					String(current)
+				)
 			}
 
 			if (this.navScroller) {
@@ -249,12 +271,18 @@ const { images, class: className, ...attrs } = Astro.props
 				// make sure the nav preview image is fully visible
 				if (this.navScroller.scrollTop > link.offsetTop) {
 					// preview image is cut off on the top, need to scroll up
-					this.navScroller.scrollTo({ top: link.offsetTop, behavior: "smooth" })
-				} else if (this.navScroller.offsetHeight < link.offsetTop + link.offsetHeight) {
+					this.navScroller.scrollTo({ top: link.offsetTop, behavior: 'smooth' })
+				} else if (
+					this.navScroller.offsetHeight <
+					link.offsetTop + link.offsetHeight
+				) {
 					// preview image is cut off on the bottom, need to scroll down
 					this.navScroller.scrollTo({
-						top: link.offsetTop + link.offsetHeight - this.navScroller.offsetHeight,
-						behavior: "smooth",
+						top:
+							link.offsetTop +
+							link.offsetHeight -
+							this.navScroller.offsetHeight,
+						behavior: 'smooth',
 					})
 				}
 			}
@@ -263,7 +291,7 @@ const { images, class: className, ...attrs } = Astro.props
 		private enhance() {
 			// click hijacking the navigation image previews
 			this.navScrollerItems.forEach((link, i) => {
-				link.addEventListener("click", (event) => {
+				link.addEventListener('click', event => {
 					// should never happen!
 					if (!this.mainScroller || !this.navScroller) {
 						return
@@ -304,11 +332,12 @@ const { images, class: className, ...attrs } = Astro.props
 
 			const carouselRect = this.mainScroller.getBoundingClientRect()
 			return this.scrollerItems.findIndex(
-				(elem) =>
-					Math.abs(elem.getBoundingClientRect().left - carouselRect.left) < carouselRect.width / 2,
+				elem =>
+					Math.abs(elem.getBoundingClientRect().left - carouselRect.left) <
+					carouselRect.width / 2
 			)
 		}
 	}
 
-	customElements.define("image-gallery", ImageGallery)
+	customElements.define('image-gallery', ImageGallery)
 </script>
