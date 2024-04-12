@@ -1,11 +1,11 @@
 ---
 import type { HTMLAttributes } from "astro/types"
-import type { CollectionEntry } from "astro:content"
 import Avatar from "./Avatar.astro"
 import Badge from "./Badge.astro"
+import type { ThemeAndAuthor } from "../_types/index.ts"
 
 export type Props = HTMLAttributes<"div"> & {
-	theme: any
+	theme: ThemeAndAuthor
 }
 
 const { theme, class: className, ...attrs } = Astro.props

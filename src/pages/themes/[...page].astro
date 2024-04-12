@@ -9,6 +9,7 @@ import { paginate } from "~/helpers/paginate.js"
 import MainLayout from "~/layouts/MainLayout.astro"
 import SubmitTheme from "./_components/SubmitTheme.astro"
 import ThemeCard from "./_components/ThemeCard.astro"
+import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from "./_types/index.ts"
 
 export const prerender = false
 
@@ -25,7 +26,7 @@ if (!currentPage || isNaN(currentPage)) {
 const search = Astro.url.searchParams.get("search")
 
 // get a list of all supported categories, this is the same list used by the zod schema
-const categories = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
+const categories: ThemeCategory[] = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
 	res.json().then((data) => data.themeCategories),
 )
 // get a list of category filters applied to the request
@@ -34,7 +35,7 @@ const selectedCategories = Astro.url.searchParams.getAll("categories[]")
 // massage category data for the Filter components
 const categoryFilter: FilterGroup = {
 	title: "Categories",
-	options: categories.map((c: any) => ({
+	options: categories.map((c) => ({
 		id: c.value,
 		name: "categories[]",
 		value: c.value,
@@ -44,7 +45,7 @@ const categoryFilter: FilterGroup = {
 }
 
 // get a list of all supported tools, this is the same list used by the zod schema
-const tools = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
+const tools: ThemeTool[] = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
 	res.json().then((data) => data.themeTools),
 )
 
@@ -54,7 +55,7 @@ const selectedTools = Astro.url.searchParams.getAll("technology[]")
 // massage tool data for the Filter components
 const toolFilter: FilterGroup = {
 	title: "Technology",
-	options: tools.map((t: any) => ({
+	options: tools.map((t) => ({
 		id: t.value,
 		name: "technology[]",
 		value: t.value,
@@ -86,7 +87,7 @@ const priceFilter: FilterGroup = {
 	})),
 }
 
-const allThemes = await fetch(
+const allThemes: ThemeAndAuthor[] = await fetch(
 	`${import.meta.env.THEMES_API_URL}/api/themes?${Astro.url.searchParams}`,
 ).then((res) => res.json())
 
@@ -110,7 +111,7 @@ const themes = page.data
 
 const showRecentlyAdded =
 	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
-const recentlyAdded = showRecentlyAdded
+const recentlyAdded: ThemeAndAuthor[] = showRecentlyAdded
 	? await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/recent`).then((res) => res.json())
 	: []
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
@@ -157,7 +158,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 							}
 						>
 							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
-								{recentlyAdded.slice(0, 3).map((theme: any) => (
+								{recentlyAdded.slice(0, 3).map((theme) => (
 									<ThemeCard theme={theme} />
 								))}
 							</CardGrid>

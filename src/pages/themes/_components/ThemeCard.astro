@@ -5,9 +5,10 @@ import CardFooter from "~/components/CardFooter.astro"
 import Avatar from "./Avatar.astro"
 import Badge from "./Badge.astro"
 import { Image } from 'astro:assets';
+import type { ThemeAndAuthor } from "../_types/index.ts"
 
 export type Props = {
-	theme: any
+	theme: ThemeAndAuthor
 }
 
 const { theme } = Astro.props
@@ -20,7 +21,8 @@ const image = theme.Theme.image
 	<a class="flex h-full flex-col" href={`/themes/details/${theme.Theme.slug}`} data-astro-prefetch>
 		<Image
 			src={image}
-			inferSize
+			width={600}
+			height={400}
 			alt=""
 			class="aspect-video w-full object-cover"
 			loading="lazy"
