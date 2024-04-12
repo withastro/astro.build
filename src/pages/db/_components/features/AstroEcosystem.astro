@@ -1,0 +1,66 @@
+---
+import AstroIcon from "../AstroLogo.astro"
+import HeroVideo from "../HeroVideo.astro"
+---
+
+<figure
+  id='astro-ecosystem-card'
+  class='landing-section relative min-h-[30rem] space-y-3 overflow-hidden rounded-2xl border border-white/30 bg-cover bg-center bg-no-repeat md:min-h-[560px] lg:min-h-0 hover:drop-shadow-2xl hover:shadow-white'
+>
+  <HeroVideo height='480' aria-hidden='true' />
+  <div
+    class='illustration pointer-events-none isolate select-none overflow-hidden pt-4'
+    aria-hidden='true'
+  >
+    <AstroIcon />
+  </div>
+  <p class='sr-only'>Astro logo</p>
+
+  <figcaption class='static z-10 flex flex-col items-center space-y-2 p-4'>
+    <h3 class='text-balance text-lg text-white'>
+      Designed for the Astro ecosystem
+    </h3>
+    <p class='text-balance body w-2/3 text-astro-gray-200'>
+      A deeply integrated, unified developer experience.
+    </p>
+  </figcaption>
+</figure>
+
+<style>
+  #astro-ecosystem-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    mask: linear-gradient(135deg, #000c 40%, #000, #000c 60%) 100% 100%/250%
+      250%;
+  }
+
+  #astro-ecosystem-card:hover {
+    mask-position: 0 0;
+    transform: perspective(5000px) rotateY(var(--rotateX))
+      rotateX(var(--rotateY));
+  }
+</style>
+
+<script>
+  const card = document.getElementById("astro-ecosystem-card")
+
+  document.addEventListener("mousemove", (e) => {
+    rotateElement(e, card!)
+  })
+
+  function rotateElement(event: MouseEvent, element: HTMLElement) {
+    const x = event.clientX
+    const y = event.clientY
+
+    const middleX = window.innerWidth / 2
+    const middleY = window.innerHeight / 2
+
+    const offsetX = ((x - middleX) / middleX) * 20
+    const offsetY = ((y - middleY) / middleY) * 20
+
+    element.style.setProperty("--rotateX", offsetX + "deg")
+    element.style.setProperty("--rotateY", -1 * offsetY + "deg")
+  }
+</script>
