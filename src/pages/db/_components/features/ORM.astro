@@ -4,13 +4,13 @@
 
 <div
   id='typing-effect'
-  class='mx-auto flex w-full h-fit items-start justify-center gap-2 p-2'
+  class='mx-auto flex w-full h-40 items-start justify-start gap-2 p-2'
 >
   <div class='mt-2 w-[48px] whitespace-nowrap text-astro-gray-100'>
-    <p class='animated-text animate-typing-effect'>User.</p>
+    <p id="animate-typing-effect" class='animated-text'>User.</p>
   </div>
 
-  <div class='group w-full space-y-1 rounded-lg bg-[#111520] p-1'>
+  <div id="intellisense-container" class='group hidden w-full space-y-1 rounded-lg bg-[#111520] border border-[#4B4B4B]/10 p-1'>
     <button
       type='button'
       class='flex w-full items-center justify-between gap-3 whitespace-nowrap rounded-lg px-3 py-2 text-astro-gray-300 hover:bg-gradient-to-r hover:from-white/5 hover:to-transparent'
@@ -83,10 +83,10 @@
     border-right: 2px solid rgba(255, 255, 255, 0.75);
   }
 
-  .animate-typing-effect {
+  #animate-typing-effect {
     animation:
-      typewriter 4s steps(15) 50ms 1 normal both,
-      blinkTextCursor 500ms steps(15) infinite normal;
+      typewriter 1500ms steps(15) 50ms 1 normal both,
+      blinkTextCursor 750ms steps(15) infinite normal;
   }
   @keyframes typewriter {
     from { width: 0; }
@@ -96,4 +96,28 @@
     from {  border-right-color: rgba(255, 255, 255, 0.75); }
     to { border-right-color: transparent; }
   }
+
+  #intellisense-container {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease-out 10ms forwards;
+  }
+
+  @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 </style>
+
+<script>
+  const mainContainer = document.getElementById('animate-typing-effect') as HTMLDivElement
+  const intellisenseContainer = document.getElementById('intellisense-container') as HTMLDivElement
+
+  mainContainer.addEventListener('animationend', () => {
+    intellisenseContainer.classList.remove('hidden')
+  })
+</script>
