@@ -1,7 +1,7 @@
 ---
 name: "astro-decap-cms"
 title: "astro-decap-cms"
-description: "Add Decap CMS’s admin dashboard to your Astro project"
+description: "Add Decap CMS's admin dashboard to your Astro project"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-decap-cms"
