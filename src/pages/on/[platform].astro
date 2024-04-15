@@ -1,19 +1,19 @@
 ---
-import siteInfo, { type SocialLink } from "~/data/site-info.js"
+import siteInfo, { type SocialLink } from "~/data/site-info.js";
 
 interface Props {
-	link: SocialLink
+	link: SocialLink;
 }
 
 export function getStaticPaths() {
 	return siteInfo.socialLinks.map((link) => ({
 		params: { platform: link.platform },
 		props: { link },
-	}))
+	}));
 }
 
-const mastodon = siteInfo.socialLinks.find((link) => link.platform === "mastodon")
-const { link } = Astro.props
+const mastodon = siteInfo.socialLinks.find((link) => link.platform === "mastodon");
+const { link } = Astro.props;
 ---
 
 {mastodon && <link rel="me" href={mastodon.me ?? mastodon.href} />}

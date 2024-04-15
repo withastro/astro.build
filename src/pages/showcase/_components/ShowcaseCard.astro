@@ -1,13 +1,13 @@
 ---
-import type { CollectionEntry } from "astro:content"
-import { resolveImage } from "~/content/showcase/_resolveImage.js"
-import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx"
+import type { CollectionEntry } from "astro:content";
+import { resolveImage } from "~/content/showcase/_resolveImage.js";
+import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx";
 
-export type Props = { site: CollectionEntry<"showcase"> }
+export type Props = { site: CollectionEntry<"showcase"> };
 
-const { site } = Astro.props
+const { site } = Astro.props;
 
-const image = await resolveImage(site, site.data.highlight ? 2 : 1)
+const image = await resolveImage(site, site.data.highlight ? 2 : 1);
 ---
 
 <article

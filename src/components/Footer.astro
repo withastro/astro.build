@@ -1,17 +1,17 @@
 ---
-import siteInfo from "~/data/site-info.js"
-import NewsLetterSignup from "./NewsLetterSignup.astro"
-import SocialLinks from "./SocialLinks.astro"
+import siteInfo from "~/data/site-info.js";
+import NewsLetterSignup from "./NewsLetterSignup.astro";
+import SocialLinks from "./SocialLinks.astro";
 
 type Link = {
-	href: string
-	text: string
-}
+	href: string;
+	text: string;
+};
 
 type LinkGroup = {
-	title: string
-	items: Link[]
-}
+	title: string;
+	items: Link[];
+};
 
 const groups: LinkGroup[] = [
 	{
@@ -90,9 +90,9 @@ const groups: LinkGroup[] = [
 			},
 		],
 	},
-]
+];
 
-const socialLinks = siteInfo.socialLinks
+const socialLinks = siteInfo.socialLinks;
 ---
 
 <footer class="container">

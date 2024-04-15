@@ -1,14 +1,14 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import type { CollectionEntry } from "astro:content"
+import type { CollectionEntry } from "astro:content";
+import type { HTMLAttributes } from "astro/types";
 
 export type Props = Omit<HTMLAttributes<"article">, "slot"> & {
-	quote: CollectionEntry<"quotes">
-}
+	quote: CollectionEntry<"quotes">;
+};
 
-const { quote, class: className, ...attrs } = Astro.props
+const { quote, class: className, ...attrs } = Astro.props;
 
-const { Content } = await quote.render()
+const { Content } = await quote.render();
 ---
 
 <article

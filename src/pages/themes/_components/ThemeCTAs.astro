@@ -1,13 +1,13 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx"
-import type { ThemeAndAuthor } from "../_types/index.ts"
+import type { HTMLAttributes } from "astro/types";
+import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx";
+import type { ThemeAndAuthor } from "../_types/index.ts";
 
 export type Props = HTMLAttributes<"div"> & {
-	theme: ThemeAndAuthor
-}
+	theme: ThemeAndAuthor;
+};
 
-const { theme, class: className, ...attrs } = Astro.props
+const { theme, class: className, ...attrs } = Astro.props;
 ---
 
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>

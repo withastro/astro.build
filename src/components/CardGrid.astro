@@ -1,9 +1,9 @@
 ---
-import type { HTMLAttributes } from "astro/types"
+import type { HTMLAttributes } from "astro/types";
 
-export type Props = HTMLAttributes<"div">
+export type Props = HTMLAttributes<"div">;
 
-const { class: className, ...attrs } = Astro.props
+const { class: className, ...attrs } = Astro.props;
 ---
 
 <div class:list={["grid gap-8 lg:gap-10", className]} {...attrs}>

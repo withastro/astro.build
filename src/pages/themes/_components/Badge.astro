@@ -1,10 +1,10 @@
 ---
 export type Props = {
-	theme: "primary" | "secondary"
-	class?: string
-}
+	theme: "primary" | "secondary";
+	class?: string;
+};
 
-const { theme, class: className } = Astro.props
+const { theme, class: className } = Astro.props;
 ---
 
 <p class:list={["code relative m-px rounded-md px-2 py-1 text-sm text-white", theme, className]}>

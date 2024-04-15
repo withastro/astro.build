@@ -1,16 +1,16 @@
 ---
-import FormRadio from "./FormRadio.astro"
+import FormRadio from "./FormRadio.astro";
 
 export type Props = Omit<astroHTML.JSX.HTMLAttributes, "name" | "type" | "slot"> & {
-	name: string
+	name: string;
 	options: Array<{
-		label: string
-		value: string
-	}>
-	defaultValue?: string
-}
+		label: string;
+		value: string;
+	}>;
+	defaultValue?: string;
+};
 
-const { name, options, defaultValue, ...props } = Astro.props
+const { name, options, defaultValue, ...props } = Astro.props;
 ---
 
 <div {...props} class="inline-flex gap-4">
