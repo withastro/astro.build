@@ -70,16 +70,13 @@ const ThemePricing = new Map<string, string>([
 	["paid", "Paid"],
 ]);
 
-// get a list of all supported tools, this is the same list used by the zod schema
-const pricing = Array.from(ThemePricing.keys());
-
 // get a list of tool filters applied to the request
 const selectedPricing = Astro.url.searchParams.getAll("price[]");
 
 // massage tool data for the Filter components
 const priceFilter: FilterGroup = {
 	title: "Pricing",
-	options: [...pricing].map(([id, label]) => ({
+	options: [...ThemePricing].map(([id, label]) => ({
 		id,
 		name: "price[]",
 		value: id,

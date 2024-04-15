@@ -28,16 +28,13 @@ if (!currentPage || Number.isNaN(currentPage)) {
 // search term from the search/filter panel
 const search = Astro.url.searchParams.get("search");
 
-// get a list of all supported categories, this is the same list used by the zod schema
-const categories = Array.from(IntegrationCategories.keys());
-
 // get a list of category filters applied to the request
 const selectedCategories = Astro.url.searchParams.getAll("categories[]");
 
 // massage category data for the Filter components
 const categoryFilter: FilterGroup = {
 	title: "Categories",
-	options: [...categories].map(([id, label]) => ({
+	options: [...IntegrationCategories].map(([id, label]) => ({
 		id,
 		name: "categories[]",
 		value: id,
