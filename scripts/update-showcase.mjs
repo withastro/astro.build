@@ -317,8 +317,8 @@ class ShowcaseScraper {
 			await ShowcaseScraper.#saveDataFile(url, site.title);
 			title = site.title;
 			success = true;
-		} catch {
-			console.error("Scraping failed.");
+		} catch (error) {
+			console.error("Scraping failed.", error);
 		}
 		console.groupEnd();
 		return { success, title };
@@ -331,18 +331,25 @@ class ShowcaseScraper {
 	 * @returns {Promise<{ screenshot: Buffer; title: string }>}
 	 */
 	static async #scrapeSite(url, browser) {
+		console.log("Creating new page");
 		const page = await browser.newPage();
+		console.log("Setting viewport");
 		await page.setViewport({ width: 1280, height: 720, deviceScaleFactor: 1.4 });
+		console.log("Navigating to", url);
 		await page.goto(url);
 		// Some pages animate elements in on load, so we give them some time to settle:
 		// wait for 2 seconds + 1 frame, then wait for page to be idle.
+		console.log("Waiting for page to settle");
 		await page.evaluate(() => {
 			return new Promise((resolve) => {
 				setTimeout(() => requestAnimationFrame(() => requestIdleCallback(resolve)), 2000);
 			});
 		});
+		console.log("Getting title");
 		const title = await page.title();
+		console.log("Taking screenshot");
 		const screenshot = await page.screenshot();
+		console.log("Closing page");
 		await page.close();
 		return { screenshot, title };
 	}
