@@ -1,18 +1,18 @@
 ---
-import { getEntry } from "astro:content"
-import { resolveImage } from "~/content/authors/_resolveImage.js"
+import { getEntry } from "astro:content";
+import { resolveImage } from "~/content/authors/_resolveImage.js";
 
 type Props = {
-	name?: string
-	image?: string
-	lg?: boolean
-}
+	name?: string;
+	image?: string;
+	lg?: boolean;
+};
 
-let { name, image, lg = false } = Astro.props
+let { name, image, lg = false } = Astro.props;
 
 if (!image && name) {
-	const author = await getEntry("authors", name)
-	image = author && (await resolveImage(author))?.src
+	const author = await getEntry("authors", name);
+	image = author && (await resolveImage(author))?.src;
 }
 ---
 

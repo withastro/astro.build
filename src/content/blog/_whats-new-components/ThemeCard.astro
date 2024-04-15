@@ -1,13 +1,13 @@
 ---
-const { slug } = Astro.props
+const { slug } = Astro.props;
 
 const entry = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
 	(res) => res.json(),
-)
-if (!entry) throw new Error(`Could not find theme with slug "${slug}"`)
+);
+if (!entry) throw new Error(`Could not find theme with slug "${slug}"`);
 
-const { title, image } = entry.Theme
-const { Author: author } = entry
+const { title, image } = entry.Theme;
+const { Author: author } = entry;
 ---
 
 <li

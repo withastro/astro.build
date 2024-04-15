@@ -1,25 +1,25 @@
 ---
-import type { CollectionEntry } from "astro:content"
-import Card from "~/components/Card.astro"
-import CardBadge from "~/components/CardBadge.astro"
-import CardBody from "~/components/CardBody.astro"
-import { randomFromArray } from "~/helpers/random.js"
-import DownloadIcon from "~/icons/DownloadIcon.jsx"
-import { iconForIntegration } from "~/icons/integrations/index.js"
+import type { CollectionEntry } from "astro:content";
+import Card from "~/components/Card.astro";
+import CardBadge from "~/components/CardBadge.astro";
+import CardBody from "~/components/CardBody.astro";
+import { randomFromArray } from "~/helpers/random.js";
+import DownloadIcon from "~/icons/DownloadIcon.jsx";
+import { iconForIntegration } from "~/icons/integrations/index.js";
 
 export type Props = {
-	integration: CollectionEntry<"integrations">
-}
+	integration: CollectionEntry<"integrations">;
+};
 
-const { integration } = Astro.props
+const { integration } = Astro.props;
 
-const isOfficial = integration.data.categories.includes("official")
+const isOfficial = integration.data.categories.includes("official");
 
-const formatter = Intl.NumberFormat("en", { notation: "compact" })
+const formatter = Intl.NumberFormat("en", { notation: "compact" });
 
-const downloads = formatter.format(integration.data.downloads)
+const downloads = formatter.format(integration.data.downloads);
 
-const Icon = iconForIntegration(integration)
+const Icon = iconForIntegration(integration);
 
 const IconBackgrounds = [
 	"bg-[#BC52EE]",
@@ -32,7 +32,7 @@ const IconBackgrounds = [
 	"bg-[#EE5552]",
 	"bg-[#EE52B7]",
 	"bg-[#858B98]",
-]
+];
 ---
 
 <Card isLink>

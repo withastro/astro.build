@@ -1,15 +1,15 @@
 ---
-import SidebarPanel, { type Props as PanelProps } from "./SidebarPanel.astro"
+import SidebarPanel, { type Props as PanelProps } from "./SidebarPanel.astro";
 
 export type Props = Omit<PanelProps, "slot"> & {
-	title: string
+	title: string;
 	cta: {
-		href: string
-		text: string
-	}
-}
+		href: string;
+		text: string;
+	};
+};
 
-const { title, cta, ...attrs } = Astro.props
+const { title, cta, ...attrs } = Astro.props;
 ---
 
 <SidebarPanel alt {...attrs}>

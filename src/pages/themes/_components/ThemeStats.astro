@@ -1,19 +1,19 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import Avatar from "./Avatar.astro"
-import Badge from "./Badge.astro"
-import type { ThemeAndAuthor } from "../_types/index.ts"
+import type { HTMLAttributes } from "astro/types";
+import type { ThemeAndAuthor } from "../_types/index.ts";
+import Avatar from "./Avatar.astro";
+import Badge from "./Badge.astro";
 
 export type Props = HTMLAttributes<"div"> & {
-	theme: ThemeAndAuthor
-}
+	theme: ThemeAndAuthor;
+};
 
-const { theme, class: className, ...attrs } = Astro.props
+const { theme, class: className, ...attrs } = Astro.props;
 
 const vercelUrl =
 	theme.Theme.repoUrl &&
 	typeof theme.Theme.stars !== "undefined" &&
-	`https://vercel.com/new/clone?repository-url=${theme.Theme.repoUrl}`
+	`https://vercel.com/new/clone?repository-url=${theme.Theme.repoUrl}`;
 ---
 
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>

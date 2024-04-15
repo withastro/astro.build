@@ -1,35 +1,35 @@
 ---
-import { type CollectionEntry, getCollection, getEntry } from "astro:content"
-import { format } from "date-fns"
-import Avatar from "~/components/Avatar.astro"
-import { resolveBlogImage, resolveSocialImage } from "~/content/blog/_resolveImage.js"
-import Layout from "~/layouts/MainLayout.astro"
-import houstonWink from "~/assets/houston_wink.webp"
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+import { format } from "date-fns";
+import houstonWink from "~/assets/houston_wink.webp";
+import Avatar from "~/components/Avatar.astro";
+import { resolveBlogImage, resolveSocialImage } from "~/content/blog/_resolveImage.js";
+import Layout from "~/layouts/MainLayout.astro";
 
 export type Props = {
-	post: CollectionEntry<"caseStudies">
-}
+	post: CollectionEntry<"caseStudies">;
+};
 
 export async function getStaticPaths() {
-	const items = await getCollection("caseStudies")
+	const items = await getCollection("caseStudies");
 	return items.map((post) => ({
 		params: { slug: post.slug },
 		props: { post },
-	}))
+	}));
 }
 
-const { post } = Astro.props
+const { post } = Astro.props;
 
-const { data, render } = post
-const { Content } = await render()
+const { data, render } = post;
+const { Content } = await render();
 
-const socialImage = await resolveSocialImage(post)
+const socialImage = await resolveSocialImage(post);
 
-const headerImage = await resolveBlogImage(post.data.headerImage)
+const headerImage = await resolveBlogImage(post.data.headerImage);
 
 const authors = await Promise.all(data.authors.map((author) => getEntry("authors", author))).then(
 	(authors) => authors.filter(Boolean) as CollectionEntry<"authors">[],
-)
+);
 ---
 
 <Layout
