@@ -1,0 +1,71 @@
+---
+title: "Astro 4.7"
+description: "Astro 4.7 is out now! This release includes significant improvements to the API for making toolbar apps, a new way to keep yourself up to date, and more."
+publishDate: "April 25, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+  - sarah
+coverImage: "/src/content/blog/_images/astro-470/post-header-4.7.webp"
+socialImage: "/src/content/blog/_images/astro-470/og-image-4.7.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+import updateCheckerImage from "/src/content/blog/_images/astro-470/update-checker.webp";
+import BlogContentImage from "/src/components/BlogContentImage.astro"
+
+<BlogSummary>
+Astro 4.7 is now available! This release includes extensive improvements to the API for making toolbar apps, more ways to keep your Astro project up to date, and more.
+</BlogSummary>
+
+Full release highlights include:
+
+- [**Significant improvements to the Dev Toolbar API**](#dev-toolbar-api-improvements)
+- [**Update checker**](#update-checker)
+- [**`allowJs: true` for strictest TypeScript preset**](#allowjs-true-for-strictest-typescript-preset)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Dev Toolbar API improvements
+
+Astro 4.7 includes considerable improvements to the API for making toolbar apps. One of our main goal this release was to make it easier to build and maintain toolbar apps, and we are excited to bring you:
+
+- a `defineToolbarApp()` helper that makes it easier to define toolbar apps. This pattern should feel familiar as it is similar to `defineConfig()` in your Astro config and `defineMiddleware()` for defining middleware.
+- new `app` and `server` helpers to make it easier to send and receive messages between the toolbar and the server.
+- a brand new starter project for building toolbar apps. This will help you get started building your own toolbar apps in no time. Run `npm create astro@latest -- --template toolbar-app` and start building your toolbar app.
+- a [recipe guiding you step-by-step through building your own toolbar app](https://docs.astro.build/en/recipes/making-toolbar-apps/) from scratch, including how to build your app using JSX frameworks like React or Preact.
+- revamped [documentation of the Dev Toolbar App API](https://docs.astro.build/en/reference/dev-toolbar-app-reference/), with all examples updated to show using the new methods.
+
+We hope you'll enjoy these improvements and we can't wait to see what you build with them!
+
+## Update checker
+
+Starting from this release, Astro will now check for updates when you run the dev server. If a new version is available, you'll see a message in the terminal with instructions on how to update and in the dev toolbar.
+
+<BlogContentImage src={updateCheckerImage} alt="A screenshot of the message that Astro shows in the terminal when an update is available: update > New version of Astro available: 4.6.3. Run npx @astrojs/upgrade to update." />
+
+To avoid spamming you with too many update messages, Astro will only check for updates once every 10 days and will only show the message if you're multiple versions behind. You can disable this feature by running `astro preferences disable checkUpdates` or setting the `ASTRO_DISABLE_UPDATE_CHECK` environment variable to `false`.
+
+## `allowJs: true` for strictest TypeScript preset
+
+Our `strictest` TypeScript preset previously included `allowJs: false`, to disable the use of `.js` files completely. This proved to be a bit too strict for the average user and often caused confusion. We've now changed this to `allowJs: true`, which allows you to use `.js` files in your project.
+
+This should not be a breaking change, but if you're using the `strictest` preset and would like to still disable `.js` files, set `allowJs: false` manually in your `tsconfig.json`.
+
+## Bug Fixes
+
+As usual, Astro 4.7 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#470) to learn more.
