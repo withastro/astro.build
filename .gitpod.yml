@@ -1,8 +1,9 @@
 # Please do not delete this file, for the Gitpod users!
 
 tasks:
-  - init: npm install
-    command: cp .env.example .env && npm run dev
+  - init: pnpm install
+    before: cp .env.example .env
+    command: pnpm run dev
 
 ports:
   - port: 4321
