@@ -67,18 +67,19 @@ import Badge from "./Badge.astro";
 	const targets = Array.from(nav.querySelectorAll("a[href^='#']"))
 		.map((a) => a.getAttribute("href")?.slice(1))
 		.filter(Boolean);
+	const selector = `:is(${targets.map((id) => `[id="${id}"]`).join(",")})`;
+	const ids = new Map<string, number>();
 	const io = new IntersectionObserver(
 		([entry]) => {
-			if (entry.intersectionRatio > 0.5) {
-				const element = entry.target.querySelector(
-					`:is(${targets.map((id) => `[id="${id}"]`).join(",")})`,
-				);
-				if (element) {
-					const link = nav.querySelector(`a[href="#${element.id}"]`);
-					resetSubnav();
-					link?.setAttribute("aria-current", "true");
-				}
+			const element = entry.target.querySelector(selector);
+			if (!element) return;
+			const prevRatio = ids.get(element.id) ?? 0;
+			if (entry.intersectionRatio > prevRatio) {
+				const link = nav.querySelector(`a[href="#${element.id}"]`);
+				resetSubnav();
+				link?.setAttribute("aria-current", "true");
 			}
+			ids.set(element.id, entry.intersectionRatio);
 		},
 		{ threshold: [0, 0.4, 0.6, 1] },
 	);
