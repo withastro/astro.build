@@ -77,7 +77,7 @@ import Badge from "./Badge.astro";
 			);
 			const element = entry.target.querySelector(selector);
 			if (!element) return;
-			const prevRatio = ids[element.id];
+			const prevRatio = ids[element.id] ?? 0;
 			if (entry.intersectionRatio > prevRatio) {
 				const link = nav.querySelector(`a[href="#${element.id}"]`);
 				resetSubnav();
