@@ -68,22 +68,18 @@ import Badge from "./Badge.astro";
 		.map((a) => a.getAttribute("href")?.slice(1))
 		.filter(Boolean);
 	const selector = `:is(${targets.map((id) => `[id="${id}"]`).join(",")})`;
-	const ids: Record<string, number> = {};
+	const ids = new Map<string, number>();
 	const io = new IntersectionObserver(
 		([entry]) => {
-			console.log(
-				entry.target.querySelector(selector),
-				entry.intersectionRatio,
-			);
 			const element = entry.target.querySelector(selector);
 			if (!element) return;
-			const prevRatio = ids[element.id] ?? 0;
+			const prevRatio = ids.get(element.id) ?? 0;
 			if (entry.intersectionRatio > prevRatio) {
 				const link = nav.querySelector(`a[href="#${element.id}"]`);
 				resetSubnav();
 				link?.setAttribute("aria-current", "true");
 			}
-			ids[element.id] = entry.intersectionRatio;
+			ids.set(element.id, entry.intersectionRatio);
 		},
 		{ threshold: [0, 0.4, 0.6, 1] },
 	);
