@@ -8,7 +8,7 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@zokki/astro-brotli"
 repoUrl: "https://gitea.zokki.net/zokki/astro-brotli"
-homepageUrl: "https://zokki.net"
+homepageUrl: "https://gitea.zokki.net/zokki/astro-brotli"
 badge: "new"
 downloads: 32
 ---

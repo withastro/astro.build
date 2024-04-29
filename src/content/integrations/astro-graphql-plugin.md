@@ -1,10 +1,11 @@
 ---
 name: "astro-graphql-plugin"
 title: "astro-graphql-plugin"
-description: "This is a template for an Astro integration. Use this template for writing integrations to use in multiple projects or publish to NPM."
+description: "Astro plugin generating Markdown documentation from a GraphQL schema. This plugin is modified off the docusaurus-graphql-plugin](https://github.com/zhouzi/docusaurus-graphql-plugin) by [Gabin Aureche. If, for some reason, you "
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-graphql-plugin"
-homepageUrl: "https://www.npmjs.com/package/astro-graphql-plugin"
+homepageUrl: "https://github.com/interledger/astro-graphql-plugin#readme"
 downloads: 1851
+repoUrl: "https://github.com/interledger/astro-graphql-plugin"
 ---

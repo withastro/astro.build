@@ -8,7 +8,7 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@zokki/astro-purgecss"
 repoUrl: "https://gitea.zokki.net/zokki/astro-purgecss"
-homepageUrl: "https://zokki.net"
+homepageUrl: "https://gitea.zokki.net/zokki/astro-purgecss"
 badge: "new"
 downloads: 66
 ---
