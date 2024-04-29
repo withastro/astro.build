@@ -1,8 +1,19 @@
 # Please do not delete this file, for the Gitpod users!
+image:
+    file: .gitpod.Dockerfile
 
 tasks:
-  - init: npm install
-    command: npm run dev
+    init: |
+      pnpm install
+      pnpm run dev
+    command: |
+      .gitpod/gitpod-setup.sh
+
+vscode:
+  extensions:
+    - astro-build.astro-vscode
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
 
 ports:
   - port: 4321
