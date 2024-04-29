@@ -6,6 +6,9 @@ export default {
 	theme: {
 		fontFamily: {},
 		extend: {
+			aria: {
+				current: "current",
+			},
 			animation: {
 				float: "float 6s ease-in-out infinite",
 			},

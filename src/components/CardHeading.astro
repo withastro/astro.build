@@ -1,10 +1,10 @@
 ---
 type Props = {
-	lg?: boolean
-	class?: string
-}
+	lg?: boolean;
+	class?: string;
+};
 
-const { lg = false, class: className } = Astro.props
+const { lg = false, class: className } = Astro.props;
 ---
 
 <h3 class:list={[lg && "xl:heading-2 xl:text-[3.5rem]", "heading-3 text-gray-100", className]}>

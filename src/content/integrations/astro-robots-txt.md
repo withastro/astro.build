@@ -11,6 +11,4 @@ repoUrl: "https://github.com/alextim/astro-lib"
 featured: 9
 homepageUrl: "https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt#readme"
 downloads: 36614
-badges:
-  - "featured"
 ---

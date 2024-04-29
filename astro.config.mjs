@@ -29,7 +29,7 @@ export default defineConfig({
 		sitemap(),
 	],
 	image: {
-		domains: ["v1.screenshot.11ty.dev"],
+		domains: ["v1.screenshot.11ty.dev", "storage.googleapis.com"],
 	},
 	vite: {
 		ssr: {
@@ -38,6 +38,7 @@ export default defineConfig({
 	},
 	output: "hybrid",
 	adapter: vercel({
+		imageService: true,
 		functionPerRoute: false,
 	}),
 });

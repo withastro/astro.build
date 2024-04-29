@@ -5,10 +5,8 @@ description: "Generate OG images from a static folder and / or a middleware.\nEx
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/og-images-generator"
 repoUrl: "https://github.com/JulianCataldo/og-images-generator"
 homepageUrl: "https://github.com/JulianCataldo/og-images-generator#readme"
-badge: "new"
 downloads: 230
 ---

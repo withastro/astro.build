@@ -1,13 +1,13 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import { Image } from "astro:assets"
-import RightArrowIcon from "~/icons/RightArrowIcon.jsx"
+import { Image } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+import RightArrowIcon from "~/icons/RightArrowIcon.jsx";
 
 export type Props = HTMLAttributes<"div"> & {
-	images: string[]
-}
+	images: string[];
+};
 
-const { images, class: className, ...attrs } = Astro.props
+const { images, class: className, ...attrs } = Astro.props;
 ---
 
 <image-gallery
@@ -26,8 +26,10 @@ const { images, class: className, ...attrs } = Astro.props
 						class="relative flex w-full flex-shrink-0 snap-start snap-always items-center justify-center"
 						id={`gallery-${i + 1}`}
 					>
-						<img
+						<Image
 							src={image}
+							height={900}
+							width={1600}
 							alt=""
 							decoding="async"
 							class="aspect-video h-full w-full object-cover object-top"
@@ -62,8 +64,10 @@ const { images, class: className, ...attrs } = Astro.props
 				images.map((image, i) => (
 					<li>
 						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? "true" : "false"}>
-							<img
+							<Image
 								src={image}
+								height={900}
+								width={1600}
 								alt=""
 								class="aspect-video h-full w-full object-cover object-top"
 								decoding="async"

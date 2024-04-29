@@ -1,11 +1,11 @@
 ---
-import type { HTMLAttributes } from "astro/types"
+import type { HTMLAttributes } from "astro/types";
 
 export type Props = HTMLAttributes<"div"> & {
-	alt?: boolean
-}
+	alt?: boolean;
+};
 
-const { class: className, alt = false, ...attrs } = Astro.props
+const { class: className, alt = false, ...attrs } = Astro.props;
 ---
 
 <div

@@ -1,29 +1,80 @@
 ---
-const arithmetic = ["avg", "min", "max", "count", "sum"]
-const data = ["null", "integer", "real", "text", "blob"]
-const joins = ["left", "inner", "cross", "outer", "right"]
-const operators = ["distinct", "order by", "where", "limit", "between"]
-const queries = ["select", "insert", "update", "delete"]
-const keys = ["primary", "foreign", "unique", "composite", "alternate"]
-const constraints = ["not null", "check", "index", "default", "unique"]
+const arithmetic = ["avg", "min", "max", "count", "sum"];
+const data = ["null", "integer", "real", "text", "blob"];
+const joins = ["left", "inner", "cross", "outer", "right"];
+const operators = ["distinct", "order by", "where", "limit", "between"];
+const queries = ["select", "insert", "update", "delete"];
+const keys = ["primary", "foreign", "unique", "composite", "alternate"];
+const constraints = ["not null", "check", "index", "default", "unique"];
 
-const a = [...arithmetic, ...data]
-const b = [...queries, ...joins, ...operators]
-const c = [...keys, ...constraints]
-
-const all = [a, b, c]
+const arithmeticAndData = [...arithmetic, ...data, ...arithmetic, ...data];
+const queriesJoinsAndOperators = [...queries, ...joins, ...operators, ...joins];
+const keysAndContraints = [...keys, ...constraints, ...keys, ...constraints];
 ---
 
-<div class="body -ml-8 flex flex-col items-start gap-2 whitespace-nowrap text-astro-gray-400">
-	{
-		all.map((group) => (
-			<div class="flex w-fit gap-2">
-				{group.map((operator) => (
-					<div class="rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase ">
-						{operator}
-					</div>
-				))}
-			</div>
-		))
-	}
-</div>
+<section
+  class='m-auto w-full h-full whitespace-nowrap overflow-hidden boder-box'
+>
+  <div class='w-full h-fit flex flex-col gap-2'>
+    <ul
+      class='marquee-container body -ml-8 flex items-start gap-2 text-astro-gray-400'
+    >
+      {
+        arithmeticAndData.map((operator) => (
+          <li class='rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase list-none'>
+            {operator}
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul
+      class='reverse-marquee-container body -ml-8 flex items-start gap-2 text-astro-gray-400'
+    >
+      {
+        queriesJoinsAndOperators.map((operator) => (
+          <li class='rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase list-none'>
+            {operator}
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul
+      class='marquee-container body -ml-8 flex items-start gap-2 text-astro-gray-400'
+    >
+      {
+        keysAndContraints.map((operator) => (
+          <li class='rounded-full border border-[#4B4B4B]/30 bg-[#2C2C2C]/20 px-4 py-2 uppercase list-none'>
+            {operator}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .marquee-container {
+    animation-play-state: paused;
+    animation: marquee 30s linear infinite alternate;
+  }
+  
+  .reverse-marquee-container {
+    animation-play-state: paused;
+    animation: marquee 30s linear infinite alternate-reverse;
+  }
+
+  .marquee-container:hover .reverse-marquee-container:hover {
+    animation-play-state: running;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>

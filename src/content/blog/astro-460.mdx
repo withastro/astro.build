@@ -1,0 +1,146 @@
+---
+title: "Astro 4.6"
+description: "Astro 4.6 is here! This release includes a new manual routing strategy for internationalization, the ability to move the dev toolbar, experimental support for CSRF protection, and more."
+publishDate: "April 11, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+coverImage: "/src/content/blog/_images/astro-460/post-header-4.6.webp"
+socialImage: "/src/content/blog/_images/astro-460/og-image-4.6.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  After a short break post-launch week, Astro 4.6 is now here and we're back to our regular schedule! This release includes a new manual routing strategy for internationalization, experimental support for CSRF protection, a new feature for the dev toolbar, and more.
+</BlogSummary>
+
+Full release highlights include:
+
+- [**Manual i18n routing strategy**](#manual-routing-strategy-for-internationalization)
+- [**Ability to move the dev toolbar**](#ability-to-move-the-dev-toolbar)
+- [**Experimental: Support for CSRF protection**](#experimental-support-for-csrf-protection)
+- [**Cookies improvements**](#cookies-improvements)
+- [**Deprecated support for older versions of Node.js**](#deprecated-support-for-older-versions-of-nodejs)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Manual routing strategy for internationalization
+
+Astro 4.6 introduces a manual routing strategy for internationalization. This new strategy allows you to take total control over the routing of your internationalized Astro website, for cases where the default routing strategy doesn't quite meet your needs.
+
+To enable manual routing, set the `i18n.routing` option in your `astro.config.mjs` to `manual`:
+
+```js
+// astro.config.mjs
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  i18n: {
+    locales: ["en", "fr"],
+    defaultLocale: "fr",
+    routing: "manual",
+  },
+});
+```
+
+and then [add a middleware](https://docs.astro.build/en/guides/middleware/) to your project to handle the routing:
+
+```ts
+// src/middleware.ts
+import { defineMiddleware } from "astro:middleware";
+import { redirectToDefaultLocale } from "astro:i18n";
+
+// Example middleware that redirects all requests to the default locale apart for the /about page
+export const onRequest = defineMiddleware(async (context, next) => {
+  if (context.url.startsWith("/about")) {
+    return next();
+  } else {
+    return redirectToDefaultLocale(context, 302);
+  }
+});
+```
+
+Alternatively, you can import Astro's own middleware logic using the new `middleware` function from `astro:i18n` to build upon the default routing strategy:
+
+```js title="src/middleware.js"
+import { defineMiddleware, sequence } from "astro:middleware";
+import { middleware } from "astro:i18n"; // Astro's own i18n routing middleware
+
+export const userMiddleware = defineMiddleware(() => {
+	// Your custom middleware logic here
+});
+
+export const onRequest = sequence(
+  userMiddleware,
+  middleware({
+    redirectToDefaultLocale: false,
+    prefixDefaultLocale: true
+  })
+)
+```
+
+Check out the [internationalization documentation](https://docs.astro.build/en/guides/internationalization/) for more information on how to use manual routing with internationalization.
+
+## Ability to move the dev toolbar
+
+Astro 4.6 introduces the ability to move the dev toolbar to different positions at the bottom of your screen. This can be useful if you have a sticky header that covers the bottom of the screen, or if you just prefer the toolbar to be somewhere else. The dev toolbar is there to help you, not get in your way! Thanks to [Ming-jun Lu](https://github.com/mingjunlu) for contributing this requested feature!
+
+## Experimental: Support for CSRF protection
+
+Astro 4.6 adds experimental partial support for [CSRF protection](https://developer.mozilla.org/en-US/docs/Glossary/CSRF). This feature is currently under an experimental flag and may change in future releases. 
+
+To enable it, set the `experimental.security.csrfProtection` option in your `astro.config.mjs`:
+
+```js
+// astro.config.mjs
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    security: {
+      csrfProtection: {
+        origin: true,
+      },
+    },
+  },
+});
+```
+
+Enabling this setting makes Astro perform a check that the "origin" header, automatically passed by all modern browsers, matches the URL sent by each `Request`. If it doesn't, Astro will respond with a `403 Forbidden` status code.
+
+Note that this feature is only available for pages that are rendered on-demand (also known as server-side rendering).
+
+## Cookies improvements
+
+Thanks to [Farzard](https://github.com/fshafiee), Astro's helper for deleting cookies (`Astro.cookies.delete`) now allows setting even more cookie attributes instead of just the `path` and `domain` attributes. Perhaps a "bite-sized" change, but definitely one you can sink your teeth into!
+
+## Deprecated support for older versions of Node.js
+
+In accordance with [our Node.js support and upgrade policy](https://docs.astro.build/en/upgrade-astro/#nodejs-support-and-upgrade-policies), this version of Astro deprecates support for:
+
+- versions of Node.js 18 lower than 18.17.1
+- Node.js 19 (the odd numbered version)
+- versions of Node.js 20 lower than 20.3.0.
+
+As described in our support policy, this decision was made after careful consideration of several factors. We believe this change will result in a more stable and secure Astro experience for all users.
+
+You can continue to use deprecated versions of Node.js until the next major version of Astro (v5). However, you may see warnings when installing Astro and certain features may not work as expected.
+
+## Bug Fixes
+
+You know it, Astro 4.6 includes more bug fixes and smaller improvements that couldn't make it into this release post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#460) to learn more.

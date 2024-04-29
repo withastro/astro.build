@@ -10,6 +10,4 @@ repoUrl: "https://github.com/aFuzzyBear/xelement"
 featured: 11
 homepageUrl: "https://github.com/aFuzzyBear/xelement"
 downloads: 234
-badges:
-  - "featured"
 ---

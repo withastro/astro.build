@@ -1,17 +1,18 @@
 ---
-import Card from "~/components/Card.astro"
-import DiscordIcon from "~/icons/DiscordIcon.jsx"
-import EmailIcon from "~/icons/EmailIcon.jsx"
-import GitHubIcon from "~/icons/GitHubIcon.jsx"
-import TwitterIcon from "~/icons/TwitterIcon.jsx"
-import YouTubeIcon from "~/icons/YouTubeIcon.jsx"
-import MainLayout from "~/layouts/MainLayout.astro"
-import PressAssetCard from "./_components/PressAssetCard.astro"
+import Card from "~/components/Card.astro";
+import DiscordIcon from "~/icons/DiscordIcon.jsx";
+import DownloadIcon from "~/icons/DownloadIcon.tsx";
+import EmailIcon from "~/icons/EmailIcon.jsx";
+import GitHubIcon from "~/icons/GitHubIcon.jsx";
+import TwitterIcon from "~/icons/TwitterIcon.jsx";
+import YouTubeIcon from "~/icons/YouTubeIcon.jsx";
+import MainLayout from "~/layouts/MainLayout.astro";
+import PressAssetCard from "./_components/PressAssetCard.astro";
 
 const seo = {
 	title: "Press",
 	description: "Download Astro logos and other assets for media and press usage.",
-}
+};
 
 const socialLinks = [
 	{
@@ -39,7 +40,7 @@ const socialLinks = [
 		icon: EmailIcon,
 		href: "mailto:press@astro.build",
 	},
-]
+];
 ---
 
 <MainLayout {...seo}>
@@ -136,6 +137,9 @@ const socialLinks = [
 						assetName="starlight-logo-dark"
 					/>
 				</ul>
+				<div class="flex justify-center">
+					<a href="/assets/press/astro-logos.zip" download class="button button-primary">Download all <DownloadIcon aria-hidden="true" class="w-4" /></a>
+				</div>
 			</section>
 		</div>
 

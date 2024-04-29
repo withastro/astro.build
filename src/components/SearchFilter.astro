@@ -1,37 +1,37 @@
 ---
-import MagnifierIcon from "~/icons/MagnifierIcon.jsx"
-import Accordion from "./Accordion.astro"
-import Checkbox from "./Checkbox.astro"
-import TextInput from "./TextInput.astro"
+import MagnifierIcon from "~/icons/MagnifierIcon.jsx";
+import Accordion from "./Accordion.astro";
+import Checkbox from "./Checkbox.astro";
+import TextInput from "./TextInput.astro";
 
 export type FilterOptions = {
-	id: string
-	name: string
-	value: string
-	label: string
-	selected?: boolean
-}
+	id: string;
+	name: string;
+	value: string;
+	label: string;
+	selected?: boolean;
+};
 
 export type FilterGroup = {
-	title: string
-	options: FilterOptions[]
-}
+	title: string;
+	options: FilterOptions[];
+};
 
 export type Props = {
-	indexRoute: string
-	groups: FilterGroup[]
-	search?: string | null
-	searchPlaceholder: string
-}
+	indexRoute: string;
+	groups: FilterGroup[];
+	search?: string | null;
+	searchPlaceholder: string;
+};
 
-const { indexRoute, groups, search = "", searchPlaceholder } = Astro.props
+const { indexRoute, groups, search = "", searchPlaceholder } = Astro.props;
 
 const groupsSelected = groups.filter(({ options }) =>
 	options.some(({ selected }) => selected),
-).length
+).length;
 
 const resetHref =
-	groupsSelected > 0 ? (search ? `${indexRoute}?search=${search}` : indexRoute) : undefined
+	groupsSelected > 0 ? (search ? `${indexRoute}?search=${search}` : indexRoute) : undefined;
 ---
 
 <form action={indexRoute} class="searchfilter">

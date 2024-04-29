@@ -1,14 +1,14 @@
 ---
-import { getEntry } from "astro:content"
-import Avatar from "./Avatar.astro"
+import { getEntry } from "astro:content";
+import Avatar from "./Avatar.astro";
 
 export type Props = {
-	name: string
-}
+	name: string;
+};
 
-const { name } = Astro.props
+const { name } = Astro.props;
 
-const mention = await getEntry("authors", name)
+const mention = await getEntry("authors", name);
 ---
 
 {

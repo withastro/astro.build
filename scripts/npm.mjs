@@ -22,8 +22,8 @@ const PAGE_SIZE = 100;
 /**
  * Gets the number of weekly downloads for an npm package.
  *
- * @param {String} pkg Name of the package published on npm
- * @returns {Promise<Number>} The number of weekly downloads for the package
+ * @param {string} pkg Name of the package published on npm
+ * @returns {Promise<number>} The number of weekly downloads for the package
  */
 export function fetchDownloadsForPackage(pkg) {
 	return fetchJson(`${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`)
@@ -34,8 +34,8 @@ export function fetchDownloadsForPackage(pkg) {
 /**
  * Gets details for a package from the npm registry
  *
- * @param {String} pkg Name of the package published to npm
- * @returns {Object} JSON data as returned by the npm registry
+ * @param {string} pkg Name of the package published to npm
+ * @returns {Promise<any>} JSON data as returned by the npm registry
  */
 export function fetchDetailsForPackage(pkg) {
 	return fetchJson(`${REGISTRY_BASE_URL}${pkg}`);
@@ -44,9 +44,9 @@ export function fetchDetailsForPackage(pkg) {
 /**
  * Searches npm for a specific keyword and returns a map, keyed by package name.
  *
- * @param {String} keyword The keyword used to search npm, ex: `astro-component`
- * @param {String | undefined} ranking The sort order for results, default: `quality`
- * @returns {Map} Map of search results, keyed by package name
+ * @param {string} keyword The keyword used to search npm, ex: `astro-component`
+ * @param {string | undefined} ranking The sort order for results, default: `quality`
+ * @returns {Promise<Map<string, any>>} Map of search results, keyed by package name
  */
 export async function searchByKeyword(keyword, ranking = "quality") {
 	const objects = [];

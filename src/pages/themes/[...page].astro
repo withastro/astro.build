@@ -1,94 +1,93 @@
 ---
-import CardGrid from "~/components/CardGrid.astro"
-import CardGridGroup from "~/components/CardGridGroup.astro"
-import Pagination from "~/components/Pagination.astro"
-import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro"
-import SidebarLayout from "~/components/SidebarLayout.astro"
-import SidebarPanel from "~/components/SidebarPanel.astro"
-import { paginate } from "~/helpers/paginate.js"
-import MainLayout from "~/layouts/MainLayout.astro"
-import SubmitTheme from "./_components/SubmitTheme.astro"
-import ThemeCard from "./_components/ThemeCard.astro"
+import CardGrid from "~/components/CardGrid.astro";
+import CardGridGroup from "~/components/CardGridGroup.astro";
+import Pagination from "~/components/Pagination.astro";
+import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro";
+import SidebarLayout from "~/components/SidebarLayout.astro";
+import SidebarPanel from "~/components/SidebarPanel.astro";
+import { paginate } from "~/helpers/paginate.js";
+import MainLayout from "~/layouts/MainLayout.astro";
+import SubmitTheme from "./_components/SubmitTheme.astro";
+import ThemeCard from "./_components/ThemeCard.astro";
+import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from "./_types/index.ts";
 
-export const prerender = false
+export const prerender = false;
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
-const currentPage = typeof Astro.params.page === "undefined" ? 1 : parseInt(Astro.params.page)
+const currentPage =
+	typeof Astro.params.page === "undefined" ? 1 : Number.parseInt(Astro.params.page);
 
 // invalid page number!
-if (!currentPage || isNaN(currentPage)) {
-	return Astro.redirect("/404")
+if (!currentPage || Number.isNaN(currentPage)) {
+	return Astro.redirect("/404");
 }
 
 // search term from the search/filter panel
-const search = Astro.url.searchParams.get("search")
+const search = Astro.url.searchParams.get("search");
 
 // get a list of all supported categories, this is the same list used by the zod schema
-const categories = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
-	res.json().then((data) => data.themeCategories),
-)
+const categories: ThemeCategory[] = await fetch(
+	`${import.meta.env.THEMES_API_URL}/api/themes/tools`,
+).then((res) => res.json().then((data) => data.themeCategories));
 // get a list of category filters applied to the request
-const selectedCategories = Astro.url.searchParams.getAll("categories[]")
+const selectedCategories = Astro.url.searchParams.getAll("categories[]");
 
 // massage category data for the Filter components
 const categoryFilter: FilterGroup = {
 	title: "Categories",
-	options: categories.map((c: any) => ({
+	options: categories.map((c) => ({
 		id: c.value,
 		name: "categories[]",
 		value: c.value,
 		label: c.name,
 		selected: selectedCategories.includes(c.value),
 	})),
-}
+};
 
 // get a list of all supported tools, this is the same list used by the zod schema
-const tools = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then((res) =>
-	res.json().then((data) => data.themeTools),
-)
+const tools: ThemeTool[] = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then(
+	(res) => res.json().then((data) => data.themeTools),
+);
 
 // get a list of tool filters applied to the request
-const selectedTools = Astro.url.searchParams.getAll("technology[]")
+const selectedTools = Astro.url.searchParams.getAll("technology[]");
 
 // massage tool data for the Filter components
 const toolFilter: FilterGroup = {
 	title: "Technology",
-	options: tools.map((t: any) => ({
+	options: tools.map((t) => ({
 		id: t.value,
 		name: "technology[]",
 		value: t.value,
 		label: t.name,
 		selected: selectedTools.includes(t.value),
 	})),
-}
+};
 
 const ThemePricing = new Map<string, string>([
 	["free", "Free"],
 	["paid", "Paid"],
-])
-
-// get a list of all supported tools, this is the same list used by the zod schema
-const pricing = Array.from(ThemePricing.keys())
+]);
 
 // get a list of tool filters applied to the request
-const selectedPricing = Astro.url.searchParams.getAll("price[]")
+const selectedPricing = Astro.url.searchParams.getAll("price[]");
 
 // massage tool data for the Filter components
 const priceFilter: FilterGroup = {
 	title: "Pricing",
-	options: pricing.map((t) => ({
-		id: t,
+	options: [...ThemePricing].map(([id, label]) => ({
+		id,
 		name: "price[]",
-		value: t,
-		label: ThemePricing.get(t)!,
-		selected: selectedPricing.includes(t),
+		value: id,
+		label,
+		selected: selectedPricing.includes(id),
 	})),
-}
+};
 
-const allThemes = await fetch(
+const allThemes: ThemeAndAuthor[] = await fetch(
 	`${import.meta.env.THEMES_API_URL}/api/themes?${Astro.url.searchParams}`,
-).then((res) => res.json())
+).then((res) => res.json());
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
@@ -97,25 +96,25 @@ const paginatedResults = paginate({
 	currentPage,
 	route: "/themes/[...page]",
 	searchParams: Astro.url.searchParams,
-})
+});
 
-const { page, allPages } = paginatedResults
+const { page, allPages } = paginatedResults;
 
 // make sure the requested page number is valid, if not redirect to the first page of results
 if (allPages.length && !page) {
-	return Astro.redirect(allPages[0])
+	return Astro.redirect(allPages[0]);
 }
 
-const themes = page.data
+const themes = page.data;
 
 const showRecentlyAdded =
-	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value)
-const recentlyAdded = showRecentlyAdded
+	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value);
+const recentlyAdded: ThemeAndAuthor[] = showRecentlyAdded
 	? await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/recent`).then((res) => res.json())
-	: []
-const recentlyAddedSearch = new URLSearchParams(Astro.url.search)
-recentlyAddedSearch.append("categories[]", "recent")
-const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`
+	: [];
+const recentlyAddedSearch = new URLSearchParams(Astro.url.search);
+recentlyAddedSearch.append("categories[]", "recent");
+const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`;
 ---
 
 <MainLayout title="Themes" image={{ src: "/og/themes.jpg", alt: "Explore the possibilities" }}>
@@ -157,7 +156,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 							}
 						>
 							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
-								{recentlyAdded.slice(0, 3).map((theme: any) => (
+								{recentlyAdded.slice(0, 3).map((theme) => (
 									<ThemeCard theme={theme} />
 								))}
 							</CardGrid>

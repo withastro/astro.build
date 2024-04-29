@@ -1,9 +1,11 @@
 ---
-export type Props = {
-	theme: any
-}
+import type { ThemeAndAuthor } from "../_types/index.ts";
 
-const { theme } = Astro.props
+export type Props = {
+	theme: ThemeAndAuthor;
+};
+
+const { theme } = Astro.props;
 ---
 
 <div class="flex items-center gap-2">

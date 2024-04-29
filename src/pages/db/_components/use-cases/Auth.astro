@@ -1,52 +1,99 @@
 ---
-import { Code } from "astro-expressive-code/components"
-import UseCase from "../UseCase.astro"
-import code from "./snippets/auth.txt?raw"
+import { Code } from "astro-expressive-code/components";
+import Icon from "astro-icon";
+import UseCase from "../UseCase.astro";
+import code from "./snippets/auth.txt?raw";
 ---
 
-<UseCase class="hidden" tab="auth">
-	<div slot="example" class="relative isolate mx-auto grid max-w-7xl grid-cols-1">
-		<div class="space-y-6 px-4 py-8 sm:px-16 md:px-8 lg:px-16">
-			<div class="mb-16">
-				<div class="mx-auto h-32 w-32 rounded-full bg-astro-gray-400"></div>
-			</div>
+<UseCase class='hidden' tab='auth'>
+	<div slot='example' class='flex min-h-full flex-col justify-center'>
+		<form
+			action='#'
+			method='POST'
+			novalidate
+			autocomplete='off'
+			class='space-y-6 p-4 caret-astro-gray-200 sm:px-16 md:px-8 lg:px-16'
+		>
 			<div>
-				<label for="email" class="mb-2 block text-sm font-medium leading-6 text-gray-900"
-					><span class="block h-4 w-32 rounded-full bg-astro-gray-400"></span></label
+				<label for='email' class='block text-sm font-medium text-astro-gray-400'
+					>Email Address</label
 				>
-				<div class="mt-2">
-					<div
-						id="email"
-						class="min-h-8 block w-full rounded-md border-0 bg-astro-gray-400 px-3.5 py-2 text-white ring-1 ring-astro-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-					>
+				<div class='relative mt-1'>
+					<div class='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
+						<Icon class='text-astro-gray-400' name='ri:user-3-line' size={20} />
 					</div>
-				</div>
-			</div>
-
-			<div class="flex items-center justify-between">
-				<div class="flex items-center">
-					<div
-						id="remember-me"
-						class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-					>
-					</div>
-					<label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900"
-						><span class="block h-4 w-32 rounded-full bg-astro-gray-400"></span></label
-					>
-				</div>
-
-				<div class="text-sm leading-6">
-					<span class="block h-4 w-32 rounded-full bg-indigo-600 hover:bg-indigo-500"></span>
+					<input
+						type='email'
+						name='email'
+						id='email'
+						class='block w-full rounded-lg border border-[#202432] bg-[#0C0F19] py-2.5 pl-10 text-astro-gray-300 shadow-sm placeholder:text-astro-gray-400 focus:border-astro-gray-400 focus:outline-none focus:ring-astro-gray-400 sm:text-sm'
+						placeholder='Email Address'
+					/>
 				</div>
 			</div>
 
 			<div>
-				<div
-					class="h-12 w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-				>
+				<label for='password' class='block text-sm font-medium text-astro-gray-400'>Password</label>
+				<div class='relative mt-1'>
+					<div class='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
+						<Icon class='text-astro-gray-400' name='ri:lock-2-line' size={20} />
+					</div>
+					<input
+						id='password'
+						type='password'
+						name='password'
+						placeholder='Password'
+						class='block w-full rounded-lg border border-[#202432] bg-[#0C0F19] py-2.5 pl-10 text-astro-gray-300 shadow-sm placeholder:text-astro-gray-400 focus:border-astro-gray-400 focus:outline-none focus:ring-astro-gray-400 sm:text-sm'
+					/>
+					<button
+						id='togglePassword'
+						type='button'
+						class='absolute inset-y-0 right-0 flex items-center pr-3'
+					>
+						<Icon
+							size={20}
+							id='passwordIcon'
+							name='ri:eye-line'
+							class='text-astro-gray-400 hover:text-astro-gray-300'
+						/>
+					</button>
 				</div>
 			</div>
-		</div>
+
+			<button
+				type='button'
+				class='flex w-full justify-center rounded-lg bg-[#343841] px-3 py-1.5 text-sm font-medium leading-6 text-astro-gray-200 shadow-sm hover:bg-[#343841]/50'
+			>
+				Sign In
+			</button>
+		</form>
+
+		<p class='text-center text-sm leading-6 text-gray-500'>
+			Don't have an account?
+			<button
+				type="button"
+				class='text-astro-gray-200 underline underline-offset-2 hover:text-astro-gray-100'
+			>
+				Sign Up
+		</button>
+		</p>
 	</div>
-	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
+	<Code slot='code' lang='ts' code={code.replaceAll("\t", "  ")} />
 </UseCase>
+
+<script>
+
+	const passwordField = document.getElementById("password") as unknown as HTMLInputElement
+	const togglePassword = document.getElementById("togglePassword") as unknown as HTMLButtonElement
+	const passwordIcon = document.getElementById("passwordIcon") as unknown as HTMLElement
+
+	togglePassword.addEventListener("click", () => {
+		if (passwordField.type === "password") {
+			passwordField.type = "text"
+			passwordIcon.setAttribute("name", "ri:eye-line")
+		} else {
+			passwordField.type = "password"
+			passwordIcon.setAttribute("name", "ri:eye-off-line")
+		}
+	})
+</script>

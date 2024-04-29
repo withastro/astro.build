@@ -11,6 +11,4 @@ repoUrl: "https://github.com/yassinedoghri/astro-i18next"
 featured: 16
 homepageUrl: "https://astro-i18next.yassinedoghri.com/"
 downloads: 8646
-badges:
-  - "featured"
 ---

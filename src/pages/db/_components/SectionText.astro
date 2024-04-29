@@ -1,28 +1,31 @@
 ---
 type Props = {
-	headingId?: string
-	isCentered?: boolean
-}
+	headingId?: string;
+	isCentered?: boolean;
+};
 
-const { isCentered = false, headingId } = Astro.props
+const { isCentered = false, headingId } = Astro.props;
 ---
 
 <div class:list={["space-y-1", isCentered && "sm:landing-section"]}>
-	<h2
-		class:list={[
-			"text-balance body w-fit bg-red-pink-gradient bg-clip-text font-semibold uppercase tracking-widest text-transparent",
-		]}
-	>
-		<slot name="eyebrow" />
-	</h2>
-	<h3 id={headingId} class:list={["text-balance heading-3 max-w-3xl font-bold heading"]}>
-		<slot name="title" />
-	</h3>
-	{
-		Astro.slots.has("default") && (
-			<div class="body max-w-prose pl-0 pt-2 text-astro-gray-200 md:pr-16">
-				<slot />
-			</div>
-		)
-	}
+  <h2
+    class:list={[
+      "text-balance body w-fit bg-red-pink-gradient bg-clip-text font-semibold uppercase tracking-widest text-transparent",
+    ]}
+  >
+    <slot name="eyebrow" />
+  </h2>
+  <h3
+    id={headingId}
+    class:list={["text-balance heading-3 max-w-3xl font-bold font-heading"]}
+  >
+    <slot name="title" />
+  </h3>
+  {
+    Astro.slots.has("default") && (
+      <div class="body max-w-prose pl-0 pt-2 text-astro-gray-200 md:pr-16">
+        <slot />
+      </div>
+    )
+  }
 </div>

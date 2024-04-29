@@ -1,57 +1,115 @@
 ---
-import { Code } from "astro-expressive-code/components"
-import UseCase from "../UseCase.astro"
-import code from "./snippets/comments.txt?raw"
+import { getImage } from "astro:assets";
+import { Code } from "astro-expressive-code/components";
+import Icon from "astro-icon";
+import UseCase from "../UseCase.astro";
+import code from "./snippets/comments.txt?raw";
+
+import jacobPic from "../../_assets/jacob-jones.png";
+import marvinPic from "../../_assets/marvin-mckinney.png";
+import wadePic from "../../_assets/wade-warren.png";
+
+const wadeProfilePicture = await getImage({
+	src: wadePic,
+	format: "webp",
+	width: 40,
+});
+const marvinProfilePicture = await getImage({
+	src: marvinPic,
+	format: "webp",
+	width: 40,
+});
+const jacobProfilePicture = await getImage({
+	src: jacobPic,
+	format: "webp",
+	width: 40,
+});
+
+const comments = [
+	{
+		id: 2,
+		author: "Wade Warren",
+		publishedAt: "30 minutes",
+		comment:
+			"I spent the weekend rebuilding our website with Astro DB. The documentation is fantastic, DX is incredible, and the results are impressive. Tons of joy!",
+		authorPic: wadeProfilePicture.src,
+	},
+	{
+		id: 1,
+		author: "Marvin McKinney",
+		publishedAt: "2 hours",
+		comment: "Astro DB is awesome! The DX this provides is great, very easy to set up.",
+		authorPic: marvinProfilePicture.src,
+	},
+];
 ---
 
 <UseCase tab="comments">
-	<div slot="example" class="relative isolate mx-auto max-w-xl py-12 lg:max-w-lg">
-		<ul class="flex flex-col space-y-4">
-			<li>
-				<figure class="rounded-md text-sm leading-6">
-					<figcaption class="flex items-center gap-x-4">
-						<span class="h-10 w-10 rounded-full bg-astro-gray-400"></span>
-						<div>
-							<div class="mb-2 h-4 w-48 rounded-full bg-astro-gray-400"></div>
-							<div class="h-4 w-32 rounded-full bg-astro-gray-400"></div>
-						</div>
-					</figcaption>
-					<blockquote class="mt-6">
-						<div class="flex flex-col gap-2">
-							<div class="h-4 max-w-[360px] rounded-full bg-astro-gray-400"></div>
-							<div class="h-4 max-w-[300px] rounded-full bg-astro-gray-400"></div>
-							<div class="h-4 max-w-[330px] rounded-full bg-astro-gray-400"></div>
-						</div>
-					</blockquote>
-				</figure>
-			</li>
-		</ul>
-		<div class="mt-8">
-			<div>
-				<div class="mx-auto max-w-xl lg:max-w-lg">
-					<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-						<div class="sm:col-span-2">
-							<div class="block text-sm font-semibold leading-6 text-white">
-								<span class="block h-4 w-32 rounded-full bg-astro-gray-400"></span>
-							</div>
-							<div class="mt-2.5">
-								<div
-									id="comment"
-									class="min-h-8 block w-full rounded-md border-0 bg-astro-gray-400 px-3.5 py-2 text-white ring-1 ring-astro-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-								>
-								</div>
-							</div>
-						</div>
+	<div slot="example">
+		<div class="border-b border-b-astro-gray-600 pb-3">
+			<h3 class="text-lg text-astro-gray-300">Latest Comments</h3>
+		</div>
+
+		{
+			comments.map((post) => (
+				<div class="space-y-2 border-b border-b-astro-gray-600 py-4">
+					<div class="flex items-center justify-between">
+						<figure class="flex items-center gap-4">
+							<img
+								src={post.authorPic}
+								alt={`${post.authorPic} Profile Picture`}
+								class="h-10 w-10 object-cover object-center"
+							/>
+							<figcaption class="text-lg text-[#9FA5B3]">
+								{post.author}
+							</figcaption>
+						</figure>
+						<p class="text-[#525866]">{post.publishedAt}</p>
 					</div>
-					<div class="mt-4 flex justify-end">
-						<div
-							class="h-12 w-40 rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-						>
-						</div>
+					<p class="text-base text-astro-gray-300">{post.comment}</p>
+
+					<div class="flex gap-2 text-[#2B3244]">
+						<Icon name="ri:heart-3-fill" size={20} />
+						<Icon name="ri:chat-smile-3-fill" size={20} />
 					</div>
 				</div>
+			))
+		}
+
+		<div class="mt-4 flex items-center gap-4">
+			<div class="w-12">
+				<img
+					src={jacobProfilePicture.src}
+					alt="Jacob Jones Profile Picture"
+					class="h-10 w-10 object-cover object-center"
+				/>
 			</div>
+
+			<form action="#" class="relative w-full">
+				<div
+					class="flex items-center gap-0 overflow-hidden rounded-lg border border-[#202432] bg-[#0C0F19] shadow-sm focus-within:border-astro-gray-500 focus-within:ring-1 focus-within:ring-astro-gray-500"
+				>
+					<label for="comment" class="sr-only">
+						Add your comment</label
+					>
+					<input
+						name="comment"
+						id="comment"
+						class="block w-full resize-none bg-transparent p-3 text-base focus:ring-0 sm:text-sm placeholder:text-astro-gray-400"
+						placeholder="Add your comment..."
+					/>
+					<div class="flex-shrink-0">
+						<button
+							type="button"
+							class="mr-1 inline-flex items-center rounded-lg p-2 text-[#2B3244] hover:text-astro-gray-300"
+						>
+							<Icon name="ri:send-plane-fill" size={24} />
+						</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
+
 	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
 </UseCase>

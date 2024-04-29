@@ -1,63 +1,44 @@
 ---
-import { Icon } from "astro-icon"
+import { Icon } from "astro-icon";
 
 interface Props {
-	title: string
-	icon: string
-	active?: boolean
+	title: string;
+	icon: string;
+	active?: boolean;
 }
 
-const { icon, title, active = false } = Astro.props
+const { icon, title, active = false } = Astro.props;
 ---
 
 <li>
-	<button
-		role="tab"
-		aria-selected={active ? "true" : undefined}
-		class="md:min-w-16 relative flex items-center gap-2 rounded-full px-4 py-1 text-lg sm:text-xl md:min-w-[8rem] md:flex-col md:rounded-lg md:p-4 md:px-6"
-		data-tab={title.toLowerCase()}
-	>
-		<Icon class="text-current" name={icon} width="20" />
-		<p>{title}</p>
-	</button>
-</li>
+  <button
+    role="tab"
+    data-tab={title.toLowerCase()}
+    aria-selected={active ? "true" : undefined}
+    class={`relative flex flex-col items-center gap-3 whitespace-nowrap rounded-full text-lg sm:text-xl md:min-w-[8rem]  md:rounded-lg md:p-4 md:px-6`}
+  >
+    <div
+      data-tab-icon-container={title.toLowerCase()}
+      aria-selected={active ? "true" : undefined}
+      class="w-fit h-fit landing-section rounded-full p-[4px] bg-astro-gray-300 aria-selected:text-white aria-selected:bg-red-pink-gradient"
+    >
+      <div class="bg-black w-16 h-16 landing-section rounded-full">
+        <div
+          data-tab-icon={title.toLowerCase()}
+          aria-selected={active ? "true" : undefined}
+          class="w-full h-full landing-section rounded-full bg-astro-gray-300/20 aria-selected:bg-gradient-to-bl aria-selected:from-[#D83333]/20 aria-selected:to-[#F041FF]/20"
+        >
+          <Icon name={icon} size={32} />
+        </div>
+      </div>
+    </div>
 
-<style>
-	button[data-tab] {
-		opacity: 0.5;
-	}
-	button[aria-selected="true"] {
-		opacity: 1;
-		color: white;
-	}
-	@screen md {
-		button svg {
-			--size: 2.5rem;
-			width: var(--size);
-			height: var(--size);
-		}
-	}
-	[aria-selected="true"]::before,
-	[aria-selected="true"]::after {
-		content: "";
-		position: absolute;
-		border-radius: inherit;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		@apply bg-blue-purple-gradient;
-		z-index: 0;
-	}
-	button > * {
-		z-index: 1;
-	}
-	[aria-selected="true"]::after {
-		top: 1px;
-		right: 1px;
-		bottom: 1px;
-		left: 1px;
-		background: #060913
-			linear-gradient(83.21deg, rgba(50, 70, 255, 0.2) 0%, rgba(184, 69, 237, 0.2) 100%);
-	}
-</style>
+    <p
+      data-tab-title={title.toLowerCase()}
+      aria-selected={active ? "true" : undefined}
+      class="font-medium text-astro-gray-300 aria-selected:bg-gradient-to-bl aria-selected:from-[#D83333] aria-selected:to-[#F041FF] aria-selected:bg-clip-text aria-selected:text-transparent"
+    >
+      {title}
+    </p>
+  </button>
+</li>
