@@ -10,6 +10,7 @@ import MainLayout from "~/layouts/MainLayout.astro";
 import SubmitTheme from "./_components/SubmitTheme.astro";
 import ThemeCard from "./_components/ThemeCard.astro";
 import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from "./_types/index.ts";
+import { THEMES_API_URL } from '~/helpers/constants.ts';
 
 export const prerender = false;
 
@@ -28,7 +29,7 @@ const search = Astro.url.searchParams.get("search");
 
 // get a list of all supported categories, this is the same list used by the zod schema
 const categories: ThemeCategory[] = await fetch(
-	`${import.meta.env.THEMES_API_URL}/api/themes/tools`,
+	`${THEMES_API_URL}/api/themes/tools`,
 ).then((res) => res.json().then((data) => data.themeCategories));
 // get a list of category filters applied to the request
 const selectedCategories = Astro.url.searchParams.getAll("categories[]");
@@ -46,7 +47,7 @@ const categoryFilter: FilterGroup = {
 };
 
 // get a list of all supported tools, this is the same list used by the zod schema
-const tools: ThemeTool[] = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/tools`).then(
+const tools: ThemeTool[] = await fetch(`${THEMES_API_URL}/api/themes/tools`).then(
 	(res) => res.json().then((data) => data.themeTools),
 );
 
@@ -86,7 +87,7 @@ const priceFilter: FilterGroup = {
 };
 
 const allThemes: ThemeAndAuthor[] = await fetch(
-	`${import.meta.env.THEMES_API_URL}/api/themes?${Astro.url.searchParams}`,
+	`${THEMES_API_URL}/api/themes?${Astro.url.searchParams}`,
 ).then((res) => res.json());
 
 // take all matching themes and create a paginated list of results
@@ -110,7 +111,7 @@ const themes = page.data;
 const showRecentlyAdded =
 	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value);
 const recentlyAdded: ThemeAndAuthor[] = showRecentlyAdded
-	? await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/recent`).then((res) => res.json())
+	? await fetch(`${THEMES_API_URL}/api/themes/recent`).then((res) => res.json())
 	: [];
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search);
 recentlyAddedSearch.append("categories[]", "recent");

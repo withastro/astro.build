@@ -1,7 +1,9 @@
 ---
+import { THEMES_API_URL } from '~/helpers/constants.ts';
+
 const { slug } = Astro.props;
 
-const entry = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
+const entry = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
 	(res) => res.json(),
 );
 if (!entry) throw new Error(`Could not find theme with slug "${slug}"`);
