@@ -5,12 +5,12 @@ import Pagination from "~/components/Pagination.astro";
 import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro";
 import SidebarLayout from "~/components/SidebarLayout.astro";
 import SidebarPanel from "~/components/SidebarPanel.astro";
+import { THEMES_API_URL } from "~/helpers/constants.ts";
 import { paginate } from "~/helpers/paginate.js";
 import MainLayout from "~/layouts/MainLayout.astro";
 import SubmitTheme from "./_components/SubmitTheme.astro";
 import ThemeCard from "./_components/ThemeCard.astro";
 import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from "./_types/index.ts";
-import { THEMES_API_URL } from '~/helpers/constants.ts';
 
 export const prerender = false;
 
@@ -28,9 +28,9 @@ if (!currentPage || Number.isNaN(currentPage)) {
 const search = Astro.url.searchParams.get("search");
 
 // get a list of all supported categories, this is the same list used by the zod schema
-const categories: ThemeCategory[] = await fetch(
-	`${THEMES_API_URL}/api/themes/tools`,
-).then((res) => res.json().then((data) => data.themeCategories));
+const categories: ThemeCategory[] = await fetch(`${THEMES_API_URL}/api/themes/tools`).then((res) =>
+	res.json().then((data) => data.themeCategories),
+);
 // get a list of category filters applied to the request
 const selectedCategories = Astro.url.searchParams.getAll("categories[]");
 
@@ -47,8 +47,8 @@ const categoryFilter: FilterGroup = {
 };
 
 // get a list of all supported tools, this is the same list used by the zod schema
-const tools: ThemeTool[] = await fetch(`${THEMES_API_URL}/api/themes/tools`).then(
-	(res) => res.json().then((data) => data.themeTools),
+const tools: ThemeTool[] = await fetch(`${THEMES_API_URL}/api/themes/tools`).then((res) =>
+	res.json().then((data) => data.themeTools),
 );
 
 // get a list of tool filters applied to the request

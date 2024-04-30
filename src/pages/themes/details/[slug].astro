@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import CardGrid from "~/components/CardGrid.astro";
 import CardGridGroup from "~/components/CardGridGroup.astro";
 import ImageGallery from "~/components/ImageGallery.astro";
+import { THEMES_API_URL } from "~/helpers/constants.ts";
 import { sanitizeThemeDescription } from "~/helpers/themes.ts";
 import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx";
 import MainLayout from "~/layouts/MainLayout.astro";
@@ -10,14 +11,13 @@ import ThemeCTAs from "../_components/ThemeCTAs.astro";
 import ThemeCard from "../_components/ThemeCard.astro";
 import ThemeStats from "../_components/ThemeStats.astro";
 import type { Theme, ThemeAndAuthor } from "../_types/index.ts";
-import { THEMES_API_URL } from '~/helpers/constants.ts';
 
 export const prerender = false;
 
 const slug = Astro.params.slug as string;
 
-const theme = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
-	(res) => res.json(),
+const theme = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then((res) =>
+	res.json(),
 );
 
 const relatedThemes: Array<ThemeAndAuthor> = await fetch(
