@@ -1,6 +1,6 @@
 ---
 title: "What's new in Astro - April 2024"
-description: "April 2024 - DESCRIPTION FOR INDEX PAGE"
+description: "April 2024 - Passing 10,000,000 downloads on NPM, getting together in Montreal, and more!"
 publishDate: "April 30, 2024"
 authors:
   - sarah
@@ -9,16 +9,18 @@ socialImage: "/src/content/blog/_images/whats-new-march-2024/og.webp"
 lang: "en"
 ---
 import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
+import ShowcaseCard from './_whats-new-components/ShowcaseCard.astro';
 import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
 
-April showers bring May... meetups?? Let's dive in!
+Some exciting news from around the Astro ecosystem this month. Let's dive in!
 
 ## Updates from Mission Control
 
+- 🥳 Astro corsses **10,000,000** downloads on NPM!
 - 📈 Astro moves up in the latest [Thoughtworks 2024 Technology Radar](https://www.thoughtworks.com/radar/languages-and-frameworks/summary/astro) report 
 - 🚀 FreeCodeCamp is [looking for Astro contributors](https://twitter.com/raisedadead/status/1779437050187403405) to revolutionize their contributor experience
 - 🎙️ New regular [Discord event](https://discord.gg/astrodotbuild?event=1230865917957767218): Tech Chat with Platform 
-- 🇨🇦 Meet you in Montreal! Save the date: May 28, 2024
+- 🇨🇦 Meet you in Montreal! Save the date and [register to attend "Astro Together"](https://lu.ma/vx2n5stv): May 28, 2024
 
 ## Releases
 
@@ -39,7 +41,7 @@ Astro wouldn’t be what it is without its community. From Discord support, to d
 
 ### Astro Team News
 
-Welcome to our newest maintainer Ming-Jun and newest core maintainer Ema (FINISH THIS)
+Welcome to our newest Astro maintainer Ming-Jun Lu and newest core maintainer Emanuele Stoppa! Thank you both for your contributions to Astro, and we're so fortunate to have you aboard! 🫡
 
 ### Community Awards February
 
@@ -111,7 +113,7 @@ Because you can never get tired of watching and reading Astro Content, here's ev
 - 📄 [HTMX & Astro](https://www.html.it/pag/499006/htmx-introduzione-e-installazione-della-libreria/) by @c-daniele
 - 📄 [Tailwind v4 Tip](https://astro-tips.dev/tips/tailwind-v4/) by @oliverspeir
 - 📄 [Darkmode Tip](https://astro-tips.dev/recipes/dark-mode/) by @astrolicious
-- 📺 [WAITING FOR TITLE FROM BEN](https://fxtwitter.com/BHolmesDev/status/1781367804643393564) by @bholmesdev
+- 📺 [You should put your web app on the edge](https://fxtwitter.com/BHolmesDev/status/1781367804643393564) by @bholmesdev
 
 ### Tips & Tools
 
@@ -122,7 +124,10 @@ The latest community-built utilities and integrations to help you build with Ast
 
 
 🛞 [`astro-turnstile`](https://github.com/hkbertoson/astro-turnstile) by @chaosbite
-  - (🕵️ early preview) a simple way to add a turnstile to your Astro site
+  - (🕵️ early preview) a simple way to add a turnstile to your Astro site.
+
+🗄️ [AstroStudio CMS](https://astro-studiocms.xyz/) by @astrolicious
+  - 🧑‍🚀 A dedicated CMS for Astro Studio built by the Astro Community.
 
 ### Themes & Templates
 
@@ -133,11 +138,23 @@ Several new Astro themes were added to the [Astro theme directory](https://astro
 
 ### Websites
 
+Sites of the month:
+
+Add another site to check every day after you've solved Wordle and Jumblie... open another tab for Let's Play Alpha--built with Astro to help computer science students learn about algorithmic searches.
+
+Font Awesome's awesome docs are now built with Starlight!
+
+What do you do when a K-pop fan mistakenly finds themselves in the Astro Discord? Build an Astro website for them... with Astro!
+
+export const siteofmonth = [ { url: 'https://lets-play-alpha.netlify.app/', title: '@ryanjames1729'}, { url: 'https://docs.fontawesome.com/', title: 'Fontawesome'}, { url: 'https://astro-kpop.vercel.app/', title: '@jumper8174'} ]
+
+<ShowcaseGrid items={siteofmonth} />
+
+
 Looking for some inspiration? See all the community member websites submitted to our Discord `#showcase` channel and featured on community calls this month.
 
 export const sites = [
 { url: 'https://tali-tails.com/', title: '@jamesbb'},
-{ url: 'https://lets-play-alpha.netlify.app/', title: '@ryanjames1729'},
 { url: 'https://fujocoded.com/', title: '@ms.boba'},
 { url: 'https://enshrouded.gdg.wiki/', title: '@rogerhn'},
 { url: 'https://e-csoport.hu/', title: '@petrovicz'},
@@ -145,7 +162,6 @@ export const sites = [
 { url: 'https://web-vault.vercel.app/', title:'@Jes015'},
 { url: 'https://dns.surf/', title:'@ccbikai'},
 { url: 'https://captainofphb.me/', title: '@CaptainofPhB'},
-{ url: 'https://astro-cn.com/', title:'@liruifengv'},
 { url: 'https://www.producthunt.com/posts/career-vault', title: 'Product Hunt'}, 
 { url: 'https://www.siddharth.codes', title: '@siddharthsuresh'},
 { url: 'https://vrtuedigital.com/', title: '@nenadvr'},
@@ -168,7 +184,6 @@ export const sites = [
 { url: 'https://www.guochen.design/', title: 'guochen_'},
 { url: 'https://shard7.fr/', title: '@shard7'},
 { url: 'https://bn2health.com.au/', title: '@tsanjaya'},
-{ url: 'https://astro-kpop.vercel.app/', title: '@jumper8174'},
 { url: 'https://bihua.fr/', title: '@donawalt'},
 { url: 'https://www.xypnox.com/', title: '@xypnox'},
 { url: 'https://bepbop.github.io/', title: '@thebigbadgeese'},
@@ -183,7 +198,6 @@ export const sites = [
 ### Starlight in the wild
 
 export const starlightSites = [
-  { url: 'https://docs.fontawesome.com/', title: 'Fontawesome'},
   { url: 'https://docs.patchstack.com/', title:'@palmiak'},
   { url: 'https://schalkneethling.github.io/html-comprehensive-guide/', title: '@schalkneethling'},
   { url: 'https://beta.contribute.freecodecamp.org/', title: '@freeCodeCamp'},
@@ -194,7 +208,7 @@ export const starlightSites = [
   { url: 'https://docs.futurethemes.io/', title: 'FutureThemes'},
   { url: 'https://docs.xtdb.com/index.html', title: 'XTDB' },
   { url: 'https://schematics.pbuilder.dev/frameworks/astro/', title: 'Schematic Docs'},
-  { url:'https://knope.tech/', title:'@knope-dev'},
+  { url: 'https://knope.tech/', title:'@knope-dev'},
   { url: 'https://schematics.pbuilder.dev/', title: '@Hyperxq' },
   { url: 'https://reaccord.djobbo.com/', title: '@djobbo' },
   { url: 'https://docs.zarf.dev/', title: 'Defense Unicorns' },
@@ -206,3 +220,5 @@ export const starlightSites = [
 <ShowcaseGrid items={starlightSites} />
 
 *Want to be on this list next month? Post your Astro websites, projects, apps, tools, blog posts, demos, and videos in our `#showcase` channel in [our Discord](https://astro.build/chat)!*
+
+{/* { url: 'https://astro-cn.com/', title:'@liruifengv'}, */}
