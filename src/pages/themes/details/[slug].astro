@@ -10,17 +10,18 @@ import ThemeCTAs from "../_components/ThemeCTAs.astro";
 import ThemeCard from "../_components/ThemeCard.astro";
 import ThemeStats from "../_components/ThemeStats.astro";
 import type { Theme, ThemeAndAuthor } from "../_types/index.ts";
+import { THEMES_API_URL } from '~/helpers/constants.ts';
 
 export const prerender = false;
 
 const slug = Astro.params.slug as string;
 
-const theme = await fetch(`${import.meta.env.THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
+const theme = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then(
 	(res) => res.json(),
 );
 
 const relatedThemes: Array<ThemeAndAuthor> = await fetch(
-	`${import.meta.env.THEMES_API_URL}/api/themes/related?slug=${slug}`,
+	`${THEMES_API_URL}/api/themes/related?slug=${slug}`,
 ).then((res) => res.json());
 ---
 
