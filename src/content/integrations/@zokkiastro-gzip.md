@@ -8,7 +8,7 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/@zokki/astro-gzip"
 repoUrl: "https://gitea.zokki.net/zokki/astro-gzip"
-homepageUrl: "https://zokki.net"
+homepageUrl: "https://gitea.zokki.net/zokki/astro-gzip"
 badge: "new"
 downloads: 97
 ---
