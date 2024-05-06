@@ -1,6 +1,6 @@
 ---
 title: "Astro 4.8"
-description: "Astro 4.8 is here! This release includes experimental support for Astro actions and rerouting, performance improvements, and more."
+description: "Astro 4.8 is here! This release includes experimental support for Astro actions and rewriting, performance improvements, and more."
 publishDate: "May 9, 2024"
 authors:
   - erika
@@ -17,13 +17,13 @@ lang: "en"
 import BlogSummary from "/src/components/BlogSummary.astro";
 
 <BlogSummary>
-Astro 4.8 is out now! This release includes experimental support for Astro actions and rerouting, performance improvements, and more.
+Astro 4.8 is out now! This release includes experimental support for Astro actions and rewriting, performance improvements, and more.
 </BlogSummary>
 
 Full release highlights include:
 
 - [**Experimental: Astro Actions**](#experimental-astro-actions)
-- [**Experimental: Rerouting support**](#experimental-rerouting-support)
+- [**Experimental: Rewriting support**](#experimental-rewriting-support)
 - [**Performance improvements**](#performance-improvements)
 - [**Ability to define multiple routes with the same entrypoint**](#ability-to-define-multiple-routes-with-the-same-entrypoint)
 
@@ -129,28 +129,28 @@ export function Comment({ postId }: { postId: string }) {
 
 For more information on Astro actions, visit [TODO: link to docs].
 
-## Experimental: Rerouting support
+## Experimental: Rewriting support
 
-Astro 4.8 introduces experimental support for rerouting. Rerouting allows you to show the content of a different page from the current URL. This can be useful for showing different content based on the user's location, device, or other conditions, without needing multiple different URLs. This feature is sometimes also called "rewriting" in other frameworks.
+Astro 4.8 introduces experimental support for rewriting. Rerouting allows you to show the content of a different page from the current URL. This can be useful for showing different content based on the user's location, device, or other conditions, without needing multiple different URLs. This feature is sometimes also called "rerouting" in other frameworks.
 
-To enable this feature, enable the `experimental.rerouting` option in your Astro config:
+To enable this feature, enable the `experimental.rewriting` option in your Astro config:
 
 ```js
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
   experimental: {
-    rerouting: true
+    rewriting: true
   }
 })
 ```
 
-From your pages, you can then access a `reroute` method on the Astro global or context object:
+From your pages, you can then access a `rewrite` method on the Astro global or context object:
 
 ```astro
 ---
 if (!Astro.props.allowed) {
-	return Astro.reroute("/")
+	return Astro.rewrite("/")
 }
 ---
 ```
@@ -158,12 +158,12 @@ if (!Astro.props.allowed) {
 ```ts
 export function GET(ctx) {
 	if (!ctx.locals.allowed) {
-		return ctx.reroute("/")
+		return ctx.rewrite("/")
 	}
 }
 ```
 
-This feature can also be used inside middlewares, by passing a parameter to the `next()` method with the same type as the `reroute` method.
+This feature can also be used inside middlewares, by passing a parameter to the `next()` method with the same type as the `rewrite` method.
 
 ```ts
 export function onRequest(ctx, next) {
@@ -174,7 +174,7 @@ export function onRequest(ctx, next) {
 }
 ```
 
-For more information on rerouting, visit [TODO: link to docs].
+For more information on rewriting, visit [TODO: link to docs].
 
 ## Performance improvements
 
