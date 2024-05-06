@@ -8,10 +8,14 @@ import GetStarted from "./_components/GetStarted.astro";
 import Hero from "./_components/Hero.astro";
 import Sponsors from "./_components/Sponsors.astro";
 import ToolingAndEcosystem from "./_components/ToolingAndEcosystem.astro";
+
+export const prerender = false;
 ---
 
 <Sprite.Provider>
-	<MainLayout image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}>
+	<MainLayout
+		image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}
+	>
 		<Hero />
 		<div class="relative">
 			<div class="bg-grid absolute inset-0 z-grid"></div>
