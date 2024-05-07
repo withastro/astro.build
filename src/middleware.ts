@@ -10,14 +10,14 @@ const pointB = {
 export const onRequest = defineMiddleware(({ request, url }, next) => {
     console.log('test', url.pathname)
     if (url.pathname !== '/') return next();
-    const { latitude, longitude } = geolocation(request);
+    const { city, country, latitude, longitude } = geolocation(request);
     if (!(latitude && longitude)) return next();
     const pointA = {
         latitude: Number.parseFloat(latitude),
         longitude: Number.parseFloat(longitude),
     }
     const distance = haversine(pointA, pointB)
-    const hours = Math.round(distance / (100 /*km/h*/ * 1000 /*m*/));
-    console.log({ latitude, longitude, distance, hours });
+    const hours = Math.round((distance / (100 /*km/h*/ * 1000 /*m*/)) * 10) / 10;
+    console.log(`${city}, ${country} is ${hours < 3.25 ? '' : 'NOT '}close to Montreal`);
     return next();
 })
