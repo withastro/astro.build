@@ -2,20 +2,18 @@ if (!process.env.GITHUB_TOKEN) {
 	throw new Error("GITHUB_TOKEN env variable must be set to run.");
 }
 
-function fetchJson(url) {
-	return fetch(url, {
+async function fetchJson(url) {
+	const res = await fetch(url, {
 		headers: {
 			Authorization: `token ${process.env.GITHUB_TOKEN}`,
 			"User-Agent": "chrome",
 		},
-	}).then((res) => {
-		if (res.status >= 400) {
-			console.error(res.status, res.statusText);
-			throw new Error(res.statusText);
-		}
-
-		return res.json();
 	});
+	if (res.status >= 400) {
+		console.error(res.status, res.statusText);
+		throw new Error(res.statusText);
+	}
+	return await res.json();
 }
 
 /**

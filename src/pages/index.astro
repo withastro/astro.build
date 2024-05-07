@@ -13,8 +13,7 @@ import ToolingAndEcosystem from "./_components/ToolingAndEcosystem.astro";
 export const prerender = false;
 
 function isWithinGeofence() {
-	const { country, latitude, longitude } =
-		(Astro.locals.geo as import("@vercel/edge").Geo) ?? {};
+	const { country, latitude, longitude } = Astro.locals.geo ?? {};
 	if (!(latitude && longitude)) return false;
 	if (country !== "CA" && country !== "US") return false;
 	const lat = Number.parseFloat(latitude);

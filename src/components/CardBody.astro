@@ -1,9 +1,9 @@
 ---
-import type { HTMLAttributes, HTMLTag } from "astro/types";
+import type { HTMLTag, Polymorphic } from "astro/types";
 
-export type Props<T extends HTMLTag> = HTMLAttributes<T> & {
-	as?: T;
-};
+export type Props<T extends HTMLTag> = Polymorphic<{
+	as: T;
+}>;
 
 const { as: Component = "div", class: className, href, ...attrs } = Astro.props;
 ---
