@@ -70,7 +70,7 @@ export const server = {
       email: z.string().email(),
       receivePromo: z.boolean(),
     }),
-    handler: async ({ email, promoOptIn }) => {
+    handler: async ({ email, receivePromo }) => {
       // call a mailing service, or store to a database
       return { success: true };
     },
