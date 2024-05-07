@@ -1,5 +1,4 @@
 ---
-import { Sprite } from "astro-icon";
 import NotificationBanner from "~/components/NotificationBanner.astro";
 import MainLayout from "~/layouts/MainLayout.astro";
 import ContentFirstFast from "./_components/ContentFirstFast.astro";
@@ -11,30 +10,27 @@ import Sponsors from "./_components/Sponsors.astro";
 import ToolingAndEcosystem from "./_components/ToolingAndEcosystem.astro";
 ---
 
-<Sprite.Provider>
-	<MainLayout
-		image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}
-	>
-		<NotificationBanner uid="astro-together-2024">
-			Join us and 100+ Astro developers at
-			<a
-				style="whitespace-nowrap"
-				href="https://lu.ma/astro-together-meetup-2024"
-				>Astro Together</a
-			>
-			 in Montreal on <time datetime="2024-05-28">May 28th</time>!
-		</NotificationBanner>
-		<Hero />
-		<div class="relative">
-			<div class="bg-grid absolute inset-0 z-grid"></div>
-			<div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
-				<FrontendArchitecture />
-				<ContentFirstFast />
-				<FullSpeedAhead />
-				<ToolingAndEcosystem />
-				<GetStarted />
-			</div>
+<MainLayout
+	image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}
+>
+	<NotificationBanner uid="astro-together-2024">
+		Join us and 100+ Astro developers at
+		<a
+			style="whitespace-nowrap"
+			href="https://lu.ma/astro-together-meetup-2024">Astro Together</a
+		>
+		 in Montreal on <time datetime="2024-05-28">May 28th</time>!
+	</NotificationBanner>
+	<Hero />
+	<div class="relative">
+		<div class="bg-grid absolute inset-0 z-grid"></div>
+		<div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
+			<FrontendArchitecture />
+			<ContentFirstFast />
+			<FullSpeedAhead />
+			<ToolingAndEcosystem />
+			<GetStarted />
 		</div>
-		<Sponsors />
-	</MainLayout>
-</Sprite.Provider>
+	</div>
+	<Sponsors />
+</MainLayout>
