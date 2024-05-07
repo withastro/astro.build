@@ -55,73 +55,52 @@ export default defineConfig({
 })
 ```
 
-Then, define actions in the `src/actions/index.ts` file using the `defineAction` function from `astro:actions`. You can define actions that accept JSON or form requests, and the `handler` function will be called with the parsed input and the context object:
+Then, define actions in a `src/actions/index.ts` file using `defineAction()`. You can define actions that accept JSON or form requests, and the `handler` function will be called with your type-safe input.
+
+Plus, no more casting `formData.get()` results. Astro will automatically parse form requests to objects using your Zod schema. Here's an example of a newsletter signup action:
 
 ```ts
 // src/actions/index.ts
 import { defineAction, z } from "astro:actions";
 
 export const server = {
-  like: defineAction({
-    // accept json
-    input: z.object({ postId: z.string() }),
-    handler: async ({ postId }, context) => {
-      // ... update likes in db
-      return likes;
-    },
-  }),
-  comment: defineAction({
-    // accept form requests
+  newsletter: defineAction({
     accept: "form",
     input: z.object({
-      postId: z.string(),
-      author: z.string(),
-      body: z.string(),
+      email: z.string().email(),
+      promoOptIn: z.boolean(),
     }),
-    handler: async ({ postId }, context) => {
-      // ... insert comments in db
-      return comment;
+    handler: async ({ email, promoOptIn }) => {
+      // call a mailing service, or store to a database
+      return { success: true };
     },
   }),
 };
 ```
 
-You can then, call the actions from your client components using the `actions` object from `astro:actions`. You can pass a type-safe object when using JSON, or a `FormData` object when using `accept: 'form'` in your action definition:
+You can call actions from any client component using the `actions` object from `astro:actions`. You can pass a type-safe object when using JSON, or a `FormData` object when using `accept: 'form'`. You can also use `getActionProps()` for progressive enhancement:
 
 ```jsx
-// src/components/blog.tsx
-import { actions } from "astro:actions";
+// src/components/newsletter.tsx
+import { actions, getActionProps } from "astro:actions";
 import { useState } from "preact/hooks";
 
-export function Like({ postId }: { postId: string }) {
-  const [likes, setLikes] = useState(0);
-  return (
-    <button
-      onClick={async () => {
-        const newLikes = await actions.like({ postId });
-        setLikes(newLikes);
-      }}
-    >
-      {likes} likes
-    </button>
-  );
-}
-
-export function Comment({ postId }: { postId: string }) {
+export function Newsletter() {
   return (
     <form
+      method="POST"
       onSubmit={async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const result = await actions.blog.comment(formData);
-        // handle result
+        const result = await actions.newsletter(formData);
       }}
     >
-      <input type="hidden" name="postId" value={postId} />
-      <label for="author">Author</label>
-      <input id="author" type="text" name="author" />
-      <textarea rows={10} name="body"></textarea>
-      <button type="submit">Post</button>
+      <input {...getActionProps(actions.newsletter)} />
+      <label for="email">Email</label>
+      <input id="email" type="text" name="email" />
+      <label for="promoOptIn">Receive promotional emails</label>
+      <input id="promoOptIn" type="checkbox" checked />
+      <button type="submit">Sign Up</button>
     </form>
   );
 }
