@@ -1,22 +1,38 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import MainSponsorItem from "./MainSponsorItem.astro";
 
 const sponsors = [
-	{ src: "sponsors/netlify", alt: "Netlify Logo", href: "https://netlify.com" },
+	{
+		src: "sponsors/netlify",
+		alt: "Netlify Logo",
+		href: "https://netlify.com",
+	},
 	{
 		src: "sponsors/chrome",
 		alt: "Google Chrome Logo",
 		href: "https://developer.chrome.com/blog/framework-fund-2022/",
 	},
-	{ src: "sponsors/shipshape", alt: "Ship Shape Logo", href: "https://shipshape.io/?ref=astro" },
+	{
+		src: "sponsors/shipshape",
+		alt: "Ship Shape Logo",
+		href: "https://shipshape.io/?ref=astro",
+	},
 	{
 		src: "sponsors/buttercms",
 		alt: "ButterCMS Logo",
 		href: "https://buttercms.com/?utm_source=astro.build&utm_medium=banner&utm_campaign=sponsorship",
 	},
-	{ src: "sponsors/deepgram", alt: "Deepgram Logo", href: "https://deepgram.com/" },
-	{ src: "sponsors/divriots", alt: "Div Riots Logo", href: "https://divriots.com/" },
+	{
+		src: "sponsors/deepgram",
+		alt: "Deepgram Logo",
+		href: "https://deepgram.com/",
+	},
+	{
+		src: "sponsors/divriots",
+		alt: "Div Riots Logo",
+		href: "https://divriots.com/",
+	},
 	{
 		src: "sponsors/transloadit",
 		alt: "Transloadit Logo",
@@ -32,13 +48,21 @@ const sponsors = [
 const mainSponsorLogoHeight = 40;
 ---
 
-<section class="landing-section gap-12 py-16 sm:gap-24 sm:py-20 md:py-24 lg:py-28 xl:py-32">
+<section
+	class="landing-section gap-12 py-16 sm:gap-24 sm:py-20 md:py-24 lg:py-28 xl:py-32"
+>
 	<h2 class="heading-4 max-w-4xl px-8 lg:heading-3">
-		Astro is free, open source software made possible by these wonderful sponsors
+		Astro is free, open source software made possible by these wonderful
+		sponsors
 	</h2>
 
-	<div class="flex flex-wrap items-center justify-center gap-12 px-8 sm:gap-16">
-		<MainSponsorItem href="https://vercel.com/" caption="Official Hosting Partner">
+	<div
+		class="flex flex-wrap items-center justify-center gap-12 px-8 sm:gap-16"
+	>
+		<MainSponsorItem
+			href="https://vercel.com/"
+			caption="Official Hosting Partner"
+		>
 			<Icon
 				name="sponsors/vercel"
 				alt="Vercel Logo"
@@ -78,7 +102,11 @@ const mainSponsorLogoHeight = 40;
 			sponsors.map((sponsor) => (
 				<li class="outline-offset-8 outline-astro-pink-light focus-within:outline hover:cursor-pointer">
 					<a href={sponsor.href} rel="sponsored">
-						<Icon name={sponsor.src} aria-label={sponsor.alt} class="w-32" />
+						<Icon
+							name={sponsor.src}
+							aria-label={sponsor.alt}
+							class="w-32"
+						/>
 					</a>
 				</li>
 			))
