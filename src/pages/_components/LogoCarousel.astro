@@ -1,5 +1,5 @@
 ---
-import { Sprite } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Marquee from "~/components/Marquee.astro";
 
 export type Props = {
@@ -16,7 +16,7 @@ export type Props = {
 		{
 			Astro.props.logos.map((logo) => (
 				<li class="flex items-center justify-center rounded-full bg-white s-16">
-					<Sprite name={logo.icon} size={32} />
+					<Icon name={logo.icon} size={32} />
 				</li>
 			))
 		}

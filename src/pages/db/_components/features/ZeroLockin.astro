@@ -1,46 +1,50 @@
 ---
 import { getImage } from "astro:assets";
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 import background from "../../_assets/zero-lockin-bg.png";
 
-const zeroLockInBg = await getImage({ src: background, format: "webp", width: 10 });
+const zeroLockInBg = await getImage({
+  src: background,
+  format: "webp",
+  width: 10,
+});
 ---
 
 <div
-  id='container'
-  class='m-auto flex w-full h-full scale-110 flex-col items-center justify-center gap-2 p-4 pb-8 bg-cover bg-center bg-no-repeat'
+  id="container"
+  class="m-auto flex w-full h-full scale-110 flex-col items-center justify-center gap-2 p-4 pb-8 bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: `url(${zeroLockInBg.src})` }}
 >
   <div>
-    <div class='mt-4 w-3/4'>
+    <div class="mt-4 w-3/4">
       <div
-        id='export-db-dropdown'
-        class='flex w-fit items-center gap-3 rounded-lg bg-[#343841] px-3 py-2 text-white'
+        id="export-db-dropdown"
+        class="flex w-fit items-center gap-3 rounded-lg bg-[#343841] px-3 py-2 text-white"
       >
-        <span class='ml-2'>Export database</span>
-        <Icon name='ri:arrow-down-s-line' size={24} />
+        <span class="ml-2">Export database</span>
+        <Icon name="ri:arrow-down-s-line" size={24} />
       </div>
     </div>
 
     <div
-      class='mt-2 w-full space-y-1 rounded-lg bg-[#111520] p-1 border border-[#4B4B4B]/10'
+      class="mt-2 w-full space-y-1 rounded-lg bg-[#111520] p-1 border border-[#4B4B4B]/10"
     >
       <button
-        id='export-as-sql-btn'
-        class='flex w-full items-center gap-3 whitespace-nowrap rounded-lg hover:bg-gradient-to-r from-white/5 to-transparent px-3 py-2 text-astro-gray-300'
+        id="export-as-sql-btn"
+        class="flex w-full items-center gap-3 whitespace-nowrap rounded-lg hover:bg-gradient-to-r from-white/5 to-transparent px-3 py-2 text-astro-gray-300"
       >
-        <Icon name='ri:file-code-line' size={20} />
+        <Icon name="ri:file-code-line" size={20} />
         <span>Export as SQL</span>
       </button>
 
       <button
         disabled
-        class='group flex w-full items-center gap-3 whitespace-nowrap rounded-lg from-gray-800/50 to-transparent px-3 py-2 text-astro-gray-300 hover:text-astro-gray-400 hover:bg-gradient-to-r disabled:cursor-not-allowed transition-all ease-in-out duration-700 delay-150'
+        class="group flex w-full items-center gap-3 whitespace-nowrap rounded-lg from-gray-800/50 to-transparent px-3 py-2 text-astro-gray-300 hover:text-astro-gray-400 hover:bg-gradient-to-r disabled:cursor-not-allowed transition-all ease-in-out duration-700 delay-150"
       >
-        <Icon name='ri:file-text-line' size={20} />
+        <Icon name="ri:file-text-line" size={20} />
         <span>Export as CSV</span>
         <span
-          class='text-xs opacity-0 group-hover:opacity-100 ease-in duration-700 text-astro-gray-300'
+          class="text-xs opacity-0 group-hover:opacity-100 ease-in duration-700 text-astro-gray-300"
         >
           (coming soon)
         </span>
@@ -49,38 +53,43 @@ const zeroLockInBg = await getImage({ src: background, format: "webp", width: 10
   </div>
 </div>
 
-<div id='downloading-db-div' class='absolute hidden w-full'>
-  <div class='relative flex flex-col h-full min-h-[28rem] items-center justify-center bg-black'>
-    <div class='absolute inset-0 overflow-hidden'>
+<div id="downloading-db-div" class="absolute hidden w-full">
+  <div
+    class="relative flex flex-col h-full min-h-[28rem] items-center justify-center bg-black"
+  >
+    <div class="absolute inset-0 overflow-hidden">
       <div
-        id='northern-lights'
-        class='absolute -inset-[10px] opacity-10 pointer-events-none'
+        id="northern-lights"
+        class="absolute -inset-[10px] opacity-10 pointer-events-none"
       >
       </div>
     </div>
 
     <div
-      class='absolute z-100 h-fit w-fit whitespace-nowrap bg-[#343841] rounded-lg tabular-nums'
+      class="absolute z-100 h-fit w-fit whitespace-nowrap bg-[#343841] rounded-lg tabular-nums"
     >
-      <div class='px-4 py-2 flex items-center justify-between gap-4'>
-        <p class='text-white font-medium'>
-          <span id='db-tables'>0</span>
+      <div class="px-4 py-2 flex items-center justify-between gap-4">
+        <p class="text-white font-medium">
+          <span id="db-tables">0</span>
           <span>/ 121 downloaded tables</span>
         </p>
 
-        <span id='loader' class='w-6 h-6 inline-block box-border'></span>
+        <span id="loader" class="w-6 h-6 inline-block box-border"></span>
       </div>
     </div>
   </div>
 </div>
 
-<div class='h-full w-full flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${zeroLockInBg.src})` }}>
+<div
+  class="h-full w-full flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: `url(${zeroLockInBg.src})` }}
+>
   <div
-    id='download-complete-div'
-    class='w-fit hidden flex flex-col items-center justify-center text-astro-gray-200 border border-[#4B4B4B]/10 bg-[#111520] rounded-lg p-4 sm:p-8 gap-4'
+    id="download-complete-div"
+    class="w-fit hidden flex flex-col items-center justify-center text-astro-gray-200 border border-[#4B4B4B]/10 bg-[#111520] rounded-lg p-4 sm:p-8 gap-4"
   >
-    <Icon name='ri:download-cloud-2-line' size={48} />
-    <span class='text-center'>
+    <Icon name="ri:download-cloud-2-line" size={48} />
+    <span class="text-center">
       All tables in the <code>`Interstellar`</code>
       <br /> database downloaded successfully!
     </span>
@@ -161,40 +170,45 @@ const zeroLockInBg = await getImage({ src: background, format: "webp", width: 10
 </style>
 
 <script>
-  import { animate, inView } from "motion"
+  import { animate, inView } from "motion";
 
-  const dbTables = document.getElementById("db-tables") as HTMLSpanElement
-  const container = document.getElementById("container") as HTMLDivElement
-  const exportDbButton = document.getElementById("export-as-sql-btn") as HTMLButtonElement
-  const downloadingDbContainer = document.getElementById("downloading-db-div") as HTMLDivElement
-  const downloadedDbContainer = document.getElementById("download-complete-div") as HTMLDivElement
+  const dbTables = document.getElementById("db-tables") as HTMLSpanElement;
+  const container = document.getElementById("container") as HTMLDivElement;
+  const exportDbButton = document.getElementById(
+    "export-as-sql-btn",
+  ) as HTMLButtonElement;
+  const downloadingDbContainer = document.getElementById(
+    "downloading-db-div",
+  ) as HTMLDivElement;
+  const downloadedDbContainer = document.getElementById(
+    "download-complete-div",
+  ) as HTMLDivElement;
 
   async function downloadDatabase() {
-    container.classList.add("hidden")
-    downloadingDbContainer.classList.remove("hidden")
+    container.classList.add("hidden");
+    downloadingDbContainer.classList.remove("hidden");
 
     animate(
       (progress) => (dbTables.innerHTML = String(Math.round(progress * 121))),
       {
         duration: 5,
         easing: "ease-out",
-      }
-    )
+      },
+    );
 
     setTimeout(() => {
-      downloadingDbContainer.classList.add("hidden")
-      downloadedDbContainer.classList.remove("hidden")
+      downloadingDbContainer.classList.add("hidden");
+      downloadedDbContainer.classList.remove("hidden");
 
       inView("div", () => {
         animate(
           downloadedDbContainer,
           { opacity: 1, transform: "none" },
-          { delay: 0.02, duration: 0.7, easing: "ease-out" }
-        )
-      })
-    }, 5000)
+          { delay: 0.02, duration: 0.7, easing: "ease-out" },
+        );
+      });
+    }, 5000);
   }
 
-  exportDbButton.addEventListener("click", downloadDatabase)
-
+  exportDbButton.addEventListener("click", downloadDatabase);
 </script>

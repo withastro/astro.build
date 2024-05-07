@@ -1,5 +1,5 @@
 ---
-import { Sprite } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import clsx from "clsx";
 import Card from "~/components/Card.astro";
 import CardBody from "~/components/CardBody.astro";
@@ -26,13 +26,17 @@ const toolingLogos = [
 
 // adds a fake box to limit the width of the first line,
 // so it doesn't overlap the graphic
-const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32");
+const graphicCardHeadingClass = clsx(
+	"before:float-right before:h-1 before:w-32",
+);
 ---
 
 <section class="landing-section">
 	<LandingSectionText>
 		<Fragment slot="title">
-			Zero to website in <span class="inline-block origin-left scale-x-110">whoa</span>
+			Zero to website in <span
+				class="inline-block origin-left scale-x-110">whoa</span
+			>
 		</Fragment>
 	</LandingSectionText>
 
@@ -47,16 +51,20 @@ const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32"
 						class="flex flex-col items-center justify-center gap-y-8 pb-6 sm:pb-8 md:flex-row lg:pb-10"
 					>
 						<div>
-							<CardHeading lg>Designed for your favorite UI library</CardHeading>
+							<CardHeading lg>
+								Designed for your favorite UI library
+							</CardHeading>
 							<p class="body mt-6 text-gray-100 md:mr-16">
-								Keep using your favorite UI framework and existing UI components in Astro. Migrate
-								from <a
+								Keep using your favorite UI framework and
+								existing UI components in Astro. Migrate from <a
 									href="https://docs.astro.build/en/guides/migrate-to-astro/from-create-react-app/"
 									class="link-underline">Create React App</a
 								> to Astro in minutes.
 							</p>
 						</div>
-						<ul class="grid max-w-md grid-cols-9 gap-4 justify-self-end lg:max-w-lg">
+						<ul
+							class="grid max-w-md grid-cols-9 gap-4 justify-self-end lg:max-w-lg"
+						>
 							{
 								toolingLogos.map(({ icon, alt }, i) => (
 									<li
@@ -66,7 +74,14 @@ const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32"
 										]}
 									>
 										<span class="sr-only">{alt}</span>
-										<Sprite name={icon} aria-hidden="true" class="h-[60%] w-[60%]" />
+										<Icon
+											name={icon}
+											width={256}
+											height={128}
+											aria-hidden="true"
+											is:inline
+											class="h-[60%] w-[60%] text-4xl"
+										/>
 									</li>
 								))
 							}
@@ -89,11 +104,13 @@ const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32"
 					<CardHeading>Try Astro in your browser</CardHeading>
 				</div>
 				<CardParagraph>
-					Start your first Astro project right in the browser—no local development environment or
-					signup required!
+					Start your first Astro project right in the browser—no local
+					development environment or signup required!
 				</CardParagraph>
 				<CardFooter>
-					<a href="https://astro.new/" class="button button-white">Start a Project</a>
+					<a href="https://astro.new/" class="button button-white"
+						>Start a Project</a
+					>
 				</CardFooter>
 			</CardBody>
 		</Card>
@@ -106,11 +123,15 @@ const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32"
 					<CardHeading>Explore Astro themes</CardHeading>
 				</div>
 				<CardParagraph>
-					Discover 100+ themes & integrations to take your project to the next level: SEO,
-					analytics, CMS integrations and more.
+					Discover 100+ themes & integrations to take your project to
+					the next level: SEO, analytics, CMS integrations and more.
 				</CardParagraph>
 				<CardFooter>
-					<a href="/themes/" data-astro-prefetch class="button button-white">Explore Themes</a>
+					<a
+						href="/themes/"
+						data-astro-prefetch
+						class="button button-white">Explore Themes</a
+					>
 				</CardFooter>
 			</CardBody>
 		</Card>
@@ -123,11 +144,14 @@ const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32"
 					<CardHeading>Learn more in our docs</CardHeading>
 				</div>
 				<CardParagraph>
-					Thanks to our wonderful contributors, our docs are the best place to learn, troubleshoot,
-					and explore Astro.
+					Thanks to our wonderful contributors, our docs are the best
+					place to learn, troubleshoot, and explore Astro.
 				</CardParagraph>
 				<CardFooter>
-					<a href="https://docs.astro.build/" class="button button-white">Start Learning</a>
+					<a
+						href="https://docs.astro.build/"
+						class="button button-white">Start Learning</a
+					>
 				</CardFooter>
 			</CardBody>
 		</Card>
@@ -137,20 +161,29 @@ const graphicCardHeadingClass = clsx("before:float-right before:h-1 before:w-32"
 				<div class="flex flex-1 flex-col lg:flex-row">
 					<CardBody>
 						<CardLabel>Community</CardLabel>
-						<div class="flex flex-1 flex-col justify-center gap-6 lg:px-8 lg:pb-12">
+						<div
+							class="flex flex-1 flex-col justify-center gap-6 lg:px-8 lg:pb-12"
+						>
 							<CardHeading>
-								<span class="lg:heading-2 lg:leading-[1.1]">Join our community</span>
+								<span class="lg:heading-2 lg:leading-[1.1]"
+									>Join our community</span
+								>
 							</CardHeading>
 							<CardParagraph>
-								Get support, get involved, and join our community of 20,000+ Astro developers—it all
+								Get support, get involved, and join our
+								community of 20,000+ Astro developers—it all
 								happens on Discord.
 							</CardParagraph>
 							<div class="mt-auto lg:mt-0">
-								<a href="/chat" class="button button-white">Join our Discord</a>
+								<a href="/chat" class="button button-white"
+									>Join our Discord</a
+								>
 							</div>
 						</div>
 					</CardBody>
-					<div class="relative h-[420px] overflow-hidden sm:hidden lg:block lg:h-[480px] lg:flex-1">
+					<div
+						class="relative h-[420px] overflow-hidden sm:hidden lg:block lg:h-[480px] lg:flex-1"
+					>
 						<img
 							src={communityCloud.src}
 							width={communityCloud.width}
