@@ -1,10 +1,14 @@
+import { defineConfig } from "astro/config";
+
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
-import astroExpressiveCode from "astro-expressive-code";
-import { defineConfig } from "astro/config";
+
+import ec from "astro-expressive-code";
+import icon from "astro-icon";
+
 import houston from "./houston.theme.json";
 
 /* https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables */
@@ -21,12 +25,13 @@ export default defineConfig({
 			applyBaseStyles: false,
 		}),
 		solid(),
-		astroExpressiveCode({
+		ec({
 			themes: [houston],
 			frames: false,
 		}),
 		mdx(),
 		sitemap(),
+		icon(),
 	],
 	image: {
 		domains: ["v1.screenshot.11ty.dev", "storage.googleapis.com"],
