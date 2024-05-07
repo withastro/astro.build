@@ -2,36 +2,32 @@
 
 ---
 
-<canvas class="absolute inset-0 z-0 h-[32rem] w-full" id="cobe" width="604" height="384"></canvas>
+<canvas
+	class="absolute inset-0 z-0 h-[32rem] w-full"
+	id="cobe"
+	width="604"
+	height="384"></canvas>
 
 <script>
-	import createGlobe from "cobe"
-	let isHover = false
+	import createGlobe from "cobe";
 
-	let phi = 2.5
-	let canvas = document.getElementById("cobe") as HTMLCanvasElement
-
-	canvas.onmouseover = () => {
-		isHover = true
-	}
-	canvas.onmouseout = () => {
-		isHover = false
-	}
+	let phi = 2.5;
+	let canvas = document.getElementById("cobe") as HTMLCanvasElement;
 
 	const rgb = (r: number, g: number, b: number): [number, number, number] =>
-		[r, g, b].map((n) => n / 255) as any
+		[r, g, b].map((n) => n / 255) as any;
 
-	let ro: ResizeObserver
-	let globe: ReturnType<typeof createGlobe>
+	let ro: ResizeObserver;
+	let globe: ReturnType<typeof createGlobe>;
 	function render() {
 		if (ro) {
-			ro.disconnect()
+			ro.disconnect();
 		}
-		const { devicePixelRatio = 1 } = window
-		const { width: w, height: h } = canvas.getBoundingClientRect()
-		const width = w * devicePixelRatio * 2
-		const height = h * devicePixelRatio * 2
-		const size = 0.1
+		const { devicePixelRatio = 1 } = window;
+		const { width: w, height: h } = canvas.getBoundingClientRect();
+		const width = w * devicePixelRatio * 2;
+		const height = h * devicePixelRatio * 2;
+		const size = 0.1;
 		globe = createGlobe(canvas, {
 			devicePixelRatio,
 			width,
@@ -58,15 +54,15 @@
 			],
 			opacity: 1,
 			onRender: (state) => {
-				state.phi = phi
-				phi += 0.00025
+				state.phi = phi;
+				phi += 0.00025;
 			},
-		})
+		});
 		ro = new ResizeObserver(() => {
-			globe.resize()
-		})
-		ro.observe(canvas)
+			globe.resize();
+		});
+		ro.observe(canvas);
 	}
 
-	render()
+	render();
 </script>

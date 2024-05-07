@@ -10,15 +10,15 @@ import MainLayout from "~/layouts/MainLayout.astro";
 import ThemeCTAs from "../_components/ThemeCTAs.astro";
 import ThemeCard from "../_components/ThemeCard.astro";
 import ThemeStats from "../_components/ThemeStats.astro";
-import type { Theme, ThemeAndAuthor } from "../_types/index.ts";
+import type { ThemeAndAuthor } from "../_types/index.ts";
 
 export const prerender = false;
 
 const slug = Astro.params.slug as string;
 
-const theme = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then((res) =>
-	res.json(),
-);
+const theme = await fetch(
+	`${THEMES_API_URL}/api/themes/details?slug=${slug}`,
+).then((res) => res.json());
 
 const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 	`${THEMES_API_URL}/api/themes/related?slug=${slug}`,
@@ -49,8 +49,12 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 				/>
 			)
 		}
-		<div class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x">
-			<section class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:px-20 lg:py-10">
+		<div
+			class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x"
+		>
+			<section
+				class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:px-20 lg:py-10"
+			>
 				<a
 					href="/themes/"
 					data-astro-prefetch
@@ -60,14 +64,21 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 					<span class="pr-2">Back to themes</span>
 				</a>
 				<div>
-					<h1 class="heading-3 mb-4 sm:heading-2">{theme.Theme.title}</h1>
-					<p class="text-lg text-astro-gray-200 lg:text-xl">{theme.Theme.description}</p>
+					<h1 class="heading-3 mb-4 sm:heading-2">
+						{theme.Theme.title}
+					</h1>
+					<p class="text-lg text-astro-gray-200 lg:text-xl">
+						{theme.Theme.description}
+					</p>
 					<ThemeCTAs theme={theme} class="py-6 md:hidden" />
 					<hr class="border-astro-gray-500 md:hidden" />
 					<ThemeStats theme={theme} class="py-4 md:hidden" />
 				</div>
 				<hr class="hidden border-astro-gray-500 md:block" />
-				<article class="prose" set:html={sanitizeThemeDescription(theme.Theme.body)} />
+				<article
+					class="prose"
+					set:html={sanitizeThemeDescription(theme.Theme.body)}
+				/>
 			</section>
 
 			<aside

@@ -1,7 +1,6 @@
 ---
 import { getImage } from "astro:assets";
 import background from "../_assets/use-cases-bg.png";
-import blob from "../_assets/uses-bg.png";
 
 import Tab from "./UseCaseTab.astro";
 import Auth from "./use-cases/Auth.astro";
@@ -10,11 +9,10 @@ import Comments from "./use-cases/Comments.astro";
 import Feedback from "./use-cases/Feedback.astro";
 import Forms from "./use-cases/Forms.astro";
 
-const bg = await getImage({ src: blob, format: "webp", width: 1280 });
 const useCasesBg = await getImage({
-	src: background,
-	format: "webp",
-	width: 1280,
+  src: background,
+  format: "webp",
+  width: 1280,
 });
 ---
 
