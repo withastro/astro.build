@@ -9,3 +9,9 @@ interface ImportMetaEnv {
 interface ImportMeta {
 	readonly env: ImportMetaEnv;
 }
+
+namespace App {
+    interface Locals {
+        geo?: typeof import('@vercel/edge').Geo
+    }
+}
