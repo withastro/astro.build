@@ -68,7 +68,7 @@ export const server = {
     accept: "form",
     input: z.object({
       email: z.string().email(),
-      promoOptIn: z.boolean(),
+      receivePromo: z.boolean(),
     }),
     handler: async ({ email, promoOptIn }) => {
       // call a mailing service, or store to a database
@@ -96,9 +96,9 @@ export function Newsletter() {
     >
       <input {...getActionProps(actions.newsletter)} />
       <label for="email">Email</label>
-      <input id="email" type="text" name="email" />
-      <label for="promoOptIn">Receive promotional emails</label>
-      <input id="promoOptIn" type="checkbox" checked />
+      <input id="email" type="email" name="email" />
+      <label for="receivePromo">Receive promotional emails</label>
+      <input id="receivePromo" name="receivePromo" type="checkbox" checked />
       <button type="submit">Sign Up</button>
     </form>
   );
