@@ -1,6 +1,6 @@
 ---
 title: "Astro 4.8"
-description: "Astro 4.8 is here! This release includes experimental support for Astro actions and rewriting, performance improvements, and more."
+description: "Astro 4.8 is here! This release includes experimental support for Astro actions and request rewriting, performance improvements, and more."
 publishDate: "May 9, 2024"
 authors:
   - erika
@@ -17,13 +17,13 @@ lang: "en"
 import BlogSummary from "/src/components/BlogSummary.astro";
 
 <BlogSummary>
-Astro 4.8 is out now! This release includes experimental support for Astro actions and rewriting, performance improvements, and more.
+Astro 4.8 is out now! This release includes experimental support for Astro actions and request rewriting, performance improvements, and more.
 </BlogSummary>
 
 Full release highlights include:
 
 - [**Experimental: Astro Actions**](#experimental-astro-actions)
-- [**Experimental: Rewriting support**](#experimental-rewriting-support)
+- [**Experimental: Request Rewriting**](#experimental-request-rewriting)
 - [**Performance improvements**](#performance-improvements)
 - [**Ability to define multiple routes with the same entrypoint**](#ability-to-define-multiple-routes-with-the-same-entrypoint)
 
@@ -109,7 +109,7 @@ export function Newsletter() {
 
 For more information on Astro actions, visit [the experimental actions docs](https://docs.astro.build/en/reference/configuration-reference/#experimentalactions).
 
-## Experimental: Rewriting support
+## Experimental: Request Rewriting
 
 Astro 4.8 introduces experimental support for Request rewriting. Rewriting is a routing feature that allows you to show the content of a different page from the current URL. This can be useful for showing different content based on the user's location, device, or other conditions without needing multiple different URLs. This feature is sometimes also called "rerouting" in other frameworks.
 
@@ -164,9 +164,11 @@ In our own benchmarks, we've observed build times improve by up to 20% in specif
 
 ## Ability to define multiple routes with the same entrypoint
 
-Astro integration authors discovered that trying to inject multiple routes with the same entrypoint using the [`injectRoute`](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) function would result in an unintended behavior at build time where the last injected route would override the previous ones. This issue has existed since the introduction of the `injectRoute` function, almost two years ago (in Astro 1.0). With our thriving developer community and so many new integrations being built all the time, it was finally time to fix this. We are pleased that this paves the way for even more integrations in the future!
+Astro integration authors discovered that trying to inject multiple routes with the same entrypoint using the [`injectRoute`](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) function would result in an unintended behavior at build time where the last injected route would override the previous ones.
 
-Thanks to [@goulvenclech](https://github.com/goulvenclech) for contributing this fix!
+This issue has existed since the introduction of the `injectRoute` function, almost two years ago (in Astro 1.0), but thanks to a contribution by [@goulvenclech](https://github.com/goulvenclech), it is now finally fixed in Astro 4.8!
+
+With our thriving developer community and so many new integrations being built all the time, it's important to us that Astro is a great platform for building integrations and we are pleased that this paves the way for even more integrations in the future!
 
 ## Bug Fixes
 
