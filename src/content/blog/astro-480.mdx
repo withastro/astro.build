@@ -17,7 +17,8 @@ lang: "en"
 import BlogSummary from "/src/components/BlogSummary.astro";
 
 <BlogSummary>
-Astro 4.8 is out now! This release includes experimental support for Astro actions and request rewriting, performance improvements, and more.
+  Astro 4.8 is out now! This release includes experimental support for Astro
+  actions and request rewriting, performance improvements, and more.
 </BlogSummary>
 
 Full release highlights include:
@@ -43,16 +44,17 @@ yarn upgrade astro --latest
 
 This release includes the first preview for a long awaited feature: Astro actions! Actions make it easy to define and call backend functions with full type-safety from your client code.
 
-To use this feature, first enable the `experimental.actions` option in your Astro config:
+To use this feature, [add a server build output](https://docs.astro.build/en/basics/rendering-modes/#on-demand-rendered) and enable the `experimental.actions` option in your Astro config:
 
 ```js
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-	experimental: {
-		actions: true
-	}
-})
+  output: "hybrid", // or 'server'
+  experimental: {
+    actions: true,
+  },
+});
 ```
 
 Then, define actions in a `src/actions/index.ts` file using `defineAction()`. You can define actions that accept JSON or form requests, and the `handler` function will be called with your type-safe input.
@@ -120,9 +122,9 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   experimental: {
-    rewriting: true
-  }
-})
+    rewriting: true,
+  },
+});
 ```
 
 From your pages and endpoints, you can then access a `rewrite()` method on the Astro global or context object:
@@ -137,9 +139,9 @@ if (!Astro.props.allowed) {
 
 ```ts
 export function GET(ctx) {
-	if (!ctx.locals.allowed) {
-		return ctx.rewrite("/")
-	}
+  if (!ctx.locals.allowed) {
+    return ctx.rewrite("/");
+  }
 }
 ```
 
@@ -147,10 +149,10 @@ This feature can also be used inside middlewares, by passing a parameter to the 
 
 ```ts
 export function onRequest(ctx, next) {
-	if (!ctx.cookies.get("allowed")) {
-		return next("/")
-	}
-	return next();
+  if (!ctx.cookies.get("allowed")) {
+    return next("/");
+  }
+  return next();
 }
 ```
 
