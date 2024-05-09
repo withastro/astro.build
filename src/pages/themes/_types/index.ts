@@ -25,6 +25,10 @@ export type Theme = {
 	approved: boolean;
 	denied: boolean;
 	hidden: boolean;
+	price: number;
+	sellingThroughPortal: boolean;
+	stripeProductId?: string;
+	stripePriceId?: string;
 };
 
 export type ThemeHasCategory = {
