@@ -1,50 +1,81 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-import ExternalLinkIcon from "~/icons/ExternalLinkIcon.jsx";
-import type { ThemeAndAuthor } from "../_types/index.ts";
-
-export type Props = HTMLAttributes<"div"> & {
-	theme: ThemeAndAuthor;
+import type { HTMLAttributes } from 'astro/types';
+import { THEMES_API_URL } from '~/helpers/constants.ts';
+import ExternalLinkIcon from '~/icons/ExternalLinkIcon.jsx';
+import type { ThemeAndAuthor } from '../_types/index.ts';
+export type Props = HTMLAttributes<'div'> & {
+  theme: ThemeAndAuthor;
 };
 
 const { theme, class: className, ...attrs } = Astro.props;
 ---
 
-<div class:list={["flex flex-col gap-4", className]} {...attrs}>
-	{
-		theme.Theme.buyUrl && (
-			<a href={theme.Theme.buyUrl} class="button button-primary" data-analytics-event="PDDOCXCA:1">
-				<span>Buy now</span>
-				<ExternalLinkIcon aria-hidden="true" />
-			</a>
-		)
-	}
-	{
-		theme.Theme.repoUrl && (
-			<a href={theme.Theme.repoUrl} class="button button-primary" data-analytics-event="PDDOCXCA:0">
-				<span>Get started</span>
-				<ExternalLinkIcon aria-hidden="true" />
-			</a>
-		)
-	}
-	{
-		theme.Theme.demoUrl && (
-			<a href={theme.Theme.demoUrl} class="button" data-analytics-event="DI9WVRXV:0">
-				<span>Live demo</span>
-				<ExternalLinkIcon aria-hidden="true" />
-			</a>
-		)
-	}
+<div class:list={['flex flex-col gap-4', className]} {...attrs}>
+  {
+    theme.Theme.sellingThroughPortal ? (
+      <a
+        href={new URL(`${THEMES_API_URL}/api/themes/generate-checkout?themeId=${theme.Theme.id}`)}
+        class='button button-primary'
+        data-analytics-event='PDDOCXCA:1'
+      >
+        <span>
+          {theme.Theme.price ? `$${theme.Theme.price / 100} - ` : null}
+          Buy now
+        </span>
+        <ExternalLinkIcon aria-hidden='true' />
+      </a>
+    ) : (
+      theme.Theme.buyUrl && (
+        <a
+          href={theme.Theme.buyUrl}
+          class='button button-primary'
+          data-analytics-event='PDDOCXCA:1'
+        >
+          <span>
+            {theme.Theme.price ? `$${theme.Theme.price} - ` : null}
+            Buy now
+          </span>
+          <ExternalLinkIcon aria-hidden='true' />
+        </a>
+      )
+    )
+  }
+  {
+    theme.Theme.repoUrl && (
+      <a
+        href={theme.Theme.repoUrl}
+        class='button button-primary'
+        data-analytics-event='PDDOCXCA:0'
+      >
+        <span>Get started</span>
+        <ExternalLinkIcon aria-hidden='true' />
+      </a>
+    )
+  }
+  {
+    theme.Theme.demoUrl && (
+      <a
+        href={theme.Theme.demoUrl}
+        class='button'
+        data-analytics-event='DI9WVRXV:0'
+      >
+        <span>Live demo</span>
+        <ExternalLinkIcon aria-hidden='true' />
+      </a>
+    )
+  }
 </div>
 
 <script>
-	document.querySelectorAll<HTMLElement>("[data-analytics-event]").forEach((elem) => {
-		if ("fathom" in window && elem.dataset.analyticsEvent) {
-			const [eventId, value = "0"] = elem.dataset.analyticsEvent.split(":")
+  document
+    .querySelectorAll<HTMLElement>('[data-analytics-event]')
+    .forEach((elem) => {
+      if ('fathom' in window && elem.dataset.analyticsEvent) {
+        const [eventId, value = '0'] = elem.dataset.analyticsEvent.split(':');
 
-			elem.addEventListener("click", () => {
-				window.fathom.trackGoal(eventId, parseInt(value!))
-			})
-		}
-	})
+        elem.addEventListener('click', () => {
+          window.fathom.trackGoal(eventId, parseInt(value!));
+        });
+      }
+    });
 </script>
