@@ -1,0 +1,177 @@
+---
+title: "Astro 4.8"
+description: "Astro 4.8 is here! This release includes experimental support for Astro actions and request rewriting, performance improvements, and more."
+publishDate: "May 9, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+  - sarah
+coverImage: "/src/content/blog/_images/astro-480/header_astro_4_8.webp"
+socialImage: "/src/content/blog/_images/astro-480/og_image_4_8.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  Astro 4.8 is out now! This release includes experimental support for Astro
+  actions and request rewriting, performance improvements, and more.
+</BlogSummary>
+
+Full release highlights include:
+
+- [**Experimental: Astro Actions**](#experimental-astro-actions)
+- [**Experimental: Request Rewriting**](#experimental-request-rewriting)
+- [**Performance improvements**](#performance-improvements)
+- [**Ability to define multiple routes with the same entrypoint**](#ability-to-define-multiple-routes-with-the-same-entrypoint)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: Astro Actions
+
+This release includes the first preview for a long awaited feature: Astro actions! Actions make it easy to define and call backend functions with full type-safety from your client code.
+
+To use this feature, [add a server build output](https://docs.astro.build/en/basics/rendering-modes/#on-demand-rendered) and enable the `experimental.actions` option in your Astro config:
+
+```js
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  output: "hybrid", // or 'server'
+  experimental: {
+    actions: true,
+  },
+});
+```
+
+Then, define actions in a `src/actions/index.ts` file using `defineAction()`. You can define actions that accept JSON or form requests, and the `handler` function will be called with your type-safe input.
+
+Plus, no more casting `formData.get()` results. Astro will automatically parse form requests to objects using your Zod schema. Here's an example of a newsletter signup action:
+
+```ts
+// src/actions/index.ts
+import { defineAction, z } from "astro:actions";
+
+export const server = {
+  newsletter: defineAction({
+    accept: "form",
+    input: z.object({
+      email: z.string().email(),
+      receivePromo: z.boolean(),
+    }),
+    handler: async ({ email, receivePromo }) => {
+      // call a mailing service, or store to a database
+      return { success: true };
+    },
+  }),
+};
+```
+
+You can call actions from any client component using the `actions` object from `astro:actions`. You can pass a type-safe object when using JSON, or a `FormData` object when using `accept: 'form'`. You can also use `getActionProps()` for progressive enhancement:
+
+```jsx
+// src/components/newsletter.tsx
+import { actions, getActionProps } from "astro:actions";
+
+export function Newsletter() {
+  return (
+    <form
+      method="POST"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const result = await actions.newsletter(formData);
+      }}
+    >
+      <input {...getActionProps(actions.newsletter)} />
+      <label for="email">Email</label>
+      <input name="email" type="email" id="email" />
+
+      <label for="receivePromo">Receive promotional emails</label>
+      <input name="receivePromo" type="checkbox" id="receivePromo" checked />
+
+      <button type="submit">Sign Up</button>
+    </form>
+  );
+}
+```
+
+For more information on Astro actions, visit [the experimental actions docs](https://docs.astro.build/en/reference/configuration-reference/#experimentalactions).
+
+## Experimental: Request Rewriting
+
+Astro 4.8 introduces experimental support for request rewriting. Rewriting is a routing feature that allows you to show the content of a different page from the current URL. This can be useful for customizing content based on the user's location, device, or other conditions without needing multiple, different URLs. This feature is sometimes also called "rerouting" in other frameworks.
+
+To enable this feature, configure the `experimental.rewriting` option in your Astro config:
+
+```js
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    rewriting: true,
+  },
+});
+```
+
+From your pages and endpoints, you can then access a `rewrite()` method on the Astro global or context object:
+
+```astro
+---
+if (!Astro.props.allowed) {
+	return Astro.rewrite("/")
+}
+---
+```
+
+```ts
+export function GET(ctx) {
+  if (!ctx.locals.allowed) {
+    return ctx.rewrite("/");
+  }
+}
+```
+
+This feature can also be used inside middlewares, by passing a parameter to the `next()` method with the same type as the `rewrite` method.
+
+```ts
+export function onRequest(ctx, next) {
+  if (!ctx.cookies.get("allowed")) {
+    return next("/");
+  }
+  return next();
+}
+```
+
+For more information on rewriting, visit [the experimental rewriting docs](https://docs.astro.build/en/reference/configuration-reference/#experimentalrewriting).
+
+## Performance improvements
+
+Thanks to the recent hard work from [@bluwy](https://github.com/bluwy) both across the JavaScript ecosystem and in Astro itself, Astro is faster than ever! This release includes a number of performance improvements, cutting build and rendering times across the board.
+
+In our own benchmarks, we've observed build times improve by up to 20% in specific cases. No changes are needed to take advantage of these improvements—just upgrade to Astro 4.8 and enjoy the faster builds!
+
+## Ability to define multiple routes with the same entrypoint
+
+Astro integration authors discovered that trying to inject multiple routes with the same entrypoint using the [`injectRoute`](https://docs.astro.build/en/reference/integrations-reference/#injectroute-option) function would result in an unintended behavior at build time where the last injected route would override the previous ones.
+
+This issue has existed since the introduction of the `injectRoute` function, almost two years ago (in Astro 1.0), but thanks to a contribution by [@goulvenclech](https://github.com/goulvenclech), it is now finally fixed in Astro 4.8!
+
+With our thriving developer community and so many new integrations being built all the time, it's important to us that Astro is a great platform to build for and we are pleased that this paves the way for even more integrations in the future!
+
+## Bug Fixes
+
+You know it, Astro 4.8 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#480) to learn more.
