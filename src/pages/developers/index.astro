@@ -27,15 +27,15 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
 
         <div class="px-4 sm:px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl">
             <div class="flex flex-col items-center justify-center">
-                <div id="astro-app-icon" class="flex items-center justify-center">
+                <div id="astro-app-icon" class="w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-2xl sm:rounded-3xl">
                     <AstroLogoLight />
                 </div>
                 
                 <div class='mt-10 sm:mt-16 w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center gap-2 md:gap-6 text-center'>
-                    <h1 id="hero-title" class='text-white font-bold font-heading text-2xl md:text-3xl xl:text-4xl'>
+                    <h1 id="hero-title" class='text-white font-bold font-heading text-xl md:text-3xl xl:text-4xl' style="text-wrap: balance;">
                         Build for the Astro Ecosystem
                     </h1>
-                    <p id="hero-description" class='text-[#BFC1C9] text-base md:text-lg' 	style="text-wrap: balance;">
+                    <p id="hero-description" class='text-[#BFC1C9] text-base md:text-lg' style="text-wrap: balance;">
                         Join the Astro Developer Program to reach customers around the world
                         on the App Store for all Apple platforms. Membership provides the
                         tools, resources, and support you need to develop and distribute
@@ -61,10 +61,7 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
 
 <style>
     #astro-app-icon {
-		width: 128px;
-		height: 128px;
 		flex-shrink: 0;
-		border-radius: 24px;
 		animation: fadeIn 500ms ease-in; 
 		background: linear-gradient(83deg, #0E1664 0%, #3E0758 100%);
 		box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.12) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.24) inset, 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 2px 0px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.15), 0px 8px 8px 0px rgba(0, 0, 0, 0.15);
