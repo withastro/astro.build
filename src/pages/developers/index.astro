@@ -5,6 +5,7 @@ import MainLayout from "~/layouts/MainLayout.astro";
 import Showcase from "./_components/Showcase.astro";
 import background from "./_assets/hero-background.png";
 import AstroLogoLight from "./_components/AstroLogoLight.astro";
+import Radar from "./_components/Radar.astro";
 
 export const prerender = true;
 const title = "Astro Developers Program";
@@ -22,14 +23,12 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
     alt: "Astro Developers Program - Build for the Astro Ecosystem",
   }}>
 
-    <section class="min-h-screen space-y-8 bg-cover bg-top bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
+    <section class="min-h-screen relative space-y-8 bg-cover bg-top bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
+
+        <Radar />
 
         <div class="px-4 sm:px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl">
-            <div class="flex flex-col items-center justify-center">
-                <div class="w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-2xl sm:rounded-3xl">
-                    <AstroLogoLight />
-                </div>
-                
+            <div class="flex flex-col items-center justify-center">                
                 <div class='mt-10 sm:mt-16 w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center gap-2 md:gap-6 text-center'>
                     <h1 id="hero-title" class='text-white font-bold font-heading text-xl md:text-3xl xl:text-4xl' style="text-wrap: balance;">
                         Join the Astro Developer Program
