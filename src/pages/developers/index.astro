@@ -1,11 +1,15 @@
 ---
-import MainLayout from "~/layouts/MainLayout.astro";
-import AstroLogoLight from "./_components/AstroLogoLight.astro";
+import { getImage } from "astro:assets";
 import Link from "./_components/Link.astro";
+import MainLayout from "~/layouts/MainLayout.astro";
+import background from "./_assets/hero-background.png"
+import AstroLogoLight from "./_components/AstroLogoLight.astro";
 
 export const prerender = true;
 const title = "Astro Developers Program";
 const description = "Build for the Astro Ecosystem";
+
+const heroBackground = await getImage({ src: background, format: "webp", width: 1280})
 ---
 
 <MainLayout
@@ -18,37 +22,39 @@ const description = "Build for the Astro Ecosystem";
     alt: "Astro Developers Program - Build for the Astro Ecosystem",
   }}>
 
-  <section class="px-4 px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl min-h-screen space-y-8">
-    <div class="flex flex-col items-center justify-center">
-        <div id="astro-app-icon" class="flex items-center justify-center">
-            <AstroLogoLight />
+    <section class="min-h-screen space-y-8 bg-cover bg-start bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
+
+        <div class="px-4 px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl">
+            <div class="flex flex-col items-center justify-center">
+                <div id="astro-app-icon" class="flex items-center justify-center">
+                    <AstroLogoLight />
+                </div>
+                
+                <div class='mt-10 sm:mt-16 w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center gap-2 md:gap-6 text-center'>
+                    <h1 id="hero-title" class='text-white font-bold font-heading text-2xl md:text-3xl xl:text-4xl'>
+                        Build for the Astro Ecosystem
+                    </h1>
+                    <p id="hero-description" class='text-[#BFC1C9] text-base md:text-lg' 	style="text-wrap: balance;">
+                        Join the Astro Developer Program to reach customers around the world
+                        on the App Store for all Apple platforms. Membership provides the
+                        tools, resources, and support you need to develop and distribute
+                        apps and games, including access to app services, testing tools, app
+                        analytics, and more.
+                    </p>
+                    
+                    <div class='mt-10 flex flex-col items-center justify-center gap-4'>
+                        <div id="CTA">
+                            <Link href='#'>
+                                <span class='bg-clip-text text-transparent bg-gradient-to-r from-[#3245FF] to-[#BC52EE]'>
+                                    Join the program
+                                </span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class='mt-10 sm:mt-16 w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center gap-2 md:gap-6 text-center'>
-            <h1 id="hero-title" class='text-white font-bold font-heading text-2xl md:text-3xl xl:text-4xl'>
-              Build for the Astro Ecosystem
-          </h1>
-          <p id="hero-description" class='text-[#BFC1C9] text-base md:text-lg' 	style="text-wrap: balance;">
-              Join the Astro Developer Program to reach customers around the world
-              on the App Store for all Apple platforms. Membership provides the
-              tools, resources, and support you need to develop and distribute
-              apps and games, including access to app services, testing tools, app
-              analytics, and more.
-          </p>
-
-          <div class='mt-10 flex flex-col items-center justify-center gap-4'>
-              <div id="CTA">
-                  <Link href='#'>
-                      <span class='bg-clip-text text-transparent bg-gradient-to-r from-[#3245FF] to-[#BC52EE]'>
-                          Join the program
-                      </span>
-                  </Link>
-              </div>
-          </div>
-      </div>
-
-    </div>
-  </section>
+    </section>
 </MainLayout>
 
 <style>
