@@ -2,7 +2,8 @@
 import { getImage } from "astro:assets";
 import Link from "./_components/Link.astro";
 import MainLayout from "~/layouts/MainLayout.astro";
-import background from "./_assets/hero-background.png"
+import Showcase from "./_components/Showcase.astro";
+import background from "./_assets/hero-background.png";
 import AstroLogoLight from "./_components/AstroLogoLight.astro";
 
 export const prerender = true;
@@ -22,9 +23,9 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
     alt: "Astro Developers Program - Build for the Astro Ecosystem",
   }}>
 
-    <section class="min-h-screen space-y-8 bg-cover bg-start bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
+    <section class="min-h-screen space-y-8 bg-cover bg-top bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
 
-        <div class="px-4 px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl">
+        <div class="px-4 sm:px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl">
             <div class="flex flex-col items-center justify-center">
                 <div id="astro-app-icon" class="flex items-center justify-center">
                     <AstroLogoLight />
@@ -42,7 +43,7 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
                         analytics, and more.
                     </p>
                     
-                    <div class='mt-10 flex flex-col items-center justify-center gap-4'>
+                    <div class='mt-4 sm:mt-8 flex flex-col items-center justify-center gap-4'>
                         <div id="CTA">
                             <Link href='#'>
                                 <span class='bg-clip-text text-transparent bg-gradient-to-r from-[#3245FF] to-[#BC52EE]'>
@@ -52,6 +53,8 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
                         </div>
                     </div>
                 </div>
+
+                <Showcase />
             </div>
         </div>
     </section>
