@@ -1,0 +1,81 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+import AstroLogoLight from "./_components/AstroLogoLight.astro";
+import Link from "./_components/Link.astro";
+
+export const prerender = true;
+const title = "Astro Developers Program";
+const description = "Build for the Astro Ecosystem";
+---
+
+<MainLayout
+  class="bg-[#060913]"
+  header="transparent"
+  rawTitle={title}
+  description={description}
+  image={{
+    src: "/og/astro-db.jpg",
+    alt: "Astro Developers Program - Build for the Astro Ecosystem",
+  }}>
+
+  <section class="px-4 px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl min-h-screen space-y-8">
+    <div class="flex flex-col items-center justify-center">
+        <div id="astro-app-icon" class="flex items-center justify-center">
+            <AstroLogoLight />
+        </div>
+
+        <div class='mt-10 sm:mt-16 w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center gap-2 md:gap-6 text-center'>
+            <h1 id="hero-title" class='text-white font-bold font-heading text-2xl md:text-3xl xl:text-4xl'>
+              Build for the Astro Ecosystem
+          </h1>
+          <p id="hero-description" class='text-[#BFC1C9] text-base md:text-lg' 	style="text-wrap: balance;">
+              Join the Astro Developer Program to reach customers around the world
+              on the App Store for all Apple platforms. Membership provides the
+              tools, resources, and support you need to develop and distribute
+              apps and games, including access to app services, testing tools, app
+              analytics, and more.
+          </p>
+
+          <div class='mt-10 flex flex-col items-center justify-center gap-4'>
+              <div id="CTA">
+                  <Link href='#'>
+                      <span class='bg-clip-text text-transparent bg-gradient-to-r from-[#3245FF] to-[#BC52EE]'>
+                          Join the program
+                      </span>
+                  </Link>
+              </div>
+          </div>
+      </div>
+
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+    #astro-app-icon {
+		width: 128px;
+		height: 128px;
+		flex-shrink: 0;
+		border-radius: 24px;
+		animation: fadeIn 500ms ease-in; 
+		background: linear-gradient(83deg, #0E1664 0%, #3E0758 100%);
+		box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.12) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.24) inset, 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 2px 0px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.15), 0px 8px 8px 0px rgba(0, 0, 0, 0.15);
+	}
+
+    #hero-title {
+		animation: fadeIn 800ms ease-in; 
+	}
+
+	#hero-description {
+		animation: fadeIn 900ms ease-in;
+	}
+
+    #CTA {
+		animation: fadeIn 1000ms ease-in;
+	}
+
+    @keyframes fadeIn {  
+		from { opacity:0; transform:  translateY(32px); }  
+		to { opacity:1; transform:  translateY(0px); }  
+	}
+</style>
