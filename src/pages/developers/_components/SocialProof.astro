@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets"
+import Jordi from "../_assets/theme-authors/jordi.jpeg"
+import sarasate from "../_assets/theme-authors/sarasate.jpeg"
+import TailusUI from "../_assets/theme-authors/Tailus-UI.png"
+import ElianCodes from "../_assets/theme-authors/ElianCodes.jpeg"
+import Flexdinesh from "../_assets/theme-authors/flexdinesh.jpeg"
+import Jaydanurwin from "../_assets/theme-authors/jaydanurwin.jpeg"
+import TheOtterlord from "../_assets/theme-authors/TheOtterlord.png"
+import EmilGulamov from "../_assets/theme-authors/Emil-Gulamov.jpeg"
+import RishiRajJain from "../_assets/theme-authors/Rishi-Raj-Jain.jpeg"
+import LexingtonThemes from "../_assets/theme-authors/Lexington-Themes.png"
+
+const authors = [
+  { id: 1, author: "Elian", avatar: ElianCodes },
+  { id: 2, author: "TheOtterlord", avatar: TheOtterlord },
+  { id: 3, author: "Jordi", avatar: Jordi },
+  { id: 4, author: "sarasate", avatar: sarasate },
+  { id: 5, author: "TailusUI", avatar: TailusUI },
+  { id: 6, author: "Flexdinesh", avatar: Flexdinesh },
+  { id: 7, author: "Jaydanurwin", avatar: Jaydanurwin },
+  { id: 8, author: "LexingtonThemes", avatar: LexingtonThemes },
+  { id: 9, author: "EmilGulamov", avatar: EmilGulamov },
+  { id: 10, author: "RishiRajJain", avatar: RishiRajJain },
+]
+---
+
+<div class='mt-2 sm:mt-4 flex flex-col items-center justify-center gap-2'>
+    <div class="flex -space-x-2">
+        {
+            authors.map(({ author, avatar }) => (
+              <img
+                class='inline-block h-8 w-8 rounded-full ring-2 ring-white'
+                src={avatar.src}
+                alt={`${author} - one of the featured Astro Theme Developers`}
+              />
+            ))
+          }
+    </div>
+
+  <p class="text-astro-gray-300 font-light text-sm">150+ ecosystem developers have already joined</p>
+</div>

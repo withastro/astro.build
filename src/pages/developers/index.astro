@@ -5,6 +5,7 @@ import MainLayout from "~/layouts/MainLayout.astro";
 import Showcase from "./_components/Showcase.astro";
 import background from "./_assets/hero-background.png";
 import ExternalLink from "~/components/ExternalLink.astro";
+import SocialProof from "./_components/SocialProof.astro";
 
 export const prerender = true;
 const title = "Astro Developers Program";
@@ -20,7 +21,9 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
 
     <section class="lg:min-h-screen relative space-y-8 bg-cover bg-top bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
 
-        <Radar />
+        <div id="radar">
+            <Radar />
+        </div>
 
         <div class="px-4 sm:px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl">
             <div class="w-full flex flex-col items-center justify-center">                
@@ -28,19 +31,23 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
                     <h1 id="hero-title" class='text-white font-bold font-heading text-xl md:text-3xl xl:text-4xl' style="text-wrap: balance;">
                         Join the Astro Developer Program
                     </h1>
-                    <p id="hero-description" class='text-[#BFC1C9] text-base md:text-lg' style="text-wrap: balance;">
+                    <p id="hero-description" class='text-astro-gray-200 text-base md:text-lg' style="text-wrap: balance;">
                         Reach over 100,000 Astro users across the Astro developer ecosystem. Distribute free and premium themes, integrations, and Astro Studio applications directly through our official marketplace.  We handle everything for you, including payment processing and analytics.
                     </p>
+
+                    <div id="social-proof">
+                        <SocialProof />
+                    </div>
                     
-                    <div class='mt-4 sm:mt-8 w-full flex flex-col items-center justify-center gap-4'>
+                    <div class='w-full flex flex-col items-center justify-center gap-4'>
                         <div id="CTA" class="w-full flex flex-col sm:flex-row items-center justify-center gap-2">
                             <ExternalLink href="#" class="px-4 py-2 w-full sm:w-fit inline-flex justify-center bg-white hover:bg-white/90 rounded-full border border-transparent text-base font-normal transition-all ease-in-out duration-500 hover:cursor-pointer">
-                                <span class='bg-clip-text text-transparent bg-gradient-to-r from-[#3245FF] to-[#BC52EE]'>
+                                <span class='bg-clip-text text-transparent bg-blue-purple-gradient'>
                                     Join the waitlist
                                 </span>
                             </ExternalLink>
 
-                            <ExternalLink href="/themes" class="px-4 py-2 w-full sm:w-fit inline-flex justify-center rounded-full border border-transparent text-base font-normal text-[#F2F6FA]/70 hover:text-[#F2F6FA] bg-[#2C2C2C]/60 hover:bg-[#2C2C2C]/30 hover:border-[#2C2C2C] transition-all ease-in-out duration-500 hover:cursor-pointer">
+                            <ExternalLink href="/themes" class="px-4 py-2 w-full sm:w-fit inline-flex justify-center rounded-full border border-transparent text-base font-normal text-astro-gray-100/70 hover:text-astro-gray-100 bg-astro-gray-600/60 hover:bg-astro-gray-600/30 hover:border-astro-gray-500 transition-all ease-in-out duration-500 hover:cursor-pointer">
                                 Browse the marketplace
                             </ExternalLink>
 
@@ -55,6 +62,10 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
 
 <style>
 
+    #radar {
+        animation: fadeIn 800ms ease-in; 
+    }
+
     #hero-title {
 		animation: fadeIn 800ms ease-in; 
 	}
@@ -63,8 +74,12 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
 		animation: fadeIn 900ms ease-in;
 	}
 
+    #social-proof {
+        animation: fadeIn 1000ms ease-in; 
+    }
+
     #CTA {
-		animation: fadeIn 1000ms ease-in;
+		animation: fadeIn 1100ms ease-in;
 	}
 
     @keyframes fadeIn {  
