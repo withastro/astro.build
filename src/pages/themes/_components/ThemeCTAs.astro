@@ -25,14 +25,14 @@ const { theme, class: className, ...attrs } = Astro.props;
         <ExternalLinkIcon aria-hidden='true' />
       </a>
     ) : (
-      theme.Theme.buyUrl && (
+      theme.Theme.paid && (
         <a
-          href={theme.Theme.buyUrl}
+          href={theme.Theme.repoUrl}
           class='button button-primary'
           data-analytics-event='PDDOCXCA:1'
         >
           <span>
-            {theme.Theme.price ? `$${theme.Theme.price} - ` : null}
+            {theme.Theme.price > 0 ? `$${theme.Theme.price} - ` : null}
             Buy now
           </span>
           <ExternalLinkIcon aria-hidden='true' />
@@ -41,7 +41,7 @@ const { theme, class: className, ...attrs } = Astro.props;
     )
   }
   {
-    theme.Theme.repoUrl && (
+    !theme.Theme.paid && (
       <a
         href={theme.Theme.repoUrl}
         class='button button-primary'
