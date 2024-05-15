@@ -118,78 +118,91 @@ recentlyAddedSearch.append("categories[]", "recent");
 const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`;
 ---
 
-<MainLayout title="Themes" image={{ src: "/og/themes.jpg", alt: "Explore the possibilities" }}>
-	<div class="bg-grid relative">
-		<div class="grid-container">
-			<h1
-				class="heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
-			>
-				Jumpstart your next project with a theme
-			</h1>
-		</div>
-	</div>
+<MainLayout
+  title='Themes'
+  image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}
+>
+  <div class='bg-grid relative'>
+    <div class='grid-container'>
+      <h1
+        class='heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40'
+      >
+        Jumpstart your next project with a theme
+      </h1>
+    </div>
+  </div>
 
-	<SidebarLayout>
-		<Fragment slot="sidebar">
-			<SidebarPanel>
-				<SearchFilter
-					indexRoute="/themes/"
-					groups={[categoryFilter, toolFilter, priceFilter]}
-					search={search}
-					searchPlaceholder="Search for a theme"
-				/>
-			</SidebarPanel>
-			<SubmitTheme class="hidden lg:block" />
-		</Fragment>
+  <SidebarLayout>
+    <Fragment slot='sidebar'>
+      <SidebarPanel>
+        <SearchFilter
+          indexRoute='/themes/'
+          groups={[categoryFilter, toolFilter, priceFilter]}
+          search={search}
+          searchPlaceholder='Search for a theme'
+        />
+      </SidebarPanel>
+      <SubmitTheme class='hidden lg:block' />
+    </Fragment>
 
-		{
-			themes.length > 0 ? (
-				<div class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10">
-					<h2 class="sr-only">Themes</h2>
+    {
+      themes.length > 0 ? (
+        <div class='flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10'>
+          <h2 class='sr-only'>Themes</h2>
 
-					{showRecentlyAdded && recentlyAdded.length > 0 && (
-						<CardGridGroup
-							title="Recently Added"
-							cta={
-								recentlyAdded.length > 3
-									? { href: recentlyAddedHref, text: "View all new themes" }
-									: undefined
-							}
-						>
-							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
-								{recentlyAdded.slice(0, 3).map((theme) => (
-									<ThemeCard theme={theme} />
-								))}
-							</CardGrid>
-						</CardGridGroup>
-					)}
+          {showRecentlyAdded && recentlyAdded.length > 0 && (
+            <CardGridGroup
+              title='Recently Added'
+              cta={
+                recentlyAdded.length > 3
+                  ? { href: recentlyAddedHref, text: 'View all new themes' }
+                  : undefined
+              }
+            >
+              <CardGrid class='w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3'>
+                {recentlyAdded.slice(0, 3).map((theme) => (
+                  <ThemeCard theme={theme} />
+                ))}
+              </CardGrid>
+            </CardGridGroup>
+          )}
 
-					<CardGridGroup
-						title={showRecentlyAdded && recentlyAdded.length > 0 ? "All Themes" : undefined}
-					>
-						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
-							{themes.map((theme) => (
-								<ThemeCard theme={theme} />
-							))}
-						</CardGrid>
-					</CardGridGroup>
+          <CardGridGroup
+            title={
+              showRecentlyAdded && recentlyAdded.length > 0
+                ? 'All Themes'
+                : undefined
+            }
+          >
+            <CardGrid class='w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3'>
+              {themes.map((theme) => (
+                <ThemeCard theme={theme} />
+              ))}
+            </CardGrid>
+          </CardGridGroup>
 
-					{allPages.length > 1 && (
-						<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
-					)}
-				</div>
-			) : (
-				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
-					<p>
-						<strong>0</strong> results found for themes matching <strong>"{search}"</strong>
-					</p>
-					<a href="/themes/" data-astro-prefetch class="button button-primary">
-						Clear filters
-					</a>
-				</div>
-			)
-		}
+          {allPages.length > 1 && (
+            <Pagination
+              restRoute
+              page={page}
+              allPages={allPages}
+              class='mx-auto'
+            />
+          )}
+        </div>
+      ) : (
+        <div class='flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10'>
+          <p>
+            <strong>0</strong> results found for themes matching{' '}
+            <strong>"{search}"</strong>
+          </p>
+          <a href='/themes/' data-astro-prefetch class='button button-primary'>
+            Clear filters
+          </a>
+        </div>
+      )
+    }
 
-		<SubmitTheme class="lg:hidden" />
-	</SidebarLayout>
+    <SubmitTheme class='lg:hidden' />
+  </SidebarLayout>
 </MainLayout>

@@ -25,6 +25,7 @@ export type Theme = {
 	approved: boolean;
 	denied: boolean;
 	hidden: boolean;
+	price: number;
 };
 
 export type ThemeHasCategory = {
