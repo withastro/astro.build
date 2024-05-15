@@ -1,14 +1,9 @@
 ---
-import { getImage } from "astro:assets"
+import { Image } from "astro:assets"
 import ThemeTwo from "../_assets/themes/theme-2.png"
 import ThemeSeven from "../_assets/themes/theme-7.png"
 import ThemeEight from "../_assets/themes/theme-8.png"
 import ThemeNine from "../_assets/themes/theme-9.png"
-
-const themeTwo = await getImage({ src: ThemeTwo, format: "webp", width: 1080 })
-const themeSeven = await getImage({ src: ThemeSeven, format: "webp", width: 1080 })
-const themeEight = await getImage({ src: ThemeEight, format: "webp", width: 1080 })
-const themeNine = await getImage({ src: ThemeNine, format: "webp", width: 1080 })
 ---
 
 <section class="mt-10 md:mt-20 lg:mt-32">
@@ -18,23 +13,23 @@ const themeNine = await getImage({ src: ThemeNine, format: "webp", width: 1080 }
         </div>
 
         <div class="w-3/4 p-2 absolute top-6 z-40 bg-[#111521] border border-[#1E2231] rounded-2xl">
-            <img class="rounded-xl w-full object-cover object-top" src={themeTwo.src} alt="AstroWind Theme">
+            <Image class="rounded-xl w-full object-cover object-top" src={ThemeTwo} alt="AstroWind Theme">
         </div>
 
         <div class="w-3/4 h-fit sm:h-3/4 p-2 absolute left-6 sm:left-[8.5rem] z-30 bg-[#111521] border border-[#1E2231] rounded-2xl">
-            <img class="rounded-xl w-full h-full object-cover object-top" src={themeSeven.src} alt="AstroPaper Theme">
+            <Image class="rounded-xl w-full h-full object-cover object-top" src={ThemeSeven} alt="AstroPaper Theme">
         </div>
 
         <div class="w-3/4 h-fit sm:h-3/4 p-2 absolute right-6 sm:right-[8.5rem] z-30 bg-[#111521] border border-[#1E2231] rounded-2xl">
-            <img class="rounded-xl w-full h-full object-cover object-top" src={themeNine.src} alt="Astroplate Theme">
+            <Image class="rounded-xl w-full h-full object-cover object-top" src={ThemeNine} alt="Astroplate Theme">
         </div>
 
         <div class="hidden md:block w-2/4 h-fit sm:h-4/6 p-2 absolute left-4 lg:left-[6.8rem] z-20 bg-[#111521] border border-[#1E2231] rounded-2xl">
-            <img class="rounded-xl w-full h-full object-cover object-left-top" src={themeEight.src} alt="Masonry UI Theme">
+            <Image class="rounded-xl w-full h-full object-cover object-left-top" src={ThemeEight} alt="Masonry UI Theme">
         </div>
 
         <div class="hidden md:block w-2/4 h-fit sm:h-4/6 p-2 absolute right-4 lg:right-[6.8rem] z-20 bg-[#111521] border border-[#1E2231] rounded-2xl">
-            <img class="rounded-xl w-full h-full object-cover object-right-top" src={themeTwo.src} alt="AstroWind Theme">
+            <Image class="rounded-xl w-full h-full object-cover object-right-top" src={ThemeTwo} alt="AstroWind Theme">
         </div>
     </div>
 </section>
