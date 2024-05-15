@@ -22,13 +22,13 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
     alt: "Astro Developers Program - Build for the Astro Ecosystem",
   }}>
 
-    <section class="min-h-screen relative space-y-8 bg-cover bg-top bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
+    <section class="lg:min-h-screen relative space-y-8 bg-cover bg-top bg-no-repeat" style={{ backgroundImage: `url(${heroBackground.src})` }}>
 
         <Radar />
 
         <div class="px-4 sm:px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl">
-            <div class="flex flex-col items-center justify-center">                
-                <div class='mt-10 sm:mt-16 w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center gap-2 md:gap-6 text-center'>
+            <div class="w-full flex flex-col items-center justify-center">                
+                <div class='mt-16 w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center gap-4 md:gap-6 text-center'>
                     <h1 id="hero-title" class='text-white font-bold font-heading text-xl md:text-3xl xl:text-4xl' style="text-wrap: balance;">
                         Join the Astro Developer Program
                     </h1>
@@ -36,8 +36,8 @@ const heroBackground = await getImage({ src: background, format: "webp", width: 
                         Reach over 100,000 Astro users across the Astro developer ecosystem. Distribute free and premium themes, integrations, and Astro Studio applications directly through our official marketplace.  We handle everything for you, including payment processing and analytics.
                     </p>
                     
-                    <div class='mt-4 sm:mt-8 flex flex-col items-center justify-center gap-4'>
-                        <div id="CTA" class="flex items-center justify-center gap-2">
+                    <div class='mt-4 sm:mt-8 w-full flex flex-col items-center justify-center gap-4'>
+                        <div id="CTA" class="w-full flex flex-col sm:flex-row items-center justify-center gap-2">
                             <Link href='#'>
                                 <span class='bg-clip-text text-transparent bg-gradient-to-r from-[#3245FF] to-[#BC52EE]'>
                                     Join the waitlist
