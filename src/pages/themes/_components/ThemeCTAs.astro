@@ -25,7 +25,7 @@ const { theme, class: className, ...attrs } = Astro.props;
         <ExternalLinkIcon aria-hidden='true' />
       </a>
     ) : (
-      theme.Theme.paid && (
+      theme.Theme.paid && theme.Theme.repoUrl && (
         <a
           href={theme.Theme.repoUrl}
           class='button button-primary'
