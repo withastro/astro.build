@@ -4,11 +4,11 @@ import AstroLogoLight from "./AstroLogoLight.astro"
 
 <section class='absolute w-full -top-[36rem] translateY-1/2'>
   <div class='w-full flex items-center justify-center'>
-    <div id='circle-1' class='w-[55rem] h-[55rem] flex items-center justify-center border border-[#D9D9D9]/5 rounded-full'>
-        <div id='circle-2' class='w-[37rem] h-[37rem] flex items-center justify-center border border-[#D9D9D9]/10 rounded-full'>
-            <div id='circle-3' class='w-[22em] h-[22rem] flex items-center justify-center border border-[#D9D9D9]/20 rounded-full'>
-                <div id='circle-4' class='w-44 h-44 relative flex items-center justify-center border border-[#D9D9D9]/30 rounded-full'>
-                    <div class="absolute -bottom-48">
+    <div class='w-[55rem] h-[55rem] flex items-center justify-center border border-[#D9D9D9]/5 rounded-full'>
+        <div class='w-[37rem] h-[37rem] flex items-center justify-center border border-[#D9D9D9]/10 rounded-full'>
+            <div class='w-[22em] h-[22rem] flex items-center justify-center border border-[#D9D9D9]/20 rounded-full'>
+                <div class='w-44 h-44 relative flex items-center justify-center border border-[#D9D9D9]/30 rounded-full'>
+                    <div id="astro-logo" class="absolute -bottom-48 animate-none">
                         <AstroLogoLight />
                     </div>
                 </div>
@@ -17,3 +17,15 @@ import AstroLogoLight from "./AstroLogoLight.astro"
     </div>
   </div>
 </section>
+
+<style>
+    #astro-logo {
+        animation: fadeIn 800ms ease-in; 
+    }
+
+
+    @keyframes fadeIn {  
+		from { opacity:0; transform:  translateY(32px); }  
+		to { opacity:1; transform:  translateY(0px); }  
+	}
+</style>

@@ -1,0 +1,93 @@
+---
+import Link from "./Link.astro"
+import { getImage } from "astro:assets"
+import ThemeOne from "../_assets/themes/theme-1.png"
+import ThemeTwo from "../_assets/themes/theme-2.png"
+import ThemeThree from "../_assets/themes/theme-3.png"
+import ThemeFour from "../_assets/themes/theme-4.png"
+import ThemeFive from "../_assets/themes/theme-5.png"
+import ThemeSix from "../_assets/themes/theme-6.png"
+import ThemeSeven from "../_assets/themes/theme-7.png"
+import ThemeEight from "../_assets/themes/theme-8.png"
+import ThemeNine from "../_assets/themes/theme-9.png"
+import ThemeTen from "../_assets/themes/theme-10.png"
+
+const themeOne = await getImage({ src: ThemeOne, format: "webp", width: 384, })
+const themeTwo = await getImage({ src: ThemeTwo, format: "webp", width: 384 })
+const themeThree = await getImage({ src: ThemeThree, format: "webp", width: 384 })
+const themeFour = await getImage({ src: ThemeFour, format: "webp", width: 384 })
+const themeFive = await getImage({ src: ThemeFive, format: "webp", width: 384 })
+const themeSix = await getImage({ src: ThemeSix, format: "webp", width: 384 })
+const themeSeven = await getImage({ src: ThemeSeven, format: "webp", width: 384 })
+const themeEight = await getImage({ src: ThemeEight, format: "webp", width: 384 })
+const themeNine = await getImage({ src: ThemeNine, format: "webp", width: 384 })
+const themeTen = await getImage({ src: ThemeTen, format: "webp", width: 384 })
+---
+
+<section class="mt-10 md:mt-20 lg:mt-32 h-[32rem] relative overflow-hidden">
+
+    <div class="absolute z-10 w-full h-full bg-gradient-to-b from-transparent via-[#060913] via-70% to-95% to-[#060913]">
+        <div class='pb-14 h-full flex items-end justify-center gap-4'>
+            <Link href='#'>
+              <span class='bg-clip-text text-transparent bg-gradient-to-r from-[#3245FF] to-[#BC52EE]'>
+                Join the program
+              </span>
+            </Link>
+            <Link href='#' class='secondary'>Browse Themes</Link>
+          </div>
+    </div>
+
+    <div class="px-4 sm:px-8 pt-20 sm:pt-40 mx-auto w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+
+        <div class="hidden lg:block space-y-2">
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg">
+                <img class="rounded w-full bg-cover bg-center" src={themeOne.src} alt="AgenceX Theme">
+            </div>
+        </div>
+        
+        <div class="hidden sm:block space-y-2">
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg">
+                <img class="rounded" src={themeTwo.src} alt="AstroWind Theme">
+            </div>
+            
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg">
+                <img class="rounded" src={themeThree.src} alt="Screw Fast Theme">
+            </div>
+            
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg" aria-hidden="true">
+                <img class="rounded" src={themeFive.src} alt="Ernersto Portfolio Theme" aria-hidden="true">
+            </div>
+        </div>
+        
+        <div class="space-y-2">
+            <div class="flex gap-1">
+                <div class="p-0.5 bg-[#111521] border border-[#1E2231] rounded-lg">
+                    <img class="rounded" src={themeEight.src} alt="Masonry UI Theme">
+                </div>
+                
+                <div class="p-0.5 bg-[#111521] border border-[#1E2231] rounded-lg">
+                    <img class="rounded" src={themeNine.src} alt="Astroplate Theme">
+                </div>
+            </div>
+            
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg">
+                <img class="rounded" src={themeFour.src} alt="Cassidy Blog Theme">
+            </div>
+            
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg" aria-hidden="true">
+                <img class="rounded" src={themeSeven.src} alt="AstroPaper Theme" aria-hidden="true">
+            </div>
+        </div>
+        
+        <div class="hidden xl:block space-y-2">
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg">
+                <img class="rounded" src={themeSix.src} alt="Astrolus Theme">
+            </div>
+            
+            <div class="p-1 bg-[#111521] border border-[#1E2231] rounded-lg">
+                <img class="rounded" src={themeTen.src} alt="DevBlog Theme">
+            </div>
+        </div>
+        
+    </div>
+</section>
