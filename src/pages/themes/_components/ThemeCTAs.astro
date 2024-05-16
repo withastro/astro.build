@@ -32,7 +32,7 @@ const { theme, class: className, ...attrs } = Astro.props;
           data-analytics-event='PDDOCXCA:1'
         >
           <span>
-            {theme.Theme.price > 0 ? `$${theme.Theme.price} - ` : null}
+            {theme.Theme.price > 0 ? `$${theme.Theme.price / 100} - ` : null}
             Buy now
           </span>
           <ExternalLinkIcon aria-hidden='true' />
