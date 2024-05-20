@@ -1,0 +1,137 @@
+---
+title: "Astro 4.9"
+description: "Astro 4.8 is now available! This release includes the long-awaited Container API, stabilized experimental features, and more."
+publishDate: "May 23, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+  - sarah
+coverImage: "/src/content/blog/_images/astro-490/header_astro_4_9.webp"
+socialImage: "/src/content/blog/_images/astro-490/og_image_4_9.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  Astro 4.9 is out! This release includes the long-awaited Container API, stabilized experimental features, and more. A small but mighty release!
+</BlogSummary>
+
+Full release highlights include:
+
+- [**Experimental: Container API**](#experimental-container-api)
+- [**Stabilized experimental features**](#stabilized-experimental-features)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: Container API
+
+Astro 4.9 introduces a first look at the long-awaited Container API. This API allows you to render Astro components outside of an Astro application. This is similar to how you can render React components on the server using libraries like `react-dom/server`, or Preact components using `preact-render-to-string`.
+
+Here's an example of how you can use the Container API to render an Astro component to a string:
+
+```ts
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import Component from './components/Component.astro';
+
+const container = await AstroContainer.create();
+console.log(await container.renderToString(Component, { props: {}, slots: {} }))
+```
+
+The posibilities that this API introduces are endless, but this is just a first step. One of our main focus at this stage is to make it easier to render Astro components inside test frameworks powered by Vite, such as Vitest.
+
+```ts
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import { expect, test } from 'vitest';
+import Card from '../src/components/Card.astro';
+
+test('Card with slots', async () => {
+	const container = await AstroContainer.create();
+	const result = await container.renderToString(Card, {
+		slots: {
+			default: 'Card content',
+		},
+	});
+
+	expect(result).toContain('This is a card');
+	expect(result).toContain('Card content');
+});
+```
+
+To get started with testing Astro components with Vitest, we made [a new example](https://github.com/withastro/astro/tree/main/examples/container-with-vitest) you can checkout, or create a new project with directly:
+
+```shell
+npm create astro@latest -- --template container-with-vitest
+```
+
+[Our testing guide](https://docs.astro.build/en/guides/testing/#vitest-and-container-api) has also been updated with more information on how to use the Container API for testing. Test everything!
+
+To learn more about the Container API and how to use it, check out the [Container API documentation](https://docs.astro.build/en/reference/container-reference/). To give feedback on this feature, visit the [Container API RFC](https://github.com/withastro/roadmap/pull/916).
+
+## Stabilized experimental features
+
+This release stabilize the CRSF protection (introduced in Astro 4.6) and i18n domains support (introduced in Astro 4.3) features. As such, it is no longer necessary to enable the `experimental.csrfProtection` and `experimental.i18nDomains` options in your Astro config to use these features.
+
+The `experimental.security.csrfProtection` option has been removed in favor of a new `security.checkOrigin` option. To enable CRSF protection, set `security.checkOrigin` to `true` in your Astro config and remove the `experimental.security.csrfProtection` option if you have it enabled:
+
+```diff
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
++	security: {
++    checkOrigin: true
++  }
+-	experimental: {
+-    security: {
+-      csrfProtection: {
+-        origin: true
+-      }
+-    }
+-	},
+});
+```
+
+As for i18n domains, you can keep your configuration as is, just without the `experimental.i18nDomains` option:
+
+```diff
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  site: "https://example.com",
+  output: "server",
+  adapter: node({
+    mode: 'standalone',
+  }),
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "fr", "pt-br", "es"],
+    prefixDefaultLocale: false,
+    domains: {
+      fr: "https://fr.example.com",
+      es: "https://example.es",
+    },
+  },
+-  experimental: {
+-    i18nDomains: true,
+-  },
+});
+```
+
+For more information on these features, see the [security](https://docs.astro.build/en/reference/configuration-reference/#security) and [i18n domains](https://docs.astro.build/en/guides/internationalization/#domains) sections of the Astro documentation respectively.
+
+## Bug Fixes
+
+As it do be, Astro 4.9 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#490) to learn more!
