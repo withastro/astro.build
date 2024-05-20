@@ -406,7 +406,6 @@ const scraper = new ShowcaseScraper({
 		"https://calckey.org",
 		"https://twitter.com",
 		"https://youtu.be",
-		"https://evadecker.com", // <-- Moved to https://eva.town/
 	],
 });
 await scraper.run();
