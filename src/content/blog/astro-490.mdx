@@ -51,7 +51,7 @@ const container = await AstroContainer.create();
 console.log(await container.renderToString(Component, { props: {}, slots: {} }))
 ```
 
-The posibilities that this API adds are endless, but this is just a first step. One of our main focus at this stage is to make it easier to render Astro components inside test frameworks powered by Vite, such as Vitest.
+The posibilities that this API adds are endless, but this is just a first step. Our main focus at this stage is to make it easier to render Astro components inside test frameworks powered by Vite, such as Vitest.
 
 ```ts
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
@@ -71,7 +71,7 @@ test('Card with slots', async () => {
 });
 ```
 
-To get started with testing Astro components with Vitest, we made [a new example](https://github.com/withastro/astro/tree/main/examples/container-with-vitest) you can checkout, or create a new project with directly:
+To get started testing Astro components with Vitest, we made [a new example](https://github.com/withastro/astro/tree/main/examples/container-with-vitest) you can checkout, or create a new project with directly:
 
 ```shell
 npm create astro@latest -- --template container-with-vitest
@@ -79,13 +79,13 @@ npm create astro@latest -- --template container-with-vitest
 
 [Our testing guide](https://docs.astro.build/en/guides/testing/#vitest-and-container-api) has also been updated with more information on how to use the Container API for testing. Test everything!
 
-To learn more about the Container API and how to use it, check out the [Container API documentation](https://docs.astro.build/en/reference/container-reference/). To give feedback on this feature, visit the [Container API RFC](https://github.com/withastro/roadmap/pull/916).
+To learn more about the Container API and how to use it, check out the [Container API documentation](https://docs.astro.build/en/reference/container-reference/). To give feedback on this experimental and developing feature, visit the [Container API RFC](https://github.com/withastro/roadmap/pull/916).
 
 ## Stabilized experimental features
 
-This release stabilize the CRSF protection (introduced in Astro 4.6) and i18n domains support (introduced in Astro 4.3) features. As such, it is no longer necessary to enable the `experimental.csrfProtection` and `experimental.i18nDomains` options in your Astro config to use these features.
+This release stabilize the CRSF protection (introduced in [Astro 4.6](/blog/astro-460/#experimental-support-for-csrf-protection)) and i18n domains support (introduced in [Astro 4.3](/blog/astro-430/#experimental-add-domain-support-for-i18n)) features. It is no longer necessary to enable the `experimental.csrfProtection` and `experimental.i18nDomains` options in your Astro config to use these features.
 
-The `experimental.security.csrfProtection` option has been removed in favor of a new `security.checkOrigin` option. To enable CRSF protection, set `security.checkOrigin` to `true` in your Astro config and remove the `experimental.security.csrfProtection` option if you have it enabled:
+The `experimental.security.csrfProtection` option has been removed in favor of a new `security.checkOrigin` option. To enable cross-site request forgery protection, set `security.checkOrigin` to `true` in your Astro config and remove the `experimental.security.csrfProtection` option if you have it enabled:
 
 ```diff
 import { defineConfig } from "astro/config";
