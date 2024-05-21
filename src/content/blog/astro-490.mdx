@@ -23,6 +23,7 @@ import BlogSummary from "/src/components/BlogSummary.astro";
 Full release highlights include:
 
 - [**Experimental: Container API**](#experimental-container-api)
+- [**React 19 support for Astro Actions**](#react-19-support)
 - [**Stabilized experimental features**](#stabilized-experimental-features)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
@@ -80,6 +81,51 @@ npm create astro@latest -- --template container-with-vitest
 [Our testing guide](https://docs.astro.build/en/guides/testing/#vitest-and-container-api) has also been updated with more information on how to use the Container API for testing. Test everything!
 
 To learn more about the Container API and how to use it, check out the [Container API documentation](https://docs.astro.build/en/reference/container-reference/). To give feedback on this experimental and developing feature, visit the [Container API RFC](https://github.com/withastro/roadmap/pull/916).
+
+## React 19 support
+
+The first React 19 release candidate is out, and Astro came prepared. We added full support for React 19 to the React adapter with some added goodies for Astro Actions.
+
+To use React 19 in your Astro project, [follow the React 19 beta installation guide.](https://react.dev/blog/2024/04/25/react-19-upgrade-guide#installing) This unlocks React's new form actions feature, which lets you call Actions from a `<form>` and track "pending" and "result" values in your components.
+
+This example uses an Astro Action called `like()` that accepts a `postId` and returns the number of likes. With React 19, you can pass this action to the `useActionState()` hook to track the result. Apply the `experimental_withState()` function to apply progressive enhancement information automatically:
+
+```tsx
+import { actions } from 'astro:actions';
+import { experimental_withState } from '@astrojs/react/actions';
+
+export function Like({ postId }: { postId: string }) {
+	const [state, action, pending] = useActionState(
+		experimental_withState(actions.like),
+		0, // initial likes
+	);
+
+	return (
+		<form action={action}>
+			<input type="hidden" name="postId" value={postId} />
+      <button disabled={pending}>{state} ❤️</button>
+		</form>
+	);
+}
+```
+
+You can also access the state stored by `useActionState()` from your action `handler` using `experimental_getActionState()`. [See the CHANGELOG](TODO:link) for usage examples.
+
+If you don't need to track the state, you can also apply Astro Actions directly to the `action` property on any React `<form>`. This will also apply progressive enhancement information:
+
+```tsx
+import { actions } from 'astro:actions';
+
+export function SignOut() {
+  return (
+    <form action={actions.signOut}>
+      <button>Sign Out</button>
+    </form>
+  );
+}
+```
+
+To learn more about Astro Actions, and to offer feedback on this experimental API, check out the [Astro Actions RFC](https://github.com/withastro/roadmap/blob/actions/proposals/0046-actions.md).
 
 ## Stabilized experimental features
 
