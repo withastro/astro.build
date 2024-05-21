@@ -91,7 +91,9 @@ To use React 19 in your Astro project, [follow the React 19 beta installation gu
 This example uses an Astro Action called `like()` that accepts a `postId` and returns the number of likes. With React 19, you can pass this action to the `useActionState()` hook to track the result. Apply the `experimental_withState()` function to apply progressive enhancement information automatically:
 
 ```tsx
+// src/components/Like.tsx
 import { actions } from 'astro:actions';
+import { useActionState } from 'react';
 import { experimental_withState } from '@astrojs/react/actions';
 
 export function Like({ postId }: { postId: string }) {
@@ -114,6 +116,7 @@ You can also access the state stored by `useActionState()` from your action `han
 If you don't need to track the state, you can also apply Astro Actions directly to the `action` property on any React `<form>`. This will also apply progressive enhancement information:
 
 ```tsx
+// src/components/SignOut.tsx
 import { actions } from 'astro:actions';
 
 export function SignOut() {
