@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@astrojs/web-vitals@0.2.0':
+    hash: tzxnozwr6mpix4mlsoktylwgn4
+    path: patches/@astrojs__web-vitals@0.2.0.patch
+
 dependencies:
   '@astro-community/astro-embed-youtube':
     specifier: ^0.4.3
@@ -28,7 +33,7 @@ dependencies:
     version: 5.1.0(astro@4.5.2)(tailwindcss@3.3.6)
   '@astrojs/web-vitals':
     specifier: ^0.2.0
-    version: 0.2.0(@astrojs/db@0.11.4)
+    version: 0.2.0(patch_hash=tzxnozwr6mpix4mlsoktylwgn4)(@astrojs/db@0.11.4)
   '@fontsource-variable/inter':
     specifier: ^5.0.16
     version: 5.0.17
@@ -448,7 +453,7 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/web-vitals@0.2.0(@astrojs/db@0.11.4):
+  /@astrojs/web-vitals@0.2.0(patch_hash=tzxnozwr6mpix4mlsoktylwgn4)(@astrojs/db@0.11.4):
     resolution: {integrity: sha512-9yChO17Tahs+OIvvY5pZfqMpag4Hvz1T4Lnv7NfMvc5Hx7KlmDyCGLP/P+kSy0QZ0TXnXIGrjAoZj+9CPVkIWA==}
     peerDependencies:
       '@astrojs/db': ^0.11.0
@@ -456,6 +461,7 @@ packages:
       '@astrojs/db': 0.11.4
       web-vitals: 4.0.1
     dev: false
+    patched: true
 
   /@babel/code-frame@7.23.5:
     resolution: {integrity: sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==}
