@@ -111,7 +111,7 @@ export function Like({ postId }: { postId: string }) {
 }
 ```
 
-You can also access the state stored by `useActionState()` from your action `handler` using `experimental_getActionState()`. [See the CHANGELOG](TODO:link) for usage examples.
+You can also access the state stored by `useActionState()` from your action `handler` using `experimental_getActionState()`. [See the CHANGELOG](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#490) for usage examples.
 
 If you don't need to track the state, you can also apply Astro Actions directly to the `action` property on any React `<form>`. This will also apply progressive enhancement information:
 
@@ -132,7 +132,7 @@ To learn more about Astro Actions, and to offer feedback on this experimental AP
 
 ## Stabilized experimental features
 
-This release stabilize the CRSF protection (introduced in [Astro 4.6](/blog/astro-460/#experimental-support-for-csrf-protection)) and i18n domains support (introduced in [Astro 4.3](/blog/astro-430/#experimental-add-domain-support-for-i18n)) features. It is no longer necessary to enable the `experimental.csrfProtection` and `experimental.i18nDomains` options in your Astro config to use these features.
+This release stabilizes the CRSF protection (introduced in [Astro 4.6](/blog/astro-460/#experimental-support-for-csrf-protection)) and i18n domains support (introduced in [Astro 4.3](/blog/astro-430/#experimental-add-domain-support-for-i18n)) features. It is no longer necessary to enable the `experimental.csrfProtection` and `experimental.i18nDomains` options in your Astro config to use these features.
 
 The `experimental.security.csrfProtection` option has been removed in favor of a new `security.checkOrigin` option. To enable cross-site request forgery protection, set `security.checkOrigin` to `true` in your Astro config and remove the `experimental.security.csrfProtection` option if you have it enabled:
 
