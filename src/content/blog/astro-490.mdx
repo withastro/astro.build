@@ -49,7 +49,7 @@ import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import Component from './components/Component.astro';
 
 const container = await AstroContainer.create();
-console.log(await container.renderToString(Component, { props: {}, slots: {} }))
+console.log(await container.renderToString(Component));
 ```
 
 The posibilities that this API adds are endless, but this is just a first step. Our main focus at this stage is to make it easier to render Astro components inside test frameworks powered by Vite, such as Vitest.
