@@ -11,7 +11,7 @@ const { skipText = false } = Astro.props;
 		!skipText && (
 			<>
 				<p class="font-heading heading-4 font-light md:text-2xl">Let's keep in touch</p>
-				<p class="mb-4 pt-2 text-astro-gray-200">
+				<p class="mb-4 pt-2 text-astro-gray-200 text-balance">
 					Enter your email to keep in the know with the latest updates from Astro.
 				</p>
 			</>
@@ -25,13 +25,13 @@ const { skipText = false } = Astro.props;
 		class="flex flex-col justify-between"
 	>
 		<input
-			class="mb-4 h-10 rounded-lg border border-astro-gray-600 bg-astro-gray-500 px-3 py-1 text-astro-gray-100"
+			class="mb-2 h-10 rounded-lg border border-astro-gray-600 bg-astro-dark-900 px-3 py-1 text-astro-gray-100 focus:outline-none focus:ring-[1px] focus:ring-astro-gray-400"
 			type="email"
 			placeholder="your@email.com"
 			name="email"
 			id="bd-email"
 			required
 		/>
-		<input type="submit" value="Submit" class="button !h-10 border-none bg-blue-purple-gradient" />
+		<input type="submit" value="Stay up to date" class="!h-10 border border-astro-dark-300/10 font-sm font-light bg-astro-gray-600/50 hover:bg-astro-gray-600/30 hover:cursor-pointer rounded-full" />
 	</form>
 </div>
