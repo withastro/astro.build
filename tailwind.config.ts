@@ -38,6 +38,7 @@ export default {
 					700: "#17191E",
 				},
 				"astro-dark": {
+					800: "#0C0F19",
 					900: "#060913"
 				},
 				"astro-blue": "#3245FF",
@@ -254,7 +255,7 @@ export default {
 				},
 
 				".link": {
-					"@apply transition-colors text-astro-gray-100 hover:text-astro-gray-300": {},
+					"@apply transition-colors font-light text-astro-gray-200 hover:text-white duration-300 ease-out": {},
 				},
 				".link-underline": {
 					"@apply link border-b border-astro-gray-100 hover:border-astro-gray-300": {},

@@ -60,52 +60,49 @@ const groups: LinkGroup[] = [
 const socialLinks = siteInfo.socialLinks;
 ---
 
-<footer class="container">
-	<nav
-		aria-label="Secondary"
-		class="flex flex-col links-start justify-between gap-12 py-8 sm:flex-row-reverse md:py-12"
-	>
-		<NewsLetterSignup />
-		<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
-			{
-				groups.map(({ title, links }, index) => (
-					<section class="group flex flex-col">
-						<h2 id={`footerHeading${index}`} class="code mb-4 label-base leading-none opacity-50">
-							{title}
-						</h2>
-						<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
-							{links.map(({ href, label }) => (
-								<li>
-									<a href={href} class="link whitespace-nowrap">
-										{label}
-									</a>
-								</li>
-							))}
-						</ul>
-					</section>
-				))
-			}
-		</div>
-	</nav>
-	<hr class="border-astro-gray-500" />
-	<nav
-		aria-label="Legal"
-		class="flex flex-col-reverse gap-x-8 gap-y-4 py-8 md:flex-row md:links-center md:justify-between md:py-12"
-	>
-		<div class="mt-6 flex flex-col gap-x-8 gap-y-4 md:mt-0 md:flex-row">
-			<a class="link opacity-80" href="/privacy/">Privacy Policy</a>
-			<a class="link opacity-80" href="/terms/">Terms of Service</a>
-			<p class="font-mono mr-auto mt-6 opacity-50 md:mt-0">
-				<a href="https://github.com/withastro/astro/blob/main/LICENSE" target="_blank" class="link"
-					>MIT License</a
-				> &copy; {new Date().getFullYear()}&nbsp;
-				<a
-					href="https://github.com/withastro/astro/graphs/contributors"
-					class="link"
-					target="_blank">Astro Contributors</a
-				>
-			</p>
-		</div>
-		<SocialLinks links={socialLinks} />
-	</nav>
+<footer class="w-full bg-astro-dark-800">
+	<div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
+		<nav
+			aria-label="Secondary"
+			class="flex flex-col sm:flex-row links-start justify-between gap-12 py-8 md:py-12"
+		>
+			<NewsLetterSignup />
+			
+			<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
+				{
+					groups.map(({ title, links }, index) => (
+						<section class="group flex flex-col">
+							<h2 id={`footerHeading${index}`} class="mb-4 label-base leading-none text-white">
+								{title}
+							</h2>
+							<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
+								{links.map(({ href, label }) => (
+									<li>
+										<a href={href} class="whitespace-nowrap link">
+											{label}
+										</a>
+									</li>
+								))}
+							</ul>
+						</section>
+					))
+				}
+			</div>
+		</nav>
+		<hr class="border-astro-gray-500" />
+		<nav
+			aria-label="Legal"
+			class="py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
+		>
+			<div class="flex items-center gap-4">
+				<a target="_blank" class="link" href="https://github.com/withastro/astro/blob/main/LICENSE">
+					MIT License &copy; {new Date().getFullYear()}&nbsp;
+				</a> 
+				<a class="link" target="_blank" href="https://github.com/withastro/astro/graphs/contributors">
+					Astro Contributors
+				</a>
+			</div>
+			<SocialLinks links={socialLinks} />
+		</nav>
+	</div>
 </footer>
