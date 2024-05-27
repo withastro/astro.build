@@ -1,15 +1,28 @@
 ---
-import siteInfo from "~/data/site-info.js";
 import AstroLogo from "./AstroLogo.astro";
-import ResourcesMenu from "./ResourcesMenu.astro";
+import siteInfo from "~/data/site-info.js";
 import SocialLinks from "./SocialLinks.astro";
+import ResourcesMenu from "./ResourcesMenu.astro";
 
 const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 ---
 
-<a href="/" data-astro-prefetch title="Home" data-home-link>
-	<AstroLogo />
-</a>
+<nav class="w-full flex items-center justify-between">
+	<a href="/" data-astro-prefetch title="Home" data-home-link>
+		<AstroLogo />
+	</a>
+	
+	<div class="ml-16 hidden shrink flex-row items-center gap-16 lg:flex text-base">
+		<a href="https://docs.astro.build" class="link">Documentation</a>
+		<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
+		<ResourcesMenu />
+		<a href="/blog/" data-astro-prefetch class="link">Blog</a>
+	</div>
+	
+	<div class="hidden gap-4 sm:flex">
+		<SocialLinks links={socialLinks} />
+	</div>
+</nav>
 
 <script>
 	import { getElement } from "~/helpers/dom.js"
@@ -19,15 +32,3 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 	})
 </script>
 
-<div class="ml-16 hidden shrink flex-row items-center gap-16 lg:flex">
-	<a href="https://docs.astro.build" class="link">Documentation</a>
-	<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
-	<ResourcesMenu />
-	<a href="/blog/" data-astro-prefetch class="link">Blog</a>
-</div>
-
-<div class="flex-1"></div>
-
-<div class="hidden gap-4 sm:flex">
-	<SocialLinks links={socialLinks} />
-</div>
