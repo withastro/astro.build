@@ -1,33 +1,23 @@
 ---
-import ChevronIcon from "~/icons/ChevronIcon.jsx";
+import Icon from "astro-icon"
+import ChevronIcon from "~/icons/ChevronIcon.jsx"
 ---
 
-<div data-code-block class="bg-blue-purple-gradient p-0.5 shadow-sm">
-	<div class="flex items-center bg-astro-gray-600">
-		<ChevronIcon class="relative ml-4 mr-2 block w-3 -rotate-90" />
+<div data-code-block class="h-10 bg-astro-dark-900/40 backdrop-blur-lg rounded-xl">
+	<div class="pl-3 group h-full flex items-center">
+		<ChevronIcon class="mr-2 relative block w-3 -rotate-90 text-astro-gray-200" aria-hidden="true" />
 
-		<code data-code class="code flex-1 text-left leading-none">
+		<code data-code class="flex-1 font-mono font-light text-sm text-astro-gray-200">
 			<slot />
 		</code>
 
 		<div class="relative">
 			<button
 				data-copy-button
-				class="block p-4 transition hover:scale-110 active:scale-100 active:transition-none"
+				class="block mr-1 p-2 transition hover:scale-110 active:scale-100 active:transition-colors text-astro-gray-300 group-hover:text-astro-gray-100"
 				title="Copy to clipboard"
-			>
-				<svg
-					class="w-5"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-					<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-				</svg>
+			> 
+				<Icon name="ri:file-copy-line" size={20} aria-hidden="true" />
 			</button>
 
 			<p
