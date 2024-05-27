@@ -1,14 +1,7 @@
 ---
-import { Sprite } from "astro-icon";
-import NotificationBanner from "~/components/NotificationBanner.astro";
-import MainLayout from "~/layouts/MainLayout.astro";
-import ContentFirstFast from "./_components/ContentFirstFast.astro";
-import FrontendArchitecture from "./_components/FrontendArchitecture.astro";
-import FullSpeedAhead from "./_components/FullSpeedAhead.astro";
-import GetStarted from "./_components/GetStarted.astro";
-import Hero from "./_components/Hero.astro";
-import Sponsors from "./_components/Sponsors.astro";
-import ToolingAndEcosystem from "./_components/ToolingAndEcosystem.astro";
+import { Sprite } from "astro-icon"
+import MainLayout from "~/layouts/MainLayout.astro"
+import NotificationBanner from "~/components/NotificationBanner.astro"
 ---
 
 <Sprite.Provider>
@@ -24,17 +17,7 @@ import ToolingAndEcosystem from "./_components/ToolingAndEcosystem.astro";
 			>
 			 in Montreal on <time datetime="2024-05-28">May 28th</time>!
 		</NotificationBanner>
-		<Hero />
-		<div class="relative">
-			<div class="bg-grid absolute inset-0 z-grid"></div>
-			<div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
-				<FrontendArchitecture />
-				<ContentFirstFast />
-				<FullSpeedAhead />
-				<ToolingAndEcosystem />
-				<GetStarted />
-			</div>
-		</div>
-		<Sponsors />
+
+
 	</MainLayout>
 </Sprite.Provider>

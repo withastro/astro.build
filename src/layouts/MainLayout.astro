@@ -19,7 +19,7 @@ const { class: classList, header = "default", ...head } = Astro.props;
   lang="en"
   class:list={[
     "astro-gray-700 overflow-x-hidden break-words text-astro-gray-100 [color-scheme:dark] [word-break:break-word]",
-    classList || "bg-black",
+    classList || "bg-astro-dark-900",
   ]}
 >
   <head>
@@ -30,8 +30,8 @@ const { class: classList, header = "default", ...head } = Astro.props;
     <div
       id="nav"
       class:list={{
-        "left-0 right-0 top-0 z-20 max-h-screen": true,
-        "sticky bg-black": header === "default",
+        "inset-x-0 top-0 z-20 max-h-screen": true,
+        "sticky bg-astro-dark-900/30 backdrop-blur-xl": header === "default",
         absolute: header === "transparent",
       }}
     >

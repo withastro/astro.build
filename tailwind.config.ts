@@ -37,6 +37,9 @@ export default {
 					600: "#23262D",
 					700: "#17191E",
 				},
+				"astro-dark": {
+					900: "#060913"
+				},
 				"astro-blue": "#3245FF",
 				"astro-purple": "#BC52EE",
 				"astro-purple-dark": "#3F224D",
