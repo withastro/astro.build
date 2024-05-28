@@ -1,17 +1,15 @@
 ---
 name: "@playform/compress"
 title: "@playform/compress"
-description: "🗜️ Compress."
+description: "🗜️ Compress —"
 categories:
   - "css+ui"
   - "performance+seo"
   - "featured"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@playform/compress"
 image: "/assets/integrations/@playform/compress.svg"
-repoUrl: "https://github.com/Playform/Compress"
+repoUrl: "https://github.com/PlayForm/Compress"
 featured: 4
-homepageUrl: "https://github.com/Playform/Compress#ReadMe"
+homepageUrl: "HTTPS://GitHub.Com/PlayForm/Compress#readme"
 downloads: 61737
-badge: "new"
 ---

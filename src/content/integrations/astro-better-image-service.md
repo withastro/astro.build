@@ -1,7 +1,7 @@
 ---
 name: "astro-better-image-service"
 title: "astro-better-image-service"
-description: "An Astro image service to optimize images with the best compression and quality."
+description: "Astro integration for image compression and conversion, superseding Astro's default image service."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-better-image-service"
