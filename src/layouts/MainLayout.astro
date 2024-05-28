@@ -47,33 +47,33 @@ const { class: classList, header = "default", ...head } = Astro.props;
     <main id="main" class="relative z-10 flex flex-1 flex-col">
       <slot />
     </main>
-
     <Footer />
-    <style>
-      :root.disclosure-open {
-        overflow-y: hidden;
-      }
-      body::before {
-        content: "";
-        position: fixed;
-        display: block;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 11;
-        background: #0d0f14;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 400ms cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      :root.disclosure-open body::before {
-        opacity: 1;
-      }
-
-      :root.disclosure-open #nav {
-        overflow-y: auto;
-      }
-    </style>
   </body>
 </html>
+
+<style>
+  :root.disclosure-open {
+    overflow-y: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 11;
+    background: #0d0f14;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  :root.disclosure-open body::before {
+    opacity: 1;
+  }
+
+  :root.disclosure-open #nav {
+    overflow-y: auto;
+  }
+</style>
