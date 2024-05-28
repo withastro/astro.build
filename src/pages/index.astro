@@ -1,29 +1,30 @@
 ---
 import { Sprite } from "astro-icon"
 import MainLayout from "~/layouts/MainLayout.astro"
+import Studio from "./_components/landing-page/Studio.astro"
 import Sponsors from "./_components/landing-page/Sponsors.astro"
 import FinalCTA from "./_components/landing-page/FinalCTA.astro"
-import NotificationBanner from "~/components/NotificationBanner.astro"
-import Studio from "./_components/landing-page/Studio.astro"
+import Features from "./_components/landing-page/Features.astro"
 import Ecosystem from "./_components/landing-page/Ecosystem.astro"
+import NotificationBanner from "~/components/NotificationBanner.astro"
 ---
 
 <Sprite.Provider>
-	<MainLayout
-		image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}
-	>
-		<NotificationBanner uid="astro-together-2024">
-			Join us and 100+ Astro developers at
-			<a
-				style="whitespace-nowrap"
-				href="https://lu.ma/astro-together-meetup-2024"
-				>Astro Together</a
-			>
-			 in Montreal on <time datetime="2024-05-28">May 28th</time>!
-		</NotificationBanner>
-		<Studio />
+  <MainLayout
+    image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}
+  >
+    <NotificationBanner uid='astro-together-2024'>
+      Join us and 100+ Astro developers at
+      <a
+        style='whitespace-nowrap'
+        href='https://lu.ma/astro-together-meetup-2024'>Astro Together</a
+      >
+      in Montreal on <time datetime='2024-05-28'>May 28th</time>!
+    </NotificationBanner>
+	<Features />
+    <Studio />
     <Ecosystem />
-		<FinalCTA />
-		<Sponsors />
-	</MainLayout>
+    <FinalCTA />
+    <Sponsors />
+  </MainLayout>
 </Sprite.Provider>
