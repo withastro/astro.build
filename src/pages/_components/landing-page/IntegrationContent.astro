@@ -1,0 +1,20 @@
+---
+interface Props {
+  tab: string
+  class?: string
+}
+
+const { tab, class: className } = Astro.props
+---
+
+<li
+  class:list={[
+    "mx-auto flex flex-col lg:flex-row lg:items-start",
+    className,
+  ]}
+  data-tab={tab}
+  inert
+>
+  <slot />
+</li>
+
