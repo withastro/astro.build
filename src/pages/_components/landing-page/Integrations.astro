@@ -10,7 +10,7 @@ import IntegrationContent from "./IntegrationContent.astro"
     <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
         <SectionCopy 
             label="Maximum Flexibility" 
-            label="Zero Lock-in" 
+            title="Zero Lock-in" 
             description="Keep using your favorite UI framework and existing UI components in Astro. Migrate from Create React App to Astro in minutes.">
         <Link slot="call-to-action" href="https://docs.astro.build/en/guides/integrations-guide/#official-integrations" class="secondary">Integrate your favourite framework</Link>
     </SectionCopy>
@@ -18,9 +18,9 @@ import IntegrationContent from "./IntegrationContent.astro"
 
     <astro-integrations-tabs class="">
         <div class="mx-auto w-full max-w-screen-2xl pl-4 sm:pl-8">
-            <ul class="mt-4 sm:mt-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4">
+            <ul class="mt-4 sm:mt-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4 md:gap-8 lg:gap-10">
                 <IntegrationTab label="React" logoSrc="/assets/integrations/react.svg"  active />
-                <IntegrationTab label="TailwindCSS" logoSrc="/assets/integrations/tailwind.svg" />
+                <IntegrationTab label="Tailwind" logoSrc="/assets/integrations/tailwind.svg" />
                 <IntegrationTab label="Vue" logoSrc="/assets/integrations/vue.svg" size="size-6" />
                 <IntegrationTab label="Preact" logoSrc="/assets/integrations/preact.svg" />
                 <IntegrationTab label="Alpine" logoSrc="/assets/integrations/alpinejs.svg" />
@@ -33,25 +33,25 @@ import IntegrationContent from "./IntegrationContent.astro"
 
         <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
             <IntegrationContent tab="react">
-                <p>React</p>
+                react code snippet and example
             </IntegrationContent>
-            <IntegrationContent tab="tailwindcss" class="hidden">
-                <p>TailwindCSS</p>
+            <IntegrationContent tab="tailwind" class="hidden">
+                react code snippet and example
             </IntegrationContent>
             <IntegrationContent tab="vue" class="hidden">
-                <p>Vue</p>
+                react code snippet and example
             </IntegrationContent>
             <IntegrationContent tab="preact" class="hidden">
-                <p>Preact</p>
+                react code snippet and example
             </IntegrationContent>
             <IntegrationContent tab="alpine" class="hidden">
-                <p>Alpine</p>
+                react code snippet and example
             </IntegrationContent>
             <IntegrationContent tab="svelte" class="hidden">
-                <p>Svelte</p>
+                react code snippet and example
             </IntegrationContent>
             <IntegrationContent tab="solid" class="hidden">
-                <p>Solid</p>
+                react code snippet and example
             </IntegrationContent>
         </ul>
     </astro-integrations-tabs>
@@ -74,7 +74,7 @@ import IntegrationContent from "./IntegrationContent.astro"
 
     const integrations = [
         {brand: 'react', color: '#61DAFB'},
-        {brand: 'tailwindcss', color: '#38BDF8'},
+        {brand: 'tailwind', color: '#38BDF8'},
         {brand: 'vue', color: '#41B883'},
         {brand: 'preact', color: '#673AB8'},
         {brand: 'alpine', color: '#77C1D2'},
@@ -130,6 +130,7 @@ import IntegrationContent from "./IntegrationContent.astro"
       }
   
       resetElements() {
+
         for (const button of this.buttons()) {
           button.removeAttribute("aria-selected")
         }
@@ -149,13 +150,13 @@ import IntegrationContent from "./IntegrationContent.astro"
   
       setActive(name) {
 
+        const brandColor = integrations.find(integration => integration.brand === name)?.color
+
         const icon = this.icon(name)
         const label = this.label(name)
         const button = this.button(name)
         const content = this.content(name)
         const iconContainer = this.iconContainer(name)
-
-        const brandColor = integrations.find(integration => integration.brand === name)?.color
   
         content.classList.remove("hidden")
         button.setAttribute("aria-selected", "true")
