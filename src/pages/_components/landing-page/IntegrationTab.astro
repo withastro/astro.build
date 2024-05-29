@@ -16,13 +16,13 @@ const { logoSrc, label, size="size-6 sm:size-8", active = false } = Astro.props
     <div
       data-tab-icon-container={label.toLowerCase()}
       aria-selected={active ? "true" : undefined}
-      class="size-fit landing-section rounded-full p-0.5 lg:p-1 bg-astro-dark-300"
+      class="size-fit landing-section rounded-full p-0.5 lg:p-1 bg-astro-dark-300 aria-selected:bg-[#61DAFB]"
     >
       <div class="bg-black size-12 lg:size-16 landing-section rounded-full">
         <div
           data-tab-icon={label.toLowerCase()}
           aria-selected={active ? "true" : undefined}
-          class="w-full h-full landing-section rounded-full bg-astro-dark-300/20 grayscale aria-selected:grayscale-0"
+          class="w-full h-full landing-section rounded-full bg-astro-dark-300/20 aria-selected:bg-[#61DAFB]/20 grayscale aria-selected:grayscale-0"
         >
           <img class={size} src={logoSrc} alt={`${label} Logo`}>
         </div>
@@ -32,7 +32,7 @@ const { logoSrc, label, size="size-6 sm:size-8", active = false } = Astro.props
     <p
       data-tab-label={label.toLowerCase()}
       aria-selected={active ? "true" : undefined}
-      class="font-medium text-base text-astro-gray-300"
+      class="font-medium text-base text-astro-gray-300 aria-selected:text-[#61DAFB]"
     >
       {label}
     </p>

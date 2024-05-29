@@ -33,25 +33,39 @@ import IntegrationContent from "./IntegrationContent.astro"
 
         <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
             <IntegrationContent tab="react">
-                react code snippet and example
+              <div slot='code'>
+                <p class="p-4">react code snippet goes here!</p>
+              </div>
             </IntegrationContent>
             <IntegrationContent tab="tailwind" class="hidden">
-                react code snippet and example
+              <div slot='code'>
+                <p class="p-4">tailwind code snippet goes here!</p>
+              </div>
             </IntegrationContent>
             <IntegrationContent tab="vue" class="hidden">
-                react code snippet and example
+              <div slot='code'>
+                <p class="p-4">vue code snippet goes here!</p>
+              </div>
             </IntegrationContent>
             <IntegrationContent tab="preact" class="hidden">
-                react code snippet and example
+              <div slot='code'>
+                <p class="p-4">preact code snippet goes here!</p>
+              </div>
             </IntegrationContent>
             <IntegrationContent tab="alpine" class="hidden">
-                react code snippet and example
+              <div slot='code'>
+                <p class="p-4">alpine code snippet goes here!</p>
+              </div>
             </IntegrationContent>
             <IntegrationContent tab="svelte" class="hidden">
-                react code snippet and example
+              <div slot='code'>
+                <p class="p-4">svelte code snippet goes here!</p>
+              </div>
             </IntegrationContent>
             <IntegrationContent tab="solid" class="hidden">
-                react code snippet and example
+              <div slot='code'>
+                <p class="p-4">solid code snippet goes here!</p>
+              </div>
             </IntegrationContent>
         </ul>
     </astro-integrations-tabs>
@@ -73,13 +87,13 @@ import IntegrationContent from "./IntegrationContent.astro"
     }
 
     const integrations = [
-        {brand: 'react', color: '#61DAFB'},
-        {brand: 'tailwind', color: '#38BDF8'},
-        {brand: 'vue', color: '#41B883'},
-        {brand: 'preact', color: '#673AB8'},
-        {brand: 'alpine', color: '#77C1D2'},
-        {brand: 'svelte', color: '#FF3E00'},
-        {brand: 'solid', color: '#76B3E1'},
+        {brand: 'react', color: '97, 218, 251'},
+        {brand: 'tailwind', color: '56, 189, 248'},
+        {brand: 'vue', color: '65, 184, 131'},
+        {brand: 'preact', color: '103, 58, 184'},
+        {brand: 'alpine', color: '119, 193, 210'},
+        {brand: 'svelte', color: '255, 62, 0'},
+        {brand: 'solid', color: '118, 179, 225'},
     ]
     
     class Tabs extends HTMLElement {
@@ -142,9 +156,12 @@ import IntegrationContent from "./IntegrationContent.astro"
         }
         for (const iconContainer of this.iconContainers()) {
           iconContainer.removeAttribute("aria-selected")
+          iconContainer.style.backgroundColor = '#858B98'
         }
         for (const label of this.labels()) {
           label.removeAttribute("aria-selected")
+          label.style.color = '#858B98'
+
         }
       }
   
@@ -163,9 +180,9 @@ import IntegrationContent from "./IntegrationContent.astro"
         icon.setAttribute("aria-selected", "true")
         label.setAttribute("aria-selected", "true")
         iconContainer.setAttribute("aria-selected", "true")
-        label?.classList.add(`aria-selected:text-[${brandColor}]`)
-        icon?.classList.add(`aria-selected:bg-[${brandColor}]/20`)
-        iconContainer?.classList.add(`aria-selected:bg-[${brandColor}]`)
+        label.style.color = `rgba(${brandColor}, 1)`
+        icon.style.backgroundColor = `rgba(${brandColor}, 0.2)`
+        iconContainer.style.backgroundColor = `rgba(${brandColor}, 1)`
       }
   
       handleClick(event: Event) {
