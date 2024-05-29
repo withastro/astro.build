@@ -1,0 +1,18 @@
+---
+const {label, score, size='size-5', src, glow} = Astro.props
+---
+
+<div data-glow={glow} class="mt-4 w-full group whitespace-nowrap flex flex-col lg:flex-row lg:items-center justify-start gap-4">
+
+    <p class="lg:w-2/12 xl:w-1/12 hidden lg:block text-xl lg:text-end heading-3">{label}</p>
+
+    <div class="h-10 w-full outline outline-offset-4 outline-1 outline-astro-gray-500 group-data-[glow]:outline-astro-gray-400 rounded-lg">
+        <div style={{ width: score + "%" }} class="h-full flex items-center gap-2">
+            <div class="size-full flex items-center px-2 bg-astro-gray-500 group-data-[glow]:bg-blue-green-gradient rounded-lg">
+                <img class={`${size}`} src={src} alt={`${label} logo`}>
+            </div>
+            <p class="sr-only">{label} Lighthouse Score</p>
+            <p class="text-xl group-data-[glow]:text-3xl font-semibold text-astro-gray-300 group-data-[glow]:bg-clip-text group-data-[glow]:text-transparent group-data-[glow]:bg-blue-green-gradient">{score}</p>
+        </div>
+    </div>
+</div>
