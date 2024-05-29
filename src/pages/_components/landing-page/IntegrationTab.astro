@@ -2,7 +2,7 @@
 
 type Props = { label: string, logoSrc: string, active?: boolean, size?: string }
 
-const { logoSrc, label, size="size-8", active = false } = Astro.props
+const { logoSrc, label, size="size-6 sm:size-8", active = false } = Astro.props
 
 ---
 
@@ -16,9 +16,9 @@ const { logoSrc, label, size="size-8", active = false } = Astro.props
     <div
       data-tab-icon-container={label.toLowerCase()}
       aria-selected={active ? "true" : undefined}
-      class="size-fit landing-section rounded-full p-[4px] bg-astro-dark-300"
+      class="size-fit landing-section rounded-full p-0.5 lg:p-1 bg-astro-dark-300"
     >
-      <div class="bg-black w-16 h-16 landing-section rounded-full">
+      <div class="bg-black size-12 lg:size-16 landing-section rounded-full">
         <div
           data-tab-icon={label.toLowerCase()}
           aria-selected={active ? "true" : undefined}
