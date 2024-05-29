@@ -7,7 +7,7 @@ const {label, score, size='size-5', src, glow} = Astro.props
     <p class="lg:w-2/12 xl:w-1/12 hidden lg:block text-xl lg:text-end heading-3">{label}</p>
 
     <div class="h-10 w-full outline outline-offset-4 outline-1 outline-astro-gray-500 group-data-[glow]:outline-astro-gray-400 rounded-lg">
-        <div style={{ width: score + "%" }} class="h-full flex items-center gap-2">
+        <div style={{ width: `${score}%` }} class="h-full flex items-center gap-2">
             <div class="size-full flex items-center px-2 bg-astro-gray-500 group-data-[glow]:bg-blue-green-gradient rounded-lg">
                 <img class={`${size}`} src={src} alt={`${label} logo`}>
             </div>
