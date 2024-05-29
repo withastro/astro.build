@@ -1,0 +1,188 @@
+---
+import Link from "../Link.astro"
+import SectionCopy from "../SectionCopy.astro"
+import IntegrationTab from "./IntegrationTab.astro"
+import IntegrationContent from "./IntegrationContent.astro"
+
+---
+
+<section class="mt-20 sm:mt-36">
+    <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
+        <SectionCopy 
+            label="Maximum Flexibility" 
+            label="Zero Lock-in" 
+            description="Keep using your favorite UI framework and existing UI components in Astro. Migrate from Create React App to Astro in minutes.">
+        <Link slot="call-to-action" href="https://docs.astro.build/en/guides/integrations-guide/#official-integrations" class="secondary">Integrate your favourite framework</Link>
+    </SectionCopy>
+    </div>
+
+    <astro-integrations-tabs class="">
+        <div class="mx-auto w-full max-w-screen-2xl pl-4 sm:pl-8">
+            <ul class="mt-4 sm:mt-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4">
+                <IntegrationTab label="React" logoSrc="/assets/integrations/react.svg"  active />
+                <IntegrationTab label="TailwindCSS" logoSrc="/assets/integrations/tailwind.svg" />
+                <IntegrationTab label="Vue" logoSrc="/assets/integrations/vue.svg" size="size-6" />
+                <IntegrationTab label="Preact" logoSrc="/assets/integrations/preact.svg" />
+                <IntegrationTab label="Alpine" logoSrc="/assets/integrations/alpinejs.svg" />
+                <IntegrationTab label="Svelte" logoSrc="/assets/integrations/svelte.svg" />
+                <IntegrationTab label="Solid" logoSrc="/assets/integrations/solid.svg" size="size-7" />
+            </ul>
+        </div>
+
+        <div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600" />
+
+        <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
+            <IntegrationContent tab="react">
+                <p>React</p>
+            </IntegrationContent>
+            <IntegrationContent tab="tailwindcss" class="hidden">
+                <p>TailwindCSS</p>
+            </IntegrationContent>
+            <IntegrationContent tab="vue" class="hidden">
+                <p>Vue</p>
+            </IntegrationContent>
+            <IntegrationContent tab="preact" class="hidden">
+                <p>Preact</p>
+            </IntegrationContent>
+            <IntegrationContent tab="alpine" class="hidden">
+                <p>Alpine</p>
+            </IntegrationContent>
+            <IntegrationContent tab="svelte" class="hidden">
+                <p>Svelte</p>
+            </IntegrationContent>
+            <IntegrationContent tab="solid" class="hidden">
+                <p>Solid</p>
+            </IntegrationContent>
+        </ul>
+    </astro-integrations-tabs>
+</section>
+
+<script>
+    // @ts-nocheck
+    const bind = (instance, proto) => {
+      if (proto == null) {
+        proto = Object.getPrototypeOf(instance)
+      }
+      let propertyNames = Object.getOwnPropertyNames(proto)
+      for (let name of propertyNames) {
+        let value = proto[name]
+        if (typeof value === "function") {
+          instance[name] = proto[name].bind(instance)
+        }
+      }
+    }
+
+    const integrations = [
+        {brand: 'react', color: '#61DAFB'},
+        {brand: 'tailwindcss', color: '#38BDF8'},
+        {brand: 'vue', color: '#41B883'},
+        {brand: 'preact', color: '#673AB8'},
+        {brand: 'alpine', color: '#77C1D2'},
+        {brand: 'svelte', color: '#FF3E00'},
+        {brand: 'solid', color: '#76B3E1'},
+    ]
+    
+    class Tabs extends HTMLElement {
+      static is = "astro-integrations-tabs"
+  
+      constructor() {
+        super()
+        bind(this)
+      }
+  
+      button(name) {
+        return this.querySelector(`button[data-tab="${name}"]`)
+      }
+      buttons() {
+        return this.querySelectorAll(`button[data-tab]`)
+      }
+      content(name) {
+        return this.querySelector(`li[data-tab="${name}"]`)
+      }
+      contents() {
+        return this.querySelectorAll(`li[data-tab]`)
+      }
+      icon(name) {
+        return this.querySelector(`div[data-tab-icon="${name}"]`)
+      }
+      icons() {
+        return this.querySelectorAll(`div[data-tab-icon]`)
+      }
+      iconContainer(name) {
+        return this.querySelector(`div[data-tab-icon-container="${name}"]`)
+      }
+      iconContainers() {
+        return this.querySelectorAll(`div[data-tab-icon-container]`)
+      }
+      label(name) {
+        return this.querySelector(`p[data-tab-label="${name}"]`)
+      }
+      labels() {
+        return this.querySelectorAll(`p[data-tab-label]`)
+      }
+  
+      connectedCallback() {
+        this.addEventListener("click", this.handleClick)
+      }
+  
+      disconnectedCallback() {
+        this.removeEventListener("click", this.handleClick)
+      }
+  
+      resetElements() {
+        for (const button of this.buttons()) {
+          button.removeAttribute("aria-selected")
+        }
+        for (const content of this.contents()) {
+          content.classList.add("hidden")
+        }
+        for (const icon of this.icons()) {
+          icon.removeAttribute("aria-selected")
+        }
+        for (const iconContainer of this.iconContainers()) {
+          iconContainer.removeAttribute("aria-selected")
+        }
+        for (const label of this.labels()) {
+          label.removeAttribute("aria-selected")
+        }
+      }
+  
+      setActive(name) {
+
+        const icon = this.icon(name)
+        const label = this.label(name)
+        const button = this.button(name)
+        const content = this.content(name)
+        const iconContainer = this.iconContainer(name)
+
+        const brandColor = integrations.find(integration => integration.brand === name)?.color
+  
+        content.classList.remove("hidden")
+        button.setAttribute("aria-selected", "true")
+        icon.setAttribute("aria-selected", "true")
+        label.setAttribute("aria-selected", "true")
+        iconContainer.setAttribute("aria-selected", "true")
+        label?.classList.add(`aria-selected:text-[${brandColor}]`)
+        icon?.classList.add(`aria-selected:bg-[${brandColor}]/20`)
+        iconContainer?.classList.add(`aria-selected:bg-[${brandColor}]`)
+      }
+  
+      handleClick(event: Event) {
+        const name = event.target.closest("button[data-tab]")?.dataset.tab
+        if (!name) return
+  
+        if ("startViewTransition" in document) {
+          document.startViewTransition(() => {
+            this.resetElements()
+            this.setActive(name)
+          })
+        } else {
+          this.resetElements()
+          this.setActive(name)
+        }
+      }
+    }
+  
+    customElements.define(Tabs.is, Tabs)
+  </script>
+

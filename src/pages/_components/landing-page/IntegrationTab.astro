@@ -1,0 +1,40 @@
+---
+
+type Props = { label: string, logoSrc: string, active?: boolean, size?: string }
+
+const { logoSrc, label, size="size-8", active = false } = Astro.props
+
+---
+
+<li>
+  <button
+    role="tab"
+    data-tab={label.toLowerCase()}
+    aria-selected={active ? "true" : undefined}
+    class={`relative flex flex-col items-center gap-3 whitespace-nowrap rounded-full text-lg sm:text-xl md:min-w-[8rem]  md:rounded-lg md:p-4 md:px-6`}
+  >
+    <div
+      data-tab-icon-container={label.toLowerCase()}
+      aria-selected={active ? "true" : undefined}
+      class="size-fit landing-section rounded-full p-[4px] bg-astro-dark-300"
+    >
+      <div class="bg-black w-16 h-16 landing-section rounded-full">
+        <div
+          data-tab-icon={label.toLowerCase()}
+          aria-selected={active ? "true" : undefined}
+          class="w-full h-full landing-section rounded-full bg-astro-dark-300/20 grayscale aria-selected:grayscale-0"
+        >
+          <img class={size} src={logoSrc} alt={`${label} Logo`}>
+        </div>
+      </div>
+    </div>
+
+    <p
+      data-tab-label={label.toLowerCase()}
+      aria-selected={active ? "true" : undefined}
+      class="font-medium text-base text-astro-gray-300"
+    >
+      {label}
+    </p>
+  </button>
+</li>
