@@ -1,52 +1,42 @@
 ---
-import ChevronIcon from "~/icons/ChevronIcon.jsx";
+import Icon from 'astro-icon'
 
 type Props = {
-	title: string;
-	subtitle: string;
-	href: string;
-	class?: string;
+	href: string
+	title: string
+	class?: string
+	subtitle?: string
 };
 
 const { title, subtitle, href, class: className } = Astro.props;
 ---
 
-<aside
+<a href={href} class:list={["h-9 group w-fit flex items-center justify-center gap-0 bg-astro-dark-900/40 backdrop-blur-3xl rounded-full", className]}>
+	<div class="px-3 h-full w-fit flex items-center bg-gradient-to-tr from-[#1321AC] to-[#881ABD] rounded-full">
+		<span class="text-sm text-white font-light">{title}</span>
+	</div>
+	{subtitle && 
+		<div class="px-3 h-full w-fit flex items-center justify-center gap-2">
+			<span class="text-sm text-astro-gray-200 group-hover:text-white font-light">{subtitle}</span>
+			<Icon name="ri:arrow-right-line" size={20} class="text-astro-gray-200 group-hover:text-white" />
+		</div>
+	}
+</a>
+
+<!-- <div
 	class:list={[
-		"relative flex gap-2 rounded-full text-xs transition-colors duration-150 hover:bg-black/20 hover:text-astro-gray-200 md:text-sm",
+		"relative flex gap-2 rounded-full text-xs transition-colors duration-150 md:text-sm",
 		className,
 	]}
 >
-	<a {href} class="flex items-center gap-2 pr-3">
+	<span class="flex items-center gap-2 pr-3">
 		<span class="pill relative m-px rounded-full px-3 py-1">{title}</span>
-		<div class="flex items-center gap-1">
-			<span>{subtitle}</span>
-			<ChevronIcon class="inline h-3 w-3 -rotate-90" aria-hidden="true" />
-		</div>
-	</a>
-</aside>
+		{subtitle && 
+			<div class="w-fit flex items-center gap-2">
+				<span>{subtitle}</span>
+				<Icon name="ri:arrow-right-line" size={16} />
+			</div>
+		}
 
-<style>
-	aside::before {
-		@apply absolute inset-0 border border-astro-gray-300;
-		content: "";
-		border-radius: inherit;
-		z-index: -2;
-	}
-
-	.pill::before {
-		@apply absolute inset-0;
-		content: "";
-		margin: -1px;
-		border-radius: inherit;
-		background: linear-gradient(45deg, rgba(216, 51, 51, 1) 0%, rgba(240, 65, 255, 1) 100%);
-		z-index: -2;
-	}
-
-	.pill::after {
-		@apply absolute inset-0 bg-black/50;
-		content: "";
-		z-index: -1;
-		border-radius: inherit;
-	}
-</style>
+	</span>
+</div> -->
