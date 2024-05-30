@@ -16,27 +16,10 @@ const { title, subtitle, href, class: className } = Astro.props;
 		<span class="text-sm text-white font-light">{title}</span>
 	</div>
 	{subtitle && 
-		<div class="px-3 h-full w-fit flex items-center justify-center gap-2">
+		<div class="hidden sm:flex px-3 h-full w-fit items-center justify-center gap-2">
 			<span class="text-sm text-astro-gray-200 group-hover:text-white font-light">{subtitle}</span>
-			<Icon name="ri:arrow-right-line" size={20} class="text-astro-gray-200 group-hover:text-white" />
+
+			<svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-astro-gray-200 group-hover:text-white" viewBox="0 0 24 24"><path fill="currentColor" d="m16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z"/></svg>
 		</div>
 	}
 </a>
-
-<!-- <div
-	class:list={[
-		"relative flex gap-2 rounded-full text-xs transition-colors duration-150 md:text-sm",
-		className,
-	]}
->
-	<span class="flex items-center gap-2 pr-3">
-		<span class="pill relative m-px rounded-full px-3 py-1">{title}</span>
-		{subtitle && 
-			<div class="w-fit flex items-center gap-2">
-				<span>{subtitle}</span>
-				<Icon name="ri:arrow-right-line" size={16} />
-			</div>
-		}
-
-	</span>
-</div> -->
