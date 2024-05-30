@@ -1,146 +1,146 @@
 ---
-import SectionCopy from "../SectionCopy.astro"
-import EcosystemTab from "./EcosystemTab.astro"
-import Trending from "./ecosystem-tabs/Trending.astro"
-import EcosystemCategory from "./EcosystemCategory.astro"
+import SectionCopy from "../SectionCopy.astro";
+import EcosystemCategory from "./EcosystemCategory.astro";
+import EcosystemTab from "./EcosystemTab.astro";
+import Trending from "./ecosystem-tabs/Trending.astro";
 ---
 
 <section class="mt-20 sm:mt-36">
-    <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
-        <SectionCopy
-        label='Ecosystem'
-        title='Themes'
-        description='Add powerful features to your site by connecting Astro Studio apps. Apps provide opinionated feature sets for common use cases.'
-      />
+  <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
+    <SectionCopy
+      label="Ecosystem"
+      title="Themes"
+      description="Add powerful features to your site by connecting Astro Studio apps. Apps provide opinionated feature sets for common use cases."
+    />
+  </div>
+
+  <astro-ecosystem-tabs class="">
+    <div class="mx-auto w-full max-w-screen-2xl">
+      <ul
+        class="mt-4 sm:mt-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4"
+      >
+        <EcosystemTab label="Trending" active />
+        <EcosystemTab label="E-Commerce" />
+        <EcosystemTab label="Blogs" />
+        <EcosystemTab label="Docs" />
+        <EcosystemTab label="Portfolios" />
+        <EcosystemTab label="Landing Pages" />
+      </ul>
     </div>
 
-    <astro-ecosystem-tabs>
-        <div class="mx-auto w-full max-w-screen-2xl pl-4 sm:pl-8">
-            <ul class="mt-4 sm:mt-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4">
-                <EcosystemTab label="Trending" active />
-                <EcosystemTab label="E-Commerce" />
-                <EcosystemTab label="Blogs" />
-                <EcosystemTab label="Docs" />
-                <EcosystemTab label="Portfolios" />
-                <EcosystemTab label="Landing Pages" />
-            </ul>
-        </div>
+    <div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600"></div>
 
-        <div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600" />
-
-        <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
-            <EcosystemCategory tab="trending">
-                <Trending />
-            </EcosystemCategory>
-            <EcosystemCategory tab="e-commerce" class="hidden">
-                <p>e-commerce</p>
-            </EcosystemCategory>
-            <EcosystemCategory tab="blogs" class="hidden">
-                <p>blogs</p>
-            </EcosystemCategory>
-            <EcosystemCategory tab="docs" class="hidden">
-                <p>docs</p>
-            </EcosystemCategory>
-            <EcosystemCategory tab="portfolios" class="hidden">
-                <p>portfolios</p>
-            </EcosystemCategory>
-            <EcosystemCategory tab="landing pages" class="hidden">
-                <p>landing pages</p>
-            </EcosystemCategory>
-        </ul>
-
-    </astro-ecosystem-tabs>
-
+    <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
+      <EcosystemCategory tab="trending">
+        <Trending />
+      </EcosystemCategory>
+      <EcosystemCategory tab="e-commerce" class="hidden">
+        <p>e-commerce</p>
+      </EcosystemCategory>
+      <EcosystemCategory tab="blogs" class="hidden">
+        <p>blogs</p>
+      </EcosystemCategory>
+      <EcosystemCategory tab="docs" class="hidden">
+        <p>docs</p>
+      </EcosystemCategory>
+      <EcosystemCategory tab="portfolios" class="hidden">
+        <p>portfolios</p>
+      </EcosystemCategory>
+      <EcosystemCategory tab="landing pages" class="hidden">
+        <p>landing pages</p>
+      </EcosystemCategory>
+    </ul>
+  </astro-ecosystem-tabs>
 </section>
 
 <script>
-    // @ts-nocheck
-    const bind = (instance, proto) => {
-      if (proto == null) {
-        proto = Object.getPrototypeOf(instance);
-      }
-      let propertyNames = Object.getOwnPropertyNames(proto);
-      for (let name of propertyNames) {
-        let value = proto[name];
-        if (typeof value === "function") {
-          instance[name] = proto[name].bind(instance);
-        }
-      }
-    };
-    class Tabs extends HTMLElement {
-      static is = "astro-ecosystem-tabs";
-  
-      constructor() {
-        super();
-        bind(this);
-      }
-  
-      button(name) {
-        return this.querySelector(`button[data-tab="${name}"]`);
-      }
-      buttons() {
-        return this.querySelectorAll(`button[data-tab]`);
-      }
-      content(name) {
-        return this.querySelector(`li[data-tab="${name}"]`);
-      }
-      contents() {
-        return this.querySelectorAll(`li[data-tab]`);
-      }
-      title(name) {
-        return this.querySelector(`p[data-tab-title="${name}"]`);
-      }
-      titles() {
-        return this.querySelectorAll(`p[data-tab-title]`);
-      }
-  
-      connectedCallback() {
-        this.addEventListener("click", this.handleClick);
-      }
-  
-      disconnectedCallback() {
-        this.removeEventListener("click", this.handleClick);
-      }
-  
-      resetElements() {
-        for (const button of this.buttons()) {
-          button.removeAttribute("aria-selected");
-        }
-        for (const content of this.contents()) {
-          content.classList.add("hidden");
-        }
-        for (const title of this.titles()) {
-          title.removeAttribute("aria-selected");
-        }
-      }
-  
-      setActive(name) {
-        const title = this.title(name);
-        const button = this.button(name);
-        const content = this.content(name);
-  
-        console.log({ button, content, title });
-  
-        content.classList.remove("hidden");
-        button.setAttribute("aria-selected", "true");
-        title.setAttribute("aria-selected", "true");
-      }
-  
-      handleClick(event: Event) {
-        const name = event.target.closest("button[data-tab]")?.dataset.tab;
-        if (!name) return;
-  
-        if ("startViewTransition" in document) {
-          document.startViewTransition(() => {
-            this.resetElements();
-            this.setActive(name);
-          });
-        } else {
-          this.resetElements();
-          this.setActive(name);
-        }
+  // @ts-nocheck
+  const bind = (instance, proto) => {
+    if (proto == null) {
+      proto = Object.getPrototypeOf(instance);
+    }
+    let propertyNames = Object.getOwnPropertyNames(proto);
+    for (let name of propertyNames) {
+      let value = proto[name];
+      if (typeof value === "function") {
+        instance[name] = proto[name].bind(instance);
       }
     }
-  
-    customElements.define(Tabs.is, Tabs);
-  </script>
+  };
+  class Tabs extends HTMLElement {
+    static is = "astro-ecosystem-tabs";
+
+    constructor() {
+      super();
+      bind(this);
+    }
+
+    button(name) {
+      return this.querySelector(`button[data-tab="${name}"]`);
+    }
+    buttons() {
+      return this.querySelectorAll(`button[data-tab]`);
+    }
+    content(name) {
+      return this.querySelector(`li[data-tab="${name}"]`);
+    }
+    contents() {
+      return this.querySelectorAll(`li[data-tab]`);
+    }
+    title(name) {
+      return this.querySelector(`p[data-tab-title="${name}"]`);
+    }
+    titles() {
+      return this.querySelectorAll(`p[data-tab-title]`);
+    }
+
+    connectedCallback() {
+      this.addEventListener("click", this.handleClick);
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener("click", this.handleClick);
+    }
+
+    resetElements() {
+      for (const button of this.buttons()) {
+        button.removeAttribute("aria-selected");
+      }
+      for (const content of this.contents()) {
+        content.classList.add("hidden");
+      }
+      for (const title of this.titles()) {
+        title.removeAttribute("aria-selected");
+      }
+    }
+
+    setActive(name) {
+      const title = this.title(name);
+      const button = this.button(name);
+      const content = this.content(name);
+
+      console.log({ button, content, title });
+
+      content.classList.remove("hidden");
+      button.setAttribute("aria-selected", "true");
+      title.setAttribute("aria-selected", "true");
+    }
+
+    handleClick(event: Event) {
+      const name = event.target.closest("button[data-tab]")?.dataset.tab;
+      if (!name) return;
+
+      if ("startViewTransition" in document) {
+        document.startViewTransition(() => {
+          this.resetElements();
+          this.setActive(name);
+        });
+      } else {
+        this.resetElements();
+        this.setActive(name);
+      }
+    }
+  }
+
+  customElements.define(Tabs.is, Tabs);
+</script>

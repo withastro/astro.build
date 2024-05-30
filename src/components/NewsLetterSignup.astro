@@ -6,11 +6,11 @@ interface Props {
 const { skipText = false } = Astro.props;
 ---
 
-<div class={`${skipText ? "mx-auto" : ""} flex flex-col self-center md:max-w-sm`}>
+<div class={`${skipText ? "mx-auto" : ""} flex flex-col md:max-w-sm`}>
 	{
 		!skipText && (
 			<>
-				<p class="font-heading heading-4 font-light md:text-2xl">Let's keep in touch</p>
+				<p class="font-semibold md:text-xl">Let's keep in touch</p>
 				<p class="mb-4 pt-2 text-astro-gray-200 text-balance">
 					Enter your email to keep in the know with the latest updates from Astro.
 				</p>
