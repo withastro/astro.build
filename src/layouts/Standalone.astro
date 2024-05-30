@@ -1,10 +1,11 @@
 ---
-import BaseHead, { type Props as HeadProps } from "~/components/BaseHead.astro";
-import Header from "~/components/Header.astro";
-import HeaderDrawerContent from "~/components/HeaderDrawerContent.astro";
-import HeaderNav from "~/components/HeaderNav.astro";
-import SkipLink from "~/components/SkipLink.astro";
 import "~/styles/tailwind.css";
+import Header from "~/components/Header.astro";
+import SkipLink from "~/components/SkipLink.astro";
+import HeaderNav from "~/components/HeaderNav.astro";
+import HeaderDrawerContent from "~/components/HeaderDrawerContent.astro";
+import BaseHead, { type Props as HeadProps } from "~/components/BaseHead.astro";
+
 export type Props = HeadProps;
 const { ...head } = Astro.props;
 ---

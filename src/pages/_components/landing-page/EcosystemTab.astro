@@ -2,12 +2,12 @@
 const { label, active = false } = Astro.props;
 ---
 
-<li>
+<li class="focus:outline-none focus-visible:ring-4 focus-visible:ring-transparent">
     <button 
         role="tab"
         data-tab={label.toLowerCase()}
         aria-selected={active ? "true" : undefined}
-        class={`px-6 py-2 w-fit inline-flex items-center rounded-full bg-astro-dark-600/30 hover:bg-astro-dark-600/70 aria-selected:bg-white focus:outline-none transition-all ease-in-out duration-500`}    
+        class={`px-6 py-2 w-fit inline-flex items-center rounded-full bg-astro-dark-600/30 hover:bg-astro-dark-600/70 aria-selected:bg-white transition-all ease-in-out duration-500`}    
     >
         <p
             data-tab-title={label.toLowerCase()}
