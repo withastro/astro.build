@@ -1,9 +1,19 @@
 ---
+import Icon from "astro-icon"
 import Link from "../Link.astro"
 import PillLink from "../PillLink.astro"
+import HeroBackground from "./HeroBackground.astro"
 import CodeBlock from "~/components/CodeBlock.astro"
 import PageTitleBlock from "~/components/PageTitleBlock.astro"
-import HeroBackground from "./HeroBackground.astro"
+
+const logos = [
+	{ src: "logos/google", alt: "Google Logo", class: "py-1 -mb-1 md:-mb-2 lg:-mb-2.5" },
+	{ src: "logos/microsoft", alt: "Microsoft Logo", class: "py-2" },
+	{ src: "logos/nordvpn", alt: "NordVPN Logo", class: "py-1" },
+	{ src: "logos/rokt", alt: "Rokt Logo", class: "py-2" },
+	{ src: "logos/theguardian", alt: "The Guardian Logo", class: "py-1.5" },
+	{ src: "logos/trivago", alt: "Trivago Logo", class: "py-1" },
+];
 ---
 
 <section class="relative">
@@ -31,4 +41,25 @@ import HeroBackground from "./HeroBackground.astro"
   </div>
 
   <HeroBackground />
+
+  <div class="mt-8 sm:mt-16 xs:p-6 mx-auto w-full max-w-screen-2xl space-y-5 sm:space-y-8 p-4 sm:p-8">
+    <div class="landing-section gap-4 sm:gap-6">
+      <p class="text-astro-gray-200 font-light text-base text-balance">
+        Used by the best developers and teams around the world:
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 px-4">
+        {
+          logos.map((logo) => (
+            <Icon
+              height={48}
+              name={logo.src}
+              aria-label={logo.alt}
+              class:list={["h-8 object-contain text-white sm:h-10 lg:h-11 xl:h-12", logo.class]}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </section>
