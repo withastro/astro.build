@@ -1,0 +1,16 @@
+---
+const { title, gradient } = Astro.props
+---
+
+<div>
+  <div>
+    <slot name='icon' />
+  </div>
+
+  <div class='mt-4 space-y-2'>
+    <h2 class='text-base text-white font-semibold'>{title}</h2>
+    <p class='text-astro-gray-200 font-light text-base text-balance'>
+      <slot name='description' />
+    </p>
+  </div>
+</div>
