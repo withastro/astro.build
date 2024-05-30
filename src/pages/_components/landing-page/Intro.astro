@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon"
+import IntroPoint from "../IntroPoint.astro"
+---
+
+<section class="xs:p-6 mx-auto w-full max-w-screen-2xl space-y-8 p-4 sm:p-8">
+  <div class="space-y-1">
+    <span class="bg-clip-text text-transparent bg-red-pink-gradient font-semibold">What is Astro?</span>
+    <h2 class="max-w-screen-lg text-balance text-3xl font-light font-heading md:text-4xl xl:text-[2.5rem] xl:leading-tight">
+      <strong>Astro</strong> is a JavaScript web framework optimized for building fast, content-driven websites.
+    </h2>
+  </div>
+
+  <dl class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+    <IntroPoint title="Content-Driven">
+      <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] bg-red-pink-gradient"> 
+        <div class='size-12 lg:size-14 landing-section bg-black text-white rounded-full'>
+          <div class="size-full landing-section bg-gradient-to-br from-astro-red/20 to-astro-pink/20 rounded-full">
+            <Icon name="ri:file-list-3-line" class="size-5 lg:size-7" />
+          </div>
+        </div>
+      </div>
+        <Fragment slot="description">
+            Reduce complexity in your tech stack without sacraficing developer experience. lorem ipsum dolor sit amet, consectetur adipisci dolore.
+        </Fragment>
+
+    </IntroPoint>
+
+    <IntroPoint title="Server-First" gradient="bg-blue-green-gradient">
+      <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] bg-blue-green-gradient"> 
+        <div class='size-12 lg:size-14 landing-section bg-black text-white rounded-full'>
+          <div class="size-full landing-section bg-gradient-to-br from-astro-blue/20 to-astro-green/20 rounded-full">
+            <Icon name="ri:server-line" class="size-5 lg:size-7" />
+          </div>
+        </div>
+      </div>
+        <Fragment slot="description">
+            Reduce complexity in your tech stack without sacraficing developer experience. lorem ipsum dolor sit amet, consectetur adipisci dolore.
+        </Fragment>
+
+    </IntroPoint>
+
+    <IntroPoint title="Customizable" gradient="bg-orange-yellow-gradient">
+      <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] bg-orange-yellow-gradient"> 
+        <div class='size-12 lg:size-14 landing-section bg-black text-white rounded-full'>
+          <div class="size-full landing-section bg-gradient-to-br from-astro-orange/15 to-astro-yellow/15 rounded-full">
+            <Icon name="ri:line-chart-line" class="size-5 lg:size-7" />
+          </div>
+        </div>
+      </div>
+        <Fragment slot="description">
+            Reduce complexity in your tech stack without sacraficing developer experience. lorem ipsum dolor sit amet, consectetur adipisci dolore.
+        </Fragment>
+
+    </IntroPoint>
+  </dl>
+</section>
+
+<style>
+  h2 {
+    font-variation-settings:
+      "wght" 290,
+      "wdth" 490 !important;
+  }
+
+  h2 strong {
+    font-variation-settings:
+      "wght" 475,
+      "wdth" 490;
+  }
+</style>

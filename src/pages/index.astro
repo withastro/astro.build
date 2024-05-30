@@ -5,7 +5,9 @@ import MainLayout from "~/layouts/MainLayout.astro";
 import Ecosystem from "./_components/landing-page/Ecosystem.astro";
 import Features from "./_components/landing-page/Features.astro";
 import FinalCTA from "./_components/landing-page/FinalCTA.astro";
+import Hero from "./_components/landing-page/Hero.astro";
 import Flexibility from "./_components/landing-page/Integrations.astro";
+import Intro from "./_components/landing-page/Intro.astro";
 import Islands from "./_components/landing-page/Islands.astro";
 import Sponsors from "./_components/landing-page/Sponsors.astro";
 import Studio from "./_components/landing-page/Studio.astro";
@@ -16,16 +18,13 @@ import Studio from "./_components/landing-page/Studio.astro";
     image={{ src: "/og/astro.jpg", alt: "Astro - Build the web you want." }}
   >
     <Hero />
-    <div class="relative">
-      <div class="bg-grid absolute inset-0 z-grid"></div>
-      <div class="relative grid gap-32 sm:gap-40 md:gap-48 lg:gap-64">
-        <FrontendArchitecture />
-        <ContentFirstFast />
-        <FullSpeedAhead />
-        <ToolingAndEcosystem />
-        <GetStarted />
-      </div>
-    </div>
+    <Intro />
+    <Islands />
+    <Flexibility />
+    <Features />
+    <Studio />
+    <Ecosystem />
+    <FinalCTA />
     <Sponsors />
   </MainLayout>
 </Sprite.Provider>
