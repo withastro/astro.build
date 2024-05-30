@@ -1,0 +1,26 @@
+---
+import { getImage } from "astro:assets"
+import screwFast from "../../../_assets/themes/screwfast-emil.png"
+import astroWind from '../../../_assets/themes/astrowind-onwidget.png'
+import agenceX from '../../../_assets/themes/agencex-johnkat-mj.png'
+
+const agenceXTheme = await getImage({ src: agenceX, format: "webp", width: 1280 })
+const screwFastTheme = await getImage({ src: screwFast, format: "webp", width: 1280 })
+const astroWindTheme = await getImage({ src: astroWind, format: "webp", width: 1280 })
+ 
+const themes = [
+  { href:"#", title: "AgenceX", author: "Johnkat MJ", src: agenceXTheme.src },
+  { href:"#", title: "AstroWind", author: "OnWidget", src: astroWindTheme.src },
+  { href:"#", author: "Emil", title: "ScrewFast", src:screwFastTheme.src },
+  { href:"#", title: "AstroWind", author: "OnWidget", src: astroWindTheme.src },
+  { href:"#", author: "Emil", title: "ScrewFast", src: screwFastTheme.src },
+]
+---
+
+<div class='p-1 grid grid-cols-1 grid-cols-3 gap-1 bg-astro-dark-800 border border-astro-dark-300/20 rounded-2xl'>
+  {themes.map(theme => 
+    <a href={theme.href}>
+      <img class="w-full h-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`}>
+    </a>
+  )}
+</div>

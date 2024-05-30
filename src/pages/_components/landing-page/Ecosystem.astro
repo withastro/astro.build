@@ -1,7 +1,8 @@
 ---
 import SectionCopy from "../SectionCopy.astro"
-import EcosystemCategory from "./EcosystemCategory.astro";
 import EcosystemTab from "./EcosystemTab.astro"
+import Trending from "./ecosystem-tabs/Trending.astro"
+import EcosystemCategory from "./EcosystemCategory.astro"
 ---
 
 <section class="mt-20 sm:mt-36">
@@ -13,7 +14,7 @@ import EcosystemTab from "./EcosystemTab.astro"
       />
     </div>
 
-    <astro-ecosystem-tabs class="">
+    <astro-ecosystem-tabs>
         <div class="mx-auto w-full max-w-screen-2xl pl-4 sm:pl-8">
             <ul class="mt-4 sm:mt-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4">
                 <EcosystemTab label="Trending" active />
@@ -29,7 +30,7 @@ import EcosystemTab from "./EcosystemTab.astro"
 
         <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
             <EcosystemCategory tab="trending">
-                <p>trending</p>
+                <Trending />
             </EcosystemCategory>
             <EcosystemCategory tab="e-commerce" class="hidden">
                 <p>e-commerce</p>
