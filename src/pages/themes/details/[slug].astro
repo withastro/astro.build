@@ -10,11 +10,12 @@ import MainLayout from "~/layouts/MainLayout.astro";
 import ThemeCTAs from "../_components/ThemeCTAs.astro";
 import ThemeCard from "../_components/ThemeCard.astro";
 import ThemeStats from "../_components/ThemeStats.astro";
-import type { Theme, ThemeAndAuthor } from "../_types/index.ts";
+import type { ThemeAndAuthor } from "../_types/index.ts";
 
 export const prerender = false;
 
 const slug = Astro.params.slug as string;
+const fromStudio = Astro.url.searchParams.get("from") === "studio";
 
 const theme = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then((res) =>
 	res.json(),
@@ -64,7 +65,7 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 					<p class="text-lg text-astro-gray-200 lg:text-xl">{theme.Theme.description}</p>
 					<ThemeCTAs theme={theme} class="py-6 md:hidden" />
 					<hr class="border-astro-gray-500 md:hidden" />
-					<ThemeStats theme={theme} class="py-4 md:hidden" />
+					<ThemeStats fromStudio={fromStudio} theme={theme} class="py-4 md:hidden" />
 				</div>
 				<hr class="hidden border-astro-gray-500 md:block" />
 				<article class="prose" set:html={sanitizeThemeDescription(theme.Theme.body)} />
@@ -75,7 +76,7 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 			>
 				<ThemeCTAs theme={theme} class="p-6 lg:p-8 xl:p-10" />
 				<hr class="border-astro-gray-500" />
-				<ThemeStats theme={theme} class="p-6 lg:p-8 xl:p-10" />
+				<ThemeStats fromStudio={fromStudio} theme={theme} class="p-6 lg:p-8 xl:p-10" />
 			</aside>
 		</div>
 		{

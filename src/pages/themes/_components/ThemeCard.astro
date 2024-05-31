@@ -9,16 +9,17 @@ import Badge from "./Badge.astro";
 
 export type Props = {
 	theme: ThemeAndAuthor;
+	fromStudio?: boolean;
 };
 
-const { theme } = Astro.props;
+const { theme, fromStudio } = Astro.props;
 
 const image = theme.Theme.image;
 ---
 
 <Card isLink>
 	<!-- {!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>} -->
-	<a class="flex h-full flex-col" href={`/themes/details/${theme.Theme.slug}`} data-astro-prefetch>
+	<a class="flex h-full flex-col" href={`/themes/details/${theme.Theme.slug}${fromStudio ? '?from=studio' : ''}`} data-astro-prefetch>
 		<Image
 			src={image}
 			width={600}

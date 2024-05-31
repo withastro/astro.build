@@ -13,6 +13,7 @@ import ThemeCard from "./_components/ThemeCard.astro";
 import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from "./_types/index.ts";
 
 export const prerender = false;
+const fromStudio = Astro.url.searchParams.get("from") === "studio";
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
@@ -124,7 +125,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 			<h1
 				class="heading-3 mx-auto max-w-screen-lg pt-24 text-center sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
 			>
-				Jumpstart your next project with a theme
+				Jumpstart your {fromStudio ? 'studio' : 'next' } project with a theme
 			</h1>
 		</div>
 	</div>
@@ -158,7 +159,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 						>
 							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 								{recentlyAdded.slice(0, 3).map((theme) => (
-									<ThemeCard theme={theme} />
+									<ThemeCard theme={theme} fromStudio={fromStudio} />
 								))}
 							</CardGrid>
 						</CardGridGroup>
@@ -169,7 +170,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					>
 						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
 							{themes.map((theme) => (
-								<ThemeCard theme={theme} />
+								<ThemeCard theme={theme} fromStudio={fromStudio} />
 							))}
 						</CardGrid>
 					</CardGridGroup>

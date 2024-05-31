@@ -25,13 +25,14 @@ export type Props = {
 };
 
 const { indexRoute, groups, search = "", searchPlaceholder } = Astro.props;
+const fromStudio = Astro.url.searchParams.get("from") === "studio";
 
 const groupsSelected = groups.filter(({ options }) =>
 	options.some(({ selected }) => selected),
 ).length;
 
 const resetHref =
-	groupsSelected > 0 ? (search ? `${indexRoute}?search=${search}` : indexRoute) : undefined;
+	groupsSelected > 0 ? (search ? `${indexRoute}?search=${search}${fromStudio && '&from=studio'}` : `${indexRoute}${fromStudio && '?from=studio'}`) : undefined;
 ---
 
 <form action={indexRoute} class="searchfilter">
@@ -72,6 +73,7 @@ const resetHref =
 			))
 		}
 	</div>
+	{ fromStudio && <input type="hidden" name="from" value="studio" /> }
 	<div>
 		<button type="submit" class="button m-6 hidden sm:mx-4 md:mx-8 lg:mx-10 lg:mb-8"
 			>View results</button
