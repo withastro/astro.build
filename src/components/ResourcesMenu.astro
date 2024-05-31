@@ -9,7 +9,7 @@ import PaletteIcon from "~/icons/PaletteIcon.jsx";
 	<summary class="accordion link flex cursor-pointer items-center gap-2">
 		Resources
 		<span class="sr-only">Open resources menu</span>
-		<ChevronIcon class="inline-block h-4 w-4 rotate-0 transition-transform group-open:-rotate-180" aria-hidden="true"/>
+		<ChevronIcon class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-500" aria-hidden="true"/>
 	</summary>
 	<ul
 		class:list={[
@@ -17,26 +17,23 @@ import PaletteIcon from "~/icons/PaletteIcon.jsx";
 			"flex flex-col",
 
 			// positioning
-
 			"absolute left-0 top-full translate-y-2",
 
 			// panel styling
-
-			"min-w-[150px] rounded bg-astro-gray-100 p-1 text-astro-gray-700 shadow-md",
+			"min-w-[150px] rounded-xl bg-astro-dark-800 p-1 text-astro-gray-200 shadow-lg border border-astro-dark-300/10",
 
 			// transitioning
-
 			"invisible group-open:visible",
 			"origin-top scale-95 group-open:scale-100",
 			"opacity-0 group-open:opacity-100",
-			"transition-all duration-300",
+			"transition-all duration-500",
 		]}
 	>
 		<li>
 			<a
 				href="/themes/"
 				data-astro-prefetch
-				class="flex items-center gap-2 rounded p-3 leading-none transition hover:bg-black/10"
+				class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-dark-700 hover:text-white"
 			>
 				<PaletteIcon class="h-4 w-4" aria-hidden="true" /> Themes
 			</a>
@@ -45,7 +42,7 @@ import PaletteIcon from "~/icons/PaletteIcon.jsx";
 			<a
 				href="/integrations/"
 				data-astro-prefetch
-				class="flex items-center gap-2 rounded p-3 leading-none transition hover:bg-black/10"
+				class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-dark-700 hover:text-white"
 			>
 				<LayersIcon class="h-4 w-4" aria-hidden="true" /> Integrations
 			</a>
@@ -53,7 +50,7 @@ import PaletteIcon from "~/icons/PaletteIcon.jsx";
 		<li>
 			<a
 				href="https://docs.astro.build/en/tutorial/0-introduction/"
-				class="flex items-center gap-2 rounded p-3 leading-none transition hover:bg-black/10"
+				class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-dark-700 hover:text-white"
 			>
 				<OpenBookIcon class="h-4 w-4" aria-hidden="true" /> Tutorials
 			</a>
