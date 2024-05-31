@@ -4,24 +4,30 @@ import screwFast from "../../../_assets/themes/screwfast-emil.png"
 import astroWind from '../../../_assets/themes/astrowind-onwidget.png'
 import agenceX from '../../../_assets/themes/agencex-johnkat-mj.png'
 import Link from "../../Link.astro"
+import Icon from "astro-icon"
 
 const agenceXTheme = await getImage({ src: agenceX, format: "webp", width: 1280 })
 const screwFastTheme = await getImage({ src: screwFast, format: "webp", width: 1280 })
 const astroWindTheme = await getImage({ src: astroWind, format: "webp", width: 1280 })
  
 const themes = [
-  { href:"#", title: "AgenceX", author: "Johnkat MJ", src: agenceXTheme.src },
-  { href:"#", title: "AstroWind", author: "OnWidget", src: astroWindTheme.src },
-  { href:"#", author: "Emil", title: "ScrewFast", src:screwFastTheme.src },
+  { href:"#", title: "AgenceX", author: "Johnkat MJ", src: agenceXTheme.src, isSeenOnMobile: true },
+  { href:"#", title: "AstroWind", author: "OnWidget", src: astroWindTheme.src, isSeenOnMobile: true },
+  { href:"#", author: "Emil", title: "ScrewFast", src:screwFastTheme.src, isSeenOnMobile: true },
+  { href:"#", title: "AstroWind", author: "OnWidget", src: astroWindTheme.src, isSeenOnMobile: false },
+  { href:"#", author: "Emil", title: "ScrewFast", src:screwFastTheme.src, isSeenOnMobile: false },
 ]
 ---
 
 <div class='p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-astro-dark-800 border border-astro-dark-300/20 rounded-2xl'>
   {themes.map(theme => 
-    <div class="size-fit group relative transition-all duration-1000 ease-in-out">
+    <div class:list={["size-fit group relative", !theme.isSeenOnMobile && 'hidden lg:block' ]}>
       <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
       <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
-        <Link href={theme.href} class="secondary">View Theme</Link>
+        <Link href={theme.href} class="secondary">
+          <span>View Theme</span>
+          <Icon name="ri:eye-line" size={18} />
+        </Link>
       </div>
     </div>
   )}

@@ -1,10 +1,11 @@
 ---
-const { label, active = false } = Astro.props;
+const { label, active = false, slug } = Astro.props;
 ---
 
 <li class="focus:outline-none focus-visible:ring-4 focus-visible:ring-transparent">
-    <button 
+    <a 
         role="tab"
+        href={slug ? `#${slug}` : `#${label.toLowerCase()}`}
         data-tab={label.toLowerCase()}
         aria-selected={active ? "true" : undefined}
         class={`px-6 py-2 w-fit inline-flex items-center rounded-full bg-astro-dark-600/30 hover:bg-astro-dark-600/70 aria-selected:bg-white transition-all ease-in-out duration-500`}    
@@ -14,6 +15,6 @@ const { label, active = false } = Astro.props;
             aria-selected={active ? "true" : undefined} 
             class="text-base font-normal text-astro-gray-200 aria-selected:bg-clip-text aria-selected:text-transparent aria-selected:bg-blue-purple-gradient">
             {label}
-</p>
-</button>
+        </p>
+    </a>
 </li>

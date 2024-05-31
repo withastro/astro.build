@@ -22,7 +22,7 @@ import EcosystemCategory from "./EcosystemCategory.astro"
                 <EcosystemTab label="Blogs" />
                 <EcosystemTab label="Docs" />
                 <EcosystemTab label="Portfolios" />
-                <EcosystemTab label="Landing Pages" />
+                <EcosystemTab label="Landing Pages" slug="landing-pages" />
             </ul>
         </div>
 
@@ -44,7 +44,7 @@ import EcosystemCategory from "./EcosystemCategory.astro"
             <EcosystemCategory tab="portfolios" class="hidden">
                 <p>portfolios</p>
             </EcosystemCategory>
-            <EcosystemCategory tab="landing pages" class="hidden">
+            <EcosystemCategory tab="landing pages" slug="landing-pages" class="hidden">
                 <p>landing pages</p>
             </EcosystemCategory>
         </ul>
@@ -76,10 +76,10 @@ import EcosystemCategory from "./EcosystemCategory.astro"
       }
   
       button(name) {
-        return this.querySelector(`button[data-tab="${name}"]`);
+        return this.querySelector(`a[data-tab="${name}"]`);
       }
       buttons() {
-        return this.querySelectorAll(`button[data-tab]`);
+        return this.querySelectorAll(`a[data-tab]`);
       }
       content(name) {
         return this.querySelector(`li[data-tab="${name}"]`);
@@ -127,7 +127,7 @@ import EcosystemCategory from "./EcosystemCategory.astro"
       }
   
       handleClick(event: Event) {
-        const name = event.target.closest("button[data-tab]")?.dataset.tab;
+        const name = event.target.closest("a[data-tab]")?.dataset.tab;
         if (!name) return;
   
         if ("startViewTransition" in document) {
