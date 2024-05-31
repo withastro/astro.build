@@ -75,10 +75,10 @@ import EcosystemCategory from "./EcosystemCategory.astro"
         bind(this);
       }
   
-      button(name) {
+      link(name) {
         return this.querySelector(`a[data-tab="${name}"]`);
       }
-      buttons() {
+      links() {
         return this.querySelectorAll(`a[data-tab]`);
       }
       content(name) {
@@ -103,8 +103,8 @@ import EcosystemCategory from "./EcosystemCategory.astro"
       }
   
       resetElements() {
-        for (const button of this.buttons()) {
-          button.removeAttribute("aria-selected");
+        for (const link of this.links()) {
+          link.removeAttribute("aria-selected");
         }
         for (const content of this.contents()) {
           content.classList.add("hidden");
@@ -116,13 +116,11 @@ import EcosystemCategory from "./EcosystemCategory.astro"
   
       setActive(name) {
         const title = this.title(name);
-        const button = this.button(name);
+        const link = this.link(name);
         const content = this.content(name);
   
-        console.log({ button, content, title });
-  
         content.classList.remove("hidden");
-        button.setAttribute("aria-selected", "true");
+        link.setAttribute("aria-selected", "true");
         title.setAttribute("aria-selected", "true");
       }
   
