@@ -80,10 +80,10 @@ export const server = {
 };
 ```
 
-You can call actions from any client component using the `actions` object from `astro:actions`. You can pass a type-safe object when using JSON, or a `FormData` object when using `accept: 'form'`. You can also use `getActionProps()` for progressive enhancement:
+You can call actions from any client component using the `actions` object from `astro:actions`. You can pass a type-safe object when using JSON, or a `FormData` object when using `accept: 'form'`. You can also [add `getActionProps()` for progressive enhancement](https://github.com/withastro/roadmap/blob/actions/proposals/0046-actions.md#add-progressive-enhancement-with-fallbacks):
 
 ```jsx
-// src/components/newsletter.tsx
+// src/components/Newsletter.tsx
 import { actions, getActionProps } from "astro:actions";
 
 export function Newsletter() {
@@ -92,15 +92,15 @@ export function Newsletter() {
       method="POST"
       onSubmit={async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
+        const formData = new FormData(e.target as HTMLFormElement);
         const result = await actions.newsletter(formData);
       }}
     >
       <input {...getActionProps(actions.newsletter)} />
-      <label for="email">Email</label>
+      <label htmlFor="email">Email</label>
       <input name="email" type="email" id="email" />
 
-      <label for="receivePromo">Receive promotional emails</label>
+      <label htmlFor="receivePromo">Receive promotional emails</label>
       <input name="receivePromo" type="checkbox" id="receivePromo" checked />
 
       <button type="submit">Sign Up</button>
