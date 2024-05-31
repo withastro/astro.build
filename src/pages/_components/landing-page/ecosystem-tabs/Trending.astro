@@ -3,6 +3,7 @@ import { getImage } from "astro:assets"
 import screwFast from "../../../_assets/themes/screwfast-emil.png"
 import astroWind from '../../../_assets/themes/astrowind-onwidget.png'
 import agenceX from '../../../_assets/themes/agencex-johnkat-mj.png'
+import Link from "../../Link.astro"
 
 const agenceXTheme = await getImage({ src: agenceX, format: "webp", width: 1280 })
 const screwFastTheme = await getImage({ src: screwFast, format: "webp", width: 1280 })
@@ -17,8 +18,11 @@ const themes = [
 
 <div class='p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-astro-dark-800 border border-astro-dark-300/20 rounded-2xl'>
   {themes.map(theme => 
-    <a href={theme.href}>
-      <img class="w-full h-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`}>
-    </a>
+    <div class="size-fit group relative transition-all duration-1000 ease-in-out">
+      <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
+      <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
+        <Link href={theme.href} class="secondary">View Theme</Link>
+      </div>
+    </div>
   )}
 </div>
