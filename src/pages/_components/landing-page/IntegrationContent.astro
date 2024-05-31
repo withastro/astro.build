@@ -1,30 +1,42 @@
 ---
 interface Props {
-  tab: string
-  class?: string
+  tab: string;
+  class?: string;
 }
 
-const { tab, class: className } = Astro.props
+const { tab, class: className } = Astro.props;
 ---
 
 <li
-  class:list={["mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6", className]}
+  class:list={[
+    "mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6",
+    className,
+  ]}
   data-tab={tab}
   inert
 >
-  <div class='lg:col-span-2 h-96 bg-[#07040F] p-1 rounded-[20px]'>
-    <div class="size-full bg-astro-dark-800 border border-astro-dark-300/20 rounded-2xl">
-      <slot name='code' />
+  <div class="lg:col-span-2 h-96 bg-[#07040F] p-1 rounded-[20px]">
+    <div
+      class="size-full bg-astro-dark-800 border border-astro-dark-100/20 rounded-2xl"
+    >
+      <slot name="code" />
     </div>
   </div>
 
-  <div class="h-96 lg:h-[28.3rem] lg:-mt-[4.5rem] bg-[#07040F] border border-astro-gray-600 rounded-2xl">
-    <div class="h-[2.438rem] px-3 flex items-center whitespace-no-wrap pointer-events-none select-none border-b border-b-astro-gray-600">
-      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-astro-gray-600"></span>
-      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-astro-gray-600"></span>
-      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-astro-gray-600"></span>
+  <div
+    class="h-96 lg:h-[28.3rem] lg:-mt-[4.5rem] bg-[#07040F] border border-astro-gray-600 rounded-2xl"
+  >
+    <div
+      class="h-[2.438rem] px-3 flex items-center whitespace-no-wrap pointer-events-none select-none border-b border-b-astro-gray-600"
+    >
+      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-astro-gray-600"
+      ></span>
+      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-astro-gray-600"
+      ></span>
+      <span class="mx-1 inline-block h-3 w-3 rounded-full bg-astro-gray-600"
+      ></span>
     </div>
 
-    <slot name='example' />
+    <slot name="example" />
   </div>
 </li>

@@ -1,14 +1,18 @@
 ---
-const { title, description } = Astro.props
+const { title, description } = Astro.props;
 ---
 
-<div class="p-4 sm:p-6 group bg-astro-dark-800 border border-astro-dark-300/20 rounded-xl sm:rounded-2xl">
+<div
+  class="p-4 sm:p-6 group bg-astro-dark-800 border border-astro-dark-100/20 rounded-xl sm:rounded-2xl"
+>
   <div>
-    <slot name='illustration' />
+    <slot name="illustration" />
   </div>
 
   <div class="space-y-2">
     <h3 class="text-base text-white font-semibold">{title}</h3>
-    <p class="text-astro-gray-200 font-light text-base text-balance">{description}</p>
+    <p class="text-astro-gray-200 font-light text-base text-balance">
+      {description}
+    </p>
   </div>
 </div>
