@@ -1,32 +1,32 @@
 ---
-import Link from "../Link.astro"
-import { getImage } from "astro:assets"
-import bg from "../../_assets/final-cta.png"
-import CodeBlock from "~/components/CodeBlock.astro"
+import { getImage } from "astro:assets";
+import CodeBlock from "~/components/CodeBlock.astro";
+import bg from "../../_assets/final-cta.png";
+import Link from "../Link.astro";
 
-const background = await getImage({ src: bg, format: "webp", width: 1280 })
+const background = await getImage({ src: bg, format: "webp", width: 1280 });
 ---
 
 <section class="mt-20 sm:mt-36 mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
+  <div
+    class="overflow-hidden rounded-2xl border-y-[0.5px] border-astro-dark-100/20 bg-cover bg-center"
+    style={{ "background-image": `url(${background.src})` }}
+  >
     <div
-      class="overflow-hidden rounded-2xl border-y-[0.5px] border-astro-dark-300/20 bg-cover bg-center"
-      style={{ "background-image": `url(${background.src})` }}
+      class="landing-section h-full min-h-[24rem] gap-8 lg:gap-12 p-8 md:p-20 xl:min-h-[44rem] lg:p-40"
     >
-      <div
-        class="landing-section h-full min-h-[24rem] gap-8 lg:gap-12 p-8 md:p-20 xl:min-h-[44rem] lg:p-40"
-      >
-        <h2 class="text-balance text-xl md:text-2xl xl:text-4xl font-heading">
-          Start building with <br /> Astro today
-        </h2>
+      <h2 class="text-balance text-xl md:text-2xl xl:text-4xl font-heading">
+        Start building with <br /> Astro today
+      </h2>
 
-        <div class="grid grid-rows-2 gap-2">
-          <Link href="https://docs.astro.build/" class="primary w-full h-fit">
-            <span class="bg-clip-text text-transparent bg-blue-purple-gradient">
-              Start Started
-            </span>
-          </Link>
-          <CodeBlock>npm create astro@latest</CodeBlock>
-        </div>
+      <div class="grid grid-rows-2 gap-2">
+        <Link href="https://docs.astro.build/" class="primary w-full h-fit">
+          <span class="bg-clip-text text-transparent bg-blue-purple-gradient">
+            Start Started
+          </span>
+        </Link>
+        <CodeBlock>npm create astro@latest</CodeBlock>
       </div>
     </div>
-  </section>
+  </div>
+</section>

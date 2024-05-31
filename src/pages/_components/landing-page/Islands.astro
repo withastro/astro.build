@@ -1,41 +1,75 @@
 ---
-import SectionCopy from "../SectionCopy.astro"
-import IslandGraphic from "./IslandGraphic.astro"
-import GreenishStardust from "./GreenishStardust.astro"
+import SectionCopy from "../SectionCopy.astro";
+import GreenishStardust from "./GreenishStardust.astro";
+import IslandGraphic from "./IslandGraphic.astro";
 ---
 
-<section class="mt-20 sm:mt-36 relative w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
+<section
+  class="mt-20 sm:mt-36 relative w-full max-w-screen-2xl mx-auto px-4 sm:px-8"
+>
   <SectionCopy
-    label='Best-In-Class Performance'
-    title='Astro Islands'
+    label="Best-In-Class Performance"
+    title="Astro Islands"
     description="Islands optimize your website like no other web framework can. Leverage Astro's unique page load performance to improve conversion rates, Core Web Vitals, and SEO."
   />
 
   <GreenishStardust height="h-56 md:h-80 lg:h-96" />
 
-  <div class="mt-8 p-4 sm:p-8 bg-astro-dark-800 border border-astro-dark-300/20 rounded-xl sm:rounded-2xl">
+  <div
+    class="mt-8 p-4 sm:p-8 bg-astro-dark-800 border border-astro-dark-100/20 rounded-xl sm:rounded-2xl"
+  >
     <p class="text-astro-gray-300">Real-World Performance Comparison</p>
 
     <div class="mt-8 mb-5">
-        <IslandGraphic label="Astro" score="98" size="size-[22px]" src="/assets/press/astro-icon-light.svg" glow />
-        <IslandGraphic label="Gatsby" score="68" size="size-[19px]" src="/assets/web-vitals/gatsby-logo.svg" />
-        <IslandGraphic label="Next.js" score="63" src="/assets/web-vitals/next-js-logo.svg" />
-        <IslandGraphic label="Wordpress" score="58" src="/assets/web-vitals/wordpress-logo.svg" />
-        <IslandGraphic label="Nuxt" score="54" size="size-6" src="/assets/web-vitals/nuxt-logo.svg" />
+      <IslandGraphic
+        label="Astro"
+        score="98"
+        size="size-[22px]"
+        src="/assets/press/astro-icon-light.svg"
+        glow
+      />
+      <IslandGraphic
+        label="Gatsby"
+        score="68"
+        size="size-[19px]"
+        src="/assets/web-vitals/gatsby-logo.svg"
+      />
+      <IslandGraphic
+        label="Next.js"
+        score="63"
+        src="/assets/web-vitals/next-js-logo.svg"
+      />
+      <IslandGraphic
+        label="Wordpress"
+        score="58"
+        src="/assets/web-vitals/wordpress-logo.svg"
+      />
+      <IslandGraphic
+        label="Nuxt"
+        score="54"
+        size="size-6"
+        src="/assets/web-vitals/nuxt-logo.svg"
+      />
     </div>
 
-    <p class="text-astro-gray-300 lg:whitespace-break-spaces lg:flex gap-1 text-balance">
-        <a class="text-astro-gray-100 underline underline-offset-2 decoration-astro-gray-300 hover:decoration-white transition-colors durartion-500 ease-out" 
-            href="https://astro.build/blog/2023-web-framework-performance-report/">
-            Read the full report
-        </a>
-        &middot; Based on 
-        <a class="w-fit text-astro-gray-100 underline underline-offset-2 decoration-astro-gray-300 hover:decoration-white transition-colors durartion-500 ease-out" 
-            href="https://httparchive.org/" target="_blank">
-            HTTP Archive
-        </a>
-        real-world preformance data (Lighthouse, P90)
+    <p
+      class="text-astro-gray-300 lg:whitespace-break-spaces lg:flex gap-1 text-balance"
+    >
+      <a
+        class="text-astro-gray-100 underline underline-offset-2 decoration-astro-gray-300 hover:decoration-white transition-colors durartion-500 ease-out"
+        href="https://astro.build/blog/2023-web-framework-performance-report/"
+      >
+        Read the full report
+      </a>
+       &middot; Based on
+      <a
+        class="w-fit text-astro-gray-100 underline underline-offset-2 decoration-astro-gray-300 hover:decoration-white transition-colors durartion-500 ease-out"
+        href="https://httparchive.org/"
+        target="_blank"
+      >
+        HTTP Archive
+      </a>
+       real-world preformance data (Lighthouse, P90)
     </p>
-
   </div>
 </section>

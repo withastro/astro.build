@@ -9,7 +9,10 @@ import PaletteIcon from "~/icons/PaletteIcon.jsx";
 	<summary class="accordion link flex cursor-pointer items-center gap-2">
 		Resources
 		<span class="sr-only">Open resources menu</span>
-		<ChevronIcon class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-500" aria-hidden="true"/>
+		<ChevronIcon
+			class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-500"
+			aria-hidden="true"
+		/>
 	</summary>
 	<ul
 		class:list={[
@@ -20,7 +23,7 @@ import PaletteIcon from "~/icons/PaletteIcon.jsx";
 			"absolute left-0 top-full translate-y-2",
 
 			// panel styling
-			"min-w-[150px] rounded-xl bg-astro-dark-800 p-1 text-astro-gray-200 shadow-lg border border-astro-dark-300/10",
+			"min-w-[150px] rounded-xl bg-astro-dark-800 p-1 text-astro-gray-200 shadow-lg border border-astro-dark-100/10",
 
 			// transitioning
 			"invisible group-open:visible",
@@ -59,14 +62,14 @@ import PaletteIcon from "~/icons/PaletteIcon.jsx";
 </details>
 
 <script>
-	const menu = document.querySelector<HTMLDetailsElement>("#resources-menu")!
+	const menu = document.querySelector<HTMLDetailsElement>("#resources-menu")!;
 
 	menu.addEventListener("focusout", () => {
 		if (!menu.matches(":focus-within")) {
 			// delay the transition on focustout so the menu doesn't immediately disappear
 			setTimeout(() => {
-				menu.open = false
-			}, 200)
+				menu.open = false;
+			}, 200);
 		}
-	})
+	});
 </script>
