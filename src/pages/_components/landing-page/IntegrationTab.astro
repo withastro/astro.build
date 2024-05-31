@@ -1,21 +1,18 @@
 ---
 type Props = {
   label: string;
+  size?: string;
+  slug?: string;
   logoSrc: string;
   active?: boolean;
-  size?: string;
 };
 
-const {
-  logoSrc,
-  label,
-  size = "size-6 sm:size-8",
-  active = false,
-} = Astro.props;
+const { logoSrc, label, slug, size = "size-6 sm:size-8", active = false } = Astro.props;
 ---
 
 <li>
-  <button
+  <a
+    href={slug ? `#${slug}-integration` : `#${label.toLowerCase()}-integration`}
     role="tab"
     data-tab={label.toLowerCase()}
     aria-selected={active ? "true" : undefined}
@@ -44,5 +41,5 @@ const {
     >
       {label}
     </p>
-  </button>
+  </a>
 </li>
