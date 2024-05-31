@@ -1,12 +1,13 @@
 ---
 interface Props {
   tab: string;
+  slug?: string
   class?: string;
 }
 
-const { tab, class: className } = Astro.props;
+const { tab, class: className, slug } = Astro.props;
 ---
 
-<li class:list={[className]} data-tab={tab}>
+<li id={slug ? slug: tab} class:list={[className]} data-tab={tab}>
   <slot />
 </li>
