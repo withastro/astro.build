@@ -216,27 +216,27 @@ export default {
 				},
 
 				".heading-1": {
-					"@apply font-heading text-6xl leading-tight": {},
-					fontWeight: "var(--heading-weight-normal)",
-				},
-
-				".heading-2": {
 					"@apply font-heading text-5xl leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
-				".heading-3": {
-					"@apply font-heading text-3xl leading-tight": {},
+				".heading-2": {
+					"@apply font-heading text-4xl leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
-				".heading-4": {
+				".heading-3": {
 					"@apply font-heading text-2xl leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
-				".heading-5": {
+				".heading-4": {
 					"@apply font-heading text-xl leading-tight": {},
+					fontWeight: "var(--heading-weight-normal)",
+				},
+
+				".heading-5": {
+					"@apply font-heading text-lg leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
@@ -247,7 +247,7 @@ export default {
 					"-webkit-font-smoothing": "subpixel-antialiased",
 				},
 				".body-large": {
-					"@apply font-sans text-2xl leading-normal": {},
+					"@apply font-sans text-xl leading-normal": {},
 					"--sans-wght": "200",
 					fontWeight: "200",
 					"-webkit-font-smoothing": "subpixel-antialiased",
