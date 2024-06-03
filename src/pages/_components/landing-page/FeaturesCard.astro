@@ -3,13 +3,13 @@ const { title, description } = Astro.props;
 ---
 
 <div
-  class="p-4 sm:p-6 group flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 rounded-xl sm:rounded-2xl overflow-hidden"
+  class="group flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 rounded-xl sm:rounded-2xl overflow-hidden"
 >
   <div class="w-full h-2/3">
     <slot name="illustration" />
   </div>
 
-  <div class="space-y-2">
+  <div class="p-4 sm:p-6 space-y-2">
     <h3 class="text-base text-white font-semibold">{title}</h3>
     <p class="text-astro-gray-200 font-light text-base text-balance">
       {description}
