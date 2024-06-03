@@ -1,5 +1,6 @@
 ---
 import SectionCopy from "../SectionCopy.astro"
+import ContentCollections from "./ContentCollections.astro"
 import FeaturesCard from "./FeaturesCard.astro"
 ---
 
@@ -14,7 +15,12 @@ import FeaturesCard from "./FeaturesCard.astro"
     <FeaturesCard
       title='Content Collections'
       description='Content Collections help to organize your documents, validate your frontmatter, and provide automatic TypeScript type-safety for all of your content.'
-    />
+    >
+      <div slot="illustration" class="size-full py-4 sm:py-6 mb-2 sm:mb-4">
+        <ContentCollections />
+      </div>
+  </FeaturesCard>
+
     <FeaturesCard
       title='Content Collections'
       description='Content Collections help to organize your documents, validate your frontmatter, and provide automatic TypeScript type-safety for all of your content.'
