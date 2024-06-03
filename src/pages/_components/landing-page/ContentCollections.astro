@@ -4,28 +4,50 @@ import Icon from "astro-icon"
 
 ---
 
-<div class='size-full relative flex items-center justify-end overflow-hidden'>
+<div class='size-full flex items-center justify-between overflow-hidden'>
 
-    <div class="absolute -left-1/3 flex items-center justify-center gap-8">
-        {Array(4).fill( 
-            <div class="relative">
-                <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 8C0 3.58172 3.58172 0 8 0H37.3972C39.3933 0 41.3173 0.746214 42.7914 2.09212L52 10.5L61.8784 21.2016C63.2425 22.6794 64 24.6168 64 26.6279V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#6B7AAB"/>
-                    <path d="M0 8C0 3.58172 3.58172 0 8 0H37C41.4183 0 45 3.58172 45 8V11C45 15.4183 48.5817 19 53 19H56C60.4183 19 64 22.5817 64 27V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#2F3854"/>
-                    <rect x="10" y="27" width="32" height="4" rx="2" fill="#6B7AAB"/>
-                    <rect x="10" y="37" width="40" height="4" rx="2" fill="#6B7AAB"/>
-                    <rect x="10" y="47" width="28" height="4" rx="2" fill="#6B7AAB"/>
-                </svg>
-                <div class="size-5 landing-section absolute -bottom-2 -right-2 bg-astro-red rounded-full">
-                    <Icon name="ri:close-line" size={16} />
+    <div class="w-1/2 h-full min-h-40 relative flex items-center overflow-hidden">
+        <div id="unscanned-docs-container" class="absolute right-2 flex items-center justify-center gap-8">
+            {Array(5).fill( 
+                <div class="relative">
+                    <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 8C0 3.58172 3.58172 0 8 0H37.3972C39.3933 0 41.3173 0.746214 42.7914 2.09212L52 10.5L61.8784 21.2016C63.2425 22.6794 64 24.6168 64 26.6279V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#6B7AAB"/>
+                        <path d="M0 8C0 3.58172 3.58172 0 8 0H37C41.4183 0 45 3.58172 45 8V11C45 15.4183 48.5817 19 53 19H56C60.4183 19 64 22.5817 64 27V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#2F3854"/>
+                        <rect x="10" y="27" width="32" height="4" rx="2" fill="#6B7AAB"/>
+                        <rect x="10" y="37" width="40" height="4" rx="2" fill="#6B7AAB"/>
+                        <rect x="10" y="47" width="28" height="4" rx="2" fill="#6B7AAB"/>
+                    </svg>
+                    <div class="size-[18px] landing-section absolute -bottom-2 -right-2 bg-astro-red rounded-full">
+                        <Icon name="ri:close-line" size={14} />
+                    </div>
                 </div>
-            </div>
-        )}
+            )}
+        </div>
     </div>
 
     <div class="w-1/2 h-full min-h-40 relative flex items-center bg-astro-dark-800 overflow-hidden">
         <div id="scanner-inlet" class="w-px h-full" />
-        <div id="scanner-light" class="w-8 h-2/3 blur-xl" />
+        <div id="scanner-light" class="w-8 h-2/3 blur-lg z-30" />
+
+        <div id="scanned-docs-container" class="absolute z-10 -left-[455px] flex items-center justify-center gap-8">
+            {Array(5).fill( 
+                <div class="relative">
+                    <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 8C0 3.58172 3.58172 0 8 0H37.3972C39.3933 0 41.3173 0.746214 42.7914 2.09212L52 10.5L61.8784 21.2016C63.2425 22.6794 64 24.6168 64 26.6279V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#6B7AAB"/>
+                        <path d="M0 8C0 3.58172 3.58172 0 8 0H37C41.4183 0 45 3.58172 45 8V11C45 15.4183 48.5817 19 53 19H56C60.4183 19 64 22.5817 64 27V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#2F3854"/>
+                        <rect x="10" y="27" width="32" height="4" rx="2" fill="#6B7AAB"/>
+                        <rect x="10" y="37" width="40" height="4" rx="2" fill="#6B7AAB"/>
+                        <rect x="10" y="47" width="28" height="4" rx="2" fill="#6B7AAB"/>
+                    </svg>
+                    <div class=" absolute -bottom-2 -right-2">
+                        <div class="relative landing-section">
+                            <Icon name="ri:shield-fill" size={22} class="text-[#3178C6]" />
+                            <Icon name="ri:check-line" size={14} class="absolute m-auto inset-0 text-white" />
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
     </div>
 
 </div>
@@ -36,6 +58,21 @@ import Icon from "astro-icon"
     }
     #scanner-light {
         background: linear-gradient(42deg, rgba(50, 69, 255, 0.30) 23.59%, rgba(188, 82, 238, 0.30) 76.41%);
+    }
+
+    #unscanned-docs-container {
+        animation-play-state: running;
+        animation: marquee 40s linear infinite;
+    }
+
+    #scanned-docs-container {
+        animation-play-state: running;
+        animation: marquee 40s linear infinite;
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% {  transform: translateX(100%); }
     }
 </style>
 
