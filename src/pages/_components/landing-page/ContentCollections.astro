@@ -4,8 +4,9 @@ import Icon from "astro-icon"
 
 ---
 
-<div class='size-full relative flex items-center justify-center overflow-hidden'>
-    <div class="flex items-center justify-center gap-8">
+<div class='size-full relative flex items-center justify-end overflow-hidden'>
+
+    <div class="absolute -left-1/3 flex items-center justify-center gap-8">
         {Array(4).fill( 
             <div class="relative">
                 <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +22,22 @@ import Icon from "astro-icon"
             </div>
         )}
     </div>
+
+    <div class="w-1/2 h-full min-h-40 relative flex items-center bg-astro-dark-800 overflow-hidden">
+        <div id="scanner-inlet" class="w-px h-full" />
+        <div id="scanner-light" class="w-8 h-2/3 blur-xl" />
+    </div>
+
 </div>
+
+<style>
+    #scanner-inlet {
+        background: radial-gradient(3337.59% 50% at 50% 50%, rgba(50, 69, 255, 1) 0%, rgba(188, 82, 238, 0) 100%);
+    }
+    #scanner-light {
+        background: linear-gradient(42deg, rgba(50, 69, 255, 0.30) 23.59%, rgba(188, 82, 238, 0.30) 76.41%);
+    }
+</style>
 
 <script>
   const docOne = document.getElementById("doc-one") as HTMLElement
