@@ -1,0 +1,41 @@
+---
+import { getImage } from "astro:assets"
+import GoogleLogo from '../../_assets/brands/google.png'
+import NordVPNLogo from '../../_assets/brands/nordvpn.png'
+import PorscheLogo from '../../_assets/brands/porsche.png'
+import NBCNewsLogo from '../../_assets/brands/nbc-news.png'
+import MicrosoftLogo from '../../_assets/brands/microsoft.png'
+import TheGuardianLogo from '../../_assets/brands/the-guardian.png'
+
+const google = await getImage({ src: GoogleLogo, format: "webp", width: 1280 });
+const microsoft = await getImage({ src: MicrosoftLogo, format: "webp", width: 1280 });
+const guardian = await getImage({ src: TheGuardianLogo, format: "webp", width: 1280 });
+const nordvpn = await getImage({ src: NordVPNLogo, format: "webp", width: 1280 });
+const porsche = await getImage({ src: PorscheLogo, format: "webp", width: 1280 });
+const nbc = await getImage({ src: NBCNewsLogo, format: "webp", width: 1280 });
+
+const logos = [
+	{ src: google.src, alt: "Google Logo", height: 'h-9' },
+	{ src: microsoft.src, alt: "Microsoft Logo", height: 'h-6' },
+	{ src: guardian.src, alt: "The Guardian Logo", height: 'h-8' },
+	{ src: nordvpn.src, alt: "NordVPN Logo", height: 'h-8' },
+	{ src: porsche.src, alt: "Porsche Logo", height: 'h-3.5' },
+	{ src: nbc.src, alt: "NBC News Logo", height: 'h-5' },
+];
+---
+
+<div class="mt-8 sm:mt-16 xs:p-6 mx-auto w-full max-w-screen-2xl space-y-5 sm:space-y-8 p-4 sm:p-8">
+    <div class="landing-section gap-4 sm:gap-6">
+      <p class="text-astro-gray-1280 font-light text-base text-balance">
+        Used by the best developers and teams around the world:
+      </p>
+
+      <div class="flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-8 gap-y-6 px-4">
+        {
+          logos.map((logo) => 
+            <img class:list={['w-fit object-center object-contain', logo.height]} src={logo.src} alt={logo.alt} />
+          )
+        }
+      </div>
+    </div>
+  </div>
