@@ -1,15 +1,13 @@
 ---
 name: "@playform/inline"
 title: "@playform/inline"
-description: "🦔 Inline."
+description: "🦔 Inline —"
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@playform/inline"
 image: "/assets/integrations/@playform/inline.svg"
-repoUrl: "https://github.com/Playform/Inline"
-homepageUrl: "https://github.com/Playform/Inline#ReadMe"
+repoUrl: "https://github.com/PlayForm/Inline"
+homepageUrl: "HTTPS://GitHub.Com/PlayForm/Inline#readme"
 downloads: 16991
-badge: "new"
 ---

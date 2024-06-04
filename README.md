@@ -29,3 +29,16 @@ Integration data is updated weekly by a [GitHub Action](/.github/workflows/weekl
 The [blog collection](/src/content/blog/) is setup to support MDX blog posts with all images being pulled from the collection's [\_images directory](/src/content/blog/_images/). Images should be a `webp` format of a reasonable width, something in the 800-1600px range is ideal.
 
 Blog post cover and social images are set as frontmatter properties and should point reference the `_images` directory, ex: `coverImage: "/src/content/blog/_images/post-1/cover.webp"`.
+
+## Web Vitals monitoring
+
+Site performance is tracked using [`@astrojs/web-vitals`](https://www.npmjs.com/package/@astrojs/web-vitals) and Astro Studio.
+
+There are two separate projects in Astro Studio to separate production and development/preview data:
+
+- Production: `astrobuild`
+- Development: `astrobuild-preview-deploys`
+
+These are both part of the `Astro` team in Studio.
+
+If table schema changes need to be pushed, remember to push them to each of these Studio projects.
