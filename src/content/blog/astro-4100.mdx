@@ -1,0 +1,146 @@
+---
+title: "Astro 4.10"
+description: "Astro 4.10 is out with experimental type-safe environment variables."
+publishDate: "June 4, 2024"
+authors:
+  - erika
+  - ema
+  - matthew
+  - nate
+  - bjorn
+  - sarah
+coverImage: "/src/content/blog/_images/astro-4100/header-astro-4.10.webp"
+socialImage: "/src/content/blog/_images/astro-4100/og-image-4.10.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  Astro 4.10 is out with experimental type-safe environment variables
+</BlogSummary>
+
+Full release highlights include:
+
+- [**Experimental: astro:env module**](#experimental-astro-env-module)
+- [**Rewrite for all HTTP methods**](#rewrite-for-all-http-methods)
+- [**Embedding Astro in server frameworks**](#embedding-astro)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: astro:env
+
+Astro 4.10 introduces a new experimental built-in module, `astro:env`.
+
+Environment variables allow you to configure your app with different values in different environments. But this comes with a great deal of complexity:
+
+- Some variables are used in the client and some only on the server.
+- Server variables are often __secrets__, things like API keys that you absolutely do not want exposed in the client, and you also do not want inlined into the server build either (which can be viewed by anyone with access to the build output).
+- Some variables are __required__ for your app to function at all; whereas other are optional enhancements.
+- Runtimes such as Cloudflare and Deno have different APIs for reading variables, creating a dev/prod difference you need to deal with.
+
+We built `astro:env` to provide more control and structure over environment variables. Here's how you might define a schema for them in your config:
+
+```js
+import { defineConfig, envField } from 'astro/config';
+
+export default defineConfig({
+  env: {
+    schema: {
+      DATABASE_URL: envField.string({
+        context: 'client',
+        access: 'public'
+      }),
+      API_PORT: envField.number({
+        context: 'server',
+        access: 'secret',
+        default: 7000
+      })
+    }
+  }
+})
+```
+
+Once defined you can use your variables by importing them from the `astro:env` module like so:
+
+```js
+import { API_PORT } from 'astro:env/server';
+
+// API_PORT is a number
+// ...
+```
+
+Some times you still want to read a variable that is not defined in the schema. This might be because the variable name is dynamic itself such as `BACK_SERVER_1` and `BACK_SERVER_2`, for example. Or it might be because you are reading variables inside of an Astro integration and don't want to impose the schema onto the app. In these cases `getSecret` is available to read runtime variables and works with any runtime (Cloudflare, Node.js, Deno).
+
+```js
+import { getSecret } from 'astro:env/server';
+
+function getServerEndpoint(num: number) {
+  return getSecret('BACKUP_SERVER_' + num);
+}
+```
+
+## Rewrite for all HTTP methods
+
+Rewrites is a new experimental feature released in 4.9. The first version targeted `GET` requests, the most common case for a rewrite. Now in 4.10 rewrites can be used to change the route for any requests, which it does by cloning the initial request.
+
+A use-case would be having a versioned API with a default version that you rewrite in middleware:
+
+```js
+import { defineMiddleware } from 'astro:middleware';
+
+// `context` and `next` are automatically typed
+export const onRequest = defineMiddleware(({ request, url }, next) => {
+  if(request.method === 'POST' && url.pathname === '/api') {
+    return next('/api/v2');
+  }
+});
+```
+
+When rewriting a new request is created pointing to the new URL. The existing headers and body are copied over to the new request.
+
+## Embedding Astro
+
+In 4.9 we introduced the Container API, a new way to render Astro components outside of the context of the Astro framework. Our initial focus was on the __testing__ story. You can now use the container API to test Astro components. Create a container, render a component with `container.renderToString` and inspect the generated HTML.
+
+We always knew people would want to use the container API in other ways. In 4.10 it's now possible to use the container API to render built __production__ components. To demonstrate it, we built a [PHP demo](https://github.com/matthewp/astro-in-php-example) app. Don't judge the code, PHP experts 😅
+
+The container part looks like this:
+
+```js
+import * as components from './dist/server/all.mjs';
+import { renderers } from './dist/server/renderers.mjs';
+import { manifest } from './dist/server/entry.mjs';
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+
+const container = await AstroContainer.create({
+  manifest,
+  renderers,
+  resolve(s) {
+    const found = manifest.entryModules[s];
+    if(found) {
+      return `/astro-project/dist/client/${found}`;
+    }
+    return found;
+  }
+});
+
+const html = await container.renderToString(components.ReactWrapper);
+console.log(html);
+```
+
+The Container API is low-level and reflects what Astro does internally to render its own routes. We're hopeful that integrations get built that smooths over the rough edges and provides simpler way to embed Astro.
+
+## Bug Fixes
+
+As always, Astro 4.10 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4100) to learn more!
