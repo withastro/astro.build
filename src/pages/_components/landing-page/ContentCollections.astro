@@ -1,7 +1,5 @@
 ---
 import Icon from "astro-icon"
-
-
 ---
 
 <div class='size-full flex items-center justify-between overflow-hidden'>
@@ -27,11 +25,11 @@ import Icon from "astro-icon"
 
     <div class="w-1/2 h-full min-h-40 relative flex items-center bg-astro-dark-800 overflow-hidden">
         <div id="scanner-inlet" class="w-px h-full" />
-        <div id="scanner-light" class="w-8 h-2/3 blur-lg z-30" />
+        <div id="scanner-light" class="w-12 h-2/3 blur-xl z-30" />
 
-        <div id="scanned-docs-container" class="absolute z-10 -left-[455px] flex items-center justify-center gap-8">
+        <div id="scanned-docs-container" class="absolute z-10 -left-[29rem] flex items-center justify-center gap-8">
             {Array(5).fill( 
-                <div class="relative">
+                <div class="relative pt-0.5">
                     <svg width="66" height="82" viewBox="0 0 66 82" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M53.3674 11.1609L53.3529 11.1452L53.3371 11.1308L44.1285 2.72287C42.5623 1.29285 40.5181 0.5 38.3972 0.5H9C4.30558 0.5 0.5 4.30558 0.5 9V73C0.5 77.6944 4.30558 81.5 9 81.5H57C61.6944 81.5 65.5 77.6944 65.5 73V27.6279C65.5 25.4911 64.6952 23.4326 63.2458 21.8625L53.3674 11.1609Z" fill="#6B7AAB" stroke="#6B7AAB"/>
                         <path d="M1 9C1 4.58172 4.58172 1 9 1H38C42.4183 1 46 4.58172 46 9V12C46 16.4183 49.5817 20 54 20H57C61.4183 20 65 23.5817 65 28V73C65 77.4183 61.4183 81 57 81H9C4.58172 81 1 77.4183 1 73V9Z" fill="#2F3854"/>
@@ -75,21 +73,3 @@ import Icon from "astro-icon"
         100% {  transform: translateX(100%); }
     }
 </style>
-
-<script>
-  const docOne = document.getElementById("doc-one") as HTMLElement
-  const docTwo = document.getElementById("doc-two") as HTMLElement
-
-  function distanceBetweenElements( elementOne: HTMLElement, elementTwo: HTMLElement) {
-    const rect1 = elementOne.getBoundingClientRect()
-    const rect2 = elementTwo.getBoundingClientRect()
-
-    const distance = Math.abs(rect2.left - rect1.right)
-
-    console.log(distance)
-
-    return distance
-  }
-
-  distanceBetweenElements(docOne, docTwo)
-</script>
