@@ -22,14 +22,21 @@ import FeaturesCard from "./FeaturesCard.astro"
   </FeaturesCard>
 
     <FeaturesCard
-      title='Content Collections'
-      description='Content Collections help to organize your documents, validate your frontmatter, and provide automatic TypeScript type-safety for all of your content.'
-    />
+      title='Zero JavaScript'
+      description='You can include JavaScript code inside of your component frontmatter, and all of it will be stripped from the final page sent to your users&apos; browsers. The result is a faster site!'
+    >
+      <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 pb-0 space-y-2 relative">
+        <p id="zero-js" class="absolute z-20 left-1/2 -translate-x-1/2 bg-clip-text text-transparent bg-gradient-to-b from-[#495057] to-[#211F2F]">0</p>
+        <div class="absolute top-0 left-0 z-10 size-full min-h-40 md:min-h-64 bg-[radial-gradient(#252730_0.5px,transparent_0.5px)] [background-size:5px_5px] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_40%,#ffffff_40%,transparent_100%)]" />
+      </div>
+  
+  </FeaturesCard>
+
     <FeaturesCard
       title='View Transitions'
-      description='Content Collections help to organize your documents, validate your frontmatter, and provide automatic TypeScript type-safety for all of your content.'
+      description='View transitions update your page content without the browser&apos;s normal, full-page navigation refresh and provide seamless animations between pages.'
     >
-      <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 pb-0 mix-blend-luminosity group-hover:mix-blend-normal space-y-2">
+      <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 pb-0 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal">
         <div class="flex items-center justify-center gap-2">
           <div class="size-12 min-w-24 sm:size-24 rounded-lg bg-gradient-to-tr from-[#211F2F] to-[#074170]" />
           <div class="w-full min-w-24 h-12 sm:h-24 group-hover:w-24 rounded-lg bg-gradient-to-tr from-[#184560] to-[#08203E] transition-all ease-in-out duration-[1.5s]" />
@@ -41,6 +48,7 @@ import FeaturesCard from "./FeaturesCard.astro"
         </div>
       </div>
   </FeaturesCard>
+
     <FeaturesCard
       title='Content Collections'
       description='Content Collections help to organize your documents, validate your frontmatter, and provide automatic TypeScript type-safety for all of your content.'
@@ -67,3 +75,12 @@ import FeaturesCard from "./FeaturesCard.astro"
     />
   </div>
 </section>
+
+<style>
+  #zero-js {
+    font-size: 200px;
+    font-weight: 700;
+    line-height: 200px;
+    @apply drop-shadow-[inset_0px_0px_0px_1.5px_rgba(255,255,255,0.06),inset_0px_1.5px_0px_0px_rgba(255,255,255,0.15)];
+  }
+</style>
