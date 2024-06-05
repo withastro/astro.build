@@ -6,39 +6,39 @@ import IntroPoint from "../IntroPoint.astro"
 <section class="mt-20 sm:mt-36 xs:p-6 mx-auto w-full max-w-screen-2xl space-y-5 sm:space-y-8 p-4 sm:p-8">
   <div class="space-y-1">
     <span class="bg-clip-text text-transparent bg-red-pink-gradient font-semibold">What is Astro?</span>
-    <h2 class="max-w-screen-lg text-balance text-2xl font-light font-heading md:text-4xl xl:text-[2.5rem] xl:leading-tight">
+    <h2 class="max-w-screen-lg text-balance text-2xl font-light font-heading md:text-4xl  md:leading-tight">
       <strong>Astro</strong> is a JavaScript web framework optimized for building fast, content-driven websites.
     </h2>
   </div>
 
-  <dl class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-    <IntroPoint title="Content-Driven">
-      <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] bg-blue-green-gradient"> 
+  <dl class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3"> 
+    <IntroPoint title="Server-First">
+      <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] from-astro-blue/25 to-astro-green/25 bg-blue-green-gradient"> 
         <div class='size-12 lg:size-14 landing-section bg-black text-white rounded-full'>
-          <div class="size-full landing-section bg-gradient-to-br from-astro-blue/25 to-astro-green/25 rounded-full">
-            <Icon name="ri:file-list-3-line" class="size-5 lg:size-7" />
-          </div>
-        </div>
-      </div>
-        <Fragment slot="description">
-            Reduce complexity in your tech stack without sacraficing developer experience. lorem ipsum dolor sit amet, consectetur adipisci dolore.
-        </Fragment>
-
-    </IntroPoint>
-
-    <IntroPoint title="Server-First" gradient="bg-blue-green-gradient">
-      <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] bg-red-pink-gradient"> 
-        <div class='size-12 lg:size-14 landing-section bg-black text-white rounded-full'>
-          <div class="size-full landing-section bg-gradient-to-br from-astro-red/20 to-astro-pink/20 rounded-full">
+          <div class="size-full landing-section bg-gradient-to-br rounded-full">
             <Icon name="ri:server-line" class="size-5 lg:size-7" />
           </div>
         </div>
       </div>
         <Fragment slot="description">
-            Reduce complexity in your tech stack without sacraficing developer experience. lorem ipsum dolor sit amet, consectetur adipisci dolore.
+            Astro improves website performance by rendering components on the server, sending lightweight HTML to the browser with zero unneccesary JavaScript overhead.
+        </Fragment>
+    </IntroPoint>
+
+    <IntroPoint title="Content-Driven">
+      <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] bg-red-pink-gradient"> 
+        <div class='size-12 lg:size-14 landing-section bg-black text-white rounded-full'>
+          <div class="size-full landing-section bg-gradient-to-br from-astro-red/20 to-astro-pink/20  rounded-full">
+            <Icon name="ri:file-list-3-line" class="size-5 lg:size-7" />
+          </div>
+        </div>
+      </div>
+        <Fragment slot="description">
+          Astro was designed to work with your content, no matter where it lives. Load data from your file system, external API, or your favorite CMS.
         </Fragment>
 
     </IntroPoint>
+
 
     <IntroPoint title="Customizable" gradient="bg-orange-yellow-gradient">
       <div slot="icon" class="size-fit rounded-full p-0.5 lg:p-[3px] bg-orange-yellow-gradient"> 
@@ -49,7 +49,7 @@ import IntroPoint from "../IntroPoint.astro"
         </div>
       </div>
         <Fragment slot="description">
-            Reduce complexity in your tech stack without sacraficing developer experience. lorem ipsum dolor sit amet, consectetur adipisci dolore.
+            Astro provides the foundation for your favorite tools. Bring your own JavaScript UI components, CSS libraries, themes, integrations and more.
         </Fragment>
 
     </IntroPoint>
