@@ -12,14 +12,20 @@ const { title, subtitle, href, class: className } = Astro.props;
 ---
 
 <a href={href} class:list={["h-9 group w-fit flex items-center justify-center gap-0 bg-astro-dark-900/55 backdrop-blur-3xl rounded-full", className]}>
-	<div class="px-3 h-full w-fit flex items-center bg-gradient-to-tr from-[#1321AC] to-[#881ABD] rounded-full">
+	<div class="px-3 h-full w-fit flex items-center gap-2 bg-gradient-to-tr from-[#1321AC] to-[#881ABD] rounded-full">
 		<span class="text-sm text-white font-light">{title}</span>
+
+		<svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-white block sm:hidden" viewBox="0 0 24 24">
+			<path fill="currentColor" d="m16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z"/>
+		</svg>
 	</div>
 	{subtitle && 
 		<div class="hidden sm:flex px-3 h-full w-fit items-center justify-center gap-2">
 			<span class="text-sm text-astro-gray-200 group-hover:text-white font-light">{subtitle}</span>
 
-			<svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-astro-gray-200 group-hover:text-white" viewBox="0 0 24 24"><path fill="currentColor" d="m16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z"/></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-astro-gray-200 group-hover:text-white" viewBox="0 0 24 24">
+				<path fill="currentColor" d="m16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z"/>
+			</svg>
 		</div>
 	}
 </a>

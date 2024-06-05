@@ -15,7 +15,7 @@ const { lg = false, title, body, wide = false } = Astro.props;
 			class:list={[
 				"mb-10 px-4 text-center lg:heading-1",
 				lg ? "heading-2" : "heading-3 sm:heading-2",
-				wide ? "max-w-5xl" : "max-w-3xl",
+				wide ? "sm:max-w-5xl" : "sm:max-w-3xl",
 			]}
 		>
 			{title}
@@ -24,7 +24,7 @@ const { lg = false, title, body, wide = false } = Astro.props;
 	<p
 		class:list={[
 			"body body-large px-2 text-center text-astro-gray-100 md:px-8",
-			wide ? "max-w-5xl" : "max-w-3xl",
+			wide ? "sm:max-w-5xl" : "sm:max-w-3xl",
 		]}
 		style="text-wrap: balance;"
 	>
