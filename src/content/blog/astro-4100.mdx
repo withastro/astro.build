@@ -59,22 +59,23 @@ export default defineConfig({
   experimental: {
     env: {
       schema: {
-        DATABASE_URL: envField.string({
-          context: 'client',
-          access: 'public'
-        }),
         API_PORT: envField.number({
           context: 'server',
           access: 'secret',
           default: 7000
-        })
+        }),
+        PUBLIC_DASHBOARD_V2: envField.boolean({
+          context: 'server',
+          access: 'public',
+          default: false
+        }),
       }
     }
   }
 })
 ```
 
-Once defined you can use your variables by importing them from the `astro:env` module like so:
+Once defined you can use your variables by importing them from the `astro:env/server` and `astro:env/client` modules like so:
 
 ```js
 import { PUBLIC_DASHBOARD_V2, getSecret } from 'astro:env/server';
@@ -85,7 +86,25 @@ if (PUBLIC_DASHBOARD_V2) {
 }
 ```
 
-Some times you still want to read a variable that is not defined in the schema. This might be because the variable name is dynamic itself such as `BACK_SERVER_1` and `BACK_SERVER_2`, for example. Or it might be because you are reading variables inside of an Astro integration and don't want to impose the schema onto the app. In these cases `getSecret` is available to read runtime variables and works with any runtime (Cloudflare, Node.js, Deno).
+Or in a client component, like so:
+
+```jsx
+import { SOME_FEATURE_FLAG } from 'astro:env/client';
+
+export default function() {
+  return (
+    <section>
+      { SOME_FEATURE_FLAG && (
+        <div id="fancy-enhanced-feature"></div>
+      )}
+
+      ...
+    </section>
+  )
+}
+```
+
+Some times you still want to read a variable that is not defined in the schema. This might be because the variable name is dynamic itself such as `BACKUP_SERVER_1` and `BACKUP_SERVER_2`, for example. Or it might be because you are reading variables inside of an Astro integration and don't want to impose the schema onto the app. In these cases `getSecret` is available to read runtime variables and works with any runtime (Cloudflare, Node.js, Deno).
 
 ```js
 import { getSecret } from 'astro:env/server';
