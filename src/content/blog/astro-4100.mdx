@@ -41,7 +41,7 @@ Astro 4.10 introduces a new experimental built-in module, `astro:env`, to allow 
 Environment variables allow you to configure your app with different values in different environments. But this comes with a great deal of complexity:
 
 - Some variables are needed in the client and some only on the server.
-- Server variables are often __secrets__, things like API keys that you absolutely do not want exposed in the client, and you also do not want inlined into the server build either (which can be viewed by anyone with access to the build output).
+- Server variables are often __secrets__, things like API keys that you do not want to be exposed in the client nor inlined into the server build (which can be viewed by anyone with access to the build output).
 - Some variables are __required__ for your app to function at all; whereas others are optional enhancements.
 - Variables can be defined in your shell, in a `.env` file, or in [build config](https://vitejs.dev/config/#using-environment-variables-in-config).
 - Runtimes such as [Cloudflare](https://docs.astro.build/en/guides/integrations-guide/cloudflare/) and [Deno](https://deno.com/) have different APIs for reading variables, creating a dev/prod difference you need to deal with.
