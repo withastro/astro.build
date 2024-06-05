@@ -81,7 +81,7 @@ if (PUBLIC_DASHBOARD_V2) {
 }
 ```
 
-Or in a client component, like so:
+Client-side you would use `astro:env/client`. This can be used in components, scripts, or anywhere else you run client code. For example:
 
 ```jsx
 import { SOME_FEATURE_FLAG } from 'astro:env/client';
@@ -120,7 +120,6 @@ A use-case would be having a versioned API with a default version that you rewri
 ```js
 import { defineMiddleware } from 'astro:middleware';
 
-// `context` and `next` are automatically typed
 export const onRequest = defineMiddleware(({ request, url }, next) => {
   if(request.method === 'POST' && url.pathname === '/api') {
     return next('/api/v2');
@@ -134,7 +133,9 @@ When rewriting, a new request is created pointing to the new URL. The existing h
 
 In 4.9 we introduced the Container API, a new way to render Astro components outside of the context of the Astro framework. Our initial focus was on the __testing__ story. You can now use the container API to test Astro components. Create a container, render a component with `container.renderToString` and inspect the generated HTML.
 
-We always knew people would want to use the container API in other ways. In 4.10 it's now possible to use the container API to render built __production__ components. To demonstrate it, we built a [PHP demo](https://github.com/matthewp/astro-in-php-example) app. Don't judge the code, PHP experts 😅
+We always knew people would want to use the container API in other ways. In 4.10 it's now possible to use the container API to render components built with `astro build`, meaning you can use them outside of an Astro site.
+
+To demonstrate it, we built a [PHP demo](https://github.com/matthewp/astro-in-php-example) app. Don't judge the code, PHP experts 😅
 
 The container part looks like this:
 
