@@ -56,17 +56,19 @@ We built `astro:env` to provide more control and structure over environment vari
 import { defineConfig, envField } from 'astro/config';
 
 export default defineConfig({
-  env: {
-    schema: {
-      DATABASE_URL: envField.string({
-        context: 'client',
-        access: 'public'
-      }),
-      API_PORT: envField.number({
-        context: 'server',
-        access: 'secret',
-        default: 7000
-      })
+  experimental: {
+    env: {
+      schema: {
+        DATABASE_URL: envField.string({
+          context: 'client',
+          access: 'public'
+        }),
+        API_PORT: envField.number({
+          context: 'server',
+          access: 'secret',
+          default: 7000
+        })
+      }
     }
   }
 })
@@ -90,6 +92,8 @@ function getServerEndpoint(num: number) {
   return getSecret(`BACKUP_SERVER_${num}`); // string | undefined
 }
 ```
+
+`astro:env` is an experimental feature and is subject to change as with all experimental features. Thanks to [Florian Lefebvre](https://github.com/florian-lefebvre) for being the champion of the RFC and providing the implementation. Leave your feedback on the [RFC](https://github.com/withastro/roadmap/pull/894) and it will be taken into account as the feature is stabilized.
 
 ## Rewrite for all HTTP methods
 
