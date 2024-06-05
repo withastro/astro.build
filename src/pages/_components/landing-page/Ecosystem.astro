@@ -58,74 +58,7 @@ import Trending from "./ecosystem-tabs/Trending.astro";
       </EcosystemCategory>
     </ul>
   </astro-ecosystem-tabs>
-
-  <div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600"></div>
-
-  <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
-    <EcosystemCategory tab="trending">
-      <Trending />
-    </EcosystemCategory>
-    <EcosystemCategory tab="e-commerce" class="hidden">
-      <p>e-commerce</p>
-    </EcosystemCategory>
-    <EcosystemCategory tab="blogs" class="hidden">
-      <p>blogs</p>
-    </EcosystemCategory>
-    <EcosystemCategory tab="docs" class="hidden">
-      <p>docs</p>
-    </EcosystemCategory>
-    <EcosystemCategory tab="portfolios" class="hidden">
-      <p>portfolios</p>
-    </EcosystemCategory>
-    <EcosystemCategory tab="landing pages" slug="landing-pages" class="hidden">
-      <p>landing pages</p>
-    </EcosystemCategory>
-  </ul>
 </section>
-
-<div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600"></div>
-
-<ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
-  <EcosystemCategory tab="trending">
-    <p>trending</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="e-commerce" class="hidden">
-    <p>e-commerce</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="blogs" class="hidden">
-    <p>blogs</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="docs" class="hidden">
-    <p>docs</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="portfolios" class="hidden">
-    <p>portfolios</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="landing pages" class="hidden">
-    <p>landing pages</p>
-  </EcosystemCategory>
-</ul>
-
-<ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
-  <EcosystemCategory tab="trending">
-    <Trending />
-  </EcosystemCategory>
-  <EcosystemCategory tab="e-commerce" class="hidden">
-    <p>e-commerce</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="blogs" class="hidden">
-    <p>blogs</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="docs" class="hidden">
-    <p>docs</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="portfolios" class="hidden">
-    <p>portfolios</p>
-  </EcosystemCategory>
-  <EcosystemCategory tab="landing pages" class="hidden">
-    <p>landing pages</p>
-  </EcosystemCategory>
-</ul>
 
 <script>
   // @ts-nocheck
@@ -149,11 +82,11 @@ import Trending from "./ecosystem-tabs/Trending.astro";
       bind(this);
     }
 
-    button(name) {
-      return this.querySelector(`button[data-tab="${name}"]`);
+    link(name) {
+      return this.querySelector(`a[data-tab="${name}"]`);
     }
-    buttons() {
-      return this.querySelectorAll(`button[data-tab]`);
+    links() {
+      return this.querySelectorAll(`a[data-tab]`);
     }
     content(name) {
       return this.querySelector(`li[data-tab="${name}"]`);
