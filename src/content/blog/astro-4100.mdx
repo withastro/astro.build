@@ -87,7 +87,7 @@ Some times you still want to read a variable that is not defined in the schema. 
 import { getSecret } from 'astro:env/server';
 
 function getServerEndpoint(num: number) {
-  return getSecret('BACKUP_SERVER_' + num);
+  return getSecret(`BACKUP_SERVER_${num}`); // string | undefined
 }
 ```
 
