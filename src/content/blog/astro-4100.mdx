@@ -141,6 +141,43 @@ console.log(html);
 
 The Container API is low-level and reflects what Astro does internally to render its own routes. We're hopeful that integrations get built that smooths over the rough edges and provides simpler way to embed Astro.
 
+## Renderer helper functions
+
+We also added some convenient helper functions for using the Container API in Vite environments (`vitest`, Astro integrations, etc.) when rendering your UI framework components.
+
+This means you no longer need to know (or figure out!) the individual, direct file paths to the client and server rendering scripts for each package. The new `getContainerRenderer()` provides the appropriate rendering scripts from our official renderer integration packages (`@astrojs/react`, `@astrojs/preact`, `@astrojs/solid-js`, `@astrojs/svelte`, `@astrojs/vue`, `@astrojs/lit`, and `@astrojs/mdx`). Be sure to upgrade your integrations at the same time to have this new function!
+
+The `loadRenderers()` function from the new `astro:container` virtual module will load these renderers from each package for you:
+
+```diff
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import ReactWrapper from '../src/components/ReactWrapper.astro';
+import { loadRenderers } from "astro:container";
+import { getContainerRenderer } from "@astrojs/react";
+
+test('ReactWrapper with react renderer', async () => {
++ const renderers = await loadRenderers([getContainerRenderer()])
+- const renderers = [
+- {
+-  name: '@astrojs/react',
+-   clientEntrypoint: '@astrojs/react/client.js',
+-   serverEntrypoint: '@astrojs/react/server.js',
+-  },
+- ];
+  const container = await AstroContainer.create({
+    renderers,
+  });
+  const result = await container.renderToString(ReactWrapper);
+
+  expect(result).toContain('Counter');
+  expect(result).toContain('Count: <!-- -->5');
+});
+```
+
+This type change to `renderers` will also allow Vite-less environments to load and pass the renderer modules manually.
+
+For more information, see the [Container API docs](https://docs.astro.build/en/reference/container-reference/).
+
 ## Bug Fixes
 
 As always, Astro 4.10 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4100) to learn more!
