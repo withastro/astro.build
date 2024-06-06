@@ -1,11 +1,10 @@
 ---
-import code from "./snippets/react.txt?raw";
+import { Content } from './snippets/jsx.mdx';
 import InterfaceExample from "./InterfaceExample.astro";
-import { Code } from "astro-expressive-code/components";
 import IntegrationContent from "../IntegrationContent.astro";
 
 ---
 <IntegrationContent tab="preact" class="hidden">
-    <Code slot='code' lang='js' code={code.replaceAll("\t", "  ")} />
-    <InterfaceExample slot="example" brandColor="bg-[#673AB8]" />
+    <Content slot="code" />
+    <InterfaceExample slot="example" brandColor="bg-[#76B3E1]" />
 </IntegrationContent>

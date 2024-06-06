@@ -1,5 +1,7 @@
+{/* prettier-ignore */}
+```js {2, 11}
 ---
-import BuyButton from '../components/BuyButton.svelte’;
+import BuyButton from '../components/BuyButton.vue';
 import ProductPageLayout from '../layouts/ProductPageLayout.astro';
 
 const product = await getProductDetails(Astro.params.slug);
@@ -10,3 +12,4 @@ const product = await getProductDetails(Astro.params.slug);
 	<h2>{product.name}</h2>
 	<BuyButton sku={product.sku} client:load />
 </ProductPageLayout>
+```

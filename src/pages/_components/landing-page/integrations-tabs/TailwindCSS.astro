@@ -1,11 +1,10 @@
 ---
-import code from "./snippets/vue.txt?raw";
+import { Content } from './snippets/tailwindcss.mdx';
 import InterfaceExample from "./InterfaceExample.astro";
-import { Code } from "astro-expressive-code/components";
 import IntegrationContent from "../IntegrationContent.astro";
 
 ---
 <IntegrationContent tab="tailwind" class="hidden">
-    <Code slot='code' lang='js' code={code.replaceAll("\t", "  ")} />
+    <Content slot="code" />
     <InterfaceExample slot="example" brandColor="bg-[#38BDF8]" />
 </IntegrationContent>
