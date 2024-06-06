@@ -1,0 +1,12 @@
+---
+import BuyButton from '../components/BuyButton.jsx’;
+import ProductPageLayout from '../layouts/ProductPageLayout.astro';
+
+const product = await getProductDetails(Astro.params.slug);
+---
+
+<ProductPageLayout>
+	<img src={product.imageUrl} />
+	<h2>{product.name}</h2>
+	<BuyButton sku={product.sku} client:load />
+</ProductPageLayout>

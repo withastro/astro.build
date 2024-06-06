@@ -1,0 +1,11 @@
+---
+import code from "./snippets/react.txt?raw";
+import InterfaceExample from "./InterfaceExample.astro";
+import { Code } from "astro-expressive-code/components";
+import IntegrationContent from "../IntegrationContent.astro";
+
+---
+<IntegrationContent tab="svelte" class="hidden">
+    <Code slot='code' lang='js' code={code.replaceAll("\t", "  ")} />
+    <InterfaceExample slot="example" brandColor="bg-[#FF3E00]" />
+</IntegrationContent>

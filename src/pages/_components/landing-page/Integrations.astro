@@ -1,8 +1,16 @@
 ---
 import Link from "../Link.astro"
 import SectionCopy from "../SectionCopy.astro"
+import Vue from "./integrations-tabs/Vue.astro"
 import IntegrationTab from "./IntegrationTab.astro"
+import React from "./integrations-tabs/React.astro"
 import IntegrationContent from "./IntegrationContent.astro"
+import TailwindCSS from "./integrations-tabs/TailwindCSS.astro"
+import Preact from "./integrations-tabs/Preact.astro"
+import Alpine from "./integrations-tabs/Alpine.astro"
+import Svelte from "./integrations-tabs/Svelte.astro"
+import Solid from "./integrations-tabs/Solid.astro"
+
 
 ---
 
@@ -32,62 +40,13 @@ import IntegrationContent from "./IntegrationContent.astro"
         <div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600" />
 
         <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
-            <IntegrationContent tab="react">
-              <div slot='code'>
-                <p class="p-4">react code snippet goes here!</p>
-              </div>
-              <div slot='example'>
-                <p class="p-4">react example goes here!</p>
-              </div>
-            </IntegrationContent>
-            <IntegrationContent tab="tailwind" class="hidden">
-              <div slot='code'>
-                <p class="p-4">tailwind code snippet goes here!</p>
-              </div>
-              <div slot='example'>
-                <p class="p-4">tailwind example goes here!</p>
-              </div>
-            </IntegrationContent>
-            <IntegrationContent tab="vue" class="hidden">
-              <div slot='code'>
-                <p class="p-4">vue code snippet goes here!</p>
-              </div>
-              <div slot='example'>
-                <p class="p-4">vue example goes here!</p>
-              </div>
-            </IntegrationContent>
-            <IntegrationContent tab="preact" class="hidden">
-              <div slot='code'>
-                <p class="p-4">preact code snippet goes here!</p>
-              </div>
-              <div slot='example'>
-                <p class="p-4">preact example goes here!</p>
-              </div>
-            </IntegrationContent>
-            <IntegrationContent tab="alpine" class="hidden">
-              <div slot='code'>
-                <p class="p-4">alpine code snippet goes here!</p>
-              </div>
-              <div slot='example'>
-                <p class="p-4">alpine example goes here!</p>
-              </div>
-            </IntegrationContent>
-            <IntegrationContent tab="svelte" class="hidden">
-              <div slot='code'>
-                <p class="p-4">svelte code snippet goes here!</p>
-              </div>
-              <div slot='example'>
-                <p class="p-4">svelte example goes here!</p>
-              </div>
-            </IntegrationContent>
-            <IntegrationContent tab="solid" class="hidden">
-              <div slot='code'>
-                <p class="p-4">solid code snippet goes here!</p>
-              </div>
-              <div slot='example'>
-                <p class="p-4">solid example goes here!</p>
-              </div>
-            </IntegrationContent>
+            <React />
+            <TailwindCSS />
+            <Vue />
+            <Preact />
+            <Alpine />
+            <Svelte />
+            <Solid />
         </ul>
     </astro-integrations-tabs>
 </section>
