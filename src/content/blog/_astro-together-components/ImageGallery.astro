@@ -1,0 +1,365 @@
+---
+// This component renders a thumbnail galleru which supports browsing
+// higher resolution images on interaction.
+
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import LeftArrowIcon from '~/icons/LeftArrowIcon.tsx';
+import RightArrowIcon from '~/icons/RightArrowIcon.tsx';
+import XIcon from '~/icons/XIcon.tsx';
+
+interface Props {
+	images: Array<{ src: ImageMetadata; alt: string }>;
+}
+---
+
+<astro-image-gallery class="my-8 grid gap-2 lg:-mx-16 xl:-mx-24">
+	{
+		Astro.props.images.map(async ({ src, alt }) => (
+			<button aria-label={`Zoom image: ${alt}`}>
+				<Image {src} {alt} width={300} data-hires-src={src.src} />
+			</button>
+		))
+	}
+
+	<template>
+		<dialog class="astro-image-gallery-dialog">
+			<figure></figure>
+			<div class="absolute inset-5 bottom-auto flex justify-between gap-5">
+				<button data-unzoom-image class="astro-image-gallery-control">
+					<XIcon aria-label="Close image gallery" class="s-6" />
+				</button>
+				<span class="flex gap-5">
+					<button data-prev-image class="astro-image-gallery-control cursor-pointer">
+						<LeftArrowIcon aria-label="Previous image" />
+					</button>
+					<button data-next-image class="astro-image-gallery-control cursor-pointer">
+						<RightArrowIcon aria-label="Next image" />
+					</button>
+				</span>
+			</div>
+		</dialog>
+	</template>
+
+	<style>
+		astro-image-gallery {
+			--min: 7rem;
+
+			/* min() with 100% prevents overflow in extra narrow spaces */
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+		}
+
+		astro-image-gallery :global(img:not(.astro-image-gallery-image)) {
+			aspect-ratio: 1;
+			object-fit: cover;
+			width: 100%;
+			height: auto;
+		}
+	</style>
+
+	<script>
+		interface CurrentZoom {
+			dialog: HTMLDialogElement;
+			image: HTMLImageElement;
+			zoomedImage: HTMLImageElement;
+			index: number;
+		}
+
+		/** Based on https://github.com/HiDeoo/astro-image-gallery */
+		class AstroImageGallery extends HTMLElement {
+			#currentZoom?: CurrentZoom | undefined;
+			#images: HTMLImageElement[] = [];
+			#previousFocus?: Element | null | undefined;
+			#template = this.querySelector('template');
+			#classList = {
+				image: 'astro-image-gallery-image',
+				opened: 'astro-image-gallery-opened',
+			};
+			#initialized = false;
+			constructor() {
+				super();
+
+				const initialize = () => {
+					// https://caniuse.com/requestidlecallback
+					const onIdle = window.requestIdleCallback ?? ((cb) => setTimeout(cb, 1));
+
+					onIdle(() => {
+						const zoomables = [...this.querySelectorAll('button')];
+						if (zoomables.length === 0) return;
+
+						this.#setupZoom(zoomables);
+						document.addEventListener('click', this.#onClick);
+						window.addEventListener('resize', this.#onResize);
+						document.addEventListener('keyup', this.#onArrow);
+					});
+				};
+				window.addEventListener('DOMContentLoaded', initialize, { once: true });
+				document.addEventListener(
+					'astro:after-preparation',
+					() => {
+						document.removeEventListener('click', this.#onClick);
+						window.removeEventListener('resize', this.#onResize);
+					},
+					{ once: true }
+				);
+				this.#initialized ||=
+					document.addEventListener('astro:after-swap', initialize) === undefined;
+			}
+
+			#setupZoom(zoomables: Element[]) {
+				zoomables.forEach((zoomable, index) => {
+					const img = zoomable.querySelector('img');
+					if (!img) return;
+
+					this.#images.push(img);
+
+					zoomable.addEventListener('click', (event) => {
+						event.stopPropagation();
+						this.#open(img, index);
+					});
+				});
+			}
+
+			#onClick = ({ target }: MouseEvent) => {
+				if (target instanceof HTMLElement && target.closest('figcaption')) return;
+				if (this.#currentZoom) this.#close();
+			};
+
+			#onResize = () => {
+				this.#close();
+			};
+
+			#onArrow = ({ code }: KeyboardEvent) => {
+				if (!this.#currentZoom) return;
+				const { index } = this.#currentZoom;
+				let newIndex: number | undefined;
+				if (code === 'ArrowLeft') {
+					if (index <= 0) return;
+					newIndex = index - 1;
+				} else if (code === 'ArrowRight') {
+					if (index >= this.#images.length) return;
+					newIndex = index + 1;
+				}
+				if (newIndex !== undefined) {
+					this.#switchToIndex(newIndex);
+				}
+			};
+
+			#onCancel = (event: Event) => {
+				event.preventDefault();
+				this.#close();
+			};
+
+			#switchToIndex(index: number) {
+				const focus = document.activeElement;
+				this.#close();
+				const newImage = this.#images.at(index);
+				if (newImage) this.#open(newImage, index);
+				if (focus && focus instanceof HTMLElement) {
+					if ('nextImage' in focus.dataset) {
+						document.querySelector<HTMLButtonElement>('button[data-next-image]')?.focus();
+					} else if ('prevImage' in focus.dataset) {
+						document.querySelector<HTMLButtonElement>('button[data-prev-image]')?.focus();
+					}
+				}
+			}
+
+			#open(image: HTMLImageElement, index: number) {
+				if (!this.#template || this.#currentZoom) return;
+
+				// Save the current focused element to restore it later.
+				this.#previousFocus = document.activeElement;
+
+				// Portal the dialog.
+				const portal = document.createElement('div');
+				portal.append(this.#template.content.cloneNode(true));
+
+				// Grab a reference to the dialog, zoomed image figure, and navigation buttons.
+				const dialog = portal.querySelector('dialog');
+				const figure = dialog?.querySelector('figure');
+				const prevButton = dialog?.querySelector<HTMLButtonElement>('[data-prev-image]');
+				const nextButton = dialog?.querySelector<HTMLButtonElement>('[data-next-image]');
+				if (!dialog || !figure) return;
+
+				// Set up navigation behaviour
+				if (prevButton) {
+					if (index > 0) {
+						prevButton.addEventListener('click', (e) => {
+							e.stopPropagation();
+							this.#switchToIndex(index - 1);
+						});
+					} else {
+						prevButton.hidden = true;
+					}
+				}
+				if (nextButton) {
+					if (index < this.#images.length - 1) {
+						nextButton.addEventListener('click', (e) => {
+							e.stopPropagation();
+							this.#switchToIndex(index + 1);
+						});
+					} else {
+						nextButton.hidden = true;
+					}
+				}
+
+				const zoomedImage = document.createElement('img');
+				zoomedImage.src = image.dataset.hiresSrc || image.src;
+				zoomedImage.classList.add(this.#classList.image);
+				zoomedImage.decoding = 'async';
+
+				// Append the zoomed image to the dialog.
+				figure.append(zoomedImage);
+
+				// Set the caption.
+				this.#setCaption(image.getAttribute('alt'), figure);
+
+				// Render the portaled dialog.
+				document.body.append(portal);
+
+				// Open the dialog.
+				dialog.addEventListener('cancel', this.#onCancel);
+				dialog.showModal();
+
+				// Apply a zoom effect to the zoomed image.
+				document.body.classList.add(this.#classList.opened);
+
+				// Keep track of the current zoom.
+				this.#currentZoom = { dialog, image, zoomedImage, index };
+			}
+
+			#close() {
+				if (!this.#currentZoom) return;
+
+				const { dialog, image } = this.#currentZoom;
+
+				// Remove the zoom effect from the zoomed image.
+				document.body.classList.remove(this.#classList.opened);
+
+				// Remove the portaled dialog.
+				dialog.parentElement?.remove();
+
+				// Reset the current zoom.
+				this.#currentZoom = undefined;
+
+				// Restore the focus.
+				if (image.parentElement) {
+					image.parentElement.focus();
+				} else if (this.#previousFocus instanceof HTMLElement) {
+					this.#previousFocus.focus();
+				}
+			}
+
+			#setCaption(text: string | null, figure: HTMLElement) {
+				if (Object.hasOwn(this.dataset, 'hideCaption')) return;
+
+				text = text?.trim() ?? '';
+
+				if (text.length === 0) return;
+
+				const caption = document.createElement('figcaption');
+				caption.ariaHidden = 'true';
+				caption.textContent = text;
+
+				figure.append(caption);
+			}
+		}
+		customElements.define('astro-image-gallery', AstroImageGallery);
+	</script>
+
+	<style is:global>
+		:root {
+			--astro-image-gallery-animation-duration: 150ms;
+		}
+
+		body:has(dialog.astro-image-gallery-dialog[open]) {
+			overflow: hidden;
+		}
+
+		astro-image-gallery img {
+			cursor: zoom-in;
+		}
+
+		astro-image-gallery button {
+			position: relative;
+			cursor: zoom-in;
+		}
+
+		.astro-image-gallery-control:not([hidden]) {
+			--control-inset: 20px;
+			@apply bg-astro-gray-700/60 text-astro-gray-200;
+			border: 1px solid;
+			border-radius: 50%;
+			display: grid;
+			place-items: center;
+			width: 44px;
+			height: 44px;
+		}
+		.astro-image-gallery-control:hover {
+			@apply bg-astro-gray-500/60;
+		}
+
+		.astro-image-gallery-image {
+			aspect-ratio: unset;
+			cursor: zoom-out;
+			object-fit: contain;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+
+	<style>
+		dialog {
+			background: transparent;
+			border: 0;
+			height: 100vh;
+			height: 100dvh;
+			margin: 0;
+			max-height: none;
+			max-width: none;
+			overflow: hidden;
+			padding: 0;
+			position: fixed;
+			width: 100vw;
+			width: 100dvw;
+		}
+
+		dialog::backdrop {
+			@apply bg-black;
+			opacity: 0;
+		}
+
+		:global(.astro-image-gallery-opened) dialog::backdrop {
+			opacity: 1;
+		}
+
+		figure {
+			cursor: zoom-out;
+			height: 100%;
+			position: relative;
+			width: 100%;
+		}
+
+		figure :global(figcaption) {
+			@apply border-t border-astro-gray-500 bg-astro-gray-600 text-astro-gray-200 p-4;
+			cursor: initial;
+			inset: auto 0 0 0;
+			opacity: 0;
+			position: absolute;
+		}
+
+		:global(.astro-image-gallery-opened) figure :global(figcaption) {
+			opacity: 1;
+		}
+
+		/* button {
+		cursor: zoom-out;
+		opacity: 0;
+		z-index: 1;
+	} */
+
+		:global(.astro-image-gallery-opened) button {
+			opacity: 1;
+		}
+	</style>
+</astro-image-gallery>
