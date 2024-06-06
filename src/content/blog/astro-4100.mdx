@@ -116,7 +116,7 @@ function getServerEndpoint(num: number) {
 
 Rewriting is a new experimental feature released in 4.9. The first version targeted `GET` requests, the most common case for a rewrite. Now in 4.10 rewrites can be used to change the route for any requests, which it does by cloning the initial request.
 
-A use-case would be having a versioned API with a default version that you rewrite in middleware:
+Here's an example of rewriting in middleware to direct you to the default version of a versioned API:
 
 ```js
 import { defineMiddleware } from 'astro:middleware';
