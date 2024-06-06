@@ -1,5 +1,5 @@
 {/* prettier-ignore */}
-```js /px-4 py-2 inline-flex items-center justify-center bg-primary rounded-lg .../
+```astro /px-4 py-2 inline-flex items-center justify-center bg-primary rounded-lg .../ /flex items-center justify-between/
 ---
 import ProductPageLayout from '../layouts/ProductPageLayout.astro';
 
@@ -8,7 +8,10 @@ const product = await getProductDetails(Astro.params.slug);
 
 <ProductPageLayout>
 	<img src={product.imageUrl} />
-	<h2>{product.name}</h2>
+	<div class="flex items-center justify-between">
+		<h2>{product.name}</h2>
+		<p>{product.price}</p>
+	</div>
 	<button type="button" class="px-4 py-2 inline-flex items-center justify-center bg-primary rounded-lg ...">
 		Add to cart
 	<button>
