@@ -18,20 +18,28 @@ const themes = [
 ];
 ---
 
-<div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-astro-dark-800 border border-astro-dark-100/20 rounded-2xl">
-  {
-    themes.map((theme) => (
-      <div
-        class:list={[ "size-fit group relative", !theme.isSeenOnMobile && "hidden lg:block" ]}
-      >
-        <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
-        <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
-          <Link href={theme.href} target="_blank" class="secondary">
-            <span>View Theme</span>
-            <Icon name="ri:eye-line" size={18} />
-          </Link>
+<div>
+  <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-astro-dark-800 border border-astro-dark-100/20 rounded-2xl">
+    {
+      themes.map((theme) => (
+        <div
+          class:list={[ "size-fit group relative", !theme.isSeenOnMobile && "hidden lg:block" ]}
+        >
+          <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
+          <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
+            <Link href={theme.href} target="_blank" class="secondary">
+              <span>View Theme</span>
+              <Icon name="ri:eye-line" size={18} />
+            </Link>
+          </div>
         </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
+
+  <a href="https://astro.build/themes/?search=&categories%5B%5D=ecommerce" 
+    class="mt-4 px-2 sm:px-4 group flex items-center justify-start gap-2 text-astro-gray-200 hover:text-astro-gray-100">
+    <span class="underline underline-offset-2 decoration-[0.5px] decoration-transparent group-hover:decoration-astro-gray-100">Browse more e-commerce themes</span>
+    <Icon name="ri:arrow-right-line" size={18} />
+  </a>
 </div>
