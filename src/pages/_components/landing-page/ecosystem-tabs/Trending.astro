@@ -2,22 +2,27 @@
 import Icon from "astro-icon";
 import Link from "../../Link.astro";
 import { getImage } from "astro:assets";
+import astrolus from "../../../_assets/themes/astrolus.png";
+import tailcast from "../../../_assets/themes/tailcast.png";
+import astroShip from "../../../_assets/themes/astroship.png";
+import starlight from "../../../_assets/themes/starlight.png";
 import moreThemes from "../../../_assets/themes/more-themes.png";
-import screwFast from "../../../_assets/themes/screwfast-emil.png";
-import agenceX from "../../../_assets/themes/agencex-johnkat-mj.png";
-import astroWind from "../../../_assets/themes/astrowind-onwidget.png";
+import primaPersona from "../../../_assets/themes/prima-persona.png";
 
-const agenceXTheme = await getImage({ src: agenceX, format: "webp", width: 1280 });
-const screwFastTheme = await getImage({ src: screwFast, format: "webp", width: 1280 });
-const astroWindTheme = await getImage({ src: astroWind, format: "webp", width: 1280 });
+const astrolusTheme = await getImage({ src: astrolus, format: "webp", width: 1280 });
+const tailcastTheme = await getImage({ src: tailcast, format: "webp", width: 1280 });
+const astroShipTheme = await getImage({ src: astroShip, format: "webp", width: 1280 });
+const starlightTheme = await getImage({ src: starlight, format: "webp", width: 1280 });
+const primaPersonaTheme = await getImage({ src: primaPersona, format: "webp", width: 1280 });
 const moreThemesPlaceholder = await getImage({ src: moreThemes, format: "webp", width: 1280 });
 
+
 const themes = [
-  { href: "#", title: "AgenceX", author: "Johnkat MJ", src: agenceXTheme.src, isSeenOnMobile: true },
-  { href: "#", title: "AstroWind", author: "OnWidget", src: astroWindTheme.src, isSeenOnMobile: true },
-  { href: "#", author: "Emil", title: "ScrewFast", src: screwFastTheme.src, isSeenOnMobile: true },
-  { href: "#", title: "AstroWind", author: "OnWidget", src: astroWindTheme.src, isSeenOnMobile: false },
-  { href: "#", author: "Emil", title: "ScrewFast", src: screwFastTheme.src, isSeenOnMobile: false },
+  { href: "https://astro.build/themes/details/starlight/", title: "Starlight", author: "Astro", src: starlightTheme.src, isSeenOnMobile: true },
+  { href: "https://astro.build/themes/details/astroship/", title: "AstroShip", author: "Web3Templates", src: astroShipTheme.src, isSeenOnMobile: true },
+  { href: "https://astro.build/themes/details/astrolus/", title: "Astrolus", author: "Tailus-UI", src: astrolusTheme.src, isSeenOnMobile: true },
+  { href: "https://astro.build/themes/details/prima-persona/", title: "Prima Persona", author: "Lexington Themes", src: primaPersonaTheme.src, isSeenOnMobile: false },
+  { href: "https://astro.build/themes/details/tailcast/", title: "Tailcast", author: "matt765", src: tailcastTheme.src, isSeenOnMobile: false },
 ];
 ---
 
@@ -31,7 +36,7 @@ const themes = [
       >
         <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
         <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
-          <Link href={theme.href} class="secondary">
+          <Link href={theme.href} target="_blank" class="secondary">
             <span>View Theme</span>
             <Icon name="ri:eye-line" size={18} />
           </Link>
