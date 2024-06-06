@@ -28,7 +28,7 @@ import Solid from "./integrations-tabs/Solid.astro"
         <div class="mx-auto w-full max-w-screen-2xl ">
             <ul class="mt-4 sm:mt-8 w-full px-4 sm:px-8 flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4 md:gap-6 lg:gap-7 xl:gap-8">
                 <IntegrationTab label="React" logoSrc="/assets/integrations/react.svg"  active />
-                <IntegrationTab label="Tailwind" slug="tailwindcss" logoSrc="/assets/integrations/tailwind.svg" />
+                <IntegrationTab label="Tailwind" logoSrc="/assets/integrations/tailwind.svg" />
                 <IntegrationTab label="Vue" logoSrc="/assets/integrations/vue.svg" size="size-5 lg:size-6" />
                 <IntegrationTab label="Preact" logoSrc="/assets/integrations/preact.svg" />
                 <IntegrationTab label="Alpine" logoSrc="/assets/integrations/alpinejs.svg" />
@@ -84,11 +84,11 @@ import Solid from "./integrations-tabs/Solid.astro"
         bind(this)
       }
   
-      link(name) {
-        return this.querySelector(`a[data-tab="${name}"]`)
+      button(name) {
+        return this.querySelector(`button[data-tab="${name}"]`)
       }
-      links() {
-        return this.querySelectorAll(`a[data-tab]`)
+      buttons() {
+        return this.querySelectorAll(`button[data-tab]`)
       }
       content(name) {
         return this.querySelector(`li[data-tab="${name}"]`)
@@ -125,8 +125,8 @@ import Solid from "./integrations-tabs/Solid.astro"
   
       resetElements() {
 
-        for (const link of this.links()) {
-          link.removeAttribute("aria-selected")
+        for (const button of this.buttons()) {
+          button.removeAttribute("aria-selected")
         }
         for (const content of this.contents()) {
           content.classList.add("hidden")
@@ -151,12 +151,12 @@ import Solid from "./integrations-tabs/Solid.astro"
 
         const icon = this.icon(name)
         const label = this.label(name)
-        const link = this.link(name)
+        const button = this.button(name)
         const content = this.content(name)
         const iconContainer = this.iconContainer(name)
   
         content.classList.remove("hidden")
-        link.setAttribute("aria-selected", "true")
+        button.setAttribute("aria-selected", "true")
         icon.setAttribute("aria-selected", "true")
         label.setAttribute("aria-selected", "true")
         iconContainer.setAttribute("aria-selected", "true")
@@ -166,7 +166,7 @@ import Solid from "./integrations-tabs/Solid.astro"
       }
   
       handleClick(event: Event) {
-        const name = event.target.closest("a[data-tab]")?.dataset.tab
+        const name = event.target.closest("button[data-tab]")?.dataset.tab
         if (!name) return
   
         if ("startViewTransition" in document) {

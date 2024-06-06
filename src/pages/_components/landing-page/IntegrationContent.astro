@@ -1,15 +1,13 @@
 ---
 interface Props {
   tab: string;
-  slug?:string;
   class?: string;
 }
 
-const { tab, class: className, slug } = Astro.props;
+const { tab, class: className } = Astro.props;
 ---
 
 <li
-  id={slug ? `${slug}-integration` : `${tab}-integration`}
   class:list={[
     "mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4",
     className,

@@ -54,7 +54,7 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
       <EcosystemCategory tab="portfolios" class="hidden">
         <Portfolios />
       </EcosystemCategory>
-      <EcosystemCategory tab="landing pages" slug="landing" class="hidden">
+      <EcosystemCategory tab="landing pages" class="hidden">
         <LandingPages />
       </EcosystemCategory>
     </ul>
@@ -83,11 +83,11 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
       bind(this);
     }
 
-    link(name) {
-      return this.querySelector(`a[data-tab="${name}"]`);
+    button(name) {
+      return this.querySelector(`button[data-tab="${name}"]`);
     }
-    links() {
-      return this.querySelectorAll(`a[data-tab]`);
+    buttons() {
+      return this.querySelectorAll(`button[data-tab]`);
     }
     content(name) {
       return this.querySelector(`li[data-tab="${name}"]`);
@@ -111,8 +111,8 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
     }
 
     resetElements() {
-      for (const link of this.links()) {
-        link.removeAttribute("aria-selected");
+      for (const button of this.buttons()) {
+        button.removeAttribute("aria-selected");
       }
       for (const content of this.contents()) {
         content.classList.add("hidden");
@@ -124,16 +124,16 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
 
     setActive(name) {
       const title = this.title(name);
-      const link = this.link(name);
+      const button = this.button(name);
       const content = this.content(name);
 
       content.classList.remove("hidden");
-      link.setAttribute("aria-selected", "true");
+      button.setAttribute("aria-selected", "true");
       title.setAttribute("aria-selected", "true");
     }
 
     handleClick(event: Event) {
-      const name = event.target.closest("a[data-tab]")?.dataset.tab;
+      const name = event.target.closest("button[data-tab]")?.dataset.tab;
       if (!name) return;
 
       if ("startViewTransition" in document) {
