@@ -250,7 +250,7 @@ export default {
 					"-webkit-font-smoothing": "subpixel-antialiased",
 				},
 				".body-large": {
-					"@apply font-sans text-xl leading-normal": {},
+					"@apply font-sans text-lg leading-normal": {},
 					"--sans-wght": "200",
 					fontWeight: "200",
 					"-webkit-font-smoothing": "subpixel-antialiased",
