@@ -1,22 +1,22 @@
 ---
 import SectionCopy from "../SectionCopy.astro"
-import ContentCollections from "./ContentCollections.astro"
 import FeaturesCard from "./FeaturesCard.astro"
+import ContentCollections from "./ContentCollections.astro"
 ---
 
-<section class='mt-20 sm:mt-36 w-full max-w-screen-2xl mx-auto px-4 sm:px-8'>
+<section class='mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-2xl mx-auto px-4 sm:px-8'>
   <SectionCopy
     label='Everything you need'
     title="Fully-Featured"
     description='Astro is an all-in-one web framework. It includes everything you need to create a website, built-in from the start.'
   />
 
-  <div class='mt-4 sm:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:max-lg:hidden'> 
+  <div class='mt-4 sm:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 md:max-lg:hidden'> 
     <FeaturesCard
       title='Content Collections'
       description='Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation.'
     >
-      <div slot="illustration" class="size-full py-4 sm:py-6 mb-2 sm:mb-4 min-h-52">
+      <div slot="illustration" class="size-full pt-4 min-h-52">
         <ContentCollections />
       </div>
     </FeaturesCard>
@@ -25,9 +25,9 @@ import FeaturesCard from "./FeaturesCard.astro"
       title='Zero JavaScript, By Default'
       description='Astro only ships the JavaScript you need and automatically strips away the rest for a faster website.'
     >
-      <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 lg:mb-4 min-h-52 space-y-2 relative">
-        <p id="zero-js" class="absolute z-20 left-1/2 -translate-x-1/2 bg-clip-text text-transparent bg-gradient-to-b from-[#495057] to-[#211F2F]">0</p>
-        <div class="absolute top-0 left-0 z-10 size-full min-h-40 md:min-h-48 bg-[radial-gradient(#252730_0.5px,transparent_0.5px)] [background-size:5px_5px] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_40%,#ffffff_40%,transparent_100%)]" />
+      <div slot="illustration" class="pt-4 px-4 sm:px-6 min-h-52 space-y-2 relative">
+        <p id="zero-js" class="absolute z-20 top-0 left-1/2 -translate-x-1/2 bg-clip-text text-transparent bg-gradient-to-b from-[#495057] to-[#211F2F]">0</p>
+        <div class="absolute top-0 left-0 z-10 size-full min-h-40 lg:min-h-52 bg-[radial-gradient(#252730_0.5px,transparent_0.5px)] [background-size:5px_5px] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_40%,#ffffff_40%,transparent_100%)]" />
       </div>
     </FeaturesCard>
 
@@ -35,7 +35,7 @@ import FeaturesCard from "./FeaturesCard.astro"
       title='View Transitions'
       description='Seamlessly morph, fade, and swipe across pages with built-in, browser-native View Transition APIs.'
     >
-      <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 pb-0 min-h-52 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal">
+      <div slot="illustration" class="pt-4 px-4 lg:pt-6  min-h-52 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal">
         <div class="flex items-center justify-center gap-2">
           <div class="w-1/3 h-20 xl:h-24 group-hover:w-1/2 xl:group-hover:w-48 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#211F2F] to-[#074170] transition-all ease-in-out duration-[1.5s]" />
           <div class="w-1/3 h-20 xl:h-24 group-hover:w-1/2 xl:group-hover:w-48 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#184560] to-[#08203E] transition-all ease-in-out duration-[1.5s]" />
@@ -54,7 +54,7 @@ import FeaturesCard from "./FeaturesCard.astro"
     />
     <FeaturesCard
       title='Actions'
-      description='type-safe backend functions you call directly from your frontend JavaScript client code.'
+      description='Type-safe backend functions you call directly from your frontend JavaScript client code.'
     />
     <FeaturesCard
       title='Environment Variables'
@@ -89,8 +89,8 @@ import FeaturesCard from "./FeaturesCard.astro"
         title='Zero JavaScript, By Default'
         description='Astro only ships the JavaScript you need and automatically strips away the rest for a faster website.'
       >
-        <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 lg:max-xl:mb-4 min-h-52 space-y-2 relative">
-          <p id="zero-js" class="absolute z-20 left-1/2 -translate-x-1/2 bg-clip-text text-transparent bg-gradient-to-b from-[#495057] to-[#211F2F]">0</p>
+        <div slot="illustration" class="pt-4 px-4 sm:p-6 min-h-52 space-y-2 relative">
+          <p id="zero-js" class="absolute z-20 top-0 left-1/2 -translate-x-1/2 bg-clip-text text-transparent bg-gradient-to-b from-[#495057] to-[#211F2F]">0</p>
           <div class="absolute top-0 left-0 z-10 size-full min-h-40 md:min-h-48 bg-[radial-gradient(#252730_0.5px,transparent_0.5px)] [background-size:5px_5px] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_40%,#ffffff_40%,transparent_100%)]" />
         </div>
       </FeaturesCard>
@@ -102,7 +102,7 @@ import FeaturesCard from "./FeaturesCard.astro"
 
       <FeaturesCard
         title='Actions'
-        description='type-safe backend functions you call directly from your frontend JavaScript client code.'
+        description='Type-safe backend functions you call directly from your frontend JavaScript client code.'
       />
       
     </div>
