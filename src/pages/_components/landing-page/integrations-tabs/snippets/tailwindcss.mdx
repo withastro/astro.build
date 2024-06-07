@@ -7,7 +7,7 @@ const product = await getProductDetails(Astro.params.slug);
 ---
 
 <ProductPageLayout>
-	<img src={product.imageUrl} />
+	<img src={product.imageUrl} alt={product.imageAlt} />
 	<div class="flex items-center justify-between">
 		<h2>{product.name}</h2>
 		<p>{product.price}</p>
