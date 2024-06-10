@@ -1,20 +1,21 @@
 ---
-import Icon from "astro-icon";
-import Link from "../../Link.astro";
-import { getImage } from "astro:assets";
-import astrolus from "../../../_assets/themes/astrolus.png";
-import tailcast from "../../../_assets/themes/tailcast.png";
-import astroShip from "../../../_assets/themes/astroship.png";
-import starlight from "../../../_assets/themes/starlight-lp.png";
-import moreThemes from "../../../_assets/themes/more-themes.png";
-import primaPersona from "../../../_assets/themes/prima-persona.png";
+import Icon from "astro-icon"
+import Link from "../../Link.astro"
+import { getImage } from "astro:assets"
+import ThemeContainer from "./ThemeContainer.astro"
+import astrolus from "../../../_assets/themes/astrolus.png"
+import tailcast from "../../../_assets/themes/tailcast.png"
+import astroShip from "../../../_assets/themes/astroship.png"
+import starlight from "../../../_assets/themes/starlight-lp.png"
+import moreThemes from "../../../_assets/themes/more-themes.png"
+import primaPersona from "../../../_assets/themes/prima-persona.png"
 
-const astrolusTheme = await getImage({ src: astrolus, format: "webp", width: 1280 });
-const tailcastTheme = await getImage({ src: tailcast, format: "webp", width: 1280 });
-const astroShipTheme = await getImage({ src: astroShip, format: "webp", width: 1280 });
-const starlightTheme = await getImage({ src: starlight, format: "webp", width: 1280 });
-const primaPersonaTheme = await getImage({ src: primaPersona, format: "webp", width: 1280 });
-const moreThemesPlaceholder = await getImage({ src: moreThemes, format: "webp", width: 1280 });
+const astrolusTheme = await getImage({ src: astrolus, format: "webp", width: 1280 })
+const tailcastTheme = await getImage({ src: tailcast, format: "webp", width: 1280 })
+const astroShipTheme = await getImage({ src: astroShip, format: "webp", width: 1280 })
+const starlightTheme = await getImage({ src: starlight, format: "webp", width: 1280 })
+const primaPersonaTheme = await getImage({ src: primaPersona, format: "webp", width: 1280 })
+const moreThemesPlaceholder = await getImage({ src: moreThemes, format: "webp", width: 1280 })
 
 
 const themes = [
@@ -29,17 +30,7 @@ const themes = [
 <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-astro-dark-800 border border-astro-dark-100/20 rounded-2xl">
   {
     themes.map((theme) => (
-      <div
-        class:list={[ "size-fit group relative", !theme.isSeenOnMobile && "hidden lg:block" ]}
-      >
-        <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
-        <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
-          <Link href={theme.href} target="_blank" class="secondary">
-            <span>View Theme</span>
-            <Icon name="ri:eye-line" size={18} />
-          </Link>
-        </div>
-      </div>
+      <ThemeContainer theme={theme} />
     ))
   }
   <div class="size-fit group relative">

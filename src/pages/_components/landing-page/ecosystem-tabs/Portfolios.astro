@@ -1,20 +1,21 @@
 ---
-import Icon from "astro-icon";
-import Link from "../../Link.astro";
-import { getImage } from "astro:assets";
-import gurido from "../../../_assets/themes/gurido.png";
-import astrofy from "../../../_assets/themes/astrofy.png";
-import swissfolio from "../../../_assets/themes/swissfolio.png";
-import esqueleteCV from "../../../_assets/themes/esquelete-cv.png";
-import shareLinks from "../../../_assets/themes/share-your-links.png";
-import morePortfolioThemes from "../../../_assets/themes/more-portfolio-themes.png";
+import Icon from "astro-icon"
+import Link from "../../Link.astro"
+import { getImage } from "astro:assets"
+import ThemeContainer from "./ThemeContainer.astro"
+import gurido from "../../../_assets/themes/gurido.png"
+import astrofy from "../../../_assets/themes/astrofy.png"
+import swissfolio from "../../../_assets/themes/swissfolio.png"
+import esqueleteCV from "../../../_assets/themes/esquelete-cv.png"
+import shareLinks from "../../../_assets/themes/share-your-links.png"
+import morePortfolioThemes from "../../../_assets/themes/more-portfolio-themes.png"
 
-const astrofyTheme = await getImage({ src: astrofy, format: "webp", width: 1280 });
-const guridoTheme = await getImage({ src: gurido, format: "webp", width: 1280 });
-const esqueleteCVTheme = await getImage({ src: esqueleteCV, format: "webp", width: 1280 });
-const shareLinksTheme = await getImage({ src: shareLinks, format: "webp", width: 1280 });
-const swissfolioTheme = await getImage({ src: swissfolio, format: "webp", width: 1280 });
-const moreThemesPlaceholder = await getImage({ src: morePortfolioThemes, format: "webp", width: 1280 });
+const astrofyTheme = await getImage({ src: astrofy, format: "webp", width: 1280 })
+const guridoTheme = await getImage({ src: gurido, format: "webp", width: 1280 })
+const esqueleteCVTheme = await getImage({ src: esqueleteCV, format: "webp", width: 1280 })
+const shareLinksTheme = await getImage({ src: shareLinks, format: "webp", width: 1280 })
+const swissfolioTheme = await getImage({ src: swissfolio, format: "webp", width: 1280 })
+const moreThemesPlaceholder = await getImage({ src: morePortfolioThemes, format: "webp", width: 1280 })
 
 
 const themes = [
@@ -29,17 +30,7 @@ const themes = [
 <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-astro-dark-800 border border-astro-dark-100/20 rounded-2xl">
   {
     themes.map((theme) => (
-      <div
-        class:list={[ "size-fit group relative", !theme.isSeenOnMobile && "hidden lg:block" ]}
-      >
-        <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
-        <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
-          <Link href={theme.href} target="_blank" class="secondary">
-            <span>View Theme</span>
-            <Icon name="ri:eye-line" size={18} />
-          </Link>
-        </div>
-      </div>
+      <ThemeContainer theme={theme} />
     ))
   }
   <div class="size-fit group relative">
