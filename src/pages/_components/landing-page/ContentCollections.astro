@@ -5,7 +5,7 @@ import Icon from "astro-icon"
 <div class='size-full flex items-center justify-between overflow-hidden'>
 
     <div class="w-1/2 h-full min-h-40 relative flex items-center overflow-hidden">
-        <div id="unscanned-docs-container" class="absolute right-1 flex items-center justify-center gap-8">
+        <div id="unscanned-docs-container" class="absolute right-1 motion-reduce:right-4 flex items-center justify-center gap-8">
             {Array(10).fill( 
                 <div class="relative">
                     <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@ import Icon from "astro-icon"
         <div id="scanner-inlet" class="w-px h-full md:max-lg:h-40" />
         <div id="scanner-light" class="w-12 h-2/3 md:max-lg:h-40 blur-xl z-30" />
 
-        <div id="scanned-docs-container" class="absolute z-10 -left-[59.5rem] flex items-center justify-center gap-8">
+        <div id="scanned-docs-container" class="absolute z-10 -left-[59.5rem] motion-reduce:left-4 flex items-center justify-center gap-8">
             {Array(10).fill( 
                 <div class="relative pt-0.5">
                     <svg width="66" height="82" viewBox="0 0 66 82" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,5 +71,14 @@ import Icon from "astro-icon"
     @keyframes marquee {
         0% { transform: translateX(0); }
         100% {  transform: translateX(100%); }
+    }
+
+    @media (prefers-reduced-motion) {
+        #unscanned-docs-container {
+            animation-play-state: paused;
+        }
+        #scanned-docs-container {
+            animation-play-state: paused;
+        }
     }
 </style>
