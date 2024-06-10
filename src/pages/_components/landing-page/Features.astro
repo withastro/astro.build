@@ -11,9 +11,11 @@ import ContentCollections from "./ContentCollections.astro"
     description='Astro is an all-in-one web framework. It includes everything you need to create a website, built-in from the start.'
   />
 
-  <div class='mt-4 sm:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 md:max-lg:hidden'> 
+    <!-- features grid for mobile and desktop screens only - hidden from tablet screens -->
+  <div class='mt-4 sm:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4 md:max-lg:hidden'> 
     <FeaturesCard
-      title='Content Collections'
+      title='Content Collections' showDescription
+      href="https://docs.astro.build/en/guides/content-collections/"
       description='Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation.'
     >
       <div slot="illustration" class="size-full pt-4 min-h-52">
@@ -22,7 +24,8 @@ import ContentCollections from "./ContentCollections.astro"
     </FeaturesCard>
 
     <FeaturesCard
-      title='Zero JavaScript, By Default'
+      title='Zero JavaScript, By Default' showDescription 
+      href="https://docs.astro.build/en/basics/astro-components/"
       description='Astro only ships the JavaScript you need and automatically strips away the rest for a faster website.'
     >
       <div slot="illustration" class="pt-4 px-4 sm:px-6 min-h-52 space-y-2 relative">
@@ -32,7 +35,8 @@ import ContentCollections from "./ContentCollections.astro"
     </FeaturesCard>
 
     <FeaturesCard
-      title='View Transitions'
+      title='View Transitions' showDescription
+      href="https://docs.astro.build/en/guides/view-transitions/"
       description='Seamlessly morph, fade, and swipe across pages with built-in, browser-native View Transition APIs.'
     >
       <div slot="illustration" class="pt-4 px-4 lg:pt-6  min-h-52 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal">
@@ -49,35 +53,43 @@ import ContentCollections from "./ContentCollections.astro"
     </FeaturesCard>
 
     <FeaturesCard
-      title='Middleware'
+      title='Middleware' 
+      href="https://docs.astro.build/en/guides/middleware/"
       description='Wrap incoming requests with custom logic like authentication, logging, or data fetching.'
     />
     <FeaturesCard
-      title='Actions'
+      title='Actions' 
+      href="https://docs.astro.build/en/reference/configuration-reference/#experimentalactions"
       description='Type-safe backend functions you call directly from your frontend JavaScript client code.'
     />
     <FeaturesCard
-      title='Environment Variables'
+      title='Environment Variables' 
+      href="https://docs.astro.build/en/guides/environment-variables/"
       description='Avoid common configuration mistakes with a built-in API to manage your environment variables.'
     />
     <FeaturesCard
-      title='Deployment Adapters'
+      title='Deployment Adapters' 
+      href="https://docs.astro.build/en/reference/adapter-reference/"
       description='Add an integration to instantly customize your project for Vercel, AWS, or your favorite hosting platform.'
     />
     <FeaturesCard
-      title='UI Integrations'
+      title='UI Integrations' 
+      href="https://docs.astro.build/en/guides/integrations-guide/"
       description={`Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture`}
     />
     <FeaturesCard
-      title='Dev Toolbar'
+      title='Dev Toolbar' 
+      href="https://docs.astro.build/en/guides/dev-toolbar/"
       description='Extend your development environment with apps and integrations for the built-in development toolbar.'
     />
   </div>
 
+  <!-- features grid for tablet screens only -->
   <div class='mt-4 sm:mt-8 md:max-lg:grid md:grid-cols-2 gap-4 hidden'> 
     <div class="space-y-4">
       <FeaturesCard
         title='Content Collections'
+        href="https://docs.astro.build/en/guides/content-collections/"
         description='Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation.'
       >
         <div slot="illustration" class="size-full pt-4 sm:pt-6 min-h-52">
@@ -87,6 +99,7 @@ import ContentCollections from "./ContentCollections.astro"
   
       <FeaturesCard
         title='Zero JavaScript, By Default'
+        href="https://docs.astro.build/en/basics/astro-components/"
         description='Astro only ships the JavaScript you need and automatically strips away the rest for a faster website.'
       >
         <div slot="illustration" class="pt-4 px-4 sm:p-6 min-h-52 space-y-2 relative">
@@ -96,12 +109,14 @@ import ContentCollections from "./ContentCollections.astro"
       </FeaturesCard>
 
       <FeaturesCard
-        title='Middleware'
+        title='Middleware' 
+        href="https://docs.astro.build/en/guides/middleware/"
         description='Wrap incoming requests with custom logic like authentication, logging, or data fetching.'
       />
 
       <FeaturesCard
-        title='Actions'
+        title='Actions' 
+        href="https://docs.astro.build/en/reference/configuration-reference/#experimentalactions"
         description='Type-safe backend functions you call directly from your frontend JavaScript client code.'
       />
       
@@ -110,6 +125,7 @@ import ContentCollections from "./ContentCollections.astro"
     <div class="space-y-4">
       <FeaturesCard
         title='View Transitions'
+        href="https://docs.astro.build/en/guides/view-transitions/"
         description='Seamlessly morph, fade, and swipe across pages with built-in, browser-native View Transition APIs.'
       >
         <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 pb-0 min-h-52 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal">
@@ -126,19 +142,23 @@ import ContentCollections from "./ContentCollections.astro"
       </FeaturesCard>
 
       <FeaturesCard
-        title='Environment Variables'
+        title='Environment Variables' 
+        href="https://docs.astro.build/en/guides/environment-variables/"
         description='Avoid common configuration mistakes with a built-in API to manage your environment variables.'
       />
       <FeaturesCard
-        title='Deployment Adapters'
+        title='Deployment Adapters' 
+        href="https://docs.astro.build/en/reference/adapter-reference/"
         description='Add an integration to instantly customize your project for Vercel, AWS, or your favorite hosting platform.'
       />
       <FeaturesCard
-        title='UI Integrations'
+        title='UI Integrations' 
+        href="https://docs.astro.build/en/guides/integrations-guide/"
         description={`Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture`}
       />
       <FeaturesCard
-        title='Dev Toolbar'
+        title='Dev Toolbar' 
+        href="https://docs.astro.build/en/guides/dev-toolbar/"
         description='Extend your development environment with apps and integrations for the built-in development toolbar.'
       />
     </div>
