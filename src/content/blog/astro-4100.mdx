@@ -1,0 +1,211 @@
+---
+title: "Astro 4.10"
+description: "Astro 4.10 is out with experimental type-safe environment variables, as well as enhancements to the Container API and Rewrites."
+publishDate: "June 6, 2024"
+authors:
+  - matthew
+coverImage: "/src/content/blog/_images/astro-4100/header-astro-4.10.webp"
+socialImage: "/src/content/blog/_images/astro-4100/og-image-4.10.webp"
+lang: "en"
+---
+
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  Astro 4.10 is out with experimental type-safe environment variables, as well as enhancements to the Container API and Rewrites.
+</BlogSummary>
+
+Full release highlights include:
+
+- [**Experimental: astro:env module**](#experimental-astroenv)
+- [**Rewrite for all HTTP methods**](#rewrite-for-all-http-methods)
+- [**Embedding Astro in server frameworks**](#embedding-astro)
+- [**Container API helpers**](#container-api-helpers)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: astro:env
+
+Astro 4.10 introduces a new experimental built-in module, `astro:env`, to allow easier use of environment variables.
+
+Environment variables allow you to configure your app with different values in different environments. But this comes with a great deal of complexity:
+
+- Some variables are needed in the client and some only on the server.
+- Server variables are often __secrets__, things like API keys that you do not want to be exposed in the client nor inlined into the server build (which can be viewed by anyone with access to the build output).
+- Some variables are __required__ for your app to function at all; whereas others are optional enhancements.
+- Variables can be defined in your shell, in a `.env` file, or in [build config](https://vitejs.dev/config/#using-environment-variables-in-config).
+- Runtimes such as [Cloudflare](https://docs.astro.build/en/guides/integrations-guide/cloudflare/) and [Deno](https://deno.com/) have different APIs for reading variables, creating a dev/prod difference you need to deal with.
+
+We built `astro:env` to provide more control and structure over environment variables. Manage that complexity with a schema, right in your config:
+
+```js
+import { defineConfig, envField } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    env: {
+      schema: {
+        API_PORT: envField.number({
+          context: 'server',
+          access: 'secret',
+          default: 7000
+        }),
+        PUBLIC_DASHBOARD_V2: envField.boolean({
+          context: 'server',
+          access: 'public',
+          default: false
+        }),
+      }
+    }
+  }
+})
+```
+
+Once defined, you can use your variables by importing them from the `astro:env/server` and `astro:env/client` modules:
+
+```js
+import { PUBLIC_DASHBOARD_V2, getSecret } from 'astro:env/server';
+
+if (PUBLIC_DASHBOARD_V2) {
+	const API_PORT = getSecret("API_PORT") // number
+	await fetch(`https://my-secret-api.com:${API_PORT}/v2`)
+}
+```
+
+Client-side `astro:env/client` can be used in components, scripts, or anywhere else you run client code. For example, display an enhanced feature only if you have a feature flag enabled:
+
+```jsx
+import { SOME_FEATURE_FLAG } from 'astro:env/client';
+
+export default function() {
+  return (
+    <section>
+      { SOME_FEATURE_FLAG && (
+        <div id="fancy-enhanced-feature"></div>
+      )}
+
+      ...
+    </section>
+  )
+}
+```
+
+When you need to read a variable that is not defined in your schema, use `getSecret()`, which works in any runtime (Cloudflare, Node.js, Deno).
+
+```js
+import { getSecret } from 'astro:env/server';
+
+function getServerEndpoint(num: number) {
+  return getSecret(`BACKUP_SERVER_${num}`); // string | undefined
+}
+```
+
+`astro:env` is an experimental feature and, as with all experimental features, is subject to change. Thanks to [Florian Lefebvre](https://github.com/florian-lefebvre) for being the champion of the RFC and providing the implementation! Leave your feedback on the [RFC](https://github.com/withastro/roadmap/pull/894) to help steer its development as this new feature is stabilized.
+
+## Rewrite for all HTTP methods
+
+Rewriting is a new experimental feature released in 4.9. The first version targeted `GET` requests, the most common case for a rewrite. Now in 4.10, rewrites can be used to change the route for any requests by cloning the initial request.
+
+Here's an example of rewriting in middleware to direct you to the default version of a versioned API:
+
+```js
+import { defineMiddleware } from 'astro:middleware';
+
+export const onRequest = defineMiddleware(({ request, url }, next) => {
+  if(request.method === 'POST' && url.pathname === '/api') {
+    return next('/api/v2');
+  }
+});
+```
+
+When rewriting, a new request is created pointing to the new URL. The existing headers and body are copied over to the new request.
+
+## Embedding Astro
+
+In 4.9 we introduced the Container API, a new way to render Astro components outside of the context of the Astro framework. Our initial focus was on the __testing__ story: using the container API to test Astro components. Create a container, render a component with `container.renderToString()`, and inspect the generated HTML.
+
+We always knew people would want to use the Container API in other ways, and we didn't intend to disappoint. In 4.10, you can now use this API to render any components built with `astro build`, meaning you can use them outside of an Astro site!
+
+To demonstrate how this works, we built an [Astro-in-PHP demo](https://github.com/matthewp/astro-in-php-example) app. Don't judge the code, PHP experts! 😅
+
+The container part looks like this:
+
+```js
+import * as components from './dist/server/all.mjs';
+import { renderers } from './dist/server/renderers.mjs';
+import { manifest } from './dist/server/entry.mjs';
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+
+const container = await AstroContainer.create({
+  manifest,
+  renderers,
+  resolve(s) {
+    const found = manifest.entryModules[s];
+    if(found) {
+      return `/astro-project/dist/client/${found}`;
+    }
+    return found;
+  }
+});
+
+const html = await container.renderToString(components.ReactWrapper);
+
+// Log to the console so that PHP injects the HTML into its page.
+console.log(html);
+```
+
+The Container API is low-level and reflects what Astro does internally to render its own routes. We're eager for the community to build integrations that smooth over the rough edges and provide simpler ways to embed Astro. Try it for yourself, and show us everywhere you add Astro!
+
+## Container API helpers
+
+We also added some convenient helper functions for using the Container API in Vite environments (`vitest`, Astro integrations, etc.) when rendering your UI framework components.
+
+This means you no longer need to know (or figure out!) the individual, direct file paths to the client and server rendering scripts for each package. The new `getContainerRenderer()` provides the appropriate rendering scripts from our official renderer integration packages (`@astrojs/react`, `@astrojs/preact`, `@astrojs/solid-js`, `@astrojs/svelte`, `@astrojs/vue`, `@astrojs/lit`, and `@astrojs/mdx`). Be sure to upgrade your integrations at the same time to have this new function!
+
+The `loadRenderers()` function from the new `astro:container` virtual module will load these renderers from each package for you:
+
+```diff
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import ReactWrapper from '../src/components/ReactWrapper.astro';
+import { loadRenderers } from "astro:container";
+import { getContainerRenderer } from "@astrojs/react";
+
+test('ReactWrapper with react renderer', async () => {
++ const renderers = await loadRenderers([getContainerRenderer()])
+- const renderers = [
+- {
+-  name: '@astrojs/react',
+-   clientEntrypoint: '@astrojs/react/client.js',
+-   serverEntrypoint: '@astrojs/react/server.js',
+-  },
+- ];
+  const container = await AstroContainer.create({
+    renderers,
+  });
+  const result = await container.renderToString(ReactWrapper);
+
+  expect(result).toContain('Counter');
+  expect(result).toContain('Count: <!-- -->5');
+});
+```
+
+This type change to `renderers` will also allow Vite-less environments to load and pass the renderer modules manually.
+
+For more information, see the [Container API docs](https://docs.astro.build/en/reference/container-reference/).
+
+## Bug Fixes
+
+As always, Astro 4.10 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4100) to learn more, and watch the full 4.10 release reveal from Astro Together! Special thanks to Sarah, Erika, Bjorn, Ema, Chris, Florian, and everyone else who contributed to this release.
+
+<YouTube id="https://youtu.be/lm2br5_zcHg" />
