@@ -6,7 +6,7 @@ const { theme } = Astro.props
 
 <a
     href={theme.href} target="_blank"
-    class:list={[ "size-fit group relative rounded-xl", !theme.isSeenOnMobile && "hidden lg:block" ]}
+    class:list={[ "size-fit group relative rounded-xl border border-astro-dark-100/20", !theme.isSeenOnMobile && "hidden lg:block" ]}
 >
     <img class="size-full rounded-xl" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
     <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
