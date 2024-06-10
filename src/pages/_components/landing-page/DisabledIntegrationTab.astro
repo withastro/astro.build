@@ -1,0 +1,33 @@
+---
+type Props = {
+  label: string;
+  size?: string;
+  logoSrc: string;
+};
+
+const { logoSrc, label, size = "size-6 sm:size-8" } = Astro.props;
+---
+<button
+  disabled
+  aria-disabled="true"
+  data-tab={label.toLowerCase()}
+  class={`relative flex flex-col items-center gap-3 whitespace-nowrap rounded-full text-lg sm:text-xl md:rounded-lg`}
+>
+  <div
+    class="size-fit landing-section rounded-full p-0.5 lg:p-1 bg-astro-dark-100"
+  >
+    <div class="bg-black size-12 lg:size-16 landing-section rounded-full">
+      <div
+        class="w-full h-full landing-section rounded-full bg-astro-dark-100/20 grayscale"
+      >
+        <img class={size} src={logoSrc} alt={`${label} Logo`} />
+      </div>
+    </div>
+  </div>
+
+  <p
+    class="font-medium text-base text-astro-gray-300"
+  >
+    {label}
+  </p>
+</button>

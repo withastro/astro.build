@@ -6,9 +6,8 @@ import IntegrationTab from "./IntegrationTab.astro"
 import React from "./integrations-tabs/React.astro"
 import Solid from "./integrations-tabs/Solid.astro"
 import Preact from "./integrations-tabs/Preact.astro"
-import Alpine from "./integrations-tabs/Alpine.astro"
 import Svelte from "./integrations-tabs/Svelte.astro"
-import TailwindCSS from "./integrations-tabs/TailwindCSS.astro"
+import DisabledIntegrationTab from "./DisabledIntegrationTab.astro"
 
 
 ---
@@ -31,7 +30,9 @@ import TailwindCSS from "./integrations-tabs/TailwindCSS.astro"
                 <IntegrationTab label="Preact" logoSrc="/assets/integrations/preact.svg" tabIndex="-1" />
                 <IntegrationTab label="Svelte" logoSrc="/assets/integrations/svelte.svg" tabIndex="-1" />
                 <IntegrationTab label="Solid" logoSrc="/assets/integrations/solid.svg" tabIndex="-1" size="size-5 lg:size-7" />
-            </div>
+                <DisabledIntegrationTab label="Tailwind" logoSrc="/assets/integrations/tailwind.svg"  />
+                <DisabledIntegrationTab label="Alpine" logoSrc="/assets/integrations/alpinejs.svg"  />
+                </div>
         </div>
 
         <div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600" />
