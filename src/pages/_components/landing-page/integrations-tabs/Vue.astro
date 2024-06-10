@@ -3,8 +3,9 @@ import { Content } from './snippets/vue.mdx';
 import InterfaceExample from "./InterfaceExample.astro";
 import IntegrationContent from "../IntegrationContent.astro";
 
+const { position } = Astro.props
 ---
-<IntegrationContent tab="vue" class="hidden">
+<IntegrationContent tab="vue" position={position} class="hidden">
     <Content slot="code" />
     <InterfaceExample slot="example" brandColor="bg-[#41B883]" />
 </IntegrationContent>

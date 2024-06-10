@@ -23,163 +23,193 @@ import TailwindCSS from "./integrations-tabs/TailwindCSS.astro"
     </SectionCopy>
     </div>
 
-    <astro-integrations-tabs>
+   <astro-integrations-tabs>
         <div class="mx-auto w-full max-w-screen-2xl ">
-            <ul class="mt-4 sm:mt-8 py-1 w-full px-4 sm:px-8 flex items-center overflow-auto text-nowrap no-scrollbar gap-4 md:gap-6 lg:gap-7 xl:gap-8">
-                <IntegrationTab label="React" logoSrc="/assets/integrations/react.svg"  isActive />
-                <IntegrationTab label="Vue" logoSrc="/assets/integrations/vue.svg" size="size-5 lg:size-6" />
-                <IntegrationTab label="Preact" logoSrc="/assets/integrations/preact.svg" />
-                <IntegrationTab label="Svelte" logoSrc="/assets/integrations/svelte.svg" />
-                <IntegrationTab label="Solid" logoSrc="/assets/integrations/solid.svg" size="size-5 lg:size-7" />
-                <IntegrationTab label="Tailwind" logoSrc="/assets/integrations/tailwind.svg" isDisabled />
-                <IntegrationTab label="Alpine" logoSrc="/assets/integrations/alpinejs.svg" isDisabled />
-            </ul>
+            <div role="tablist" aria-label="UI Frameworks Integration Tabs" class="mt-4 sm:mt-8 py-1 w-full px-4 sm:px-8 flex items-center overflow-auto text-nowrap no-scrollbar gap-4 md:gap-6 lg:gap-7 xl:gap-8">
+                <IntegrationTab label="React" logoSrc="/assets/integrations/react.svg" tabIndex="0" isActive />
+                <IntegrationTab label="Vue" logoSrc="/assets/integrations/vue.svg" tabIndex="-1" size="size-5 lg:size-6" />
+                <IntegrationTab label="Preact" logoSrc="/assets/integrations/preact.svg" tabIndex="-1" />
+                <IntegrationTab label="Svelte" logoSrc="/assets/integrations/svelte.svg" tabIndex="-1" />
+                <IntegrationTab label="Solid" logoSrc="/assets/integrations/solid.svg" tabIndex="-1" size="size-5 lg:size-7" />
+            </div>
         </div>
 
         <div class="my-4 sm:my-8 w-full border-t border-t-astro-gray-600" />
 
         <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
-            <React />
-            <Vue />
-            <Preact />
-            <Svelte />
-            <Solid />
-            <TailwindCSS />
-            <Alpine />
+            <React position={1} />
+            <Vue position={2} />
+            <Preact position={3} />
+            <Svelte position={4} />
+            <Solid position={5} />
         </ul>
     </astro-integrations-tabs>
 </section>
 
 <script>
-    // @ts-nocheck
-    const bind = (instance, proto) => {
-      if (proto == null) {
-        proto = Object.getPrototypeOf(instance)
+  // @ts-nocheck
+  const bind = (instance, proto) => {
+    if (proto == null) {
+      proto = Object.getPrototypeOf(instance)
+    }
+    let propertyNames = Object.getOwnPropertyNames(proto)
+    for (let name of propertyNames) {
+      let value = proto[name]
+      if (typeof value === "function") {
+        instance[name] = proto[name].bind(instance)
       }
-      let propertyNames = Object.getOwnPropertyNames(proto)
-      for (let name of propertyNames) {
-        let value = proto[name]
-        if (typeof value === "function") {
-          instance[name] = proto[name].bind(instance)
-        }
+    }
+  }
+
+  const integrations = [
+      { brand: 'react', color: '97, 218, 251' },
+      { brand: 'tailwind', color: '56, 189, 248' },
+      { brand: 'vue', color: '65, 184, 131' },
+      { brand: 'preact', color: '103, 58, 184' },
+      { brand: 'alpine', color: '119, 193, 210' },
+      { brand: 'svelte', color: '255, 62, 0' },
+      { brand: 'solid', color: '118, 179, 225' },
+  ]
+  
+  class Tabs extends HTMLElement {
+    static is = "astro-integrations-tabs"
+
+    constructor() {
+      super()
+      bind(this)
+    }
+
+    button(name) {
+      return this.querySelector(`button[data-tab="${name}"]`)
+    }
+    buttons() {
+      return this.querySelectorAll(`button[data-tab]`)
+    }
+    content(name) {
+      return this.querySelector(`li[data-tab="${name}"]`)
+    }
+    contents() {
+      return this.querySelectorAll(`li[data-tab]`)
+    }
+    icon(name) {
+      return this.querySelector(`div[data-tab-icon="${name}"]`)
+    }
+    icons() {
+      return this.querySelectorAll(`div[data-tab-icon]`)
+    }
+    iconContainer(name) {
+      return this.querySelector(`div[data-tab-icon-container="${name}"]`)
+    }
+    iconContainers() {
+      return this.querySelectorAll(`div[data-tab-icon-container]`)
+    }
+    label(name) {
+      return this.querySelector(`p[data-tab-label="${name}"]`)
+    }
+    labels() {
+      return this.querySelectorAll(`p[data-tab-label]`)
+    }
+
+    connectedCallback() {
+      this.addEventListener("click", this.handleClick)
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener("click", this.handleClick)
+    }
+
+    resetElements() {
+
+      for (const button of this.buttons()) {
+        button.removeAttribute("aria-selected")
+      }
+      for (const content of this.contents()) {
+        content.classList.add("hidden")
+      }
+      for (const icon of this.icons()) {
+        icon.removeAttribute("aria-selected")
+      }
+      for (const iconContainer of this.iconContainers()) {
+        iconContainer.removeAttribute("aria-selected")
+        iconContainer.style.backgroundColor = '#858B98'
+      }
+      for (const label of this.labels()) {
+        label.removeAttribute("aria-selected")
+        label.style.color = '#858B98'
       }
     }
 
-    const integrations = [
-        {brand: 'react', color: '97, 218, 251'},
-        {brand: 'tailwind', color: '56, 189, 248'},
-        {brand: 'vue', color: '65, 184, 131'},
-        {brand: 'preact', color: '103, 58, 184'},
-        {brand: 'alpine', color: '119, 193, 210'},
-        {brand: 'svelte', color: '255, 62, 0'},
-        {brand: 'solid', color: '118, 179, 225'},
-    ]
-    
-    class Tabs extends HTMLElement {
-      static is = "astro-integrations-tabs"
-  
-      constructor() {
-        super()
-        bind(this)
-      }
-  
-      button(name) {
-        return this.querySelector(`button[data-tab="${name}"]`)
-      }
-      buttons() {
-        return this.querySelectorAll(`button[data-tab]`)
-      }
-      content(name) {
-        return this.querySelector(`li[data-tab="${name}"]`)
-      }
-      contents() {
-        return this.querySelectorAll(`li[data-tab]`)
-      }
-      icon(name) {
-        return this.querySelector(`div[data-tab-icon="${name}"]`)
-      }
-      icons() {
-        return this.querySelectorAll(`div[data-tab-icon]`)
-      }
-      iconContainer(name) {
-        return this.querySelector(`div[data-tab-icon-container="${name}"]`)
-      }
-      iconContainers() {
-        return this.querySelectorAll(`div[data-tab-icon-container]`)
-      }
-      label(name) {
-        return this.querySelector(`p[data-tab-label="${name}"]`)
-      }
-      labels() {
-        return this.querySelectorAll(`p[data-tab-label]`)
-      }
-  
-      connectedCallback() {
-        this.addEventListener("click", this.handleClick)
-      }
-  
-      disconnectedCallback() {
-        this.removeEventListener("click", this.handleClick)
-      }
-  
-      resetElements() {
+    setActive(name) {
 
-        for (const button of this.buttons()) {
-          button.removeAttribute("aria-selected")
-        }
-        for (const content of this.contents()) {
-          content.classList.add("hidden")
-        }
-        for (const icon of this.icons()) {
-          icon.removeAttribute("aria-selected")
-        }
-        for (const iconContainer of this.iconContainers()) {
-          iconContainer.removeAttribute("aria-selected")
-          iconContainer.style.backgroundColor = '#858B98'
-        }
-        for (const label of this.labels()) {
-          label.removeAttribute("aria-selected")
-          label.style.color = '#858B98'
+      const brandColor = integrations.find(integration => integration.brand === name)?.color
 
-        }
-      }
-  
-      setActive(name) {
+      const icon = this.icon(name)
+      const label = this.label(name)
+      const button = this.button(name)
+      const content = this.content(name)
+      const iconContainer = this.iconContainer(name)
 
-        const brandColor = integrations.find(integration => integration.brand === name)?.color
+      content.classList.remove("hidden")
+      button.setAttribute("aria-selected", "true")
+      icon.setAttribute("aria-selected", "true")
+      label.setAttribute("aria-selected", "true")
+      iconContainer.setAttribute("aria-selected", "true")
+      label.style.color = `rgba(${brandColor}, 1)`
+      icon.style.backgroundColor = `rgba(${brandColor}, 0.2)`
+      iconContainer.style.backgroundColor = `rgba(${brandColor}, 1)`
+    }
 
-        const icon = this.icon(name)
-        const label = this.label(name)
-        const button = this.button(name)
-        const content = this.content(name)
-        const iconContainer = this.iconContainer(name)
-  
-        content.classList.remove("hidden")
-        button.setAttribute("aria-selected", "true")
-        icon.setAttribute("aria-selected", "true")
-        label.setAttribute("aria-selected", "true")
-        iconContainer.setAttribute("aria-selected", "true")
-        label.style.color = `rgba(${brandColor}, 1)`
-        icon.style.backgroundColor = `rgba(${brandColor}, 0.2)`
-        iconContainer.style.backgroundColor = `rgba(${brandColor}, 1)`
-      }
-  
-      handleClick(event: Event) {
-        const name = event.target.closest("button[data-tab]")?.dataset.tab
-        if (!name) return
-  
-        if ("startViewTransition" in document) {
-          document.startViewTransition(() => {
-            this.resetElements()
-            this.setActive(name)
-          })
-        } else {
+    handleClick(event: Event) {
+      const name = event.target.closest("button[data-tab]")?.dataset.tab
+      if (!name) return
+
+      if ("startViewTransition" in document) {
+        document.startViewTransition(() => {
           this.resetElements()
           this.setActive(name)
-        }
+        })
+      } else {
+        this.resetElements()
+        this.setActive(name)
       }
     }
+  }
   
-    customElements.define(Tabs.is, Tabs)
+  customElements.define(Tabs.is, Tabs)
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".integration-tab")
+    let activeTabIndex = 0
+    
+    function updateTabSelection(index) {
+        tabs[activeTabIndex].setAttribute("aria-selected", "false")
+        tabs[activeTabIndex].setAttribute("tabindex", "-1")
+        document.querySelector(`#panel-${activeTabIndex + 1}`).hidden = true
+
+        tabs[index].setAttribute("aria-selected", "true")
+        tabs[index].setAttribute("tabindex", "0")
+        document.querySelector(`#panel-${index + 1}`).hidden = false
+
+        tabs[index].focus()
+        activeTabIndex = index
+
+    }
+
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => updateTabSelection(index))
+    })
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+            event.preventDefault()
+            const nextIndex = (activeTabIndex + 1) % tabs.length
+            updateTabSelection(nextIndex)
+        } else if (event.key === "ArrowLeft") {
+            event.preventDefault()
+            const prevIndex = (activeTabIndex - 1 + tabs.length) % tabs.length
+            updateTabSelection(prevIndex)
+        }
+    })
+  })
   </script>
 

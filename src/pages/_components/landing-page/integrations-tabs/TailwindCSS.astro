@@ -3,8 +3,9 @@ import { Content } from './snippets/tailwindcss.mdx';
 import InterfaceExample from "./InterfaceExample.astro";
 import IntegrationContent from "../IntegrationContent.astro";
 
+const { position } = Astro.props
 ---
-<IntegrationContent tab="tailwind" class="hidden">
+<IntegrationContent tab="tailwind" position={position} class="hidden">
     <Content slot="code" />
     <InterfaceExample slot="example" brandColor="bg-[#38BDF8]" highContrast />
 </IntegrationContent>

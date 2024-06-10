@@ -3,8 +3,10 @@ import { Content } from './snippets/jsx.mdx';
 import InterfaceExample from "./InterfaceExample.astro";
 import IntegrationContent from "../IntegrationContent.astro";
 
+const { position } = Astro.props
+
 ---
-<IntegrationContent tab="react">
+<IntegrationContent tab="react" position={position}>
     <Content slot="code" />
     <InterfaceExample slot="example" brandColor="bg-[#61DAFB]" highContrast />
 </IntegrationContent>

@@ -1,12 +1,18 @@
 ---
 interface Props {
-  tab: string;
-  class?: string;
+  tab: string
+  class?: string
 }
 
-const { tab, class: className } = Astro.props;
+const { tab, class: className } = Astro.props
 ---
 
-<li class:list={[className]} data-tab={tab}>
+<li
+  id={tab}
+  role='tabpanel'
+  data-tab={tab}
+  aria-labelledby={tab}
+  class:list={[className]}
+>
   <slot />
 </li>

@@ -22,7 +22,7 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
 
   <astro-ecosystem-tabs>
     <div class="mx-auto w-full max-w-screen-2xl">
-      <ul
+      <div role="tablist" aria-label="Ecosystem Tabs"
         class="mt-4 py-1 sm:mt-8 px-4 sm:px-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4"
       >
         <EcosystemTab label="Trending" active />
@@ -31,7 +31,7 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
         <EcosystemTab label="Docs" />
         <EcosystemTab label="Portfolios" />
         <EcosystemTab label="Landing Pages" slug="landing" />
-      </ul>
+    </div>
     </div>
 
     <PurpleStardust height="h-80 lg:h-96 xl:h-[44rem]" />
@@ -148,5 +148,63 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
     }
   }
 
-  customElements.define(Tabs.is, Tabs);
+  customElements.define(Tabs.is, Tabs)
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll('[role="tab"]')
+    const tabList = document.querySelector('[role="tablist"]')
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", changeTabs)
+    })
+
+    let tabFocus = 0
+
+    tabList.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        tabs[tabFocus].setAttribute("tabindex", -1)
+        if (e.key === "ArrowRight") {
+          tabFocus++;
+          // If we're at the end, go to the start
+          if (tabFocus >= tabs.length) {
+            tabFocus = 0
+          }
+          // Move left
+        } else if (e.key === "ArrowLeft") {
+          tabFocus--
+          // If we're at the start, move to the end
+          if (tabFocus < 0) {
+            tabFocus = tabs.length - 1
+          }
+        }
+
+        tabs[tabFocus].setAttribute("tabindex", 0)
+        tabs[tabFocus].focus()
+      }
+    })
+  })
+
+function changeTabs(e) {
+  const target = e.target
+  const parent = target.parentNode
+  const grandparent = parent.parentNode
+
+  // Remove all current selected tabs
+  parent
+    .querySelectorAll('[aria-selected="true"]')
+    .forEach((t) => t.setAttribute("aria-selected", false))
+
+  // Set this tab as selected
+  target.setAttribute("aria-selected", true)
+
+  // Hide all tab panels
+  grandparent
+    .querySelectorAll('[role="tabpanel"]')
+    .forEach((p) => p.setAttribute("hidden", true))
+
+  // Show the selected panel
+  grandparent.parentNode
+    .querySelector(`#${target.getAttribute("aria-controls")}`)
+    .removeAttribute("hidden")
+}
 </script>
