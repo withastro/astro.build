@@ -1,10 +1,9 @@
 ---
-const { label, tabIndex, isActive = false } = Astro.props;
+const { label, isActive = false } = Astro.props;
 ---
 
 <button 
     role="tab"
-    tabindex={tabIndex}
     data-tab={label.toLowerCase()}
     aria-selected={isActive ? "true" : undefined}
     class={`px-6 py-2 size-fit inline-flex items-center rounded-full bg-astro-dark-600/30 hover:bg-astro-dark-600/70 aria-selected:bg-white transition-all ease-in-out duration-500`}    
