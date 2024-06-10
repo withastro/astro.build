@@ -185,11 +185,11 @@ import DisabledIntegrationTab from "./DisabledIntegrationTab.astro"
     function updateTabSelection(index) {
         tabs[activeTabIndex].setAttribute("aria-selected", "false")
         tabs[activeTabIndex].setAttribute("tabindex", "-1")
-        document.querySelector(`#panel-${activeTabIndex + 1}`).hidden = true
+        document.querySelector(`#integration-panel-${activeTabIndex + 1}`).hidden = true
 
         tabs[index].setAttribute("aria-selected", "true")
         tabs[index].setAttribute("tabindex", "0")
-        document.querySelector(`#panel-${index + 1}`).hidden = false
+        document.querySelector(`#integration-panel-${index + 1}`).hidden = false
 
         tabs[index].focus()
         activeTabIndex = index
