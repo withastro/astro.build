@@ -2,7 +2,7 @@
 import Icon from "astro-icon"
 ---
 
-<div class='size-full flex items-center justify-between overflow-hidden'>
+<div id="content-collections"class='size-full flex items-center justify-between overflow-hidden'>
 
     <div class="w-1/2 h-full min-h-40 relative flex items-center overflow-hidden">
         <div id="unscanned-docs-container" class="absolute right-1 motion-reduce:right-4 flex items-center justify-center gap-8">
@@ -59,11 +59,27 @@ import Icon from "astro-icon"
     }
 
     #unscanned-docs-container {
-        animation-play-state: running;
         animation: marquee 50s linear infinite;
     }
 
     #scanned-docs-container {
+        animation: marquee 50s linear infinite;
+    }
+
+    #content-collections #unscanned-docs-container {
+        animation-play-state: paused;
+    }
+
+    #content-collections #scanned-docs-container {
+        animation-play-state: paused;
+    }
+
+    #content-collections:hover #unscanned-docs-container {
+        animation-play-state: running;
+        animation: marquee 50s linear infinite;
+    }
+
+    #content-collections:hover #scanned-docs-container {
         animation-play-state: running;
         animation: marquee 50s linear infinite;
     }
