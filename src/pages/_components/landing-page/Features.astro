@@ -1,7 +1,7 @@
 ---
 import SectionCopy from "../SectionCopy.astro"
-import ContentCollections from "./ContentCollections.astro"
 import FeaturesCard from "./FeaturesCard.astro"
+import ContentCollectionsFeatureCard from "./ContentCollectionsFeatureCard.astro"
 ---
 
 <section class='mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-2xl mx-auto px-4 sm:px-8'>
@@ -13,15 +13,7 @@ import FeaturesCard from "./FeaturesCard.astro"
 
     <!-- features grid for mobile and desktop screens only - hidden from tablet screens -->
   <div class='mt-4 sm:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4 md:max-lg:hidden'> 
-    <FeaturesCard
-      title='Content Collections' showDescription
-      href="https://docs.astro.build/en/guides/content-collections/"
-      description='Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation.'
-    >
-      <div slot="illustration" class="size-full pt-4 min-h-52">
-        <ContentCollections />
-      </div>
-    </FeaturesCard>
+    <ContentCollectionsFeatureCard />
 
     <FeaturesCard
       title='Zero JavaScript, By Default' showDescription 
@@ -93,7 +85,7 @@ import FeaturesCard from "./FeaturesCard.astro"
         description='Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation.'
       >
         <div slot="illustration" class="size-full pt-4 sm:pt-6 min-h-52">
-          <ContentCollections />
+          <ContentCollectionsFeatureCard />
         </div>
       </FeaturesCard>
   
