@@ -46,11 +46,11 @@ I'm excited to announce that that day has finally arrived. Chrome 126 (released 
 
 ## Demo
 
-Both Chrome and Edge offer staggered rollout of new versions, so check that your browser is running 126 before running the demo. In Chrome, you can see your current version at `chrome://settings/help`.
+*Both Chrome and Edge rollout new browser versions gradually, so check that you are on version 126 before running the demo. In Chrome, you can see your current version at `chrome://settings/help`. If an upgrade isn't available yet for your browser, check back later or use a [Beta](https://www.google.com/chrome/beta/) or [Canary](https://www.google.com/chrome/canary/) release channel instead.*
 
-Open the [astro-zerojs-transitions.vercel.app](https://astro-zerojs-transitions.vercel.app/) demo to experience zero-JavaScript view transitions in your browser. You can explore your browser's Network Panel to verify that every link click triggers a full page load, and zero JavaScript is being sent to the browser to run these animations. If your browser supports it, the demo should look like this:
+Open the <a href="https://astro-zerojs-transitions.vercel.app/" target="_blank">astro-zerojs-transitions.vercel.app</a> demo to experience zero-JavaScript view transitions in your browser. You can explore your browser's Network Panel to verify that every link click triggers a full page load, and zero JavaScript is being sent to the browser. If your browser supports it, the demo should look like this:
 
-<figure  class="my-10">
+<figure class="my-10">
   <video autoplay loop muted playsinline class="border border-neutral-600 rounded">
     <source src="/assets/blog/future-of-astro/spotify-demo.mp4" type="video/mp4" />
     Sorry, your browser doesn't support embedded videos.
@@ -62,19 +62,23 @@ Open the [astro-zerojs-transitions.vercel.app](https://astro-zerojs-transitions.
  
 If your browser does not support the latest cross-domain view transitions, then your website will still run and display content as expected. However, the animations will be disabled and page navigation will behave like any other navigation in your browser (without animation).
 
-## Enable
+## Enable Zero-JavaScript View Transitions
 
 To take advantage of the native new View Transition API, it’s as simple as adding the `@view-transition` at-rule to your website. Here’s all the CSS you need:
 
-```css
-@view-transition {
-  navigation: auto;
-}
+```html
+<style>
+  @view-transition {
+    navigation: auto; /* enabled! */
+  }
+</style>
 ```
+
+*Note: The built-in CSS syntax highlighter in some code editors (ex: VSCode) may struggle to parse the newer `@view-transition` at-rule syntax. You can add a comment like `/* enabled! */` to your CSS as a short-term fix for your highlighter.*
 
 To enable cross-document view transitions, both "ends" of the transition must include this rule. A shared page layout component can be a good place to add this to your codebase.
 
-## Upgrade
+## Upgrade an Existing Project
 
 If you were already using Astro View Transitions powered by our `<ViewTransitions />` component, then it is now safe to remove that component and replace it with the at-rule. This will remove the injected backwards-compatible JavaScript router from your page, reducing the overall complexity of your client-side code.
 
@@ -101,7 +105,7 @@ If you would still like your view transitions to run in older browsers, you are 
 
 Unfortunately, this feature is not yet supported by native cross-document navigation in the browser. Native support for persistent audio and video players may be coming in the future, but in the meantime you can continue to use our `<ViewTransitions />` component if you need this additional functionality.
 
-### The Future of Astro
+## The Future of Astro
 
 Using links to navigate is a foundational behavior of the web. We believe this is one of the most significant advancements to come out of Chromium and the browser spec process in recent memory. We are excited to continue partnering with Google Chrome and other browser vendors as they roll out this new API.
 
