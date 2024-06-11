@@ -117,7 +117,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 									: undefined
 							}
 						>
-							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
+							<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
 								{recentlyAdded.slice(0, 3).map((integration) => (
 									<IntegrationCard integration={integration} />
 								))}
@@ -128,7 +128,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					<CardGridGroup
 						title={showRecentlyAdded && recentlyAdded.length > 0 ? "All Integrations" : undefined}
 					>
-						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
+						<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
 							{integrations.map((integration) => (
 								<IntegrationCard integration={integration} />
 							))}
