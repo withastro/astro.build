@@ -38,14 +38,14 @@ export default {
 					700: "#17191E",
 				},
 				"astro-dark": {
-					100: '#858B98',
-					300: '#343841',
-					400: '#18191E',
+					100: "#858B98",
+					300: "#343841",
+					400: "#18191E",
 					500: "#4B4B4B",
 					600: "#2C2C2C",
 					700: "#11172A",
 					800: "#0C0F19",
-					900: "#060913"
+					900: "#060913",
 				},
 				"astro-blue": "#3245FF",
 				"astro-purple": "#BC52EE",
@@ -261,7 +261,8 @@ export default {
 				},
 
 				".link": {
-					"@apply transition-colors font-light text-astro-gray-200 hover:text-white duration-300 ease-out": {},
+					"@apply transition-colors font-light text-astro-gray-200 hover:text-white duration-300 ease-out":
+						{},
 				},
 				".link-underline": {
 					"@apply link border-b border-astro-gray-100 hover:border-astro-gray-300": {},

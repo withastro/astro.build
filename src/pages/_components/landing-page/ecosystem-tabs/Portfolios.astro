@@ -1,29 +1,62 @@
 ---
-import Icon from "astro-icon"
-import Link from "../../Link.astro"
-import { getImage } from "astro:assets"
-import ThemeContainer from "./ThemeContainer.astro"
-import gurido from "../../../_assets/themes/gurido.png"
-import astrofy from "../../../_assets/themes/astrofy.png"
-import swissfolio from "../../../_assets/themes/swissfolio.png"
-import esqueleteCV from "../../../_assets/themes/esquelete-cv.png"
-import shareLinks from "../../../_assets/themes/share-your-links.png"
-import morePortfolioThemes from "../../../_assets/themes/more-portfolio-themes.png"
+import { getImage } from "astro:assets";
+import Icon from "astro-icon";
+import astrofy from "../../../_assets/themes/astrofy.png";
+import esqueleteCV from "../../../_assets/themes/esquelete-cv.png";
+import gurido from "../../../_assets/themes/gurido.png";
+import morePortfolioThemes from "../../../_assets/themes/more-portfolio-themes.png";
+import shareLinks from "../../../_assets/themes/share-your-links.png";
+import swissfolio from "../../../_assets/themes/swissfolio.png";
+import Link from "../../Link.astro";
+import ThemeContainer from "./ThemeContainer.astro";
 
-const astrofyTheme = await getImage({ src: astrofy, format: "webp", width: 1280 })
-const guridoTheme = await getImage({ src: gurido, format: "webp", width: 1280 })
-const esqueleteCVTheme = await getImage({ src: esqueleteCV, format: "webp", width: 1280 })
-const shareLinksTheme = await getImage({ src: shareLinks, format: "webp", width: 1280 })
-const swissfolioTheme = await getImage({ src: swissfolio, format: "webp", width: 1280 })
-const moreThemesPlaceholder = await getImage({ src: morePortfolioThemes, format: "webp", width: 1280 })
-
+const astrofyTheme = await getImage({ src: astrofy, format: "webp", width: 1280 });
+const guridoTheme = await getImage({ src: gurido, format: "webp", width: 1280 });
+const esqueleteCVTheme = await getImage({ src: esqueleteCV, format: "webp", width: 1280 });
+const shareLinksTheme = await getImage({ src: shareLinks, format: "webp", width: 1280 });
+const swissfolioTheme = await getImage({ src: swissfolio, format: "webp", width: 1280 });
+const moreThemesPlaceholder = await getImage({
+	src: morePortfolioThemes,
+	format: "webp",
+	width: 1280,
+});
 
 const themes = [
-  { href: "https://astro.build/themes/details/astrofy-personal-porfolio-website-template/", title: "Astrofy", author: "manuelernestog", src: astrofyTheme.src, isSeenOnMobile: true },
-  { href: "https://astro.build/themes/details/swissfolio/", title: "Swissfolio", author: "Lexington Themes", src: swissfolioTheme.src, isSeenOnMobile: true },
-  { href: "https://astro.build/themes/details/gurido/", title: "Gurido", author: "Lexington Themes", src: guridoTheme.src, isSeenOnMobile: true },
-  { href: "https://astro.build/themes/details/shareyourlinks/", title: "ShareYourLinks", author: "Angela Sofia Osorio", src: shareLinksTheme.src, isSeenOnMobile: false },
-  { href: "https://astro.build/themes/details/esquelete-cv/", title: "Esquelete CV", author: "Martín", src: esqueleteCVTheme.src, isSeenOnMobile: false },
+	{
+		href: "https://astro.build/themes/details/astrofy-personal-porfolio-website-template/",
+		title: "Astrofy",
+		author: "manuelernestog",
+		src: astrofyTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/swissfolio/",
+		title: "Swissfolio",
+		author: "Lexington Themes",
+		src: swissfolioTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/gurido/",
+		title: "Gurido",
+		author: "Lexington Themes",
+		src: guridoTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/shareyourlinks/",
+		title: "ShareYourLinks",
+		author: "Angela Sofia Osorio",
+		src: shareLinksTheme.src,
+		isSeenOnMobile: false,
+	},
+	{
+		href: "https://astro.build/themes/details/esquelete-cv/",
+		title: "Esquelete CV",
+		author: "Martín",
+		src: esqueleteCVTheme.src,
+		isSeenOnMobile: false,
+	},
 ];
 ---
 

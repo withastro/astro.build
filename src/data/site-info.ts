@@ -41,7 +41,7 @@ const siteInfo: SiteInfo = {
 			href: "https://x.com/astrodotbuild",
 			text: "Follow Astro on x.com (formerly Twitter)",
 		},
-				{
+		{
 			platform: "github",
 			icon: "social/github",
 			text: "Go to Astro's GitHub repo",

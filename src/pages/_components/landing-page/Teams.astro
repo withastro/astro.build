@@ -1,11 +1,11 @@
 ---
-import { getImage } from "astro:assets"
-import GoogleLogo from '../../_assets/brands/google.png'
-import MicrosoftLogo from '../../_assets/brands/microsoft.png'
-import NBCNewsLogo from '../../_assets/brands/nbc-news.png'
-import NordVPNLogo from '../../_assets/brands/nordvpn.png'
-import PorscheLogo from '../../_assets/brands/porsche.png'
-import TheGuardianLogo from '../../_assets/brands/the-guardian.png'
+import { getImage } from "astro:assets";
+import GoogleLogo from "../../_assets/brands/google.png";
+import MicrosoftLogo from "../../_assets/brands/microsoft.png";
+import NBCNewsLogo from "../../_assets/brands/nbc-news.png";
+import NordVPNLogo from "../../_assets/brands/nordvpn.png";
+import PorscheLogo from "../../_assets/brands/porsche.png";
+import TheGuardianLogo from "../../_assets/brands/the-guardian.png";
 
 const google = await getImage({ src: GoogleLogo, format: "webp", width: 1280 });
 const microsoft = await getImage({ src: MicrosoftLogo, format: "webp", width: 1280 });
@@ -15,12 +15,12 @@ const porsche = await getImage({ src: PorscheLogo, format: "webp", width: 1280 }
 const nbc = await getImage({ src: NBCNewsLogo, format: "webp", width: 1280 });
 
 const logos = [
-	{ src: google.src, alt: "Google Logo", height: 'h-9' },
-	{ src: microsoft.src, alt: "Microsoft Logo", height: 'h-6' },
-	{ src: guardian.src, alt: "The Guardian Logo", height: 'h-8' },
-	{ src: nordvpn.src, alt: "NordVPN Logo", height: 'h-8' },
-	{ src: porsche.src, alt: "Porsche Logo", height: 'h-3.5' },
-	{ src: nbc.src, alt: "NBC News Logo", height: 'h-5' },
+	{ src: google.src, alt: "Google Logo", height: "h-9" },
+	{ src: microsoft.src, alt: "Microsoft Logo", height: "h-6" },
+	{ src: guardian.src, alt: "The Guardian Logo", height: "h-8" },
+	{ src: nordvpn.src, alt: "NordVPN Logo", height: "h-8" },
+	{ src: porsche.src, alt: "Porsche Logo", height: "h-3.5" },
+	{ src: nbc.src, alt: "NBC News Logo", height: "h-5" },
 ];
 ---
 
