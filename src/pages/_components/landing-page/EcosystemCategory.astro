@@ -1,15 +1,18 @@
 ---
-interface Props {
+type Props = {
+  id: string
   tab: string
   class?: string
 }
 
-const { tab, class: className, } = Astro.props
+const { id, tab, class: className } = Astro.props
 ---
 
 <li
-  role='tabpanel'
   data-tab={tab}
+  role='tabpanel'
+  id={`panel-${id}`}
+  aria-labelledby={tab}
   class:list={[className]}
 >
   <slot />

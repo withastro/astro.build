@@ -20,135 +20,82 @@ import LandingPages from "./ecosystem-tabs/LandingPages.astro";
     />
   </div>
 
-  <astro-ecosystem-tabs>
-    <div class="mx-auto w-full max-w-screen-2xl">
-      <div role="tablist" aria-label="Ecosystem Tabs"
-        class="mt-4 py-1 sm:mt-8 px-4 sm:px-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4"
-      >
-        <EcosystemTab label="Trending" isActive />
+  <div class="mx-auto w-full max-w-screen-2xl">
+    <div role="tablist" aria-label="Ecosystem Tabs"
+      class="mt-4 py-1 sm:mt-8 px-4 sm:px-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4">
+        <EcosystemTab label="Trending" isActive/>
         <EcosystemTab label="E-Commerce" />
         <EcosystemTab label="Blogs" />
         <EcosystemTab label="Docs" />
         <EcosystemTab label="Portfolios" />
         <EcosystemTab label="Landing Pages" />
     </div>
-    </div>
 
     <PurpleStardust height="h-80 lg:h-96 xl:h-[44rem]" />
 
     <div class="my-4 w-full border-t border-t-astro-gray-600"></div>
 
-    <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">
-      <EcosystemCategory tab="trending">
+    <ul class="mx-auto w-full max-w-screen-2xl px-4 sm:px-8">            
+      <EcosystemCategory id="1" tab="trending">
         <Trending />
       </EcosystemCategory>
-      <EcosystemCategory tab="e-commerce" class="hidden">
+      <EcosystemCategory id="2" tab="e-commerce" class="hidden">
         <Ecommerce />
       </EcosystemCategory>
-      <EcosystemCategory tab="blogs" class="hidden">
+      <EcosystemCategory id="3" tab="blogs" class="hidden">
         <Blogs />
       </EcosystemCategory>
-      <EcosystemCategory tab="docs" class="hidden">
-       <Docs />
+      <EcosystemCategory id="4" tab="docs" class="hidden">
+        <Docs />
       </EcosystemCategory>
-      <EcosystemCategory tab="portfolios" class="hidden">
+      <EcosystemCategory id="5" tab="portfolios" class="hidden">
         <Portfolios />
       </EcosystemCategory>
-      <EcosystemCategory tab="landing pages" class="hidden">
+      <EcosystemCategory id="6" tab="landing pages" class="hidden">
         <LandingPages />
       </EcosystemCategory>
     </ul>
-  </astro-ecosystem-tabs>
+</div>
+
+
 </section>
 
 <script>
   // @ts-nocheck
-  const bind = (instance, proto) => {
-    if (proto == null) {
-      proto = Object.getPrototypeOf(instance);
-    }
-    let propertyNames = Object.getOwnPropertyNames(proto);
-    for (let name of propertyNames) {
-      let value = proto[name];
-      if (typeof value === "function") {
-        instance[name] = proto[name].bind(instance);
-      }
-    }
-  };
-  class Tabs extends HTMLElement {
-    static is = "astro-ecosystem-tabs";
+    const tabs = document.querySelectorAll(".ecosystem-tab");
+    let activeTabIndex = 0;
 
-    constructor() {
-      super();
-      bind(this);
-    }
+    function updateTabSelection(index) {
+      const nextTab = tabs[index]
+      const activeTab = tabs[activeTabIndex]
+      const nextTabContent = document.querySelector(`#panel-${index + 1}`)
+      const activeTabContent = document.querySelector(`#panel-${activeTabIndex + 1}`)
 
-    button(name) {
-      return this.querySelector(`button[data-tab="${name}"]`);
-    }
-    buttons() {
-      return this.querySelectorAll(`button[data-tab]`);
-    }
-    content(name) {
-      return this.querySelector(`li[data-tab="${name}"]`);
-    }
-    contents() {
-      return this.querySelectorAll(`li[data-tab]`);
-    }
-    title(name) {
-      return this.querySelector(`p[data-tab-title="${name}"]`);
-    }
-    titles() {
-      return this.querySelectorAll(`p[data-tab-title]`);
+      activeTab.setAttribute("aria-selected", "false")
+      activeTab.setAttribute("tabindex", "-1")
+      activeTabContent.classList.add('hidden')
+
+      nextTab.setAttribute("aria-selected", "true")
+      nextTab.setAttribute("tabindex", "0")
+      nextTabContent.classList.remove('hidden')
+
+      tabs[index].focus()
+      activeTabIndex = index
     }
 
-    connectedCallback() {
-      this.addEventListener("click", this.handleClick);
-    }
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => updateTabSelection(index))
+    });
 
-    disconnectedCallback() {
-      this.removeEventListener("click", this.handleClick);
-    }
-
-    resetElements() {
-      for (const button of this.buttons()) {
-        button.removeAttribute("aria-selected");
-      }
-      for (const content of this.contents()) {
-        content.classList.add("hidden");
-      }
-      for (const title of this.titles()) {
-        title.removeAttribute("aria-selected");
-      }
-    }
-
-    setActive(name) {
-      const title = this.title(name);
-      const button = this.button(name);
-      const content = this.content(name);
-
-      content.classList.remove("hidden");
-      button.setAttribute("aria-selected", "true");
-      title.setAttribute("aria-selected", "true");
-    }
-
-    handleClick(event: Event) {
-      const name = event.target.closest("button[data-tab]")?.dataset.tab;
-      if (!name) return;
-
-      if ("startViewTransition" in document) {
-        document.startViewTransition(() => {
-          this.resetElements();
-          this.setActive(name);
-        });
-      } else {
-        this.resetElements();
-        this.setActive(name);
-      }
-    }
-  }
-
-  customElements.define(Tabs.is, Tabs)
-
-  
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+            event.preventDefault()
+            const nextIndex = (activeTabIndex + 1) % tabs.length
+            updateTabSelection(nextIndex)
+        } else if (event.key === "ArrowLeft") {
+            event.preventDefault()
+            const prevIndex = (activeTabIndex - 1 + tabs.length) % tabs.length
+            updateTabSelection(prevIndex)
+        }
+    });
 </script>
