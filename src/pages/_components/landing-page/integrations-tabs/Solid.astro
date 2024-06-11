@@ -1,11 +1,10 @@
 ---
-import { Content } from './snippets/jsx.mdx';
-import InterfaceExample from "./InterfaceExample.astro";
-import IntegrationContent from "../IntegrationContent.astro";
-
-const { position } = Astro.props
+import { Content } from "./snippets/jsx.mdx"
+import InterfaceExample from "./InterfaceExample.astro"
+import IntegrationContent from "../IntegrationContent.astro"
 ---
-<IntegrationContent tab="solid" position={position} class="hidden">
-    <Content slot="code" />
-    <InterfaceExample slot="example" brandColor="bg-[#76B3E1]" highContrast />
+
+<IntegrationContent id='5' tab='solid' class='hidden'>
+  <Content slot='code' />
+  <InterfaceExample slot='example' brandColor='bg-[#76B3E1]' highContrast />
 </IntegrationContent>
