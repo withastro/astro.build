@@ -1,9 +1,9 @@
 export type SocialLink = {
-	platform: string;
-	href: string;
 	me?: string;
 	text: string;
 	icon: string;
+	href: string;
+	platform: string;
 	footerOnly?: boolean;
 };
 
@@ -29,32 +29,32 @@ const siteInfo: SiteInfo = {
 	},
 	socialLinks: [
 		{
-			platform: "github",
-			href: "https://github.com/withastro/astro",
-			me: "https://github.com/withastro/",
-			text: "Go to Astro's GitHub repo",
-			icon: "social/github",
-		},
-		{
 			platform: "discord",
 			href: "/chat",
-			text: "Join the Astro community on Discord",
 			icon: "social/discord",
+			text: "Join the Astro community on Discord",
 		},
 		{
 			platform: "twitter",
-			href: "https://twitter.com/astrodotbuild",
-			me: "https://twitter.com/astrodotbuild",
-			text: "Follow Astro on Twitter",
 			icon: "social/twitter",
+			me: "https://x.com/astrodotbuild",
+			href: "https://x.com/astrodotbuild",
+			text: "Follow Astro on x.com (formerly Twitter)",
+		},
+				{
+			platform: "github",
+			icon: "social/github",
+			text: "Go to Astro's GitHub repo",
+			me: "https://github.com/withastro/",
+			href: "https://github.com/withastro/astro",
 		},
 		{
 			platform: "mastodon",
-			href: "https://m.webtoo.ls/@astro",
-			me: "https://m.webtoo.ls/@astro",
-			text: "Follow Astro on Mastodon",
 			footerOnly: true,
 			icon: "social/mastodon",
+			me: "https://m.webtoo.ls/@astro",
+			text: "Follow Astro on Mastodon",
+			href: "https://m.webtoo.ls/@astro",
 		},
 	],
 };
