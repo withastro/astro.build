@@ -1,0 +1,114 @@
+---
+title: "Zero-JavaScript View Transitions"
+description: "Part one of our series on The Future of Astro. Browser-native page transitions are now possible with zero JavaScript required."
+publishDate: "June 11, 2024"
+authors:
+  - fred
+coverImage: "/src/content/blog/_images/future-of-astro-zero-js-view-transitions/header-astro-zerojs-transitions.webp"
+socialImage: "/src/content/blog/_images/future-of-astro-zero-js-view-transitions/og-astro-zerojs-transitions.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  This is Part 1 of our series on *The Future of Astro* covering three major new features we have planned for Astro in 2024. This post introduces an update to the [View Transitions API](https://docs.astro.build/en/guides/view-transitions/) that Astro can now leverage for native, app-like page navigation without a single line of JavaScript required.
+</BlogSummary>
+
+The [View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions) is a set of new platform APIs that unlock native browser transitions between pages. Historically this has only been possible in JavaScript-heavy Single Page Applications (SPAs), but recent advances are now bringing native page transitions to the web platform.
+
+Astro users have had early access to view transitions since [Astro 2.9](https://astro.build/blog/astro-290/). Due to initial limitations in the browser, our early support worked by injecting a JavaScript router onto the page to manage the animations for you. This was never meant as a long-term solution, but it successfully created an early playground for our users to explore:
+
+<div class="flex flex-col gap-6 my-10 items-end">
+	<figure>
+		<video autoplay loop muted playsinline class="border border-neutral-600 rounded">
+			<source src="/assets/blog/astro-3/demo-2.mp4" type="video/mp4" />
+			Sorry, your browser doesn't support embedded videos.
+		</video>
+		<figcaption class="text-center text-sm my-4">
+			Watch <a href="https://twitter.com/joebell_/status/1688167865961037825">Joe Bell</a> demo view transitions.
+		</figcaption>
+	</figure>
+	<figure>
+		<video autoplay loop muted playsinline class="border border-neutral-600 rounded">
+			<source src="/assets/blog/astro-3/demo-3.mp4" type="video/mp4" />
+			Sorry, your browser doesn't support embedded videos.
+		</video>
+		<figcaption class="text-center text-sm my-4">
+			Try out this <a href="https://astro-records.pages.dev/">live demo</a> by <a href="https://twitter.com/charca">Maxi Ferreira</a>.
+		</figcaption>
+	</figure>
+</div>
+
+Our bet was that the major web browsers would continue to improve and one day we could remove our JavaScript router shim entirely. One day, when a user clicked a link, that click could trigger a transition animation in the browser as part of its normal flow from page to page.
+
+I'm excited to announce that that day has finally arrived. Chrome 126 (released last week) and Microsoft Edge 126 (releasing this week) both support "cross-document view transitions" unlocking **zero-JavaScript view transitions** in Astro.
+
+## Demo
+
+*Both Chrome and Edge rollout new browser versions gradually, so check that you are on version 126 before running the demo. In Chrome, you can see your current version at `chrome://settings/help`. If an upgrade isn't available yet for your browser, check back later or use a [Beta](https://www.google.com/chrome/beta/) or [Canary](https://www.google.com/chrome/canary/) release channel instead.*
+
+Open the <a href="https://astro-zerojs-transitions.vercel.app/" target="_blank">astro-zerojs-transitions.vercel.app</a> demo to experience zero-JavaScript view transitions in your browser. You can explore your browser's Network Panel to verify that every link click triggers a full page load, and zero JavaScript is being sent to the browser. If your browser supports it, the demo should look like this:
+
+<figure class="my-10">
+  <video autoplay loop muted playsinline class="border border-neutral-600 rounded">
+    <source src="/assets/blog/future-of-astro/spotify-demo.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+  <figcaption class="text-center text-sm my-4">
+    <a href="https://x.com/astrodotbuild/status/1698534383970656497">Spotify clone</a> built with Astro View Transitions
+  </figcaption>
+</figure>
+ 
+If your browser does not support the latest cross-domain view transitions, then your website will still run and display content as expected. However, the animations will be disabled and page navigation will behave like any other navigation in your browser (without animation).
+
+## Enable Zero-JavaScript View Transitions
+
+To take advantage of the native new View Transition API, it’s as simple as adding the `@view-transition` at-rule to your website. Here’s all the CSS you need:
+
+```html
+<style>
+  @view-transition {
+    navigation: auto; /* enabled! */
+  }
+</style>
+```
+
+*Note: The built-in CSS syntax highlighter in some code editors (ex: VSCode) may struggle to parse the newer `@view-transition` at-rule syntax. You can add a comment like `/* enabled! */` to your CSS as a short-term fix for your highlighter.*
+
+To enable cross-document view transitions, both "ends" of the transition must include this rule. A shared page layout component can be a good place to add this to your codebase.
+
+## Upgrade an Existing Project
+
+If you were already using Astro View Transitions powered by our `<ViewTransitions />` component, then it is now safe to remove that component and replace it with the at-rule. This will remove the injected backwards-compatible JavaScript router from your page, reducing the overall complexity of your client-side code.
+
+
+```diff
+---
+- import { ViewTransitions } from "astro:transitions";
+---
+<head>
+-  <ViewTransitions fallback="none" />
++  <style>
++    @view-transition {
++      navigation: auto;
++    }
++  <style>
+</head>
+```
+
+If you would still like your view transitions to run in older browsers, you are welcome to keep using our backwards-compatible `<ViewTransitions />` component instead. You can migrate whenever you are ready. We have no plans to remove support for the `<ViewTransitions />` component at this time.
+
+## What about `transition:persist`?
+
+[Persistent element transitions](https://docs.astro.build/en/guides/view-transitions/#maintaining-state) became a popular feature in Astro. The `transition:persist` directive told Astro to persist an element across navigation without interrupting or disrupting its state. This enabled UI like audio and video players to continue to play across pages, like in <a href="https://twitter.com/charca">Maxi Ferreira's</a> <a href="https://astro-records.pages.dev/">music player demo</a>.
+
+Unfortunately, this feature is not yet supported by native cross-document navigation in the browser. Native support for persistent audio and video players may be coming in the future, but in the meantime you can continue to use our `<ViewTransitions />` component if you need this additional functionality.
+
+## The Future of Astro
+
+Using links to navigate is a foundational behavior of the web. We believe this is one of the most significant advancements to come out of Chromium and the browser spec process in recent memory. We are excited to continue partnering with Google Chrome and other browser vendors as they roll out this new API.
+
+Developers can take advantage of native view transitions today or wait as it rolls out to more users. Whenever you're ready to enable (or migrate) it’s essentially a one-line change of CSS to do so.
+
+To get started, you can learn more about [Astro View Transitions](https://docs.astro.build/en/guides/view-transitions). We will be updating our documentation over the next few weeks to include using these [new native browser APIs](https://developer.chrome.com/docs/web-platform/view-transitions).
