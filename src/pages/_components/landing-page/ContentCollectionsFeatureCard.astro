@@ -72,6 +72,24 @@ import FeaturesCard from "./FeaturesCard.astro";
         background: linear-gradient(42deg, rgba(50, 69, 255, 0.30) 23.59%, rgba(188, 82, 238, 0.30) 76.41%);
     }
 
+        @media screen and (max-width: 1023px) {
+
+        #unscanned-docs-container {
+            animation-name: marquee;
+            animation-duration: 50s;
+            animation-play-state: paused;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        #scanned-docs-container {
+            animation-name: marquee;
+            animation-duration: 50s;
+            animation-play-state: paused;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    }
+
     #unscanned-docs-container {
         animation: marquee 50s linear infinite;
     }
@@ -112,3 +130,23 @@ import FeaturesCard from "./FeaturesCard.astro";
         }
     }
 </style>
+
+<script>
+    const container = document.getElementById('content-collections')!
+    const unscannedDocsContainer = document.getElementById('unscanned-docs-container')!
+    const scannedDocsContainer = document.getElementById('scanned-docs-container')!
+
+    const observer = new IntersectionObserver((entries) => {
+        const intersecting = entries[0].isIntersecting
+
+        if (intersecting && window.innerWidth < 1023) {
+            unscannedDocsContainer.style.animationPlayState = "running"
+            scannedDocsContainer.style.animationPlayState = "running"
+        } else if((!intersecting)) {
+            unscannedDocsContainer.style.animationPlayState = "paused"
+            scannedDocsContainer.style.animationPlayState = "paused"
+        }
+    }, {root: null, threshold: 0.8})
+    
+    observer.observe(container)
+</script>
