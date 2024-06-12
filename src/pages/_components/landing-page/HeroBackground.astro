@@ -1,7 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import HeroBackgroundPng from "./HeroBackground.png";
-const optimizedBackground = await getImage({ src: HeroBackgroundPng, quality: 80 });
+const optimizedBackground = await getImage({ src: HeroBackgroundPng, quality: 10, width: 256 });
 ---
 <svg id="hero-bg" class="absolute -z-50 m-auto -inset-1/2" width="2353" height="1969" viewBox="0 0 2353 1969" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g style="mix-blend-mode:color" filter="url(#filter0_f_2501_106490)">
@@ -362,7 +362,7 @@ const optimizedBackground = await getImage({ src: HeroBackgroundPng, quality: 80
     </defs>
 </svg>
     
-<div id="hero-bg-fallback" style={`background-image: url('${optimizedBackground.src}');`} class="absolute -z-50 m-auto -inset-1/2 bg-[length:2353px_1969px] w-[2353px] h-[1969px]" />
+<div id="hero-bg-fallback" style={`background-image: url('${optimizedBackground.src}');`} class="blur-3xl absolute -z-50 m-auto -inset-1/2 bg-[length:2353px_1969px] w-[2353px] h-[1969px]" />
 <style>
   #hero-bg-fallback {
     display: none;
