@@ -31,7 +31,7 @@ const allBlogPosts = await getCollection('blog');
 // Get a single entry from a collection via the request URL.
 // Requires the name of the collection and an entry ID slug.
 // Example: retrieve `src/content/blog/future-of-astro-content-layer.mdx`
-const graceHopperProfile = await getEntry('blog', Astro.params.slug);
+const blogPostEntry = await getEntry('blog', Astro.params.slug);
 ```
 
 Content is an essential primitive in Astro. But building content-driven websites with Astro should be easy no matter where your content lives. We had solved this for local Markdown, but what about larger projects where content lives outside of your repo? In a remote API? In your favorite CMS? 
