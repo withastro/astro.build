@@ -1,10 +1,14 @@
 ---
+import { getImage } from 'astro:assets'
 import CodeBlock from "~/components/CodeBlock.astro";
 import PageTitleBlock from "~/components/PageTitleBlock.astro";
 import Link from "../Link.astro";
 import PillLink from "../PillLink.astro";
 import HeroBackground from "./HeroBackground.astro";
+import HeroBackgroundPng from "./HeroBackground.png";
 import Teams from "./Teams.astro";
+
+const optimizedBackground = await getImage({ src: HeroBackgroundPng, quality: 20 })
 ---
 
 <section class="relative">
@@ -31,8 +35,24 @@ import Teams from "./Teams.astro";
     </div>
   </div>
 
+  <div style={`background-image: url('${optimizedBackground.src}');`} class="absolute -z-50 m-auto -inset-1/2 w-[2353px] h-[1969px] is-hidden" />
   <HeroBackground />
 
   <Teams />
 
 </section>
+
+<style>
+  .is-hidden {
+    display: none;
+  }
+
+  @-moz-document url-prefix() {
+    :global(svg) {
+      display: none;
+    }
+    .is-hidden {
+      display: initial;
+    }
+  }
+</style>
