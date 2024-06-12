@@ -1,4 +1,9 @@
-<svg class="absolute -z-50 m-auto -inset-1/2" width="2353" height="1969" viewBox="0 0 2353 1969" fill="none" xmlns="http://www.w3.org/2000/svg">
+---
+import { getImage } from "astro:assets";
+import HeroBackgroundPng from "./HeroBackground.png";
+const optimizedBackground = await getImage({ src: HeroBackgroundPng, quality: 80 });
+---
+<svg id="hero-bg" class="absolute -z-50 m-auto -inset-1/2" width="2353" height="1969" viewBox="0 0 2353 1969" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g style="mix-blend-mode:color" filter="url(#filter0_f_2501_106490)">
     <path d="M1498.92 866.615L1509.79 838.77C1527.89 792.403 1595.24 798.08 1605.33 846.824L1626.74 950.339C1633.15 981.319 1666.36 998.634 1695.43 986.154L1808.23 937.727C1810.97 936.551 1813.81 935.622 1816.71 934.952L1971.23 899.295C2008.37 890.723 2041.06 925.2 2030.52 961.834L1957.51 1215.71C1955.96 1221.11 1953.5 1226.2 1950.26 1230.79L1669.53 1627.12C1653 1650.45 1620.31 1655.2 1597.83 1637.53L1227.89 1346.83C1213.88 1335.82 1206.79 1318.19 1209.27 1300.55L1231.94 1139.44C1235.93 1111.12 1262.8 1091.91 1290.89 1097.3L1473.35 1132.34C1508.17 1139.03 1538.7 1108.34 1531.83 1073.55L1496.44 894.492C1494.6 885.153 1495.46 875.482 1498.92 866.615Z" fill="url(#paint0_linear_2501_106490)"/>
     <path d="M1519.98 612.873L1360.09 730.535C1354 735.021 1346.86 737.889 1339.36 738.87L1209.61 755.832C1174.11 760.473 1161.72 710.286 1195.29 697.87C1215.84 690.271 1221.6 663.943 1206.11 648.453L1076.88 519.221C1053.06 495.399 1059.14 455.315 1088.95 439.622L1304.39 326.214C1319.96 318.018 1338.69 318.61 1353.71 327.771L1625.77 493.687C1663.36 516.609 1655.12 573.406 1612.57 584.702L1536.79 604.817C1530.73 606.425 1525.03 609.158 1519.98 612.873Z" fill="url(#paint1_linear_2501_106490)"/>
@@ -357,3 +362,18 @@
     </defs>
 </svg>
     
+<div id="hero-bg-fallback" style={`background-image: url('${optimizedBackground.src}');`} class="absolute -z-50 m-auto -inset-1/2 bg-[length:2353px_1969px] w-[2353px] h-[1969px]" />
+<style>
+  #hero-bg-fallback {
+    display: none;
+  }
+
+  @-moz-document url-prefix() {
+    #hero-bg {
+      display: none;
+    }
+    #hero-bg-fallback {
+      display: initial;
+    }
+  }
+</style>
