@@ -142,7 +142,7 @@ import FeaturesCard from "./FeaturesCard.astro";
         if (intersecting && window.innerWidth < 1023) {
             unscannedDocsContainer.style.animationPlayState = "running"
             scannedDocsContainer.style.animationPlayState = "running"
-        } else if((!intersecting)) {
+        } else if((!intersecting && window.innerWidth < 1023)) {
             unscannedDocsContainer.style.animationPlayState = "paused"
             scannedDocsContainer.style.animationPlayState = "paused"
         }
