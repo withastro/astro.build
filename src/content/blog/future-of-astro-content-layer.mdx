@@ -12,13 +12,13 @@ lang: "en"
 import BlogSummary from "/src/components/BlogSummary.astro";
 
 <BlogSummary>
-  This is Part 2 of our series on *The Future of Astro*, covering three major advancements we have planned for the Astro web framework in 2024. This post introduces a new and improved Content Layer to Astro: a new way to work with your content across local and remote sources.
+  This is Part 2 of our series on *"The Future of Astro"*, covering three major advancements we have planned for the Astro web framework in 2024. This post introduces a more powerful Content Layer to Astro: a new way to work with your local and remote content sources.
 </BlogSummary>
 
 
-In Astro 2.0, we released the original Content Collections API. Our goal was to make it easier to work with local content (aka: Markdown) in Astro than any other web framework. Content Collections were designed around our own experiences and frustrations struggling to scale up large Markdown projects in modern web frameworks, including Astro at the time. 
+In Astro 2.0, we released the original [Content Collections API](https://docs.astro.build/en/guides/content-collections/). Content Collections were designed around our own experiences and frustrations struggling to scale up large Markdown projects in modern web frameworks, including Astro at the time. Our goal was to make it easier to work with local content (Markdown, MDX, etc.) in Astro than any other web framework. 
 
-Content Collections brought built-in content management to Astro with features like content schemas, frontmatter validation, and a fully TypeScript-enabled query APIs.
+Content Collections brought built-in content management features to Astro like content schemas, frontmatter validation, and a fully TypeScript-enabled query API: 
 
 ```js
 import { getCollection, getEntry } from 'astro:content';
@@ -28,28 +28,27 @@ import { getCollection, getEntry } from 'astro:content';
 // Example: retrieve `src/content/blog/**`
 const allBlogPosts = await getCollection('blog');
 
-// Get a single entry from a collection.
-// Requires the name of the collection and either
-// the entry `slug` (content collections) or `id` (data collections)
-// Example: retrieve `src/content/authors/grace-hopper.json`
-const graceHopperProfile = await getEntry('authors', 'grace-hopper');
+// Get a single entry from a collection via the request URL.
+// Requires the name of the collection and an entry ID slug.
+// Example: retrieve `src/content/blog/future-of-astro-content-layer.mdx`
+const graceHopperProfile = await getEntry('blog', Astro.params.slug);
 ```
 
 Content is an essential primitive in Astro. But building content-driven websites with Astro should be easy no matter where your content lives. We had solved this for local Markdown, but what about larger projects where content lives outside of your repo? In a remote API? In your favorite CMS? 
 
-**We are beginning to explore a new, more powerful Content Layer API for Astro.** The new Content Layer would build on our existing Content Collections functionality to make working with your content in Astro easier than ever before.
+**We are beginning to explore a new, more powerful Content Layer API for Astro.** The new Content Layer will build on our existing Content Collections functionality to make working with your content in Astro easier than ever before. Lets dive into how it works.
 
 ## A More Powerful Content Engine
 
-One of the limitations we've hit with Content Collections in the past is that our current data structure is stored entirely in-memory. This scales surprisingly well for static sites -- even as you hit 10,000s of blog posts or documentation pages in a project -- but loading all of that data into memory can wreck havoc on cold-start times in serverless SSR.
+One of the current limitations of Content Collections is that our current data structure is stored entirely in memory. This works well enough for static sites, but loading all of that data into memory can wreak havoc on cold-start times in serverless SSR environments.
 
 We are currently exploring [LibSQL](https://github.com/tursodatabase/libsql) (SQLite) as a new underlying storage mechanism for content in Astro. By embedding SQLite inside of Astro, we could scale up to millions of content entries in a project without breaking a sweat. Plus, SQLite's file storage would dramatically speed up both development and build performance by allowing us to cache content across builds.
 
-For developers, direct access to a SQL database would also introduce more powerful query API for those who need it. We intentionally designed our own `getCollection` and `getEntry` APIs to be intentionally simple and straightforward, and have no intention of removing those APIs. However, this has always left the responsibility of filtering and sorting to the user. An internal SQL database would help us bridge that gap and offer more advanced query functionality going forward to anyone who needs it.
+For developers, direct access to a SQL database would also introduce more powerful query API for those who need it. We specifically designed our own `getCollection` and `getEntry` APIs to be intentionally simple, and these APIs aren't going anywhere. However, this has always left the responsibility of filtering and sorting to the user. An internal SQL database would help us bridge that gap and offer more advanced built-in querying to anyone who needs it.
 
 ## A More Flexible Content Source 
 
-Breaking content out of the current `src/content` directory requires rethinking how we define collections in Astro. Instead of a hard-coded filesystem loader like the one built in to Astro today, we are exploring a new, more flexible data loader for the `defineCollection()` API.
+Breaking content out of the current `src/content` directory requires rethinking how we define collections in Astro. Instead of a hard-coded filesystem loader like the one built into Astro today, we are exploring a new, more flexible data loader for the `defineCollection()` API.
 
 ```js
 defineCollection({
@@ -69,9 +68,7 @@ With this new API, you can:
 - Load data from a remote API using `fetch()`
 - Load content from an external CMS like Storyblok
 
-## A More Pluggable Content Layer
-
-One of the biggest benefits of moving to a function-based loading system is that it allows us to enables composability across the Astro developer community. Anyone can publish a loader to npm. As an Astro developer, that means that you will be able to leverage a community ecosystem full of pluggable and reusable content loaders.
+This will also enable composability across the larger Astro developer ecosystem. Anyone can publish a loader to npm. As an Astro developer, that means that you will be able to leverage a community ecosystem full of pluggable and reusable content loaders.
 
 
 ```js
@@ -84,11 +81,11 @@ defineCollection({
 })
 ```
 
-We will continue to ship built-in loaders for common content use-cases, like local folders of Markdown. Our goal is always to make any migration in Astro as easy and painless as possible. This new API will enable new ecosystem opportunities without sacrificing the ease of our current built-in Markdown support.
+We'll be exploring this pluggable ecosystem story in parallel with the new Content Layer API. We are excited to give Astro users something will that unlock entirely new opportunities for composable content without sacrificing the ease of our current built-in Markdown support that you know and love.
 
 
 ## Next Steps
 
 Keep an eye out for experimental support coming to Astro later this year. We often launch new features behind experimental flags before they are stable, which gives our developer community plenty of time to try out new APIs and leave feedback. 
 
-To learn more about the Content Layer proposal and leave early feedback, you can visit [the dedicated thread](https://github.com/withastro/roadmap/issues/946) in our [open roadmap](https://github.com/withastro/roadmap) repo. We'll continue to post updates there and in [our Discord](https://astro.build/chat) as we begin work on the official implementation.
+To learn more about the Content Layer proposal and leave early feedback, you can visit [the ongoing discussion in our open roadmap repo](https://github.com/withastro/roadmap/issues/946). We'll continue to post updates there and in [our Discord](https://astro.build/chat) as we begin work on the official implementation.
