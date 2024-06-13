@@ -28,10 +28,9 @@ But frontend performance isn't the only performance problem you'll run into on t
 
 **Performance and personalization shouldn't be mutually exclusive.** We believe that Islands architecture holds the answer to this problem as well, and we are currently working on a new feature to bring you the best of both worlds: **Server Islands.**
 
-## What are Server Islands?
+## Server Islands
 
-
-You define a server island with a template directive the same way you would a client island, but instead of a `client:*` directive you would use the new `server:defer` directive:
+Server Islands are a new primitive that we are exploring for Astro, building on our existing island frontend architecture. You define a server island the same way you would a client island, but instead of using a `client:*` directive you would use the new `server:defer` directive instead:
 
 ```astro
 <UserButton server:defer />
