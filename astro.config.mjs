@@ -49,10 +49,6 @@ export default defineConfig({
 	output: "hybrid",
 	adapter: vercel({
 		imageService: true,
-		imagesConfig: {
-			sizes: [640, 1333, 2000],
-			domains: [],
-		},
 		functionPerRoute: false,
 	}),
 });

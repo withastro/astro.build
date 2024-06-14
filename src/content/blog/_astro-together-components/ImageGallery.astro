@@ -15,22 +15,11 @@ interface Props {
 
 <astro-image-gallery class="my-8 grid gap-2 lg:-mx-16 xl:-mx-24" data-hide-caption>
 	{
-		Astro.props.images.map(async ({ src, alt }) => {
-			const sizes = `100vw`;
-			const hires = await getImage({ src, widths: [640, 1333, 2000], sizes });
-			return (
-				<button aria-label={`Zoom image: ${alt}`}>
-					<Image
-						{src}
-						{alt}
-						width={300}
-						data-hires-src={hires.src}
-						data-srcset={hires.srcSet.attribute}
-						data-sizes={sizes}
-					/>
-				</button>
-			);
-		})
+		Astro.props.images.map(async ({ src, alt }) => (
+			<button aria-label={`Zoom image: ${alt}`}>
+				<Image {src} {alt} width={300} data-hires-src={src.src} />
+			</button>
+		))
 	}
 
 	<template>
@@ -216,8 +205,6 @@ interface Props {
 
 				const zoomedImage = document.createElement('img');
 				zoomedImage.src = image.dataset.hiresSrc || image.src;
-				zoomedImage.srcset = image.dataset.srcset || '';
-				zoomedImage.sizes = image.dataset.sizes || '';
 				zoomedImage.classList.add(this.#classList.image);
 				zoomedImage.decoding = 'async';
 
