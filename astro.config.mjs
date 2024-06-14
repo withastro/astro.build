@@ -51,6 +51,7 @@ export default defineConfig({
 		imageService: true,
 		imagesConfig: {
 			sizes: [640, 1333, 2000],
+			domains: [],
 		},
 		functionPerRoute: false,
 	}),
