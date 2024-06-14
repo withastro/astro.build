@@ -17,11 +17,7 @@ interface Props {
 	{
 		Astro.props.images.map(async ({ src, alt }) => {
 			const sizes = `100vw`;
-			const hires = await getImage({
-				src,
-				widths: [640, 1280, src.width],
-				sizes,
-			});
+			const hires = await getImage({ src, widths: [640, 1333, 2000], sizes });
 			return (
 				<button aria-label={`Zoom image: ${alt}`}>
 					<Image
