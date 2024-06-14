@@ -3,6 +3,12 @@ import siteInfo from "~/data/site-info.js";
 import NewsLetterSignup from "./NewsLetterSignup.astro";
 import SocialLinks from "./SocialLinks.astro";
 
+interface Props {
+	bgClass?: string;
+}
+
+const { bgClass = 'bg-dark' } = Astro.props;
+
 type Link = {
 	href: string;
 	label: string;
@@ -67,7 +73,10 @@ const socialLinks = siteInfo.socialLinks;
 ---
 
 <footer
-	class="mt-20 sm:mt-36 w-full bg-astro-dark-800 border-t border-astro-dark-100/20"
+	class:list={[
+		"w-full border-t border-astro-dark-100/20",
+		bgClass,
+	]}
 >
 	<div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
 		<nav
