@@ -13,7 +13,7 @@ interface Props {
 }
 ---
 
-<astro-image-gallery class="my-8 grid gap-2 lg:-mx-16 xl:-mx-24">
+<astro-image-gallery class="my-8 grid gap-2 lg:-mx-16 xl:-mx-24" data-hide-caption>
 	{
 		Astro.props.images.map(async ({ src, alt }) => (
 			<button aria-label={`Zoom image: ${alt}`}>
