@@ -1,0 +1,8 @@
+---
+import { getImage } from "astro:assets";
+import heroBackground from "../landing-page/_assets/HeroBackground.png";
+
+const background = await getImage({ src: heroBackground, quality: 10, width: 256 });
+---
+
+<div style={`background-image: url('${background.src}');`} class="blur-3xl absolute -z-50 m-auto -inset-1/2 bg-[length:2353px_1969px] w-[2353px] h-[1969px]" />

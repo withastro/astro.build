@@ -1,0 +1,16 @@
+{/* prettier-ignore */}
+```astro {2, 12}
+---
+import BuyButton from '../components/BuyButton.jsx';
+import { getProductDetails } from "ecommerce-package";
+import ProductPageLayout from '../layouts/ProductPageLayout.astro';
+
+const product = await getProductDetails(Astro.params.slug);
+---
+
+<ProductPageLayout>
+	<img src={product.imageUrl} alt={product.imageAlt} />
+	<h2>{product.name}</h2>
+	<BuyButton id={product.id} client:load />
+</ProductPageLayout>
+```

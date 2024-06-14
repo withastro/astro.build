@@ -1,0 +1,52 @@
+---
+import { getImage } from "astro:assets";
+import Icon from "astro-icon";
+import astroDS from "../../../_assets/themes/astro-design-system.png";
+import ion from "../../../_assets/themes/ion.png";
+import starlight from "../../../_assets/themes/starlight.png";
+import ThemeContainer from "./ThemeContainer.astro";
+
+const ionTheme = await getImage({ src: ion, format: "webp", width: 1280 });
+const astroDSTheme = await getImage({ src: astroDS, format: "webp", width: 1280 });
+const starlightTheme = await getImage({ src: starlight, format: "webp", width: 1280 });
+
+const themes = [
+	{
+		href: "https://astro.build/themes/details/starlight/",
+		title: "Starlight",
+		author: "Astro",
+		src: starlightTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/astro-design-system-docs/",
+		title: "Astro Design System",
+		author: "jordi",
+		src: astroDSTheme.src,
+		isSeenOnMobile: false,
+	},
+	{
+		href: "https://astro.build/themes/details/ion/",
+		title: "Ion",
+		author: "Louis Escher",
+		src: ionTheme.src,
+		isSeenOnMobile: true,
+	},
+];
+---
+
+<div>
+  <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
+    {
+      themes.map((theme) => (
+      <ThemeContainer theme={theme} />
+      ))
+    }
+  </div>
+
+  <a href="https://astro.build/themes/?search=&categories%5B%5D=docs" 
+    class="mt-4 px-2 sm:px-4 group flex items-center justify-start gap-2 text-astro-gray-200 hover:text-astro-gray-100">
+    <span class="underline underline-offset-2 decoration-[0.5px] decoration-transparent group-hover:decoration-astro-gray-100">Browse more documentation themes</span>
+    <Icon name="ri:arrow-right-line" size={18} />
+  </a>
+</div>

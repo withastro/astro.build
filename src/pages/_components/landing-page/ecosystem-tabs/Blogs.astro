@@ -1,0 +1,79 @@
+---
+import { getImage } from "astro:assets";
+import Icon from "astro-icon";
+import astroNano from "../../../_assets/themes/astro-nano.png";
+import brutal from "../../../_assets/themes/brutal.png";
+import dante from "../../../_assets/themes/dante.png";
+import microblog from "../../../_assets/themes/microblog.png";
+import openblog from "../../../_assets/themes/openblog.png";
+import stablo from "../../../_assets/themes/stablo.png";
+import ThemeContainer from "./ThemeContainer.astro";
+
+const astroNanoTheme = await getImage({ src: astroNano, format: "webp", width: 1280 });
+const brutalTheme = await getImage({ src: brutal, format: "webp", width: 1280 });
+const danteTheme = await getImage({ src: dante, format: "webp", width: 1280 });
+const microblogTheme = await getImage({ src: microblog, format: "webp", width: 1280 });
+const openblogTheme = await getImage({ src: openblog, format: "webp", width: 1280 });
+const stabloTheme = await getImage({ src: stablo, format: "webp", width: 1280 });
+
+const themes = [
+	{
+		href: "https://astro.build/themes/details/astronano/",
+		title: "Astro Nano",
+		author: "Mark Horn",
+		src: astroNanoTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/stablo-blog-template/",
+		title: "Stablo",
+		author: "Web3Templates",
+		src: stabloTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/microblog/",
+		title: "Microblog",
+		author: "Lexington Themes",
+		src: microblogTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/dante/",
+		title: "Dante",
+		author: "Asta Bankauske",
+		src: danteTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/brutal/",
+		title: "Brutal",
+		author: "ElianCodes",
+		src: brutalTheme.src,
+		isSeenOnMobile: false,
+	},
+	{
+		href: "https://astro.build/themes/details/openblog/",
+		title: "OpenBlog",
+		author: "danielcgilibert",
+		src: openblogTheme.src,
+		isSeenOnMobile: false,
+	},
+];
+---
+
+<div>
+  <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
+    {
+      themes.map((theme) => (
+        <ThemeContainer theme={theme} />
+      ))
+    }
+  </div>
+  
+  <a href="https://astro.build/themes/?search=&categories%5B%5D=blog" 
+    class="mt-4 px-2 sm:px-4 group flex items-center justify-start gap-2 text-astro-gray-200 hover:text-astro-gray-100">
+      <span class="underline underline-offset-2 decoration-[0.5px] decoration-transparent group-hover:decoration-astro-gray-100">Browse more blog themes</span>
+      <Icon name="ri:arrow-right-line" size={18} />
+  </a>
+</div>

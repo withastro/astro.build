@@ -1,0 +1,74 @@
+---
+import { getImage } from "astro:assets";
+import Icon from "astro-icon";
+import astroplate from "../../../_assets/themes/astroplate.png";
+import atom from "../../../_assets/themes/atom.png";
+import moreLPThemes from "../../../_assets/themes/more-lp-themes.png";
+import positivus from "../../../_assets/themes/positivus.png";
+import sendit from "../../../_assets/themes/sendit.png";
+import stone from "../../../_assets/themes/stone.png";
+import Link from "../../Link.astro";
+import ThemeContainer from "./ThemeContainer.astro";
+
+const atomTheme = await getImage({ src: atom, format: "webp", width: 1280 });
+const stoneTheme = await getImage({ src: stone, format: "webp", width: 1280 });
+const senditTheme = await getImage({ src: sendit, format: "webp", width: 1280 });
+const positivusTheme = await getImage({ src: positivus, format: "webp", width: 1280 });
+const astroplateTheme = await getImage({ src: astroplate, format: "webp", width: 1280 });
+const moreThemesPlaceholder = await getImage({ src: moreLPThemes, format: "webp", width: 1280 });
+
+const themes = [
+	{
+		href: "https://astro.build/themes/details/sendit/",
+		title: "Sendit",
+		author: "CloudCannon",
+		src: senditTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/stone/",
+		title: "Stone",
+		author: "m6v3l9",
+		src: stoneTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/positivus/",
+		title: "Positivus",
+		author: "Manul Thanura",
+		src: positivusTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/atom/",
+		title: "Atom",
+		author: "Méschac Irung",
+		src: atomTheme.src,
+		isSeenOnMobile: false,
+	},
+	{
+		href: "https://astro.build/themes/details/astroplate/",
+		title: "Astroplate",
+		author: "Zeon Studio",
+		src: astroplateTheme.src,
+		isSeenOnMobile: false,
+	},
+];
+---
+
+<div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
+  {
+    themes.map((theme) => (
+      <ThemeContainer theme={theme} />
+    ))
+  }
+  <div class="size-fit group relative">
+    <img class="size-full rounded-xl isolate select-none" src={moreThemesPlaceholder.src} alt="An image showing all types of content driven websites you can build with Astro" />
+    <div class="m-auto size-full landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/20 group-hover:to-astro-dark-900/50 rounded-xl">
+      <Link href='/themes' class="secondary">
+        <span>Browse more themes</span>
+        <Icon name="ri:arrow-right-line" size={18} />
+      </Link>
+    </div>
+  </div>
+</div>

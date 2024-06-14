@@ -1,0 +1,99 @@
+---
+import SectionCopy from "../SectionCopy.astro";
+import EcosystemCategory from "./EcosystemCategory.astro";
+import EcosystemTab from "./EcosystemTab.astro";
+import PurpleStardust from "./PurpleStardust.astro";
+import Blogs from "./ecosystem-tabs/Blogs.astro";
+import Docs from "./ecosystem-tabs/Docs.astro";
+import Ecommerce from "./ecosystem-tabs/Ecommerce.astro";
+import LandingPages from "./ecosystem-tabs/LandingPages.astro";
+import Portfolios from "./ecosystem-tabs/Portfolios.astro";
+import Trending from "./ecosystem-tabs/Trending.astro";
+---
+
+<section class="mt-20 md:mt-24 lg:mt-28 xl:mt-36 relative">
+  <div class="w-full max-w-screen-xl mx-auto px-4 sm:px-8">
+    <SectionCopy
+      label="Ecosystem"
+      title="Themes"
+      description="Get started faster with a pre-built website theme for Astro. Customize it to make it your own."
+    />
+  </div>
+
+  <div class="mx-auto w-full max-w-screen-xl">
+    <div role="tablist" aria-label="Ecosystem Tabs"
+      class="mt-4 py-1 sm:mt-8 px-4 sm:px-8 w-full flex items-center overflow-x-auto text-nowrap no-scrollbar gap-4">
+        <EcosystemTab label="Trending" isActive/>
+        <EcosystemTab label="E-Commerce" />
+        <EcosystemTab label="Blogs" />
+        <EcosystemTab label="Docs" />
+        <EcosystemTab label="Portfolios" />
+        <EcosystemTab label="Landing Pages" />
+    </div>
+  </div>
+
+  <PurpleStardust height="h-80 lg:h-96 xl:h-[44rem]" />
+
+  <div class="my-4 w-full border-t border-t-astro-gray-600"></div>
+
+  <ul class="mx-auto w-full max-w-screen-xl px-4 sm:px-8">            
+    <EcosystemCategory id="1" tab="trending">
+      <Trending />
+    </EcosystemCategory>
+    <EcosystemCategory id="2" tab="e-commerce" class="hidden">
+      <Ecommerce />
+    </EcosystemCategory>
+    <EcosystemCategory id="3" tab="blogs" class="hidden">
+      <Blogs />
+    </EcosystemCategory>
+    <EcosystemCategory id="4" tab="docs" class="hidden">
+      <Docs />
+    </EcosystemCategory>
+    <EcosystemCategory id="5" tab="portfolios" class="hidden">
+      <Portfolios />
+    </EcosystemCategory>
+    <EcosystemCategory id="6" tab="landing pages" class="hidden">
+      <LandingPages />
+    </EcosystemCategory>
+  </ul>
+</section>
+
+<script>
+  // @ts-nocheck
+    const tabs = document.querySelectorAll(".ecosystem-tab")
+    let activeTabIndex = 0
+
+    function updateTabSelection(index) {
+      const nextTab = tabs[index]
+      const activeTab = tabs[activeTabIndex]
+      const nextTabContent = document.querySelector(`#ecosystem-panel-${index + 1}`)
+      const activeTabContent = document.querySelector(`#ecosystem-panel-${activeTabIndex + 1}`)
+
+      activeTab.setAttribute("aria-selected", "false")
+      activeTab.setAttribute("tabindex", "-1")
+      activeTabContent.classList.add('hidden')
+
+      nextTab.setAttribute("aria-selected", "true")
+      nextTab.setAttribute("tabindex", "0")
+      nextTabContent.classList.remove('hidden')
+
+      tabs[index].focus()
+      activeTabIndex = index
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => updateTabSelection(index))
+
+      tab.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+            event.preventDefault()
+            const nextIndex = (activeTabIndex + 1) % tabs.length
+            updateTabSelection(nextIndex)
+        } else if (event.key === "ArrowLeft") {
+            event.preventDefault()
+            const prevIndex = (activeTabIndex - 1 + tabs.length) % tabs.length
+            updateTabSelection(prevIndex)
+          }
+      })
+    })
+</script>

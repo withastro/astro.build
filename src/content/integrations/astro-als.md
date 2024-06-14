@@ -5,9 +5,7 @@ description: "Avoid hydration mismatches by getting the data on both server and 
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-als"
 homepageUrl: "https://github.com/florian-lefebvre/astro-als"
-badge: "new"
 downloads: 325
 ---

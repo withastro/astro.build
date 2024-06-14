@@ -82,7 +82,7 @@ const [current, setCurrent] = createSignal<number | undefined>(0);
 
 export default function ExampleShowcase() {
 	return (
-		<div class="mx-auto flex w-full max-w-screen-2xl flex-col gap-4 px-4 md:flex-row md:items-center md:px-0">
+		<div class="mx-auto flex w-full max-w-screen-xl flex-col gap-4 px-4 md:flex-row md:items-center md:px-0">
 			<section aria-label="Examples" class="mb-4 grid gap-4 md:mx-auto md:w-[380px]">
 				<For each={items}>
 					{(item, index) => {

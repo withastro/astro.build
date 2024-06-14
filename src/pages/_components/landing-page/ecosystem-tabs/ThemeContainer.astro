@@ -1,0 +1,18 @@
+---
+import Icon from "astro-icon";
+
+const { theme } = Astro.props;
+---
+
+<a
+    href={theme.href} target="_blank"
+    class:list={[ "size-fit group relative rounded-xl border border-astro-dark-100/20", !theme.isSeenOnMobile && "hidden lg:block" ]}
+>
+    <img class="size-full rounded-xl object-cover object-center" src={theme.src} alt={`${theme.title} Theme by ${theme.author}`} />
+    <div class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl">
+        <div class="px-4 py-2 inline-flex items-center justify-center gap-2 rounded-full border text-base font-normal transition-all ease-in-out duration-500 hover:cursor-pointer font-sans font-bold border-astro-dark-100/30 hover:border-astro-dark-100/60 text-astro-gray-200 hover:text-astro-gray-100 bg-astro-dark-600/30 hover:bg-astro-dark-600/30">
+            <span>View Theme</span>
+            <Icon name="ri:eye-line" size={18} />
+        </div>
+    </div>
+</a>

@@ -1,0 +1,52 @@
+---
+import { getImage } from "astro:assets";
+import Icon from "astro-icon";
+import SKNCRE from "../../../_assets/themes/SKNCRE.png";
+import astroShopify from "../../../_assets/themes/astro-shopify.png";
+import quickStore from "../../../_assets/themes/quick-store.png";
+import ThemeContainer from "./ThemeContainer.astro";
+
+const skincareTheme = await getImage({ src: SKNCRE, format: "webp", width: 1280 });
+const quickStoreTheme = await getImage({ src: quickStore, format: "webp", width: 1280 });
+const astroShopifyTheme = await getImage({ src: astroShopify, format: "webp", width: 1280 });
+
+const themes = [
+	{
+		href: "https://astro.build/themes/details/astro-shopify/",
+		title: "Astro Shopify",
+		author: "thomasKn",
+		src: astroShopifyTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/quick-store/",
+		title: "Quick Store",
+		author: "Lexington Themes",
+		src: quickStoreTheme.src,
+		isSeenOnMobile: true,
+	},
+	{
+		href: "https://astro.build/themes/details/skncre-a-hygraph-cosmetics-brand-e-commerce/",
+		title: "SKNCRE",
+		author: "Bryan Robinson",
+		src: skincareTheme.src,
+		isSeenOnMobile: false,
+	},
+];
+---
+
+<div>
+  <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
+    {
+      themes.map((theme) => (
+      <ThemeContainer theme={theme} />
+      ))
+    }
+  </div>
+
+  <a href="https://astro.build/themes/?search=&categories%5B%5D=ecommerce" 
+    class="mt-4 px-2 sm:px-4 group flex items-center justify-start gap-2 text-astro-gray-200 hover:text-astro-gray-100">
+    <span class="underline underline-offset-2 decoration-[0.5px] decoration-transparent group-hover:decoration-astro-gray-100">Browse more e-commerce themes</span>
+    <Icon name="ri:arrow-right-line" size={18} />
+  </a>
+</div>

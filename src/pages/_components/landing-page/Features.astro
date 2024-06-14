@@ -1,0 +1,97 @@
+---
+import SectionCopy from "../SectionCopy.astro";
+import ContentCollectionsFeatureCard from "./ContentCollectionsFeatureCard.astro";
+import FeaturesCard from "./FeaturesCard.astro";
+import ViewTransitionsFeatureCard from "./ViewTransitionsFeatureCard.astro";
+import ZeroJsFeatureCard from "./ZeroJsFeatureCard.astro";
+---
+
+<section class='mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-xl mx-auto px-4 sm:px-8'>
+  <SectionCopy
+    label='Everything you need'
+    title="Fully Featured"
+    description='Astro comes with everything you need to build a modern website. Need more? Extend Astro with integrations.'
+  />
+
+    <!-- features grid for mobile and desktop screens only - hidden on tablet screens -->
+  <div class='mt-4 sm:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4 md:max-lg:hidden'> 
+    <ContentCollectionsFeatureCard />
+
+    <ZeroJsFeatureCard />
+
+    <ViewTransitionsFeatureCard />
+
+    <FeaturesCard
+      title='Middleware' 
+      href="https://docs.astro.build/en/guides/middleware/"
+      description='Wrap incoming requests with custom logic like authentication, logging, or data fetching.'
+    />
+    <FeaturesCard
+      title='Actions' 
+      href="https://docs.astro.build/en/reference/configuration-reference/#experimentalactions"
+      description='Write type-safe backend functions that you can call directly from your frontend JavaScript client code.'
+    />
+    <FeaturesCard
+      title='Environment Variables' 
+      href="https://docs.astro.build/en/guides/environment-variables/"
+      description='Avoid common configuration mistakes with a built-in API to manage your environment variables.'
+    />
+    <FeaturesCard
+      title='Deployment Adapters' 
+      href="https://astro.build/integrations/?search=&categories%5B%5D=adapters"
+      description='Add an integration to instantly customize your project for Vercel, AWS, or your favorite hosting platform.'
+    />
+    <FeaturesCard
+      title='UI Integrations' 
+      href="https://docs.astro.build/en/guides/integrations-guide/"
+      description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
+    />
+    <FeaturesCard
+      title='Dev Toolbar' 
+      href="https://docs.astro.build/en/guides/dev-toolbar/"
+      description='Extend your development environment with apps and integrations for the built-in development toolbar.'
+    />
+  </div>
+
+  <!-- features grid for tablet screens only -->
+  <div class='mt-4 sm:mt-8 md:max-lg:grid md:grid-cols-2 gap-4 hidden'> 
+    <div class="space-y-4">
+      <ContentCollectionsFeatureCard />
+  
+      <ViewTransitionsFeatureCard />
+
+      <FeaturesCard
+        title='UI Integrations' 
+        href="https://docs.astro.build/en/guides/integrations-guide/"
+        description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
+      />
+    </div>
+
+    <div class="space-y-4">
+      <ZeroJsFeatureCard />
+
+      <FeaturesCard
+        title='Actions' 
+        href="https://docs.astro.build/en/reference/configuration-reference/#experimentalactions"
+        description='Write type-safe backend functions that you can call directly from your frontend JavaScript client code.'
+      />
+      <FeaturesCard
+        title='Environment Variables' 
+        href="https://docs.astro.build/en/guides/environment-variables/"
+        description='Avoid common configuration mistakes with a built-in API to manage your environment variables.'
+      />
+      <FeaturesCard
+        title='Deployment Adapters' 
+        href="https://astro.build/integrations/?search=&categories%5B%5D=adapters"
+        description='Add an integration to instantly customize your project for Vercel, AWS, or your favorite hosting platform.'
+      />
+
+      <FeaturesCard
+        title='Dev Toolbar' 
+        href="https://docs.astro.build/en/guides/dev-toolbar/"
+        description='Extend your development environment with apps and integrations for the built-in development toolbar.'
+      />
+    </div>
+  </div>
+
+</section>

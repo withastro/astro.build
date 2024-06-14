@@ -1,0 +1,151 @@
+---
+import Icon from "astro-icon";
+---
+
+<a
+    id="content-collections"
+    href="https://docs.astro.build/en/guides/content-collections/"
+    class="group flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+>
+    <div class="pt-4 lg:pt-6 min-h-52">
+        <div class='size-full flex items-center justify-between overflow-hidden'>
+            <div class="w-1/2 h-full min-h-40 relative flex items-center overflow-hidden">
+                <div id="unscanned-docs-container" class="absolute right-1 motion-reduce:right-4 flex items-center justify-center gap-8">
+                    {Array(10).fill( 
+                        <div class="relative">
+                            <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 8C0 3.58172 3.58172 0 8 0H37.3972C39.3933 0 41.3173 0.746214 42.7914 2.09212L52 10.5L61.8784 21.2016C63.2425 22.6794 64 24.6168 64 26.6279V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#6B7AAB"/>
+                                <path d="M0 8C0 3.58172 3.58172 0 8 0H37C41.4183 0 45 3.58172 45 8V11C45 15.4183 48.5817 19 53 19H56C60.4183 19 64 22.5817 64 27V72C64 76.4183 60.4183 80 56 80H8C3.58172 80 0 76.4183 0 72V8Z" fill="#2F3854"/>
+                                <rect x="10" y="27" width="32" height="4" rx="2" fill="#6B7AAB"/>
+                                <rect x="10" y="37" width="40" height="4" rx="2" fill="#6B7AAB"/>
+                                <rect x="10" y="47" width="28" height="4" rx="2" fill="#6B7AAB"/>
+                            </svg>
+                            <div class="size-[18px] landing-section absolute -bottom-1.5 -right-2 bg-astro-red rounded-full">
+                                <Icon name="ri:close-line" size={14} />
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        
+            <div class="w-1/2 h-full min-h-40 relative flex items-center bg-astro-dark-800 overflow-hidden">
+                <div id="scanner-inlet" class="w-px h-full md:max-lg:h-40" />
+                <div id="scanner-light" class="w-12 h-2/3 md:max-lg:h-40 blur-xl z-30" />
+        
+                <div id="scanned-docs-container" class="absolute z-10 -left-[59.5rem] motion-reduce:left-4 flex items-center justify-center gap-8">
+                    {Array(10).fill( 
+                        <div class="relative pt-0.5">
+                            <svg width="66" height="82" viewBox="0 0 66 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M53.3674 11.1609L53.3529 11.1452L53.3371 11.1308L44.1285 2.72287C42.5623 1.29285 40.5181 0.5 38.3972 0.5H9C4.30558 0.5 0.5 4.30558 0.5 9V73C0.5 77.6944 4.30558 81.5 9 81.5H57C61.6944 81.5 65.5 77.6944 65.5 73V27.6279C65.5 25.4911 64.6952 23.4326 63.2458 21.8625L53.3674 11.1609Z" fill="#6B7AAB" stroke="#6B7AAB"/>
+                                <path d="M1 9C1 4.58172 4.58172 1 9 1H38C42.4183 1 46 4.58172 46 9V12C46 16.4183 49.5817 20 54 20H57C61.4183 20 65 23.5817 65 28V73C65 77.4183 61.4183 81 57 81H9C4.58172 81 1 77.4183 1 73V9Z" fill="#2F3854"/>
+                                <rect x="10" y="27" width="32" height="4" rx="2" fill="#6B7AAB"/>
+                                <rect x="10" y="37" width="40" height="4" rx="2" fill="#6B7AAB"/>
+                                <rect x="10" y="47" width="28" height="4" rx="2" fill="#6B7AAB"/>
+                            </svg>
+                            <div class=" absolute -bottom-2 -right-2">
+                                <div class="relative landing-section">
+                                    <Icon name="ri:shield-fill" size={22} class="text-[#3178C6]" />
+                                    <Icon name="ri:check-line" size={14} class="absolute m-auto inset-0 text-white" />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div class="p-4 xl:p-6 space-y-2">
+    <h3 class="text-base text-white font-semibold">Content Collections</h3>
+    <p class="text-astro-gray-200 font-light text-sm xl:text-base md:text-balance">
+        Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation.
+    </p>
+  </div>
+</a>
+
+<style>
+    #scanner-inlet {
+        background: radial-gradient(3337.59% 50% at 50% 50%, rgba(50, 69, 255, 1) 0%, rgba(188, 82, 238, 0) 100%);
+    }
+    #scanner-light {
+        background: linear-gradient(42deg, rgba(50, 69, 255, 0.30) 23.59%, rgba(188, 82, 238, 0.30) 76.41%);
+    }
+
+        @media screen and (max-width: 1023px) {
+
+        #unscanned-docs-container {
+            animation-name: marquee;
+            animation-duration: 50s;
+            animation-play-state: paused;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        #scanned-docs-container {
+            animation-name: marquee;
+            animation-duration: 50s;
+            animation-play-state: paused;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    #unscanned-docs-container {
+        animation: marquee 50s linear infinite;
+    }
+
+    #scanned-docs-container {
+        animation: marquee 50s linear infinite;
+    }
+
+    #content-collections #unscanned-docs-container {
+        animation-play-state: paused;
+    }
+
+    #content-collections #scanned-docs-container {
+        animation-play-state: paused;
+    }
+
+    #content-collections:hover #unscanned-docs-container {
+        animation-play-state: running;
+        animation: marquee 50s linear infinite;
+    }
+
+    #content-collections:hover #scanned-docs-container {
+        animation-play-state: running;
+        animation: marquee 50s linear infinite;
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% {  transform: translateX(100%); }
+    }
+
+    @media (prefers-reduced-motion) {
+        #unscanned-docs-container {
+            animation-play-state: paused;
+        }
+        #scanned-docs-container {
+            animation-play-state: paused;
+        }
+    }
+</style>
+
+<script>
+    const container = document.getElementById('content-collections')!
+    const unscannedDocsContainer = document.getElementById('unscanned-docs-container')!
+    const scannedDocsContainer = document.getElementById('scanned-docs-container')!
+
+    const observer = new IntersectionObserver((entries) => {
+        const intersecting = entries[0].isIntersecting
+
+        if (intersecting && window.innerWidth < 1023) {
+            unscannedDocsContainer.style.animationPlayState = "running"
+            scannedDocsContainer.style.animationPlayState = "running"
+        } else if((!intersecting && window.innerWidth < 1023)) {
+            unscannedDocsContainer.style.animationPlayState = "paused"
+            scannedDocsContainer.style.animationPlayState = "paused"
+        }
+    }, {root: null, threshold: 0.8})
+    
+    observer.observe(container)
+</script>

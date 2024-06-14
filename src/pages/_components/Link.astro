@@ -1,0 +1,25 @@
+---
+const { href, class: className = "primary" } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    className,
+    "px-4 py-2 group inline-flex items-center justify-center gap-2 rounded-full border text-base font-normal transition-all ease-in-out duration-500 hover:cursor-pointer",
+  ]}
+>
+  <slot />
+</a>
+
+<style>
+  .primary {
+    @apply border-transparent bg-white hover:bg-astro-gray-100 focus:outline focus:outline-2 focus:outline-offset-2;
+  }
+  .secondary {
+    @apply border-astro-dark-100/30 hover:border-astro-dark-100/60 text-astro-gray-200 hover:text-astro-gray-100 bg-astro-dark-600/30 hover:bg-astro-dark-600/30;
+  }
+  .ghost {
+    @apply bg-transparent border-transparent text-white hover:bg-white/5;
+  }
+</style>

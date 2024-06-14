@@ -117,7 +117,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 									: undefined
 							}
 						>
-							<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
+							<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
 								{recentlyAdded.slice(0, 3).map((integration) => (
 									<IntegrationCard integration={integration} />
 								))}
@@ -128,7 +128,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					<CardGridGroup
 						title={showRecentlyAdded && recentlyAdded.length > 0 ? "All Integrations" : undefined}
 					>
-						<CardGrid class="w-full max-w-screen-2xl sm:grid-cols-2 xl:grid-cols-3">
+						<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
 							{integrations.map((integration) => (
 								<IntegrationCard integration={integration} />
 							))}
@@ -140,7 +140,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					)}
 				</div>
 			) : (
-				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
+				<div class="flex flex-col items-center gap-12 py-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
 					<p>
 						<strong>0</strong> results found for integrations matching <strong>"{search}"</strong>
 					</p>

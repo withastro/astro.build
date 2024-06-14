@@ -8,7 +8,7 @@ export interface Props {
 const { header = "default" } = Astro.props;
 ---
 
-<header class:list={{ "shadow-lg": header === "default" }}>
+<header class:list={{ "shadow": header === "default" }}>
   <nav aria-label="Primary" class="container flex h-header items-center">
     <slot />
     <button

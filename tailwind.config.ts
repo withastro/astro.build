@@ -37,6 +37,16 @@ export default {
 					600: "#23262D",
 					700: "#17191E",
 				},
+				"astro-dark": {
+					100: "#858B98",
+					300: "#343841",
+					400: "#18191E",
+					500: "#4B4B4B",
+					600: "#2C2C2C",
+					700: "#11172A",
+					800: "#0C0F19",
+					900: "#060913",
+				},
 				"astro-blue": "#3245FF",
 				"astro-purple": "#BC52EE",
 				"astro-purple-dark": "#3F224D",
@@ -156,7 +166,7 @@ export default {
 				},
 
 				".container": {
-					"@apply w-full mx-auto max-w-screen-2xl px-4 md:px-8": {},
+					"@apply w-full mx-auto max-w-screen-xl px-4 md:px-8": {},
 				},
 
 				".grid-container": {
@@ -209,27 +219,27 @@ export default {
 				},
 
 				".heading-1": {
-					"@apply font-heading text-6xl leading-tight": {},
-					fontWeight: "var(--heading-weight-normal)",
-				},
-
-				".heading-2": {
 					"@apply font-heading text-5xl leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
-				".heading-3": {
-					"@apply font-heading text-3xl leading-tight": {},
+				".heading-2": {
+					"@apply font-heading text-4xl leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
-				".heading-4": {
+				".heading-3": {
 					"@apply font-heading text-2xl leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
-				".heading-5": {
+				".heading-4": {
 					"@apply font-heading text-xl leading-tight": {},
+					fontWeight: "var(--heading-weight-normal)",
+				},
+
+				".heading-5": {
+					"@apply font-heading text-lg leading-tight": {},
 					fontWeight: "var(--heading-weight-normal)",
 				},
 
@@ -240,7 +250,7 @@ export default {
 					"-webkit-font-smoothing": "subpixel-antialiased",
 				},
 				".body-large": {
-					"@apply font-sans text-2xl leading-normal": {},
+					"@apply font-sans text-lg leading-normal": {},
 					"--sans-wght": "200",
 					fontWeight: "200",
 					"-webkit-font-smoothing": "subpixel-antialiased",
@@ -251,7 +261,8 @@ export default {
 				},
 
 				".link": {
-					"@apply transition-colors text-astro-gray-100 hover:text-astro-gray-300": {},
+					"@apply transition-colors font-light text-astro-gray-200 hover:text-white duration-300 ease-out":
+						{},
 				},
 				".link-underline": {
 					"@apply link border-b border-astro-gray-100 hover:border-astro-gray-300": {},

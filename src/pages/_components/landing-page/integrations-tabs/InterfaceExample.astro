@@ -1,0 +1,24 @@
+---
+import { getImage } from "astro:assets";
+import astroCap from "../../../_components/landing-page/_assets/astro-cap.png";
+
+const astroCapSwag = await getImage({ src: astroCap, format: "webp", width: 1280 });
+
+const { brandColor, highContrast = false } = Astro.props;
+---
+
+<div class="pt-10 sm:pt-0 size-full flex items-end justify-center overflow-hidden">
+    <div class="w-2/3 md:max-xl:w-4/5 px-3 pt-3 bg-astro-gray-600 rounded-t-3xl">
+        <div class="p-2 sm:p-4 size-full flex flex-col bg-astro-gray-700 rounded-t-2xl space-y-2">
+            <img class="w-full h-40 md:h-36 lg:h-40 xl:h-56 rounded-xl object-center object-contain" src={astroCapSwag.src} alt="Official Astro Cap Swag" />
+            <div class="flex items-center justify-between text-sm xl:text-base">
+                <h2 class="text-astro-gray-300 font-medium">Snapback Cap</h2>
+                <p class="text-astro-gray-300 font-medium">$15.50</p>
+            </div>
+            <button type="button" disabled aria-disabled="true"
+                class:list={["px-4 py-2 inline-flex items-center justify-center gap-2 text-base font-normal rounded-lg transition-all ease-in-out duration-700", brandColor, highContrast ? 'text-gray-950' : 'text-white']}>
+                Add to cart
+            </button>
+        </div>
+    </div>
+</div>
