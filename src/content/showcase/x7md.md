@@ -1,6 +1,9 @@
 ---
-title: "x7md Blog"
-image: "/src/content/showcase/_images/x7md.webp"
-url: "https://x7md.net/posts"
-categories: ["personal"]
+title: x7md Blog
+image: /src/content/showcase/_images/x7md.webp
+url: 'https://x7md.net/posts'
+categories:
+  - personal
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

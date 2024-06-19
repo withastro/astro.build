@@ -1,5 +1,7 @@
 ---
-title: 'Goose Insurance'
-image: '/src/content/showcase/_images/www.gooseinsurance.com.webp'
+title: Goose Insurance
+image: /src/content/showcase/_images/www.gooseinsurance.com.webp
 url: 'https://www.gooseinsurance.com'
+dateAdded: 2024-06-17T18:50:04.000Z
 ---
+

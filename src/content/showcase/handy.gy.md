@@ -2,5 +2,6 @@
 title: The Handy Perspective
 image: /src/content/showcase/_images/handy.gy.webp
 url: 'https://handy.gy'
+dateAdded: 2024-05-15T09:25:17.000Z
 ---
 

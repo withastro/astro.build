@@ -1,6 +1,10 @@
 ---
-title: "miduConf - Conferencia de programación y desarrollo"
-image: "/src/content/showcase/_images/miduconf.webp"
-url: "https://miduconf.com/"
-categories: ["tech", "marketing"]
+title: miduConf - Conferencia de programación y desarrollo
+image: /src/content/showcase/_images/miduconf.webp
+url: 'https://miduconf.com/'
+categories:
+  - tech
+  - marketing
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

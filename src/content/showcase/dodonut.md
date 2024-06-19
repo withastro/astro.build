@@ -1,8 +1,11 @@
 ---
-title: "Dodonut"
-image: "/src/content/showcase/_images/dodonut.webp"
-url: "https://dodonut.com/"
-categories: ["marketing"]
+title: Dodonut
+image: /src/content/showcase/_images/dodonut.webp
+url: 'https://dodonut.com/'
+categories:
+  - marketing
 highlight: true
 featured: 5
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

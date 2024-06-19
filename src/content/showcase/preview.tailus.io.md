@@ -1,5 +1,7 @@
 ---
 title: Tailus - templates preview
 image: /src/content/showcase/_images/preview.tailus.io.webp
-url: "https://preview.tailus.io/"
+url: 'https://preview.tailus.io/'
+dateAdded: 2024-01-16T15:21:12.000Z
 ---
+

@@ -1,5 +1,7 @@
 ---
-title: "Roseto — Growing is a necessity, not an option."
+title: 'Roseto — Growing is a necessity, not an option.'
 image: /src/content/showcase/_images/roseto.co.webp
-url: "https://roseto.co"
+url: 'https://roseto.co'
+dateAdded: 2024-03-26T20:04:45.000Z
 ---
+

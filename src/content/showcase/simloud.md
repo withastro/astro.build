@@ -1,7 +1,10 @@
 ---
-title: "Simloud | Your all-in-one deployments cost savings platform"
-image: "/src/content/showcase/_images/simloud.webp"
-url: "https://simloud.com"
-categories: ["marketing"]
+title: Simloud | Your all-in-one deployments cost savings platform
+image: /src/content/showcase/_images/simloud.webp
+url: 'https://simloud.com'
+categories:
+  - marketing
 highlight: true
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+
