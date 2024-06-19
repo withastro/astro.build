@@ -283,21 +283,20 @@ class ShowcaseScraper {
 	}
 
 	/**
-	 * Fetch URLs from live `/api/showcase.json`.
+	 * Get URLs already added to the showcase
 	 * @returns {Promise<Set<string>>}
 	 */
 	static async #getLiveShowcaseUrls() {
-		const showcaseJsonUrl = "https://astro.build/api/showcase.json";
-		/** @type {{ title: string; url: string }[]} */
-		let data = [];
-		try {
-			const res = await fetch(showcaseJsonUrl);
-			const json = await res.json();
-			data = json;
-		} catch {
-			console.error("Failed to fetch", showcaseJsonUrl);
-		}
-		return new Set(data.map(({ url }) => new URL(url).origin));
+		const showcaseDir = "./src/content/showcase";
+		const showcaseFilePaths = await fs.readdir(showcaseDir);
+		const showcaseFiles = (
+			await Promise.all(
+				showcaseFilePaths
+					.filter((path) => path.endsWith(".md"))
+					.map((path) => fs.readFile(`${showcaseDir}/${path}`, "utf-8")),
+			)
+		).map((fileString) => matter(fileString));
+		return new Set(showcaseFiles.map((file) => new URL(file.data.url).origin));
 	}
 
 	/**
