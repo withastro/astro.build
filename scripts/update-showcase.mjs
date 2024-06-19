@@ -401,7 +401,7 @@ class ShowcaseScraper {
 		const { hostname } = new URL(url);
 		/** @type {Record<string, any>} */
 		const frontmatter = { title, image: `/src/content/showcase/_images/${hostname}.webp`, url };
-		if (isStarlight) frontmatter.tags = ["starlight"];
+		if (isStarlight) frontmatter.categories = ["starlight"];
 		const file = matter.stringify("", frontmatter);
 		await fs.writeFile(`src/content/showcase/${hostname}.md`, file, "utf-8");
 		console.log("Wrote", `src/content/showcase/${hostname}.md`);
