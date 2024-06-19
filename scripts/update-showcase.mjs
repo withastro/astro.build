@@ -407,6 +407,12 @@ const scraper = new ShowcaseScraper({
 		"https://twitter.com",
 		"https://youtu.be",
 		"https://evadecker.com", // <-- Moved to https://eva.town/
+		// 404s - 2024/06/19
+		"https://www.enjoyyearof.com/",
+		"https://juniorjobs.pages.dev/",
+		"https://souto.tk",
+		"https://unwrapped.studio/",
+		"https://gdscyu.com/",
 	],
 });
 await scraper.run();
