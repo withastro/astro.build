@@ -2,5 +2,6 @@
 title: Formations aux metiers du web et du digital - Digital-Cookie
 image: /src/content/showcase/_images/digital-cookie.io.webp
 url: 'https://digital-cookie.io'
+dateAdded: 2024-06-10T14:21:56.000Z
 ---
 

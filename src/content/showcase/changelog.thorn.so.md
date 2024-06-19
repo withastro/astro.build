@@ -1,5 +1,7 @@
 ---
 title: What's new | THORN
 image: /src/content/showcase/_images/changelog.thorn.so.webp
-url: "https://changelog.thorn.so"
+url: 'https://changelog.thorn.so'
+dateAdded: 2023-09-25T15:41:54.000Z
 ---
+

@@ -1,5 +1,7 @@
 ---
 title: Home - Anacle Technical Day 2023
 image: /src/content/showcase/_images/www.atd2023.com.webp
-url: "https://www.atd2023.com/"
+url: 'https://www.atd2023.com/'
+dateAdded: 2023-04-24T16:01:09.000Z
 ---
+

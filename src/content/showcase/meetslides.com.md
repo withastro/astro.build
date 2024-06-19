@@ -1,5 +1,7 @@
 ---
 title: Create new presentation
 image: /src/content/showcase/_images/meetslides.com.webp
-url: "https://meetslides.com/"
+url: 'https://meetslides.com/'
+dateAdded: 2023-08-21T22:19:33.000Z
 ---
+

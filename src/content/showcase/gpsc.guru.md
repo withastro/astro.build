@@ -1,5 +1,7 @@
 ---
-title: "GPSC Guru : GPSC Old question papers, GPSC Videos, Mock tests, and More"
+title: 'GPSC Guru : GPSC Old question papers, GPSC Videos, Mock tests, and More'
 image: /src/content/showcase/_images/gpsc.guru.webp
-url: "https://gpsc.guru"
+url: 'https://gpsc.guru'
+dateAdded: 2023-05-11T08:37:44.000Z
 ---
+

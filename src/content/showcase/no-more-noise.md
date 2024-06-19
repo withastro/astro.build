@@ -1,6 +1,9 @@
 ---
-title: "No More Noise"
-image: "/src/content/showcase/_images/no-more-noise.webp"
-url: "https://nomorenoisegame.com/"
-categories: ["other"]
+title: No More Noise
+image: /src/content/showcase/_images/no-more-noise.webp
+url: 'https://nomorenoisegame.com/'
+categories:
+  - other
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

@@ -1,5 +1,7 @@
 ---
 title: Open Graph Examples
 image: /src/content/showcase/_images/opengraphexamples.com.webp
-url: "https://opengraphexamples.com/"
+url: 'https://opengraphexamples.com/'
+dateAdded: 2024-03-11T14:30:06.000Z
 ---
+

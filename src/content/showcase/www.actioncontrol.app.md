@@ -1,5 +1,7 @@
 ---
 title: Action Control | Control Your GoPro with Apple Watch
 image: /src/content/showcase/_images/www.actioncontrol.app.webp
-url: "https://www.actioncontrol.app/"
+url: 'https://www.actioncontrol.app/'
+dateAdded: 2024-02-19T15:41:03.000Z
 ---
+

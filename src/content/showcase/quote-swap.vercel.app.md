@@ -1,5 +1,7 @@
 ---
 title: Quote Swap
 image: /src/content/showcase/_images/quote-swap.vercel.app.webp
-url: "https://quote-swap.vercel.app/"
+url: 'https://quote-swap.vercel.app/'
+dateAdded: 2024-01-16T15:21:12.000Z
 ---
+
