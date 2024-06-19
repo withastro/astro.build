@@ -36,7 +36,7 @@ yarn upgrade astro --latest
 
 [`src/pages/500.astro`](https://docs.astro.build/en/basics/astro-pages/#custom-500-error-page) is a special page file in Astro that allows you to handle [500](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500) errors gracefully. A 500 error most commonly happens where there is a bug in your application; such as not wrapping delicate code in a `try/catch`. When component code throws, Astro catches and returns a 500 response. If you have `src/pages/500.astro` this page gets rendered into the response body.
 
-New in 4.11, `500.astro` now receives the `error` as a prop. This allows you to give more contextual information about the error. For example, in dev mode you might show the error's stack trace to aid in debugging.
+New in 4.11, `500.astro` now receives the `error` as a prop. This allows you to give more contextual information about the error.
 
 ```astro
 ---
@@ -52,7 +52,7 @@ const { error } = Astro.props
 </head>
 <body>
   <h1>Server error</h1>
-	<p>{error}</p>
+	<p>{error instanceof Error ? error.message : 'Unknown error'}</p>
 </body>
 </html>
 ```
