@@ -1,3 +1,4 @@
+// @ts-check
 import fs from "node:fs/promises";
 import ghActions from "@actions/core";
 import octokit from "@octokit/graphql";
@@ -21,7 +22,12 @@ class ShowcaseScraper {
 	/** Array of origins that should never be added to the showcase. */
 	#blocklist;
 
-	constructor({ org = "withastro", repo = "roadmap", discussion = 521, blockedOrigins = [] } = {}) {
+	constructor({
+		org = "withastro",
+		repo = "roadmap",
+		discussion = 521,
+		blockedOrigins = /** @type {string[]} */ ([]),
+	} = {}) {
 		if (!process.env.GITHUB_TOKEN) {
 			throw new Error("GITHUB_TOKEN env variable must be set to run.");
 		}
@@ -313,7 +319,7 @@ class ShowcaseScraper {
 		try {
 			const site = await ShowcaseScraper.#scrapeSite(url, browser);
 			await ShowcaseScraper.#saveScreenshots(url, site.screenshot);
-			await ShowcaseScraper.#saveDataFile(url, site.title);
+			await ShowcaseScraper.#saveDataFile(url, site);
 			title = site.title;
 			success = true;
 		} catch (error) {
@@ -324,10 +330,10 @@ class ShowcaseScraper {
 	}
 
 	/**
-	 * Loads the URL with Puppeteer to extract the page title and take a screenshot.
+	 * Loads the URL with Puppeteer to extract the page metadata and take a screenshot.
 	 * @param {string} url URL of the page to visit
 	 * @param {import('puppeteer').Browser} browser
-	 * @returns {Promise<{ screenshot: Buffer; title: string }>}
+	 * @returns {Promise<{ screenshot: Buffer; title: string; isStarlight: boolean }>}
 	 */
 	static async #scrapeSite(url, browser) {
 		console.log("Creating new page");
@@ -346,11 +352,24 @@ class ShowcaseScraper {
 		});
 		console.log("Getting title");
 		const title = await page.title();
+
+		console.log("Testing if built with Starlight");
+		let isStarlight = false;
+		const generators = await page.$$('meta[name="generator"]');
+		for (const generator of generators) {
+			const contentHandle = await generator.getProperty("content");
+			const content = await contentHandle.jsonValue();
+			if (content.startsWith("Starlight")) {
+				isStarlight = true;
+				break;
+			}
+		}
+
 		console.log("Taking screenshot");
 		const screenshot = await page.screenshot();
 		console.log("Closing page");
 		await page.close();
-		return { screenshot, title };
+		return { screenshot, title, isStarlight };
 	}
 
 	/**
@@ -375,16 +394,15 @@ class ShowcaseScraper {
 	/**
 	 * Create a Markdown file in the showcase content collection.
 	 * @param {string} url URL of the showcase entry to link to
-	 * @param {string} title Title of the showcase site
+	 * @param {{ title: string; isStarlight: boolean }} site Metadata for the showcase site
 	 * @returns {Promise<void>}
 	 */
-	static async #saveDataFile(url, title) {
+	static async #saveDataFile(url, { title, isStarlight }) {
 		const { hostname } = new URL(url);
-		const file = matter.stringify("", {
-			title,
-			image: `/src/content/showcase/_images/${hostname}.webp`,
-			url,
-		});
+		/** @type {Record<string, any>} */
+		const frontmatter = { title, image: `/src/content/showcase/_images/${hostname}.webp`, url };
+		if (isStarlight) frontmatter.tags = ["starlight"];
+		const file = matter.stringify("", frontmatter);
 		await fs.writeFile(`src/content/showcase/${hostname}.md`, file, "utf-8");
 		console.log("Wrote", `src/content/showcase/${hostname}.md`);
 	}

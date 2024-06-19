@@ -128,6 +128,7 @@ export const collections = {
 			url: z.string().url(),
 			featured: z.number().min(1).optional(),
 			highlight: z.boolean().default(false),
+			tags: z.enum(["starlight"]).array().default([]),
 		}),
 	},
 };
