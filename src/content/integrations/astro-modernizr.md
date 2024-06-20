@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-modernizr"
 homepageUrl: "https://github.com/YonicDev/astro-modernizr"
 badge: "new"
-downloads: 65
+downloads: 70
 ---

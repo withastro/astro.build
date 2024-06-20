@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-index"
 homepageUrl: "https://github.com/Its-Just-Nans/astro-index"
 badge: "new"
-downloads: 213
+downloads: 276
 ---

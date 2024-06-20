@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-image-processor"
 repoUrl: "https://github.com/macropygia/astro-image-processor"
 homepageUrl: "https://macropygia.github.io/astro-image-processor/"
 badge: "new"
-downloads: 55
+downloads: 60
 ---
