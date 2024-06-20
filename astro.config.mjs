@@ -3,7 +3,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import netlify from "@astrojs/netlify";
 import webVitals from "@astrojs/web-vitals";
 import astroExpressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
@@ -11,15 +11,10 @@ import houston from "./houston.theme.json";
 
 import { rehypePrettyCode } from "rehype-pretty-code";
 
-/* https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables */
-const VERCEL_PREVIEW_SITE =
-	process.env.VERCEL_ENV !== "production" &&
-	process.env.VERCEL_URL &&
-	`https://${process.env.VERCEL_URL}`;
 
 // https://astro.build/config
 export default defineConfig({
-	site: VERCEL_PREVIEW_SITE || "https://astro.build",
+	site: "https://astro.build",
 	markdown: {
 		syntaxHighlight: false,
 		rehypePlugins: [[rehypePrettyCode, {}]],
@@ -47,8 +42,5 @@ export default defineConfig({
 		},
 	},
 	output: "hybrid",
-	adapter: vercel({
-		imageService: true,
-		functionPerRoute: false,
-	}),
+	adapter: netlify(),
 });
