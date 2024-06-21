@@ -439,9 +439,7 @@ const scraper = new ShowcaseScraper({
 		"https://roudstudio.com/",
 		"https://oengi.com/",
 		"https://kireerik.github.io/refo/",
-		"https://aiaman.web.app/",
 		"https://zenorocha.com/",
-		"https://www.rmmanfredi.com/",
 		"https://aperium.sk/",
 		"https://www.quickdreamviz.com/",
 		
