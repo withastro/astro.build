@@ -1,5 +1,7 @@
 ---
 title: Matt Stein
 image: /src/content/showcase/_images/mattstein.com.webp
-url: "https://mattstein.com"
+url: 'https://mattstein.com'
+dateAdded: 2023-04-24T16:01:09.000Z
 ---
+

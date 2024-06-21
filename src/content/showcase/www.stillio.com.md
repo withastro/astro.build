@@ -1,5 +1,7 @@
 ---
 title: Capture Website Screenshots and Archive Automatically | Stillio
 image: /src/content/showcase/_images/www.stillio.com.webp
-url: "https://www.stillio.com"
+url: 'https://www.stillio.com'
+dateAdded: 2024-03-19T09:33:34.000Z
 ---
+

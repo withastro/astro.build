@@ -1,5 +1,7 @@
 ---
 title: Nuno Góis - Full Stack Developer
 image: /src/content/showcase/_images/www.nunogois.com.webp
-url: "https://www.nunogois.com"
+url: 'https://www.nunogois.com'
+dateAdded: 2023-10-11T13:04:36.000Z
 ---
+

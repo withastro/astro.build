@@ -2,5 +2,6 @@
 title: osvauld
 image: /src/content/showcase/_images/osvauld.com.webp
 url: 'https://osvauld.com'
+dateAdded: 2024-05-15T09:25:17.000Z
 ---
 

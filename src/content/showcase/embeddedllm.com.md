@@ -1,5 +1,7 @@
 ---
 title: Autopilot Your Business Workflow with Embedded LLM No-Code Platform
 image: /src/content/showcase/_images/embeddedllm.com.webp
-url: "https://embeddedllm.com/"
+url: 'https://embeddedllm.com/'
+dateAdded: 2023-11-06T21:05:41.000Z
 ---
+

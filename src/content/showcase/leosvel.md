@@ -1,6 +1,9 @@
 ---
-title: "Leosvel"
-image: "/src/content/showcase/_images/leosvel.webp"
-url: "https://leosvel.dev/"
-categories: ["personal"]
+title: Leosvel
+image: /src/content/showcase/_images/leosvel.webp
+url: 'https://leosvel.dev/'
+categories:
+  - personal
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

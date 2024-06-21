@@ -1,6 +1,9 @@
 ---
-title: "Novateg"
-image: "/src/content/showcase/_images/novateg.webp"
-url: "https://novateg.com/"
-categories: ["marketing"]
+title: Novateg
+image: /src/content/showcase/_images/novateg.webp
+url: 'https://novateg.com/'
+categories:
+  - marketing
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

@@ -1,5 +1,7 @@
 ---
-title: "Richards Penn Bonner, LLP — Texas Personal Injury Lawyers"
+title: 'Richards Penn Bonner, LLP — Texas Personal Injury Lawyers'
 image: /src/content/showcase/_images/richardspenn.com.webp
-url: "https://richardspenn.com"
+url: 'https://richardspenn.com'
+dateAdded: 2023-04-24T16:01:09.000Z
 ---
+

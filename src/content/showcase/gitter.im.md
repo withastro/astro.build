@@ -1,6 +1,8 @@
 ---
 title: Gitter — Where developers come to talk.
 image: /src/content/showcase/_images/gitter.im.webp
-url: "https://gitter.im/"
+url: 'https://gitter.im/'
 featured: 10
+dateAdded: 2023-07-24T13:51:06.000Z
 ---
+

@@ -1,5 +1,7 @@
 ---
 title: Golden Era Workouts
 image: /src/content/showcase/_images/goldenera.squaddy.app.webp
-url: "https://goldenera.squaddy.app"
+url: 'https://goldenera.squaddy.app'
+dateAdded: 2023-08-07T16:29:50.000Z
 ---
+

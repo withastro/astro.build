@@ -1,5 +1,7 @@
 ---
 title: Internet of Life
 image: /src/content/showcase/_images/internetoflife.org.webp
-url: "https://internetoflife.org/"
+url: 'https://internetoflife.org/'
+dateAdded: 2023-07-24T13:51:06.000Z
 ---
+

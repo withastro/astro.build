@@ -1,6 +1,9 @@
 ---
-title: "Alex Kuznetsov"
-image: "/src/content/showcase/_images/alex-kuznetsov.webp"
-url: "https://alex-porfolio.vercel.app/"
-categories: ["personal"]
+title: Alex Kuznetsov
+image: /src/content/showcase/_images/alex-kuznetsov.webp
+url: 'https://alex-porfolio.vercel.app/'
+categories:
+  - personal
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

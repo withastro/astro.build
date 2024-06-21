@@ -1,5 +1,7 @@
 ---
 title: Fulldev - Web development & design Groningen
 image: /src/content/showcase/_images/full.dev.webp
-url: "https://full.dev"
+url: 'https://full.dev'
+dateAdded: 2024-02-05T23:12:59.000Z
 ---
+
