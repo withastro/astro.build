@@ -9,6 +9,7 @@ socialImage: "/src/content/blog/_images/whats-new-may/og.webp"
 lang: "en"
 ---
 import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
+import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
 import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
 
 // CONTENT LAST UPDATED June 20 on Talking and Doc'ing
@@ -18,9 +19,9 @@ Some exciting news from around the Astro ecosystem this month. Let's dive in!
 
 ## Updates from Mission Control
 
-{/* - 🚀 [Astro Actions (experimental)](/blog/astro-480/#experimental-astro-actions)
-- 🥳 [Lunaria beta release](https://lunaria.dev/blog/introducing-lunaria)
-- 🇨🇦 [Astro Together](https://lu.ma/astro-together-meetup-2024), in Montreal! An in-person only event, but stay tuned for the videos and announcements published next week! */}
+- 🚀 [`astro:env` (experimental)](https://docs.astro.build/en/reference/configuration-reference/#experimentalenv)
+- 🐘 [Astro in PHP](https://github.com/matthewp/astro-in-php-example)
+- 🍿 [Astro Together Keynote](https://youtu.be/eIjzMwaKxZI)
 
 ## Releases
 
@@ -40,8 +41,8 @@ Welcome to our newest Astro maintainers @Jumper and @Atharva! The crew just keep
 These are some of the people who went above and beyond last month to make all our lives just a little (or a lot!) better:
 
 - 🌟 $500 to @LorenzoLewis  for exceptional contributions to Starlight development, docs, and support.
-- 🚀 $250 to @Szymon Chmal for fixing issues in the Astro core codebase.
-- 🎈 $250 to @sergio.s | (sasoria)  for being active in Docs PRs and reviews.
+- 🚀 $250 to @SzymonChmal for fixing issues in the Astro core codebase.
+- 🎈 $250 to @sasoria  for being active in Docs PRs and reviews.
 - 🎊 $250 to @Arknoodle  for being positive, encouraging, and helpful in support.
 
 Check them out and learn more about the Astro Community Awards on [our community website](https://community.astro.build).
@@ -52,24 +53,12 @@ Check them out and learn more about the Astro Community Awards on [our community
 
 Here's what caught our attention this month: 
 
-{/* - 📺 Watch @WebDevSimplified [recreate Shadcn's Docs in 30 minutes with Starlight](https://www.youtube.com/watch?v=5pq80drDrNs). We're not sure **we** would say "Building documentation for a library is one of the worst parts of any project!" But for those who think so, see why Starlight takes that task from painful to delightful!
-- 📖 Go [behind the scenes](https://eva.town/posts/design-outside-the-computer) for the making of [Eva's Guestbook](https://eva.town/guestbook) built with Astro DB by @for.eva.new 
-- 🧜‍♀️ See how to [add diagrams to your Astro site with MermaidJS and Playwright](https://agramont.net/blog/diagraming-with-mermaidjs-astro/) by @cloudconrad
-- 📚 [Introduction to the Astro web framework (Udemy course)](https://www.udemy.com/course/introduction-to-the-astro-web-framework/) by @TechRazor
-- 📺 [How to send in-app notifications with Astro](https://www.youtube.com/watch?v=j7XvQjnowSA) by @jeffeverhart383
-- 🤗 Thank *you* Luke, for [Thank you Astro](https://lukealexdavis.co.uk/posts/how-astro-changed-my-web-life/)! by @lukealexdavis */}
+- 📚 [3-part Astro & Strapi Website tutorial](https://strapi.io/blog/astro-and-strapi-website-tutorial-part-1-intro-to-astro) and an upcoming stream with Ben or Matthew maybe?.... [ CONFIRM DETAILS - Tuesday July 16th or Thursday July 18th at 10 am CST.]
+- 🍦 If you build an Astro theme, integration, or tool, you might be interested in learning [why Astrolicious](https://astrolicious.dev/blog/why-astrolicious/) might be a community for you, or your project!
 
-Because you can never get tired of watching and reading Astro Content, here's even more community content!
+// CHOOSE MORE THINGS AT THE END OF THE MONTH
 
-{/* - 📄 [Integrate Stripe with Astro](https://zellwk.com/blog/stripe-astro-recipe/) by @zellwk
-- 📄 [Feature Flags with Vercel Toolbar and Astro](https://www.thomasledoux.be/blog/feature-flags-astro-vercel-toolbar) by @tledoux
-- 📄 [Animate code blocks](https://www.dertimonius.dev/blog/til-27) by @dertimonius
-- 📄 [Add Progress bar using View Transitions](https://events-3bg.pages.dev/loading/progress-bar/one/) by @martrapp
-- 🎙️ [WordPress to Astro site conversion](https://share.transistor.fm/s/d86496cd) by @UIBuzz
-- 📄 [Merge Blog and Website](https://cassidoo.co/post/blog-website-baby/) by @cassidoo
-- 📺 [eCommerce Store with Astro](https://www.youtube.com/watch?v=vi_HfqWtCBc&t=21s) by @nebojsa_cookie_duster
-- 📄 [Contact form in Astro](https://medium.com/@surjithctly/how-to-build-a-contact-form-in-astro-728f68c997db) by @surjithctly
-https://www.youtube.com/watch?v=IjS9U2kacmg */}
+Because you can never get tired of Astro, here's even more community content!
 
 - 📺 [Astro Starlight and emoji-blase with Chris Swithinbank](https://www.youtube.com/watch?v=vi_HfqWtCBc) by @JoshuaKGoldberg
 - 📺 [Adding a Guestbook to my Websites AstroJS | Typescript | WebDev | Canvas](https://www.youtube.com/watch?v=IjS9U2kacmg) by @nebojsa_cookie_duster
@@ -84,11 +73,6 @@ https://www.youtube.com/watch?v=IjS9U2kacmg */}
 - 📺 [Capitole Tech Talks - View Transitions con Astro v4](https://www.youtube.com/watch?v=EnrsiLrGZ24) by @capitoleconsulting
 - 📺 [Astro Fixed Environment Variables!!](https://www.youtube.com/watch?v=kTceOl4qCm0) by @JamesQQuick
 - 📺 [My First Impressions (to Future of Astro)](https://www.youtube.com/watch?v=-NZIHSGJuzU) by @CodinginPublic
-- 📺 [title]() by @
-- 📺 [title]() by @
-- 📺 [title]() by @
-- 📺 [title]() by @
-- 📺 [title]() by @
 - 📄 [Hybrid i18n with Next and Astro (part 1)](https://www.ericburel.tech/blog/hybrid-i18n-next-astro-1) by @ericbureltech
 - 📄 [Using React Query with Astro: A Step-by-Step Guide](https://hounie.me/writings/how-to-use-react-query-with-astro/) by @mihos8146
 - 📄 [How to Create a Persistent Sidebar Menu using Astro and View Transitions](https://jbhutch.com/blog/astro-with-peristent-sidebar/) by @ihiutch 
@@ -98,28 +82,36 @@ https://www.youtube.com/watch?v=IjS9U2kacmg */}
 - 📄 [How to Build your own Reverse Image Search in Astro](https://neon.tech/guides/llamaindex-postgres-search-images) by @rishirajjain
 - 📄 [How to Build a RAG chatbot with Astro, Postgres, and LlamaIndex](https://neon.tech/guides/chatbot-astro-postgres-llamaindex) by @rishirajjain
 - 📄 [Building a Contact Form with Astro and Cloudflare Workers: A Simple Guide](https://hkbertoson.hashnode.dev/building-a-contact-form-with-astro-and-cloudflare-workers-a-simple-guide) by @hkbertoson
+- 📄 [Generate Related Posts for Your Astro Blog with Astra DB Vector Search](https://www.datastax.com/blog/generate-related-posts-for-your-astro-blog-with-astra-db-vector-search) by @datastax
+- 📄 [How to Implement RBAC (Role-Based Access Control) in Astro](https://www.permit.io/blog/how-to-implement-rbac-role-based-access-control-in-astro-framework) by @permit_io
+- 📺 [title]() by @
+- 📺 [title]() by @
+- 📺 [title]() by @
+- 📄 [title]() by @
+- 📄 [title]() by @
+- 🎙️ [title]() by @
+- 🎙️ [title]() by @
 
 
  ... and don't miss the latest tips from [Astro Tips](https://astro-tips.dev) such as [how to make a dynamic footer date for static sites](https://astro-tips.dev/recipes/dynamic-footer-date-for-static-websites/) and tutorials from [Lexingon Themes](https://lexingtonthemes.com/tutorials/) such as [How to create a swatch clock with Tailwind CSS]( https://lexingtonthemes.com/tutorials/how-to-create-a-swatch-clock-with-tailwind-css/)
-
 
 
 ### Tips & Tools
 
 The latest community-built utilities and integrations to help you build with Astro.
 
-- [Astrolace](https://github.com/MatthiesenXYZ/Astrolace) by @matthiesenxyz
-- [Starlight View Modes](https://starlight-view-modes.trueberryless.org/) by @trueberryless
-- [Starlight Utils](https://starlight-utils.pages.dev/) by @lorenzolewis
-- [Content Utils Git Time](https://inox-tools.vercel.app/content-utils/git-time) by @Fryuni
-- [Astro Command Palette](https://github.com/pauchiner/astro-command-palette) by @pauchiner
+- [Astrolace](https://github.com/MatthiesenXYZ/Astrolace) - An easy way to use Shoelace.style within your Astro project by @matthiesenxyz
+- [Starlight View Modes](https://starlight-view-modes.trueberryless.org/) - Starlight plugin adding view mode capabilities to your documentation website by @trueberryless
+- [Starlight Utils](https://starlight-utils.pages.dev/) - Utilities to use with your 🌟 Starlight site by @lorenzolewis
+- [Content Utils Git Time](https://inox-tools.vercel.app/content-utils/git-time) - A library to retrieve last updated dates for your content from your Git history by @Fryuni
+- [Astro Command Palette](https://github.com/pauchiner/astro-command-palette) - A lightweight, extensible, and fast command palette for Astro by @pauchiner
 
 
 ### Themes & Templates
 
 Several new Astro themes were added to the [Astro theme directory](https://astro.build/themes/) this month. Try them out!
 
- <ThemeGrid themes={[ 'starfunnel', 'astro-big-doc', ]} />
+ <ThemeGrid themes={[ 'starfunnel', 'astro-big-doc', 'astro-kreatif-landing',]} />
 
 Also check out:
 
@@ -127,14 +119,21 @@ Also check out:
 - [Astro Aceternity](https://github.com/calrloco/astro-aceternity) by @CarloB
 
 
-
 ### Websites
 
-Sites of the month:
+Sites of the month: // THESE ARE MAY'S SITES
 
 - [SquiggleConf](https://2024.squiggleconf.com/), a web developer tooling conference, is using Astro for their conference website!
 - See a [QR Code generator](https://qr.florian-lefebvre.dev/) built with Astro.
 - Add a new daily puzzle game to your routine: [node_shift](https://nodeshift.click/) is built with Astro DB!
+
+export const siteofmonth = [ 
+  { url: 'https://2024.squiggleconf.com/', title: 'SquiggleConf'},
+  { url: 'https://qr.florian-lefebvre.dev/', title: '@florian'},
+  { url: 'https://nodeshift.click/', title: '@johnmcgg'}, 
+]
+
+<ShowcaseGrid items={siteofmonth} />
 
 Looking for some inspiration? See all the community member websites submitted to our Discord `#showcase` channel and featured on community calls this month.
 
