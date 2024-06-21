@@ -435,6 +435,17 @@ const scraper = new ShowcaseScraper({
 		"https://souto.tk",
 		"https://unwrapped.studio/",
 		"https://gdscyu.com/",
+		"https://ahuja-lab.in/",
+		"https://roudstudio.com/",
+		"https://oengi.com/",
+		"https://kireerik.github.io/refo/",
+		"https://aiaman.web.app/",
+		"https://zenorocha.com/",
+		"https://www.rmmanfredi.com/",
+		"https://aperium.sk/",
+		"https://www.quickdreamviz.com/",
+		
+		
 	],
 });
 await scraper.run();
