@@ -442,8 +442,6 @@ const scraper = new ShowcaseScraper({
 		"https://zenorocha.com/",
 		"https://aperium.sk/",
 		"https://www.quickdreamviz.com/",
-		
-		
 	],
 });
 await scraper.run();
