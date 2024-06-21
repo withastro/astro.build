@@ -1,0 +1,83 @@
+---
+title: "Astro 4.11"
+description: Astro 4.11 is out with custom 500 page improvements and Shiki transformers in the Code component.
+publishDate: "June 20, 2024"
+authors:
+  - matthew
+coverImage: "/src/content/blog/_images/astro-4110/header-astro-4.11.webp"
+socialImage: "/src/content/blog/_images/astro-4110/og-image-4.11.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  Astro 4.11 is out with custom 500 page improvements and Shiki transformers in the Code component.
+</BlogSummary>
+
+Learn more on each of these:
+
+- [**Improvements to `500.astro`**](#improvements-to-500astro)
+- [**Shiki transfomers in the `<Code />` component**](#shiki-transfomers-in-the-code-component)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Improvements to 500.astro
+
+[`src/pages/500.astro`](https://docs.astro.build/en/basics/astro-pages/#custom-500-error-page) is a special page file in Astro that allows you to handle [500](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500) errors gracefully. A 500 error most commonly happens where there is a bug in your application; such as not wrapping delicate code in a `try/catch`. When component code throws, Astro catches and returns a 500 response. If you have `src/pages/500.astro` this page gets rendered into the response body.
+
+New in 4.11, `500.astro` now receives the `error` as a prop. This allows you to give more contextual information about the error.
+
+```astro
+---
+interface Props {
+  error: unknown
+}
+const { error } = Astro.props
+---
+
+<html lang="en">
+<head>
+  <title>Server error - Custom 500</title>
+</head>
+<body>
+  <h1>Server error</h1>
+	<p>{error instanceof Error ? error.message : 'Unknown error'}</p>
+</body>
+</html>
+```
+
+## Shiki transfomers in the Code component
+
+Astro's built-in [`<Code />` component](https://docs.astro.build/en/reference/api-reference/#code-) is used to render syntax highlighted code blocks inside of Astro pages. The component uses [Shiki](https://shiki.style/) and supports all popular themes and languages. Now, you can also use [Shiki transformers](https://shiki.style/packages/transformers#shikijs-transformers) on the code blocks by passing the `transformers` prop:
+
+```astro
+---
+import { transformerNotationFocus } from '@shikijs/transformers'
+import { Code } from 'astro:components'
+const code = `const foo = 'hello'
+const bar = ' world'
+console.log(foo + bar) // [!code focus]
+`
+---
+<Code {code} lang="js" transformers={[transformerNotationFocus()]} />
+<style is:global>
+  pre.has-focused .line:not(.focused) {
+    filter: blur(1px);
+  }
+</style>
+```
+
+## More
+
+As always, Astro 4.11 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4110) to learn more. Special thanks to Sarah, Bjorn, Ema, Florian, [braebo](https://github.com/braebo) and everyone else who contributed to this release.

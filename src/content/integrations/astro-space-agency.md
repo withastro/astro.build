@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-space-agency"
 repoUrl: "https://github.com/Chrissdroid/ASA"
 homepageUrl: "https://github.com/Chrissdroid/ASA#readme"
-downloads: 3
+downloads: 4
 ---
