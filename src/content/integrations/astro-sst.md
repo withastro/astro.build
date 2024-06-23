@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sst"
 repoUrl: "https://github.com/sst/sst"
 homepageUrl: "https://github.com/sst/sst#readme"
-downloads: 25415
+downloads: 24938
 ---
