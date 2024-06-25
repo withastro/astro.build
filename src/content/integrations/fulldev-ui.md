@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/fulldev-ui"
 repoUrl: "https://github.com/fulldotdev/ui"
 homepageUrl: "https://ui.full.dev/"
 badge: "new"
-downloads: 624
+downloads: 646
 ---
