@@ -1,0 +1,101 @@
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
+
+[build]
+  command = "NODE_OPTIONS=--max_old_space_size=4096 pnpm netlify:build"
+  ignore = "git diff --quiet $COMMIT_REF $CACHED_COMMIT_REF -- /"
+
+  [[redirects]]
+    from = "/fonts/*"
+    to = "https://fonts-cdn.astro.build/:splat"
+    status = 200
+
+  [[redirects]]
+    from = "/play/*"
+    to = "/"
+
+  [[redirects]]
+    from = "/company"
+    to = "/"
+
+  [[redirects]]
+    from = "/chat"
+    to = "https://discord.gg/grF4GTXXYm"
+
+  [[redirects]]
+    from = "/partnerships"
+    to = "https://astroinc.notion.site/Partner-with-Astro-b05cfd5dcf4248dcbea4a2d81554efed"
+
+  [[redirects]]
+    from = "/studio"
+    to = "https://studio.astro.build/"
+
+  [[redirects]]
+    from = "/docs"
+    to = "https://docs.astro.build/en/getting-started/"
+
+  [[redirects]]
+    from = "/showcase/submit"
+    to = "https://github.com/withastro/roadmap/discussions/521"
+
+  [[redirects]]
+    from = "/examples"
+    to = "https://github.com/withastro/astro/tree/main/examples"
+
+  [[redirects]]
+    from = "/issues/site"
+    to = "https://github.com/withastro/astro.build/issues/new/choose"
+
+  [[redirects]]
+    from = "/issues"
+    to = "https://github.com/withastro/astro/issues/new/choose"
+
+  [[redirects]]
+    from = "/issues/compiler"
+    to = "https://github.com/withastro/compiler/issues/new/choose"
+
+  [[redirects]]
+    from = "/releases/:slug"
+    to = "https://github.com/withastro/astro/releases/tag/astro@:slug"
+
+  [[redirects]]
+    from = "/code-of-conduct"
+    to = "https://github.com/withastro/.github/blob/main/CODE_OF_CONDUCT.md#readme"
+
+  [[redirects]]
+    from = "/governance"
+    to = "https://github.com/withastro/.github/blob/main/GOVERNANCE.md#readme"
+
+  [[redirects]]
+    from = "/config"
+    to = "https://docs.astro.build/en/reference/configuration-reference"
+
+  [[redirects]]
+    from = "/db/config"
+    to = "https://docs.astro.build/en/guides/astro-db/#define-your-database"
+
+  [[redirects]]
+    from = "/db/seed"
+    to = "https://docs.astro.build/en/guides/astro-db/#seed-your-database"
+
+  [[redirects]]
+    from = "/deprecated/resolve"
+    to = "https://docs.astro.build/en/migrate/#deprecated-astroresolve"
+
+  [[redirects]]
+    from = "/v0.21"
+    to = "/blog/astro-021-release"
+
+  [[redirects]]
+    from = "/hack"
+    to = "https://astroinc.notion.site/FRIDAY-Astro-1-0-Hackathon-9fb3499b375e4b01b88b080fd918b184"
+
+  [[redirects]]
+    from = "/resources/image-templates"
+    to = "https://www.figma.com/community/file/1182357255394426899"
+
+  [[redirects]]
+    from = "/newsletter"
+    to = "/newsletter/signup"
