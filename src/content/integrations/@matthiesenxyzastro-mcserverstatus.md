@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@matthiesenxyz/astro-mcserverstatus"
 homepageUrl: "https://matthiesen.xyz"
 badge: "new"
-downloads: 27
+downloads: 25
 ---
