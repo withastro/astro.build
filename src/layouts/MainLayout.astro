@@ -9,9 +9,10 @@ import "~/styles/tailwind.css";
 
 interface Props extends HeadProps, HeaderProps {
 	class?: string;
+	bgClass?: string;
 }
 
-const { class: classList, header = "default", ...head } = Astro.props;
+const { bgClass = "bg-black", header = "default", ...head } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +20,8 @@ const { class: classList, header = "default", ...head } = Astro.props;
   lang="en"
   class:list={[
     "astro-gray-700 overflow-x-hidden break-words text-astro-gray-100 [color-scheme:dark] [word-break:break-word]",
-    classList || "bg-astro-dark-900",
+    bgClass,
+    Astro.props.class,
   ]}
 >
   <head>
@@ -31,7 +33,7 @@ const { class: classList, header = "default", ...head } = Astro.props;
       id="nav"
       class:list={{
         "inset-x-0 top-0 z-20 max-h-screen": true,
-        "sticky bg-astro-dark-900/30 backdrop-blur-xl": header === "default",
+        "sticky bg-black/30 backdrop-blur-xl": header === "default",
         absolute: header === "transparent",
       }}
     >
@@ -46,7 +48,7 @@ const { class: classList, header = "default", ...head } = Astro.props;
     <main id="main" class="relative z-10 flex flex-1 flex-col">
       <slot />
     </main>
-    <Footer />
+    <Footer {bgClass} />
   </body>
 </html>
 

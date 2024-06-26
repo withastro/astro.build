@@ -1,0 +1,64 @@
+---
+title: "Server Islands"
+description: "Part three of our series on The Future of Astro, covering a new island architecture pattern for dynamic content rendered inside of fast, CDN-cached static pages."
+publishDate: "June 13, 2024"
+authors:
+  - fred
+  - matthew
+coverImage: "/src/content/blog/_images/future-of-astro-server-islands/header-astro-server-islands.webp"
+socialImage: "/src/content/blog/_images/future-of-astro-server-islands/og-astro-server-islands.jpg"
+lang: "en"
+---
+
+import BlogContentImage from "/src/components/BlogContentImage.astro";
+import BlogSummary from "/src/components/BlogSummary.astro";
+import islandDiag from "/src/content/blog/_images/future-of-astro-server-islands/dark-mode-server-islands-diag.webp";
+
+<BlogSummary>
+  This is Part 3 of our series on "The Future of Astro" covering the three major features we have planned for Astro in 2024. This post introduces Server Islands: a new island architecture primitive that lets you deliver static, CDN-cached HTML page shells with injected dynamic content.
+</BlogSummary>
+
+In 2021, Astro pioneered a new frontend architecture called [Islands](https://docs.astro.build/en/concepts/islands/). Islands are unique because they allow Astro to automatically strip all unused JavaScript from your page, delivering faster performance without forcing you to give up your favorite UI components at dev time (React, Svelte, Vue, etc). 
+
+But frontend performance isn't the only performance problem you'll run into on the web. *How* you deliver a website to the user can be even more impactful than *what* you deliver, and developers are often forced to make a difficult choice: performance, or personalization?
+
+**Performance:** Serve pages as static HTML, and cache aggressively. You won't be able to personalize pages to the user, but the performance benefits, cost-savings, and simplicity of static CDN deployments are impossible to match.
+
+**Personalization:** Serve pages as dynamic HTML, rendered on-demand. This forces your request through some data center that may be halfway around the world, which slows performance and increases your likelihood of failing Google's [Core Web Vitals](https://web.dev/articles/vitals). However, the level of control and personalization that you unlock with dynamic responses can be hard to turn down.
+
+**Performance and personalization shouldn't be mutually exclusive.** We believe that Islands architecture holds the answer to this problem as well, and we are currently working on a new feature to bring you the best of both worlds: **Server Islands.**
+
+## Server Islands
+
+Server Islands are a new primitive that we are exploring for Astro, building on our existing island frontend architecture. You define a server island the same way you would a client island, but instead of using a `client:*` directive you would use the new `server:defer` directive instead:
+
+```astro
+<UserButton server:defer />
+```
+
+This tells Astro to skip rendering this component in the initial response and "defer" its render to later. This lets you cache the static page behind a CDN with some initial placeholder content. When the dynamic HTML has loaded, it replaces the server island on the page with the HTML result of the deferred render.
+
+You can see this running in the prototype below. The static page loads instantly with the majority of your page content (21ms, in this example running on [Vercel](https://vercel.com/)). The dynamic deferred component HTML then renders separately, and Astro stitches it all back together when the deferred render is complete.
+
+<video autoplay loop muted playsinline>
+	<source src="/assets/blog/future-of-astro/ServerDefer.mp4" type="video/mp4" />
+	Sorry, your browser doesn't support embedded videos.
+</video>
+
+Conceptually this is similar to the concept of Suspense in React, Solid, etc. but with the key difference that the deferred island is rendered as a separate HTTP request. We have intentionally avoided streaming the static content *and* the islands back in a single response to simplify things for your CDN of choice.
+
+<BlogContentImage src={islandDiag} alt="A diagram showing the server island population parts of the page from the server." />
+
+By moving all of your dynamic HTML into deferred server islands, you're left with the best of both worlds: 
+- **Performance:** An instant, static page shell of HTML, cached in a global CDN.
+- **Personalization:** Dynamic content injected anywhere you'd like on the page.
+
+Server islands won't make sense for every use case. Some pages may require so much dynamic content that it still makes sense to render the entire page on the server. Other sites may still wish to fetch dynamic content as JSON from API endpoints instead. 
+
+However, we believe that server islands make sense for the vast majority of personalized content in content-driven websites. The websites that we see built with Astro often mix dynamic and static content on the page. For these sites that currently can't leverage CDN caching, server islands will likely deliver big performance wins.
+
+## Next Steps
+
+We're in the [design phase](https://github.com/withastro/roadmap/issues/945) of this feature and are thinking about trade-offs for different implementations, but prototyping is already underway.
+
+Keep an eye out for experimental support for Server Islands in Astro in the near future. We often launch new features behind experimental flags before they are stable, which gives our users plenty of time to try out new APIs and give feedback. If you'd like to get involved earlier than that, check out the [RFC](https://github.com/withastro/roadmap/issues/945) and participate in the discussions now.

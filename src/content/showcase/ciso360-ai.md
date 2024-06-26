@@ -1,6 +1,9 @@
 ---
-title: "CISO360.AI"
-image: "/src/content/showcase/_images/ciso360-ai.webp"
-url: "https://ciso360.ai/"
-categories: ["marketing"]
+title: CISO360.AI
+image: /src/content/showcase/_images/ciso360-ai.webp
+url: 'https://ciso360.ai/'
+categories:
+  - marketing
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+

@@ -1,5 +1,7 @@
 ---
-title: "DisruptDesign - Expert Logo, Visual Identity, and Web Development Services"
+title: 'DisruptDesign - Expert Logo, Visual Identity, and Web Development Services'
 image: /src/content/showcase/_images/disrapt.co.webp
-url: "https://disrapt.co/"
+url: 'https://disrapt.co/'
+dateAdded: 2023-08-07T16:29:50.000Z
 ---
+

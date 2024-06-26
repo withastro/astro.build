@@ -1,5 +1,7 @@
 ---
 title: Premium Snooker & Pool Club | Levels Huddersfield
 image: /src/content/showcase/_images/www.levelshuddersfield.co.uk.webp
-url: "https://www.levelshuddersfield.co.uk"
+url: 'https://www.levelshuddersfield.co.uk'
+dateAdded: 2023-04-24T16:01:09.000Z
 ---
+

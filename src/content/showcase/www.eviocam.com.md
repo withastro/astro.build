@@ -1,5 +1,7 @@
 ---
 title: Ana Sayfa | Eviocam Bulut Kamera Sistemleri
 image: /src/content/showcase/_images/www.eviocam.com.webp
-url: "https://www.eviocam.com"
+url: 'https://www.eviocam.com'
+dateAdded: 2023-04-24T16:01:09.000Z
 ---
+

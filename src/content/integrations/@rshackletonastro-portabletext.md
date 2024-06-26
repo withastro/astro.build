@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@rshackleton/astro-portabletext"
 repoUrl: "https://github.com/rshackleton/astro-portabletext"
 homepageUrl: "https://github.com/rshackleton/astro-portabletext#readme"
-downloads: 1
+downloads: 2
 ---

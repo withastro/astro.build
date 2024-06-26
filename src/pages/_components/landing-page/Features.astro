@@ -2,6 +2,8 @@
 import SectionCopy from "../SectionCopy.astro";
 import ContentCollectionsFeatureCard from "./ContentCollectionsFeatureCard.astro";
 import FeaturesCard from "./FeaturesCard.astro";
+import ViewTransitionsFeatureCard from "./ViewTransitionsFeatureCard.astro";
+import ZeroJsFeatureCard from "./ZeroJsFeatureCard.astro";
 ---
 
 <section class='mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-xl mx-auto px-4 sm:px-8'>
@@ -11,38 +13,13 @@ import FeaturesCard from "./FeaturesCard.astro";
     description='Astro comes with everything you need to build a modern website. Need more? Extend Astro with integrations.'
   />
 
-    <!-- features grid for mobile and desktop screens only - hidden from tablet screens -->
+    <!-- features grid for mobile and desktop screens only - hidden on tablet screens -->
   <div class='mt-4 sm:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4 md:max-lg:hidden'> 
     <ContentCollectionsFeatureCard />
 
-    <FeaturesCard
-      title='Zero JavaScript, By Default' showDescription 
-      href="https://docs.astro.build/en/basics/astro-components/"
-      description='Astro only ships the JavaScript you need and automatically strips away the rest for a faster website.'
-    >
-      <div slot="illustration" class="pt-4 px-4 sm:px-6 min-h-52 space-y-2 relative">
-        <p id="zero-js" class="absolute z-20 top-0 left-1/2 -translate-x-1/2 bg-clip-text text-transparent bg-gradient-to-b from-[#495057] to-[#211F2F]">0</p>
-        <div class="absolute top-0 left-0 z-10 size-full min-h-40 lg:min-h-52 bg-[radial-gradient(#252730_0.5px,transparent_0.5px)] [background-size:5px_5px] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_40%,#ffffff_40%,transparent_100%)]" />
-      </div>
-    </FeaturesCard>
+    <ZeroJsFeatureCard />
 
-    <FeaturesCard
-      title='View Transitions' showDescription
-      href="https://docs.astro.build/en/guides/view-transitions/"
-      description='Seamlessly morph, fade, and swipe across pages with built-in, browser-native View Transition APIs.'
-    >
-      <div slot="illustration" class="pt-4 px-4 lg:pt-6  min-h-52 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal">
-        <div class="flex items-center justify-center gap-2">
-          <div class="w-1/3 h-20 xl:h-24 motion-safe:group-hover:w-1/2 xl:motion-safe:group-hover:w-48 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#211F2F] to-[#074170] transition-all ease-in-out duration-[1.5s]" />
-          <div class="w-1/3 h-20 xl:h-24 motion-safe:group-hover:w-1/2 xl:motion-safe:group-hover:w-48 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#184560] to-[#08203E] transition-all ease-in-out duration-[1.5s]" />
-          <div class="w-1/3 h-20 xl:h-24 motion-safe:group-hover:w-full rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#000328] to-[#103783] transition-all ease-in-out duration-[1.5s]" />
-        </div>
-        <div class="flex items-center justify-center gap-2">
-          <div class="w-1/2 motion-safe:group-hover:w-full h-20 xl:h-24 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#243748] to-[#0A3431] transition-all ease-in-out duration-[1.5s]" />
-          <div class="w-1/2 h-20 xl:h-24 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#133A94] to-[#08203E] transition-all ease-in-out duration-[1.5s]" />
-        </div>
-      </div>
-    </FeaturesCard>
+    <ViewTransitionsFeatureCard />
 
     <FeaturesCard
       title='Middleware' 
@@ -61,13 +38,13 @@ import FeaturesCard from "./FeaturesCard.astro";
     />
     <FeaturesCard
       title='Deployment Adapters' 
-      href="https://docs.astro.build/en/reference/adapter-reference/"
+      href="https://astro.build/integrations/?search=&categories%5B%5D=adapters"
       description='Add an integration to instantly customize your project for Vercel, AWS, or your favorite hosting platform.'
     />
     <FeaturesCard
       title='UI Integrations' 
       href="https://docs.astro.build/en/guides/integrations-guide/"
-      description={`Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture`}
+      description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
     />
     <FeaturesCard
       title='Dev Toolbar' 
@@ -79,60 +56,25 @@ import FeaturesCard from "./FeaturesCard.astro";
   <!-- features grid for tablet screens only -->
   <div class='mt-4 sm:mt-8 md:max-lg:grid md:grid-cols-2 gap-4 hidden'> 
     <div class="space-y-4">
-      <FeaturesCard
-        title='Content Collections'
-        href="https://docs.astro.build/en/guides/content-collections/"
-        description='Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation.'
-      >
-        <div slot="illustration" class="size-full pt-4 sm:pt-6 min-h-52">
-          <ContentCollectionsFeatureCard />
-        </div>
-      </FeaturesCard>
+      <ContentCollectionsFeatureCard />
   
-      <FeaturesCard
-        title='Zero JavaScript, By Default'
-        href="https://docs.astro.build/en/basics/astro-components/"
-        description='Astro only ships the JavaScript you need and automatically strips away the rest for a faster website.'
-      >
-        <div slot="illustration" class="pt-4 px-4 sm:p-6 min-h-52 space-y-2 relative">
-          <p id="zero-js" class="absolute z-20 top-0 left-1/2 -translate-x-1/2 bg-clip-text text-transparent bg-gradient-to-b from-[#495057] to-[#211F2F]">0</p>
-          <div class="absolute top-0 left-0 z-10 size-full min-h-40 md:min-h-48 bg-[radial-gradient(#252730_0.5px,transparent_0.5px)] [background-size:5px_5px] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_40%,#ffffff_40%,transparent_100%)]" />
-        </div>
-      </FeaturesCard>
+      <ViewTransitionsFeatureCard />
 
       <FeaturesCard
-        title='Middleware' 
-        href="https://docs.astro.build/en/guides/middleware/"
-        description='Wrap incoming requests with custom logic like authentication, logging, or data fetching.'
+        title='UI Integrations' 
+        href="https://docs.astro.build/en/guides/integrations-guide/"
+        description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
       />
+    </div>
+
+    <div class="space-y-4">
+      <ZeroJsFeatureCard />
 
       <FeaturesCard
         title='Actions' 
         href="https://docs.astro.build/en/reference/configuration-reference/#experimentalactions"
         description='Write type-safe backend functions that you can call directly from your frontend JavaScript client code.'
       />
-      
-    </div>
-
-    <div class="space-y-4">
-      <FeaturesCard
-        title='View Transitions'
-        href="https://docs.astro.build/en/guides/view-transitions/"
-        description='Seamlessly morph, fade, and swipe across pages with built-in, browser-native View Transition APIs.'
-      >
-        <div slot="illustration" class="pt-4 px-4 sm:px-6 sm:pt-6 pb-0 min-h-52 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal">
-          <div class="flex items-center justify-center gap-2">
-            <div class="w-1/3 h-20 xl:h-24 motion-safe:group-hover:w-1/2 xl:motion-safe:group-hover:w-48 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#211F2F] to-[#074170] transition-all ease-in-out duration-[1.5s]" />
-            <div class="w-1/3 h-20 xl:h-24 motion-safe:group-hover:w-1/2 xl:motion-safe:group-hover:w-48 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#184560] to-[#08203E] transition-all ease-in-out duration-[1.5s]" />
-            <div class="w-1/3 h-20 xl:h-24 motion-safe:group-hover:w-full rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#000328] to-[#103783] transition-all ease-in-out duration-[1.5s]" />
-          </div>
-          <div class="flex items-center justify-center gap-2">
-            <div class="w-1/2 motion-safe:group-hover:w-full h-20 xl:h-24 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#243748] to-[#0A3431] transition-all ease-in-out duration-[1.5s]" />
-            <div class="w-1/2 h-20 xl:h-24 rounded-lg xl:rounded-xl bg-gradient-to-tr from-[#133A94] to-[#08203E] transition-all ease-in-out duration-[1.5s]" />
-          </div>
-        </div>
-      </FeaturesCard>
-
       <FeaturesCard
         title='Environment Variables' 
         href="https://docs.astro.build/en/guides/environment-variables/"
@@ -140,14 +82,10 @@ import FeaturesCard from "./FeaturesCard.astro";
       />
       <FeaturesCard
         title='Deployment Adapters' 
-        href="https://docs.astro.build/en/reference/adapter-reference/"
+        href="https://astro.build/integrations/?search=&categories%5B%5D=adapters"
         description='Add an integration to instantly customize your project for Vercel, AWS, or your favorite hosting platform.'
       />
-      <FeaturesCard
-        title='UI Integrations' 
-        href="https://docs.astro.build/en/guides/integrations-guide/"
-        description={`Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture`}
-      />
+
       <FeaturesCard
         title='Dev Toolbar' 
         href="https://docs.astro.build/en/guides/dev-toolbar/"
@@ -157,12 +95,3 @@ import FeaturesCard from "./FeaturesCard.astro";
   </div>
 
 </section>
-
-<style>
-  #zero-js {
-    font-size: 200px;
-    font-weight: 700;
-    line-height: 200px;
-    @apply drop-shadow-[inset_0px_0px_0px_1.5px_rgba(255,255,255,0.06),inset_0px_1.5px_0px_0px_rgba(255,255,255,0.15)];
-  }
-</style>

@@ -1,5 +1,7 @@
 ---
 title: Rise of Machine — A curated list of powerful AI tools.
 image: /src/content/showcase/_images/riseofmachine.com.webp
-url: "https://riseofmachine.com"
+url: 'https://riseofmachine.com'
+dateAdded: 2023-05-15T14:57:35.000Z
 ---
+

@@ -1,5 +1,7 @@
 ---
 title: Indie Astro Template
 image: /src/content/showcase/_images/indieastrotemplate.netlify.app.webp
-url: "https://indieastrotemplate.netlify.app/"
+url: 'https://indieastrotemplate.netlify.app/'
+dateAdded: 2024-01-02T09:51:14.000Z
 ---
+

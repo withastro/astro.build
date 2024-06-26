@@ -1,5 +1,7 @@
 ---
 title: Aidan Tomcy
 image: /src/content/showcase/_images/aidantomcy.github.io.webp
-url: "https://aidantomcy.github.io/"
+url: 'https://aidantomcy.github.io/'
+dateAdded: 2024-01-22T15:11:56.000Z
 ---
+

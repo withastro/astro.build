@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/a11y-astro-components"
 homepageUrl: "https://www.npmjs.com/package/a11y-astro-components"
 badge: "new"
-downloads: 100
+downloads: 214
 ---

@@ -1,6 +1,8 @@
 ---
-title: "Cityflo: App-based AC buses for office commute"
+title: 'Cityflo: App-based AC buses for office commute'
 image: /src/content/showcase/_images/www.cityflo.com.webp
-url: "https://www.cityflo.com/"
+url: 'https://www.cityflo.com/'
 featured: 20
+dateAdded: 2023-03-28T22:01:33.000Z
 ---
+

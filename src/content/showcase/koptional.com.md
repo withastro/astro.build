@@ -1,5 +1,7 @@
 ---
 title: A high-quality custom software development company
 image: /src/content/showcase/_images/koptional.com.webp
-url: "https://koptional.com/"
+url: 'https://koptional.com/'
+dateAdded: 2024-01-22T15:11:56.000Z
 ---
+

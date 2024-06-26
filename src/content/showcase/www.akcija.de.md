@@ -1,5 +1,7 @@
 ---
 title: Akcija.de - Naslovna strana
 image: /src/content/showcase/_images/www.akcija.de.webp
-url: "https://www.akcija.de"
+url: 'https://www.akcija.de'
+dateAdded: 2023-08-07T16:29:50.000Z
 ---
+

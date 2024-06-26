@@ -1,5 +1,7 @@
 ---
 title: Astraeus Gym
 image: /src/content/showcase/_images/fitness-astro-template.netlify.app.webp
-url: "https://fitness-astro-template.netlify.app/"
+url: 'https://fitness-astro-template.netlify.app/'
+dateAdded: 2024-01-16T15:21:12.000Z
 ---
+

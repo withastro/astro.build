@@ -1,7 +1,10 @@
 ---
-title: "OpenMoji"
-image: "/src/content/showcase/_images/open-moji.webp"
-url: "https://openmoji.org/"
-categories: ["landing"]
+title: OpenMoji
+image: /src/content/showcase/_images/open-moji.webp
+url: 'https://openmoji.org/'
+categories:
+  - landing
 highlight: true
+dateAdded: 2023-03-06T18:09:38.000Z
 ---
+
