@@ -8,5 +8,5 @@ npmUrl: "https://www.npmjs.com/package/@sentry/astro"
 repoUrl: "https://github.com/getsentry/sentry-javascript"
 homepageUrl: "https://docs.sentry.io/platforms/javascript/guides/astro/"
 image: "/assets/integrations/sentry.svg"
-downloads: 26776
+downloads: 27159
 ---
