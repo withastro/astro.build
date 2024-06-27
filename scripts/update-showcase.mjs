@@ -442,6 +442,11 @@ const scraper = new ShowcaseScraper({
 		"https://zenorocha.com/",
 		"https://aperium.sk/",
 		"https://www.quickdreamviz.com/",
+		"https://taskworld.com/",
+		"https://codewithandrea.com/",
+		"https://notes.aliciasykes.com",
+		"http://www.gooseinsurance.com/",
+		"http://www.smartbunny.com/",
 	],
 });
 await scraper.run();
