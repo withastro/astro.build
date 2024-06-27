@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@astro_ui/button"
 homepageUrl: "https://www.npmjs.com/package/@astro_ui/button"
-downloads: 5
+downloads: 3
 ---
