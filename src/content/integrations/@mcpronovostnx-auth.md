@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@mcpronovost/nx-auth"
 homepageUrl: "https://www.npmjs.com/package/@mcpronovost/nx-auth"
-downloads: 4
+downloads: 3
 ---
