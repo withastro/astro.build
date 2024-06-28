@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { AstroError } from 'astro/errors';
 import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
 
@@ -7,6 +7,7 @@ interface Props {
 	startDate: `${number}-${number}-${number}`;
 	endDate: `${number}-${number}-${number}`;
 	starlight?: boolean;
+	exclude?: Array<CollectionEntry<'showcase'>['id']>;
 }
 
 if (!Astro.props.startDate) {
@@ -23,13 +24,15 @@ const endDate = new Date(Astro.props.endDate);
 const sites = (
 	await getCollection(
 		'showcase',
-		({ data }) =>
+		({ data, id }) =>
 			data.dateAdded >= startDate &&
 			data.dateAdded <= endDate &&
 			// Include/exclude Starlight sites depending on prop value.
 			(Astro.props.starlight
 				? data.categories.includes('starlight')
-				: !data.categories.includes('starlight'))
+				: !data.categories.includes('starlight')) &&
+			// Exclude any IDs explicitly specified with the exclude prop.
+			!(Astro.props.exclude || []).includes(id)
 	)
 )
 	// Sort by date added ascending, then alphabetically by title ascending.

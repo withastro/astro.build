@@ -126,15 +126,17 @@ Sites of the month:
 - Not just a website, [Dracarys is an experience!](https://dracarys.robertborghesi.is/) A WebGL, Three.js experiment on GPGPU simulations, particles, postprocessing, shaders, water, modelling, audio, lightning and dragons... your typical Astro site. 🔥🧊🐉 - 🔊 ON for full effect!
 - Organize your thoughts with [stickly](https://stickly.pages.dev/), a handy virtual sticky notes board built with Astro by @floyare. Choose your note color, then drag and drop anywhere on the screen.
 
-<ShowcaseGridById ids={[
+export const monthlySites = [
   // 'astro-zerojs-transitions.vercel.app.md',
   'dracarys.robertborghesi.is.md',
   'stickly.pages.dev.md',
-]} />
+];
+
+<ShowcaseGridById ids={monthlySites} />
 
 Looking for some inspiration? See all the community member websites submitted to our Discord `#showcase` channel and featured on community calls this month.
 
-<MonthlyShowcaseGrid startDate="2024-06-01" endDate="2024-06-30" />
+<MonthlyShowcaseGrid startDate="2024-06-01" endDate="2024-06-30" exclude={monthlySites} />
 
 ### Starlight in the wild
 
