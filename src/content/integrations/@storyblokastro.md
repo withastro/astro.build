@@ -11,6 +11,6 @@ image: "/assets/integrations/storyblok.svg"
 repoUrl: "https://github.com/storyblok/storyblok-astro"
 featured: 5
 homepageUrl: "https://github.com/storyblok/storyblok-astro"
-downloads: 13436
+downloads: 13325
 toolbar: 1
 ---
