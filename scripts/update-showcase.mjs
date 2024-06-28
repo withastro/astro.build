@@ -347,7 +347,10 @@ class ShowcaseScraper {
 		console.log("Waiting for page to settle");
 		await page.evaluate(() => {
 			return new Promise((resolve) => {
-				setTimeout(() => requestAnimationFrame(() => requestIdleCallback(resolve, { timeout: 2000 })), 2000);
+				setTimeout(
+					() => requestAnimationFrame(() => requestIdleCallback(resolve, { timeout: 2000 })),
+					2000,
+				);
 			});
 		});
 		console.log("Getting title");
