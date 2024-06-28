@@ -9,7 +9,7 @@ socialImage: "/src/content/blog/_images/whats-new-june/og.webp"
 lang: "en"
 ---
 import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
-import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
+import ShowcaseGridById from './_whats-new-components/ShowcaseGridById.astro';
 import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
 
 // CONTENT LAST UPDATED Thurs June 27 - 3pm
@@ -123,17 +123,14 @@ Also check out:
 Sites of the month:
 
 - [Astro ZeroJS View Transitions](https://astro-zerojs-transitions.vercel.app/), a Spotify clone using Astro's view transitions with 0JS.
-- Not just a website, [Dracarys is **an experience**](https://dracarys.robertborghesi.is/)! A WebGL, Three.js experiment on GPGPU simulations, particles, postprocessing, shaders, water, modelling, audio, lightning and dragons... your typical Astro site. 🔥🧊🐉 - 🔊 ON for full effect! (It's so wild, we cannot display a preview!)
+- Not just a website, [Dracarys is an experience!](https://dracarys.robertborghesi.is/) A WebGL, Three.js experiment on GPGPU simulations, particles, postprocessing, shaders, water, modelling, audio, lightning and dragons... your typical Astro site. 🔥🧊🐉 - 🔊 ON for full effect!
 - Organize your thoughts with [stickly](https://stickly.pages.dev/), a handy virtual sticky notes board built with Astro by @floyare. Choose your note color, then drag and drop anywhere on the screen.
 
-export const siteofmonth = [ 
-  { url: 'https://astro-zerojs-transitions.vercel.app/', title: '0JS view transitions'},
-  { url: 'https://dracarys.robertborghesi.is/', title: 'Dracarys - Robert Borghesi LAB'},
-  { url: 'https://stickly.pages.dev/', title: 'stickly'}
-
-]
-
-<ShowcaseGrid items={siteofmonth} />
+<ShowcaseGridById ids={[
+  // 'astro-zerojs-transitions.vercel.app.md',
+  'dracarys.robertborghesi.is.md',
+  'stickly.pages.dev.md',
+]} />
 
 Looking for some inspiration? See all the community member websites submitted to our Discord `#showcase` channel and featured on community calls this month.
 
