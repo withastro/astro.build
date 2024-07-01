@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astropub/experiments"
 repoUrl: "https://github.com/astro-community/experiments"
 homepageUrl: "https://github.com/astro-community/experiments#readme"
-downloads: 4
+downloads: 5
 ---
