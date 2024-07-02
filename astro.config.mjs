@@ -9,8 +9,6 @@ import astroExpressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import houston from "./houston.theme.json";
 
-import { rehypePrettyCode } from "rehype-pretty-code";
-
 /* https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables */
 const VERCEL_PREVIEW_SITE =
 	process.env.VERCEL_ENV !== "production" &&
@@ -20,10 +18,6 @@ const VERCEL_PREVIEW_SITE =
 // https://astro.build/config
 export default defineConfig({
 	site: VERCEL_PREVIEW_SITE || "https://astro.build",
-	markdown: {
-		syntaxHighlight: false,
-		rehypePlugins: [[rehypePrettyCode, {}]],
-	},
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
