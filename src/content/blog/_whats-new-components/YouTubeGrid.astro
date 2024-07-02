@@ -2,7 +2,7 @@
 import { YouTube } from '@astro-community/astro-embed-youtube';
 
 interface Props {
-	videos: string[];
+	videos: { id: string; title?: string }[];
 }
 ---
 
@@ -10,9 +10,9 @@ interface Props {
 	class="grid gap-5 !p-0 md:grid-flow-row-dense md:grid-cols-2 lg:-mx-16 lg:!mb-16 lg:!mt-8 lg:grid-cols-3 xl:-mx-32"
 >
 	{
-		Astro.props.videos.map((id) => (
+		Astro.props.videos.map(({ id, title }) => (
 			<li class="before:!hidden">
-				<YouTube {id} />
+				<YouTube {id} {title} />
 			</li>
 		))
 	}
