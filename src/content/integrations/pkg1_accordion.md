@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/pkg1_accordion"
 homepageUrl: "https://www.npmjs.com/package/pkg1_accordion"
 badge: "new"
-downloads: 96
+downloads: 100
 ---
