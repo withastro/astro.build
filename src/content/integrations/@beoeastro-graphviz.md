@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@beoe/astro-graphviz"
 repoUrl: "https://github.com/stereobooster/beoe"
 homepageUrl: "https://github.com/stereobooster/beoe#readme"
-downloads: 8
+downloads: 6
 ---

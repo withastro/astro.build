@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-tailwind-v4"
 homepageUrl: "https://github.com/jdtjenkins/astro-tailwind-v4"
-downloads: 5
+downloads: 6
 ---
