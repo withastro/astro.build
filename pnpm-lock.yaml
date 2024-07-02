@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@astro-community/astro-embed-youtube':
         specifier: ^0.4.3
-        version: 0.4.5(astro@4.9.2)
+        version: 0.4.5(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))
       '@astrojs/db':
         specifier: ^0.11.4
         version: 0.11.4
       '@astrojs/mdx':
         specifier: ^2.1.1
-        version: 2.3.1(astro@4.9.2)
+        version: 2.3.1(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))
       '@astrojs/rss':
         specifier: ^4.0.5
         version: 4.0.6
@@ -25,10 +25,10 @@ importers:
         version: 3.1.5
       '@astrojs/solid-js':
         specifier: ^4.0.1
-        version: 4.2.0(solid-js@1.8.17)(vite@5.2.12)
+        version: 4.2.0(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.9.2)(tailwindcss@3.4.4)
+        version: 5.1.0(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))(tailwindcss@3.4.4)
       '@astrojs/web-vitals':
         specifier: ^0.2.1
         version: 0.2.1(@astrojs/db@0.11.4)
@@ -43,7 +43,7 @@ importers:
         version: 4.9.2(@types/node@20.12.13)(typescript@5.4.5)
       astro-expressive-code:
         specifier: ^0.33.4
-        version: 0.33.5(astro@4.9.2)
+        version: 0.33.5(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))
       chart.js:
         specifier: 4.4.1
         version: 4.4.1
@@ -65,9 +65,6 @@ importers:
       quill:
         specifier: ^1.3.7
         version: 1.3.7
-      rehype-pretty-code:
-        specifier: ^0.13.2
-        version: 0.13.2(shiki@1.6.1)
       sharp:
         specifier: ^0.33.0
         version: 0.33.4
@@ -95,13 +92,13 @@ importers:
         version: 1.10.1
       '@astrojs/check':
         specifier: ^0.5.6
-        version: 0.5.10(prettier@3.2.5)(typescript@5.4.5)
+        version: 0.5.10(prettier-plugin-astro@0.12.3)(prettier@3.2.5)(typescript@5.4.5)
       '@astrojs/site-kit':
         specifier: github:withastro/site-kit
-        version: https://codeload.github.com/withastro/site-kit/tar.gz/33cfc809fbd9212cc14bce08a2f843979e2a4324(astro@4.9.2)(eslint@8.57.0)(prettier@3.2.5)(tailwindcss@3.4.4)(typescript@5.4.5)
+        version: https://codeload.github.com/withastro/site-kit/tar.gz/33cfc809fbd9212cc14bce08a2f843979e2a4324(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))(eslint@8.57.0)(prettier@3.2.5)(tailwindcss@3.4.4)(typescript@5.4.5)
       '@astrojs/vercel':
         specifier: ^7.3.5
-        version: 7.6.0(astro@4.9.2)
+        version: 7.6.0(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))
       '@babel/core':
         specifier: ^7.23.6
         version: 7.24.6
@@ -125,7 +122,7 @@ importers:
         version: 2.0.14
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.14.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.5)
+        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/parser':
         specifier: ^6.14.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.4.5)
@@ -232,7 +229,6 @@ packages:
 
   '@astrojs/site-kit@https://codeload.github.com/withastro/site-kit/tar.gz/33cfc809fbd9212cc14bce08a2f843979e2a4324':
     resolution: {tarball: https://codeload.github.com/withastro/site-kit/tar.gz/33cfc809fbd9212cc14bce08a2f843979e2a4324}
-    name: '@astrojs/site-kit'
     version: 5.0.0
     peerDependencies:
       astro: '>=2.2.1'
@@ -794,6 +790,7 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -801,6 +798,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
 
   '@iconify-json/ri@1.1.20':
     resolution: {integrity: sha512-yScIGjLFBCJKWKskQTWRjNI2Awoq+VRDkRxEsCQvSfdz41n+xkRtFG2K6J1OVI90ClRHfjFC8VJ2+WzxxyFjTQ==}
@@ -2562,9 +2560,6 @@ packages:
   hast-util-to-parse5@8.0.0:
     resolution: {integrity: sha512-3KKrV5ZVI8if87DVSi1vDeByYrkGzg4mEfeu4alwgmmIeARiBLKCZS2uw5Gb6nU9x9Yufyj3iudm6i7nl52PFw==}
 
-  hast-util-to-string@3.0.0:
-    resolution: {integrity: sha512-OGkAxX1Ua3cbcW6EJ5pT/tslVb90uViVkcJ4ZZIMW/R33DX/AkcJcRrPebPwJkHYwlDHXz4aIwvAAaAdtrACFA==}
-
   hast-util-to-text@4.0.2:
     resolution: {integrity: sha512-KK6y/BN8lbaq654j7JgBydev7wuNMcID54lkRav1P0CaE1e47P72AWWPiGKXTJU271ooYzcvTAn/Zt0REnvc7A==}
 
@@ -2933,7 +2928,6 @@ packages:
 
   libsql@0.3.18:
     resolution: {integrity: sha512-lvhKr7WV3NLWRbXkjn/MeKqXOAqWKU0PX9QYrvDh7fneukapj+iUQ4qgJASrQyxcCrEsClXCQiiK5W6OoYPAlA==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -3429,9 +3423,6 @@ packages:
   parse-latin@5.0.1:
     resolution: {integrity: sha512-b/K8ExXaWC9t34kKeDV8kGXBkXZ1HCSAZRYE7HR14eA1GlXX5L8iWhs8USJNhQU9q5ci413jCKF0gOyovvyRBg==}
 
-  parse-numeric-range@1.3.0:
-    resolution: {integrity: sha512-twN+njEipszzlMJd4ONUYgSfZPDxgHhT9Ahed5uTigpQn90FggW4SA/AIPq/6a149fTbE9qBEcSwE3FAEp6wQQ==}
-
   parse5@6.0.1:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
 
@@ -3730,12 +3721,6 @@ packages:
 
   rehype-parse@9.0.0:
     resolution: {integrity: sha512-WG7nfvmWWkCR++KEkZevZb/uw41E8TsH4DsY9UxsTbIXCVGbAs4S+r8FrQ+OtH5EEQAs+5UxKC42VinkmpA1Yw==}
-
-  rehype-pretty-code@0.13.2:
-    resolution: {integrity: sha512-F+PaFMscfJOcSHcR2b//+hk/0jT56hmGDqXcVD6VC9j0CUSGiqv8YxaWUyhR7qEIRRSbzAVxx+0uxzk+akXs+w==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      shiki: ^1.3.0
 
   rehype-raw@7.0.0:
     resolution: {integrity: sha512-/aE8hCfKlQeA8LmyeyQvQF3eBiLRGNlfBJEvWH7ivp9sBqs7TNqBL5X3v157rM4IFETqDnIOO+z5M/biZbo9Ww==}
@@ -4630,14 +4615,14 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@astro-community/astro-embed-youtube@0.4.5(astro@4.9.2)':
+  '@astro-community/astro-embed-youtube@0.4.5(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))':
     dependencies:
       astro: 4.9.2(@types/node@20.12.13)(typescript@5.4.5)
       lite-youtube-embed: 0.3.2
 
-  '@astrojs/check@0.5.10(prettier@3.2.5)(typescript@5.4.5)':
+  '@astrojs/check@0.5.10(prettier-plugin-astro@0.12.3)(prettier@3.2.5)(typescript@5.4.5)':
     dependencies:
-      '@astrojs/language-server': 2.10.0(prettier@3.2.5)(typescript@5.4.5)
+      '@astrojs/language-server': 2.10.0(prettier-plugin-astro@0.12.3)(prettier@3.2.5)(typescript@5.4.5)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -4698,7 +4683,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.0': {}
 
-  '@astrojs/language-server@2.10.0(prettier@3.2.5)(typescript@5.4.5)':
+  '@astrojs/language-server@2.10.0(prettier-plugin-astro@0.12.3)(prettier@3.2.5)(typescript@5.4.5)':
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@jridgewell/sourcemap-codec': 1.4.15
@@ -4708,7 +4693,6 @@ snapshots:
       '@volar/language-service': 2.2.5
       '@volar/typescript': 2.2.5
       fast-glob: 3.3.2
-      prettier: 3.2.5
       volar-service-css: 0.0.45(@volar/language-service@2.2.5)
       volar-service-emmet: 0.0.45(@volar/language-service@2.2.5)
       volar-service-html: 0.0.45(@volar/language-service@2.2.5)
@@ -4717,6 +4701,9 @@ snapshots:
       volar-service-typescript-twoslash-queries: 0.0.45(@volar/language-service@2.2.5)
       vscode-html-languageservice: 5.2.0
       vscode-uri: 3.0.8
+    optionalDependencies:
+      prettier: 3.2.5
+      prettier-plugin-astro: 0.12.3
     transitivePeerDependencies:
       - typescript
 
@@ -4743,7 +4730,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@2.3.1(astro@4.9.2)':
+  '@astrojs/mdx@2.3.1(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))':
     dependencies:
       '@astrojs/markdown-remark': 5.1.0
       '@mdx-js/mdx': 3.0.1
@@ -4773,25 +4760,25 @@ snapshots:
       fast-xml-parser: 4.4.0
       kleur: 4.1.5
 
-  '@astrojs/site-kit@https://codeload.github.com/withastro/site-kit/tar.gz/33cfc809fbd9212cc14bce08a2f843979e2a4324(astro@4.9.2)(eslint@8.57.0)(prettier@3.2.5)(tailwindcss@3.4.4)(typescript@5.4.5)':
-    id: '@astrojs/site-kit@https://codeload.github.com/withastro/site-kit/tar.gz/33cfc809fbd9212cc14bce08a2f843979e2a4324'
+  '@astrojs/site-kit@https://codeload.github.com/withastro/site-kit/tar.gz/33cfc809fbd9212cc14bce08a2f843979e2a4324(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))(eslint@8.57.0)(prettier@3.2.5)(tailwindcss@3.4.4)(typescript@5.4.5)':
     dependencies:
-      '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.4.5)
-      astro: 4.9.2(@types/node@20.12.13)(typescript@5.4.5)
       eslint: 8.57.0
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
       eslint-plugin-astro: 0.29.1(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.2.5)
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5)
       prettier: 3.2.5
       prettier-plugin-astro: 0.12.3
       prettier-plugin-jsdoc: 1.3.0(prettier@3.2.5)
       prettier-plugin-organize-imports: 3.2.4(prettier@3.2.5)(typescript@5.4.5)
-      prettier-plugin-tailwindcss: 0.5.14(prettier-plugin-astro@0.12.3)(prettier-plugin-jsdoc@1.3.0)(prettier-plugin-organize-imports@3.2.4)(prettier@3.2.5)
+      prettier-plugin-tailwindcss: 0.5.14(prettier-plugin-astro@0.12.3)(prettier-plugin-jsdoc@1.3.0(prettier@3.2.5))(prettier-plugin-organize-imports@3.2.4(prettier@3.2.5)(typescript@5.4.5))(prettier@3.2.5)
       smartypants: 0.1.6
-      tailwindcss: 3.4.4
       typescript: 5.4.5
+    optionalDependencies:
+      astro: 4.9.2(@types/node@20.12.13)(typescript@5.4.5)
+      tailwindcss: 3.4.4
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-pug'
@@ -4816,10 +4803,10 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/solid-js@4.2.0(solid-js@1.8.17)(vite@5.2.12)':
+  '@astrojs/solid-js@4.2.0(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13))':
     dependencies:
       solid-js: 1.8.17
-      vite-plugin-solid: 2.10.2(solid-js@1.8.17)(vite@5.2.12)
+      vite-plugin-solid: 2.10.2(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - supports-color
@@ -4831,7 +4818,7 @@ snapshots:
       kleur: 4.1.5
       ora: 8.0.1
 
-  '@astrojs/tailwind@5.1.0(astro@4.9.2)(tailwindcss@3.4.4)':
+  '@astrojs/tailwind@5.1.0(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))(tailwindcss@3.4.4)':
     dependencies:
       astro: 4.9.2(@types/node@20.12.13)(typescript@5.4.5)
       autoprefixer: 10.4.19(postcss@8.4.38)
@@ -4853,7 +4840,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@7.6.0(astro@4.9.2)':
+  '@astrojs/vercel@7.6.0(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.0
       '@vercel/analytics': 1.3.1
@@ -5758,7 +5745,7 @@ snapshots:
       '@types/node': 20.12.13
     optional: true
 
-  '@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.5)':
+  '@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)':
     dependencies:
       '@eslint-community/regexpp': 4.10.0
       '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.4.5)
@@ -5773,6 +5760,7 @@ snapshots:
       natural-compare: 1.4.0
       semver: 7.6.2
       ts-api-utils: 1.3.0(typescript@5.4.5)
+    optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
@@ -5785,6 +5773,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 6.21.0
       debug: 4.3.5
       eslint: 8.57.0
+    optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
@@ -5806,6 +5795,7 @@ snapshots:
       debug: 4.3.5
       eslint: 8.57.0
       ts-api-utils: 1.3.0(typescript@5.4.5)
+    optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
@@ -5824,6 +5814,7 @@ snapshots:
       minimatch: 9.0.3
       semver: 7.6.2
       ts-api-utils: 1.3.0(typescript@5.4.5)
+    optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
@@ -6078,7 +6069,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-expressive-code@0.33.5(astro@4.9.2):
+  astro-expressive-code@0.33.5(astro@4.9.2(@types/node@20.12.13)(typescript@5.4.5)):
     dependencies:
       astro: 4.9.2(@types/node@20.12.13)(typescript@5.4.5)
       hast-util-to-html: 8.0.4
@@ -6149,7 +6140,7 @@ snapshots:
       unist-util-visit: 5.0.0
       vfile: 6.0.1
       vite: 5.2.12(@types/node@20.12.13)
-      vitefu: 0.2.5(vite@5.2.12)
+      vitefu: 0.2.5(vite@5.2.12(@types/node@20.12.13))
       which-pm: 2.2.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -6420,6 +6411,7 @@ snapshots:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
+    optionalDependencies:
       typescript: 5.4.5
 
   cross-fetch@4.0.0:
@@ -6622,7 +6614,7 @@ snapshots:
   dotenv@16.4.5: {}
 
   drizzle-orm@0.30.10(@libsql/client@0.6.1):
-    dependencies:
+    optionalDependencies:
       '@libsql/client': 0.6.1
 
   dset@3.1.3: {}
@@ -6854,13 +6846,14 @@ snapshots:
       object.entries: 1.1.8
       object.fromentries: 2.0.8
 
-  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.2.5):
+  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5):
     dependencies:
       eslint: 8.57.0
-      eslint-config-prettier: 9.1.0(eslint@8.57.0)
       prettier: 3.2.5
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
+    optionalDependencies:
+      eslint-config-prettier: 9.1.0(eslint@8.57.0)
 
   eslint-scope@7.2.2:
     dependencies:
@@ -7414,10 +7407,6 @@ snapshots:
       space-separated-tokens: 2.0.2
       web-namespaces: 2.0.1
       zwitch: 2.0.4
-
-  hast-util-to-string@3.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
 
   hast-util-to-text@4.0.2:
     dependencies:
@@ -8551,8 +8540,6 @@ snapshots:
       unist-util-modify-children: 3.1.1
       unist-util-visit-children: 2.0.2
 
-  parse-numeric-range@1.3.0: {}
-
   parse5@6.0.1: {}
 
   parse5@7.1.2:
@@ -8629,8 +8616,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.38
       yaml: 2.4.2
+    optionalDependencies:
+      postcss: 8.4.38
 
   postcss-nested@6.0.1(postcss@8.4.38):
     dependencies:
@@ -8683,9 +8671,10 @@ snapshots:
       prettier: 3.2.5
       typescript: 5.4.5
 
-  prettier-plugin-tailwindcss@0.5.14(prettier-plugin-astro@0.12.3)(prettier-plugin-jsdoc@1.3.0)(prettier-plugin-organize-imports@3.2.4)(prettier@3.2.5):
+  prettier-plugin-tailwindcss@0.5.14(prettier-plugin-astro@0.12.3)(prettier-plugin-jsdoc@1.3.0(prettier@3.2.5))(prettier-plugin-organize-imports@3.2.4(prettier@3.2.5)(typescript@5.4.5))(prettier@3.2.5):
     dependencies:
       prettier: 3.2.5
+    optionalDependencies:
       prettier-plugin-astro: 0.12.3
       prettier-plugin-jsdoc: 1.3.0(prettier@3.2.5)
       prettier-plugin-organize-imports: 3.2.4(prettier@3.2.5)(typescript@5.4.5)
@@ -8814,16 +8803,6 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-from-html: 2.0.1
       unified: 11.0.4
-
-  rehype-pretty-code@0.13.2(shiki@1.6.1):
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-to-string: 3.0.0
-      parse-numeric-range: 1.3.0
-      rehype-parse: 9.0.0
-      shiki: 1.6.1
-      unified: 11.0.4
-      unist-util-visit: 5.0.0
 
   rehype-raw@7.0.0:
     dependencies:
@@ -9371,7 +9350,7 @@ snapshots:
   ts-interface-checker@0.1.13: {}
 
   tsconfck@3.1.0(typescript@5.4.5):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.5
 
   tslib@2.6.2: {}
@@ -9592,7 +9571,7 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite-plugin-solid@2.10.2(solid-js@1.8.17)(vite@5.2.12):
+  vite-plugin-solid@2.10.2(solid-js@1.8.17)(vite@5.2.12(@types/node@20.12.13)):
     dependencies:
       '@babel/core': 7.24.6
       '@types/babel__core': 7.20.5
@@ -9601,62 +9580,67 @@ snapshots:
       solid-js: 1.8.17
       solid-refresh: 0.6.3(solid-js@1.8.17)
       vite: 5.2.12(@types/node@20.12.13)
-      vitefu: 0.2.5(vite@5.2.12)
+      vitefu: 0.2.5(vite@5.2.12(@types/node@20.12.13))
     transitivePeerDependencies:
       - supports-color
 
   vite@5.2.12(@types/node@20.12.13):
     dependencies:
-      '@types/node': 20.12.13
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.18.0
     optionalDependencies:
+      '@types/node': 20.12.13
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.2.12):
-    dependencies:
+  vitefu@0.2.5(vite@5.2.12(@types/node@20.12.13)):
+    optionalDependencies:
       vite: 5.2.12(@types/node@20.12.13)
 
   volar-service-css@0.0.45(@volar/language-service@2.2.5):
     dependencies:
-      '@volar/language-service': 2.2.5
       vscode-css-languageservice: 6.2.14
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.2.5
 
   volar-service-emmet@0.0.45(@volar/language-service@2.2.5):
     dependencies:
       '@emmetio/css-parser': 0.4.0
       '@emmetio/html-matcher': 1.3.0
-      '@volar/language-service': 2.2.5
       '@vscode/emmet-helper': 2.9.3
+    optionalDependencies:
+      '@volar/language-service': 2.2.5
 
   volar-service-html@0.0.45(@volar/language-service@2.2.5):
     dependencies:
-      '@volar/language-service': 2.2.5
       vscode-html-languageservice: '@johnsoncodehk/vscode-html-languageservice@5.2.0-34a5462'
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.2.5
 
   volar-service-prettier@0.0.45(@volar/language-service@2.2.5)(prettier@3.2.5):
     dependencies:
+      vscode-uri: 3.0.8
+    optionalDependencies:
       '@volar/language-service': 2.2.5
       prettier: 3.2.5
-      vscode-uri: 3.0.8
 
   volar-service-typescript-twoslash-queries@0.0.45(@volar/language-service@2.2.5):
-    dependencies:
+    optionalDependencies:
       '@volar/language-service': 2.2.5
 
   volar-service-typescript@0.0.45(@volar/language-service@2.2.5):
     dependencies:
-      '@volar/language-service': 2.2.5
       path-browserify: 1.0.1
       semver: 7.6.2
       typescript-auto-import-cache: 0.3.2
       vscode-languageserver-textdocument: 1.0.11
       vscode-nls: 5.2.0
+    optionalDependencies:
+      '@volar/language-service': 2.2.5
 
   vscode-css-languageservice@6.2.14:
     dependencies:
