@@ -9,9 +9,12 @@ import astroExpressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import houston from "./houston.theme.json";
 
+/* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
+const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== "production" && process.env.DEPLOY_PRIME_URL;
+
 // https://astro.build/config
 export default defineConfig({
-	site: "https://astro.build",
+	site: NETLIFY_PREVIEW_SITE || "https://astro.build",
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
