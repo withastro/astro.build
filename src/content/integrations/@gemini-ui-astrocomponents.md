@@ -6,6 +6,6 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@gemini-ui-astro/components"
 homepageUrl: "https://github.com/gemini-ui/gemini-ui-monorepo#readme"
-downloads: 23
+downloads: 74
 repoUrl: "https://github.com/gemini-ui/gemini-ui-monorepo"
 ---

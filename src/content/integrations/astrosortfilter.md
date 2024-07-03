@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astrosortfilter"
 homepageUrl: "https://www.npmjs.com/package/astrosortfilter"
-downloads: 2
+downloads: 3
 ---
