@@ -43,7 +43,12 @@ if (theme.Theme.repoUrl && typeof theme.Theme.stars !== "undefined") {
 		netlifyUrl && !theme.Theme.paid && (
 			<>
 				<hr class="border-astro-gray-500" />
-				<a href={netlifyUrl} class="link flex flex-row items-center gap-2" target="_blank">
+				<a
+					href={netlifyUrl}
+					class="link flex flex-row items-center gap-2"
+					target="_blank"
+					onclick="fathom.trackEvent('Theme Details - Deploy to Netlify');"
+				>
 					<img
 						src="/assets/integrations/netlify-dark.svg"
 						width="20"
