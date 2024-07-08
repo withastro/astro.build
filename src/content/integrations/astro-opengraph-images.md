@@ -10,5 +10,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-opengraph-images"
 homepageUrl: "https://www.npmjs.com/package/astro-opengraph-images"
 badge: "new"
-downloads: 1026
+downloads: 1069
 ---

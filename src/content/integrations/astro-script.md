@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-script"
 repoUrl: "https://github.com/RafidMuhymin/astro-script"
 homepageUrl: "https://github.com/RafidMuhymin/astro-script#readme"
-downloads: 9
+downloads: 10
 ---

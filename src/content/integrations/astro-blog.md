@@ -6,6 +6,6 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-blog"
 homepageUrl: "https://astro-blog.futurethemes.io/"
-downloads: 93
+downloads: 94
 repoUrl: "https://github.com/futurethemes/astro-blog"
 ---
