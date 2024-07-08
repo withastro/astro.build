@@ -10,10 +10,19 @@ export type Props = HTMLAttributes<"div"> & {
 
 const { theme, class: className, ...attrs } = Astro.props;
 
-const vercelUrl =
-	theme.Theme.repoUrl &&
-	typeof theme.Theme.stars !== "undefined" &&
-	`https://vercel.com/new/clone?repository-url=${theme.Theme.repoUrl}`;
+let netlifyUrl: URL | undefined;
+if (theme.Theme.repoUrl && typeof theme.Theme.stars !== "undefined") {
+	const repoRE =
+		/https:\/\/github\.com\/(?<org>[^\/]+)\/(?<repo>[^\/]+)(?:\/tree\/(?<branch>[^\/]+)\/(?<subdirectory>.+))?/i;
+	const matches = theme.Theme.repoUrl.match(repoRE);
+	if (matches?.groups) {
+		netlifyUrl = new URL('https://app.netlify.com/start/deploy');
+		netlifyUrl.searchParams.set('repository', `https://github.com/${matches.groups.org}/${matches.groups.repo}`);
+		if (matches.groups.subdirectory) {
+			netlifyUrl.searchParams.set('create_from_path', matches.groups.subdirectory);
+		}
+	}
+}
 ---
 
 <div class:list={["flex flex-col gap-4", className]} {...attrs}>
@@ -31,17 +40,17 @@ const vercelUrl =
 		</a>
 	</div>
 	{
-		vercelUrl && !theme.Theme.paid && (
+		netlifyUrl && !theme.Theme.paid && (
 			<>
 				<hr class="border-astro-gray-500" />
-				<a href={vercelUrl} class="link flex flex-row items-center gap-2" target="_blank">
+				<a href={netlifyUrl} class="link flex flex-row items-center gap-2" target="_blank">
 					<img
-						src="/assets/integrations/vercel-dark.svg"
+						src="/assets/integrations/netlify-dark.svg"
 						width="20"
 						height="20"
-						alt="Vercel logo"
+						alt=""
 					/>
-					Deploy to Vercel
+					Deploy to Netlify
 				</a>
 			</>
 		)
