@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-loading-indicator"
 homepageUrl: "https://github.com/florian-lefebvre/astro-loading-indicator"
-downloads: 823
+downloads: 849
 ---
