@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@halfgray/grayspace"
 repoUrl: "https://github.com/jack126guy/grayspace"
 homepageUrl: "https://github.com/jack126guy/grayspace#readme"
 badge: "new"
-downloads: 199
+downloads: 207
 ---

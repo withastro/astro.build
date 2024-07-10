@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@matthiesenxyz/astrolace"
 homepageUrl: "https://matthiesen.xyz"
 badge: "new"
-downloads: 547
+downloads: 655
 ---

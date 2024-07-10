@@ -1,14 +1,15 @@
 ---
 name: "astro-opengraph-images"
 title: "astro-opengraph-images"
-description: "<div align=\"center\">   <picture>     <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cdn.rawgit.com/shepherdjerred/astro-opengraph-images/main/assets/logo-dark.png\">     <source media=\"(prefers-color-scheme: light)\" srcset=\"https://cdn.rawgit"
+description: "Generate Open Graph images for your Astro site."
 categories:
   - "css+ui"
   - "performance+seo"
   - "frameworks"
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-opengraph-images"
-homepageUrl: "https://www.npmjs.com/package/astro-opengraph-images"
+homepageUrl: "https://github.com/shepherdjerred/astro-opengraph-images"
 badge: "new"
-downloads: 539
+downloads: 1098
+repoUrl: "https://github.com/shepherdjerred/astro-opengraph-images"
 ---
