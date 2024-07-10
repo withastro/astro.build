@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-preload"
 repoUrl: "https://github.com/lyonsyonii/astro-preload"
 homepageUrl: "https://github.com/lyonsyonii/astro-preload#readme"
-downloads: 161
+downloads: 185
 ---
