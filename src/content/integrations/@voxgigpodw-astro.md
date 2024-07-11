@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@voxgig/podw-astro"
 homepageUrl: "https://www.npmjs.com/package/@voxgig/podw-astro"
 badge: "new"
-downloads: 175
+downloads: 176
 ---
