@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@matthiesenxyz/astro-hashnode"
 repoUrl: "https://github.com/MatthiesenXYZ/astro-hashnode"
 homepageUrl: "https://github.com/matthiesenxyz/astro-hashnode"
-downloads: 82
+downloads: 83
 ---
