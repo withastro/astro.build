@@ -16,10 +16,13 @@ if (theme.Theme.repoUrl && typeof theme.Theme.stars !== "undefined") {
 		/https:\/\/github\.com\/(?<org>[^\/]+)\/(?<repo>[^\/]+)(?:\/tree\/(?<branch>[^\/]+)\/(?<subdirectory>.+))?/i;
 	const matches = theme.Theme.repoUrl.match(repoRE);
 	if (matches?.groups) {
-		netlifyUrl = new URL('https://app.netlify.com/start/deploy');
-		netlifyUrl.searchParams.set('repository', `https://github.com/${matches.groups.org}/${matches.groups.repo}`);
+		netlifyUrl = new URL("https://app.netlify.com/start/deploy");
+		netlifyUrl.searchParams.set(
+			"repository",
+			`https://github.com/${matches.groups.org}/${matches.groups.repo}`,
+		);
 		if (matches.groups.subdirectory) {
-			netlifyUrl.searchParams.set('create_from_path', matches.groups.subdirectory);
+			netlifyUrl.searchParams.set("create_from_path", matches.groups.subdirectory);
 		}
 	}
 }
