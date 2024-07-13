@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-better-image-service"
 repoUrl: "https://github.com/risu729/astro-better-image-service"
 homepageUrl: "https://github.com/risu729/astro-better-image-service#readme"
-downloads: 1233
+downloads: 1172
 ---
