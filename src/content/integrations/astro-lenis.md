@@ -7,6 +7,6 @@ categories:
   - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-lenis"
 homepageUrl: "https://www.npmjs.com/package/astro-lenis"
-downloads: 152
+downloads: 0
 badge: "new"
 ---

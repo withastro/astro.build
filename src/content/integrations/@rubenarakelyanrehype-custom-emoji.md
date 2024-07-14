@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@rubenarakelyan/rehype-custom-emoji"
 repoUrl: "https://github.com/rubenarakelyan/rehype-custom-emoji"
 homepageUrl: "https://github.com/rubenarakelyan/rehype-custom-emoji#readme"
 badge: "new"
-downloads: 236
+downloads: 237
 ---

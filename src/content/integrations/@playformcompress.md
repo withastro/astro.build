@@ -11,5 +11,5 @@ image: "/assets/integrations/@playform/compress.svg"
 repoUrl: "https://github.com/PlayForm/Compress"
 featured: 4
 homepageUrl: "HTTPS://GitHub.Com/PlayForm/Compress#readme"
-downloads: 16529
+downloads: 16109
 ---
