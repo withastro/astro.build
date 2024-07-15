@@ -453,7 +453,7 @@ const scraper = new ShowcaseScraper({
 		// Not Astro - 2024/07/08
 		"https://www.un.org/",
 		"https://getcockpit.com/",
-		"http://taskworld.com/", // <-- already included using HTTPS
+		"http://www.taskworld.com/", // <-- already included using HTTPS
 	],
 });
 await scraper.run();
