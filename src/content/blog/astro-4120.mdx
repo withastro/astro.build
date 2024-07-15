@@ -1,0 +1,69 @@
+---
+title: "Astro 4.12: Server Islands"
+description: Astro 4.12 is now available! This release includes a first look at Server Islands, improvements to pagination and syntax highlighting, and more.
+publishDate: "July 18, 2024"
+authors:
+  - erika
+coverImage: "/src/content/blog/_images/astro-4120/header_astro_4_12.webp"
+socialImage: "/src/content/blog/_images/astro-4120/og_image_4_12.webp"
+lang: "en"
+---
+
+import BlogSummary from "/src/components/BlogSummary.astro";
+
+<BlogSummary>
+  Astro 4.12 is out now! This release includes a first look at [Server Islands](https://astro.build/blog/future-of-astro-server-islands/), as well as improvements to pagination and syntax highlighting, and more.
+</BlogSummary>
+
+This release includes the following highlights:
+
+- [**Experimental: Server Islands**](#experimental-server-islands)
+- [**Added `first` and `last` URLs to pagination data**](#added-first-and-last-urls-to-pagination-data)
+- [**Added support for the Shiki's `defaultColor` option**](#added-support-for-the-shikis-defaultcolor-option)
+- [**New `inferRemoteSize` function**](#new-inferremotesize-function)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: Server Islands
+
+TODO: Matthew Please Write This Part
+
+## Added `first` and `last` URLs to pagination data
+
+The [paginate() helper](https://docs.astro.build/en/reference/api-reference/#paginate) now returns the `first` and `last` properties in the pagination data. These properties contain the first and last page urls, respectively. Thanks to [@tsawada](https://github.com/tsawada) for contributing this feature!
+
+## Added support for the Shiki's `defaultColor` option
+
+The `defaultColor` option allows you to override the values of a theme's inline style, adding only CSS variables to give you more flexibility in applying multiple color themes. This option can be configured in your Shiki config to apply throughout your site, or passed to Astro's built-in `<Code>` component to style an individual code block. Thank you to [@madcampos](https://github.com/madcampos) for contributing this!
+
+## New `inferRemoteSize` function
+
+In Astro 4.4, we added a new property to the Image and Picture components and `getImage()` to automatically infer the size of remote images. Thanks to [@itsmatteomanf](https://github.com/itsmatteomanf), this release now includes a new  function, `inferRemoteSize()`, that allows you to get the size of a remote image indendently of these components or `getImage()`.
+
+This can be useful if you're using the image width to generate different densities, or if you need the image dimension for styling purposes.
+
+```astro
+---
+import { inferRemoteSize, Image } from 'astro:assets';
+
+const { width, height } = await inferRemoteSize('https://...');
+---
+
+<Image src={"https://..."} width={width / 2} height={height} densities={[1.5, 2]}  />
+```
+
+## Some more things
+
+As we do, Astro 4.12 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4120) to learn more.
+
+Special thanks to Sarah, TODO and everyone else who contributed to this release.
