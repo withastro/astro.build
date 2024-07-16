@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-sal"
 repoUrl: "https://github.com/warpsio/astro-sal"
 homepageUrl: "https://github.com/warpsio/astro-sal"
-downloads: 2
+downloads: 3
 ---

@@ -6,8 +6,8 @@ const mainSponsors = [
 		height: 60,
 		label: "Netlify",
 		src: "sponsors/netlify",
-		href: "https://netlify.com/",
-		caption: "Official Hosting Partner",
+		href: "https://www.netlify.com/?utm_campaign=Astro-2024&utm_source=astro-referral",
+		caption: "Official Deployment Partner",
 	},
 	{
 		height: 32,
@@ -28,15 +28,9 @@ const mainSponsors = [
 const sponsors = [
 	{
 		height: 32,
-		label: "Chrome",
-		src: "sponsors/chrome",
-		href: "https://developer.chrome.com/blog/framework-fund-2022/",
-	},
-	{
-		height: 32,
-		label: "Ship Shape",
-		src: "sponsors/shipshape",
-		href: "https://shipshape.io/?ref=astro",
+		label: "JetBrains",
+		src: "sponsors/jetbrains",
+		href: "https://www.jetbrains.com/",
 	},
 	{
 		height: 22,
@@ -45,83 +39,68 @@ const sponsors = [
 		href: "https://buttercms.com/?utm_source=astro.build&utm_medium=banner&utm_campaign=sponsorship",
 	},
 	{
-		height: 18,
-		label: "Deepgram",
-		src: "sponsors/deepgram",
-		href: "https://deepgram.com/",
-	},
-	{
-		height: 22,
-		label: "Div Riots",
-		src: "sponsors/divriots",
-		href: "https://divriots.com/",
-	},
-	{
-		height: 32,
-		label: "Transloadit",
-		src: "sponsors/transloadit",
-		href: "https://transloadit.com/?utm_source=astro&utm_medium=referral&utm_campaign=sponsorship&utm_content=astro-website",
-	},
-	{
-		height: 32,
-		label: "CloudCannon",
-		src: "sponsors/cloudcannon",
-		href: "https://cloudcannon.com/astro-cms/?utm_campaign=Astro%20out-of-beta&utm_source=astro-sponsorship",
-	},
-	{
 		height: 64,
 		label: "ArcJet",
 		src: "sponsors/arcjet",
 		href: "https://arcjet.com/?ref=astro.build",
 	},
+	{
+		height: 23,
+		label: "HandsOnTable",
+		src: "sponsors/handsontable",
+		href: "https://handsontable.com/",
+	},
 ];
 ---
 
 <section class="mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-xl mx-auto px-4 sm:px-8">
-  <h2 class="max-w-screen-md mx-auto font-heading text-2xl lg:text-3xl font-bold text-white text-balance text-center">
-    Astro is free, open-source software made possible by these wonderful sponsors
-  </h2>
+	<h2
+		class="max-w-screen-md mx-auto font-heading text-2xl lg:text-3xl font-bold text-white text-balance text-center"
+	>
+		Astro is free, open-source software made possible by these wonderful sponsors
+	</h2>
 
-  <div
-    class="mt-8 lg:mt-10 max-w-4xl w-full mx-auto border border-astro-dark-100/20 bg-astro-dark-800 rounded-xl sm:rounded-2xl overflow-hidden"
-  >
-    <div
-      class="h-96 lg:h-44 flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-[1fr_auto_auto_1fr] text-center items-center justify-center lg:divide-x divide-y lg:divide-y-0 divide-astro-dark-100/20"
-    >
-      {
-        mainSponsors.map((sponsor) => (
-          <a
-            href={sponsor.href}
-            rel="sponsored"
-            target="_blank"
-            class="size-full basis-1/3 flex flex-col lg:grid lg:grid-rows-subgrid lg:row-span-full items-center justify-center gap-2 sm:gap-4 -outline-offset-2 hover:bg-astro-gray-100/5 transition-colors duration-400"
-          >
-            <Icon class="lg:row-start-2 lg:mx-auto" name={sponsor.src} height={sponsor.height} alt="" />
-            <span class="sr-only">{sponsor.label}</span>
-            <span class="lg:row-start-3 font-light text-astro-gray-300">
-              {sponsor.caption}
-            </span>
-          </a>
-        ))
-      }
-    </div>
+	<div
+		class="mt-8 lg:mt-10 max-w-4xl w-full mx-auto border border-astro-dark-100/20 bg-astro-dark-800 rounded-xl sm:rounded-2xl overflow-hidden"
+	>
+		<div
+			class="h-96 lg:h-44 flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-[1fr_auto_auto_1fr] text-center items-center justify-center lg:divide-x divide-y lg:divide-y-0 divide-astro-dark-100/20"
+		>
+			{
+				mainSponsors.map((sponsor) => (
+					<a
+						href={sponsor.href}
+						rel="sponsored"
+						target="_blank"
+						class="size-full basis-1/3 flex flex-col lg:grid lg:grid-rows-subgrid lg:row-span-full items-center justify-center gap-2 sm:gap-4 -outline-offset-2 hover:bg-astro-gray-100/5 transition-colors duration-400"
+					>
+						<Icon
+							class="lg:row-start-2 lg:mx-auto"
+							name={sponsor.src}
+							height={sponsor.height}
+							alt=""
+						/>
+						<span class="sr-only">{sponsor.label}</span>
+						<span class="lg:row-start-3 font-light text-astro-gray-300">{sponsor.caption}</span>
+					</a>
+				))
+			}
+		</div>
 
-    <div
-      class="grid grid-cols-2 lg:flex lg:flex-wrap divide-y divide-astro-dark-100/20"
-    >
-      {
-        sponsors.map((sponsor) => (
-          <a
-            href={sponsor.href}
-            rel="sponsored"
-            target="_blank"
-            class="h-32 lg:h-44 grow shrink basis-1/2 p-4 lg:basis-1/4 flex flex-col items-center justify-center gap-2 sm:gap-4 first:border-t first:border-astro-dark-100/20 odd:border-r odd:border-astro-dark-100/20 lg:[&:nth-child(2)]:border-r lg:[&:nth-child(6)]:border-r lg:[&:nth-child]:border-astro-dark-100/20 hover:bg-astro-gray-100/5 transition-colors  duration-400 last:odd:col-span-2 last:odd:border-r-0 -outline-offset-2"
-          >
-            <Icon name={sponsor.src} height={sponsor.height} alt="" />
-            <span class="sr-only">{sponsor.label}</span>
-          </a>
-        ))
-      }
-    </div>
-  </div>
+		<div class="grid grid-cols-2 lg:flex lg:flex-wrap divide-y divide-astro-dark-100/20">
+			{
+				sponsors.map((sponsor) => (
+					<a
+						href={sponsor.href}
+						rel="sponsored"
+						target="_blank"
+						class="h-32 lg:h-44 grow shrink basis-1/2 p-4 lg:basis-1/4 flex flex-col items-center justify-center gap-2 sm:gap-4 first:border-t first:border-astro-dark-100/20 odd:border-r odd:border-astro-dark-100/20 lg:[&:nth-child(2)]:border-r lg:[&:nth-child(6)]:border-r lg:[&:nth-child]:border-astro-dark-100/20 hover:bg-astro-gray-100/5 transition-colors  duration-400 last:odd:col-span-2 last:odd:border-r-0 -outline-offset-2"
+					>
+						<Icon name={sponsor.src} height={sponsor.height} alt="" />
+						<span class="sr-only">{sponsor.label}</span>
+					</a>
+				))
+			}
+		</div>
+	</div>
 </section>
