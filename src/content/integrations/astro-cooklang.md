@@ -5,6 +5,6 @@ description: "Use Cooklang recipes within Astro"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-cooklang"
-homepageUrl: "https://www.npmjs.com/package/astro-cooklang"
-downloads: 6
+homepageUrl: "https://astro-cooklang.kauh.at/"
+downloads: 71
 ---

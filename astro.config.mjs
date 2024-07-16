@@ -1,29 +1,20 @@
 import db from "@astrojs/db";
 import mdx from "@astrojs/mdx";
+import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
 import webVitals from "@astrojs/web-vitals";
 import astroExpressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import houston from "./houston.theme.json";
 
-import { rehypePrettyCode } from "rehype-pretty-code";
-
-/* https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables */
-const VERCEL_PREVIEW_SITE =
-	process.env.VERCEL_ENV !== "production" &&
-	process.env.VERCEL_URL &&
-	`https://${process.env.VERCEL_URL}`;
+/* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
+const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== "production" && process.env.DEPLOY_PRIME_URL;
 
 // https://astro.build/config
 export default defineConfig({
-	site: VERCEL_PREVIEW_SITE || "https://astro.build",
-	markdown: {
-		syntaxHighlight: false,
-		rehypePlugins: [[rehypePrettyCode, {}]],
-	},
+	site: NETLIFY_PREVIEW_SITE || "https://astro.build",
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
@@ -47,8 +38,5 @@ export default defineConfig({
 		},
 	},
 	output: "hybrid",
-	adapter: vercel({
-		imageService: true,
-		functionPerRoute: false,
-	}),
+	adapter: netlify({ imageCDN: false }),
 });

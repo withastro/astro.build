@@ -347,7 +347,10 @@ class ShowcaseScraper {
 		console.log("Waiting for page to settle");
 		await page.evaluate(() => {
 			return new Promise((resolve) => {
-				setTimeout(() => requestAnimationFrame(() => requestIdleCallback(resolve)), 2000);
+				setTimeout(
+					() => requestAnimationFrame(() => requestIdleCallback(resolve, { timeout: 2000 })),
+					2000,
+				);
 			});
 		});
 		console.log("Getting title");
@@ -442,6 +445,15 @@ const scraper = new ShowcaseScraper({
 		"https://zenorocha.com/",
 		"https://aperium.sk/",
 		"https://www.quickdreamviz.com/",
+		"https://taskworld.com/",
+		"https://codewithandrea.com/",
+		"https://notes.aliciasykes.com",
+		"http://www.gooseinsurance.com/",
+		"http://www.smartbunny.com/",
+		// Not Astro - 2024/07/08
+		"https://www.un.org/",
+		"https://getcockpit.com/",
+		"http://www.taskworld.com/", // <-- already included using HTTPS
 	],
 });
 await scraper.run();
