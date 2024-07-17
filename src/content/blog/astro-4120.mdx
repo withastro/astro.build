@@ -73,6 +73,10 @@ To test the viability of this idea we built [server-islands.com](https://server-
 
 [server-islands.com](https://server-islands.com) is consistently faster in repeated runs; it's about 28% faster in the critical First Contentful Paint metric.
 
+With Server islands there is a small waterfall caused by the islands depending on script first running, whereas partial prerendering starts its requests on the server. This means that while Server islands paint earlier, they might finishing later than PPR.
+
+The less cacheable the main content is, the less likely you will want to use either of these techniques. The ability to edge cache the main page content and dynamically load personalized content is the draw here, and we designed Server islands with this in mind. It works well for ecommerce but would probably not be something you want to use for a social network feed.
+
 ### Portability
 
 We built **Server islands** with portability in mind. It doesn't depend on any server infrastructure so it will work with any host you have, from a Node.js server in a Docker container to the serverless provider of your choice.
