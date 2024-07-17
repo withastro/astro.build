@@ -39,25 +39,47 @@ yarn upgrade astro --latest
 
 ## Experimental: Server Islands
 
-Today we're announcing experimental support for **Server Islands**, bringing islands architecture to the server. With Server Islands you mark components to run dynamically on the server during page load, allowing the rest of the page to be cached at the edge.
+In 2021 Astro brought the idea of [islands architecture](https://astro.build/blog/introducing-astro/) to the mainstream, allowing you to create "islands" of interactive client-side components while most of your page is generated statically.
 
-In 2021 Astro brought the idea of [islands architecture](https://astro.build/blog/introducing-astro/) to the mainstream. We noticed that developers were building content oriented sites using frontend frameworks even though little of the page were dynamic. Islands architecture provides a way to limit the amount of JavaScript loaded in the client without sacrificing the DX (developer experience) that modern frameworks afford.
+With **Server islands** we are extending this same architecture to the server. Server islands make it easy to combine high performance static HTML and dynamic server-generated components.
 
-With **Server Islands** we are extending this same architecture to the server side as well. Within any given web page you might have content that is:
+Within any given web page you might have content that is:
 
 - Completely static and never changes.
 - Dynamically backed by a database that changes infrequently, but more often than you deploy.
 - Personalized content, tailored to individual users.
 
-Today you must choose 1 caching strategy for all of these types of content, and if the page is a logged-in experience that usually means no caching at all. Server Islands allow you to mark certain components as being islands. Doing so will **defer** them from loading until the browser has first downloaded the shell. 
+Today you must choose 1 caching strategy for all of these types of content, and if the page is a logged-in experience that usually means no caching at all. With Server islands you get the best of both worlds.
 
 <BlogContentImage src={islandDiag} alt="A diagram showing the server island population parts of the page from the server." />
 
-The server islands are used for your most dynamic content; personalized content like the user's avatar, their shopping cart, and product reviews. With these components deferred you're free to more aggressively cache the page itself.
+Server islands are used for your most dynamic content; personalized content like the user's avatar, their shopping cart, and product reviews. With these components deferred you're free to more aggressively cache the page itself.
 
-This means that users, logged in or not, will see the most critical parts of the page instantly, as they are caching on Edge CDNs. With careful design considerations the fallback content will be visible for a short amount of time before the dynamic islands are then loaded.
+This means that users, logged in or not, will see the most critical parts of the page instantly, as they are caching on Edge CDNs. Fallback content will be visible for a short amount of time before the dynamic islands are then loaded.
 
 Each island is loaded independent from the rest; this means a slower island, such as one connected to a legacy backend, won't delay the rest of personalized content from being seen and interacted with.
+
+### Performance
+
+To test the viability of this idea we built [server-islands.com](https://server-islands.com/). This demo is inspired by the [Next.js Partial Prerendering](https://www.partialprerendering.com/) demo, reskinned to suit Astro's personality. **Server Islands** has a lot in common with Partial Prerendering, especially in its goal of allowing increased cacheability of pages.
+
+| <span class="whitespace-nowrap">Metrics</span>                                                                                                 | <a href="https://partialprerendering.com/">partialprerendering.com</a>                                                 | <a href="https://server-islands.com/">server-islands.com</a>                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| <abbr class="sm:hidden no-underline" title="Time To First Byte">TTFB</abbr><span class="hidden sm:inline">Time To First Byte</span>            | 0.838s                                                               | 0.766s                                                               |
+| <abbr class="sm:hidden no-underline" title="First Contentful Paint">FCP</abbr><span class="hidden sm:inline">First Contentful Paint</span>     | 1.740s                                                               | 1.251s                                                               |
+| <abbr class="sm:hidden no-underline" title="Largest Contentful Paint">LCP</abbr><span class="hidden sm:inline">Largest Contentful Paint</span> | 1.740s                                                               | 1.405s                                                               |
+| <abbr class="sm:hidden no-underline" title="Total Blocking Time">TBT</abbr><span class="hidden sm:inline">Total Blocking Time</span>           | 0.093s                                                               | 0.018s                                                               |
+| Source                                                                                                                                         | [WebPageTest](https://www.webpagetest.org/result/240715_BiDc15_G7W/) | [WebPageTest](https://www.webpagetest.org/result/240716_AiDc6D_D1N/) |
+
+[server-islands.com](https://server-islands.com) is consistently faster in repeated runs; it's about 28% faster in the critical First Contentful Paint metric.
+
+### Portability
+
+We built **Server islands** with portability in mind. It doesn't depend on any server infrastructure so it will work with any host you have, from a Node.js server in a Docker container to the serverless provider of your choice.
+
+Our implementation happens mostly at build-time, where component content is swapped out for a small script, one that can almost fit into a Tweet.
+
+Each of the islands marked with `server:defer` are split off into their own special route which the script fetches at run time. The trade-off is that the island doesn't get a head-start rendering as it might if it depended on edge handling, but we think the performance numbers favor the simpler approach we've taken thus far.
 
 ### Trying out Server Islands
 
@@ -88,22 +110,6 @@ Server islands, as the name implies, run on the server, so you'll need to use ei
 When Astro builds your site it will omit the component and inject a script in its place, in addition to the content you've marked with `slot="fallback"`. When the page loads in the browser these components will be requested, along with the props you passed to them, to a special endpoint that renders them and returns the HTML.
 
 Server Islands are normal Astro components and can use any of the features you expect from Astro like middleware, slots, `client:` islands.
-
-### Performance
-
-To test the viability of this idea we built [server-islands.com](https://server-islands.com/). This demo is inspired by the [Next.js Partial Prerendering](https://www.partialprerendering.com/) demo, reskinned to suit Astro's personality. **Server Islands** has a lot in common with Partial Prerendering, especially in its goal of allowing increased cacheability of pages.
-
-| <span class="whitespace-nowrap">Metrics</span>                                                                                                 | Partial Prerendering                                                 | Server Islands                                                       |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| <abbr class="sm:hidden no-underline" title="Time To First Byte">TTFB</abbr><span class="hidden sm:inline">Time To First Byte</span>            | 0.838s                                                               | 0.766s                                                               |
-| <abbr class="sm:hidden no-underline" title="First Contentful Paint">FCP</abbr><span class="hidden sm:inline">First Contentful Paint</span>     | 1.740s                                                               | 1.251s                                                               |
-| <abbr class="sm:hidden no-underline" title="Largest Contentful Paint">LCP</abbr><span class="hidden sm:inline">Largest Contentful Paint</span> | 1.740s                                                               | 1.405s                                                               |
-| <abbr class="sm:hidden no-underline" title="Total Blocking Time">TBT</abbr><span class="hidden sm:inline">Total Blocking Time</span>           | 0.093s                                                               | 0.018s                                                               |
-| Source                                                                                                                                         | [WebPageTest](https://www.webpagetest.org/result/240715_BiDc15_G7W/) | [WebPageTest](https://www.webpagetest.org/result/240716_AiDc6D_D1N/) |
-
-As you can see from this table, the numbers are extremely close. Server Islands has an advantage in painting slightly faster due to being more lightweight both in the infrastructure setting in front of the request, and the amount of code needed in the client throughout the process. Partial prerendering has an advantage in that it can finish slightly faster, due to starting the request for its deferred content on the server before the HTML reaches the user's browser.
-
-Overall we are happy with the trade-offs we've made for Server Islands. Our implementation happens mostly at build-time, where component content is swapped out for a small script, one that can almost fit into a Tweet. This means that Server Islands aren't dependant on any particular server infrastructure and will run on any host.
 
 ### Getting involved
 
