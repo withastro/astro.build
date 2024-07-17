@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@inox-tools/runtime-logger"
 homepageUrl: "https://www.npmjs.com/package/@inox-tools/runtime-logger"
 badge: "new"
-downloads: 164
+downloads: 178
 ---
