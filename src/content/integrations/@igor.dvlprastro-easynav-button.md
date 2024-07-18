@@ -11,5 +11,5 @@ npmUrl: "https://www.npmjs.com/package/@igor.dvlpr/astro-easynav-button"
 repoUrl: "https://github.com/igorskyflyer/astro-easynav-button"
 homepageUrl: "https://github.com/igorskyflyer/astro-easynav-button"
 badge: "new"
-downloads: 151
+downloads: 170
 ---
