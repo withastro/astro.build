@@ -71,11 +71,13 @@ To test the viability of this idea we built [server-islands.com](https://server-
 | <abbr class="sm:hidden no-underline" title="Total Blocking Time">TBT</abbr><span class="hidden sm:inline">Total Blocking Time</span>           | 0.093s                                                               | 0.018s                                                               |
 | Source                                                                                                                                         | [WebPageTest](https://www.webpagetest.org/result/240715_BiDc15_G7W/) | [WebPageTest](https://www.webpagetest.org/result/240716_AiDc6D_D1N/) |
 
-[server-islands.com](https://server-islands.com) is consistently faster in repeated runs; it's about 28% faster in the critical First Contentful Paint metric.
+[server-islands.com](https://server-islands.com) performs consistently faster in repeated runs; it scores a 20% faster Largest Contentful Paint, which is one of Google's 3 Core Web Vitals impacting both user experience and SEO.
 
-With Server islands there is a small waterfall caused by the islands depending on script first running, whereas partial prerendering starts its requests on the server. This means that while Server islands paint earlier, they might finishing later than PPR.
+Instead of starting the request to the origin on the server like PPR, Server Islands do so from the browser. This means that while Server islands paint earlier, they might finish later than PPR. 
 
-The less cacheable the main content is, the less likely you will want to use either of these techniques. The ability to edge cache the main page content and dynamically load personalized content is the draw here, and we designed Server islands with this in mind. It works well for ecommerce but would probably not be something you want to use for a social network feed.
+Both Server islands and PPR work best in sites like these, where the main page content can be edge cached. They work well for ecommerce but would probably not be something you want to use for a social network feed. Due to the page being edge cached, that wait for the island request is minimal.
+
+Ultimately, we are confident in this tradeoff as being the best overall performance for Astro users across both the user experience and passing Core Web Vitals without requiring any special backend infrastructure or support to get started.
 
 ### Portability
 
