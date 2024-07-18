@@ -70,4 +70,26 @@
 	.prose > .expressive-code pre {
 		@apply my-6 rounded-md border border-astro-gray-400;
 	}
+
+	.prose table {
+		@apply overflow-auto border-spacing-0 text-sm sm:text-base w-full;
+	}
+	.prose tr {
+		@apply w-full;
+	}
+	.prose :is(th, td) {
+		@apply border-b border-astro-gray-500 py-2 px-4 align-baseline;
+	}
+	.prose :is(th, td):first-child {
+		@apply pl-0;
+	}
+	.prose :is(th, td):last-child {
+		@apply pr-0;
+	}
+	.prose th {
+		@apply text-white font-medium;
+	}
+	.prose th:not([align]) {
+		@apply text-start;
+	}
 }
