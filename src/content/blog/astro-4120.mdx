@@ -1,6 +1,6 @@
 ---
 title: "Astro 4.12: Server Islands"
-description: Astro 4.12 is now available! This release includes a first look at Server Islands, improvements to pagination and syntax highlighting, and more.
+description: Astro 4.12 is now available! This release includes includes the first experimental release of Server Islands, improvements to pagination and syntax highlighting, and more.
 publishDate: "July 18, 2024"
 authors:
   - erika
@@ -15,7 +15,7 @@ import BlogSummary from "/src/components/BlogSummary.astro";
 import islandDiag from "/src/content/blog/_images/future-of-astro-server-islands/dark-mode-server-islands-diag.webp";
 
 <BlogSummary>
-  Astro 4.12 is out now! This release includes a first look at [Server Islands](https://astro.build/blog/future-of-astro-server-islands/), as well as improvements to pagination and syntax highlighting, and more.
+  Astro 4.12 is out now! This release includes a first experimental release of Server Islands, our new solution to integrate high performance static HTML and dynamic server-generated components together. Improvements to pagination and syntax highlighting are also included.
 </BlogSummary>
 
 This release includes the following highlights:
@@ -73,7 +73,7 @@ To test the viability of this idea we built [server-islands.com](https://server-
 
 [server-islands.com](https://server-islands.com) performs consistently faster in repeated runs; it scores a 20% faster Largest Contentful Paint, which is one of Google's 3 Core Web Vitals impacting both user experience and SEO.
 
-Instead of starting the request to the origin on the server like PPR, Server Islands do so from the browser. This means that while Server islands paint earlier, they might finish later than PPR. 
+Instead of starting the request to the origin on the server like PPR, Server Islands do so from the browser. This means that while Server islands paint earlier, they might finish later than PPR.
 
 Both Server islands and PPR work best in sites like these, where the main page content can be edge cached. They work well for ecommerce but would probably not be something you want to use for a social network feed. Due to the page being edge cached, that wait for the island request is minimal.
 
