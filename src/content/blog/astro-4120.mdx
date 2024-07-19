@@ -13,6 +13,7 @@ lang: "en"
 import BlogContentImage from "/src/components/BlogContentImage.astro";
 import BlogSummary from "/src/components/BlogSummary.astro";
 import islandDiag from "/src/content/blog/_images/future-of-astro-server-islands/dark-mode-server-islands-diag.webp";
+import Note from "/src/components/Note.astro";
 
 <BlogSummary>
   Astro 4.12 is out now! This release includes the first experimental release of Server Islands, our new solution to integrate high performance static HTML and dynamic server-generated components together. Improvements to pagination and syntax highlighting are also included.
@@ -61,7 +62,7 @@ Each island is loaded independent from the rest; this means a slower island, suc
 
 ### Performance
 
-*[partialprerendering.com](https://www.partialprerendering.com/) has had some changes since this post was published. Rerunning the benchmarks maybe produce different results. We stand by these results as accurate the time of publishing.*
+<Note>[partialprerendering.com](https://www.partialprerendering.com/) has had some changes since this post was published. Rerunning the benchmarks maybe produce different results. We stand by these results as accurate the time of publishing.</Note>
 
 To test the viability of this idea we built [server-islands.com](https://server-islands.com/). This demo is inspired by the [Next.js Partial Prerendering](https://www.partialprerendering.com/) demo, reskinned to suit Astro's personality. **Server Islands** has a lot in common with Partial Prerendering (PPR), especially in its goal of allowing increased cacheability of pages.
 
