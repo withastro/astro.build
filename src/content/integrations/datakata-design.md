@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/datakata-design"
 homepageUrl: "https://www.npmjs.com/package/datakata-design"
-downloads: 71
+downloads: 72
 ---
