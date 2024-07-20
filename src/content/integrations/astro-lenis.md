@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-lenis"
 homepageUrl: "https://www.npmjs.com/package/astro-lenis"
-downloads: 17
+downloads: 20
 ---

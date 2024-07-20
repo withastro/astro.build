@@ -10,6 +10,6 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-opengraph-images"
 homepageUrl: "https://github.com/shepherdjerred/astro-opengraph-images"
 badge: "new"
-downloads: 1404
+downloads: 1410
 repoUrl: "https://github.com/shepherdjerred/astro-opengraph-images"
 ---
