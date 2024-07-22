@@ -127,7 +127,11 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 
 					<CardGridGroup
 						title={
-							showRecentlyAdded && recentlyAdded.length > 0 ? 'Popular integrations' : undefined
+							showRecentlyAdded && recentlyAdded.length > 0
+								? 'Popular integrations'
+								: search
+									? `Results for "${search}"`
+									: undefined
 						}
 					>
 						<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
