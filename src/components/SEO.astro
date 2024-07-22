@@ -44,11 +44,6 @@ const og = {
 
 const twitter = {
 	name,
-	title,
-	description,
-	canonicalURL,
-	image,
-	locale,
 	card: "summary_large_image",
 	...Astro.props.twitter,
 } satisfies Twitter;
@@ -86,8 +81,3 @@ function formatCanonicalURL(url: string | URL) {
 <!-- Twitter Tags -->
 {twitter.card && <meta name="twitter:card" content={twitter.card} />}
 {twitter.handle && <meta name="twitter:site" content={twitter.handle} />}
-
-<meta name="twitter:title" content={twitter.title} />
-<meta name="twitter:description" content={twitter.description} />
-{twitter.image && <meta name="twitter:image" content={twitter.image.src} />}
-{twitter.image && <meta name="twitter:image:alt" content={twitter.image.alt} />}
