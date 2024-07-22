@@ -14,7 +14,7 @@ import {
 	getToolbarPackagePriority,
 	isNewPackage,
 } from "./integrations.mjs";
-import { stringifyLinks } from "./markdown.mjs";
+import { markdownToPlainText } from "./markdown.mjs";
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs";
 
 function isOfficial(pkg) {
@@ -69,7 +69,7 @@ function normalizePackageDetails(data, pkg) {
 	return {
 		name: data.name,
 		title: data.name,
-		description: stringifyLinks(data.description),
+		description: markdownToPlainText(data.description),
 		categories: uniqCategories,
 		npmUrl,
 		repoUrl,
