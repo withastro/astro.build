@@ -5,11 +5,9 @@ description: "A set of Accessible, easy to use, Front-end UI Components for Astr
 categories:
   - "css+ui"
   - "accessibility"
-  - "featured"
 npmUrl: "https://www.npmjs.com/package/accessible-astro-components"
 image: "/assets/integrations/accessible-astro-components.png"
 repoUrl: "https://github.com/markteekman/accessible-astro-components"
-featured: 15
 homepageUrl: "https://accessible-astro.netlify.app/accessible-components/"
 downloads: 4100
 url: "https://components.accessible-astro.dev/"

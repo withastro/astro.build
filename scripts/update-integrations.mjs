@@ -10,7 +10,6 @@ import {
 	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
-	getFeaturedPackagePriority,
 	getOverrides,
 	getToolbarPackagePriority,
 	isNewPackage,
@@ -50,13 +49,11 @@ async function getIntegrationFiles() {
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
-	const featured = getFeaturedPackagePriority(pkg);
 	const toolbar = getToolbarPackagePriority(pkg);
 	const official = isOfficial(pkg);
 
 	const otherCategories = [
 		official ? "official" : undefined,
-		featured ? "featured" : undefined,
 		toolbar ? "toolbar" : undefined,
 		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean);
@@ -86,14 +83,12 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const integrationOverrides = getOverrides(pkg) || {};
 
 	const badge = badgeForPackage(details);
-	const featured = getFeaturedPackagePriority(pkg);
 	const toolbar = getToolbarPackagePriority(pkg);
 
 	const newData = {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		badge,
-		featured,
 		toolbar,
 	};
 
