@@ -454,6 +454,7 @@ const scraper = new ShowcaseScraper({
 		"https://www.un.org/",
 		"https://getcockpit.com/",
 		"http://www.taskworld.com/", // <-- already included using HTTPS
+		"http://keyboardcounter.online/",
 	],
 });
 await scraper.run();
