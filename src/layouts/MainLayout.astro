@@ -16,18 +16,15 @@ const { bgClass = "bg-black", header = "default", ...head } = Astro.props;
 ---
 
 <!doctype html>
-<html
-  lang="en"
-  class:list={[
-    "astro-gray-700 overflow-x-hidden break-words text-astro-gray-100 [color-scheme:dark] [word-break:break-word]",
-    bgClass,
-    Astro.props.class,
-  ]}
->
+<html lang="en">
   <head>
     <BaseHead {...head} />
   </head>
-  <body class="flex min-h-screen max-w-screen flex-col overflow-x-hidden">
+  <body class:list={[
+    "astro-gray-700 overflow-x-hidden break-words text-astro-gray-100 [color-scheme:dark] [word-break:break-word]",
+    bgClass,
+    Astro.props.class,
+  ]} class="flex min-h-screen max-w-screen flex-col overflow-x-hidden">
     <SkipLink />
     <div
       id="nav"
