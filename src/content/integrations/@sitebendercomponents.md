@@ -1,7 +1,7 @@
 ---
 name: "@sitebender/components"
 title: "@sitebender/components"
-description: "![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)"
+description: "stability-beta"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@sitebender/components"

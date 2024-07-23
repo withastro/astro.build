@@ -1,7 +1,7 @@
 ---
 name: "astro-link"
 title: "astro-link"
-description: "Supercharge your links. This component detects external / anchor / same domain / mail / telephone `href`, and apply optimizations accordingly."
+description: "Supercharge your links. This component detects external / anchor / same domain / mail / telephone href, and apply optimizations accordingly."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-link"

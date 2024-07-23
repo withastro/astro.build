@@ -1,7 +1,7 @@
 ---
 name: "astro-bun-adapter"
 title: "astro-bun-adapter"
-description: "> Allows Astro to run your SSR site with the Bun's native API `Bun.serve`."
+description: "Allows Astro to run your SSR site with the Bun's native API Bun.serve."
 categories:
   - "adapters"
   - "css+ui"
