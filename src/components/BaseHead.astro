@@ -35,6 +35,8 @@ const resolvedImage = {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title set:html={smartypants(title, 1)} />
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#8D46E7" />
 
 <!-- Fathom - beautiful, simple website analytics -->
 <script is:inline src="https://cdn.usefathom.com/script.js" data-site="EZBHTSIG" defer></script>
@@ -45,11 +47,9 @@ const resolvedImage = {
 
 <!-- Low Priority Global Metadata -->
 <Favicon />
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
-
-<meta name="generator" content={Astro.generator} />
-<meta name="theme-color" content="#8D46E7" />
 
 <SEO
 	name={siteInfo.name}

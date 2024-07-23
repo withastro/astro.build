@@ -1,7 +1,7 @@
 ---
 name: "astro-lucide"
 title: "astro-lucide"
-description: " Astro component to use Lucide icons "
+description: "Astro component to use Lucide icons"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-lucide"

@@ -1,7 +1,7 @@
 ---
 name: "astro-svg-sprite"
 title: "astro-svg-sprite"
-description: "A zero-dependency Astro Integration that generates a `sprite.svg` from SVG files in your Astro project."
+description: "A zero-dependency Astro Integration that generates a sprite.svg from SVG files in your Astro project."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-svg-sprite"

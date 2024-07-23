@@ -1,7 +1,7 @@
 ---
 name: "astro-zerog-fonts"
 title: "astro-zerog-fonts"
-description: "> Privacy-friendly drop-in replacement for Google Fonts by Bunny CDN"
+description: "Privacy-friendly drop-in replacement for Google Fonts by Bunny CDN"
 categories:
   - "css+ui"
   - "performance+seo"

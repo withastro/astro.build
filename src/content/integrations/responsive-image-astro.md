@@ -1,7 +1,7 @@
 ---
 name: "responsive-image-astro"
 title: "responsive-image-astro"
-description: "> **Experimental package - Please refer to source code if you don't feel comfortable using it.**"
+description: "Experimental package - Please refer to source code if you don't feel comfortable using it."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/responsive-image-astro"
