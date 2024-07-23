@@ -1,7 +1,7 @@
 ---
 name: "astro-tooltips"
 title: "astro-tooltips"
-description: "Progressively enhanced. This component globally override regular `title` attributes on all links with Tippy.js tooltips."
+description: "Progressively enhanced. This component globally override regular title attributes on all links with Tippy.js tooltips."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-tooltips"

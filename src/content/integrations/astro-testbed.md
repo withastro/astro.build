@@ -1,7 +1,7 @@
 ---
 name: "astro-testbed"
 title: "astro-testbed"
-description: "Complete toolbox for Astro / JSX component testing and analysis.\nFor design systems, storybooks, local dev. isolation, documentation…\n"
+description: "Complete toolbox for Astro / JSX component testing and analysis.\nFor design systems, storybooks, local dev. isolation, documentation…"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-testbed"

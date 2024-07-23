@@ -1,7 +1,7 @@
 ---
 name: "astro-stylex"
 title: "astro-stylex"
-description: "This **Astro integration][astro-integration]** brings [StyleX's](https://stylexjs.com/docs/learn/) CSS compiler to every `.astro` file and [framework component in your project."
+description: "This [Astro integration][astro-integration] brings StyleX's CSS compiler to every .astro file and framework component in your project."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-stylex"

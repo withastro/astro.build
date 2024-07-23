@@ -1,7 +1,7 @@
 ---
 name: "astro-auto-adapter"
 title: "astro-auto-adapter"
-description: "Let's you choose between Astro Adapters based off of the `ASTRO_ADAPTER_MODE` environment variable."
+description: "Let's you choose between Astro Adapters based off of the ASTRO_ADAPTER_MODE environment variable."
 categories:
   - "css+ui"
   - "adapters"
