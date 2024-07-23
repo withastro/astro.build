@@ -1,7 +1,7 @@
 ---
 name: "astro-client-interaction"
 title: "astro-client-interaction"
-description: "Load and hydrate framework components on first interaction by adding a `client:interaction` directive."
+description: "Load and hydrate framework components on first interaction by adding a client:interaction directive."
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-client-interaction"
