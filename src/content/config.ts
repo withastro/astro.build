@@ -2,7 +2,6 @@ import { defineCollection } from "astro:content";
 import { z } from "zod";
 
 export const IntegrationCategories = new Map([
-	["featured", "Featured"],
 	["recent", "Recently Added"],
 	["official", "Official"],
 	["frameworks", "Frameworks"],
@@ -92,9 +91,9 @@ export const collections = {
 			npmUrl: z.string().url(),
 			homepageUrl: z.string().url().optional(),
 			official: z.boolean().default(false),
-			featured: z.number().min(1).optional(),
 			toolbar: z.number().min(1).optional(),
 			downloads: z.number().min(0).default(0),
+			downloadFactor: z.number().min(0).default(1),
 			badge: z.string().optional(),
 		}),
 	},

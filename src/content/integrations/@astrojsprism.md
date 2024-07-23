@@ -9,5 +9,7 @@ npmUrl: "https://www.npmjs.com/package/@astrojs/prism"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/reference/api-reference/#prism-"
 downloads: 892250
+# @astrojs/prism is bundled with astro. In reality far fewer people use it than download count suggests
+downloadFactor: 0.0005
 official: true
 ---

@@ -78,7 +78,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 
 <MainLayout
 	title="Integrations"
-	image={{ src: "/og/integrations.jpg", alt: "Discover our integrations" }}
+	image={{ src: '/og/integrations.jpg', alt: 'Discover our integrations' }}
 >
 	<div class="bg-grid relative">
 		<div class="grid-container">
@@ -110,10 +110,10 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 
 					{showRecentlyAdded && recentlyAdded.length > 0 && (
 						<CardGridGroup
-							title="Recently Added"
+							title="Recently added"
 							cta={
 								recentlyAdded.length > 3
-									? { href: recentlyAddedHref, text: "View all new integrations" }
+									? { href: recentlyAddedHref, text: 'View all new integrations' }
 									: undefined
 							}
 						>
@@ -126,7 +126,13 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 					)}
 
 					<CardGridGroup
-						title={showRecentlyAdded && recentlyAdded.length > 0 ? "All Integrations" : undefined}
+						title={
+							showRecentlyAdded && recentlyAdded.length > 0
+								? 'Popular integrations'
+								: search
+									? `Results for "${search}"`
+									: undefined
+						}
 					>
 						<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
 							{integrations.map((integration) => (
