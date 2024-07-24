@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-robots"
 repoUrl: "https://github.com/ACP-CODE/astro-robots"
 homepageUrl: "https://github.com/ACP-CODE/astro-robots#readme"
-downloads: 1337
+downloads: 1366
 ---
