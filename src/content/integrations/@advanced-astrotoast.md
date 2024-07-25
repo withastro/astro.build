@@ -5,6 +5,6 @@ description: "astro-toast is a simple component for displaying toasts on your we
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@advanced-astro/toast"
-homepageUrl: "https://github.com/advenced-astro/toast"
+homepageUrl: "https://github.com/advanced-astro/toast"
 downloads: 8
 ---
