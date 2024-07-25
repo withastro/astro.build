@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/pkg2_accordion_printhey"
 homepageUrl: "https://www.npmjs.com/package/pkg2_accordion_printhey"
 badge: "new"
-downloads: 61
+downloads: 62
 ---

@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/fullcart"
 homepageUrl: "https://fullcart.dev/"
-downloads: 16
+downloads: 14
 ---
