@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@kcws/astro-decap-cms"
 repoUrl: "https://github.com/kc-workspace/kcws-js"
 homepageUrl: "https://github.com/kc-workspace/kcws-js/tree/main/packages/astro-decap-cms"
-downloads: 573
+downloads: 574
 ---
