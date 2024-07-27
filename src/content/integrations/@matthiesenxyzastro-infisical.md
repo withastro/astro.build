@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@matthiesenxyz/astro-infisical"
 repoUrl: "https://github.com/matthiesenxyz/astro-infisical"
 homepageUrl: "https://github.com/matthiesenxyz/astro-infisical#readme"
 badge: "new"
-downloads: 118
+downloads: 119
 ---
