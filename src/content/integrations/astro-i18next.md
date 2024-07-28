@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-i18next"
 repoUrl: "https://github.com/yassinedoghri/astro-i18next"
 homepageUrl: "https://astro-i18next.yassinedoghri.com/"
-downloads: 7189
+downloads: 6983
 ---
