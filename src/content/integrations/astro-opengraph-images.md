@@ -6,10 +6,8 @@ categories:
   - "css+ui"
   - "performance+seo"
   - "frameworks"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-opengraph-images"
 homepageUrl: "https://github.com/shepherdjerred/astro-opengraph-images"
-badge: "new"
 downloads: 1504
 repoUrl: "https://github.com/shepherdjerred/astro-opengraph-images"
 ---
