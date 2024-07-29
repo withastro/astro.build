@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-fouc-killer"
 repoUrl: "https://github.com/AVGVSTVS96/astro-fouc-killer"
 homepageUrl: "https://github.com/avgvstvs96/astro-fouc-killer"
 badge: "new"
-downloads: 490
+downloads: 491
 ---
