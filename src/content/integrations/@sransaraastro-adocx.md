@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@sransara/astro-adocx"
 repoUrl: "https://github.com/sransara/astro-adocx"
 homepageUrl: "https://github.com/sransara/astro-adocx#readme"
 badge: "new"
-downloads: 1416
+downloads: 1417
 ---
