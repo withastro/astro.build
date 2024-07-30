@@ -450,6 +450,11 @@ const scraper = new ShowcaseScraper({
 		"https://notes.aliciasykes.com",
 		"http://www.gooseinsurance.com/",
 		"http://www.smartbunny.com/",
+		// Not Astro - 2024/07/08
+		"https://www.un.org/",
+		"https://getcockpit.com/",
+		"http://www.taskworld.com/", // <-- already included using HTTPS
+		"http://keyboardcounter.online/",
 	],
 });
 await scraper.run();

@@ -10,12 +10,11 @@ import {
 	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
-	getFeaturedPackagePriority,
 	getOverrides,
 	getToolbarPackagePriority,
 	isNewPackage,
 } from "./integrations.mjs";
-import { stringifyLinks } from "./markdown.mjs";
+import { markdownToPlainText } from "./markdown.mjs";
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs";
 
 function isOfficial(pkg) {
@@ -50,13 +49,11 @@ async function getIntegrationFiles() {
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
-	const featured = getFeaturedPackagePriority(pkg);
 	const toolbar = getToolbarPackagePriority(pkg);
 	const official = isOfficial(pkg);
 
 	const otherCategories = [
 		official ? "official" : undefined,
-		featured ? "featured" : undefined,
 		toolbar ? "toolbar" : undefined,
 		isNewPackage(data) ? "recent" : undefined,
 	].filter(Boolean);
@@ -72,7 +69,7 @@ function normalizePackageDetails(data, pkg) {
 	return {
 		name: data.name,
 		title: data.name,
-		description: stringifyLinks(data.description),
+		description: markdownToPlainText(data.description),
 		categories: uniqCategories,
 		npmUrl,
 		repoUrl,
@@ -86,14 +83,12 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const integrationOverrides = getOverrides(pkg) || {};
 
 	const badge = badgeForPackage(details);
-	const featured = getFeaturedPackagePriority(pkg);
 	const toolbar = getToolbarPackagePriority(pkg);
 
 	const newData = {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		badge,
-		featured,
 		toolbar,
 	};
 

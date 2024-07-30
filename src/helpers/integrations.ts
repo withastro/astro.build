@@ -60,23 +60,14 @@ export function validateCategories(
 	return true;
 }
 
-// Sorting priority: featured first, then compare downloads, then sort alphabetically
+// Sorting priority: compare download count then sort alphabetically
 function sortIntegrations(a: CollectionEntry<"integrations">, b: CollectionEntry<"integrations">) {
-	if (a.data.featured && b.data.featured) {
-		return a.data.featured - b.data.featured;
-	}
+	const aDownloads = a.data.downloadFactor * a.data.downloads;
+	const bDownloads = b.data.downloadFactor * b.data.downloads;
 
-	if (a.data.featured && !b.data.featured) {
-		return -1;
-	}
-
-	if (!a.data.featured && b.data.featured) {
-		return 1;
-	}
-
-	if (a.data.downloads === b.data.downloads) {
+	if (aDownloads === bDownloads) {
 		return b.data.name.localeCompare(a.data.name);
 	}
 
-	return b.data.downloads - a.data.downloads;
+	return bDownloads - aDownloads;
 }
