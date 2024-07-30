@@ -9,7 +9,9 @@ socialImage: "/src/content/blog/_images/astro-4130/og_image_4_13.webp"
 lang: "en"
 ---
 
+import BlogContentImage from "/src/components/BlogContentImage.astro";
 import BlogSummary from "/src/components/BlogSummary.astro";
+import slowPageImage from "/src/content/blog/_images/astro-4130/slow-page.webp";
 
 <BlogSummary>
   Astro 4.13 is out now! This release includes stabilized experimental features, logging improvements, and more.
@@ -36,9 +38,9 @@ yarn upgrade astro --latest
 
 ## Stable: Request Rewriting
 
-[In Astro 4.8](https://astro.build/blog/astro-480/#experimental-request-rewriting), we added experimental support for request rewriting. In Astro 4.13, we're excited to announce that request rewriting is now stable! This feature allows you to rewrite incoming requests to different paths or URLs, enabling you to create custom routing rules for your site.
+[In Astro 4.8](https://astro.build/blog/astro-480/#experimental-request-rewriting), we added experimental support for request rewriting, a powerful feature that can be used to render another page without changing the URL of the browser in Astro pages and endpoints. In Astro 4.13, we're excited to announce that request rewriting is now stable!
 
-If you were using request rewriting in Astro 4.8, you can now remove the `experimental.rewrites` option from your Astro config. The feature is now enabled by default.
+If you were already using request rewriting prior to Astro 4.13, you can now remove the `experimental.rewrites` option from your Astro config. The feature is now enabled by default.
 
 ```diff
 import { defineConfig } from 'astro';
@@ -50,11 +52,13 @@ export default defineConfig({
 })
 ```
 
-As a reminder, request rewriting is a powerful feature that can be used to render another page without changing the URL of the browser in Astro pages and endpoints. For more information on this feature, check out the [Astro documentation](https://docs.astro.build/en/guides/routing/#rewrite).
+For more information on this feature, check out the [Astro rewrites documentation](https://docs.astro.build/en/guides/routing/#rewrite).
 
 ## Stable: Content Collections JSON Schemas
 
-[In Astro 4.5](https://astro.build/blog/astro-450/#experimental-json-schemas-for-data-collections), we introduced the (experimental) ability to automatically generate JSON schemas for data content collections. In Astro 4.13, this feature is now stable! If you were using content collection JSON schemas in Astro 4.5, you can now remove the `experimental.contentCollectionJsonSchema` option from your Astro config. The feature is now enabled by default.
+[In Astro 4.5](https://astro.build/blog/astro-450/#experimental-json-schemas-for-data-collections), we introduced the (experimental) ability to automatically generate JSON schemas for data content collections. In Astro 4.13, this feature is now stable!
+
+If you were using content collection JSON schemas in Astro 4.5, you can now remove the `experimental.contentCollectionJsonSchema` option from your Astro config. The feature is now enabled by default.
 
 ```diff
 import { defineConfig } from 'astro';
@@ -66,11 +70,19 @@ export default defineConfig({
 })
 ```
 
-When you define a data content collection in your Astro project, Astro will now automatically generate a JSON schema for the collection. This schema can then be used in your editor to provide autocompletion, validation and more for your data. For more information on this feature, check out the [Astro content collections schema documentation](https://docs.astro.build/en/guides/content-collections/#enabling-json-schema-generation).
+When you define a data content collection in your Astro project, Astro will now automatically generate a JSON schema for the collection. This schema can then be used in your editor to provide autocompletion, validation and more for your data.
+
+For more information on this feature, check out the [Astro content collections schema documentation](https://docs.astro.build/en/guides/content-collections/#enabling-json-schema-generation).
 
 ## Logging Improvements
 
-As part of our endless crusade against slow builds, Astro 4.13 includes a small improvement to the logging output during the build process. Pages that take a long time will now have their time logged in red, making it easier to spot bottlenecks in your build process. May there be fewer of these in your future!
+As part of our endless crusade against slow builds, Astro 4.13 includes a small improvement to the logging output during the build process.
+
+Pages that take a long time will now have their time logged in red, making it easier to spot bottlenecks in your build process.
+
+<BlogContentImage src={slowPageImage} alt={"A screenshot of the terminal showing the output of a build with two pages. One of the page has the time it took to build (603ms) highlighted in red."} />
+
+May there be fewer of these in your future!
 
 ## Support for remote LibSQL databases
 
@@ -86,4 +98,11 @@ ASTRO_STUDIO_REMOTE_DB_URL=libsql://example.com:5432 npm run dev
 
 As we do, Astro 4.13 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4130) to learn more.
 
-Special thanks to [@sarah11918](https://github.com/sarah11918), [Fryuni](https://github.com/Fryuni), [Alexander Niebuhr](https://github.com/alexanderniebuhr), and everyone else who contributed to this release.
+Thanks to
+
+- [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918)
+- [Emanuele Stoppa (@ematipico)](https://github.com/ematipico)
+- [Luiz Ferraz (@Fryuni)](https://github.com/Fryuni)
+- [Alexander Niebuhr (@alexanderniebuhr)](https://github.com/alexanderniebuhr)
+
+and everyone else who contributed to this release.
