@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/@digi4care/astro-google-analytics"
 repoUrl: "https://github.com/digi4care/astro-google-analytics"
 homepageUrl: "https://github.com/digi4care/astro-google-analytics"
 badge: "new"
-downloads: 67
+downloads: 68
 ---
