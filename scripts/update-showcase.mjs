@@ -455,6 +455,7 @@ const scraper = new ShowcaseScraper({
 		"https://getcockpit.com/",
 		"http://www.taskworld.com/", // <-- already included using HTTPS
 		"http://keyboardcounter.online/",
+		"https://jerrywski.netlify.app/", // <-- already included as https://jerrywski.dev/
 	],
 });
 await scraper.run();
