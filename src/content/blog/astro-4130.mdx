@@ -22,7 +22,6 @@ This release includes the following highlights:
 - [**Stable: Request Rewriting**](#stable-request-rewriting)
 - [**Stable: Content Collections JSON Schemas**](#stable-content-collections-json-schemas)
 - [**Logging Improvements**](#logging-improvements)
-- [**Support for remote LibSQL databases**](#support-for-remote-libsql-databases)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -84,16 +83,6 @@ Pages that take a long time will now have their time logged in red, making it ea
 
 May there be fewer of these in your future!
 
-## Support for remote LibSQL databases
-
-Astro DB now supports connecting to remote LibSQL databases. This feature allows you to connect to a LibSQL database using any of the supported protocols (`libsql://`, `wss://`, `memory://`, etc.)
-
-To use this feature, update the `ASTRO_STUDIO_REMOTE_DB_URL` with the URL of your remote LibSQL database.
-
-```shell
-ASTRO_STUDIO_REMOTE_DB_URL=libsql://example.com:5432 npm run dev
-```
-
 ## Bug Fixes and Special Thanks
 
 As we do, Astro 4.13 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4130) to learn more.
@@ -102,7 +91,6 @@ Thanks to
 
 - [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918)
 - [Emanuele Stoppa (@ematipico)](https://github.com/ematipico)
-- [Luiz Ferraz (@Fryuni)](https://github.com/Fryuni)
 - [Alexander Niebuhr (@alexanderniebuhr)](https://github.com/alexanderniebuhr)
 
 and everyone else who contributed to this release.
