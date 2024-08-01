@@ -1,12 +1,12 @@
 ---
-import { THEMES_API_URL } from '~/helpers/constants.ts';
-import ThemeCard from './ThemeCard.astro';
+import { THEMES_API_URL } from "~/helpers/constants.ts";
+import ThemeCard from "./ThemeCard.astro";
 interface Props {
 	date: string;
 }
 
 const themes = await fetch(
-	new URL(`/api/themes/monthly?month=${Astro.props.date}`, THEMES_API_URL)
+	new URL(`/api/themes/monthly?month=${Astro.props.date}`, THEMES_API_URL),
 ).then((res) => res.json());
 ---
 
