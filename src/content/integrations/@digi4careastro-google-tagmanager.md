@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/@digi4care/astro-google-tagmanager"
 repoUrl: "https://github.com/digi4care/astro-google-tagmanager"
 homepageUrl: "https://github.com/digi4care/astro-google-tagmanager"
 badge: "new"
-downloads: 284
+downloads: 291
 ---
