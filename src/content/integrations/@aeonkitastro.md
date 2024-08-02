@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@aeonkit/astro"
 homepageUrl: "https://www.npmjs.com/package/@aeonkit/astro"
-downloads: 262
+downloads: 224
 ---
