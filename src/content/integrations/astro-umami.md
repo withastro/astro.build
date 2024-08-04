@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-umami"
 homepageUrl: "TODO:"
 badge: "new"
-downloads: 14
+downloads: 15
 ---
