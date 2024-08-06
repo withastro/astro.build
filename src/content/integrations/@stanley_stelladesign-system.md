@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@stanley_stella/design-system"
 homepageUrl: "https://www.npmjs.com/package/@stanley_stella/design-system"
 badge: "new"
-downloads: 241
+downloads: 256
 ---

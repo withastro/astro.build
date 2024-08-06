@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/fulldev-blocks"
 repoUrl: "https://github.com/fulldotdev/blocks"
 homepageUrl: "https://github.com/fulldotdev/blocks"
 badge: "new"
-downloads: 3853
+downloads: 3865
 ---
