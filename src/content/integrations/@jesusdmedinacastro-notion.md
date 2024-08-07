@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@jesusdmedinac/astro-notion"
 homepageUrl: "https://www.npmjs.com/package/@jesusdmedinac/astro-notion"
-downloads: 1
+downloads: 2
 ---

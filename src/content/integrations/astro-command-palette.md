@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-command-palette"
 repoUrl: "https://github.com/pauchiner/astro-command-palette"
 homepageUrl: "https://github.com/pauchiner/astro-command-palette#readme"
-downloads: 39
+downloads: 36
 ---

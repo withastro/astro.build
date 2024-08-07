@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-imagetools"
 repoUrl: "https://github.com/RafidMuhymin/astro-imagetools"
 homepageUrl: "https://github.com/RafidMuhymin/astro-imagetools#readme"
-downloads: 7327
+downloads: 7421
 ---
