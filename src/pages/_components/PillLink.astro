@@ -21,9 +21,26 @@ const { title, subtitle, href, class: className } = Astro.props;
 		<div class="hidden sm:flex px-3 h-full w-fit items-center justify-center gap-2">
 			<span class="text-sm text-astro-gray-100 group-hover:underline decoration-astro-gray-100/50 underline-offset-2 font-light">{subtitle}</span>
 
-			<svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-astro-gray-100 group-hover:animate-pill-arrow" viewBox="0 0 24 24">
+			<svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-astro-gray-100 pill-arrow-animation" viewBox="0 0 24 24">
 				<path fill="currentColor" d="m16.172 11l-5.364-5.364l1.414-1.414L20 12l-7.778 7.778l-1.414-1.414L16.172 13H4v-2z"/>
 			</svg>
 		</div>
 	}
 </a>
+
+<style>
+	a:hover .pill-arrow-animation {
+		animation: pill-arrow 1s infinite;
+	}
+
+	@keyframes pill-arrow {
+			0%, 100% {
+				transform: translateX(0);
+				animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+			}
+			50% {
+				transform: translateX(12.5%);
+				animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+			}
+		}
+</style>

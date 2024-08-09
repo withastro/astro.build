@@ -11,17 +11,12 @@ export default {
 			},
 			animation: {
 				float: "float 6s ease-in-out infinite",
-				"pill-arrow": "pill-arrow 1s infinite",
 			},
 			keyframes: {
 				float: {
 					"0%, 100%": { transform: "translate3d(0px, -8px, 0)" },
 					"50%": { transform: "translate3d(0px, 8px, 0)" },
 				},
-				"pill-arrow": {
-					"0%, 100%": { transform: 'translateX(0)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
-					"50%": { transform: 'translateX(12.5%)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' },
-				}
 			},
 			boxShadow: {
 				xs: "0px 1px 1px rgba(24, 24, 27, 0.06), 0px 0px 0px rgba(24, 24, 27, 0.08), 0px 0px 0px rgba(24, 24, 27, 0.08)",
