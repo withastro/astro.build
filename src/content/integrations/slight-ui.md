@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/slight-ui"
 homepageUrl: "https://www.npmjs.com/package/slight-ui"
 badge: "new"
-downloads: 198
+downloads: 216
 ---
