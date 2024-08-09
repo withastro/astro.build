@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-typed-links"
 homepageUrl: "https://github.com/florian-lefebvre/astro-typed-links"
 badge: "new"
-downloads: 134
+downloads: 145
 ---
