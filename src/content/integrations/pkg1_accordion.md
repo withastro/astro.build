@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/pkg1_accordion"
 homepageUrl: "https://www.npmjs.com/package/pkg1_accordion"
-downloads: 23
+downloads: 22
 ---
