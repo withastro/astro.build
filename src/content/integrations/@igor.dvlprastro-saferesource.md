@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@igor.dvlpr/astro-saferesource"
 repoUrl: "https://github.com/igorskyflyer/npm-astro-saferesource"
 homepageUrl: "https://github.com/igorskyflyer/npm-astro-saferesource"
 badge: "new"
-downloads: 147
+downloads: 148
 ---
