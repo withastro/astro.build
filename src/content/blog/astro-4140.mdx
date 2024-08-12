@@ -71,11 +71,45 @@ and in your editor, enable the `astro.content-intellisense` setting, or for othe
 
 This feature currently only works in the editor, and will be enabled in `astro check` in a future release.
 
+## Deprecate support for dynamic `prerender` values
+
+In order to improve our bundling and tree-shaking capabilities, Astro 4.14 deprecates support for dynamic `prerender` values. This means that you can no longer use dynamic values for the `prerender` option in your Astro pages.
+
+This feature can now be replaced with the new `astro:route:setup` hook in Astro integrations, which allows you to dynamically control the prerendering of specific pages.
+
+```diff
+---
+- export const prerender = import.meta.env.PROD;
+---
+```
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  integrations: [setPrerender()],
+});
+
+function setPrerender() {
+  return {
+    name: 'set-prerender',
+    hooks: {
+      'astro:route:setup': ({ route }) => {
+        if (route.component.endsWith('/blog/[slug].astro')) {
+          route.prerender = true;
+        }
+      },
+    },
+  };
+}
+```
+
 ## New `injectTypes` integration API
 
 Type generation has become all the rage in recent years, and Astro is no exception as we use type generation pretty extensively for features like Content Collections (or, now, Content Layer), or Astro DB.
 
-Thanks to [@florian-lefebvre](https://github.com/florian-lefebvre), Astro integrations can now join the fun with the new `injectTypes` integration API! This API allows integrations to easily inject types into the user's project, making it easier to provide type definitions for your integration's features.
+Thanks to [@florian-lefebvre](https://github.com/florian-lefebvre), Astro integrations can now join the fun with the new `injectTypes` integration API! This API allows integrations to inject types into the user's project, making it easier to provide type definitions for your integration's features.
 
 ```js
 // my-integration/index.js
@@ -97,11 +131,16 @@ For more information on this feature, check out the [Astro integration API docum
 Astro 4.14 adds support for the `meta` attribute in the `Code` component. This attribute simulate using properties on code blocks in Markdown, for example `` ```js astro=cool ``, which can then be used by [Shiki transformers](https://shiki.matsu.io/guide/transformers#meta) to apply custom transformations to the code block.
 
 ```astro
+// src/pages/index.astro
 ---
-import { Code } from 'astro:components';
+import { Code } from "astro:components";
+import { transformerMetaHighlight } from '@shikijs/transformers';
 ---
-
-<Code code="console.log('Hello, Astro!')" lang={"js"} meta="astro=cool" />
+<Code
+  code={code}
+  lang="js"
+  transformers={[transformerMetaHighlight()]}
+  meta="{1,3}" />
 ```
 
 Thanks to [@jcayzac](https://github.com/jcayzac) for this contribution!
@@ -110,4 +149,4 @@ Thanks to [@jcayzac](https://github.com/jcayzac) for this contribution!
 
 As we do, Astro 4.13 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4130) to learn more.
 
-Thanks to [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918) and everyone else who contributed to this release.
+Thanks to [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918), [Bjorn Lu (@bluwy)](https://github.com/bluwy) and everyone else who contributed to this release.
