@@ -1,0 +1,113 @@
+---
+title: "Astro 4.14"
+description: Astro 4.14 is available now! This release includes a first experimental version of Content Layer, experimental support for intellisense inside content files, and more.
+publishDate: "August 15, 2024"
+authors:
+  - erika
+  - matt
+coverImage: "/src/content/blog/_images/astro-4140/header_astro_4_14.webp"
+socialImage: "/src/content/blog/_images/astro-4140/og_image_4_14.webp"
+lang: "en"
+---
+
+import BlogContentImage from "/src/components/BlogContentImage.astro";
+import BlogSummary from "/src/components/BlogSummary.astro";
+import frontmatterIntellisense from "/src/content/blog/_images/astro-4140/frontmatter-intellisense.png";
+
+<BlogSummary>
+  Astro 4.14 is out now! This release includes the first experimental release of Content Layer, our new super-flexible solution for managing content in Astro projects, support for intellisense inside content files, and more.
+</BlogSummary>
+
+This release includes the following highlights:
+
+- [**Experimental: Content Layer**](#experimental-content-layer)
+- [**Experimental: Intellisense inside content**](#experimental-intellisense-inside-content)
+- [**New `injectTypes` integration API**](#new-injecttypes-integration-api)
+- [**Support for metastrings in the Code component**](#support-for-metastrings-in-the-code-component)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: Content Layer
+
+TODO: MATT WRITE THIS
+
+## Experimental: Intellisense inside content
+
+Astro 4.14 introduces experimental support for intellisense inside the frontmatter of your content. This feature helps you write content files more efficiently by providing completions, validation, hover information and more for frontmatter keys and values, based on your content schemas, directly in your editor.
+
+This feature is available in VS Code and other editors that support the Language Server Protocol for Markdown, MDX, and Markdoc files.
+
+<BlogContentImage src={frontmatterIntellisense} />
+
+To enable content file intellisense, add the following to your Astro config:
+
+```js
+import { defineConfig } from 'astro';
+
+export default defineConfig({
+	experimental: {
+		contentIntellisense: true
+	}
+})
+```
+
+and in your editor, enable the `astro.content-intellisense` setting, or for other editors, pass `contentIntellisense: true` to the initialization parameters of the Astro language server.
+
+```json
+{
+	"astro.content-intellisense": true
+}
+```
+
+This feature currently only works in the editor, and will be enabled in `astro check` in a future release.
+
+## New `injectTypes` integration API
+
+Type generation has become all the rage in recent years, and Astro is no exception as we use type generation pretty extensively for features like Content Collections (or, now, Content Layer), or Astro DB.
+
+Thanks to [@florian-lefebvre](https://github.com/florian-lefebvre), Astro integrations can now join the fun with the new `injectTypes` integration API! This API allows integrations to easily inject types into the user's project, making it easier to provide type definitions for your integration's features.
+
+```js
+// my-integration/index.js
+export default {
+	name: 'my-integration',
+	'astro:config:done': ({ injectTypes }) => {
+		injectTypes({
+			filename: "types.d.ts",
+			content: "declare module 'virtual:my-integration' {}"
+		})
+	}
+};
+```
+
+For more information on this feature, check out the [Astro integration API documentation](https://docs.astro.build/en/reference/integrations-reference/#injecttypes-options).
+
+## Support for metastrings in the Code component
+
+Astro 4.14 adds support for the `meta` attribute in the `Code` component. This attribute simulate using properties on code blocks in Markdown, for example `` ```js astro=cool ``, which can then be used by [Shiki transformers](https://shiki.matsu.io/guide/transformers#meta) to apply custom transformations to the code block.
+
+```astro
+---
+import { Code } from 'astro:components';
+---
+
+<Code code="console.log('Hello, Astro!')" lang={"js"} meta="astro=cool" />
+```
+
+Thanks to [@jcayzac](https://github.com/jcayzac) for this contribution!
+
+## Bug Fixes and Special Thanks
+
+As we do, Astro 4.13 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4130) to learn more.
+
+Thanks to [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918) and everyone else who contributed to this release.
