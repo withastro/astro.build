@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@inlang/paraglide-astro"
 repoUrl: "https://github.com/opral/inlang-paraglide-js"
 homepageUrl: "https://inlang.com/m/iljlwzfs/paraglide-astro-i18n"
-downloads: 3031
+downloads: 3009
 ---
