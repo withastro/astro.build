@@ -37,11 +37,11 @@ pnpm upgrade astro --latest
 yarn upgrade astro --latest
 ```
 
-## Experimental: Content Layer
+## Experimental: Content Layer API
 
 In Astro 2.0 we introduced [Content Collections](https://docs.astro.build/en/guides/content-collections/), a powerful way to manage local content in Astro projects. While this has helped hundreds of thousands of developers build content-driven sites with Astro, we've heard your feedback that you want more flexibility and power in managing your content. We're excited to announce the experimental release of the next generation of content collections in Astro: the Content Layer API.
 
-The new Content Layer API builds upon content collections, taking them beyond local files in `src/content/` and allowing you to fetch content from anywhere, including remote APIs, or files anywhere in your project. These new collections work alongside your existing content collections, and you can migrate them to the new API at your own pace. We think you'll want to soon, because they have lots of advantages, but there's no rush – the existing collections will continue to work as they always have.
+The new Content Layer API builds upon content collections, taking them beyond local files in `src/content/` and allowing you to fetch content from anywhere, including remote APIs. These new collections work alongside your existing content collections, and you can migrate them to the new API at your own pace. We think you'll want to soon, because they have lots of advantages, but there's no rush – the existing collections will continue to work as they always have.
 
 To try out the new Content Layer API, first enable it in your Astro config:
 
@@ -72,7 +72,7 @@ We plan to continue improving the performance of the Content Layer API in future
 
 ### Loading your content
 
-The core of the new Content Layer API is the loader, a function that fetches content from a source and caches it in a local data store. Astro 4.14 ships with built-in `glob()` and `file()` loaders to handle your local Markdown, MDX, Markdoc and JSON files:
+The core of the new Content Layer API is the loader, a function that fetches content from a source and caches it in a local data store. Astro 4.14 ships with built-in `glob()` and `file()` loaders to handle your local Markdown, MDX, Markdoc, and JSON files:
 
 ```ts {3,7}
 // src/content/config.ts
