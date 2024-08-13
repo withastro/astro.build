@@ -39,7 +39,120 @@ yarn upgrade astro --latest
 
 ## Experimental: Content Layer
 
-TODO: MATT WRITE THIS
+In Astro 2.0 we introduced [Content Collections](https://docs.astro.build/en/guides/content-collections/), a powerful way to manage local content in Astro projects. While this has helped hundreds of thousands of developers build content-driven sites with Astro, we've heard your feedback that you want more flexibility and power in managing your content. We're excited to announce the experimental release of the next generation of content collections in Astro: the Content Layer API.
+
+The new Content Layer API builds upon content collections, taking them beyond local files in `src/content/` and allowing you to fetch content from anywhere, including remote APIs, or files anywhere in your project. These new collections work alongside your existing content collections, and you can migrate them to the new API at your own pace. We think you'll want to soon, because they have lots of advantages, but there's no rush – the existing collections will continue to work as they always have.
+
+To try out the new Content Layer API, first enable it in your Astro config:
+
+```js
+import { defineConfig } from 'astro';
+
+export default defineConfig({
+  experimental: {
+    contentLayer: true
+  }
+})
+```
+
+### Performance
+
+The Content Layer API is the first step in scaling Astro to support fast builds for sites with tens or hundreds of thousands of pages. The new API is designed to be more efficient and performant in the way it loads content. It caches content locally to avoid the need to keep hitting APIs, and has dramatically improved handling of local Markdown and MDX files. This benchmark shows the performance when building a site with 10,000 pages on a Macbook Air M1:
+
+
+|              |            | Astro 4.13 | Astro 4.14 (Content Layer) |             |
+| -----------: | ---------- | ---------- | -------------------------- | ----------- |
+| **Markdown** | Build Time | 136.29s    | 25.96s                     | 5.3x faster |
+|              | Memory     | 763.50MB   | 276.22MB                   | 64% less    |
+|      **MDX** | Build Time | 129.82s    | 66.70s                     | 1.9x faster |
+|              | Memory     | 897.91MB   | 674.39MB                   | 25% less    |
+
+
+We plan to continue improving the performance of the Content Layer API in future releases, including adding support for a SQLite backend to handle even larger sites.
+
+### Loading your content
+
+The core of the new Content Layer API is the loader, a function that fetches content from a source and caches it in a local data store. Astro 4.14 ships with built-in `glob()` and `file()` loaders to handle your local Markdown, MDX, Markdoc and JSON files:
+
+```ts {3,7}
+// src/content/config.ts
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+		 
+const blog = defineCollection({
+  // The ID is a slug generated from the path of the file relative to `base`
+  loader: glob({ pattern: "**/*.md", base: "./src/data/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.coerce.date(),
+  })
+});
+
+export const collections = { blog };
+```
+
+You can then use the content in your site:
+
+```astro
+---
+import { getEntry, render } from 'astro:content';
+
+const post = await getEntry('blog', Astro.params.slug);
+
+const { Content } = await render(entry);
+---
+
+<Content />
+```
+
+### Creating a loader
+
+You're not restricted to the built-in loaders – we hope you'll try building your own. You can fetch content from anywhere and return an array of entries:
+
+```ts
+// src/content/config.ts
+const countries = defineCollection({
+  loader: async () => {
+    const response = await fetch("https://restcountries.com/v3.1/all");
+    const data = await response.json();
+    // Must return an array of entries with an id property,
+    // or an object with IDs as keys and entries as values
+    return data.map((country) => ({
+      id: country.cca3,
+      ...country,
+    }));
+  },
+  // optionally add a schema to validate the data and make it type-safe for users
+  // schema: z.object...
+});
+
+export const collections = { countries };
+```
+
+For more advanced loading logic, you can define an object loader. This allows incremental updates and conditional loading, and gives full access to the data store. It also allows a loader to define its own schema, including generating it dynamically based on the source API. See the [the Content Layer API RFC](https://github.com/withastro/roadmap/blob/content-layer/proposals/0047-content-layer.md#loaders) for more details.
+
+### Sharing your loaders
+
+Loaders are better when they're shared. You can create a package that exports a loader and publish it to npm, and then anyone can use it on their site. We're excited to see what the community comes up with! To get started, [take a look at some examples](https://github.com/ascorbic/astro-loaders/). Here's how to load content using an RSS/Atom feed loader:
+
+```ts
+// src/content/config.ts
+import { defineCollection } from "astro:content";
+import { feedLoader } from "@ascorbic/feed-loader";
+
+const podcasts = defineCollection({
+  loader: feedLoader({
+    url: "https://feeds.99percentinvisible.org/99percentinvisible",
+  }),
+});
+
+export const collections = { podcasts };
+```
+
+### Learn more
+
+To find out more about using the Content Layer API, check out [the Content Layer RFC](https://github.com/withastro/roadmap/blob/content-layer/proposals/0047-content-layer.md) and [share your feedback](https://github.com/withastro/roadmap/pull/982).
 
 ## Experimental: Intellisense inside content
 
@@ -147,6 +260,6 @@ Thanks to [@jcayzac](https://github.com/jcayzac) for this contribution!
 
 ## Bug Fixes and Special Thanks
 
-As we do, Astro 4.13 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4130) to learn more.
+As we do, Astro 4.14 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4130) to learn more.
 
 Thanks to [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918), [Bjorn Lu (@bluwy)](https://github.com/bluwy) and everyone else who contributed to this release.
