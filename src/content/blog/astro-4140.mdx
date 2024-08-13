@@ -43,17 +43,6 @@ In Astro 2.0 we introduced [Content Collections](https://docs.astro.build/en/gui
 
 The new Content Layer API builds upon content collections, taking them beyond local files in `src/content/` and allowing you to fetch content from anywhere, including remote APIs. These new collections work alongside your existing content collections, and you can migrate them to the new API at your own pace. We think you'll want to soon, because they have lots of advantages, but there's no rush – the existing collections will continue to work as they always have.
 
-To try out the new Content Layer API, first enable it in your Astro config:
-
-```js
-import { defineConfig } from 'astro';
-
-export default defineConfig({
-  experimental: {
-    contentLayer: true
-  }
-})
-```
 
 ### Performance
 
@@ -69,6 +58,22 @@ The Content Layer API is the first step in scaling Astro to support fast builds 
 
 
 We plan to continue improving the performance of the Content Layer API in future releases, including adding support for a SQLite backend to handle even larger sites.
+
+### Getting started
+
+To try out the new Content Layer API, enable it in your Astro config:
+
+```js
+import { defineConfig } from 'astro';
+
+export default defineConfig({
+  experimental: {
+    contentLayer: true
+  }
+})
+```
+
+You can then create collections in your `src/content/config.ts` using the Content Layer API.
 
 ### Loading your content
 
