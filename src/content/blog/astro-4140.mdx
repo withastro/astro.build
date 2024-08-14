@@ -1,6 +1,6 @@
 ---
 title: "Astro 4.14"
-description: Astro 4.14 is available now! This release includes a first experimental version of Content Layer, experimental support for intellisense inside content files, and more.
+description: Astro 4.14 is available now! This release includes a first experimental version of the Content Layer API, experimental support for Intellisense inside content files, and more.
 publishDate: "August 15, 2024"
 authors:
   - erika
@@ -15,13 +15,14 @@ import BlogSummary from "/src/components/BlogSummary.astro";
 import frontmatterIntellisense from "/src/content/blog/_images/astro-4140/frontmatter-intellisense.png";
 
 <BlogSummary>
-  Astro 4.14 is out now! This release includes the first experimental release of Content Layer, our new super-flexible solution for managing content in Astro projects, support for intellisense inside content files, and more.
+  Astro 4.14 is out now! This release includes the first experimental release of the Content Layer API, our new super-flexible solution for managing content in Astro projects, support for Intellisense inside content files, and more.
 </BlogSummary>
 
 This release includes the following highlights:
 
-- [**Experimental: Content Layer**](#experimental-content-layer)
-- [**Experimental: Intellisense inside content**](#experimental-intellisense-inside-content)
+- [**Experimental: Content Layer API**](#experimental-content-layer-api)
+- [**Experimental: Intellisense inside content files**](#experimental-intellisense-inside-content-files)
+- [**Deprecate support for dynamic `prerender` values**](#deprecate-support-for-dynamic-prerender-values)
 - [**New `injectTypes` integration API**](#new-injecttypes-integration-api)
 - [**Support for metastrings in the Code component**](#support-for-metastrings-in-the-code-component)
 
@@ -159,9 +160,9 @@ export const collections = { podcasts };
 
 To find out more about using the Content Layer API, check out [the Content Layer RFC](https://github.com/withastro/roadmap/blob/content-layer/proposals/0047-content-layer.md) and [share your feedback](https://github.com/withastro/roadmap/pull/982).
 
-## Experimental: Intellisense inside content
+## Experimental: Intellisense inside content files
 
-Astro 4.14 introduces experimental support for intellisense inside the frontmatter of your content. This feature helps you write content files more efficiently by providing completions, validation, hover information and more for frontmatter keys and values, based on your content schemas, directly in your editor.
+Astro 4.14 introduces experimental support for Intellisense inside the frontmatter of your content. This feature helps you write content files more efficiently by providing completions, validation, hover information, and more for frontmatter keys and values. These tools are based on your content schemas, and available directly in your editor.
 
 This feature is available in VS Code and other editors that support the Language Server Protocol for Markdown, MDX, and Markdoc files.
 
@@ -179,7 +180,7 @@ export default defineConfig({
 })
 ```
 
-and in your editor, enable the `astro.content-intellisense` setting, or for other editors, pass `contentIntellisense: true` to the initialization parameters of the Astro language server.
+and in VS Code, enable the `astro.content-intellisense` setting. For other editors, pass `contentIntellisense: true` to the initialization parameters of the Astro language server.
 
 ```json
 {
@@ -191,7 +192,7 @@ This feature currently only works in the editor, and will be enabled in `astro c
 
 ## Deprecate support for dynamic `prerender` values
 
-In order to improve our bundling and tree-shaking capabilities, Astro 4.14 deprecates support for dynamic `prerender` values. This means that you can no longer use dynamic values for the `prerender` option in your Astro pages.
+In order to improve our bundling and tree-shaking capabilities, Astro 4.14 deprecates support for using dynamic values for the `prerender` option in your Astro pages.
 
 This feature can now be replaced with the new `astro:route:setup` hook in Astro integrations, which allows you to dynamically control the prerendering of specific pages.
 
