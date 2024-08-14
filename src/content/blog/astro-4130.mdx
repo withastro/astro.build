@@ -39,9 +39,9 @@ yarn upgrade astro --latest
 
 [In Astro 4.8](https://astro.build/blog/astro-480/#experimental-request-rewriting), we added experimental support for request rewriting, a powerful feature that can be used to render another page without changing the URL of the browser in Astro pages and endpoints. In Astro 4.13, we're excited to announce that request rewriting is now stable!
 
-If you were already using request rewriting prior to Astro 4.13, you can now remove the `experimental.rewrites` option from your Astro config. The feature is now enabled by default.
+If you were already using request rewriting prior to Astro 4.13, you can now remove the `experimental.rewriting` option from your Astro config. The feature is now enabled by default.
 
-```diff
+```diff lang="js"
 import { defineConfig } from 'astro';
 
 export default defineConfig({
@@ -59,7 +59,7 @@ For more information on this feature, check out the [Astro rewrites documentatio
 
 If you were using content collection JSON schemas in Astro 4.5, you can now remove the `experimental.contentCollectionJsonSchema` option from your Astro config. The feature is now enabled by default.
 
-```diff
+```diff lang="js"
 import { defineConfig } from 'astro';
 
 export default defineConfig({
