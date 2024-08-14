@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/fulldev-blocks"
 repoUrl: "https://github.com/fulldotdev/blocks"
 homepageUrl: "https://github.com/fulldotdev/blocks"
-downloads: 3426
+downloads: 2999
 ---

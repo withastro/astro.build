@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-generic-build-filenames"
 homepageUrl: "https://github.com/mschoeffmann/astro-generic-build-filenames"
 badge: "new"
-downloads: 187
+downloads: 192
 ---
