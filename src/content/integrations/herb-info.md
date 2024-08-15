@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/herb-info"
 homepageUrl: "https://www.npmjs.com/package/herb-info"
 badge: "new"
-downloads: 333
+downloads: 334
 ---

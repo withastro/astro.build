@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-decap"
 homepageUrl: "https://www.npmjs.com/package/astro-decap"
-downloads: 11
+downloads: 10
 ---

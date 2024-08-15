@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/astro-youtube"
 repoUrl: "https://github.com/advanced-astro/astro-embeds"
 homepageUrl: "https://github.com/advanced-astro/astro-embeds/tree/main/packages/astro-embeds-youtube#readme"
 badge: "new"
-downloads: 74
+downloads: 75
 ---
