@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/checkoutjoy-astro-sst"
 repoUrl: "https://github.com/mdwt/checkoutjoy-astro-ssr"
 homepageUrl: "https://github.com/mdwt/checkoutjoy-astro-ssr#readme"
-downloads: 6
+downloads: 7
 ---

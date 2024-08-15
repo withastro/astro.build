@@ -6,10 +6,8 @@ categories:
   - "css+ui"
   - "frameworks"
   - "accessibility"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/@igor.dvlpr/astro-easynav-button"
 repoUrl: "https://github.com/igorskyflyer/astro-easynav-button"
 homepageUrl: "https://github.com/igorskyflyer/astro-easynav-button"
-badge: "new"
-downloads: 570
+downloads: 546
 ---
