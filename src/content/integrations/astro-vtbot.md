@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-vtbot"
 repoUrl: "https://github.com/martrapp/astro-vtbot"
 homepageUrl: "https://events-3bg.pages.dev/"
-downloads: 13549
+downloads: 13472
 ---
