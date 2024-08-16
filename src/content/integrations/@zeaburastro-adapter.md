@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@zeabur/astro-adapter"
 repoUrl: "https://github.com/zeabur/astro"
 homepageUrl: "https://docs.astro.build/en/guides/integrations-guide/zeabur/"
-downloads: 189
+downloads: 196
 ---
