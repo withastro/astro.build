@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/pkg2_accordion_printhey"
 homepageUrl: "https://www.npmjs.com/package/pkg2_accordion_printhey"
-downloads: 10
+downloads: 11
 ---

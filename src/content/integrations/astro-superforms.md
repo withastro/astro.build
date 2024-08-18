@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-superforms"
 homepageUrl: "https://github.com/gbouteiller/astro-superforms"
 badge: "new"
-downloads: 881
+downloads: 882
 ---
