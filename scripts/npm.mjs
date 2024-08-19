@@ -25,7 +25,7 @@ const PAGE_SIZE = 100;
  * @param {string} pkg Name of the package published on npm
  * @returns {Promise<number>} The number of weekly downloads for the package
  */
-export function fetchDownloadsForPackage(pkg) {
+export async function fetchDownloadsForPackage(pkg) {
 	return fetchJson(`${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`)
 		.then((res) => res.downloads)
 		.catch(() => 0);
