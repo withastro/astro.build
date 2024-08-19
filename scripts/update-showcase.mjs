@@ -249,6 +249,12 @@ class ShowcaseScraper {
 			return false;
 		}
 
+		// Test for elements with an Astro component ID data attribute.
+		// This can’t be queried for, because the attribute name contains the hash.
+		if (/<\w+ [^>]*?data-astro-cid-\w+[^>]*?>/.test(raw)) {
+			return true;
+		}
+
 		const { document } = parseHTML(raw);
 
 		const generator = document.querySelector('meta[name="generator"]');
