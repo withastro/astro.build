@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-locomotive-scroll"
 homepageUrl: "https://www.npmjs.com/package/astro-locomotive-scroll"
 badge: "new"
-downloads: 469
+downloads: 470
 ---
