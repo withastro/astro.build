@@ -49,10 +49,6 @@ jobs:
       - name: Install Tools & Dependencies
         uses: ./.github/actions/setup-node-pnpm
 
-      - name: Install optional dependencies
-        shell: bash
-        run: pnpm install
-
       - name: Run update:showcase script
         id: showcase
         run: pnpm run update:showcase
