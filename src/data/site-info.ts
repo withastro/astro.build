@@ -57,12 +57,12 @@ const siteInfo: SiteInfo = {
 			href: 'https://m.webtoo.ls/@astro',
 		},
 		{
-			platform: "reddit",
+			platform: 'reddit',
 			footerOnly: true,
-			icon: "social/reddit",
-			me: "https://www.reddit.com/r/withastro/",
-			text: "Join the official Astro community on Reddit",
-			href: "https://www.reddit.com/r/withastro/",
+			icon: 'social/reddit',
+			me: 'https://www.reddit.com/r/withastro/',
+			text: 'Join the official Astro community on Reddit',
+			href: 'https://www.reddit.com/r/withastro/',
 		},
 	],
 };
