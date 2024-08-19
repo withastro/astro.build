@@ -17,10 +17,6 @@ jobs:
       - name: Setup Node.js & install dependencies
         uses: ./.github/actions/setup-node-pnpm
 
-      - name: Install optional dependencies
-        shell: bash
-        run: pnpm install
-
       - name: Search NPM for new and deprecated integrations
         run: pnpm run update:integrations --unsafe
         env:
@@ -52,6 +48,10 @@ jobs:
 
       - name: Install Tools & Dependencies
         uses: ./.github/actions/setup-node-pnpm
+
+      - name: Install optional dependencies
+        shell: bash
+        run: pnpm install
 
       - name: Run update:showcase script
         id: showcase
