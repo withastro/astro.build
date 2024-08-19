@@ -1,5 +1,5 @@
 import { defineCollection } from "astro:content";
-import { z } from "zod";
+import { z } from "astro/zod";
 
 export const IntegrationCategories = new Map([
 	["recent", "Recently Added"],
