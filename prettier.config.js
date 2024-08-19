@@ -9,9 +9,15 @@ export default {
 	plugins: ['prettier-plugin-astro'],
 	overrides: [
 		{
-			files: ['.*', '*.md', '*.toml', '*.yml'],
+			files: ['*.toml', '*.yml'],
 			options: {
 				useTabs: false,
+			},
+		},
+		{
+			files: ['*.mdx', '*.md'],
+			options: {
+				printWidth: 80,
 			},
 		},
 		{
