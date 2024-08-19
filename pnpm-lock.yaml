@@ -17,6 +17,9 @@ importers:
       '@astrojs/mdx':
         specifier: ^3.1.3
         version: 3.1.3(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+      '@astrojs/netlify':
+        specifier: ^5.5.1
+        version: 5.5.1(@opentelemetry/api@1.9.0)(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
       '@astrojs/rss':
         specifier: ^4.0.7
         version: 4.0.7
@@ -75,9 +78,6 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.3
         version: 0.9.3(prettier-plugin-astro@0.12.3)(prettier@3.2.5)(typescript@5.5.4)
-      '@astrojs/netlify':
-        specifier: ^5.3.5
-        version: 5.3.5(@opentelemetry/api@1.9.0)(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
       '@astrojs/site-kit':
         specifier: github:withastro/site-kit
         version: https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.2.5)(tailwindcss@3.4.10)(typescript@5.5.4)
@@ -193,8 +193,8 @@ packages:
     peerDependencies:
       astro: ^4.8.0
 
-  '@astrojs/netlify@5.3.5':
-    resolution: {integrity: sha512-gQ9HTW2wMWqz4adYS/mXDTHldDb4SJ/has++bsGxYSKppsnfnNR3OiUsPwbGn4WAMAG3OdJ05Shp2JcXOKbt5w==}
+  '@astrojs/netlify@5.5.1':
+    resolution: {integrity: sha512-tC5L51/bMo5SjM+7/eKw+NJL4aXDr8BLGLgrN874YU+lX4Q4VqiFsy/yLjfgj7NXFHNdK8CTCrTrcg89knKryw==}
     peerDependencies:
       astro: ^4.2.0
 
@@ -4967,7 +4967,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@5.3.5(@opentelemetry/api@1.9.0)(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
+  '@astrojs/netlify@5.5.1(@opentelemetry/api@1.9.0)(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
@@ -5738,7 +5738,7 @@ snapshots:
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
-      semver: 7.6.2
+      semver: 7.6.3
       tar: 6.2.1
     transitivePeerDependencies:
       - encoding
@@ -5931,7 +5931,7 @@ snapshots:
       '@types/shimmer': 1.0.5
       import-in-the-middle: 1.8.1
       require-in-the-middle: 7.3.0
-      semver: 7.6.2
+      semver: 7.6.3
       shimmer: 1.2.1
     transitivePeerDependencies:
       - supports-color
@@ -6025,7 +6025,7 @@ snapshots:
       '@opentelemetry/propagator-b3': 1.25.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/propagator-jaeger': 1.25.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 1.25.1(@opentelemetry/api@1.9.0)
-      semver: 7.6.2
+      semver: 7.6.3
 
   '@opentelemetry/semantic-conventions@1.25.1': {}
 
@@ -6406,7 +6406,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -7922,7 +7922,7 @@ snapshots:
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -9354,7 +9354,7 @@ snapshots:
 
   require-in-the-middle@7.3.0:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.6
       module-details-from-path: 1.0.3
       resolve: 1.22.8
     transitivePeerDependencies:
