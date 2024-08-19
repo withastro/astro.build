@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/@ayco/astro-sw"
 repoUrl: "https://github.com/ayoayco/astro-sw"
 homepageUrl: "https://github.com/ayoayco/astro-sw"
 badge: "new"
-downloads: 1170
+downloads: 1931
 ---
