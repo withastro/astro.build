@@ -1,8 +1,8 @@
 ---
-import MagnifierIcon from "~/icons/MagnifierIcon.jsx";
-import Accordion from "./Accordion.astro";
-import Checkbox from "./Checkbox.astro";
-import TextInput from "./TextInput.astro";
+import MagnifierIcon from '~/icons/MagnifierIcon.jsx';
+import Accordion from './Accordion.astro';
+import Checkbox from './Checkbox.astro';
+import TextInput from './TextInput.astro';
 
 export type FilterOptions = {
 	id: string;
@@ -24,7 +24,7 @@ export type Props = {
 	searchPlaceholder: string;
 };
 
-const { indexRoute, groups, search = "", searchPlaceholder } = Astro.props;
+const { indexRoute, groups, search = '', searchPlaceholder } = Astro.props;
 
 const groupsSelected = groups.filter(({ options }) =>
 	options.some(({ selected }) => selected),
@@ -84,26 +84,26 @@ const resetHref =
 
 <script>
 	/** progressive enhancement! only show the View results button when the form is changed */
-	document.querySelectorAll<HTMLFormElement>("form.searchfilter").forEach((form) => {
-		const submitBtn = form.querySelector<HTMLButtonElement>("[type=submit]")
-		const searchInput = form.querySelector<HTMLInputElement>("[type=search]")
+	document.querySelectorAll<HTMLFormElement>('form.searchfilter').forEach((form) => {
+		const submitBtn = form.querySelector<HTMLButtonElement>('[type=submit]');
+		const searchInput = form.querySelector<HTMLInputElement>('[type=search]');
 
 		if (!submitBtn) {
-			return
+			return;
 		}
 
 		if (searchInput) {
-			searchInput.addEventListener("input", () => submitBtn.classList.remove("hidden"), {
+			searchInput.addEventListener('input', () => submitBtn.classList.remove('hidden'), {
 				once: true,
-			})
+			});
 		}
 
 		form.addEventListener(
-			"change",
+			'change',
 			() => {
-				submitBtn.classList.remove("hidden")
+				submitBtn.classList.remove('hidden');
 			},
 			{ once: true },
-		)
-	})
+		);
+	});
 </script>

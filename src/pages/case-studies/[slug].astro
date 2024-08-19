@@ -1,17 +1,17 @@
 ---
-import { type CollectionEntry, getCollection, getEntry } from "astro:content";
-import { format } from "date-fns";
-import houstonWink from "~/assets/houston_wink.webp";
-import Avatar from "~/components/Avatar.astro";
-import { resolveBlogImage, resolveSocialImage } from "~/content/blog/_resolveImage.js";
-import Layout from "~/layouts/MainLayout.astro";
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
+import { format } from 'date-fns';
+import houstonWink from '~/assets/houston_wink.webp';
+import Avatar from '~/components/Avatar.astro';
+import { resolveBlogImage, resolveSocialImage } from '~/content/blog/_resolveImage.js';
+import Layout from '~/layouts/MainLayout.astro';
 
 export type Props = {
-	post: CollectionEntry<"caseStudies">;
+	post: CollectionEntry<'caseStudies'>;
 };
 
 export async function getStaticPaths() {
-	const items = await getCollection("caseStudies");
+	const items = await getCollection('caseStudies');
 	return items.map((post) => ({
 		params: { slug: post.slug },
 		props: { post },
@@ -27,8 +27,8 @@ const socialImage = await resolveSocialImage(post);
 
 const headerImage = await resolveBlogImage(post.data.headerImage);
 
-const authors = await Promise.all(data.authors.map((author) => getEntry("authors", author))).then(
-	(authors) => authors.filter(Boolean) as CollectionEntry<"authors">[],
+const authors = await Promise.all(data.authors.map((author) => getEntry('authors', author))).then(
+	(authors) => authors.filter(Boolean) as CollectionEntry<'authors'>[],
 );
 ---
 
@@ -64,7 +64,7 @@ const authors = await Promise.all(data.authors.map((author) => getEntry("authors
 			<p class="code text-astro-gray-200">
 				Case Study &bull;
 				<time datetime={data.publishDate.toISOString()}>
-					{format(data.publishDate, "MMMM d, yyyy")}
+					{format(data.publishDate, 'MMMM d, yyyy')}
 				</time>
 			</p>
 			<h1 class="mb-4 mt-2 flex flex-col items-center sm:mb-5 sm:mt-3">
@@ -82,7 +82,7 @@ const authors = await Promise.all(data.authors.map((author) => getEntry("authors
 								<Avatar name={author.slug} lg />
 								<span>{author.data.name}</span>
 							</div>
-						)
+						);
 					})
 				}
 			</div>
@@ -114,14 +114,14 @@ const authors = await Promise.all(data.authors.map((author) => getEntry("authors
 
 <script>
 	// Remove autoplay from videos when `prefers-reduced-motion: reduce`
-	const autoplayVideos = document.querySelectorAll("video[autoplay]")
-	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+	const autoplayVideos = document.querySelectorAll('video[autoplay]');
+	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	if (prefersReducedMotion) {
 		autoplayVideos.forEach((video) => {
-			video.removeAttribute("autoplay")
+			video.removeAttribute('autoplay');
 			// Add controls attribute so user can still play the video if they want
-			video.setAttribute("controls", "true")
-		})
+			video.setAttribute('controls', 'true');
+		});
 	}
 </script>

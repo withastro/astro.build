@@ -1,13 +1,13 @@
 ---
-import siteInfo from "~/data/site-info.js";
-import NewsLetterSignup from "./NewsLetterSignup.astro";
-import SocialLinks from "./SocialLinks.astro";
+import siteInfo from '~/data/site-info.js';
+import NewsLetterSignup from './NewsLetterSignup.astro';
+import SocialLinks from './SocialLinks.astro';
 
 interface Props {
 	bgClass?: string;
 }
 
-const { bgClass = "bg-dark" } = Astro.props;
+const { bgClass = 'bg-dark' } = Astro.props;
 
 type Link = {
 	href: string;
@@ -21,50 +21,50 @@ type LinkGroup = {
 
 const groups: LinkGroup[] = [
 	{
-		title: "Resources",
+		title: 'Resources',
 		links: [
 			{
-				label: "Docs",
-				href: "https://docs.astro.build/en/getting-started/",
+				label: 'Docs',
+				href: 'https://docs.astro.build/en/getting-started/',
 			},
-			{ label: "Themes", href: "/themes/" },
-			{ label: "Showcase", href: "/showcase/" },
-			{ label: "Integrations", href: "/integrations/" },
-			{ label: "Starter templates", href: "https://astro.new/" },
+			{ label: 'Themes', href: '/themes/' },
+			{ label: 'Showcase', href: '/showcase/' },
+			{ label: 'Integrations', href: '/integrations/' },
+			{ label: 'Starter templates', href: 'https://astro.new/' },
 		],
 	},
 	{
-		title: "Ecosystem",
+		title: 'Ecosystem',
 		links: [
-			{ label: "Studio", href: "https://studio.astro.build/" },
-			{ label: "Community", href: "https://community.astro.build" },
+			{ label: 'Studio', href: 'https://studio.astro.build/' },
+			{ label: 'Community', href: 'https://community.astro.build' },
 			{
-				label: "Contributing",
-				href: "https://github.com/withastro/astro/blob/main/CONTRIBUTING.md",
+				label: 'Contributing',
+				href: 'https://github.com/withastro/astro/blob/main/CONTRIBUTING.md',
 			},
 		],
 	},
 	{
-		title: "About",
+		title: 'About',
 		links: [
-			{ label: "Press", href: "/press/" },
-			{ label: "Telemetry", href: "/telemetry/" },
-			{ label: "Partner with us", href: "/partnerships/" },
+			{ label: 'Press', href: '/press/' },
+			{ label: 'Telemetry', href: '/telemetry/' },
+			{ label: 'Partner with us', href: '/partnerships/' },
 		],
 	},
 	{
-		title: "More",
+		title: 'More',
 		links: [
-			{ label: "Blog", href: "/blog/" },
-			{ label: "Wallpapers", href: "/wallpapers/" },
-			{ label: "Swag Shop", href: "https://shop.astro.build" },
+			{ label: 'Blog', href: '/blog/' },
+			{ label: 'Wallpapers', href: '/wallpapers/' },
+			{ label: 'Swag Shop', href: 'https://shop.astro.build' },
 		],
 	},
 	{
-		title: "Legal",
+		title: 'Legal',
 		links: [
-			{ label: "Privacy Policy", href: "/privacy/" },
-			{ label: "Terms of Service", href: "/terms/" },
+			{ label: 'Privacy Policy', href: '/privacy/' },
+			{ label: 'Terms of Service', href: '/terms/' },
 		],
 	},
 ];
@@ -72,12 +72,7 @@ const groups: LinkGroup[] = [
 const socialLinks = siteInfo.socialLinks;
 ---
 
-<footer
-	class:list={[
-		"w-full border-t border-astro-dark-100/20",
-		bgClass,
-	]}
->
+<footer class:list={['w-full border-t border-astro-dark-100/20', bgClass]}>
 	<div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
 		<nav
 			aria-label="Secondary"
@@ -85,28 +80,17 @@ const socialLinks = siteInfo.socialLinks;
 		>
 			<NewsLetterSignup />
 
-			<div
-				class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20"
-			>
+			<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
 				{
 					groups.map(({ title, links }, index) => (
 						<section class="group flex flex-col">
-							<h2
-								id={`footerHeading${index}`}
-								class="mb-4 label-base leading-none text-white"
-							>
+							<h2 id={`footerHeading${index}`} class="mb-4 label-base leading-none text-white">
 								{title}
 							</h2>
-							<ul
-								aria-labelledby={`footerHeading${index}`}
-								class="flex flex-col gap-2"
-							>
+							<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
 								{links.map(({ href, label }) => (
 									<li>
-										<a
-											href={href}
-											class="whitespace-nowrap link"
-										>
+										<a href={href} class="whitespace-nowrap link">
 											{label}
 										</a>
 									</li>
@@ -123,11 +107,7 @@ const socialLinks = siteInfo.socialLinks;
 			class="py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
 		>
 			<div class="flex items-center gap-4">
-				<a
-					target="_blank"
-					class="link"
-					href="https://github.com/withastro/astro/blob/main/LICENSE"
-				>
+				<a target="_blank" class="link" href="https://github.com/withastro/astro/blob/main/LICENSE">
 					MIT License &copy; {new Date().getFullYear()}&nbsp;
 				</a>
 				<a

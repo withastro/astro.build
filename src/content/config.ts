@@ -1,17 +1,16 @@
-import { defineCollection } from "astro:content";
-import { z } from "zod";
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 
 export const IntegrationCategories = new Map([
-	["featured", "Featured"],
-	["recent", "Recently Added"],
-	["official", "Official"],
-	["frameworks", "Frameworks"],
-	["adapters", "Adapters"],
-	["css+ui", "CSS + UI"],
-	["performance+seo", "Performance + SEO"],
-	["analytics", "Analytics"],
-	["accessibility", "Accessibility"],
-	["toolbar", "Dev Toolbar"],
+	['recent', 'Recently Added'],
+	['official', 'Official'],
+	['frameworks', 'Frameworks'],
+	['adapters', 'Adapters'],
+	['css+ui', 'CSS + UI'],
+	['performance+seo', 'Performance + SEO'],
+	['analytics', 'Analytics'],
+	['accessibility', 'Accessibility'],
+	['toolbar', 'Dev Toolbar'],
 ] as const);
 
 const seoSchema = z.object({
@@ -19,11 +18,11 @@ const seoSchema = z.object({
 	description: z.string().min(15).max(160),
 	image: z
 		.object({
-			src: z.string().default("/og/social.jpg"),
-			alt: z.string().default("Build the web you want"),
+			src: z.string().default('/og/social.jpg'),
+			alt: z.string().default('Build the web you want'),
 		})
 		.default({}),
-	pageType: z.enum(["website", "article"]).default("website"),
+	pageType: z.enum(['website', 'article']).default('website'),
 	robots: z
 		.object({
 			index: z.boolean().default(true),
@@ -53,7 +52,7 @@ export const collections = {
 			authors: z.array(z.string()),
 			socialImage: z.string().optional(),
 			coverImage: z.string().optional(),
-			lang: z.enum(["en"]).default("en"),
+			lang: z.enum(['en']).default('en'),
 		}),
 	}),
 	caseStudies: defineCollection({
@@ -69,7 +68,7 @@ export const collections = {
 				authors: z.array(z.string()),
 				socialImage: z.string().optional(),
 				coverImage: z.string().optional(),
-				lang: z.enum(["en"]).default("en"),
+				lang: z.enum(['en']).default('en'),
 				headerImage: z.string().optional(),
 				coverGradientFrom: z.string(),
 				coverGradientTo: z.string(),
@@ -79,10 +78,10 @@ export const collections = {
 	}),
 	integrations: {
 		schema: z.object({
-			name: z.string().describe("Name of the package as it is published to NPM"),
+			name: z.string().describe('Name of the package as it is published to NPM'),
 			title: z
 				.string()
-				.describe("Title of the integration as it should be shown in the Integrations catalog"),
+				.describe('Title of the integration as it should be shown in the Integrations catalog'),
 			description: z.string().optional(),
 			image: z.string().optional(),
 			categories: z.array(
@@ -92,17 +91,17 @@ export const collections = {
 			npmUrl: z.string().url(),
 			homepageUrl: z.string().url().optional(),
 			official: z.boolean().default(false),
-			featured: z.number().min(1).optional(),
 			toolbar: z.number().min(1).optional(),
 			downloads: z.number().min(0).default(0),
+			downloadFactor: z.number().min(0).default(1),
 			badge: z.string().optional(),
 		}),
 	},
 	pages: {
 		schema: z.object({
 			seo: seoSchema,
-			updated_date: z.date().describe("The date this content was last updated."),
-			locale: z.enum(["en"]).default("en"),
+			updated_date: z.date().describe('The date this content was last updated.'),
+			locale: z.enum(['en']).default('en'),
 		}),
 	},
 	partials: {
@@ -131,17 +130,17 @@ export const collections = {
 			dateAdded: z.date(),
 			categories: z
 				.enum([
-					"starlight",
-					"personal",
-					"tech",
-					"marketing",
-					"entertainment",
-					"landing",
-					"blog",
-					"portfolio",
-					"docs",
-					"e-commerce",
-					"other",
+					'starlight',
+					'personal',
+					'tech',
+					'marketing',
+					'entertainment',
+					'landing',
+					'blog',
+					'portfolio',
+					'docs',
+					'e-commerce',
+					'other',
 				])
 				.array()
 				.default([]),

@@ -1,22 +1,22 @@
-import type { APIRoute } from "astro";
-import { integrations as LAST_MODIFIED } from "~/data/last-modified.json";
-import { getFilteredIntegrations } from "~/helpers/integrations.ts";
+import type { APIRoute } from 'astro';
+import { integrations as LAST_MODIFIED } from '~/data/last-modified.json';
+import { getFilteredIntegrations } from '~/helpers/integrations.ts';
 
 export const prerender = false;
 
 const headers = {
-	accept: "application/json",
-	"cache-control": "public,max-age=604800,s-max-age=604800,stale-while-revalidate=86400",
-	"last-modified": LAST_MODIFIED,
-	"Access-Control-Allow-Credentials": "true",
-	"Access-Control-Allow-Origin": "*",
-	"Access-Control-Allow-Methods": "GET,OPTIONS,HEAD",
-	"Access-Control-Allow-Headers":
-		"X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, If-Modified-Since, X-Api-Version",
+	accept: 'application/json',
+	'cache-control': 'public,max-age=604800,s-max-age=604800,stale-while-revalidate=86400',
+	'last-modified': LAST_MODIFIED,
+	'Access-Control-Allow-Credentials': 'true',
+	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Methods': 'GET,OPTIONS,HEAD',
+	'Access-Control-Allow-Headers':
+		'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, If-Modified-Since, X-Api-Version',
 };
 
 export const HEAD: APIRoute = (ctx) => {
-	const modified = ctx.request.headers.get("If-Modified-Since");
+	const modified = ctx.request.headers.get('If-Modified-Since');
 	if (modified === LAST_MODIFIED) {
 		return new Response(null, { status: 304 });
 	}
@@ -24,7 +24,7 @@ export const HEAD: APIRoute = (ctx) => {
 };
 
 export const GET: APIRoute = async (ctx) => {
-	const modified = ctx.request.headers.get("If-Modified-Since");
+	const modified = ctx.request.headers.get('If-Modified-Since');
 	if (modified === LAST_MODIFIED) {
 		return new Response(null, { status: 304 });
 	}

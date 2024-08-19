@@ -1,5 +1,5 @@
-import { differenceInDays } from "date-fns";
-import integrations from "./integrations.json" assert { type: "json" };
+import { differenceInDays } from 'date-fns';
+import integrations from './integrations.json' assert { type: 'json' };
 
 const NEW_THRESHOLD_DAYS = 28;
 
@@ -49,20 +49,15 @@ export function getCategoriesForKeyword(keyword) {
 		? Array.from(keywordToCategories.get(keyword))
 		: [];
 
-	return categories.length ? categories : ["css+ui"];
+	return categories.length ? categories : ['css+ui'];
 }
 
 export function badgeForPackage(pkg) {
 	if (isNewPackage(pkg)) {
-		return "new";
+		return 'new';
 	}
 
 	return undefined;
-}
-
-export function getFeaturedPackagePriority(pkg) {
-	const index = integrations.featured.indexOf(pkg) + 1;
-	return index > 0 ? index : undefined;
 }
 
 export function getToolbarPackagePriority(pkg) {

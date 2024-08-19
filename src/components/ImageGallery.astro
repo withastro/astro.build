@@ -1,9 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import type { HTMLAttributes } from "astro/types";
-import RightArrowIcon from "~/icons/RightArrowIcon.jsx";
+import { Image } from 'astro:assets';
+import type { HTMLAttributes } from 'astro/types';
+import RightArrowIcon from '~/icons/RightArrowIcon.jsx';
 
-export type Props = HTMLAttributes<"div"> & {
+export type Props = HTMLAttributes<'div'> & {
 	images: string[];
 };
 
@@ -12,7 +12,7 @@ const { images, class: className, ...attrs } = Astro.props;
 
 <image-gallery
 	selected="0"
-	class:list={["grid pb-4 sm:aspect-[16/7] sm:grid-cols-[77.75%,22.25%] sm:pb-0", className]}
+	class:list={['grid pb-4 sm:aspect-[16/7] sm:grid-cols-[77.75%,22.25%] sm:pb-0', className]}
 	{...attrs}
 >
 	<div class="relative max-w-full">
@@ -63,7 +63,7 @@ const { images, class: className, ...attrs } = Astro.props;
 			{
 				images.map((image, i) => (
 					<li>
-						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? "true" : "false"}>
+						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? 'true' : 'false'}>
 							<Image
 								src={image}
 								height={900}
@@ -84,7 +84,7 @@ const { images, class: className, ...attrs } = Astro.props;
 				images.map((_, i) => (
 					<div
 						class="pill h-2.5 w-2.5 rounded-full bg-astro-gray-100 transition-all duration-200 ease-in-out"
-						aria-current={i === 0 ? "true" : "false"}
+						aria-current={i === 0 ? 'true' : 'false'}
 					/>
 				))
 			}
@@ -93,8 +93,8 @@ const { images, class: className, ...attrs } = Astro.props;
 </image-gallery>
 
 <style>
-	image-gallery [aria-current="false"]:empty,
-	image-gallery [aria-current="false"] img {
+	image-gallery [aria-current='false']:empty,
+	image-gallery [aria-current='false'] img {
 		@apply opacity-50;
 	}
 
@@ -112,7 +112,7 @@ const { images, class: className, ...attrs } = Astro.props;
 		-webkit-user-drag: none;
 	}
 
-	.pill[aria-current="true"] {
+	.pill[aria-current='true'] {
 		@apply w-5;
 	}
 
@@ -131,132 +131,134 @@ const { images, class: className, ...attrs } = Astro.props;
 
 <script>
 	function throttle(fn: Function, delay = 50) {
-		let lastCalled = 0
+		let lastCalled = 0;
 		return (...args: any[]) => {
-			let now = new Date().getTime()
+			let now = new Date().getTime();
 			if (now - lastCalled < delay) {
-				return
+				return;
 			}
-			lastCalled = now
-			return fn(...args)
-		}
+			lastCalled = now;
+			return fn(...args);
+		};
 	}
 
 	function safeParse(maybeNumber: any) {
 		try {
-			return parseInt(maybeNumber)
+			return parseInt(maybeNumber);
 		} catch {
-			return undefined
+			return undefined;
 		}
 	}
 
 	class ImageGallery extends HTMLElement {
 		connectedCallback() {
-			this.enhance()
-			this.update()
+			this.enhance();
+			this.update();
 
-			window.addEventListener("hashchange", () => this.onHashChange())
+			window.addEventListener('hashchange', () => this.onHashChange());
 			this.mainScroller?.addEventListener(
-				"scroll",
+				'scroll',
 				throttle(() => this.onScroll()),
-			)
+			);
 
-			this.next?.addEventListener("click", () => {
-				this.selected = (this.selected + 1) % this.scrollerItems.length
-				this.scrollToItem(this.selected)
-			})
+			this.next?.addEventListener('click', () => {
+				this.selected = (this.selected + 1) % this.scrollerItems.length;
+				this.scrollToItem(this.selected);
+			});
 
-			this.previous?.addEventListener("click", () => {
+			this.previous?.addEventListener('click', () => {
 				if (this.selected === 0) {
-					this.selected = this.scrollerItems.length - 1
+					this.selected = this.scrollerItems.length - 1;
 				} else {
-					this.selected -= 1
+					this.selected -= 1;
 				}
-				this.scrollToItem(this.selected)
-			})
+				this.scrollToItem(this.selected);
+			});
 		}
 
 		static get observedAttributes() {
-			return ["selected"]
+			return ['selected'];
 		}
 
 		attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-			if (name !== "selected" || oldValue === newValue) {
-				return
+			if (name !== 'selected' || oldValue === newValue) {
+				return;
 			}
 
-			this.update()
+			this.update();
 		}
 
 		private onHashChange() {
-			this.selected = this.scrollerItems.findIndex((elem) => elem.matches(window.location.hash))
+			this.selected = this.scrollerItems.findIndex((elem) => elem.matches(window.location.hash));
 		}
 
 		private onScroll() {
-			this.selected = this.calcSelected()
+			this.selected = this.calcSelected();
 		}
 
 		private get selected() {
-			return safeParse(this.getAttribute("selected")) || 0
+			return safeParse(this.getAttribute('selected')) || 0;
 		}
 
 		private set selected(value: number) {
-			this.setAttribute("selected", String(value))
+			this.setAttribute('selected', String(value));
 		}
 
 		private get next() {
-			return this.querySelector<HTMLButtonElement>("#gallery-next")
+			return this.querySelector<HTMLButtonElement>('#gallery-next');
 		}
 
 		private get previous() {
-			return this.querySelector<HTMLButtonElement>("#gallery-prev")
+			return this.querySelector<HTMLButtonElement>('#gallery-prev');
 		}
 
 		private get mainScroller() {
-			return this.querySelector<HTMLUListElement>("#gallery")
+			return this.querySelector<HTMLUListElement>('#gallery');
 		}
 
 		private get scrollerItems() {
-			return Array.from(this.mainScroller?.querySelectorAll<HTMLLIElement>("li") || [])
+			return Array.from(this.mainScroller?.querySelectorAll<HTMLLIElement>('li') || []);
 		}
 
 		private get navScroller() {
-			return this.querySelector<HTMLUListElement>("nav")
+			return this.querySelector<HTMLUListElement>('nav');
 		}
 
 		private get navScrollerItems() {
-			return Array.from(this.navScroller?.querySelectorAll<HTMLAnchorElement>(`a[href^="#"]`) || [])
+			return Array.from(
+				this.navScroller?.querySelectorAll<HTMLAnchorElement>(`a[href^="#"]`) || [],
+			);
 		}
 
 		private get scrollIndicator() {
-			return this.querySelector<HTMLDivElement>("nav > div")
+			return this.querySelector<HTMLDivElement>('nav > div');
 		}
 
 		private get scrollIndicatorPills() {
-			return Array.from(this.scrollIndicator?.querySelectorAll<HTMLDivElement>("div") || [])
+			return Array.from(this.scrollIndicator?.querySelectorAll<HTMLDivElement>('div') || []);
 		}
 
 		private update() {
 			for (let i = 0; i < this.scrollerItems.length; i++) {
-				const current = i === this.selected
+				const current = i === this.selected;
 
-				this.navScrollerItems[i].setAttribute("aria-current", String(current))
-				this.scrollIndicatorPills[i].setAttribute("aria-current", String(current))
+				this.navScrollerItems[i].setAttribute('aria-current', String(current));
+				this.scrollIndicatorPills[i].setAttribute('aria-current', String(current));
 			}
 
 			if (this.navScroller) {
-				const link = this.navScrollerItems[this.selected]
+				const link = this.navScrollerItems[this.selected];
 
 				// make sure the nav preview image is fully visible
 				if (this.navScroller.scrollTop > link.offsetTop) {
 					// preview image is cut off on the top, need to scroll up
-					this.navScroller.scrollTo({ top: link.offsetTop, behavior: "smooth" })
+					this.navScroller.scrollTo({ top: link.offsetTop, behavior: 'smooth' });
 				} else if (this.navScroller.offsetHeight < link.offsetTop + link.offsetHeight) {
 					// preview image is cut off on the bottom, need to scroll down
 					this.navScroller.scrollTo({
 						top: link.offsetTop + link.offsetHeight - this.navScroller.offsetHeight,
-						behavior: "smooth",
-					})
+						behavior: 'smooth',
+					});
 				}
 			}
 		}
@@ -264,52 +266,52 @@ const { images, class: className, ...attrs } = Astro.props;
 		private enhance() {
 			// click hijacking the navigation image previews
 			this.navScrollerItems.forEach((link, i) => {
-				link.addEventListener("click", (event) => {
+				link.addEventListener('click', (event) => {
 					// should never happen!
 					if (!this.mainScroller || !this.navScroller) {
-						return
+						return;
 					}
 
 					// try to find the matching full-size image
-					const url = new URL(link.href)
-					const target = this.mainScroller.querySelector<HTMLElement>(url.hash)
+					const url = new URL(link.href);
+					const target = this.mainScroller.querySelector<HTMLElement>(url.hash);
 
 					if (!target) {
 						// oops! Let the navigation link continue
-						return
+						return;
 					}
 
 					// hijacking commence
-					event.preventDefault()
+					event.preventDefault();
 
-					this.scrollToItem(i)
+					this.scrollToItem(i);
 
-					this.selected = i
-				})
-			})
+					this.selected = i;
+				});
+			});
 		}
 
 		private scrollToItem(index: number) {
 			if (this.mainScroller) {
-				const target = this.scrollerItems[index]
+				const target = this.scrollerItems[index];
 
 				// programmatically scroll the full image into view
-				this.mainScroller.scrollLeft = target.offsetLeft
+				this.mainScroller.scrollLeft = target.offsetLeft;
 			}
 		}
 
 		private calcSelected() {
 			if (!this.mainScroller || !this.scrollerItems?.length) {
-				return 0
+				return 0;
 			}
 
-			const carouselRect = this.mainScroller.getBoundingClientRect()
+			const carouselRect = this.mainScroller.getBoundingClientRect();
 			return this.scrollerItems.findIndex(
 				(elem) =>
 					Math.abs(elem.getBoundingClientRect().left - carouselRect.left) < carouselRect.width / 2,
-			)
+			);
 		}
 	}
 
-	customElements.define("image-gallery", ImageGallery)
+	customElements.define('image-gallery', ImageGallery);
 </script>

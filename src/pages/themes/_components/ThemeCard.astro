@@ -1,11 +1,11 @@
 ---
-import { Image } from "astro:assets";
-import Card from "~/components/Card.astro";
-import CardBody from "~/components/CardBody.astro";
-import CardFooter from "~/components/CardFooter.astro";
-import type { ThemeAndAuthor } from "../_types/index.ts";
-import Avatar from "./Avatar.astro";
-import Badge from "./Badge.astro";
+import { Image } from 'astro:assets';
+import Card from '~/components/Card.astro';
+import CardBody from '~/components/CardBody.astro';
+import CardFooter from '~/components/CardFooter.astro';
+import type { ThemeAndAuthor } from '../_types/index.ts';
+import Avatar from './Avatar.astro';
+import Badge from './Badge.astro';
 
 export type Props = {
 	theme: ThemeAndAuthor;
@@ -31,7 +31,7 @@ const image = theme.Theme.image;
 		<CardBody>
 			<div>
 				<!-- <h3 class:list={["heading-5 mb-2 text-white", { official: theme.data.official }]}> -->
-				<h3 class:list={["heading-5 mb-2 text-white"]}>
+				<h3 class:list={['heading-5 mb-2 text-white']}>
 					{theme.Theme.title}
 				</h3>
 				<p class="line-clamp-3">{theme.Theme.description}</p>
@@ -41,8 +41,8 @@ const image = theme.Theme.image;
 			>
 				<Avatar theme={theme} />
 
-				<Badge theme={theme.Theme.paid ? "primary" : "secondary"} class="z-10">
-					{theme.Theme.paid ? "Paid" : "Free"}
+				<Badge theme={theme.Theme.paid ? 'primary' : 'secondary'} class="z-10">
+					{theme.Theme.paid ? 'Paid' : 'Free'}
 				</Badge>
 			</CardFooter>
 		</CardBody>
@@ -52,7 +52,7 @@ const image = theme.Theme.image;
 <style>
 	.official::after {
 		@apply ml-1 inline-block h-5 w-5 translate-y-[2px] bg-contain bg-no-repeat;
-		content: "";
+		content: '';
 		background-image: url(/assets/official.svg);
 	}
 </style>

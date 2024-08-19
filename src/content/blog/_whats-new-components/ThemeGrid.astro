@@ -1,13 +1,17 @@
 ---
-import ThemeCard from "./ThemeCard.astro";
-
+import { THEMES_API_URL } from '~/helpers/constants.ts';
+import ThemeCard from './ThemeCard.astro';
 interface Props {
-	themes: string[];
+	date: string;
 }
+
+const themes = await fetch(
+	new URL(`/api/themes/monthly?month=${Astro.props.date}`, THEMES_API_URL),
+).then((res) => res.json());
 ---
 
 <ul
 	class="grid gap-5 !p-0 md:grid-flow-row-dense md:grid-cols-2 lg:-mx-16 lg:!mb-16 lg:!mt-8 lg:grid-cols-3 xl:-mx-32"
 >
-	{Astro.props.themes.map((theme) => <ThemeCard slug={theme} />)}
+	{themes.map((theme: any) => <ThemeCard {...theme} />)}
 </ul>

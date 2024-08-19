@@ -1,6 +1,6 @@
-import { type CollectionEntry, getCollection } from "astro:content";
-import { IntegrationCategories } from "~/content/config.js";
-import type { MapKeys } from "./types.ts";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { IntegrationCategories } from '~/content/config.js';
+import type { MapKeys } from './types.ts';
 
 export interface IntegrationOptions {
 	search?: string | null;
@@ -10,8 +10,8 @@ export interface IntegrationOptions {
 
 export async function getFilteredIntegrations(options: IntegrationOptions = {}) {
 	const { categories: selectedCategories = [], toolbar = false, search } = options;
-	const searchRegex = search && new RegExp(search, "i");
-	function integrationsFilter(integration: CollectionEntry<"integrations">) {
+	const searchRegex = search && new RegExp(search, 'i');
+	function integrationsFilter(integration: CollectionEntry<'integrations'>) {
 		// Overlay doesn't support categories or search (for now)
 		if (toolbar) {
 			return integration.data.toolbar !== undefined;
@@ -40,7 +40,7 @@ export async function getFilteredIntegrations(options: IntegrationOptions = {}) 
 	}
 
 	// get integrations, filtered by the applied search & filter, then sort the matches
-	return await getCollection("integrations", integrationsFilter).then((entries) =>
+	return await getCollection('integrations', integrationsFilter).then((entries) =>
 		entries.sort(sortIntegrations),
 	);
 }
@@ -60,23 +60,14 @@ export function validateCategories(
 	return true;
 }
 
-// Sorting priority: featured first, then compare downloads, then sort alphabetically
-function sortIntegrations(a: CollectionEntry<"integrations">, b: CollectionEntry<"integrations">) {
-	if (a.data.featured && b.data.featured) {
-		return a.data.featured - b.data.featured;
-	}
+// Sorting priority: compare download count then sort alphabetically
+function sortIntegrations(a: CollectionEntry<'integrations'>, b: CollectionEntry<'integrations'>) {
+	const aDownloads = a.data.downloadFactor * a.data.downloads;
+	const bDownloads = b.data.downloadFactor * b.data.downloads;
 
-	if (a.data.featured && !b.data.featured) {
-		return -1;
-	}
-
-	if (!a.data.featured && b.data.featured) {
-		return 1;
-	}
-
-	if (a.data.downloads === b.data.downloads) {
+	if (aDownloads === bDownloads) {
 		return b.data.name.localeCompare(a.data.name);
 	}
 
-	return b.data.downloads - a.data.downloads;
+	return bDownloads - aDownloads;
 }

@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-storyblok-image-service"
 homepageUrl: "https://www.npmjs.com/package/astro-storyblok-image-service"
-downloads: 61
+downloads: 40
 ---

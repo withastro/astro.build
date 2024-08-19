@@ -1,64 +1,61 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import matter from "gray-matter";
-import yaml from "json-to-pretty-yaml";
-import slugify from "slugify";
-import glob from "tiny-glob";
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import matter from 'gray-matter';
+import yaml from 'json-to-pretty-yaml';
+import slugify from 'slugify';
+import glob from 'tiny-glob';
 import {
 	allowlist,
 	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
-	getFeaturedPackagePriority,
 	getOverrides,
 	getToolbarPackagePriority,
 	isNewPackage,
-} from "./integrations.mjs";
-import { stringifyLinks } from "./markdown.mjs";
-import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from "./npm.mjs";
+} from './integrations.mjs';
+import { markdownToPlainText } from './markdown.mjs';
+import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from './npm.mjs';
 
 function isOfficial(pkg) {
-	return pkg.startsWith("@astrojs/");
+	return pkg.startsWith('@astrojs/');
 }
 
 function sanitizeGitHubUrl(url) {
 	return url
-		.replace("git+", "")
-		.replace(".git", "")
-		.replace("git:", "https:")
-		.replace("git@github.com:", "https://github.com/");
+		.replace('git+', '')
+		.replace('.git', '')
+		.replace('git:', 'https:')
+		.replace('git@github.com:', 'https://github.com/');
 }
 
 function updateLastModified() {
 	const pathname = path.resolve(
 		path.dirname(fileURLToPath(import.meta.url)),
-		"../src/data/last-modified.json",
+		'../src/data/last-modified.json',
 	);
-	const json = fs.readFileSync(pathname, { encoding: "utf8" });
+	const json = fs.readFileSync(pathname, { encoding: 'utf8' });
 	const data = JSON.parse(json);
 	data.integrations = new Date().toUTCString();
-	fs.writeFileSync(pathname, JSON.stringify(data, null, "\t"), { encoding: "utf8" });
+	fs.writeFileSync(pathname, JSON.stringify(data, null, '\t'), { encoding: 'utf8' });
 }
 
 async function getIntegrationFiles() {
-	return await glob("src/content/integrations/*.md", {
-		cwd: path.resolve(fileURLToPath(import.meta.url), "../.."),
+	return await glob('src/content/integrations/*.md', {
+		cwd: path.resolve(fileURLToPath(import.meta.url), '../..'),
 	});
 }
 
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
-	const featured = getFeaturedPackagePriority(pkg);
 	const toolbar = getToolbarPackagePriority(pkg);
 	const official = isOfficial(pkg);
 
 	const otherCategories = [
-		official ? "official" : undefined,
-		featured ? "featured" : undefined,
-		toolbar ? "toolbar" : undefined,
-		isNewPackage(data) ? "recent" : undefined,
+		official ? 'official' : undefined,
+		toolbar ? 'toolbar' : undefined,
+		isNewPackage(data) ? 'recent' : undefined,
 	].filter(Boolean);
 
 	const uniqCategories = Array.from(new Set([...keywordCategories, ...otherCategories]));
@@ -72,7 +69,7 @@ function normalizePackageDetails(data, pkg) {
 	return {
 		name: data.name,
 		title: data.name,
-		description: stringifyLinks(data.description),
+		description: markdownToPlainText(data.description),
 		categories: uniqCategories,
 		npmUrl,
 		repoUrl,
@@ -86,14 +83,12 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const integrationOverrides = getOverrides(pkg) || {};
 
 	const badge = badgeForPackage(details);
-	const featured = getFeaturedPackagePriority(pkg);
 	const toolbar = getToolbarPackagePriority(pkg);
 
 	const newData = {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		badge,
-		featured,
 		toolbar,
 	};
 
@@ -105,7 +100,7 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 }
 
 async function unsafeUpdateAllIntegrations() {
-	const keyword = "astro-component,withastro";
+	const keyword = 'astro-component,withastro';
 
 	const packagesMap = await searchByKeyword(keyword);
 	const searchResults = new Set(
@@ -183,7 +178,7 @@ Updated: ${existingIntegrations.size - deprecatedIntegrations.length} integratio
 		stats += `\n\nRemoved:${deprecatedIntegrations.map((pkg) => `\n  - ${pkg}`)}`;
 	}
 
-	stats += "\n---------------------------";
+	stats += '\n---------------------------';
 
 	console.info(stats);
 }
@@ -215,7 +210,7 @@ const args = process.argv.slice(2);
 
 // only fetch unsafe changes like new and deprecated integrations
 // if the --unsafe CLI flag was provided
-if (args.includes("--unsafe")) {
+if (args.includes('--unsafe')) {
 	await unsafeUpdateAllIntegrations();
 } else {
 	await safeUpdateExistingIntegrations();

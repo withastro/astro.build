@@ -1,44 +1,44 @@
 ---
-import { getImage } from "astro:assets";
-import { Code } from "astro-expressive-code/components";
-import Icon from "astro-icon";
-import UseCase from "../UseCase.astro";
-import code from "./snippets/comments.txt?raw";
+import { getImage } from 'astro:assets';
+import { Code } from 'astro-expressive-code/components';
+import Icon from 'astro-icon';
+import UseCase from '../UseCase.astro';
+import code from './snippets/comments.txt?raw';
 
-import jacobPic from "../../_assets/jacob-jones.png";
-import marvinPic from "../../_assets/marvin-mckinney.png";
-import wadePic from "../../_assets/wade-warren.png";
+import jacobPic from '../../_assets/jacob-jones.png';
+import marvinPic from '../../_assets/marvin-mckinney.png';
+import wadePic from '../../_assets/wade-warren.png';
 
 const wadeProfilePicture = await getImage({
 	src: wadePic,
-	format: "webp",
+	format: 'webp',
 	width: 40,
 });
 const marvinProfilePicture = await getImage({
 	src: marvinPic,
-	format: "webp",
+	format: 'webp',
 	width: 40,
 });
 const jacobProfilePicture = await getImage({
 	src: jacobPic,
-	format: "webp",
+	format: 'webp',
 	width: 40,
 });
 
 const comments = [
 	{
 		id: 2,
-		author: "Wade Warren",
-		publishedAt: "30 minutes",
+		author: 'Wade Warren',
+		publishedAt: '30 minutes',
 		comment:
-			"I spent the weekend rebuilding our website with Astro DB. The documentation is fantastic, DX is incredible, and the results are impressive. Tons of joy!",
+			'I spent the weekend rebuilding our website with Astro DB. The documentation is fantastic, DX is incredible, and the results are impressive. Tons of joy!',
 		authorPic: wadeProfilePicture.src,
 	},
 	{
 		id: 1,
-		author: "Marvin McKinney",
-		publishedAt: "2 hours",
-		comment: "Astro DB is awesome! The DX this provides is great, very easy to set up.",
+		author: 'Marvin McKinney',
+		publishedAt: '2 hours',
+		comment: 'Astro DB is awesome! The DX this provides is great, very easy to set up.',
 		authorPic: marvinProfilePicture.src,
 	},
 ];
@@ -60,9 +60,7 @@ const comments = [
 								alt={`${post.authorPic} Profile Picture`}
 								class="h-10 w-10 object-cover object-center"
 							/>
-							<figcaption class="text-lg text-[#9FA5B3]">
-								{post.author}
-							</figcaption>
+							<figcaption class="text-lg text-[#9FA5B3]">{post.author}</figcaption>
 						</figure>
 						<p class="text-[#525866]">{post.publishedAt}</p>
 					</div>
@@ -89,9 +87,7 @@ const comments = [
 				<div
 					class="flex items-center gap-0 overflow-hidden rounded-lg border border-[#202432] bg-[#0C0F19] shadow-sm focus-within:border-astro-gray-500 focus-within:ring-1 focus-within:ring-astro-gray-500"
 				>
-					<label for="comment" class="sr-only">
-						Add your comment</label
-					>
+					<label for="comment" class="sr-only"> Add your comment</label>
 					<input
 						name="comment"
 						id="comment"
@@ -111,5 +107,5 @@ const comments = [
 		</div>
 	</div>
 
-	<Code slot="code" lang="ts" code={code.replaceAll("\t", "  ")} />
+	<Code slot="code" lang="ts" code={code.replaceAll('\t', '  ')} />
 </UseCase>

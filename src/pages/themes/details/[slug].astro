@@ -1,16 +1,16 @@
 ---
-import { Image } from "astro:assets";
-import CardGrid from "~/components/CardGrid.astro";
-import CardGridGroup from "~/components/CardGridGroup.astro";
-import ImageGallery from "~/components/ImageGallery.astro";
-import { THEMES_API_URL } from "~/helpers/constants.ts";
-import { sanitizeThemeDescription } from "~/helpers/themes.ts";
-import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx";
-import MainLayout from "~/layouts/MainLayout.astro";
-import ThemeCTAs from "../_components/ThemeCTAs.astro";
-import ThemeCard from "../_components/ThemeCard.astro";
-import ThemeStats from "../_components/ThemeStats.astro";
-import type { Theme, ThemeAndAuthor } from "../_types/index.ts";
+import { Image } from 'astro:assets';
+import CardGrid from '~/components/CardGrid.astro';
+import CardGridGroup from '~/components/CardGridGroup.astro';
+import ImageGallery from '~/components/ImageGallery.astro';
+import { THEMES_API_URL } from '~/helpers/constants.ts';
+import { sanitizeThemeDescription } from '~/helpers/themes.ts';
+import LeftArrowIcon from '~/icons/LeftArrowIcon.jsx';
+import MainLayout from '~/layouts/MainLayout.astro';
+import ThemeCTAs from '../_components/ThemeCTAs.astro';
+import ThemeCard from '../_components/ThemeCard.astro';
+import ThemeStats from '../_components/ThemeStats.astro';
+import type { ThemeAndAuthor } from '../_types/index.ts';
 
 export const prerender = false;
 
@@ -84,7 +84,7 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 					<div class="grid-container gap-y-10 pb-0 pt-20">
 						<CardGridGroup
 							title="Other themes to consider"
-							cta={{ href: "/themes/", text: "View more themes" }}
+							cta={{ href: '/themes/', text: 'View more themes' }}
 						>
 							<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
 								{relatedThemes.map((theme) => (
@@ -107,7 +107,7 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 
 		.related::before {
 			@apply bg-grid absolute aspect-square w-full;
-			content: "";
+			content: '';
 			mask-image: linear-gradient(to bottom, white, transparent);
 		}
 	</style>

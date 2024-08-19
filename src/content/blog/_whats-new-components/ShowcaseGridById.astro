@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+
+interface Props {
+	ids: Array<CollectionEntry<'showcase'>['id']>;
+}
+
+const sites = await getCollection('showcase', (site) => Astro.props.ids.includes(site.id));
+---
+
+<ul
+	class="grid gap-5 !p-0 md:grid-flow-row-dense md:grid-cols-2 lg:-mx-16 lg:!mb-16 lg:!mt-8 lg:grid-cols-3 xl:-mx-32 [&_a]:!text-white"
+>
+	{
+		Astro.props.ids.map((id) => {
+			const site = sites.find((site) => site.id === id);
+			if (site) {
+				return (
+					<li class="before:!hidden">
+						<ShowcaseCard {site} />
+					</li>
+				);
+			}
+		})
+	}
+</ul>

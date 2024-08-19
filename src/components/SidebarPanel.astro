@@ -1,7 +1,7 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import type { HTMLAttributes } from 'astro/types';
 
-export type Props = HTMLAttributes<"div"> & {
+export type Props = HTMLAttributes<'div'> & {
 	alt?: boolean;
 };
 
@@ -10,8 +10,8 @@ const { class: className, alt = false, ...attrs } = Astro.props;
 
 <div
 	class:list={[
-		"border-astro-gray-500 p-6 lg:border-b lg:p-8 xl:p-10",
-		{ "bg-astro-gray-500": alt },
+		'border-astro-gray-500 p-6 lg:border-b lg:p-8 xl:p-10',
+		{ 'bg-astro-gray-500': alt },
 		className,
 	]}
 	{...attrs}

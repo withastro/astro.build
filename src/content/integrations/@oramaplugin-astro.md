@@ -5,7 +5,7 @@ description: "An Astro integration for Orama"
 categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@orama/plugin-astro"
-repoUrl: "https://github.com/oramasearch/orama"
-homepageUrl: "https://github.com/oramasearch/orama#readme"
-downloads: 608
+repoUrl: "https://github.com/askorama/orama"
+homepageUrl: "https://github.com/askorama/orama#readme"
+downloads: 543
 ---

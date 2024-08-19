@@ -1,6 +1,6 @@
 ---
-import { format } from "date-fns";
-import { resolveCoverImage } from "~/content/blog/_resolveImage.js";
+import { format } from 'date-fns';
+import { resolveCoverImage } from '~/content/blog/_resolveImage.js';
 
 export type Props = {
 	isCaseStudy: boolean;
@@ -30,7 +30,7 @@ const image = await resolveCoverImage(post);
 	>
 		<header>
 			<time class="code text-astro-gray-200" datetime={post.data.publishDate.toISOString()}>
-				{format(post.data.publishDate, "MMMM d, yyyy")}
+				{format(post.data.publishDate, 'MMMM d, yyyy')}
 			</time>
 		</header>
 		<div class="-mx-4">

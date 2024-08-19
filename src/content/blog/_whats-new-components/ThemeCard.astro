@@ -1,22 +1,18 @@
 ---
-import { THEMES_API_URL } from "~/helpers/constants.ts";
+interface Props {
+	Theme: { title: string; image: string; slug: string };
+	Author: { name: string };
+}
 
-const { slug } = Astro.props;
-
-const entry = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then((res) =>
-	res.json(),
-);
-if (!entry) throw new Error(`Could not find theme with slug "${slug}"`);
-
-const { title, image } = entry.Theme;
-const { Author: author } = entry;
+const { Author, Theme } = Astro.props;
+const { title, image, slug } = Theme;
 ---
 
 <li
 	class:list={[
-		"group relative flex aspect-[1200/630] h-full w-full cursor-pointer flex-col overflow-hidden bg-astro-gray-600",
+		'group relative flex aspect-[1200/630] h-full w-full cursor-pointer flex-col overflow-hidden bg-astro-gray-600',
 		// Override default Markdown content styles
-		"!m-0 before:!hidden",
+		'!m-0 before:!hidden',
 	]}
 >
 	<a href={`/themes/details/${slug}/`} class="h-full w-full text-astro-gray-100">
@@ -33,7 +29,7 @@ const { Author: author } = entry;
 		>
 			<span class="heading-5">{title}</span>
 			<span class="body flex flex-row items-center gap-2">
-				by {author.name}
+				by {Author.name}
 			</span>
 		</span>
 	</a>

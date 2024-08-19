@@ -1,4 +1,4 @@
-import path from "node:path";
+import path from 'node:path';
 
 export function to2xPath(src: string) {
 	const ext = path.extname(src);

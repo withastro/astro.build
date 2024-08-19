@@ -34,8 +34,8 @@
 
 	/* the ::marker selector doesn't allow customizing the spacing around the marker as easily */
 	.prose ul li::before {
-		content: "";
-		background: url("../icons/star.svg") center no-repeat;
+		content: '';
+		background: url('../icons/star.svg') center no-repeat;
 		display: inline-block;
 		width: 10px;
 		height: 10px;
@@ -69,5 +69,27 @@
 
 	.prose > .expressive-code pre {
 		@apply my-6 rounded-md border border-astro-gray-400;
+	}
+
+	.prose table {
+		@apply overflow-auto border-spacing-0 text-sm sm:text-base w-full;
+	}
+	.prose tr {
+		@apply w-full;
+	}
+	.prose :is(th, td) {
+		@apply border-b border-astro-gray-500 py-2 px-4 align-baseline;
+	}
+	.prose :is(th, td):first-child {
+		@apply pl-0;
+	}
+	.prose :is(th, td):last-child {
+		@apply pr-0;
+	}
+	.prose th {
+		@apply text-white font-medium;
+	}
+	.prose th:not([align]) {
+		@apply text-start;
 	}
 }

@@ -1,10 +1,10 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import sharp from "sharp";
-import glob from "tiny-glob";
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import sharp from 'sharp';
+import glob from 'tiny-glob';
 
 async function main() {
-	const allImages = await glob("../src/content/showcase/_images/**/*.{jpg,jpeg,png}");
+	const allImages = await glob('../src/content/showcase/_images/**/*.{jpg,jpeg,png}');
 
 	for (const input of allImages) {
 		const outputBuffer = await sharp(input)
@@ -13,7 +13,7 @@ async function main() {
 			.toBuffer();
 
 		const basename = path.basename(input);
-		const filename = input.replace(basename, basename.replace(path.extname(input), ".webp"));
+		const filename = input.replace(basename, basename.replace(path.extname(input), '.webp'));
 
 		console.log(`${input} => ${filename}`);
 
@@ -27,7 +27,7 @@ async function main() {
 			.toBuffer();
 
 		const basename = path.basename(input);
-		const filename = input.replace(basename, basename.replace(path.extname(input), "@2x.webp"));
+		const filename = input.replace(basename, basename.replace(path.extname(input), '@2x.webp'));
 
 		console.log(`${input} => ${filename}`);
 
