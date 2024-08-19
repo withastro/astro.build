@@ -1,4 +1,4 @@
-import { raise } from "./errors.js";
+import { raise } from './errors.js';
 
 /**
  * Find a DOM element and validate its type.

@@ -1,17 +1,17 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import type { GetStaticPathsOptions, Page } from "astro";
-import Pagination from "~/components/Pagination.astro";
-import MainLayout from "~/layouts/MainLayout.astro";
-import ShowcaseCard from "./_components/ShowcaseCard.astro";
-import SubmitSite from "./_components/SubmitSite.astro";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import type { GetStaticPathsOptions, Page } from 'astro';
+import Pagination from '~/components/Pagination.astro';
+import MainLayout from '~/layouts/MainLayout.astro';
+import ShowcaseCard from './_components/ShowcaseCard.astro';
+import SubmitSite from './_components/SubmitSite.astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const getWeight = (site: CollectionEntry<"showcase">) =>
+	const getWeight = (site: CollectionEntry<'showcase'>) =>
 		site.data.featured ?? 1000 + Math.random();
 
 	// fetch all showcase sites and sort featured sites to the front, randomize the rest
-	const sortedShowcase = (await getCollection("showcase")).sort(
+	const sortedShowcase = (await getCollection('showcase')).sort(
 		(a, b) => getWeight(a) - getWeight(b),
 	);
 
@@ -29,21 +29,21 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	return paginate(showcase, { pageSize: 30 });
 }
 
-const { page } = Astro.props as { page: Page<CollectionEntry<"showcase">> };
+const { page } = Astro.props as { page: Page<CollectionEntry<'showcase'>> };
 const showcase = page.data;
 
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
-	return `/showcase${num === 0 ? "" : `/${String(num + 1)}`}`;
+	return `/showcase${num === 0 ? '' : `/${String(num + 1)}`}`;
 });
 
-const title = "Showcase";
+const title = 'Showcase';
 const description = "Explore what's possible with Astro and get inspired for your next project.";
 ---
 
 <MainLayout
 	title={title}
 	description={description}
-	image={{ src: "/og/showcase.jpg", alt: "Explore the possibilities" }}
+	image={{ src: '/og/showcase.jpg', alt: 'Explore the possibilities' }}
 >
 	<div class="hero relative">
 		<div class="grid-container">
@@ -60,7 +60,7 @@ const description = "Explore what's possible with Astro and get inspired for you
 			{
 				showcase.map((site, i) => (
 					<>
-						<li class:list={{ "md:col-span-2 md:row-span-2": site.data.highlight }}>
+						<li class:list={{ 'md:col-span-2 md:row-span-2': site.data.highlight }}>
 							<ShowcaseCard site={site} />
 						</li>
 						{i === 5 && (
@@ -80,13 +80,13 @@ const description = "Explore what's possible with Astro and get inspired for you
 <style>
 	:global(main::before) {
 		@apply bg-grid absolute aspect-square w-full;
-		content: "";
+		content: '';
 		mask-image: linear-gradient(to bottom, white, transparent);
 	}
 
 	.hero::before {
 		@apply absolute z-blur;
-		content: "";
+		content: '';
 		height: 50vw;
 		width: 100vw;
 		top: 50%;
@@ -98,7 +98,7 @@ const description = "Explore what's possible with Astro and get inspired for you
 
 	.hero::after {
 		@apply absolute z-blur;
-		content: "";
+		content: '';
 		height: 50vw;
 		width: 100vw;
 		top: 50%;
@@ -110,7 +110,7 @@ const description = "Explore what's possible with Astro and get inspired for you
 
 	.backgrounds:last-of-type::after {
 		@apply absolute z-blur;
-		content: "";
+		content: '';
 		height: 50vw;
 		width: 100vw;
 		bottom: 0;

@@ -1,42 +1,42 @@
 ---
-import CardGrid from "~/components/CardGrid.astro";
-import CardGridGroup from "~/components/CardGridGroup.astro";
-import Pagination from "~/components/Pagination.astro";
-import SearchFilter, { type FilterGroup } from "~/components/SearchFilter.astro";
-import SidebarLayout from "~/components/SidebarLayout.astro";
-import SidebarPanel from "~/components/SidebarPanel.astro";
-import { IntegrationCategories } from "~/content/config.js";
-import { getFilteredIntegrations } from "~/helpers/integrations.ts";
-import { paginate } from "~/helpers/paginate.js";
-import type { MapKeys } from "~/helpers/types.ts";
-import MainLayout from "~/layouts/MainLayout.astro";
-import IntegrationCard from "./_components/IntegrationCard.astro";
-import SubmitIntegration from "./_components/SubmitIntegration.astro";
+import CardGrid from '~/components/CardGrid.astro';
+import CardGridGroup from '~/components/CardGridGroup.astro';
+import Pagination from '~/components/Pagination.astro';
+import SearchFilter, { type FilterGroup } from '~/components/SearchFilter.astro';
+import SidebarLayout from '~/components/SidebarLayout.astro';
+import SidebarPanel from '~/components/SidebarPanel.astro';
+import { IntegrationCategories } from '~/content/config.js';
+import { getFilteredIntegrations } from '~/helpers/integrations.ts';
+import { paginate } from '~/helpers/paginate.js';
+import type { MapKeys } from '~/helpers/types.ts';
+import MainLayout from '~/layouts/MainLayout.astro';
+import IntegrationCard from './_components/IntegrationCard.astro';
+import SubmitIntegration from './_components/SubmitIntegration.astro';
 
 export const prerender = false;
 
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
 const currentPage =
-	typeof Astro.params.page === "undefined" ? 1 : Number.parseInt(Astro.params.page);
+	typeof Astro.params.page === 'undefined' ? 1 : Number.parseInt(Astro.params.page);
 
 // invalid page number!
 if (!currentPage || Number.isNaN(currentPage)) {
-	return Astro.redirect("/404");
+	return Astro.redirect('/404');
 }
 
 // search term from the search/filter panel
-const search = Astro.url.searchParams.get("search");
+const search = Astro.url.searchParams.get('search');
 
 // get a list of category filters applied to the request
-const selectedCategories = Astro.url.searchParams.getAll("categories[]");
+const selectedCategories = Astro.url.searchParams.getAll('categories[]');
 
 // massage category data for the Filter components
 const categoryFilter: FilterGroup = {
-	title: "Categories",
+	title: 'Categories',
 	options: [...IntegrationCategories].map(([id, label]) => ({
 		id,
-		name: "categories[]",
+		name: 'categories[]',
 		value: id,
 		label,
 		selected: selectedCategories.includes(id),
@@ -53,7 +53,7 @@ const paginatedResults = paginate({
 	data: allIntegrations,
 	pageSize: 18,
 	currentPage,
-	route: "/integrations/[...page]",
+	route: '/integrations/[...page]',
 	searchParams: Astro.url.searchParams,
 });
 
@@ -69,10 +69,10 @@ const integrations = page.data;
 const showRecentlyAdded =
 	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value);
 const recentlyAdded = showRecentlyAdded
-	? allIntegrations.filter((entry) => entry.data.badge === "new")
+	? allIntegrations.filter((entry) => entry.data.badge === 'new')
 	: [];
 const recentlyAddedSearch = new URLSearchParams(Astro.url.search);
-recentlyAddedSearch.append("categories[]", "recent");
+recentlyAddedSearch.append('categories[]', 'recent');
 const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString()}`;
 ---
 

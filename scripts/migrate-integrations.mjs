@@ -1,10 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
-import yaml from "json-to-pretty-yaml";
-import slugify from "slugify";
+import fs from 'node:fs';
+import path from 'node:path';
+import yaml from 'json-to-pretty-yaml';
+import slugify from 'slugify';
 
 function main() {
-	const blob = fs.readFileSync("./integrations.json", "utf-8");
+	const blob = fs.readFileSync('./integrations.json', 'utf-8');
 	const data = JSON.parse(blob);
 
 	const integrations = data.map((i) => {
@@ -12,7 +12,7 @@ function main() {
 			name: i.slug,
 			title: i.title,
 			description: i.description,
-			categories: i.featured ? [...i.categories, "featured"] : i.categories,
+			categories: i.featured ? [...i.categories, 'featured'] : i.categories,
 			npmUrl: i.npmUrl.href,
 			image: i.image?.src,
 			repoUrl: i.repoUrl?.href,

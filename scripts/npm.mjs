@@ -1,4 +1,4 @@
-import { format, subDays } from "date-fns";
+import { format, subDays } from 'date-fns';
 
 async function fetchJson(url) {
 	const res = await fetch(url);
@@ -11,11 +11,11 @@ async function fetchJson(url) {
 	return await res.json();
 }
 
-const API_BASE_URL = "https://api.npmjs.org/";
-const REGISTRY_BASE_URL = "https://registry.npmjs.org/";
+const API_BASE_URL = 'https://api.npmjs.org/';
+const REGISTRY_BASE_URL = 'https://registry.npmjs.org/';
 
-const END_DATE = format(new Date(), "yyyy-MM-dd");
-const START_DATE = format(subDays(new Date(), 30), "yyyy-MM-dd");
+const END_DATE = format(new Date(), 'yyyy-MM-dd');
+const START_DATE = format(subDays(new Date(), 30), 'yyyy-MM-dd');
 
 const PAGE_SIZE = 100;
 
@@ -48,17 +48,17 @@ export function fetchDetailsForPackage(pkg) {
  * @param {string | undefined} ranking The sort order for results, default: `quality`
  * @returns {Promise<Map<string, any>>} Map of search results, keyed by package name
  */
-export async function searchByKeyword(keyword, ranking = "quality") {
+export async function searchByKeyword(keyword, ranking = 'quality') {
 	const objects = [];
 	let total = -1;
 	let page = 0;
 
 	do {
 		const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`);
-		url.searchParams.set("text", `keywords:${keyword}`);
-		url.searchParams.set("ranking", ranking);
-		url.searchParams.set("size", PAGE_SIZE);
-		url.searchParams.set("from", page++ * PAGE_SIZE);
+		url.searchParams.set('text', `keywords:${keyword}`);
+		url.searchParams.set('ranking', ranking);
+		url.searchParams.set('size', PAGE_SIZE);
+		url.searchParams.set('from', page++ * PAGE_SIZE);
 
 		const results = await fetchJson(url.toString());
 
@@ -75,8 +75,8 @@ export async function searchByKeyword(keyword, ranking = "quality") {
 		.filter(({ package: pkg }) => {
 			// remove any published forks of official @astrojs integrations
 			return (
-				pkg.links.repository !== "https://github.com/withastro/astro" ||
-				pkg.name.startsWith("@astrojs/")
+				pkg.links.repository !== 'https://github.com/withastro/astro' ||
+				pkg.name.startsWith('@astrojs/')
 			);
 		})
 		.reduce((acc, next) => {

@@ -1,15 +1,15 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import type { GetStaticPathsOptions, Page } from "astro";
-import Pagination from "~/components/Pagination.astro";
-import SidebarLayout from "~/components/SidebarLayout.astro";
-import SidebarPanel from "~/components/SidebarPanel.astro";
-import RSSIcon from "~/icons/RSSIcon.jsx";
-import Layout from "~/layouts/MainLayout.astro";
-import BlogPostPreview from "./_components/BlogPostPreview.astro";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import type { GetStaticPathsOptions, Page } from 'astro';
+import Pagination from '~/components/Pagination.astro';
+import SidebarLayout from '~/components/SidebarLayout.astro';
+import SidebarPanel from '~/components/SidebarPanel.astro';
+import RSSIcon from '~/icons/RSSIcon.jsx';
+import Layout from '~/layouts/MainLayout.astro';
+import BlogPostPreview from './_components/BlogPostPreview.astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const posts = [...(await getCollection("blog")), ...(await getCollection("caseStudies"))];
+	const posts = [...(await getCollection('blog')), ...(await getCollection('caseStudies'))];
 
 	const sortedPosts = posts.sort(
 		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
@@ -19,29 +19,29 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 
 const { page } = Astro.props as {
-	page: Page<CollectionEntry<"blog"> | CollectionEntry<"caseStudies">>;
+	page: Page<CollectionEntry<'blog'> | CollectionEntry<'caseStudies'>>;
 };
 
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
-	return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`;
+	return `/blog${num === 0 ? '' : `/${String(num + 1)}`}`;
 });
 
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection('blog');
 
 const featuredPosts = [
-	"images",
-	"2023-web-framework-performance-report",
-	"hybrid-rendering",
-	"netlify-official-deployment-partner",
+	'images',
+	'2023-web-framework-performance-report',
+	'hybrid-rendering',
+	'netlify-official-deployment-partner',
 ]
 	.map((slug) => allPosts.find((post) => post.slug === slug))
-	.filter(Boolean) as CollectionEntry<"blog">[];
+	.filter(Boolean) as CollectionEntry<'blog'>[];
 ---
 
 <Layout
 	title="The Astro Blog"
 	description="Get all the latest news from the Astroverse."
-	image={{ src: "/og/blog.jpg", alt: "What’s new in the Astro ecosystem" }}
+	image={{ src: '/og/blog.jpg', alt: 'What’s new in the Astro ecosystem' }}
 >
 	<div class="lg:py-18 grid-container relative py-12 sm:py-14 md:py-16 xl:py-20">
 		<div class="bleed-full bg-grid absolute inset-0"></div>
@@ -91,7 +91,7 @@ const featuredPosts = [
 				{
 					page.data.map((post) => (
 						<li>
-							<BlogPostPreview post={post} isCaseStudy={"isCaseStudy" in post.data} />
+							<BlogPostPreview post={post} isCaseStudy={'isCaseStudy' in post.data} />
 						</li>
 					))
 				}

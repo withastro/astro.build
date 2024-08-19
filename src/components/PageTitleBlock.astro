@@ -13,9 +13,9 @@ const { lg = false, title, body, wide = false } = Astro.props;
 	<slot name="title">
 		<h1
 			class:list={[
-				"mb-10 px-4 text-center lg:heading-1",
-				lg ? "heading-2" : "heading-3 sm:heading-2",
-				wide ? "sm:max-w-5xl" : "sm:max-w-3xl",
+				'mb-10 px-4 text-center lg:heading-1',
+				lg ? 'heading-2' : 'heading-3 sm:heading-2',
+				wide ? 'sm:max-w-5xl' : 'sm:max-w-3xl',
 			]}
 		>
 			{title}
@@ -23,8 +23,8 @@ const { lg = false, title, body, wide = false } = Astro.props;
 	</slot>
 	<p
 		class:list={[
-			"body body-large px-2 text-center text-astro-gray-200 md:px-8",
-			wide ? "sm:max-w-5xl" : "sm:max-w-3xl",
+			'body body-large px-2 text-center text-astro-gray-200 md:px-8',
+			wide ? 'sm:max-w-5xl' : 'sm:max-w-3xl',
 		]}
 		style="text-wrap: balance;"
 	>

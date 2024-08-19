@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import ExternalLinkIcon from "~/icons/ExternalLinkIcon";
+import { Image } from 'astro:assets';
+import ExternalLinkIcon from '~/icons/ExternalLinkIcon';
 
 export interface Props {
 	url: string;
@@ -12,9 +12,9 @@ const { url, title } = Astro.props;
 
 <li
 	class:list={[
-		"group relative flex aspect-[1200/630] h-full w-full cursor-pointer flex-col overflow-hidden bg-astro-gray-600",
+		'group relative flex aspect-[1200/630] h-full w-full cursor-pointer flex-col overflow-hidden bg-astro-gray-600',
 		// Override default Markdown content styles
-		"!m-0 before:!hidden",
+		'!m-0 before:!hidden',
 	]}
 >
 	<a href={url} class="h-full w-full text-astro-gray-100">

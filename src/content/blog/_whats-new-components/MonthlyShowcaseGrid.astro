@@ -1,20 +1,20 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import { AstroError } from "astro/errors";
-import ShowcaseCard from "~/pages/showcase/_components/ShowcaseCard.astro";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { AstroError } from 'astro/errors';
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
 
 interface Props {
 	startDate: `${number}-${number}-${number}`;
 	endDate: `${number}-${number}-${number}`;
 	starlight?: boolean;
-	exclude?: Array<CollectionEntry<"showcase">["id"]>;
+	exclude?: Array<CollectionEntry<'showcase'>['id']>;
 }
 
 if (!Astro.props.startDate) {
-	throw new AstroError("Missing prop `startDate` in `<MonthlyShowcaseGrid />`");
+	throw new AstroError('Missing prop `startDate` in `<MonthlyShowcaseGrid />`');
 }
 if (!Astro.props.endDate) {
-	throw new AstroError("Missing prop `endDate` in `<MonthlyShowcaseGrid />`");
+	throw new AstroError('Missing prop `endDate` in `<MonthlyShowcaseGrid />`');
 }
 
 const startDate = new Date(Astro.props.startDate);
@@ -23,14 +23,14 @@ const endDate = new Date(Astro.props.endDate);
 // Get the showcase sites for the date range specified.
 const sites = (
 	await getCollection(
-		"showcase",
+		'showcase',
 		({ data, id }) =>
 			data.dateAdded >= startDate &&
 			data.dateAdded <= endDate &&
 			// Include/exclude Starlight sites depending on prop value.
 			(Astro.props.starlight
-				? data.categories.includes("starlight")
-				: !data.categories.includes("starlight")) &&
+				? data.categories.includes('starlight')
+				: !data.categories.includes('starlight')) &&
 			// Exclude any IDs explicitly specified with the exclude prop.
 			!(Astro.props.exclude || []).includes(id),
 	)

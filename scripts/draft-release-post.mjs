@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+import fs from 'node:fs/promises';
 
 const githubToken = process.env.GITHUB_TOKEN;
 
@@ -7,11 +7,11 @@ export async function githubGet({ url, githubToken = undefined }) {
 	while (retries < 3) {
 		try {
 			const headers = {
-				Accept: "application/vnd.github.v3+json",
+				Accept: 'application/vnd.github.v3+json',
 			};
 			if (githubToken) headers.Authorization = `token ${githubToken}`;
 			const response = await fetch(url, { headers });
-			if (response.headers.get("content-type")?.startsWith("application/json") === false) {
+			if (response.headers.get('content-type')?.startsWith('application/json') === false) {
 				return await response.text();
 			}
 			const json = await response.json();
@@ -36,7 +36,7 @@ export async function githubGet({ url, githubToken = undefined }) {
 
 async function main() {
 	const changesets = await githubGet({
-		url: "https://api.github.com/repos/withastro/astro/contents/.changeset",
+		url: 'https://api.github.com/repos/withastro/astro/contents/.changeset',
 		githubToken,
 	});
 
@@ -44,46 +44,46 @@ async function main() {
 	const others = [];
 
 	for (const changeset of changesets) {
-		if (changeset.name === "README.md" || changeset.name === "config.json") continue;
+		if (changeset.name === 'README.md' || changeset.name === 'config.json') continue;
 		const rawContent = await githubGet({ url: changeset.download_url, githubToken });
-		let [, metadata, content] = rawContent.split("---");
-		const [pkg, increment] = metadata.split(": ").map((s) => s.trim());
+		let [, metadata, content] = rawContent.split('---');
+		const [pkg, increment] = metadata.split(': ').map((s) => s.trim());
 
-		const lines = content.split("\n");
-		while (lines[0] === "") lines.shift();
+		const lines = content.split('\n');
+		while (lines[0] === '') lines.shift();
 		let title = lines[0];
-		if (title.slice(0, -1).includes("."))
-			title = pkg === "astro" ? "New feature" : `${pkg} feature`;
+		if (title.slice(0, -1).includes('.'))
+			title = pkg === 'astro' ? 'New feature' : `${pkg} feature`;
 		else lines.shift();
-		while (lines[0] === "") lines.shift();
-		content = lines.join("\n");
+		while (lines[0] === '') lines.shift();
+		content = lines.join('\n');
 
-		if (increment.trim() === "patch") continue;
-		if (pkg === "astro") main.push({ title, content, increment });
+		if (increment.trim() === 'patch') continue;
+		if (pkg === 'astro') main.push({ title, content, increment });
 		else others.push({ title, content, increment });
 	}
 
 	let version = await fetch(
-		"https://raw.githubusercontent.com/withastro/astro/main/packages/astro/package.json",
+		'https://raw.githubusercontent.com/withastro/astro/main/packages/astro/package.json',
 	)
 		.then((res) => res.json())
 		.then((json) => json.version);
 	const oldVersion = version;
-	if (main.find((item) => item.increment === "major"))
+	if (main.find((item) => item.increment === 'major'))
 		version = version
-			.split(".")
+			.split('.')
 			.map((v, i) => (i === 0 ? Number.parseInt(v) + 1 : 0))
-			.join(".");
-	else if (main.find((item) => item.increment === "minor"))
+			.join('.');
+	else if (main.find((item) => item.increment === 'minor'))
 		version = version
-			.split(".")
+			.split('.')
 			.map((v, i) => (i === 1 ? Number.parseInt(v) + 1 : 0))
-			.join(".");
-	const versionSlug = version.split(".").join("");
-	const versionShort = version.split(".").slice(0, 2).join(".");
+			.join('.');
+	const versionSlug = version.split('.').join('');
+	const versionShort = version.split('.').slice(0, 2).join('.');
 
 	if (version === oldVersion) {
-		console.log("Not a new Astro version, skipping");
+		console.log('Not a new Astro version, skipping');
 		// return
 	}
 
@@ -113,9 +113,9 @@ yarn upgrade astro@latest
 
 While you're at it, upgrade any \`@astrojs/*\` integrations and adapters you have installed, too!
 
-${main.map((item) => `## ${item.title}\n\n${item.content}`).join("\n\n")}
+${main.map((item) => `## ${item.title}\n\n${item.content}`).join('\n\n')}
 
-${others.map((item) => `## ${item.title}\n\n${item.content}`).join("\n\n")}
+${others.map((item) => `## ${item.title}\n\n${item.content}`).join('\n\n')}
 `;
 	await fs.writeFile(`./src/content/blog/astro-${versionSlug}.mdx`, body);
 }

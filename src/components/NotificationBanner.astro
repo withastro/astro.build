@@ -1,5 +1,5 @@
 ---
-import XIcon from "~/icons/XIcon.jsx";
+import XIcon from '~/icons/XIcon.jsx';
 export type Props = {
 	uid: string;
 };
@@ -28,33 +28,33 @@ const { uid } = Astro.props;
 
 <script is:inline>
 	// inline function to ensure it executes immediately
-	;(function () {
-		const banner = document.getElementById("notification-banner")
+	(function () {
+		const banner = document.getElementById('notification-banner');
 		if (!banner) {
-			return
+			return;
 		}
-		const uid = banner.dataset.uid
+		const uid = banner.dataset.uid;
 		if (!uid) {
-			return
+			return;
 		}
-		const key = `astro-banner-${uid}`
-		const removeBanner = () => banner.parentElement.removeChild(banner)
-		if (localStorage.getItem(key) === "closed") {
+		const key = `astro-banner-${uid}`;
+		const removeBanner = () => banner.parentElement.removeChild(banner);
+		if (localStorage.getItem(key) === 'closed') {
 			// banner was already closed previously
-			removeBanner()
+			removeBanner();
 		} else {
 			// can safely remove the hidden class to make the banner visible
-			banner.classList.remove("hidden")
-			const button = banner.querySelector("button")
+			banner.classList.remove('hidden');
+			const button = banner.querySelector('button');
 			button.addEventListener(
-				"click",
+				'click',
 				() => {
 					// save the close preference and remove the banner
-					localStorage.setItem(key, "closed")
-					removeBanner()
+					localStorage.setItem(key, 'closed');
+					removeBanner();
 				},
 				{ once: true },
-			)
+			);
 		}
-	})()
+	})();
 </script>

@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createSignal } from 'solid-js';
 
 export function createTimer(duration: number) {
 	const [running, setRunning] = createSignal(false);

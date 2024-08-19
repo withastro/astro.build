@@ -1,38 +1,47 @@
 ---
-import CodeBlock from "~/components/CodeBlock.astro";
-import PageTitleBlock from "~/components/PageTitleBlock.astro";
-import Link from "../Link.astro";
-import PillLink from "../PillLink.astro";
-import HeroBackground from "./HeroBackground.astro";
-import Teams from "./Teams.astro";
+import CodeBlock from '~/components/CodeBlock.astro';
+import PageTitleBlock from '~/components/PageTitleBlock.astro';
+import Link from '../Link.astro';
+import PillLink from '../PillLink.astro';
+import HeroBackground from './HeroBackground.astro';
+import Teams from './Teams.astro';
 ---
 
 <section class="relative">
-  <div class="mt-16 md:mt-20 lg:mt-24 px-4 sm:px-8 mx-auto w-full sm:max-w-screen-md flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-8">
-    <PillLink href='https://astro.build/blog/astro-4140/' title='Astro 4.14' subtitle='New experimental Content Layer API'/>
-    <PageTitleBlock wide lg
-      body="Astro powers the world's fastest marketing sites, blogs, e-commerce websites, and more."
-    >
-      <h1
-        slot='title'
-        class='text-balance mb-4 text-center text-3xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-4xl/[1.1] xl:text-5xl/[1.1]'
-      >
-      The web framework for content-driven websites
-      </h1>
-    </PageTitleBlock>
+	<div
+		class="mt-16 md:mt-20 lg:mt-24 px-4 sm:px-8 mx-auto w-full sm:max-w-screen-md flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-8"
+	>
+		<PillLink
+			href="https://astro.build/blog/astro-4140/"
+			title="Astro 4.14"
+			subtitle="New experimental Content Layer API"
+		/>
+		<PageTitleBlock
+			wide
+			lg
+			body="Astro powers the world's fastest marketing sites, blogs, e-commerce websites, and more."
+		>
+			<h1
+				slot="title"
+				class="text-balance mb-4 text-center text-3xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-4xl/[1.1] xl:text-5xl/[1.1]"
+			>
+				The web framework for content-driven websites
+			</h1>
+		</PageTitleBlock>
 
-    <div class="grid grid-rows-2 gap-2">
-      <Link href="https://docs.astro.build/" class="primary w-full h-fit">
-        <span class="bg-clip-text text-transparent bg-blue-purple-gradient group-hover:text-astro-blue transition-all ease-in-out duration-500">
-          Get Started
-        </span>
-      </Link>
-      <CodeBlock>npm create astro@latest</CodeBlock>
-    </div>
-  </div>
+		<div class="grid grid-rows-2 gap-2">
+			<Link href="https://docs.astro.build/" class="primary w-full h-fit">
+				<span
+					class="bg-clip-text text-transparent bg-blue-purple-gradient group-hover:text-astro-blue transition-all ease-in-out duration-500"
+				>
+					Get Started
+				</span>
+			</Link>
+			<CodeBlock>npm create astro@latest</CodeBlock>
+		</div>
+	</div>
 
-  <HeroBackground />
+	<HeroBackground />
 
-  <Teams />
-
+	<Teams />
 </section>

@@ -16,7 +16,7 @@ export type OpenGraph = Partial<SEOMetadata> & {
 };
 export type Twitter = Partial<SEOMetadata> & {
 	handle?: string;
-	card?: "summary" | "summary_large_image";
+	card?: 'summary' | 'summary_large_image';
 };
 export type Props = SEOMetadata & {
 	og?: OpenGraph;
@@ -27,7 +27,7 @@ const {
 	title,
 	description,
 	image,
-	locale = "en",
+	locale = 'en',
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
 
@@ -38,7 +38,7 @@ const og = {
 	canonicalURL,
 	image,
 	locale,
-	type: "website",
+	type: 'website',
 	...Astro.props.og,
 } satisfies OpenGraph;
 
@@ -49,7 +49,7 @@ const twitter = {
 	canonicalURL,
 	image,
 	locale,
-	card: "summary_large_image",
+	card: 'summary_large_image',
 	...Astro.props.twitter,
 } satisfies Twitter;
 
@@ -58,13 +58,13 @@ const twitter = {
  */
 function formatCanonicalURL(url: string | URL) {
 	const path = url.toString();
-	const hasQueryParams = path.includes("?");
+	const hasQueryParams = path.includes('?');
 	// If there are query params, make sure the URL has no trailing slash
 	if (hasQueryParams) {
-		path.replace(/\/?$/, "");
+		path.replace(/\/?$/, '');
 	}
 	// otherwise, canonical URL always has a trailing slash
-	return path.replace(/\/?$/, hasQueryParams ? "" : "/");
+	return path.replace(/\/?$/, hasQueryParams ? '' : '/');
 }
 ---
 

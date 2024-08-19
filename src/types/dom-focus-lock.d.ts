@@ -1,4 +1,4 @@
-declare module "dom-focus-lock" {
+declare module 'dom-focus-lock' {
 	const focusLock: {
 		on: (element: HTMLElement) => void;
 		off: (element: HTMLElement) => void;

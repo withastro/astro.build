@@ -1,37 +1,37 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import Card from "~/components/Card.astro";
-import CardBadge from "~/components/CardBadge.astro";
-import CardBody from "~/components/CardBody.astro";
-import { randomFromArray } from "~/helpers/random.js";
-import DownloadIcon from "~/icons/DownloadIcon.jsx";
-import { iconForIntegration } from "~/icons/integrations/index.js";
+import type { CollectionEntry } from 'astro:content';
+import Card from '~/components/Card.astro';
+import CardBadge from '~/components/CardBadge.astro';
+import CardBody from '~/components/CardBody.astro';
+import { randomFromArray } from '~/helpers/random.js';
+import DownloadIcon from '~/icons/DownloadIcon.jsx';
+import { iconForIntegration } from '~/icons/integrations/index.js';
 
 export type Props = {
-	integration: CollectionEntry<"integrations">;
+	integration: CollectionEntry<'integrations'>;
 };
 
 const { integration } = Astro.props;
 
-const isOfficial = integration.data.categories.includes("official");
+const isOfficial = integration.data.categories.includes('official');
 
-const formatter = Intl.NumberFormat("en", { notation: "compact" });
+const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
 const downloads = formatter.format(integration.data.downloads);
 
 const Icon = iconForIntegration(integration);
 
 const IconBackgrounds = [
-	"bg-[#BC52EE]",
-	"bg-[#6D6AF0]",
-	"bg-[#52EEBD]",
-	"bg-[#52B7EE]",
-	"bg-[#52EE55]",
-	"bg-[#B7EE52]",
-	"bg-[#EEBD52]",
-	"bg-[#EE5552]",
-	"bg-[#EE52B7]",
-	"bg-[#858B98]",
+	'bg-[#BC52EE]',
+	'bg-[#6D6AF0]',
+	'bg-[#52EEBD]',
+	'bg-[#52B7EE]',
+	'bg-[#52EE55]',
+	'bg-[#B7EE52]',
+	'bg-[#EEBD52]',
+	'bg-[#EE5552]',
+	'bg-[#EE52B7]',
+	'bg-[#858B98]',
 ];
 ---
 
@@ -42,8 +42,8 @@ const IconBackgrounds = [
 			<header class="flex items-center justify-between">
 				<div
 					class:list={[
-						"flex h-14 w-14 items-center justify-center rounded-full bg-white p-3",
-						!integration.data.image && ["icon", randomFromArray(IconBackgrounds)],
+						'flex h-14 w-14 items-center justify-center rounded-full bg-white p-3',
+						!integration.data.image && ['icon', randomFromArray(IconBackgrounds)],
 					]}
 				>
 					{
@@ -61,7 +61,7 @@ const IconBackgrounds = [
 			</header>
 			<h3
 				class:list={[
-					"body mb-1 mt-4 text-lg font-medium text-white md:text-xl",
+					'body mb-1 mt-4 text-lg font-medium text-white md:text-xl',
 					{ official: isOfficial },
 				]}
 			>
@@ -85,13 +85,13 @@ const IconBackgrounds = [
 
 	.icon::after {
 		@apply absolute inset-0;
-		content: "";
+		content: '';
 		background: linear-gradient(180deg, rgba(35, 38, 45, 0) 27.6%, rgba(35, 38, 45, 0.33) 100%);
 	}
 
 	.official::after {
 		@apply ml-1 inline-block h-5 w-5 translate-y-[2px] bg-contain bg-no-repeat;
-		content: "";
+		content: '';
 		background-image: url(/assets/official.svg);
 	}
 </style>

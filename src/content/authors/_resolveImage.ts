@@ -1,10 +1,10 @@
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
-	"/src/content/authors/_images/*.{png,jpg,jpeg,webp}",
+	'/src/content/authors/_images/*.{png,jpg,jpeg,webp}',
 );
 
-export async function resolveImage(entry: CollectionEntry<"authors">) {
+export async function resolveImage(entry: CollectionEntry<'authors'>) {
 	if (!entry.data.image) {
 		return undefined;
 	}
