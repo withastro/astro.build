@@ -6,17 +6,9 @@
 
 <script>
 	import createGlobe from "cobe"
-	let isHover = false
 
 	let phi = 2.5
 	let canvas = document.getElementById("cobe") as HTMLCanvasElement
-
-	canvas.onmouseover = () => {
-		isHover = true
-	}
-	canvas.onmouseout = () => {
-		isHover = false
-	}
 
 	const rgb = (r: number, g: number, b: number): [number, number, number] =>
 		[r, g, b].map((n) => n / 255) as any
