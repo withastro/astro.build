@@ -2,13 +2,13 @@
 import Icon from 'astro-icon';
 
 const logos = [
-	{ icon: 'logos/google', alt: 'Google Logo', classes: 'h-9' },
-	{ icon: 'logos/microsoft', alt: 'Microsoft Logo', classes: 'h-6' },
-	{ icon: 'logos/theguardian', alt: 'The Guardian Logo', classes: 'h-8' },
-	{ icon: 'logos/nordvpn', alt: 'NordVPN Logo', classes: 'h-8' },
-	{ icon: 'logos/porsche', alt: 'Porsche Logo', classes: 'h-3.5' },
-	{ icon: 'logos/nbc-news', alt: 'NBC News Logo', classes: 'h-5' },
-];
+	{ icon: 'logos/google', label: 'Google', classes: 'h-9' },
+	{ icon: 'logos/microsoft', label: 'Microsoft', classes: 'h-6' },
+	{ icon: 'logos/theguardian', label: 'The Guardian', classes: 'h-8' },
+	{ icon: 'logos/nordvpn', label: 'NordVPN', classes: 'h-8' },
+	{ icon: 'logos/porsche', label: 'Porsche', classes: 'h-3.5' },
+	{ icon: 'logos/nbc-news', label: 'NBC News', classes: 'h-5' },
+] satisfies Array<{ icon: string; label: string; classes?: string }>;
 ---
 
 <div class="mt-8 sm:mt-16 xs:p-6 mx-auto w-full max-w-screen-xl space-y-5 sm:space-y-8 p-4 sm:p-8">
@@ -18,7 +18,7 @@ const logos = [
 		</p>
 
 		<div class="flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-8 gap-y-6 px-4">
-			{logos.map((logo) => <Icon name={logo.icon} class={logo.classes} />)}
+			{logos.map((logo) => <Icon name={logo.icon} class={logo.classes} aria-label={logo.label} />)}
 		</div>
 	</div>
 </div>
