@@ -1,7 +1,7 @@
 ---
 name: "@ayco/astro-sw"
 title: "@ayco/astro-sw"
-description: "Simple Astro integration to use your own authored service-worker"
+description: "Simple Astro integration to use your own authored service worker"
 categories:
   - "css+ui"
   - "performance+seo"
