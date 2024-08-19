@@ -1,5 +1,5 @@
 ---
-import siteInfo, { type SocialLink } from "~/data/site-info.js";
+import siteInfo, { type SocialLink } from '~/data/site-info.js';
 
 interface Props {
 	link: SocialLink;
@@ -12,7 +12,7 @@ export function getStaticPaths() {
 	}));
 }
 
-const mastodon = siteInfo.socialLinks.find((link) => link.platform === "mastodon");
+const mastodon = siteInfo.socialLinks.find((link) => link.platform === 'mastodon');
 const { link } = Astro.props;
 ---
 

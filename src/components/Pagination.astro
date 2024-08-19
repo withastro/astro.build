@@ -1,11 +1,11 @@
 ---
-import type { Page } from "astro";
-import type { HTMLAttributes } from "astro/types";
-import { collapseRange } from "~/helpers/paginate.js";
-import LeftArrowIcon from "~/icons/LeftArrowIcon.jsx";
-import RightArrowIcon from "~/icons/RightArrowIcon.jsx";
+import type { Page } from 'astro';
+import type { HTMLAttributes } from 'astro/types';
+import { collapseRange } from '~/helpers/paginate.js';
+import LeftArrowIcon from '~/icons/LeftArrowIcon.jsx';
+import RightArrowIcon from '~/icons/RightArrowIcon.jsx';
 
-export type Props = Omit<HTMLAttributes<"nav">, "slot"> & {
+export type Props = Omit<HTMLAttributes<'nav'>, 'slot'> & {
 	page: Page<unknown>;
 	allPages: string[];
 	restRoute?: boolean;
@@ -15,7 +15,7 @@ const {
 	page,
 	allPages,
 	restRoute = false,
-	"aria-label": ariaLabel = "Pagination",
+	'aria-label': ariaLabel = 'Pagination',
 	...attrs
 } = Astro.props;
 
@@ -54,10 +54,10 @@ const collapsedPages = collapseRange(page, pages);
 						<a
 							href={link.href}
 							class:list={[
-								"relative flex h-10 w-10 items-center justify-center rounded-md border border-transparent transition-colors duration-150",
-								link.pageNum !== page.currentPage && "hover:border-white focus:border-white",
+								'relative flex h-10 w-10 items-center justify-center rounded-md border border-transparent transition-colors duration-150',
+								link.pageNum !== page.currentPage && 'hover:border-white focus:border-white',
 							]}
-							aria-current={link.pageNum === page.currentPage ? "page" : undefined}
+							aria-current={link.pageNum === page.currentPage ? 'page' : undefined}
 						>
 							{link.pageNum}
 						</a>
@@ -91,18 +91,18 @@ const collapsedPages = collapseRange(page, pages);
 	}
 
 	@media screen(sm) {
-		[aria-current="page"]::before {
+		[aria-current='page']::before {
 			@apply absolute inset-0;
-			content: "";
+			content: '';
 			margin: -1px;
 			border-radius: inherit;
 			background: linear-gradient(247.23deg, rgba(74, 242, 200, 1) 0%, rgba(47, 76, 179, 1) 100%);
 			z-index: -2;
 		}
 
-		[aria-current="page"]::after {
+		[aria-current='page']::after {
 			@apply absolute inset-0 z-blur;
-			content: "";
+			content: '';
 			border-radius: inherit;
 			background: rgb(35 38 45)
 				linear-gradient(247.23deg, rgba(74, 242, 200, 0.2) 0%, rgba(47, 76, 179, 0.2) 100%);

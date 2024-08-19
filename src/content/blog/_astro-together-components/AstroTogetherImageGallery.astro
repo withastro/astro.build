@@ -2,16 +2,16 @@
 // This component maps simple image file names to properly resolved
 // image imports from the Astro Together gallery folder.
 
-import type { ImageMetadata } from "astro";
-import { AstroError } from "astro/errors";
-import ImageGallery from "./ImageGallery.astro";
+import type { ImageMetadata } from 'astro';
+import { AstroError } from 'astro/errors';
+import ImageGallery from './ImageGallery.astro';
 
 interface Props {
 	images: Array<{ src: string; alt: string }>;
 }
 
 const imageGlob = import.meta.glob<{ default: ImageMetadata }>(
-	"../_images/astro-together-montreal/gallery/*",
+	'../_images/astro-together-montreal/gallery/*',
 );
 const resolvedImages = await Promise.all(
 	Astro.props.images.map(async ({ src, alt }) => {

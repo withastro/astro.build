@@ -1,20 +1,17 @@
 ---
-import Icon from "astro-icon";
-import AstroLogo from "~/components/AstroLogo.astro";
-import Badge from "./Badge.astro";
+import Icon from 'astro-icon';
+import AstroLogo from '~/components/AstroLogo.astro';
+import Badge from './Badge.astro';
 ---
 
 <nav
 	aria-label="Secondary"
 	class:list={[
-		"container fixed left-0 right-0 top-0 z-20 flex hidden h-header items-center bg-black shadow-lg sm:flex",
+		'container fixed left-0 right-0 top-0 z-20 flex hidden h-header items-center bg-black shadow-lg sm:flex',
 		Astro.props.class,
 	]}
 >
-	<a
-		href="#"
-		class="block text-xl heading flex flex-row items-center gap-2 whitespace-nowrap"
-	>
+	<a href="#" class="block text-xl heading flex flex-row items-center gap-2 whitespace-nowrap">
 		<span class="sr-only">Astro DB</span>
 		<span aria-hidden="true">
 			<AstroLogo />
@@ -27,9 +24,7 @@ import Badge from "./Badge.astro";
 		</span></a
 	>
 	<div class="xs:p-6 mx-auto w-full max-w-screen-xl space-y-8 p-4 sm:px-8">
-		<div
-			class="ml-16 flex shrink flex-row items-center gap-16 gap-8 justify-end lg:justify-start"
-		>
+		<div class="ml-16 flex shrink flex-row items-center gap-16 gap-8 justify-end lg:justify-start">
 			<a
 				href="#use-cases"
 				class="whitespace-nowrap eyebrow link aria-current:underline underline-offset-4"
@@ -44,8 +39,7 @@ import Badge from "./Badge.astro";
 			<a
 				href="#pricing"
 				data-astro-prefetch
-				class="whitespace-nowrap eyebrow link aria-current:underline underline-offset-4"
-				>Pricing</a
+				class="whitespace-nowrap eyebrow link aria-current:underline underline-offset-4">Pricing</a
 			>
 		</div>
 	</div>
@@ -65,9 +59,9 @@ import Badge from "./Badge.astro";
 <script>
 	const nav = document.querySelector('nav[aria-label="Secondary"]')!;
 	const targets = Array.from(nav.querySelectorAll("a[href^='#']"))
-		.map((a) => a.getAttribute("href")?.slice(1))
+		.map((a) => a.getAttribute('href')?.slice(1))
 		.filter(Boolean);
-	const selector = `:is(${targets.map((id) => `[id="${id}"]`).join(",")})`;
+	const selector = `:is(${targets.map((id) => `[id="${id}"]`).join(',')})`;
 	const ids = new Map<string, number>();
 	const io = new IntersectionObserver(
 		([entry]) => {
@@ -77,18 +71,18 @@ import Badge from "./Badge.astro";
 			if (entry.intersectionRatio > prevRatio) {
 				const link = nav.querySelector(`a[href="#${element.id}"]`);
 				resetSubnav();
-				link?.setAttribute("aria-current", "true");
+				link?.setAttribute('aria-current', 'true');
 			}
 			ids.set(element.id, entry.intersectionRatio);
 		},
 		{ threshold: [0, 0.4, 0.6, 1] },
 	);
-	for (const section of document.querySelectorAll("section")) {
+	for (const section of document.querySelectorAll('section')) {
 		io.observe(section);
 	}
 	function resetSubnav() {
-		for (const item of nav.querySelectorAll("[aria-current]")) {
-			item.removeAttribute("aria-current");
+		for (const item of nav.querySelectorAll('[aria-current]')) {
+			item.removeAttribute('aria-current');
 		}
 	}
 </script>

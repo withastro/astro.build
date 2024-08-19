@@ -1,8 +1,8 @@
 ---
-import siteInfo from "~/data/site-info.js";
-import AstroLogo from "./AstroLogo.astro";
-import ResourcesMenu from "./ResourcesMenu.astro";
-import SocialLinks from "./SocialLinks.astro";
+import siteInfo from '~/data/site-info.js';
+import AstroLogo from './AstroLogo.astro';
+import ResourcesMenu from './ResourcesMenu.astro';
+import SocialLinks from './SocialLinks.astro';
 
 const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 ---
@@ -12,24 +12,23 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 		<span class="sr-only">Astro Logo</span>
 		<AstroLogo />
 	</a>
-	
+
 	<div class="hidden shrink flex-row items-center gap-16 lg:flex text-base">
 		<a href="https://docs.astro.build" class="link">Documentation</a>
 		<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
 		<ResourcesMenu />
 		<a href="/blog/" data-astro-prefetch class="link">Blog</a>
 	</div>
-	
+
 	<div class="hidden gap-4 sm:flex">
 		<SocialLinks links={socialLinks} />
 	</div>
 </nav>
 
 <script>
-	import { getElement } from "~/helpers/dom.js"
-	getElement("[data-home-link]", HTMLAnchorElement).addEventListener("contextmenu", (event) => {
-		event.preventDefault()
-		window.location.href = "/press#assets"
-	})
+	import { getElement } from '~/helpers/dom.js';
+	getElement('[data-home-link]', HTMLAnchorElement).addEventListener('contextmenu', (event) => {
+		event.preventDefault();
+		window.location.href = '/press#assets';
+	});
 </script>
-

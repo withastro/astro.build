@@ -10,7 +10,7 @@ const { title, subtitle, class: className } = Astro.props;
 
 <aside
 	class:list={[
-		"relative flex gap-2 rounded-full text-xs transition-colors duration-150 md:text-sm",
+		'relative flex gap-2 rounded-full text-xs transition-colors duration-150 md:text-sm',
 		className,
 	]}
 >
@@ -23,14 +23,14 @@ const { title, subtitle, class: className } = Astro.props;
 <style>
 	aside::before {
 		@apply absolute inset-0 border border-white/40;
-		content: "";
+		content: '';
 		border-radius: inherit;
 		z-index: -2;
 	}
 
 	.pill::before {
 		@apply absolute inset-0 bg-blue-green-gradient;
-		content: "";
+		content: '';
 		margin: -1px;
 		border-radius: inherit;
 		z-index: -2;
@@ -38,7 +38,7 @@ const { title, subtitle, class: className } = Astro.props;
 
 	.pill::after {
 		@apply absolute inset-0 bg-[#2F4CB3]/30;
-		content: "";
+		content: '';
 		z-index: -1;
 		border-radius: inherit;
 	}

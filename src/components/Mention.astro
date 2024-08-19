@@ -1,6 +1,6 @@
 ---
-import { getEntry } from "astro:content";
-import Avatar from "./Avatar.astro";
+import { getEntry } from 'astro:content';
+import Avatar from './Avatar.astro';
 
 export type Props = {
 	name: string;
@@ -8,7 +8,7 @@ export type Props = {
 
 const { name } = Astro.props;
 
-const mention = await getEntry("authors", name);
+const mention = await getEntry('authors', name);
 ---
 
 {
@@ -16,7 +16,7 @@ const mention = await getEntry("authors", name);
 		<span class="m-0 inline-block align-middle leading-none">
 			<a
 				href={mention.data.twitter ?? mention.data.mastodon}
-				title={`Follow ${mention.data.name} on ${mention.data.twitter ? "Twitter" : "Mastodon"}`}
+				title={`Follow ${mention.data.name} on ${mention.data.twitter ? 'Twitter' : 'Mastodon'}`}
 				class="m-0 inline-flex items-center space-x-1 whitespace-nowrap font-medium"
 			>
 				<Avatar name={name} />

@@ -1,13 +1,13 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
-import ShowcaseCard from "~/pages/showcase/_components/ShowcaseCard.astro";
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
 
 interface Props {
-	ids: Array<CollectionEntry<"showcase">["id"]>;
+	ids: Array<CollectionEntry<'showcase'>['id']>;
 }
 
-const sites = await getCollection("showcase", (site) => Astro.props.ids.includes(site.id));
+const sites = await getCollection('showcase', (site) => Astro.props.ids.includes(site.id));
 ---
 
 <ul

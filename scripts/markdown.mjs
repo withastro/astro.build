@@ -1,5 +1,5 @@
-import { fromMarkdown } from "mdast-util-from-markdown";
-import { toString as mdastToString } from "mdast-util-to-string";
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { toString as mdastToString } from 'mdast-util-to-string';
 
 /**
  * Convert Markdown content to plain text.

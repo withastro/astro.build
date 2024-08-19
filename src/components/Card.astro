@@ -1,21 +1,21 @@
 ---
 export type Props = {
-	background?: "neutral" | "blue-purple" | "blue-green" | "red-pink";
+	background?: 'neutral' | 'blue-purple' | 'blue-green' | 'red-pink';
 	isLink?: boolean;
 	className?: string;
 };
 
-const { background = "neutral", isLink = false, className } = Astro.props;
+const { background = 'neutral', isLink = false, className } = Astro.props;
 ---
 
 <article
 	class:list={[
-		"panel relative flex min-w-0 flex-col",
-		background === "blue-purple" && "bg-blue-purple-gradient",
-		background === "blue-green" && "bg-blue-green-gradient",
-		background === "red-pink" && "bg-red-pink-gradient",
-		background === "neutral" ? "text-astro-gray-200" : "text-astro-gray-100",
-		isLink && "transition-transform duration-300 ease-out hover:scale-[1.03]",
+		'panel relative flex min-w-0 flex-col',
+		background === 'blue-purple' && 'bg-blue-purple-gradient',
+		background === 'blue-green' && 'bg-blue-green-gradient',
+		background === 'red-pink' && 'bg-red-pink-gradient',
+		background === 'neutral' ? 'text-astro-gray-200' : 'text-astro-gray-100',
+		isLink && 'transition-transform duration-300 ease-out hover:scale-[1.03]',
 		className,
 	]}
 >

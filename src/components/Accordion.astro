@@ -1,15 +1,15 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-import ChevronIcon from "~/icons/ChevronIcon.jsx";
+import type { HTMLAttributes } from 'astro/types';
+import ChevronIcon from '~/icons/ChevronIcon.jsx';
 
-export type Props = HTMLAttributes<"details"> & {
+export type Props = HTMLAttributes<'details'> & {
 	summary: string;
 };
 
 const { summary, class: className, ...attrs } = Astro.props;
 ---
 
-<details class:list={["group", className]} {...attrs}>
+<details class:list={['group', className]} {...attrs}>
 	<summary
 		class="accordion code flex cursor-pointer list-none items-center justify-between text-astro-gray-200"
 	>

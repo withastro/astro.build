@@ -1,6 +1,6 @@
 ---
-import { getEntry } from "astro:content";
-import { resolveImage } from "~/content/authors/_resolveImage.js";
+import { getEntry } from 'astro:content';
+import { resolveImage } from '~/content/authors/_resolveImage.js';
 
 type Props = {
 	name?: string;
@@ -11,7 +11,7 @@ type Props = {
 let { name, image, lg = false } = Astro.props;
 
 if (!image && name) {
-	const author = await getEntry("authors", name);
+	const author = await getEntry('authors', name);
 	image = author && (await resolveImage(author))?.src;
 }
 ---
@@ -20,8 +20,8 @@ if (!image && name) {
 	image && (
 		<img
 			class:list={[
-				"my-0 inline-block rounded-full border border-astro-gray-100",
-				lg ? "h-6 w-6 md:h-10 md:w-10" : "h-6 w-6",
+				'my-0 inline-block rounded-full border border-astro-gray-100',
+				lg ? 'h-6 w-6 md:h-10 md:w-10' : 'h-6 w-6',
 			]}
 			src={image}
 			alt=""

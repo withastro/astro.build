@@ -1,5 +1,5 @@
-import { createEffect, createSignal } from "solid-js";
-import { EventEmitter } from "./emitter.ts";
+import { createEffect, createSignal } from 'solid-js';
+import { EventEmitter } from './emitter.ts';
 
 export function createDisclosure({
 	button,
@@ -13,13 +13,13 @@ export function createDisclosure({
 	closeAt?: number;
 }) {
 	if (content.id) {
-		button.setAttribute("aria-controls", content.id);
+		button.setAttribute('aria-controls', content.id);
 	}
 
 	if (closeAt > 0) {
 		const mediaQuery = window.matchMedia(`(min-width: ${closeAt}px)`);
 
-		mediaQuery.addEventListener("change", (event: MediaQueryListEvent) => {
+		mediaQuery.addEventListener('change', (event: MediaQueryListEvent) => {
 			if (event.matches) {
 				setVisible(false);
 			}
@@ -30,47 +30,47 @@ export function createDisclosure({
 	const [visible, setVisible] = createSignal(false);
 
 	createEffect(() => {
-		button.setAttribute("aria-expanded", String(visible()));
+		button.setAttribute('aria-expanded', String(visible()));
 
 		if (visible()) {
-			content.style.removeProperty("display");
+			content.style.removeProperty('display');
 		}
 
 		if (!visible() && !animated) {
-			content.style.display = "none";
+			content.style.display = 'none';
 		}
 		/* make sure page scrolling is disabled when the menu is open */
 		if (visible()) {
-			document.documentElement.classList.add("disclosure-open");
+			document.documentElement.classList.add('disclosure-open');
 		}
 
 		// run after an animation frame to let the element start at the leave state
 		requestAnimationFrame(() => {
 			if (visible()) {
-				content.dataset.open = "true";
+				content.dataset.open = 'true';
 			} else {
 				delete content.dataset.open;
 			}
 		});
 	});
 
-	content.addEventListener("transitionstart", () => {});
+	content.addEventListener('transitionstart', () => {});
 
 	if (animated) {
-		content.addEventListener("transitionend", () => {
+		content.addEventListener('transitionend', () => {
 			if (!visible()) {
-				content.style.display = "none";
-				document.documentElement.classList.remove("disclosure-open");
+				content.style.display = 'none';
+				document.documentElement.classList.remove('disclosure-open');
 			}
 		});
 	}
 
-	button.addEventListener("click", () => {
+	button.addEventListener('click', () => {
 		setVisible(!visible());
 	});
 
-	content.addEventListener("keydown", (event) => {
-		if (event.key === "Escape") {
+	content.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') {
 			setVisible(false);
 			button.focus();
 		}
@@ -97,13 +97,13 @@ export function createDisclosure({
 	};
 
 	createEffect(() => {
-		emitter.emit("toggle", { visible: visible() });
+		emitter.emit('toggle', { visible: visible() });
 		if (visible()) {
-			window.addEventListener("click", handleClickOutside);
-			window.addEventListener("focusin", handleFocusLost);
+			window.addEventListener('click', handleClickOutside);
+			window.addEventListener('focusin', handleFocusLost);
 		} else {
-			window.removeEventListener("click", handleClickOutside);
-			window.removeEventListener("focusin", handleFocusLost);
+			window.removeEventListener('click', handleClickOutside);
+			window.removeEventListener('focusin', handleFocusLost);
 		}
 	});
 

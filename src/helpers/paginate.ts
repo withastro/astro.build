@@ -1,4 +1,4 @@
-import type { Page } from "astro";
+import type { Page } from 'astro';
 
 export type PaginateOptions<T> = {
 	data: T[];
@@ -17,20 +17,20 @@ export const paginate = <T>({
 }: PaginateOptions<T>) => {
 	const lastPage = Math.max(1, Math.ceil(data.length / pageSize));
 	// to match Astro's built-in paginate() API, don't include numbers for rest routes
-	const includesFirstPageNumber = !route.includes("[...page]");
+	const includesFirstPageNumber = !route.includes('[...page]');
 
 	function pageNumToUrl(pageNum: number) {
 		// replace the [page] and [...page] route params with the actual page number
 		// if it's the first page of a rest route, just trim off the page number param
 		const pageRoute = route.replace(
 			/\[\.{0,3}page]/,
-			includesFirstPageNumber ? String(pageNum) : pageNum > 1 ? String(pageNum) : "",
+			includesFirstPageNumber ? String(pageNum) : pageNum > 1 ? String(pageNum) : '',
 		);
 
 		// append the search params, if provided
 		const search = searchParams?.toString();
 
-		return [pageRoute, search].filter(Boolean).join("?");
+		return [pageRoute, search].filter(Boolean).join('?');
 	}
 
 	// create a list of all pages, matching the structure used by Astro's paginate() function
@@ -52,6 +52,8 @@ export const paginate = <T>({
 				current: pageNumToUrl(pageNum),
 				next: pageNum === lastPage ? undefined : pageNumToUrl(pageNum + 1),
 				prev: pageNum === 1 ? undefined : pageNumToUrl(pageNum - 1),
+				first: pageNumToUrl(1),
+				last: pageNumToUrl(lastPage),
 			},
 		};
 	});
@@ -96,13 +98,13 @@ export function collapseRange(
 	}
 
 	if (hasStartEllipsis && !hasEndEllipsis) {
-		return [pages[0], { text: "..." }, ...pages.slice(Math.min(page.currentPage - 2, total - 3))];
+		return [pages[0], { text: '...' }, ...pages.slice(Math.min(page.currentPage - 2, total - 3))];
 	}
 
 	if (!hasStartEllipsis && hasEndEllipsis) {
 		return [
 			...pages.slice(0, Math.max(3, page.currentPage + 1)),
-			{ text: "..." },
+			{ text: '...' },
 			pages[pages.length - 1],
 		];
 	}
@@ -110,9 +112,9 @@ export function collapseRange(
 	// we have both start and end ellipsis
 	return [
 		pages[0],
-		{ text: "..." },
+		{ text: '...' },
 		...pages.slice(page.currentPage - 2, page.currentPage + 1),
-		{ text: "..." },
+		{ text: '...' },
 		pages[pages.length - 1],
 	];
 }
