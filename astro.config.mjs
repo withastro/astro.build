@@ -53,4 +53,7 @@ export default defineConfig({
 	},
 	output: 'hybrid',
 	adapter: netlify({ imageCDN: false }),
+	experimental: {
+		contentIntellisense: true,
+	},
 });
