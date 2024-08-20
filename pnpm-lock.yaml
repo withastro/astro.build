@@ -11,6 +11,9 @@ importers:
       '@astro-community/astro-embed-youtube':
         specifier: ^0.5.3
         version: 0.5.3(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+      '@astrojs/check':
+        specifier: ^0.9.3
+        version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
       '@astrojs/db':
         specifier: ^0.11.4
         version: 0.11.4(@opentelemetry/api@1.9.0)
@@ -23,6 +26,9 @@ importers:
       '@astrojs/rss':
         specifier: ^4.0.7
         version: 4.0.7
+      '@astrojs/site-kit':
+        specifier: github:withastro/site-kit
+        version: https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)
       '@astrojs/sitemap':
         specifier: ^3.1.6
         version: 3.1.6
@@ -35,39 +41,63 @@ importers:
       '@astrojs/web-vitals':
         specifier: ^0.2.1
         version: 0.2.1(@astrojs/db@0.11.4(@opentelemetry/api@1.9.0))
+      '@biomejs/biome':
+        specifier: 1.8.3
+        version: 1.8.3
       '@iconify-json/ri':
         specifier: ^1.1.20
         version: 1.1.20
+      '@types/json-to-pretty-yaml':
+        specifier: 1.2.1
+        version: 1.2.1
+      '@types/node':
+        specifier: ^20.10.4
+        version: 20.12.13
       astro:
         specifier: ^4.14.2
         version: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       astro-expressive-code:
         specifier: ^0.35.6
         version: 0.35.6(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+      astro-icon:
+        specifier: ^0.8.2
+        version: 0.8.2
       chart.js:
         specifier: 4.4.1
         version: 4.4.1
       cobe:
         specifier: ^0.6.3
         version: 0.6.3
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
+      date-fns:
+        specifier: ^2.30.0
+        version: 2.30.0
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.4.5
       motion:
         specifier: ^10.17.0
         version: 10.17.0
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
-      slugify:
-        specifier: ^1.6.6
-        version: 1.6.6
+      only-allow:
+        specifier: 1.2.1
+        version: 1.2.1
+      prettier:
+        specifier: ^3.3.3
+        version: 3.3.3
+      prettier-plugin-astro:
+        specifier: ^0.14.1
+        version: 0.14.1
+      smartypants:
+        specifier: ^0.2.2
+        version: 0.2.2
       solid-js:
         specifier: ^1.8.21
         version: 1.8.21
       tailwindcss:
         specifier: ^3.4.10
         version: 3.4.10
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
       xss:
         specifier: ^1.0.15
         version: 1.0.15
@@ -75,33 +105,12 @@ importers:
       '@actions/core':
         specifier: ^1.10.1
         version: 1.10.1
-      '@astrojs/check':
-        specifier: ^0.9.3
-        version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
-      '@astrojs/site-kit':
-        specifier: github:withastro/site-kit
-        version: https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)
-      '@biomejs/biome':
-        specifier: 1.8.3
-        version: 1.8.3
       '@octokit/graphql':
         specifier: ^7.0.2
         version: 7.1.0
-      '@types/json-to-pretty-yaml':
-        specifier: 1.2.1
-        version: 1.2.1
-      '@types/node':
-        specifier: ^20.10.4
-        version: 20.12.13
-      astro-icon:
-        specifier: ^0.8.2
-        version: 0.8.2
-      date-fns:
-        specifier: ^2.30.0
-        version: 2.30.0
-      dotenv:
-        specifier: ^16.3.1
-        version: 16.4.5
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
       json-to-pretty-yaml:
         specifier: ^1.2.2
         version: 1.2.2
@@ -114,27 +123,18 @@ importers:
       mdast-util-to-string:
         specifier: ^4.0.0
         version: 4.0.0
-      only-allow:
-        specifier: 1.2.1
-        version: 1.2.1
-      prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
-      prettier-plugin-astro:
-        specifier: ^0.14.1
-        version: 0.14.1
       puppeteer:
         specifier: ^21.6.0
         version: 21.11.0(typescript@5.5.4)
-      smartypants:
-        specifier: ^0.2.2
-        version: 0.2.2
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
+      slugify:
+        specifier: ^1.6.6
+        version: 1.6.6
       tiny-glob:
         specifier: ^0.2.9
         version: 0.2.9
-      typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
 
 packages:
 
@@ -3868,7 +3868,7 @@ packages:
   puppeteer@21.11.0:
     resolution: {integrity: sha512-9jTHuYe22TD3sNxy0nEIzC7ZrlRnDgeX3xPkbS7PnbdwYjl2o/z/YuCrRBwezdKpbTDTJ4VqIggzNyeRcKq3cg==}
     engines: {node: '>=16.13.2'}
-    deprecated: < 22.6.4 is no longer supported
+    deprecated: < 22.8.2 is no longer supported
     hasBin: true
 
   queue-microtask@1.2.3:
