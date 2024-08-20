@@ -49,10 +49,8 @@ export const collections = {
 				.describe(
 					'Summary of this blog post. Appears on the blog index as well as in metadata displayed on social media.',
 				),
-			publishDate: z
-				.string()
-				.or(z.date())
-				.transform((val) => new Date(val))
+			publishDate: z.coerce
+				.date()
 				.describe(
 					'A date string or YAML date that is compatible with JavaScript’s `new Date()` constructor.',
 				),
@@ -85,10 +83,7 @@ export const collections = {
 				seo: seoSchema.optional(),
 				title: z.string(),
 				description: z.string(),
-				publishDate: z
-					.string()
-					.or(z.date())
-					.transform((val) => new Date(val)),
+				publishDate: z.coerce.date(),
 				authors: z.array(z.string()),
 				socialImage: z.string().optional(),
 				coverImage: z.string().optional(),
