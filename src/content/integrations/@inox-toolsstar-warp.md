@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@inox-tools/star-warp"
 homepageUrl: "https://www.npmjs.com/package/@inox-tools/star-warp"
 badge: "new"
-downloads: 166
+downloads: 169
 ---

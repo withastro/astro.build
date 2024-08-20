@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/@astrolicious/studiocms"
 repoUrl: "https://github.com/astrolicious/studiocms"
 homepageUrl: "https://astro-studiocms.xyz"
 badge: "new"
-downloads: 250
+downloads: 253
 ---
