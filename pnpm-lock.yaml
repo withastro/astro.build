@@ -11,6 +11,9 @@ importers:
       '@astro-community/astro-embed-youtube':
         specifier: ^0.5.3
         version: 0.5.3(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+      '@astrojs/check':
+        specifier: ^0.9.3
+        version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
       '@astrojs/db':
         specifier: ^0.11.4
         version: 0.11.4(@opentelemetry/api@1.9.0)
@@ -23,6 +26,9 @@ importers:
       '@astrojs/rss':
         specifier: ^4.0.7
         version: 4.0.7
+      '@astrojs/site-kit':
+        specifier: github:withastro/site-kit
+        version: https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)
       '@astrojs/sitemap':
         specifier: ^3.1.6
         version: 3.1.6
@@ -35,89 +41,42 @@ importers:
       '@astrojs/web-vitals':
         specifier: ^0.2.1
         version: 0.2.1(@astrojs/db@0.11.4(@opentelemetry/api@1.9.0))
-      '@iconify-json/ri':
-        specifier: ^1.1.20
-        version: 1.1.20
-      astro:
-        specifier: ^4.14.2
-        version: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
-      astro-expressive-code:
-        specifier: ^0.35.6
-        version: 0.35.6(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
-      chart.js:
-        specifier: 4.4.1
-        version: 4.4.1
-      cobe:
-        specifier: ^0.6.3
-        version: 0.6.3
-      motion:
-        specifier: ^10.17.0
-        version: 10.17.0
-      slugify:
-        specifier: ^1.6.6
-        version: 1.6.6
-      solid-js:
-        specifier: ^1.8.21
-        version: 1.8.21
-      tailwindcss:
-        specifier: ^3.4.10
-        version: 3.4.10
-      xss:
-        specifier: ^1.0.15
-        version: 1.0.15
-    optionalDependencies:
-      '@actions/core':
-        specifier: ^1.10.1
-        version: 1.10.1
-      '@octokit/graphql':
-        specifier: ^7.0.2
-        version: 7.1.0
-      linkedom:
-        specifier: ^0.16.4
-        version: 0.16.11
-      puppeteer:
-        specifier: ^21.6.0
-        version: 21.11.0(typescript@5.5.4)
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
-    devDependencies:
-      '@astrojs/check':
-        specifier: ^0.9.3
-        version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
-      '@astrojs/site-kit':
-        specifier: github:withastro/site-kit
-        version: https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)
       '@biomejs/biome':
         specifier: 1.8.3
         version: 1.8.3
+      '@iconify-json/ri':
+        specifier: ^1.1.20
+        version: 1.1.20
       '@types/json-to-pretty-yaml':
         specifier: 1.2.1
         version: 1.2.1
       '@types/node':
         specifier: ^20.10.4
         version: 20.12.13
+      astro:
+        specifier: ^4.14.2
+        version: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+      astro-expressive-code:
+        specifier: ^0.35.6
+        version: 0.35.6(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
       astro-icon:
         specifier: ^0.8.2
         version: 0.8.2
+      chart.js:
+        specifier: 4.4.1
+        version: 4.4.1
+      cobe:
+        specifier: ^0.6.3
+        version: 0.6.3
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
       dotenv:
         specifier: ^16.3.1
         version: 16.4.5
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
-      json-to-pretty-yaml:
-        specifier: ^1.2.2
-        version: 1.2.2
-      mdast-util-from-markdown:
-        specifier: ^2.0.1
-        version: 2.0.1
-      mdast-util-to-string:
-        specifier: ^4.0.0
-        version: 4.0.0
+      motion:
+        specifier: ^10.17.0
+        version: 10.17.0
       only-allow:
         specifier: 1.2.1
         version: 1.2.1
@@ -130,12 +89,52 @@ importers:
       smartypants:
         specifier: ^0.2.2
         version: 0.2.2
-      tiny-glob:
-        specifier: ^0.2.9
-        version: 0.2.9
+      solid-js:
+        specifier: ^1.8.21
+        version: 1.8.21
+      tailwindcss:
+        specifier: ^3.4.10
+        version: 3.4.10
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
+      xss:
+        specifier: ^1.0.15
+        version: 1.0.15
+    devDependencies:
+      '@actions/core':
+        specifier: ^1.10.1
+        version: 1.10.1
+      '@octokit/graphql':
+        specifier: ^7.0.2
+        version: 7.1.0
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      json-to-pretty-yaml:
+        specifier: ^1.2.2
+        version: 1.2.2
+      linkedom:
+        specifier: ^0.16.4
+        version: 0.16.11
+      mdast-util-from-markdown:
+        specifier: ^2.0.1
+        version: 2.0.1
+      mdast-util-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
+      puppeteer:
+        specifier: ^21.6.0
+        version: 21.11.0(typescript@5.5.4)
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
+      slugify:
+        specifier: ^1.6.6
+        version: 1.6.6
+      tiny-glob:
+        specifier: ^0.2.9
+        version: 0.2.9
 
 packages:
 
@@ -4824,13 +4823,11 @@ snapshots:
     dependencies:
       '@actions/http-client': 2.2.1
       uuid: 8.3.2
-    optional: true
 
   '@actions/http-client@2.2.1':
     dependencies:
       tunnel: 0.0.6
       undici: 5.28.4
-    optional: true
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -5548,8 +5545,7 @@ snapshots:
     dependencies:
       '@expressive-code/core': 0.35.6
 
-  '@fastify/busboy@2.1.1':
-    optional: true
+  '@fastify/busboy@2.1.1': {}
 
   '@grpc/grpc-js@1.10.10':
     dependencies:
@@ -5861,24 +5857,20 @@ snapshots:
     dependencies:
       '@octokit/types': 13.5.0
       universal-user-agent: 6.0.1
-    optional: true
 
   '@octokit/graphql@7.1.0':
     dependencies:
       '@octokit/request': 8.4.0
       '@octokit/types': 13.5.0
       universal-user-agent: 6.0.1
-    optional: true
 
-  '@octokit/openapi-types@22.2.0':
-    optional: true
+  '@octokit/openapi-types@22.2.0': {}
 
   '@octokit/request-error@5.1.0':
     dependencies:
       '@octokit/types': 13.5.0
       deprecation: 2.3.1
       once: 1.4.0
-    optional: true
 
   '@octokit/request@8.4.0':
     dependencies:
@@ -5886,12 +5878,10 @@ snapshots:
       '@octokit/request-error': 5.1.0
       '@octokit/types': 13.5.0
       universal-user-agent: 6.0.1
-    optional: true
 
   '@octokit/types@13.5.0':
     dependencies:
       '@octokit/openapi-types': 22.2.0
-    optional: true
 
   '@opentelemetry/api-logs@0.52.1':
     dependencies:
@@ -6090,7 +6080,6 @@ snapshots:
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   '@rollup/pluginutils@4.2.1':
     dependencies:
@@ -6157,8 +6146,7 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
-  '@tootallnate/quickjs-emscripten@0.23.0':
-    optional: true
+  '@tootallnate/quickjs-emscripten@0.23.0': {}
 
   '@trysound/sax@0.2.0': {}
 
@@ -6437,7 +6425,6 @@ snapshots:
       debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   ajv@6.12.6:
     dependencies:
@@ -6545,7 +6532,6 @@ snapshots:
   ast-types@0.13.4:
     dependencies:
       tslib: 2.6.2
-    optional: true
 
   astring@1.8.6: {}
 
@@ -6688,8 +6674,7 @@ snapshots:
 
   axobject-query@4.1.0: {}
 
-  b4a@1.6.6:
-    optional: true
+  b4a@1.6.6: {}
 
   babel-plugin-jsx-dom-expressions@0.37.21(@babel/core@7.25.2):
     dependencies:
@@ -6714,11 +6699,9 @@ snapshots:
 
   base-64@1.0.0: {}
 
-  base64-js@1.5.1:
-    optional: true
+  base64-js@1.5.1: {}
 
-  basic-ftp@5.0.5:
-    optional: true
+  basic-ftp@5.0.5: {}
 
   bcp-47-match@2.0.3: {}
 
@@ -6770,14 +6753,12 @@ snapshots:
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
-  buffer-crc32@0.2.13:
-    optional: true
+  buffer-crc32@0.2.13: {}
 
   buffer@5.7.1:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
-    optional: true
 
   bundle-name@4.1.0:
     dependencies:
@@ -6847,7 +6828,6 @@ snapshots:
       devtools-protocol: 0.0.1232444
       mitt: 3.0.1
       urlpattern-polyfill: 10.0.0
-    optional: true
 
   ci-info@4.0.0: {}
 
@@ -6891,7 +6871,6 @@ snapshots:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
-    optional: true
 
   color-support@1.1.3: {}
 
@@ -6899,7 +6878,6 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
-    optional: true
 
   comma-separated-tokens@2.0.3: {}
 
@@ -6929,14 +6907,12 @@ snapshots:
       parse-json: 5.2.0
     optionalDependencies:
       typescript: 5.5.4
-    optional: true
 
   cross-fetch@4.0.0:
     dependencies:
       node-fetch: 2.7.0
     transitivePeerDependencies:
       - encoding
-    optional: true
 
   cross-spawn@7.0.3:
     dependencies:
@@ -6959,7 +6935,6 @@ snapshots:
       domhandler: 5.0.3
       domutils: 3.1.0
       nth-check: 2.1.1
-    optional: true
 
   css-selector-parser@3.0.5: {}
 
@@ -6978,8 +6953,7 @@ snapshots:
     dependencies:
       css-tree: 1.1.3
 
-  cssom@0.5.0:
-    optional: true
+  cssom@0.5.0: {}
 
   csstype@3.1.3: {}
 
@@ -6987,8 +6961,7 @@ snapshots:
 
   data-uri-to-buffer@4.0.1: {}
 
-  data-uri-to-buffer@6.0.2:
-    optional: true
+  data-uri-to-buffer@6.0.2: {}
 
   data-view-buffer@1.0.1:
     dependencies:
@@ -7015,7 +6988,6 @@ snapshots:
   debug@4.3.4:
     dependencies:
       ms: 2.1.2
-    optional: true
 
   debug@4.3.5:
     dependencies:
@@ -7059,12 +7031,10 @@ snapshots:
       ast-types: 0.13.4
       escodegen: 2.1.0
       esprima: 4.0.1
-    optional: true
 
   delegates@1.0.0: {}
 
-  deprecation@2.3.1:
-    optional: true
+  deprecation@2.3.1: {}
 
   dequal@2.0.3: {}
 
@@ -7082,8 +7052,7 @@ snapshots:
     dependencies:
       dequal: 2.0.3
 
-  devtools-protocol@0.0.1232444:
-    optional: true
+  devtools-protocol@0.0.1232444: {}
 
   didyoumean@1.2.2: {}
 
@@ -7112,7 +7081,6 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       entities: 4.5.0
-    optional: true
 
   domelementtype@2.3.0: {}
 
@@ -7123,7 +7091,6 @@ snapshots:
   domhandler@5.0.3:
     dependencies:
       domelementtype: 2.3.0
-    optional: true
 
   domutils@2.8.0:
     dependencies:
@@ -7136,7 +7103,6 @@ snapshots:
       dom-serializer: 2.0.0
       domelementtype: 2.3.0
       domhandler: 5.0.3
-    optional: true
 
   dotenv@16.4.5: {}
 
@@ -7167,19 +7133,16 @@ snapshots:
   end-of-stream@1.4.4:
     dependencies:
       once: 1.4.0
-    optional: true
 
   entities@2.2.0: {}
 
   entities@4.5.0: {}
 
-  env-paths@2.2.1:
-    optional: true
+  env-paths@2.2.1: {}
 
   error-ex@1.3.2:
     dependencies:
       is-arrayish: 0.2.1
-    optional: true
 
   es-abstract@1.23.3:
     dependencies:
@@ -7343,7 +7306,6 @@ snapshots:
       esutils: 2.0.3
     optionalDependencies:
       source-map: 0.6.1
-    optional: true
 
   eslint-config-prettier@9.1.0(eslint@8.57.0):
     dependencies:
@@ -7526,14 +7488,12 @@ snapshots:
       '@types/yauzl': 2.10.3
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   fast-deep-equal@3.1.3: {}
 
   fast-diff@1.3.0: {}
 
-  fast-fifo@1.3.2:
-    optional: true
+  fast-fifo@1.3.2: {}
 
   fast-glob@3.3.2:
     dependencies:
@@ -7560,7 +7520,6 @@ snapshots:
   fd-slicer@1.1.0:
     dependencies:
       pend: 1.2.0
-    optional: true
 
   fetch-blob@3.2.0:
     dependencies:
@@ -7624,7 +7583,6 @@ snapshots:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
       universalify: 2.0.1
-    optional: true
 
   fs-minipass@2.1.0:
     dependencies:
@@ -7675,7 +7633,6 @@ snapshots:
   get-stream@5.2.0:
     dependencies:
       pump: 3.0.0
-    optional: true
 
   get-stream@8.0.1: {}
 
@@ -7693,7 +7650,6 @@ snapshots:
       fs-extra: 11.2.0
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   github-slugger@2.0.0: {}
 
@@ -7963,7 +7919,6 @@ snapshots:
       domhandler: 5.0.3
       domutils: 3.1.0
       entities: 4.5.0
-    optional: true
 
   http-cache-semantics@4.1.1: {}
 
@@ -7973,7 +7928,6 @@ snapshots:
       debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   https-proxy-agent@5.0.1:
     dependencies:
@@ -7988,12 +7942,10 @@ snapshots:
       debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   human-signals@5.0.0: {}
 
-  ieee754@1.2.1:
-    optional: true
+  ieee754@1.2.1: {}
 
   ignore@5.3.1: {}
 
@@ -8034,7 +7986,6 @@ snapshots:
     dependencies:
       jsbn: 1.1.0
       sprintf-js: 1.1.3
-    optional: true
 
   is-alphabetical@2.0.1: {}
 
@@ -8048,11 +7999,9 @@ snapshots:
       call-bind: 1.0.7
       get-intrinsic: 1.2.4
 
-  is-arrayish@0.2.1:
-    optional: true
+  is-arrayish@0.2.1: {}
 
-  is-arrayish@0.3.2:
-    optional: true
+  is-arrayish@0.3.2: {}
 
   is-async-function@2.0.0:
     dependencies:
@@ -8212,15 +8161,13 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jsbn@1.1.0:
-    optional: true
+  jsbn@1.1.0: {}
 
   jsesc@2.5.2: {}
 
   json-buffer@3.0.1: {}
 
-  json-parse-even-better-errors@2.3.1:
-    optional: true
+  json-parse-even-better-errors@2.3.1: {}
 
   json-schema-traverse@0.4.1: {}
 
@@ -8244,7 +8191,6 @@ snapshots:
       universalify: 2.0.1
     optionalDependencies:
       graceful-fs: 4.2.11
-    optional: true
 
   jsx-ast-utils@3.3.5:
     dependencies:
@@ -8300,7 +8246,6 @@ snapshots:
       html-escaper: 3.0.3
       htmlparser2: 9.1.0
       uhyphen: 0.2.0
-    optional: true
 
   lite-youtube-embed@0.3.3: {}
 
@@ -8340,8 +8285,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lru-cache@7.18.3:
-    optional: true
+  lru-cache@7.18.3: {}
 
   magic-string@0.30.11:
     dependencies:
@@ -8832,11 +8776,9 @@ snapshots:
       minipass: 3.3.6
       yallist: 4.0.0
 
-  mitt@3.0.1:
-    optional: true
+  mitt@3.0.1: {}
 
-  mkdirp-classic@0.5.3:
-    optional: true
+  mkdirp-classic@0.5.3: {}
 
   mkdirp@1.0.4: {}
 
@@ -8869,8 +8811,7 @@ snapshots:
 
   neotraverse@0.6.18: {}
 
-  netmask@2.0.2:
-    optional: true
+  netmask@2.0.2: {}
 
   nlcst-to-string@4.0.0:
     dependencies:
@@ -9038,13 +8979,11 @@ snapshots:
       socks-proxy-agent: 8.0.3
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   pac-resolver@7.0.1:
     dependencies:
       degenerator: 5.0.1
       netmask: 2.0.2
-    optional: true
 
   parent-module@1.0.1:
     dependencies:
@@ -9067,7 +9006,6 @@ snapshots:
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
-    optional: true
 
   parse-latin@7.0.0:
     dependencies:
@@ -9103,8 +9041,7 @@ snapshots:
 
   path-type@4.0.0: {}
 
-  pend@1.2.0:
-    optional: true
+  pend@1.2.0: {}
 
   periscopic@3.1.0:
     dependencies:
@@ -9233,8 +9170,7 @@ snapshots:
 
   prismjs@1.29.0: {}
 
-  progress@2.0.3:
-    optional: true
+  progress@2.0.3: {}
 
   prompts@2.4.2:
     dependencies:
@@ -9270,16 +9206,13 @@ snapshots:
       socks-proxy-agent: 8.0.3
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
-  proxy-from-env@1.1.0:
-    optional: true
+  proxy-from-env@1.1.0: {}
 
   pump@3.0.0:
     dependencies:
       end-of-stream: 1.4.4
       once: 1.4.0
-    optional: true
 
   punycode@2.3.1: {}
 
@@ -9296,7 +9229,6 @@ snapshots:
       - encoding
       - supports-color
       - utf-8-validate
-    optional: true
 
   puppeteer@21.11.0(typescript@5.5.4):
     dependencies:
@@ -9309,12 +9241,10 @@ snapshots:
       - supports-color
       - typescript
       - utf-8-validate
-    optional: true
 
   queue-microtask@1.2.3: {}
 
-  queue-tick@1.0.1:
-    optional: true
+  queue-tick@1.0.1: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -9607,7 +9537,6 @@ snapshots:
       '@img/sharp-wasm32': 0.33.5
       '@img/sharp-win32-ia32': 0.33.5
       '@img/sharp-win32-x64': 0.33.5
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -9636,7 +9565,6 @@ snapshots:
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
-    optional: true
 
   sisteransi@1.0.5: {}
 
@@ -9651,8 +9579,7 @@ snapshots:
 
   slugify@1.6.6: {}
 
-  smart-buffer@4.2.0:
-    optional: true
+  smart-buffer@4.2.0: {}
 
   smartypants@0.1.6: {}
 
@@ -9665,13 +9592,11 @@ snapshots:
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   socks@2.8.3:
     dependencies:
       ip-address: 9.0.5
       smart-buffer: 4.2.0
-    optional: true
 
   solid-js@1.8.21:
     dependencies:
@@ -9698,8 +9623,7 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  sprintf-js@1.1.3:
-    optional: true
+  sprintf-js@1.1.3: {}
 
   stable@0.1.8: {}
 
@@ -9714,7 +9638,6 @@ snapshots:
       text-decoder: 1.1.0
     optionalDependencies:
       bare-events: 2.3.1
-    optional: true
 
   string-width@4.2.3:
     dependencies:
@@ -9870,14 +9793,12 @@ snapshots:
       mkdirp-classic: 0.5.3
       pump: 3.0.0
       tar-stream: 3.1.7
-    optional: true
 
   tar-stream@3.1.7:
     dependencies:
       b4a: 1.6.6
       fast-fifo: 1.3.2
       streamx: 2.18.0
-    optional: true
 
   tar@6.2.1:
     dependencies:
@@ -9891,7 +9812,6 @@ snapshots:
   text-decoder@1.1.0:
     dependencies:
       b4a: 1.6.6
-    optional: true
 
   text-table@0.2.0: {}
 
@@ -9903,8 +9823,7 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
-  through@2.3.8:
-    optional: true
+  through@2.3.8: {}
 
   tiny-glob@0.2.9:
     dependencies:
@@ -9935,8 +9854,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tunnel@0.0.6:
-    optional: true
+  tunnel@0.0.6: {}
 
   type-check@0.4.0:
     dependencies:
@@ -9986,8 +9904,7 @@ snapshots:
 
   typescript@5.5.4: {}
 
-  uhyphen@0.2.0:
-    optional: true
+  uhyphen@0.2.0: {}
 
   unbox-primitive@1.0.2:
     dependencies:
@@ -10000,14 +9917,12 @@ snapshots:
     dependencies:
       buffer: 5.7.1
       through: 2.3.8
-    optional: true
 
   undici-types@5.26.5: {}
 
   undici@5.28.4:
     dependencies:
       '@fastify/busboy': 2.1.1
-    optional: true
 
   unified@11.0.5:
     dependencies:
@@ -10065,11 +9980,9 @@ snapshots:
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 
-  universal-user-agent@6.0.1:
-    optional: true
+  universal-user-agent@6.0.1: {}
 
-  universalify@2.0.1:
-    optional: true
+  universalify@2.0.1: {}
 
   update-browserslist-db@1.0.16(browserslist@4.23.0):
     dependencies:
@@ -10087,15 +10000,13 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  urlpattern-polyfill@10.0.0:
-    optional: true
+  urlpattern-polyfill@10.0.0: {}
 
   urlpattern-polyfill@8.0.2: {}
 
   util-deprecate@1.0.2: {}
 
-  uuid@8.3.2:
-    optional: true
+  uuid@8.3.2: {}
 
   validate-html-nesting@1.2.2: {}
 
@@ -10351,8 +10262,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.16.0:
-    optional: true
+  ws@8.16.0: {}
 
   ws@8.17.0: {}
 
@@ -10406,7 +10316,6 @@ snapshots:
     dependencies:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
-    optional: true
 
   yocto-queue@0.1.0: {}
 
