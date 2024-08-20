@@ -43,16 +43,40 @@ export const collections = {
 	}),
 	blog: defineCollection({
 		schema: z.object({
-			title: z.string(),
-			description: z.string(),
+			title: z.string().describe('The blog post title.'),
+			description: z
+				.string()
+				.describe(
+					'Summary of this blog post. Appears on the blog index as well as in metadata displayed on social media.',
+				),
 			publishDate: z
 				.string()
 				.or(z.date())
-				.transform((val) => new Date(val)),
-			authors: z.array(z.string()),
-			socialImage: z.string().optional(),
-			coverImage: z.string().optional(),
-			lang: z.enum(['en']).default('en'),
+				.transform((val) => new Date(val))
+				.describe(
+					'A date string or YAML date that is compatible with JavaScript’s `new Date()` constructor.',
+				),
+			authors: z
+				.array(
+					// biome-ignore format:
+					z.enum(['astro-team', 'ben', 'bjorn', 'chris', 'dan', 'drew', 'elian', 'ema', 'erika', 'fred', 'fuzzy', 'hideoo', 'jon', 'mark', 'martrapp', 'matt', 'matthew', 'nate', 'reuben', 'sarah', 'thuy', 'tony', 'yan']),
+				)
+				.describe('A list of authors of this blog post, e.g. `["erika", "matt"]`'),
+			socialImage: z
+				.string()
+				.optional()
+				.describe(
+					'Path to the open graph image for this blog post to display in social media previews, e.g. `/src/content/blog/_images/my-post/og-image.webp`.\n\n' +
+						'This should be pre-optimized as a WebP to ensure good performance.',
+				),
+			coverImage: z
+				.string()
+				.optional()
+				.describe(
+					'Path to the cover image displayed at the top of the blog post and on the blog index, e.g. `/src/content/blog/_images/my-post/cover-image.webp`.\n\n' +
+						'This should be pre-optimized as a WebP to ensure good performance.',
+				),
+			lang: z.enum(['en']).default('en').describe('The language of this blog post (optional)'),
 		}),
 	}),
 	caseStudies: defineCollection({
