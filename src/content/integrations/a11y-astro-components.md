@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/a11y-astro-components"
 homepageUrl: "https://www.npmjs.com/package/a11y-astro-components"
-downloads: 11
+downloads: 9
 ---

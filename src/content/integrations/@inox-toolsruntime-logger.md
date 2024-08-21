@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@inox-tools/runtime-logger"
 homepageUrl: "https://www.npmjs.com/package/@inox-tools/runtime-logger"
-downloads: 367
+downloads: 358
 ---
