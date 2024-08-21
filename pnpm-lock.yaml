@@ -4,13 +4,18 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  astro@4.14.2:
+    hash: 7htkkv6hevtklgbnroq3f3lsgm
+    path: patches/astro@4.14.2.patch
+
 importers:
 
   .:
     dependencies:
       '@astro-community/astro-embed-youtube':
         specifier: ^0.5.3
-        version: 0.5.3(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+        version: 0.5.3(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
       '@astrojs/check':
         specifier: ^0.9.3
         version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
@@ -19,16 +24,16 @@ importers:
         version: 0.11.4(@opentelemetry/api@1.9.0)
       '@astrojs/mdx':
         specifier: ^3.1.3
-        version: 3.1.3(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+        version: 3.1.3(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
       '@astrojs/netlify':
         specifier: ^5.5.1
-        version: 5.5.1(@opentelemetry/api@1.9.0)(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+        version: 5.5.1(@opentelemetry/api@1.9.0)(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
       '@astrojs/rss':
         specifier: ^4.0.7
         version: 4.0.7
       '@astrojs/site-kit':
         specifier: github:withastro/site-kit
-        version: https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)
+        version: https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)
       '@astrojs/sitemap':
         specifier: ^3.1.6
         version: 3.1.6
@@ -37,7 +42,7 @@ importers:
         version: 4.4.1(solid-js@1.8.21)(vite@5.4.1(@types/node@20.12.13))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(tailwindcss@3.4.10)
+        version: 5.1.0(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(tailwindcss@3.4.10)
       '@astrojs/web-vitals':
         specifier: ^0.2.1
         version: 0.2.1(@astrojs/db@0.11.4(@opentelemetry/api@1.9.0))
@@ -55,10 +60,10 @@ importers:
         version: 20.12.13
       astro:
         specifier: ^4.14.2
-        version: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+        version: 4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       astro-expressive-code:
         specifier: ^0.35.6
-        version: 0.35.6(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
+        version: 0.35.6(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))
       astro-icon:
         specifier: ^0.8.2
         version: 0.8.2
@@ -4836,9 +4841,9 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@astro-community/astro-embed-youtube@0.5.3(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
+  '@astro-community/astro-embed-youtube@0.5.3(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
     dependencies:
-      astro: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+      astro: 4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       lite-youtube-embed: 0.3.3
 
   '@astrojs/check@0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)':
@@ -4956,12 +4961,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.3(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
+  '@astrojs/mdx@3.1.3(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
     dependencies:
       '@astrojs/markdown-remark': 5.2.0
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.1
-      astro: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+      astro: 4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -4977,13 +4982,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@5.5.1(@opentelemetry/api@1.9.0)(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
+  '@astrojs/netlify@5.5.1(@opentelemetry/api@1.9.0)(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
       '@netlify/functions': 2.8.0(@opentelemetry/api@1.9.0)
       '@vercel/nft': 0.27.2
-      astro: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+      astro: 4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       esbuild: 0.22.0
     transitivePeerDependencies:
       - '@opentelemetry/api'
@@ -4999,7 +5004,7 @@ snapshots:
       fast-xml-parser: 4.4.0
       kleur: 4.1.5
 
-  '@astrojs/site-kit@https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)':
+  '@astrojs/site-kit@https://codeload.github.com/withastro/site-kit/tar.gz/c53071893428a3069310ae7c79c4485342c364ed(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(eslint@8.57.0)(prettier@3.3.3)(tailwindcss@3.4.10)(typescript@5.5.4)':
     dependencies:
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
       '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.5.4)
@@ -5016,7 +5021,7 @@ snapshots:
       smartypants: 0.1.6
       typescript: 5.5.4
     optionalDependencies:
-      astro: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+      astro: 4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       tailwindcss: 3.4.10
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
@@ -5057,9 +5062,9 @@ snapshots:
       kleur: 4.1.5
       ora: 8.0.1
 
-  '@astrojs/tailwind@5.1.0(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(tailwindcss@3.4.10)':
+  '@astrojs/tailwind@5.1.0(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4))(tailwindcss@3.4.10)':
     dependencies:
-      astro: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+      astro: 4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       autoprefixer: 10.4.19(postcss@8.4.39)
       postcss: 8.4.39
       postcss-load-config: 4.0.2(postcss@8.4.39)
@@ -6549,9 +6554,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-expressive-code@0.35.6(astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)):
+  astro-expressive-code@0.35.6(astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)):
     dependencies:
-      astro: 4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
+      astro: 4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4)
       rehype-expressive-code: 0.35.6
 
   astro-icon@0.8.2:
@@ -6559,7 +6564,7 @@ snapshots:
       resolve-pkg: 2.0.0
       svgo: 2.8.0
 
-  astro@4.14.2(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4):
+  astro@4.14.2(patch_hash=7htkkv6hevtklgbnroq3f3lsgm)(@types/node@20.12.13)(rollup@4.18.0)(typescript@5.5.4):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
