@@ -1,5 +1,5 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import Icon from 'astro-icon';
 import astroplate from '../../../_assets/themes/astroplate.png';
 import atom from '../../../_assets/themes/atom.png';
@@ -10,47 +10,40 @@ import stone from '../../../_assets/themes/stone.png';
 import Link from '../../Link.astro';
 import ThemeContainer from './ThemeContainer.astro';
 
-const atomTheme = await getImage({ src: atom, format: 'webp', width: 1280 });
-const stoneTheme = await getImage({ src: stone, format: 'webp', width: 1280 });
-const senditTheme = await getImage({ src: sendit, format: 'webp', width: 1280 });
-const positivusTheme = await getImage({ src: positivus, format: 'webp', width: 1280 });
-const astroplateTheme = await getImage({ src: astroplate, format: 'webp', width: 1280 });
-const moreThemesPlaceholder = await getImage({ src: moreLPThemes, format: 'webp', width: 1280 });
-
 const themes = [
 	{
 		href: 'https://astro.build/themes/details/sendit/',
 		title: 'Sendit',
 		author: 'CloudCannon',
-		src: senditTheme.src,
+		src: sendit,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/stone/',
 		title: 'Stone',
 		author: 'm6v3l9',
-		src: stoneTheme.src,
+		src: stone,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/positivus/',
 		title: 'Positivus',
 		author: 'Manul Thanura',
-		src: positivusTheme.src,
+		src: positivus,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/atom/',
 		title: 'Atom',
 		author: 'Méschac Irung',
-		src: atomTheme.src,
+		src: atom,
 		isSeenOnMobile: false,
 	},
 	{
 		href: 'https://astro.build/themes/details/astroplate/',
 		title: 'Astroplate',
 		author: 'Zeon Studio',
-		src: astroplateTheme.src,
+		src: astroplate,
 		isSeenOnMobile: false,
 	},
 ];
@@ -59,11 +52,10 @@ const themes = [
 <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
 	{themes.map((theme) => <ThemeContainer theme={theme} />)}
 	<div class="size-fit group relative">
-		<img
-			loading="lazy"
-			decoding="async"
-			class="size-full rounded-xl isolate select-none"
-			src={moreThemesPlaceholder.src}
+		<Image
+			width={800}
+			class="width-full rounded-xl isolate select-none"
+			src={moreLPThemes}
 			alt="An image showing all types of content driven websites you can build with Astro"
 		/>
 		<div

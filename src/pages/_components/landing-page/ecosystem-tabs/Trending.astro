@@ -1,6 +1,6 @@
 ---
-import { getImage } from 'astro:assets';
 import Icon from 'astro-icon';
+import Image from 'astro/components/Image.astro';
 import astrolus from '../../../_assets/themes/astrolus.png';
 import astroShip from '../../../_assets/themes/astroship.png';
 import moreThemes from '../../../_assets/themes/more-themes.png';
@@ -10,47 +10,40 @@ import tailcast from '../../../_assets/themes/tailcast.png';
 import Link from '../../Link.astro';
 import ThemeContainer from './ThemeContainer.astro';
 
-const astrolusTheme = await getImage({ src: astrolus, format: 'webp', width: 800 });
-const tailcastTheme = await getImage({ src: tailcast, format: 'webp', width: 800 });
-const astroShipTheme = await getImage({ src: astroShip, format: 'webp', width: 800 });
-const starlightTheme = await getImage({ src: starlight, format: 'webp', width: 800 });
-const primaPersonaTheme = await getImage({ src: primaPersona, format: 'webp', width: 800 });
-const moreThemesPlaceholder = await getImage({ src: moreThemes, format: 'webp', width: 800 });
-
 const themes = [
 	{
 		href: 'https://astro.build/themes/details/starlight/',
 		title: 'Starlight',
 		author: 'Astro',
-		src: starlightTheme.src,
+		src: starlight,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/astroship/',
 		title: 'AstroShip',
 		author: 'Web3Templates',
-		src: astroShipTheme.src,
+		src: astroShip,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/astrolus/',
 		title: 'Astrolus',
 		author: 'Tailus-UI',
-		src: astrolusTheme.src,
+		src: astrolus,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/prima-persona/',
 		title: 'Prima Persona',
 		author: 'Lexington Themes',
-		src: primaPersonaTheme.src,
+		src: primaPersona,
 		isSeenOnMobile: false,
 	},
 	{
 		href: 'https://astro.build/themes/details/tailcast/',
 		title: 'Tailcast',
 		author: 'matt765',
-		src: tailcastTheme.src,
+		src: tailcast,
 		isSeenOnMobile: false,
 	},
 ];
@@ -59,11 +52,10 @@ const themes = [
 <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
 	{themes.map((theme) => <ThemeContainer theme={theme} />)}
 	<div class="size-fit group relative">
-		<img
-			loading="lazy"
-			decoding="async"
-			class="size-full rounded-xl isolate select-none"
-			src={moreThemesPlaceholder.src}
+		<Image
+			width={800}
+			class="width-full rounded-xl isolate select-none"
+			src={moreThemes}
 			alt="An image showing all types of content driven websites you can build with Astro"
 		/>
 		<div
