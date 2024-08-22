@@ -16,6 +16,8 @@ const { theme } = Astro.props;
 		class="size-full rounded-xl object-cover object-center"
 		src={theme.src}
 		alt={`${theme.title} Theme by ${theme.author}`}
+		loading="lazy"
+		decoding="async"
 	/>
 	<div
 		class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl"
