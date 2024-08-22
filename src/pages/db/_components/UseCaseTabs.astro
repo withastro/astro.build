@@ -19,6 +19,7 @@ const useCasesBg = await getImage({
 <astro-db-tabs class="relative">
 	<div class="mx-auto w-full max-w-screen-xl">
 		<ul
+			role="tablist"
 			class="w-full flex items-center overflow-x-auto no-scrollbar gap-10 p-4 sm:p-0 sm:gap-1 text-astro-gray-200 sm:min-h-[10rem]"
 		>
 			<Tab title="Comments" icon="uil:comments-alt" active />
@@ -44,56 +45,20 @@ const useCasesBg = await getImage({
 </astro-db-tabs>
 
 <script>
-	// @ts-nocheck
-	const bind = (instance, proto) => {
-		if (proto == null) {
-			proto = Object.getPrototypeOf(instance);
-		}
-		let propertyNames = Object.getOwnPropertyNames(proto);
-		for (let name of propertyNames) {
-			let value = proto[name];
-			if (typeof value === 'function') {
-				instance[name] = proto[name].bind(instance);
-			}
-		}
-	};
 	class Tabs extends HTMLElement {
 		static is = 'astro-db-tabs';
 
-		constructor() {
-			super();
-			bind(this);
-		}
-
-		button(name) {
-			return this.querySelector(`button[data-tab="${name}"]`);
+		button(name: string) {
+			return this.querySelector<HTMLButtonElement>(`button[data-tab="${name}"]`);
 		}
 		buttons() {
-			return this.querySelectorAll(`button[data-tab]`);
+			return this.querySelectorAll<HTMLButtonElement>(`button[data-tab]`);
 		}
-		content(name) {
-			return this.querySelector(`li[data-tab="${name}"]`);
+		content(name: string) {
+			return this.querySelector<HTMLLIElement>(`li[data-tab="${name}"]`);
 		}
 		contents() {
-			return this.querySelectorAll(`li[data-tab]`);
-		}
-		icon(name) {
-			return this.querySelector(`div[data-tab-icon="${name}"]`);
-		}
-		icons() {
-			return this.querySelectorAll(`div[data-tab-icon]`);
-		}
-		iconContainer(name) {
-			return this.querySelector(`div[data-tab-icon-container="${name}"]`);
-		}
-		iconContainers() {
-			return this.querySelectorAll(`div[data-tab-icon-container]`);
-		}
-		title(name) {
-			return this.querySelector(`p[data-tab-title="${name}"]`);
-		}
-		titles() {
-			return this.querySelectorAll(`p[data-tab-title]`);
+			return this.querySelectorAll<HTMLLIElement>(`li[data-tab]`);
 		}
 
 		connectedCallback() {
@@ -111,38 +76,22 @@ const useCasesBg = await getImage({
 			for (const content of this.contents()) {
 				content.classList.add('hidden');
 			}
-			for (const icon of this.icons()) {
-				icon.removeAttribute('aria-selected');
-			}
-			for (const iconContainer of this.iconContainers()) {
-				iconContainer.removeAttribute('aria-selected');
-			}
-			for (const title of this.titles()) {
-				title.removeAttribute('aria-selected');
-			}
 		}
 
-		setActive(name) {
-			const icon = this.icon(name);
-			const title = this.title(name);
+		setActive(name: string) {
 			const button = this.button(name);
 			const content = this.content(name);
-			const iconContainer = this.iconContainer(name);
-
-			console.log({ button, content });
-
-			content.classList.remove('hidden');
-			button.setAttribute('aria-selected', 'true');
-			icon.setAttribute('aria-selected', 'true');
-			title.setAttribute('aria-selected', 'true');
-			iconContainer.setAttribute('aria-selected', 'true');
+			content?.classList.remove('hidden');
+			button?.setAttribute('aria-selected', 'true');
 		}
 
-		handleClick(event: Event) {
-			const name = event.target.closest('button[data-tab]')?.dataset.tab;
+		handleClick = (event: MouseEvent) => {
+			if (!(event.target instanceof HTMLElement || event.target instanceof SVGElement)) return;
+			const name = event.target.closest<HTMLButtonElement>('button[data-tab]')?.dataset.tab;
 			if (!name) return;
 
 			if ('startViewTransition' in document) {
+				// @ts-expect-error — `startViewTransition` type definition is missing
 				document.startViewTransition(() => {
 					this.resetElements();
 					this.setActive(name);
@@ -151,7 +100,7 @@ const useCasesBg = await getImage({
 				this.resetElements();
 				this.setActive(name);
 			}
-		}
+		};
 	}
 
 	customElements.define(Tabs.is, Tabs);
