@@ -5,8 +5,10 @@ import heroBackground from '../landing-page/_assets/HeroBackground.png';
 const background = await getImage({ src: heroBackground, quality: 10, width: 256 });
 ---
 
-<div
-	style={`background-image: url('${background.src}');`}
-	class="blur-lg absolute -z-50 m-auto -inset-1/2 bg-[length:2353px_1969px] w-[2353px] h-[1969px]"
->
-</div>
+<img
+	loading="eager"
+	fetchpriority="high"
+	src={background.src}
+	alt=""
+	class="blur-lg absolute -z-50 -translate-x-1/2 inset-x-1/2 -inset-y-full w-[2353px] h-[1969px] object-cover max-w-[unset]"
+/>
