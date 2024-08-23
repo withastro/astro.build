@@ -58,7 +58,7 @@ const { images, class: className, ...attrs } = Astro.props;
 			</button>
 		</div>
 	</div>
-	<nav class="w-full sm:h-full sm:overflow-y-auto">
+	<nav class="w-full sm:h-full sm:overflow-y-auto" aria-label="Image gallery">
 		<ul class="hidden h-full sm:block">
 			{
 				images.map((image, i) => (
@@ -68,7 +68,7 @@ const { images, class: className, ...attrs } = Astro.props;
 								src={image}
 								height={900}
 								width={1600}
-								alt=""
+								alt={`Preview image ${i + 1}`}
 								class="aspect-video h-full w-full object-cover object-top"
 								decoding="async"
 								loading="lazy"

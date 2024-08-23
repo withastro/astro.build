@@ -1,5 +1,5 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import Icon from 'astro-icon';
 import astrofy from '../../../_assets/themes/astrofy.png';
 import esqueleteCV from '../../../_assets/themes/esquelete-cv.png';
@@ -10,51 +10,40 @@ import swissfolio from '../../../_assets/themes/swissfolio.png';
 import Link from '../../Link.astro';
 import ThemeContainer from './ThemeContainer.astro';
 
-const astrofyTheme = await getImage({ src: astrofy, format: 'webp', width: 1280 });
-const guridoTheme = await getImage({ src: gurido, format: 'webp', width: 1280 });
-const esqueleteCVTheme = await getImage({ src: esqueleteCV, format: 'webp', width: 1280 });
-const shareLinksTheme = await getImage({ src: shareLinks, format: 'webp', width: 1280 });
-const swissfolioTheme = await getImage({ src: swissfolio, format: 'webp', width: 1280 });
-const moreThemesPlaceholder = await getImage({
-	src: morePortfolioThemes,
-	format: 'webp',
-	width: 1280,
-});
-
 const themes = [
 	{
 		href: 'https://astro.build/themes/details/astrofy-personal-porfolio-website-template/',
 		title: 'Astrofy',
 		author: 'manuelernestog',
-		src: astrofyTheme.src,
+		src: astrofy,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/swissfolio/',
 		title: 'Swissfolio',
 		author: 'Lexington Themes',
-		src: swissfolioTheme.src,
+		src: swissfolio,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/gurido/',
 		title: 'Gurido',
 		author: 'Lexington Themes',
-		src: guridoTheme.src,
+		src: gurido,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/shareyourlinks/',
 		title: 'ShareYourLinks',
 		author: 'Angela Sofia Osorio',
-		src: shareLinksTheme.src,
+		src: shareLinks,
 		isSeenOnMobile: false,
 	},
 	{
 		href: 'https://astro.build/themes/details/esquelete-cv/',
 		title: 'Esquelete CV',
 		author: 'Martín',
-		src: esqueleteCVTheme.src,
+		src: esqueleteCV,
 		isSeenOnMobile: false,
 	},
 ];
@@ -63,9 +52,10 @@ const themes = [
 <div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
 	{themes.map((theme) => <ThemeContainer theme={theme} />)}
 	<div class="size-fit group relative">
-		<img
-			class="size-full rounded-xl isolate select-none"
-			src={moreThemesPlaceholder.src}
+		<Image
+			width={800}
+			class="width-full rounded-xl isolate select-none"
+			src={morePortfolioThemes}
 			alt="An image showing all types of content driven websites you can build with Astro"
 		/>
 		<div

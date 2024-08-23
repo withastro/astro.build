@@ -1,35 +1,30 @@
 ---
-import { getImage } from 'astro:assets';
 import Icon from 'astro-icon';
-import SKNCRE from '../../../_assets/themes/SKNCRE.png';
+import skincare from '../../../_assets/themes/SKNCRE.png';
 import astroShopify from '../../../_assets/themes/astro-shopify.png';
 import quickStore from '../../../_assets/themes/quick-store.png';
 import ThemeContainer from './ThemeContainer.astro';
-
-const skincareTheme = await getImage({ src: SKNCRE, format: 'webp', width: 1280 });
-const quickStoreTheme = await getImage({ src: quickStore, format: 'webp', width: 1280 });
-const astroShopifyTheme = await getImage({ src: astroShopify, format: 'webp', width: 1280 });
 
 const themes = [
 	{
 		href: 'https://astro.build/themes/details/astro-shopify/',
 		title: 'Astro Shopify',
 		author: 'thomasKn',
-		src: astroShopifyTheme.src,
+		src: astroShopify,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/quick-store/',
 		title: 'Quick Store',
 		author: 'Lexington Themes',
-		src: quickStoreTheme.src,
+		src: quickStore,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/skncre-a-hygraph-cosmetics-brand-e-commerce/',
 		title: 'SKNCRE',
 		author: 'Bryan Robinson',
-		src: skincareTheme.src,
+		src: skincare,
 		isSeenOnMobile: false,
 	},
 ];

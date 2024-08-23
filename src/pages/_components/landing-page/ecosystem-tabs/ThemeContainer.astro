@@ -1,5 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Icon from 'astro-icon';
+
+interface Props {
+	theme: {
+		href: string;
+		title: string;
+		isSeenOnMobile: boolean;
+		author: string;
+		src: ImageMetadata;
+	};
+}
 
 const { theme } = Astro.props;
 ---
@@ -12,10 +24,11 @@ const { theme } = Astro.props;
 		!theme.isSeenOnMobile && 'hidden lg:block',
 	]}
 >
-	<img
-		class="size-full rounded-xl object-cover object-center"
+	<Image
+		width={800}
+		class="width-full rounded-xl object-cover object-center"
 		src={theme.src}
-		alt={`${theme.title} Theme by ${theme.author}`}
+		alt={`${theme.title} theme by ${theme.author}`}
 	/>
 	<div
 		class="m-auto size-full hidden group-hover:landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/80 rounded-xl"
