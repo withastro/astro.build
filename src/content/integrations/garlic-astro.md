@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/garlic-astro"
 homepageUrl: "https://github.com/velocitatem/garlic/tree/main"
-downloads: 1
+downloads: 2
 ---

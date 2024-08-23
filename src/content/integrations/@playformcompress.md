@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@playform/compress"
 image: "/assets/integrations/@playform/compress.svg"
 repoUrl: "https://github.com/PlayForm/Compress"
 homepageUrl: "HTTPS://GitHub.Com/PlayForm/Compress#readme"
-downloads: 20809
+downloads: 20494
 ---
