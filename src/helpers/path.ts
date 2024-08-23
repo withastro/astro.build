@@ -1,7 +1,6 @@
 /** Adds a trailing `/` to the passed path if needed. */
 export const ensureTrailingSlash = (path: string) => {
-	const fakeOrigin = 'https://example.com';
-	const url = new URL(path, fakeOrigin);
+	const url = new URL(path, 'https://example.com');
 	if (url.pathname.at(-1) !== '/') url.pathname += '/';
-	return url.href.slice(fakeOrigin.length);
+	return url.href.slice(url.origin.length);
 };
