@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-integration-kit"
 homepageUrl: "https://github.com/florian-lefebvre/astro-integration-kit"
-downloads: 28644
+downloads: 29932
 ---

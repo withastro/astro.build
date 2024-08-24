@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/astro-typst"
 repoUrl: "https://github.com/OverflowCat/astro-typst"
 homepageUrl: "https://github.com/OverflowCat/astro-typst"
 badge: "new"
-downloads: 727
+downloads: 731
 ---

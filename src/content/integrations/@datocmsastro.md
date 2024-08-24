@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@datocms/astro"
 repoUrl: "https://github.com/datocms/astro-datocms"
 homepageUrl: "https://github.com/datocms/astro-datocms"
 badge: "new"
-downloads: 1262
+downloads: 1265
 ---
