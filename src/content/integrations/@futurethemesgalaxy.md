@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@futurethemes/galaxy"
 homepageUrl: "https://galaxy.futurethemes.io"
-downloads: 46
+downloads: 47
 ---

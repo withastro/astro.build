@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrolib/analytics"
 repoUrl: "https://github.com/onwidget/astrolib"
 homepageUrl: "https://github.com/onwidget/astrolib/tree/main/packages/analytics"
-downloads: 76477
+downloads: 75799
 ---
