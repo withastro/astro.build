@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-purgecss"
 repoUrl: "https://github.com/codiume/orbit"
 homepageUrl: "https://github.com/codiume/orbit"
-downloads: 10668
+downloads: 10315
 ---
