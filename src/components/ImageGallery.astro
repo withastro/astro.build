@@ -18,6 +18,7 @@ const { images, class: className, ...attrs } = Astro.props;
 	<div class="relative max-w-full">
 		<ul
 			id="gallery"
+			tabindex="0"
 			class="flex aspect-video h-full w-full flex-shrink-0 snap-x snap-mandatory scroll-p-0 overflow-y-hidden overflow-x-scroll"
 		>
 			{
@@ -63,7 +64,11 @@ const { images, class: className, ...attrs } = Astro.props;
 			{
 				images.map((image, i) => (
 					<li>
-						<a href={`#gallery-${i + 1}`} aria-current={i === 0 ? 'true' : 'false'}>
+						<a
+							href={`#gallery-${i + 1}`}
+							aria-current={i === 0 ? 'true' : 'false'}
+							class="-outline-offset-2"
+						>
 							<Image
 								src={image}
 								height={900}
