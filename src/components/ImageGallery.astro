@@ -31,7 +31,7 @@ const { images, class: className, ...attrs } = Astro.props;
 							height={900}
 							width={1600}
 							alt=""
-							decoding="async"
+							loading={i === 0 ? 'eager' : 'lazy'}
 							class="aspect-video h-full w-full object-cover object-top"
 						/>
 					</li>
@@ -70,7 +70,6 @@ const { images, class: className, ...attrs } = Astro.props;
 								width={1600}
 								alt={`Preview image ${i + 1}`}
 								class="aspect-video h-full w-full object-cover object-top"
-								decoding="async"
 								loading="lazy"
 							/>
 						</a>
