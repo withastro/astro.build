@@ -13,9 +13,10 @@ export type Props = {
 			coverImage?: string;
 		};
 	};
+	imageLoading: 'lazy' | 'eager';
 };
 
-const { post, isCaseStudy } = Astro.props;
+const { post, isCaseStudy, imageLoading } = Astro.props;
 
 const image = await resolveCoverImage(post);
 ---
@@ -42,7 +43,7 @@ const image = await resolveCoverImage(post);
 						height={image.height}
 						alt={post.data.title}
 						class="my-4"
-						loading="lazy"
+						loading={imageLoading}
 						decoding="async"
 					/>
 				)
