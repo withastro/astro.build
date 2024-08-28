@@ -67,10 +67,11 @@ defineAction({
 })
 ```
 
-Actions can be called from client-side components, or even plain HTML forms using the `action` property. This gives you to flexibility to build apps using any framework: React, Svelte, HTMX, or just plain Astro components. This example calls a newsletter action using a `form`:
+Actions can be called from client-side components and HTML forms. This gives you to flexibility to build apps using any technology: React, Svelte, HTMX, or just plain Astro components. This example calls a newsletter action and renders the result using an Astro component:
 
 ```astro
 ---
+// src/pages/newsletter.astro
 import { actions } from 'astro:actions';
 
 const result = Astro.getActionResult(actions.newsletter);
