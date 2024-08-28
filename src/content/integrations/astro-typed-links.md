@@ -5,9 +5,7 @@ description: "An Astro integration to automatically get typed links to your page
 categories:
   - "css+ui"
   - "performance+seo"
-  - "recent"
 npmUrl: "https://www.npmjs.com/package/astro-typed-links"
 homepageUrl: "https://github.com/florian-lefebvre/astro-typed-links"
-badge: "new"
-downloads: 151
+downloads: 28
 ---

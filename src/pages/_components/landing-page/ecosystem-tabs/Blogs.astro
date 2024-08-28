@@ -1,5 +1,4 @@
 ---
-import { getImage } from 'astro:assets';
 import Icon from 'astro-icon';
 import astroNano from '../../../_assets/themes/astro-nano.png';
 import brutal from '../../../_assets/themes/brutal.png';
@@ -9,54 +8,47 @@ import openblog from '../../../_assets/themes/openblog.png';
 import stablo from '../../../_assets/themes/stablo.png';
 import ThemeContainer from './ThemeContainer.astro';
 
-const astroNanoTheme = await getImage({ src: astroNano, format: 'webp', width: 1280 });
-const brutalTheme = await getImage({ src: brutal, format: 'webp', width: 1280 });
-const danteTheme = await getImage({ src: dante, format: 'webp', width: 1280 });
-const microblogTheme = await getImage({ src: microblog, format: 'webp', width: 1280 });
-const openblogTheme = await getImage({ src: openblog, format: 'webp', width: 1280 });
-const stabloTheme = await getImage({ src: stablo, format: 'webp', width: 1280 });
-
 const themes = [
 	{
 		href: 'https://astro.build/themes/details/astronano/',
 		title: 'Astro Nano',
 		author: 'Mark Horn',
-		src: astroNanoTheme.src,
+		src: astroNano,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/stablo-blog-template/',
 		title: 'Stablo',
 		author: 'Web3Templates',
-		src: stabloTheme.src,
+		src: stablo,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/microblog/',
 		title: 'Microblog',
 		author: 'Lexington Themes',
-		src: microblogTheme.src,
+		src: microblog,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/dante/',
 		title: 'Dante',
 		author: 'Asta Bankauske',
-		src: danteTheme.src,
+		src: dante,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/brutal/',
 		title: 'Brutal',
 		author: 'ElianCodes',
-		src: brutalTheme.src,
+		src: brutal,
 		isSeenOnMobile: false,
 	},
 	{
 		href: 'https://astro.build/themes/details/openblog/',
 		title: 'OpenBlog',
 		author: 'danielcgilibert',
-		src: openblogTheme.src,
+		src: openblog,
 		isSeenOnMobile: false,
 	},
 ];

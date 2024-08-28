@@ -2,6 +2,7 @@
 import type { Page } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 import { collapseRange } from '~/helpers/paginate.js';
+import { ensureTrailingSlash } from '~/helpers/path.ts';
 import LeftArrowIcon from '~/icons/LeftArrowIcon.jsx';
 import RightArrowIcon from '~/icons/RightArrowIcon.jsx';
 
@@ -36,7 +37,7 @@ const collapsedPages = collapseRange(page, pages);
 			page.url.prev && (
 				<li class="prev rounded-full border border-white">
 					<a
-						href={page.url.prev}
+						href={ensureTrailingSlash(page.url.prev)}
 						data-astro-prefetch
 						class="flex h-10 w-10 items-center justify-center"
 					>
@@ -52,7 +53,7 @@ const collapsedPages = collapseRange(page, pages);
 						<p>{link.text}</p>
 					) : (
 						<a
-							href={link.href}
+							href={ensureTrailingSlash(link.href)}
 							class:list={[
 								'relative flex h-10 w-10 items-center justify-center rounded-md border border-transparent transition-colors duration-150',
 								link.pageNum !== page.currentPage && 'hover:border-white focus:border-white',
@@ -72,7 +73,7 @@ const collapsedPages = collapseRange(page, pages);
 			page.url.next && (
 				<li class="next ease rounded-full border border-white transition-colors duration-150">
 					<a
-						href={page.url.next}
+						href={ensureTrailingSlash(page.url.next)}
 						data-astro-prefetch
 						class="flex h-10 w-10 items-center justify-center"
 					>

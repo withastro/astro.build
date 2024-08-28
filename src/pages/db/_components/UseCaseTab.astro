@@ -10,7 +10,7 @@ interface Props {
 const { icon, title, active = false } = Astro.props;
 ---
 
-<li>
+<li role="presentation">
 	<button
 		role="tab"
 		data-tab={title.toLowerCase()}
@@ -19,14 +19,12 @@ const { icon, title, active = false } = Astro.props;
 	>
 		<div
 			data-tab-icon-container={title.toLowerCase()}
-			aria-selected={active ? 'true' : undefined}
-			class="w-fit h-fit landing-section rounded-full p-[4px] bg-astro-gray-300 aria-selected:text-white aria-selected:bg-red-pink-gradient"
+			class="w-fit h-fit landing-section rounded-full p-[4px] bg-astro-gray-300 [[aria-selected=true]_&]:text-white [[aria-selected=true]_&]:bg-red-pink-gradient"
 		>
 			<div class="bg-black w-16 h-16 landing-section rounded-full">
 				<div
 					data-tab-icon={title.toLowerCase()}
-					aria-selected={active ? 'true' : undefined}
-					class="w-full h-full landing-section rounded-full bg-astro-gray-300/20 aria-selected:bg-gradient-to-bl aria-selected:from-[#D83333]/20 aria-selected:to-[#F041FF]/20"
+					class="w-full h-full landing-section rounded-full bg-astro-gray-300/20 [[aria-selected=true]_&]:bg-gradient-to-bl [[aria-selected=true]_&]:from-[#D83333]/20 [[aria-selected=true]_&]:to-[#F041FF]/20"
 				>
 					<Icon name={icon} size={32} />
 				</div>
@@ -35,8 +33,7 @@ const { icon, title, active = false } = Astro.props;
 
 		<p
 			data-tab-title={title.toLowerCase()}
-			aria-selected={active ? 'true' : undefined}
-			class="font-medium text-astro-gray-300 aria-selected:bg-gradient-to-bl aria-selected:from-[#D83333] aria-selected:to-[#F041FF] aria-selected:bg-clip-text aria-selected:text-transparent"
+			class="font-medium text-astro-gray-300 [[aria-selected=true]_&]:bg-gradient-to-bl [[aria-selected=true]_&]:from-[#D83333] [[aria-selected=true]_&]:to-[#F041FF] [[aria-selected=true]_&]:bg-clip-text [[aria-selected=true]_&]:text-transparent"
 		>
 			{title}
 		</p>

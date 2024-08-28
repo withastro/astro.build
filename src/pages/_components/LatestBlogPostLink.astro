@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import PillLink from './PillLink.astro';
+
+/** Blog posts with a banner configured in their frontmatter. */
+const blogPostsWithBanner = await getCollection('blog', (entry) => !!entry.data.homepageLink);
+/** The most recent blog post. */
+const latestBlogPost = blogPostsWithBanner
+	.sort((a, b) => (a.data.publishDate > b.data.publishDate ? 1 : -1))
+	.pop();
+---
+
+{
+	latestBlogPost && (
+		<PillLink
+			href={`https://astro.build/blog/${latestBlogPost.slug}/`}
+			title={latestBlogPost.data.homepageLink!.title}
+			subtitle={latestBlogPost.data.homepageLink!.subtitle}
+		/>
+	)
+}

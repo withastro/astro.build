@@ -53,6 +53,19 @@ export const collections = {
 				.describe(
 					'Summary of this blog post. Appears on the blog index as well as in metadata displayed on social media.',
 				),
+			homepageLink: z
+				.object({
+					title: z.string().max(16).describe('Very short call-out, e.g. `Astro 4.14` or `New!`.'),
+					subtitle: z
+						.string()
+						.max(50)
+						.optional()
+						.describe(
+							'Short tagline attracting attention to the post, e.g. `New experimental Content Layer API` or `Announcing Astro DB`. Avoid punctuation and keep things punchy.',
+						),
+				})
+				.optional()
+				.describe('Configure the homepage banner link for this post if it’s the most recent post.'),
 			publishDate: z.coerce
 				.date()
 				.describe(

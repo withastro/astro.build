@@ -1,35 +1,30 @@
 ---
-import { getImage } from 'astro:assets';
 import Icon from 'astro-icon';
 import astroDS from '../../../_assets/themes/astro-design-system.png';
 import ion from '../../../_assets/themes/ion.png';
 import starlight from '../../../_assets/themes/starlight.png';
 import ThemeContainer from './ThemeContainer.astro';
 
-const ionTheme = await getImage({ src: ion, format: 'webp', width: 1280 });
-const astroDSTheme = await getImage({ src: astroDS, format: 'webp', width: 1280 });
-const starlightTheme = await getImage({ src: starlight, format: 'webp', width: 1280 });
-
 const themes = [
 	{
 		href: 'https://astro.build/themes/details/starlight/',
 		title: 'Starlight',
 		author: 'Astro',
-		src: starlightTheme.src,
+		src: starlight,
 		isSeenOnMobile: true,
 	},
 	{
 		href: 'https://astro.build/themes/details/astro-design-system-docs/',
 		title: 'Astro Design System',
 		author: 'jordi',
-		src: astroDSTheme.src,
+		src: astroDS,
 		isSeenOnMobile: false,
 	},
 	{
 		href: 'https://astro.build/themes/details/ion/',
 		title: 'Ion',
 		author: 'Louis Escher',
-		src: ionTheme.src,
+		src: ion,
 		isSeenOnMobile: true,
 	},
 ];

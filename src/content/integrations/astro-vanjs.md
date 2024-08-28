@@ -9,5 +9,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-vanjs"
 homepageUrl: "https://www.npmjs.com/package/astro-vanjs"
 badge: "new"
-downloads: 122
+downloads: 129
 ---
