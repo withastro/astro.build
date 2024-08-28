@@ -10,5 +10,5 @@ npmUrl: "https://www.npmjs.com/package/astro-link-card"
 repoUrl: "https://github.com/Robot-Inventor/astro-link-card"
 homepageUrl: "https://github.com/Robot-Inventor/astro-link-card#readme"
 badge: "new"
-downloads: 1299
+downloads: 1347
 ---
