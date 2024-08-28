@@ -79,7 +79,7 @@ const authors = await Promise.all(data.authors.map((author) => getEntry('authors
 					authors.map((author) => {
 						return (
 							<div class="flex items-center gap-2">
-								<Avatar name={author.slug} lg />
+								<Avatar name={author.id} lg />
 								<span>{author.data.name}</span>
 							</div>
 						);
