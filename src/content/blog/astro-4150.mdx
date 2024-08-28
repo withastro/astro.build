@@ -46,25 +46,25 @@ yarn upgrade astro --latest
 
 Astro Actions are out of experimental and ready to help build your next backend.
 
-Actions handle type-safe data fetching, JSON parsing, and input validation for you. This dramatically reduces the amount of boilerplate needed compared to using an API endpoint. 
+Actions handle type-safe data fetching, JSON parsing, and input validation for you. This dramatically reduces the amount of boilerplate needed compared to using an API endpoint.
 
-```diff
-import { z } from 'astro:schema';
+```ts del={2-10}
+// Before
+export const POST = ({ request }) => {
+  const contentType = request.headers.get('Content-Type');
+  if (contentType !== 'application/json') return new Response('Unsupported body', { status: 415 });
 
-- export const POST = ({ request }) => {
--   const contentType = request.headers.get('Content-Type');
--   if (contentType !== 'application/json') return new Response('Unsupported body', { status: 415 });
+  const json = await request.json();
+  const input = z.object({ email: z.string().email() }).safeParse(json);
+  if (!input.success) return new Response(JSON.stringify(input.error), { status: 400 });
+  // ...50 more lines
+ }
 
--   const json = await request.json();
--   const input = z.object({ email: z.string().email() }).safeParse(json);
--   if (!input.success) return new Response(JSON.stringify(input.error), { status: 400 });
--   // ...50 more lines
-- }
-
-+ defineAction({
-+    input: z.object({ email: z.string().email() }),
-+    handler: ({ name }) => { /* ... */ },
-+ })
+// After
+defineAction({
+  input: z.object({ email: z.string().email() }),
+  handler: ({ name }) => { /* ... */ },
+})
 ```
 
 Actions can be called from client-side components, or even plain HTML forms using the `action` property. This gives you to flexibility to build apps using any framework: React, Svelte, HTMX, or just plain Astro components. This example calls a newsletter action using a `form`:
@@ -77,8 +77,10 @@ const result = Astro.getActionResult(actions.newsletter);
 ---
 
 {result && !result.error && <p>Thanks for signing up!</p>}
+
 <form method="POST" action={actions.newsletter}>
   <input type="email" name="email" />
+  <button>Sign up</button>
 </form>
 ```
 
