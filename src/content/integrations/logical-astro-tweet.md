@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/logical-astro-tweet"
 homepageUrl: "https://www.npmjs.com/package/logical-astro-tweet"
 badge: "new"
-downloads: 78
+downloads: 79
 ---

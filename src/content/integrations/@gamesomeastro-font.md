@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@gamesome/astro-font"
 repoUrl: "https://github.com/Gamesome-ab/astro-font"
 homepageUrl: "https://github.com/Gamesome-ab/astro-font#readme"
-downloads: 111
+downloads: 114
 ---

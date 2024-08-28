@@ -89,9 +89,13 @@ const featuredPosts = [
 		<div class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20">
 			<ul class="flex max-w-screen-md flex-col gap-y-4 md:gap-y-6 lg:gap-y-8">
 				{
-					page.data.map((post) => (
+					page.data.map((post, index) => (
 						<li>
-							<BlogPostPreview post={post} isCaseStudy={'isCaseStudy' in post.data} />
+							<BlogPostPreview
+								post={post}
+								isCaseStudy={'isCaseStudy' in post.data}
+								imageLoading={index === 0 ? 'eager' : 'lazy'}
+							/>
 						</li>
 					))
 				}
