@@ -1,5 +1,7 @@
 import { defineCollection } from 'astro:content';
+import { file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import authors from '../data/authors/authors.json';
 
 export const IntegrationCategories = new Map([
 	['recent', 'Recently Added'],
@@ -33,13 +35,15 @@ const seoSchema = z.object({
 
 export const collections = {
 	authors: defineCollection({
-		schema: z.object({
-			image: z.string().optional(),
-			name: z.string(),
-			title: z.string().optional(),
-			twitter: z.string().optional(),
-			mastodon: z.string().optional(),
-		}),
+		loader: file('src/data/authors/authors.json'),
+		schema: ({ image }) =>
+			z.object({
+				image: image().optional(),
+				name: z.string(),
+				title: z.string().optional(),
+				twitter: z.string().optional(),
+				mastodon: z.string().optional(),
+			}),
 	}),
 	blog: defineCollection({
 		schema: z.object({
@@ -68,10 +72,8 @@ export const collections = {
 					'A date string or YAML date that is compatible with JavaScript’s `new Date()` constructor.',
 				),
 			authors: z
-				.array(
-					// biome-ignore format:
-					z.enum(['astro-team', 'ben', 'bjorn', 'chris', 'dan', 'drew', 'elian', 'ema', 'erika', 'fred', 'fuzzy', 'hideoo', 'jon', 'mark', 'martrapp', 'matt', 'matthew', 'nate', 'reuben', 'sarah', 'thuy', 'tony', 'yan']),
-				)
+				.enum(Object.keys(authors) as [keyof typeof authors, ...(keyof typeof authors)[]])
+				.array()
 				.describe('A list of authors of this blog post, e.g. `["erika", "matt"]`'),
 			socialImage: z
 				.string()

@@ -55,5 +55,6 @@ export default defineConfig({
 	adapter: netlify({ imageCDN: false }),
 	experimental: {
 		contentIntellisense: true,
+		contentLayer: true,
 	},
 });
