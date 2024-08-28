@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { file, glob } from 'astro/loaders';
+import { file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import authors from '../data/authors/authors.json';
 
