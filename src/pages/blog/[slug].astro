@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 import { format } from 'date-fns';
 import Avatar from '~/components/Avatar.astro';
@@ -50,12 +51,11 @@ const placeholderGradient = randomFromArray(gradients);
 	{
 		coverImage ? (
 			<div class="mx-auto w-full max-w-screen-lg md:-mb-10 lg:-mb-12 xl:-mb-16">
-				<img
-					src={coverImage.src}
-					width={coverImage.width}
-					height={coverImage.height}
+				<Image
+					src={coverImage}
+					widths={[766, 1500]}
+					sizes="100vw"
 					loading="eager"
-					decoding="async"
 					alt=""
 					class="min-h-[240px] w-full object-cover"
 				/>
