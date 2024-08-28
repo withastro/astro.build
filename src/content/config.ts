@@ -40,7 +40,6 @@ export const collections = {
 			z.object({
 				image: image().optional(),
 				name: z.string(),
-				title: z.string().optional(),
 				twitter: z.string().optional(),
 				mastodon: z.string().optional(),
 			}),
