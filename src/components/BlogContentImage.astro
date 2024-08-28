@@ -1,18 +1,21 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Props {
 	src: ImageMetadata;
 	alt?: string;
 }
 
 const { src, alt = '' } = Astro.props;
+
+const maxColumnWidth = 768 * 2; // 768px * 2 pixel density
+const width = Math.min(maxColumnWidth);
+const height = (width / src.width) * src.height;
 ---
 
-<img
-	src={src.src}
-	alt={alt}
-	width={src.width}
-	height={src.height}
+<Image
+	{...{ src, alt, width, height }}
+	widths={[width / 2, width]}
+	sizes="90vw"
 	class="mx-auto w-full max-w-full rounded-lg border border-astro-gray-500"
-	loading="lazy"
-	decoding="async"
 />
