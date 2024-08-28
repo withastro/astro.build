@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { format } from 'date-fns';
 import { resolveCoverImage } from '~/content/blog/_resolveImage.js';
 
@@ -37,14 +38,14 @@ const image = await resolveCoverImage(post);
 		<div class="-mx-4">
 			{
 				image && (
-					<img
-						src={image.src}
-						width={image.width}
-						height={image.height}
+					<Image
+						src={image}
+						width="766"
+						widths={[766, 1500]}
+						sizes="90vw"
 						alt={post.data.title}
 						class="my-4"
 						loading={imageLoading}
-						decoding="async"
 					/>
 				)
 			}
