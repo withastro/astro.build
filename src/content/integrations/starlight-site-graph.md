@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/starlight-site-graph"
 repoUrl: "https://github.com/fevol/starlight-site-graph"
 homepageUrl: "https://github.com/fevol/starlight-site-graph#readme"
 badge: "new"
-downloads: 709
+downloads: 719
 ---

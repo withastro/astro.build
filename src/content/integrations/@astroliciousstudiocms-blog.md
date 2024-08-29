@@ -8,5 +8,5 @@ image: "/assets/integrations/studiocms-master.svg"
 npmUrl: "https://www.npmjs.com/package/@astrolicious/studiocms-blog"
 repoUrl: "https://github.com/astrolicious/studiocms"
 homepageUrl: "https://astro-studiocms.xyz"
-downloads: 90
+downloads: 83
 ---
