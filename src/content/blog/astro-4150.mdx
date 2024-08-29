@@ -1,6 +1,6 @@
 ---
 title: "Astro 4.15"
-description: "Astro 4.15 is now available! This release stabilize Astro Actions - our solution for fully type-safe backend functions. Also included: support for LibSQL remotes in Astro DB, a new timeout option for `client:idle`, and more."
+description: "Astro 4.15 is now available! This release stabilizes Astro Actions — our solution for fully type-safe backend functions. Also included: support for LibSQL remotes in Astro DB, a new timeout option for `client:idle`, and more."
 homepageLink:
   title: Astro 4.15
   subtitle: Astro Actions
@@ -19,7 +19,7 @@ import BlogSummary from "/src/components/BlogSummary.astro";
 import frontmatterIntellisense from "/src/content/blog/_images/astro-4140/frontmatter-intellisense.png";
 
 <BlogSummary>
-  Astro 4.15 is out now! This release stabilize Astro Actions - our solution for fully type-safe backend functions. Also included: support for LibSQL remotes in Astro DB, a new timeout option for `client:idle`, and more.
+  Astro 4.15 is out now! This release stabilizes Astro Actions — our solution for fully type-safe backend functions. Also included: support for LibSQL remotes in Astro DB, a new timeout option for `client:idle`, and more.
 </BlogSummary>
 
 This release includes the following highlights:
@@ -91,7 +91,7 @@ For more information and usage examples, see our [all-new Actions guide](https:/
 
 A new option was added to [internationalization (i18n) routing](https://docs.astro.build/en/guides/internationalization/) which allows more control over how fallbacks are handled. You can now specify whether a fallback results in a rewrite (a `200` response from the server) or a redirect, the current default.
 
-The fallback system in i18n allows you to define which content is used for a locale when that content is not available in the user's locale. For example your config might look like:
+The fallback system in i18n allows you to define which content is used for a locale when that content is not available in the user's locale. For example, your config might look like this:
 
 ```js
 import { defineConfig } from "astro/config"
@@ -111,22 +111,22 @@ export default defineConfig({
 
 For more information on this new feature, see [our revamped documentation on handling fallbacks in i18n](https://docs.astro.build/en/guides/internationalization/#fallback).
 
-## LibSQL remotes in Astro DB
+## libSQL remotes in Astro DB
 
-You can now specify a [LibSQL](https://turso.tech/libsql) server instance as the remote for `@astrojs/db`. This allows you to self-host your own LibSQL server as an alternative to using Astro DB with Astro Studio. This option works with any supported LibSQL protocol.
+You can now specify a [libSQL](https://turso.tech/libsql) server instance as the remote for `@astrojs/db`. This allows you to self-host your own libSQL server as an alternative to using Astro DB with Astro Studio. This option works with any supported libSQL protocol.
 
 To use this feature, set the following environment variables:
 
-- `ASTRO_DB_REMOTE_URL`: the connection URL to your LibSQL server.
-- `ASTRO_DB_APP_TOKEN`: the auth token to your LibSQL server.
+- `ASTRO_DB_REMOTE_URL`: the connection URL to your libSQL server.
+- `ASTRO_DB_APP_TOKEN`: the auth token to your libSQL server.
 
-Enabling this feature allows you to both connect to the LibSQL server in your production environment, it also allows you to use the Astro DB deployment and push (migration) commands with the LibSQL instance. Thanks to [Fryuni](https://github.com/Fryuni) for this amazing contribution!
+Enabling this feature allows you to connect to the libSQL server in your production environment and also allows you to use the Astro DB deployment and push (migration) commands with the libSQL instance. Thanks to [Fryuni](https://github.com/Fryuni) for this amazing contribution!
 
-For more information on using LibSQL servers in Astro DB, [visit our Astro DB guide](https://docs.astro.build/en/guides/astro-db/#libsql).
+For more information on using libSQL servers in Astro DB, [visit our Astro DB guide](https://docs.astro.build/en/guides/astro-db/#libsql).
 
 ## Timeout option in `client:idle`
 
-The `client:idle` directive is used to load an [Astro Island](https://docs.astro.build/en/concepts/islands/) when the user's CPU is idle (which no other JavaScript is executing). Under the hood this feature relies on the [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) feature of browsers.
+The `client:idle` directive is used to load an [Astro Island](https://docs.astro.build/en/concepts/islands/) when the user's CPU is idle (which no other JavaScript is executing). Under the hood, this feature relies on the [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) feature of browsers.
 
 In Astro 4.15, you can now specify a `timeout` property that will trigger the island to load if it has not already done so in that time. This is useful to add priority to a component that might be competing with other idle components.
 
@@ -146,7 +146,7 @@ Thanks to [ph1p](https://github.com/ph1p) for this contribution.
 
 ## Swap helpers for ViewTransitions
 
-Astro's `<ViewTransitions />` router works by turning your MPA (multi-page app) into a SPA (single-page app), while attempting to preserve the DX of a MPA. It does this by fetching pages on navigation and swapping the content. In some cases you might want more control over how the swap works, which can be done by overriding the swap in the [`astro:before-swap`](https://docs.astro.build/en/guides/view-transitions/#astrobefore-swap) event.
+Astro's `<ViewTransitions />` router works by turning your MPA (multi-page app) into a SPA (single-page app), while attempting to preserve the DX of a MPA. It does this by fetching pages on navigation and swapping the content. In some cases, you might want more control over how the swap works, which can be done by overriding the swap in the [`astro:before-swap`](https://docs.astro.build/en/guides/view-transitions/#astrobefore-swap) event.
 
 In Astro 4.15, the built-in swap functions are now exported from `astro:transitions/client`. These helpers allow you to use parts of what Astro does by default, with your own custom logic in between.
 
