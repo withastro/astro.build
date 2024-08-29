@@ -1,0 +1,181 @@
+---
+title: "Astro 4.15"
+description: "Astro 4.15 is now available! This release stabilizes Astro Actions — our solution for fully type-safe backend functions. Also included: support for libSQL remotes in Astro DB, a new timeout option for `client:idle`, and more."
+homepageLink:
+  title: Astro 4.15
+  subtitle: Astro Actions
+publishDate: "August 29, 2024"
+authors:
+  - matthew
+  - erika
+  - ben
+coverImage: "/src/content/blog/_images/astro-4150/header_astro_4_15.webp"
+socialImage: "/src/content/blog/_images/astro-4150/og_image_4_15.webp"
+lang: "en"
+---
+
+import BlogContentImage from "/src/components/BlogContentImage.astro";
+import BlogSummary from "/src/components/BlogSummary.astro";
+import frontmatterIntellisense from "/src/content/blog/_images/astro-4140/frontmatter-intellisense.png";
+
+<BlogSummary>
+  Astro 4.15 is out now! This release stabilizes Astro Actions — our solution for fully type-safe backend functions. Also included: support for libSQL remotes in Astro DB, a new timeout option for `client:idle`, and more.
+</BlogSummary>
+
+This release includes the following highlights:
+
+- [**Stable: Astro Actions**](#stable-astro-actions)
+- [**Use rewrites for i18n fallbacks**](#rewrites-in-i18n-fallbacks)
+- [**libSQL remotes in @astrojs/db**](#libsql-remotes-in-astro-db)
+- [**Timeout option in client:idle**](#timeout-option-in-clientidle)
+- [**Swap helpers available for ViewTransitions customizations**](#swap-helpers-for-viewtransitions)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Stable: Astro Actions
+
+Astro Actions are out of experimental and ready to help build your next backend.
+
+Actions handle type-safe data fetching, JSON parsing, and input validation for you. This dramatically reduces the amount of boilerplate needed compared to using an API endpoint.
+
+```ts del={2-10}
+// Before
+export const POST = ({ request }) => {
+  const contentType = request.headers.get('Content-Type');
+  if (contentType !== 'application/json') return new Response('Unsupported body', { status: 415 });
+
+  const json = await request.json();
+  const input = z.object({ email: z.string().email() }).safeParse(json);
+  if (!input.success) return new Response(JSON.stringify(input.error), { status: 400 });
+  // ...50 more lines
+ }
+
+// After
+defineAction({
+  input: z.object({ email: z.string().email() }),
+  handler: ({ name }) => { /* ... */ },
+})
+```
+
+Actions can be called from client-side components and HTML forms. This gives you the flexibility to build apps using any technology: React, Svelte, HTMX, or just plain Astro components. This example calls a newsletter action and renders the result using an Astro component:
+
+```astro
+---
+// src/pages/newsletter.astro
+import { actions } from 'astro:actions';
+
+const result = Astro.getActionResult(actions.newsletter);
+---
+
+{result && !result.error && <p>Thanks for signing up!</p>}
+
+<form method="POST" action={actions.newsletter}>
+  <input type="email" name="email" />
+  <button>Sign up</button>
+</form>
+```
+
+For more information and usage examples, see our [new Actions guide](https://docs.astro.build/en/guides/actions).
+
+## Rewrites in i18n fallbacks
+
+A new option was added to [internationalization (i18n) routing](https://docs.astro.build/en/guides/internationalization/) which allows more control over how fallbacks are handled. You can now specify whether a fallback results in a rewrite (a `200` response from the server) or a redirect, the current default.
+
+The fallback system in i18n allows you to define which content is used for a locale when that content is not available in the user's locale. For example, your config might look like this:
+
+```js
+import { defineConfig } from "astro/config"
+export default defineConfig({
+  i18n: {
+    defaultLocale: "en",
+    locales: ["es", "en", "fr"],
+    fallback: {
+      fr: "es"
+    },
+    routing: {
+      fallbackType: "rewrite"
+    }
+  }
+})
+```
+
+For more information on this new feature, see [our revamped documentation on handling fallbacks in i18n](https://docs.astro.build/en/guides/internationalization/#fallback).
+
+## libSQL remotes in Astro DB
+
+You can now specify a [libSQL](https://turso.tech/libsql) server instance as the remote for `@astrojs/db`. This allows you to self-host your own libSQL server as an alternative to using Astro DB with Astro Studio. This option works with any supported libSQL protocol.
+
+To use this feature, set the following environment variables:
+
+- `ASTRO_DB_REMOTE_URL`: the connection URL to your libSQL server.
+- `ASTRO_DB_APP_TOKEN`: the auth token to your libSQL server.
+
+Enabling this feature allows you to connect to the libSQL server in your production environment and also allows you to use the Astro DB deployment and push (migration) commands with the libSQL instance. Thanks to [Fryuni](https://github.com/Fryuni) for this amazing contribution!
+
+For more information on using libSQL servers in Astro DB, [visit our Astro DB guide](https://docs.astro.build/en/guides/astro-db/#libsql).
+
+## Timeout option in `client:idle`
+
+The `client:idle` directive is used to load an [Astro Island](https://docs.astro.build/en/concepts/islands/) when the user's CPU is idle (which no other JavaScript is executing). Under the hood, this feature relies on the [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) feature of browsers.
+
+In Astro 4.15, you can now specify a `timeout` property that will trigger hydration to ensure your element is interactive within a specified time frame. This is useful to add priority to a component that might be competing with other idle components.
+
+```astro
+{/* Component loads after a maximum wait of 500ms */}
+<Counter id="client-idle-timeout" {...someProps} client:idle={{ timeout: 500 }}>
+	<h1>Hello, client:idle={'{{timeout: 500}}'}!</h1>
+</Counter>
+```
+
+Thanks to [ph1p](https://github.com/ph1p) for this contribution.
+
+## Swap helpers for ViewTransitions
+
+Astro's `<ViewTransitions />` router gives you the UX of a single-page app (SPA) while preserving the DX of an Astro multi-page app (MPA). It does this by fetching pages on navigation and swapping the content for client-side routing. In some cases, you might want more control over how the swap works, which can be done by overriding the swap in the [`astro:before-swap`](https://docs.astro.build/en/guides/view-transitions/#astrobefore-swap) event.
+
+In Astro 4.15, the built-in swap functions are now exported from `astro:transitions/client`. These helpers allow you to use parts of what Astro does by default, and add your own custom logic in between.
+
+```astro
+<script>
+import { swapFunctions } from 'astro:transitions/client';
+
+document.addEventListener('astro:before-swap', (e) => {
+  e.swap = () => swapMainOnly(e.newDocument);
+});
+
+function swapMainOnly(doc: Document) {
+  swapFunctions.deselectScripts(doc);
+  swapFunctions.swapRootAttributes(doc);
+  swapFunctions.swapHeadElements(doc);
+  const restoreFocusFunction = swapFunctions.saveFocus();
+  const newMain = doc.querySelector('main');
+  const oldMain = document.querySelector('main');
+  if (newMain && oldMain) {
+    swapFunctions.swapBodyElement(newMain, oldMain);
+  } else {
+    swapFunctions.swapBodyElement(doc.body, document.body);
+  }
+  restoreFocusFunction();
+}
+<script>
+```
+
+Check out the docs for more information about [building your own custom swap function](https://docs.astro.build/en/guides/view-transitions/#building-a-custom-swap-function) and be sure to share with us what you create!
+
+Thanks to [martrapp](https://github.com/martrapp) for this contribution.
+
+## Bug Fixes and Special Thanks
+
+As we do, Astro 4.16 includes more bug fixes and smaller improvements that couldn't make it into this post! Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#4150) to learn more.
+
+Thanks to [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918), [Yan (@yanthomasdev)](https://github.com/yanthomasdev), [Bjorn Lu (@bluwy)](https://github.com/bluwy), [Emanuele Stoppa (@ematipico)](https://github.com/ematipico), [Chris Swithinbank (@delucis)](https://github.com/delucis), and everyone else who contributed to this release.
