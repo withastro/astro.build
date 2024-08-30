@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-xelement"
 repoUrl: "https://github.com/aFuzzyBear/xelement"
 homepageUrl: "https://github.com/aFuzzyBear/xelement"
-downloads: 105
+downloads: 102
 ---

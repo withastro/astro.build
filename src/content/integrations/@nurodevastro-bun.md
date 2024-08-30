@@ -7,5 +7,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@nurodev/astro-bun"
 homepageUrl: "https://github.com/nurodev/astro-bun"
-downloads: 537
+downloads: 486
 ---
