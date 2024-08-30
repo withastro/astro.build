@@ -18,6 +18,7 @@ Some exciting news from around the Astro ecosystem this month. Let's dive in!
 ## Updates from Mission Control - UPDATE THESE
 
 - 5.0 alpha
+- [Algolia DocSearch crawler for Starlight](https://www.algolia.com/blog/engineering/algolia-docsearch-astro-starlight-part-2/)
 
 - 🏝️ [Server Islands (experimental)](https://docs.astro.build/en/reference/configuration-reference/#experimentalserverislands)
 - 🤝 [Netlify Partnership](https://astro.build/blog/netlify-official-deployment-partner/)
@@ -58,15 +59,15 @@ Here's what caught our attention this month:
 
 - ⏳ Read about [how Astro's server islands deliver progressive rendering for your sites](https://developers.netlify.com/guides/how-astros-server-islands-deliver-progressive-rendering-for-your-sites/) from Rob Stanford, with one-click clone and deploy to Netlify to test drive an example project.
 - 👀 You don't need to know German to understand "Astro Geht Brrrr!" means Astro goes fast! Take the fun, meme-heavy journey through [Das schnellste Framework der Welt](https://www.youtube.com/watch?v=iuOjrz8VT5k), even if it means turning on captions or auto translation.
-- 🔥 Hit the 9 minute mark of [the Front-end Fire podcast](https://front-end-fire.com/episodes/53/) to hear Jack Harrington's early take on server islands.
+- 🔥 [Sign up for the Astro Party](https://astro.party/) and learn Astro with Jason Lengstorf! Get notified when tickets for the September 17 workshop go live.
 
 Because you can never get tired of Astro, here's even more community content!
 
-- 📄 
-- 📄 
-- 📄 
-- 📄
-- 📄 
+- 📄 [Beyond React: How Astro and Its Server Islands Work](https://thenewstack.io/how-astro-and-its-server-islands-compare-to-react-frameworks/)
+- 📄 [Building a Lightning-Fast Blog — My First Journey with Astro](https://flavienbonvin.com/articles/building-a-lightning-fast-blog-my-first-journey-with-astro)
+- 📄 [SSG Astro with Headless Craft CMS Content Fetched At Build Time](https://www.olets.dev/posts/ssg-astro-with-headless-craft-cms-content-fetched-at-build-time/)
+- 📄 [My experience with astro](https://www.giannistolou.gr/blog/my-experience-with-astro)
+- 📄 [Easily manage your multilingual Astro site in CloudCannon](https://cloudcannon.com/blog/easily-manage-your-multilingual-astro-site-in-cloudcannon/)
 - 📄
 - 📄 
 - 📄 
@@ -78,26 +79,34 @@ Because you can never get tired of Astro, here's even more community content!
 
 <YouTubeGrid
   videos={[
-    { id: 'https://www.youtube.com/watch?v=cD7afv02cBs', title: 'Building Content-Driven Websites With Astro: Astro introduction and new collections API' },
-    { id: 'https://www.youtube.com/watch?v=SkJiaRclTjM', title: 'Server Islands w/ Matthew Phillips'},
-    { id: 'https://www.youtube.com/watch?v=D27okNKcLwA', title: 'Migrating From Gatsby to Astro: Migration and Styling Tips with Kathleen McMahon' },
-    { id: 'https://www.youtube.com/watch?v=AUQIE6TOx40', title: 'Adding serverside rendering to Astro with Tim Benniks & Bryan Robinson' },
-    { id: 'https://www.youtube.com/watch?v=iuOjrz8VT5k', title: 'Das schnellste Framework der Welt | Astro.js' },
-    { id: 'https://www.youtube.com/watch?v=d12eMFmEfsU', title: "Why should you build with Astro?"},
-    { id: 'https://www.youtube.com/watch?v=CamMuQTmRZ8', title: 'Clerk auth and Astro (no client-side JavaScript version)' },
-    { id: 'https://www.youtube.com/watch?v=qmRu5z5VoDQ', title: 'starlight documentation site astro js headless cms tina cloud for mdx files' },
-    { id: 'https://www.youtube.com/watch?v=LWTMtj1Z3Zk&list=PLx5xbrpW6nXiPRXklsQKiDESH_3tJlLWK&index=1', title: "Clon de Spotify con Astro"},
-    { id: 'https://www.youtube.com/watch?v=2uNm-AgNtSo', title: 'The best JS framework for building a #markdown blog (#astro)' },
-    { id: 'https://www.youtube.com/watch?v=p4hvTDU9kGI', title: 'Usar un componente de 🚀 ASTRO dentro de un componente de ⚛️ REACT | ASTRO TIPS #1 - @otrocadev' },
-    { id: 'https://www.youtube.com/watch?v=PzOSONAdxe8', title: 'Vasyl Gavryliuk - Sitecore Headless Software Development Kit for Astro' },
-    { id: 'https://www.youtube.com/watch?v=UmvT6GYlHgE', title: 'Astro.js! Inseln und SPA vs MPA #short #shorts #programmieren #javascript #astrojs' },
-    { id: 'https://www.youtube.com/watch?v=1qI17x0rpd0', title: 'Astro.js und die Islands Architektur #astrojs #astro #programmieren' },
-    { id: 'https://www.youtube.com/watch?v=byWuX848O8U', title: 'Tutorial: Proyecto con Astro Build y Tailwind CSS en Visual Studio Code' },
-    { id: 'https://www.youtube.com/watch?v=AvtySUwGBTQ', title: 'Clon de la Página de Starbucks con Astro.js y Mejora Animaciones con CSS 🚀☕️' },
-    { id: 'https://www.youtube.com/watch?v=1K8dMuJa8f4', title: "Let's Build blog website using Astro" },
-    { id: 'https://www.youtube.com/watch?v=g09ZNLn3gEM', title: 'Responsive Store Template using Astro JS and Tailwind CSS' },
-    { id: 'https://www.youtube.com/watch?v=LG8PDLZHEts', title: 'x-satori - 🌠 Using Astro (.astro) file to generate Open Graph image power by Satori and Vite' },
-    { id: 'https://www.youtube.com/watch?v=dj6tUUTDXAo', title: 'State of JS 2023 Reactions' },
+    { id: 'https://www.youtube.com/watch?v=uBxehYwQox4', title: 'Server Islands are really cool' },
+    { id: 'https://www.youtube.com/watch?v=0lgGFTIH_TU', title: 'Autenticación con Firebase en Astro JS: Tutorial Completo'},
+    { id: 'https://www.youtube.com/watch?v=chvnmzj8Rbc', title: 'Creando mi portafolio en Astro con SASS'},
+    { id: 'https://www.youtube.com/watch?v=-E3kD83fhUE', title: 'Aprendiendo Sobre Astro, creando documentacion para Laravel.nvim' },
+    { id: 'https://www.youtube.com/watch?v=1FmlAHop3v8', title: 'Building Angular Three Documentation with Astro & Starlight' },
+    { id: 'https://www.youtube.com/watch?v=8eq6cX9I-Ws', title: '🏝️ The Server Islands hype is real!' },
+    { id: 'https://www.youtube.com/watch?v=VE5YVk-LbB4', title: 'Learn Astro FAST - For the Proficient Developer' },
+    { id: 'https://www.youtube.com/watch?v=o7jgWkCedQk', title: 'Animer vos images avec l\'API View Transitions d\'Astro' },
+    { id: 'https://www.youtube.com/watch?v=in2X2fHkaD0', title: 'Did Astro Fix Server Actions and Suspense?' },
+    { id: 'https://www.youtube.com/watch?v=FohuglE2Au4', title: 'Las Server Islands lo cambian TODO' },
+    { id: 'https://www.youtube.com/watch?v=zlr_FlT4NT0', title: 'Getting started with astro - Ben Holmes' },
+    { id: 'https://www.youtube.com/watch?v=qo6yC8owVx0', title: 'Framework Javascript Paling OP!?' },
+    { id: 'https://www.youtube.com/watch?v=etcbjbzeeiE', title: 'Astro Crash Course 2024 Part 1 - Getting Started with Astro' },
+    { id: 'https://www.youtube.com/watch?v=9YwB_OPIybA', title: 'Heard of Frontmatter or Astro?' },
+    { id: 'https://www.youtube.com/watch?v=1Mt6t1R0VXE', title: 'Astro: framework para webs orientadas a contenido - Estructura de un proyecto' },
+    { id: 'https://www.youtube.com/watch?v=kbcPDfiyx5E', title: 'ASTRO: CREA SITIOS WEB MODERNOS EN MINUTOS' },
+    { id: 'https://www.youtube.com/watch?v=Lj9CEpl73EU', title: 'Cómo Crear un Acortador de Links con Astro.js, Node y SQL en Docker' },
+    { id: 'https://www.youtube.com/watch?v=06y49jiG9UQ', title: 'Live Code: Frontend Mentor Product List with Cart (with Astro)' },
+    { id: 'https://www.youtube.com/watch?v=v3IvTJo69is', title: 'Migrando una página web a Astro (Cloudinary) - episodio 07' },
+    { id: 'https://www.youtube.com/watch?v=qoYsWnP_iu8', title: 'Exploring the Astro Content Layer API' },
+    { id: 'https://www.youtube.com/watch?v=89TRqTXfwrg', title: 'Ngobrolin Astro - Ngobrolin WEB' },
+    { id: 'https://www.youtube.com/watch?v=nRCnBvHcvsw', title: 'Is Astro getting too complex?' },
+    { id: 'https://www.youtube.com/watch?v=2zV-BwOqTjg', title: 'MUCH BETTER Performance with Astro Server Islands' },
+    { id: 'https://www.youtube.com/watch?v=j1alT-t0w1U', title: 'Astro Tourism Website Setup and Layout' },
+    { id: 'https://www.youtube.com/watch?v=dd7mqbuF3Ow', title: 'best portfolio website with source code | responsive portfolio website tutorial' },
+    { id: 'https://www.youtube.com/watch?v=xU2ZJ-casUw', title: 'Astro en 1 minuto!' },
+    { id: 'https://www.youtube.com/watch?v=mrjW9ocIJEw', title: 'Sito web portfolio in pochi minuti? Gratis! AstroJS, AlpineJS e TailwindCSS [ITA]' },
+    { id: 'https://www.youtube.com/watch?v=PQ4dEeRLVm4', title: 'Creando con Astro la navegación mobile de la web de The Refactor Project' },
   ]}
 /> 
 
@@ -105,19 +114,10 @@ Because you can never get tired of Astro, here's even more community content!
 
 The latest community-built utilities and integrations to help you build with Astro.
 
-{/* - [Astro Studio CMS](https://astro-studiocms.xyz/) - A dedicated CMS for Astro Studio built by the Astro community by @AdamMatthiesen, @Jumper, and @dreyfus
-- [Advanced Astro Starter kit](https://github.com/BuckyBuck135/Advanced-Astro-v4-i18n) - Includes a pre-configured multi-language setup, and CodeStitch components by @buckybuck 
-- [Notion-based configurable static website generator](https://www.producthunt.com/posts/webtrotion) - Your own Notion website with Astro by @nerdymomocat
-- [Astro Infisical](https://www.npmjs.com/package/@matthiesenxyz/astro-infisical) - An Astro integration for Infisical for secret management by @AdamMatthiesen
-- [Bun adapter for Astro](https://github.com/nurodev/astro-bun) - Allows Astro to deploy your SSR site to Bun targets by @NeuroDev
-- [Bag of Tricks - Inspection Chamber](https://github.com/martrapp/astro-vtbot) - See your view transitions like never before: examine all details, reveal, debug, and optimize! by @martrapp
-- [Spaceship CMS](https://spaceship-cms.co/) - Coming soon, waiting list open by @blazingbowser
-- [Star Warp](https://inox-tools.fryuni.dev/star-warp) - Add a quick “jump to first search result” URL to any Astro site using Pagefind by @Fryuni
-- [`@inox-tools/runtime-logger`](https://inox-tools.vercel.app/runtime-logger) - Allows you to access Astro’s built-in logger from the runtime of a project by @Fryuni
-- [`astro-toolkit`](https://www.npmjs.com/package/astro-toolkit) - A collection of Astro tools, components, and utilities to streamline your development process by @blackpepper
-- [`astro-typed-links`](https://github.com/florian-lefebvre/astro-typed-links) - Automatically get typed links to your pages by @florian-levebre
-- [`astro-email-password-2fa`](https://github.com/pilcrowOnPaper/astro-email-password-2fa) - Built with Astro, SQLite, and Lucia v4 by @pilcrowOnPaper
-- [`astro-wordpress-docker`](https://github.com/RyanHarrigan/astro-wordpress-docker) - An Astro-based headless WordPress setup by @RyanHarrigan  */}
+- [Astrobook](https://github.com/ocavue/astrobook) - A minimal UI component playground that supports multiple frameworks including React, Vue, Preact, Svelte, Solid, Lit, and Astro. It offers a unified environment to develop, test, and showcase components.
+- [`create-krew`](https://github.com/Cspeisman/krew) - A CLI tool to quickly set up an Astro project with GitHub repository, Vercel deployment, and CI/CD pipeline.
+- [Bag of Tricks: `<InspectionChamber />`](https://events-3bg.pages.dev/library/InspectionChamber/) - adds a control panel that you can use to examine your view transition animations.
+
 
 
 ### Themes & Templates
@@ -130,7 +130,7 @@ Several new Astro themes were added to the [Astro theme directory](https://astro
 
 Sites of the month: UPDATE THESE
 {/* 
-- Visit [MusicDev](https://music.manz.dev/), an electronic music album about web development and programming. [Built live on stream](https://www.youtube.com/watch?v=2ZQ-sPMOmww) over four sessions.
+-   
 - See live, updating trends and stats about GitHub repositories at [gitcharts](https://gitcharts.com/). GitHub, visualized.
 - Make your next destination Astro's own [Server Islands Demo](https://server-islands.com) to learn more about this new, experimental feature.
 
