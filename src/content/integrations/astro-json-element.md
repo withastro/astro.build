@@ -7,5 +7,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-json-element"
 repoUrl: "https://github.com/BryceRussell/astro-json-element"
 homepageUrl: "https://github.com/BryceRussell/astro-json-element#readme"
-downloads: 79
+downloads: 58
 ---

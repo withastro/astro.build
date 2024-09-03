@@ -8,7 +8,7 @@ categories:
 npmUrl: "https://www.npmjs.com/package/@astrojs/prism"
 repoUrl: "https://github.com/withastro/astro"
 homepageUrl: "https://docs.astro.build/en/reference/api-reference/#prism-"
-downloads: 867038
+downloads: 849294
 downloadFactor: 0.0005
 official: true
 ---
