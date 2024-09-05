@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-control"
 homepageUrl: "https://www.npmjs.com/package/astro-control"
-downloads: 5
+downloads: 6
 ---

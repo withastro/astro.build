@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-turnstile"
 homepageUrl: "https://github.com/hkbertoson/astro-turnstile"
-downloads: 24
+downloads: 28
 ---

@@ -9,5 +9,5 @@ npmUrl: "https://www.npmjs.com/package/@minpluto/zorn"
 repoUrl: "https://codeberg.org/MinPluto/Zorn"
 homepageUrl: "https://codeberg.org/MinPluto/Zorn"
 badge: "new"
-downloads: 74
+downloads: 76
 ---
