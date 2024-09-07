@@ -8,5 +8,5 @@ categories:
 npmUrl: "https://www.npmjs.com/package/astro-dump"
 homepageUrl: "https://www.npmjs.com/package/astro-dump"
 badge: "new"
-downloads: 172
+downloads: 180
 ---

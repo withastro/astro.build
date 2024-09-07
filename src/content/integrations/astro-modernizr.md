@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-modernizr"
 homepageUrl: "https://github.com/YonicDev/astro-modernizr"
-downloads: 5
+downloads: 4
 ---
