@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-generic-build-filenames"
 homepageUrl: "https://github.com/mschoeffmann/astro-generic-build-filenames"
-downloads: 52
+downloads: 40
 ---

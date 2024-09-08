@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@voxgig/podw-astro"
 homepageUrl: "https://www.npmjs.com/package/@voxgig/podw-astro"
-downloads: 45
+downloads: 17
 ---

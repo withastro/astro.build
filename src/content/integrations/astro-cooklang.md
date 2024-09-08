@@ -6,6 +6,6 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-cooklang"
 homepageUrl: "https://astro-cooklang.kauh.at/"
-downloads: 127
+downloads: 126
 repoUrl: "https://github.com/kauhat/astro-cooklang-integration"
 ---
