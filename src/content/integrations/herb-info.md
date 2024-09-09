@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/herb-info"
 homepageUrl: "https://www.npmjs.com/package/herb-info"
-downloads: 32
+downloads: 29
 ---

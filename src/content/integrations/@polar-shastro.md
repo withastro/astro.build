@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/@polar-sh/astro"
 homepageUrl: "https://www.npmjs.com/package/@polar-sh/astro"
-downloads: 5
+downloads: 6
 ---
