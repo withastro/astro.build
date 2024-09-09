@@ -1,12 +1,13 @@
 ---
-name: "@astrolicious/studiocms"
-title: "@astrolicious/studiocms"
+name: "studiocms"
+title: "studiocms"
 description: "A dedicated CMS for Astro Studio. Built from the ground up by the Astro community."
 categories:
   - "css+ui"
-image: "/assets/integrations/studiocms-master.svg"
-npmUrl: "https://www.npmjs.com/package/@astrolicious/studiocms"
+  - "recent"
+npmUrl: "https://www.npmjs.com/package/studiocms"
 repoUrl: "https://github.com/astrolicious/studiocms"
 homepageUrl: "https://astro-studiocms.xyz"
-downloads: 92
+badge: "new"
+downloads: 60
 ---
