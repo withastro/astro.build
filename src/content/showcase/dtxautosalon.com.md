@@ -1,7 +1,0 @@
----
-title: DTX Auto Salon | Premium Auto Detailing Services in Dallas/Ft. Worth
-image: /src/content/showcase/_images/dtxautosalon.com.webp
-url: 'https://dtxautosalon.com/'
-dateAdded: 2024-07-29T12:08:05.429Z
----
-

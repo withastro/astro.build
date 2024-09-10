@@ -1,8 +1,0 @@
----
-title: Film director and photographer — Danielle Levitt
-image: /src/content/showcase/_images/www.daniellelevitt.com.webp
-url: 'https://www.daniellelevitt.com'
-highlight: true
-dateAdded: 2024-06-03T18:48:06.000Z
----
-

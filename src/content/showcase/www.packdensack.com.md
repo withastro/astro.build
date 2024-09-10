@@ -1,7 +1,0 @@
----
-title: Pack den Sack - The Ultimate Packing List Generator
-image: /src/content/showcase/_images/www.packdensack.com.webp
-url: 'https://www.packdensack.com/'
-dateAdded: 2024-07-22T12:08:24.993Z
----
-

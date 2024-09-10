@@ -1,8 +1,0 @@
----
-title: How We Designed & Built a View Transition Demo | Viget
-image: /src/content/showcase/_images/www.viget.com.webp
-url: >-
-  https://www.viget.com/articles/how-we-designed-and-built-a-view-transition-demo/
-dateAdded: 2023-11-06T21:05:41.000Z
----
-

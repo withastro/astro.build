@@ -1,8 +1,0 @@
----
-title: Home - Unitary Fund
-image: /src/content/showcase/_images/unitary.fund.webp
-url: 'https://unitary.fund/'
-featured: 20
-dateAdded: 2023-08-14T14:39:00.000Z
----
-

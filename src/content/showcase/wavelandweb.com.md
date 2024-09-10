@@ -1,7 +1,0 @@
----
-title: Wave Land Web | Creative Web Design & Development
-image: /src/content/showcase/_images/wavelandweb.com.webp
-url: 'https://wavelandweb.com/'
-dateAdded: 2024-07-22T12:08:16.500Z
----
-

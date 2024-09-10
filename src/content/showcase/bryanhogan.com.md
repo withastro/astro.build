@@ -1,7 +1,0 @@
----
-title: Bryan Hogan
-image: /src/content/showcase/_images/bryanhogan.com.webp
-url: 'https://bryanhogan.com/'
-dateAdded: 2024-06-03T18:48:06.000Z
----
-

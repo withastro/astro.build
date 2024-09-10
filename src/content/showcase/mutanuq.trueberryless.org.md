@@ -1,7 +1,0 @@
----
-title: Willkommen bei Mutanuq | Mutanuq
-image: /src/content/showcase/_images/mutanuq.trueberryless.org.webp
-url: 'https://mutanuq.trueberryless.org/'
-dateAdded: 2023-10-18T08:11:02.000Z
----
-

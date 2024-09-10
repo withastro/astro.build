@@ -1,13 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { resolveImage } from '~/content/showcase/_resolveImage.js';
 import ExternalLinkIcon from '~/icons/ExternalLinkIcon.jsx';
 
 export type Props = { site: CollectionEntry<'showcase'> };
 
 const { site } = Astro.props;
-
-const image = await resolveImage(site, site.data.highlight ? 2 : 1);
+const { image } = site.data;
 ---
 
 <article
@@ -17,14 +16,11 @@ const image = await resolveImage(site, site.data.highlight ? 2 : 1);
 >
 	<a href={site.data.url} rel="noopener" target="_blank" class="h-full w-full">
 		<span class="sr-only">{site.data.title}</span>
-		<img
-			src={image.src}
-			width={image.width}
-			height={image.height}
+		<Image
+			src={image}
+			width={site.data.highlight ? 1600 : 800}
 			alt=""
 			class="h-full w-full object-cover"
-			loading="lazy"
-			decoding="async"
 		/>
 
 		<footer

@@ -1,8 +1,0 @@
----
-title: Anna Hsu | Home
-image: /src/content/showcase/_images/annahsu.dev.webp
-url: 'https://annahsu.dev'
-featured: 20
-dateAdded: 2023-06-12T14:39:32.000Z
----
-

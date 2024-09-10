@@ -1,7 +1,0 @@
----
-title: 'Welcome to CleanVid. Save time, money, and your sanity.'
-image: /src/content/showcase/_images/cleanvid.com.webp
-url: 'https://cleanvid.com/'
-dateAdded: 2024-06-21T00:29:11.962Z
----
-

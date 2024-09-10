@@ -1,9 +1,0 @@
----
-title: Mocked-API
-image: /src/content/showcase/_images/mocked-api.webp
-url: 'https://mocked-api.dev/'
-categories:
-  - tech
-dateAdded: 2023-03-06T18:09:38.000Z
----
-
