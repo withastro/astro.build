@@ -1,7 +1,0 @@
----
-title: 'Serial Tech Entrepreneur, Author, Bibliophile, and Lifelong | Said Hasyim'
-image: /src/content/showcase/_images/www.saidhasyim.com.webp
-url: 'https://www.saidhasyim.com'
-dateAdded: 2024-06-17T18:50:04.000Z
----
-

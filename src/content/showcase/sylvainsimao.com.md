@@ -1,8 +1,0 @@
----
-title: Sylvain Simao | Technology leader & full-stack engineer
-image: /src/content/showcase/_images/sylvainsimao.com.webp
-url: 'https://sylvainsimao.com'
-featured: 20
-dateAdded: 2023-05-29T14:26:05.000Z
----
-

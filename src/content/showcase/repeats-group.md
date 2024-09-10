@@ -1,9 +1,0 @@
----
-title: Repeats Group
-image: /src/content/showcase/_images/repeats-group.webp
-url: 'https://repeats-group.com/'
-categories:
-  - marketing
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

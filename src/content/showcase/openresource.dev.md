@@ -1,7 +1,0 @@
----
-title: 'Open {re}Source - Your platform for Open Source'
-image: /src/content/showcase/_images/openresource.dev.webp
-url: 'https://openresource.dev'
-dateAdded: 2023-04-24T16:01:09.000Z
----
-

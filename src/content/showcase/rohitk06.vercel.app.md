@@ -1,7 +1,0 @@
----
-title: Rohit Kushwaha
-image: /src/content/showcase/_images/rohitk06.vercel.app.webp
-url: 'https://rohitk06.vercel.app'
-dateAdded: 2023-10-02T13:30:25.000Z
----
-

@@ -1,7 +1,0 @@
----
-title: La cafeteria Astro y Tailwind
-image: /src/content/showcase/_images/astro-landig-coffe-shop.vercel.app.webp
-url: 'https://astro-landig-coffe-shop.vercel.app/'
-dateAdded: 2024-04-22T14:46:32.000Z
----
-

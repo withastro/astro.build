@@ -1,9 +1,0 @@
----
-title: Byte of Dev
-image: /src/content/showcase/_images/byte-of-dev.webp
-url: 'https://byteofdev.com/'
-categories:
-  - tech
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

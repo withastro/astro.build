@@ -1,7 +1,0 @@
----
-title: 'Opanuj Frontend: AI Edition ⚡️'
-image: /src/content/showcase/_images/opanujfrontend.pl.webp
-url: 'https://opanujfrontend.pl'
-dateAdded: 2024-01-22T15:11:56.000Z
----
-

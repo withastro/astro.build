@@ -1,7 +1,0 @@
----
-title: '#whiteboardtheweb'
-image: /src/content/showcase/_images/wtw.dev.webp
-url: 'https://wtw.dev'
-dateAdded: 2023-03-28T22:01:33.000Z
----
-

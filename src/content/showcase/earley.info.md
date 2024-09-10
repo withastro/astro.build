@@ -1,7 +1,0 @@
----
-title: Mike Earley's Portfolio
-image: /src/content/showcase/_images/earley.info.webp
-url: 'https://earley.info/'
-dateAdded: 2024-06-24T12:08:10.793Z
----
-

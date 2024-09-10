@@ -153,30 +153,32 @@ export const collections = {
 			published: z.date(),
 		}),
 	},
-	showcase: {
-		schema: z.object({
-			title: z.string().min(1),
-			image: z.string(),
-			url: z.string().url(),
-			featured: z.number().min(1).optional(),
-			highlight: z.boolean().default(false),
-			dateAdded: z.date(),
-			categories: z
-				.enum([
-					'starlight',
-					'personal',
-					'tech',
-					'marketing',
-					'entertainment',
-					'landing',
-					'blog',
-					'portfolio',
-					'docs',
-					'e-commerce',
-					'other',
-				])
-				.array()
-				.default([]),
-		}),
-	},
+	showcase: defineCollection({
+		type: 'data',
+		schema: ({ image }) =>
+			z.object({
+				title: z.string().min(1),
+				image: image(),
+				url: z.string().url(),
+				featured: z.number().min(1).optional(),
+				highlight: z.boolean().default(false),
+				dateAdded: z.date(),
+				categories: z
+					.enum([
+						'starlight',
+						'personal',
+						'tech',
+						'marketing',
+						'entertainment',
+						'landing',
+						'blog',
+						'portfolio',
+						'docs',
+						'e-commerce',
+						'other',
+					])
+					.array()
+					.default([]),
+			}),
+	}),
 };
