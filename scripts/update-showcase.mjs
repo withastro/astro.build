@@ -2,7 +2,7 @@
 import fs from 'node:fs/promises';
 import ghActions from '@actions/core';
 import octokit from '@octokit/graphql';
-import matter from 'gray-matter';
+import yaml from 'json-to-pretty-yaml';
 import { parseHTML } from 'linkedom';
 import puppeteer from 'puppeteer';
 import { downloadBrowser } from 'puppeteer/lib/esm/puppeteer/node/install.js';
@@ -324,7 +324,7 @@ class ShowcaseScraper {
 		let success = false;
 		try {
 			const site = await ShowcaseScraper.#scrapeSite(url, browser);
-			await ShowcaseScraper.#saveScreenshots(url, site.screenshot);
+			await ShowcaseScraper.#saveScreenshot(url, site.screenshot);
 			await ShowcaseScraper.#saveDataFile(url, site);
 			title = site.title;
 			success = true;
@@ -387,21 +387,15 @@ class ShowcaseScraper {
 	 * @param {Buffer} screenshot PNG image buffer
 	 * @returns {Promise<void>}
 	 */
-	static async #saveScreenshots(url, screenshot) {
+	static async #saveScreenshot(url, screenshot) {
 		const { hostname } = new URL(url);
-		const pipeline = sharp(screenshot);
-		await pipeline
-			.clone()
-			.resize(1600)
-			.webp()
-			.toFile(`src/content/showcase/_images/${hostname}@2x.webp`);
-		console.log('Wrote', `src/content/showcase/_images/${hostname}@2x.webp`);
-		await pipeline.resize(800).webp().toFile(`src/content/showcase/_images/${hostname}.webp`);
-		console.log('Wrote', `src/content/showcase/_images/${hostname}.webp`);
+		const path = `src/content/showcase/_images/${hostname}.webp`;
+		await sharp(screenshot).resize(1600).webp().toFile(path);
+		console.log('Wrote', path);
 	}
 
 	/**
-	 * Create a Markdown file in the showcase content collection.
+	 * Create a YAML file in the showcase content collection.
 	 * @param {string} url URL of the showcase entry to link to
 	 * @param {{ title: string; isStarlight: boolean }} site Metadata for the showcase site
 	 * @returns {Promise<void>}
@@ -409,16 +403,17 @@ class ShowcaseScraper {
 	static async #saveDataFile(url, { title, isStarlight }) {
 		const { hostname } = new URL(url);
 		/** @type {Record<string, any>} */
-		const frontmatter = {
+		const data = {
 			title,
-			image: `/src/content/showcase/_images/${hostname}.webp`,
+			image: `./${hostname}.webp`,
 			url,
 			dateAdded: new Date(),
 		};
-		if (isStarlight) frontmatter.categories = ['starlight'];
-		const file = matter.stringify('', frontmatter);
-		await fs.writeFile(`src/content/showcase/${hostname}.md`, file, 'utf-8');
-		console.log('Wrote', `src/content/showcase/${hostname}.md`);
+		if (isStarlight) data.categories = ['starlight'];
+		const path = `src/content/showcase/${hostname}.yml`;
+		const file = yaml.stringify(data);
+		await fs.writeFile(path, file, 'utf-8');
+		console.log('Wrote', path);
 	}
 }
 
