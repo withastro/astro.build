@@ -5,5 +5,6 @@ url: 'https://coolify.io/docs/'
 dateAdded: 2024-09-09T12:39:53.054Z
 categories:
   - starlight
+  - docs
 ---
 

@@ -5,5 +5,6 @@ url: 'https://docs.nativelink.com/introduction/setup/'
 dateAdded: 2024-09-09T12:39:49.849Z
 categories:
   - starlight
+  - docs
 ---
 
