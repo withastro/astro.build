@@ -6,5 +6,5 @@ categories:
   - "css+ui"
 npmUrl: "https://www.npmjs.com/package/astro-locomotive-scroll"
 homepageUrl: "https://www.npmjs.com/package/astro-locomotive-scroll"
-downloads: 169
+downloads: 80
 ---
