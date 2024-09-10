@@ -1,0 +1,224 @@
+---
+title: 'Content Layer: A Deep Dive'
+description: There's a new way to handle content in Astro. Take a deep dive into the Content Layer API, and learn how it can help you build even more kinds of sites using Astro.
+homepageLink:
+  title: "Content Layer"
+  subtitle: New experimental Content Layer API
+publishDate: '2024-09-18'
+authors:
+  - matt
+lang: 'en'
+---
+
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+import BlogSummary from '/src/components/BlogSummary.astro';
+import astroBuildImage from '/src/content/blog/_images/content-layer-deep-dive/astro-build.png';
+import contentLayerArchitectureImage from '/src/content/blog/_images/content-layer-deep-dive/content-layer-architecture.png';
+
+<BlogSummary>
+	The Content Layer API is a new way to handle content in Astro. It unlocks powerful new capabilities, helping you build even more kinds of sites using Astro. This post takes a deep dive into the Content Layer API, and shows you how to use it to build even more kinds of sites using Astro.
+</BlogSummary>
+
+This week we have released the first beta of Astro 5, which includes a whole new way to handle content in Astro. It unlocks powerful new capabilities, helping you build even more kinds of sites using Astro.
+
+## Making content better
+
+Astro was born to create content-driven websites, and while it can now be used to build all sorts of dynamic apps too, it is still the very best for sites that are built around lots of content. Whether that is the very best docs sites built with Astro and Starlight for projects such as... or beautiful marketing sites for brands such as..., millions of users every day are already appreciating the fast and accessible sites that you can build with Astro, while thousands of developers love the best developer experience in the industry.
+
+In Astro 2 we introduced [Content Collections](https://docs.astro.build/en/guides/content-collections/) as a powerful new way organize your local content, and use it to easily build sites with type-safe data. The developer experience is best in class, and it has helped developers to scale their sites to thousands of pages. However, while Content Collections are great for local files such as Markdown and MDX, we heard from you that you wanted more flexibility for that content, and you wanted the same benefits for all of your content including remote APIs. It was also clear that while many people were building sites with thousands of pages, Content Collections struggled to scale into the tens of thousands of pages, with slower builds and excessive memory usage.
+
+In June [we previewed our plan](https://astro.build/blog/future-of-astro-content-layer/) to solve these problems and more with an all new type of content collection. The Content Layer API introduces loaders, which take collections beyond files in `src/content`, letting you load your content from anywhere whether local files on disk or remote APIs. Since its first experimental release in Astro 4.14, we've had some great feedback and have been working hard on stabilizing the API and getting it ready for release in Astro 5.
+
+## What is the Content Layer
+
+The content layer API allows you to load data from any source when you build your site, and then access it on your page with a simple, type-safe API. With existing content collections this is limited to file such as Markdown, inside folder in `src/content`. The content layer API caches the data locally between builds, meaning that updates can be fast and can minimize the number of API calls that need to be made. You can combine data from many sources on each page, using the same API.
+
+A **collection** is defined as a set of entries that share a common schema. Each entry has a unique ID. It is analogous to a table in a relational database. When using the Astro Content Layer API, each collection uses a **loader**, which defines how the entries are loaded to populate that collection. These loaders can be a basic inline function that returns an array of entries, or it can be a more advanced object that handles its own caching and data store, and may be distributed as a node module. When a site is built, the loader for each collection is invoked which will then update the local **data store**. The Astro pages can then query that data store using the `getCollection` and `getEntry` functions. This can be done during pre-rendering, or during server rendering if using an on-demand adapter. In each of these cases the same data is available, which is the snapshot from the time of the build.
+
+<BlogContentImage src={contentLayerArchitectureImage} />
+
+## Creating collections
+
+Content collections are defined in `src/content/config.ts`, and this is the same with the Content Layer API. The `loader` property defines the source of the data, with the simplest form of loader being an async function that returns an array of items:
+
+```ts
+import { defineCollection, z } from 'astro:content';
+
+const countries = defineCollection({
+	loader: async () => {
+		const response = await fetch('https://restcountries.com/v3.1/all');
+		const data = await response.json();
+		// Must return an array of entries with an id property, or an object with IDs as keys and entries as values
+		return data.map((country) => ({
+			id: country.cca3,
+			...country,
+		}));
+	},
+	// optionally define a schema using Zod
+	schema: z.object({
+		id: z.string(),
+		name: z.string(),
+		capital: z.array(z.string()),
+		population: z.number(),
+		// ...
+	}),
+});
+
+export const collections = { countries };
+```
+
+This data is then available in your `.astro` components.
+
+```astro
+---
+// src/pages/countries/[id].astro
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const collection = await getCollection('countries');
+	if (!collection) return [];
+	return collection.map((country) => ({
+		params: {
+			id: country.id,
+		},
+		props: {
+			country,
+		},
+	}));
+};
+
+const { country } = Astro.props;
+---
+
+<h1>{craft.data.name}</h1>
+<p>Capital: {craft.data.capital}</p>
+```
+
+## Content layer lifecycle
+
+When `astro build` or `astro dev` is run, the loader for each collection is invoked. These loaders update their own scoped data store, which is preserved between builds.
+
+<BlogContentImage src={astroBuildImage} />
+
+Astro components and pages can then use `getCollection` or `getEntry` to query the data. The data is immutable at that point, so the pages are all querying the same snapshot, compiled at build time. This applies whether the page is being prerendered at build time, or rendered on-demand in SSR. The important thing to note here is that the data store is only updated at build time: a deployed site cannot change the data store. If a data source needs to update a collection it must do this by triggering a new build.
+
+During development the data store can be updated on demand, by using the hotkey `s+enter` when running `astro dev`. Integrations can also update the data during dev. This could be used for things such as registering a development refresh endpoint, or opening a socket to a CMS to listen for updates. This is just available during development though: once deployed the data store is immutable.
+
+## How a loader works
+
+A loader defines how a collection loads its data. It is executed during `astro build` and `astro dev`, or when the content is refreshed by an integration. The example above shows the simplest kind of loader: an async function that returns an array. However for more complex cases an object loader gives more flexibility because it can directly control the data store.
+
+A loader interacts with the content layer via a data store object. This is a key-value store that is scoped to an individual collection. A collection can only access its own entries, but has complete control over these. If a loader knows that its data source hasn't changed then it can skip updating entirely, or it can just update the entries which have changed. There are some tools that are provided to make this easier. First is the metadata store, which can be used to store arbitrary values such as "last modified" times, or sync tokens. Comparing these will allow the loader to do things like make conditional API requests, or use delta sync APIs. This example shows how to do this with an RSS feed loader. It stores the last modified and etag headers in the metadata store, and then uses those to make conditional requests.
+
+```ts {11,29}
+// src/content/config.ts
+export function feedLoader({ url }: FeedLoaderOptions): Loader {
+	const feedUrl = new URL(url);
+	// Return a loader object
+	return {
+		// The name of the loader. This is used in logs and error messages.
+		name: 'feed-loader',
+		// The load method is called to load data
+		load: async ({ store, logger, meta }) => {
+			// Check if there's a last-modified time already stored
+			const lastModified = meta.get('last-modified');
+
+			// If so, make a conditional request for the feed
+			const headers = lastModified ? { 'If-Modified-Since': lastModified } : {};
+
+			const res = await fetch(feedUrl, { headers });
+
+			// If the feed hasn't changed, you do not need to update the store
+			if (res.status === 304) {
+				logger.info('Feed not modified, skipping');
+				return;
+			}
+			if (!res.ok || !res.body) {
+				throw new Error(`Failed to fetch feed: ${res.statusText}`);
+			}
+
+			// Store the last-modified header in the meta store so we can
+			// send it with the next request
+			meta.set('last-modified', res.headers.get('last-modified'));
+
+			// ... now store the data
+		},
+	};
+}
+```
+
+If the content _has_ changed, we can either clear the store and replace it all, or incrementally update individual entries if the data source provides this level of detail.
+
+```ts {33-61}
+// src/content/config.ts
+export function feedLoader({ url }: FeedLoaderOptions): Loader {
+	const feedUrl = new URL(url);
+	// Return a loader object
+	return {
+		// The name of the loader. This is used in logs and error messages.
+		name: 'feed-loader',
+		// The load method is called to load data
+		load: async ({ store, logger, meta }) => {
+			// Check if there's a last-modified time already stored
+			const lastModified = meta.get('last-modified');
+
+			// If so, make a conditional request for the feed
+			const headers = lastModified ? { 'If-Modified-Since': lastModified } : {};
+
+			const res = await fetch(feedUrl, { headers });
+
+			// If the feed hasn't changed, you do not need to update the store
+			if (res.status === 304) {
+				logger.info('Feed not modified, skipping');
+				return;
+			}
+			if (!res.ok || !res.body) {
+				throw new Error(`Failed to fetch feed: ${res.statusText}`);
+			}
+
+			// Store the last-modified header in the meta store so we can
+			// send it with the next request
+			meta.set('last-modified', res.headers.get('last-modified'));
+
+			const feed = parseFeed(res.body);
+
+			// If the loader doesn't handle incremental updates, clear the store before inserting new entries
+			// In some cases the API might send a stream of updates, in which case you would not want to clear the store
+			// and instead add, delete or update entries as needed.
+			store.clear();
+
+			for (const item of feed.items) {
+				// The parseData helper uses the schema to validate and transform data
+				const data = await parseData({
+					id: item.guid,
+					data: item,
+				});
+
+				// The generateDigest helper lets you generate a digest based on the content. This is an optional
+				// optimization. When inserting data into the store, if the digest is provided then the store will
+				// check if the content has changed before updating the entry. This will avoid triggering a rebuild
+				// in development if the content has not changed.
+				const digest = generateDigest(data);
+
+				store.set({
+					id,
+					data,
+					// If the data source provides HTML, it can be set in the `rendered` property
+					// This will allow users to use the `<Content />` component in their pages to render the HTML.
+					rendered: {
+						html: data.description ?? '',
+					},
+					digest,
+				});
+			}
+		},
+	};
+}
+```
+
+## When _not_ to use content collections
+
+Previously it was clear when content collections were a good idea, because it was whenever you were using local content in your pages. The content layer API makes that less clear, because you can use it for any content source including live APIs. The key consideration when deciding is that the data is only updated when the site is built. This means it's perfect for prerendered pages, but also for [on-demand rendering (SSR)](https://docs.astro.build/en/guides/server-side-rendering/) where the data changes relatively rarely. A blog would be a good example - if you're writing a blog that's hosted in a CMS, you can trigger a build with a webhook whenever you publish a new post. The same applies for e-commerce, where a build can be triggered when a product is edited. If you are ok with waiting the time it takes to deploy the site to see updates, then content collections are a good choice. You will get the best performance and great developer experience.
+
+If you need your pages to update in near realtime or with personalized content, then you are better off using an on-demand rendering adapter, ideally with CDN cache headers to ensure that page loads are super fast. You can even combine the two using [server islands]() and get the best of both worlds - render the main content using content collections, and use a server island for real-time or personalized content.
