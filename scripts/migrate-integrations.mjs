@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import yaml from 'json-to-pretty-yaml';
 import slugify from 'slugify';
+import * as yaml from 'yaml';
 
 function main() {
 	const blob = fs.readFileSync('./integrations.json', 'utf-8');

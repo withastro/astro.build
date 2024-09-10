@@ -2,11 +2,11 @@
 import fs from 'node:fs/promises';
 import ghActions from '@actions/core';
 import octokit from '@octokit/graphql';
-import yaml from 'json-to-pretty-yaml';
 import { parseHTML } from 'linkedom';
 import puppeteer from 'puppeteer';
 import { downloadBrowser } from 'puppeteer/lib/esm/puppeteer/node/install.js';
 import sharp from 'sharp';
+import * as yaml from 'yaml';
 
 await downloadBrowser();
 
@@ -301,14 +301,13 @@ class ShowcaseScraper {
 	static async #getLiveShowcaseUrls() {
 		const showcaseDir = './src/content/showcase';
 		const showcaseFilePaths = await fs.readdir(showcaseDir);
-		const showcaseFiles = (
-			await Promise.all(
-				showcaseFilePaths
-					.filter((path) => path.endsWith('.md'))
-					.map((path) => fs.readFile(`${showcaseDir}/${path}`, 'utf-8')),
-			)
-		).map((fileString) => matter(fileString));
-		return new Set(showcaseFiles.map((file) => new URL(file.data.url).origin));
+		const rawShowcaseFiles = await Promise.all(
+			showcaseFilePaths
+				.filter((path) => path.endsWith('.yml'))
+				.map((path) => fs.readFile(`${showcaseDir}/${path}`, 'utf-8')),
+		);
+		const showcaseFiles = rawShowcaseFiles.map((fileString) => yaml.parse(fileString));
+		return new Set(showcaseFiles.map((file) => new URL(file.url).origin));
 	}
 
 	/**
@@ -389,7 +388,7 @@ class ShowcaseScraper {
 	 */
 	static async #saveScreenshot(url, screenshot) {
 		const { hostname } = new URL(url);
-		const path = `src/content/showcase/_images/${hostname}.webp`;
+		const path = `src/content/showcase/${hostname}.webp`;
 		await sharp(screenshot).resize(1600).webp().toFile(path);
 		console.log('Wrote', path);
 	}
