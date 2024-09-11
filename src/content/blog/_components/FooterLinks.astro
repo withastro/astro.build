@@ -1,0 +1,12 @@
+---
+import type { ComponentProps } from 'astro/types';
+import BlogLinkCard from './BlogLinkCard.astro';
+
+interface Props {
+	slugs: Array<ComponentProps<typeof BlogLinkCard>['slug']>;
+}
+---
+
+<div class="my-6 flex flex-wrap w-full md:w-auto md:[&>*]:flex-1 gap-8 lg:gap-10">
+	{Astro.props.slugs.map((slug) => <BlogLinkCard {slug} />)}
+</div>
