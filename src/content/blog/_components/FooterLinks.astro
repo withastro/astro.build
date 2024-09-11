@@ -7,6 +7,6 @@ interface Props {
 }
 ---
 
-<div class="my-6 flex flex-wrap w-full md:w-auto md:[&>*]:flex-1 gap-8 lg:gap-10">
+<div class="my-6 grid gap-8 lg:gap-10 grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))]">
 	{Astro.props.slugs.map((slug) => <BlogLinkCard {slug} />)}
 </div>
