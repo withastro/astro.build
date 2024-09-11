@@ -1,9 +1,9 @@
 ---
-import type { ComponentProps } from 'astro/types';
+import type { CollectionEntry } from 'astro:content';
 import BlogLinkCard from './BlogLinkCard.astro';
 
 interface Props {
-	slugs: Array<ComponentProps<typeof BlogLinkCard>['slug']>;
+	slugs: Array<CollectionEntry<'blog' | 'caseStudies'>['slug']>;
 }
 ---
 
