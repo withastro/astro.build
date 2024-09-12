@@ -8,5 +8,5 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-als
 homepageUrl: https://github.com/florian-lefebvre/astro-als
-downloads: 49
+downloads: 59
 ---

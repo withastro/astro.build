@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@picperf/astro
 repoUrl: https://github.com/alexmacarthur/picperf-javascript
 homepageUrl: https://picperf.io
 image: /assets/integrations/picperf.svg
-downloads: 28
+downloads: 29
 ---

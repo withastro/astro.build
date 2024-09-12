@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-state
 homepageUrl: https://www.npmjs.com/package/@inox-tools/request-state
 badge: new
-downloads: 244
+downloads: 259
 ---
