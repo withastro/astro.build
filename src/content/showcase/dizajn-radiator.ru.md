@@ -1,7 +1,0 @@
----
-title: "\U0001F525 Дизайнерские радиаторы отопления WARMMET | купить"
-image: /src/content/showcase/_images/dizajn-radiator.ru.webp
-url: 'https://dizajn-radiator.ru'
-dateAdded: 2024-06-24T12:08:07.700Z
----
-

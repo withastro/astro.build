@@ -1,7 +1,0 @@
----
-title: Tabula Rasa | Tabula Rasa
-image: /src/content/showcase/_images/tabularasa.nl.webp
-url: 'https://tabularasa.nl/'
-dateAdded: 2024-06-24T12:07:35.732Z
----
-

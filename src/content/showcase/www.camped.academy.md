@@ -1,7 +1,0 @@
----
-title: CampEd - A New-Gen Campus Experience Platform
-image: /src/content/showcase/_images/www.camped.academy.webp
-url: 'https://www.camped.academy/'
-dateAdded: 2024-03-11T14:30:06.000Z
----
-

@@ -1,7 +1,0 @@
----
-title: Yoon – Web Developer
-image: /src/content/showcase/_images/yoonhou.com.webp
-url: 'https://yoonhou.com/'
-dateAdded: 2024-03-19T09:33:34.000Z
----
-

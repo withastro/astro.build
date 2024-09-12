@@ -1,7 +1,0 @@
----
-title: Grupo MACA | Maquinaria y capacitación
-image: /src/content/showcase/_images/grupomaca.com.webp
-url: 'https://grupomaca.com/'
-dateAdded: 2024-06-24T12:07:56.939Z
----
-

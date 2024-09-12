@@ -1,7 +1,0 @@
----
-title: DS Design Studio
-image: /src/content/showcase/_images/www.ds-design-studio.com.webp
-url: 'https://www.ds-design-studio.com/'
-dateAdded: 2024-06-30T13:53:18.356Z
----
-

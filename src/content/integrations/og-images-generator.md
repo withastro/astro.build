@@ -1,12 +1,15 @@
 ---
-name: "og-images-generator"
-title: "og-images-generator"
-description: "Generate OG images from a static folder and / or a middleware.\nExtract metadata from HTML pages. No headless browser involved.\nComes as a CLI, API or plugins."
+name: og-images-generator
+title: og-images-generator
+description: |-
+  Generate OG images from a static folder and / or a middleware.
+  Extract metadata from HTML pages. No headless browser involved.
+  Comes as a CLI, API or plugins.
 categories:
-  - "css+ui"
-  - "performance+seo"
-npmUrl: "https://www.npmjs.com/package/og-images-generator"
-repoUrl: "https://github.com/JulianCataldo/og-images-generator"
-homepageUrl: "https://github.com/JulianCataldo/og-images-generator#readme"
-downloads: 217
+  - css+ui
+  - performance+seo
+npmUrl: https://www.npmjs.com/package/og-images-generator
+repoUrl: https://github.com/JulianCataldo/og-images-generator
+homepageUrl: https://github.com/JulianCataldo/og-images-generator#readme
+downloads: 211
 ---

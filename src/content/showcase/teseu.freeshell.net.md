@@ -1,7 +1,0 @@
----
-title: Teseu.freeshell | Astro and Tailwind CSS
-image: /src/content/showcase/_images/teseu.freeshell.net.webp
-url: 'http://teseu.freeshell.net/en/'
-dateAdded: 2024-06-21T00:32:31.625Z
----
-

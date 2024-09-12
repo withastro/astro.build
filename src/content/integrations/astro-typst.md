@@ -1,12 +1,12 @@
 ---
-name: "astro-typst"
-title: "astro-typst"
-description: "Use Typst within Astro"
+name: astro-typst
+title: astro-typst
+description: Use Typst within Astro
 categories:
-  - "css+ui"
-  - "frameworks"
-npmUrl: "https://www.npmjs.com/package/astro-typst"
-repoUrl: "https://github.com/OverflowCat/astro-typst"
-homepageUrl: "https://github.com/OverflowCat/astro-typst"
-downloads: 202
+  - css+ui
+  - frameworks
+npmUrl: https://www.npmjs.com/package/astro-typst
+repoUrl: https://github.com/OverflowCat/astro-typst
+homepageUrl: https://github.com/OverflowCat/astro-typst
+downloads: 366
 ---

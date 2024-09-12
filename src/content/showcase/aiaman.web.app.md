@@ -1,6 +1,0 @@
----
-title: 'aiAman - Computer Science Enthusiast, Linux Expert, Deep Learning Aficionado'
-image: /src/content/showcase/_images/aiaman.web.app.webp
-url: 'https://aiaman.web.app/'
-dateAdded: 2024-06-21T00:25:55.113Z
----

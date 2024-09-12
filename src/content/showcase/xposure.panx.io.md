@@ -1,7 +1,0 @@
----
-title: Xposure
-image: /src/content/showcase/_images/xposure.panx.io.webp
-url: 'https://xposure.panx.io'
-dateAdded: 2024-06-30T13:53:52.133Z
----
-

@@ -1,9 +1,0 @@
----
-title: DevOps Engineer's Handbook
-image: /src/content/showcase/_images/octopus-devops.webp
-url: 'https://octopus.com/devops/'
-categories:
-  - tech
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

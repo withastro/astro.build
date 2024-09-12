@@ -1,9 +1,0 @@
----
-title: Wowvalor
-image: /src/content/showcase/_images/wowvalor.webp
-url: 'https://wowvalor.app/'
-categories:
-  - other
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

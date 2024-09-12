@@ -1,11 +1,11 @@
 ---
-name: "astro-theme-provider"
-title: "astro-theme-provider"
-description: "Easily create theme integrations for Astro"
+name: astro-theme-provider
+title: astro-theme-provider
+description: Easily create theme integrations for Astro
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/astro-theme-provider"
-repoUrl: "https://github.com/astrolicious/astro-theme-provider"
-homepageUrl: "https://astro-theme-provider.netlify.app/"
-downloads: 174
+  - css+ui
+npmUrl: https://www.npmjs.com/package/astro-theme-provider
+repoUrl: https://github.com/astrolicious/astro-theme-provider
+homepageUrl: https://astro-theme-provider.netlify.app/
+downloads: 179
 ---

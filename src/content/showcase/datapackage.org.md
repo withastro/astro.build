@@ -1,9 +1,0 @@
----
-title: Data Package | Data Package Standard
-image: /src/content/showcase/_images/datapackage.org.webp
-url: 'https://datapackage.org/'
-dateAdded: 2024-06-30T13:53:38.960Z
-categories:
-  - starlight
----
-

@@ -1,7 +1,0 @@
----
-title: Fit Women's Weekly - Strength Training for Women
-image: /src/content/showcase/_images/fitwomensweekly.com.webp
-url: 'https://fitwomensweekly.com/'
-dateAdded: 2023-09-04T13:59:59.000Z
----
-

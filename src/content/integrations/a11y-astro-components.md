@@ -1,10 +1,11 @@
 ---
-name: "a11y-astro-components"
-title: "a11y-astro-components"
-description: "This is a template for an Astro component library. Use this template for writing components to use in multiple projects or publish to NPM."
+name: a11y-astro-components
+title: a11y-astro-components
+description: This is a template for an Astro component library. Use this
+  template for writing components to use in multiple projects or publish to NPM.
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/a11y-astro-components"
-homepageUrl: "https://www.npmjs.com/package/a11y-astro-components"
-downloads: 3
+  - css+ui
+npmUrl: https://www.npmjs.com/package/a11y-astro-components
+homepageUrl: https://www.npmjs.com/package/a11y-astro-components
+downloads: 2
 ---

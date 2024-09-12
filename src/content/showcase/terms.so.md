@@ -1,7 +1,0 @@
----
-title: Terms
-image: /src/content/showcase/_images/terms.so.webp
-url: 'https://terms.so'
-dateAdded: 2023-12-07T09:51:00.000Z
----
-
