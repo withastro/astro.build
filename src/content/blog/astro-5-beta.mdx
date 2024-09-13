@@ -36,15 +36,15 @@ pnpm install astro@beta
 yarn add astro@beta
 ```
 
-Check out the [v5.0 Upgrade Guide](https://docs.astro.build/en/guides/upgrade-to/v5/) for full details and individual upgrade guidance for each change of this release.
+Check out the [Upgrade Guide in the v5.0 beta docs](https://5-0-0-beta.docs.astro.build/en/guides/upgrade-to/v5/) for full details and individual upgrade guidance for each change of this release.
 
 ## Stable: Content Layer
 
-Astro 5.0 introduces the Astro Content Layer, a new way, to manage content in your Astro project. The content layer is a flexible and extensible way to interact with content, providing a unified, type-safe API to access and define your content in your Astro project - no matter where it comes from thanks to powerful loaders.
+Astro 5.0 introduces the Astro Content Layer, a new way, to manage content in your Astro project. The content layer is a flexible and extensible way to interact with content, providing a unified, type-safe API to access and define your content in your Astro project—no matter where it comes from—thanks to powerful loaders.
 
-As your website grows, having your content in quaint cozy Markdown files in a Git repository may becomes less and less practical. You might want to use a CMS, perhaps some sections of your website are powered by a REST API somewhere, or you have optimized images coming from a asset management system such as Cloudinary. This can quickly become a mess to manage, requiring a bunch of different APIs and data fetching strategies.
+As your website grows, having your content in quaint cozy Markdown files in a Git repository may become less and less practical. You might want to use a CMS. Perhaps some sections of your website are powered by a REST API somewhere, or you have optimized images coming from an asset management system such as Cloudinary. This can quickly become a mess to manage, requiring an assortment of different APIs and data fetching strategies.
 
-With content layer, no matter where you content comes from, you can access your data with full confidence in its shape and type. Here's an example of how you can define a collection of blog posts in your Astro project, using a simple glob loader with (quaint cozy) Markdown files:
+With content layer, you can access your data from anywhere with full confidence in its shape and type. Here's an example of how you can define a collection of blog posts in your Astro project, using Astro's built-in  `glob()` loader for your (quaint, cozy) local Markdown files:
 
 ```ts {3,7}
 // src/content/config.ts
@@ -84,13 +84,13 @@ const { Content } = await render(post);
 <Content />
 ```
 
-This is only scratching the surface of the possibilities the content layer unlocks for your project. Stay tuned this week for more information on this feature, and check out our guide on [content layer](TODO) to learn how to get started.
+This is only scratching the surface of the possibilities the content layer unlocks for your project. Stay tuned this week for more information on this feature, and check out our guide on [the new content collections in the v5.0 beta docs](https://5-0-0-beta.docs.astro.build/en/guides/content-collections/) to learn how to get started.
 
 ## Stable: Server Islands
 
 Server Islands are a new primitive coming to Astro 5 allowing you to defer the rendering of dynamic content until after the initial page load. This lets you serve static pages with personalized content injected later, providing the best of both worlds: fast, CDN-cached static pages, with personalized and dynamic content.
 
-Server islands build upon the existing island architecture in Astro. Defining a server island is a simple as defining a client island, but using the `server:defer` directive instead:
+Server islands build upon the existing islands architecture in Astro. Defining a server island is a simple as defining a client island, but using the `server:defer` directive instead:
 
 ```astro
 <UserButton server:defer />
@@ -100,7 +100,7 @@ This tells Astro to skip rendering this component in the initial response and "d
 
 This feature is notably useful for content-driven websites that mix dynamic and static content on the page. For instance, for an e-commerce site, you could defer the rendering of product recommendations until after the initial page load, providing a faster initial page load time while still delivering personalized content.
 
-For more details on this feature, visit the [Server Islands documentation](TODO).
+For more details on using this feature, visit the [server islands documentation in the 5.0 beta docs](https://5-0-0-beta.docs.astro.build/en/guides/server-islands/).
 
 ## Merged static and hybrid output modes
 
@@ -114,7 +114,7 @@ export const prerender = false; // Render at request time
 ---
 ```
 
-If most of your pages are rendered on the server, you can set `output: 'server'` in your Astro config to default to server rendering:
+If most of your pages are rendered on the server, you can still set `output: 'server'` in your Astro config to default to on-demand server rendering:
 
 ```ts
 import { defineConfig } from 'astro/config';
@@ -124,9 +124,9 @@ export default defineConfig({
 });
 ```
 
-Once you're ready to deploy your site to production, Astro will automatically generate the proper output for each page based on the `prerender` constant and the `output` configuration. An adapter is still required to serve the server-rendered pages, which you can add to your project using `astro add`, as before.
+Once you're ready to deploy your site to production, Astro will automatically generate the proper output for each page based on the `prerender` constant and the `output` configuration. An adapter is still required to serve the server-rendered pages, in both `static` and `server` modes, which you can add to your project using `astro add`, as before.
 
-For more information on prerendering and server-side rendering in Astro, check out our documentation on [rendering modes](https://docs.astro.build/en/basics/rendering/).
+For more information on prerendering and server-side rendering in Astro, check out our documentation on [rendering modes in the 5.0 beta docs](https://5-0-0-beta.docs.astro.build/en/basics/rendering/).
 
 ## Stable: `astro:env`
 
@@ -167,10 +167,10 @@ const data = await fetch(`${SERVER_API_URL}/api`, {
 </script>
 ```
 
-For more information on handling environment variables in Astro, check out our guide on [environment variables](TODO).
+For more information on handling environment variables in Astro, check out our guide on [type safe environment variables in the 5.0 beta docs](https://5-0-0-beta.docs.astro.build/en/guides/environment-variables/#type-safe-environment-variables).
 
 ## And more!
 
-These are only a few of the changes in this Astro 5.0 beta. Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#500-beta1) to learn more.
+These are only a few of the changes in this Astro 5.0 beta. Check out the full [release notes](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#500-beta1) and visit the [5.0 beta docs site](https://5-0-0-beta.docs.astro.build/en/guides/upgrade-to/v5/) to learn more.
 
 Thank you to everyone who contributed to this release, and we can't wait to see what you build with Astro 5.0 beta!
