@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-early-hints
 repoUrl: https://github.com/itsmatteomanf/astro-components
 homepageUrl: https://github.com/itsmatteomanf/astro-components/tree/main/packages/astro-searly-hints#readme
-downloads: 96
+downloads: 95
 ---
