@@ -18,16 +18,14 @@ import astroBuildImage from '/src/content/blog/_images/content-layer-deep-dive/a
 import contentLayerArchitectureImage from '/src/content/blog/_images/content-layer-deep-dive/content-layer-architecture.png';
 
 <BlogSummary>
-	This week we have released the first beta of Astro 5, which includes a whole new way to handle content in Astro. The Content Layer unlocks powerful new capabilities, helping you build even more kinds of sites using Astro. This post takes a deep dive into the Content Layer API, showing how it works and how you can use it to build your sites.
+	This week we have released the first beta of Astro 5, which includes a whole new way to handle content in Astro. This post takes a deep dive into the Content Layer API, showing how it works and how you can use it to build your sites.
 </BlogSummary>
-
-## Making content better
 
 Astro was born to create content-driven websites. While it can now be used to build all sorts of dynamic apps too, it is still the very best for sites that are built around lots of content. From full-featured docs sites built with Starlight like [Cloudflare](https://developers.cloudflare.com/) and [Stackblitz](https://tutorialkit.dev/), to beautiful marketing sites for brands such as [Porsche](https://www.porsche.com/usa/) and [Netlify](https://www.netlify.com), millions of users every day are already appreciating the fast and accessible sites that you can build with Astro, and thousands of engineers love the best developer experience in the industry.
 
-In Astro 2 we introduced [Content Collections](https://docs.astro.build/en/guides/content-collections/) as a powerful new way organize your local content and build with type safety and scale to thousands of pages. Content Collections provide a best in class developer experience for local files such as Markdown and MDX, but we heard from you that you wanted the same benefits for all of your content including remote APIs. It was also clear that while many people were building sites with thousands of pages, our Content Collections API struggled to scale into the tens of thousands of pages, with slower builds and excessive memory usage.
+In Astro 2 we introduced [Content Collections](https://docs.astro.build/en/guides/content-collections/) as a powerful new way organize your local content, build with type safety, and scale to thousands of pages. Content Collections provide a best in class developer experience for local files such as Markdown and MDX, but we heard from you that you wanted the same benefits for all of your content including remote APIs. It was also clear that while many people were building sites with thousands of pages, our Content Collections API struggled to scale into the tens of thousands of pages, with slower builds and excessive memory usage.
 
-In June [we shared an early preview of our plan](https://astro.build/blog/future-of-astro-content-layer/) to solve these problems and more with an all new type of content collection backed by an all new API that gives you the flexibility you asked for. We imagined taking collections beyond just files in `src/content`, letting you load your content from anywhere. We have been testing on collections that scale up to a size never before possible. From our first experimental release in Astro 4.14, we have been hard at work stabilizing this new API for release in Astro 5.
+In June [we shared an early preview of our plan](https://astro.build/blog/future-of-astro-content-layer/) to solve these problems and more with an all new type of content collection backed by an all new Content Layer API that gives you the flexibility you asked for. We imagined taking collections beyond just files in `src/content`, letting you load your content from anywhere. We have been testing with collections that scale up to a size never before possible. From our first experimental release in Astro 4.14, we have been hard at work stabilizing this new API for release in Astro 5.
 
 ## What is the Content Layer
 
@@ -102,9 +100,10 @@ const { country } = Astro.props;
 ```
 
 We were already pretty pleased with this experience of querying and rendering your data on the page, so we turned our attention to the mechanics underlying the process. Let's take that deep dive into how the Content Layer API organizes, manages, and uses your content!
+
 ## Content layer lifecycle
 
-When `astro build` or `astro dev` is run, the loader for each collection is invoked. These loaders update their own scoped data store, which is preserved between builds.
+When `astro build` or `astro dev` is run, the loader for each collection is invoked in parallel. These loaders update their own scoped data store, which is preserved between builds.
 
 <BlogContentImage src={astroBuildImage} />
 
@@ -114,12 +113,11 @@ During development the data store can be updated on demand, by using the hotkey 
 
 ## How a loader works
 
-
 A loader interacts with the content layer via a data store object. This is a key-value store that is scoped to an individual collection. A collection can only access its own entries, but has complete control over these. If a loader knows that its data source hasn't changed then it can skip updating entirely, or it can just update the entries which have changed.
 
 The Content Layer API provides some tools to make this easier. First is the metadata store, which can be used to store arbitrary values such as "last modified" times, or sync tokens. Comparing these will allow the loader to do things like make conditional API requests, or use delta sync APIs.
 
-This example shows how to do this with an RSS feed loader. It stores the last modified and etag headers in the metadata store, and then uses those to make conditional requests:
+This example shows how to do this with an RSS feed loader. It stores the last modified header in the metadata store, and then uses it to make conditional requests when it next loads the feed:
 
 ```ts {11,29}
 // src/content/config.ts
@@ -241,6 +239,4 @@ If you need your pages to update in near realtime or with personalized content, 
 
 The Content Layer API is a big step forward for Astro, but we're just getting started. Currently the data store is just a key value store, with limited filtering. This is fast but not memory efficient, and querying is not very flexibile. Our goal is to introduce a backend based on Astro DB in a future version to help it scale to hundreds of thousands of pages. It will also allow us to support more complex queries, and perhaps even real-time updates.
 
-In the meantime, we'd love to hear your feedback on the Content Layer API! Try migrating your existing sites to use it. ([It's easy, we promise!](https://5-0-0-beta.docs.astro.build/en/guides/upgrade-to/v5/#legacy-v20-content-collections-api)) and let us know how it goes.
-
-[Try building a loader](https://5-0-0-beta.docs.astro.build/en/reference/loader-reference/) for your favorite API, or even [build support into an integration](https://5-0-0-beta.docs.astro.build/en/reference/integrations-reference/#refreshcontent-option). We're excited to see what you build with it!
+In the meantime, we'd love to hear your feedback on the Content Layer API! Try migrating your existing sites to use it. ([It's easy, we promise!](https://5-0-0-beta.docs.astro.build/en/guides/upgrade-to/v5/#legacy-v20-content-collections-api)) and let us know how it goes. Try out some of the new [loaders built by the community](https://www.npmjs.com/search?q=keywords:astro-loader), or [build your own](https://5-0-0-beta.docs.astro.build/en/reference/loader-reference/) for your favorite API. We're excited to see what you build with it!
