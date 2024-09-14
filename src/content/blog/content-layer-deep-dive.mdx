@@ -113,7 +113,7 @@ Although immutable in production, the data store can be updated on demand by use
 
 ## How a loader works
 
-A loader interacts with the content layer via a data store object. This is a key-value store that is scoped to an individual collection. A collection can only access its own entries but has complete control over these. If a loader knows that its data source hasn't changed then it can skip updating entirely, or it can just update the entries which have changed.
+The first example showed how to build a simple inline loader, but you don't need to stop there. With the object loader API you can make powerful loaders with more advanced capabilities. An object loader interacts with the content layer via a data store object. This is a key-value store that is scoped to an individual collection. A collection can only access its own entries but has complete control over these. If a loader knows that its data source hasn't changed then it can skip updating entirely, or it can just update the entries which have changed.
 
 The Content Layer API provides some tools to make this easier. First is the metadata store, which can be used to store arbitrary values such as "last modified" times, or sync tokens. Comparing these will allow the loader to do things like make conditional API requests, or use delta sync APIs.
 
@@ -229,7 +229,7 @@ export function feedLoader({ url }: FeedLoaderOptions): Loader {
 
 Previously it was clear when content collections were a good idea: whenever you were using local content in your pages! The Content Layer API gives you so much more power and flexibility because you can use it for any content source including live APIs. However, it's important to remember that data is only updated when the site is built, so it won't serve every use case.
 
-This means that collections are perfect when your data changes relatively infrequently, such as a blog. If you're writing a blog that's hosted in a CMS, you can trigger a build with a webhook whenever you publish a new post.
+This means that collections are perfect when your data changes relatively infrequently, such as a blog. If you're writing a blog that's hosted in a CMS, you can trigger a build with a webhook whenever you publish a new post. The content layer's incremental updates should make this build fast.
 
 The same applies for most e-commerce sites, where a build can be triggered when a product is edited. If you are ok with waiting the time it takes to deploy the site to publish updates, then content collections are still your obvious choice. You will get the best performance and great developer experience.
 
