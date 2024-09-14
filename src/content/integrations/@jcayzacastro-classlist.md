@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@jcayzac/astro-classlist
 repoUrl: https://github.com/jcayzac/copepod-modules
 homepageUrl: https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-classlist#readme
 badge: new
-downloads: 477
+downloads: 481
 ---

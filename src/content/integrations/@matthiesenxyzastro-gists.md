@@ -7,6 +7,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/astro-gists
 homepageUrl: https://github.com/MatthiesenXYZ/astro-gists
-downloads: 28
+downloads: 53
 repoUrl: https://github.com/MatthiesenXYZ/astro-gists
 ---
