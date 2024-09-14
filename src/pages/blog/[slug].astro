@@ -40,6 +40,23 @@ const gradients = [
 ];
 
 const placeholderGradient = randomFromArray(gradients);
+
+/** Data describing the current blog post for use in a JSON-LD script tag that Google can slurp up. */
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	'@id': Astro.url,
+	headline: data.title,
+	image: socialImage ? [new URL(socialImage.src, Astro.site)] : undefined,
+	datePublished: data.publishDate.toISOString(),
+	author: authors.map(({ id, data }) => ({
+		'@type': id === 'astro-team' ? 'Organization' : 'Person',
+		'@id': `https://astro.build/blog/#/author/${id}`,
+		name: data.name,
+		sameAs: data.twitter || data.mastodon || data.github,
+		image: data.image && new URL(data.image.src, Astro.site),
+	})),
+};
 ---
 
 <Layout
@@ -101,6 +118,7 @@ const placeholderGradient = randomFromArray(gradients);
 			</article>
 		</div>
 	</div>
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </Layout>
 
 <script>
