@@ -47,6 +47,7 @@ const structuredData = {
 	'@type': 'BlogPosting',
 	'@id': Astro.url,
 	headline: data.title,
+	description: data.description,
 	image: socialImage ? [new URL(socialImage.src, Astro.site)] : undefined,
 	datePublished: data.publishDate.toISOString(),
 	author: authors.map(({ id, data }) => ({
