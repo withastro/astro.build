@@ -27,6 +27,7 @@ const { Content } = await render();
 
 const coverImage = await resolveCoverImage(post);
 const socialImage = await resolveSocialImage(post);
+const socialImageUrl = socialImage && new URL(socialImage.src, Astro.site);
 
 const authors = await Promise.all(data.authors.map((author) => getEntry('authors', author))).then(
 	(authors) => authors.filter(Boolean) as CollectionEntry<'authors'>[],
@@ -48,7 +49,7 @@ const structuredData = {
 	'@id': Astro.url,
 	headline: data.title,
 	description: data.description,
-	image: socialImage ? [new URL(socialImage.src, Astro.site)] : undefined,
+	...(socialImageUrl && { thumbnailUrl: socialImageUrl, image: [socialImageUrl] }),
 	datePublished: data.publishDate.toISOString(),
 	author: authors.map(({ id, data }) => ({
 		'@type': id === 'astro-team' ? 'Organization' : 'Person',
