@@ -68,12 +68,11 @@ function formatCanonicalURL(url: string | URL) {
 }
 ---
 
-<!-- Page Metadata -->{
-	canonicalURL && <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
-}
+{/* Page Metadata */}
+{canonicalURL && <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />}
 <meta name="description" content={description} />
 
-<!-- OpenGraph Tags -->
+{/* OpenGraph Tags */}
 <meta property="og:title" content={og.title} />
 <meta property="og:type" content={og.type} />
 {og.canonicalURL && <meta property="og:url" content={formatCanonicalURL(og.canonicalURL)} />}
@@ -83,10 +82,9 @@ function formatCanonicalURL(url: string | URL) {
 {og.image && <meta property="og:image" content={og.image.src} />}
 {og.image && <meta property="og:image:alt" content={og.image.alt} />}
 
-<!-- Twitter Tags -->
+{/* Twitter Tags */}
 {twitter.card && <meta name="twitter:card" content={twitter.card} />}
 {twitter.handle && <meta name="twitter:site" content={twitter.handle} />}
-
 <meta name="twitter:title" content={twitter.title} />
 <meta name="twitter:description" content={twitter.description} />
 {twitter.image && <meta name="twitter:image" content={twitter.image.src} />}
