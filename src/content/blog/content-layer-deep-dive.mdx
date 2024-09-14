@@ -25,7 +25,7 @@ Astro was born to create content-driven websites. While it can now be used to bu
 
 In Astro 2 we introduced [Content Collections](https://docs.astro.build/en/guides/content-collections/) as a powerful new way to organize your local content, build with type safety, and scale to thousands of pages. Content Collections provide a best-in-class developer experience for local files such as Markdown and MDX, but we heard from you that you wanted the same benefits for all of your content including remote APIs. It was also clear that while many people were building sites with thousands of pages, our Content Collections API struggled to scale into the tens of thousands of pages, with slower builds and excessive memory usage.
 
-In June [we shared an early preview of our plan](https://astro.build/blog/future-of-astro-content-layer/) to solve these problems and more with an all new type of content collection backed by an all new Content Layer API that gives you the flexibility you asked for. We imagined taking collections beyond just files in `src/content`, letting you load your content from anywhere. We have been testing with collections that scale up to a size never before possible. From our first experimental release in Astro 4.14, we have been hard at work stabilizing this new API for release in Astro 5.
+In June [we shared an early preview of our plan](https://astro.build/blog/future-of-astro-content-layer/) to solve these problems and more with an all new type of content collection backed by an all new Content Layer API that gives you the flexibility you asked for. We imagined taking collections beyond just files in `src/content`, letting you load your content from anywhere. We have been testing with collections that scale up to a size never before possible. From our [first experimental release in Astro 4.14](/blog/astro-4140/#experimental-content-layer-api), we have been hard at work stabilizing this new API for release in Astro 5.
 
 ## What is the Content Layer
 
@@ -109,7 +109,7 @@ When `astro build` or `astro dev` is run, the loader for each collection is invo
 
 Astro components and pages can then use `getCollection` or `getEntry` to query the data. The data is immutable at that point, so the pages are all querying the same snapshot, compiled at build time. This applies whether the page is being prerendered at build time, or server rendered on-demand. The important thing to note here is that **the data store is only updated at build time: a deployed site cannot change the data store.** If a data source needs to update a collection it must do this by triggering a new build.
 
-Although immutable in production, the data store can be updated on demand by users with the `s+enter` hotkey when running `astro dev` or by integrations. This could be used for things such as registering a development refresh endpoint or opening a socket to a CMS to listen for updates.
+Although immutable in production, when running `astro dev` the data store can be updated on demand by users with the `s+enter` hotkey, or by integrations. They can do this in many ways, such as registering a development refresh endpoint or opening a socket to a CMS to listen for updates.
 
 ## How a loader works
 
