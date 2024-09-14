@@ -35,7 +35,7 @@ The Content Layer API doesn't care where your data is stored. One collection cou
 
 If you've used content collections before, you'll recognize many of the following concepts and terms. In fact, we haven't changed much about *using* collections in your project at all! A **collection** is still our term for a set of entries that share a common schema. Each entry has a unique ID. It is analogous to a table in a relational database.
 
-But now, each collection uses a **loader**, which defines how the entries are loaded to populate that collection. A loader can be a basic inline function that returns an array of entries, or it can be a more advanced object that handles its own caching and data store. The very first loaders are already distributed as modules on NPM.
+But now, each collection uses a **loader**, which defines how the entries are loaded to populate that collection. A loader can be a basic inline function that returns an array of entries, or it can be a more advanced object that handles its own caching and data store. The very first loaders are already distributed as modules on npm.
 
 Whenever your site is built, the loader for each collection is invoked which then updates the local **data store**. You can query that data store using the familiar **`getCollection()`** and **`getEntry()`** functions. This is done at build time for your prerendered pages, or during server rendering if using an on-demand adapter. In each of these cases, the same data is available, which is the snapshot from the time of the build.
 
