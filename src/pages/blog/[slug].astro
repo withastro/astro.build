@@ -51,6 +51,7 @@ const structuredData = {
 	description: data.description,
 	...(socialImageUrl && { thumbnailUrl: socialImageUrl, image: [socialImageUrl] }),
 	datePublished: data.publishDate.toISOString(),
+	potentialAction: [{ '@type': 'ReadAction', target: [Astro.url] }],
 	author: authors.map(({ id, data }) => ({
 		'@type': id === 'astro-team' ? 'Organization' : 'Person',
 		'@id': `https://astro.build/blog/#/author/${id}`,
