@@ -91,3 +91,12 @@ function formatCanonicalURL(url: string | URL) {
 <meta name="twitter:description" content={twitter.description} />
 {twitter.image && <meta name="twitter:image" content={twitter.image.src} />}
 {twitter.image && <meta name="twitter:image:alt" content={twitter.image.alt} />}
+
+{
+	/*
+	Robots meta tag for Google Search.
+	Enables a large image preview in Google search results, most pertinently in Chrome’s “Discover” view on mobile.
+	See: https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#max-image-preview
+*/
+}
+<meta name="robots" content="max-image-preview:large" />
