@@ -42,6 +42,7 @@ export const collections = {
 				name: z.string(),
 				twitter: z.string().optional(),
 				mastodon: z.string().optional(),
+				github: z.string().optional(),
 			}),
 	}),
 	blog: defineCollection({
