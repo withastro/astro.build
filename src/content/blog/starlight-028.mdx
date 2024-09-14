@@ -11,16 +11,37 @@ socialImage: '/src/content/blog/_images/starlight-028/og-starlight-v0.28.webp'
 
 Starlight v0.28 is out now! To celebrate, let’s take a look at some of the highlights from recent Starlight releases.
 
+- [Next-level localization](#next-level-localization)
 - [On-demand rendering support](#on-demand-rendering-support)
 - [Tabs that remember you](#tabs-that-remember-you)
 - [Sidebar state persistence](#sidebar-state-persistence)
 - [Simpler sidebar configuration](#simpler-sidebar-configuration)
+- [Sparkling new component docs](#sparkling-new-component-docs)
+- [A Markdoc preset for the adventurous](#a-markdoc-preset-for-the-adventurous)
 
 To upgrade an existing project, run the automated `@astrojs/upgrade` CLI from your terminal:
 
 ```sh
 npx @astrojs/upgrade
 ```
+
+## Next-level localization
+
+Starlight has been multilingual from day one and v0.28 takes this to the next level.
+Starlight’s built-in localization system is now powered by the first-in-class [`i18next`](https://www.i18next.com/) library and available to use anywhere in your site.
+
+Use the new `Astro.locals.t()` method from any Astro component to use Starlight’s built-in UI labels or your own custom strings, including support for interpolation and pluralization:
+
+```astro
+<p>{Astro.locals.t('404.text')}</p>
+<!-- <p>Page not found. Check the URL or try using the search bar.</p> -->
+
+<p>{Astro.locals.t('componentCount', { count: 99 })}</p>
+<!-- <p>I have 99 components 🎉</p> -->
+```
+
+This update makes Starlight an unrivalled choice for out-of-the-box internationalization features.
+Even if starting with a single language today, build with the confidence that you’ll be ready to translate your documentation when that day comes.
 
 ## On-demand rendering support
 
@@ -82,6 +103,18 @@ starlight({
 ```
 
 As a bonus, with this syntax you get link checking for free — no more accidental 404s! Thanks to [Lorenzo](https://github.com/lorenzolewis) for adding this feature.
+
+## Sparkling new component docs
+
+We have overhauled the documentation of Starlight’s built-in components.
+Each component now has a dedicated page including common usage examples and a full prop reference.
+
+Check out the new [“Using components” guide](https://starlight.astro.build/components/using-components/) to get started.
+
+## A Markdoc preset for the adventurous
+
+Starlight users interested in Markdoc can now use the new `@astrojs/starlight-markdoc` package to quickly configure all of Starlight’s built-in components for use in Markdoc files.
+See our [Markdoc set-up guide](https://starlight.astro.build/guides/authoring-content/#markdoc) for more details.
 
 ## Try Starlight today!
 
