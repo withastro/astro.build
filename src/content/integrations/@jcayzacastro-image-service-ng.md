@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@jcayzac/astro-image-service-ng
 repoUrl: https://github.com/jcayzac/copepod-modules
 homepageUrl: https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service#readme
 badge: new
-downloads: 2438
+downloads: 2442
 ---

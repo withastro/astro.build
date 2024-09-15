@@ -7,5 +7,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@caisy/rich-text-astro-renderer
 homepageUrl: https://www.npmjs.com/package/@caisy/rich-text-astro-renderer
-downloads: 222
+downloads: 204
 ---

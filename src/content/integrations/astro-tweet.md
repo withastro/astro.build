@@ -8,5 +8,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-tweet
 homepageUrl: https://www.npmjs.com/package/astro-tweet
-downloads: 1284
+downloads: 1312
 ---
