@@ -15,7 +15,7 @@ homepageLink:
 import BlogSummary from "/src/components/BlogSummary.astro";
 
 <BlogSummary>
-  The first Astro 5.0 beta is now available! This release includes the now stable Astro content layer, our latest iteration on managing content in Astro projects and server islands, a new way to mix static and personalized content on your site for the best of both worlds.
+  The first Astro 5.0 beta is now available! This release includes the now stable Astro Content Layer, our latest iteration on managing content in Astro projects, and server islands, a new way to mix static and personalized content on your site for the best of both worlds.
 
 	Read on to learn more about the new features and improvements in Astro 5.0 beta!
 </BlogSummary>
@@ -43,11 +43,11 @@ Check out the [Upgrade Guide in the v5.0 beta docs](https://5-0-0-beta.docs.astr
 
 ## Stable: Content Layer
 
-Astro 5.0 introduces the Astro Content Layer, a new way, to manage content in your Astro project. The content layer is a flexible and extensible way to interact with content, providing a unified, type-safe API to access and define your content in your Astro project—no matter where it comes from—thanks to powerful loaders.
+Astro 5.0 introduces the Astro Content Layer, a new way to manage content in your Astro project. The content layer is a flexible and extensible way to interact with content, providing a unified, type-safe API to access and define your content in your Astro project—no matter where it comes from—thanks to powerful loaders.
 
 As your website grows, having your content in quaint cozy Markdown files in a Git repository may become less and less practical. You might want to use a CMS. Perhaps some sections of your website are powered by a REST API somewhere, or you have optimized images coming from an asset management system such as Cloudinary. This can quickly become a mess to manage, requiring an assortment of different APIs and data fetching strategies.
 
-The content layer is powered by loaders, which are pluggable functions that fetch and transform data from any source into a unified, type-safe format that you can use in your Astro project, so that you access your data from anywhere with full confidence in its shape and type.
+The content layer is powered by loaders, which are pluggable functions that fetch and transform data from any source into a unified, type-safe format that you can use in your Astro project so that you access your data from anywhere with full confidence in its shape and type.
 
 ```ts ins={3, 8}
 // src/content/config.ts
@@ -58,7 +58,7 @@ const database = defineCollection({
   // Automatically fetch content from Notion in one line
   // using the 'notion-astro-loader' npm package!
   loader: notion({ /* ... */ })
-	// optionally, define a schema for the content, or let the loader infer it
+	// optionally, define a schema for the content or let the loader infer it
 	// schema: z.object({ /* ... */ })
 });
 
@@ -71,7 +71,7 @@ This is only scratching the surface of the possibilities the content layer unloc
 
 ## Stable: Server Islands
 
-Server Islands are a new primitive coming to Astro 5 allowing you to defer the rendering of dynamic content until after the initial page load. This lets you serve static pages with personalized content injected later, providing the best of both worlds: fast, CDN-cached static pages, with personalized and dynamic content.
+Server islands are a new primitive coming to Astro 5 allowing you to defer the rendering of dynamic content until after the initial page load. This lets you serve static pages with personalized content injected later, providing the best of both worlds: fast, CDN-cached static pages, with personalized and dynamic content.
 
 Server islands build upon the existing islands architecture in Astro. Defining a server island is as simple as defining a client island, but using the `server:defer` directive instead:
 
@@ -87,9 +87,9 @@ For more details on using this feature, visit the [server islands documentation 
 
 ## Merged static and hybrid output modes
 
-In Astro 5, it is now easier than ever to create a website with both static, cached, performant pages and server-rendered, dynamic pages. Astro's new `output: 'static'` mode, the default, now allows you to render individual routes at runtime on the server just by adding an adapter, no other configuration required.
+In Astro 5, it is now easier than ever to create a website with both static, cached, performant pages and server-rendered, dynamic pages. Astro's new `output: 'static'` mode, the default, now allows you to render individual routes at runtime on the server just by adding an adapter, no other configuration is required.
 
-This is identical to our previous `hybrid` mode: by default, every pages is statically generated until you opt out of prerendering:
+This is identical to our previous `hybrid` mode: by default, every page is statically generated until you opt out of prerendering:
 
 ```astro
 ---
