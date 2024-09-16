@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@jcayzac/astro-image-service-ng
 repoUrl: https://github.com/jcayzac/copepod-modules
-homepageUrl: https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service#readme
+homepageUrl: https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service-ng#readme
 badge: new
 downloads: 2446
 ---
