@@ -1,4 +1,3 @@
-// @ts-check
 import fs from 'node:fs/promises';
 import ghActions from '@actions/core';
 import octokit from '@octokit/graphql';
