@@ -44,35 +44,23 @@ Astro 5.0 introduces the Astro Content Layer, a new way, to manage content in yo
 
 As your website grows, having your content in quaint cozy Markdown files in a Git repository may become less and less practical. You might want to use a CMS. Perhaps some sections of your website are powered by a REST API somewhere, or you have optimized images coming from an asset management system such as Cloudinary. This can quickly become a mess to manage, requiring an assortment of different APIs and data fetching strategies.
 
-With the content layer, you can access your data from anywhere with full confidence in its shape and type. Here's an example of how you can define a collection of blog posts in your Astro project, using Astro's built-in  `glob()` loader for your (quaint, cozy) local Markdown files:
+The content layer is powered by loaders, which are pluggable functions that fetch and transform data from any source into a unified, type-safe format that you can use in your Astro project, so that you access your data from anywhere with full confidence in its shape and type.
 
 ```ts {3,7}
 // src/content/config.ts
-import { defineCollection, z, reference } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { notionLoader } from "notion-astro-loader";
 
-const blog = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/data/blog" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-		author: reference('authors'),
-    publishDate: z.coerce.date(),
-  })
+const database = defineCollection({
+  // Automatically fetch content from Notion in one line
+  // using the 'notion-astro-loader' npm package!
+  loader: notion({ /* ... */ })
+	// optionally, define a schema for the content, or let the loader infer it
+	// schema: z.object({ /* ... */ })
 });
 
-```
-
-```astro
----
-import { getEntry, render } from 'astro:content';
-
-const post = await getEntry('blog', Astro.params.slug);
-
-const { Content } = await render(post);
----
-
-<Content />
+export const collections = {
+	database,
+}
 ```
 
 This is only scratching the surface of the possibilities the content layer unlocks for your project. Stay tuned this week for more information on this feature, and check out our guide on [the new content collections in the v5.0 beta docs](https://5-0-0-beta.docs.astro.build/en/guides/content-collections/) to learn how to get started.
