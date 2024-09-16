@@ -456,6 +456,8 @@ const scraper = new ShowcaseScraper({
 		'http://www.taskworld.com/', // <-- already included using HTTPS
 		'http://keyboardcounter.online/',
 		'https://jerrywski.netlify.app/', // <-- already included as https://jerrywski.dev/
+		// Not Astro - 2024/09/16
+		'https://www.corbado.com/',
 	],
 });
 await scraper.run();
