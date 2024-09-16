@@ -7,12 +7,15 @@ authors:
 coverImage: "/src/content/blog/_images/astro-5-beta/header_astro_5_beta.webp"
 socialImage: "/src/content/blog/_images/astro-5-beta/og_image_5_beta.webp"
 lang: "en"
+homepageLink:
+  title: "Astro 5.0 Beta"
+  subtitle: "Now available to try!"
 ---
 
 import BlogSummary from "/src/components/BlogSummary.astro";
 
 <BlogSummary>
-  The first Astro 5.0 beta is now available! This release stabilizes many of the features we've been working on over the last few months, including server islands, the Astro content layer, and `astro:env`, our solution for type-safe environment variables.
+  The first Astro 5.0 beta is now available! This release includes the now stable Astro content layer, our latest iteration on managing content in Astro projects and server islands, a new way to mix static and personalized content on your site for the best of both worlds.
 
 	Read on to learn more about the new features and improvements in Astro 5.0 beta!
 </BlogSummary>
@@ -46,8 +49,9 @@ As your website grows, having your content in quaint cozy Markdown files in a Gi
 
 The content layer is powered by loaders, which are pluggable functions that fetch and transform data from any source into a unified, type-safe format that you can use in your Astro project, so that you access your data from anywhere with full confidence in its shape and type.
 
-```ts {3,7}
+```ts ins={3, 8}
 // src/content/config.ts
+import { defineCollection } from "astro:content";
 import { notionLoader } from "notion-astro-loader";
 
 const database = defineCollection({
@@ -83,9 +87,9 @@ For more details on using this feature, visit the [server islands documentation 
 
 ## Merged static and hybrid output modes
 
-In Astro 5, we've made it easier to control if specific pages should be statically rendered to `.html` files or rendered at runtime on the server. It is no longer necessary to choose between static and hybrid output modes for your entire project, as Astro now automatically generates the proper output based on your project's needs.
+In Astro 5, it is now easier than ever to create a website with both static, cached, performant pages and server-rendered, dynamic pages. Astro's new `output: 'static'` mode, the default, now allows you to render individual routes at runtime on the server just by adding an adapter, no other configuration required.
 
-The only necessary change to define if a page should be rendered at build or at request time is exporting a `prerender` constant in your page:
+This is identical to our previous `hybrid` mode: by default, every pages is statically generated until you opt out of prerendering:
 
 ```astro
 ---
