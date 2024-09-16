@@ -55,7 +55,7 @@ export const collections = {
 				),
 			homepageLink: z
 				.object({
-					title: z.string().max(16).describe('Very short call-out, e.g. `Astro 4.14` or `New!`.'),
+					title: z.string().max(32).describe('Very short call-out, e.g. `Astro 4.14` or `New!`.'),
 					subtitle: z
 						.string()
 						.max(50)
