@@ -1,8 +1,7 @@
 ---
 name: studiocms
 title: studiocms
-description: A dedicated CMS for Astro Studio. Built from the ground up by the
-  Astro community.
+description: A dedicated CMS for Astro DB. Built from the ground up by the Astro community.
 categories:
   - css+ui
   - recent
