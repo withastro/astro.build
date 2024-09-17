@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@inox-tools/star-warp
 homepageUrl: https://www.npmjs.com/package/@inox-tools/star-warp
-downloads: 42
+downloads: 43
 ---

@@ -7,5 +7,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@lloydjatkinson/astro-snipcart
 homepageUrl: https://www.npmjs.com/package/@lloydjatkinson/astro-snipcart
-downloads: 39
+downloads: 51
 ---

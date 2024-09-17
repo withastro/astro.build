@@ -8,8 +8,8 @@ categories:
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/vercel
 image: /assets/integrations/vercel.svg
-repoUrl: https://github.com/withastro/astro
+repoUrl: https://github.com/withastro/adapters
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/vercel/
-downloads: 108378
+downloads: 110733
 official: true
 ---

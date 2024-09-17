@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-framework7
 repoUrl: https://github.com/grenovles/astro-framework7
 homepageUrl: https://github.com/grenovales/astro-framework7
 badge: new
-downloads: 185
+downloads: 189
 ---
