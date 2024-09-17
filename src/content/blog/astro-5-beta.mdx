@@ -87,7 +87,7 @@ For more details on using this feature, visit the [server islands documentation 
 
 ## Merged static and hybrid output modes
 
-In Astro 5, it is now easier than ever to create a website with both static, cached, performant pages and server-rendered, dynamic pages. Astro's new `output: 'static'` mode, the default, now allows you to render individual routes at runtime on the server just by adding an adapter, no other configuration is required.
+In Astro 5, it is now easier than ever to create a website with both static, cached, performant pages and rendered on-demand, dynamic pages. Astro's new `output: 'static'` mode, the default, now allows you to render individual routes at runtime on the server just by adding an adapter, no other configuration is required.
 
 This is identical to our previous `hybrid` mode: by default, every page is statically generated until you opt out of prerendering:
 
@@ -97,7 +97,7 @@ export const prerender = false; // Render at request time
 ---
 ```
 
-If most of your pages are rendered on the server, you can still set `output: 'server'` in your Astro config to default to on-demand server rendering:
+If most of your pages should be rendered on-demand, you can still set `output: 'server'` in your Astro config to default to server rendering:
 
 ```ts
 import { defineConfig } from 'astro/config';
@@ -107,7 +107,7 @@ export default defineConfig({
 });
 ```
 
-Once you're ready to deploy your site to production, Astro will automatically generate the proper output for each page based on the `prerender` constant and the `output` configuration. An adapter is still required to serve the server-rendered pages, in both `static` and `server` modes, which you can add to your project using `astro add`, as before.
+Once you're ready to deploy your site to production, Astro will automatically generate the proper output for each page based on the `prerender` constant and the `output` configuration. An adapter is still required to serve the pages rendered on demand, in both `static` and `server` modes, which you can add to your project using `astro add`, as before.
 
 For more information on prerendering and server-side rendering in Astro, check out our documentation on [rendering modes in the 5.0 beta docs](https://5-0-0-beta.docs.astro.build/en/basics/rendering/).
 
