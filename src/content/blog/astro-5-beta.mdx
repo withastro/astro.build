@@ -21,7 +21,7 @@ This release includes the following highlights:
 - [**Stable: Content Layer**](#stable-content-layer)
 - [**Stable: Server Islands**](#stable-server-islands)
 - [**Merged static and hybrid output modes**](#merged-static-and-hybrid-output-modes)
-- [**Stable: `astro:env`**](#stable-astro-env)
+- [**Stable: `astro:env`**](#stable-astroenv)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the install command for your package manager, specifying the `beta` tag.
 
@@ -53,7 +53,7 @@ import { notionLoader } from "notion-astro-loader";
 const database = defineCollection({
   // Automatically fetch content from Notion in one line
   // using the 'notion-astro-loader' npm package!
-  loader: notion({ /* ... */ })
+  loader: notionLoader({ /* ... */ })
 	// optionally, define a schema for the content or let the loader infer it
 	// schema: z.object({ /* ... */ })
 });
