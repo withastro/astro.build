@@ -1,7 +1,0 @@
----
-title: CS000 | Collaborative Coding With Git And GitHub
-image: /src/content/showcase/_images/www.cs000.dev.webp
-url: 'https://www.cs000.dev'
-dateAdded: 2024-08-05T12:08:07.456Z
----
-

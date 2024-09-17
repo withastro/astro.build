@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import { type CollectionEntry, getEntry } from 'astro:content';
+import Card from '~/components/Card.astro';
+import { resolveCoverImage } from '~/content/blog/_resolveImage.js';
+
+interface Props {
+	slug: CollectionEntry<'blog' | 'caseStudies'>['slug'];
+}
+const { slug } = Astro.props;
+const post = (await getEntry('blog', slug)) || (await getEntry('caseStudies', slug));
+
+if (!post) {
+	throw new Error(`Could not find post with slug \`${JSON.stringify(Astro.props.slug)}\``);
+}
+
+const image = await resolveCoverImage(post);
+const base = post.collection === 'caseStudies' ? 'case-studies' : 'blog';
+---
+
+<Card
+	className="relative outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
+>
+	{image && <Image src={image} alt="" width="1000" />}
+	<div class="px-4 py-6 flex flex-col gap-4">
+		<a
+			href={`/${base}/${post.slug}/`}
+			class="text-pretty heading-4 md:heading-3 text-white no-underline outline-none after:absolute after:inset-0"
+		>
+			{post.data.title}
+		</a>
+		<p>{post.data.description}</p>
+	</div>
+</Card>

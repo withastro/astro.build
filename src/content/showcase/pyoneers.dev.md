@@ -1,7 +1,0 @@
----
-title: Your Path To Full Stack Python | The Pyoneer Project
-image: /src/content/showcase/_images/pyoneers.dev.webp
-url: 'https://pyoneers.dev/'
-dateAdded: 2024-02-12T14:40:03.000Z
----
-

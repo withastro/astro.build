@@ -1,9 +1,0 @@
----
-title: Nafees Nazik
-image: /src/content/showcase/_images/nafees-nazik.webp
-url: 'https://nafeez.xyz/'
-categories:
-  - personal
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

@@ -1,7 +1,0 @@
----
-title: 'Bauen, was von Wert ist. | Josef Rädlinger Bau'
-image: /src/content/showcase/_images/www.raedlinger.com.webp
-url: 'https://www.raedlinger.com/'
-dateAdded: 2023-07-24T13:51:06.000Z
----
-

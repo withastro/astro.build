@@ -1,13 +1,11 @@
 ---
-name: "astro-vanjs"
-title: "astro-vanjs"
-description: "Astro integration for VanJS"
+name: astro-vanjs
+title: astro-vanjs
+description: Astro integration for VanJS
 categories:
-  - "css+ui"
-  - "frameworks"
-  - "recent"
-npmUrl: "https://www.npmjs.com/package/astro-vanjs"
-homepageUrl: "https://www.npmjs.com/package/astro-vanjs"
-badge: "new"
-downloads: 140
+  - css+ui
+  - frameworks
+npmUrl: https://www.npmjs.com/package/astro-vanjs
+homepageUrl: https://www.npmjs.com/package/astro-vanjs
+downloads: 51
 ---

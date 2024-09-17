@@ -1,11 +1,11 @@
 ---
-name: "astro-localization"
-title: "astro-localization"
-description: "Localization utils for astro"
+name: astro-localization
+title: astro-localization
+description: Localization utils for astro
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/astro-localization"
-repoUrl: "https://github.com/warpsio/astro-localization"
-homepageUrl: "https://github.com/warpsio/astro-localization"
+  - css+ui
+npmUrl: https://www.npmjs.com/package/astro-localization
+repoUrl: https://github.com/warpsio/astro-localization
+homepageUrl: https://github.com/warpsio/astro-localization
 downloads: 3
 ---

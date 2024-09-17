@@ -7,7 +7,7 @@ export const GET: APIRoute = async () => {
 	const result = showcase.map((site) => ({
 		title: site.data.title,
 		url: site.data.url,
-		slug: site.slug,
+		slug: site.id,
 	}));
 
 	return Response.json(result);

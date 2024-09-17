@@ -1,13 +1,13 @@
 ---
 name: "@playform/format"
 title: "@playform/format"
-description: "🗻 Format —"
+description: 🗻 Format —
 categories:
-  - "css+ui"
-  - "performance+seo"
-npmUrl: "https://www.npmjs.com/package/@playform/format"
-repoUrl: "https://github.com/PlayForm/Format"
-homepageUrl: "HTTPS://GitHub.Com/PlayForm/Format#readme"
-downloads: 3016
-image: "/assets/integrations/@playform/format.svg"
+  - css+ui
+  - performance+seo
+npmUrl: https://www.npmjs.com/package/@playform/format
+repoUrl: https://github.com/PlayForm/Format
+homepageUrl: HTTPS://GitHub.Com/PlayForm/Format#readme
+downloads: 3523
+image: /assets/integrations/@playform/format.svg
 ---

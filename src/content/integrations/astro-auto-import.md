@@ -1,11 +1,11 @@
 ---
-name: "astro-auto-import"
-title: "astro-auto-import"
-description: "Auto-import components in Astro projects"
+name: astro-auto-import
+title: astro-auto-import
+description: Auto-import components in Astro projects
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/astro-auto-import"
-repoUrl: "https://github.com/delucis/astro-auto-import"
-homepageUrl: "https://github.com/delucis/astro-auto-import#readme"
-downloads: 46339
+  - css+ui
+npmUrl: https://www.npmjs.com/package/astro-auto-import
+repoUrl: https://github.com/delucis/astro-auto-import
+homepageUrl: https://github.com/delucis/astro-auto-import#readme
+downloads: 51651
 ---

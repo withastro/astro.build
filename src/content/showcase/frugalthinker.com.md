@@ -1,7 +1,0 @@
----
-title: 'Frugal Thinker: Maximizing Value in Software Development'
-image: /src/content/showcase/_images/frugalthinker.com.webp
-url: 'https://frugalthinker.com/'
-dateAdded: 2024-06-21T00:32:25.068Z
----
-

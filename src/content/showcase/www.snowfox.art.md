@@ -1,7 +1,0 @@
----
-title: SNOW FOX | Home
-image: /src/content/showcase/_images/www.snowfox.art.webp
-url: 'https://www.snowfox.art'
-dateAdded: 2023-06-07T15:57:21.000Z
----
-

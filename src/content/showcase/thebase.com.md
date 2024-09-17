@@ -1,7 +1,0 @@
----
-title: BASE (ベイス) -無料で簡単なネットショップ作成サービス
-image: /src/content/showcase/_images/thebase.com.webp
-url: 'https://thebase.com/'
-dateAdded: 2023-09-19T20:34:49.000Z
----
-

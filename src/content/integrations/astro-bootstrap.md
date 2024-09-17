@@ -1,12 +1,12 @@
 ---
-name: "astro-bootstrap"
-title: "astro-bootstrap"
-description: "Bootstrap 5 components crafted for use with Astro"
+name: astro-bootstrap
+title: astro-bootstrap
+description: Bootstrap 5 components crafted for use with Astro
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/astro-bootstrap"
-repoUrl: "https://github.com/astro-bootstrap/astro-bootstrap"
-homepageUrl: "https://astro-bootstrap.github.io"
-downloads: 790
-image: "/assets/integrations/astro-bootstrap.png"
+  - css+ui
+npmUrl: https://www.npmjs.com/package/astro-bootstrap
+repoUrl: https://github.com/astro-bootstrap/astro-bootstrap
+homepageUrl: https://astro-bootstrap.github.io
+downloads: 797
+image: /assets/integrations/astro-bootstrap.png
 ---

@@ -15,6 +15,7 @@ const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env
 // https://astro.build/config
 export default defineConfig({
 	site: NETLIFY_PREVIEW_SITE || 'https://astro.build',
+	prefetch: true,
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,

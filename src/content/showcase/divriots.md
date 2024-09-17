@@ -1,9 +1,0 @@
----
-title: <div>RIOTS
-image: /src/content/showcase/_images/divriots.webp
-url: 'https://divriots.com/'
-categories:
-  - marketing
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

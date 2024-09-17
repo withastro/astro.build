@@ -1,9 +1,0 @@
----
-title: VidaVera
-image: /src/content/showcase/_images/vidavera.webp
-url: 'https://vidavera.pt'
-categories:
-  - marketing
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

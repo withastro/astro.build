@@ -1,10 +1,10 @@
 ---
-name: "astro-umami"
-title: "astro-umami"
+name: astro-umami
+title: astro-umami
 description: "TODO:"
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/astro-umami"
+  - css+ui
+npmUrl: https://www.npmjs.com/package/astro-umami
 homepageUrl: "TODO:"
 downloads: 3
 ---

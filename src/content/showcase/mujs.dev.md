@@ -1,7 +1,0 @@
----
-title: 'Muj – Frontend Engineer, UI/UX Designer, Design Systems Engineer'
-image: /src/content/showcase/_images/mujs.dev.webp
-url: 'https://mujs.dev/'
-dateAdded: 2023-03-28T22:01:33.000Z
----
-

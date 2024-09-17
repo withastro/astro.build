@@ -1,11 +1,12 @@
 ---
 name: "@ayco/astro-resume"
 title: "@ayco/astro-resume"
-description: "This facilitates the creation and usage of global, immutable data for Astro apps."
+description: This facilitates the creation and usage of global, immutable data
+  for Astro apps.
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/@ayco/astro-resume"
-homepageUrl: "https://github.com/ayoayco/astro-resume"
-downloads: 132
-repoUrl: "https://github.com/ayoayco/astro-resume"
+  - css+ui
+npmUrl: https://www.npmjs.com/package/@ayco/astro-resume
+homepageUrl: https://github.com/ayoayco/astro-resume
+downloads: 127
+repoUrl: https://github.com/ayoayco/astro-resume
 ---

@@ -1,9 +1,0 @@
----
-title: Welcome to Astro StudioCMS | Astro StudioCMS
-image: /src/content/showcase/_images/docs.astro-studiocms.xyz.webp
-url: 'https://docs.astro-studiocms.xyz/'
-dateAdded: 2024-06-21T00:25:29.506Z
-categories:
-  - starlight
----
-

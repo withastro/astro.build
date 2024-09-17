@@ -1,7 +1,0 @@
----
-title: CodeNanshu - developer's coding blog
-image: /src/content/showcase/_images/codenanshu.in.webp
-url: 'https://codenanshu.in'
-dateAdded: 2023-04-04T19:06:24.000Z
----
-

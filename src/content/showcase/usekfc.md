@@ -1,9 +1,0 @@
----
-title: useKFC
-image: /src/content/showcase/_images/usekfc.webp
-url: 'https://use-kfc.deno.dev'
-categories:
-  - other
-dateAdded: 2023-03-06T18:09:38.000Z
----
-

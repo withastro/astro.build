@@ -1,11 +1,11 @@
 ---
-name: "astro-svg-icon"
-title: "astro-svg-icon"
-description: "Astro component for SVG icons"
+name: astro-svg-icon
+title: astro-svg-icon
+description: Astro component for SVG icons
 categories:
-  - "css+ui"
-npmUrl: "https://www.npmjs.com/package/astro-svg-icon"
-repoUrl: "https://github.com/karesztrk/astro-svg-icon"
-homepageUrl: "https://karolytorok.netlify.app/blog/styling-an-svg/"
-downloads: 13
+  - css+ui
+npmUrl: https://www.npmjs.com/package/astro-svg-icon
+repoUrl: https://github.com/karesztrk/astro-svg-icon
+homepageUrl: https://karolytorok.netlify.app/blog/styling-an-svg/
+downloads: 7
 ---

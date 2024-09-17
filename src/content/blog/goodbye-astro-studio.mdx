@@ -1,0 +1,39 @@
+---
+title: "Goodbye Studio, Hello DB"
+description: "We have decided to wind down Astro Studio and open up Astro DB to connect to any libSQL database, including Turso. Read on to hear what comes next for Astro and Astro DB."
+publishDate: "September 13, 2024"
+authors:
+  - fred
+coverImage: "/src/content/blog/_images/goodbye-astro-studio/blog-post-sunsetting-studio.jpg"
+socialImage: "/src/content/blog/_images/goodbye-astro-studio/og-sunsetting-studio.jpg"
+lang: "en"
+---
+
+**We have decided to wind down Astro Studio and open up Astro DB to connect to any libSQL database, including [Turso](https://turso.tech/). Read on to learn more about how we came to the decision, what comes next, and why we think this is the right decision for Astro and Astro DB.**
+
+Earlier this year, we launched a hosted database platform called [Astro Studio](/db). Our goal was to give every Astro developer easy access to affordable, fast SQL data storage directly from within the Astro framework itself. On this point, we succeeded. Astro Studio delivered instant database access for both local development and production traffic with impressive scale and cost savings.
+
+Our second goal was to build this into a profitable business to support the continued development and growth of Astro. On this point, we failed. Astro Studio never reached a point where we felt we had found product-market fit. Thousands of Astro developers tried the platform, but few stuck around. Larger dev platforms like Turso and Supabase offered similar features and had exciting roadmaps of their own, complicating our efforts to stand out in a crowded space. We moved too slowly. I could go on, but ultimately we couldn't find a clear path to pursue with conviction that we were building something that would last.
+
+**As a result, we are making the call to wind down -- and eventually shut down -- Astro Studio.**  Astro Studio itself was built on top of [Turso](https://turso.tech/), and we feel confident recommending the Turso platform to our users as a great alternative to Astro Studio that will hopefully result in minimal disruption to migrate. You can also self-host your libSQL database or move off to another database entirely (more on this in the next section).
+
+Some more details, for those interested:
+- Invites to Astro Studio will remain closed.
+- Existing users will no longer be able to create new databases after October 1, 2024.
+- Existing databases will no longer be accessible after March 1, 2025. 
+- Any remaining databases will be deleted on or soon after March 1, 2025.
+- If you are a current Astro Studio user, check your email inbox or our Discord server in the coming days for more information and instructions.
+
+To the thousands of developers who tried Astro Studio this year: thank you. Thank you for taking a bet on us. This experience has taught us so much and we are already taking these lessons -- and preserving some of our favorite parts of Studio -- to chart a new course and build something that we *do* think will last. Next week is launch week, so check back with us next Friday for an sneak preview of what we've been up to...
+
+## Astro DB: Doubling Down on Open Source
+
+Looking ahead, there is *some* good news hidden in this announcement: [Astro DB](https://docs.astro.build/en/guides/astro-db/) isn’t going anywhere. It's actually improving.
+
+For anyone unfamiliar, Astro DB is the framework and software component of our database story. It includes a local dev database, schema management, automatic migrations, and a database ORM/SDK with full automatic TypeScript types. It's incredibly cool, but up until recently it only worked with the Astro Studio platform.
+
+With Astro Studio winding down, we can now invest our time and energy into making Astro DB even more open and powerful for everyone.
+
+As of [Astro 4.15](https://astro.build/blog/astro-4150/#libsql-remotes-in-astro-db), you can now connect Astro DB to any libSQL (SQLite) database! This required some clever refactoring, like moving some important administrative metadata for a database into the database itself, so that everything you needed could be self-contained. Thank you to Astro community member and maintainer [@Fryuni](https://github.com/Fryuni) for his work to make this possible!
+
+I'm personally so excited for a world where Astro DB can talk to any database you point it to. One day, Astro DB could talk to your MySQL or Postgres database, entirely built-in to the Astro framework. This change takes us one step closer to that future!
