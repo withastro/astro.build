@@ -40,8 +40,9 @@ export const collections = {
 			z.object({
 				image: image().optional(),
 				name: z.string(),
-				twitter: z.string().optional(),
-				mastodon: z.string().optional(),
+				twitter: z.string().url().optional(),
+				mastodon: z.string().url().optional(),
+				github: z.string().url().optional(),
 			}),
 	}),
 	blog: defineCollection({
@@ -54,7 +55,7 @@ export const collections = {
 				),
 			homepageLink: z
 				.object({
-					title: z.string().max(16).describe('Very short call-out, e.g. `Astro 4.14` or `New!`.'),
+					title: z.string().max(32).describe('Very short call-out, e.g. `Astro 4.14` or `New!`.'),
 					subtitle: z
 						.string()
 						.max(50)

@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-umami
 homepageUrl: "TODO:"
-downloads: 4
+downloads: 3
 ---
