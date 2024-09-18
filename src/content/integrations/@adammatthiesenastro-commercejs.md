@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@adammatthiesen/astro-commercejs
 homepageUrl: https://github.com/adammatthiesen/astro-commercejs
-downloads: 10
+downloads: 9
 ---

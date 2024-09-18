@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-svg-sprite
 repoUrl: https://github.com/ACP-CODE/astro-svg-sprite
 homepageUrl: https://github.com/ACP-CODE/astro-svg-sprite#readme
-downloads: 534
+downloads: 565
 ---

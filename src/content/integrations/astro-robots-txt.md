@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-robots-txt
 repoUrl: https://github.com/alextim/astro-lib
 homepageUrl: https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt#readme
-downloads: 41804
+downloads: 41998
 ---
