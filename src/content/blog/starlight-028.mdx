@@ -1,0 +1,143 @@
+---
+title: Starlight 0.28
+description: 'Meet the latest Starlight features: i18next, on-demand rendering support, sidebar persistence, smart tabs, and more for your docs.'
+publishDate: 2024-09-18
+authors:
+  - chris
+  - hideoo
+coverImage: '/src/content/blog/_images/starlight-028/blog-post-starlight-v0.28.webp'
+socialImage: '/src/content/blog/_images/starlight-028/og-starlight-v0.28.webp'
+---
+
+**Starlight v0.28 is out now! The latest version of Astro's official, all-in-one documentation site builder just dropped. Let’s take a look at some of the highlights from recent Starlight releases.**
+
+- [Next-level localization](#next-level-localization)
+- [On-demand rendering support](#on-demand-rendering-support)
+- [Tabs that remember you](#tabs-that-remember-you)
+- [Sidebar state persistence](#sidebar-state-persistence)
+- [Simpler sidebar configuration](#simpler-sidebar-configuration)
+- [Sparkling fresh docs](#sparkling-fresh-docs)
+- [A Markdoc preset for the adventurous](#a-markdoc-preset-for-the-adventurous)
+
+To upgrade an existing project, run the automated `@astrojs/upgrade` CLI from your terminal:
+
+```sh
+npx @astrojs/upgrade
+```
+
+## Next-level localization
+
+Starlight has been multilingual from day one and v0.28 takes this to the next level.
+Starlight’s built-in localization system is now powered by the first-in-class [`i18next`](https://www.i18next.com/) library and available to use anywhere in your site.
+
+Use the new [`Astro.locals.t()`](https://starlight.astro.build/guides/i18n/#using-ui-translations) method from any Astro component to render Starlight’s built-in UI labels or your own custom strings, including support for interpolation and pluralization:
+
+```astro
+<p>{Astro.locals.t('404.text')}</p>
+<!-- <p>Page not found. Check the URL or try using the search bar.</p> -->
+
+<p>{Astro.locals.t('componentCount', { count: 99 })}</p>
+<!-- <p>I have 99 components 🎉</p> -->
+```
+
+This update makes Starlight an unrivaled choice for out-of-the-box internationalization features.
+Start with a single language today, and build with the confidence that you’ll be ready to translate your documentation when the time comes.
+
+## On-demand rendering support
+
+Since v0.27, Starlight supports fully dynamic server-side rendering if you need it.
+Set `prerender: false` in the Starlight options to disable static generation of your pages and switch to Astro’s [on-demand rendering mode](https://docs.astro.build/en/basics/rendering-modes/):
+
+```diff title="astro.config.mjs" lang="js"
+starlight({
+	title: 'Docs on Demand',
++	prerender: false,
+}),
+```
+
+This unlocks features like user authentication and personalization, making Starlight even more flexible.
+Check out our [Docs on Demand demo](https://starlight-ssr.netlify.app/) to see some of the possibilities in action.
+Thanks to [Fryuni](https://github.com/Fryuni) for implementing this feature!
+
+## Tabs that remember you
+
+Starlight’s [`<Tabs>` component](https://starlight.astro.build/components/tabs/) now supports remembering user preferences across page navigations. This lets your reader choose options like their preferred package manager or operating system once, and see that preference reflected elsewhere in your docs. To enable this feature, add matching `syncKey` attributes to your `<Tabs>`:
+
+```mdx title="src/content/docs/example.mdx" /syncKey=".+"/
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs syncKey="package-manager">
+	<TabItem label="npm">npm install @astrojs/starlight</TabItem>
+	<TabItem label="pnpm">pnpm add @astrojs/starlight</TabItem>
+	<TabItem label="yarn">yarn add @astrojs/starlight</TabItem>
+</Tabs>
+```
+
+## Sidebar state persistence
+
+Starlight builds on tried and tested web technology, serving simple, static HTML with minimal JavaScript for optimal performance.
+We heard user feedback that full-page navigations could be disruptive because sidebar state would be lost on each page load.
+
+From v0.26 on, Starlight persists and restores sidebar state across navigations thanks to a lightweight custom element, making for a smoother browsing experience.
+This is a progressive enhancement — if JavaScript isn’t available on a user’s device, the sidebar renders as usual ensuring a robust experience for all.
+
+## Simpler sidebar configuration
+
+In earlier versions of Starlight, setting up your [sidebar config](https://starlight.astro.build/guides/sidebar/) could get a little verbose:
+
+```js title="astro.config.mjs" {4-6}
+starlight({
+	title: 'Old Skool Starlight',
+	sidebar: [
+		{ label: 'Page one', link: '/one' },
+		{ label: 'Page two', link: '/two' },
+		// ...
+	],
+}),
+```
+
+With Starlight v0.25, this got a lot simpler for internal links.
+You can now specify just the slug of the page you’re linking to and Starlight will use the page title as the link label automatically:
+
+```js title="astro.config.mjs" {4}
+starlight({
+	title: 'Cutting Edge Starlight',
+	sidebar: [
+		'one', 'two', // ...
+	],
+}),
+```
+
+As a bonus, with this syntax you get link checking for free — no more accidental 404s! Thanks to [Lorenzo](https://github.com/lorenzolewis) for adding this feature.
+
+## Sparkling fresh docs
+
+And we've been working on our own docs, too!
+We overhauled the documentation for Starlight’s built-in components.
+Each component now has a dedicated page including common usage examples and a full prop reference.
+
+Visit the new [“Using components” guide](https://starlight.astro.build/components/using-components/) to explore the available components.
+
+Of course, these wouldn’t be Astro docs without translations.
+Shout out to `@dreyfus92`, `@jsparkdev`, `@dragomano`, `@liruifengv`, `@zhoushengdao`, `@Nin3lee`, `@casungo`, `@at-the-vr`, and `@thomasbnt` for keeping our Spanish, Korean, Russian, Simplified Chinese, Italian, Hindi, and French docs updated!
+
+## A Markdoc preset for the adventurous
+
+Starlight users interested in Markdoc can use the new `@astrojs/starlight-markdoc` package to quickly configure all of Starlight’s built-in components for use in Markdoc files.
+See our [Markdoc set-up guide](https://starlight.astro.build/guides/authoring-content/#markdoc) for more details.
+
+## Try Starlight today!
+
+We’ve been excited to see companies like [Cloudflare](https://developers.cloudflare.com/), [Crowdin](https://support.crowdin.com/), [StackBlitz](https://tutorialkit.dev/), [Sentry](https://spotlightjs.com/), [Font Awesome](https://docs.fontawesome.com/), and [SST](https://sst.dev/docs/) embrace Starlight when building docs. Join them and open-source projects like [FreeCodeCamp](https://contribute.freecodecamp.org/), [RealWorld Apps](https://www.realworld.how/), [Biome](https://biomejs.dev/), [Jimp](https://jimp-dev.github.io/jimp/), [Shepherd](https://docs.shepherdpro.com/), [Bloc](https://bloclibrary.dev/), and [Knip](https://knip.dev/) — to name just a few! — and get started today.
+
+Visit the [Starlight docs](https://starlight.astro.build/) or create a new site right from your terminal:
+
+```sh
+npm create astro@latest -- --template starlight
+```
+
+## Previously…
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['starlight-turns-one', 'wp-engine']} />
