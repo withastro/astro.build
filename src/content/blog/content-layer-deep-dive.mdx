@@ -19,7 +19,7 @@ Astro was born to create content-driven websites. While it can now be used to bu
 
 In Astro 2 we introduced [Content Collections](https://docs.astro.build/en/guides/content-collections/) as a powerful new way to organize your local content, build with type safety, and scale to thousands of pages. Content Collections provide a best-in-class developer experience for local files such as Markdown and MDX, but we heard from you that you wanted the same benefits for all of your content including remote APIs. It was also clear that while many people were building sites with thousands of pages, our Content Collections API struggled to scale into the tens of thousands of pages, with slower builds and excessive memory usage.
 
-In June [we shared an early preview of our plan](https://astro.build/blog/future-of-astro-content-layer/) to solve these problems and more with an all new type of content collection backed by an all new Content Layer API that gives you the flexibility you asked for. We imagined taking collections beyond just files in `src/content`, letting you load your content from anywhere. We have been testing with collections that scale up to a size never before possible. From our [first experimental release in Astro 4.14](/blog/astro-4140/#experimental-content-layer-api), we have been hard at work stabilizing this new API for release in Astro 5.
+In June [we shared an early preview of our plan](https://astro.build/blog/future-of-astro-content-layer/) to solve these problems and more with an all-new type of content collection backed by the Content Layer API that gives you the flexibility you asked for. We imagined taking collections beyond just files in `src/content`, letting you load your content from anywhere. We have been testing with collections that scale up to a size never before possible. From our [first experimental release in Astro 4.14](/blog/astro-4140/#experimental-content-layer-api), we have been hard at work stabilizing this new API for release in Astro 5.
 
 ## What is the Content Layer
 
@@ -107,7 +107,7 @@ Although immutable in production, when running `astro dev` the data store can be
 
 ## How a loader works
 
-The first example showed how to build a simple inline loader, but you don't need to stop there. With the object loader API you can make powerful loaders with more advanced capabilities. An object loader interacts with the content layer via a data store object. This is a key-value store that is scoped to an individual collection. A collection can only access its own entries but has complete control over these. If a loader knows that its data source hasn't changed then it can skip updating entirely, or it can just update the entries which have changed.
+The first example showed how to build a simple inline loader, but you don't need to stop there. With the object loader API, you can make powerful loaders with more advanced capabilities. An object loader interacts with the content layer via a data store object. This is a key-value store that is scoped to an individual collection. A collection can only access its own entries but has complete control over these. If a loader knows that its data source hasn't changed then it can skip updating entirely, or it can just update the entries which have changed.
 
 The Content Layer API provides some tools to make this easier. First is the metadata store, which can be used to store arbitrary values such as "last modified" times, or sync tokens. Comparing these will allow the loader to do things like make conditional API requests, or use delta sync APIs.
 
@@ -187,7 +187,7 @@ export function feedLoader({ url }: FeedLoaderOptions): Loader {
 
 			// If the loader doesn't handle incremental updates, clear the store before inserting new entries
 			// In some cases the API might send a stream of updates, in which case you would not want to clear the store
-			// and instead add, delete or update entries as needed.
+			// and instead add, delete, or update entries as needed.
 			store.clear();
 
 			for (const item of feed.items) {
@@ -225,7 +225,7 @@ Previously it was clear when content collections were a good idea: whenever you 
 
 This means that collections are perfect when your data changes relatively infrequently, such as a blog. If you're writing a blog that's hosted in a CMS, you can trigger a build with a webhook whenever you publish a new post. The content layer's incremental updates should make this build fast.
 
-The same applies for most e-commerce sites, where a build can be triggered when a product is edited. If you are ok with waiting the time it takes to deploy the site to publish updates, then content collections are still your obvious choice. You will get the best performance and great developer experience.
+The same applies to most e-commerce sites, where a build can be triggered when a product is edited. If you are ok with waiting for the time it takes to deploy the site to publish updates, then content collections are still your obvious choice. You will get the best performance and great developer experience.
 
 If you need your pages to update in near real-time or with personalized content, then you are better off using an on-demand rendering adapter, ideally with CDN cache headers to ensure that page loads are super fast. You can even combine the two using [server islands](https://5-0-0-beta.docs.astro.build/en/guides/server-islands) and get the best of both worlds - render the main content using content collections, and use a server island for real-time or personalized content.
 
