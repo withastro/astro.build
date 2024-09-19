@@ -1,0 +1,137 @@
+---
+title: "Community Loaders for Astro Content Layer"
+authors:
+  - matthew
+description: |
+  An overview of some of the early and promising loaders for Astro's Content Layer.
+publishDate: "September 19, 2024 13:00:00"
+socialImage: "/src/content/blog/_images/community-loaders/blog-post-community-loaders.webp"
+coverImage: "/src/content/blog/_images/community-loaders/og-community-loaders.webp"
+lang: "en"
+---
+
+Since experimental support for the Astro Content Layer API was added we have seen several loaders being built for a variety of types of content. We've already highlighted a few of the CMSes that have built loaders. In this post, we'll go over some of the other types of loaders to see the diverse use cases for the content layer.
+
+The loaders we'll be covering here are:
+
+- **[Notion](#notion)**
+- **[Stripe](#stripe)**
+- **[Feed loader](#feed-loader)**
+- **[Airtable](#airtable)**
+- **[Strapi](#strapi)**
+
+## Notion
+
+Notion is a collaborative platform for all types of documents. Although it's not usually thought of as a CMS, many people do use it as one.
+
+With [notion-astro-loader](https://www.npmjs.com/package/notion-astro-loader) you can sync Notion documents into one of your project's collections. The loader automatically infers a schema based on the schema of the Notion database.
+
+Install `notion-astro-loader` and configure it like so:
+
+```js
+import { defineCollection } from "astro:content";
+import { notionLoader } from "notion-astro-loader";
+
+const database = defineCollection({
+  loader: notionLoader({
+    auth: import.meta.env.NOTION_TOKEN,
+    database_id: import.meta.env.NOTION_DATABASE_ID,
+    filter: {
+      property: "Hidden",
+      checkbox: { equals: false },
+    },
+  }),
+});
+
+export const collections = { database };
+```
+
+## Feed loader
+
+The [Astro feed loader](https://github.com/ascorbic/astro-loaders/tree/main/packages/feed) allows you to load RSS, RDF, and Atom feeds, and use the data in your Astro site. There are many use cases for this, as RSS is a widely used publishing format. For example, you can [use RSS to show recent releases for GitHub projects](https://hideoo.dev/notes/starlight-list-recent-github-releases) on your site.
+
+To use the loader, install the `@ascorbic/feed-loader` package and define a collection pointing as a feed URL like so:
+
+```js
+import { defineCollection } from "astro:content";
+import { feedLoader } from "@ascorbic/feed-loader";
+
+const releases = defineCollection({
+  loader: feedLoader({
+    url: "https://github.com/withastro/astro/releases.atom",
+  }),
+})
+
+const podcasts = defineCollection({
+  loader: feedLoader({
+    url: "https://feeds.99percentinvisible.org/99percentinvisible",
+  }),
+})
+
+export const collections = { releases, podcasts }
+```
+
+## Stripe
+
+With the [Stripe loader](https://github.com/notrab/stripe-astro-loader) you can pull down product and price information from the Stripe API.
+
+To use it, you'll need the `stripe-astro-loader` and `stripe` packages. Create an instance of `Stripe` with your API key, then pass it to the loaders, and that's all you need to do.
+
+```js
+import { defineCollection } from "astro:content";
+import { stripePriceLoader, stripeProductLoader } from "stripe-astro-loader";
+import Stripe from "stripe";
+
+const stripe = new Stripe("<API_KEY>");
+
+const products = defineCollection({
+  loader: stripeProductLoader(stripe),
+})
+
+const prices = defineCollection({
+  loader: stripePriceLoader(stripe),
+})
+
+export const collections = { products, prices }
+```
+
+## Airtable
+
+Airtable is a way to organize data and build no-code apps. With the [Airtable loader](https://github.com/ascorbic/astro-loaders/tree/main/packages/airtable) you can load records from your Airtable base and use them in an Astro project.
+
+The Airtable loader is available from the `@ascorbic/airtable-loader` package. Provide your API key from an environment variable and load a table with the loader.
+
+```ts
+import { defineCollection } from "astro:content";
+import { airtableLoader } from "@ascorbic/airtable-loader";
+
+const launches = defineCollection({
+  loader: airtableLoader({
+    base: import.meta.env.AIRTABLE_BASE,
+    table: "Product Launches",
+  }),
+})
+
+export const collections = { launches }
+```
+
+## Strapi
+
+[Strapi](https://strapi.io/) is an open-source headless CMS that can be self-hosted or used with Strapi Cloud. With Strapi you can create collections and custom content types.
+
+The new community developed [Strapi loader](https://www.npmjs.com/package/strapi-community-astro-loader) lets you pull down your content into local collections. To use it, install `strapi-community-astro-loader` from npm. In your Content Collections config (`src/content/config.ts`) create a collection and call the loader with the `contentType` you are wanting to sync. In this example we're grabbing all of the remote articles and syncing them into a collection called `posts`.
+
+```ts
+import { defineCollection } from "astro:content";
+import { strapiLoader } from "strapi-community-astro-loader";
+
+const posts = defineCollection({
+  loader: strapiLoader({
+    contentType: "article"
+  }),
+})
+
+export const collections = { posts }
+```
+
+Also see the Strapi blog article [How To Create a Custom Astro Loader for Strapi Using Content Layer API](https://strapi.io/blog/how-to-create-a-custom-astro-loader-for-strapi-using-content-layer-api).
