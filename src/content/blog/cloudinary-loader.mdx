@@ -1,0 +1,47 @@
+---
+title: "Astro x Cloudinary: Content Loader"
+authors:
+  - matthew
+description: |
+  We are happy to announce Cloudinary as a launch partner for the Astro Content Layer API.
+publishDate: "September 19, 2024 11:00:00"
+socialImage: "/src/content/blog/_images/cloudinary-loader/og-cloudinary.webp"
+coverImage: "/src/content/blog/_images/cloudinary-loader/blog-post-cloudinary.webp"
+lang: "en"
+---
+
+import Blockquote from "/src/components/Blockquote.astro"
+
+We are thrilled to announce [Cloudinary](https://cloudinary.com/) as a launch partner for the Astro Content Layer API, our new approach to bringing external content into [content collections](https://docs.astro.build/en/guides/content-collections/). Cloudinary is a hosting platform for media assets that allows you to transform and optimize media types.
+
+Content collections are Astro's answer to organized, managed, type-safe content. Now with Astro's content layer, you can bring in all different types of content and data from external sources during the build. The Content Layer API efficiently syncs and caches the content, giving you a familiar, unified experience for working with any data source.
+
+## Using the Cloudinary loader
+
+To use the new loader, first install the `astro-cloudinary` package from npm:
+
+```shell
+npm install astro-cloudinary
+```
+
+Next, you'll need to configure your environment with your API key. See the [Cloudinary loader configuration guide](https://astro.cloudinary.dev/installation) for details.
+
+Then import and use the loader inside of your `src/content/config.ts` configuration file:
+
+```ts
+import { defineCollection } from 'astro:content'
+import { cldAssetsLoader } from 'astro-cloudinary/loaders'
+
+const samples = defineCollection({
+  loader: cldAssetsLoader({
+    limit: 4,
+    folder: 'samples/food'
+  })
+})
+
+export const collections = { assets }
+```
+
+And that's it! From here, you can query and use collections the same way you would for local collections. See the Astro docs [content collections guide](https://docs.astro.build/en/guides/content-collections/) to learn more.
+
+For more reading on using the Cloudinary loader, go read [Source Cloudinary Assets in Astro With the Astro Content Layer](https://cloudinary.com/blog/source-cloudinary-assets-astro-content-layer) which has additional details. Also check out yesterday's [deep dive](/blog/content-layer-deep-dive/) on the new Content Layer API to learn how loaders work, and how you can build your own.

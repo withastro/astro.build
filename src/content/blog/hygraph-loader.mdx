@@ -1,0 +1,61 @@
+---
+title: "Astro x Hygraph: Content Loader"
+authors:
+  - matthew
+description: |
+  We are excited to announce Hygraph as a launch partner for Astro Content Layer.
+publishDate: "September 19, 2024 12:00:00"
+socialImage: "/src/content/blog/_images/hygraph-loader/og-hygraph.webp"
+coverImage: "/src/content/blog/_images/hygraph-loader/blog-post-hygraph.webp"
+lang: "en"
+---
+
+import Blockquote from "/src/components/Blockquote.astro"
+
+We are excited to announce [Hygraph](https://hygraph.com/) as a launch partner for Astro Content Layer, our new approach to bringing external CMS content into [content collections](https://docs.astro.build/en/guides/content-collections/). Hygraph is an API-first CMS that lets you organize your complex, structured content and build high-performance, content-driven applications with any frontend technology.
+
+Content collections allows you to combine content of various types into a single API. With Content Layer this now includes bringing in content from various external sources, such as Hygraph CMS.
+
+## Using the Hygraph loader
+
+To use the new loader (in beta), first install the `@hygraph/hygraph-astro-loader` package:
+
+```shell
+npm install @hygraph/hygraph-astro-loader
+```
+
+In the Hygraph dashboard, find the endpoint of your API and copy the URL and provide it as an environment variable, naming it something like `HYGRAPH_ENDPOINT`.
+
+Then import and use the loader inside of your `src/content/config.ts` configuration file:
+
+```ts
+import { defineCollection, z } from 'astro:content';
+import { HygraphLoader } from '@hygraph/hygraph-astro-loader';
+
+const pages = defineCollection({
+  loader: HygraphLoader({
+    endpoint: import.meta.env.HYGRAPH_ENDPOINT,
+    operation: 'pages',
+    fields: ["id", "title", "slug", { "body": ["text"] }],
+  }),
+
+  schema: z.object({
+    id: z.string(),
+    title: z.string({
+      required_error: 'Title is required'
+    }).min(1, {
+      message: 'Title is required to be at least 1 character'
+    }),
+    slug: z.string(),
+    body: z.object({
+      text: z.string(),
+    }),
+  })
+})
+
+export const collections = { pages }
+```
+
+And that's it, from here you can query and use collections the same way you would for local collections. See the Astro docs on [content collections](https://docs.astro.build/en/guides/content-collections/) to learn more.
+
+Also check out yesterday's [deep dive](/blog/content-layer-deep-dive/) on Content Layer to learn how loaders work, and how you can build your own. Also check out the Hygraph loader's [GitHub repo](https://github.com/hygraph/hygraph-astro-loader) to report issues and contribute.

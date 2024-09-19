@@ -1,0 +1,77 @@
+---
+title: "Astro x Storyblok: Content Loader"
+authors:
+  - matthew
+description: |
+  We are excited to announce Storyblok as a launch partner for Astro Content Layer.
+publishDate: "September 19, 2024 11:00:00"
+socialImage: "/src/content/blog/_images/storyblok-loader/og-storyblok.webp"
+coverImage: "/src/content/blog/_images/storyblok-loader/blog-post-storyblok.webp"
+lang: "en"
+---
+
+import Blockquote from "/src/components/Blockquote.astro"
+
+We are thrilled to announce that [Storyblok](https://www.storyblok.com/) is a launch partner for the Astro Content Layer API, our new approach to bring remote and CMS data into [content collections](https://docs.astro.build/en/guides/content-collections/). Storyblok is a pioneer in headless CMS, featuring a built-in visual editor. It enables collaboration with marketers without hindering development teams from adopting emerging front-end technologies.
+
+With the content layer you can now combine content from CMSes like Storyblok, alongside your local git-backed Markdown and MDX. With the Storyblok loader, you can sync your remote data in dev and get automatic refreshes as it changes.
+
+## Using the Storyblok loader
+
+To use the new loader (in alpha), first install the `@storyblok/astro` package:
+
+```shell
+npm install @storyblok/astro@alpha
+```
+
+Then import and use the loader inside of your `src/content/config.ts` configuration file:
+
+```ts
+import { storyblokLoader } from "@storyblok/astro";
+import { defineCollection } from "astro:content";
+
+const storyblokCollection = defineCollection({
+  loader: storyblokLoader({
+    accessToken: import.meta.env.STORYBLOK_TOKEN,
+    version: "published",
+  }),
+})
+
+export const collections = {
+  storyblok: storyblokCollection,
+}
+```
+
+And that's it, from here you can query and use collections the same way you would for local collections. Storyblok comes with a `StoryblokComponent` that renders blocks for you. Here's an example of how you might use it in a spread route.
+
+```astro
+---
+import { getCollection } from "astro:content";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { type ISbStoryData } from "@storyblok/astro";
+
+export async function getStaticPaths() {
+  const stories = await getCollection("storyblok");
+
+  return stories.map(({ data }: { data: ISbStoryData }) => {
+    return {
+      params: { slug: data.full_slug },
+      props: { story: data },
+    };
+  });
+}
+
+interface Props {
+  story: ISbStoryData;
+}
+
+const { story } = Astro.props;
+---
+
+<BaseLayout>
+  <StoryblokComponent blok={story.content} />
+</BaseLayout>
+```
+
+See the Astro docs on [content collections](https://docs.astro.build/en/guides/content-collections/) to learn more. Also check out yesterday's [deep dive on the Content Layer API](/blog/content-layer-deep-dive/) to learn how loaders work, and how you can build your own, and [the in alpha Storyblok's loader GitHub repo](https://github.com/storyblok/storyblok-astro) to report issues and contribute.
