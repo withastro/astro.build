@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@gnuechtel/astro-adapter-azure
 repoUrl: https://github.com/gnuechtel/astro-adapter-azure
 homepageUrl: https://github.com/gnuechtel/astro-adapter-azure#readme
 badge: new
-downloads: 416
+downloads: 432
 ---
