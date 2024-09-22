@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-seo
 repoUrl: https://github.com/jonasmerlin/astro-seo
 homepageUrl: https://github.com/jonasmerlin/astro-seo#readme
-downloads: 69267
+downloads: 67816
 image: /assets/integrations/astro-seo.png
 ---
