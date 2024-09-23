@@ -6,9 +6,7 @@ description: Embed tweets in your Astro sites with zero JavaScript on the client
   library. Huge thanks to Vercel and all the contributors of react-tweet.
 categories:
   - css+ui
-  - recent
 npmUrl: https://www.npmjs.com/package/logical-astro-tweet
 homepageUrl: https://www.npmjs.com/package/logical-astro-tweet
-badge: new
 downloads: 41
 ---
