@@ -7,7 +7,8 @@ categories:
   - css+ui
   - recent
 npmUrl: https://www.npmjs.com/package/hono-astro-adapter
-homepageUrl: https://www.npmjs.com/package/hono-astro-adapter
+homepageUrl: https://github.com/JoseDv1/HonoAstroAdapter#readme
 downloads: 425
 badge: new
+repoUrl: https://github.com/JoseDv1/HonoAstroAdapter
 ---

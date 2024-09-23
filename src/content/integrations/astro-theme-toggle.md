@@ -1,7 +1,7 @@
 ---
 name: astro-theme-toggle
 title: astro-theme-toggle
-description: NPM version
+description: Add a ripple-style theme toggle animation to your Astro project with ease
 categories:
   - css+ui
   - recent
