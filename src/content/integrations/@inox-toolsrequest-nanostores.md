@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-nanostores
 homepageUrl: https://www.npmjs.com/package/@inox-tools/request-nanostores
-downloads: 91
+downloads: 89
 ---

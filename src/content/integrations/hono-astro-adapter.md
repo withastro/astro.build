@@ -8,6 +8,6 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/hono-astro-adapter
 homepageUrl: https://www.npmjs.com/package/hono-astro-adapter
-downloads: 468
+downloads: 425
 badge: new
 ---
