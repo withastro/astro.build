@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@traders/google-analytics
 homepageUrl: https://www.npmjs.com/package/@traders/google-analytics
 badge: new
-downloads: 75
+downloads: 79
 ---
