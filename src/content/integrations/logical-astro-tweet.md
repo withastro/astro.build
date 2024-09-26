@@ -8,5 +8,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/logical-astro-tweet
 homepageUrl: https://www.npmjs.com/package/logical-astro-tweet
-downloads: 43
+downloads: 40
 ---
