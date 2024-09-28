@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/astrodtsbuilder
 homepageUrl: https://github.com/matthiesenxyz/astrodtsbuilder
 badge: new
-downloads: 287
+downloads: 301
 ---
