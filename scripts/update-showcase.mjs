@@ -457,6 +457,8 @@ const scraper = new ShowcaseScraper({
 		'https://jerrywski.netlify.app/', // <-- already included as https://jerrywski.dev/
 		// Not Astro - 2024/09/16
 		'https://www.corbado.com/',
+		// Not Astro - 2024/09/30
+		'https://savvyideas.co/', // <-- their docs site is, but main site seems not Astro
 	],
 });
 await scraper.run();
