@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-copy-prod-deps
 repoUrl: https://github.com/TrueWinter/astro-copy-prod-deps
 homepageUrl: https://github.com/TrueWinter/astro-copy-prod-deps#readme
 badge: new
-downloads: 266
+downloads: 268
 ---

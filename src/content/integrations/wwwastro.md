@@ -7,5 +7,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/wwwastro
 homepageUrl: https://www.npmjs.com/package/wwwastro
-downloads: 5
+downloads: 4
 ---
