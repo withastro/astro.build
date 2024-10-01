@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-hyperscript
 repoUrl: https://github.com/adamNewell/astro-hyperscript
 homepageUrl: https://github.com/adamNewell/astro-hyperscript#readme
 badge: new
-downloads: 149
+downloads: 151
 ---

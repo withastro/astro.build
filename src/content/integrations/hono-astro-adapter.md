@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/hono-astro-adapter
 homepageUrl: https://github.com/JoseDv1/HonoAstroAdapter#readme
-downloads: 476
+downloads: 472
 badge: new
 repoUrl: https://github.com/JoseDv1/HonoAstroAdapter
 ---

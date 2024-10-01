@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-runtime-config
 homepageUrl: https://github.com/Dovias/astro-runtime-config
 badge: new
-downloads: 69
+downloads: 72
 ---

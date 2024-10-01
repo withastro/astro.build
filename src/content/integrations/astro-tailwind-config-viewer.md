@@ -8,5 +8,5 @@ categories:
   - toolbar
 npmUrl: https://www.npmjs.com/package/astro-tailwind-config-viewer
 homepageUrl: https://github.com/florian-lefebvre/astro-tailwind-config-viewer
-downloads: 293
+downloads: 292
 ---
