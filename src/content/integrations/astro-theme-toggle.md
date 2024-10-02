@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-theme-toggle
 repoUrl: https://github.com/ocavue/astro-theme-toggle
 homepageUrl: https://github.com/ocavue/astro-theme-toggle#readme
 badge: new
-downloads: 1201
+downloads: 1321
 ---

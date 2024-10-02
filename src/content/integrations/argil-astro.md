@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/argil-astro
 repoUrl: https://gitlab.com/argil-data/argil-astro
 homepageUrl: https://gitlab.com/argil-data/argil-astro#readme
 badge: new
-downloads: 345
+downloads: 346
 ---

@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/position-component
 repoUrl: https://github.com/sacarvy/astro-components
 homepageUrl: https://github.com/sacarvy/astro-components/tree/master/position-component
-downloads: 9
+downloads: 3
 ---
