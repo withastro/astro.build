@@ -7,5 +7,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@inox-tools/content-utils
 homepageUrl: https://www.npmjs.com/package/@inox-tools/content-utils
-downloads: 299
+downloads: 312
 ---
