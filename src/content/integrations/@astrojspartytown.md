@@ -3,7 +3,6 @@ name: "@astrojs/partytown"
 title: "@astrojs/partytown"
 description: Use Partytown to move scripts into a web worker in your Astro project
 categories:
-  - css+ui
   - analytics
   - performance+seo
   - official

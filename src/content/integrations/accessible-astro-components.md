@@ -3,7 +3,6 @@ name: accessible-astro-components
 title: accessible-astro-components
 description: A set of Accessible, easy to use, Front-end UI Components for Astro.
 categories:
-  - css+ui
   - accessibility
 npmUrl: https://www.npmjs.com/package/accessible-astro-components
 image: /assets/integrations/accessible-astro-components.png

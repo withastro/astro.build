@@ -3,7 +3,6 @@ name: astro-page-insight
 title: astro-page-insight
 description: Shows everything to improve from Lighthouse results directly on the page.
 categories:
-  - css+ui
   - accessibility
   - performance+seo
   - toolbar

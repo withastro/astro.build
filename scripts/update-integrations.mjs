@@ -49,6 +49,10 @@ async function getIntegrationFiles() {
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
+	if (keywordCategories.length === 0) {
+		keywordCategories.push('css+ui');
+	}
+
 	const toolbar = getToolbarPackagePriority(pkg);
 	const official = isOfficial(pkg);
 

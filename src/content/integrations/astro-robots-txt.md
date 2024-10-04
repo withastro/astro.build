@@ -3,7 +3,6 @@ name: astro-robots-txt
 title: astro-robots-txt
 description: Generate a robots.txt for Astro
 categories:
-  - css+ui
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-robots-txt
 repoUrl: https://github.com/alextim/astro-lib

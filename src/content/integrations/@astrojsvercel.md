@@ -3,7 +3,6 @@ name: "@astrojs/vercel"
 title: "@astrojs/vercel"
 description: Deploy your site to Vercel
 categories:
-  - css+ui
   - adapters
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/vercel

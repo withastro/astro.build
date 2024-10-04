@@ -3,7 +3,6 @@ name: astro-imagetools
 title: astro-imagetools
 description: Image Optimization tools for the Astro JS framework
 categories:
-  - css+ui
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-imagetools
 repoUrl: https://github.com/RafidMuhymin/astro-imagetools

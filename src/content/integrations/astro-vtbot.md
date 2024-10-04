@@ -3,7 +3,6 @@ name: astro-vtbot
 title: astro-vtbot
 description: The 👜 Bag of Tricks ✨ for Astro's View Transitions
 categories:
-  - css+ui
   - toolbar
 image: /assets/integrations/bag-of-tricks.svg
 npmUrl: https://www.npmjs.com/package/astro-vtbot

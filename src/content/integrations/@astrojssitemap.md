@@ -3,7 +3,6 @@ name: "@astrojs/sitemap"
 title: "@astrojs/sitemap"
 description: Generate a sitemap for your Astro site
 categories:
-  - css+ui
   - performance+seo
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/sitemap
