@@ -7,6 +7,7 @@ export const IntegrationCategories = new Map([
 	['recent', 'Recently Added'],
 	['official', 'Official'],
 	['frameworks', 'Frameworks'],
+	['loaders', 'Loaders'],
 	['adapters', 'Adapters'],
 	['css+ui', 'CSS + UI'],
 	['performance+seo', 'Performance + SEO'],
