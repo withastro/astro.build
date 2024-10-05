@@ -3,7 +3,7 @@ name: "@storyblok/astro"
 title: "@storyblok/astro"
 description: Official Astro integration for the Storyblok Headless CMS
 categories:
-  - css+ui
+  - other
   - toolbar
 npmUrl: https://www.npmjs.com/package/@storyblok/astro
 image: /assets/integrations/storyblok.svg

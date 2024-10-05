@@ -2,7 +2,7 @@
 name: astro-jquery
 title: astro-jquery
 categories:
-  - css+ui
+  - other
 npmUrl: https://www.npmjs.com/package/astro-jquery
 homepageUrl: https://www.npmjs.com/package/astro-jquery
 downloads: 14

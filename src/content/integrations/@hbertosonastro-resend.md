@@ -3,7 +3,7 @@ name: "@hbertoson/astro-resend"
 title: "@hbertoson/astro-resend"
 description: Astro Resend Integration
 categories:
-  - css+ui
+  - other
   - recent
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-resend
 homepageUrl: "TODO:"
