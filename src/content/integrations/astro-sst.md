@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-sst
 image: /assets/integrations/sst.svg
 repoUrl: https://github.com/sst/sst
 homepageUrl: https://github.com/sst/sst#readme
-downloads: 66834
+downloads: 67772
 ---

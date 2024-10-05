@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/astrolace
 homepageUrl: https://matthiesen.xyz
-downloads: 604
+downloads: 609
 ---

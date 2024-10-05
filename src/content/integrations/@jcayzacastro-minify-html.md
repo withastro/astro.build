@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@jcayzac/astro-minify-html
 repoUrl: https://github.com/jcayzac/copepod-modules
 homepageUrl: https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-minify-html#readme
 badge: new
-downloads: 85
+downloads: 87
 ---
