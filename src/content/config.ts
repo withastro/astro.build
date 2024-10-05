@@ -15,6 +15,7 @@ export const IntegrationCategories = new Map([
 	['accessibility', 'Accessibility'],
 	['toolbar', 'Dev Toolbar'],
 	['utilities', 'Utilities'],
+	['other', 'Others'],
 ] as const);
 
 const seoSchema = z.object({

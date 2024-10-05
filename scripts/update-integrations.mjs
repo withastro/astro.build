@@ -50,7 +50,7 @@ function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
 	if (keywordCategories.length === 0) {
-		keywordCategories.push('css+ui');
+		keywordCategories.push('other');
 	}
 
 	const toolbar = getToolbarPackagePriority(pkg);
