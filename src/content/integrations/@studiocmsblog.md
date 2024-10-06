@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/blog
 repoUrl: https://github.com/astrolicious/studiocms
 homepageUrl: https://studiocms.xyz
 badge: new
-downloads: 220
+downloads: 174
 ---

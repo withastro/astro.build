@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-dump
 homepageUrl: https://www.npmjs.com/package/astro-dump
-downloads: 88
+downloads: 46
 ---

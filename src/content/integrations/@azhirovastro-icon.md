@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@azhirov/astro-icon
 repoUrl: https://github.com/azhirov/astro-icon
 homepageUrl: https://github.com/natemoo-re/astro-icon#readme
 badge: new
-downloads: 132
+downloads: 52
 ---
