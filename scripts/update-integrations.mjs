@@ -118,7 +118,7 @@ async function unsafeUpdateAllIntegrations() {
 	const deprecatedIntegrations = [];
 
 	// loop through all integrations already published to the catalog
-	for (const entry of entries) {
+	await Promise.all(entries.map(async entry => {
 		const { data } = matter.read(entry);
 		existingIntegrations.add(data.name);
 
@@ -144,14 +144,14 @@ async function unsafeUpdateAllIntegrations() {
 ${frontmatter}---\n`,
 			);
 		}
-	}
+	}));
 
 	// find new integrations that haven't been published yet
 	const newIntegrations = Array.from(searchResults.keys()).filter(
 		(pkg) => !existingIntegrations.has(pkg),
 	);
 
-	for (const entry of newIntegrations) {
+	await Promise.all(newIntegrations.map(async (entry) => {
 		const details = await fetchWithOverrides(entry);
 
 		const frontmatter = yaml.stringify(details);
@@ -167,7 +167,7 @@ ${frontmatter}---\n`,
 			`---
 ${frontmatter}---\n`,
 		);
-	}
+	}));
 
 	updateLastModified();
 
