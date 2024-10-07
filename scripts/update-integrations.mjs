@@ -64,7 +64,12 @@ function normalizePackageDetails(data, pkg) {
 
 	const repoUrl = data.repository?.url && sanitizeGitHubUrl(data.repository.url);
 
-	const homepageUrl = data.homepage || npmUrl;
+	let homepageUrl = npmUrl;
+	// The `homepage` field is user-authored, so sometimes funky values can end up here.
+	// This is just a brief sanity check that things looks vaguely like a URL.
+	if (data.homepage?.toLowerCase().startsWith('https')) {
+		homepageUrl = data.homepage;
+	}
 
 	return {
 		name: data.name,
