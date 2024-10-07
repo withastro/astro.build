@@ -6,7 +6,7 @@ categories:
   - css+ui
   - recent
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-s3
-homepageUrl: "TODO:"
+homepageUrl: https://www.npmjs.com/package/@hbertoson/astro-s3
 badge: new
 downloads: 66
 ---

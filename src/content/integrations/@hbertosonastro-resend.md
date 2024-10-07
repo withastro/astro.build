@@ -6,7 +6,7 @@ categories:
   - css+ui
   - recent
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-resend
-homepageUrl: "TODO:"
+homepageUrl: https://www.npmjs.com/package/@hbertoson/astro-resend
 badge: new
 downloads: 64
 ---
