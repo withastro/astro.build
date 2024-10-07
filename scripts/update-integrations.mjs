@@ -105,7 +105,7 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 }
 
 async function unsafeUpdateAllIntegrations() {
-	const keyword = 'astro-component,withastro';
+	const keyword = 'astro-component,withastro,astro-integration';
 
 	const packagesMap = await searchByKeyword(keyword);
 	const searchResults = new Set(
