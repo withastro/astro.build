@@ -13,7 +13,7 @@ function fetchJson(url) {
 		}
 
 		return await res.json();
-	})
+	});
 }
 
 const API_BASE_URL = 'https://api.npmjs.org/';
