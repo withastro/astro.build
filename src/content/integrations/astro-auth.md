@@ -3,8 +3,8 @@ name: astro-auth
 title: astro-auth
 description: "TODO:"
 categories:
-  - css+ui
+  - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-auth
-homepageUrl: "TODO:"
-downloads: 38
+homepageUrl: https://www.npmjs.com/package/astro-auth
+downloads: 40
 ---

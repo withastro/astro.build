@@ -1,14 +1,19 @@
 import { format, subDays } from 'date-fns';
+import pLimit from 'p-limit';
 
-async function fetchJson(url) {
-	const res = await fetch(url);
+const fetchLimit = pLimit(10);
 
-	if (!res.ok) {
-		console.error(`[${url}] ${res.status} ${res.statusText}`);
-		throw new Error();
-	}
+function fetchJson(url) {
+	return fetchLimit(async () => {
+		const res = await fetch(url);
 
-	return await res.json();
+		if (!res.ok) {
+			console.error(`[${url}] ${res.status} ${res.statusText}`);
+			throw new Error();
+		}
+
+		return await res.json();
+	});
 }
 
 const API_BASE_URL = 'https://api.npmjs.org/';

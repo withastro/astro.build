@@ -4,11 +4,9 @@ title: hono-astro-adapter
 description: This is a simple adapter that allows you to use a Middleware to
   handle the SSR of your Astro project.
 categories:
-  - css+ui
-  - recent
+  - uncategorized
 npmUrl: https://www.npmjs.com/package/hono-astro-adapter
 homepageUrl: https://github.com/JoseDv1/HonoAstroAdapter#readme
-downloads: 1
-badge: new
+downloads: 2
 repoUrl: https://github.com/JoseDv1/HonoAstroAdapter
 ---

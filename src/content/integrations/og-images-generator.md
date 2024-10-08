@@ -6,10 +6,9 @@ description: |-
   Extract metadata from HTML pages. No headless browser involved.
   Comes as a CLI, API or plugins.
 categories:
-  - css+ui
   - performance+seo
 npmUrl: https://www.npmjs.com/package/og-images-generator
 repoUrl: https://github.com/JulianCataldo/og-images-generator
 homepageUrl: https://github.com/JulianCataldo/og-images-generator#readme
-downloads: 207
+downloads: 214
 ---

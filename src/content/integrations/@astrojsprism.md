@@ -3,12 +3,12 @@ name: "@astrojs/prism"
 title: "@astrojs/prism"
 description: Add Prism syntax highlighting support to your Astro site
 categories:
-  - css+ui
+  - uncategorized
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/prism
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/reference/api-reference/#prism-
-downloads: 1096995
+downloads: 1122784
 downloadFactor: 0.0005
 official: true
 ---

@@ -4,8 +4,8 @@ title: "@inox-tools/content-utils"
 description: Utilities to work with content collections on an Astro project from
   an integration or library.
 categories:
-  - css+ui
+  - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/content-utils
 homepageUrl: https://www.npmjs.com/package/@inox-tools/content-utils
-downloads: 508
+downloads: 530
 ---

@@ -3,7 +3,6 @@ name: "@gnuechtel/astro-adapter-azure"
 title: "@gnuechtel/astro-adapter-azure"
 description: Deploy your site to Azure using SWA
 categories:
-  - css+ui
   - adapters
   - recent
 npmUrl: https://www.npmjs.com/package/@gnuechtel/astro-adapter-azure

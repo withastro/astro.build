@@ -49,6 +49,10 @@ async function getIntegrationFiles() {
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
+	if (keywordCategories.length === 0) {
+		keywordCategories.push('uncategorized');
+	}
+
 	const toolbar = getToolbarPackagePriority(pkg);
 	const official = isOfficial(pkg);
 
@@ -64,7 +68,12 @@ function normalizePackageDetails(data, pkg) {
 
 	const repoUrl = data.repository?.url && sanitizeGitHubUrl(data.repository.url);
 
-	const homepageUrl = data.homepage || npmUrl;
+	let homepageUrl = npmUrl;
+	// The `homepage` field is user-authored, so sometimes funky values can end up here.
+	// This is just a brief sanity check that things looks vaguely like a URL.
+	if (data.homepage?.toLowerCase().startsWith('https')) {
+		homepageUrl = data.homepage;
+	}
 
 	return {
 		name: data.name,
@@ -100,7 +109,7 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 }
 
 async function unsafeUpdateAllIntegrations() {
-	const keyword = 'astro-component,withastro';
+	const keyword = 'astro-component,withastro,astro-integration';
 
 	const packagesMap = await searchByKeyword(keyword);
 	const searchResults = new Set(
@@ -113,56 +122,60 @@ async function unsafeUpdateAllIntegrations() {
 	const deprecatedIntegrations = [];
 
 	// loop through all integrations already published to the catalog
-	for (const entry of entries) {
-		const { data } = matter.read(entry);
-		existingIntegrations.add(data.name);
+	await Promise.all(
+		entries.map(async (entry) => {
+			const { data } = matter.read(entry);
+			existingIntegrations.add(data.name);
 
-		if (!searchResults.has(data.name)) {
-			// the integration was deprecated or removed from NPM
-			deprecatedIntegrations.push(data.name);
-			fs.rmSync(entry);
-		} else {
-			// fetch the latest NPM data, keeping any local overrides like description or icon
-			// skipping download counts here since existing integrations will be updated
-			// automatically in a separate GitHub Action.
-			const details = await fetchWithOverrides(data.name, false);
+			if (!searchResults.has(data.name)) {
+				// the integration was deprecated or removed from NPM
+				deprecatedIntegrations.push(data.name);
+				fs.rmSync(entry);
+			} else {
+				// fetch the latest NPM data, keeping any local overrides like description or icon
+				// skipping download counts here since existing integrations will be updated
+				// automatically in a separate GitHub Action.
+				const details = await fetchWithOverrides(data.name, false);
 
-			const frontmatter = yaml.stringify({
-				...data,
-				...details,
-				badges: undefined,
-			});
+				const frontmatter = yaml.stringify({
+					...data,
+					...details,
+					badges: undefined,
+				});
 
-			fs.writeFileSync(
-				entry,
-				`---
+				fs.writeFileSync(
+					entry,
+					`---
 ${frontmatter}---\n`,
-			);
-		}
-	}
+				);
+			}
+		}),
+	);
 
 	// find new integrations that haven't been published yet
 	const newIntegrations = Array.from(searchResults.keys()).filter(
 		(pkg) => !existingIntegrations.has(pkg),
 	);
 
-	for (const entry of newIntegrations) {
-		const details = await fetchWithOverrides(entry);
+	await Promise.all(
+		newIntegrations.map(async (entry) => {
+			const details = await fetchWithOverrides(entry);
 
-		const frontmatter = yaml.stringify(details);
+			const frontmatter = yaml.stringify(details);
 
-		const slug = slugify(entry);
-		const file = path.resolve(
-			path.dirname(fileURLToPath(import.meta.url)),
-			`../src/content/integrations/${slug}.md`,
-		);
+			const slug = slugify(entry);
+			const file = path.resolve(
+				path.dirname(fileURLToPath(import.meta.url)),
+				`../src/content/integrations/${slug}.md`,
+			);
 
-		fs.writeFileSync(
-			file,
-			`---
+			fs.writeFileSync(
+				file,
+				`---
 ${frontmatter}---\n`,
-		);
-	}
+			);
+		}),
+	);
 
 	updateLastModified();
 

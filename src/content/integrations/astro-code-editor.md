@@ -6,9 +6,9 @@ description: |-
   Specifically tailored for each language.
   Powered by the Monaco Editor and helpers.
 categories:
-  - css+ui
+  - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-code-editor
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://code.juliancataldo.com/component/astro-code-editor
-downloads: 4
+downloads: 7
 ---
