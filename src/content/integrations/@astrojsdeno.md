@@ -3,7 +3,6 @@ name: "@astrojs/deno"
 title: "@astrojs/deno"
 description: Deploy your site to a Deno server
 categories:
-  - css+ui
   - adapters
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/deno

@@ -1,11 +1,10 @@
 ---
 name: "@inox-tools/astro-tests"
 title: "@inox-tools/astro-tests"
-description: <p align="center">     <img alt="InoxTools" width="350px"
-  src="https://github.com/Fryuni/inox-tools/blob/main/assets/shield.png?raw=true"/>
-  </p>
+description: Utilities for testing your own Astro integrations and libraries
+  based on Astro's own testing tools
 categories:
-  - css+ui
+  - utilities
   - recent
 npmUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
 homepageUrl: https://www.npmjs.com/package/@inox-tools/astro-tests

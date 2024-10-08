@@ -3,7 +3,6 @@ name: "@aqzhyi/google-analytics"
 title: "@aqzhyi/google-analytics"
 description: Google Analytics (GA4) library
 categories:
-  - css+ui
   - analytics
   - recent
 npmUrl: https://www.npmjs.com/package/@aqzhyi/google-analytics

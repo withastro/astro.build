@@ -50,7 +50,7 @@ function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
 	if (keywordCategories.length === 0) {
-		keywordCategories.push('other');
+		keywordCategories.push('uncategorized');
 	}
 
 	const toolbar = getToolbarPackagePriority(pkg);
