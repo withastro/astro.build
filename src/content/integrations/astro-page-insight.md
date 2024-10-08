@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-page-insight
 repoUrl: https://github.com/ktym4a/astro-page-insight
 homepageUrl: https://astro-page-insight.pages.dev/
-downloads: 1872
+downloads: 1900
 ---

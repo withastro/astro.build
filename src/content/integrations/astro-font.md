@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-font
 homepageUrl: https://launchfa.st/features/astro-font
-downloads: 14332
+downloads: 14842
 repoUrl: https://github.com/rishi-raj-jain/astro-font
 ---
