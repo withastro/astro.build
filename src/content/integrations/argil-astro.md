@@ -3,7 +3,6 @@ name: argil-astro
 title: argil-astro
 description: Astro UI Components Kit from argil data agency
 categories:
-  - css+ui
   - accessibility
   - recent
 npmUrl: https://www.npmjs.com/package/argil-astro

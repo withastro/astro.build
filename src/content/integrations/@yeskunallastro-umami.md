@@ -3,7 +3,6 @@ name: "@yeskunall/astro-umami"
 title: "@yeskunall/astro-umami"
 description: Add Umami Analytics to your Astro website
 categories:
-  - css+ui
   - analytics
   - recent
 npmUrl: https://www.npmjs.com/package/@yeskunall/astro-umami

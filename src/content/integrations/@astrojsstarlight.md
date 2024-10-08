@@ -3,7 +3,7 @@ name: "@astrojs/starlight"
 title: "@astrojs/starlight"
 description: Build beautiful, high-performance documentation websites with Astro
 categories:
-  - css+ui
+  - uncategorized
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/starlight
 image: /assets/integrations/starlight.svg

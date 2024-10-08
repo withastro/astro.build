@@ -3,7 +3,6 @@ name: "@galactiks/astro-integration"
 title: "@galactiks/astro-integration"
 description: Galactiks Astro integration
 categories:
-  - css+ui
   - analytics
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@galactiks/astro-integration
