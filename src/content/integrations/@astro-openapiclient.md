@@ -5,7 +5,7 @@ description: |-
   Generate helpers for fetching an OpenAPI endpoint.
   Supports vanilla fetchers, React Queries, Nano stores…
 categories:
-  - css+ui
+  - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/client
 homepageUrl: https://www.npmjs.com/package/@astro-openapi/client
 downloads: 30

@@ -3,7 +3,7 @@ name: "@jcayzac/astro-markdown-tree-dump"
 title: "@jcayzac/astro-markdown-tree-dump"
 description: Dumps rehype and remark trees to files
 categories:
-  - css+ui
+  - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/@jcayzac/astro-markdown-tree-dump
 repoUrl: https://github.com/jcayzac/copepod-modules

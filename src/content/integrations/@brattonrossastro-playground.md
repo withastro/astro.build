@@ -2,7 +2,7 @@
 name: "@brattonross/astro-playground"
 title: "@brattonross/astro-playground"
 categories:
-  - css+ui
+  - uncategorized
 npmUrl: https://www.npmjs.com/package/@brattonross/astro-playground
 repoUrl: https://github.com/brattonross/astro-playground
 homepageUrl: https://github.com/brattonross/astro-playground
