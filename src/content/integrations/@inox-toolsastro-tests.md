@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
 homepageUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
 badge: new
-downloads: 428
+downloads: 439
 ---
