@@ -6,7 +6,6 @@ import slugify from 'slugify';
 import glob from 'tiny-glob';
 import * as yaml from 'yaml';
 import {
-	allowlist,
 	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
@@ -17,10 +16,12 @@ import {
 import { markdownToPlainText } from './markdown.mjs';
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from './npm.mjs';
 
+/** @param {string} pkg */
 function isOfficial(pkg) {
 	return pkg.startsWith('@astrojs/');
 }
 
+/** @param {string} url */
 function sanitizeGitHubUrl(url) {
 	return url
 		.replace('git+', '')
@@ -46,6 +47,10 @@ async function getIntegrationFiles() {
 	});
 }
 
+/**
+ * @param {Awaited<ReturnType<typeof fetchDetailsForPackage>>} data
+ * @param {string} pkg
+ */
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
@@ -87,6 +92,7 @@ function normalizePackageDetails(data, pkg) {
 	};
 }
 
+/** @param {string} pkg */
 async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const details = await fetchDetailsForPackage(pkg);
 	const integrationOverrides = getOverrides(pkg) || {};
@@ -94,31 +100,25 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const badge = badgeForPackage(details);
 	const toolbar = getToolbarPackagePriority(pkg);
 
-	const newData = {
+	return {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		badge,
 		toolbar,
+		...(includeDownloads ? { downloads: await fetchDownloadsForPackage(pkg) } : {}),
 	};
-
-	if (includeDownloads) {
-		newData.downloads = await fetchDownloadsForPackage(pkg);
-	}
-
-	return newData;
 }
 
 async function unsafeUpdateAllIntegrations() {
 	const keyword = 'astro-component,withastro,astro-integration';
 
 	const packagesMap = await searchByKeyword(keyword);
-	const searchResults = new Set(
-		[...packagesMap.keys(), ...allowlist].filter((pkg) => !blocklist.includes(pkg)),
-	);
+	const searchResults = new Set([...packagesMap.keys()].filter((pkg) => !blocklist.includes(pkg)));
 
 	const entries = await getIntegrationFiles();
 
 	const existingIntegrations = new Set();
+	/** @type {string[]} */
 	const deprecatedIntegrations = [];
 
 	// loop through all integrations already published to the catalog
