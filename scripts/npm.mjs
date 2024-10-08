@@ -1,8 +1,12 @@
+import { z } from 'astro/zod';
 import { format, subDays } from 'date-fns';
 import pLimit from 'p-limit';
 
 const fetchLimit = pLimit(10);
 
+/**
+ * @param {string | URL} url
+ */
 function fetchJson(url) {
 	return fetchLimit(async () => {
 		const res = await fetch(url);
@@ -36,14 +40,38 @@ export async function fetchDownloadsForPackage(pkg) {
 		.catch(() => 0);
 }
 
+const npmRegistrySchema = z.object({
+	name: z.string(),
+	description: z.string().optional(),
+	homepage: z.string().url().optional(),
+	keywords: z.string().array().default([]),
+	repository: z
+		.union([
+			z.string(),
+			// If the package.json’s repo field is an object, convert it to a string:
+			z
+				.object({ url: z.string() })
+				.transform(({ url }) => url),
+		])
+		.optional(),
+	time: z.object({ created: z.string(), modified: z.string() }),
+});
+
 /**
  * Gets details for a package from the npm registry
  *
  * @param {string} pkg Name of the package published to npm
- * @returns {Promise<any>} JSON data as returned by the npm registry
+ * @returns JSON data as returned by the npm registry
  */
-export function fetchDetailsForPackage(pkg) {
-	return fetchJson(`${REGISTRY_BASE_URL}${pkg}`);
+export async function fetchDetailsForPackage(pkg) {
+	const registryData = await fetchJson(`${REGISTRY_BASE_URL}${pkg}`);
+	const result = npmRegistrySchema.safeParse(registryData);
+	if (result.success) {
+		return result.data;
+	}
+	const { message, path } = result.error.issues[0];
+	console.error(`Failed to parse metadata for "${pkg}": ${message} at ${path.join('.')}`);
+	return;
 }
 
 /**
@@ -62,8 +90,8 @@ export async function searchByKeyword(keyword, ranking = 'quality') {
 		const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`);
 		url.searchParams.set('text', `keywords:${keyword}`);
 		url.searchParams.set('ranking', ranking);
-		url.searchParams.set('size', PAGE_SIZE);
-		url.searchParams.set('from', page++ * PAGE_SIZE);
+		url.searchParams.set('size', String(PAGE_SIZE));
+		url.searchParams.set('from', String(page++ * PAGE_SIZE));
 
 		const results = await fetchJson(url.toString());
 

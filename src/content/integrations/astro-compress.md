@@ -4,6 +4,7 @@ title: astro-compress
 description: 🗜️ Compress —
 categories:
   - css+ui
+  - media
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-compress
 repoUrl: https://github.com/PlayForm/Compress

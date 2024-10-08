@@ -4,6 +4,7 @@ title: "@playform/compress"
 description: 🗜️ Compress —
 categories:
   - css+ui
+  - media
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@playform/compress
 image: /assets/integrations/@playform/compress.svg

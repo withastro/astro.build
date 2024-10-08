@@ -6,7 +6,6 @@ import slugify from 'slugify';
 import glob from 'tiny-glob';
 import * as yaml from 'yaml';
 import {
-	allowlist,
 	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
@@ -17,10 +16,12 @@ import {
 import { markdownToPlainText } from './markdown.mjs';
 import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from './npm.mjs';
 
+/** @param {string} pkg */
 function isOfficial(pkg) {
 	return pkg.startsWith('@astrojs/');
 }
 
+/** @param {string} url */
 function sanitizeGitHubUrl(url) {
 	return url
 		.replace('git+', '')
@@ -46,6 +47,10 @@ async function getIntegrationFiles() {
 	});
 }
 
+/**
+ * @param {NonNullable<Awaited<ReturnType<typeof fetchDetailsForPackage>>>} data
+ * @param {string} pkg
+ */
 function normalizePackageDetails(data, pkg) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
@@ -66,7 +71,7 @@ function normalizePackageDetails(data, pkg) {
 
 	const npmUrl = `https://www.npmjs.com/package/${pkg}`;
 
-	const repoUrl = data.repository?.url && sanitizeGitHubUrl(data.repository.url);
+	const repoUrl = data.repository && sanitizeGitHubUrl(data.repository);
 
 	let homepageUrl = npmUrl;
 	// The `homepage` field is user-authored, so sometimes funky values can end up here.
@@ -87,38 +92,34 @@ function normalizePackageDetails(data, pkg) {
 	};
 }
 
+/** @param {string} pkg */
 async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const details = await fetchDetailsForPackage(pkg);
+	if (!details) return;
 	const integrationOverrides = getOverrides(pkg) || {};
 
 	const badge = badgeForPackage(details);
 	const toolbar = getToolbarPackagePriority(pkg);
 
-	const newData = {
+	return {
 		...normalizePackageDetails(details, pkg),
 		...integrationOverrides,
 		badge,
 		toolbar,
+		...(includeDownloads ? { downloads: await fetchDownloadsForPackage(pkg) } : {}),
 	};
-
-	if (includeDownloads) {
-		newData.downloads = await fetchDownloadsForPackage(pkg);
-	}
-
-	return newData;
 }
 
 async function unsafeUpdateAllIntegrations() {
 	const keyword = 'astro-component,withastro,astro-integration';
 
 	const packagesMap = await searchByKeyword(keyword);
-	const searchResults = new Set(
-		[...packagesMap.keys(), ...allowlist].filter((pkg) => !blocklist.includes(pkg)),
-	);
+	const searchResults = new Set([...packagesMap.keys()].filter((pkg) => !blocklist.includes(pkg)));
 
 	const entries = await getIntegrationFiles();
 
 	const existingIntegrations = new Set();
+	/** @type {string[]} */
 	const deprecatedIntegrations = [];
 
 	// loop through all integrations already published to the catalog
@@ -136,6 +137,7 @@ async function unsafeUpdateAllIntegrations() {
 				// skipping download counts here since existing integrations will be updated
 				// automatically in a separate GitHub Action.
 				const details = await fetchWithOverrides(data.name, false);
+				if (!details) return;
 
 				const frontmatter = yaml.stringify({
 					...data,
@@ -160,6 +162,7 @@ ${frontmatter}---\n`,
 	await Promise.all(
 		newIntegrations.map(async (entry) => {
 			const details = await fetchWithOverrides(entry);
+			if (!details) return;
 
 			const frontmatter = yaml.stringify(details);
 
