@@ -3,6 +3,7 @@ name: astro-icon
 title: astro-icon
 description: This Astro integration provides a straight-forward `Icon` component for Astro.
 categories:
+  - media
   - css+ui
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-icon

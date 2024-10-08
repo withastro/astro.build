@@ -3,6 +3,7 @@ name: "@senseimarv/astro-icon"
 title: "@senseimarv/astro-icon"
 description: This is a fork of Astro Icon with @iconify/json as peer dependency.
 categories:
+  - media
   - css+ui
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@senseimarv/astro-icon

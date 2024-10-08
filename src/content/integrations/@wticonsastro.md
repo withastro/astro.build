@@ -7,4 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@wticons/astro
 homepageUrl: https://www.npmjs.com/package/@wticons/astro
 downloads: 22
+repoUrl: https://github.com/OzzyCzech/wticons
 ---
