@@ -73,7 +73,7 @@ function normalizePackageDetails(data, pkg) {
 
 	const npmUrl = `https://www.npmjs.com/package/${pkg}`;
 
-	const repoUrl = data.repository?.url && sanitizeGitHubUrl(data.repository.url);
+	const repoUrl = data.repository && sanitizeGitHubUrl(data.repository);
 
 	let homepageUrl = npmUrl;
 	// The `homepage` field is user-authored, so sometimes funky values can end up here.

@@ -43,9 +43,17 @@ export async function fetchDownloadsForPackage(pkg) {
 const npmRegistrySchema = z.object({
 	name: z.string(),
 	description: z.string().optional(),
-	homepage: z.string().optional(),
+	homepage: z.string().url().optional(),
 	keywords: z.string().array().default([]),
-	repository: z.object({ url: z.string() }).optional(),
+	repository: z
+		.union([
+			z.string().url(),
+			// If the package.json’s repo field is an object, convert it to a string:
+			z
+				.object({ url: z.string().url() })
+				.transform(({ url }) => url),
+		])
+		.optional(),
 	time: z.object({ created: z.string(), modified: z.string() }),
 });
 
