@@ -3,7 +3,6 @@ name: "@lagon/astro"
 title: "@lagon/astro"
 description: Astro integration to deploy your site to Lagon
 categories:
-  - css+ui
   - adapters
 npmUrl: https://www.npmjs.com/package/@lagon/astro
 image: /assets/integrations/lagon-astro.png

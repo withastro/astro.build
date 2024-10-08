@@ -4,7 +4,6 @@ title: "@inlang/paraglide-astro"
 description: A fully type-safe i18n library specifically designed for partial
   hydration patterns like Astro's islands.
 categories:
-  - css+ui
   - performance+seo
   - accessibility
 npmUrl: https://www.npmjs.com/package/@inlang/paraglide-astro

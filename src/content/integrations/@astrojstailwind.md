@@ -3,7 +3,7 @@ name: "@astrojs/tailwind"
 title: "@astrojs/tailwind"
 description: Use Tailwind CSS to style your Astro site
 categories:
-  - css+ui
+  - uncategorized
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/tailwind
 image: /assets/integrations/tailwind.svg

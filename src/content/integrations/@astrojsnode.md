@@ -3,7 +3,6 @@ name: "@astrojs/node"
 title: "@astrojs/node"
 description: Deploy your site to a Node.js server
 categories:
-  - css+ui
   - adapters
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/node

@@ -3,7 +3,6 @@ name: "@astrojs/netlify"
 title: "@astrojs/netlify"
 description: Deploy your site to Netlify
 categories:
-  - css+ui
   - adapters
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/netlify

@@ -45,11 +45,9 @@ export function getOverrides(packageName) {
  * @returns {String[]}
  */
 export function getCategoriesForKeyword(keyword) {
-	const categories = keywordToCategories.has(keyword)
+	return keywordToCategories.has(keyword)
 		? Array.from(keywordToCategories.get(keyword))
 		: [];
-
-	return categories.length ? categories : ['css+ui'];
 }
 
 export function badgeForPackage(pkg) {
