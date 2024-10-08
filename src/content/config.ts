@@ -13,6 +13,7 @@ export const IntegrationCategories = new Map([
 	['performance+seo', 'Performance + SEO'],
 	['analytics', 'Analytics'],
 	['accessibility', 'Accessibility'],
+	['media', 'Images + Media'],
 	['toolbar', 'Dev Toolbar'],
 	['utilities', 'Utilities'],
 	['uncategorized', 'Uncategorized'],
