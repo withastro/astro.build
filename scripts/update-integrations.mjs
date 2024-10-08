@@ -50,7 +50,7 @@ async function getIntegrationFiles() {
 }
 
 /**
- * @param {Awaited<ReturnType<typeof fetchDetailsForPackage>>} data
+ * @param {NonNullable<Awaited<ReturnType<typeof fetchDetailsForPackage>>>} data
  * @param {string} pkg
  */
 function normalizePackageDetails(data, pkg) {
@@ -97,6 +97,7 @@ function normalizePackageDetails(data, pkg) {
 /** @param {string} pkg */
 async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const details = await fetchDetailsForPackage(pkg);
+	if (!details) return;
 	const { categories, ...integrationOverrides } = getOverrides(pkg) || {};
 
 	const badge = badgeForPackage(details);
@@ -145,6 +146,7 @@ async function unsafeUpdateAllIntegrations() {
 				// skipping download counts here since existing integrations will be updated
 				// automatically in a separate GitHub Action.
 				const details = await fetchWithOverrides(data.name, false);
+				if (!details) return;
 
 				const frontmatter = yaml.stringify({
 					...data,
@@ -169,6 +171,7 @@ ${frontmatter}---\n`,
 	await Promise.all(
 		newIntegrations.map(async (entry) => {
 			const details = await fetchWithOverrides(entry);
+			if (!details) return;
 
 			const frontmatter = yaml.stringify(details);
 

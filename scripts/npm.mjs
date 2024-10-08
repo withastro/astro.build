@@ -47,10 +47,10 @@ const npmRegistrySchema = z.object({
 	keywords: z.string().array().default([]),
 	repository: z
 		.union([
-			z.string().url(),
+			z.string(),
 			// If the package.json’s repo field is an object, convert it to a string:
 			z
-				.object({ url: z.string().url() })
+				.object({ url: z.string() })
 				.transform(({ url }) => url),
 		])
 		.optional(),
@@ -65,7 +65,13 @@ const npmRegistrySchema = z.object({
  */
 export async function fetchDetailsForPackage(pkg) {
 	const registryData = await fetchJson(`${REGISTRY_BASE_URL}${pkg}`);
-	return npmRegistrySchema.parse(registryData);
+	const result = npmRegistrySchema.safeParse(registryData);
+	if (result.success) {
+		return result.data;
+	}
+	const { message, path } = result.error.issues[0];
+	console.error(`Failed to parse metadata for "${pkg}": ${message} at ${path.join('.')}`);
+	return;
 }
 
 /**
