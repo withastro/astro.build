@@ -1,3 +1,5 @@
+// @ts-check
+
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -95,13 +97,20 @@ function normalizePackageDetails(data, pkg) {
 /** @param {string} pkg */
 async function fetchWithOverrides(pkg, includeDownloads = true) {
 	const details = await fetchDetailsForPackage(pkg);
-	const integrationOverrides = getOverrides(pkg) || {};
+	const { categories, ...integrationOverrides } = getOverrides(pkg) || {};
 
 	const badge = badgeForPackage(details);
 	const toolbar = getToolbarPackagePriority(pkg);
+	const normalizedDetails = normalizePackageDetails(details, pkg);
+
+	for (const category of categories || []) {
+		if (!normalizedDetails.categories.includes(category)) {
+			normalizedDetails.categories.push(category);
+		}
+	}
 
 	return {
-		...normalizePackageDetails(details, pkg),
+		...normalizedDetails,
 		...integrationOverrides,
 		badge,
 		toolbar,
