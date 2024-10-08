@@ -4,9 +4,9 @@ title: astro-framework7
 description: Open source framework to develop mobile, desktop or web apps with
   native look and feel.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/astro-framework7
 repoUrl: https://github.com/grenovles/astro-framework7
 homepageUrl: https://github.com/grenovales/astro-framework7
-downloads: 24
+downloads: 18
 ---

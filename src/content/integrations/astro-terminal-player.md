@@ -9,9 +9,9 @@ description: >-
 
   Comes with full asciinema player settings support, typings and docs hints.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/astro-terminal-player
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://code.juliancataldo.com/component/astro-terminal-player
-downloads: 118
+downloads: 107
 ---

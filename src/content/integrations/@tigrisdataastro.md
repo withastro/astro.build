@@ -3,10 +3,10 @@ name: "@tigrisdata/astro"
 title: "@tigrisdata/astro"
 description: Access NoSQL data from your Astro site.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/@tigrisdata/astro
 repoUrl: https://github.com/tigrisdata/tigris-astro
 homepageUrl: https://github.com/tigrisdata/tigris-astro#readme
-downloads: 10
+downloads: 8
 image: /assets/integrations/tigris.svg
 ---

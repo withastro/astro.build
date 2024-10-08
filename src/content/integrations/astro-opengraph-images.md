@@ -3,11 +3,11 @@ name: astro-opengraph-images
 title: astro-opengraph-images
 description: Generate Open Graph images for your Astro site.
 categories:
-  - performance+seo
   - css+ui
+  - performance+seo
   - frameworks
 npmUrl: https://www.npmjs.com/package/astro-opengraph-images
 homepageUrl: https://github.com/shepherdjerred/astro-opengraph-images
-downloads: 339
+downloads: 500
 repoUrl: https://github.com/shepherdjerred/astro-opengraph-images
 ---

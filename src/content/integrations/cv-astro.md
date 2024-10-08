@@ -4,9 +4,9 @@ title: cv-astro
 description: Astro component to display a print-friendly and minimalist CV
   inspired by BartoszJarocki/cv
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/cv-astro
 repoUrl: https://github.com/tribal2/cv-astro
 homepageUrl: https://github.com/tribal2/cv-astro
-downloads: 4
+downloads: 5
 ---

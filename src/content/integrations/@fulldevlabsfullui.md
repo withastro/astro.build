@@ -3,8 +3,8 @@ name: "@fulldevlabs/fullui"
 title: "@fulldevlabs/fullui"
 description: A component library built for Astro
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/@fulldevlabs/fullui
 homepageUrl: https://ui.full.dev/
-downloads: 19
+downloads: 17
 ---

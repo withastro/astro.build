@@ -3,9 +3,9 @@ name: sifra
 title: sifra
 description: A toolkit for writing interactive tutorials
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/sifra
 repoUrl: https://github.com/yonkeltron/sifra
 homepageUrl: https://github.com/yonkeltron/sifra#readme
-downloads: 9
+downloads: 7
 ---

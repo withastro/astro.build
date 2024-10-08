@@ -3,8 +3,8 @@ name: "@voxgig/podw-astro"
 title: "@voxgig/podw-astro"
 description: Astro wrapper to use the Podmind widget
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/@voxgig/podw-astro
 homepageUrl: https://www.npmjs.com/package/@voxgig/podw-astro
-downloads: 35
+downloads: 29
 ---

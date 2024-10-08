@@ -3,9 +3,9 @@ name: astro-svg-icon
 title: astro-svg-icon
 description: Astro component for SVG icons
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/astro-svg-icon
 repoUrl: https://github.com/karesztrk/astro-svg-icon
 homepageUrl: https://karolytorok.netlify.app/blog/styling-an-svg/
-downloads: 11
+downloads: 10
 ---

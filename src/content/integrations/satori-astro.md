@@ -4,8 +4,8 @@ title: satori-astro
 description: Astro integration and utilities to help you generate OpenGraph
   images using satori.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/satori-astro
 homepageUrl: https://github.com/florian-lefebvre/satori-astro
-downloads: 310
+downloads: 236
 ---

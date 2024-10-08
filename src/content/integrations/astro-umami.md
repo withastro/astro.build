@@ -3,8 +3,8 @@ name: astro-umami
 title: astro-umami
 description: "TODO:"
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/astro-umami
-homepageUrl: "TODO:"
-downloads: 2
+homepageUrl: https://www.npmjs.com/package/astro-umami
+downloads: 3
 ---

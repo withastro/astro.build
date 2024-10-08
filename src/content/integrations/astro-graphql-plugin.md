@@ -5,9 +5,9 @@ description: Astro plugin generating Markdown documentation from a GraphQL
   schema. This plugin is modified off the docusaurus-graphql-plugin by Gabin
   Aureche. If, for some reason, you
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/astro-graphql-plugin
 homepageUrl: https://github.com/interledger/astro-graphql-plugin#readme
-downloads: 1620
+downloads: 1501
 repoUrl: https://github.com/interledger/astro-graphql-plugin
 ---

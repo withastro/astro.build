@@ -3,9 +3,9 @@ name: "@julian_cataldo/astro-lightbox"
 title: "@julian_cataldo/astro-lightbox"
 description: Simple lightbox component.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/@julian_cataldo/astro-lightbox
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://code.juliancataldo.com/component/astro-lightbox
-downloads: 215
+downloads: 213
 ---

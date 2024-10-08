@@ -3,9 +3,9 @@ name: "@altano/astro-opengraph-image"
 title: "@altano/astro-opengraph-image"
 description: Render Open Graph Images from Astro Components
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/@altano/astro-opengraph-image
 repoUrl: https://github.com/altano/npm-packages
 homepageUrl: https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph-image
-downloads: 13
+downloads: 11
 ---

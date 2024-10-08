@@ -6,9 +6,9 @@ description: Astro component for using pandoc to convert content. This allows
   https://pandoc.org/MANUAL.html#general-options -
   [Demo](https://github.com/trashhalo/astro-pandoc/blob/main/src/components/Demo.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/astro-pandoc
 repoUrl: https://github.com/trashhalo/astro-pandoc
 homepageUrl: https://github.com/trashhalo/astro-pandoc#readme
-downloads: 9
+downloads: 6
 ---

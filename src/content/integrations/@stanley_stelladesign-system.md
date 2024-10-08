@@ -2,8 +2,8 @@
 name: "@stanley_stella/design-system"
 title: "@stanley_stella/design-system"
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/@stanley_stella/design-system
 homepageUrl: https://www.npmjs.com/package/@stanley_stella/design-system
-downloads: 21
+downloads: 17
 ---

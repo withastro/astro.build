@@ -3,12 +3,12 @@ name: "@storyblok/astro"
 title: "@storyblok/astro"
 description: Official Astro integration for the Storyblok Headless CMS
 categories:
-  - other
+  - css+ui
   - toolbar
 npmUrl: https://www.npmjs.com/package/@storyblok/astro
 image: /assets/integrations/storyblok.svg
 repoUrl: https://github.com/storyblok/storyblok-astro
 homepageUrl: https://github.com/storyblok/storyblok-astro
-downloads: 14820
+downloads: 13776
 toolbar: 1
 ---

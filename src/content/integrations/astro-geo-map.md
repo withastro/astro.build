@@ -5,9 +5,9 @@ description: |-
   Embed an interactive map in your webpage.
   Using Leaflet.js under the hood.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/astro-geo-map
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://code.juliancataldo.com/component/astro-geo-map
-downloads: 315
+downloads: 295
 ---

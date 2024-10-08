@@ -4,8 +4,8 @@ title: pkg2_accordion_printhey
 description: This is a template for an Astro component library. Use this
   template for writing components to use in multiple projects or publish to NPM.
 categories:
-  - other
+  - css+ui
 npmUrl: https://www.npmjs.com/package/pkg2_accordion_printhey
 homepageUrl: https://www.npmjs.com/package/pkg2_accordion_printhey
-downloads: 3
+downloads: 4
 ---
