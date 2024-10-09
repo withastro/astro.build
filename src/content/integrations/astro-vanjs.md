@@ -7,5 +7,5 @@ categories:
   - frameworks
 npmUrl: https://www.npmjs.com/package/astro-vanjs
 homepageUrl: https://www.npmjs.com/package/astro-vanjs
-downloads: 94
+downloads: 95
 ---
