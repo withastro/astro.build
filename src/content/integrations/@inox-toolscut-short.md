@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/cut-short
 homepageUrl: https://www.npmjs.com/package/@inox-tools/cut-short
 badge: new
-downloads: 223
+downloads: 227
 ---

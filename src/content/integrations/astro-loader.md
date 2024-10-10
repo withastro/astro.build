@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-loader
 repoUrl: https://github.com/adrian-ub/astro-loader
 homepageUrl: https://github.com/adrian-ub/astro-loader#readme
 badge: new
-downloads: 487
+downloads: 490
 ---

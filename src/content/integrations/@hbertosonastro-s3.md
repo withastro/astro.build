@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-s3
 homepageUrl: https://www.npmjs.com/package/@hbertoson/astro-s3
 badge: new
-downloads: 70
+downloads: 72
 ---

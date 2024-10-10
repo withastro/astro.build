@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@philnash/astro-pagination
 repoUrl: https://github.com/philnash/astro-components
 homepageUrl: "https://github.com/philnash/astro-components/tree/main/packages/a\
   stro-pagination "
-downloads: 299
+downloads: 295
 ---
