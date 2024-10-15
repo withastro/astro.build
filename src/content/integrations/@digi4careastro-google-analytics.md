@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@digi4care/astro-google-analytics
 repoUrl: https://github.com/digi4care/astro-google-analytics
 homepageUrl: https://github.com/digi4care/astro-google-analytics
-downloads: 131
+downloads: 128
 ---

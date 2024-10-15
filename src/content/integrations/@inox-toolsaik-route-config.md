@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/aik-route-config
 repoUrl: https://github.com/Fryuni/inox-tools
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 1190
+downloads: 1165
 ---
