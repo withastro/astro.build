@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-resend
 homepageUrl: https://github.com/hkbertoson/astro-integrations/tree/main/packages/astro-resend
 badge: new
-downloads: 134
+downloads: 140
 ---
