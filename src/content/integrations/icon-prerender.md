@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/icon-prerender
 repoUrl: https://github.com/Ernxst/icon-prerender
 homepageUrl: https://github.com/Ernxst/icon-prerender/packages/core
-downloads: 7
+downloads: 6
 ---

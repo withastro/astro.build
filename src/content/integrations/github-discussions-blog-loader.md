@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/github-discussions-blog-loader
 repoUrl: https://github.com/mattbrailsford/github-discussions-blog-loader
 homepageUrl: https://github.com/mattbrailsford/github-discussions-blog-loader
 badge: new
-downloads: 151
+downloads: 153
 ---
