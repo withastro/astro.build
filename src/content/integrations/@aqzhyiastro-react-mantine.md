@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@aqzhyi/astro-react-mantine
 repoUrl: https://github.com/Aqzhyi/oh-my-monorepo
 homepageUrl: https://github.com/Aqzhyi/oh-my-monorepo#readme
 badge: new
-downloads: 190
+downloads: 191
 ---
