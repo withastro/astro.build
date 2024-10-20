@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-auth
 homepageUrl: https://www.npmjs.com/package/astro-auth
-downloads: 34
+downloads: 35
 ---
