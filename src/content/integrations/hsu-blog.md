@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/hsu-blog
 homepageUrl: https://github.com/charles-hsuz/HsuBlog#readme
-downloads: 2
+downloads: 3
 ---

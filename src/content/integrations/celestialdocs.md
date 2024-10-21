@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/celestialdocs
 repoUrl: https://github.com/HYP3R00T/CelestialDocs
 homepageUrl: https://celestialdocs.hyperoot.dev/
 badge: new
-downloads: 29
+downloads: 20
 ---

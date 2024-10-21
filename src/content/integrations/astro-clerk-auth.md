@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-clerk-auth
 repoUrl: https://github.com/panteliselef/astro-with-clerk-auth
 homepageUrl: https://github.com/panteliselef/astro-with-clerk-auth/blob/main/packages/astro-clerk-auth/README.md
-downloads: 780
+downloads: 627
 ---
