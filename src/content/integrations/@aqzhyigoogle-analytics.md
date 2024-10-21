@@ -1,7 +1,7 @@
 ---
 name: "@aqzhyi/google-analytics"
 title: "@aqzhyi/google-analytics"
-description: Google Analytics (GA4) library
+description: Google Analytics (GA4) library for Astro.build
 categories:
   - analytics
   - recent
