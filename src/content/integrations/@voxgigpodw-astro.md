@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@voxgig/podw-astro
 homepageUrl: https://www.npmjs.com/package/@voxgig/podw-astro
-downloads: 17
+downloads: 20
 ---
