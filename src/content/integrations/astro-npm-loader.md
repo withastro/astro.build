@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-npm-loader
 repoUrl: https://github.com/gingerchew/astro-npm-loader
 homepageUrl: https://github.com/gingerchew/astro-npm-loader
 badge: new
-downloads: 240
+downloads: 264
 ---

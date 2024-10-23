@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/dewp
 repoUrl: https://github.com/delucis/dewp
 homepageUrl: https://delucis.github.io/dewp/
 badge: new
-downloads: 310
+downloads: 333
 ---
