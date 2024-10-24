@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-sitemap
 repoUrl: https://github.com/alextim/astro-lib
 homepageUrl: https://github.com/alextim/astro-lib/tree/main/packages/astro-sitemap#readme
-downloads: 1049
+downloads: 1090
 ---

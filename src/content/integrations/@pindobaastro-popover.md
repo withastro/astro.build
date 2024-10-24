@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@pindoba/astro-popover
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/blocks/astro/popover#README.md
 badge: new
-downloads: 481
+downloads: 544
 ---
