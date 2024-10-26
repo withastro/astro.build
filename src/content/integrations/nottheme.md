@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/nottheme
 homepageUrl: https://github.com/NotNite/nottheme
 badge: new
-downloads: 198
+downloads: 53
 ---

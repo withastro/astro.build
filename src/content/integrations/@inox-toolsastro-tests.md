@@ -7,5 +7,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
 homepageUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
-downloads: 409
+downloads: 405
 ---
