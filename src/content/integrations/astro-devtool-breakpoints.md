@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-devtool-breakpoints
 repoUrl: https://github.com/bryanschuetz/astro-breakpoints
 homepageUrl: https://www.npmjs.com/package/astro-devtool-breakpoints?activeTab=readme
-downloads: 2429
+downloads: 2344
 ---
