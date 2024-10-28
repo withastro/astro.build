@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@yeskunall/astro-umami
 homepageUrl: https://github.com/yeskunall/astro-umami#readme
 badge: new
-downloads: 86
+downloads: 87
 ---

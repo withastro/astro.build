@@ -11,5 +11,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-theme-catppuccin
 homepageUrl: https://catppuccin-starlight.otterlord.dev/
 badge: new
-downloads: 208
+downloads: 277
 ---

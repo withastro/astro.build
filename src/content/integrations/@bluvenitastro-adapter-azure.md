@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@bluvenit/astro-adapter-azure
 repoUrl: https://github.com/bluvenit/azure-adapter-azure
 homepageUrl: https://github.com/bluvenit/azure-adapter-azure#readme
-downloads: 136
+downloads: 133
 ---
