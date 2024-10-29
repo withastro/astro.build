@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-assets-manifest
 repoUrl: https://github.com/Olympe-Studio/astro-assets-manifest
 homepageUrl: https://github.com/Olympe-Studio/astro-assets-manifest#readme
 badge: new
-downloads: 121
+downloads: 125
 ---

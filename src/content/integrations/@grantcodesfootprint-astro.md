@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@grantcodes/footprint-astro
 repoUrl: https://github.com/grantcodes/footprint-astro
 homepageUrl: https://github.com/grantcodes/footprint-astro#readme
 badge: new
-downloads: 72
+downloads: 73
 ---

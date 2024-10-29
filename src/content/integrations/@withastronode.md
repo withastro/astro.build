@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@withastro/node
 repoUrl: https://github.com/lilnasy/astro-adapters
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/node/
 badge: new
-downloads: 113
+downloads: 114
 ---
