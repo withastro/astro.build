@@ -6,8 +6,9 @@ description: A fully type-safe i18n library specifically designed for partial
 categories:
   - performance+seo
   - accessibility
+image: /assets/integrations/@inlang/paraglide-astro.png
 npmUrl: https://www.npmjs.com/package/@inlang/paraglide-astro
 repoUrl: https://github.com/opral/inlang-paraglide-js
-homepageUrl: https://inlang.com/m/iljlwzfs/paraglide-astro-i18n
+homepageUrl: https://inlang.com/c/astro
 downloads: 3574
 ---
