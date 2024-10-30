@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astro-content/validator
 repoUrl: https://github.com/JulianCataldo/astro-content
 homepageUrl: https://astro-content.dev
-downloads: 6
+downloads: 4
 ---

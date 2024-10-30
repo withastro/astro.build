@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@mgcrea/astro-background-image
 repoUrl: https://github.com/mgcrea/astro-background-image
 homepageUrl: https://github.com/mgcrea/astro-background-image#readme
 badge: new
-downloads: 104
+downloads: 106
 ---

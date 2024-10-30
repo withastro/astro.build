@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-mail-obfuscation
 repoUrl: https://github.com/andreas-brunner/astro-mail-obfuscation
 homepageUrl: https://www.npmjs.com/package/astro-mail-obfuscation
 badge: new
-downloads: 183
+downloads: 256
 ---

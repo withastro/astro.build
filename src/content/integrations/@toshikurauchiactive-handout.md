@@ -6,5 +6,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@toshikurauchi/active-handout
 repoUrl: https://github.com/insper-edu/active-handout-astro
 homepageUrl: https://github.com/insper-edu/active-handout-astro#readme
-downloads: 209
+downloads: 211
 ---
