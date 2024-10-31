@@ -2,7 +2,7 @@
 name: expressive-code-color-chips
 title: expressive-code-color-chips
 description: CSS color preview plugin for Expressive Code. Display a small
-  sample of each CSS color in your code examples.
+  sample of each CSS color in your syntax highlighted code examples.
 categories:
   - uncategorized
   - recent
