@@ -459,6 +459,20 @@ const scraper = new ShowcaseScraper({
 		'https://www.corbado.com/',
 		// Not Astro - 2024/09/30
 		'https://savvyideas.co/', // <-- their docs site is, but main site seems not Astro
+		// AI Slop - 2024/10/31
+		'https://www.beyazcengiz.com/',
+		'https://www.dijitalanahtar.shop/',
+		'https://www.haberyazilimiburada.com/',
+		'https://www.haberyazilimimarket.com.tr',
+		'https://www.haberyazilimimerkezi.com.tr/',
+		'https://www.haberyazilimiportal.com.tr/',
+		'https://www.haberyazilimisistemleri.com/',
+		'https://www.kodmimari.site/',
+		'https://www.kodvadibilisim.icu/',
+		'https://www.plxbilisim.icu/',
+		'https://www.temizlikbirimi.shop/',
+		'https://www.temizlikyurdu.com.tr/',
+		'https://www.veriyonu.online/',
 	],
 });
 await scraper.run();
