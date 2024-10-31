@@ -37,7 +37,12 @@ const IconBackgrounds = [
 
 <Card isLink>
 	{!!integration.data.badge && <CardBadge>{integration.data.badge}</CardBadge>}
-	<CardBody as="a" href={integration.data.homepageUrl || integration.data.npmUrl} target="_blank">
+	<CardBody
+		as="a"
+		href={integration.data.homepageUrl || integration.data.npmUrl}
+		rel={isOfficial ? undefined : 'nofollow'}
+		target="_blank"
+	>
 		<div class="flex h-full flex-col">
 			<header class="flex items-center justify-between">
 				<div
