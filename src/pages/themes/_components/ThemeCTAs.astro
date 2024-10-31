@@ -8,6 +8,8 @@ export type Props = HTMLAttributes<'div'> & {
 };
 
 const { theme, class: className, ...attrs } = Astro.props;
+const isOfficial = theme.Author.name === 'withastro';
+const linkRel = isOfficial ? undefined : 'nofollow ugc';
 ---
 
 <div class:list={['flex flex-col gap-4', className]} {...attrs}>
@@ -17,6 +19,7 @@ const { theme, class: className, ...attrs } = Astro.props;
 				href={new URL(`${THEMES_API_URL}/api/themes/generate-checkout?themeId=${theme.Theme.id}`)}
 				class="button button-primary"
 				data-analytics-event="PDDOCXCA:1"
+				rel={linkRel}
 			>
 				<span>
 					{theme.Theme.price ? `$${theme.Theme.price / 100} - ` : null}
@@ -31,6 +34,7 @@ const { theme, class: className, ...attrs } = Astro.props;
 					href={theme.Theme.repoUrl}
 					class="button button-primary"
 					data-analytics-event="PDDOCXCA:1"
+					rel={linkRel}
 				>
 					<span>
 						{theme.Theme.price > 0 ? `$${theme.Theme.price / 100} - ` : null}
@@ -43,7 +47,12 @@ const { theme, class: className, ...attrs } = Astro.props;
 	}
 	{
 		!theme.Theme.paid && (
-			<a href={theme.Theme.repoUrl} class="button button-primary" data-analytics-event="PDDOCXCA:0">
+			<a
+				href={theme.Theme.repoUrl}
+				class="button button-primary"
+				data-analytics-event="PDDOCXCA:0"
+				rel={linkRel}
+			>
 				<span>Get started</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>
@@ -51,7 +60,7 @@ const { theme, class: className, ...attrs } = Astro.props;
 	}
 	{
 		theme.Theme.demoUrl && (
-			<a href={theme.Theme.demoUrl} class="button" data-analytics-event="DI9WVRXV:0">
+			<a href={theme.Theme.demoUrl} class="button" data-analytics-event="DI9WVRXV:0" rel={linkRel}>
 				<span>Live demo</span>
 				<ExternalLinkIcon aria-hidden="true" />
 			</a>
