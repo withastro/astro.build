@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-integration-pocketbase
 homepageUrl: https://github.com/pawcoding/astro-integration-pocketbase
 badge: new
-downloads: 64
+downloads: 67
 ---

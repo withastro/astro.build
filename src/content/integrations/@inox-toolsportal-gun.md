@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/portal-gun
 homepageUrl: https://www.npmjs.com/package/@inox-tools/portal-gun
 badge: new
-downloads: 144
+downloads: 145
 ---

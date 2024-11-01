@@ -8,5 +8,5 @@ npmUrl: https://www.npmjs.com/package/@sanity/astro
 image: /assets/integrations/sanity.svg
 repoUrl: ssh://git@github.com/sanity-io/sanity-astro
 homepageUrl: https://www.sanity.io/plugins/sanity-astro
-downloads: 23513
+downloads: 24166
 ---
