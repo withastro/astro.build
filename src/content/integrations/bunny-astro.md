@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/bunny-astro
 repoUrl: https://github.com/jlarmstrongiv/bunny-astro
 homepageUrl: https://bunny-launcher.net/adapters/astro/
 badge: new
-downloads: 1776
+downloads: 1778
 ---

@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-htmx
 repoUrl: https://github.com/xstevenyung/astro-htmx
 homepageUrl: https://github.com/xstevenyung/astro-htmx#readme
-downloads: 3614
+downloads: 3556
 ---
