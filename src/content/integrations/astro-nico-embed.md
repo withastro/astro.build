@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-nico-embed
 repoUrl: https://github.com/Robot-Inventor/astro-nico-embed
 homepageUrl: https://github.com/Robot-Inventor/astro-nico-embed#readme
 badge: new
-downloads: 220
+downloads: 225
 ---

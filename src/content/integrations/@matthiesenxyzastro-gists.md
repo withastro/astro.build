@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/astro-gists
 homepageUrl: https://github.com/MatthiesenXYZ/astro-gists
-downloads: 29
+downloads: 30
 repoUrl: https://github.com/MatthiesenXYZ/astro-gists
 ---

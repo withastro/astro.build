@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astropub/config-to-alias
 repoUrl: https://github.com/astro-community/config-to-alias
 homepageUrl: https://github.com/astro-community/config-to-alias/#readme
-downloads: 91
+downloads: 90
 ---
