@@ -1,7 +1,7 @@
 ---
 name: "@minpluto/zorn"
 title: "@minpluto/zorn"
-description: A video player tailored for MinPluto
+description: Tailored for MinPluto, customizable for you.
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@minpluto/zorn

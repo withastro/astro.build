@@ -1,8 +1,8 @@
 ---
 name: astro-mail-obfuscation
 title: astro-mail-obfuscation
-description: Protect email addresses, phone numbers, and other sensitive data
-  from bots scraping the source code of your Astro apps.
+description: Protect email addresses, phone numbers and other sensitive data
+  from bots scraping the source code of your Astro app.
 categories:
   - utilities
   - recent
