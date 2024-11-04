@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@pindoba/astro-dialog
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/blocks/astro/dialog#README.md
 badge: new
-downloads: 618
+downloads: 599
 ---

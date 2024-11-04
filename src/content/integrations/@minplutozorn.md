@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@minpluto/zorn
 repoUrl: https://codeberg.org/MinPluto/Zorn
 homepageUrl: https://codeberg.org/MinPluto/Zorn
-downloads: 77
+downloads: 151
 ---

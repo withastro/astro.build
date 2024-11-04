@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-redirects
 homepageUrl: https://www.npmjs.com/package/astro-cloudflare-redirects
 badge: new
-downloads: 246
+downloads: 249
 ---
