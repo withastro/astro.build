@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-cooklang
 homepageUrl: https://astro-cooklang.kauh.at/
-downloads: 62
+downloads: 59
 repoUrl: https://github.com/kauhat/astro-cooklang-integration
 ---
