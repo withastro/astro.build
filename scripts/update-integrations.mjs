@@ -143,7 +143,7 @@ async function unsafeUpdateAllIntegrations() {
 				// if not, replace it by the link to the package on npm
 				try {
 					const response = await fetch(details.homepageUrl, { method: 'HEAD'})
-					if (response.status == 404) {
+					if (response.status === 404) {
 						details.homepageUrl = `https://www.npmjs.com/package/${data.name}`
 					}
 				} catch (error) {
