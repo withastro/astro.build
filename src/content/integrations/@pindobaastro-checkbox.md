@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-checkbox
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/blocks/astro/checkbox#README.md
-downloads: 505
+downloads: 436
 ---
