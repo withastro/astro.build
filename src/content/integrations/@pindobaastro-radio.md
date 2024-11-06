@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-radio
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/blocks/astro/radio#README.md
-downloads: 478
+downloads: 343
 ---
