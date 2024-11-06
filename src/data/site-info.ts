@@ -49,6 +49,14 @@ const siteInfo: SiteInfo = {
 			href: 'https://github.com/withastro/astro',
 		},
 		{
+			platform: 'bluesky',
+			footerOnly: true,
+			icon: 'social/bluesky',
+			me: 'https://bsky.app/profile/astro.build',
+			text: 'Follow Astro on Bluesky',
+			href: 'https://bsky.app/profile/astro.build',
+		},
+		{
 			platform: 'mastodon',
 			footerOnly: true,
 			icon: 'social/mastodon',
