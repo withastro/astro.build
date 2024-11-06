@@ -7,6 +7,6 @@ categories:
   - frameworks
 npmUrl: https://www.npmjs.com/package/@grucloud/bau-astro
 repoUrl: https://github.com/grucloud/bau
-homepageUrl: https://github.com/grucloud/bau/bau-astro
+homepageUrl: https://www.npmjs.com/package/@grucloud/bau-astro
 downloads: 44
 ---

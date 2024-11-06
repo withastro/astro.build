@@ -6,6 +6,6 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/@zeabur/astro-adapter
 repoUrl: https://github.com/zeabur/astro
-homepageUrl: https://docs.astro.build/en/guides/integrations-guide/zeabur/
+homepageUrl: https://www.npmjs.com/package/@zeabur/astro-adapter
 downloads: 76
 ---

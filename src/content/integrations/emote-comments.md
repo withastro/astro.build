@@ -7,6 +7,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/emote-comments
 repoUrl: https://github.com/ezoic-marketing/emote-npm
-homepageUrl: https://github.com/ezoic-marketing/emote-npm#readme
+homepageUrl: https://www.npmjs.com/package/emote-comments
 downloads: 9
 ---

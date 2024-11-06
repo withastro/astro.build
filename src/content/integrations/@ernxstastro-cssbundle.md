@@ -7,6 +7,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@ernxst/astro-cssbundle
 repoUrl: https://github.com/Ernxst/astro-cssbundle
-homepageUrl: https://github.com/Ernxst/astro-cssbundle
+homepageUrl: https://www.npmjs.com/package/@ernxst/astro-cssbundle
 downloads: 10
 ---

@@ -7,6 +7,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/icon-prerender
 repoUrl: https://github.com/Ernxst/icon-prerender
-homepageUrl: https://github.com/Ernxst/icon-prerender/packages/core
+homepageUrl: https://www.npmjs.com/package/icon-prerender
 downloads: 6
 ---

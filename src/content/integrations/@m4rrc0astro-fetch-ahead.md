@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@m4rrc0/astro-fetch-ahead
 repoUrl: https://github.com/m4rrc0/poko-notion
-homepageUrl: https://github.com/m4rrc0/poko-notion/astro-integrations/astro-fetch-ahead
+homepageUrl: https://www.npmjs.com/package/@m4rrc0/astro-fetch-ahead
 downloads: 2
 ---

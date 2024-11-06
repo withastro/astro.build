@@ -5,9 +5,7 @@ description: Transport HTML elements through your page during rendering using Po
 categories:
   - css+ui
   - utilities
-  - recent
 npmUrl: https://www.npmjs.com/package/@inox-tools/portal-gun
 homepageUrl: https://www.npmjs.com/package/@inox-tools/portal-gun
-badge: new
 downloads: 98
 ---

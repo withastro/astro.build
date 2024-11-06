@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@cosmicui/components
 repoUrl: https://github.com/juanpa77/CosmicUI
-homepageUrl: https://github.com/juanpa77/CosmicUI#readme
+homepageUrl: https://www.npmjs.com/package/@cosmicui/components
 downloads: 16
 ---

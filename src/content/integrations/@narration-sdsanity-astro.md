@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@narration-sd/sanity-astro
 repoUrl: ssh://git@github.com/narration-sd/astro-san
-homepageUrl: https://github.com/narration-sd/astro-san#readme
+homepageUrl: https://www.npmjs.com/package/@narration-sd/sanity-astro
 downloads: 26
 ---

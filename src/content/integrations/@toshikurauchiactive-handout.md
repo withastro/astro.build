@@ -5,6 +5,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@toshikurauchi/active-handout
 repoUrl: https://github.com/insper-edu/active-handout-astro
-homepageUrl: https://github.com/insper-edu/active-handout-astro#readme
+homepageUrl: https://www.npmjs.com/package/@toshikurauchi/active-handout
 downloads: 205
 ---

@@ -5,6 +5,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/schema-checkers
 repoUrl: https://github.com/JulianCataldo/astro-openapi
-homepageUrl: https://juliancataldo.github.io/astro-openapi
+homepageUrl: https://www.npmjs.com/package/@astro-openapi/schema-checkers
 downloads: 2
 ---

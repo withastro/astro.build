@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-early-hints
 repoUrl: https://github.com/itsmatteomanf/astro-components
-homepageUrl: https://github.com/itsmatteomanf/astro-components/tree/main/packages/astro-searly-hints#readme
+homepageUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-early-hints
 downloads: 140
 ---

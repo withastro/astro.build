@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-alert
 repoUrl: https://github.com/EduardoLopes/pindoba
-homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/blocks/astro/alert#README.md
+homepageUrl: https://www.npmjs.com/package/@pindoba/astro-alert
 downloads: 322
 ---
