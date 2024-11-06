@@ -141,15 +141,16 @@ async function unsafeUpdateAllIntegrations() {
 
 				// check if the homepageurl is valid
 				// if not, replace it by the link to the package on npm
+				let fixHomepageUrl = false
 				try {
 					const response = await fetch(details.homepageUrl, { method: 'HEAD'})
-					if (response.status === 404) {
-						details.homepageUrl = `https://www.npmjs.com/package/${data.name}`
-					}
+					fixHomepageUrl = (response.status >= 400)
 				} catch (error) {
 					// such an error may occur when the hostname is unknown
-					// we consider it ok at this may come from a down server
-					console.info(`Package ${details.name}: Cannot access ${details.homepageUrl} (not fixed)`)
+					fixHomepageUrl = true
+				}
+				if (fixHomepageUrl) {
+					details.homepageUrl = `https://www.npmjs.com/package/${data.name}`
 				}
 
 				const frontmatter = yaml.stringify({
@@ -237,7 +238,8 @@ ${frontmatter}---\n`,
 
 const args = process.argv.slice(2);
 
-// only fetch unsafe changes like new and deprecated integrations, and fix 404 homepageurl
+// only fetch unsafe changes like new and deprecated integrations,
+// and fix wrong homepageurl (response>=400 or not responding)
 // if the --unsafe CLI flag was provided
 if (args.includes('--unsafe')) {
 	await unsafeUpdateAllIntegrations();
