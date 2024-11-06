@@ -141,16 +141,16 @@ async function unsafeUpdateAllIntegrations() {
 
 				// check if the homepageurl is valid
 				// if not, replace it by the link to the package on npm
-				let fixHomepageUrl = false
+				let fixHomepageUrl = false;
 				try {
-					const response = await fetch(details.homepageUrl, { method: 'HEAD'})
-					fixHomepageUrl = (response.status >= 400)
+					const response = await fetch(details.homepageUrl, { method: 'HEAD' });
+					fixHomepageUrl = response.status >= 400;
 				} catch (error) {
 					// such an error may occur when the hostname is unknown
-					fixHomepageUrl = true
+					fixHomepageUrl = true;
 				}
 				if (fixHomepageUrl) {
-					details.homepageUrl = `https://www.npmjs.com/package/${data.name}`
+					details.homepageUrl = `https://www.npmjs.com/package/${data.name}`;
 				}
 
 				const frontmatter = yaml.stringify({
