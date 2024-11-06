@@ -139,6 +139,20 @@ async function unsafeUpdateAllIntegrations() {
 				const details = await fetchWithOverrides(data.name, false);
 				if (!details) return;
 
+				// check if the homepageurl is valid
+				// if not, replace it by the link to the package on npm
+				let fixHomepageUrl = false
+				try {
+					const response = await fetch(details.homepageUrl, { method: 'HEAD'})
+					fixHomepageUrl = (response.status >= 400)
+				} catch (error) {
+					// such an error may occur when the hostname is unknown
+					fixHomepageUrl = true
+				}
+				if (fixHomepageUrl) {
+					details.homepageUrl = `https://www.npmjs.com/package/${data.name}`
+				}
+
 				const frontmatter = yaml.stringify({
 					...data,
 					...details,
@@ -224,7 +238,8 @@ ${frontmatter}---\n`,
 
 const args = process.argv.slice(2);
 
-// only fetch unsafe changes like new and deprecated integrations
+// only fetch unsafe changes like new and deprecated integrations,
+// and fix wrong homepageurl (response>=400 or not responding)
 // if the --unsafe CLI flag was provided
 if (args.includes('--unsafe')) {
 	await unsafeUpdateAllIntegrations();
