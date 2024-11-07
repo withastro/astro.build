@@ -5,6 +5,6 @@ description: Component description
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/gd_ui_components
-homepageUrl: https://github.com/owner/project#readme
+homepageUrl: https://www.npmjs.com/package/gd_ui_components
 downloads: 3
 ---

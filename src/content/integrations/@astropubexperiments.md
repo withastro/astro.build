@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astropub/experiments
 repoUrl: https://github.com/astro-community/experiments
-homepageUrl: https://github.com/astro-community/experiments#readme
+homepageUrl: https://www.npmjs.com/package/@astropub/experiments
 downloads: 10
 ---

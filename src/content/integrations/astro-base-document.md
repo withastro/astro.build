@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-base-document
 repoUrl: https://github.com/JulianCataldo/web-garden
-homepageUrl: https://code.juliancataldo.com/component/astro-base
+homepageUrl: https://www.npmjs.com/package/astro-base-document
 downloads: 3
 ---

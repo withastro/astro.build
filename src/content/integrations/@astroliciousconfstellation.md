@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astrolicious/confstellation
 repoUrl: https://github.com/UserName/@astrolicious/confstellation
-homepageUrl: https://github.com/UserName/theme-playground
+homepageUrl: https://www.npmjs.com/package/@astrolicious/confstellation
 downloads: 4
 ---

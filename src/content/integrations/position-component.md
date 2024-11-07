@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/position-component
 repoUrl: https://github.com/sacarvy/astro-components
-homepageUrl: https://github.com/sacarvy/astro-components/tree/master/position-component
+homepageUrl: https://www.npmjs.com/package/position-component
 downloads: 3
 ---

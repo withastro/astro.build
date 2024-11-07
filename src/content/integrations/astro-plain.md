@@ -5,6 +5,6 @@ description: Generic, batteries-included prototype for Astro pages
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-plain
-homepageUrl: https://github.com/johnhenry/lib/js/astro-plain/0.0.6#readme
+homepageUrl: https://www.npmjs.com/package/astro-plain
 downloads: 6
 ---

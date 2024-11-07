@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-accessible-patterns
 repoUrl: https://github.com/anuarhdz/astro-accessible-patterns
-homepageUrl: https://github.com/anuarhdz/astro-accessible-patterns#readme
+homepageUrl: https://www.npmjs.com/package/astro-accessible-patterns
 downloads: 2
 ---

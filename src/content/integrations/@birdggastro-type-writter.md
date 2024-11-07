@@ -5,6 +5,6 @@ description: A astro type writter writen in pure js
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@birdgg/astro-type-writter
-homepageUrl: https://github.com/birdgg/astro-type-writter
+homepageUrl: https://www.npmjs.com/package/@birdgg/astro-type-writter
 downloads: 4
 ---

@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-charts
 repoUrl: https://github.com/wobsoriano/astro-charts
-homepageUrl: https://github.com/wobsoriano/astro-charts#readme
+homepageUrl: https://www.npmjs.com/package/astro-charts
 badge: new
 downloads: 212
 ---
