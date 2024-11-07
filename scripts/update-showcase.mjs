@@ -473,6 +473,10 @@ const scraper = new ShowcaseScraper({
 		'https://www.temizlikbirimi.shop/',
 		'https://www.temizlikyurdu.com.tr/',
 		'https://www.veriyonu.online/',
+		// Broken links - 2024/11/07
+		'https://www.joingamedev.com/blog',
+		'https://www.safecars.info/',
+		'https://lokdentistry.com/',
 	],
 });
 await scraper.run();
