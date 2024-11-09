@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-s3
 homepageUrl: https://www.npmjs.com/package/@hbertoson/astro-s3
-downloads: 9
+downloads: 7
 ---
