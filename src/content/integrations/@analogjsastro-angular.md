@@ -7,9 +7,5 @@ categories:
   - frameworks
 npmUrl: https://www.npmjs.com/package/@analogjs/astro-angular
 repoUrl: https://github.com/analogjs/analog
-
 homepageUrl: https://analogjs.org/docs/packages/astro-angular/overview
 downloads: 2499
-
-
-
