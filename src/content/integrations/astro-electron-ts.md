@@ -10,4 +10,5 @@ repoUrl: https://github.com/ultimateshadsform/astro-electron-ts
 homepageUrl: https://github.com/ultimateshadsform/astro-electron-ts
 badge: new
 downloads: 0
+image: /assets/integrations/astro-electron-ts.png
 ---
