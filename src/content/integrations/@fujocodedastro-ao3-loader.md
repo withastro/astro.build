@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@fujocoded/astro-ao3-loader
 homepageUrl: https://www.npmjs.com/package/@fujocoded/astro-ao3-loader
 badge: new
-downloads: 206
+downloads: 209
 ---
