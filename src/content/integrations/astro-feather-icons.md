@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-feather-icons
 repoUrl: https://github.com/edazpotato/astro-feather-icons
 homepageUrl: https://github.com/edazpotato/astro-feather-icons#readme
-downloads: 6287
+downloads: 6778
 ---
