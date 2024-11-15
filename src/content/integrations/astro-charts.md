@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-charts
 repoUrl: https://github.com/wobsoriano/astro-charts
 homepageUrl: https://www.npmjs.com/package/astro-charts
 badge: new
-downloads: 217
+downloads: 218
 ---

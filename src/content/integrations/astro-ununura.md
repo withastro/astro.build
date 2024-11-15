@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-ununura
 repoUrl: https://github.com/Novout/ununuracss
 homepageUrl: https://ununura.com
-downloads: 14
+downloads: 11
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@cxa/astro-inline-svg
 repoUrl: https://github.com/cxa/astro-inline-svg
 homepageUrl: https://realazy.com/astro-inline-svg/
-downloads: 453
+downloads: 454
 ---
