@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-whatsapp
 homepageUrl: https://github.com/dfrios/astro-whatsapp
 badge: new
-downloads: 33
+downloads: 29
 ---
