@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jop-software/astro-cookieconsent
 repoUrl: https://github.com/jop-software/astro-cookieconsent
 homepageUrl: https://github.com/jop-software/astro-cookieconsent#readme
-downloads: 4039
+downloads: 3983
 ---
