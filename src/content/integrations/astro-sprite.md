@@ -1,7 +1,7 @@
 ---
 name: astro-sprite
 title: astro-sprite
-description: Sprite generation (png, webp, avif...) dedicated Astro framework
+description: Sprite generation (png, webp, avif...) dedicated to Astro framework
 categories:
   - css+ui
   - media

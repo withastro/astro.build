@@ -6,9 +6,7 @@ description: <!-- ![GitHub Actions Workflow
   -->
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-integration-pocketbase
 homepageUrl: https://github.com/pawcoding/astro-integration-pocketbase
-badge: new
 downloads: 185
 ---
