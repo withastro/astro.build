@@ -477,6 +477,10 @@ const scraper = new ShowcaseScraper({
 		'https://www.joingamedev.com/blog',
 		'https://www.safecars.info/',
 		'https://lokdentistry.com/',
+		// No longer Astro - 2024/11/18
+		'https://lays.kz/',
+		'https://mijnvraagovercorona.nl/',
+		'https://contenda.co/',
 	],
 });
 await scraper.run();
