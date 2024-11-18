@@ -7,7 +7,7 @@ description: This package provides a Airtable loader for Astro. It allows you to
 categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/@ascorbic/airtable-loader
-repoUrl: github.com:ascorbic/astro-loaders
+repoUrl: https://github.com/ascorbic/astro-loaders
 homepageUrl: https://github.com/ascorbic/astro-loaders
 downloads: 230
 ---
