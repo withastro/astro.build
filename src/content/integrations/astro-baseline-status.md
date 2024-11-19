@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-baseline-status
 repoUrl: https://github.com/karesztrk/astro-baseline-status
 homepageUrl: https://github.com/karesztrk/astro-baseline-status
 badge: new
-downloads: 123
+downloads: 124
 ---
