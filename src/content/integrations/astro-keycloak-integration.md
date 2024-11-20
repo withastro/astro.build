@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-keycloak-integration
 homepageUrl: https://www.npmjs.com/package/astro-keycloak-integration
 badge: new
-downloads: 57
+downloads: 58
 ---

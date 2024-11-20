@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@ascorbic/bluesky-loader
 repoUrl: https://github.com/ascorbic/astro-loaders
 homepageUrl: https://github.com/ascorbic/astro-loaders
 badge: new
-downloads: 237
+downloads: 240
 ---

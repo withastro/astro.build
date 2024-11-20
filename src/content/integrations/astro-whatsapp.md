@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-whatsapp
 homepageUrl: https://github.com/dfrios/astro-whatsapp
-downloads: 22
+downloads: 21
 ---

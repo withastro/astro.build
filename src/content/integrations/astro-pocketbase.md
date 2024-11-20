@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-pocketbase
 homepageUrl: https://github.com/gbouteiller/astro-pocketbase
-downloads: 418
+downloads: 411
 ---
