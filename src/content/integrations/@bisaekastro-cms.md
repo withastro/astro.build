@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@bisaek/astro-cms
 homepageUrl: https://www.npmjs.com/package/@bisaek/astro-cms
 badge: new
-downloads: 424
+downloads: 426
 ---
