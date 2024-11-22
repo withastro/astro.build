@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@braindb/astro
 repoUrl: https://github.com/stereobooster/braindb
 homepageUrl: https://github.com/stereobooster/braindb#readme
-downloads: 63
+downloads: 61
 ---
