@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/expressive-code-color-chips
 repoUrl: https://github.com/delucis/expressive-code-color-chips
 homepageUrl: https://delucis.github.io/expressive-code-color-chips/
 badge: new
-downloads: 430
+downloads: 440
 ---
