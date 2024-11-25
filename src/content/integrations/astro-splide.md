@@ -1,7 +1,7 @@
 ---
 name: astro-splide
 title: astro-splide
-description: The native Astro component for the Splide slider/carousel.
+description: The Astro component for Splide.
 categories:
   - uncategorized
   - recent
