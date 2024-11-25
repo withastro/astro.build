@@ -481,6 +481,8 @@ const scraper = new ShowcaseScraper({
 		'https://lays.kz/',
 		'https://mijnvraagovercorona.nl/',
 		'https://contenda.co/',
+		// 2024/11/24
+		'https://chat-sesso.com',
 	],
 });
 await scraper.run();
