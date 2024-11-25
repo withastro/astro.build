@@ -9,6 +9,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-compress
 repoUrl: https://github.com/PlayForm/Compress
 homepageUrl: HTTPS://GitHub.Com/PlayForm/Compress#readme
-downloads: 62002
+downloads: 58647
 downloadFactor: 0.25
 ---
