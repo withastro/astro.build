@@ -8,5 +8,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-tweet
 homepageUrl: https://www.npmjs.com/package/astro-tweet
-downloads: 1364
+downloads: 1391
 ---

@@ -7,6 +7,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@ayco/astro-resume
 homepageUrl: https://github.com/ayoayco/astro-resume
-downloads: 265
+downloads: 281
 repoUrl: https://github.com/ayoayco/astro-resume
 ---
