@@ -5,10 +5,8 @@ description: AstroNicoEmbed allows easy embedding of Niconico Douga (ニコニ�
   videos in Astro projects.
 categories:
   - media
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-nico-embed
 repoUrl: https://github.com/Robot-Inventor/astro-nico-embed
 homepageUrl: https://github.com/Robot-Inventor/astro-nico-embed#readme
-badge: new
-downloads: 57
+downloads: 42
 ---

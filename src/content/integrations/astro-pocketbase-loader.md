@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-pocketbase-loader
 homepageUrl: https://github.com/kmishmael/astro-loader-pocketbase
 badge: new
-downloads: 118
+downloads: 124
 ---
