@@ -484,7 +484,7 @@ const scraper = new ShowcaseScraper({
 		// 2024/11/24
 		'https://chat-sesso.com',
 		// Redirects to a page that is not Astro - 2024/11/27
-		'https://tt.adarshrkumar.dev/'
+		'https://tt.adarshrkumar.dev/',
 	],
 });
 await scraper.run();
