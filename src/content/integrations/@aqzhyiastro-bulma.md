@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@aqzhyi/astro-bulma
 repoUrl: https://github.com/aqzhyi/oh-my-monorepo
 homepageUrl: https://github.com/aqzhyi/oh-my-monorepo#readme
 badge: new
-downloads: 73
+downloads: 74
 ---
