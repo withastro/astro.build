@@ -23,3 +23,18 @@ const { maxCols = 3, videos } = Astro.props;
 		))
 	}
 </ul>
+
+<style>
+	/* Expand scrim and increase text shadow on title display to improve contrast. */
+	li :global(lite-youtube[data-title]:not([data-title=''])::before) {
+		height: 10rem;
+		padding-top: 1em;
+		line-height: 1;
+		text-shadow:
+			0 0 2px rgba(0, 0, 0, 0.25),
+			2px -2px 8px rgba(0, 0, 0, 0.5),
+			2px 2px 8px rgba(0, 0, 0, 0.5),
+			-2px 2px 8px rgba(0, 0, 0, 0.5),
+			-2px -2px 8px rgba(0, 0, 0, 0.5);
+	}
+</style>
