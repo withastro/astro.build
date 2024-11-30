@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-sheet-loader
 repoUrl: https://github.com/AlphaJack/astro-sheet-loader
 homepageUrl: https://github.com/AlphaJack/astro-sheet-loader#readme
 badge: new
-downloads: 335
+downloads: 337
 ---
