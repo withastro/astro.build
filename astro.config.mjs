@@ -1,3 +1,5 @@
+// @ts-check
+
 import db from '@astrojs/db';
 import mdx from '@astrojs/mdx';
 import netlify from '@astrojs/netlify';
@@ -52,10 +54,8 @@ export default defineConfig({
 			noExternal: ['smartypants'],
 		},
 	},
-	output: 'hybrid',
 	adapter: netlify({ imageCDN: false }),
 	experimental: {
 		contentIntellisense: true,
-		contentLayer: true,
 	},
 });
