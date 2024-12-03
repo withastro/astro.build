@@ -83,7 +83,7 @@ export const collections = { blog, database, countries }
 
 Since Astro 2.0, content collections have allowed you to organize your static content in type-safe collections, and then use them in any page on your site. However, as your site grows, having your content in Markdown files in a Git repository may become less practical. You might want to use a CMS, have some sections of your site powered by a REST API, or use optimized images coming from an asset management system like Cloudinary. This can quickly become a mess to manage, requiring various APIs and data-fetching strategies.
 
-The content layer is the solution to this, bringing all of your content into one friendly, type-safe data store, ready to use across your site. They are the content collections you know and love, but with the extra power of **loaders** – pluggable functions that fetch and transform data from any source. With the content layer, you can:
+The content layer is the solution to this, bringing all of your content into one friendly, type-safe data store, ready to use across your site. They are the content collections you know and love but with the extra power of **loaders** – pluggable functions that fetch and transform data from any source. With the content layer, you can:
 
 - Use the [built-in loaders](https://docs.astro.build/en/guides/content-collections/#built-in-loaders) to load content from anywhere on disk.
 - Define your own loader to fetch content from any API in [just a few lines of code](https://docs.astro.build/en/guides/content-collections/#building-a-custom-loader).
@@ -109,7 +109,7 @@ On any given web page you might have content that is:
 - Dynamically backed by a database that changes infrequently, but more often than you deploy.
 - *Personalized* content, tailored to individual users.
 
-Previously, you had to choose one caching strategy for all of these types of content, and if the page is a logged-in experience that usually means no caching at all. Now, with server islands you get the best of both worlds.
+Previously, you had to choose one caching strategy for all of these types of content, and if the page is a logged-in experience that usually means no caching at all. Now, with server islands, you get the best of both worlds.
 
 <BlogContentImage src={islandDiag} alt="A diagram showing the server island population parts of the page from the server." />
 
@@ -164,7 +164,7 @@ For more information on how to use `astro:env`, see our guide on [type safe envi
 
 ## Vite 6
 
-Astro 5 is one of the first framework to ship with Vite 6, just released a week ago. (Don't worry: we've been working with beta releases so you likely won’t need to change any code when upgrading to Astro 5.)
+Astro 5 is one of the first frameworks to ship with Vite 6, just released a week ago. (Don't worry: we've been working with beta releases so you likely won’t need to change any code when upgrading to Astro 5.)
 
 The highlight of Vite 6 is a new Environment API, an internal refactor that allows creating new environments to more closely align the development experience to how your code runs in production. Integration authors can begin using this new API today; in the future, we hope to find ways to use it in core, such as providing better development compatibility for Cloudflare users or providing Edge runtimes to test locally.
 
