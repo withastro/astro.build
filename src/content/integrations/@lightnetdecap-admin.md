@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@lightnet/decap-admin
 homepageUrl: https://www.npmjs.com/package/@lightnet/decap-admin
-downloads: 140
+downloads: 136
 ---
