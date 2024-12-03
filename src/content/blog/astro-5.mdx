@@ -137,7 +137,7 @@ After many requests, [in Astro 2.0 we made this more granular by creating a thir
 
 As Astro grew and gained powerful features like actions or server islands, which cannot be used in a purely static output mode, we realized that the matrix of “What settings do I need to use this feature?” became large and tiresome to explain and document. We also found that people ended up server-rendering more than they needed to because it was easier than using the fine-grained controls, making their sites slower than they needed to be.
 
-In Astro 5.0, we’re happy to say that we’ve simplified all of this: **The hybrid and static options have been merged into the default `static` option.** This now allows you to render individual routes at runtime on the server just by adding an adapter, no other configuration is required.
+In Astro 5.0, we’re happy to say that we’ve simplified all of this: **the hybrid and static options have been merged into the default `static` option.** This now allows you to render individual routes at runtime on the server just by adding an adapter, no other configuration is required.
 
 Fear not, if you still want good old statically generated `.html` files, you’ll still get them: Astro is still static by default! But, if you happen to set one of your pages to `prerender = false`, Astro will now dynamically switch its output mode, allowing you to use features that require server-side rendering without figuring out which configuration mode you need.
 
