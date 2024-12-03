@@ -1,6 +1,6 @@
 ---
 title: "Astro 5.0"
-description: "Astro 5.0 brings exciting new features like the Astro Content Layer for seamless content organization from any source, and Server Islands for effortlessly combining static and dynamic personalized content."
+description: "Astro 5.0 brings exciting new features like the Astro Content Layer for seamless content loading from any source, and Server Islands for effortlessly combining static and dynamic personalized content."
 publishDate: "2024-12-03T00:00:00+00:00"
 authors:
   - erika
@@ -11,7 +11,7 @@ socialImage: "/src/content/blog/_images/astro-500/og-astro-5.webp"
 lang: "en"
 homepageLink:
   title: "Astro 5.0"
-  subtitle: "is here!"
+  subtitle: "available now!"
 ---
 
 import BlogContentImage from "/src/components/BlogContentImage.astro"
@@ -83,7 +83,7 @@ export const collections = { blog, database, countries }
 
 Since Astro 2.0, content collections have allowed you to organize your static content in type-safe collections, and then use them in any page on your site. However, as your site grows, having your content in Markdown files in a Git repository may become less practical. You might want to use a CMS, have some sections of your site powered by a REST API, or use optimized images coming from an asset management system like Cloudinary. This can quickly become a mess to manage, requiring various APIs and data-fetching strategies.
 
-The content layer is the solution to this, bringing all of your content into one friendly, type-safe data store, ready to use across your site. They are the content collections you are used to but with the extra power of **loaders** – pluggable functions that fetch and transform data from any source. With the content layer, you can:
+The content layer is the solution to this, bringing all of your content into one friendly, type-safe data store, ready to use across your site. They are the content collections you know and love, but with the extra power of **loaders** – pluggable functions that fetch and transform data from any source. With the content layer, you can:
 
 - Use the [built-in loaders](https://docs.astro.build/en/guides/content-collections/#built-in-loaders) to load content from anywhere on disk.
 - Define your own loader to fetch content from any API in [just a few lines of code](https://docs.astro.build/en/guides/content-collections/#building-a-custom-loader).
