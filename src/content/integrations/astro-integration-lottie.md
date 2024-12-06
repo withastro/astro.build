@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-integration-lottie
 repoUrl: https://github.com/giuseppelt/astro-lottie
 homepageUrl: https://github.com/giuseppelt/astro-lottie#readme.md
-downloads: 1958
+downloads: 1943
 ---
