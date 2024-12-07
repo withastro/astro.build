@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/custom-elements-ssr
 repoUrl: https://github.com/thepassle/custom-elements-ssr
 homepageUrl: https://github.com/thepassle/custom-elements-ssr#readme
-downloads: 134
+downloads: 140
 ---

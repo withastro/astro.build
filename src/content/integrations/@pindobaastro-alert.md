@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-alert
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-alert
-downloads: 141
+downloads: 140
 ---
