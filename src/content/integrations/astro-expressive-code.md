@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-expressive-code
 repoUrl: https://github.com/expressive-code/expressive-code
 homepageUrl: https://github.com/expressive-code/expressive-code#readme
-downloads: 198629
+downloads: 193594
 ---

@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/sb-astro-sdk
 homepageUrl: https://www.npmjs.com/package/sb-astro-sdk
 badge: new
-downloads: 59
+downloads: 60
 ---
