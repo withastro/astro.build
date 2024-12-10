@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-collection-search
 repoUrl: https://github.com/trebco/astro-collection-search
 homepageUrl: https://github.com/trebco/astro-collection-search
 badge: new
-downloads: 512
+downloads: 520
 ---
