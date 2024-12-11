@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@pwaset/astro
 repoUrl: https://github.com/withpwa/astro
 homepageUrl: https://github.com/withpwa/astro#readme
 badge: new
-downloads: 32
+downloads: 31
 ---
