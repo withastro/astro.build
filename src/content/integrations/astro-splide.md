@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-splide
 repoUrl: https://github.com/pascal-brand38/astro-dev
 homepageUrl: https://github.com/pascal-brand38/astro-dev/tree/main/packages/astro-splide#readme
 badge: new
-downloads: 834
+downloads: 839
 ---

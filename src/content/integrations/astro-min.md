@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-min
 homepageUrl: https://github.com/advanced-astro/astro-min#readme
-downloads: 565
+downloads: 561
 repoUrl: https://github.com/advanced-astro/astro-min
 ---

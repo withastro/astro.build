@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@grantcodes/footprint-astro
 repoUrl: https://github.com/grantcodes/footprint-astro
 homepageUrl: https://github.com/grantcodes/footprint-astro#readme
-downloads: 101
+downloads: 100
 ---

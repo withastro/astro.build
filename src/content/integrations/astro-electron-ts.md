@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/astro-electron-ts
 repoUrl: https://github.com/ultimateshadsform/astro-electron-ts
 homepageUrl: https://github.com/ultimateshadsform/astro-electron-ts
 badge: new
-downloads: 1611
+downloads: 1499
 image: /assets/integrations/astro-electron-ts.png
 ---
