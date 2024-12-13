@@ -11,5 +11,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@terrahq/astro-core
 homepageUrl: https://www.npmjs.com/package/@terrahq/astro-core
 badge: new
-downloads: 723
+downloads: 729
 ---

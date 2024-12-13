@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-loader-obsidian
 repoUrl: https://github.com/aitorllj93/astro-loader-obsidian
 homepageUrl: https://github.com/aitorllj93/astro-loader-obsidian
 badge: new
-downloads: 50
+downloads: 49
 ---

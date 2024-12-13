@@ -10,5 +10,5 @@ image: /assets/integrations/@inlang/paraglide-astro.png
 npmUrl: https://www.npmjs.com/package/@inlang/paraglide-astro
 repoUrl: https://github.com/opral/inlang-paraglide-js
 homepageUrl: https://inlang.com/c/astro
-downloads: 4260
+downloads: 4281
 ---
