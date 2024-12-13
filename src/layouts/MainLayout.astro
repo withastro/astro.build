@@ -1,18 +1,18 @@
 ---
 import BaseHead, { type Props as HeadProps } from '~/components/BaseHead.astro';
 import Footer from '~/components/Footer.astro';
-import Header, { type Props as HeaderProps } from '~/components/Header.astro';
+import Header from '~/components/Header.astro';
 import HeaderDrawerContent from '~/components/HeaderDrawerContent.astro';
 import HeaderNav from '~/components/HeaderNav.astro';
 import SkipLink from '~/components/SkipLink.astro';
 import '~/styles/tailwind.css';
 
-interface Props extends HeadProps, HeaderProps {
+interface Props extends HeadProps {
 	class?: string;
 	bgClass?: string;
 }
 
-const { bgClass = 'bg-black', header = 'default', ...head } = Astro.props;
+const { bgClass = 'bg-black', ...head } = Astro.props;
 ---
 
 <!doctype html>
@@ -33,11 +33,10 @@ const { bgClass = 'bg-black', header = 'default', ...head } = Astro.props;
 			id="nav"
 			class:list={{
 				'inset-x-0 top-0 z-20 max-h-screen': true,
-				'sticky bg-black/30 backdrop-blur-xl': header === 'default',
-				absolute: header === 'transparent',
+				'bg-black/30': true,
 			}}
 		>
-			<Header {header}>
+			<Header>
 				<HeaderNav />
 				<HeaderDrawerContent slot="drawer" />
 			</Header>
