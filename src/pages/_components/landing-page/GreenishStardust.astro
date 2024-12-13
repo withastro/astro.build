@@ -3,16 +3,26 @@ const { height = 'h-40 sm:h-56' } = Astro.props;
 ---
 
 <div
-	id="stardust"
 	class:list={[
-		'w-full shrink-0 absolute -z-50 rotate-[-7deg] blur-[160px] rounded-full',
+		'stardust',
+		'opacity-75',
+		'w-full shrink-0 absolute rotate-[-7deg] -z-50 scale-x-[1.5] scale-y-[2.5] rounded-full mask-radial-gradient',
+		`${height}`,
+	]}
+>
+</div>
+<div
+	class:list={[
+		'stardust',
+		'opacity-50',
+		'w-full shrink-0 absolute rotate-[-7deg] -z-50 scale-x-[2.5] scale-y-[4.2] rounded-full mask-radial-gradient',
 		`${height}`,
 	]}
 >
 </div>
 
 <style>
-	#stardust {
+	.stardust {
 		background: linear-gradient(270deg, rgba(64, 222, 191, 0.3) 0%, rgba(51, 75, 169, 0.3) 100%);
 	}
 </style>
