@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@critters-rs/astro
 repoUrl: https://github.com/michaelhthomas/critters-rs
 homepageUrl: https://github.com/michaelhthomas/critters-rs#readme
 badge: new
-downloads: 219
+downloads: 223
 ---
