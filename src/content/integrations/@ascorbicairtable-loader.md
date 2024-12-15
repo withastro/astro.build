@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ascorbic/airtable-loader
 repoUrl: https://github.com/ascorbic/astro-loaders
 homepageUrl: https://github.com/ascorbic/astro-loaders
-downloads: 126
+downloads: 116
 ---
