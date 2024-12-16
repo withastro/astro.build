@@ -14,7 +14,7 @@ import {
 	isNewPackage,
 } from './integrations.mjs';
 import { markdownToPlainText } from './markdown.mjs';
-import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeyword } from './npm.mjs';
+import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeywords } from './npm.mjs';
 
 /** @param {string} pkg */
 function isOfficial(pkg) {
@@ -111,9 +111,9 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 }
 
 async function unsafeUpdateAllIntegrations() {
-	const keyword = 'astro-component,withastro,astro-integration';
+	const keywords = ['astro-component', 'withastro', 'astro-integration'];
 
-	const packagesMap = await searchByKeyword(keyword);
+	const packagesMap = await searchByKeywords(keywords);
 	const searchResults = new Set([...packagesMap.keys()].filter((pkg) => !blocklist.includes(pkg)));
 
 	const entries = await getIntegrationFiles();

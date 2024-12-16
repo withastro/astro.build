@@ -77,32 +77,38 @@ export async function fetchDetailsForPackage(pkg) {
 /**
  * Searches npm for a specific keyword and returns a map, keyed by package name.
  *
- * @param {string} keyword The keyword used to search npm, ex: `astro-component`
+ * @param {string[]} keywords The keywords used to search npm, ex: `astro-component`
  * @param {string | undefined} ranking The sort order for results, default: `quality`
  * @returns {Promise<Map<string, any>>} Map of search results, keyed by package name
  */
-export async function searchByKeyword(keyword, ranking = 'quality') {
+export async function searchByKeywords(keywords, ranking = 'quality') {
 	const objects = [];
-	let total = -1;
-	let page = 0;
 
-	do {
-		const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`);
-		url.searchParams.set('text', `keywords:${keyword}`);
-		url.searchParams.set('ranking', ranking);
-		url.searchParams.set('size', String(PAGE_SIZE));
-		url.searchParams.set('from', String(page++ * PAGE_SIZE));
+	for (const keyword of keywords) {
+		const keywordObjects = [];
+		let total = -1;
+		let page = 0;
 
-		const results = await fetchJson(url.toString());
+		do {
+			const url = new URL(`${REGISTRY_BASE_URL}-/v1/search`);
+			url.searchParams.set('text', `keywords:${keyword}`);
+			url.searchParams.set('ranking', ranking);
+			url.searchParams.set('size', String(PAGE_SIZE));
+			url.searchParams.set('from', String(page++ * PAGE_SIZE));
 
-		// just in case, bail if no objects were returned for the page
-		if (results.objects.length === 0) {
-			break;
-		}
+			const results = await fetchJson(url.toString());
 
-		objects.push(...results.objects);
-		total = results.total;
-	} while (total > objects.length);
+			// just in case, bail if no objects were returned for the page
+			if (results.objects.length === 0) {
+				break;
+			}
+
+			keywordObjects.push(...results.objects);
+			total = results.total;
+		} while (total > keywordObjects.length);
+
+		objects.push(...keywordObjects);
+	}
 
 	return objects
 		.filter(({ package: pkg }) => {
