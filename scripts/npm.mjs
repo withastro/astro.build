@@ -9,7 +9,7 @@ const fetchLimit = pLimit(10);
  */
 function fetchJson(url) {
 	return fetchLimit(async () => {
-		const res = await fetch(url);
+		const res = await fetch(url, { headers: { 'User-Agent': 'astro.build/integrations; v1' } });
 
 		if (!res.ok) {
 			console.error(`[${url}] ${res.status} ${res.statusText}`);
