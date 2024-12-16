@@ -201,11 +201,11 @@ ${frontmatter}---\n`,
 Updated: ${existingIntegrations.size - deprecatedIntegrations.length} integrations`;
 
 	if (newIntegrations.length) {
-		stats += `\n\nAdded:${newIntegrations.map((pkg) => `\n  + ${pkg}`)}`;
+		stats += `\n\nAdded:\n${newIntegrations.map((pkg) => `+ ${pkg}`).join('\n')}`;
 	}
 
 	if (deprecatedIntegrations.length) {
-		stats += `\n\nRemoved:${deprecatedIntegrations.map((pkg) => `\n  - ${pkg}`)}`;
+		stats += `\n\nRemoved:\n${deprecatedIntegrations.map((pkg) => `- ${pkg}`).join('\n')}`;
 	}
 
 	stats += '\n---------------------------';
