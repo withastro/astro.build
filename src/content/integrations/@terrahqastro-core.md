@@ -7,9 +7,7 @@ description: astro-core is a collection of core Astro components designed to
   tools for handling images, videos,
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@terrahq/astro-core
 homepageUrl: https://www.npmjs.com/package/@terrahq/astro-core
-badge: new
 downloads: 591
 ---

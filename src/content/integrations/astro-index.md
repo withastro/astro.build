@@ -1,7 +1,7 @@
 ---
 name: astro-index
 title: astro-index
-description: Astro component to render a apache like index
+description: "Astro component to render a apache like index #withastro"
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-index
