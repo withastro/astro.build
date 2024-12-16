@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@polar-sh/astro
 homepageUrl: https://polar.sh
-downloads: 5
+downloads: 4
 repoUrl: https://github.com/polarsource/polar
 ---

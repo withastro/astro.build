@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-site-graph
 repoUrl: https://github.com/fevol/starlight-site-graph
 homepageUrl: https://github.com/fevol/starlight-site-graph#readme
-downloads: 471
+downloads: 506
 ---

@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@storyblok/astro
 image: /assets/integrations/storyblok.svg
 repoUrl: https://github.com/storyblok/storyblok-astro
 homepageUrl: https://github.com/storyblok/storyblok-astro
-downloads: 15846
+downloads: 15450
 toolbar: 1
 ---
