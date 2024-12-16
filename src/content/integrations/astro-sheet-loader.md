@@ -6,10 +6,8 @@ description: This package provides a Google Sheets loader for Astro. It allows
   site.
 categories:
   - loaders
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-sheet-loader
 repoUrl: https://github.com/AlphaJack/astro-sheet-loader
 homepageUrl: https://github.com/AlphaJack/astro-sheet-loader#readme
-badge: new
 downloads: 385
 ---

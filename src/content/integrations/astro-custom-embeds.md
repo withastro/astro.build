@@ -6,10 +6,8 @@ description: Astro integration to easily add your own embeds (that replace
 categories:
   - utilities
   - css+ui
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-custom-embeds
 repoUrl: https://github.com/flo-bit/astro-custom-embeds
 homepageUrl: https://github.com/flo-bit/astro-custom-embeds#readme
-badge: new
 downloads: 9
 ---

@@ -7,10 +7,8 @@ description: A compact solution for SVG sprites in Astro projects. It automates
 categories:
   - css+ui
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-svgs
 repoUrl: https://github.com/ACP-CODE/astro-svgs
 homepageUrl: https://github.com/ACP-CODE/astro-svgs#readme
-badge: new
 downloads: 424
 ---

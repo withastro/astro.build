@@ -6,7 +6,7 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-sst
 image: /assets/integrations/sst.svg
-repoUrl: https://github.com/sst/sst
-homepageUrl: https://github.com/sst/sst#readme
+repoUrl: https://github.com/sst/astro-sst
+homepageUrl: https://github.com/sst/astro-sst#readme
 downloads: 93263
 ---
