@@ -14,9 +14,9 @@ lang: "en"
 
 import BlogContentImage from "/src/components/BlogContentImage.astro";
 
-**Astro 5.1 is now available! Delivered just in time for the holidays, the first minor release of the Astro 5 era includes a new experimental sessions feature, improved caching for images, and extra tools for building Astro Actions.**
+**Astro 5.1 is now available! Delivered just in time for the holidays, the first minor release of the Astro 5 era includes a new experimental sessions feature, improved caching for images, and extra tools for working with Astro Actions.**
 
-The gifts it bears include:
+The gifts it comes bearing include:
 
 - [**Experimental: Sessions**](#experimental-sessions)
 - [**Remote image caching**](#remote-image-caching)
@@ -40,7 +40,9 @@ yarn upgrade astro --latest
 
 If you’ve built apps with frameworks like Rails or Laravel, you’re probably familiar with sessions: a simple way to keep track of per-user data like login status, flash messages, or shopping carts as users navigate your site. Sessions let you securely store temporary data tied to a specific user – with no client-side storage required. Currently you might store data in a cookie or local storage, but that can be insecure or cumbersome – or has limits on how much data you can store. 
 
-Sessions work by storing data on the server, and only sending a session ID as a cookie to the client. You can then get and set the session data in your Astro pages, API endpoints, Astro Actions, and middleware. The API and data is the same for each of them. In Astro components and pages, you can access the session object as `Astro.session`:
+Sessions work by storing data on the server, and only sending a session ID as a cookie to the client. You can then get and set the session data in your Astro pages, API endpoints, Astro Actions, and middleware. The API and data are the same for each of them. 
+
+In Astro components and pages, you can access the session object as `Astro.session`:
 
 ```astro 
 ---
@@ -82,7 +84,7 @@ import CartButton from '../components/CartButton.astro';
 
 ### Drivers
 
-Astro sessions are powered by [Unstorage](https://unstorage.unjs.io/) drivers, which are modules that Astro uses to store the session data. Unstorage supports dozens of providers, giving you a world of choice for storing the user data. When sessions are a stable feature, adapters will automatically configure a default driver, but during the experimental phase you must choose and configure one yourself. When using the Node.js adapter, the best choice is usually the [filesystem driver](https://unstorage.unjs.io/drivers/fs), but this cannot be used in serverless environments as they have no shared filesystem. For these, the best default is usually the storage feature provided by the platform, such as the [Netlify Blobs driver](https://unstorage.unjs.io/drivers/netlify), the [Cloudflare KV driver](https://unstorage.unjs.io/drivers/cloudflare) or the [Deno KV driver](https://unstorage.unjs.io/drivers/deno). You can also use a cross-platform driver such as [Upstash](https://unstorage.unjs.io/drivers/upstash) or [Redis](https://unstorage.unjs.io/drivers/redis).
+Astro sessions are powered by [unstorage](https://unstorage.unjs.io/) drivers, which are modules that Astro uses to store the session data. Unstorage supports dozens of providers, giving you a world of choice for storing the user data. When sessions are a stable feature, adapters will automatically configure a default driver, but during the experimental phase you must choose and configure one yourself. When using the Node.js adapter, the best choice is usually the [filesystem driver](https://unstorage.unjs.io/drivers/fs), but this cannot be used in serverless environments as they have no shared filesystem. For these, the best default is usually the storage feature provided by the platform, such as the [Netlify Blobs driver](https://unstorage.unjs.io/drivers/netlify), the [Cloudflare KV driver](https://unstorage.unjs.io/drivers/cloudflare) or the [Deno KV driver](https://unstorage.unjs.io/drivers/deno). You can also use a cross-platform driver such as [Upstash](https://unstorage.unjs.io/drivers/upstash) or [Redis](https://unstorage.unjs.io/drivers/redis).
 
 ### Usage
 
