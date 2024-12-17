@@ -118,12 +118,24 @@ Special thanks to [@oliverlynch](https://github.com/oliverlynch), who contribute
 
 ## `getActionPath` helper
 
-In most cases, using Astro Actions is as simple as calling `actions.like()` or `actions.addToCart()`. But sometimes you need to know the URL of an action, for example when you want to make a request with custom headers, or use an API such as `navigator.sendBeacon()`. Astro 5.1 introduces a new helper function, `getActionPath`, which returns the URL of an action. 
+The `getActionPath()` utility accepts an action and returns a URL path so you can execute an action call as a `fetch()` operation directly. This allows you to provide details such as custom headers when you call your action.
 
-```ts
+This example shows how to call a defined `like` action passing the `Authorization` header and the [`keepalive`](https://developer.mozilla.org/en-US/docs/Web/API/Request/keepalive) option:
+
+```astro title="src/components/my-component.astro" {8,11}
+<script>
 import { actions, getActionPath } from 'astro:actions'
 
-const path = getActionPath(actions.like) // '/_actions/like'
+await fetch(getActionPath(actions.like), {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer YOUR_TOKEN'
+  },
+  body: JSON.stringify({ id: 'YOUR_ID' }),
+  keepalive: true
+})
+</script>
 ```
 
 For more information, see [the new `getActionPath` documentation](https://docs.astro.build/en/reference/modules/astro-actions/#getactionpath).
