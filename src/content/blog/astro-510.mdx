@@ -120,9 +120,11 @@ Special thanks to [@oliverlynch](https://github.com/oliverlynch), who contribute
 
 ## `getActionPath` helper
 
-The `getActionPath()` utility accepts an action and returns a URL path so you can execute an action call as a `fetch()` operation directly. This allows you to provide details such as custom headers when you call your action.
+Using Astro Actions is as simple as calling `actions.like()` or `actions.addToCart()`. But sometimes you need to know the URL of an action so so you can make a `fetch()` request with custom headers, or use an API such as `navigator.sendBeacon()`.
 
-This example shows how to call a defined `like` action passing the `Authorization` header and the [`keepalive`](https://developer.mozilla.org/en-US/docs/Web/API/Request/keepalive) option:
+Astro 5.1 introduces a new helper function, `getActionPath()` to give you more flexibility when calling your action.
+
+Need to authorize those likes? Call your `like` action passing the `Authorization` header and the [`keepalive`](https://developer.mozilla.org/en-US/docs/Web/API/Request/keepalive) option:
 
 ```astro title="src/components/my-component.astro" {8,11}
 <script>
@@ -140,7 +142,7 @@ await fetch(getActionPath(actions.like), {
 </script>
 ```
 
-For more information, see [the new `getActionPath` documentation](https://docs.astro.build/en/reference/modules/astro-actions/#getactionpath).
+For more information, see [the new `getActionPath()` documentation](https://docs.astro.build/en/reference/modules/astro-actions/#getactionpath).
 
 ## Bug fixes
 We've had loads of great feedback since [the Astro 5 release](https://astro.build/blog/astro-5), and we've been working hard to fix the issues you've reported. See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all of the fixes since Astro 5.0.
