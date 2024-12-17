@@ -38,7 +38,7 @@ yarn upgrade astro --latest
 
 ## Experimental: Sessions
 
-If you’ve built apps with frameworks like Rails or Laravel, you’re probably familiar with sessions: a simple way to keep track of per-user data like login status, flash messages, or shopping carts as users navigate your site. Sessions let you securely store temporary data tied to a specific user – with no client-side storage required. Currently you might store data in a cookie or local storage, but that can be insecure or cumbersome – or has limits on how much data you can store. 
+If you’ve built apps with frameworks like Rails or Laravel, you’re probably familiar with sessions: a simple way to keep track of per-user data like login status, flash messages, or shopping carts as users navigate your site. Sessions let you securely store temporary data tied to a specific user – with no client-side storage required. Currently, you might store data in a cookie or local storage, but that can be insecure or cumbersome – or has limits on how much data you can store. 
 
 Sessions work by storing data on the server, and only sending a session ID as a cookie to the client. You can then get and set the session data in your Astro pages and components, API endpoints, Astro Actions, and middleware. The API and data are the same for each of them. 
 
@@ -84,9 +84,9 @@ import CartButton from '../components/CartButton.astro';
 
 ### Drivers
 
-Astro sessions are powered by [unstorage](https://unstorage.unjs.io/) drivers, which are modules that Astro uses to store the session data. Unstorage supports dozens of providers, giving you a world of choice for storing the user data.
+Astro sessions are powered by [unstorage](https://unstorage.unjs.io/) drivers, which are modules that Astro uses to store the session data. Unstorage supports dozens of providers, giving you a world of choice for storing user data.
 
- When sessions are a stable feature, Astro's official adapters will automatically configure a default driver. But during this experimental phase you must configure a `driver` for your chosen adapter yourself. You can also use a cross-platform driver such as [Upstash](https://unstorage.unjs.io/drivers/upstash) or [Redis](https://unstorage.unjs.io/drivers/redis).
+When sessions become a stable feature, Astro's official adapters will automatically configure a default driver. But during this experimental phase, you must configure a `driver` for your chosen adapter yourself. You can also use a cross-platform driver such as [Upstash](https://unstorage.unjs.io/drivers/upstash) or [Redis](https://unstorage.unjs.io/drivers/redis).
 
 ### Usage
 
@@ -114,13 +114,13 @@ You already know and love the built-in `<Image />` component to [display optimiz
 
 Now, Astro will cache remote images as well, reducing the need to re-download and re-transform images on every build. It uses [conditional requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#conditional_headers) with [`If-Modified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) or [`If-None-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) headers to determine whether the image is still fresh, and will use the cached version unless the source image has changed. 
 
-This is now enabled for all sites, and will work with any host that supports conditional requests. See the new [asset caching docs](https://docs.astro.build/en/guides/images/#asset-caching) for details. 
+This is now enabled for all sites and will work with any host that supports conditional requests. See the new [asset caching docs](https://docs.astro.build/en/guides/images/#asset-caching) for details.
 
 Special thanks to [@oliverlynch](https://github.com/oliverlynch), who contributed this feature!
 
 ## `getActionPath` helper
 
-Using Astro Actions is as simple as calling `actions.like()` or `actions.addToCart()`. But sometimes you need to know the URL of an action so so you can make a `fetch()` request with custom headers, or use an API such as `navigator.sendBeacon()`.
+Using Astro Actions is as simple as calling `actions.like()` or `actions.addToCart()`. But sometimes you need to know the URL of an action so you can make a `fetch()` request with custom headers, or use an API such as `navigator.sendBeacon()`.
 
 Astro 5.1 introduces a new helper function, `getActionPath()` to give you more flexibility when calling your action.
 
