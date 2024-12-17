@@ -18,8 +18,8 @@ import BlogContentImage from "/src/components/BlogContentImage.astro";
 
 The gifts it bears include:
 
-- [**Remote image caching**](#remote-image-caching)
 - [**Experimental: Sessions**](#experimental-sessions)
+- [**Remote image caching**](#remote-image-caching)
 - [**`getActionPath` helper**](#getactionpath-helper)
 
 
@@ -35,15 +35,6 @@ pnpm upgrade astro --latest
 yarn upgrade astro --latest
 ```
 
-## Remote image caching
-
-Astro sites can use the built-in `<Image />` component to [display optimized images](https://docs.astro.build/en/guides/images/#display-optimized-images-with-the-image--component) with automatic resizing and optimization. This works with both local and remote images. 
-
-Astro already caches transformed local images between builds, but previously did not cache remote images. Now, Astro will cache remote images as well, reducing the need to re-download and re-transform images on every build. It uses conditional requests with `If-Modified-Since` or `If-None-Match` headers to determine whether the image is still fresh, and will use the cached version unless the source image has changed. 
-
-This is now enabled for all sites, and will work with any host that supports conditional requests. See the new [asset caching docs](https://docs.astro.build/en/guides/images/#asset-caching) for details. 
-
-Special thanks to [@oliverlynch](https://github.com/oliverlynch), who contributed this feature!
 
 ## Experimental: Sessions
 
@@ -100,18 +91,28 @@ To try experimental sessions, add a `sessions` key to your `astro.config.mjs`:
 This example shows how to enable the filesystem driver, which works with the Node.js adapter:
 
 ```js title="astro.config.mjs" ins={4-8}
-	{
+  {
     adapter: node({ mode: 'standalone' }),
-		experimental: {
+    experimental: {
       session: {
         // Required: the name of the Unstorage driver
         driver: "fs",
       },
     },
-	}
+  }
 ```
 
 For more information see [the docs for the experimental flag](https://docs.astro.build/en/reference/experimental-flags/sessions/). We'd also appreciate your feedback on the feature. For more details, see [the Sessions RFC](https://github.com/withastro/roadmap/pull/1055) and leave your comments.
+
+## Remote image caching
+
+Astro sites can use the built-in `<Image />` component to [display optimized images](https://docs.astro.build/en/guides/images/#display-optimized-images-with-the-image--component) with automatic resizing and optimization. This works with both local and remote images. 
+
+Astro already caches transformed local images between builds, but previously did not cache remote images. Now, Astro will cache remote images as well, reducing the need to re-download and re-transform images on every build. It uses [conditional requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#conditional_headers) with [`If-Modified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) or [`If-None-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) headers to determine whether the image is still fresh, and will use the cached version unless the source image has changed. 
+
+This is now enabled for all sites, and will work with any host that supports conditional requests. See the new [asset caching docs](https://docs.astro.build/en/guides/images/#asset-caching) for details. 
+
+Special thanks to [@oliverlynch](https://github.com/oliverlynch), who contributed this feature!
 
 ## `getActionPath` helper
 
