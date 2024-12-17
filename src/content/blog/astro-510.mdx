@@ -40,7 +40,7 @@ yarn upgrade astro --latest
 
 If you’ve built apps with frameworks like Rails or Laravel, you’re probably familiar with sessions: a simple way to keep track of per-user data like login status, flash messages, or shopping carts as users navigate your site. Sessions let you securely store temporary data tied to a specific user – with no client-side storage required. Currently you might store data in a cookie or local storage, but that can be insecure or cumbersome – or has limits on how much data you can store. 
 
-Sessions work by storing data on the server, and only sending a session ID as a cookie to the client. You can then get and set the session data in your Astro pages, API endpoints, Astro Actions, and middleware. The API and data are the same for each of them. 
+Sessions work by storing data on the server, and only sending a session ID as a cookie to the client. You can then get and set the session data in your Astro pages and components, API endpoints, Astro Actions, and middleware. The API and data are the same for each of them. 
 
 In Astro components and pages, you can access the session object as `Astro.session`:
 
@@ -84,11 +84,13 @@ import CartButton from '../components/CartButton.astro';
 
 ### Drivers
 
-Astro sessions are powered by [unstorage](https://unstorage.unjs.io/) drivers, which are modules that Astro uses to store the session data. Unstorage supports dozens of providers, giving you a world of choice for storing the user data. When sessions are a stable feature, adapters will automatically configure a default driver, but during the experimental phase you must choose and configure one yourself. When using the Node.js adapter, the best choice is usually the [filesystem driver](https://unstorage.unjs.io/drivers/fs), but this cannot be used in serverless environments as they have no shared filesystem. For these, the best default is usually the storage feature provided by the platform, such as the [Netlify Blobs driver](https://unstorage.unjs.io/drivers/netlify), the [Cloudflare KV driver](https://unstorage.unjs.io/drivers/cloudflare) or the [Deno KV driver](https://unstorage.unjs.io/drivers/deno). You can also use a cross-platform driver such as [Upstash](https://unstorage.unjs.io/drivers/upstash) or [Redis](https://unstorage.unjs.io/drivers/redis).
+Astro sessions are powered by [unstorage](https://unstorage.unjs.io/) drivers, which are modules that Astro uses to store the session data. Unstorage supports dozens of providers, giving you a world of choice for storing the user data.
+
+ When sessions are a stable feature, Astro's official adapters will automatically configure a default driver. But during this experimental phase you must configure a `driver` for your chosen adapter yourself. You can also use a cross-platform driver such as [Upstash](https://unstorage.unjs.io/drivers/upstash) or [Redis](https://unstorage.unjs.io/drivers/redis).
 
 ### Usage
 
-To try experimental sessions, add a `sessions` key to your `astro.config.mjs`:
+To try experimental sessions, add the `experimental.sessions` flag to your `astro.config.mjs`:
 
 This example shows how to enable the filesystem driver, which works with the Node.js adapter:
 
@@ -104,13 +106,13 @@ This example shows how to enable the filesystem driver, which works with the Nod
   }
 ```
 
-For more information see [the docs for the experimental flag](https://docs.astro.build/en/reference/experimental-flags/sessions/). We'd also appreciate your feedback on the feature. For more details, see [the Sessions RFC](https://github.com/withastro/roadmap/pull/1055) and leave your comments.
+For more information see [the sessions docs for this experimental flag ](https://docs.astro.build/en/reference/experimental-flags/sessions/). We'd also appreciate your feedback on the feature. For even more details, and to leave feedback and participate in the development of the feature, see [the Sessions RFC](https://github.com/withastro/roadmap/pull/1055).
 
 ## Remote image caching
 
-Astro sites can use the built-in `<Image />` component to [display optimized images](https://docs.astro.build/en/guides/images/#display-optimized-images-with-the-image--component) with automatic resizing and optimization. This works with both local and remote images. 
+You already know and love the built-in `<Image />` component to [display optimized images](https://docs.astro.build/en/guides/images/#display-optimized-images-with-the-image--component) with automatic resizing and optimization. While this component currently transforms both local and remote images, image caching between builds was limited to local images. 
 
-Astro already caches transformed local images between builds, but previously did not cache remote images. Now, Astro will cache remote images as well, reducing the need to re-download and re-transform images on every build. It uses [conditional requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#conditional_headers) with [`If-Modified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) or [`If-None-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) headers to determine whether the image is still fresh, and will use the cached version unless the source image has changed. 
+Now, Astro will cache remote images as well, reducing the need to re-download and re-transform images on every build. It uses [conditional requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#conditional_headers) with [`If-Modified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) or [`If-None-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) headers to determine whether the image is still fresh, and will use the cached version unless the source image has changed. 
 
 This is now enabled for all sites, and will work with any host that supports conditional requests. See the new [asset caching docs](https://docs.astro.build/en/guides/images/#asset-caching) for details. 
 
