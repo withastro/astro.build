@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@zokki/astro-brotli
 repoUrl: https://gitea.zokki.net/zokki/astro-brotli
 homepageUrl: https://gitea.zokki.net/zokki/astro-brotli
-downloads: 89
+downloads: 97
 ---
