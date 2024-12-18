@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-electron-ts
 repoUrl: codeberg:hedgehogform/astro-electron-ts
 homepageUrl: https://codeberg.org/hedgehogform/astro-electron-ts
-downloads: 266
+downloads: 258
 image: /assets/integrations/astro-electron-ts.png
 ---

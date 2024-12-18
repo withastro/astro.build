@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/minearm-website
 homepageUrl: https://github.com/Minearm-RPM/minearm
 badge: new
-downloads: 357
+downloads: 359
 ---

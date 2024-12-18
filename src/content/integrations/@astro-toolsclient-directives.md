@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@astro-tools/client-directives
 repoUrl: https://github.com/wishrd/astro-tools
 homepageUrl: https://astro-tools.pages.dev
 badge: new
-downloads: 108
+downloads: 110
 ---
