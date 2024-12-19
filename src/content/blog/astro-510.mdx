@@ -1,0 +1,151 @@
+---
+title: "Astro 5.1"
+description: "Astro 5.1 is now available. This includes a new experimental sessions feature, improved caching for images, and new tools for building Astro Actions."
+homepageLink:
+  title: "Astro 5.1"
+  subtitle: "Available now!"
+publishDate: "2024-12-17"
+authors:
+  - matt
+coverImage: "/src/content/blog/_images/astro-510/blog-post-5-1.webp"
+socialImage: "/src/content/blog/_images/astro-510/og-astro-5-1.webp"
+lang: "en"
+---
+
+import BlogContentImage from "/src/components/BlogContentImage.astro";
+
+**Astro 5.1 is now available! Delivered just in time for the holidays, the first minor release of the Astro 5 era includes a new experimental sessions feature, improved caching for images, and extra tools for working with Astro Actions.**
+
+The gifts it comes bearing include:
+
+- [**Experimental: Sessions**](#experimental-sessions)
+- [**Remote image caching**](#remote-image-caching)
+- [**`getActionPath` helper**](#getactionpath-helper)
+
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+
+## Experimental: Sessions
+
+If you’ve built apps with frameworks like Rails or Laravel, you’re probably familiar with sessions: a simple way to keep track of per-user data like login status, flash messages, or shopping carts as users navigate your site. Sessions let you securely store temporary data tied to a specific user – with no client-side storage required. Currently, you might store data in a cookie or local storage, but that can be insecure or cumbersome – or has limits on how much data you can store. 
+
+Sessions work by storing data on the server, and only sending a session ID as a cookie to the client. You can then `get` and `set` the session data in your Astro pages and components, API endpoints, Astro Actions, and middleware. The API and data are the same for each of them. 
+
+In Astro components and pages, you can access the session object as `Astro.session`:
+
+```astro {4}
+---
+// src/components/CartButton.astro
+export const prerender = false;
+const cart = await Astro.session.get('cart');
+---
+
+<a href="/cart">🛒 {cart?.length ?? 0} items</a>
+```
+The same session data is available in your Astro Actions:
+
+```ts {9,11}
+// src/actions/addToCart.ts
+import { defineAction } from "astro:actions";
+import { z } from "astro:schema";
+
+export const server = {
+  addToCart: defineAction({
+    input: z.object({ productId: z.string() }),
+    handler: async (input, context) => {
+      const cart = await context.session.get("cart");
+      cart.push(input.productId);
+      await context.session.set("cart", cart);
+      return cart;
+    },
+  }),
+};
+```
+
+Sessions work on pages that are rendered on-demand, or they pair perfectly with [server islands](https://docs.astro.build/en/concepts/islands/#server-islands), letting you sprinkle islands of personalized content in an otherwise static site.
+
+```astro
+---
+import CartButton from '../components/CartButton.astro';
+---
+<CartButton server:defer />
+```
+
+### Drivers
+
+Astro sessions are powered by [unstorage](https://unstorage.unjs.io/) drivers, which are modules that Astro uses to store the session data. Unstorage supports dozens of providers, giving you a world of choice for storing user data.
+
+When sessions become a stable feature, Astro's official adapters will automatically configure a default driver. But during this experimental phase, you must configure a `driver` for your chosen adapter yourself. You can also use a cross-platform driver such as [Upstash](https://unstorage.unjs.io/drivers/upstash) or [Redis](https://unstorage.unjs.io/drivers/redis).
+
+### Usage
+
+To try experimental sessions, add the `experimental.sessions` flag to your `astro.config.mjs`:
+
+This example shows how to enable the filesystem driver, which works with the Node.js adapter:
+
+```js title="astro.config.mjs" ins={4-8}
+  {
+    adapter: node({ mode: 'standalone' }),
+    experimental: {
+      session: {
+        // Required: the name of the Unstorage driver
+        driver: "fs",
+      },
+    },
+  }
+```
+
+For more information see [the sessions docs for this experimental flag ](https://docs.astro.build/en/reference/experimental-flags/sessions/). We'd also appreciate your feedback on the feature. For even more details, and to leave feedback and participate in the development of the feature, see [the Sessions RFC](https://github.com/withastro/roadmap/pull/1055).
+
+## Remote image caching
+
+You already know and love the built-in `<Image />` component to [display optimized images](https://docs.astro.build/en/guides/images/#display-optimized-images-with-the-image--component) with automatic resizing and optimization. While this component currently transforms both local and remote images, image caching between builds was limited to local images. 
+
+Now, Astro will cache remote images as well, reducing the need to re-download and re-transform images on every build. It uses [conditional requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#conditional_headers) with [`If-Modified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) or [`If-None-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) headers to determine whether the image is still fresh, and will use the cached version unless the source image has changed. 
+
+This is now enabled for all sites and will work with any host that supports conditional requests. See the new [asset caching docs](https://docs.astro.build/en/guides/images/#asset-caching) for details.
+
+Special thanks to [@oliverlynch](https://github.com/oliverlynch), who contributed this feature!
+
+## `getActionPath` helper
+
+Using Astro Actions is as simple as calling `actions.like()` or `actions.addToCart()`. But sometimes you need to know the URL of an action so you can make a `fetch()` request with custom headers, or use an API such as `navigator.sendBeacon()`.
+
+Astro 5.1 introduces a new helper function, `getActionPath()` to give you more flexibility when calling your action.
+
+Need to authorize those likes? Call your `like` action passing the `Authorization` header and the [`keepalive`](https://developer.mozilla.org/en-US/docs/Web/API/Request/keepalive) option:
+
+```astro title="src/components/my-component.astro" {8,11}
+<script>
+import { actions, getActionPath } from 'astro:actions'
+
+await fetch(getActionPath(actions.like), {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer YOUR_TOKEN'
+  },
+  body: JSON.stringify({ id: 'YOUR_ID' }),
+  keepalive: true
+})
+</script>
+```
+
+For more information, see [the new `getActionPath()` documentation](https://docs.astro.build/en/reference/modules/astro-actions/#getactionpath).
+
+## Bug fixes
+
+We've had loads of great feedback since [the Astro 5 release](https://astro.build/blog/astro-5), and we've been working hard to fix the issues you've reported. See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all of the fixes since Astro 5.0.
+
+Thanks to [Florian Lefebvre (@florian-lefebvre)](https://github.com/florian-lefebvre), [@oliverlynch](https://github.com/oliverlynch), [Sarah Rainsberger (@sarah11918)](https://github.com/sarah11918), [Yan (@yanthomasdev)](https://github.com/yanthomasdev), [Emanuele Stoppa (@ematipico)](https://github.com/ematipico), and everyone else who contributed to this release. Thanks also to everyone who's been using Astro and sharing their feedback. We're excited to see what you build with Astro 5.1!
