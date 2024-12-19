@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-globals
 homepageUrl: https://github.com/gingerchew/astro-globals
 badge: new
-downloads: 199
+downloads: 203
 ---
