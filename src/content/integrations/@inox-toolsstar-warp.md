@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/star-warp
 homepageUrl: https://www.npmjs.com/package/@inox-tools/star-warp
-downloads: 161
+downloads: 193
 ---
