@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/ui
 repoUrl: https://github.com/withstudiocms/ui
 homepageUrl: https://ui.studiocms.dev
 badge: new
-downloads: 393
+downloads: 401
 ---

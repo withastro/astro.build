@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/astro-when
 repoUrl: https://github.com/Fryuni/inox-tools
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 68509
+downloads: 69306
 ---
