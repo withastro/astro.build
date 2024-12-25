@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astropub/code
 homepageUrl: https://www.npmjs.com/package/@astropub/code
 badge: new
-downloads: 1104
+downloads: 1113
 ---

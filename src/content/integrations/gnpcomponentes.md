@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/gnpcomponentes
 homepageUrl: https://www.npmjs.com/package/gnpcomponentes
 badge: new
-downloads: 75
+downloads: 76
 ---
