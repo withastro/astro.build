@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-dynamic-static-split-domain
 homepageUrl: https://github.com/Jacob-Roberts/astro-dynamic-static-split-domain
 badge: new
-downloads: 34
+downloads: 30
 ---

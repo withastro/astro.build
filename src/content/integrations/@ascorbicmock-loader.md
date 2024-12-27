@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ascorbic/mock-loader
 repoUrl: github.com:ascorbic/astro-loaders
 homepageUrl: https://github.com/ascorbic/astro-loaders
-downloads: 11
+downloads: 10
 ---
