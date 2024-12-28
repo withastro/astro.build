@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-typed-ids
 homepageUrl: https://github.com/florian-lefebvre/astro-typed-ids
 badge: new
-downloads: 22
+downloads: 16
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-assert
 repoUrl: https://github.com/IamAlexandros/astro-assert
 homepageUrl: https://github.com/IamAlexandros/astro-assert#readme
 badge: new
-downloads: 548
+downloads: 549
 ---
