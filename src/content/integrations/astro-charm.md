@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-charm
 repoUrl: https://github.com/Yuhanawa/astro-charm
 homepageUrl: https://github.com/Yuhanawa/astro-charm
 badge: new
-downloads: 1243
+downloads: 1306
 ---
