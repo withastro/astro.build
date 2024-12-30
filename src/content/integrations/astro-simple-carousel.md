@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-simple-carousel
 homepageUrl: https://github.com/Its-Just-Nans/astro-carousel
 badge: new
-downloads: 107
+downloads: 115
 ---
