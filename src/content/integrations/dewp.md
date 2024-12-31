@@ -1,7 +1,7 @@
 ---
 name: dewp
 title: dewp
-description: Tools for migrating from WordPress to Astro
+description: Use your WordPress data in Astro projects
 categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/dewp
