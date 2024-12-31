@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@gemini-ui-astro/styles
 homepageUrl: https://github.com/gemini-ui/gemini-ui-monorepo#readme
-downloads: 1
+downloads: 2
 repoUrl: https://github.com/gemini-ui/gemini-ui-monorepo
 ---
