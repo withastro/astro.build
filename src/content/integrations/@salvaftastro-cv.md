@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@salvaft/astro-cv
 repoUrl: https://github.com/salvaft/astro-sft
 homepageUrl: https://github.com/salvaft/astro-sft#readme
-downloads: 1
+downloads: 11
 ---
