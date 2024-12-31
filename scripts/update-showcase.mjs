@@ -487,6 +487,10 @@ const scraper = new ShowcaseScraper({
 		'https://tt.adarshrkumar.dev/',
 		// Already added to showcase - 2024/11/29
 		'https://cointracker.io',
+		// Already added to showcase - 2024/12/30
+		'https://michler.io',
+		// Previously added, this is an insecure version
+		'http://boxing-data.com/',
 	],
 });
 await scraper.run();
