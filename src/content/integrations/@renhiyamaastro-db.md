@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@renhiyama/astro-db
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/db/
 badge: new
-downloads: 13
+downloads: 10
 ---
