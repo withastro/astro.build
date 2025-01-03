@@ -8,5 +8,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/logical-astro-tweet
 homepageUrl: https://www.npmjs.com/package/logical-astro-tweet
-downloads: 64
+downloads: 53
 ---
