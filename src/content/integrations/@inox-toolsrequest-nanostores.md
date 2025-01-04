@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-nanostores
 homepageUrl: https://www.npmjs.com/package/@inox-tools/request-nanostores
-downloads: 2679
+downloads: 2333
 ---

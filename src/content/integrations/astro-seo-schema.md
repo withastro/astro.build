@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-seo-schema
 repoUrl: https://github.com/codiume/orbit
 homepageUrl: https://github.com/codiume/orbit
-downloads: 21585
+downloads: 20516
 ---
