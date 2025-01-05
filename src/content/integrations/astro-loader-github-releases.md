@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-loader-github-releases
 repoUrl: https://github.com/lin-stephanie/astro-loaders
 homepageUrl: https://github.com/lin-stephanie/astro-loaders/blob/main/packages/astro-loader-github-releases/
 badge: new
-downloads: 470
+downloads: 396
 ---

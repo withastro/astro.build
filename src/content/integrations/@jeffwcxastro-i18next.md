@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@jeffwcx/astro-i18next
 repoUrl: https://github.com/jeffwcx/astro-i18next
 homepageUrl: https://jeffwcx.github.io/astro-i18next/
 badge: new
-downloads: 36
+downloads: 32
 ---

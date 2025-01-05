@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@pbkware/astro-main-menu
 repoUrl: https://github.com/pbkware/astro-main-menu
 homepageUrl: https://pbkware.klink.au/astro-main-menu/
 badge: new
-downloads: 115
+downloads: 56
 ---
