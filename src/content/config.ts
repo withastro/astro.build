@@ -162,7 +162,13 @@ export const collections = {
 		type: 'data',
 		schema: ({ image }) =>
 			z.object({
-				title: z.string().min(1),
+				title: z
+					.string()
+					.min(1)
+					.refine((value) => value !== 'Just a moment...', {
+						message:
+							"A showcase entry's title cannot be 'Just a moment...' which usually indicates a loading error.\nMake sure to update the title manually.\n",
+					}),
 				image: image(),
 				url: z.string().url(),
 				featured: z.number().min(1).optional(),
