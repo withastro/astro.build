@@ -5,10 +5,8 @@ description: Astro loader for loading GitHub releases from a user's commit
   history or a list of repositories.
 categories:
   - loaders
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-loader-github-releases
 repoUrl: https://github.com/lin-stephanie/astro-loaders
 homepageUrl: https://github.com/lin-stephanie/astro-loaders/blob/main/packages/astro-loader-github-releases/
-badge: new
 downloads: 327
 ---

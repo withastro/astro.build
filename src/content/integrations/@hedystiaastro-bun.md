@@ -5,10 +5,8 @@ description: <div align="center">   <p>     <strong>🚀 @hedystia/astro-bun</st
 categories:
   - performance+seo
   - adapters
-  - recent
 npmUrl: https://www.npmjs.com/package/@hedystia/astro-bun
 repoUrl: https://github.com/Zastinian/astro-bun
 homepageUrl: https://github.com/Zastinian/astro-bun
-badge: new
 downloads: 2417
 ---

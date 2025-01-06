@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/tractstack
 repoUrl: https://github.com/AtRiskMedia/tractstack
-homepageUrl: https://tractstack.com
+homepageUrl: https://www.npmjs.com/package/tractstack
 downloads: 24
 ---
