@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astrosortfilter
 homepageUrl: https://www.npmjs.com/package/astrosortfilter
-downloads: 3
+downloads: 4
 ---
