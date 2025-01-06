@@ -18,7 +18,7 @@ const image = theme.Theme.image;
 
 <Card isLink>
 	<!-- {!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>} -->
-	<a class="flex h-full flex-col" href={`/themes/details/${theme.Theme.slug}/`} data-astro-prefetch>
+	<a href={`/themes/details/${theme.Theme.slug}/`} data-astro-prefetch>
 		<Image
 			src={image}
 			width={600}
@@ -28,25 +28,27 @@ const image = theme.Theme.image;
 			loading="lazy"
 			decoding="async"
 		/>
-		<CardBody>
-			<div>
-				<!-- <h3 class:list={["heading-5 mb-2 text-white", { official: theme.data.official }]}> -->
+	</a>
+	<CardBody>
+		<div>
+			<!-- <h3 class:list={["heading-5 mb-2 text-white", { official: theme.data.official }]}> -->
+			<a href={`/themes/details/${theme.Theme.slug}/`} data-astro-prefetch>
 				<h3 class:list={['heading-5 mb-2 text-white']}>
 					{theme.Theme.title}
 				</h3>
 				<p class="line-clamp-3">{theme.Theme.description}</p>
-			</div>
-			<CardFooter
-				class="grid grid-cols-[1fr,auto] items-center justify-between gap-2 overflow-hidden border-t border-astro-gray-400 pt-6"
-			>
-				<Avatar theme={theme} />
+			</a>
+		</div>
+		<CardFooter
+			class="grid grid-cols-[1fr,auto] items-center justify-between gap-2 overflow-hidden border-t border-astro-gray-400 pt-6"
+		>
+			<Avatar theme={theme} />
 
-				<Badge theme={theme.Theme.paid ? 'primary' : 'secondary'} class="z-10">
-					{theme.Theme.paid ? 'Paid' : 'Free'}
-				</Badge>
-			</CardFooter>
-		</CardBody>
-	</a>
+			<Badge theme={theme.Theme.paid ? 'primary' : 'secondary'} class="z-10">
+				{theme.Theme.paid ? 'Paid' : 'Free'}
+			</Badge>
+		</CardFooter>
+	</CardBody>
 </Card>
 
 <style>
