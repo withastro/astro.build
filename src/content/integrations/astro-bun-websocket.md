@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-bun-websocket
 homepageUrl: https://github.com/lilnasy/gratelets/packages/bun-websocket
 badge: new
-downloads: 128
+downloads: 132
 ---
