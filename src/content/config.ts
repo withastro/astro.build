@@ -138,7 +138,7 @@ export const collections = {
 	pages: {
 		schema: z.object({
 			seo: seoSchema,
-			updated_date: z.date().describe('The date this content was last updated.'),
+			updated_date: z.date().optional().describe('The date this content was last updated.'),
 			locale: z.enum(['en']).default('en'),
 		}),
 	},
