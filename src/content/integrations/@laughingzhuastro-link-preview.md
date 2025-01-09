@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@laughingzhu/astro-link-preview
 repoUrl: https://github.com/LaughingZhu/astro-link-preview
 homepageUrl: https://github.com/LaughingZhu/astro-link-preview
 badge: new
-downloads: 1172
+downloads: 1173
 ---

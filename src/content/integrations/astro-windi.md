@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-windi
 repoUrl: https://github.com/pep108/astro-windi
 homepageUrl: https://github.com/pep108/astro-windi/
-downloads: 25
+downloads: 27
 image: /assets/integrations/astro-windi.svg
 ---

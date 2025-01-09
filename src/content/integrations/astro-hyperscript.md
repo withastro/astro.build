@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-hyperscript
 repoUrl: https://github.com/adamNewell/astro-hyperscript
 homepageUrl: https://github.com/adamNewell/astro-hyperscript#readme
-downloads: 7
+downloads: 9
 ---

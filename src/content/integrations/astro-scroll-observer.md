@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-scroll-observer
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://code.juliancataldo.com/component/astro-scroll-observer
-downloads: 225
+downloads: 221
 ---
