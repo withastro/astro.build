@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astro-utils/formidable
 repoUrl: https://github.com/withastro-utils/utils
 homepageUrl: https://withastro-utils.github.io/docs/
-downloads: 139
+downloads: 159
 ---

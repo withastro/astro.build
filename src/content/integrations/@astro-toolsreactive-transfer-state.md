@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@astro-tools/reactive-transfer-state
 repoUrl: https://github.com/wishrd/astro-tools
 homepageUrl: https://astro-tools.pages.dev
 badge: new
-downloads: 1117
+downloads: 1181
 ---
