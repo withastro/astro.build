@@ -15,14 +15,13 @@ const { author } = Astro.props;
 		src={author.avatar ?? ''}
 		height={48}
 		width={48}
-		class="rounded-full size-12 lg:w-full h-fit border"
+		class="size-12 lg:w-full h-fit"
 		alt="Your avatar"
 	/>
 	<h1 class="border-astro-gray-500 lg:hidden heading-3">{author.name}</h1>
 	<div class="flex flex-col gap-4 pt-2 lg:pt-8 w-full">
 		<div class="flex items-center justify-between">
 			<small class="code text-astro-gray-200">Joined</small>
-			<small class="text-astro-gray-200">
 			{
 				new Date(author.createdAt).toLocaleDateString('en-US', {
 					year: 'numeric',
@@ -30,25 +29,20 @@ const { author } = Astro.props;
 					day: 'numeric',
 				})
 			}
-			</small>
 		</div>
 		<hr class="border-astro-gray-500" />
 		<div class="flex items-center justify-between">
 			<small class="code text-astro-gray-200">GitHub</small>
-			<small class="text-astro-gray-200">
-				<a class="link" href={`https://github.com/${author.username}`}>@{author.username}</a>
-			</small>
+			<a class="link" href={`https://github.com/${author.username}`}>@{author.username}</a>
 		</div>
 		{
 			author.url && (
 				<hr class="border-astro-gray-500" />
 				<div class="flex items-center justify-between">
 					<small class="code text-astro-gray-200">Website</small>
-					<small class="text-astro-gray-200">
 						<a class="link" href={author.url}>
-							{author.url}
+							{new URL(author.url).hostname}
 						</a>
-					</small>
 				</div>
 			)
 		}

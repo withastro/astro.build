@@ -25,7 +25,7 @@ if (!currentPage || Number.isNaN(currentPage)) {
 }
 
 const allThemes: ThemeAndAuthor[] = await fetch(
-	`${THEMES_API_URL}/api/themes/author?username=${Astro.params.username}`,
+	`${THEMES_API_URL}/api/themes/author?id=${Astro.params.id}`,
 ).then((res) => res.json());
 
 // take all matching themes and create a paginated list of results
@@ -33,7 +33,7 @@ const paginatedResults = paginate({
 	data: allThemes,
 	pageSize: 12,
 	currentPage,
-	route: `/themes/author/${Astro.params.username}/[...page]`,
+	route: `/themes/author/${Astro.params.id}/[...page]`,
 });
 
 const { page, allPages } = paginatedResults;

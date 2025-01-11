@@ -8,7 +8,7 @@ export type Props = {
 const { theme } = Astro.props;
 ---
 
-<a class="flex items-center gap-2" href={`/themes/author/${theme.Author.username}`}>
+<div class="flex items-center gap-2">
 	<img
 		class="h-6 w-6 rounded-full"
 		src={theme.Author.avatar}
@@ -21,4 +21,4 @@ const { theme } = Astro.props;
 	<span class="overflow-hidden text-ellipsis">
 		{theme.Author.name}
 	</span>
-</a>
+</div>
