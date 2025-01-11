@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-deno-websocket
 homepageUrl: https://github.com/lilnasy/gratelets/packages/deno-websocket
 badge: new
-downloads: 67
+downloads: 69
 ---
