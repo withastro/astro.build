@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@wix/astro
 homepageUrl: https://www.npmjs.com/package/@wix/astro
 badge: new
-downloads: 148
+downloads: 152
 ---
