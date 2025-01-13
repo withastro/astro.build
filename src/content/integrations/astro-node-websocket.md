@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-node-websocket
 homepageUrl: https://github.com/lilnasy/gratelets/packages/node-websocket
 badge: new
-downloads: 303
+downloads: 207
 ---
