@@ -6,7 +6,7 @@ categories:
   - adapters
   - recent
 npmUrl: https://www.npmjs.com/package/astro-bun-websocket
-homepageUrl: https://github.com/lilnasy/gratelets/packages/bun-websocket
+homepageUrl: https://www.npmjs.com/package/astro-bun-websocket
 badge: new
 downloads: 135
 ---

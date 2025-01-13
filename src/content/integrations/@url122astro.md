@@ -4,10 +4,8 @@ title: "@url122/astro"
 description: An Astro integration for generating URL122 ids
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@url122/astro
 repoUrl: https://github.com/altie122/URL122AstroIntergration
 homepageUrl: https://docs.url122.xyz/
-badge: new
 downloads: 303
 ---

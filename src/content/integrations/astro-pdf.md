@@ -1,7 +1,7 @@
 ---
 name: astro-pdf
 title: astro-pdf
-description: A simple Astro integration to generate PDFs from built pages
+description: Astro integration to generate PDFs from pages in your site and other websites
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-pdf

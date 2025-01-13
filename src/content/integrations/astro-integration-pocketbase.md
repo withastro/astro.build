@@ -1,9 +1,7 @@
 ---
 name: astro-integration-pocketbase
 title: astro-integration-pocketbase
-description: <!-- ![GitHub Actions Workflow
-  Status](https://img.shields.io/github/actions/workflow/status/pawcoding/astro-integration-pocketbase/release.yaml?style=flat-square)
-  -->
+description: GitHub Actions Workflow Status [NPM Version](ht
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-integration-pocketbase
