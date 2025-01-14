@@ -10,6 +10,8 @@ socialImage: "/src/content/blog/_images/whats-new-december/og.webp"
 lang: "en"
 ---
 
+import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
+import { YouTube } from '@astro-community/astro-embed-youtube';
 import BlogContentImage from "/src/components/BlogContentImage.astro";
 import islandDiag from "/src/content/blog/_images/future-of-astro-server-islands/dark-mode-server-islands-diag.webp";
 import astroBuild from "/src/content/blog/_images/year-in-review/astro-build.webp"
@@ -419,7 +421,7 @@ Besides `renderToString`, there's also a `renderToResponse` method, and you can 
 
 At Astro Together, there was a demo showing how to use the Container API to embed Astro components (with islands!) into a PHP project, which was quite impressive. Be sure to check it out, too:
 
-https://www.youtube.com/watch?v=lm2br5_zcHg
+<YouTube id='https://www.youtube.com/watch?v=lm2br5_zcHg' title='Astro 4.10: Accelerating content site development'/>
 
 
 ## Related Projects
@@ -456,8 +458,12 @@ The README of the Astro Storefront project covers design decisions and more, so 
 
 Ecosystem CI is a mechanism for preserving the overall quality of a software ecosystem. It originated in the Vite community, led mainly by [dominikg](https://github.com/dominikg):
 
-https://www.youtube.com/watch?v=UgQtYT1DMiw
-https://www.youtube.com/watch?v=7L4I4lDzO48
+<YouTubeGrid
+  videos={[
+      { id: 'https://www.youtube.com/watch?v=UgQtYT1DMiw', title: 'vite-ecosystem-ci, Dominik G, ViteConf 2022' },
+      { id: 'https://www.youtube.com/watch?v=7L4I4lDzO48', title: 'Dominik G. | Ecosystem-ci - One Year Later | ViteConf 2023' },
+  ]}
+/>
 
 Vite's ecosystem is huge, with new libraries and tools constantly popping up. The flip side is that any unexpected breaking change in Vite can have a massive ripple effect. Ecosystem CI helps minimize that risk by continuously checking major ecosystem packages whenever Vite changes, ensuring things don't unexpectedly break—or if they do, that they can be fixed promptly in collaboration with the package maintainers.
 
@@ -522,6 +528,17 @@ Find out more about Bombshell and Clack on [the Bombshell website](https://bomb.
 On May 28, 2024, the first offline Astro meetup Astro Together was held in Motreal, Canada. There's [a blog post](https://astro.build/blog/astro-together-montreal/) with a summary and photos of the event.
 
 Talks from the event are available on [YouTube](https://www.youtube.com/playlist?list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H). The flow goes: Fred K. Schott on Astro's current status and future, Ben Holmes demonstrating Astro Actions, Matthew Phillips explaining what changed in Astro 4.10, and Sarah Rainsberger talking about docs, Starlight, and the Astro community.
+
+<YouTubeGrid
+  videos={[
+      { id: 'https://www.youtube.com/watch?v=tk1RWcasgxs&list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H&index=1', title: 'Astro Together keynote in 6 minutes' },
+      { id: 'https://www.youtube.com/watch?v=VkYQMhit_04&list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H&index=2', title: 'Astro Actions: the missing server action library' },
+      { id: 'https://www.youtube.com/watch?v=lm2br5_zcHg&list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H&index=3', title: 'Astro 4.10: Accelerating content site development' },
+      { id: 'https://www.youtube.com/watch?v=lm2br5_zcHg&list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H&index=4', title: 'One year of Starlight: Astro's community-built documentation theme' },
+      { id: 'https://www.youtube.com/watch?v=lm2br5_zcHg&list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H&index=5', title: 'The Future of Astro is...' },
+      { id: 'https://www.youtube.com/watch?v=lm2br5_zcHg&list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H&index=6', title: 'Astro Together 2024 Full Keynote' },
+  ]}
+/>
 
 Several blog posts were also released around this event:
 
