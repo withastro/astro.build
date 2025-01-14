@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-theme-template
 homepageUrl: https://starlight-theme-template.otterlord.dev/
 badge: new
-downloads: 58
+downloads: 62
 ---

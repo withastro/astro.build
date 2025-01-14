@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-websocket
 homepageUrl: https://www.npmjs.com/package/astro-cloudflare-websocket
 badge: new
-downloads: 68
+downloads: 69
 ---
