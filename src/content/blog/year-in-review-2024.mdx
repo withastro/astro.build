@@ -421,7 +421,7 @@ At [Astro Together](#astro-together), there was a demo by Matthew Phillips showi
 
 ### Astro Studio
 
-[Astro Studio](https://studio.astro.build/) launched as Astro's first managed service in early 2024, but sadly announced [its shutdown](https://astro.build/blog/goodbye-astro-studio/) in September. The post explains that Astro Studio aimed to:
+[Astro Studio](https://web.archive.org/web/20240224162616/https://studio.astro.build/) launched as Astro's first managed service in early 2024, but sadly announced [its shutdown](https://astro.build/blog/goodbye-astro-studio/) in September. The post explains that Astro Studio aimed to:
 
 1. Provide all Astro developers with an affordable, high-performance SQL data storage solution that is easy to use and integrated seamlessly with Astro
 2. Build a sustainable business model to support Astro's continued development and growth
@@ -437,11 +437,11 @@ As for the shutdown timeline, it's as follows:
 
 If you're using Astro Studio, be sure to plan your migration to another database service in advance.
 
-Meanwhile, Astro DB will still be available for use in your Astro projects. In [v4.15](https://astro.build/blog/astro-4150/#libsql-remotes-in-astro-db), Astro DB introduced support for connecting to any libSQL server, so you can self-host a libSQL server or use a managed service like [Turo](https://turso.tech/) to continue using Astro DB.
+Meanwhile, Astro DB will still be available for use in your Astro projects. In [v4.15](https://astro.build/blog/astro-4150/#libsql-remotes-in-astro-db), Astro DB introduced support for connecting to any libSQL server, so you can self-host a libSQL server or use a managed service like [Turso](https://turso.tech/) to continue using Astro DB.
 
 ### Astro Storefront
 
-Astro Storefront is an e-commerce site project demonstrating many of Astro's newer features mentioned above, including Actions and `astro:env`. It represents the current state of Astro's capabilities and is a great reference for building your own Astro projects. [The source code](https://github.com/withastro/storefront) is publicly available on GitHub, and the same code is used in the production for powering [Astro Shop](https://shop.astro.build/), where you can buy Astro merchandise.
+Astro Storefront is an e-commerce site project demonstrating many of Astro's newer features mentioned above, including Actions and `astro:env`. It represents the current state of Astro's capabilities and is a great reference for building your own Astro projects. [The Storefront source code](https://github.com/withastro/storefront) is publicly available on GitHub, and the same code is used in the production for powering [the Astro Swag Shop](https://shop.astro.build/), where you can buy Astro merchandise.
 
 Astro started life as a static site generator, but in recent years it has actively expanded its server-side functionality, now capable of building sites with dynamic content like e-commerce sites without sacrificing UX. Astro Storefront exemplifies this trend, and in March 2024, an [E-commerce guide](https://docs.astro.build/en/guides/ecommerce/) was also published to help you build your own e-commerce site with Astro.
 
@@ -473,7 +473,7 @@ Ecosystem CI has spread beyond Vite to other projects like:
 
 And now Astro has joined this trend with its own Ecosystem CI implementation, available at [withastro/astro-ecosystem-ci](https://github.com/withastro/astro-ecosystem-ci).
 
-You can see the results of the CI checks at https://github.com/withastro/astro-ecosystem-ci/actions. Each workflow has jobs for packages in the ecosystem—e.g., Starlight—and they test building, running, etc., to ensure compatibility with the [withastro/astro](https://github.com/withastro/astro) package.
+You can see the results of the CI checks at https://github.com/withastro/astro-ecosystem-ci/actions. Each workflow has jobs for packages in the ecosystem (e.g. [Starlight](#starlight)) and they test building, running, etc., to ensure compatibility with the [withastro/astro](https://github.com/withastro/astro) package.
 
 Ecosystem CI is more or less aimed at package developers, so if you're simply using Astro, it's not something you need to worry about. That said, if a package in the ecosystem suddenly breaks, Ecosystem CI could offer some useful insights into what's going on. Even if you're not directoly involved in open-source development, understanding the Ecosystem CI concept can help you maintain stability across internally developed packages, such as those used in your company systems.
 
@@ -481,7 +481,7 @@ Ecosystem CI is more or less aimed at package developers, so if you're simply us
 
 [Starlight](https://starlight.astro.build/) is a documentation theme released in 2023, which has now passed [its first anniversary](https://astro.build/blog/starlight-turns-one/). Its version at the start of 2024 was [v0.15.2](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.15.2), and it's now at [v0.30.3](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.30.3), reflecting the steady pace of updates. For example, [v0.21.0](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.21.0) introduced the [`<FileTree>`](https://starlight.astro.build/components/file-tree/) component for displaying directory trees and the [`<Steps>`](https://starlight.astro.build/components/steps/) component for showing sequences of steps, and [`v0.27.0`](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.27.0) added support for server-side rendering.
 
-Adoption of Starlight soared last year with well-known projects like [Bioime](https://biomejs.dev/) and [Knip](https://knip.dev/), and it continues to see more usage in 2024. Some examples include:
+Adoption of Starlight soared last year with well-known projects like [Biome](https://biomejs.dev/) and [Knip](https://knip.dev/), and it continues to see more usage in 2024. Some examples include:
 
 - [Cloudflare Docs](https://developers.cloudflare.com/)
 - [jscodeshift](https://jscodeshift.com/) (a codemod toolkit by Meta)
