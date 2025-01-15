@@ -598,10 +598,15 @@ You can [learn more about TutorialKit in their official docs](https://tutorialki
 
 ### IKEA, Porsche
 
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+import { getEntry } from 'astro:content';
+
 Astro is now used by many websites, including big names like IKEA and Porsche:
 
-- [IKEA](https://www.ikea.com/)
-- [Porsche](https://www.porsche.com/usa/)
+<div class="grid grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.ikea.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.porsche.com')} />
+</div>
 
 IKEA's site makes effective use of View Transitions, making navigation quite fun. Meanwhile, Porsche's site runs Vue on Astro, making good use of Islands Architecture.
 
