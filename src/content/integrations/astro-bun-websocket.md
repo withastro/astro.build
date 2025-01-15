@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-bun-websocket
 homepageUrl: https://www.npmjs.com/package/astro-bun-websocket
 badge: new
-downloads: 135
+downloads: 136
 ---

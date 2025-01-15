@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-cached-icon
 homepageUrl: https://www.npmjs.com/package/astro-cached-icon
-downloads: 14
+downloads: 15
 ---
