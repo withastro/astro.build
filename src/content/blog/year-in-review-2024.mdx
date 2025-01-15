@@ -80,7 +80,7 @@ Overall, **every metric was either "an improvement over last year" or "still hol
 
 ### Content Layer
 
-[Content Collections](https://docs.astro.build/en/guides/content-collections/) were introduced in [Astro 2.0](https://astro.build/blog/introducing-content-collections/) as a way for type-safe handling of local content written in Markdown, etc. In [Astro 5.0](https://astro.build/blog/astro-5/), the new Content Layer API was added to expand how content is defined, making it even more flexible and powerful for various use cases.
+[Content Collections](https://docs.astro.build/en/guides/content-collections/) were introduced in [Astro 2.0](/blog/introducing-content-collections/) as a way for type-safe handling of local content written in Markdown, etc. In [Astro 5.0](/blog/astro-5/), the new Content Layer API was added to expand how content is defined, making it even more flexible and powerful for various use cases.
 
 Previously, Astro's Content Collections could only handle content like Markdown or MDX files located locally in the reserved `src/content` directory:
 
@@ -121,13 +121,13 @@ This blog collection behaves similar to the old local file-based approach. Meanw
 
 In this way, the new Content Layer generalizes how content is handled in Astro and also allows you to freely define and distribute custom data loaders, significantly expanding Astro's capabilities around content. The [Content Loader API](https://docs.astro.build/en/reference/content-loader-reference/) for building custom loaders also comes with handy features like the [`meta`](https://docs.astro.build/en/reference/content-loader-reference/#meta) key-value store for storing metadata about your content and the [`rendered`](https://docs.astro.build/en/reference/content-loader-reference/#rendered) field for storing rendered output.
 
-With the newly refreshed Content Collections backed by the Content Layer API, go ahead and create your own loader—if it turns out well, publish it as an npm package and share it with the Astro community [in the "Content Loaders" category of the integrations library](https://astro.build/integrations/?search=&categories%5B%5D=loaders)! For instance, [Storyblok](https://astro.build/blog/storyblok-loader/), [Cloudinary](https://astro.build/blog/cloudinary-loader/), and [Hygraph](https://astro.build/blog/hygraph-loader/) have already released their own loaders, so you can fetch data from these services without having to write your own loader from scratch.
+With the newly refreshed Content Collections backed by the Content Layer API, go ahead and create your own loader—if it turns out well, publish it as an npm package and share it with the Astro community [in the "Content Loaders" category of the integrations library](https://astro.build/integrations/?search=&categories%5B%5D=loaders)! For instance, [Storyblok](/blog/storyblok-loader/), [Cloudinary](/blog/cloudinary-loader/), and [Hygraph](/blog/hygraph-loader/) have already released their own loaders, so you can fetch data from these services without having to write your own loader from scratch.
 
 [Check out the official docs to learn more about Content Collections](https://docs.astro.build/en/guides/content-collections/).
 
 ### Astro Actions
 
-Astro already offered [endpoints](https://docs.astro.build/en/guides/endpoints/) for handling HTTP requests on the server side. But in [v4.15, Astro Actions were introduced](https://astro.build/blog/astro-4150/) to make it easier to call backend services less boilerplate-y and more type-safe. Some of the benefits of Astro Actions include:
+Astro already offered [endpoints](https://docs.astro.build/en/guides/endpoints/) for handling HTTP requests on the server side. But in [v4.15, Astro Actions were introduced](/blog/astro-4150/) to make it easier to call backend services less boilerplate-y and more type-safe. Some of the benefits of Astro Actions include:
 
 - Automatic input validation using [Zod](https://zod.dev/)
 - Automatic generation of type-safe functions that invoke your actions
@@ -188,7 +188,7 @@ Given its name, Astro Actions are influenced by React's [Server Actions (Functio
 
 ### Server Islands
 
-A new rendering approach called [Server Islands](https://docs.astro.build/en/guides/server-islands/) has been introduced in [Astro 5.0](https://astro.build/blog/astro-5/). Astro's Islands Architecture has always allowed selective hydration of certain portions of a page, but now Server Islands extends that concept to let you render parts of your page on the server. Below is the image shared in [the initial announcement for Server Islands](https://astro.build/blog/astro-4120/):
+A new rendering approach called [Server Islands](https://docs.astro.build/en/guides/server-islands/) has been introduced in [Astro 5.0](/blog/astro-5/). Astro's Islands Architecture has always allowed selective hydration of certain portions of a page, but now Server Islands extends that concept to let you render parts of your page on the server. Below is the image shared in [the initial announcement for Server Islands](/blog/astro-4120/):
 
 <BlogContentImage src={islandDiag} alt="A diagram showing a static page with server-rendered components embedded in it." />
 
@@ -368,7 +368,7 @@ Although it looks like a small feature, environment variables are often a source
 
 ### Request Rewriting
 
-[Astro 4.13](https://astro.build/blog/astro-4130/) introduced [Request Rewriting](https://docs.astro.build/en/guides/routing/#rewrites), a feature that allows you to server a different route without redirecting the client to a new page. This means the browser URL remains the same, while the server reroutes the request to a different path behind the schenes, returning the result as if it were the response to the original request. This feature is particularly useful for scenarios like where you want to display the same content at multiple paths without maintaining different source files.
+[Astro 4.13](/blog/astro-4130/) introduced [Request Rewriting](https://docs.astro.build/en/guides/routing/#rewrites), a feature that allows you to server a different route without redirecting the client to a new page. This means the browser URL remains the same, while the server reroutes the request to a different path behind the schenes, returning the result as if it were the response to the original request. This feature is particularly useful for scenarios like where you want to display the same content at multiple paths without maintaining different source files.
 
 You can use rewrites by calling the `Astro.rewrite` function in your Astro components:
 
@@ -396,7 +396,7 @@ For more details on request rewriting, check out the official docs:
 
 ### Container API
 
-The Container API, which was at Stage 2 on Astro's Project Roadmap in 2023, has been implemented in [Astro 4.9](https://astro.build/blog/astro-490/) as an experimental feature. This feature enables you to render Astro components independently from the application context, much like the various methods offered by [`react-dom/server`](https://react.dev/reference/react-dom/server) in React. If you're interested in learning more about the background of the Container API, check out [my last year's article](https://zenn.dev/morinokami/articles/astro-2023-2024#container-api%3A-render-components-in-isolation) for further details.
+The Container API, which was at Stage 2 on Astro's Project Roadmap in 2023, has been implemented in [Astro 4.9](/blog/astro-490/) as an experimental feature. This feature enables you to render Astro components independently from the application context, much like the various methods offered by [`react-dom/server`](https://react.dev/reference/react-dom/server) in React. If you're interested in learning more about the background of the Container API, check out [my last year's article](https://zenn.dev/morinokami/articles/astro-2023-2024#container-api%3A-render-components-in-isolation) for further details.
 
 To use the Container API, you first need to create a container (the environment in which the component will be rendered) and call methods like [`renderToString`](https://docs.astro.build/en/reference/container-reference/#rendertostring) or [`renderToResponse`](https://docs.astro.build/en/reference/container-reference/#rendertoresponse):
 
@@ -421,7 +421,7 @@ At [Astro Together](#astro-together), there was a demo by Matthew Phillips showi
 
 ### Astro Studio
 
-[Astro Studio](https://web.archive.org/web/20240224162616/https://studio.astro.build/) launched as Astro's first managed service in early 2024, but sadly announced [its shutdown](https://astro.build/blog/goodbye-astro-studio/) in September. The post explains that Astro Studio aimed to:
+[Astro Studio](https://web.archive.org/web/20240224162616/https://studio.astro.build/) launched as Astro's first managed service in early 2024, but sadly announced [its shutdown](/blog/goodbye-astro-studio/) in September. The post explains that Astro Studio aimed to:
 
 1. Provide all Astro developers with an affordable, high-performance SQL data storage solution that is easy to use and integrated seamlessly with Astro
 2. Build a sustainable business model to support Astro's continued development and growth
@@ -437,7 +437,7 @@ As for the shutdown timeline, it's as follows:
 
 If you're using Astro Studio, be sure to plan your migration to another database service in advance.
 
-Meanwhile, Astro DB will still be available for use in your Astro projects. In [v4.15](https://astro.build/blog/astro-4150/#libsql-remotes-in-astro-db), Astro DB introduced support for connecting to any libSQL server, so you can self-host a libSQL server or use a managed service like [Turso](https://turso.tech/) to continue using Astro DB.
+Meanwhile, Astro DB will still be available for use in your Astro projects. In [v4.15](/blog/astro-4150/#libsql-remotes-in-astro-db), Astro DB introduced support for connecting to any libSQL server, so you can self-host a libSQL server or use a managed service like [Turso](https://turso.tech/) to continue using Astro DB.
 
 ### Astro Storefront
 
@@ -479,7 +479,7 @@ Ecosystem CI is more or less aimed at package developers, so if you're simply us
 
 ### Starlight
 
-[Starlight](https://starlight.astro.build/) is a documentation theme released in 2023, which has now passed [its first anniversary](https://astro.build/blog/starlight-turns-one/). Its version at the start of 2024 was [v0.15.2](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.15.2), and it's now at [v0.30.3](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.30.3), reflecting the steady pace of updates. For example, [v0.21.0](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.21.0) introduced the [`<FileTree>`](https://starlight.astro.build/components/file-tree/) component for displaying directory trees and the [`<Steps>`](https://starlight.astro.build/components/steps/) component for showing sequences of steps, and [`v0.27.0`](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.27.0) added support for server-side rendering.
+[Starlight](https://starlight.astro.build/) is a documentation theme released in 2023, which has now passed [its first anniversary](/blog/starlight-turns-one/). Its version at the start of 2024 was [v0.15.2](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.15.2), and it's now at [v0.30.3](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.30.3), reflecting the steady pace of updates. For example, [v0.21.0](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.21.0) introduced the [`<FileTree>`](https://starlight.astro.build/components/file-tree/) component for displaying directory trees and the [`<Steps>`](https://starlight.astro.build/components/steps/) component for showing sequences of steps, and [`v0.27.0`](https://github.com/withastro/starlight/releases/tag/%40astrojs%2Fstarlight%400.27.0) added support for server-side rendering.
 
 Adoption of Starlight soared last year with well-known projects like [Biome](https://biomejs.dev/) and [Knip](https://knip.dev/), and it continues to see more usage in 2024. Some examples include:
 
@@ -537,7 +537,7 @@ Find out more about Bombshell and Clack on [the Bombshell website](https://bomb.
 
 ### Astro Together
 
-On May 28, 2024, the first offline Astro meetup Astro Together was held in Motreal, Canada. There's [a blog post](https://astro.build/blog/astro-together-montreal/) with a summary and photos of the event.
+On May 28, 2024, the first offline Astro meetup Astro Together was held in Motreal, Canada. There's [a blog post](/blog/astro-together-montreal/) with a summary and photos of the event.
 
 Talks from the event are available [in a playlist on YouTube](https://www.youtube.com/playlist?list=PL8Qn4kutqAEsxDfIjyD-sxNnxJ4WkuV0H). The flow goes: Fred K. Schott on Astro's current status and future, Ben Holmes demonstrating Astro Actions, Matthew Phillips explaining what changed in Astro 4.10, and Sarah Rainsberger talking about docs, Starlight, and the Astro community.
 
@@ -554,9 +554,9 @@ Talks from the event are available [in a playlist on YouTube](https://www.youtub
 
 Several blog posts were also released around this event:
 
-- [Zero-JavaScript View Transitions](https://astro.build/blog/future-of-astro-zero-js-view-transitions/)
-- [The Astro Content Layer](https://astro.build/blog/future-of-astro-content-layer/)
-- [Server Islands](https://astro.build/blog/future-of-astro-server-islands/)
+- [Zero-JavaScript View Transitions](/blog/future-of-astro-zero-js-view-transitions/)
+- [The Astro Content Layer](/blog/future-of-astro-content-layer/)
+- [Server Islands](/blog/future-of-astro-server-islands/)
 
 ### Bluesky
 
@@ -564,13 +564,13 @@ Astro now has its own [Bluesky account](https://bsky.app/profile/astro.build). B
 
 ### Netlify as Official Deployment Partner
 
-Netlify has become [Astro's official deployment partner](https://astro.build/blog/netlify-official-deployment-partner/). This means Netlify is now contributing $12,500 per month to support Astro’s development. As of that announcement, Netlify was also mentioned as helping with the development of Server Islands. Netlify is a popular choice for deploying Astro projects, so it's great to see them supporting Astro's development.
+Netlify has become [Astro's official deployment partner](/blog/netlify-official-deployment-partner/). This means Netlify is now contributing $12,500 per month to support Astro’s development. As of that announcement, Netlify was also mentioned as helping with the development of Server Islands. Netlify is a popular choice for deploying Astro projects, so it's great to see them supporting Astro's development.
 
 Netlify also uses Astro to run [its developer platform site](https://developers.netlify.com/), which is another great example of Astro in action.
 
 ### Google IDX as Official Online Editor Partner
 
-Google IDX is now [Astro's official online editor partner](https://astro.build/blog/idx-official-online-editor-partner/).
+Google IDX is now [Astro's official online editor partner](/blog/idx-official-online-editor-partner/).
 
 Project IDX (Google IDX) is an online development environment similar to StackBlitz. Because it's provided by Google, it can integrate with [Gemini](https://gemini.google.com/) and [Google Cloud](https://cloud.google.com/). [David East](https://github.com/davideast), who leads this project's DevRel, has ties with Astro going back to his days on [Firebase](https://firebase.google.com/), including a project last year to [rebuild the Firebase blog with Astro](https://astro.build/case-studies/firebase/).
 
@@ -636,7 +636,7 @@ Let's take a look at some of these proposals below.
 
 Sessions are a mechanism to temporarily store user-specific data, such as login state or shopping carts. Up until now, you had to handle cookies or local storage directly. The new proposal would allow you to handle sessions natively in Astro. Data is stored server-side, and only the session ID is sent to the client as a cookie, which should help with security.
 
-Sessions are already introduced experimentally in [Astro 5.1](https://astro.build/blog/astro-510/). To work with sessions, you'll use the `Astro.session` object's `get` and `set` methods. Sessions are available in many contexts, including pages, components, endpoints, actions, or middleware. Here's an example from the article that demonstrates how to retrieve and update cart data in a session:
+Sessions are already introduced experimentally in [Astro 5.1](/blog/astro-510/). To work with sessions, you'll use the `Astro.session` object's `get` and `set` methods. Sessions are available in many contexts, including pages, components, endpoints, actions, or middleware. Here's an example from the article that demonstrates how to retrieve and update cart data in a session:
 
 ```astro title="src/components/CartButton.astro"
 ---
@@ -687,7 +687,7 @@ Although images are a crucial factor in shaping user experience and therefore in
 
 This proposal aims to introduce a `layout` property that would automate the generation of `srcset` and `sizes`, letting developers easily follow image best practices.
 
-It's already available as an experimental feature in [Astro 5.0](https://astro.build/blog/astro-5/#experimental-features), and you can check out [the experimental responsive image docs](https://docs.astro.build/en/reference/experimental-flags/responsive-images/) for more details. 
+It's already available as an experimental feature in [Astro 5.0](/blog/astro-5/#experimental-features), and you can check out [the experimental responsive image docs](https://docs.astro.build/en/reference/experimental-flags/responsive-images/) for more details. 
 
 ### Fonts
 
