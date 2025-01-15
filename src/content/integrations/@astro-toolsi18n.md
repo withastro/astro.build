@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@astro-tools/i18n
 repoUrl: https://github.com/wishrd/astro-tools
 homepageUrl: https://astro-tools.pages.dev
 badge: new
-downloads: 197
+downloads: 200
 ---
