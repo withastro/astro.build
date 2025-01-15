@@ -6,7 +6,7 @@ categories:
   - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/starlight-theme-template
-homepageUrl: https://starlight-theme-template.otterlord.dev/
+homepageUrl: https://www.npmjs.com/package/starlight-theme-template
 badge: new
 downloads: 64
 ---
