@@ -10,15 +10,17 @@ socialImage: "/src/content/blog/_images/whats-new-december/og.webp"
 lang: "en"
 ---
 
+import Tweet from "/src/components/Tweet.astro";
 import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
 import { YouTube } from '@astro-community/astro-embed-youtube';
 import BlogContentImage from "/src/components/BlogContentImage.astro";
 import islandDiag from "/src/content/blog/_images/future-of-astro-server-islands/dark-mode-server-islands-diag.webp";
-import astroBuild from "/src/content/blog/_images/year-in-review/astro-build.webp"
-import npmTrends from "/src/content/blog/_images/year-in-review/npm-trends.webp"
-import starHistory from "/src/content/blog/_images/year-in-review/star-history.webp"
-import stateofjs from "/src/content/blog/_images/year-in-review/stateofjs.webp"
-import clack from "/src/content/blog/_images/year-in-review/clack.webp"
+import astroBuild from "/src/content/blog/_images/year-in-review/astro-build.webp";
+import npmTrends from "/src/content/blog/_images/year-in-review/npm-trends.webp";
+import starHistory from "/src/content/blog/_images/year-in-review/star-history.webp";
+import stateofjs from "/src/content/blog/_images/year-in-review/stateofjs.webp";
+import clack from "/src/content/blog/_images/year-in-review/clack.webp";
+import bombshell from "/src/content/blog/_images/year-in-review/bombshell.webp";
 
 SARAH WRITE GUEST AUTHOR INTRO HERE
 
@@ -408,11 +410,13 @@ The Container API, which was at Stage 2 on Astro's Project Roadmap in 2023, has 
 To use the Container API, you first need to create a container (the environment in which the component will be rendered) and call methods like [`renderToString`](https://docs.astro.build/en/reference/container-reference/#rendertostring) or [`renderToResponse`](https://docs.astro.build/en/reference/container-reference/#rendertoresponse). For example:
 
 ```astro
+---
 import { experimental_AstroContainer } from "astro/container";
 import Card from "../src/components/Card.astro";
 
 const container = await experimental_AstroContainer.create();
 const result = await container.renderToString(Card);
+---
 ```
 
 `result` will contain the rendered HTML of the `Card` component, which you can use for testing purposes, such as checking if it contains a specific expected string. For a reference on how to write tests with the Container API, check out [the official example project](https://github.com/withastro/astro/tree/main/examples/container-with-vitest) demonstrating how to use the Container API with Vitest.
@@ -499,11 +503,30 @@ Starlight's UI has multilingual support, making it great for documentation sites
 
 In June 2024, [Nate Moore](https://github.com/natemoo-re), an Astro co-creator, announced he would be leaving the core team:
 
-https://x.com/n_moore/status/1798030024525885888
+<Tweet src="https://x.com/n_moore/status/1798030024525885888">
+	<blockquote>
+		<p>
+			After 3 incredible years with Astro, I'm ready for my next challenge! Building up @astrodotbuild from nothing with this team has been one of the most rewarding experiences of my life. 🙏
+			<br />
+			Devtools companies—have a CLI that needs some love? Let's chat, DMs open! I'd love to help.
+		</p>
+		&mdash; Nate Moore (@n_moore) <a href="https://x.com/n_moore/status/1798030024525885888">June 4, 2024</a>
+	</blockquote>
+</Tweet>
+
 
 He noted he would now be focusing on [Clack](https://www.clack.cc/), a framework for building interactive CLI tools. Then in October, he revealed [Bombshell](https://bomb.sh/) that will host his projects going forward, including Clack:
 
-https://x.com/bombshell_dev/status/1849600726734971299
+<Tweet src="https://x.com/bombshell_dev/status/1849600726734971299">
+	<blockquote>
+		<p>
+			<BlogContentImage src={bombshell} alt="A dark, dramatic teaser with a barely illuminated logo that reads:
+JavaScript needs better CLI tooling. We're building it. Dropping November 2024." />
+		</p>
+		&mdash; bombshell (@bombshell_dev) <a href="https://x.com/bombshell_dev/status/1849600726734971299">October 24, 2024</a>
+	</blockquote>
+</Tweet>
+
 
 Clack provides CLI components like text inputs, multi-selects, spinners, and more, letting you easily build interactive CLI apps. You can check out a demo at https://www.clack.cc/ for an idea of its capabilities:
 
