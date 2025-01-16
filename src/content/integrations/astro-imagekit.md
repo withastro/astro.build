@@ -7,5 +7,5 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/astro-imagekit
 homepageUrl: https://www.npmjs.com/package/astro-imagekit
-downloads: 2
+downloads: 7
 ---

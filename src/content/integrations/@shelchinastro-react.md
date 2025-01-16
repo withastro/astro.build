@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@shelchin/astro-react
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/react/
-downloads: 21
+downloads: 23
 ---

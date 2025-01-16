@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-globals
 homepageUrl: https://github.com/gingerchew/astro-globals
-downloads: 91
+downloads: 79
 ---

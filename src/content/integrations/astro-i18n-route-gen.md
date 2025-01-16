@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-i18n-route-gen
 homepageUrl: https://github.com/aitorcas23/astro-i18n-route-gen
 badge: new
-downloads: 143
+downloads: 148
 ---
