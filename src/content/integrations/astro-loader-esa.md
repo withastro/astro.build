@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-esa
 homepageUrl: https://www.npmjs.com/package/astro-loader-esa
 badge: new
-downloads: 361
+downloads: 367
 ---

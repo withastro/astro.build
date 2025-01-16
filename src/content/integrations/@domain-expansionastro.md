@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@domain-expansion/astro
 homepageUrl: https://github.com/astro-expansion/domain-expansion
 badge: new
-downloads: 743
+downloads: 749
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-test-wei
 homepageUrl: https://www.npmjs.com/package/astro-test-wei
 badge: new
-downloads: 804
+downloads: 806
 ---
