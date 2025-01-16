@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import LeftArrowIcon from '~/icons/LeftArrowIcon.tsx'
 import type { Author } from '../pages/themes/_types/index.ts';
 
 interface Props {
@@ -9,6 +10,14 @@ interface Props {
 const { author } = Astro.props;
 ---
 
+<a
+	href="/themes/"
+	data-astro-prefetch
+	class="flex items-center gap-2 self-start text-sm text-astro-gray-200 mb-4"
+>
+	<LeftArrowIcon aria-hidden="true" />
+	<span class="pr-2">Back to themes</span>
+</a>
 <div class="flex lg:flex-col flex-wrap items-center gap-4">
 	<Image
 		inferSize
@@ -30,7 +39,6 @@ const { author } = Astro.props;
 				})
 			}
 		</div>
-		<hr class="border-astro-gray-500" />
 		{
 			author.url && (
 				<hr class="border-astro-gray-500" />
