@@ -11,6 +11,8 @@ lang: "en"
 ---
 
 import Tweet from "/src/components/Tweet.astro";
+import Note from "/src/components/Note.astro";
+import Mention from "/src/components/Mention.astro";
 import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
 import { YouTube } from '@astro-community/astro-embed-youtube';
 import BlogContentImage from "/src/components/BlogContentImage.astro";
@@ -22,7 +24,11 @@ import stateofjs from "/src/content/blog/_images/year-in-review-2024/stateofjs.w
 import clack from "/src/content/blog/_images/year-in-review-2024/clack.webp";
 import bombshell from "/src/content/blog/_images/year-in-review-2024/bombshell.webp";
 
-*This post first appeared on [Zenn.dev](https://zenn.dev/morinokami/articles/astro-2024-2025). This post has been translated by the author into English from the original Japanese.*
+<Note>
+
+This is a guest post written by <Mention name="shinya" />, an active Astro community member and contributor. This post first appeared on [Zenn.dev](https://zenn.dev/morinokami/articles/astro-2024-2025), and we would like to thank Shinya for providing this English translation to share on our blog!
+
+</Note>
 
 
 ## Introduction
@@ -50,14 +56,14 @@ For those who are curious about the details of each release, you can check [the 
 
 According to [GitHub Star History](https://star-history.com/#withastro/astro&Date), Astro's GitHub stars were around 37,000 in early 2024 but increased to around 48,000 by the end of the year. Although that's a bit slower than 2023's increase of 15,000, it's still a jump of over 10,000 for the year. It's fair to say Astro's star count is still on a healthy upward trend.
 
-<BlogContentImage src={starHistory} alt="Star History Chart." />
+<BlogContentImage src={starHistory} alt="A chart showing the increase of GitHub stars since the project's beginning (with zero stars) in 2021. The line tends up and to the right mostly linearly, with a slight jump in late 2022." />
 
 
 ### NPM Downloads
 
 Based on [npm trends](https://npmtrends.com/astro), weekly downloads of Astro were 185,902 at the start of 2024, climbing to 364,201 as of December 15. That's approximately double, so Astro is clearly growing at a steady pace here as well.
 
-<BlogContentImage src={npmTrends} alt="Download trends of Astro on npmtrends.com." />
+<BlogContentImage src={npmTrends} alt="" />
 
 ### State of JavaScript
 
@@ -69,7 +75,7 @@ In the Meta Frameworks category of [State of JavaScript 2024](https://2024.state
 
 On top of that, its Usage (the proportion of respondents having used an item) rose from 4th to 2nd this year, trailing only Next.js:
 
-<BlogContentImage src={stateofjs} alt="Astro ranked #2 in Usage." />
+<BlogContentImage src={stateofjs} alt="A graph comparing the yearly positional rank of 9 frameworks (e.g. Next.js, Gatsby, Remix, Nuxt) from 2018 to the present. (Not all frameworks have data going back all years.) From 2023 to 2024, most other frameworks stayed flat or changed one position, while only Astro showed a significant jump up in position." />
 
 Astro also climbed to 5th place in Awareness (the proportion of respondents having heard about or used an item).
 
@@ -527,7 +533,7 @@ JavaScript needs better CLI tooling. We're building it. Dropping November 2024."
 
 Clack provides CLI components like text inputs, multi-selects, spinners, and more, letting you easily build interactive CLI apps. You can check out a demo at https://www.clack.cc/ for an idea of its capabilities:
 
-<BlogContentImage src={clack} alt="Demo app of Clack." />
+<BlogContentImage src={clack} alt="Demo of Clack app." />
 
 Docs are still under development, but Clack is already used by high-profile projects, including:
 
