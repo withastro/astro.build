@@ -41,13 +41,16 @@ export const collections = {
 	authors: defineCollection({
 		loader: file('src/data/authors/authors.json'),
 		schema: ({ image }) =>
-			z.object({
-				image: image().optional(),
-				name: z.string(),
-				twitter: z.string().url().optional(),
-				mastodon: z.string().url().optional(),
-				github: z.string().url().optional(),
-			}),
+			z
+				.object({
+					image: image().optional(),
+					name: z.string(),
+					twitter: z.string().url().optional(),
+					mastodon: z.string().url().optional(),
+					bluesky: z.string().url().optional(),
+					github: z.string().url().optional(),
+				})
+				.strict(),
 	}),
 	blog: defineCollection({
 		schema: z.object({
