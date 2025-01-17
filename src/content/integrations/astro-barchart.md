@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-barchart
 homepageUrl: https://github.com/Its-Just-Nans/astro-barchart
-downloads: 60
+downloads: 61
 ---

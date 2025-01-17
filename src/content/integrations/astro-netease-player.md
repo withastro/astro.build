@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-netease-player
 repoUrl: https://github.com/syhily/astor-netease-player
 homepageUrl: https://github.com/syhily/astor-netease-player#readme
 badge: new
-downloads: 188
+downloads: 191
 ---
