@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@forastro/utilities
 homepageUrl: https://www.npmjs.com/package/@forastro/utilities
-downloads: 350
+downloads: 352
 ---
