@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-ion-theme
 homepageUrl: https://louisescher.github.io/starlight-ion-theme/
 badge: new
-downloads: 261
+downloads: 265
 ---
