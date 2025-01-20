@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jsxstyle/astro
 homepageUrl: https://www.npmjs.com/package/@jsxstyle/astro
 badge: new
-downloads: 1515
+downloads: 1310
 ---

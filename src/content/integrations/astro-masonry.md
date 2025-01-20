@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-masonry
 repoUrl: https://github.com/OlivierEstevez/astro-masonry
 homepageUrl: https://astro-masonry.vercel.app/
 badge: new
-downloads: 282
+downloads: 287
 ---

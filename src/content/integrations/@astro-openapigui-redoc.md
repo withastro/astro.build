@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/gui-redoc
 homepageUrl: https://www.npmjs.com/package/@astro-openapi/gui-redoc
-downloads: 40
+downloads: 44
 ---
