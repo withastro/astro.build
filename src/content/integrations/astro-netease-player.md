@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-netease-player
 repoUrl: https://github.com/syhily/astor-netease-player
-homepageUrl: https://github.com/syhily/astor-netease-player#readme
+homepageUrl: https://www.npmjs.com/package/astro-netease-player
 badge: new
 downloads: 192
 ---
