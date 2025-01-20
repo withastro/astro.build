@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@forastro/utilities
 homepageUrl: https://www.npmjs.com/package/@forastro/utilities
 downloads: 357
-repoUrl: https//:github.com/louiss0/forastro
+repoUrl: https://github.com/louiss0/forastro
 ---
