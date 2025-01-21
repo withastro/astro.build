@@ -6,8 +6,6 @@ import LayersIcon from '~/icons/LayersIcon.jsx';
 import OpenBookIcon from '~/icons/OpenBookIcon.jsx';
 import PaletteIcon from '~/icons/PaletteIcon.jsx';
 import SocialLinks from './SocialLinks.astro';
-
-const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 ---
 
 <nav
@@ -59,7 +57,7 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 		</div>
 	</details>
 	<div class="flex flex-col gap-6">
-		<SocialLinks links={socialLinks} />
+		<SocialLinks links={siteInfo.socialLinks} />
 		<a href="https://docs.astro.build/" class="button button-primary">Read the docs</a>
 		<a href="https://studio.astro.build/" class="button button-white">Astro Studio</a>
 	</div>
