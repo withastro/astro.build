@@ -30,12 +30,14 @@ const siteInfo: SiteInfo = {
 	socialLinks: [
 		{
 			platform: 'discord',
+			footerOnly: true,
 			href: '/chat',
 			icon: 'social/discord',
 			text: 'Join the Astro community on Discord',
 		},
 		{
 			platform: 'twitter',
+			footerOnly: true,
 			icon: 'social/twitter',
 			me: 'https://x.com/astrodotbuild',
 			href: 'https://x.com/astrodotbuild',
