@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-ghostcms-loader
 repoUrl: https://github.com/MatthiesenXYZ/ghostcms-loader
-homepageUrl: https://matthiesen.dev
+homepageUrl: https://www.npmjs.com/package/astro-ghostcms-loader
 badge: new
 downloads: 67
 ---

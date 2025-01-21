@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@ayco/astro-sw
 repoUrl: https://github.com/ayoayco/astro-sw
-homepageUrl: https://www.npmjs.com/package/@ayco/astro-sw
+homepageUrl: https://github.com/ayoayco/astro-sw
 downloads: 586
 ---

@@ -1,7 +1,7 @@
 ---
 name: astro-lite
 title: astro-lite
-description: A minimal set of large UI components for Astro
+description: Open source and lightweight UI blocks library for Astro.
 categories:
   - css+ui
   - recent
