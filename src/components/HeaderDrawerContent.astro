@@ -1,4 +1,5 @@
 ---
+import Icon from 'astro-icon';
 import siteInfo from '~/data/site-info.js';
 import ChevronIcon from '~/icons/ChevronIcon.jsx';
 import LayersIcon from '~/icons/LayersIcon.jsx';
@@ -13,8 +14,8 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 	aria-label="Primary"
 	class="text-xl flex flex-col divide-y divide-astro-gray-500 pb-12 text-left [&>*]:p-6"
 >
-	<a href="https://docs.astro.build/" class="link"> Docs</a>
-	<a href="/showcase/" data-astro-prefetch class="link"> Showcase</a>
+	<a href="https://docs.astro.build/" class="link">Docs</a>
+	<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
 	<details class="group">
 		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
 			Resources
@@ -37,7 +38,26 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 			</a>
 		</div>
 	</details>
-	<a href="/blog/" data-astro-prefetch class="link"> Blog</a>
+	<a href="/blog/" data-astro-prefetch class="link">Blog</a>
+	<details class="group">
+		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
+			Community
+			<ChevronIcon
+				class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
+			/>
+		</summary>
+		<div class="mt-4 flex flex-col gap-4 text-xl font-light">
+			<a href="/chat/" class="link flex items-center gap-4">
+				<Icon name="social/discord" size="24" /> Discord
+			</a>
+			<a href="https://opencollective.com/astrodotbuild" class="link flex items-center gap-4">
+				<Icon name="heart" size="24" /> Sponsors
+			</a>
+			<a href="https://shop.astro.build/" class="link flex items-center gap-4">
+				<Icon name="shopping-bag" size="24" /> Merch
+			</a>
+		</div>
+	</details>
 	<div class="flex flex-col gap-6">
 		<SocialLinks links={socialLinks} />
 		<a href="https://docs.astro.build/" class="button button-primary">Read the docs</a>
