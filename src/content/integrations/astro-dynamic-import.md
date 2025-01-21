@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-dynamic-import
 repoUrl: https://github.com/lilnasy/gratelets
 homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/dynamic-import
-downloads: 4546
+downloads: 4909
 ---

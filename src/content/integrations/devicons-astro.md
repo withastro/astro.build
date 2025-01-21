@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/devicons-astro
 homepageUrl: https://github.com/jpal91/devicons-astro
 badge: new
-downloads: 1227
+downloads: 1230
 ---
