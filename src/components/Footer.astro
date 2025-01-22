@@ -1,7 +1,7 @@
 ---
+import Icon from 'astro-icon';
 import siteInfo from '~/data/site-info.js';
 import NewsLetterSignup from './NewsLetterSignup.astro';
-import SocialLinks from './SocialLinks.astro';
 
 interface Props {
 	bgClass?: string;
@@ -12,6 +12,7 @@ const { bgClass = 'bg-dark' } = Astro.props;
 type Link = {
 	href: string;
 	label: string;
+	icon?: string;
 };
 
 type LinkGroup = {
@@ -61,6 +62,14 @@ const groups: LinkGroup[] = [
 			{ label: 'Terms of Service', href: '/terms/' },
 		],
 	},
+	{
+		title: 'Elsewhere',
+		links: siteInfo.socialLinks.map((item) => ({
+			icon: item.icon,
+			label: item.label,
+			href: item.href,
+		})),
+	},
 ];
 
 const socialLinks = siteInfo.socialLinks;
@@ -77,14 +86,15 @@ const socialLinks = siteInfo.socialLinks;
 			<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
 				{
 					groups.map(({ title, links }, index) => (
-						<section class="group flex flex-col">
+						<section class="group flex flex-col min-w-28">
 							<h2 id={`footerHeading${index}`} class="mb-4 label-base leading-none text-white">
 								{title}
 							</h2>
 							<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
-								{links.map(({ href, label }) => (
+								{links.map(({ href, label, icon }) => (
 									<li>
-										<a href={href} class="whitespace-nowrap link">
+										<a href={href} class="whitespace-nowrap link flex gap-2 items-center">
+											{icon && <Icon name={icon} size={16} aria-hidden="true" />}
 											{label}
 										</a>
 									</li>
@@ -112,7 +122,6 @@ const socialLinks = siteInfo.socialLinks;
 					Astro Contributors
 				</a>
 			</div>
-			<SocialLinks links={socialLinks} />
 		</nav>
 	</div>
 </footer>
