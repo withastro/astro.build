@@ -12,7 +12,6 @@ import SocialLinks from './SocialLinks.astro';
 	aria-label="Primary"
 	class="text-xl flex flex-col divide-y divide-astro-gray-500 pb-12 text-left [&>*]:p-6"
 >
-	<a href="https://docs.astro.build/" class="link">Docs</a>
 	<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
 	<details class="group">
 		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
@@ -56,8 +55,10 @@ import SocialLinks from './SocialLinks.astro';
 			</a>
 		</div>
 	</details>
-	<div class="flex flex-col gap-6">
+	<div class="flex flex-wrap justify-between gap-12 gap-y-6">
 		<SocialLinks links={siteInfo.socialLinks} />
-		<a href="https://docs.astro.build/" class="button button-primary">Read the docs</a>
+		<a href="https://docs.astro.build/" class="button button-primary flex-grow sm:max-w-sm"
+			>Read the docs</a
+		>
 	</div>
 </nav>
