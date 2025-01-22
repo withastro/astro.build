@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-ghostcms-loader
 repoUrl: https://github.com/MatthiesenXYZ/ghostcms-loader
 homepageUrl: https://www.npmjs.com/package/astro-ghostcms-loader
 badge: new
-downloads: 67
+downloads: 69
 ---
