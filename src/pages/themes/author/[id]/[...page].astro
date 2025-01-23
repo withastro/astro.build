@@ -24,9 +24,14 @@ if (!currentPage || Number.isNaN(currentPage)) {
 	return Astro.redirect('/404');
 }
 
-const allThemes: ThemeAndAuthor[] = await fetch(
+console.log(Object.entries(Astro.params))
+const res = await fetch(
 	`${THEMES_API_URL}/api/themes/author?id=${Astro.params.id}`,
-).then((res) => res.json());
+);
+
+if (res.status !== 200) return Astro.redirect('/404')
+
+const allThemes: ThemeAndAuthor[] = await res.json();
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
@@ -63,7 +68,7 @@ const themes = page.data;
 					<h1 class="heading-3 max-lg:hidden">{themes[0].Author.name}</h1>
 				</header>
 				<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
-					{themes.map((theme) => <ThemeCard theme={theme} />)}
+					{themes.map((theme) => <ThemeCard as="h2" theme={theme} />)}
 				</CardGrid>
 			</CardGridGroup>
 			{

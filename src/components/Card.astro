@@ -3,12 +3,14 @@ export type Props = {
 	background?: 'neutral' | 'blue-purple' | 'blue-green' | 'red-pink';
 	isLink?: boolean;
 	className?: string;
+	labelledby?: string;
 };
 
-const { background = 'neutral', isLink = false, className } = Astro.props;
+const { background = 'neutral', isLink = false, className, labelledby } = Astro.props;
 ---
 
 <article
+	aria-labelledby={labelledby}
 	class:list={[
 		'panel relative flex min-w-0 flex-col',
 		background === 'blue-purple' && 'bg-blue-purple-gradient',
