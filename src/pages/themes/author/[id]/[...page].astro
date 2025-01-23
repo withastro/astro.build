@@ -21,10 +21,9 @@ const currentPage =
 
 // invalid page number!
 if (!currentPage || Number.isNaN(currentPage)) {
-	return Astro.redirect('/404');
+	return new Response(null, { status: 404 });
 }
 
-console.log(Object.entries(Astro.params))
 const res = await fetch(
 	`${THEMES_API_URL}/api/themes/author?id=${Astro.params.id}`,
 );
