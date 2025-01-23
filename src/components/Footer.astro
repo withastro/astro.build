@@ -2,6 +2,7 @@
 import Icon from 'astro-icon';
 import siteInfo from '~/data/site-info.js';
 import NewsLetterSignup from './NewsLetterSignup.astro';
+import SocialLinks from './SocialLinks.astro';
 
 interface Props {
 	bgClass?: string;
@@ -62,14 +63,6 @@ const groups: LinkGroup[] = [
 			{ label: 'Terms of Service', href: '/terms/' },
 		],
 	},
-	{
-		title: 'Elsewhere',
-		links: siteInfo.socialLinks.map((item) => ({
-			icon: item.icon,
-			label: item.label,
-			href: item.href,
-		})),
-	},
 ];
 
 const socialLinks = siteInfo.socialLinks;
@@ -79,15 +72,15 @@ const socialLinks = siteInfo.socialLinks;
 	<div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-8">
 		<nav
 			aria-label="Secondary"
-			class="flex flex-col lg:flex-row links-start justify-between gap-12 py-8 md:py-12"
+			class="flex flex-col lg:flex-row justify-between gap-20 py-8 md:py-12"
 		>
 			<NewsLetterSignup />
 
-			<div class="grid grid-cols-2 gap-12 sm:flex sm:flex-wrap sm:gap-16 lg:gap-20">
+			<div class= "gap-12 sm:gap-16 lg:gap-20 flex flex-wrap xl:grid xl:grid-cols-4">
 				{
 					groups.map(({ title, links }, index) => (
-						<section class="group flex flex-col min-w-28">
-							<h2 id={`footerHeading${index}`} class="mb-4 label-base leading-none text-white">
+						<section class="group flex flex-col">
+							<h2 id={`footerHeading${index}`} class="mb-4 label-base leading-none text-white font-semibold">
 								{title}
 							</h2>
 							<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
@@ -123,6 +116,7 @@ const socialLinks = siteInfo.socialLinks;
 					Astro Contributors
 				</a>
 			</div>
+			<SocialLinks links={socialLinks} />
 		</nav>
 	</div>
 </footer>
