@@ -51,8 +51,9 @@ const groups: LinkGroup[] = [
 		title: 'About',
 		links: [
 			{ label: 'Blog', href: '/blog/' },
-			{ label: 'Press', href: '/press/' },
+			{ label: 'Case studies', href: '/case-studies/' },
 			{ label: 'Partner with us', href: '/partnerships/' },
+			{ label: 'Press', href: '/press/' },
 		],
 	},
 	{
@@ -76,11 +77,14 @@ const socialLinks = siteInfo.socialLinks;
 		>
 			<NewsLetterSignup />
 
-			<div class= "gap-12 sm:gap-16 lg:gap-20 flex flex-wrap xl:grid xl:grid-cols-4">
+			<div class="gap-12 sm:gap-16 lg:gap-20 flex flex-wrap xl:grid xl:grid-cols-4">
 				{
 					groups.map(({ title, links }, index) => (
 						<section class="group flex flex-col">
-							<h2 id={`footerHeading${index}`} class="mb-4 label-base leading-none text-white font-semibold">
+							<h2
+								id={`footerHeading${index}`}
+								class="mb-4 label-base leading-none text-white font-semibold"
+							>
 								{title}
 							</h2>
 							<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
