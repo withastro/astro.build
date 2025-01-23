@@ -1,8 +1,15 @@
 ---
+import Icon from 'astro-icon';
 import ChevronIcon from '~/icons/ChevronIcon.jsx';
 
 interface Props {
 	label: string;
+	items: Array<{
+		href: string;
+		icon: string;
+		label: string;
+		prefetch?: boolean;
+	}>;
 }
 ---
 
@@ -24,7 +31,7 @@ interface Props {
 				'absolute left-0 top-full translate-y-2',
 
 				// panel styling
-				'min-w-44 rounded-xl bg-astro-dark-800 p-1 text-astro-gray-200 shadow-lg border border-astro-dark-100/10',
+				'min-w-44 rounded-xl bg-black p-1 text-astro-gray-200 shadow-lg border border-astro-dark-100/10',
 
 				// transitioning
 				'invisible group-open:visible',
@@ -34,6 +41,18 @@ interface Props {
 			]}
 		>
 			<slot />
+			{
+				Astro.props.items.map(({ href, icon, label }) => (
+					<li>
+						<a
+							{href}
+							class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-gray-700 hover:text-white"
+						>
+							<Icon name={icon} size="16" /> {label}
+						</a>
+					</li>
+				))
+			}
 		</ul>
 	</details>
 </header-drop-down>
