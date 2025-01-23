@@ -28,7 +28,7 @@ const res = await fetch(
 	`${THEMES_API_URL}/api/themes/author?id=${Astro.params.id}`,
 );
 
-if (res.status !== 200) return Astro.redirect('/404')
+if (res.status !== 200) return new Response(null, { status: 404 });
 
 const allThemes: ThemeAndAuthor[] = await res.json();
 
