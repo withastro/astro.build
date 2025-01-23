@@ -42,10 +42,11 @@ interface Props {
 		>
 			<slot />
 			{
-				Astro.props.items.map(({ href, icon, label }) => (
+				Astro.props.items.map(({ href, icon, label, prefetch }) => (
 					<li>
 						<a
 							{href}
+							data-astro-prefetch={prefetch ? '' : undefined}
 							class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-gray-700 hover:text-white"
 						>
 							<Icon name={icon} size="16" /> {label}
