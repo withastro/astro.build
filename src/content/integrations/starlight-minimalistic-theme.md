@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-minimalistic-theme
 homepageUrl: https://starlight-minimalistic-theme.trueberryless.org/
 badge: new
-downloads: 55
+downloads: 56
 ---
