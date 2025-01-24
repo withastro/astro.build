@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import { resolveCoverImage } from '~/content/blog/_resolveImage.js';
+
+export type Props = {
+	post: {
+		slug: string;
+		data: {
+			title: string;
+			description: string;
+			coverImage?: string;
+		};
+	};
+	imageLoading: 'lazy' | 'eager';
+};
+
+const { post, imageLoading } = Astro.props;
+
+const image = await resolveCoverImage(post);
+---
+
+<article
+	class="relative border border-astro-gray-500 bg-astro-gray-600 p-4 pt-0 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
+	aria-labelledby={post.slug}
+>
+	<div class="-mx-4">
+		{
+			image && (
+				<Image
+					src={image}
+					width="766"
+					widths={[766, 1500]}
+					sizes="90vw"
+					alt=""
+					loading={imageLoading}
+				/>
+			)
+		}
+	</div>
+
+	<div class="mt-6 flex flex-col gap-x-16 gap-y-4">
+		<h2 class="heading-4 md:heading-3" id={post.slug}>
+			<a
+				href={`/case-studies/${post.slug}/`}
+				data-astro-prefetch
+				class="outline-none after:absolute after:inset-0"
+			>
+				{post.data.title}
+			</a>
+		</h2>
+		<p class="text-astro-gray-200">{post.data.description}</p>
+	</div>
+</article>
