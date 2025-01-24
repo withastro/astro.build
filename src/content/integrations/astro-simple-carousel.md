@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-simple-carousel
 homepageUrl: https://github.com/Its-Just-Nans/astro-simple-carousel
-downloads: 183
+downloads: 201
 ---

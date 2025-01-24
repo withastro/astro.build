@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astro-tools/reactive-transfer-state
 repoUrl: https://github.com/wishrd/astro-tools
 homepageUrl: https://astro-tools.pages.dev
-downloads: 1022
+downloads: 1041
 ---

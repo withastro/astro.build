@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-loader-bluesky-posts
 repoUrl: https://github.com/lin-stephanie/astro-loaders
 homepageUrl: https://github.com/lin-stephanie/astro-loaders/blob/main/packages/astro-loader-bluesky-posts/
 badge: new
-downloads: 69
+downloads: 70
 ---

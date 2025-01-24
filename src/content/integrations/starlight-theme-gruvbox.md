@@ -11,5 +11,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-theme-gruvbox
 homepageUrl: https://starlight-theme-gruvbox.otterlord.dev/
 badge: new
-downloads: 75
+downloads: 28
 ---

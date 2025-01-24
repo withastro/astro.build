@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@coursebuilder/astro
 repoUrl: https://github.com/joelhooks/course-builder
 homepageUrl: https://github.com/joelhooks/course-builder#readme
 badge: new
-downloads: 71
+downloads: 72
 ---
