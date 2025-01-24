@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@ryandejaegher/my-component
 homepageUrl: https://www.npmjs.com/package/@ryandejaegher/my-component
-downloads: 12
+downloads: 16
 ---

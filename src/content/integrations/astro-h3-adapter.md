@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-h3-adapter
 homepageUrl: https://www.npmjs.com/package/astro-h3-adapter
 badge: new
-downloads: 284
+downloads: 285
 ---
