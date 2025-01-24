@@ -39,7 +39,7 @@ const image = await resolveCoverImage(post);
 	</div>
 
 	<div class="mt-6 flex flex-col gap-x-16 gap-y-4">
-		<h3 class="heading-4 md:heading-3" id={post.slug}>
+		<h2 class="heading-4 md:heading-3" id={post.slug}>
 			<a
 				href={`/case-studies/${post.slug}/`}
 				data-astro-prefetch
@@ -47,7 +47,7 @@ const image = await resolveCoverImage(post);
 			>
 				{post.data.title}
 			</a>
-		</h3>
+		</h2>
 		<p class="text-astro-gray-200">{post.data.description}</p>
 	</div>
 </article>
