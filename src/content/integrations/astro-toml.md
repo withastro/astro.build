@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-toml
 repoUrl: https://github.com/cmgriffing/astro-toml
 homepageUrl: https://github.com/cmgriffing/astro-toml#readme
-downloads: 356
+downloads: 323
 ---
