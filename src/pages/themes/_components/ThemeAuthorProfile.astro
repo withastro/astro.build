@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import LeftArrowIcon from '~/icons/LeftArrowIcon.tsx'
+import type { Author } from '../_types/index.ts';
+
+interface Props {
+	author: Author;
+}
+
+const { author } = Astro.props;
+---
+
+<a
+	href="/themes/"
+	data-astro-prefetch
+	class="flex items-center gap-2 self-start text-sm text-astro-gray-200 mb-4"
+>
+	<LeftArrowIcon aria-hidden="true" />
+	<span class="pr-2">Back to all themes</span>
+</a>
+<div class="flex lg:flex-col flex-wrap items-center gap-4">
+	<Image
+		inferSize
+		src={author.avatar ?? ''}
+		height={48}
+		width={48}
+		class="size-12 lg:w-full h-fit"
+		alt=""
+	/>
+	<h1 class="border-astro-gray-500 lg:hidden heading-3">{author.name}</h1>
+	<div class="flex flex-col gap-4 pt-2 lg:pt-8 w-full">
+		<div class="flex items-baseline justify-between">
+			<small class="code text-astro-gray-200">Joined</small>
+			{
+				new Date(author.createdAt).toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric',
+				})
+			}
+		</div>
+		{
+			author.url && (
+				<hr class="border-astro-gray-500" />
+				<div class="flex items-baseline justify-between">
+					<small class="code text-astro-gray-200">Website</small>
+					<a class="link" href={author.url}>
+						{author.url.replace(/^https?:\/\/|\/$/g, '')}
+					</a>
+				</div>
+			)
+		}
+	</div>
+</div>

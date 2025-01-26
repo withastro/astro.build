@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import type { HTMLTag } from 'astro/types'
 import Card from '~/components/Card.astro';
 import CardBody from '~/components/CardBody.astro';
 import CardFooter from '~/components/CardFooter.astro';
@@ -8,15 +9,16 @@ import Avatar from './Avatar.astro';
 import Badge from './Badge.astro';
 
 export type Props = {
+	as?: HTMLTag;
 	theme: ThemeAndAuthor;
 };
 
-const { theme } = Astro.props;
+const { as: Tag = 'h3', theme } = Astro.props;
 
 const image = theme.Theme.image;
 ---
 
-<Card isLink>
+<Card isLink labelledby={theme.Theme.slug}>
 	<!-- {!!theme.data.badge && <CardBadge>{theme.data.badge}</CardBadge>} -->
 	<a class="flex h-full flex-col" href={`/themes/details/${theme.Theme.slug}/`} data-astro-prefetch>
 		<Image
@@ -30,10 +32,9 @@ const image = theme.Theme.image;
 		/>
 		<CardBody>
 			<div>
-				<!-- <h3 class:list={["heading-5 mb-2 text-white", { official: theme.data.official }]}> -->
-				<h3 class:list={['heading-5 mb-2 text-white']}>
+				<Tag class:list={['heading-5 mb-2 text-white']} id={theme.Theme.slug}>
 					{theme.Theme.title}
-				</h3>
+				</Tag>
 				<p class="line-clamp-3">{theme.Theme.description}</p>
 			</div>
 			<CardFooter
