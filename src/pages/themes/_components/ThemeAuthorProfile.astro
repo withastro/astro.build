@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import LeftArrowIcon from '~/icons/LeftArrowIcon.tsx'
+import LeftArrowIcon from '~/icons/LeftArrowIcon.tsx';
 import type { Author } from '../_types/index.ts';
 
 interface Props {
@@ -41,13 +41,15 @@ const { author } = Astro.props;
 		</div>
 		{
 			author.url && (
-				<hr class="border-astro-gray-500" />
-				<div class="flex items-baseline justify-between">
-					<small class="code text-astro-gray-200">Website</small>
-					<a class="link" href={author.url}>
-						{author.url.replace(/^https?:\/\/|\/$/g, '')}
-					</a>
-				</div>
+				<>
+					<hr class="border-astro-gray-500" />
+					<div class="flex items-baseline justify-between">
+						<small class="code text-astro-gray-200">Website</small>
+						<a class="link" href={author.url}>
+							{author.url.replace(/^https?:\/\/|\/$/g, '')}
+						</a>
+					</div>
+				</>
 			)
 		}
 	</div>
