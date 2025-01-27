@@ -6,7 +6,7 @@ categories:
   - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/starlight-minimalistic-theme
-homepageUrl: https://starlight-minimalistic-theme.trueberryless.org/
+homepageUrl: https://www.npmjs.com/package/starlight-minimalistic-theme
 badge: new
-downloads: 54
+downloads: 57
 ---

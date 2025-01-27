@@ -7,9 +7,7 @@ description: <p align="center"> 	<a
   href="https://git
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/starlight-theme-gruvbox
 homepageUrl: https://starlight-theme-gruvbox.otterlord.dev/
-badge: new
-downloads: 75
+downloads: 17
 ---

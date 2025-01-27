@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 import { format } from 'date-fns';
 import houstonWink from '~/assets/houston_wink.webp';
@@ -39,20 +40,19 @@ const authors = await Promise.all(data.authors.map((author) => getEntry('authors
 	image={socialImage && { src: socialImage.src, alt: data.title }}
 >
 	<div
-		class="z-blur -mb-56 h-64 w-full opacity-[0.85] md:-mb-52 md:h-64 lg:-mb-80 lg:h-96"
+		class="z-blur -mb-64 h-64 w-full opacity-[0.85] lg:-mb-80 lg:h-96"
 		style={`background-image: linear-gradient(120deg,${data.coverGradientFrom} 0%,${data.coverGradientTo} 100%);`}
 	>
 	</div>
 	{
 		headerImage && (
-			<img
-				src={headerImage.src}
-				width={headerImage.width}
-				height={headerImage.height}
-				loading="lazy"
-				decoding="async"
+			<Image
+				src={headerImage}
+				loading="eager"
+				width={512}
+				densities={[1, 1.5]}
 				alt=""
-				class="mx-auto mb-20 mt-8 max-w-full object-contain px-8"
+				class="mx-auto max-w-full max-h-64 max-w-lg w-full object-contain px-8 py-12 lg:p-0 lg:mb-16"
 			/>
 		)
 	}
@@ -64,7 +64,7 @@ const authors = await Promise.all(data.authors.map((author) => getEntry('authors
 			<p class="code text-astro-gray-200">
 				Case Study &bull;
 				<time datetime={data.publishDate.toISOString()}>
-					{format(data.publishDate, 'MMMM d, yyyy')}
+					{format(data.publishDate, 'MMMM yyyy')}
 				</time>
 			</p>
 			<h1 class="mb-4 mt-2 flex flex-col items-center sm:mb-5 sm:mt-3">
