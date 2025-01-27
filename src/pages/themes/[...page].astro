@@ -92,7 +92,7 @@ const allThemes: ThemeAndAuthor[] = await fetch(
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
-	data: allThemes.filter(theme => !theme.Theme.featured),
+	data: allThemes.filter((theme) => !theme.Theme.featured),
 	pageSize: 12,
 	currentPage,
 	route: '/themes/[...page]',
@@ -157,9 +157,7 @@ const featured: ThemeAndAuthor[] = showFeatured
 						</CardGridGroup>
 					)}
 
-					<CardGridGroup
-						title={showFeatured && featured.length > 0 ? 'All Themes' : undefined}
-					>
+					<CardGridGroup title={showFeatured && featured.length > 0 ? 'All Themes' : undefined}>
 						<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
 							{themes.map((theme) => (
 								<ThemeCard theme={theme} />
