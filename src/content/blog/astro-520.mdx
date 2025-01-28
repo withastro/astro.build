@@ -4,7 +4,7 @@ description: 'Astro 5.1 is now available. This includes a new experimental sessi
 homepageLink:
   title: 'Astro 5.2'
   subtitle: 'Available now!'
-publishDate: '2025-01-19'
+publishDate: '2025-01-30'
 authors:
   - matt
   - ema
@@ -18,7 +18,7 @@ import BlogContentImage from '/src/components/BlogContentImage.astro';
 
 **Astro 5.2 is now available! The first minor release of 2025 includes Tailwind 4 support, a new way to access config values in your pages, better trailing slash handling and support for external redirects.**
 
-It's still just about January, so make it your resolution to try out these new features:
+It's still January, so make it your resolution to try out these new features:
 
 - [**Tailwind 4 support**](#tailwind-4-support)
 - [**Trailing slash redirects**](#trailing-slash-redirects)
@@ -51,7 +51,9 @@ Thanks to Eveeifyeve ([`@Eveeifyeve`](https://github.com/Eveeifyeve)) who did th
 
 ## Trailing slash redirects
 
-Whether or not a path should have a trailing slash is a common debate in web development. However everyone agrees that it should be consistent. Duplicate content is bad for SEO and confusing for users. Astro has long allowed you to configure whether routes should be matched with or without trailing slash, but previously this has meant returning a "not found" page for the incorrect path or leaving it up to the host to handle conflicts. Now, Astro will automatically redirect to the correct path on routes that are rendered on-demand, if you have configured the `trailingSlash` option in your `astro.config.mjs`.
+Whether or not a path should have a trailing slash is a common debate in web development. However everyone agrees that it should be consistent. Duplicate content is bad for SEO and confusing for users.
+
+Astro has long allowed you to configure whether routes should be matched with or without trailing slash, but previously this has meant returning a "not found" page for the incorrect path or leaving it up to the host to handle conflicts. Astro 5.2 will automatically redirect your on-demand rendered routes to the correct path according to the `trailingSlash` option in your `astro.config.mjs`.
 
 Now, it doesn't matter whether your visitor navigates to `/about/`, `/about`, or even `/about///`. In production, they'll always end up on the correct page. For GET requests, the redirect will be a 301 (permanent) redirect, and for all other request methods, it will be a 308 (permanent, and preserve the request method) redirect.
 
@@ -70,7 +72,9 @@ For more information, see the [`trailingSlash` documentation](https://docs.astro
 
 ## External redirects
 
-Astro now supports defining external redirects straight from the configuration. External redirects must start with `https` or `http`:
+Astro now supports defining external redirects to `http` or `https` destinations straight from the configuration. 
+
+Just like with internal redirects available since Astro 2.9, with an adapter you can also provide an object as the value. This allows you to specify a `status` code in addition to the new `destination`.
 
 ```js
 import {defineConfig} from "astro/config"
@@ -86,10 +90,11 @@ export default defineConfig({
 })
 ```
 
+See the updated [`redirects` configuration docs](https://docs.astro.build/en/reference/configuration-reference/#redirects) for more details.
 
 ## TOML frontmatter in Markdown
 
-Currently Astro supports YAML frontmatter in Markdown and MDX files. With this release, Astro now also supports TOML frontmatter in both. This is useful for adding existing content files with TOML frontmatter to your project from another framework such as Hugo, or you may just prefer TOML over YAML!
+Astro's excellent support for Markdown and MDX has always included the YAML frontmatter, whether in file exports or content collections. With this release, Astro now also supports TOML frontmatter in both. This is useful for adding existing content files with TOML frontmatter to your project from another framework such as Hugo, or you may just prefer TOML over YAML!
 
 No configuration is required to use TOML frontmatter in your content files: just use `+++` to delimit the frontmatter and Astro will parse it as TOML.
 
