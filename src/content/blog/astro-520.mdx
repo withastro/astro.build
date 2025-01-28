@@ -1,0 +1,122 @@
+---
+title: "Astro 5.2"
+description: "Astro 5.1 is now available. This includes a new experimental sessions feature, improved caching for images, and new tools for building Astro Actions."
+homepageLink:
+  title: "Astro 5.2"
+  subtitle: "Available now!"
+publishDate: "2025-01-19"
+authors:
+  - matt
+  - ema
+coverImage: "/src/content/blog/_images/astro-520/blog-post-5-2.webp"
+socialImage: "/src/content/blog/_images/astro-520/og-astro-5-2.webp"
+lang: "en"
+---
+
+import BlogContentImage from "/src/components/BlogContentImage.astro";
+
+**Astro 5.2 is now available! The first minor release of 2025 includes Tailwind 4 support, a new way to access config values in your pages, better trailing slash handling and support for external redirects.**
+
+It's still just about January, so make it your resolution to try out these new features:
+
+- [**Tailwind 4 support**](#tailwind-4-support)
+- [**Trailing slash redirects**](#trailing-slash-redirects)
+- [**External redirects**](#external-redirects)
+- [**TOML frontmatter in Markdown**](#toml-frontmatter-in-markdown)
+- [**Experimental: `astro:config`**](#experimental-astroconfig)
+- [**Experimental: disable React streaming**](#experimental-disable-react-streaming)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Tailwind 4 support
+
+...
+
+Thanks to Eveeifyeve ([`@Eveeifyeve`](https://github.com/Eveeifyeve)) who did the first work on supporting Tailwind 4, even though this ended up using a different implementation.
+
+## Trailing slash redirects
+
+Whether or not a path should have a trailing slash is a common debate in web development. However what is agreed upon is that it should be consistent. Duplicate content is bad for SEO and confusing for users. Astro has long allowed you to configure whether routes should be matched with or without trailing slash, but previously this has meant returning a "not found" page for the incorrect path or leaving it up to the host to handle conflicts. Now, Astro will automatically redirect to the correct path on routes that are rendered on-demand, if you have configured the `trailingSlash` option in your `astro.config.mjs`.
+
+To enable trailing slash redirects, set the `trailingSlash` option in your `astro.config.mjs`:
+
+```js title="astro.config.mjs" ins={3}
+export default defineConfig({
+  adapter: node({ mode: 'standalone' }),
+  trailingSlash: 'never', // or 'always'
+})
+```
+
+Then when you visit a path such as `/about/` that should not have a trailing slash, Astro will automatically redirect to `/about`.
+
+During development, Astro will display an error page instead of redirecting to help you catch any misconfigurations and bad links.
+
+## External redirects
+...
+
+## TOML frontmatter in Markdown
+
+Currently Astro supports YAML frontmatter in Markdown files. With this release, Astro now also supports TOML frontmatter in Markdown and MDX files. This is useful for adding existing content files with TOML frontmatter to your project from another framework such as Hugo, or you may just prefer TOML over YAML!
+
+No configuration is required to use TOML frontmatter in your content files: just use `+++` to delimit the frontmatter and Astro will parse it as TOML.
+
+```md ins={1-6}
++++
+date = 2025-01-30
+title = 'Use TOML frontmatter in Astro!'
+[params]
+  author = 'Houston'
++++
+# Support for TOML frontmatter is here!
+```
+
+Thanks to [Colin Bate](https://colinbate.com/) who contributed this feature.
+
+## Experimental: `astro:config` 
+...
+
+## Experimental: disable React streaming
+
+The `@astrojs/react` integration now allows you to disable React streaming. This can be useful if you are using a library that is not compatible with streaming, such as many CSS-in-JS libraries. To disable React streaming, upgrade the `@astrojs/react` integration:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install @astrojs/react@latest
+pnpm upgrade @astrojs/react --latest
+yarn upgrade @astrojs/react --latest
+```
+Then set the integration's `experimentalDisableStreaming` option to `true` in your `astro.config.mjs`:
+```js title="astro.config.mjs" ins={4}
+export default defineConfig({
+  integrations: [
+    react({
+      experimentalDisableStreaming: true,
+    }),
+  ]
+});
+```
+
+Thanks to [Arturo Silva](https://artfromclt.dev/) from the Washington Post who contributed this feature.
+
+## Bug fixes
+
+We've had loads of bug fixes since the [5.1 release](/blog/astro-510). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Thanks
+
+Thanks to everyone who contributed to this release, including Arturo Silva ([`@artmsilva`](https://github.com/artmsilva)), Colin Bate ([`@colinbate`](https://github.com/colinbate)), Sarah Rainsberger ([`@sarah11918`](https://github.com/sarah11918)), Matthew Phillips ([`@matthewp`](https://github.com/matthewp)), HiDeoo ([`@hideoo`](https://github.com/HiDeoo)), Bjorn Lu ([`@bluwy`](https://github.com/bluwy)), Armand Philippot ([`@armandphilippot`](https://github.com/ArmandPhilippot)), and many more.
+
+We're excited to see what you build with Astro 5.2!
