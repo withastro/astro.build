@@ -41,9 +41,11 @@ yarn upgrade astro --latest
 
 ## Tailwind 4 support
 
-Tailwind CSS now offers a `@tailwindcss/vite` plugin which is the preferred way to use Tailwind 4 in Astro. Astro 5.2 adds native support for the Vite plugin, and the `astro add tailwind` command will now add the plugin to your Astro config and create the default CSS file.
+With their release of v4, Tailwind CSS now offers a `@tailwindcss/vite` plugin that can be directly added to your Astro project. This simplifies the Tailwind experience in Astro, and is now the recommended way to use Tailwind 4 in Astro.
 
-The `@astrojs/tailwind` integration is now deprecated, but will continue to work for older versions of Tailwind. If you want to upgrade, please uninstall the integration and either use the updated `astro add tailwind` command or follow the [Tailwind documentation for manual installation](https://tailwindcss.com/docs/installation/framework-guides/astro).
+Astro 5.2 adds native support for this Vite plugin, and the `astro add tailwind` command will now add the plugin to your Astro config and create a default CSS file that imports Tailwind styles.
+
+As a result, the `@astrojs/tailwind` integration is now deprecated, but will continue to work for older versions of Tailwind. To upgrade to Tailwind 4, please uninstall the integration and either use the updated `astro add tailwind` command or follow the [Tailwind documentation for manual installation](https://tailwindcss.com/docs/installation/framework-guides/astro).
 
 Thanks to Eveeifyeve ([`@Eveeifyeve`](https://github.com/Eveeifyeve)) who did the first work on supporting Tailwind 4 while it was in alpha, even though this ended up using a different implementation.
 
