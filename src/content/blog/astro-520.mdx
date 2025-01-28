@@ -67,7 +67,23 @@ During development, Astro will display an error page instead of redirecting to h
 For more information, see the [`trailingSlash` documentation](https://docs.astro.build/en/reference/configuration-reference/#trailingslash).
 
 ## External redirects
-...
+
+Astro now supports defining external redirects straight from the configuration. External redirects must start with `https` or `http`:
+
+```js
+import {defineConfig} from "astro/config"
+
+export default defineConfig({
+    redirects: {
+        "/about": "https://example.com/about",
+        "/news": {
+            status: 302,
+            destination: "https://example.com/news"
+        }
+    }
+})
+```
+
 
 ## TOML frontmatter in Markdown
 
@@ -88,7 +104,40 @@ title = 'Use TOML frontmatter in Astro!'
 Thanks to [Colin Bate](https://colinbate.com/) who contributed this feature.
 
 ## Experimental: `astro:config` 
-...
+
+Astro allows the users to retrieve some configuration information in various ways: the use of the environment variable `import.meta.env`, the `Astro` global object in `.astro` files, and the `context` variable in middleware/endepoints.
+
+Reading the same information sometimes felt confusing for beginners, for example reading `import.meta.env.BASE` or `Astro.base`.
+
+With `astro:config`, we want to provide a **unique** way to read some configuration options from anywhere inside the project, with type-safety in mind! The end goal would be to deprecate the properties, and make `astro:config` the de fact standard. Please leave your feedback in the relative [RFC](https://github.com/withastro/roadmap/pull/1106).
+
+To use this new virtual module, you need to enable it via experimental flag:
+
+```js
+import {defineConfig} from "astro/config"
+
+export default defineConfig({
+    trailingSlash: "always",
+    experimental: {
+        serializeConfig: true
+    }
+})
+```
+Then, from any file inside the Astro project, you can use the virtual module:
+
+```js
+// src/utils.js
+import {trailingSlash} from "astro:config/client"
+
+export function appendForwardPath(path) {
+    if (trailingSlash === "always") { // the value will be "never", as per config
+        return path.endsWith("/") ? path : path + "/"
+    }
+    return path
+}
+```
+
+Refer to the [documentation page](https://docs.astro.build/en/reference/experimental-flags/serialized-configuration/) for more information regarding this new experimental feature.
 
 ## Experimental: disable React streaming
 
