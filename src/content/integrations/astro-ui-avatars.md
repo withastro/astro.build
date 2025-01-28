@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-ui-avatars
 repoUrl: https://github.com/codiume/orbit
 homepageUrl: https://github.com/codiume/orbit
 badge: new
-downloads: 209
+downloads: 215
 ---
