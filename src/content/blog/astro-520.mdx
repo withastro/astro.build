@@ -113,11 +113,11 @@ Thanks to [Colin Bate](https://colinbate.com/) who contributed this feature.
 
 ## Experimental: `astro:config` 
 
-Astro allows the users to retrieve some configuration information in various ways: the use of the environment variable `import.meta.env`, the `Astro` global object in `.astro` files, and the `context` variable in middleware/endepoints.
+Astro allows the users to retrieve some configuration information in various ways: the use of the environment variable `import.meta.env`, the `Astro` global object in `.astro` files, and the `context` variable in middleware and endpoints.
 
-Reading the same information sometimes felt confusing for beginners, for example reading `import.meta.env.BASE` or `Astro.base`.
+It could be hard to remember where the information was available: was it `import.meta.env.BASE` or `Astro.base`?
 
-With `astro:config`, we want to provide a **unique** way to read some configuration options from anywhere inside the project, with type-safety in mind! The end goal would be to deprecate the properties, and make `astro:config` the de fact standard. Please leave your feedback in the relative [RFC](https://github.com/withastro/roadmap/pull/1106).
+With `astro:config`, we want to provide a *single* way to read the most useful configuration options from anywhere inside the project, with type-safety in mind! The end goal would be to deprecate the other ways of reading properties, and make `astro:config` the de facto standard. Please leave your feedback in the relevant [RFC](https://github.com/withastro/roadmap/pull/1106).
 
 To use this new virtual module, you need to enable it via experimental flag:
 
