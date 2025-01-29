@@ -113,11 +113,11 @@ Thanks to [Colin Bate](https://colinbate.com/) who contributed this feature.
 
 ## Experimental: `astro:config` 
 
-Astro allows the users to retrieve some configuration information in various ways: the use of the environment variable `import.meta.env`, the `Astro` global object in `.astro` files, and the `context` variable in middleware and endpoints.
+Astro provides several ways to access your configuration settings from your project files: environment variables, the `Astro` global object in `.astro` files, and the `context` variable in middleware and endpoints. But, it can be hard to remember where the information is available: was it `import.meta.env.BASE` or `Astro.base`?
 
-It could be hard to remember where the information was available: was it `import.meta.env.BASE` or `Astro.base`?
+With `astro:config`, we want to provide a *single* way to read the most useful configuration options from anywhere inside your project. And, because it's Astro, we're doing it with type-safety in mind! 
 
-With `astro:config`, we want to provide a *single* way to read the most useful configuration options from anywhere inside the project, with type-safety in mind! The end goal would be to deprecate the other ways of reading properties, and make `astro:config` the de facto standard. Please leave your feedback in the relevant [RFC](https://github.com/withastro/roadmap/pull/1106).
+This virtual module exposes two submodules (`/client` and `/server`) for accessing different subsets of your configuration values. This protects your information by only making some data available to the client.
 
 To use this new virtual module, you need to enable it via experimental flag:
 
@@ -138,14 +138,16 @@ Then, from any file inside the Astro project, you can use the virtual module:
 import {trailingSlash} from "astro:config/client"
 
 export function appendForwardPath(path) {
-    if (trailingSlash === "always") { // the value will be "never", as per config
+    if (trailingSlash === "always") {
         return path.endsWith("/") ? path : path + "/"
     }
     return path
 }
 ```
 
-Refer to the [documentation page](https://docs.astro.build/en/reference/experimental-flags/serialized-configuration/) for more information regarding this new experimental feature.
+Refer to the [Serialized Configuration docs](https://docs.astro.build/en/reference/experimental-flags/serialized-configuration/) for more information regarding this new experimental feature.
+
+We want to eventually deprecate the other ways of reading these properties, and make `astro:config` the de facto standard for accessing your configuration values in your Astro project. Please join the active discussion to leave your feedback in the [Serialized Config RFC](https://github.com/withastro/roadmap/pull/1106) and help shape the future of this feature!
 
 ## Experimental: disable React streaming
 
