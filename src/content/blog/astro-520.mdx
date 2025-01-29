@@ -1,6 +1,6 @@
 ---
 title: 'Astro 5.2'
-description: 'Astro 5.1 is now available. This includes a new experimental sessions feature, improved caching for images, and new tools for building Astro Actions.'
+description: 'Astro 5.2 is now available! The first minor release of 2025 includes Tailwind 4 support, a new way to access config values in your pages, better trailing slash handling, and support for external redirects.'
 homepageLink:
   title: 'Astro 5.2'
   subtitle: 'Available now!'
@@ -16,7 +16,7 @@ lang: 'en'
 
 import BlogContentImage from '/src/components/BlogContentImage.astro';
 
-**Astro 5.2 is now available! The first minor release of 2025 includes Tailwind 4 support, a new way to access config values in your pages, better trailing slash handling and support for external redirects.**
+**Astro 5.2 is now available! The first minor release of 2025 includes Tailwind 4 support, a new way to access config values in your pages, better trailing slash handling, and support for external redirects.**
 
 It's still January, so make it your resolution to try out these new features:
 
@@ -41,17 +41,17 @@ yarn upgrade astro --latest
 
 ## Tailwind 4 support
 
-With their release of v4, Tailwind CSS now offers a `@tailwindcss/vite` plugin that can be directly added to your Astro project. This simplifies the Tailwind experience in Astro, and is now the recommended way to use Tailwind 4 in Astro.
+With their release of v4, Tailwind CSS now offers a `@tailwindcss/vite` plugin that can be directly added to your Astro project. This simplifies the Tailwind experience in Astro and is now the recommended way to use Tailwind 4 in Astro.
 
 Astro 5.2 adds native support for this Vite plugin, and the `astro add tailwind` command will now add the plugin to your Astro config and create a default CSS file that imports Tailwind styles.
 
-As a result, the `@astrojs/tailwind` integration is now deprecated, but will continue to work for older versions of Tailwind. To upgrade to Tailwind 4, please uninstall the integration and either use the updated `astro add tailwind` command or follow the [Tailwind documentation for manual installation](https://tailwindcss.com/docs/installation/framework-guides/astro).
+As a result, the `@astrojs/tailwind` integration is now deprecated but will continue to work for older versions of Tailwind. To upgrade to Tailwind 4, please uninstall the integration and either use the updated `astro add tailwind` command or follow the [Tailwind documentation for manual installation](https://tailwindcss.com/docs/installation/framework-guides/astro).
 
 Thanks to Eveeifyeve ([`@Eveeifyeve`](https://github.com/Eveeifyeve)) who did the first work on supporting Tailwind 4 while it was in alpha, even though this ended up using a different implementation.
 
 ## Trailing slash redirects
 
-Whether or not a path should have a trailing slash is a common debate in web development. However everyone agrees that it should be consistent. Duplicate content is bad for SEO and confusing for users.
+Whether or not a path should have a trailing slash is a common debate in web development. However, everyone agrees that it should be consistent. Duplicate content is bad for SEO and confusing for users.
 
 Astro has long allowed you to configure whether routes should be matched with or without trailing slash, but previously this has meant returning a "not found" page for the incorrect path or leaving it up to the host to handle conflicts. Astro 5.2 will automatically redirect your on-demand rendered routes to the correct path according to the `trailingSlash` option in your `astro.config.mjs`.
 
