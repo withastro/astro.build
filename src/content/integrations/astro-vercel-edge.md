@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-vercel-edge
 repoUrl: https://github.com/mayank99/astro-vercel-edge
 homepageUrl: https://github.com/mayank99/astro-vercel-edge#readme
-downloads: 167
+downloads: 169
 ---

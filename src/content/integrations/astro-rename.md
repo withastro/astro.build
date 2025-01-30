@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-rename
 repoUrl: https://github.com/RodrigoTomeES/astro-rename
 homepageUrl: https://github.com/RodrigoTomeES/astro-rename
-downloads: 1813
+downloads: 1902
 ---
