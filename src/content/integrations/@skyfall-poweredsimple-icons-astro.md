@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@skyfall-powered/simple-icons-astro
 repoUrl: https://github.com/dzeiocom/simple-icons-astro
 homepageUrl: https://simple-icons-astro.dzeio.com
 badge: new
-downloads: 293
+downloads: 322
 ---

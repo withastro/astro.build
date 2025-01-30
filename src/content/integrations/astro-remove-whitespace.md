@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-remove-whitespace
 repoUrl: https://github.com/utsuboco/astro-remove-whitespace
 homepageUrl: https://github.com/utsuboco/astro-remove-whitespace#readme
 badge: new
-downloads: 138
+downloads: 32
 ---

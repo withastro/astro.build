@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-minimalistic-theme
 homepageUrl: https://www.npmjs.com/package/starlight-minimalistic-theme
 badge: new
-downloads: 57
+downloads: 58
 ---

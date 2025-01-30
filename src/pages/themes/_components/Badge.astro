@@ -7,7 +7,13 @@ export type Props = {
 const { theme, class: className } = Astro.props;
 ---
 
-<p class:list={['code relative m-px rounded-md px-2 py-1 text-sm text-white', theme, className]}>
+<p
+	class:list={[
+		'code relative m-px rounded-md px-2 py-1 text-sm text-white whitespace-nowrap',
+		theme,
+		className,
+	]}
+>
 	<slot />
 </p>
 
