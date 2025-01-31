@@ -135,7 +135,7 @@ The latest community-built utilities and integrations to help you build with Ast
 - [`astro-transition-event-polyfill`](https://github.com/louisescher/astro-transition-event-polyfill) - An integration that adds a polyfill for the astro:page-load event when view transitions are not used.
 - [Astro server todo app](https://github.com/devgauravjatt/astro5-server-todo-app) - A simple Todo List App built with Astro and Better Auth.
 - [`astro-font` v1.0](https://github.com/rishi-raj-jain/astro-font) - Automatically optimize your Custom Fonts, Local Fonts, Fonts over any CDN and Google fonts for performance.
-- [`@inox-tools/server-islands`] - An integration that provides a set of utilities to work with Astro’s Server Islands.
+- [`@inox-tools/server-islands`](https://inox-tools.fryuni.dev/server-islands) - An integration that provides a set of utilities to work with Astro’s Server Islands.
 
 ### Themes & Templates
 
@@ -161,13 +161,13 @@ export const monthlySites = [
   'sillystring.party.yml',
 ]; 
 
-{/* <ShowcaseGridById ids={monthlySites} />  */}
-
-<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={monthlySites} /> 
+<ShowcaseGridById ids={monthlySites} />
 
 Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
 
-<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={monthlySites} /> 
+
+{/* <MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> */}
 
 ### Starlight in the wild
 
