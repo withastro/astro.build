@@ -494,7 +494,7 @@ const scraper = new ShowcaseScraper({
 		// 404 - 2025-01-31
 		'https://nano-blog-nine.vercel.app/',
 		// No evidence it's Astro? - 2025-01-31
-		https://www.kamcalorie.com/
+		'https://www.kamcalorie.com/',
 	],
 });
 await scraper.run();
