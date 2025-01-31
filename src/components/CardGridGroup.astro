@@ -1,20 +1,24 @@
 ---
 export type Props = {
 	title?: string;
+	tagline?: string;
 	cta?: {
 		text: string;
 		href: string;
 	};
 };
 
-const { title, cta } = Astro.props;
+const { title, tagline, cta } = Astro.props;
 ---
 
 <section class="flex flex-col gap-4 lg:gap-6 w-full">
 	{
 		!!title && (
 			<header class="flex items-end justify-between">
-				<h3 class="heading-3">{title}</h3>
+				<div class="flex flex-col gap-2">
+					<h3 class="heading-3">{title}</h3>
+					{tagline && <p class="text-astro-gray-200">{tagline}</p>}
+				</div>
 				{cta?.href && (
 					<a class="button button-sm hidden md:flex" href={cta.href}>
 						<span>{cta.text}</span>
