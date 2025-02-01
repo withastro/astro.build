@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@stanley_stella/design-system
 homepageUrl: https://www.npmjs.com/package/@stanley_stella/design-system
-downloads: 21
+downloads: 20
 ---
