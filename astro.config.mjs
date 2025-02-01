@@ -62,7 +62,6 @@ export default defineConfig({
 		"/on/twitter": "https://x.com/astrodotbuild",
 		"/on/x": "https://x.com/astrodotbuild",
 		"/on/reddit": "https://www.reddit.com/r/withastro/",
-		"/on/mastodon": "https://m.webtoo.ls/@astro",
 		"/on/discord": "https://astro.build/chat",
 		"/on/github": "https://github.com/withastro",
 		"/on/bluesky": "https://bsky.app/profile/astro.build"
