@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/hydrogenpay-astro
 repoUrl: https://github.com/HydrogenAfrica/hydrogenpay-astro
-homepageUrl: https://github.com/HydrogenAfrica/hydrogenpay-astro.git
+homepageUrl: https://www.npmjs.com/package/hydrogenpay-astro
 badge: new
 downloads: 63
 ---

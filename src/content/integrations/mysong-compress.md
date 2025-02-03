@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/mysong-compress
 repoUrl: https://github.com/mysongstudio/mysong-compress
-homepageUrl: https://github.com/mysongstudio/mysong-compress#readme
+homepageUrl: https://www.npmjs.com/package/mysong-compress
 badge: new
 downloads: 253
 ---
