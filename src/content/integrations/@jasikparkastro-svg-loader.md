@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jasikpark/astro-svg-loader
 repoUrl: https://github.com/jasikpark/astro-svg-loader
 homepageUrl: https://github.com/jasikpark/astro-svg-loader#readme
-downloads: 341
+downloads: 331
 ---
