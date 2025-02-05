@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-portabletext
 repoUrl: https://github.com/theisel/astro-portabletext
 homepageUrl: https://github.com/theisel/astro-portabletext#readme
-downloads: 16700
+downloads: 16216
 ---
