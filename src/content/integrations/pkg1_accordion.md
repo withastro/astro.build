@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/pkg1_accordion
 homepageUrl: https://www.npmjs.com/package/pkg1_accordion
-downloads: 6
+downloads: 8
 ---

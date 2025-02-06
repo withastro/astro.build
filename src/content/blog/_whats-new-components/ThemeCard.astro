@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
 	Theme: { title: string; image: string; slug: string };
 	Author: { name: string };
@@ -16,10 +18,10 @@ const { title, image, slug } = Theme;
 	]}
 >
 	<a href={`/themes/details/${slug}/`} class="h-full w-full text-astro-gray-100">
-		<img
+		<Image
 			src={image}
-			width={450}
-			height={236}
+			width={800}
+			height={421}
 			alt=""
 			class="h-full w-full object-cover object-top"
 		/>

@@ -6,7 +6,7 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@unocss/astro
 repoUrl: https://github.com/unocss/unocss
-homepageUrl: https://github.com/unocss/unocss#readme
-downloads: 621094
+homepageUrl: https://unocss.dev
+downloads: 606232
 downloadFactor: 0.02
 ---

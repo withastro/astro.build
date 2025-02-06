@@ -1,0 +1,190 @@
+---
+title: 'Astro 5.2'
+description: 'Astro 5.2 is now available! The first minor release of 2025 includes Tailwind 4 support, a new way to access config values in your pages, better trailing slash handling, and support for external redirects.'
+homepageLink:
+  title: 'Astro 5.2'
+  subtitle: 'Available now!'
+publishDate: '2025-01-30'
+authors:
+  - matt
+  - ema
+  - florian
+coverImage: '/src/content/blog/_images/astro-520/blog-post-5-2.webp'
+socialImage: '/src/content/blog/_images/astro-520/og-astro-5-2.webp'
+lang: 'en'
+---
+
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+
+**Astro 5.2 is now available! The first minor release of 2025 includes Tailwind 4 support, a new way to access config values in your pages, better trailing slash handling, and support for external redirects.**
+
+It's still January, so make it your resolution to try out these new features:
+
+- [**Tailwind 4 support**](#tailwind-4-support)
+- [**Trailing slash redirects**](#trailing-slash-redirects)
+- [**External redirects**](#external-redirects)
+- [**TOML frontmatter in Markdown**](#toml-frontmatter-in-markdown)
+- [**Experimental: `astro:config`**](#experimental-astroconfig)
+- [**Experimental: disable React streaming**](#experimental-disable-react-streaming)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Tailwind 4 support
+
+With their release of v4, Tailwind CSS now offers a `@tailwindcss/vite` plugin that can be directly added to your Astro project. This simplifies the Tailwind experience in Astro and is now the recommended way to use Tailwind 4 in Astro.
+
+Astro 5.2 adds native support for this Vite plugin, and the `astro add tailwind` command will now add the plugin to your Astro config and create a default CSS file that imports Tailwind styles.
+
+As a result, the `@astrojs/tailwind` integration is now deprecated but will continue to work for older versions of Tailwind. To upgrade to Tailwind 4, please uninstall the integration and either use the updated `astro add tailwind` command or follow the [Tailwind documentation for manual installation](https://tailwindcss.com/docs/installation/framework-guides/astro).
+
+Thanks to [Eveeifyeve](https://github.com/Eveeifyeve) who did the first work on supporting Tailwind 4 while it was in alpha, even though this ended up using a different implementation.
+
+## Trailing slash redirects
+
+Whether or not a path should have a trailing slash is a common debate in web development. However, everyone agrees that it should be consistent. Duplicate content is bad for SEO and confusing for users.
+
+Astro has long allowed you to configure whether routes should be matched with or without trailing slash, but previously this has meant returning a "not found" page for the incorrect path or leaving it up to the host to handle conflicts. Astro 5.2 will automatically redirect your on-demand rendered routes to the correct path according to the `trailingSlash` option in your `astro.config.mjs`.
+
+Now, it doesn't matter whether your visitor navigates to `/about/`, `/about`, or even `/about///`. In production, they'll always end up on the correct page. For GET requests, the redirect will be a 301 (permanent) redirect, and for all other request methods, it will be a 308 (permanent, and preserve the request method) redirect.
+
+During development, Astro will display an error page instead of redirecting to help you catch any misconfigurations and bad links.
+
+To enable trailing slash redirects, set the `trailingSlash` option in your `astro.config.mjs`:
+
+```js title="astro.config.mjs" ins={3}
+export default defineConfig({
+	adapter: node({ mode: 'standalone' }),
+	trailingSlash: 'never', // or 'always'
+});
+```
+
+For more information, see the [`trailingSlash` documentation](https://docs.astro.build/en/reference/configuration-reference/#trailingslash).
+
+## External redirects
+
+Astro now supports defining external redirects to `http` or `https` destinations straight from the configuration. 
+
+Just like with internal redirects available since Astro 2.9, with an adapter you can also provide an object as the value. This allows you to specify a `status` code in addition to the new `destination`.
+
+```js
+import {defineConfig} from "astro/config"
+
+export default defineConfig({
+    redirects: {
+        "/about": "https://example.com/about",
+        "/news": {
+            status: 302,
+            destination: "https://example.com/news"
+        }
+    }
+})
+```
+
+See the updated [`redirects` configuration docs](https://docs.astro.build/en/reference/configuration-reference/#redirects) for more details.
+
+## TOML frontmatter in Markdown
+
+Astro's excellent support for Markdown and MDX has always included the YAML frontmatter, whether in file exports or content collections. With this release, Astro now also supports TOML frontmatter in both. This is useful for adding existing content files with TOML frontmatter to your project from another framework such as Hugo, or you may just prefer TOML over YAML!
+
+No configuration is required to use TOML frontmatter in your content files: just use `+++` to delimit the frontmatter and Astro will parse it as TOML.
+
+```md ins={1-6}
++++
+date = 2025-01-30
+title = 'Use TOML frontmatter in Astro!'
+[params]
+  author = 'Houston'
++++
+
+# Support for TOML frontmatter is here!
+```
+
+Thanks to [Colin Bate](https://colinbate.com/) who contributed this feature.
+
+## Experimental: `astro:config` 
+
+Astro provides several ways to access your configuration settings from your project files: environment variables, the `Astro` global object in `.astro` files, and the `context` variable in middleware and endpoints. But, it can be hard to remember where the information is available: was it `import.meta.env.BASE` or `Astro.base`?
+
+With `astro:config`, we want to provide a *single* way to read the most useful configuration options from anywhere inside your project. And, because it's Astro, we're doing it with type-safety in mind! 
+
+This virtual module exposes two submodules (`/client` and `/server`) for accessing different subsets of your configuration values. This protects your information by only making some data available to the client.
+
+To use this new virtual module, you need to enable it via experimental flag:
+
+```js
+import {defineConfig} from "astro/config"
+
+export default defineConfig({
+    trailingSlash: "always",
+    experimental: {
+        serializeConfig: true
+    }
+})
+```
+Then, from any file inside the Astro project, you can use the virtual module:
+
+```js
+// src/utils.js
+import {trailingSlash} from "astro:config/client"
+
+export function appendForwardPath(path) {
+    if (trailingSlash === "always") {
+        return path.endsWith("/") ? path : path + "/"
+    }
+    return path
+}
+```
+
+Refer to the [Serialized Configuration docs](https://docs.astro.build/en/reference/experimental-flags/serialized-configuration/) for more information regarding this new experimental feature.
+
+We want to eventually deprecate the other ways of reading these properties, and make `astro:config` the de facto standard for accessing your configuration values in your Astro project. Please join the active discussion to leave your feedback in the [Serialized Config RFC](https://github.com/withastro/roadmap/pull/1106) and help shape the future of this feature!
+
+## Experimental: disable React streaming
+
+The `@astrojs/react` integration now allows you to disable React streaming. This can be useful if you are using a library that is not compatible with streaming, such as many CSS-in-JS libraries. To disable React streaming, upgrade the `@astrojs/react` integration:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install @astrojs/react@latest
+pnpm upgrade @astrojs/react --latest
+yarn upgrade @astrojs/react --latest
+```
+
+Then set the integration's `experimentalDisableStreaming` option to `true` in your `astro.config.mjs`:
+
+```js title="astro.config.mjs" ins={4}
+export default defineConfig({
+	integrations: [
+		react({
+			experimentalDisableStreaming: true,
+		}),
+	],
+});
+```
+
+See the [`@astrojs/react` documentation](https://docs.astro.build/en/guides/integrations-guide/react/#disable-streaming-experimental) for more information.
+
+Thanks to [Arturo Silva](https://artfromclt.dev/) from the Washington Post who contributed this feature.
+
+## Bug fixes
+
+We've had loads of bug fixes since the [5.1 release](/blog/astro-510). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Thanks
+
+Thanks to everyone who contributed to this release, including [Arturo Silva](https://github.com/artmsilva), [Colin Bate](https://github.com/colinbate), [Sarah Rainsberger](https://github.com/sarah11918), [Matthew Phillips](https://github.com/matthewp), [HiDeoo](https://github.com/HiDeoo), [Bjorn Lu](https://github.com/bluwy), [Armand Philippot](https://github.com/ArmandPhilippot), [Yan Thomas](https://github.com/yanthomasdev), and many more.
+
+We're excited to see what you build with Astro 5.2!

@@ -5,7 +5,7 @@ description: Add a blog to your Astro site in just one line
 categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-blog
-homepageUrl: https://www.npmjs.com/package/astro-blog
-downloads: 24
+homepageUrl: https://astro-blog.futurethemes.io/
+downloads: 20
 repoUrl: https://github.com/futurethemes/astro-blog
 ---

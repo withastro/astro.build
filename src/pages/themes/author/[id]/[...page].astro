@@ -1,0 +1,80 @@
+---
+import CardGrid from '~/components/CardGrid.astro';
+import CardGridGroup from '~/components/CardGridGroup.astro';
+import Pagination from '~/components/Pagination.astro';
+import SidebarLayout from '~/components/SidebarLayout.astro';
+import SidebarPanel from '~/components/SidebarPanel.astro';
+import { THEMES_API_URL } from '~/helpers/constants.ts';
+import { paginate } from '~/helpers/paginate.js';
+import MainLayout from '~/layouts/MainLayout.astro';
+import SubmitTheme from '../../_components/SubmitTheme.astro';
+import Profile from '../../_components/ThemeAuthorProfile.astro';
+import ThemeCard from '../../_components/ThemeCard.astro';
+import type { ThemeAndAuthor } from '../../_types/index.ts';
+
+export const prerender = false;
+
+// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
+// otherwise, try to parse the page number from the URL
+const currentPage =
+	typeof Astro.params.page === 'undefined' ? 1 : Number.parseInt(Astro.params.page);
+
+// invalid page number!
+if (!currentPage || Number.isNaN(currentPage)) {
+	return Astro.redirect('/404', 404);
+}
+
+const res = await fetch(`${THEMES_API_URL}/api/themes/author?id=${Astro.params.id}`);
+
+if (res.status !== 200) return Astro.redirect('/404', 404);
+
+const allThemes: ThemeAndAuthor[] = await res.json();
+
+// take all matching themes and create a paginated list of results
+const paginatedResults = paginate({
+	data: allThemes,
+	pageSize: 12,
+	currentPage,
+	route: `/themes/author/${Astro.params.id}/[...page]`,
+});
+
+const { page, allPages } = paginatedResults;
+
+// make sure the requested page number is valid, if not redirect to the first page of results
+if (allPages.length && !page) {
+	return Astro.redirect(allPages[0]);
+}
+
+const themes = page.data;
+---
+
+<MainLayout title="Themes" image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}>
+	<SidebarLayout>
+		<Fragment slot="sidebar">
+			<SidebarPanel>
+				<Profile author={themes[0].Author} />
+			</SidebarPanel>
+			<SubmitTheme class="hidden lg:block" />
+		</Fragment>
+
+		<div
+			class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10"
+		>
+			<CardGridGroup>
+				<header class="w-full">
+					<h1 class="heading-3 max-lg:hidden">{themes[0].Author.name}</h1>
+				</header>
+				<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
+					{themes.map((theme) => <ThemeCard as="h2" theme={theme} />)}
+				</CardGrid>
+			</CardGridGroup>
+			{
+				allPages.length > 1 && (
+					<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
+				)
+			}
+		</div>
+
+		<SubmitTheme class="lg:hidden" />
+	</SidebarLayout>
+</MainLayout>

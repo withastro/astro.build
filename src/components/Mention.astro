@@ -9,19 +9,24 @@ export type Props = {
 const { name } = Astro.props;
 
 const mention = await getEntry('authors', name);
+if (!mention) {
+	return;
+}
+
+const platform = mention.data.bluesky ? 'bluesky' : mention.data.twitter ? 'twitter' : 'mastodon';
+const linkUrl = mention.data[platform];
+const platformName = platform[0].toUpperCase() + platform.slice(1);
+
+const Tag = linkUrl ? 'a' : 'span';
 ---
 
-{
-	mention && (
-		<span class="m-0 inline-block align-middle leading-none">
-			<a
-				href={mention.data.twitter ?? mention.data.mastodon}
-				title={`Follow ${mention.data.name} on ${mention.data.twitter ? 'Twitter' : 'Mastodon'}`}
-				class="m-0 inline-flex items-center space-x-1 whitespace-nowrap font-medium"
-			>
-				<Avatar name={name} />
-				<span class="underline">{mention.data.name}</span>
-			</a>
-		</span>
-	)
-}
+<span class="m-0 inline-block align-middle leading-none">
+	<Tag
+		href={linkUrl}
+		title={linkUrl && `Follow ${mention.data.name} on ${platformName}`}
+		class="m-0 inline-flex items-center space-x-1 whitespace-nowrap font-medium"
+	>
+		<Avatar name={name} />
+		<span class="underline">{mention.data.name}</span>
+	</Tag>
+</span>
