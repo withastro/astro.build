@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-runtime-config
 homepageUrl: https://github.com/Dovias/astro-runtime-config
-downloads: 17
+downloads: 15
 ---
