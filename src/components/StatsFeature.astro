@@ -3,8 +3,8 @@ interface Props {
 	stats: {
 		amount: string;
 		text: string;
-		source?:string;
-		url?:string;
+		source?: string;
+		url?: string;
 	}[];
 }
 ---
@@ -13,13 +13,17 @@ interface Props {
 	<div class="mt-4 sm:mt-8 grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
 		{
 			Astro.props.stats.map(({ amount, text, source, url }) => (
-				<div class="flex flex-col bg-astro-purple-dark/30 rounded-xl xl:rounded-2xl overflow-hidden">
+				<div class="flex flex-col border border-astro-gray-500 bg-astro-gray-600 overflow-hidden">
 					<div class="p-4 xl:p-6 space-y-2">
 						<p class="block text-white font-light text-sm xl:text-base md:text-balance">
 							<span class="block font-semibold text-3xl">{amount}</span>
 							{text}
 						</p>
-						{ source && <a href={url}><p class="block text-white font-light text-xs pt-4">{source}</p></a> }
+						{source && (
+							<a href={url}>
+								<p class="block text-white font-light text-xs pt-4">{source}</p>
+							</a>
+						)}
 					</div>
 				</div>
 			))

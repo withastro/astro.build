@@ -1,25 +1,5 @@
----
-export interface Props {
-	// title?: string;
-	color: 'blue' | 'orange' | 'purple' | 'red';
-}
-
-const {
-	// title,
-	color,
-} = Astro.props;
-
-const colorClass = {
-	blue: 'bg-astro-blue/15',
-	orange: 'bg-astro-orange/15',
-	purple: 'bg-astro-purple-dark/30',
-	red: 'bg-astro-red/15',
-}[color];
----
-
-<aside class={`my-6 rounded px-6 py-4 ${colorClass}`}>
+<aside class={`my-6 px-6 py-4 border border-astro-gray-500 bg-astro-gray-600`}>
 	<div class="my-3 space-y-3">
-		{/* {title && <h3>{title}</h3>} */}
 		<slot />
 	</div>
 </aside>
