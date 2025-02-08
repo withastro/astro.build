@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/porfolio-dev
 homepageUrl: https://www.npmjs.com/package/porfolio-dev
-downloads: 4
+downloads: 9
 ---

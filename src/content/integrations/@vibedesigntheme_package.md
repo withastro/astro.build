@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@vibedesign/theme_package
 homepageUrl: https://www.npmjs.com/package/@vibedesign/theme_package
 badge: new
-downloads: 0
+downloads: 30
 ---

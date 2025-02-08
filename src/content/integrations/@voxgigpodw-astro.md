@@ -7,5 +7,5 @@ categories:
 image: /assets/integrations/@voxgig/podw-astro.png
 npmUrl: https://www.npmjs.com/package/@voxgig/podw-astro
 homepageUrl: https://www.npmjs.com/package/@voxgig/podw-astro
-downloads: 14
+downloads: 26
 ---
