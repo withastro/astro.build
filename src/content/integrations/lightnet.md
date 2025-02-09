@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/lightnet
 homepageUrl: https://www.npmjs.com/package/lightnet
 badge: new
-downloads: 265
+downloads: 268
 ---

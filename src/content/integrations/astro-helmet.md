@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-helmet
 repoUrl: https://github.com/ryan-voitiskis/astro-helmet
 homepageUrl: https://github.com/ryan-voitiskis/astro-helmet#readme
-downloads: 170
+downloads: 148
 ---

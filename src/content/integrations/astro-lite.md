@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-lite
 repoUrl: https://github.com/MarcosKlender/astrolite
 homepageUrl: https://astro-lite.netlify.app
 badge: new
-downloads: 112
+downloads: 102
 ---
