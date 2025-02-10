@@ -495,6 +495,9 @@ const scraper = new ShowcaseScraper({
 		'https://nano-blog-nine.vercel.app/',
 		// No evidence it's Astro? - 2025-01-31
 		'https://www.kamcalorie.com/',
+		'https://kamcalorie.com/',
+		// Already added - 2025-02-10
+		'http://getastrothemes.com',
 	],
 });
 await scraper.run();
