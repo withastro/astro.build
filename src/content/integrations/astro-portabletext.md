@@ -1,7 +1,8 @@
 ---
 name: astro-portabletext
 title: astro-portabletext
-description: Render Portable Text with Astro
+description: A flexible and customizable library for rendering Portable Text
+  content in your Astro projects
 categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-portabletext
