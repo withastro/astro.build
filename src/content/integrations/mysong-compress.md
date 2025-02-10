@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/mysong-compress
 repoUrl: https://github.com/mysongstudio/mysong-compress
 homepageUrl: https://github.com/mysongstudio/mysong-compress#readme
 badge: new
-downloads: 106
+downloads: 104
 ---
