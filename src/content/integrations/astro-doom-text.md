@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-doom-text
 homepageUrl: https://github.com/ijanos/astro-doom-text#readme
 badge: new
-downloads: 148
+downloads: 150
 ---
