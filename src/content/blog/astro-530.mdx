@@ -100,7 +100,7 @@ For more details and examples, see the [experimental session docs](https://docs.
 
 When Astro builds your site to deploy to a serverless platform like Netlify or Vercel, it needs to bundle all the files and dependencies needed to run your site. The Netlify and Vercel adapters use [the same library for this](https://github.com/vercel/nft), which is usually good at working out what's needed. It doesn't always get this right though: sometimes it misses a file that you need, particularly if it's a static file that you are loading with filesystem functions. Other times it includes files that you don't need, which can slow down your build and increase your bundle size, particularly if it's something like a large binary.
 
-To deal with this, the Vercel adapter already has `excludeFiles` and `includeFiles` options that allow you to specify files that should be excluded or included in the bundle. With this release these options are available in the Netlify adapter as well. Both options accept an array of paths or globs.
+To deal with this, the Vercel adapter already has `excludeFiles` and `includeFiles` options that allow you to specify files that should be excluded or included in the bundle. With this release, these options are available in the Netlify adapter as well. Both options accept an array of paths or globs.
 
 
 ```js title="astro.config.mjs" ins={3,4}
