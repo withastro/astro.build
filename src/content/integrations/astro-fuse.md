@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-fuse
 repoUrl: https://github.com/johnny-mh/blog2
 homepageUrl: https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse
-downloads: 427
+downloads: 435
 image: /assets/integrations/astro-fuse.png
 ---
