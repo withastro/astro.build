@@ -1,6 +1,6 @@
 ---
 title: 'Astro 5.3'
-description: 'Astro 5.3 is here with faster page rendering and easier setup for experimental sessions'
+description: 'Astro 5.3 is here with faster page rendering, easier setup for experimental sessions, and more!'
 homepageLink:
   title: 'Astro 5.3'
   subtitle: 'Available now!'
@@ -20,7 +20,7 @@ import BlogContentImage from '/src/components/BlogContentImage.astro';
 
 - [**Faster page rendering**](#faster-page-rendering)
 - [**Automatic session storage setup**](#automatic-session-storage-setup)
-
+- [**More control over Netlify Functions**](#more-control-over-netlify-functions)
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
 ```sh
@@ -35,7 +35,11 @@ yarn upgrade astro --latest
 
 ## Faster page rendering
 
-Astro makes it easy to use async functions inside components, but previously this meant that every component and page was rendered asynchronously, even if it wasn't needed. When this was happening for every component on a page, the overhead from these promises would really add up. Now, thanks to an awesome community contribution from [MatthewLymer](https://github.com/MatthewLymer), Astro will only render components asynchronously if they actually contain an async function call. In benchmarks, this has resulted in a significant speedup for rendering synchronous components. This benefits both on-demand and static builds, though the biggest improvements are seen in SSR response times. This even helps pages that use async functions, because most components on the page will still be synchronous.
+Astro makes it easy to use async functions inside components, but previously this meant that every component and page were rendered asynchronously, even if it wasn't needed. When this happens for every component on a page, the overhead from these promises can really add up!
+
+Now, thanks to an awesome community contribution from [MatthewLymer](https://github.com/MatthewLymer), Astro will only render components asynchronously if... (a)wait for it... they actually contain an async function call.
+
+In benchmarks, this has resulted in a significant speedup for rendering synchronous components. This benefits both on-demand and static builds, though the biggest improvements are seen in SSR response times. This even helps pages that use async functions, because most components on the page will still be synchronous.
 
 The exact amount of the improvement will depend on the individual sites. Complex pages with many components will see the biggest improvements, while pages that use slower external APIs at request time may be unchanged. In our testing, SSR responses are generally 1.5-2x faster unless the page is querying external APIs. Some examples:
 
@@ -46,11 +50,13 @@ You don't need to do anything to benefit from this improvement: just sit back an
 
 ## Automatic session storage setup
 
-Astro 5.1 introduced the experimental [session storage API](https://docs.astro.build/en/reference/experimental-flags/sessions/), which allows developers to easily manage user sessions on the server. The feature supports dozens of different backend storage drivers, powered by [unstorage](https://unstorage.unjs.io). Previously you would need to configure the session storage driver in your `astro.config.mjs`, but now Astro will automatically set up the session storage for you when using a supported adapter. 
+Astro 5.1 introduced the experimental [session storage API](https://docs.astro.build/en/reference/experimental-flags/sessions/), which allows developers to easily manage user sessions on the server. The feature supports dozens of different backend storage drivers, powered by [unstorage](https://unstorage.unjs.io).
 
-Currently, these supported adapters include `@astrojs/node`, which uses the filesystem for storage, and `@astrojs/netlify`, which uses Netlify Blobs. We hope to add support for more adapters in the near future, where the hosting platforms include a storage API. In all cases, you can still manually configure your own session storage driver if you prefer.
+Previously you needed to configure a session storage driver in your `astro.config.mjs`, but now Astro will automatically set up the session storage for you when using a supported adapter.
 
-To enable session storage, set the `experimental.session` flag in your `astro.config.mjs`:
+We're starting with support for the `@astrojs/node` adapter, which uses the filesystem for storage, and `@astrojs/netlify`, which uses Netlify Blobs. We hope to add default driver support for more adapters in the near future, where the hosting platforms include a storage API. In all cases, you can still manually configure your own session storage driver if a default one does not exist or you prefer to use a different one.
+
+If you haven't experimented with the session storage API yet, you can enable this feature by setting the `experimental.session` flag  to `true` in your `astro.config.mjs`:
 
 ```js title="astro.config.mjs" ins={6}
   {
@@ -63,7 +69,11 @@ To enable session storage, set the `experimental.session` flag in your `astro.co
   }
 ```
 
-If you are already using the session feature, note that the syntax for the config has changed. The `experimental.session` option is now a boolean flag, and the actual session config has moved to a top-level `session` key. This allows you to enable the feature without needing to configure the session storage driver when on a platform that configures it for you.
+If you are already using the session feature, you will need to update your configuration for the new syntax with this breaking change.
+
+The `experimental.session` option is now a boolean flag that you can set `true` and enjoy a default session storage driver with a supported adapter, no further configuration needed!
+
+Session configuration itself has moved to a top-level `session` key. This allows you to configure a non-default driver, as well as other options such as a `base` prefix or expiration `ttl`.
 
 ```js title="astro.config.mjs" ins={9,11-13} del={6-8}
   {
