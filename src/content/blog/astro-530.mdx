@@ -39,7 +39,7 @@ yarn upgrade astro --latest
 
 Astro makes it easy to use async functions inside components, but previously this meant that every component and page was rendered asynchronously, even if it wasn't needed. When this happens for every component on a page, the overhead from these promises can really add up!
 
-Now, thanks to an awesome community contribution from [MatthewLymer](https://github.com/MatthewLymer) on behalf of [VerticalScope](https://www.verticalscope.com/), Astro will only render components asynchronously if... (a)wait for it... they actually contain an async function call.
+Now, thanks to an awesome community contribution from [MatthewLymer](https://github.com/MatthewLymer) from [Fora](https://fora.com), Astro will only render components asynchronously if... (a)wait for it... they actually contain an async function call.
 
 In benchmarks, this has resulted in a significant speedup for rendering synchronous components. This benefits both on-demand and static builds, though the biggest improvements are seen in SSR response times. This even helps pages that use async functions, because most components on the page will still be synchronous.
 
