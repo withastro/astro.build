@@ -14,13 +14,13 @@ lang: 'en'
 
 import BlogContentImage from '/src/components/BlogContentImage.astro';
 
-**Astro 5.3 is here and it's faster than ever**
+**Astro 5.3 is here with faster page rendering, easier setup for experimental sessions, and more!**
 
 💘 It's the season of love, and you're sure to fall for these improvements to Astro:
 
 - [**Faster page rendering**](#faster-page-rendering)
 - [**Automatic session storage setup**](#automatic-session-storage-setup)
-- [**More control over Netlify Functions**](#more-control-over-netlify-functions)
+- [**More control over Netlify bundling**](#more-control-over-netlify-bundling)
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
 ```sh
@@ -43,7 +43,7 @@ In benchmarks, this has resulted in a significant speedup for rendering synchron
 
 The exact amount of the improvement will depend on the individual sites. Complex pages with many components will see the biggest improvements, while pages that use slower external APIs at request time may be unchanged. In our testing, SSR responses are generally 1.5-2x faster unless the page is querying external APIs. Some examples:
 
-- For the 5300-page [Astro docs site](https://docs.astro.build), it **cut static build times by 10-15%.** 
+- For the 5300-page [Astro docs site](https://docs.astro.build), it **cut static build times by 10-15%.**
 - In the Platformic SSR benchmark, which generates a page with over 3000 components, requests are **4x faster**.
 
 You don't need to do anything to benefit from this improvement: just sit back and enjoy the faster rendering times.
@@ -92,12 +92,31 @@ Session configuration itself has moved to a top-level `session` key. This allows
   }
 ```
 
+For more details and examples, see the [experimental session docs](https://docs.astro.build/en/reference/experimental-flags/sessions/).
+
+## More control over Netlify bundling
+
+When Astro builds your site to deploy to a serverless platform like Netlify or Vercel, it needs to bundle all the files and dependencies needed to run your site. The Netlify and Vercel adapters use [the same library for this](https://github.com/vercel/nft), which is usually good at working out what's needed. It doesn't always get this right though: sometimes it misses a file that you need, particularly if it's a static file that you are loading with filesystem functions. Other times it includes files that you don't need, which can slow down your build and increase your bundle size, particularly if it's something like a large binary.
+
+To deal with this, the Vercel adapter already has `excludeFiles` and `includeFiles` options that allow you to specify files that should be excluded or included in the bundle. With this release these options are available in the Netlify adapter as well. Both options accept an array of paths or globs.
+
+
+```js title="astro.config.mjs" ins={3,4}
+	{
+		adapter: netlify({
+			includeFiles: ["src/locales/**/*.po"],
+			excludeFiles: ["node_modules/big-package/chonky-file.bin"],
+		}),
+	}
+```
+Thanks to [Dani Fernández](https://github.com/dfdez) who contributed this feature.
+
 ## Bug fixes
 
 As always we've been working hard on fixing issues since the [5.2 release](/blog/astro-520). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
 
 ## Thanks
 
-Thanks to everyone who contributed to this release, including [Emanuele Stoppa](https://github.com/ematipico), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [unprintable123](https://github.com/unprintable123), [Hacksore](https://github.com/Hacksore) and many more. Extra thanks to [MatthewLymer](https://github.com/MatthewLymer) for the excellent work on the faster rendering improvements.
+Thanks to everyone who contributed to this release, including [Emanuele Stoppa](https://github.com/ematipico), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [Dani Fernández](https://github.com/dfdez), [unprintable123](https://github.com/unprintable123), [Sean Boult](https://github.com/Hacksore), [Armand Philippot](https://github.com/ArmandPhilippot) and many more. Extra thanks to [MatthewLymer](https://github.com/MatthewLymer) for the excellent work on the faster rendering improvements.
 
 We look forward to seeing what you build with Astro 5.3! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
