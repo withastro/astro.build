@@ -21,6 +21,8 @@ import BlogContentImage from '/src/components/BlogContentImage.astro';
 - [**Faster page rendering**](#faster-page-rendering)
 - [**Automatic session storage setup**](#automatic-session-storage-setup)
 - [**More control over Netlify bundling**](#more-control-over-netlify-bundling)
+- [**Improved handling of `HEAD` requests**](#improved-handling-of-head-requests)
+
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
 ```sh
@@ -37,7 +39,7 @@ yarn upgrade astro --latest
 
 Astro makes it easy to use async functions inside components, but previously this meant that every component and page were rendered asynchronously, even if it wasn't needed. When this happens for every component on a page, the overhead from these promises can really add up!
 
-Now, thanks to an awesome community contribution from [MatthewLymer](https://github.com/MatthewLymer), Astro will only render components asynchronously if... (a)wait for it... they actually contain an async function call.
+Now, thanks to an awesome community contribution from [MatthewLymer](https://github.com/MatthewLymer) on behalf of [VerticalScope](https://www.verticalscope.com/), Astro will only render components asynchronously if... (a)wait for it... they actually contain an async function call.
 
 In benchmarks, this has resulted in a significant speedup for rendering synchronous components. This benefits both on-demand and static builds, though the biggest improvements are seen in SSR response times. This even helps pages that use async functions, because most components on the page will still be synchronous.
 
@@ -111,12 +113,18 @@ To deal with this, the Vercel adapter already has `excludeFiles` and `includeFil
 ```
 Thanks to [Dani Fernández](https://github.com/dfdez) who contributed this feature.
 
+## Improved handling of `HEAD` requests
+
+API endpoints will now automatically handle `HEAD` requests if a `GET` handler is defined. Astro will call the `GET` handler and return the response with an empty body. If you'd prefer to handle `HEAD` requests differently, you can still define a separate handler. See [the API endpoints docs](https://docs.astro.build/en/guides/endpoints/#server-endpoints-api-routes) for more details.
+
+Thanks to [Vitalii Rybachenko](https://github.com/VitaliyR) from Netlify for this contribution.
+
 ## Bug fixes
 
 As always we've been working hard on fixing issues since the [5.2 release](/blog/astro-520). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
 
 ## Thanks
 
-Thanks to everyone who contributed to this release, including [Emanuele Stoppa](https://github.com/ematipico), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [Dani Fernández](https://github.com/dfdez), [unprintable123](https://github.com/unprintable123), [Sean Boult](https://github.com/Hacksore), [Armand Philippot](https://github.com/ArmandPhilippot) and many more. Extra thanks to [MatthewLymer](https://github.com/MatthewLymer) for the excellent work on the faster rendering improvements.
+Thanks to everyone who contributed to this release, including [Emanuele Stoppa](https://github.com/ematipico), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [Dani Fernández](https://github.com/dfdez), [unprintable123](https://github.com/unprintable123), [Sean Boult](https://github.com/Hacksore), [Armand Philippot](https://github.com/ArmandPhilippot), [Vitalii Rybachenko](https://github.com/VitaliyR) and many more. Extra thanks to [MatthewLymer](https://github.com/MatthewLymer) for the excellent work on the faster rendering improvements.
 
 We look forward to seeing what you build with Astro 5.3! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
