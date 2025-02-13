@@ -46,7 +46,7 @@ In benchmarks, this has resulted in a significant speedup for rendering synchron
 The exact amount of the improvement will depend on the individual sites. Complex pages with many components will see the biggest improvements, while pages that use slower external APIs at request time may be unchanged. In our testing, SSR responses are generally 1.5-2x faster unless the page is querying external APIs. Some examples:
 
 - For the 5300-page [Astro docs site](https://docs.astro.build), it **cut static build times by 10-15%.**
-- In the Platformic SSR benchmark, which generates a page with over 3000 components, requests are **4x faster**.
+- In the [Platformatic SSR benchmark](https://github.com/platformatic/ssr-performance-showdown), which generates a page with over 3000 components, requests are **4x faster**.
 
 You don't need to do anything to benefit from this improvement: just sit back and enjoy the faster rendering times.
 
