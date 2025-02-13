@@ -1,0 +1,132 @@
+---
+title: 'Astro 5.3'
+description: 'Astro 5.3 is here with faster page rendering, easier setup for experimental sessions, and more!'
+homepageLink:
+  title: 'Astro 5.3'
+  subtitle: 'Available now!'
+publishDate: '2025-02-13'
+authors:
+  - matt
+coverImage: '/src/content/blog/_images/astro-530/blog-post-5-3.webp'
+socialImage: '/src/content/blog/_images/astro-530/og-astro-5-3.webp'
+lang: 'en'
+---
+
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+
+**Astro 5.3 is here with faster page rendering, easier setup for experimental sessions, and more!**
+
+💘 It's the season of love, and you're sure to fall for these improvements to Astro:
+
+- [**Faster page rendering**](#faster-page-rendering)
+- [**Automatic session storage setup**](#automatic-session-storage-setup)
+- [**More control over Netlify bundling**](#more-control-over-netlify-bundling)
+- [**Improved handling of `HEAD` requests**](#improved-handling-of-head-requests)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Faster page rendering
+
+Astro makes it easy to use async functions inside components, but previously this meant that every component and page was rendered asynchronously, even if it wasn't needed. When this happens for every component on a page, the overhead from these promises can really add up!
+
+Now, thanks to an awesome community contribution from [MatthewLymer](https://github.com/MatthewLymer) from [Fora](https://fora.com), Astro will only render components asynchronously if... (a)wait for it... they actually contain an async function call.
+
+In benchmarks, this has resulted in a significant speedup for rendering synchronous components. This benefits both on-demand and static builds, though the biggest improvements are seen in SSR response times. This even helps pages that use async functions, because most components on the page will still be synchronous.
+
+The exact amount of the improvement will depend on the individual sites. Complex pages with many components will see the biggest improvements, while pages that use slower external APIs at request time may be unchanged. In our testing, SSR responses are generally 1.5-2x faster unless the page is querying external APIs. Some examples:
+
+- For the 5300-page [Astro docs site](https://docs.astro.build), it **cut static build times by 10-15%.**
+- In the [Platformatic SSR benchmark](https://github.com/platformatic/ssr-performance-showdown), which generates a page with over 3000 components, requests are **4x faster**.
+
+You don't need to do anything to benefit from this improvement: just sit back and enjoy the faster rendering times.
+
+## Automatic session storage setup
+
+Astro 5.1 introduced the experimental [session storage API](https://docs.astro.build/en/reference/experimental-flags/sessions/), which allows developers to easily manage user sessions on the server. The feature supports dozens of different backend storage drivers, powered by [unstorage](https://unstorage.unjs.io).
+
+Previously you needed to configure a session storage driver in your `astro.config.mjs`, but now Astro will automatically set up the session storage for you when using a supported adapter.
+
+We're starting with support for the `@astrojs/node` adapter, which uses the filesystem for storage, and `@astrojs/netlify`, which uses Netlify Blobs. We hope to add default driver support for more adapters in the near future, where the hosting platforms include a storage API. In all cases, you can still manually configure your own session storage driver if a default one does not exist or you prefer to use a different one.
+
+If you haven't experimented with the session storage API yet, you can enable this feature by setting the `experimental.session` flag  to `true` in your `astro.config.mjs`:
+
+```js title="astro.config.mjs" ins={6}
+  {
+    adapter: node({
+      mode: "standalone",
+    }),
+    experimental: {
+      session: true,
+    },
+  }
+```
+
+If you are already using the session feature, you will need to update your configuration for the new syntax with this breaking change.
+
+The `experimental.session` option is now a boolean flag that you can set `true` and enjoy a default session storage driver with a supported adapter, no further configuration needed!
+
+Session configuration itself has moved to a top-level `session` key. This allows you to configure a non-default driver, as well as other options such as a `base` prefix or expiration `ttl`.
+
+```js title="astro.config.mjs" ins={9,11-13} del={6-8}
+  {
+    adapter: node({
+      mode: "standalone",
+    }),
+    experimental: {
+        session: {
+            driver: "upstash",
+        },
+        session: true,
+    },
+    session: {
+        driver: "upstash",
+    },
+  }
+```
+
+For more details and examples, see the [experimental session docs](https://docs.astro.build/en/reference/experimental-flags/sessions/).
+
+## More control over Netlify bundling
+
+When Astro builds your site to deploy to a serverless platform like Netlify or Vercel, it needs to bundle all the files and dependencies needed to run your site. The Netlify and Vercel adapters use [the same library for this](https://github.com/vercel/nft), which is usually good at working out what's needed.
+
+It doesn't always get this right though: sometimes it misses a file that you need, particularly if it's a static file that you are loading with filesystem functions. Other times it includes files that you don't need, which can slow down your build and increase your bundle size, particularly if it's something like a large binary.
+
+To deal with this, the Vercel adapter already has `excludeFiles` and `includeFiles` options that allow you to specify files that should be excluded or included in the bundle. With this release, these options are available in the Netlify adapter as well. Both options accept an array of paths or globs.
+
+
+```js title="astro.config.mjs" ins={3,4}
+	{
+		adapter: netlify({
+			includeFiles: ["src/locales/**/*.po"],
+			excludeFiles: ["node_modules/big-package/chonky-file.bin"],
+		}),
+	}
+```
+Thanks to [Dani Fernández](https://github.com/dfdez) who contributed this feature.
+
+## Improved handling of `HEAD` requests
+
+API endpoints will now automatically handle `HEAD` requests if a `GET` handler is defined. Astro will call the `GET` handler and return the response with an empty body. If you'd prefer to handle `HEAD` requests differently, you can still define a separate handler. See [the API endpoints docs](https://docs.astro.build/en/guides/endpoints/#server-endpoints-api-routes) for more details.
+
+Thanks to [Vitalii Rybachenko](https://github.com/VitaliyR) from Netlify for this contribution.
+
+## Bug fixes
+
+As always we've been working hard on fixing issues since the [5.2 release](/blog/astro-520). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Thanks
+
+Thanks to everyone who contributed to this release, including [Emanuele Stoppa](https://github.com/ematipico), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [Dani Fernández](https://github.com/dfdez), [unprintable123](https://github.com/unprintable123), [Sean Boult](https://github.com/Hacksore), [Armand Philippot](https://github.com/ArmandPhilippot), [Vitalii Rybachenko](https://github.com/VitaliyR), [Cornelius Roemer](https://github.com/corneliusroemer), and many more. Extra thanks to [MatthewLymer](https://github.com/MatthewLymer) for the excellent work on the faster rendering improvements.
+
+We look forward to seeing what you build with Astro 5.3! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
