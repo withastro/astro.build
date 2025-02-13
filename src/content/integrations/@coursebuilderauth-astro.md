@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@coursebuilder/auth-astro
 repoUrl: https://github.com/nowaythatworked/auth-astro
 homepageUrl: https://github.com/nowaythatworked/auth-astro#readme
 badge: new
-downloads: 78
+downloads: 79
 ---

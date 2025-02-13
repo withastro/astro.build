@@ -10,5 +10,5 @@ image: /assets/integrations/astro-page-insight.png
 npmUrl: https://www.npmjs.com/package/astro-page-insight
 repoUrl: https://github.com/ktym4a/astro-page-insight
 homepageUrl: https://astro-page-insight.pages.dev/
-downloads: 2279
+downloads: 2225
 ---
