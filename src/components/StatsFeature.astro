@@ -9,24 +9,18 @@ interface Props {
 }
 ---
 
-<section class="my-20 w-full max-w-screen-xl mx-auto">
-	<div class="mt-4 sm:mt-8 grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-		{
-			Astro.props.stats.map(({ amount, text, source, url }) => (
-				<div class="flex flex-col border border-astro-gray-500 bg-astro-gray-600 overflow-hidden">
-					<div class="p-4 xl:p-6 space-y-2">
-						<p class="block text-white font-light text-sm xl:text-base md:text-balance">
-							<span class="block font-semibold text-3xl">{amount}</span>
-							{text}
-						</p>
-						{source && (
-							<a href={url}>
-								<p class="block text-white font-light text-xs pt-4">{source}</p>
-							</a>
-						)}
-					</div>
-				</div>
-			))
-		}
-	</div>
-</section>
+<div class="mt-8 mb-20 w-full grid fluid-cols-40 md:fluid-cols-48 gap-8 gap-y-12 lg:gap-16">
+	{
+		Astro.props.stats.map(({ amount, text, source, url }) => (
+			<p class="flex flex-col gap-2.5 leading-none text-white font-light">
+				<span class="font-heading text-4xl lg:text-5xl">{amount}</span>
+				<span class="text-sm xl:text-base">{text}</span>
+				{source && (
+					<a href={url} class="link text-xs">
+						{source}
+					</a>
+				)}
+			</p>
+		))
+	}
+</div>
