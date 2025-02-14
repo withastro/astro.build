@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/reactive-astro-sidebar
 repoUrl: https://github.com/sacarvy/Reactive_Sidebar
 homepageUrl: https://www.npmjs.com/package/reactive-astro-sidebar
-downloads: 65
+downloads: 69
 ---

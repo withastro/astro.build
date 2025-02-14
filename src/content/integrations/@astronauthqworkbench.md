@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astronauthq/workbench
 homepageUrl: https://www.npmjs.com/package/@astronauthq/workbench
 badge: new
-downloads: 356
+downloads: 373
 ---
