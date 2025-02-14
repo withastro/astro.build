@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { type CollectionEntry, getCollection } from 'astro:content';
 import MainLayout from '~/layouts/MainLayout.astro';
 
@@ -14,23 +15,59 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props as { page: CollectionEntry<'pages'> };
-const { seo, updated_date } = page.data;
+const { seo, pageLayout } = page.data;
 const { Content } = await page.render();
 ---
 
 <MainLayout {...seo}>
-	<section class="mb-20 bg-blue-purple-gradient sm:mb-24 md:mb-28 lg:mb-32">
-		<div class="mx-auto flex max-w-screen-lg flex-col items-center pb-16 pt-24 text-center">
-			<p class="code">
-				Last updated on {updated_date.toLocaleDateString('en-US', { dateStyle: 'long' })}
-			</p>
-			<h1 class="heading-3 pb-10 pt-3 sm:heading-2">{seo.title}</h1>
-		</div>
-	</section>
+	{
+		pageLayout !== 'blog' ? (
+			<>
+				<section class="mb-20 bg-blue-purple-gradient sm:mb-24 md:mb-28 lg:mb-32">
+					<div class="mx-auto flex max-w-screen-lg flex-col items-center pb-40 pt-48 text-center">
+						<p class="code">
+							Last updated on{' '}
+							{page.data.updated_date.toLocaleDateString('en-US', { dateStyle: 'long' })}
+						</p>
+						<h1 class="heading-3 pb-10 pt-3 sm:heading-2">{seo.title}</h1>
+					</div>
+				</section>
 
-	<section class="grid-container">
-		<article class="prose">
-			<Content />
-		</article>
-	</section>
+				<section class="grid-container">
+					<article class="prose">
+						<Content />
+					</article>
+				</section>
+			</>
+		) : (
+			<>
+				{page.data.image ? (
+					<div class="mx-auto w-full max-w-screen-lg md:-mb-10 lg:-mb-12 xl:-mb-16">
+						<Image
+							src={page.data.image}
+							widths={[766, 1500]}
+							sizes="100vw"
+							loading="eager"
+							alt=""
+							class="min-h-[240px] w-full object-cover"
+						/>
+					</div>
+				) : (
+					<div class="z-blur -mb-56 h-64 w-full md:-mb-52 md:h-64 lg:-mb-80 lg:h-96" />
+				)}
+
+				<div class="grid-container relative mx-auto max-w-screen-lg md:z-10">
+					<div class="mx-auto w-fit max-w-full bg-black py-8 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20">
+						<header class="mx-auto w-full max-w-prose text-center">
+							<h1 class="heading-3 mb-4 mt-2 md:heading-2 sm:mb-5 sm:mt-3">{seo.title}</h1>
+						</header>
+						<hr class="-mx-16 my-8 border-astro-gray-500 lg:my-16" />
+						<article class="prose">
+							<Content />
+						</article>
+					</div>
+				</div>
+			</>
+		)
+	}
 </MainLayout>

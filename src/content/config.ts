@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { file } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import authors from '../data/authors/authors.json';
 
@@ -138,13 +138,23 @@ export const collections = {
 			badge: z.string().optional(),
 		}),
 	},
-	pages: {
-		schema: z.object({
-			seo: seoSchema,
-			updated_date: z.date().describe('The date this content was last updated.'),
-			locale: z.enum(['en']).default('en'),
-		}),
-	},
+	pages: defineCollection({
+		schema: ({ image }) =>
+			z.discriminatedUnion('pageLayout', [
+				z.object({
+					seo: seoSchema,
+					locale: z.enum(['en']).default('en'),
+					pageLayout: z.literal('blog'),
+					image: image(),
+				}),
+				z.object({
+					seo: seoSchema,
+					locale: z.enum(['en']).default('en'),
+					pageLayout: z.literal('legal').optional(),
+					updated_date: z.date().describe('The date this content was last updated.'),
+				}),
+			]),
+	}),
 	partials: {
 		schema: z.object({}),
 	},

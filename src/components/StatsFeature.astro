@@ -1,0 +1,28 @@
+---
+interface Props {
+	stats: {
+		amount: string;
+		text: string;
+		source?: string;
+		url?: string;
+	}[];
+}
+---
+
+<div
+	class="mt-8 mb-20 w-full grid fluid-cols-[9.5rem] sm:fluid-cols-40 md:fluid-cols-48 gap-x-4 gap-y-12 sm:gap-x-8 lg:gap-16"
+>
+	{
+		Astro.props.stats.map(({ amount, text, source, url }) => (
+			<p class="flex flex-col items-start gap-2.5 leading-none text-white font-light">
+				<span class="font-heading text-4xl lg:text-5xl whitespace-nowrap">{amount}</span>
+				<span class="text-sm xl:text-base">{text}</span>
+				{source && (
+					<a href={url} class="link text-xs">
+						{source}
+					</a>
+				)}
+			</p>
+		))
+	}
+</div>
