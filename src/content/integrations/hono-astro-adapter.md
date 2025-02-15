@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/hono-astro-adapter
 homepageUrl: https://www.npmjs.com/package/hono-astro-adapter
-downloads: 126
+downloads: 128
 repoUrl: https://github.com/JoseDv1/HonoAstroAdapter
 ---
