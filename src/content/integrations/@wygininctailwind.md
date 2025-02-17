@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@wygininc/tailwind
 homepageUrl: https://www.npmjs.com/package/@wygininc/tailwind
 badge: new
-downloads: 58
+downloads: 53
 ---

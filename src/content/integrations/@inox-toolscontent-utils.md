@@ -7,5 +7,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/content-utils
 homepageUrl: https://www.npmjs.com/package/@inox-tools/content-utils
-downloads: 478
+downloads: 482
 ---
