@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/mysong-compress
 repoUrl: https://github.com/mysongstudio/mysong-compress
-homepageUrl: https://www.npmjs.com/package/mysong-compress
-downloads: 97
+homepageUrl: https://github.com/mysongstudio/mysong-compress#readme
+downloads: 98
 ---

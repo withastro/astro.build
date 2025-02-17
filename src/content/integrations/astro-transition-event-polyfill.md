@@ -5,10 +5,8 @@ description: An integration that adds a polyfill for the astro:page-load event
   when view transitions are not used.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-transition-event-polyfill
 repoUrl: https://github.com/louisescher/astro-transition-event-polyfill
 homepageUrl: https://github.com/louisescher/astro-transition-event-polyfill#readme
-badge: new
-downloads: 411
+downloads: 445
 ---

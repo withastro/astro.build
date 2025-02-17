@@ -7,8 +7,8 @@ categories:
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/netlify
 image: /assets/integrations/netlify.svg
-repoUrl: https://github.com/withastro/adapters
+repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/netlify/
-downloads: 47343
+downloads: 45577
 official: true
 ---
