@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/gnpcomponentes
 homepageUrl: https://www.npmjs.com/package/gnpcomponentes
-downloads: 14
+downloads: 15
 ---

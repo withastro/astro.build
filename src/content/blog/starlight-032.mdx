@@ -1,0 +1,163 @@
+---
+title: Starlight 0.32
+description: The latest Starlight features unlock new possibilities on our path to v1. Let’s meet route middleware, plugin i18n APIs, and multisite search.
+publishDate: 2025-02-17
+authors:
+  - chris
+coverImage: '/src/content/blog/_images/starlight-032/blog-post-starlight-v0.32.webp'
+socialImage: '/src/content/blog/_images/starlight-032/og-starlight-v0.32.webp'
+---
+
+import Note from '~/components/Note.astro';
+
+**Starlight 0.32 is here! Let’s unpack what’s new as we work our way towards a v1 release.**
+
+🧘 We’ve been stretching to make Starlight extra extendable. Here’s our latest flow for more flexibility:
+
+- [**Route data middleware**](#a-new-route-data-paradigm)
+- [**New i18n APIs for plugins**](#new-i18n-apis-for-plugins)
+- [**Updated plugin hooks**](#updated-plugin-hooks)
+- [**Multisite search support**](#multisite-search-support)
+
+To upgrade an existing Starlight site, use the automated `@astrojs/upgrade` CLI tool. This will update Starlight, Astro, and any other integrations you are using:
+
+```sh
+npx @astrojs/upgrade
+```
+
+<Note title="Using plugins?">
+	Community Starlight plugins may also need to be manually updated to work with
+	Starlight 0.32. If you encounter any issues, please reach out to the plugin
+	author to see if it is a known issue or if an updated version is being worked
+	on.
+</Note>
+
+## A new route data paradigm
+
+Starlight’s [component override](https://starlight.astro.build/guides/overriding-components/) system allows users to customize a site’s appearance with their own components. This is great for extending Starlight’s UI, but over time, we saw a pattern develop where people also used overrides to modify component data, while still reusing Starlight’s built-in components.
+
+To make this use case easier, v0.32 introduces **a new route middleware system** that provides full access to Starlight’s data model without needing to override any components. This is particularly helpful for plugins as it avoids common conflicts where several plugins tried to override the same component.
+
+Similar to Astro’s middleware system, route middleware is called for every Starlight page render and gives you the opportunity to modify any data before it gets rendered. This is a powerful way to implement custom logic not currently possible with configuration alone.
+
+In the following example, we try to make our docs more exciting by adding exclamation marks to the end of every page’s title!!!
+
+```js
+import { defineRouteMiddleware } from '@astrojs/starlight/route-data';
+
+export const onRequest = defineRouteMiddleware((context) => {
+	// Get the content collection entry for this page.
+	const { entry } = context.locals.starlightRoute;
+	// Update the title to add exclamation marks.
+	entry.data.title = entry.data.title + '!!!';
+});
+```
+
+See the [“Route Data”](https://starlight.astro.build/guides/route-data) guide for full details about how to write route middleware.
+
+### Breaking changes
+
+To better support route middleware, we have updated how Starlight’s default components receive route data.
+
+Previously, all of Starlight’s templating components, including user or plugin overrides, had access to a data object for the current route via `Astro.props`. This data is now available as `Astro.locals.starlightRoute` instead.
+
+See the [Starlight changelog](https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md) for full details of how to migrate to this new approach.
+
+## New i18n APIs for plugins
+
+This release gives plugins full access to Starlight’s powerful built-in [internationalization system](https://starlight.astro.build/guides/i18n/).
+
+Plugins can now call [`useTranslations()`](https://starlight.astro.build/reference/plugins/#usetranslations) in the `config:setup` hook to access any of Starlight’s UI strings. This opens up possibilities for localized logging, using translations in Markdown plugins, and more.
+
+This example plugin logs Starlight’s default “Built with Starlight” text string and uses the translation matching the user’s locale if it is available:
+
+```js "useTranslations" "useTranslations(userLocale)"
+export default {
+	name: 'localizedPlugin',
+	hooks: {
+		'config:setup'({ useTranslations, logger }) {
+			// Detect the current user’s preferred locale.
+			const userLocale = Intl.DateTimeFormat().resolvedOptions().locale;
+			// Get a `t()` function for the locale.
+			const t = useTranslations(userLocale);
+			// Log the localized string.
+			logger.info(t('builtWithStarlight.label'));
+		},
+	},
+};
+```
+
+## Updated plugin hooks
+
+As part of the rework to support translation use in plugins, we have split the old `setup` hook into two: [`i18n:setup`](https://starlight.astro.build/reference/plugins/#i18nsetup) and [`config:setup`](https://starlight.astro.build/reference/plugins/#configsetup). Use of the `setup` hook is deprecated and plugins should migrate to using `config:setup` instead:
+
+```js del={4} ins={5}
+  export default {
+    name: 'starlight-plugin',
+    hooks: {
+      'setup'({ config }) {
+      'config:setup'({ config }) {
+        // Your plugin configuration setup code
+      },
+    },
+  };
+```
+
+Plugins using the `injectTranslations()` utility need to move this to the dedicated `i18n:setup` hook:
+
+```js del={4} ins={5}
+  export default {
+    name: 'plugin-with-translations',
+    hooks: {
+      'config:setup'({ injectTranslations }) {
+      'i18n:setup'({ injectTranslations }) {
+        injectTranslations({
+          en: { 'myPlugin.doThing': 'Do the thing' },
+          fr: { 'myPlugin.doThing': 'Faire le truc' },
+        });
+      },
+    },
+  };
+```
+
+## Multisite search support
+
+Starlight provides site search out of the box using [Pagefind](https://pagefind.app/). This release exposes Pagefind’s multisite search configuration, so you can support searching across multiple sites.
+
+For example, if you have a main site at `example.com` indexed with Pagefind and your Starlight site deployed to the `docs.example.com` subdomain, you can display search results from your main site in your docs with the `mergeIndex` configuration option:
+
+```js {10-12}
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+
+export default defineConfig({
+	site: 'https://docs.example.com/',
+	integrations: [
+		starlight({
+			title: 'Docs with multisite search',
+			pagefind: {
+				mergeIndex: [{ bundlePath: 'https://example.com/pagefind' }],
+			},
+		}),
+	],
+});
+```
+
+See Pagefind’s guide to [“Searching multiple sites”](https://pagefind.app/docs/multisite/) for full details of the available configuration options.
+
+## Bug fixes and more
+
+As always, we’ve also been working to fix issues since the v0.31 release. See the [Starlight changelog](https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md) for all the details including detailed migration guidance.
+
+## Thanks
+
+Thanks to everyone who contributed to this release with PRs and reviews, including [HiDeoo](https://github.com/HiDeoo/), [Emilien Guilmineau](https://github.com/XREvo), [trueberryless](https://github.com/trueberryless), [Sarah Rainsberger](https://github.com/sarah11918/), [Lorenzo Lewis](https://github.com/lorenzolewis), and [Yan Thomas](https://github.com/yanthomasdev/).
+
+We look forward to seeing what you build with Starlight 0.32! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
+
+## Previously…
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['starlight-028', 'starlight-turns-one']} />

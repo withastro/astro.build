@@ -7,8 +7,8 @@ categories:
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/node
 image: /assets/integrations/node.svg
-repoUrl: https://github.com/withastro/adapters
+repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/node/
-downloads: 296099
+downloads: 282470
 official: true
 ---

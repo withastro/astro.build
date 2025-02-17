@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-relatinator
 repoUrl: https://github.com/DBozhinovski/relatinator
 homepageUrl: https://github.com/DBozhinovski/relatinator#readme
-downloads: 47
+downloads: 43
 ---
