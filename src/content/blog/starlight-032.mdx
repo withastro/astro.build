@@ -34,9 +34,9 @@ npx @astrojs/upgrade
 
 ## A new route data paradigm
 
-Historically, users and plugin authors have found themselves reaching for Starlight’s [component override](https://starlight.astro.build/guides/overriding-components/) system when all they really wanted to do was tweak the data rendered by Starlight’s default components.
+Starlight’s [component override](https://starlight.astro.build/guides/overriding-components/) system allows users to customize a site’s appearance with their own components. This is great for extending Starlight’s UI, but over time, we saw a pattern develop where people also used overrides to modify component data, while still reusing Starlight’s built-in components.
 
-In v0.32, we are introducing **a new route middleware system** that gives users full access to Starlight’s data model without needing to override any components. This is particularly helpful for plugins as it avoids common conflicts where several plugins tried to override the same component.
+To make this use case easier, v0.32 introduces **a new route middleware system** that provides full access to Starlight’s data model without needing to override any components. This is particularly helpful for plugins as it avoids common conflicts where several plugins tried to override the same component.
 
 Similar to Astro’s middleware system, route middleware is called for every Starlight page render and gives you the opportunity to modify any data before it gets rendered. This is a powerful way to implement custom logic not currently possible with configuration alone.
 
