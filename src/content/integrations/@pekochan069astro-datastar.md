@@ -3,7 +3,8 @@ name: "@pekochan069/astro-datastar"
 title: "@pekochan069/astro-datastar"
 description: Astro integration for Datastar
 categories:
-  - uncategorized
+  - css+ui
+  - frameworks
   - recent
 npmUrl: https://www.npmjs.com/package/@pekochan069/astro-datastar
 repoUrl: https://github.com/pekochan069/astro-datastar

@@ -6,6 +6,6 @@ description: This is a template for an Astro component library. Use this
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/garlic-astro
-homepageUrl: https://www.npmjs.com/package/garlic-astro
+homepageUrl: https://github.com/velocitatem/garlic/tree/main
 downloads: 13
 ---
