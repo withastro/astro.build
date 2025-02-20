@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-iconify
 repoUrl: https://github.com/manuelmeister/astro-iconify
 homepageUrl: https://github.com/manuelmeister/astro-iconify#readme
-downloads: 1214
+downloads: 1281
 ---

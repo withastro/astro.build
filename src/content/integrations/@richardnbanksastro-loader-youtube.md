@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@richardnbanks/astro-loader-youtube
 homepageUrl: https://github.com/richardnbanks/astro-loader-youtube
 badge: new
-downloads: 60
+downloads: 50
 ---

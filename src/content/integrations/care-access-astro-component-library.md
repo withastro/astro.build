@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/care-access-astro-component-library
 homepageUrl: https://www.npmjs.com/package/care-access-astro-component-library
 badge: new
-downloads: 117
+downloads: 216
 ---
