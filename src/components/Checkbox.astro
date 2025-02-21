@@ -4,23 +4,25 @@ import type { RequireSome } from '~/helpers/types.js';
 
 export type Props = RequireSome<HTMLAttributes<'input'>, 'id' | 'name'> & {
 	label: string;
+	count: number;
 };
 
-const { id, name, label, class: className, ...attrs } = Astro.props;
+const { id, name, label, count, class: className, ...attrs } = Astro.props;
 ---
 
 <label
 	for={id}
-	class="relative block cursor-pointer select-none pl-6 outline-offset-2 outline-astro-pink-light focus-within:outline"
+	class="relative block cursor-pointer select-none pl-6 outline-offset-2 outline-astro-pink-light [&:has(:focus-visible)]:outline w-full"
 >
 	<input
 		id={id}
 		name={name}
 		type="checkbox"
-		class="h-0 w-0 cursor-pointer appearance-none"
+		class="h-0 w-0 cursor-pointer appearance-none outline-none"
 		{...attrs}
 	/>
 	<span>{label}</span>
+	<span class="float-right text-astro-gray-300 tabular-nums">{count}</span>
 </label>
 
 <style>
