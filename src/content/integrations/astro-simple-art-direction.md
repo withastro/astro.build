@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-simple-art-direction
 repoUrl: https://github.com/hollyteds/astro-simple-art-direction
 homepageUrl: https://www.npmjs.com/package/astro-simple-art-direction
-downloads: 82
+downloads: 78
 ---

@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@sailhouse/astro
 homepageUrl: https://www.npmjs.com/package/@sailhouse/astro
-downloads: 19
+downloads: 15
 ---

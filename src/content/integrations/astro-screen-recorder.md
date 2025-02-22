@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-screen-recorder
 repoUrl: https://github.com/Cspeisman/astro-screen-recorder
 homepageUrl: https://github.com/Cspeisman/astro-screen-recorder#readme
-downloads: 22
+downloads: 19
 ---
