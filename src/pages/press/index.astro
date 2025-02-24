@@ -1,11 +1,7 @@
 ---
+import Icon from 'astro-icon';
 import Card from '~/components/Card.astro';
-import DiscordIcon from '~/icons/DiscordIcon.jsx';
 import DownloadIcon from '~/icons/DownloadIcon.tsx';
-import EmailIcon from '~/icons/EmailIcon.jsx';
-import GitHubIcon from '~/icons/GitHubIcon.jsx';
-import TwitterIcon from '~/icons/TwitterIcon.jsx';
-import YouTubeIcon from '~/icons/YouTubeIcon.jsx';
 import MainLayout from '~/layouts/MainLayout.astro';
 import PressAssetCard from './_components/PressAssetCard.astro';
 
@@ -16,31 +12,42 @@ const seo = {
 
 const socialLinks = [
 	{
-		text: '@astrodotbuild',
-		icon: TwitterIcon,
-		href: 'https://twitter.com/astrodotbuild',
+		text: 'press@astro.build',
+		icon: 'email',
+		href: 'mailto:press@astro.build',
+	},
+	'separator',
+	{
+		text: 'Bluesky',
+		icon: 'social/bluesky',
+		href: 'https://astro.build/on/bluesky',
 	},
 	{
-		text: 'Astro Lounge',
-		icon: DiscordIcon,
+		text: 'Discord',
+		icon: 'social/discord',
 		href: 'https://astro.build/chat',
 	},
 	{
-		text: '/withastro',
-		icon: GitHubIcon,
-		href: 'https://github.com/withastro/',
+		text: 'GitHub',
+		icon: 'social/github',
+		href: 'https://astro.build/on/github',
 	},
 	{
-		text: '@astrodotbuild',
-		icon: YouTubeIcon,
+		text: 'Mastodon',
+		icon: 'social/mastodon',
+		href: 'https://astro.build/on/mastodon',
+	},
+	{
+		text: 'X/Twitter',
+		icon: 'social/twitter',
+		href: 'https://astro.build/on/twitter',
+	},
+	{
+		text: 'YouTube',
+		icon: 'social/youtube',
 		href: 'https://www.youtube.com/@astrodotbuild',
 	},
-	{
-		text: 'press@astro.build',
-		icon: EmailIcon,
-		href: 'mailto:press@astro.build',
-	},
-];
+] satisfies Array<{ text: string; icon: string; href: string } | 'separator'>;
 ---
 
 <MainLayout {...seo}>
@@ -68,17 +75,21 @@ const socialLinks = [
 				<section class="shrink-0">
 					<Card>
 						<div class="space-y-4 px-10 py-8 text-white">
-							<h3 class="heading-3">Get in touch</h3>
+							<h3 class="heading-3">Keep in touch</h3>
 							<ul class="flex flex-wrap gap-x-4 gap-y-3 md:flex-col">
 								{
-									socialLinks.map((link) => (
-										<li>
-											<a href={link.href} class="flex items-center gap-2 font-medium underline">
-												{link.icon && <link.icon class="s-6" />}
-												{link.text}
-											</a>
-										</li>
-									))
+									socialLinks.map((link) =>
+										link === 'separator' ? (
+											<hr class="border-astro-gray-500" />
+										) : (
+											<li>
+												<a href={link.href} class="flex items-center gap-2 font-medium underline">
+													<Icon name={link.icon} class="s-6" />
+													{link.text}
+												</a>
+											</li>
+										),
+									)
 								}
 							</ul>
 						</div>
@@ -86,7 +97,7 @@ const socialLinks = [
 				</section>
 			</div>
 			<section class="space-y-14">
-				<h2 class="heading-3 text-center" id="assets">Brand Assets</h2>
+				<h2 class="heading-3" id="assets">Brand Assets</h2>
 				<ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					<PressAssetCard
 						name="Logo on light"
