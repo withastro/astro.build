@@ -11,4 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-cloudflare-pages-headers
 homepageUrl: https://github.com/martinsilha/astro-cloudflare-pages-headers
 badge: new
 downloads: 844
+image: /assets/integrations/astro-cloudflare-pages-headers.png
 ---
