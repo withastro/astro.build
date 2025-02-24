@@ -62,8 +62,8 @@ const socialLinks = [
 
 		<div class="grid-container overflow-hidden border-t border-astro-gray-500 pt-16">
 			<div class="flex flex-col gap-16 md:flex-row md:items-start">
-				<section class="space-y-4">
-					<h2 class="heading-3">This is Astro</h2>
+				<section class="space-y-4" aria-labelledby="this-is-astro">
+					<h2 class="heading-3" id="this-is-astro">This is Astro</h2>
 					<p class="body-large text-astro-gray-200">
 						Astro is a web framework that takes the best from the early internet (think HTML and
 						CSS) and puts it to work in a next-gen architecture to make every Astro site, and the
@@ -72,10 +72,10 @@ const socialLinks = [
 						deploy everywhere, and let's build the web we want, together.
 					</p>
 				</section>
-				<section class="shrink-0">
+				<section class="shrink-0" aria-labelledby="keep-in-touch">
 					<Card>
 						<div class="space-y-4 px-10 py-8 text-white">
-							<h3 class="heading-3">Keep in touch</h3>
+							<h3 class="heading-3" id="keep-in-touch">Keep in touch</h3>
 							<ul class="flex flex-wrap gap-x-4 gap-y-3 md:flex-col">
 								{
 									socialLinks.map((link) =>
@@ -96,7 +96,7 @@ const socialLinks = [
 					</Card>
 				</section>
 			</div>
-			<section class="space-y-14">
+			<section class="space-y-14" aria-labelledby="assets">
 				<h2 class="heading-3" id="assets">Brand Assets</h2>
 				<ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					<PressAssetCard
