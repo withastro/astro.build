@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from 'astro-icon';
 import Card from '~/components/Card.astro';
 import DownloadIcon from '~/icons/DownloadIcon.tsx';
 import MainLayout from '~/layouts/MainLayout.astro';
 import PressAssetCard from './_components/PressAssetCard.astro';
+import houston from './_components/houston.png';
 
 const seo = {
 	title: 'Press',
@@ -72,6 +74,7 @@ const socialLinks = [
 						deploy everywhere, and let's build the web we want, together.
 					</p>
 				</section>
+
 				<section class="shrink-0" aria-labelledby="keep-in-touch">
 					<Card>
 						<div class="space-y-4 px-10 py-8 text-white">
@@ -96,6 +99,7 @@ const socialLinks = [
 					</Card>
 				</section>
 			</div>
+
 			<section class="space-y-14" aria-labelledby="assets">
 				<h2 class="heading-3" id="assets">Brand Assets</h2>
 				<ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -152,6 +156,139 @@ const socialLinks = [
 					<a href="/assets/press/astro-logos.zip" download class="button button-primary"
 						>Download all <DownloadIcon aria-hidden="true" class="w-4" /></a
 					>
+				</div>
+			</section>
+
+			<section aria-labelledby="guidelines" class="flex flex-col gap-14">
+				<h2 class="heading-3" id="guidelines">Guidelines</h2>
+
+				<div class="flex flex-col gap-24">
+					<div class="flex flex-col gap-14 md:flex-row">
+						<div class="flex flex-col gap-4 grow">
+							<h3 class="heading-4">How to use the Astro logo</h3>
+							<ul class="flex flex-col gap-4 text-astro-gray-200">
+								{
+									[
+										'Use our logo to link to Astro’s website or GitHub repository',
+										'Use our logo to show your product has built-in Astro support',
+										'Use our logo in a blog post or video about Astro',
+									].map((rule) => (
+										<li class="flex gap-x-2.5">
+											<Icon name="approval-check" class="s-6 shrink-0 text-astro-green" /> {rule}
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="flex flex-col gap-4 grow">
+							<h3 class="heading-4">Things to avoid</h3>
+							<ul class="flex flex-col gap-4 text-astro-gray-200">
+								{
+									[
+										'Don’t use the Astro logo for your app or website’s icon',
+										'Don’t include the Astro logo in your own logo',
+										'Don’t modify the Astro logo or change its colors',
+										'Don’t sell products featuring the Astro logo without permission',
+									].map((rule) => (
+										<li class="flex gap-x-2.5">
+											<Icon name="x-close-cancel" class="s-6 shrink-0 text-astro-red" /> {rule}
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-5">
+						<h3 class="heading-4">Logo history</h3>
+						<div class="flex flex-col gap-12 md:flex-row md:gap-16">
+							<div class="text-astro-gray-200 flex flex-col gap-4 shrink-0 md:max-w-80">
+								<p>We refreshed our logo in 2023. Make sure you’re using the latest version!</p>
+								<p>
+									<a href="/blog/welcome-world/" class="link font-normal underline">
+										Read more about our redesign
+									</a>
+								</p>
+							</div>
+							{/* Old/new logo comparison */}
+							<div
+								aria-hidden="true"
+								class="flex flex-wrap gap-y-12 justify-center w-full md:max-w-xl"
+							>
+								<div class="flex flex-col gap-6 items-center px-12">
+									<Icon name="press/old-logo" class="h-12 text-astro-gray-300" />
+									<span class="flex gap-2 font-mono text-astro-gray-300">
+										<Icon name="x-close-cancel" class="s-6 shrink-0 text-astro-red" />
+										2021
+									</span>
+								</div>
+								<div class="flex flex-col gap-6 items-center px-12">
+									<Icon name="press/new-logo" class="h-12 text-white" />
+									<span class="flex gap-2 font-mono text-astro-gray-100">
+										<Icon name="approval-check" class="s-6 shrink-0 text-astro-green" />
+										2023
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-5">
+						<h3 class="heading-4">Spacing</h3>
+						<div class="flex flex-col gap-12 md:flex-row md:gap-16">
+							<div class="text-astro-gray-200 flex flex-col gap-4 shrink-0 md:max-w-80">
+								<p>
+									Always maintain adequate clear space between the Astro logo or logomark and other
+									elements in your design.
+								</p>
+							</div>
+							{/* Spacing illustration */}
+							<div aria-hidden="true" class="flex shrink gap-[9%] w-full md:max-w-xl items-start">
+								<Icon name="press/spacing-logo" class="max-h-36 flex-auto" />
+								<Icon name="press/spacing-logomark" class="max-h-36 flex-auto" />
+							</div>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-5">
+						<h3 class="heading-4">Minimum size</h3>
+						<div class="flex flex-col gap-12 md:flex-row md:gap-16">
+							<div class="text-astro-gray-200 flex flex-col gap-4 shrink-0 md:max-w-80">
+								<p>
+									The Astro logo and logomark should always be at least 24px tall in digital
+									applications and 1/8” tall in print applications.
+								</p>
+							</div>
+							{/* Sizing illustration */}
+							<div aria-hidden="true" class="flex gap-6 items-center w-full md:max-w-xl">
+								<div class="font-mono text-astro-gray-300 shrink-0">24px</div>
+								<div class="flex justify-between w-full items-center">
+									<div class="border border-r-0 border-astro-gray-400 h-6 w-2"></div>
+									<Icon name="press/new-logo" class="h-6 shrink-0" />
+									<Icon name="logos/astro" class="h-6 shrink-0" />
+									<div class="border border-l-0 border-astro-gray-400 h-6 w-2"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-5">
+						<h3 class="heading-4 flex gap-2.5 items-center">
+							Houston <Image src={houston} alt="" class="s-8" />
+						</h3>
+						<div class="text-astro-gray-200 flex flex-col gap-4 max-w-2xl">
+							<p>
+								Houston is Astro’s friendly mascot. They are used in our community to create a fun,
+								welcoming atmosphere that reinforces the Astro brand.
+							</p>
+							<p>
+								While we love Houston dearly,
+								<strong class="text-white font-medium">
+									they must not be used in your own materials.
+								</strong>
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>

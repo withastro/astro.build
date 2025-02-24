@@ -58,6 +58,7 @@ export default {
 				'astro-orange': '#F8E42E',
 				'astro-yellow': '#FF7D54',
 				'astro-hover': '#E8C4F9',
+				'astro-green': '#4AF2C8',
 			},
 			backgroundImage: {
 				'blue-purple-gradient': 'linear-gradient(83.21deg, #3245FF 0%, #B845ED 100%)',
