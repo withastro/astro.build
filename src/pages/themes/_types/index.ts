@@ -58,10 +58,17 @@ export type ThemeCategory = {
 	id: number;
 	value: string;
 	name: string;
+	count: number;
 };
 
 export type ThemeTool = {
 	id: number;
 	value: string;
 	name: string;
+	count: number;
 };
+
+export type ThemePricingStats = {
+	paid: number;
+	free: number;
+}
