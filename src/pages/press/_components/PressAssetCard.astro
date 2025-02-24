@@ -1,6 +1,6 @@
 ---
+import Icon from 'astro-icon';
 import Card from '~/components/Card.astro';
-import DownloadIcon from '~/icons/DownloadIcon.jsx';
 
 export type Props = {
 	name: string;
@@ -29,7 +29,7 @@ export type Props = {
 						download=""
 					>
 						PNG
-						<DownloadIcon aria-hidden="true" class="w-4" />
+						<Icon name="download" aria-hidden="true" class="s-4" />
 					</a>
 					<a
 						href={`/assets/press/${Astro.props.assetName}.svg`}
@@ -37,7 +37,7 @@ export type Props = {
 						download=""
 					>
 						SVG
-						<DownloadIcon aria-hidden="true" class="w-4" />
+						<Icon name="download" aria-hidden="true" class="s-4" />
 					</a>
 				</p>
 			</div>

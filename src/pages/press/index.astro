@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import Icon from 'astro-icon';
 import Card from '~/components/Card.astro';
-import DownloadIcon from '~/icons/DownloadIcon.tsx';
 import MainLayout from '~/layouts/MainLayout.astro';
 import PressAssetCard from './_components/PressAssetCard.astro';
 import houston from './_components/houston.png';
@@ -153,9 +152,9 @@ const socialLinks = [
 					/>
 				</ul>
 				<div class="flex justify-center">
-					<a href="/assets/press/astro-logos.zip" download class="button button-primary"
-						>Download all <DownloadIcon aria-hidden="true" class="w-4" /></a
-					>
+					<a href="/assets/press/astro-logos.zip" download class="button button-primary">
+						Download all <Icon name="download" aria-hidden="true" class="s-6" />
+					</a>
 				</div>
 			</section>
 
