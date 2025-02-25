@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import LeftArrowIcon from '~/icons/LeftArrowIcon.tsx';
+import Icon from 'astro-icon';
 import type { Author } from '../_types/index.ts';
 
 interface Props {
@@ -15,7 +15,7 @@ const { author } = Astro.props;
 	data-astro-prefetch
 	class="flex items-center gap-2 self-start text-sm text-astro-gray-200 mb-4"
 >
-	<LeftArrowIcon aria-hidden="true" />
+	<Icon name="left-arrow" class="s-6" aria-hidden="true" />
 	<span class="pr-2">Back to all themes</span>
 </a>
 <div class="flex lg:flex-col flex-wrap items-center gap-4">
