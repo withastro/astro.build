@@ -1,7 +1,6 @@
 ---
 import Icon from 'astro-icon';
 import siteInfo from '~/data/site-info.js';
-import ChevronIcon from '~/icons/ChevronIcon.jsx';
 import SocialLinks from './SocialLinks.astro';
 ---
 
@@ -14,7 +13,9 @@ import SocialLinks from './SocialLinks.astro';
 	<details class="group">
 		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
 			Resources
-			<ChevronIcon
+			<Icon
+				name="chevron"
+				aria-hidden="true"
 				class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
 			/>
 		</summary>
@@ -39,7 +40,9 @@ import SocialLinks from './SocialLinks.astro';
 	<details class="group">
 		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
 			Community
-			<ChevronIcon
+			<Icon
+				name="chevron"
+				aria-hidden="true"
 				class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
 			/>
 		</summary>

@@ -1,6 +1,5 @@
 ---
 import Icon from 'astro-icon';
-import ChevronIcon from '~/icons/ChevronIcon.jsx';
 
 interface Props {
 	label: string;
@@ -17,7 +16,8 @@ interface Props {
 	<details class="group relative">
 		<summary class="accordion link flex cursor-pointer items-center gap-2">
 			{Astro.props.label}
-			<ChevronIcon
+			<Icon
+				name="chevron"
 				class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-500"
 				aria-hidden="true"
 			/>
