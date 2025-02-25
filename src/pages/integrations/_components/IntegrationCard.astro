@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import Icon from 'astro-icon';
 import Card from '~/components/Card.astro';
 import CardBadge from '~/components/CardBadge.astro';
 import CardBody from '~/components/CardBody.astro';
@@ -19,7 +20,7 @@ const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
 const downloads = formatter.format(integration.data.downloads);
 
-const Icon = iconForIntegration(integration);
+const iconName = iconForIntegration(integration);
 
 const IconBackgrounds = [
 	'bg-[#BC52EE]',
@@ -59,7 +60,7 @@ const IconBackgrounds = [
 								class="h-full w-full object-contain object-center"
 							/>
 						) : (
-							<Icon class="h-full w-full text-astro-gray-700" />
+							<Icon name={iconName} class="h-full w-full text-astro-gray-700" />
 						)
 					}
 				</div>
