@@ -1,10 +1,10 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import type { GetStaticPathsOptions, Page } from 'astro';
+import Icon from 'astro-icon';
 import Pagination from '~/components/Pagination.astro';
 import SidebarLayout from '~/components/SidebarLayout.astro';
 import SidebarPanel from '~/components/SidebarPanel.astro';
-import RSSIcon from '~/icons/RSSIcon.jsx';
 import Layout from '~/layouts/MainLayout.astro';
 import BlogPostPreview from './_components/BlogPostPreview.astro';
 
@@ -80,7 +80,7 @@ const featuredPosts = [
 					Stay up-to-date with news from the Astroverse
 				</p>
 				<a href="/rss.xml" class="button button-sm">
-					<RSSIcon aria-hidden="true" />
+					<Icon name="rss" class="s-6" aria-hidden="true" />
 					<span class="code">RSS</span>
 				</a>
 			</SidebarPanel>
