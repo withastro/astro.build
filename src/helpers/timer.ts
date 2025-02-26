@@ -1,4 +1,4 @@
-import { signal } from '@preact/signals';
+import { signal } from '@preact/signals-core';
 
 export function createTimer(duration: number) {
 	const running = signal(false);

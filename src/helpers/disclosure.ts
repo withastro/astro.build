@@ -1,4 +1,4 @@
-import { effect, signal } from '@preact/signals';
+import { effect, signal } from '@preact/signals-core';
 import { EventEmitter } from './emitter.ts';
 
 export function createDisclosure({
