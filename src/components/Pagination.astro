@@ -1,10 +1,9 @@
 ---
 import type { Page } from 'astro';
+import Icon from 'astro-icon';
 import type { HTMLAttributes } from 'astro/types';
 import { collapseRange } from '~/helpers/paginate.js';
 import { ensureTrailingSlash } from '~/helpers/path.ts';
-import LeftArrowIcon from '~/icons/LeftArrowIcon.jsx';
-import RightArrowIcon from '~/icons/RightArrowIcon.jsx';
 
 export type Props = Omit<HTMLAttributes<'nav'>, 'slot'> & {
 	page: Page<unknown>;
@@ -41,7 +40,10 @@ const collapsedPages = collapseRange(page, pages);
 						data-astro-prefetch
 						class="flex h-10 w-10 items-center justify-center"
 					>
-						<LeftArrowIcon aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`} />
+						<span class="sr-only">
+							Go to page {page.currentPage - 1} of {page.lastPage}
+						</span>
+						<Icon name="left-arrow" class="s-6" aria-hidden="true" />
 					</a>
 				</li>
 			)
@@ -77,7 +79,10 @@ const collapsedPages = collapseRange(page, pages);
 						data-astro-prefetch
 						class="flex h-10 w-10 items-center justify-center"
 					>
-						<RightArrowIcon aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`} />
+						<span class="sr-only">
+							Go to page {page.currentPage + 1} of {page.lastPage}
+						</span>
+						<Icon name="right-arrow" class="s-6" aria-hidden="true" />
 					</a>
 				</li>
 			)

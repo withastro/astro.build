@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import Icon from 'astro-icon';
 import Card from '~/components/Card.astro';
 import CardBadge from '~/components/CardBadge.astro';
 import CardBody from '~/components/CardBody.astro';
 import { randomFromArray } from '~/helpers/random.js';
-import DownloadIcon from '~/icons/DownloadIcon.jsx';
 import { iconForIntegration } from '~/icons/integrations/index.js';
 
 export type Props = {
@@ -19,7 +19,7 @@ const formatter = Intl.NumberFormat('en', { notation: 'compact' });
 
 const downloads = formatter.format(integration.data.downloads);
 
-const Icon = iconForIntegration(integration);
+const iconName = iconForIntegration(integration);
 
 const IconBackgrounds = [
 	'bg-[#BC52EE]',
@@ -59,7 +59,7 @@ const IconBackgrounds = [
 								class="h-full w-full object-contain object-center"
 							/>
 						) : (
-							<Icon class="h-full w-full text-astro-gray-700" />
+							<Icon name={iconName} class="h-full w-full text-astro-gray-700" />
 						)
 					}
 				</div>
@@ -75,7 +75,7 @@ const IconBackgrounds = [
 			</h3>
 			<p class="line-clamp-2 flex-1">{integration.data.description}</p>
 			<div class="subtle mt-4 flex items-center gap-x-1 justify-self-end text-sm">
-				<DownloadIcon aria-hidden="true" />
+				<Icon name="download" class="s-6" aria-hidden="true" />
 				<span>{downloads}</span>
 				<span class="sr-only">weekly downloads</span>
 			</div>

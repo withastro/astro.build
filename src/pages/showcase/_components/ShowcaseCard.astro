@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import ExternalLinkIcon from '~/icons/ExternalLinkIcon.jsx';
+import Icon from 'astro-icon';
 
 export type Props = { site: CollectionEntry<'showcase'> };
 
@@ -29,7 +29,7 @@ const { image } = site.data;
 			<h2 class="heading-5">{site.data.title}</h2>
 			<p class="body flex flex-row items-center gap-2">
 				<span>{site.data.url}</span>
-				<ExternalLinkIcon />
+				<Icon name="external-link" class="s-6" aria-hidden="true" />
 			</p>
 		</footer>
 	</a>
