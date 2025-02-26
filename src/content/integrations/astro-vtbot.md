@@ -8,5 +8,5 @@ image: /assets/integrations/bag-of-tricks.svg
 npmUrl: https://www.npmjs.com/package/astro-vtbot
 repoUrl: https://github.com/martrapp/astro-vtbot
 homepageUrl: https://events-3bg.pages.dev/
-downloads: 18141
+downloads: 18400
 ---

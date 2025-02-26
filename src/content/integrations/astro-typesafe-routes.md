@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-typesafe-routes
 repoUrl: https://github.com/feelixe/astro-typesafe-routes
 homepageUrl: https://github.com/feelixe/astro-typesafe-routes
-downloads: 1827
+downloads: 1665
 ---

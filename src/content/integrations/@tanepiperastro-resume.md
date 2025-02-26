@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@tanepiper/astro-resume
 repoUrl: https://git.sr.ht/~ayoayco/astro-resume
 homepageUrl: https://ayco.io/sh/astro-resume
 badge: new
-downloads: 57
+downloads: 59
 ---

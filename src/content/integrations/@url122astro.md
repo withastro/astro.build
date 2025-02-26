@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@url122/astro
 repoUrl: https://github.com/altie122/URL122AstroIntergration
 homepageUrl: https://docs.url122.xyz/
-downloads: 20
+downloads: 17
 ---
