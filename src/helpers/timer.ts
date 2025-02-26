@@ -1,19 +1,19 @@
-import { createSignal } from 'solid-js';
+import { signal } from '@preact/signals';
 
 export function createTimer(duration: number) {
-	const [running, setRunning] = createSignal(false);
+	const running = signal(false);
 	let timeout: ReturnType<typeof setTimeout> | undefined;
 	return {
 		running,
 		start() {
-			setRunning(true);
+			running.value = true;
 			clearTimeout(timeout);
 			timeout = setTimeout(() => {
-				setRunning(false);
+				running.value = false;
 			}, duration);
 		},
 		stop() {
-			setRunning(false);
+			running.value = false;
 			clearTimeout(timeout);
 		},
 	};

@@ -39,7 +39,7 @@ import Icon from 'astro-icon';
 </div>
 
 <script>
-	import { createEffect } from 'solid-js';
+	import { effect } from '@preact/signals';
 	import { getElement } from '~/helpers/dom.js';
 	import { createTimer } from '~/helpers/timer.js';
 
@@ -55,10 +55,10 @@ import Icon from 'astro-icon';
 			timer.start();
 		});
 
-		createEffect(() => {
-			button.title = timer.running() ? 'Copied!' : 'Copy to clipboard';
-			tooltip.dataset.visible = String(timer.running());
-			tooltip.ariaHidden = String(!timer.running());
+		effect(() => {
+			button.title = timer.running.value ? 'Copied!' : 'Copy to clipboard';
+			tooltip.dataset.visible = String(timer.running.value);
+			tooltip.ariaHidden = String(!timer.running.value);
 		});
 	}
 </script>
