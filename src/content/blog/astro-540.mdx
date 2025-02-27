@@ -1,0 +1,167 @@
+---
+title: 'Astro 5.4'
+description: 'Astro 5.4 brings remote image optimization in Markdown, enhanced security for dev and preview servers, RegExp support for Vercel ISR excludes, and more!'
+homepageLink:
+  title: 'Astro 5.4'
+  subtitle: 'Available now!'
+publishDate: '2025-02-25'
+authors:
+  - matt
+coverImage: '/src/content/blog/_images/astro-540/blog-post-5-4.webp'
+socialImage: '/src/content/blog/_images/astro-540/og-astro-5-4.webp'
+lang: 'en'
+---
+
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+
+**Astro 5.4 brings remote image optimization in Markdown, enhanced security for dev and preview servers, RegExp support for Vercel ISR excludes, and more!**
+
+🖼️ We've got a picture-perfect release for you with these improvements to Astro:
+
+- [**Remote image optimization in Markdown**](#remote-image-optimization-in-markdown)
+- [**Experimental responsive image support in Markdown**](#experimental-responsive-image-support-in-markdown)
+- [**Allowlist hosts for dev and preview servers**](#allowlist-hosts-for-dev-and-preview-servers)
+- [**RegExp support for Vercel ISR excludes**](#regexp-support-for-vercel-isr-excludes)
+- [**New config helpers and build options**](#new-config-helpers-and-build-options)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Remote image optimization in Markdown
+
+Astro's image service already handled optimizing your local Markdown images. Now, it can do the same for remote images too!
+
+Previously, when you used standard Markdown syntax like `![Houston](https://images.unsplash.com/photo-1530089711124-9ca31fb9e863)` with remote images, Astro would simply pass them through without any processing. This was different from how the `Image` component worked, and meant you couldn't take advantage of Astro's image optimization for images stored in a CMS or other external locations.
+
+With Astro 5.4, the image service now automatically processes and optimizes remote images in your Markdown and MDX files too. You'll get all the benefits of Astro's image optimization without changing how you write your content.
+
+This feature is enabled by default–any existing remote images in your Markdown and MDX files will automatically be optimized. If you need to opt out for specific images, you can use HTML `<img>` tags instead of Markdown syntax.
+
+Note that images in your `public/` folder are still never processed, following Astro's normal behavior.
+
+Thanks to [PolyWolf](https://github.com/p0lyw0lf) for this great contribution!
+
+## Experimental responsive image support in Markdown
+
+Previously the experimental responsive images feature only had full support in the `Image` and `Picture` components. In Astro 5.4, we've extended this support to Markdown and MDX files too!
+
+When using the `experimental.responsiveImages` option in your Astro config, Astro will now generate responsive images for images in your Markdown and MDX files, applying the correct properties and styles to make them responsive.
+
+Thanks again to [PolyWolf](https://github.com/p0lyw0lf) who also contributed this feature!
+
+## Allowlist hosts for dev and preview servers
+
+For enhanced security, Astro 5.4 introduces a new option to restrict which hostnames your dev and preview servers will respond to.
+
+The new `server.allowedHosts` configuration option lets you specify a list of allowed hostnames. This will check the `Host` header of incoming requests and only respond to requests with a matching hostname. This helps prevent [DNS rebinding attacks](https://en.wikipedia.org/wiki/DNS_rebinding) such as [GHSA-vg6x-rcgg-rjx6](https://github.com/vitejs/vite/security/advisories/GHSA-vg6x-rcgg-rjx6).
+
+You can configure this in your `astro.config.mjs`:
+
+```js title="astro.config.mjs"
+import {defineConfig} from "astro/config";
+
+export default defineConfig({
+  server: {
+    allowedHosts: ['hello.world.example.local', 'hello.example.local']
+  }
+})
+```
+
+Or directly in the CLI:
+
+```sh
+astro dev --allowed-hosts=hello.world.example.local,hello.example.local
+astro preview --allowed-hosts=hello.world.example.local,hello.example.local
+```
+You should only use this with domains that you control. Allowing third-party domains can open you up to security risks.
+
+If you need more details about how this works under the hood, check out the [Vite documentation](https://vite.dev/config/server-options.html#server-allowedhosts), as the implementation is the same.
+
+## RegExp support for Vercel ISR excludes
+
+If you're using [Incremental Static Regeneration (ISR)](https://docs.astro.build/en/guides/integrations-guide/vercel/#isr) with the Vercel adapter, you now have more flexibility in defining which routes should be excluded from ISR caching.
+
+Previously, you had to explicitly list each route to exclude in the `isr.exclude` option. For sites with many routes requiring server-side rendering, this could become unwieldy:
+
+```js title="astro.config.mjs"
+import vercel from '@astrojs/vercel';
+
+export default defineConfig({
+  output: 'server',
+  adapter: vercel({
+    isr: {
+      exclude: [
+        '/api/users',
+        '/api/posts',
+        '/api/comments',
+        // ... many more API routes
+      ]
+    }
+  })
+});
+```
+
+Now you can use regular expressions to create powerful, pattern-based exclusions:
+
+```js title="astro.config.mjs"
+import vercel from '@astrojs/vercel';
+
+export default defineConfig({
+  output: 'server',
+  adapter: vercel({
+    isr: {
+      exclude: [
+        '/preview',      // Specific route
+        '/auth/[page]',  // Dynamic route
+        /^\/api\/.+/,    // RegExp: all routes starting with /api/
+      ]
+    }
+  })
+});
+```
+
+This makes it much easier to manage ISR exclusions at scale, especially for sites with many API routes or dynamic pages.
+
+Thanks to [Slawek Kolodziej](https://github.com/slawekkolodziej) for this contribution!
+
+
+## New config helpers and build options
+
+Astro 5.4 introduces new APIs that make it easier to work with Astro programmatically, particularly for testing and scripting scenarios.
+
+### Configuration helpers
+
+Two new helper functions are now exported from `astro/config`:
+
+- `mergeConfig`: Allows you to merge partially defined Astro configurations on top of a base config, following the same rules as the `updateConfig` function available to integrations.
+- `validateConfig`: Validates that a given value is a valid Astro configuration and fills in default values as needed.
+
+These helpers are particularly useful for integration authors and for developers writing scripts that need to manipulate Astro configurations programmatically.
+
+### Programmatic build options
+
+The `build` API now accepts a second optional `BuildOptions` argument with two options:
+
+- `devOutput`: When set to `true`, outputs a development-based build similar to code transformed in `astro dev`. Default is `false`.
+- `teardownCompiler`: Controls whether to teardown the compiler WASM instance after build. Default is `true`.
+
+These options provide more control when running Astro builds programmatically, especially for testing scenarios or custom build pipelines.
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.3 release](/blog/astro-530). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Thanks
+
+Thanks to everyone who contributed to this release, including [Emanuele Stoppa](https://github.com/ematipico), [Luiz Ferraz](https://github.com/Fryuni), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [PolyWolf](https://github.com/p0lyw0lf), [Slawek Kolodziej](https://github.com/slawekkolodziej), and many more.
+
+We look forward to seeing what you build with Astro 5.4! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
