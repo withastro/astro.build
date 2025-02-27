@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-teleport
 repoUrl: https://github.com/ok-98/astro-teleport
 homepageUrl: https://github.com/ok-98/astro-teleport#readme
 badge: new
-downloads: 120
+downloads: 121
 ---

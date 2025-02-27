@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-llms-txt
 repoUrl: https://github.com/codiume/orbit
 homepageUrl: https://github.com/codiume/orbit
 badge: new
-downloads: 54
+downloads: 55
 ---

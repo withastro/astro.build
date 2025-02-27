@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@stylify/astro
 image: /assets/integrations/stylify.svg
 repoUrl: https://github.com/stylify/packages
 homepageUrl: https://stylifycss.com
-downloads: 73
+downloads: 68
 ---

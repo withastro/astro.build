@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@convocomet/auth-astro
 repoUrl: https://github.com/nowaythatworked/auth-astro
 homepageUrl: https://github.com/nowaythatworked/auth-astro#readme
-downloads: 21
+downloads: 20
 ---
