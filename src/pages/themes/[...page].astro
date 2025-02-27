@@ -28,9 +28,9 @@ if (!currentPage || Number.isNaN(currentPage)) {
 const search = Astro.url.searchParams.get('search');
 
 // get a list of all supported categories & tools, this is the same list used by the zod schema
-const [categories, tools]: [ThemeCategory[], ThemeTool[]] = await fetch(`${THEMES_API_URL}/api/themes/tools`).then((res) =>
-	res.json().then((data) => [data.themeCategories, data.themeTools]),
-);
+const [categories, tools]: [ThemeCategory[], ThemeTool[]] = await fetch(
+	`${THEMES_API_URL}/api/themes/tools`,
+).then((res) => res.json().then((data) => [data.themeCategories, data.themeTools]));
 
 // get a list of category filters applied to the request
 const selectedCategories = Astro.url.searchParams.getAll('categories[]');
