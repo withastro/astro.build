@@ -1,11 +1,9 @@
 // @ts-check
 
-import db from '@astrojs/db';
 import mdx from '@astrojs/mdx';
 import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import webVitals from '@astrojs/web-vitals';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
@@ -40,22 +38,6 @@ export default defineConfig({
 		}),
 		mdx(),
 		sitemap(),
-		/**
-		 * Only add Astro DB and Web Vitals integrations for `astro dev`, CI builds,
-		 * or when an explicit `WITH_DB` variable is set.
-		 */
-		{
-			name: 'conditional-web-vitals',
-			hooks: {
-				'astro:config:setup'({ command, updateConfig }) {
-					if (command === 'dev' || process.env.CI || process.env.WITH_DB) {
-						updateConfig({
-							integrations: [...db(), webVitals()],
-						});
-					}
-				},
-			},
-		},
 	],
 	image: {
 		domains: ['v1.screenshot.11ty.dev', 'storage.googleapis.com'],
