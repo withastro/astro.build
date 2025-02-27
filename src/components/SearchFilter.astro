@@ -10,7 +10,6 @@ export type FilterOptions = {
 	value: string;
 	label: string;
 	selected?: boolean;
-	count?: number;
 };
 
 export type FilterGroup = {
@@ -64,8 +63,8 @@ const resetHref =
 					<hr class="my-4 border-astro-gray-500" />
 					<Accordion summary={title} open={options.some(({ selected }) => selected)}>
 						<fieldset class="flex flex-col items-start gap-2">
-							{options.map(({ id, name, value, label, selected, count }) => (
-								<Checkbox id={id} name={name} value={value} label={label} checked={selected} {count} />
+							{options.map(({ id, name, value, label, selected }) => (
+								<Checkbox id={id} name={name} value={value} label={label} checked={selected} />
 							))}
 						</fieldset>
 					</Accordion>

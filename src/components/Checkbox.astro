@@ -4,10 +4,9 @@ import type { RequireSome } from '~/helpers/types.js';
 
 export type Props = RequireSome<HTMLAttributes<'input'>, 'id' | 'name'> & {
 	label: string;
-	count?: number;
 };
 
-const { id, name, label, count, class: className, ...attrs } = Astro.props;
+const { id, name, label, class: className, ...attrs } = Astro.props;
 ---
 
 <label
@@ -22,7 +21,6 @@ const { id, name, label, count, class: className, ...attrs } = Astro.props;
 		{...attrs}
 	/>
 	<span>{label}</span>
-	{count && <span class="float-right text-astro-gray-300 tabular-nums">{count}</span>}
 </label>
 
 <style>
