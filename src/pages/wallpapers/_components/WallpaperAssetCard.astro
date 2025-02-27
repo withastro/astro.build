@@ -1,6 +1,6 @@
 ---
+import Icon from 'astro-icon';
 import Card from '~/components/Card.astro';
-import DownloadIcon from '~/icons/DownloadIcon.jsx';
 
 export type Props = {
 	name: string;
@@ -33,7 +33,7 @@ const height = Astro.props.type === 'desktop' ? 307 : 584;
 					download=""
 				>
 					Download
-					<DownloadIcon aria-hidden="true" class="w-4" />
+					<Icon name="download" aria-hidden="true" class="s-4" />
 				</a>
 			</p>
 		</div>

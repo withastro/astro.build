@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import ExternalLinkIcon from '~/icons/ExternalLinkIcon';
+import Icon from 'astro-icon';
 
 export interface Props {
 	url: string;
@@ -32,7 +32,7 @@ const { url, title } = Astro.props;
 			<span class="heading-5">{title}</span>
 			<span class="body flex flex-row items-center gap-2">
 				<span>{url}</span>
-				<ExternalLinkIcon />
+				<Icon name="external-link" class="s-6" aria-hidden="true" />
 			</span>
 		</span>
 	</a>

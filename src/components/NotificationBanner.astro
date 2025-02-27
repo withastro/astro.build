@@ -1,5 +1,5 @@
 ---
-import XIcon from '~/icons/XIcon.jsx';
+import Icon from 'astro-icon';
 export type Props = {
 	uid: string;
 };
@@ -16,7 +16,7 @@ const { uid } = Astro.props;
 	</p>
 	<button class="absolute right-0 top-0 flex h-10 w-10 items-center justify-center">
 		<span class="sr-only">Hide banner</span>
-		<XIcon class="h-5" aria-hidden="true" />
+		<Icon name="x-close-cancel" class="s-5" aria-hidden="true" />
 	</button>
 </aside>
 

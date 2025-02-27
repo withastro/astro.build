@@ -1,6 +1,6 @@
 ---
+import Icon from 'astro-icon';
 import type { HTMLAttributes } from 'astro/types';
-import ChevronIcon from '~/icons/ChevronIcon.jsx';
 
 export type Props = HTMLAttributes<'details'> & {
 	summary: string;
@@ -14,8 +14,10 @@ const { summary, class: className, ...attrs } = Astro.props;
 		class="accordion code flex cursor-pointer list-none items-center justify-between text-astro-gray-200"
 	>
 		<span>{summary}</span>
-		<ChevronIcon
-			class="chevron h-4 w-4 rotate-0 transition-transform duration-300 ease-in-out group-open:-rotate-180"
+		<Icon
+			name="chevron"
+			class="s-4 rotate-0 transition-transform duration-300 ease-in-out group-open:-rotate-180"
+			aria-hidden="true"
 		/>
 	</summary>
 

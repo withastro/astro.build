@@ -1,39 +1,39 @@
 import type { CollectionEntry } from 'astro:content';
 import { randomFromArray } from '~/helpers/random.js';
-import ApproveUserIcon from './ApproveUserIcon.jsx';
-import CheckCircleIcon from './CheckCircleIcon.jsx';
-import CompressIcon from './CompressIcon.jsx';
-import GridIcon from './GridIcon.jsx';
-import ImageIcon from './ImageIcon.jsx';
-import PuzzleIcon from './PuzzleIcon.jsx';
-import ResizeImageIcon from './ResizeImageIcon.jsx';
-import RobotIcon from './RobotIcon.jsx';
-import SearchFileIcon from './SearchFileIcon.jsx';
-import SitemapIcon from './SitemapIcon.jsx';
 
 const categoryIcons = new Map([
-	['frameworks', [PuzzleIcon, GridIcon]],
-	['adapters', [PuzzleIcon, GridIcon, CompressIcon]],
-	['css+ui', [CompressIcon, GridIcon, ImageIcon, ResizeImageIcon, PuzzleIcon]],
+	['frameworks', ['integrations/puzzle', 'integrations/grid']],
+	['adapters', ['integrations/puzzle', 'integrations/grid', 'integrations/compress']],
+	[
+		'css+ui',
+		[
+			'integrations/compress',
+			'integrations/grid',
+			'integrations/image',
+			'integrations/resize-image',
+			'integrations/puzzle',
+		],
+	],
 	[
 		'performance+seo',
-		[ApproveUserIcon, CheckCircleIcon, CompressIcon, RobotIcon, SearchFileIcon, SitemapIcon],
+		[
+			'integrations/approve-user',
+			'approval-check',
+			'integrations/compress',
+			'integrations/robot',
+			'integrations/search-file',
+			'integrations/sitemap',
+		],
 	],
-	['analytics', [CheckCircleIcon, CompressIcon, SearchFileIcon]],
-	['accessibility', [ApproveUserIcon, CheckCircleIcon]],
-	['other', [CheckCircleIcon, GridIcon, PuzzleIcon, SitemapIcon]],
+	['analytics', ['approval-check', 'integrations/compress', 'integrations/search-file']],
+	['accessibility', ['integrations/approve-user', 'approval-check']],
+	['other', ['approval-check', 'integrations/grid', 'integrations/puzzle', 'integrations/sitemap']],
 ]);
-
-export function iconForCategory(category: string) {
-	return (
-		randomFromArray(categoryIcons.get(category) ?? categoryIcons.get('other') ?? []) ?? PuzzleIcon
-	);
-}
 
 export function iconForIntegration(integration: CollectionEntry<'integrations'>) {
 	const icons = integration.data.categories.flatMap(
 		(category) => categoryIcons.get(category) ?? [],
 	);
 
-	return randomFromArray(icons) ?? PuzzleIcon;
+	return randomFromArray(icons) ?? 'integrations/puzzle';
 }

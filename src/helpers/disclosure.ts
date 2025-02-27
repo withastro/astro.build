@@ -1,4 +1,4 @@
-import { createEffect, createSignal } from 'solid-js';
+import { effect, signal } from '@preact/signals-core';
 import { EventEmitter } from './emitter.ts';
 
 export function createDisclosure({
@@ -21,32 +21,32 @@ export function createDisclosure({
 
 		mediaQuery.addEventListener('change', (event: MediaQueryListEvent) => {
 			if (event.matches) {
-				setVisible(false);
+				visible.value = false;
 			}
 		});
 	}
 
 	const emitter = new EventEmitter<{ toggle: { visible: boolean } }>();
-	const [visible, setVisible] = createSignal(false);
+	const visible = signal(false);
 
-	createEffect(() => {
-		button.setAttribute('aria-expanded', String(visible()));
+	effect(() => {
+		button.setAttribute('aria-expanded', String(visible.value));
 
-		if (visible()) {
+		if (visible.value) {
 			content.style.removeProperty('display');
 		}
 
-		if (!visible() && !animated) {
+		if (!visible.value && !animated) {
 			content.style.display = 'none';
 		}
 		/* make sure page scrolling is disabled when the menu is open */
-		if (visible()) {
+		if (visible.value) {
 			document.documentElement.classList.add('disclosure-open');
 		}
 
 		// run after an animation frame to let the element start at the leave state
 		requestAnimationFrame(() => {
-			if (visible()) {
+			if (visible.value) {
 				content.dataset.open = 'true';
 			} else {
 				delete content.dataset.open;
@@ -58,7 +58,7 @@ export function createDisclosure({
 
 	if (animated) {
 		content.addEventListener('transitionend', () => {
-			if (!visible()) {
+			if (!visible.value) {
 				content.style.display = 'none';
 				document.documentElement.classList.remove('disclosure-open');
 			}
@@ -66,12 +66,12 @@ export function createDisclosure({
 	}
 
 	button.addEventListener('click', () => {
-		setVisible(!visible());
+		visible.value = !visible.value;
 	});
 
 	content.addEventListener('keydown', (event) => {
 		if (event.key === 'Escape') {
-			setVisible(false);
+			visible.value = false;
 			button.focus();
 		}
 	});
@@ -87,18 +87,18 @@ export function createDisclosure({
 	const handleClickOutside = (event: MouseEvent) => {
 		// close on click outside
 		if (
-			visible() &&
+			visible.value &&
 			!content.contains(event.target as Node) &&
 			!button.contains(event.target as Node)
 		) {
-			setVisible(false);
+			visible.value = false;
 			button.focus();
 		}
 	};
 
-	createEffect(() => {
-		emitter.emit('toggle', { visible: visible() });
-		if (visible()) {
+	effect(() => {
+		emitter.emit('toggle', { visible: visible.value });
+		if (visible.value) {
 			window.addEventListener('click', handleClickOutside);
 			window.addEventListener('focusin', handleFocusLost);
 		} else {

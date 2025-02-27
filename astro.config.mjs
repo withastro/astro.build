@@ -4,7 +4,6 @@ import db from '@astrojs/db';
 import mdx from '@astrojs/mdx';
 import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
-import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import webVitals from '@astrojs/web-vitals';
 import astroExpressiveCode from 'astro-expressive-code';
@@ -22,7 +21,6 @@ export default defineConfig({
 		tailwind({
 			applyBaseStyles: false,
 		}),
-		solid(),
 		astroExpressiveCode({
 			themes: [houston],
 			frames: false,

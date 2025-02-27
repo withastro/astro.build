@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/image-uploader-astro-toolbar-integration
 homepageUrl: https://www.npmjs.com/package/image-uploader-astro-toolbar-integration
 badge: new
-downloads: 66
+downloads: 67
 ---

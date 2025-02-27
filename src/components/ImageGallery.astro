@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
+import Icon from 'astro-icon';
 import type { HTMLAttributes } from 'astro/types';
-import RightArrowIcon from '~/icons/RightArrowIcon.jsx';
 
 export type Props = HTMLAttributes<'div'> & {
 	images: string[];
@@ -47,14 +47,14 @@ const { images, class: className, ...attrs } = Astro.props;
 				id="gallery-prev"
 				class="flex flex-1 items-center justify-center rounded-t-full bg-astro-gray-500 text-astro-gray-200 outline-astro-pink-light focus-within:z-20 hover:z-20 hover:outline focus:outline-2"
 			>
-				<RightArrowIcon class="-rotate-90" aria-hidden="true" />
+				<Icon name="right-arrow" class="s-6 -rotate-90" aria-hidden="true" />
 				<span class="sr-only">Go to previous image</span>
 			</button>
 			<button
 				id="gallery-next"
 				class="flex flex-1 items-center justify-center rounded-b-full bg-astro-gray-500 text-astro-gray-200 outline-astro-pink-light focus-within:z-20 hover:z-20 hover:outline focus:outline-2"
 			>
-				<RightArrowIcon class="rotate-90" aria-hidden="true" />
+				<Icon name="right-arrow" class="s-6 rotate-90" aria-hidden="true" />
 				<span class="sr-only">Go to next image</span>
 			</button>
 		</div>

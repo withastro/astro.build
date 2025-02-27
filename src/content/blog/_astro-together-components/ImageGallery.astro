@@ -4,9 +4,7 @@
 
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import LeftArrowIcon from '~/icons/LeftArrowIcon.tsx';
-import RightArrowIcon from '~/icons/RightArrowIcon.tsx';
-import XIcon from '~/icons/XIcon.tsx';
+import Icon from 'astro-icon';
 
 interface Props {
 	images: Array<{ src: ImageMetadata; alt: string }>;
@@ -27,14 +25,17 @@ interface Props {
 			<figure></figure>
 			<div class="absolute inset-5 bottom-auto flex justify-between gap-5">
 				<button data-unzoom-image class="astro-image-gallery-control">
-					<XIcon aria-label="Close image gallery" class="s-6" />
+					<span class="sr-only">Close image gallery</span>
+					<Icon name="x-close-cancel" class="s-6" aria-hidden="true" />
 				</button>
 				<span class="flex gap-5">
 					<button data-prev-image class="astro-image-gallery-control cursor-pointer">
-						<LeftArrowIcon aria-label="Previous image" />
+						<span class="sr-only">Previous image</span>
+						<Icon name="left-arrow" class="s-6" aria-hidden="true" />
 					</button>
 					<button data-next-image class="astro-image-gallery-control cursor-pointer">
-						<RightArrowIcon aria-label="Next image" />
+						<span class="sr-only">next image</span>
+						<Icon name="right-arrow" class="s-6" aria-hidden="true" />
 					</button>
 				</span>
 			</div>

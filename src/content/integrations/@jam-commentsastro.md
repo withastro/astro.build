@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jam-comments/astro
 repoUrl: https://github.com/alexmacarthur/jam-comments-javascript
 homepageUrl: https://jamcomments.com
-downloads: 354
+downloads: 324
 ---

@@ -1,7 +1,7 @@
 ---
+import Icon from 'astro-icon';
 import type { HTMLAttributes } from 'astro/types';
 import { THEMES_API_URL } from '~/helpers/constants.ts';
-import ExternalLinkIcon from '~/icons/ExternalLinkIcon.jsx';
 import type { ThemeAndAuthor } from '../_types/index.ts';
 export type Props = HTMLAttributes<'div'> & {
 	theme: ThemeAndAuthor;
@@ -25,7 +25,7 @@ const linkRel = isOfficial ? undefined : 'nofollow ugc';
 					{theme.Theme.price ? `$${theme.Theme.price / 100} - ` : null}
 					Buy now
 				</span>
-				<ExternalLinkIcon aria-hidden="true" />
+				<Icon name="external-link" class="s-6" aria-hidden="true" />
 			</a>
 		) : (
 			theme.Theme.paid &&
@@ -40,7 +40,7 @@ const linkRel = isOfficial ? undefined : 'nofollow ugc';
 						{theme.Theme.price > 0 ? `$${theme.Theme.price / 100} - ` : null}
 						Buy now
 					</span>
-					<ExternalLinkIcon aria-hidden="true" />
+					<Icon name="external-link" class="s-6" aria-hidden="true" />
 				</a>
 			)
 		)
@@ -54,7 +54,7 @@ const linkRel = isOfficial ? undefined : 'nofollow ugc';
 				rel={linkRel}
 			>
 				<span>Get started</span>
-				<ExternalLinkIcon aria-hidden="true" />
+				<Icon name="external-link" class="s-6" aria-hidden="true" />
 			</a>
 		)
 	}
@@ -62,7 +62,7 @@ const linkRel = isOfficial ? undefined : 'nofollow ugc';
 		theme.Theme.demoUrl && (
 			<a href={theme.Theme.demoUrl} class="button" data-analytics-event="DI9WVRXV:0" rel={linkRel}>
 				<span>Live demo</span>
-				<ExternalLinkIcon aria-hidden="true" />
+				<Icon name="external-link" class="s-6" aria-hidden="true" />
 			</a>
 		)
 	}
