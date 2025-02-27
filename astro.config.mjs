@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import webVitals from '@astrojs/web-vitals';
 import astroExpressiveCode from 'astro-expressive-code';
+import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import houston from './houston.theme.json';
 
@@ -24,6 +25,18 @@ export default defineConfig({
 		astroExpressiveCode({
 			themes: [houston],
 			frames: false,
+		}),
+		icon({
+			svgoOptions: {
+				plugins: [
+					{ name: 'preset-default' },
+					{
+						name: 'prefixIds',
+						// Ensure IDs used in SVGs are unique to avoid clashes between inline SVGs.
+						params: { prefix: () => Math.round(Math.random() * 1_000_000_000).toString(36) },
+					},
+				],
+			},
 		}),
 		mdx(),
 		sitemap(),

@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 
 const mainSponsors = [
 	{
@@ -110,8 +110,9 @@ const sponsors = [
 						<Icon
 							class="lg:row-start-2 lg:mx-auto max-w-full"
 							name={sponsor.src}
+							width="auto"
 							height={sponsor.height}
-							alt=""
+							aria-hidden="true"
 						/>
 						<span class="sr-only">{sponsor.label}</span>
 						<span class="lg:row-start-3 font-light text-astro-gray-300">{sponsor.caption}</span>
@@ -129,7 +130,13 @@ const sponsors = [
 						target="_blank"
 						class="h-32 lg:h-44 grow shrink basis-1/2 p-4 lg:basis-1/4 flex flex-col items-center justify-center gap-2 sm:gap-4 first:border-t first:border-astro-dark-100/20 odd:border-r odd:border-astro-dark-100/20 lg:[&:nth-child(2)]:border-r lg:[&:nth-child(6)]:border-r lg:[&:nth-child]:border-astro-dark-100/20 hover:bg-astro-gray-100/5 bg-clip-padding transition-colors  duration-400 last:odd:col-span-2 last:odd:border-r-0 -outline-offset-2"
 					>
-						<Icon name={sponsor.src} height={sponsor.height} alt="" class="max-w-full" />
+						<Icon
+							name={sponsor.src}
+							width="auto"
+							height={sponsor.height}
+							aria-hidden="true"
+							class="max-w-full"
+						/>
 						<span class="sr-only">{sponsor.label}</span>
 					</a>
 				))
@@ -140,7 +147,13 @@ const sponsors = [
 				target="_blank"
 				class="h-32 lg:h-44 grow shrink basis-1/2 p-4 lg:basis-1/4 flex flex-col items-center justify-center gap-2 first:border-t first:border-astro-dark-100/20 odd:border-r odd:border-astro-dark-100/20 lg:[&:nth-child(2)]:border-r lg:[&:nth-child(6)]:border-r lg:[&:nth-child]:border-astro-dark-100/20 hover:bg-astro-gray-100/5 bg-clip-padding transition-colors duration-400 last:odd:col-span-2 last:odd:border-r-0 -outline-offset-2"
 			>
-				<Icon name="heart" height="24" alt="" class="max-w-full text-astro-red" />
+				<Icon
+					name="heart"
+					width="24"
+					height="24"
+					aria-hidden="true"
+					class="max-w-full text-astro-red"
+				/>
 				<span class="text-astro-gray-200 text-center leading-snug">Sponsor Astro</span>
 			</a>
 		</div>
