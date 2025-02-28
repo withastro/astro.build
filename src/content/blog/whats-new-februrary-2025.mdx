@@ -20,11 +20,13 @@ Some exciting news from around the Astro ecosystem this month, including:
 
 - [Updates from Mission Control](#updates-from-mission-control)
 - [Latest releases](#latest-releases)
+- [Astro Adopters](#astro-adopters)
+- [Weird Wide Web](#weird-wide-web)
 - [Community updates](#community)
 - [Astro in the news, migration stories, how-to articles, videos, and more!](#content)
 - [Tips & Tools](#tips--tools)
 - [Themes & Templates](#themes--templates)
-- [Weird Wide Web](#weird-wide-web)
+- [Showcase](showcase)
 - [Starlight in the wild](#starlight-in-the-wild)
 
 Let's dive right into it!
@@ -43,6 +45,33 @@ Minor releases introduce new features and improvements. Check out what's new!
 - [Astro 5.4](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#540) - remote image optimization in Markdown, enhanced security for dev and preview servers, RegExp support for Vercel ISR excludes, and more!
 - [Starlight 0.32](https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md#0310) - New route data middleware, i18n API access for plugins, multisite search support, and more!
  
+## Astro Adopters
+
+From Porche to IKEA to Jamie Oliver, some of the biggest names you know are using Astro!
+
+export const featuredSites = [
+  'www.michelin.com',
+  'nordvpn.com',
+  'www.scoutmotors.com',
+]; 
+
+<ShowcaseGridById ids={featuredSites} />
+
+## Weird Wide Web
+
+Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring or just plain fun!
+
+export const monthlySites = [
+  'codetv.dev',
+  'isastro.pages.dev',
+  'wybm-valentine-2025.netlify.app',
+  'photo-splitter.vercel.app',
+  'timer.bryanhogan.com',
+  'www.loremipsums.org',
+]; 
+
+<ShowcaseGridById ids={monthlySites} />
+
 ## Community
 
 Astro wouldn’t be what it is without its community. From Discord support, to documentation improvements, to translations, to code contributions, Astro welcomes it all.
@@ -142,24 +171,13 @@ Several new Astro themes were added to the [Astro theme directory](https://astro
 
 Also check out the brand new [Starlight community themes](https://starlight.astro.build/resources/themes/) page with six custom Starlight themes ready to use.
 
-## Weird Wide Web
-
-Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring or just plain fun!
-
-export const monthlySites = [
-  'codetv.dev',
-  'isastro.pages.dev',
-  'wybm-valentine-2025.netlify.app',
-  'photo-splitter.vercel.app',
-  'timer.bryanhogan.com',
-  'www.loremipsums.org',
-]; 
-
-<ShowcaseGridById ids={monthlySites} />
+## Showcase
 
 Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
 
-<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={monthlySites} /> 
+export const excludedSites = [...featuredSites, ...monthlySites]
+
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
 
 ## Starlight in the wild
 
