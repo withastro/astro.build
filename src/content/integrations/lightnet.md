@@ -5,7 +5,7 @@ categories:
   - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/lightnet
-homepageUrl: https://lightnet-docs.pages.dev
+homepageUrl: https://lightnet.community
 badge: new
 downloads: 591
 description: Share the message of Jesus and strengthen believers worldwide.
