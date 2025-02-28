@@ -6,7 +6,7 @@ categories:
   - uncategorized
 image: /assets/integrations/studiocms-master.svg
 npmUrl: https://www.npmjs.com/package/@studiocms/blog
-repoUrl: https://github.com/astrolicious/studiocms
-homepageUrl: https://studiocms.xyz
+repoUrl: https://github.com/withstudiocms/studiocms
+homepageUrl: https://studiocms.dev
 downloads: 16
 ---
