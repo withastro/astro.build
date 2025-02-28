@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astropub/md
 repoUrl: https://github.com/astro-community/md
 homepageUrl: https://github.com/astro-community/md
-downloads: 5551
+downloads: 5632
 ---
