@@ -498,6 +498,8 @@ const scraper = new ShowcaseScraper({
 		'https://kamcalorie.com/',
 		// Already added - 2025-02-10
 		'http://getastrothemes.com',
+		// 2025-02-28
+		'https://calc.codingbroz.com/',
 	],
 });
 await scraper.run();
