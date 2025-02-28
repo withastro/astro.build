@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import Card from '~/components/Card.astro';
 import MainLayout from '~/layouts/MainLayout.astro';
 import PressAssetCard from './_components/PressAssetCard.astro';
@@ -215,14 +215,14 @@ const socialLinks = [
 								class="flex flex-wrap gap-y-12 justify-center w-full md:max-w-xl"
 							>
 								<div class="flex flex-col gap-6 items-center px-12">
-									<Icon name="press/old-logo" class="h-12 text-astro-gray-300" />
+									<Icon name="press/old-logo" class="w-auto h-12 text-astro-gray-300" />
 									<span class="flex gap-2 font-mono text-astro-gray-300">
 										<Icon name="x-close-cancel" class="s-6 shrink-0 text-astro-red" />
 										2021
 									</span>
 								</div>
 								<div class="flex flex-col gap-6 items-center px-12">
-									<Icon name="press/new-logo" class="h-12 text-white" />
+									<Icon name="press/new-logo" class="w-auto h-12 text-white" />
 									<span class="flex gap-2 font-mono text-astro-gray-100">
 										<Icon name="approval-check" class="s-6 shrink-0 text-astro-green" />
 										2023
@@ -243,8 +243,16 @@ const socialLinks = [
 							</div>
 							{/* Spacing illustration */}
 							<div aria-hidden="true" class="flex shrink gap-[9%] w-full md:max-w-xl items-start">
-								<Icon name="press/spacing-logo" class="max-h-36 flex-auto" />
-								<Icon name="press/spacing-logomark" class="max-h-36 flex-auto" />
+								<Icon
+									name="press/spacing-logo"
+									preserveAspectRatio="xMinYMin"
+									class="w-auto h-36 max-w-full max-h-36 flex-auto"
+								/>
+								<Icon
+									name="press/spacing-logomark"
+									preserveAspectRatio="xMinYMin"
+									class="w-auto h-36 max-w-full max-h-36 flex-auto"
+								/>
 							</div>
 						</div>
 					</div>
@@ -263,8 +271,8 @@ const socialLinks = [
 								<div class="font-mono text-astro-gray-300 shrink-0">24px</div>
 								<div class="flex justify-between w-full items-center">
 									<div class="border border-r-0 border-astro-gray-400 h-6 w-2"></div>
-									<Icon name="press/new-logo" class="h-6 shrink-0" />
-									<Icon name="logos/astro" class="h-6 shrink-0" />
+									<Icon name="press/new-logo" class="w-auto h-6 shrink-0" />
+									<Icon name="logos/astro" class="w-auto h-6 shrink-0" />
 									<div class="border border-l-0 border-astro-gray-400 h-6 w-2"></div>
 								</div>
 							</div>

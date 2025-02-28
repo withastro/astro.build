@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import siteInfo from '~/data/site-info.js';
 import NewsLetterSignup from './NewsLetterSignup.astro';
 import SocialLinks from './SocialLinks.astro';
@@ -13,7 +13,6 @@ const { bgClass = 'bg-dark' } = Astro.props;
 type Link = {
 	href: string;
 	label: string;
-	icon?: string;
 };
 
 type LinkGroup = {
@@ -88,10 +87,9 @@ const socialLinks = siteInfo.socialLinks;
 								{title}
 							</h2>
 							<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
-								{links.map(({ href, label, icon }) => (
+								{links.map(({ href, label }) => (
 									<li>
 										<a href={href} class="whitespace-nowrap link flex gap-2 items-center">
-											{icon && <Icon name={icon} size={16} aria-hidden="true" />}
 											{label}
 										</a>
 									</li>

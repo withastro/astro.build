@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 
 const logos = [
 	{ icon: 'logos/google', label: 'Google', classes: 'h-9' },
@@ -18,7 +18,11 @@ const logos = [
 		<p class="font-light text-balance">Used by some of the largest companies around the world:</p>
 
 		<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 px-4">
-			{logos.map((logo) => <Icon name={logo.icon} class={logo.classes} aria-label={logo.label} />)}
+			{
+				logos.map((logo) => (
+					<Icon name={logo.icon} class:list={['w-auto', logo.classes]} aria-label={logo.label} />
+				))
+			}
 		</div>
 	</div>
 </div>
