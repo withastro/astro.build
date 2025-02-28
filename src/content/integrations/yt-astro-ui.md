@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/yt-astro-ui
 repoUrl: https://github.com/qwert2001qwert-alex/yt-astro-ui
-homepageUrl: https://ui.yatoday.es
+homepageUrl: https://astro-ui.dev.yatoday.es
 badge: new
 downloads: 699
 ---
