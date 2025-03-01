@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/polite-stack
 homepageUrl: https://www.npmjs.com/package/polite-stack
 badge: new
-downloads: 356
+downloads: 361
 ---
