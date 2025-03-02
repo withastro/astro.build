@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/elmstronaut
 repoUrl: https://github.com/feedbackone/elmstronaut
 homepageUrl: https://github.com/feedbackone/elmstronaut
 badge: new
-downloads: 120
+downloads: 122
 ---

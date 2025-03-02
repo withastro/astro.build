@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-loader-goodreads
 repoUrl: https://github.com/sadmanca/astro-loader-goodreads
 homepageUrl: https://www.npmjs.com/package/astro-loader-goodreads
 badge: new
-downloads: 179
+downloads: 180
 ---

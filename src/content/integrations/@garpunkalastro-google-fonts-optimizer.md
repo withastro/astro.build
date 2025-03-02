@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@garpunkal/astro-google-fonts-optimizer
 homepageUrl: https://github.com/garpunkal/astro-google-fonts-optimizer
 badge: new
-downloads: 61
+downloads: 3
 ---

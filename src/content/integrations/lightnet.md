@@ -7,7 +7,7 @@ categories:
 npmUrl: https://www.npmjs.com/package/lightnet
 homepageUrl: https://lightnet.community
 badge: new
-downloads: 598
+downloads: 550
 description: Share the message of Jesus and strengthen believers worldwide.
   LightNet empowers you to create digital media libraries, making your content
   accessible on the web — including videos, audio, images, and books.

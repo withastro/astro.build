@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-websocket
 homepageUrl: https://www.npmjs.com/package/astro-cloudflare-websocket
-downloads: 157
+downloads: 103
 ---
