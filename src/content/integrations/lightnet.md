@@ -3,10 +3,8 @@ name: lightnet
 title: lightnet
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/lightnet
 homepageUrl: https://lightnet.community
-badge: new
 downloads: 545
 description: Share the message of Jesus and strengthen believers worldwide.
   LightNet empowers you to create digital media libraries, making your content

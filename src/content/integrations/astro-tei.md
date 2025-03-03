@@ -1,7 +1,7 @@
 ---
 name: astro-tei
 title: astro-tei
-description: Astro component for TEI as Custom Elements
+description: Astro integration for TEI as Custom Elements
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-tei
