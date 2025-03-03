@@ -424,6 +424,7 @@ const scraper = new ShowcaseScraper({
 		'https://user-images.githubusercontent.com',
 		'https://camo.githubusercontent.com',
 		'https://private-user-images.githubusercontent.com',
+		'https://raw.githubusercontent.com',
 		'https://astro.build',
 		'https://pagespeed.web.dev',
 		'https://lighthouse-metrics.com',
