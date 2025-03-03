@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/server-islands
 homepageUrl: https://www.npmjs.com/package/@inox-tools/server-islands
 badge: new
-downloads: 13
+downloads: 1
 ---

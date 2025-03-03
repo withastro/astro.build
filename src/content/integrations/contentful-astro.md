@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/contentful-astro
 homepageUrl: https://github.com/ajsummerfield/contentful-astro#readme
-downloads: 10
+downloads: 7
 ---
