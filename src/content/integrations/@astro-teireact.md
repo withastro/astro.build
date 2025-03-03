@@ -1,7 +1,7 @@
 ---
 name: "@astro-tei/react"
 title: "@astro-tei/react"
-description: Astro component for TEI as Custom Elements with React support
+description: Astro integration for TEI as Custom Elements with React support
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-tei/react
