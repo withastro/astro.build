@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@codemint/astro-meta
 repoUrl: https://github.com/arabbani/astro-meta
 homepageUrl: https://github.com/arabbani/astro-meta#readme
 badge: new
-downloads: 279
+downloads: 366
 ---

@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-package-managers
 repoUrl: https://github.com/HiDeoo/starlight-package-managers
 homepageUrl: https://www.npmjs.com/package/starlight-package-managers
-downloads: 7786
+downloads: 7924
 ---

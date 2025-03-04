@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@vincentvd/astro-remote
 repoUrl: https://github.com/VincentvD/astro-remote
 homepageUrl: https://github.com/VincentvD/astro-remote#README
 badge: new
-downloads: 64
+downloads: 80
 ---
