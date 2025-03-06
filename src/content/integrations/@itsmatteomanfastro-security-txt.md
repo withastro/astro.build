@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-security-txt
 repoUrl: https://github.com/itsmatteomanf/astro-components
 homepageUrl: https://github.com/itsmatteomanf/astro-components/tree/main/packages/astro-security-txt#readme
-downloads: 301
+downloads: 306
 ---

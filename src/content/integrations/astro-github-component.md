@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-github-component
 repoUrl: https://github.com/vaporvee/astro-github-component
 homepageUrl: https://docs.vaporvee.com
-downloads: 19
+downloads: 16
 ---
