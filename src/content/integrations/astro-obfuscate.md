@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-obfuscate
 repoUrl: https://github.com/TrueWinter/astro-obfuscate
 homepageUrl: https://github.com/TrueWinter/astro-obfuscate
 badge: new
-downloads: 303
+downloads: 304
 ---
