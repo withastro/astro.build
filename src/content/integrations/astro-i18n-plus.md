@@ -8,6 +8,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-i18n-plus
 homepageUrl: https://github.com/jianghong008/astro-i18n-plus/tree/master/packages/astro-i18n-plus
-downloads: 7
+downloads: 4
 repoUrl: https://github.com/jianghong008/astro-i18n-plus
 ---
