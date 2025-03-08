@@ -14,10 +14,7 @@ import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from './_types/index.ts
 
 export const prerender = false;
 
-// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
-// otherwise, try to parse the page number from the URL
-const currentPage =
-	typeof Astro.params.page === 'undefined' ? 1 : Number.parseInt(Astro.params.page);
+const currentPage = Astro.params.page && Number.parseInt(Astro.params.page);
 
 // invalid page number!
 if (!currentPage || Number.isNaN(currentPage)) {
@@ -126,7 +123,7 @@ const featured: ThemeAndAuthor[] = showFeatured
 		<Fragment slot="sidebar">
 			<SidebarPanel>
 				<SearchFilter
-					indexRoute="/themes/"
+					indexRoute="/themes/1/"
 					groups={[categoryFilter, toolFilter, priceFilter]}
 					search={search}
 					searchPlaceholder="Search for a theme"

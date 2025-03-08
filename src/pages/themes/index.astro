@@ -1,0 +1,189 @@
+---
+import { Icon } from 'astro-icon/components';
+import { THEMES_API_URL } from '~/helpers/constants.ts';
+import MainLayout from '~/layouts/MainLayout.astro';
+import Link from '../_components/Link.astro';
+import ThemeCard from './_components/ThemeCard.astro';
+import type { ThemeAndAuthor } from './_types/index.ts';
+
+import { Image } from 'astro:assets'
+import Blog from '~/assets/themes/blog.png';
+import Docs from '~/assets/themes/docs.png';
+import Ecommerce from '~/assets/themes/ecommerce.png';
+import LandingPage from '~/assets/themes/landing-page.png';
+import More from '~/assets/themes/more-themes.png';
+import Portfolio from '~/assets/themes/portfolio.png';
+
+const featured: ThemeAndAuthor[] = await fetch(`${THEMES_API_URL}/api/themes/featured`).then(
+	(res) => res.json(),
+);
+
+featured.sort(() => Math.random() - 0.5);
+
+const categories = [
+	{
+		href: '/themes/1/?search=&categories%5B%5D=blog',
+		title: 'Blogs',
+		description:
+			'Whether you want sleek minimalism or bold colors, find the blog template for you.',
+		cta: 'Browse blog themes',
+    image: Blog,
+	},
+	{
+		href: '/themes/1/?search=&categories%5B%5D=ecommerce',
+		title: 'E-commerce',
+		description:
+			'Every second counts. Find an e-commerce template that loads fast and looks great.',
+		cta: 'Browse e-commerce themes',
+    image: Ecommerce,
+	},
+	{
+		href: '/themes/1/?search=&categories%5B%5D=landing-page',
+		title: 'Landing pages',
+		description: 'Showcase your product or service with a stylish landing page template.',
+		cta: 'Browse landing page themes',
+    image: LandingPage,
+	},
+	{
+		href: '/themes/1/?search=&categories%5B%5D=portfolio',
+		title: 'Portfolio',
+		description: 'Share your art, coding projects, music, and more with an Astro portfolio theme.',
+		cta: 'Browse portfolio themes',
+    image: Portfolio,
+	},
+	{
+		href: '/themes/1/?search=&categories%5B%5D=docs',
+		title: 'Documentation',
+		description: 'Ship your next technical documentation website with an Astro docs theme.',
+		cta: 'Browse docs themes',
+    image: Docs,
+	},
+	{
+		href: '/themes/1/',
+		title: '...and more!',
+		description:
+			'Discover all Astro themes and filter by your favorite technology, from Tailwind to Vue.',
+		cta: 'Browse all themes',
+    image: More,
+	},
+];
+
+const seo = {
+	title: 'Themes',
+	description: 'Elevate your style with our stellar designs.',
+};
+
+if (Astro.url.searchParams.size > 0) {
+	Astro.redirect(`/themes/1/${Astro.url.searchParams.toString()}`, 301);
+}
+---
+
+<MainLayout {...seo}>
+	<div class="relative overflow-hidden pb-16">
+		<div class="grid-container relative py-16 sm:py-20 md:py-24 xl:py-32">
+			<div class="bleed-full bg-grid absolute inset-0 mask-linear-gradient-to-b"></div>
+			<div class="relative flex flex-col items-center gap-6 text-center">
+				<h1 class="heading-3 mx-auto max-w-screen-lg sm:heading-2 md:heading-1">
+					Jumpstart your next project with a theme
+				</h1>
+			</div>
+		</div>
+
+		<div class="grid-container overflow-hidden border-t border-astro-gray-500 pt-16">
+			<section class="space-y-14">
+				<div>
+					<h2 class="heading-4 sm:heading-3 md:heading-2" id="featured">Featured themes</h2>
+					<p class="body text-astro-gray-200 md:body-large">
+						Professional themes designed and developed by our sponsors
+					</p>
+				</div>
+				<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+					{featured.map((theme) => <ThemeCard {theme} />)}
+				</div>
+				<div class="flex justify-center">
+					<a href="/themes/1/" class="button button-primary"> Discover more themes </a>
+				</div>
+			</section>
+
+			<section class="space-y-14">
+				<div>
+					<span class="bg-clip-text text-transparent bg-red-pink-gradient font-semibold"
+						>Find the theme for you</span
+					>
+
+					<h2
+						class="mt-1 heading-4 sm:heading-3 md:heading-2 text-white text-balance"
+						id="categories"
+					>
+						Launch your next site at light speed with our catalog of free and premium Astro themes
+					</h2>
+				</div>
+
+				<div class="mt-4 sm:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4 md:max-lg:hidden">
+					{
+						categories.map(({ href, title, description, cta, image }) => (
+							<a
+								{href}
+								class="group flex flex-col p-1 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+							>
+								<div class="p-3 space-y-2">
+									<h3 class="text-base text-white font-semibold">{title}</h3>
+									<p class="hidden sm:block text-astro-gray-200 font-light text-sm xl:text-base md:text-balance">
+										{description}
+									</p>
+								</div>
+								<div class="relative">
+									<Image
+										src={image}
+										alt=""
+										class="w-full h-48 object-cover rounded-lg xl:rounded-xl"
+									/>
+									<div class="opacity-0 transition-opacity group-hover:opacity-100 absolute inset-0 flex items-center justify-center">
+										<div class="bg-astro-gray-600/70 border border-astro-gray-400/30 px-4 py-2 rounded-full flex items-center">
+											<span class="px-1 font-medium">{cta}</span>
+											<Icon name="right-arrow" class="h-6 w-6 text-astro-gray-200" />
+										</div>
+									</div>
+								</div>
+							</a>
+						))
+					}
+				</div>
+			</section>
+		</div>
+
+		<div class="grid-container overflow-hidden border-t border-astro-gray-500 py-16">
+			<section class="space-y-11 flex flex-col items-center max-w-2xl mx-auto">
+				<Icon name="logos/astro" class="w-auto h-16 shrink-0" />
+				<h2 class="heading-3 mx-auto sm:heading-2 md:heading-1">Showcase your themes</h2>
+				<p class="heading-5 text-center text-astro-gray-200 md:heading-3">
+					Want to feature your theme on this page? Become a theme sponsor to showcase your premium
+					designs and help support Astro’s open source mission.
+				</p>
+				<div class="flex justify-center">
+					<Link href="https://opencollective.com/astrodotbuild/">
+						<span
+							class="bg-clip-text text-transparent bg-blue-purple-gradient group-hover:text-astro-blue transition-all ease-in-out duration-500 px-4"
+						>
+							Become a theme sponsor
+						</span>
+					</Link>
+				</div>
+			</section>
+
+			<div
+				class="pointer-events-none absolute left-0 top-[-150px] z-blur h-[800px] w-[70vw] -translate-x-2/3 bg-blue-purple-gradient opacity-30 mask-radial-gradient"
+			>
+			</div>
+
+			<div
+				class="pointer-events-none absolute right-0 top-[-150px] z-blur h-[800px] w-[70vw] translate-x-2/3 bg-blue-green-gradient opacity-30 mask-radial-gradient"
+			>
+			</div>
+			<div
+				class="pointer-events-none absolute left-1/2 bottom-[-500px] z-blur h-[800px] w-[120vw] lg:w-[70vw] -translate-x-1/2 bg-blue-purple-gradient opacity-50 mask-radial-gradient"
+			>
+			</div>
+		</div>
+	</div>
+</MainLayout>
