@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astropix
 repoUrl: https://github.com/alexanderniebuhr/astropix
-homepageUrl: https://github.com/alexanderniebuhr/astropix/blob/main/packages/astropix/README.md
+homepageUrl: https://www.npmjs.com/package/astropix
 downloads: 4
 ---

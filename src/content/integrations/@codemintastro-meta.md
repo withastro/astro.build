@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@codemint/astro-meta
 repoUrl: https://github.com/arabbani/astro-meta
-homepageUrl: https://github.com/arabbani/astro-meta#readme
+homepageUrl: https://astro-meta.vercel.app/
 badge: new
 downloads: 794
 ---

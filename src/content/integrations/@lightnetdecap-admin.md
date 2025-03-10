@@ -4,7 +4,7 @@ title: "@lightnet/decap-admin"
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@lightnet/decap-admin
-homepageUrl: https://lightnet-docs.pages.dev
+homepageUrl: https://lightnet.community
 downloads: 236
 description: Administration UI for LightNet sites. This is built as an Astro
   Integration that uses Decap CMS to administrate LightNet´s content folders. It
