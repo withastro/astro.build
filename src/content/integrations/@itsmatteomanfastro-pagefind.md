@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-pagefind
 repoUrl: https://github.com/itsmatteomanf/astro-components
 homepageUrl: https://github.com/itsmatteomanf/astro-components/tree/main/packages/astro-pagefind#readme
-downloads: 2171
+downloads: 2281
 ---
