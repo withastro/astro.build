@@ -1,6 +1,6 @@
 ---
 title: 'Astro 5.5'
-description: 'Astro 5.5 dives deep with easier Mermaid diagram support, improved Markdown compatibility, and type-safe sessions!'
+description: 'Astro 5.5 dives deep with better support for diagramming tools, improved Markdown compatibility, and type-safe sessions!'
 homepageLink:
   title: 'Astro 5.5'
   subtitle: 'Available now!'
@@ -14,11 +14,11 @@ lang: 'en'
 
 import BlogContentImage from '/src/components/BlogContentImage.astro';
 
-**Astro 5.5 dives deep with easier Mermaid diagram support, improved Markdown compatibility, and type-safe sessions!**
+**Astro 5.5 dives deep with better support for diagramming tools, improved Markdown compatibility, and type-safe sessions!**
 
 🧜‍♀️ Dive into a sea of new features with these improvements to Astro:
 
-- [**Easier Mermaid diagram support in Markdown**](#easier-mermaid-diagram-support-in-markdown)
+- [**Better support for diagramming tools in Markdown**](#better-support-for-diagramming-tools-in-markdown)
 - [**Type-safe experimental sessions**](#type-safe-experimental-sessions)
 - [**Improved heading ID compatibility**](#improved-heading-id-compatibility)
 
@@ -34,9 +34,9 @@ pnpm upgrade astro --latest
 yarn upgrade astro --latest
 ```
 
-## Easier Mermaid diagram support in Markdown
+## Better support for diagramming tools in Markdown
 
-Mermaid is a popular diagramming and charting tool that uses text definitions inside code blocks to render charts directly inside your Markdown content. Until now, using Mermaid diagrams in Astro could be tricky because syntax highlighting would interfere with how the code blocks are rendered. Astro 5.5 introduces a new `excludeLangs` option in your Markdown syntax highlighting configuration that makes it possible to skip syntax highlighting for specific language code blocks. This unlocks the ability to use Mermaid without disabling syntax highlighting for other blocks.
+Tools like Mermaid and D2 let you define charts and diagrams in code blocks in Markdown, which are then rendered inside the content. Until now, using these in Astro could be tricky, because syntax highlighting would interfere with how the code blocks are rendered. Astro 5.5 introduces a new `excludeLangs` option in your Markdown configuration that makes it possible to skip syntax highlighting for specific language code blocks. This unlocks the ability to use tools like these without disabling syntax highlighting for other blocks.
 
 Here's an example of how to configure Astro to disable highlighting for the `mermaid` language after installing the [`rehype-mermaid` plugin](https://github.com/remcohaszing/rehype-mermaid):
 
@@ -67,7 +67,7 @@ graph TD
 ```
 ````
 
-Which will render as a diagram in your page.
+This will then render as a diagram in your page.
 
 Massive thanks to [Chris Chua](https://github.com/chrisirhc) for this contribution.
 
