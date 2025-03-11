@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-og-canvas
 repoUrl: https://github.com/delucis/astro-og-canvas
 homepageUrl: https://github.com/delucis/astro-og-canvas#readme
-downloads: 11847
+downloads: 12405
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@lekoarts/clerk-loader
 repoUrl: https://github.com/LekoArts/astro-loaders
 homepageUrl: https://github.com/LekoArts/astro-loaders
 badge: new
-downloads: 53
+downloads: 54
 ---

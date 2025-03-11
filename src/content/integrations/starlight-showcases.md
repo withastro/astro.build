@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-showcases
 repoUrl: https://github.com/HiDeoo/starlight-showcases
 homepageUrl: https://www.npmjs.com/package/starlight-showcases
-downloads: 1707
+downloads: 1697
 ---
