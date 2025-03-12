@@ -21,6 +21,7 @@ import BlogContentImage from '/src/components/BlogContentImage.astro';
 - [**Better support for diagramming tools in Markdown**](#better-support-for-diagramming-tools-in-markdown)
 - [**Type-safe experimental sessions**](#type-safe-experimental-sessions)
 - [**Improved heading ID compatibility**](#improved-heading-id-compatibility)
+- [**Experimental: preserve order of style and script tags**](#experimental-preserve-order-of-style-and-script-tags)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -128,13 +129,73 @@ export default defineConfig({
 
 This is particularly useful for sites that might have anchor links shared between GitHub, npm documentation, and your Astro website.
 
+## Experimental: preserve order of style and script tags
+
+Currently, Astro reverses the order of style and script tags in the generated HTML output, which can give unexpected results. Changing this to preserve the order is a breaking change, so it's behind an experimental flag in Astro 5.5. 
+
+You can enable it in your configuration like this:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    preserveScriptOrder: true,
+  },
+});
+```
+
+As an example, consider these styles:
+
+```astro
+<style>
+  body {
+    background-color: red;
+  }
+</style>
+<style>
+  body {
+    background-color: yellow;
+  }
+</style>
+```
+
+By default, Astro will generate the following output:
+
+```html
+<style>
+  body {
+    background-color: yellow;
+  }
+  body {
+    background-color: red;
+  }
+</style>
+```
+
+With the new `preserveScriptOrder` flag enabled, Astro will generate the styles in the order they are defined:
+
+```html
+<style>
+  body {
+    background-color: red;
+  }
+  body {
+    background-color: yellow;
+  }
+</style>
+``` 
+
+
+This is likely to become the default behavior in Astro 6, so it's a good idea to test your site with this flag enabled to ensure it works as expected.
+
 ## Bug fixes
 
 As always, we've been working hard on fixing issues since the [5.4 release](/blog/astro-540). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
 
 ## Thanks
 
-Thanks to everyone who contributed to this release, including [Chris Swithinbank](https://github.com/delucis), [Emanuele Stoppa](https://github.com/ematipico), [Luiz Ferraz](https://github.com/Fryuni), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [Chris Chua](https://github.com/chrisirhc), and many more.
+Thanks to everyone who contributed to this release, including [Chris Swithinbank](https://github.com/delucis), [Emanuele Stoppa](https://github.com/ematipico), [Reuben Tier](https://github.com/TheOtterLord), [Luiz Ferraz](https://github.com/Fryuni), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [Chris Chua](https://github.com/chrisirhc), and many more.
 
 We look forward to seeing what you build with Astro 5.5! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
 
