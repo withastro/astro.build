@@ -36,7 +36,9 @@ yarn upgrade astro --latest
 
 ## Better support for diagramming tools in Markdown
 
-Tools like Mermaid and D2 let you define charts and diagrams in code blocks in Markdown, which are then rendered inside the content. Until now, using these in Astro could be tricky, because syntax highlighting would interfere with how the code blocks are rendered. Astro 5.5 introduces a new `excludeLangs` option in your Markdown configuration that makes it possible to skip syntax highlighting for specific language code blocks. This unlocks the ability to use tools like these without disabling syntax highlighting for other blocks.
+Tools like Mermaid and D2 let you define charts and diagrams in code blocks in Markdown, which are then rendered inside the content. Until now, using these in Astro could be tricky, because Astro's default syntax highlighting would interfere with how the code blocks were rendered.
+
+Astro 5.5 introduces a new `excludeLangs` option in your Markdown configuration that makes it possible to skip syntax highlighting for specific language code blocks. This unlocks the ability to use tools like these without disabling syntax highlighting for other blocks.
 
 Here's an example of how to configure Astro to disable highlighting for the `mermaid` language after installing the [`rehype-mermaid` plugin](https://github.com/remcohaszing/rehype-mermaid):
 
@@ -55,7 +57,7 @@ export default defineConfig({
 });
 ```
 
-Then you can create diagrams directly in your Markdown content:
+Then, you can create diagrams directly in your Markdown content:
 
 ````md
 ```mermaid
@@ -104,15 +106,15 @@ Astro.session.set('user', 1); // Error: Type 'number' is not assignable to type 
 
 This improvement makes working with sessions in Astro more reliable and helps catch potential errors at development time rather than at runtime.
 
-For more information, see the [experimental session docs](https://docs.astro.build/en/reference/experimental-flags/sessions/#session-data-types).
+For more information, see the [experimental sessions docs](https://docs.astro.build/en/reference/experimental-flags/sessions/#session-data-types).
 
 ## Improved heading ID compatibility
 
-Astro 5.5 introduces a new `experimental.headingIdCompat` flag that improves compatibility with how heading IDs are generated in other Markdown processors like those used by GitHub and npm.
+Astro 5.5 introduces a new [`experimental.headingIdCompat`](https://docs.astro.build/en/reference/experimental-flags/heading-id-compat/) flag that generates heading IDs consistent with other common Markdown processors like those used by GitHub and npm.
 
 By default, Astro removes trailing dashes from the end of IDs it generates for headings containing special characters. This behavior differs from other common Markdown processors, which can cause inconsistencies when linking to headings across different platforms.
 
-With the new configuration flag, you can now ensure your heading IDs follow the same conventions as other platforms:
+With the new configuration flag, you can now ensure your heading IDs follow the same convention as other platforms:
 
 ```js title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
@@ -135,3 +137,7 @@ As always, we've been working hard on fixing issues since the [5.4 release](/blo
 Thanks to everyone who contributed to this release, including [Chris Swithinbank](https://github.com/delucis), [Emanuele Stoppa](https://github.com/ematipico), [Luiz Ferraz](https://github.com/Fryuni), [Sarah Rainsberger](https://github.com/sarah11918), [HiDeoo](https://github.com/HiDeoo), [Yan Thomas](https://github.com/yanthomasdev), [Chris Chua](https://github.com/chrisirhc), and many more.
 
 We look forward to seeing what you build with Astro 5.5! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['astro-540', 'astro-530']} />
