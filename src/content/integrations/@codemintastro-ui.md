@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@codemint/astro-ui
 repoUrl: https://github.com/arabbani/astro-ui
 homepageUrl: https://github.com/arabbani/astro-ui
 badge: new
-downloads: 853
+downloads: 943
 ---

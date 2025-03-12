@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@strifeapp/astro
 homepageUrl: https://www.npmjs.com/package/@strifeapp/astro
 badge: new
-downloads: 237
+downloads: 442
 ---
