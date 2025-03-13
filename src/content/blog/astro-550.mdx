@@ -131,7 +131,11 @@ This is particularly useful for sites that might have anchor links shared betwee
 
 ## Experimental: preserve order of style and script tags
 
-Currently, Astro reverses the order of style and script tags in the generated HTML output, which can give unexpected results. Changing this to preserve the order is a breaking change, so it's behind an experimental flag in Astro 5.5. 
+Experimental flags aren't only for cool new features. Sometimes, things just have to *change*.  We also use experimental flags to carefully introduce you to breaking changes that will eventually become the new default behavior. `experimental.preserveScriptOrder` is one of them!
+
+When rendering multiple `<style>` and `<script>` tags on the same page, Astro currently reverses their order in your generated HTML output. This can give unexpected results, for example CSS styles that apply in development mode being overridden by earlier style tags once your site is built.
+
+We encourage you to add this experimental style and script ordering as soon as you are able. This will help us test the new behavior and ensure your code is ready when this becomes the new normal.
 
 You can enable it in your configuration like this:
 
@@ -145,49 +149,9 @@ export default defineConfig({
 });
 ```
 
-As an example, consider these styles:
+With the new `preserveScriptOrder` flag enabled, Astro will generate your styles and scripts in the order they are defined. If you were previously compensating for Astro's behavior by writing these out of order, you will need to update your code. 
 
-```astro
-<style>
-  body {
-    background-color: red;
-  }
-</style>
-<style>
-  body {
-    background-color: yellow;
-  }
-</style>
-```
-
-By default, Astro will generate the following output:
-
-```html
-<style>
-  body {
-    background-color: yellow;
-  }
-  body {
-    background-color: red;
-  }
-</style>
-```
-
-With the new `preserveScriptOrder` flag enabled, Astro will generate the styles in the order they are defined:
-
-```html
-<style>
-  body {
-    background-color: red;
-  }
-  body {
-    background-color: yellow;
-  }
-</style>
-``` 
-
-
-This is likely to become the default behavior in Astro 6, so it's a good idea to test your site with this flag enabled to ensure it works as expected.
+We think this change makes sense in the long run for everyone. Thanks to `@JaneSmith` for first identifying this issue, and `@theOtterLord` for contributing the compiler fix!
 
 ## Bug fixes
 
