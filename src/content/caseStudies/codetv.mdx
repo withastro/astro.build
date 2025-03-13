@@ -73,25 +73,33 @@ Incrementally, Jason added the necessary integrations to CodeTV to build out the
 
 <Blockquote>
 	<Fragment slot="quote">
+		I just keep adding more stuff to it, each time thinking, "Maybe this is the thing that will stop me." But so far, I haven't found the limits yet. And, I'm starting to doubt that they even exist.
+	</Fragment>
+	<Fragment slot="caption">— Jason Lengstorf, CodeTV</Fragment>
+</Blockquote>
+
+Jason was even able to reuse a custom React Algolia component that had moved with him over the years, from one site to another, without needing to rebuild a site search solution, nor remember how he did it originally!
+
+## Results
+
+Jason's original plan was to "make it work, then make it fast." But he made CodeTV work AND fast, because as Jason noted, "That's just the nature of how you build on Astro." For a complex, content-heavy, media streaming site with several integrations, CodeTV exceeded Jason's expectations of what Astro could achieve.
+
+(lighthouse? some kind of perf graphic or gif of navigating through the site?)
+
+Now, Jason spends most of his time working on content, his original goal, because the housing for his content can be an afterthought. But, when he does want to add new features, he doesn't have to fight against optimizing API calls or database latency. Almost every time Jason wanted to improve performance, Astro's prerendering was the solution. The result is a content-heavy site that feels dynamic and responsive to viewers who may be navigating through dozens of pages each visit as they surf CodeTV's content.
+
+
+{/*  
+
+BACKUP QUOTE?
+
+
+<Blockquote>
+	<Fragment slot="quote">
 		I was like, "Let's see how far we can push this thing before it breaks." And I just never found the breaking point.
 	</Fragment>
 	<Fragment slot="caption">— Jason Lengstorf, CodeTV</Fragment>
 </Blockquote>
-
-Jason was even able to reuse a custom React Algolia component that had moved with him over the years, from one site to another, without needing to rebuild a site search solution, nor remember how he did it originally.
-
-## Results
-
-<Blockquote>
-	<Fragment slot="quote">
-		I just keep adding more stuff to it, each time thinking "Maybe this is the thing that will stop me." But so far, I haven't found the limits yet. And, I'm starting to doubt that they even exist.
-	</Fragment>
-	<Fragment slot="caption">— Jason Lengstorf, CodeTV</Fragment>
-</Blockquote>
-
-{/*  
-
-In order to maintain a website that was easy to use for both less experienced developers as well as folks that were not familiar with code, Thinkmill needed a solution that was simple.
 
 <ImageFigure caption="Astro is extremely well documented and has a friendly community.">
 	<BlogContentImage src={astroBenefits} />
