@@ -39,7 +39,7 @@ yarn upgrade astro --latest
 
 Tools like Mermaid and D2 let you define charts and diagrams in code blocks in Markdown, which are then rendered inside the content. Until now, using these in Astro could be tricky, because Astro's default syntax highlighting would interfere with how the code blocks were rendered.
 
-Astro 5.5 introduces a new `excludeLangs` option in your Markdown configuration that makes it possible to skip syntax highlighting for specific language code blocks. This unlocks the ability to use tools like these without disabling syntax highlighting for other blocks.
+Astro 5.5 introduces a new [`excludeLangs`](https://docs.astro.build/en/reference/configuration-reference/#markdownsyntaxhighlightexcludelangs) option in your Markdown configuration that makes it possible to skip syntax highlighting for specific language code blocks. This unlocks the ability to use tools like these without disabling syntax highlighting for other blocks.
 
 Here's an example of how to configure Astro to disable highlighting for the `mermaid` language after installing the [`rehype-mermaid` plugin](https://github.com/remcohaszing/rehype-mermaid):
 
@@ -131,7 +131,7 @@ This is particularly useful for sites that might have anchor links shared betwee
 
 ## Experimental: preserve order of style and script tags
 
-Experimental flags aren't only for cool new features. Sometimes, things just have to *change*.  We also use experimental flags to carefully introduce you to breaking changes that will eventually become the new default behavior. `experimental.preserveScriptOrder` is one of them!
+Experimental flags aren't only for cool new features. Sometimes, things just have to *change*.  We also use experimental flags to carefully introduce you to breaking changes that will eventually become the new default behavior. [`experimental.preserveScriptOrder`](https://docs.astro.build/en/reference/experimental-flags/preserve-scripts-order/) is one of them!
 
 When rendering multiple `<style>` and `<script>` tags on the same page, Astro currently reverses their order in your generated HTML output. This can give unexpected results, for example CSS styles that apply in development mode being overridden by earlier style tags once your site is built.
 
