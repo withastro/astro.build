@@ -135,8 +135,6 @@ Experimental flags aren't only for cool new features. Sometimes, things just hav
 
 When rendering multiple `<style>` and `<script>` tags on the same page, Astro currently reverses their order in your generated HTML output. This can give unexpected results, for example CSS styles that apply in development mode being overridden by earlier style tags once your site is built.
 
-We encourage you to add this experimental style and script ordering as soon as you are able. This will help us test the new behavior and ensure your code is ready when this becomes the new normal.
-
 You can enable it in your configuration like this:
 
 ```js title="astro.config.mjs"
@@ -151,7 +149,9 @@ export default defineConfig({
 
 With the new `preserveScriptOrder` flag enabled, Astro will generate your styles and scripts in the order they are defined. If you were previously compensating for Astro's behavior by writing these out of order, you will need to update your code. 
 
-We think this change makes sense in the long run for everyone. Thanks to `@JaneSmith` for first identifying this issue, and `@theOtterLord` for contributing the compiler fix!
+We think this change makes sense in the long run for everyone, so we encourage you to test this now to ensure it works before it becomes the default behavior. 
+
+Thanks to [JaneSmith](https://github.com/withastro/astro/issues/12264) for first identifying this issue, and [Reuben Tier](https://github.com/TheOtterLord) for contributing the compiler fix!
 
 ## Bug fixes
 
