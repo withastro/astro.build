@@ -16,18 +16,17 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 	<div class="hidden shrink flex-row items-center gap-12 lg:flex text-base">
 		<a href="https://docs.astro.build" class="link">Documentation</a>
 		<a href="/blog/" data-astro-prefetch class="link">Blog</a>
-		<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
 		<HeaderDropDown
 			label="Resources"
 			items={[
 				{ href: '/themes/', label: 'Themes', icon: 'palette', prefetch: true },
 				{ href: '/integrations/', label: 'Integrations', icon: 'layers', prefetch: true },
+				{ href: '/showcase/', label: 'Site showcase', icon: 'browser-windows', prefetch: true },
 				{
 					href: 'https://docs.astro.build/en/tutorial/0-introduction/',
 					label: 'Tutorials',
 					icon: 'open-book',
 				},
-				{ href: '/case-studies/', label: 'Case studies', icon: 'file-alt', prefetch: true },
 			]}
 		/>
 		<HeaderDropDown
@@ -36,6 +35,13 @@ const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
 				{ href: '/chat/', label: 'Discord', icon: 'social/discord' },
 				{ href: 'https://opencollective.com/astrodotbuild', label: 'Sponsors', icon: 'heart' },
 				{ href: 'https://shop.astro.build/', label: 'Merch', icon: 'shopping-bag' },
+			]}
+		/>
+		<HeaderDropDown
+			label="Enterprise"
+			items={[
+				{ href: '/agencies/', label: 'Agencies', icon: 'bag-briefcase', badge: 'New' },
+				{ href: '/case-studies/', label: 'Case studies', icon: 'file-alt', prefetch: true },
 			]}
 		/>
 	</div>
