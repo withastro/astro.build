@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mgcrea/astro-background-image
 repoUrl: https://github.com/mgcrea/astro-background-image
 homepageUrl: https://github.com/mgcrea/astro-background-image#readme
-downloads: 40
+downloads: 44
 ---
