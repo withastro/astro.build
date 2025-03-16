@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/@wix/astro
 homepageUrl: https://www.npmjs.com/package/@wix/astro
-downloads: 528
+downloads: 588
 ---
