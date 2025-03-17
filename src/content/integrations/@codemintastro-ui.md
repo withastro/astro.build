@@ -6,8 +6,8 @@ categories:
   - css+ui
   - recent
 npmUrl: https://www.npmjs.com/package/@codemint/astro-ui
-repoUrl: https://github.com/arabbani/astro-ui
-homepageUrl: https://github.com/arabbani/astro-ui
+repoUrl: https://github.com/ArifRabbaniIn/astro-ui
+homepageUrl: https://github.com/ArifRabbaniIn/astro-ui
 badge: new
 downloads: 1373
 ---
