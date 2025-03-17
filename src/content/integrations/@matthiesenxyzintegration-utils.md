@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/integration-utils
 repoUrl: https://github.com/matthiesenxyz/integration-utils
 homepageUrl: https://github.com/matthiesenxyz/integration-utils#readme
-downloads: 285
+downloads: 280
 ---

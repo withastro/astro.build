@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrojs-service-worker
 repoUrl: https://github.com/tatethurston/astrojs-service-worker
 homepageUrl: https://www.npmjs.com/package/astrojs-service-worker
-downloads: 5759
+downloads: 5587
 ---
