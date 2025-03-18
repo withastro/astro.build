@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@dmno/astro-integration
 repoUrl: https://github.com/dmno-dev/dmno
 homepageUrl: https://dmno.dev/docs/integrations/astro
-downloads: 27
+downloads: 45
 ---

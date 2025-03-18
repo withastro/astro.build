@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-fix-paths
 repoUrl: https://github.com/ArtechFuz3D/astro-fix-paths
 homepageUrl: https://github.com/ArtechFuz3D/astro-fix-paths
 badge: new
-downloads: 381
+downloads: 387
 ---

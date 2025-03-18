@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-loader-i18n
 repoUrl: https://github.com/openscript/astro-loader-i18n
 homepageUrl: https://github.com/openscript/astro-loader-i18n
 badge: new
-downloads: 106
+downloads: 114
 ---

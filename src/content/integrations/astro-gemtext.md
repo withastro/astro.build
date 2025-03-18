@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-gemtext
 repoUrl: https://github.com/aspizu/astro-gemtext
 homepageUrl: https://github.com/aspizu/astro-gemtext
 badge: new
-downloads: 380
+downloads: 391
 ---
