@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astronauthq/integrations
 homepageUrl: https://www.npmjs.com/package/@astronauthq/integrations
 badge: new
-downloads: 191
+downloads: 192
 ---

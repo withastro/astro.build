@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-control
 homepageUrl: https://www.npmjs.com/package/astro-control
-downloads: 7
+downloads: 12
 ---

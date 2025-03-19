@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-youtube
 repoUrl: https://github.com/advanced-astro/astro-embeds
 homepageUrl: https://www.npmjs.com/package/astro-youtube
-downloads: 2
+downloads: 3
 ---

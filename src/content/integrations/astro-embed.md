@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-embed
 repoUrl: https://github.com/delucis/astro-embed
 homepageUrl: https://astro-embed.netlify.app/
-downloads: 39592
+downloads: 40736
 ---
