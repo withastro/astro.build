@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/is-wdsssx
 repoUrl: ssh://git@github.com/apophis51/package
-homepageUrl: https://github.com/apophis51/package#readme
+homepageUrl: https://www.npmjs.com/package/is-wdsssx
 downloads: 1
 ---

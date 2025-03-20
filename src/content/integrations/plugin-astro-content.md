@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/plugin-astro-content
 repoUrl: https://github.com/Its-Just-Nans/plugin-astro-content
-homepageUrl: https://github.com/Its-Just-Nans/plugin-astro-content
+homepageUrl: https://www.npmjs.com/package/plugin-astro-content
 downloads: 16
 ---

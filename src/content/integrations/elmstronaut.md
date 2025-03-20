@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/elmstronaut
 repoUrl: https://github.com/feedbackone/elmstronaut
-homepageUrl: https://github.com/feedbackone/elmstronaut
+homepageUrl: https://www.npmjs.com/package/elmstronaut
 badge: new
 downloads: 140
 ---
