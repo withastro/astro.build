@@ -7,7 +7,7 @@ categories:
   - media
   - recent
 npmUrl: https://www.npmjs.com/package/buttterui
-homepageUrl: https://github.com/HeJimenez00/ButterUI
+homepageUrl: https://www.npmjs.com/package/buttterui
 badge: new
 downloads: 47
 ---
