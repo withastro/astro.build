@@ -9,5 +9,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-theme-catppuccin
 homepageUrl: https://catppuccin-starlight.otterlord.dev/
-downloads: 1008
+downloads: 1076
 ---

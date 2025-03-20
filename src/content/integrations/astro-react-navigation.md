@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-react-navigation
 repoUrl: https://github.com/jkhaui/castro
 homepageUrl: https://www.npmjs.com/package/astro-react-navigation
-downloads: 10
+downloads: 11
 ---
