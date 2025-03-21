@@ -10,6 +10,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/preact
 image: /assets/integrations/preact.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/preact/
-downloads: 50900
+downloads: 50955
 official: true
 ---

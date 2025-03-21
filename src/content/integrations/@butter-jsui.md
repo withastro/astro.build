@@ -13,5 +13,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@butter-js/ui
 homepageUrl: https://github.com/HeJimenez00/ButterUI
 badge: new
-downloads: 74
+downloads: 95
 ---

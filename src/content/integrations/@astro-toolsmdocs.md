@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@astro-tools/mdocs
 repoUrl: https://github.com/wishrd/astro-tools
 homepageUrl: https://astro-tools.pages.dev/tools/mdocs/
 badge: new
-downloads: 602
+downloads: 603
 ---

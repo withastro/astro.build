@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@coffic/shared-ui
 repoUrl: https://github.com/CofficLab/shared-ui
 homepageUrl: https://github.com/CofficLab/shared-ui#readme
 badge: new
-downloads: 621
+downloads: 622
 ---
