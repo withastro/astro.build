@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/unplugin-fonts-with-stretch
 repoUrl: https://github.com/cssninjaStudio/unplugin-fonts
 homepageUrl: https://www.npmjs.com/package/unplugin-fonts-with-stretch
 badge: new
-downloads: 73
+downloads: 74
 ---
