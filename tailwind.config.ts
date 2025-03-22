@@ -85,45 +85,6 @@ export default {
 		container: false,
 	},
 	plugins: [
-		plugin(function fontPlugin({ addBase }) {
-			addBase({
-				'font-sans': {
-					fontFamily: ['Inter', 'inter-fallback', 'system-ui', 'sans-serif'],
-					fontVariationSettings: 'var(--sans-wght)',
-					fontFeatureSettings: [
-						'var(--sans-case)',
-						'var(--sans-ss03)',
-						'var(--sans-cpsp)',
-						'var(--sans-cv03)',
-						'var(--cv04)',
-						'var(--cv05)',
-						'var(--cv06)',
-					],
-				},
-				'font-mono': {
-					fontFamily: ['MDIO', 'md-io-fallback', 'monospace'],
-					fontVariationSettings: 'var(--mono-ital)',
-					fontFeatureSettings: ['var(--mono-calt)', 'var(--mono-ital)', 'var(--mono-zero)'],
-				},
-				'font-heading': {
-					fontFamily: ['Obviously', 'obviously-fallback', 'system-ui', 'sans-serif'],
-					fontVariationSettings: [
-						'var(--heading-wdth)',
-						'var(--heading-wght)',
-						'var(--heading-slnt)',
-					],
-					fontFeatureSettings: [
-						'var(--heading-salt)',
-						'var(--heading-ss06)',
-						'var(--heading-ss11)',
-						'var(--heading-cv09)',
-						'var(--heading-liga)',
-						'var(--heading-calt)',
-					],
-				},
-			});
-		}),
-
 		// adds a `s-*` utility to apply the same width and height
 		plugin(function sizePlugin(api) {
 			api.matchUtilities(
