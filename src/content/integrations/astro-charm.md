@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-charm
 repoUrl: https://github.com/Yuhanawa/astro-charm
 homepageUrl: https://github.com/Yuhanawa/astro-charm
-downloads: 60
+downloads: 80
 ---
