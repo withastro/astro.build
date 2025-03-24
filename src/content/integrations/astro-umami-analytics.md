@@ -6,6 +6,6 @@ categories:
   - analytics
 npmUrl: https://www.npmjs.com/package/astro-umami-analytics
 repoUrl: https://github.com/thevrus/astro-umami
-homepageUrl: https://www.npmjs.com/package/astro-umami-analytics
+homepageUrl: https://github.com/thevrus/astro-umami
 downloads: 120
 ---
