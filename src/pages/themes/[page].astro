@@ -100,12 +100,6 @@ if (allPages.length && !page) {
 }
 
 const themes = page.data;
-
-const showFeatured =
-	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value);
-const featured: ThemeAndAuthor[] = showFeatured
-	? await fetch(`${THEMES_API_URL}/api/themes/featured`).then((res) => res.json())
-	: [];
 ---
 
 <MainLayout title="Themes" image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}>
@@ -137,20 +131,7 @@ const featured: ThemeAndAuthor[] = showFeatured
 				<div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12 sm:px-4 lg:px-8 xl:px-10 pt-8 lg:pt-10 pb-10 sm:pb-12 md:pb-16 lg:pb-20">
 					<h2 class="sr-only">Themes</h2>
 
-					{showFeatured && featured.length > 0 && (
-						<CardGridGroup
-							title="Featured Themes"
-							tagline="Professional themes designed and developed by our sponsors"
-						>
-							<CardGrid class="sm:grid-cols-2 xl:grid-cols-3 w-full max-w-screen-xl">
-								{featured.slice(0, 3).map((theme) => (
-									<ThemeCard theme={theme} />
-								))}
-							</CardGrid>
-						</CardGridGroup>
-					)}
-
-					<CardGridGroup title={showFeatured && featured.length > 0 ? 'All Themes' : undefined}>
+					<CardGridGroup>
 						<CardGrid class="sm:grid-cols-2 xl:grid-cols-3 w-full max-w-screen-xl">
 							{themes.map((theme) => (
 								<ThemeCard theme={theme} />
