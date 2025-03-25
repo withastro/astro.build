@@ -6,10 +6,8 @@ description: A lightweight Astro component for rendering content in a different
 categories:
   - css+ui
   - frameworks
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-teleport
 repoUrl: https://github.com/ok-98/astro-teleport
 homepageUrl: https://github.com/ok-98/astro-teleport#readme
-badge: new
-downloads: 134
+downloads: 96
 ---

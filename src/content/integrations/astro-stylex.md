@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-stylex
 repoUrl: https://github.com/lilnasy/gratelets
-homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/stylex
-downloads: 16
+homepageUrl: https://www.npmjs.com/package/astro-stylex
+downloads: 12
 ---

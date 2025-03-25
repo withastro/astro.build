@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-tools/client-directives
 repoUrl: https://github.com/wishrd/astro-tools
-homepageUrl: https://astro-tools.pages.dev
-downloads: 77
+homepageUrl: https://astro-tools.pages.dev/client-directives/on/
+downloads: 103
 ---
