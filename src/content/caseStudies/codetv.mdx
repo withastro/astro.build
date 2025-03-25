@@ -15,10 +15,7 @@ coverImage: /src/content/caseStudies/_images/codetv/cover-image.webp
 headerImage: /src/content/caseStudies/_images/codetv/header.png
 ---
 
-import thinkmillResults from "./_images/thinkmill/thinkmill-results-summary.webp"
-import thinkmillHomepage from "./_images/thinkmill/thinkmill-homepage.webp"
-import astroBenefits from "./_images/thinkmill/astro-benefits.webp"
-import unlighthouseResults from "./_images/thinkmill/unlighthouse-results.webp"
+import coreWebVitalsGraphic from "./_images/codetv/codetv-cwv.webp"
 import BlogContentImage from "~/components/BlogContentImage.astro"
 import ImageFigure from "~/components/ImageFigure.astro"
 import Blockquote from "~/components/Blockquote.astro"
@@ -84,7 +81,14 @@ Jason was even able to reuse a custom React Algolia component that had moved wit
 
 Now, Jason spends most of his time working on content, his original goal, because the housing for his content can be an afterthought. But, when he does want to add new features, he doesn't have to fight against optimizing API calls or database latency. Almost every time Jason wanted to improve performance, Astro's prerendering was the solution. The result is a content-heavy site that feels dynamic and responsive to viewers who may be navigating through dozens of pages each visit as they surf CodeTV's content.
 
-(lighthouse? some kind of perf graphic or gif of navigating through the site?)
+<ImageFigure
+	caption="Real-world Core Web Vital metrics collected from the CrUX Report. CodeTV has good performance on desktop and mobile in the key metrics: Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift."
+>
+	<BlogContentImage
+		src={coreWebVitalsGraphic}
+		alt="Real World Core Web Vitals (p75): 1.5s LCP, 45ms INP, 0.0 CLS."
+	/>
+</ImageFigure>
 
 Jason's original plan was to "make it work, then make it fast." But he made CodeTV work AND fast, because as Jason noted, "That's just the nature of how you build on Astro." As a complex, content-heavy, media streaming platform with several integrations and automated workflows, CodeTV proved that Astro's limits might not exist.
 
