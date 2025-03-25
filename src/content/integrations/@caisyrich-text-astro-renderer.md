@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@caisy/rich-text-astro-renderer
 homepageUrl: https://www.npmjs.com/package/@caisy/rich-text-astro-renderer
-downloads: 83
+downloads: 84
 ---
