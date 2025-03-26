@@ -18,8 +18,8 @@ importers:
         specifier: ^4.2.1
         version: 4.2.1(astro@5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.13)(jiti@1.21.6)(rollup@4.36.0)(typescript@5.8.2)(yaml@2.7.0))
       '@astrojs/netlify':
-        specifier: ^6.2.3
-        version: 6.2.3(@types/node@22.13.13)(astro@5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.13)(jiti@1.21.6)(rollup@4.36.0)(typescript@5.8.2)(yaml@2.7.0))(jiti@1.21.6)(rollup@4.36.0)(yaml@2.7.0)
+        specifier: ^6.2.4
+        version: 6.2.4(@types/node@22.13.13)(astro@5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.13)(jiti@1.21.6)(rollup@4.36.0)(typescript@5.8.2)(yaml@2.7.0))(jiti@1.21.6)(rollup@4.36.0)(yaml@2.7.0)
       '@astrojs/rss':
         specifier: ^4.0.11
         version: 4.0.11
@@ -235,8 +235,8 @@ packages:
     peerDependencies:
       astro: ^5.0.0
 
-  '@astrojs/netlify@6.2.3':
-    resolution: {integrity: sha512-QWSvoECD1ctC8N376TICRrc6F6XyyRiW3L9G1Z37B6o5BmMBXlkwsk9cMboDLbLqhcxR3RHBHXJYZ4rgjQDvQA==}
+  '@astrojs/netlify@6.2.4':
+    resolution: {integrity: sha512-Pk1ZRDgH4cmrIqIuYQn1DJjNKRLNjybHoYWMoZnE+zP2NLQFirR15FQFKGbg8S3+zWQ1EptOBAb/ETnXpbwepA==}
     peerDependencies:
       astro: ^5.3.0
 
@@ -4513,6 +4513,46 @@ packages:
       yaml:
         optional: true
 
+  vite@6.2.3:
+    resolution: {integrity: sha512-IzwM54g4y9JA/xAeBPNaDXiBF8Jsgl3VBQ2YQ/wOY6fyW3xMdSoltIV3Bo59DErdqdE6RxUfv8W69DvUorE4Eg==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      jiti: '>=1.21.0'
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      sass-embedded: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      jiti:
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+
   vitefu@1.0.6:
     resolution: {integrity: sha512-+Rex1GlappUyNN6UfwbVZne/9cYC4+R2XDk9xkNXBKMw6HQagdX9PgZ8V2v1WUSK1wfBLp7qbI1+XSNIlB1xmA==}
     peerDependencies:
@@ -4990,7 +5030,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@6.2.3(@types/node@22.13.13)(astro@5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.13)(jiti@1.21.6)(rollup@4.36.0)(typescript@5.8.2)(yaml@2.7.0))(jiti@1.21.6)(rollup@4.36.0)(yaml@2.7.0)':
+  '@astrojs/netlify@6.2.4(@types/node@22.13.13)(astro@5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.13)(jiti@1.21.6)(rollup@4.36.0)(typescript@5.8.2)(yaml@2.7.0))(jiti@1.21.6)(rollup@4.36.0)(yaml@2.7.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/underscore-redirects': 0.6.0
@@ -5000,7 +5040,7 @@ snapshots:
       astro: 5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.13)(jiti@1.21.6)(rollup@4.36.0)(typescript@5.8.2)(yaml@2.7.0)
       esbuild: 0.25.1
       tinyglobby: 0.2.12
-      vite: 6.2.2(@types/node@22.13.13)(jiti@1.21.6)(yaml@2.7.0)
+      vite: 6.2.3(@types/node@22.13.13)(jiti@1.21.6)(yaml@2.7.0)
     transitivePeerDependencies:
       - '@types/node'
       - encoding
@@ -10193,6 +10233,17 @@ snapshots:
       vfile-message: 4.0.2
 
   vite@6.2.2(@types/node@22.13.13)(jiti@1.21.6)(yaml@2.7.0):
+    dependencies:
+      esbuild: 0.25.1
+      postcss: 8.5.3
+      rollup: 4.36.0
+    optionalDependencies:
+      '@types/node': 22.13.13
+      fsevents: 2.3.3
+      jiti: 1.21.6
+      yaml: 2.7.0
+
+  vite@6.2.3(@types/node@22.13.13)(jiti@1.21.6)(yaml@2.7.0):
     dependencies:
       esbuild: 0.25.1
       postcss: 8.5.3
