@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@vibedesign/package
 homepageUrl: https://www.npmjs.com/package/@vibedesign/package
-downloads: 21
+downloads: 27
 ---
