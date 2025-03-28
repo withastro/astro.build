@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@rebelchris/astro-static-tweet
 repoUrl: https://github.com/rebelchris/astro-static-tweet
 homepageUrl: https://github.com/rebelchris/astro-static-tweet#readme
-downloads: 58
+downloads: 51
 ---
