@@ -8,6 +8,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/reactive-astro-sidebar
 repoUrl: https://github.com/sacarvy/Reactive_Sidebar
-homepageUrl: https://www.npmjs.com/package/reactive-astro-sidebar
+homepageUrl: https://github.com/sacarvy/Reactive_Sidebar#README
 downloads: 54
 ---

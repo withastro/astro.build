@@ -1,7 +1,7 @@
 ---
 name: astro-splide
 title: astro-splide
-description: The Astro component for Splide.
+description: The Astro component for Splide dedicated to slides / carousel / photo swiper.
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-splide

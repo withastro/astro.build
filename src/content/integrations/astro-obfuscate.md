@@ -6,10 +6,8 @@ description: astro-obfuscate is a set of components that prevent spam bots from
   Both SSG and SSR modes are supported.
 categories:
   - utilities
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-obfuscate
 repoUrl: https://github.com/TrueWinter/astro-obfuscate
 homepageUrl: https://github.com/TrueWinter/astro-obfuscate
-badge: new
 downloads: 283
 ---
