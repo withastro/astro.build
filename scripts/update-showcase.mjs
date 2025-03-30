@@ -505,6 +505,7 @@ const scraper = new ShowcaseScraper({
 		'https://snowdaycal.org',
 		// 2025-03-30 - theme demo advertising itself
 		'https://astro-sassify-template.pages.dev/',
+		'demo.sonicjs.com',
 
 	],
 });
