@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@aeonkit/astro
 homepageUrl: https://www.npmjs.com/package/@aeonkit/astro
-downloads: 11
+downloads: 112
 ---

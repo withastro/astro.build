@@ -501,6 +501,8 @@ const scraper = new ShowcaseScraper({
 		'http://getastrothemes.com',
 		// 2025-02-28
 		'https://calc.codingbroz.com/',
+		// 2025-03-10
+		'https://snowdaycal.org',
 	],
 });
 await scraper.run();
