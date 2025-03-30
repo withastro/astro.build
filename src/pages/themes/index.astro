@@ -2,7 +2,6 @@
 import { Icon } from 'astro-icon/components';
 import { THEMES_API_URL } from '~/helpers/constants.ts';
 import MainLayout from '~/layouts/MainLayout.astro';
-import Link from '../_components/Link.astro';
 import ThemeCard from './_components/ThemeCard.astro';
 import type { ThemeAndAuthor } from './_types/index.ts';
 
@@ -14,9 +13,13 @@ import LandingPage from '~/assets/themes/landing-page.png';
 import More from '~/assets/themes/more-themes.png';
 import Portfolio from '~/assets/themes/portfolio.png';
 
+export const prerender = false;
+
 if (Astro.url.searchParams.size > 0) {
 	Astro.redirect(`/themes/1/${Astro.url.searchParams.toString()}`, 301);
 }
+
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
 
 const featured: ThemeAndAuthor[] = await fetch(`${THEMES_API_URL}/api/themes/featured`).then(
 	(res) => res.json(),
@@ -69,6 +72,7 @@ const categories = [
 			'Discover all Astro themes and filter by your favorite technology, from Tailwind to Vue.',
 		cta: 'Browse all themes',
 		image: More,
+		persist: true,
 	},
 ];
 
@@ -89,22 +93,24 @@ const seo = {
 			</div>
 		</div>
 
-		<div class="grid-container pt-16 border-astro-gray-500 border-t overflow-hidden">
-			<section class="space-y-14">
+		<div class="grid-container pt-10 pb-28 border-astro-gray-500 border-t overflow-hidden">
+			<section>
 				<div>
-					<h2 class="heading-4 sm:heading-3 md:heading-2" id="featured">Featured themes</h2>
+					<h2 class="heading-4 sm:heading-3 md:heading-2 my-" id="featured">Featured themes</h2>
 					<p class="text-astro-gray-200 body md:body-large">
 						Professional themes designed and developed by our sponsors
 					</p>
 				</div>
-				<div class="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
+				<div class="gap-10 grid md:grid-cols-2 lg:grid-cols-3 mt-6">
 					{featured.map((theme) => <ThemeCard {theme} />)}
 				</div>
-				<div class="flex justify-center">
+				<div class="flex justify-center mt-[4.5rem]">
 					<a href="/themes/1/" class="button button-primary"> Discover more themes </a>
 				</div>
 			</section>
+		</div>
 
+		<div class="grid-container py-28 border-astro-gray-500 border-t overflow-hidden">
 			<section class="space-y-14">
 				<div>
 					<span class="bg-red-pink-gradient bg-clip-text font-semibold text-transparent"
@@ -119,15 +125,21 @@ const seo = {
 					</h2>
 				</div>
 
-				<div class="md:max-lg:hidden gap-2 lg:gap-4 grid grid-cols-1 lg:grid-cols-3 mt-4 sm:mt-8">
+				<div class="gap-10 grid grid-cols-1 lg:grid-cols-3 mt-4 sm:mt-8">
 					{
-						categories.map(({ href, title, description, cta, image }) => (
-							<a
-								{href}
-								class="group flex flex-col p-1 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+						categories.map(({ href, title, description, cta, image, persist }) => (
+							<div
+								class={`relative group flex flex-col p-1 border border-astro-dark-100/20 hover:border-astro-dark-100/40 focus-within:outline outline-2 outline-offset-2 outline-astro-pink-light rounded-xl xl:rounded-2xl overflow-hidden`}
 							>
 								<div class="space-y-2 p-3">
-									<h3 class="font-semibold text-white text-base">{title}</h3>
+									<h3 class="font-semibold text-white text-lg">
+										<a
+											{href}
+											class="after:content-[''] after:absolute after:z-10 after:inset-0 group-focus-within:outline-none"
+										>
+											{title}
+										</a>
+									</h3>
 									<p class="hidden sm:block font-light text-astro-gray-200 text-sm xl:text-base md:text-balance">
 										{description}
 									</p>
@@ -136,39 +148,39 @@ const seo = {
 									<Image
 										src={image}
 										alt=""
-										class="rounded-lg xl:rounded-xl w-full h-48 object-cover"
+										class={`rounded-lg xl:rounded-xl w-full object-cover ${persist ? '' : 'group-hover:brightness-50 group-focus-within:brightness-50'} transition-opacity`}
 									/>
-									<div class="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+									<div
+										class={`absolute inset-0 flex justify-center items-center ${persist ? '' : 'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'} transition-opacity`}
+									>
 										<div class="flex items-center bg-astro-gray-600/70 px-4 py-2 border border-astro-gray-400/30 rounded-full">
 											<span class="px-1 font-medium">{cta}</span>
 											<Icon name="right-arrow" class="w-6 h-6 text-astro-gray-200" />
 										</div>
 									</div>
 								</div>
-							</a>
+							</div>
 						))
 					}
 				</div>
 			</section>
 		</div>
 
-		<div class="grid-container py-16 border-astro-gray-500 border-t overflow-hidden">
-			<section class="flex flex-col items-center space-y-11 mx-auto max-w-2xl">
-				<Icon name="logos/astro" class="w-auto h-16 shrink-0" />
-				<h2 class="mx-auto heading-3 sm:heading-2 md:heading-1">Showcase your themes</h2>
-				<p class="text-astro-gray-200 text-center heading-5 md:heading-3">
-					Want to feature your theme on this page? Become a theme sponsor to showcase your premium
-					designs and help support Astro’s open source mission.
-				</p>
-				<div class="flex justify-center">
-					<Link href="https://opencollective.com/astrodotbuild/">
-						<span
-							class="group-hover:text-astro-blue bg-blue-purple-gradient bg-clip-text px-4 text-transparent transition-all duration-500 ease-in-out"
-						>
-							Become a theme sponsor
-						</span>
-					</Link>
+		<div class="grid-container py-28 border-astro-gray-500 border-t overflow-hidden">
+			<section
+				class="max-w-screen-md mx-auto flex flex-col sm:items-center gap-6 sm:gap-11 sm:text-center"
+			>
+				<Icon name="logos/astro" size="64" />
+				<div class="flex flex-col gap-2 sm:gap-6 md:gap-8">
+					<h2 class="heading-2 sm:text-5xl md:text-6xl sm:leading-tight md:leading-tight">
+						Showcase your themes
+					</h2>
+					<p class="text-xl sm:text-2xl font-light text-astro-gray-200">
+						Want to feature your theme on this page? Become a theme sponsor to showcase your premium
+						designs and help support Astro’s open source mission.
+					</p>
 				</div>
+				<a href="/agencies/join/" class="button button-white">Become a theme sponsor</a>
 			</section>
 
 			<div
