@@ -47,6 +47,9 @@ Minor releases introduce new features and improvements. Check out what's new!
  
 ## Astro Adopters
 
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+import { getEntry } from 'astro:content';
+
 From Cloudflare to Ladybird, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
@@ -54,7 +57,10 @@ export const featuredSites = [
   'ladybird.org',
 ]; 
 
-<ShowcaseGridById ids={featuredSites} />
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'cloudflare.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'ladybird.org')} />
+</div>
 
 ## Weird Wide Web
 
