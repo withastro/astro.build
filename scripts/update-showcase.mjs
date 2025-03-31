@@ -506,7 +506,6 @@ const scraper = new ShowcaseScraper({
 		// 2025-03-30 - theme demo advertising itself
 		'https://astro-sassify-template.pages.dev/',
 		'https://demo.sonicjs.com',
-
 	],
 });
 await scraper.run();
