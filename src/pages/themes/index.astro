@@ -125,7 +125,7 @@ const pageData = {
 					/>
 					<p class="text-astro-gray-200 body md:body-large" set:text={pageData.featured.tagline} />
 				</div>
-				<div class="gap-10 grid md:grid-cols-2 lg:grid-cols-3 mt-6">
+				<div class="gap-6 md:gap-10 grid md:grid-cols-2 lg:grid-cols-3 mt-6">
 					{pageData.featured.themes.map((theme) => <ThemeCard {theme} />)}
 				</div>
 				<div class="flex justify-center mt-[4.5rem]">
@@ -152,7 +152,7 @@ const pageData = {
 					/>
 				</div>
 
-				<div class="gap-10 grid grid-cols-1 lg:grid-cols-3 mt-4 sm:mt-8">
+				<div class="gap-6 md:gap-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 sm:mt-8">
 					{
 						pageData.categories.cards.map(({ href, title, description, cta, image, persist }) => (
 							<div
@@ -163,7 +163,7 @@ const pageData = {
 									'focus-within:outline outline-2 outline-offset-2 outline-astro-pink-light',
 								]}
 							>
-								<div class="space-y-2 p-3">
+								<div class="md:space-y-2 p-3">
 									<h3 class="font-semibold text-white text-lg">
 										<a
 											{href}
@@ -172,7 +172,7 @@ const pageData = {
 										/>
 									</h3>
 									<p
-										class="hidden sm:block font-light text-astro-gray-200 text-sm xl:text-base md:text-balance"
+										class="font-light text-astro-gray-200 text-sm xl:text-base md:text-balance"
 										set:text={description}
 									/>
 								</div>
