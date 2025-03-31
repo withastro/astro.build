@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-qiita-loader
 repoUrl: https://github.com/t0yohei/astro-qiita-loader
 homepageUrl: https://github.com/t0yohei/astro-qiita-loader.git
 badge: new
-downloads: 12
+downloads: 11
 ---

@@ -503,6 +503,9 @@ const scraper = new ShowcaseScraper({
 		'https://calc.codingbroz.com/',
 		// 2025-03-10
 		'https://snowdaycal.org',
+		// 2025-03-30 - theme demo advertising itself
+		'https://astro-sassify-template.pages.dev/',
+		'https://demo.sonicjs.com',
 	],
 });
 await scraper.run();
