@@ -14,10 +14,7 @@ import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from './_types/index.ts
 
 export const prerender = false;
 
-// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
-// otherwise, try to parse the page number from the URL
-const currentPage =
-	typeof Astro.params.page === 'undefined' ? 1 : Number.parseInt(Astro.params.page);
+const currentPage = Astro.params.page && Number.parseInt(Astro.params.page);
 
 // invalid page number!
 if (!currentPage || Number.isNaN(currentPage)) {
@@ -103,19 +100,13 @@ if (allPages.length && !page) {
 }
 
 const themes = page.data;
-
-const showFeatured =
-	currentPage === 1 && !Array.from(Astro.url.searchParams).some(([_, value]) => !!value);
-const featured: ThemeAndAuthor[] = showFeatured
-	? await fetch(`${THEMES_API_URL}/api/themes/featured`).then((res) => res.json())
-	: [];
 ---
 
 <MainLayout title="Themes" image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}>
-	<div class="bg-grid relative">
+	<div class="relative bg-grid">
 		<div class="grid-container">
 			<h1
-				class="heading-3 mx-auto max-w-screen-xl w-full pt-24 text-center text-balance sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
+				class="mx-auto pt-24 md:pt-32 lg:pt-40 w-full max-w-screen-xl text-center text-balance heading-3 sm:heading-2 lg:heading-1"
 			>
 				Jumpstart your next project with a theme
 			</h1>
@@ -126,7 +117,7 @@ const featured: ThemeAndAuthor[] = showFeatured
 		<Fragment slot="sidebar">
 			<SidebarPanel>
 				<SearchFilter
-					indexRoute="/themes/"
+					indexRoute="/themes/1/"
 					groups={[categoryFilter, toolFilter, priceFilter]}
 					search={search}
 					searchPlaceholder="Search for a theme"
@@ -137,24 +128,11 @@ const featured: ThemeAndAuthor[] = showFeatured
 
 		{
 			themes.length > 0 ? (
-				<div class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10">
+				<div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12 sm:px-4 lg:px-8 xl:px-10 pt-8 lg:pt-10 pb-10 sm:pb-12 md:pb-16 lg:pb-20">
 					<h2 class="sr-only">Themes</h2>
 
-					{showFeatured && featured.length > 0 && (
-						<CardGridGroup
-							title="Featured Themes"
-							tagline="Professional themes designed and developed by our sponsors"
-						>
-							<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
-								{featured.slice(0, 3).map((theme) => (
-									<ThemeCard theme={theme} />
-								))}
-							</CardGrid>
-						</CardGridGroup>
-					)}
-
-					<CardGridGroup title={showFeatured && featured.length > 0 ? 'All Themes' : undefined}>
-						<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
+					<CardGridGroup>
+						<CardGrid class="sm:grid-cols-2 xl:grid-cols-3 w-full max-w-screen-xl">
 							{themes.map((theme) => (
 								<ThemeCard theme={theme} />
 							))}
@@ -166,11 +144,11 @@ const featured: ThemeAndAuthor[] = showFeatured
 					)}
 				</div>
 			) : (
-				<div class="flex flex-col items-center gap-12 pt-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
+				<div class="flex flex-col items-center gap-12 sm:px-4 md:px-8 lg:px-10 pt-8 lg:pt-10 text-center">
 					<p>
 						<strong>0</strong> results found for themes matching <strong>"{search}"</strong>
 					</p>
-					<a href="/themes/" data-astro-prefetch class="button button-primary">
+					<a href="/themes/1/" data-astro-prefetch class="button button-primary">
 						Clear filters
 					</a>
 				</div>

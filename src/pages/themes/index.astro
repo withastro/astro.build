@@ -1,0 +1,255 @@
+---
+import { Icon } from 'astro-icon/components';
+import { THEMES_API_URL } from '~/helpers/constants.ts';
+import MainLayout from '~/layouts/MainLayout.astro';
+import ThemeCard from './_components/ThemeCard.astro';
+import type { ThemeAndAuthor } from './_types/index.ts';
+
+import { Image } from 'astro:assets';
+import Blog from './_assets/blog.webp';
+import Docs from './_assets/docs.webp';
+import Ecommerce from './_assets/ecommerce.webp';
+import LandingPage from './_assets/landing-page.webp';
+import More from './_assets/more-themes.webp';
+import Portfolio from './_assets/portfolio.webp';
+
+export const prerender = false;
+
+if (Astro.url.searchParams.size > 0) {
+	Astro.redirect(`/themes/1/${Astro.url.searchParams.toString()}`, 301);
+}
+
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+
+const pageData = {
+	seo: {
+		title: 'Themes',
+		description: 'Elevate your style with our stellar designs.',
+		image: { src: '/og/themes.jpg', alt: 'Explore the possibilities' },
+	},
+	header: {
+		title: 'Jumpstart your next project with a theme',
+	},
+	featured: {
+		title: 'Featured themes',
+		tagline: 'Professional themes designed and developed by our sponsors',
+		cta: 'Discover more themes',
+		ctaHref: '/themes/1/',
+		themes: (await fetch(`${THEMES_API_URL}/api/themes/featured`).then((res) => res.json())).sort(
+			() => Math.random() - 0.5,
+		) as ThemeAndAuthor[],
+	},
+	footer: {
+		title: 'Showcase your themes',
+		description:
+			'Want to feature your theme on this page? Become a theme sponsor to showcase your premium designs and help support Astro’s open source mission.',
+		cta: 'Become a theme sponsor',
+		ctaHref: 'https://opencollective.com/astrodotbuild/contribute/theme-sponsor-86430',
+	},
+	categories: {
+		title: 'Find the theme for you',
+		tagline:
+			'Launch your next site at light speed with our catalog of free and premium Astro themes',
+		cards: [
+			{
+				href: '/themes/1/?search=&categories%5B%5D=blog',
+				title: 'Blogs',
+				description:
+					'Whether you want sleek minimalism or bold colors, find the blog template for you.',
+				cta: 'Browse blog themes',
+				image: Blog,
+			},
+			{
+				href: '/themes/1/?search=&categories%5B%5D=ecommerce',
+				title: 'E-commerce',
+				description:
+					'Every second counts. Find an e-commerce template that loads fast and looks great.',
+				cta: 'Browse e-commerce themes',
+				image: Ecommerce,
+			},
+			{
+				href: '/themes/1/?search=&categories%5B%5D=landing-page',
+				title: 'Landing pages',
+				description: 'Showcase your product or service with a stylish landing page template.',
+				cta: 'Browse landing page themes',
+				image: LandingPage,
+			},
+			{
+				href: '/themes/1/?search=&categories%5B%5D=portfolio',
+				title: 'Portfolio',
+				description:
+					'Share your art, coding projects, music, and more with an Astro portfolio theme.',
+				cta: 'Browse portfolio themes',
+				image: Portfolio,
+			},
+			{
+				href: '/themes/1/?search=&categories%5B%5D=docs',
+				title: 'Documentation',
+				description: 'Ship your next technical documentation website with an Astro docs theme.',
+				cta: 'Browse docs themes',
+				image: Docs,
+			},
+			{
+				href: '/themes/1/',
+				title: '...and more!',
+				description:
+					'Discover all Astro themes and filter by your favorite technology, from Tailwind to Vue.',
+				cta: 'Browse all themes',
+				image: More,
+				persist: true,
+			},
+		],
+	},
+};
+---
+
+<MainLayout {...pageData.seo}>
+	<div class="relative pb-16 overflow-hidden">
+		<div class="relative grid-container py-16 sm:py-20 md:py-24 xl:py-32">
+			<div class="absolute inset-0 bg-grid mask-linear-gradient-to-b bleed-full"></div>
+			<div class="relative flex flex-col items-center gap-6 text-center">
+				<h1
+					class="mx-auto max-w-screen-lg heading-3 sm:heading-2 md:heading-1"
+					set:text={pageData.header.title}
+				/>
+			</div>
+		</div>
+
+		<div class="grid-container pt-10 pb-28 border-astro-gray-500 border-t overflow-hidden">
+			<section>
+				<div>
+					<h2
+						class="heading-4 sm:heading-3 md:heading-2 my-"
+						id="featured"
+						set:text={pageData.featured.title}
+					/>
+					<p class="text-astro-gray-200 body md:body-large" set:text={pageData.featured.tagline} />
+				</div>
+				<div class="gap-6 md:gap-10 grid md:grid-cols-2 lg:grid-cols-3 mt-6">
+					{pageData.featured.themes.map((theme) => <ThemeCard {theme} />)}
+				</div>
+				<div class="flex justify-center mt-[4.5rem]">
+					<a
+						href={pageData.featured.ctaHref}
+						class="button button-primary"
+						set:text={pageData.featured.cta}
+					/>
+				</div>
+			</section>
+		</div>
+
+		<div class="grid-container py-28 border-astro-gray-500 border-t overflow-hidden">
+			<section class="space-y-14">
+				<div class="flex flex-col items-start">
+					<h2
+						class="bg-red-pink-gradient bg-clip-text font-semibold text-transparent"
+						set:text={pageData.categories.title}
+					/>
+					<p
+						class="mt-1 text-white text-balance heading-4 sm:heading-3 md:heading-2"
+						id="categories"
+						set:text={pageData.categories.tagline}
+					/>
+				</div>
+
+				<div class="gap-6 md:gap-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 sm:mt-8">
+					{
+						pageData.categories.cards.map(({ href, title, description, cta, image, persist }) => (
+							<div
+								class:list={[
+									'relative group flex flex-col p-1 border border-astro-dark-100/20  rounded-xl xl:rounded-2xl overflow-hidden',
+									'transition-colors duration-500',
+									'hover:border-astro-dark-100/40',
+									'focus-within:outline outline-2 outline-offset-2 outline-astro-pink-light',
+								]}
+							>
+								<div class="md:space-y-2 p-3">
+									<h3 class="font-semibold text-white text-lg">
+										<a
+											{href}
+											class="after:absolute after:z-10 after:inset-0 group-focus-within:outline-none"
+											set:text={title}
+										/>
+									</h3>
+									<p
+										class="font-light text-astro-gray-200 text-sm xl:text-base md:text-balance"
+										set:text={description}
+									/>
+								</div>
+								<div class="relative">
+									<div class="rounded-lg xl:rounded-xl overflow-clip relative">
+										<Image src={image} alt="" class:list={[`w-full object-cover`]} />
+										{/* Overlay to dim image on hover */}
+										<div
+											class:list={[
+												'opacity-0 absolute inset-0 bg-astro-gray-700/80',
+												'transition-opacity duration-500',
+												'group-hover:opacity-100 group-focus-within:opacity-100',
+											]}
+										/>
+									</div>
+									<div
+										class:list={[
+											'absolute inset-0 flex justify-center items-center',
+											'transition-opacity duration-500',
+											!persist &&
+												'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100',
+										]}
+									>
+										<p
+											class:list={[
+												'flex items-center px-4 py-2 bg-astro-gray-600/50 text-astro-gray-200 border border-astro-gray-400/30 rounded-full',
+												'transition-colors duration-500',
+												'group-hover:text-astro-gray-100 group-focus-within:text-astro-gray-100 group-hover:border-astro-gray-300/30 group-focus-within:border-astro-gray-300/30',
+											]}
+										>
+											<span class="px-1 font-medium transition-colors">{cta}</span>
+											<Icon name="right-arrow" class="w-6 h-6 transition-colors" />
+										</p>
+									</div>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</section>
+		</div>
+
+		<div class="grid-container py-28 border-astro-gray-500 border-t overflow-hidden">
+			<section
+				class="max-w-screen-md mx-auto flex flex-col sm:items-center gap-6 sm:gap-11 sm:text-center"
+			>
+				<Icon name="logos/astro" size="64" />
+				<div class="flex flex-col gap-2 sm:gap-6 md:gap-8">
+					<h2
+						class="heading-2 sm:text-5xl md:text-6xl sm:leading-tight md:leading-tight"
+						set:text={pageData.footer.title}
+					/>
+					<p
+						class="text-xl sm:text-2xl font-light text-astro-gray-200"
+						set:text={pageData.footer.description}
+					/>
+				</div>
+				<a
+					href={pageData.footer.ctaHref}
+					class="button button-white"
+					set:text={pageData.footer.cta}
+				/>
+			</section>
+
+			<div
+				class="top-[-150px] left-0 z-blur absolute bg-blue-purple-gradient opacity-30 w-[70vw] h-[800px] -translate-x-2/3 pointer-events-none mask-radial-gradient"
+			>
+			</div>
+
+			<div
+				class="top-[-150px] right-0 z-blur absolute bg-blue-green-gradient opacity-30 w-[70vw] h-[800px] translate-x-2/3 pointer-events-none mask-radial-gradient"
+			>
+			</div>
+			<div
+				class="bottom-[-500px] left-1/2 z-blur absolute bg-blue-purple-gradient opacity-50 w-[120vw] lg:w-[70vw] h-[800px] -translate-x-1/2 pointer-events-none mask-radial-gradient"
+			>
+			</div>
+		</div>
+	</div>
+</MainLayout>
