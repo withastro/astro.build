@@ -174,10 +174,17 @@ const pageData = {
 									<Image
 										src={image}
 										alt=""
-										class={`rounded-lg xl:rounded-xl w-full object-cover ${persist ? '' : 'group-hover:brightness-50 group-focus-within:brightness-50'} transition-opacity`}
+										class:list={[
+											`rounded-lg xl:rounded-xl w-full object-cover transition-opacity`,
+											!persist && 'group-hover:brightness-50 group-focus-within:brightness-50',
+										]}
 									/>
 									<div
-										class={`absolute inset-0 flex justify-center items-center ${persist ? '' : 'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'} transition-opacity`}
+										class:list={[
+											`absolute inset-0 flex justify-center items-center transition-opacity`,
+											!persist &&
+												'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100',
+										]}
 									>
 										<div class="flex items-center bg-astro-gray-600/70 px-4 py-2 border border-astro-gray-400/30 rounded-full">
 											<span class="px-1 font-medium">{cta}</span>
