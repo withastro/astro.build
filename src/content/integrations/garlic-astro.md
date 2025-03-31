@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/garlic-astro
 homepageUrl: https://www.npmjs.com/package/garlic-astro
-downloads: 1
+downloads: 3
 ---
