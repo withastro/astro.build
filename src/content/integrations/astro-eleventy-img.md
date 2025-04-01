@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-eleventy-img
 repoUrl: https://github.com/Princesseuh/astro-eleventy-img
 homepageUrl: https://github.com/Princesseuh/astro-eleventy-img#readme
-downloads: 129
+downloads: 131
 ---
