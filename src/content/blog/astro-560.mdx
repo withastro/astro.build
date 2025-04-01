@@ -137,9 +137,10 @@ prefetch('/about', { eagerness: 'moderate' });
 
 You can choose from three eagerness levels:
 
-- `'immediate'`: Prefetch as soon as possible (high performance, higher resource usage)
-- `'moderate'`: Let the browser decide when to prefetch (balanced approach)
-- `'conservative'`: Only prefetch when highly likely to be needed (resource-efficient)
+- `'immediate'`: Prefetch immediately, if resource limits allow
+- `'eager'`: Link is likely to be needed, so fetch at the earliest opportunity
+- `'moderate'`: Let the browser decide when to prefetch
+- `'conservative'`: Only prefetch when highly likely to be needed
 
 This feature is particularly valuable when dealing with large numbers of links where you might otherwise run into [browser limits in place to guard against over-speculating](https://developer.chrome.com/blog/speculation-rules-improvements#chrome-limits).
 
