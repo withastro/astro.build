@@ -22,6 +22,7 @@ import Mention from '/src/components/Mention.astro';
 - [**Global `astro:env` on Cloudflare**](#global-astroenv-on-cloudflare)
 - [**Experimental sessions on Cloudflare**](#experimental-sessions-on-cloudflare)
 - [**New prefetch eagerness option**](#new-prefetch-eagerness-option)
+- [**Custom fetch option for prerendered error pages**](#custom-fetch-option-for-prerendered-error-pages)
 - [**Improved config validation**](#improved-config-validation)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
@@ -146,6 +147,34 @@ You can choose from three eagerness levels:
 This feature is particularly valuable when dealing with large numbers of links where you might otherwise run into [browser limits in place to guard against over-speculating](https://developer.chrome.com/blog/speculation-rules-improvements#chrome-limits).
 
 Thanks to community member [Marocco2](https://github.com/Marocco2) for contributing this feature!
+
+## Custom Fetch Option for Prerendered Error Pages
+
+When an on-demand rendered page needs to display an error, it may need to fetch the prerendered error page from elsewhere. Currently, this is done by making a request using the default `fetch` implementation, which may not be suitable for all use cases. For example, the page may be served from a location that can't be called recursively, or the page may be stored elsewhere. Astro 5.6 adds a new optional `prerenderedErrorPageFetch` option in the Adapter API to allow adapters to provide custom implementations for fetching prerendered error pages.
+
+The following example provides a custom fetch for `500.html` and `404.html`, reading them from disk instead of performing an HTTP call:
+```js 
+return app.render(request, {
+  prerenderedErrorPageFetch: async (url: string): Promise<Response> => {
+    if (url.includes("/500")) {
+        const content = await fs.promises.readFile("500.html", "utf-8");
+        return new Response(content, {
+          status: 500,
+          headers: { "Content-Type": "text/html" },
+        });
+    }
+    const content = await fs.promises.readFile("404.html", "utf-8");
+      return new Response(content, {
+        status: 404,
+        headers: { "Content-Type": "text/html" },
+      });
+});
+```
+If no value is provided, Astro will use `fetch`, and make a request to `/500` or `/404` as appropriate. This is the same behavior as in previous versions of Astro.
+
+Read more about this feature in the [Adapter API reference](https://docs.astro.build/en/reference/adapter-reference/#prerenderederrorpagefetch).
+
+Thanks to [Yury Michurin](https://github.com/yurynix) for contributing this feature!
 
 ## Improved Config Validation
 
