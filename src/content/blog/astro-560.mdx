@@ -150,7 +150,9 @@ Thanks to community member [Marocco2](https://github.com/Marocco2) for contribut
 
 ## Custom Fetch Option for Prerendered Error Pages
 
-When an on-demand rendered page needs to display an error, it may need to fetch the prerendered error page from elsewhere. Currently, this is done by making a request using the default `fetch` implementation, which may not be suitable for all use cases. For example, the page may be served from a location that can't be called recursively, or the page may be stored elsewhere. Astro 5.6 adds a new optional `prerenderedErrorPageFetch` option in the Adapter API to allow adapters to provide custom implementations for fetching prerendered error pages.
+When an on-demand rendered page needs to display an error, your adapter may need to fetch a prerendered error page from somewhere other than your server. Currently, this is done by making a request using the default `fetch` implementation, which may not be suitable for all use cases. For example, the page may be served from a location that can't be called recursively, or the page may be stored elsewhere.
+
+Astro 5.6 adds a new optional `prerenderedErrorPageFetch` option in the Adapter API to allow adapters to provide custom implementations for fetching prerendered error pages.
 
 The following example provides a custom fetch for `500.html` and `404.html`, reading them from disk instead of performing an HTTP call:
 ```js 
