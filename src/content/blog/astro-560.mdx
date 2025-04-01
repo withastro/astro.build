@@ -1,6 +1,6 @@
 ---
 title: 'Astro 5.6'
-description: 'Astro 5.6 brings first class astro:env and experimental session support to Cloudflare, and gives more control over prefetching.'
+description: 'Astro 5.6 brings first-class astro:env and experimental session support to Cloudflare, and gives more control over prefetching.'
 homepageLink:
   title: 'Astro 5.6'
   subtitle: 'Available now!'
@@ -15,7 +15,7 @@ lang: 'en'
 import BlogContentImage from '/src/components/BlogContentImage.astro';
 import Mention from '/src/components/Mention.astro';
 
-**Astro 5.6 brings first class astro:env and experimental session support to Cloudflare, and gives more control over prefetching.**
+**Astro 5.6 brings first-class astro:env and experimental session support to Cloudflare, and gives more control over prefetching.**
 
 ☁️ Soar through the clouds with these new features in Astro:
 
@@ -39,7 +39,7 @@ yarn upgrade astro --latest
 
 ## Global `astro:env` on Cloudflare
 
-Since Astro 5 you have been able to access [type-safe environment variables using `astro:env`](https://docs.astro.build/en/guides/environment-variables/#type-safe-environment-variables). However, environment variables in Cloudflare were only accessible within a request — limiting when and where you could use them. For example, if you wanted to use a shared API client instance you couldn't use environment variables if instantiating outside of a request. This could be confusing, and was different from our other adapters.
+Since Astro 5 you have been able to access [type-safe environment variables using `astro:env`](https://docs.astro.build/en/guides/environment-variables/#type-safe-environment-variables). However, environment variables in Cloudflare were only accessible within a request — limiting when and where you could use them. For example, if you wanted to use a shared API client instance, you couldn't use environment variables if instantiating outside of a request. This could be confusing and was different from our other adapters.
 
 Astro 5.6 lifts this restriction, meaning you can now access your environment variables globally throughout your server code and brings the Cloudflare adapter in line with the other official adapters. This is possible thanks to [enhancements in Cloudflare Workers](https://developers.cloudflare.com/changelog/2025-03-17-importable-env/) that are now implemented in Astro.
 
@@ -130,7 +130,7 @@ import { prefetch } from 'astro:prefetch';
 prefetch('/data-heavy-dashboard', { eagerness: 'conservative' });
 
 // This page is critical to the user journey, load it ASAP!
-prefetch('/product-details', { eagerness: 'immediate' });
+prefetch('/product-details'); // defaults to `{ eagerness: 'immediate' }`
 
 // For most pages, a balanced approach works best
 prefetch('/about', { eagerness: 'moderate' });
