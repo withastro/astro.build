@@ -27,7 +27,7 @@ import Mention from '/src/components/Mention.astro';
 - [**Custom fetch option for prerendered error pages**](#custom-fetch-option-for-prerendered-error-pages)
 - [**New `load()` method for experimental sessions**](#new-load-method-for-experimental-sessions)
 - [**Improved config validation**](#improved-config-validation)
-- [**Removed features from experimental SVG**]()
+- [**Breaking changes to the experimental SVG API**](#breaking-changes-to-the-experimental-svg-api)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -188,7 +188,9 @@ Thanks to [Yury Michurin](https://github.com/yurynix) for contributing this feat
 
 ## New `load()` method for experimental sessions
 
-When using [the experimental sessions API](https://docs.astro.build/en/reference/experimental-flags/sessions/), you don't normally need to worry about managing the session ID and cookies: Astro automatically reads the user's cookies and loads the correct session when needed. However, sometimes you need more control over which session to load. The new `load()` method allows you to manually load a session by ID. This is useful if you are handling the session ID yourself, or if you want to keep track of a session without using cookies. For example, you might want to restore a session from a logged-in user on another device, or work with an API endpoint that doesn't use cookies.
+When using [the experimental Sessions API](https://docs.astro.build/en/reference/experimental-flags/sessions/), you don't normally need to worry about managing the session ID and cookies: Astro automatically reads the user's cookies and loads the correct session when needed. However, sometimes you need more control over which session to load.
+
+The new `load()` method allows you to manually load a session by ID. This is useful if you are handling the session ID yourself, or if you want to keep track of a session without using cookies. For example, you might want to restore a session from a logged-in user on another device, or work with an API endpoint that doesn't use cookies.
 
 ```ts
 // src/pages/api/cart.ts
@@ -211,9 +213,11 @@ For more information, see the [experimental sessions docs](https://docs.astro.bu
 
 Astro now validates your config after every integration is run, making it easier to catch issues early and pinpoint the source of any problems. This is particularly useful when using multiple integrations, as it helps ensure that they are all compatible with each other and with your Astro project.
 
-## Removed features from experimental SVG
+## Breaking changes to the experimental SVG API
 
-The [experimental SVG RFC](https://github.com/withastro/roadmap/pull/1035) has been under heavy discussion, and for that we thank you all for chiming in! As result of discussions, we decided to *temporarily* remove certain features. This doesn't mean that we won't add them again, but this gives us time to have separate discussions and reach out a good balance between DX and good defaults.
+The [experimental SVG RFC](https://github.com/withastro/roadmap/pull/1035) has been under heavy discussion, and for that we thank you all for chiming in! As result of discussions, we decided to *temporarily* remove certain features. That's just how it goes with an experimental API sometimes! 
+
+But, this doesn't mean they're gone for good! Removing them now at this early stage gives us time to have separate discussions and build features back based on your feedback, striking the right balance between DX, accessibility best practices, and sensible defaults.
 
 These items are no longer available and must be removed from your code:
 
@@ -225,7 +229,7 @@ These items are no longer available and must be removed from your code:
 - Sprite mode has been temporarily removed while we consider a new implementation that addresses how this feature was being used in practice. This means that there are no longer multiple `mode` options, and all SVGs will be inline. All instances of `mode` must be removed from your project as you can no longer control a mode:
   ```diff
   - <Logo mode="inline" />
-  + <Logo />
+  + <Logo /> // Always inline
   ```
   ```diff
   import { defineConfig } from 'astro'
