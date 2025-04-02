@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@lekoarts/plausible-loader
 repoUrl: https://github.com/LekoArts/astro-loaders
 homepageUrl: https://github.com/LekoArts/astro-loaders
 badge: new
-downloads: 65
+downloads: 117
 ---

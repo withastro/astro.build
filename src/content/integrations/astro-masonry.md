@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-masonry
 repoUrl: https://github.com/OlivierEstevez/astro-masonry
 homepageUrl: https://astro-masonry.vercel.app/
-downloads: 80
+downloads: 77
 ---
