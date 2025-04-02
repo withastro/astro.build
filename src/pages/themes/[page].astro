@@ -86,7 +86,7 @@ const allThemes: ThemeAndAuthor[] = await fetch(
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
 	data: allThemes.filter((theme) => !theme.Theme.featured),
-	pageSize: 12,
+	pageSize: 18,
 	currentPage,
 	route: '/themes/[...page]',
 	searchParams: Astro.url.searchParams,
