@@ -7,6 +7,7 @@ homepageLink:
 publishDate: '2025-04-03'
 authors:
   - matt
+  - ema
 coverImage: '/src/content/blog/_images/astro-560/blog-post-5-6.webp'
 socialImage: '/src/content/blog/_images/astro-560/og-astro-5-6.webp'
 lang: 'en'
@@ -26,6 +27,7 @@ import Mention from '/src/components/Mention.astro';
 - [**Custom fetch option for prerendered error pages**](#custom-fetch-option-for-prerendered-error-pages)
 - [**New `load()` method for experimental sessions**](#new-load-method-for-experimental-sessions)
 - [**Improved config validation**](#improved-config-validation)
+- [**Removed features from experimental SVG**]()
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -208,6 +210,46 @@ For more information, see the [experimental sessions docs](https://docs.astro.bu
 ## Improved Config Validation
 
 Astro now validates your config after every integration is run, making it easier to catch issues early and pinpoint the source of any problems. This is particularly useful when using multiple integrations, as it helps ensure that they are all compatible with each other and with your Astro project.
+
+## Removed features from experimental SVG
+
+The [experimental SVG RFC](https://github.com/withastro/roadmap/pull/1035) has been under heavy discussion, and for that we thank you all for chiming in! As result of discussions, we decided to *temporarily* remove certain features. This doesn't mean that we won't add them again, but this gives us time to have separate discussions and reach out a good balance between DX and good defaults.
+
+These items are no longer available and must be removed from your code:
+
+- The `title` prop has been removed until we can settle on the correct balance between developer experience and accessibility. Please replace any `title` props on your components with `aria-label`:
+  ```diff
+  - <Logo title="My Company Logo" />
+  + <Logo aria-label="My Company Logo" />
+  ```
+- Sprite mode has been temporarily removed while we consider a new implementation that addresses how this feature was being used in practice. This means that there are no longer multiple `mode` options, and all SVGs will be inline. All instances of `mode` must be removed from your project as you can no longer control a mode:
+  ```diff
+  - <Logo mode="inline" />
+  + <Logo />
+  ```
+  ```diff
+  import { defineConfig } from 'astro'
+
+  export default defineConfig({
+    experimental: {
+  -   svg: {
+  -     mode: 'sprite'
+  -   },
+  +   svg: true
+    }
+  });
+  ```
+- The default `role` is no longer applied due to developer feedback. Please add the appropriate `role` on each component individually as needed:
+  ```diff
+  - <Logo />
+  + <Logo role="img" /> // To keep the role that was previously applied by default
+  ```
+- The `size` prop has been removed to better work in combination with `viewBox` and additional styles/attributes. Please replace `size` with explicit `width` and `height` attributes:
+  ```diff
+  - <Logo size={64} />
+  + <Logo width={64} height={64} />
+  ```
+
 
 ## Bug fixes
 
