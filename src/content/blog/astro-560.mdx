@@ -13,6 +13,7 @@ lang: 'en'
 ---
 
 import BlogContentImage from '/src/components/BlogContentImage.astro';
+import Note from '~/components/Note.astro';
 import Mention from '/src/components/Mention.astro';
 
 **Astro 5.6 brings first-class astro:env and experimental session support to Cloudflare, and gives more control over prefetching.**
@@ -113,6 +114,10 @@ const cart = await Astro.session.get('cart');
 ```
 
 For more information, see the [experimental sessions docs](https://docs.astro.build/en/reference/experimental-flags/sessions/).
+
+<Note title="Note">
+Writes to Cloudflare KV are [eventually consistent](https://developers.cloudflare.com/kv/concepts/how-kv-works/#consistency) between regions. This means that changes are available immediately within the same region, but may take up to 60 seconds to propagate globally. This won't affect most users as they are unlikely to switch regions between requests, but may be a consideration for some use cases such as VPN users.
+</Note>
 
 ## New Prefetch Eagerness Option
 
