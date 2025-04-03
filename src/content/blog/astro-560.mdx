@@ -74,35 +74,35 @@ Getting started is three steps:
 
 1. Create a KV namespace using the Wrangler CLI:
 
-```sh
-npx wrangler kv namespace create "SESSION"
-```
+   ```sh
+   npx wrangler kv namespace create "SESSION"
+   ```
 
 2. Declare the KV namespace in your Wrangler config:
 
-```jsonc
-// wrangler.json
-{
-	"kv_namespaces": [
-		{
-			"binding": "SESSION",
-			"id": "<SESSION_ID>"
-		}
-	]
-}
-```
+   ```jsonc
+   // wrangler.json
+   {
+     "kv_namespaces": [
+       {
+         "binding": "SESSION",
+         "id": "<SESSION_ID>"
+       }
+     ]
+   }
+   ```
 
 3. Enable experimental sessions in your Astro config:
 
-```js
-// astro.config.mjs
-export default defineConfig({
-	adapter: cloudflare(),
-	experimental: {
-		sessions: true,
-	},
-});
-```
+   ```js
+   // astro.config.mjs
+   export default defineConfig({
+     adapter: cloudflare(),
+     experimental: {
+       sessions: true,
+     },
+   });
+   ```
 
 You can then use sessions in your server code:
 
@@ -222,17 +222,16 @@ But, this doesn't mean they're gone for good! Removing them now at this early st
 These items are no longer available and must be removed from your code:
 
 - The `title` prop has been removed until we can settle on the correct balance between developer experience and accessibility. Please replace any `title` props on your components with `aria-label`:
-  ```diff
+  ```diff lang="astro"
   - <Logo title="My Company Logo" />
   + <Logo aria-label="My Company Logo" />
   ```
 - Sprite mode has been temporarily removed while we consider a new implementation that addresses how this feature was being used in practice. This means that there are no longer multiple `mode` options, and all SVGs will be inline. All instances of `mode` must be removed from your project as you can no longer control a mode:
-  ```diff
+  ```diff lang="astro"
   - <Logo mode="inline" />
   + <Logo /> // Always inline
   ```
-  
-  ```diff
+  ```diff lang="js"
   import { defineConfig } from 'astro'
 
   export default defineConfig({
@@ -245,12 +244,12 @@ These items are no longer available and must be removed from your code:
   });
   ```
 - The default `role` is no longer applied due to developer feedback. Please add the appropriate `role` on each component individually as needed:
-  ```diff
+  ```diff lang="astro"
   - <Logo />
   + <Logo role="img" /> // To keep the role that was previously applied by default
   ```
 - The `size` prop has been removed to better work in combination with `viewBox` and additional styles/attributes. Please replace `size` with explicit `width` and `height` attributes:
-  ```diff
+  ```diff lang="astro"
   - <Logo size={64} />
   + <Logo width={64} height={64} />
   ```
