@@ -13,7 +13,7 @@ if (!mention) {
 	return;
 }
 
-const platform = mention.data.bluesky ? 'bluesky' : mention.data.twitter ? 'twitter' : 'mastodon';
+const platform = mention.data.bluesky ? 'bluesky' : mention.data.twitter ? 'twitter' : mention.data.mastodon ? 'mastodon' : 'github';
 const linkUrl = mention.data[platform];
 const platformName = platform[0].toUpperCase() + platform.slice(1);
 
