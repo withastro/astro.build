@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-typewriter
 repoUrl: https://github.com/cyrillbolliger/astro-typewriter
 homepageUrl: https://cyrillbolliger.github.io/astro-typewriter/
 badge: new
-downloads: 486
+downloads: 496
 ---

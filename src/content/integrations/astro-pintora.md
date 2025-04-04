@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-pintora
 homepageUrl: https://github.com/tex0l/astro-pintora
-downloads: 36
+downloads: 35
 ---

@@ -10,6 +10,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/vue
 image: /assets/integrations/vue.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/vue/
-downloads: 117966
+downloads: 119249
 official: true
 ---
