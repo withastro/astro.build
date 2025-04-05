@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-opengraph-image
 repoUrl: https://github.com/tombl/astro-opengraph-image
 homepageUrl: https://github.com/tombl/astro-opengraph-image
 badge: new
-downloads: 484
+downloads: 486
 ---
