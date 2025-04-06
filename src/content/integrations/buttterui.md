@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/buttterui
 homepageUrl: https://www.npmjs.com/package/buttterui
 badge: new
-downloads: 65
+downloads: 67
 ---
