@@ -1,7 +1,7 @@
 ---
 name: "@playform/compress"
 title: "@playform/compress"
-description: 🗜️ Compress —
+description: Compress 🗜️
 categories:
   - css+ui
   - media

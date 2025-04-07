@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/simple-icons-astro
 repoUrl: https://github.com/dzeiocom/simple-icons-astro
-homepageUrl: https://simple-icons-astro.dzeio.com
+homepageUrl: https://www.npmjs.com/package/simple-icons-astro
 downloads: 6337
 ---

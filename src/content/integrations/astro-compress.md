@@ -1,7 +1,7 @@
 ---
 name: astro-compress
 title: astro-compress
-description: 🗜️ Compress —
+description: Compress 🗜️
 categories:
   - css+ui
   - media

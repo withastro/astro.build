@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/lucide-astro
 repoUrl: https://github.com/dzeiocom/lucide-astro
-homepageUrl: https://lucide-astro.dzeio.com
+homepageUrl: https://www.npmjs.com/package/lucide-astro
 downloads: 18403
 ---
