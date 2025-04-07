@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/simple-stack-form
 repoUrl: https://github.com/bholmesdev/simple-stack
-homepageUrl: https://www.npmjs.com/package/simple-stack-form
+homepageUrl: https://github.com/bholmesdev/simple-stack#readme
 downloads: 5602
 ---

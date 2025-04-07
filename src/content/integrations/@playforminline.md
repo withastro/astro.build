@@ -1,7 +1,7 @@
 ---
 name: "@playform/inline"
 title: "@playform/inline"
-description: 🦔 Inline —
+description: Inline 🦔
 categories:
   - css+ui
   - performance+seo

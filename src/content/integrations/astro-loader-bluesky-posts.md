@@ -1,7 +1,7 @@
 ---
 name: astro-loader-bluesky-posts
 title: astro-loader-bluesky-posts
-description: Astro loader for loading Bluesky posts and threads using AT-URI.
+description: Astro loader for loading Bluesky posts and threads using post URLs or AT-URIs.
 categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/astro-loader-bluesky-posts
