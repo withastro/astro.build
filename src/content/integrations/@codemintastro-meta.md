@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@codemint/astro-meta
 repoUrl: https://github.com/ArifRabbaniIn/astro-meta
 homepageUrl: https://astro-meta.vercel.app/
 badge: new
-downloads: 727
+downloads: 712
 ---

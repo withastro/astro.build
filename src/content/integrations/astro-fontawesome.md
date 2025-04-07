@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-fontawesome
 repoUrl: https://github.com/luluvia/astro-fontawesome
 homepageUrl: https://github.com/luluvia/astro-fontawesome#readme
 badge: new
-downloads: 130
+downloads: 133
 ---

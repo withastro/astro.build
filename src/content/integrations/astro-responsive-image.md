@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-responsive-image
 homepageUrl: https://www.npmjs.com/package/astro-responsive-image
-downloads: 56
+downloads: 57
 ---
