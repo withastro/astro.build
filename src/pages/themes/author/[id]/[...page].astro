@@ -46,9 +46,17 @@ if (allPages.length && !page) {
 }
 
 const themes = page.data;
+
+const author = themes[0].Author.name || 'Unknown Author';
+const title = `Themes by ${author}`;
+const description =
+	'Explore a variety of Astro themes — designed to help you launch quickly, with flexible layouts, practical features, and customization built in.';
 ---
 
-<MainLayout title="Themes" image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}>
+<MainLayout
+	title={title}
+	description={description}
+	image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}>
 	<SidebarLayout>
 		<Fragment slot="sidebar">
 			<SidebarPanel>
@@ -58,8 +66,7 @@ const themes = page.data;
 		</Fragment>
 
 		<div
-			class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10"
-		>
+			class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10">
 			<CardGridGroup>
 				<header class="w-full">
 					<h1 class="heading-3 max-lg:hidden">{themes[0].Author.name}</h1>
