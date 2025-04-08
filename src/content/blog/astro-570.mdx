@@ -54,7 +54,52 @@ yarn upgrade astro --latest
 
 ## Config Imports
 
-...
+The new virtual module `astro:config` is now stable!
+
+The virtual module allows to import a subset of the Astro configuration, with type-safety in mind. Two sub-paths are exposed for controlled access to your configuration:
+
+- `astro:config/client`: exposes config information that is safe to expose to the client.
+- `astro:config/server`: exposes additional information that is safe to expose to the server, such as file/dir paths.
+
+For example, you can now build your own path utilities without relying on an integrations:
+
+```js title="astro.config.mjs"
+// astro.config.mjs
+export default defineConfig({
+    base: "store/",
+    trailingSlash: "always"
+})
+```
+
+```js title="src/utils.js"
+// src/utils.js
+import { trailingSlash, base } from 'astro:config/client';
+
+// This method adds a forwards slash to paths, and prepends the `base`
+function addForwardSlashAndBase(path) {
+    let finalPath;
+    if (trailingSlash === 'always') {
+      finalPath = path.endsWith('/') ? path : path + '/';
+    } else {
+      finalPath = path;
+    }
+    if (base !== "/") {
+        return base + finalPath
+    }
+    return finalPath
+}
+```
+
+```astro title="src/pages/index.astro"
+---
+// src/pages/index.astro
+import { addForwardSlashAndBase } from "@src/utils.js";
+
+const cartUrl = addForwardSlashAndBase("cart"); // it will return "store/cart/"
+---
+
+<a href={cartUrl}>Cart</a>
+```
 
 ## Bug fixes
 
