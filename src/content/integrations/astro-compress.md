@@ -1,7 +1,7 @@
 ---
 name: astro-compress
 title: astro-compress
-description: 🗜️ Compress —
+description: Compress 🗜️
 categories:
   - css+ui
   - media
@@ -9,6 +9,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-compress
 repoUrl: https://github.com/PlayForm/Compress
 homepageUrl: HTTPS://GitHub.Com/PlayForm/Compress#readme
-downloads: 59487
+downloads: 60055
 downloadFactor: 0.25
 ---

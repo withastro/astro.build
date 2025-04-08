@@ -22,7 +22,17 @@ export default defineConfig({
 		}),
 		astroExpressiveCode({
 			themes: [houston],
-			frames: false,
+			styleOverrides: {
+				borderRadius: '0.375rem',
+				borderColor: 'rgb(84 88 100)',
+			},
+			defaultProps: {
+				overridesByLang: {
+					'bash,sh,shell': {
+						frame: 'none',
+					},
+				},
+			},
 		}),
 		icon({
 			svgoOptions: {
