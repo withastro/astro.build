@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-emoji
 repoUrl: https://github.com/seanmcp/astro-emoji
 homepageUrl: https://github.com/seanmcp/astro-emoji#readme
-downloads: 158
+downloads: 162
 ---

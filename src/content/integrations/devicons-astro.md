@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/devicons-astro
 homepageUrl: https://github.com/jpal91/devicons-astro
-downloads: 65
+downloads: 66
 ---
