@@ -42,4 +42,7 @@ const { id, tab, class: className } = Astro.props;
 	.code :global(:is(.expressive-code, figure, pre)) {
 		height: 100%;
 	}
+	.code :global(:is(pre)) {
+		@apply border border-astro-dark-100/20 rounded-2xl;
+	}
 </style>
