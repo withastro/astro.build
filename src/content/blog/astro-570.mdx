@@ -46,7 +46,122 @@ yarn upgrade astro --latest
 
 ## Sessions API
 
-...
+The Astro Sessions API is now stable and ready for production!
+
+Sessions let you securely store data tied to a specific user as they navigate between pages on your site. Unlike cookies, sessions are stored on the server, so you can store larger amounts of data without worrying about size limits or security issues. They are useful for storing things like user data, shopping carts, and form state, and they work without any client-side JavaScript:
+
+
+```astro title="src/components/CartButton.astro" {2}
+---
+const cart = await Astro.session.get('cart');
+export const prerender = false;
+---
+
+<a href="/checkout">🛒 {cart?.length ?? 0} items</a>
+```
+
+They can be used in Astro components, pages, API endpoints, actions, and middleware. The API is the same for all of them:
+
+```ts title="src/actions/addToCart.ts" {9,10}
+import { defineAction } from "astro:actions";
+import { z } from "astro:schema";
+export const server = {
+  addToCart: defineAction({
+    input: z.object({
+      product: z.string(),
+    }),
+    async handler({ product }, { session }) {
+      const cart = await session.get('cart');
+      session.set('cart', [...cart, product]);
+    },
+  }),
+};
+```
+
+### Type-safety
+
+Of course, as this is Astro, your sessions can be type-safe too. Define an interface and you will get type-checking and auto-completion for all of your session data:
+
+
+```ts title="src/env.d.ts"
+declare namespace App {
+  interface SessionData {
+    user: {
+      id: string;
+      name: string;
+    };
+    cart: string[];
+  }
+}
+```
+
+### Cookie-less sessions
+
+The session ID is automatically tracked using a cookie, but you can also use them without cookies by using the `session.load()` method. This is useful for things like APIs, where you might want to use a custom header or params to track the session ID:
+
+```ts title="src/pages/api/cart.ts" "session.load(sessionId)"
+export async function POST({ session, request }: APIContext) {
+  const sessionId = request.headers.get('x-session-id');
+
+  // If there is an existing session ID, load it. Otherwise one will be created
+  if (sessionId) {
+    await session.load(sessionId);
+  } 
+
+  const cart = await session.get('cart');
+  const data = await request.json<{ item: string }>();
+
+  if (!data?.item) {
+    return new Response('Item is required', { status: 400 });
+  }
+  session.set('cart', [...cart, data.item]);
+  // Return the cart and session ID
+  return Response.json({ cart, sessionId: session.sessionId });
+}
+```
+
+
+### Storage drivers
+
+Astro sessions use storage drivers to persist the data, and these are either zero-config or require minimal setup for all official Astro adapters. Alternatively you can use any [unstorage](https://unstorage.unjs.io/) driver, which supports dozens of storage backends such as Redis and MongoDB.
+
+- **[Node](https://docs.astro.build/en/guides/integrations-guide/node/#sessions)**: zero-config filesystem driver
+- **[Netlify](https://docs.astro.build/en/guides/integrations-guide/netlify/#sessions)**: zero-config Netlify Blobs driver
+- **[Cloudflare](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#sessions)**: minimal-config Workers KV driver
+- **[Vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/#sessions)**: minimal-config Redis/Upstash driver
+
+On any of these platforms you can easily switch out the driver for a different one if you don't want to use the default.
+
+```js title="astro.config.mjs" {5-10}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  // ...
+  session: {
+    driver: 'redis',
+    options: {
+      url: process.env.REDIS_URL,
+    },
+  },
+});
+
+```
+
+### Upgrading from experimental sessions
+
+If you were using the experimental sessions API, you should remove the experimental flag from your `astro.config.mjs` file:
+
+```js title="astro.config.mjs" del={6}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  // ...
+  experimental: {
+    session: false,
+  },
+});
+```
+Check out the [sessions guide](https://docs.astro.build/en/guides/sessions/) to learn more about how to use them in your Astro project.
 
 ## SVG Components
 
