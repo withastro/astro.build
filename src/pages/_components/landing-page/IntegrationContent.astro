@@ -16,9 +16,7 @@ const { id, tab, class: className } = Astro.props;
 	class:list={['mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4', className]}
 >
 	<div class="lg:col-span-2 bg-[#07040F] p-1 rounded-[20px]">
-		<div
-			class="w-full h-80 xl:h-96 min-h-80 code bg-astro-dark-400 border border-astro-dark-100/20 rounded-2xl overflow-y-auto"
-		>
+		<div class="w-full h-80 xl:h-96 min-h-80 code">
 			<slot name="code" />
 		</div>
 	</div>
@@ -39,3 +37,12 @@ const { id, tab, class: className } = Astro.props;
 		</div>
 	</div>
 </section>
+
+<style>
+	.code :global(:is(.expressive-code, figure, pre)) {
+		height: 100%;
+	}
+	.code :global(:is(pre)) {
+		@apply border border-astro-dark-100/20 rounded-2xl;
+	}
+</style>
