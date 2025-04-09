@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@coffic/cosy-ui
 homepageUrl: https://github.com/CofficLab/cosy-ui
 badge: new
-downloads: 2050
+downloads: 2052
 repoUrl: https://github.com/CofficLab/cosy-ui
 ---

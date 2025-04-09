@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@rxdrag/website-lib
 homepageUrl: https://www.npmjs.com/package/@rxdrag/website-lib
 badge: new
-downloads: 604
+downloads: 608
 ---
