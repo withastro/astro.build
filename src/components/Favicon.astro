@@ -2,10 +2,22 @@
 <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 
+{/* Only run favicon change script on browsers that support SVG favicons */}
 <script>
+	function isSafariOnMacOS() {
+		const userAgent = navigator.userAgent;
+		return (
+			userAgent.includes("Safari") &&
+			userAgent.includes("Macintosh") &&
+			!userAgent.includes("Chrome")
+		);
+	}
+
 	const favicon = document.querySelector('link[rel="icon"]')!;
-	document.addEventListener('visibilitychange', () => {
+	document.addEventListener("visibilitychange", () => {
 		const hidden = document.hidden;
-		favicon.setAttribute('href', `/favicon${hidden ? '-hidden' : ''}.svg`);
+		!isSafariOnMacOS
+			? favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.svg`)
+			: favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.ico`);
 	});
 </script>
