@@ -42,13 +42,13 @@ yarn upgrade astro --latest
 
 ## Experimental Fonts API
 
-Almost every website these days use custom fonts. However, it can be surprisingly complicated to get them right: how many font faces should I include? Why do I get a Flash of Unstyled Text? Should I preload?
+Almost every website these days uses custom fonts. However, it can be surprisingly complicated to get them right: Why do I get a Flash of Unstyled Text? Should I add a preload link? What about preconnect links? Am I really getting better performance from a self-hosted font?
 
-Fortunately, web APIs have greatly improved recently and thanks to amazing initiatives of the Open-Source community (eg. [`unifont`](https://github.com/unjs/unifont/) and [`capsize`](https://github.com/seek-oss/capsize)), it's now easier than ever to use fonts in Astro!
+ Fonts can have significant performance implications on your site, affecting your visitors' browsing experience and important Core Web Vitals (CWV) metrics. Fortunately, web APIs have greatly improved recently and thanks to amazing initiatives of the open source community (eg. [`unifont`](https://github.com/unjs/unifont/) and [`capsize`](https://github.com/seek-oss/capsize)), we've been able to start working on a great way to use fonts in Astro!
 
-This experimental feature allows you to use fonts from your filesystem and various providers (eg. Google, Fontsource, Bunny...) through a unified API. Keep your site performant thanks to sensible defaults and automatic optimizations.
+This experimental feature allows you to use fonts from both your filesystem and several built-in supported providers (e.g. Google, Fontsource, Bunny) through a unified API. Keep your site performant thanks to sensible defaults and automatic optimizations including fallback font generation.
 
-To enable this feature, configure an `experimental.fonts` object:
+To enable this feature, configure an `experimental.fonts` object with one or more fonts:
 
 ```js title="astro.config.mjs"
 import { defineConfig, fontProviders } from "astro/config"
@@ -78,7 +78,9 @@ body {
 </style>
 ```
 
-There's more to discover! Head to [documentation for this experimental feature](https://docs.astro.build/en/reference/experimental-flags/fonts/) for more information. We'd also appreciate your feedback. Participate in the development of the feature on the [Fonts RFC](https://github.com/withastro/roadmap/pull/1039).
+There's so much more to discover! Head over to [the experimental Fonts documentation](https://docs.astro.build/en/reference/experimental-flags/fonts/) for the full API, how to get started, and even how to build your own custom `AstroFontProvider` if we don't yet support your preferred font service.
+
+We'd also appreciate your feedback. Participate in the ongoing development of this feature on the [Fonts RFC](https://github.com/withastro/roadmap/pull/1039) and help shape its future.
 
 ## Sessions API
 
