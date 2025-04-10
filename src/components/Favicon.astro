@@ -1,6 +1,6 @@
-<link rel="icon" href="/favicon.ico" sizes="48x48" >
-<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
 {/* Only run favicon change script on browsers that support SVG favicons */}
@@ -8,19 +8,22 @@
 	function isSafariOnMacOS() {
 		const userAgent = navigator.userAgent;
 		return (
-			userAgent.includes("Safari") &&
-			userAgent.includes("Macintosh") &&
-			!userAgent.includes("Chrome")
+			userAgent.includes('Safari') &&
+			userAgent.includes('Macintosh') &&
+			!userAgent.includes('Chrome')
 		);
 	}
 
-	const favicon = document.querySelector('link[rel="icon"]')!;
-	document.addEventListener("visibilitychange", () => {
+	document.addEventListener('visibilitychange', () => {
+		const safari = isSafariOnMacOS();
 		const hidden = document.hidden;
-		if (isSafariOnMacOS()) {
-        favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.ico`);
-    } else {
-        favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.svg`);
-    }
+
+		if (safari) {
+			const favicon = document.querySelector('link[rel="icon"][sizes="48x48"]')!;
+			favicon.setAttribute('href', `/favicon${hidden ? '-hidden' : ''}.ico`);
+		} else {
+			const favicon = document.querySelector('link[rel="icon"][type="image/svg+xml"]')!;
+			favicon.setAttribute('href', `/favicon${hidden ? '-hidden' : ''}.svg`);
+		}
 	});
 </script>
