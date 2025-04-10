@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import fiftyEightAgents from './58agents.webp';
+import bejamas from './bejamas.webp';
+import exdst from './exdst.webp';
+import luckyMedia from './lucky-media.webp';
+
+const agencies = [
+	{ image: bejamas, name: 'Bejamas', id: 'bejamas' },
+	{ image: luckyMedia, name: 'Lucky Media', id: 'lucky-media' },
+	{ image: exdst, name: 'EXDST', id: 'exdst' },
+	{ image: fiftyEightAgents, name: '58agents', id: '58agents' },
+];
+---
+
+<ul class="grid grid-cols-2 gap-2 !p-0">
+	{
+		agencies.map(({ image, name, id }) => (
+			<li class="before:!hidden">
+				<a href={`/agencies/${id}/`} class="rounded-lg">
+					<span class="sr-only">{name}</span>
+					<Image
+						src={image}
+						alt=""
+						width="400"
+						class="rounded-lg w-full outline outline-1 -outline-offset-1 outline-white/20 transition-all duration-300 ease-out hover:opacity-80 hover:outline-white/65"
+					/>
+				</a>
+			</li>
+		))
+	}
+</ul>
