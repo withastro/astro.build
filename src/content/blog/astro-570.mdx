@@ -97,7 +97,7 @@ declare namespace App {
 
 ### Cookie-less sessions
 
-The session ID is automatically tracked using a cookie, but you can also use them without cookies by using the `session.load()` method. This is useful for things like APIs, where you might want to use a custom header or params to track the session ID:
+The session ID is automatically tracked using a cookie, but you can also use the `session.load()` method to access sessions without cookies . This is useful for things like APIs, where you might want to use a custom header or params to track the session ID:
 
 ```ts title="src/pages/api/cart.ts" "session.load(sessionId)"
 export async function POST({ session, request }: APIContext) {
@@ -134,9 +134,11 @@ On any of these platforms you can easily switch out the driver for a different o
 
 ```js title="astro.config.mjs" {5-10}
 import { defineConfig } from 'astro/config';
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
   // ...
+  adapter: netlify(),
   session: {
     driver: 'redis',
     options: {
