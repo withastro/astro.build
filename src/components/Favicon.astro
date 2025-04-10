@@ -17,8 +17,10 @@
 	const favicon = document.querySelector('link[rel="icon"]')!;
 	document.addEventListener("visibilitychange", () => {
 		const hidden = document.hidden;
-		!isSafariOnMacOS
-			? favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.svg`)
-			: favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.ico`);
+		if (isSafariOnMacOS()) {
+        favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.ico`);
+    } else {
+        favicon.setAttribute("href", `/favicon${hidden ? "-hidden" : ""}.svg`);
+    }
 	});
 </script>
