@@ -205,7 +205,34 @@ Check out the [sessions guide](https://docs.astro.build/en/guides/sessions/) to 
 
 ## SVG Components
 
-...
+Astro now supports local SVG files as components! Reference the default import of any `.svg` file and use it as you would use any `.astro` component. The content will be inlined directly into your HTML.
+
+You can pass props such as `width`, `height`, `fill`, `stroke`, and any other attribute accepted by the [native `<svg>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg). Take a look at [the SVG components documentation](https://docs.astro.build/en/guides/images#svg-components) for complete reference.
+
+```astro title="src/components/MyAstroComponent.astro"
+---
+import Logo from './path/to/svg/file.svg';
+---
+
+<Logo width={64} height={64} fill="currentColor" />
+```
+
+### Upgrading from experimental SVG
+
+If you were previously using the experimental SVG API, you should remove the experimental flag from your `astro.config.mjs` file.
+
+Note that [Astro 5.6](/blog/astro-560) introduced [some breaking changes to this flag](/blog/astro-560/#breaking-changes-to-the-experimental-svg-api).
+
+```js title="astro.config.mjs" del={6}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  // ...
+  experimental: {
+    svg: true,
+  },
+});
+```
 
 ## Config Imports
 
