@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/wysiwyg
 repoUrl: https://github.com/withstudiocms/experiments
 homepageUrl: https://studiocms.dev
 badge: new
-downloads: 61
+downloads: 64
 ---
