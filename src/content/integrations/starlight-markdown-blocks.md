@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starlight-markdown-blocks
 repoUrl: https://github.com/delucis/starlight-markdown-blocks
 homepageUrl: https://delucis.github.io/starlight-markdown-blocks/
 badge: new
-downloads: 154
+downloads: 156
 ---

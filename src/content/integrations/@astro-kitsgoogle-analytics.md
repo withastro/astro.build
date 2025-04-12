@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@astro-kits/google-analytics
 repoUrl: https://github.com/handystudio/astro-google-analytics
 homepageUrl: https://github.com/handystudio/astro-google-analytics#readme
 badge: new
-downloads: 128
+downloads: 131
 ---

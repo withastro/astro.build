@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-rerun-island
 homepageUrl: https://www.npmjs.com/package/astro-rerun-island
 badge: new
-downloads: 71
+downloads: 72
 ---
