@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/sonda
 repoUrl: https://github.com/filipsobol/sonda
 homepageUrl: https://sonda.dev
-downloads: 60936
+downloads: 57211
 ---
