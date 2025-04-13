@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-path-helpers
 repoUrl: https://github.com/heycassidy/astro-path-helpers
 homepageUrl: https://github.com/heycassidy/astro-path-helpers/blob/main/package/README.md
 badge: new
-downloads: 323
+downloads: 325
 ---
