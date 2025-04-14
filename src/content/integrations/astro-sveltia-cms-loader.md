@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-sveltia-cms-loader
 repoUrl: https://github.com/MikeNewXYZ/astro-sveltia-cms-loader
-homepageUrl: https://github.com/MikeNewXYZ/astro-sveltia-cms-loader
+homepageUrl: https://www.npmjs.com/package/astro-sveltia-cms-loader
 badge: new
-downloads: 40
+downloads: 57
 ---
