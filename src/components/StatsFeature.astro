@@ -1,19 +1,58 @@
 ---
 interface Props {
-	stats: {
+	stats?: {
 		amount: string;
 		text: string;
 		source?: string;
 		url?: string;
 	}[];
 }
+
+const stats = Astro.props.stats || [
+	{
+		amount: '📦 1.9M',
+		text: 'monthly downloads',
+		source: 'NPM downloads',
+		url: 'https://www.npmjs.com/package/astro',
+	},
+	{
+		amount: '🌐 82k',
+		text: 'X/Twitter Followers',
+		source: '@astrodotbuild',
+		url: 'https://x.com/astrodotbuild',
+	},
+	{
+		amount: '⭐ 50k',
+		text: 'GitHub Stars',
+		source: 'withastro/astro',
+		url: 'https://github.com/withastro/astro',
+	},
+	{
+		amount: '🏆 #1',
+		text: 'in developer retention',
+		source: 'State of JS 2024',
+		url: 'https://2024.stateofjs.com/en-US/libraries/meta-frameworks/',
+	},
+	{
+		amount: '💜 #1',
+		text: 'in developer interest',
+		source: 'State of JS 2024',
+		url: 'https://2024.stateofjs.com/en-US/libraries/meta-frameworks/',
+	},
+	{
+		amount: '📈 3x',
+		text: 'growth in usage',
+		source: 'State of JS 2024',
+		url: 'https://2024.stateofjs.com/en-US/libraries/meta-frameworks/',
+	},
+];
 ---
 
 <div
 	class="mt-8 mb-20 w-full grid fluid-cols-[9.5rem] sm:fluid-cols-40 md:fluid-cols-48 gap-x-4 gap-y-12 sm:gap-x-8 lg:gap-16"
 >
 	{
-		Astro.props.stats.map(({ amount, text, source, url }) => (
+		stats.map(({ amount, text, source, url }) => (
 			<p class="flex flex-col items-start gap-2.5 leading-none text-white font-light">
 				<span class="font-heading text-4xl lg:text-5xl whitespace-nowrap">{amount}</span>
 				<span class="text-sm xl:text-base">{text}</span>

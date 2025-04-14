@@ -8,6 +8,7 @@ interface Props {
 		icon: string;
 		label: string;
 		prefetch?: boolean;
+		badge?: string;
 	}>;
 }
 ---
@@ -42,7 +43,7 @@ interface Props {
 		>
 			<slot />
 			{
-				Astro.props.items.map(({ href, icon, label, prefetch }) => (
+				Astro.props.items.map(({ href, icon, label, prefetch, badge }) => (
 					<li>
 						<a
 							{href}
@@ -50,6 +51,11 @@ interface Props {
 							class="flex items-center gap-2 rounded-md p-3 leading-none transition hover:bg-astro-gray-700 hover:text-white"
 						>
 							<Icon name={icon} size="16" /> {label}
+							{badge && (
+								<span class="text-xs leading-none font-mono py-1 px-1.5 rounded bg-astro-blue/40 border border-astro-blue">
+									{badge}
+								</span>
+							)}
 						</a>
 					</li>
 				))

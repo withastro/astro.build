@@ -2,66 +2,115 @@
 import { Icon } from 'astro-icon/components';
 import siteInfo from '~/data/site-info.js';
 import SocialLinks from './SocialLinks.astro';
+
+const nav: Nav = [
+	{ href: '/blog/', label: 'Blog', prefetch: true },
+	{
+		label: 'Resources',
+		items: [
+			{ href: '/themes/', label: 'Themes', icon: 'palette', prefetch: true },
+			{ href: '/integrations/', label: 'Integrations', icon: 'layers', prefetch: true },
+			{ href: '/showcase/', label: 'Site showcase', icon: 'browser-windows', prefetch: true },
+			{
+				href: 'https://docs.astro.build/en/tutorial/0-introduction/',
+				label: 'Tutorials',
+				icon: 'open-book',
+			},
+		],
+	},
+	{
+		label: 'Community',
+		items: [
+			{ href: '/chat/', label: 'Discord', icon: 'social/discord' },
+			{
+				href: 'https://opencollective.com/astrodotbuild',
+				label: 'Sponsors',
+				icon: 'heart',
+			},
+			{ href: 'https://shop.astro.build/', label: 'Merch', icon: 'shopping-bag' },
+		],
+	},
+	{
+		label: 'Enterprise',
+		items: [
+			{
+				href: '/agencies/',
+				label: 'Agencies',
+				icon: 'bag-briefcase',
+				badge: 'New',
+				prefetch: true,
+			},
+			{ href: '/case-studies/', label: 'Case studies', icon: 'file-alt', prefetch: true },
+		],
+	},
+];
+
+interface Link {
+	href: string;
+	label: string;
+	prefetch?: true;
+}
+interface GroupLink extends Link {
+	icon: string;
+	badge?: string;
+}
+interface Group {
+	label: string;
+	items: GroupLink[];
+}
+type Nav = Array<Link | Group>;
 ---
 
 <nav
 	aria-label="Primary"
 	class="text-xl flex flex-col divide-y divide-astro-gray-500 pb-12 text-left [&>*]:p-6"
 >
-	<a href="/blog/" data-astro-prefetch class="link">Blog</a>
-	<a href="/showcase/" data-astro-prefetch class="link">Showcase</a>
-	<details class="group">
-		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
-			Resources
-			<Icon
-				name="chevron"
-				aria-hidden="true"
-				class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
-			/>
-		</summary>
-		<div class="mt-4 flex flex-col gap-4 text-xl font-light">
-			<a href="/themes/" data-astro-prefetch class="link flex items-center gap-4">
-				<Icon name="palette" size="24" /> Themes
-			</a>
-			<a href="/integrations/" data-astro-prefetch class="link flex items-center gap-4">
-				<Icon name="layers" size="24" /> Integrations
-			</a>
-			<a
-				href="https://docs.astro.build/en/tutorial/0-introduction/"
-				class="link flex items-center gap-4"
-			>
-				<Icon name="open-book" size="24" /> Tutorials
-			</a>
-			<a href="/case-studies/" data-astro-prefetch class="link flex items-center gap-4">
-				<Icon name="file-alt" size="24" /> Case studies
-			</a>
-		</div>
-	</details>
-	<details class="group">
-		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
-			Community
-			<Icon
-				name="chevron"
-				aria-hidden="true"
-				class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
-			/>
-		</summary>
-		<div class="mt-4 flex flex-col gap-4 text-xl font-light">
-			<a href="/chat/" class="link flex items-center gap-4">
-				<Icon name="social/discord" size="24" /> Discord
-			</a>
-			<a href="https://opencollective.com/astrodotbuild" class="link flex items-center gap-4">
-				<Icon name="heart" size="24" /> Sponsors
-			</a>
-			<a href="https://shop.astro.build/" class="link flex items-center gap-4">
-				<Icon name="shopping-bag" size="24" /> Merch
-			</a>
-		</div>
-	</details>
+	{
+		nav.map((item) =>
+			'href' in item ? (
+				// Top-level link
+				<a
+					class="link"
+					href={item.href}
+					data-astro-prefetch={item.prefetch ? '' : undefined}
+					set:text={item.label}
+				/>
+			) : (
+				// Drop-down group
+				<details class="group">
+					<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
+						{item.label}
+						<Icon
+							name="chevron"
+							aria-hidden="true"
+							class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
+						/>
+					</summary>
+					<div class="mt-4 flex flex-col gap-4 text-xl font-light">
+						{item.items.map((link) => (
+							<a
+								href={link.href}
+								data-astro-prefetch={link.prefetch ? '' : undefined}
+								class="link flex items-center gap-4"
+							>
+								<Icon name={link.icon} size="24" /> {link.label}{' '}
+								{link.badge && (
+									<span class="text-sm leading-none font-mono py-1 px-1.5 rounded bg-astro-blue/40 border border-astro-blue">
+										{link.badge}
+									</span>
+								)}
+							</a>
+						))}
+					</div>
+				</details>
+			),
+		)
+	}
+
 	<div class="flex flex-wrap justify-between gap-12 gap-y-6">
 		<SocialLinks links={siteInfo.socialLinks} />
-		<a href="https://docs.astro.build/" class="button button-primary flex-grow sm:max-w-sm"
-			>Read the docs</a
-		>
+		<a href="https://docs.astro.build/" class="button button-primary flex-grow sm:max-w-sm">
+			Read the docs
+		</a>
 	</div>
 </nav>

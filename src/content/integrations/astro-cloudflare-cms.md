@@ -7,7 +7,7 @@ categories:
   - utilities
   - recent
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-cms
-homepageUrl: https://astro-cloudflare-cms.reeple.studio
+homepageUrl: https://www.npmjs.com/package/astro-cloudflare-cms
 badge: new
-downloads: 59
+downloads: 62
 ---

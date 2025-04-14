@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-path-helpers
 repoUrl: https://github.com/heycassidy/astro-path-helpers
-homepageUrl: https://github.com/heycassidy/astro-path-helpers/blob/main/package/README.md
+homepageUrl: https://github.com/heycassidy/astro-path-helpers
 badge: new
-downloads: 297
+downloads: 407
 ---
