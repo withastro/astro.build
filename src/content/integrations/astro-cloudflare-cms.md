@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-cms
 homepageUrl: https://astro-cloudflare-cms.reeple.studio
 badge: new
-downloads: 60
+downloads: 62
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-ai-robots-txt
 repoUrl: https://github.com/delucis/astro-ai-robots-txt
 homepageUrl: https://delucis.github.io/astro-ai-robots-txt/
 badge: new
-downloads: 328
+downloads: 177
 ---

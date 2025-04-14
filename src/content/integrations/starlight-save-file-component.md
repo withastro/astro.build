@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starlight-save-file-component
 repoUrl: https://github.com/trueberryless-org/starlight-save-file-component
 homepageUrl: https://github.com/trueberryless-org/starlight-save-file-component
 badge: new
-downloads: 71
+downloads: 15
 ---
