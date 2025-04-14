@@ -51,17 +51,17 @@ This experimental feature allows you to use fonts from both your file system and
 To enable this feature, configure an `experimental.fonts` object with one or more fonts:
 
 ```js title="astro.config.mjs"
-import { defineConfig, fontProviders } from "astro/config"
+import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
     experimental: {
         fonts: [{
             provider: fontProviders.google(),
             name: "Roboto",
-            cssVariable: "--font-roboto",
+            cssVariable: "--font-roboto"
         }]
     }
-})
+});
 ```
 
 Then, add a `<Font />` component and site-wide styling in your `<head>`:
@@ -70,13 +70,13 @@ Then, add a `<Font />` component and site-wide styling in your `<head>`:
 ---
 import { Font } from 'astro:assets'
 ---
+
 <Font cssVariable='--font-roboto' preload />
 <style>
 body {
     font-family: var(--font-roboto);
 }
 </style>
-```
 
 There's so much more to discover! Head over to [the experimental Fonts documentation](https://docs.astro.build/en/reference/experimental-flags/fonts/) for the full API, how to get started, and even how to build your own custom `AstroFontProvider` if we don't yet support your preferred font service.
 
@@ -103,6 +103,7 @@ They can be used in Astro components, pages, API endpoints, actions, and middlew
 ```ts title="src/actions/addToCart.ts" {9,10}
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
+
 export const server = {
   addToCart: defineAction({
     input: z.object({
@@ -135,13 +136,13 @@ declare namespace App {
 
 ### Cookie-less sessions
 
-The session ID is automatically tracked using a cookie, but you can also use the `session.load()` method to access sessions without cookies . This is useful for things like APIs, where you might want to use a custom header or params to track the session ID:
+The session ID is automatically tracked using a cookie, but you can also use the `session.load()` method to access sessions without cookies. This is useful for things like APIs, where you might want to use a custom header or params to track the session ID:
 
 ```ts title="src/pages/api/cart.ts" "session.load(sessionId)"
 export async function POST({ session, request }: APIContext) {
   const sessionId = request.headers.get('x-session-id');
 
-  // If there is an existing session ID, load it. Otherwise one will be created
+  // If there is an existing session ID, load it. Otherwise, one will be created
   if (sessionId) {
     await session.load(sessionId);
   } 
@@ -161,14 +162,14 @@ export async function POST({ session, request }: APIContext) {
 
 ### Storage drivers
 
-Astro sessions use storage drivers to persist the data, and these are either zero-config or require minimal setup for all official Astro adapters. Alternatively you can use any [unstorage](https://unstorage.unjs.io/) driver, which supports dozens of storage backends such as Redis and MongoDB.
+Astro sessions use storage drivers to persist the data, and these are either zero-config or require minimal setup for all official Astro adapters. Alternatively, you can use any [unstorage](https://unstorage.unjs.io/) driver, which supports dozens of storage backends such as Redis and MongoDB.
 
 - **[Node](https://docs.astro.build/en/guides/integrations-guide/node/#sessions)**: zero-config filesystem driver
 - **[Netlify](https://docs.astro.build/en/guides/integrations-guide/netlify/#sessions)**: zero-config Netlify Blobs driver
 - **[Cloudflare](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#sessions)**: minimal-config Workers KV driver
 - **[Vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/#sessions)**: minimal-config Redis/Upstash driver
 
-On any of these platforms you can easily switch out the driver for a different one if you don't want to use the default.
+On any of these platforms, you can easily switch out the driver for a different one if you don't want to use the default.
 
 ```js title="astro.config.mjs" {5-10}
 import { defineConfig } from 'astro/config';
@@ -184,7 +185,6 @@ export default defineConfig({
     },
   },
 });
-
 ```
 
 ### Upgrading from experimental sessions
@@ -253,13 +253,13 @@ For example, you can now build your own path utilities without relying on an int
 export default defineConfig({
     base: "store/",
     trailingSlash: "always"
-})
+});
 ```
 
 ```js title="src/utils.js"
 import { trailingSlash, base } from 'astro:config/client';
 
-// This method adds a forwards slash to paths, and prepends the `base`
+// This method adds a forward slash to paths, and prepends the `base`
 function addForwardSlashAndBase(path) {
     let finalPath;
     if (trailingSlash === 'always') {
@@ -296,7 +296,7 @@ The Astro core team is:
 
 <Mention name="ben" />, <Mention name="caleb" />, <Mention name="chris" />, <Mention name="ema" />, <Mention name="erika" />, <Mention name="florian" />, <Mention name="fuzzy" />, <Mention name="hideoo" />, <Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />, <Mention name="nate" />, <Mention name="reuben" />, <Mention name="sarah" />, and <Mention name="yan" />.
 
-Thanks to all the other contributors who helped make Astro 5.7 possible, including: [Roberto Molina](https://github.com/robertoms99), [Junseong Park](https://github.com/jsparkdev), [ryu](https://github.com/ryuapp), [Martin Trapp](https://github.com/martrapp) and [Michael Stramel](https://github.com/stramel).
+Thanks to all the other contributors who helped make Astro 5.7 possible, including: [Roberto Molina](https://github.com/robertoms99), [Junseong Park](https://github.com/jsparkdev), [ryu](https://github.com/ryuapp), [Martin Trapp](https://github.com/martrapp), [Michael Stramel](https://github.com/stramel), [Armand Philippot](https://github.com/ArmandPhilippot), [Nin3](https://github.com/Nin3lee), [viniciusdeliz](https://github.com/viniciusdeliz), [Juan Diaz](https://github.com/JuanPabloDiaz), [Marcos Corrochano Arroyo](https://github.com/drixswe), [Paul Valladares](https://github.com/dreyfus92), [Bugo](https://github.com/dragomano), [liruifengv](https://github.com/liruifengv), [Thomas Bonnet](https://github.com/thomasbnt), [Ming-jun Lu](https://github.com/mingjunlu), [CHEZ](https://github.com/choonse), [omoyx](https://github.com/omoyx), [emily-shen](https://github.com/emily-shen), [Ariel K](https://github.com/anaxite), [Maciek Palmowski](https://github.com/palmiak), [Matthew Justice](https://github.com/justicematthew), [Adam Matthiesen](https://github.com/Adammatthiesen), and [Louis Escher](https://github.com/louisescher).
 
 We look forward to seeing what you build with Astro 5.7! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
 
