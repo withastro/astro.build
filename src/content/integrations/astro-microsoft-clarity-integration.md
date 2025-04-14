@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-microsoft-clarity-integration
 repoUrl: https://github.com/YKalashnikov/astro-microsoft-clarity-integration
-homepageUrl: https://github.com/YKalashnikov#readme
+homepageUrl: https://github.com/YKalashnikov/astro-microsoft-clarity-integration
 badge: new
 downloads: 105
 ---
