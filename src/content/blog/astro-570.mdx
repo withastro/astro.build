@@ -242,15 +242,14 @@ Note that [Astro 5.6](/blog/astro-560) introduced [some breaking changes to this
 
 The new virtual module `astro:config` is now stable!
 
-The virtual module allows to import a subset of the Astro configuration, with type-safety in mind. Two sub-paths are exposed for controlled access to your configuration:
+The virtual module allows you to import a subset of the Astro configuration, with type-safety in mind. Two sub-paths are exposed for controlled access to your configuration:
 
 - `astro:config/client`: exposes config information that is safe to expose to the client.
 - `astro:config/server`: exposes additional information that is safe to expose to the server, such as file/dir paths.
 
-For example, you can now build your own path utilities without relying on an integrations:
+For example, you can now build your own path utilities without relying on an integration. Properties like `base` and `trailingSlash` set in your configuration can be imported and used in a `.js` file:
 
 ```js title="astro.config.mjs"
-// astro.config.mjs
 export default defineConfig({
     base: "store/",
     trailingSlash: "always"
@@ -258,7 +257,6 @@ export default defineConfig({
 ```
 
 ```js title="src/utils.js"
-// src/utils.js
 import { trailingSlash, base } from 'astro:config/client';
 
 // This method adds a forwards slash to paths, and prepends the `base`
@@ -276,9 +274,9 @@ function addForwardSlashAndBase(path) {
 }
 ```
 
+Use this path utility that depends on your configuration settings throughout your project, for example, for more control over page links: 
 ```astro title="src/pages/index.astro"
 ---
-// src/pages/index.astro
 import { addForwardSlashAndBase } from "@src/utils.js";
 
 const cartUrl = addForwardSlashAndBase("cart"); // it will return "store/cart/"
@@ -287,6 +285,7 @@ const cartUrl = addForwardSlashAndBase("cart"); // it will return "store/cart/"
 <a href={cartUrl}>Cart</a>
 ```
 
+We `config`ured you'd enjoy this new ability to access your settings, with Astro's trademark type safety to help you get it right!
 ## Bug fixes
 
 As always, we've been working hard on fixing issues since the [5.6 release](/blog/astro-560). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
