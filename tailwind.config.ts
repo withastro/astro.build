@@ -270,7 +270,24 @@ export default {
 		plugin(function maskGradientPlugin(api) {
 			api.addUtilities({
 				'.mask-radial-gradient': {
-					maskImage: 'radial-gradient(rgba(0, 0, 0, 0.8), transparent 60%)',
+					maskImage: `radial-gradient(
+												rgba(0, 0, 0, 0.8) 0%,
+												rgba(0, 0, 0, 0.79) 5.64%,
+												rgba(0, 0, 0, 0.761) 10.6%,
+												rgba(0, 0, 0, 0.717) 14.9%,
+												rgba(0, 0, 0, 0.66) 18.7%,
+												rgba(0, 0, 0, 0.593) 22.2%,
+												rgba(0, 0, 0, 0.518) 25.4%,
+												rgba(0, 0, 0, 0.44) 28.5%,
+												rgba(0, 0, 0, 0.36) 31.5%,
+												rgba(0, 0, 0, 0.282) 34.6%,
+												rgba(0, 0, 0, 0.207) 37.8%,
+												rgba(0, 0, 0, 0.14) 41.3%,
+												rgba(0, 0, 0, 0.083) 45.1%,
+												rgba(0, 0, 0, 0.039) 49.4%,
+												rgba(0, 0, 0, 0.01) 54.36%,
+												rgba(0, 0, 0, 0) 60%
+											)`,
 				},
 				'.mask-linear-gradient-to-b': {
 					maskImage: 'linear-gradient(to bottom, white 0%, white 33%, transparent 90%)',
