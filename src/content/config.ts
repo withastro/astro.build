@@ -205,4 +205,19 @@ export const collections = {
 					.default([]),
 			}),
 	}),
+	agencies: defineCollection({
+		loader: glob({ base: './src/content/agencies', pattern: '**/*.md' }),
+		schema: ({ image }) =>
+			z
+				.object({
+					name: z.string(),
+					location: z.string(),
+					url: z.string().url(),
+					contactLink: z.string().url().or(z.string().startsWith('mailto:')).optional(),
+					image: image(),
+					imageAlt: z.string(),
+					description: z.string(),
+				})
+				.strict(),
+	}),
 };

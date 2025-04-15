@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/slick-image-compare-astro
 homepageUrl: https://www.npmjs.com/package/slick-image-compare-astro
 badge: new
-downloads: 255
+downloads: 259
 ---

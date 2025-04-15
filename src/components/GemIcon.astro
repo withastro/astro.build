@@ -1,0 +1,40 @@
+---
+// This component renders an icon in a vibrant circle in one of Astro’s “gem” gradient shades.
+
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	icon: string;
+	gradient: 'blue-purple' | 'blue-green' | 'red-pink' | 'orange-yellow';
+}
+
+const { bg, shade } = {
+	'blue-purple': {
+		bg: 'bg-blue-purple-gradient',
+		shade: 'from-astro-blue/30 to-astro-purple/30',
+	},
+	'blue-green': {
+		bg: 'bg-blue-green-gradient',
+		shade: 'from-astro-blue/25 to-astro-green/25',
+	},
+	'red-pink': {
+		bg: 'bg-red-pink-gradient',
+		shade: 'from-astro-red/20 to-astro-pink/20',
+	},
+	'orange-yellow': {
+		bg: 'bg-orange-yellow-gradient',
+		shade: 'from-astro-orange/15 to-astro-yellow/15',
+	},
+}[Astro.props.gradient];
+---
+
+<div class:list={['size-fit rounded-full p-0.5 lg:p-[3px]', bg]}>
+	<div
+		class:list={[
+			'size-12 lg:size-14 grid place-content-center text-white rounded-full bg-black bg-gradient-to-br',
+			shade,
+		]}
+	>
+		<Icon name={Astro.props.icon} class="size-5 lg:size-7" />
+	</div>
+</div>

@@ -506,6 +506,8 @@ const scraper = new ShowcaseScraper({
 		// 2025-03-30 - theme demo advertising itself
 		'https://astro-sassify-template.pages.dev/',
 		'https://demo.sonicjs.com',
+		// 2024-04-14 - not Astro (yet? 😁)
+		'https://www.linkedin.com',
 	],
 });
 await scraper.run();
