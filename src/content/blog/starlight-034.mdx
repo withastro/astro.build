@@ -58,9 +58,24 @@ We’ve been using this approach in the Astro docs for some time now and are exc
 
 Starlight has supported authoring styles with Tailwind CSS since shortly after our first release via a custom Tailwind plugin. We’ve now updated our support for compatibility with Tailwind v4!
 
-To upgrade to Tailwind v4…
+Tailwind v4 comes with some big changes. Support is now provided via a Vite plugin and configuration has moved to a CSS file instead of a JS module. Starlight’s Tailwind compatibility styles must now be imported directly in your CSS and customized using the `@theme` directive:
 
-{/* TODO(chris): explain how to upgrade to Tailwind v4 */}
+```css /(starlight),/ {6,10-12}
+/* src/styles/global.css */
+/* Include the "starlight" layer alongside Tailwind’s default layers. */
+@layer base, starlight, theme, components, utilities;
+
+/* Import Starlight’s compatibility styles. */
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+	/* Configure Starlight theme variables. */
+}
+```
+
+For detailed guidance on updating see the [`@astrojs/starlight-tailwind` changelog](https://github.com/withastro/starlight/blob/main/packages/tailwind/CHANGELOG.md). You might also want to keep the [official Tailwind v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide) and [Starlight’s Tailwind set-up guide](https://starlight.astro.build/guides/css-and-tailwind/#tailwind-css) handy.
 
 ## CSS cascade layers
 
