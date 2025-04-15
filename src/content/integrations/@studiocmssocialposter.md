@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/socialposter
 repoUrl: https://github.com/withstudiocms/experiments
 homepageUrl: https://studiocms.dev
 badge: new
-downloads: 58
+downloads: 90
 ---
