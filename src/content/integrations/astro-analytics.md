@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-analytics
 repoUrl: https://github.com/Destiner/astro-analytics
 homepageUrl: https://github.com/Destiner/astro-analytics#readme
-downloads: 5006
+downloads: 4910
 ---
