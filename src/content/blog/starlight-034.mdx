@@ -1,0 +1,163 @@
+---
+title: Starlight April Update
+description: Rejuvenate your docs with heading anchor links, Tailwind v4 support, CSS @layer, and a new head metadata API.
+publishDate: 2025-04-17
+authors:
+  - chris
+coverImage: '/src/content/blog/_images/starlight-034/blog-post-starlight-034.webp'
+socialImage: '/src/content/blog/_images/starlight-034/og-starlight-034.webp'
+---
+
+import Image from '~/components/BlogContentImage.astro';
+import Note from '~/components/Note.astro';
+import AnchorLinks from './_images/starlight-034/starlight-anchor-links.webp';
+
+**🌸 Blossoms all around me and Starlight is growing too. Let’s take a look and see what’s new!**
+
+We’ve been working through our roadmap towards releasing v1 later this year. Here are some highlights from our latest releases:
+
+- [**Built-in heading anchor links**](#heading-anchor-links)
+- [**Tailwind v4 support**](#tailwind-v4-support)
+- [**CSS cascade layers**](#css-cascade-layers)
+- [**Improved `<head>` APIs**](#improved-head-apis)
+
+To upgrade an existing Starlight site, use the automated `@astrojs/upgrade` CLI tool. This will update Starlight, Astro, and any other integrations you are using:
+
+```sh
+npx @astrojs/upgrade
+```
+
+## Heading anchor links
+
+Starlight v0.34 adds built-in support for automatically rendering clickable anchor links next to headings in your Markdown, MDX, and Markdoc content.
+
+<Image
+	src={AnchorLinks}
+	alt="A subheading in the Starlight docs showing a pointer cursor hovering over an anchor link icon."
+/>
+
+We built on [accessibility research by Amber Wilson](https://amberwilson.co.uk/blog/are-your-anchor-links-accessible/) to design an anchor link approach that aims to be helpful for all users.
+
+Starlight places the link element below the heading in the HTML output and automatically generates an accessible label from your Markdown content. For example, the following Markdown:
+
+```md
+## Get started
+```
+
+will generate HTML a bit like this:
+
+```html
+<h2 id="get-started">Get started</h2>
+<a href="#get-started">Section titled “Get started”</a>
+```
+
+This ensures that headings in the document structure are not cluttered by anchor links and that the links themselves still have a clear label available for assistive technology.
+We’ve been using this approach in the Astro docs for some time now and are excited to make it available to all sites built with Starlight!
+
+## Tailwind v4 support
+
+Starlight has supported authoring styles with Tailwind CSS since shortly after our first release via a custom Tailwind plugin. We’ve now updated our support for compatibility with Tailwind v4!
+
+Tailwind v4 comes with some big changes. Support is now provided via a Vite plugin and configuration has moved to a CSS file instead of a JS module. Starlight’s Tailwind compatibility styles must now be imported directly in your CSS and customized using the `@theme` directive:
+
+```css /(starlight),/ {6,10-12}
+/* src/styles/global.css */
+/* Include the "starlight" layer alongside Tailwind’s default layers. */
+@layer base, starlight, theme, components, utilities;
+
+/* Import Starlight’s compatibility styles. */
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+	/* Configure Starlight theme variables. */
+}
+```
+
+For detailed guidance on updating see the [`@astrojs/starlight-tailwind` changelog](https://github.com/withastro/starlight/blob/main/packages/tailwind/CHANGELOG.md). You might also want to keep the [official Tailwind v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide) and [Starlight’s Tailwind set-up guide](https://starlight.astro.build/guides/css-and-tailwind/#tailwind-css) handy.
+
+## CSS cascade layers
+
+It’s important that Starlight users can easily customize their sites. Historically, clashes between Starlight’s built-in styles and a user’s CSS made the customization experience less smooth than it could have been:
+
+```css
+/* Starlight built-in styles (simplified) */
+:not(h1, h2, h3, h4, h5, h6) + h2 {
+	margin-top: 1.5em;
+}
+
+/* User styles */
+h2 {
+	margin-top: 1em; /* ❌ Doesn’t apply because `h2` is a lower specificity! */
+}
+```
+
+Starlight v0.34 solves conflicts by moving all built-in styles into a dedicated `starlight` [CSS cascade layer](https://css-tricks.com/css-cascade-layers/). This means that **user styles will always take precedence** over default styles and we can wave goodbye to specificity battles. 👋
+
+```css
+/* Starlight built-in styles (simplified) */
+@layer starlight.content {
+	:not(h1, h2, h3, h4, h5, h6) + h2 {
+		margin-top: 1.5em;
+	}
+}
+
+/* User styles */
+h2 {
+	margin-top: 1em; /* ✅ Applies because it’s in the top layer! */
+}
+```
+
+This change also means you can enjoy the benefits of using `@layer` to organize your own CSS without Starlight’s styles always overriding it.
+
+Learn more about using cascade layers in [Starlight’s “CSS & Styling” guide](https://starlight.astro.build/guides/css-and-tailwind/#cascade-layers).
+
+<Note>
+	**With great power comes great responsibility!** We recommend checking your
+	site’s appearance when upgrading to make sure there are no style regressions
+	caused by this change.
+</Note>
+
+## Improved &lt;head&gt; APIs
+
+In Starlight v0.33, we added a new `head` property to our route data object. This unlocks full control over Starlight’s `<head>` tags in [route middleware](https://starlight.astro.build/guides/route-data/#customizing-route-data), including for plugins, allowing you to add tags and filter default tags more easily.
+
+For example, this middleware uses Railway’s demo [Open Graph image API](https://og.railway.com/) to add `og:image` meta tags to every Starlight page:
+
+```js
+// src/routeData.ts
+import { defineRouteMiddleware } from '@astrojs/starlight/route-data';
+
+export const onRequest = defineRouteMiddleware((context) => {
+	const { entry, head } = context.locals.starlightRoute;
+
+	// Create an Open Graph image URL using the current page’s title.
+	const ogImageUrl = new URL(
+		'https://og.railway.com/api/image?fileType=png&layoutName=simple',
+	);
+	ogImageUrl.searchParams.set('text', entry.data.title);
+
+	// Add a `<meta property="og:image">` tag to the current page’s `<head>`.
+	head.push({
+		tag: 'meta',
+		attrs: { property: 'og:image', content: ogImageUrl.href },
+	});
+});
+```
+
+## Bug fixes and more
+
+As always, we’ve also been working to fix issues and extend existing features. See the [Starlight changelog](https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md) for all the details including migration guidance for breaking changes.
+
+## Thanks
+
+Thanks to everyone who contributed to our recent releases with PRs and reviews, including [HiDeoo](https://github.com/HiDeoo/), [Dhruv Bhanushali](https://github.com/dhruvkb), [Hippo](https://github.com/hippotastic), [mayank99](https://github.com/mayank99), [Mark Gaze](https://github.com/markgaze), [Matthew Justice](https://github.com/JusticeMatthew), [Ariel K](https://github.com/anaxite), [techfg](https://github.com/techfg), [jsparkdev](https://github.com/jsparkdev), [trueberryless](https://github.com/trueberryless), [Juan Diaz](https://github.com/JuanPabloDiaz), [dragomano](https://github.com/dragomano), [Armand Philippot](https://github.com/ArmandPhilippot), [Ayo Ayco](https://github.com/ayoayco), [Oluwatobi Sofela](https://github.com/oluwatobiss), [liruifengv](https://github.com/liruifengv), [Lars Kappert](https://github.com/webpro), [Emilien Guilmineau](https://github.com/XREvo), [Florian Lefebvre](https://github.com/florian-lefebvre), [Emanuele Stoppa](https://github.com/ematipico), [Ervins Strauhmanis](https://github.com/resoltico), [Pejyuu](https://github.com/Pejyuu), and [Sarah Rainsberger](https://github.com/sarah11918).
+
+We look forward to seeing what you build with Starlight! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
+
+## Previously…
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['starlight-032', 'starlight-028']} />
