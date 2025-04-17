@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-bundle-islands
 repoUrl: https://github.com/mathhulk/astro-bundle-islands
 homepageUrl: https://github.com/mathhulk/astro-bundle-islands#readme
 badge: new
-downloads: 74
+downloads: 75
 ---
