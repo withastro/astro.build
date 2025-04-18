@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@lekoarts/clerk-loader
 repoUrl: https://github.com/LekoArts/astro-loaders
 homepageUrl: https://github.com/LekoArts/astro-loaders
-downloads: 99
+downloads: 96
 ---

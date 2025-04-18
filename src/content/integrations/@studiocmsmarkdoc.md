@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/markdoc
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
 badge: new
-downloads: 275
+downloads: 380
 ---
