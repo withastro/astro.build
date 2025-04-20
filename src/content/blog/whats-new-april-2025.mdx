@@ -53,6 +53,8 @@ Minor releases introduce new features and improvements. Check out what's new!
 
 From Firebase Studio to Sharp to the Lua Language Server, some of the biggest names you know are using Astro!
 
+{/* 
+
 export const featuredSites = [
   'firebase.studio',
   'sharp.pixelplumbing.com',
@@ -64,6 +66,8 @@ export const featuredSites = [
   <ShowcaseCard site={await getEntry('showcase', 'ladybird.org')} />
 </div>
 
+*/}
+
 ## Weird Wide Web
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
@@ -72,12 +76,14 @@ Some sites from the last month that show off what you can do with Astro that are
 - Check out Aaron Morey's [anti-social microblog](https://aaronmorey.com/micros/) that looks like a social network feed, but the comment, like, and repost buttons are a lie! You can only read the stylized posts (and, you'll never have to read the comments).
 - [Hypertext TV](https://hypertext.tv/) - Daily programming for the handmade web. Airing now.
 
+{/* 
 export const monthlySites = [
   'www.utsubo.com',
   'artechfuz3d.itch.io_space-bingo',
 ]; 
 
-<ShowcaseGridById ids={monthlySites} />
+<ShowcaseGridById ids={monthlySites} /> 
+*/}
 
 ## Community
 
@@ -85,27 +91,19 @@ Astro wouldn’t be what it is without its community. From Discord support, to d
 
 ### Astro Team News
 
-#### 2025 TSC
-
 We have a new Technical Steering Committee (TSC)!
 
 Welcome core maintainers <Mention name="ema" /> <Mention name="florian" /> and <Mention name="matt" /> to the Astro TSC, joining current member <Mention name="matthew" />, to guide Astro's technical direction and ensure a healthy codebase for many years to come!
 
-Additionally, Matt has stepped into the role of framework team lead alongside <Mention name="sarah" />, our current docs team lead! 
+Additionally, Matt has stepped into the role of framework team lead alongside <Mention name="sarah" />, our current docs team lead!
 
 [Read more about the 2025 TSC](/blog/astro-tsc-2025/)
-
-#### New Maintainer
-
-We are pleased to welcome our newest Astro maintainer [@stramel](https://astro.badg.es/contributor/stramel/)!
-
-We are **S**o **V**ery **G**lad to have you aboard!
 
 ### Open source feel-good Story
 
 Last month's "What's New?" included a blog post by Angelika Cathor on [the implications of Astro's HTML streaming](https://angelika.me/2025/03/16/implications-of-astro-html-streaming/) and detailed their current workaround in use.
 
-In response, Astro core team member <Mention name="fryuni" /> not only identified an issue in a 3rd-party service and [contributed a bug fix](https://github.com/getsentry/sentry-javascript/pull/15995), but also created [an Astro integration to allow you to disable Astro's streaming](https://inox-tools.fryuni.dev/cut-short) featured below in *this* month's Tips and Tools section.
+In response, Astro core team member <Mention name="luiz" /> not only identified an issue in a 3rd-party service and [contributed a bug fix](https://github.com/getsentry/sentry-javascript/pull/15995), but also created [an Astro integration to allow you to disable Astro's streaming](https://inox-tools.fryuni.dev/cut-short) featured below in *this* month's Tips and Tools section.
 
 
 ## Content
@@ -120,8 +118,6 @@ Because you can never get tired of Astro, here's even more community content!
 
 ### Migration Stories
 
-- 
-- 
 
 ### How-to Articles
 - [How I automatically update the `updated` property of content on my site](https://www.lloydatkinson.net/notes/22/)
@@ -139,10 +135,6 @@ Find these and **all how-to articles** from previous monthly blog posts at [Astr
 
 
 ### ... and more!
-
-- 
-- 
-
 
 
 ## Watch Party
@@ -217,14 +209,14 @@ The latest community-built utilities and integrations to help you build with Ast
 - [`astro-wordpress`](https://github.com/sijad/astro-wordpress) - Build WordPress themes using Astro.
 - [Nova IDE Astro extension](https://extensions.panic.com/extensions/com.johnlindop/com.johnlindop.nova-astro/) - Provides syntax highlighting and basic autocomplete for .astro files for Panic's Nova IDE.
 - 🌟 [`starlight-fullview-mode`](https://windmillcode.github.io/starlight-fullview-mode/) - A minimalist plugin that collapses Starlight's sidebars and expands the main content to full width.
-- [`@inox-tools/cut-short`(https://inox-tools.fryuni.dev/cut-short)] -  an Astro integration that lets you stop processing a request instantly and send back a custom response, now with a `disableStreaming` option.
+- [`@inox-tools/cut-short`(https://inox-tools.fryuni.dev/cut-short)] - an Astro integration that lets you stop processing a request instantly and send back a custom response, now with a `disableStreaming` option.
 - [`typed-rest-routes`] - An Astro integration that allows for creating type-safe server endpoints.
 
 
 ... and some built *with* Astro:
 
 - [Starlight Changelog](https://starlight-changelog.netlify.app/) - [Trueberryless](https://github.com/trueberryless/) (whose name, we learned this month, is *not* a pun on Drew Barrymore!) took inspiration from Astro's [Starlog theme](https://astro.build/themes/details/starlog/), added the [`astro-loader-github-releases` content loader](https://github.com/lin-stephanie/astro-loaders/tree/main/packages/astro-loader-github-releases) and gave us a pretty, dark-mode version of Starlight's own `CHANGELOG.md`, automatically updating. Bookmark it to keep up with Starlight's changes!
-- []() -
+
 
 ## Themes & Templates
 
@@ -238,9 +230,13 @@ And, Otterlord's [Catppuccin for Starlight](https://starlight.catppuccin.com/) h
 
 Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
 
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
+
+{/* 
 export const excludedSites = [...featuredSites, ...monthlySites]
 
 <MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
+*/}
 
 ## Starlight in the wild
 
