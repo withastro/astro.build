@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
 repoUrl: https://github.com/bearBoy80/auth-astro
-homepageUrl: https://github.com/bearBoy80/auth-astro#readme
+homepageUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
 badge: new
 downloads: 267
 ---

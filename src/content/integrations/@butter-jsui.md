@@ -9,9 +9,7 @@ categories:
   - css+ui
   - frameworks
   - media
-  - recent
 npmUrl: https://www.npmjs.com/package/@butter-js/ui
 homepageUrl: https://github.com/HeJimenez00/ButterUI
-badge: new
 downloads: 109
 ---

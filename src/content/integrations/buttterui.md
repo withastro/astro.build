@@ -5,9 +5,7 @@ categories:
   - css+ui
   - frameworks
   - media
-  - recent
 npmUrl: https://www.npmjs.com/package/buttterui
-homepageUrl: https://github.com/HeJimenez00/ButterUI
-badge: new
+homepageUrl: https://www.npmjs.com/package/buttterui
 downloads: 16
 ---
