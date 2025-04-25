@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/mdx
 image: /assets/integrations/mdx.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/mdx/
-downloads: 745956
+downloads: 753164
 official: true
 ---

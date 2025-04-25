@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@studiocms/markdoc
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
-downloads: 697
+downloads: 715
 ---
