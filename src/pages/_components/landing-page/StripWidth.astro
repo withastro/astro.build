@@ -1,0 +1,11 @@
+---
+// This is a bit of a hack.
+// Astro Icon always adds `width` and `height` attributes to icons but that can mess with
+// responsive layouts. This component removes the first `width` attribute it finds in its
+// child content.
+
+let html = await Astro.slots.render('default');
+html = html.replace(/width="[^"]+"/, '');
+---
+
+<Fragment set:html={html} />
