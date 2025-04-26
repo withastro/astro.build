@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@dotnetthailand/minimal-portfolio-theme
 homepageUrl: https://www.npmjs.com/package/@dotnetthailand/minimal-portfolio-theme
 badge: new
-downloads: 155
+downloads: 156
 ---

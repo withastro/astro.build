@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@xtreat/astro-iconify
 repoUrl: https://github.com/xandertreat/astro-iconify
 homepageUrl: https://github.com/xandertreat/astro-iconify?tab=readme-ov-file#readme
-downloads: 60
+downloads: 48
 ---

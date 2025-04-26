@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/font-awesome-astro
 homepageUrl: https://github.com/mgmka/font-awesome-astro
 badge: new
-downloads: 374
+downloads: 375
 ---

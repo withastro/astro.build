@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-react-i18next
 repoUrl: https://github.com/jeremyxgo/astro-react-i18next
 homepageUrl: https://github.com/jeremyxgo/astro-react-i18next#readme
-downloads: 486
+downloads: 493
 ---
