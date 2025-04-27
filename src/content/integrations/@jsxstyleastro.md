@@ -7,5 +7,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@jsxstyle/astro
 homepageUrl: https://www.npmjs.com/package/@jsxstyle/astro
-downloads: 100
+downloads: 99
 ---

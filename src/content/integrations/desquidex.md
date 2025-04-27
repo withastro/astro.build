@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/desquidex
 repoUrl: https://github.com/sgalcheung/starlight-squidex
 homepageUrl: https://www.npmjs.com/package/desquidex
-downloads: 148
+downloads: 158
 ---
