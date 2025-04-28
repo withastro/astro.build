@@ -1,7 +1,8 @@
 ---
 name: astro-selfie-veeva
 title: astro-selfie-veeva
-description: Astro integration to generate page screenshots for Veeva CRM thumbnails
+description: Astro integration to generate page screenshots and process them
+  into thumbnails for Veeva CRM presentations.
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-selfie-veeva

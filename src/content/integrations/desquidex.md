@@ -6,6 +6,6 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/desquidex
 repoUrl: https://github.com/sgalcheung/starlight-squidex
-homepageUrl: https://www.npmjs.com/package/desquidex
+homepageUrl: https://starlight-squidex.netlify.app/
 downloads: 162
 ---
