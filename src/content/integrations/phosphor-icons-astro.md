@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/phosphor-icons-astro
 repoUrl: https://github.com/smastrom/phosphor-icons-astro
-homepageUrl: https://github.com/smastrom/phosphor-icons-astro
+homepageUrl: https://www.npmjs.com/package/phosphor-icons-astro
 badge: new
 downloads: 143
 ---
