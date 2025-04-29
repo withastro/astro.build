@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@eventcatalogtest/schema-viewer
 homepageUrl: https://www.npmjs.com/package/@eventcatalogtest/schema-viewer
 badge: new
-downloads: 126
+downloads: 127
 ---

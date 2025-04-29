@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/a11y-astro-components
 homepageUrl: https://www.npmjs.com/package/a11y-astro-components
-downloads: 22
+downloads: 23
 ---

@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-deno-websocket
 homepageUrl: https://www.npmjs.com/package/astro-deno-websocket
-downloads: 26
+downloads: 27
 ---

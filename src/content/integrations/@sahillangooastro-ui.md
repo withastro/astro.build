@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sahillangoo/astro-ui
 homepageUrl: https://www.npmjs.com/package/@sahillangoo/astro-ui
 badge: new
-downloads: 248
+downloads: 249
 ---
