@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/solidjs-upgraded-babel-preset
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/solid-js/
-downloads: 21
+downloads: 18
 ---

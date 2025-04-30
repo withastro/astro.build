@@ -5,6 +5,6 @@ description: Astro integration to ease the use of PocketBase in your Astro proje
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-pocketbase
-homepageUrl: https://github.com/gbouteiller/astro-pocketbase
-downloads: 127
+homepageUrl: https://www.npmjs.com/package/astro-pocketbase
+downloads: 117
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-icon
 image: /assets/integrations/astro-icon.svg
 repoUrl: https://github.com/natemoo-re/astro-icon
 homepageUrl: https://github.com/natemoo-re/astro-icon#readme
-downloads: 223052
+downloads: 226084
 ---

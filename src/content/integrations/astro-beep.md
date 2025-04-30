@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-beep
 repoUrl: https://github.com/natemoo-re/astro-beep
 homepageUrl: https://github.com/natemoo-re/astro-beep#README
-downloads: 15
+downloads: 12
 ---

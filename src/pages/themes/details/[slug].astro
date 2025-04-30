@@ -16,9 +16,11 @@ export const prerender = false;
 
 const slug = Astro.params.slug as string;
 
-const theme = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then((res) =>
-	res.json(),
-);
+const res = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`);
+
+if (res.status === 404) return Astro.redirect('/404');
+
+const theme = await res.json();
 
 const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 	`${THEMES_API_URL}/api/themes/related?slug=${slug}`,

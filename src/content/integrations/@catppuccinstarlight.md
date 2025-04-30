@@ -1,13 +1,16 @@
 ---
-name: starlight-theme-catppuccin
-title: starlight-theme-catppuccin
+name: "@catppuccin/starlight"
+title: "@catppuccin/starlight"
 description: <h3 align="center"> 	<img
   src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png"
   width="100" alt="Logo"/><br/> 	<img
   src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transp
 categories:
   - uncategorized
-npmUrl: https://www.npmjs.com/package/starlight-theme-catppuccin
-homepageUrl: https://catppuccin-starlight.otterlord.dev/
-downloads: 1383
+  - recent
+npmUrl: https://www.npmjs.com/package/@catppuccin/starlight
+homepageUrl: https://starlight.catppuccin.com/
+badge: new
+downloads: 185
+repoUrl: https://github.com/catppuccin/starlight
 ---

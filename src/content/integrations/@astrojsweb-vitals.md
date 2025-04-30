@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@astrojs/web-vitals
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://github.com/withastro/astro#readme
 official: true
-downloads: 835
+downloads: 1319
 ---
