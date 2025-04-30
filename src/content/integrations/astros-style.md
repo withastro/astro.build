@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astros-style
 repoUrl: https://github.com/warpsio/astros-style
 homepageUrl: https://www.npmjs.com/package/astros-style
-downloads: 4
+downloads: 5
 ---

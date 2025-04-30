@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-fluidcube
 homepageUrl: https://www.npmjs.com/package/astro-fluidcube
-downloads: 21
+downloads: 11
 ---

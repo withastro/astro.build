@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/nativelatex
 homepageUrl: https://www.npmjs.com/package/nativelatex
-downloads: 38
+downloads: 39
 ---

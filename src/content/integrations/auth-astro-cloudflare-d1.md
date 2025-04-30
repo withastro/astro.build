@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
 repoUrl: https://github.com/bearBoy80/auth-astro
 homepageUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
 badge: new
-downloads: 278
+downloads: 279
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-shadcn-registry
 repoUrl: https://github.com/JoeJohnson01/astro-shadcn-registry
 homepageUrl: https://github.com/JoeJohnson01/astro-shadcn-registry#readme
 badge: new
-downloads: 79
+downloads: 82
 ---
