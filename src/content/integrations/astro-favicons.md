@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-favicons
 repoUrl: https://github.com/ACP-CODE/astro-favicons
 homepageUrl: https://github.com/ACP-CODE/astro-favicons#readme
-downloads: 2921
+downloads: 2815
 ---
