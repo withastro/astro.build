@@ -7,5 +7,5 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/buttterui
 homepageUrl: https://www.npmjs.com/package/buttterui
-downloads: 10
+downloads: 14
 ---

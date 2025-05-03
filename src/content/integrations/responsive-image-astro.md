@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/responsive-image-astro
 repoUrl: https://github.com/MrAmericanMike/responsive-image-astro
 homepageUrl: https://www.npmjs.com/package/responsive-image-astro
-downloads: 26
+downloads: 29
 ---

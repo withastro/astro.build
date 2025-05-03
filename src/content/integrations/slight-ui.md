@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/slight-ui
 homepageUrl: https://www.npmjs.com/package/slight-ui
-downloads: 4
+downloads: 7
 ---
