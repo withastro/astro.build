@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/cfetch
 repoUrl: https://github.com/withstudiocms/cfetch
 homepageUrl: https://studiocms.dev
 badge: new
-downloads: 571
+downloads: 575
 ---

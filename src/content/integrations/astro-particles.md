@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-particles
 repoUrl: https://github.com/tsparticles/astro
 homepageUrl: https://github.com/tsparticles/astro#readme
-downloads: 1025
+downloads: 992
 ---
