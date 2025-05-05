@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-transitions-lottie
 repoUrl: https://github.com/giuseppecutuli/astro-lottie
 homepageUrl: https://www.npmjs.com/package/astro-transitions-lottie
-downloads: 11
+downloads: 10
 ---
