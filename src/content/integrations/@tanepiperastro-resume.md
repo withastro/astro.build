@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@tanepiper/astro-resume
 repoUrl: https://git.sr.ht/~ayoayco/astro-resume
 homepageUrl: https://www.npmjs.com/package/@tanepiper/astro-resume
-downloads: 10
+downloads: 12
 ---

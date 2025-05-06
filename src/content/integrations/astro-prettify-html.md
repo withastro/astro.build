@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-prettify-html
 homepageUrl: https://www.npmjs.com/package/astro-prettify-html
-downloads: 10
+downloads: 11
 ---

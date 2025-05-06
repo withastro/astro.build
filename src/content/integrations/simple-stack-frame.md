@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/simple-stack-frame
 repoUrl: https://github.com/bholmesdev/simple-stack
 homepageUrl: https://www.npmjs.com/package/simple-stack-frame
-downloads: 10
+downloads: 11
 ---
