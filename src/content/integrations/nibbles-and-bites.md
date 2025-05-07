@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/nibbles-and-bites
 homepageUrl: https://www.npmjs.com/package/nibbles-and-bites
 badge: new
-downloads: 144
+downloads: 149
 ---

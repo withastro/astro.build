@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/polite-stack
 homepageUrl: https://www.npmjs.com/package/polite-stack
-downloads: 32
+downloads: 31
 ---
