@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-quiz
 repoUrl: https://github.com/FelipeIzolan/astro-quiz
 homepageUrl: https://github.com/FelipeIzolan/astro-quiz#readme
 badge: new
-downloads: 55
+downloads: 56
 ---
