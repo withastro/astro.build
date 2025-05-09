@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-dev-toolbar-showcase
 repoUrl: https://github.com/morinokami/astro-dev-toolbar-showcase
 homepageUrl: https://github.com/morinokami/astro-dev-toolbar-showcase#readme
 badge: new
-downloads: 161
+downloads: 172
 ---
