@@ -10,6 +10,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/partytown
 image: /assets/integrations/partytown.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/partytown/
-downloads: 104820
+downloads: 104739
 official: true
 ---

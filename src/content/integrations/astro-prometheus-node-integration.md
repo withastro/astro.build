@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-prometheus-node-integration
 repoUrl: https://github.com/dvelasquez/astro-prometheus-integration
 homepageUrl: https://github.com/dvelasquez/astro-prometheus-integration/tree/main/packages/astro-prometheus-node-integration#readme
 badge: new
-downloads: 382
+downloads: 385
 ---
