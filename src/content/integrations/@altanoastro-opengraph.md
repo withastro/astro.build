@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@altano/astro-opengraph
 repoUrl: https://github.com/altano/npm-packages
 homepageUrl: https://www.npmjs.com/package/@altano/astro-opengraph
 badge: new
-downloads: 160
+downloads: 151
 ---

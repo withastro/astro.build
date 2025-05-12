@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/typed-rest-routes
 homepageUrl: https://www.npmjs.com/package/typed-rest-routes
 badge: new
-downloads: 756
+downloads: 655
 ---

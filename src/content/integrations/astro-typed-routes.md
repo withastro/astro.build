@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-typed-routes
 repoUrl: https://github.com/bartoszkrawczyk2/astro-typed-routes
 homepageUrl: https://www.npmjs.com/package/astro-typed-routes
-downloads: 12
+downloads: 11
 ---
