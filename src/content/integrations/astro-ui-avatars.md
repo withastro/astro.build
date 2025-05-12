@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-ui-avatars
 repoUrl: https://github.com/codiume/orbit
-homepageUrl: https://www.npmjs.com/package/astro-ui-avatars
+homepageUrl: https://github.com/codiume/orbit
 downloads: 43
 ---

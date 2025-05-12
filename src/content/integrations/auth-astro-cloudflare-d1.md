@@ -4,10 +4,8 @@ title: auth-astro-cloudflare-d1
 description: The easiest way to add authentication to your Astro project!
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
 repoUrl: https://github.com/bearBoy80/auth-astro
 homepageUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
-badge: new
 downloads: 41
 ---
