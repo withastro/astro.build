@@ -11,6 +11,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@catppuccin/starlight
 homepageUrl: https://starlight.catppuccin.com/
 badge: new
-downloads: 274
+downloads: 289
 repoUrl: https://github.com/catppuccin/starlight
 ---
