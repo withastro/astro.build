@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-directives
 repoUrl: https://github.com/QuentinDutot/astro-directives
 homepageUrl: https://github.com/QuentinDutot/astro-directives#readme
-downloads: 16
+downloads: 14
 ---

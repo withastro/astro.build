@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@vl07/flare-docs
 repoUrl: https://github.com/VL07/flare-docs
 homepageUrl: https://github.com/VL07/flare-docs#readme
-downloads: 18
+downloads: 15
 ---
