@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@cfu288/worker
 repoUrl: https://github.com/astro-community/worker
 homepageUrl: https://github.com/astro-community/worker
-downloads: 22
+downloads: 20
 ---
