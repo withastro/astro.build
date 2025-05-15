@@ -506,8 +506,17 @@ const scraper = new ShowcaseScraper({
 		// 2025-03-30 - theme demo advertising itself
 		'https://astro-sassify-template.pages.dev/',
 		'https://demo.sonicjs.com',
-		// 2024-04-14 - not Astro (yet? 😁)
+		// 2025-04-14 - not Astro (yet? 😁)
 		'https://www.linkedin.com',
+		// 2025-05-15 no evidence Astro
+		'https://www.vvidhya.com/',
+		'https://www.idealo.de/',
+		// 2025-05-15 - updated their domain which is already added
+		'https://pvcnt.github.io/mergeable/',
+		// 2025-05-15 - in a showcase description of a valid Astro site
+		'https://tina.io/',
+		'https://carbondesignsystem.com/',
+		// 2025-05-15 https://sonicjs.com/ gives us all kinds of headaches evaluating
 	],
 });
 await scraper.run();
