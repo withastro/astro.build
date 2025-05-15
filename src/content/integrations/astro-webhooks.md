@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-webhooks
 repoUrl: https://github.com/codiume/orbit
-homepageUrl: https://www.npmjs.com/package/astro-webhooks
+homepageUrl: https://github.com/codiume/orbit
 downloads: 12
 ---
