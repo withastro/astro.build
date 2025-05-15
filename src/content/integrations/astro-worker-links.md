@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-worker-links
 repoUrl: https://github.com/Ovyerus/astro-worker-links
 homepageUrl: https://www.npmjs.com/package/astro-worker-links
-downloads: 56
+downloads: 51
 ---
