@@ -71,17 +71,17 @@ export const featuredSites = [
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
 
-- [Mac Theme Gardens] - A website showcasing more than 3,000 (and counting) Kaleidoscope from the Classic Mac era. And don't forget to read the [story behind creating Mac Theme Gardens with Astro](https://damien.zone/introducing-mac-themes-garden/)!
+- [Mac Theme Gardens](https://macthemes.garden) - A website showcasing more than 3,000 (and counting) Kaleidoscope from the Classic Mac era. And don't forget to read the [story behind creating Mac Theme Gardens with Astro](https://damien.zone/introducing-mac-themes-garden/)!
 - [Statt Land, Song.](https://statt-land-song.ch/) - Test your music knowledge, compete with friends, and race against the clock in this "guess the song" party game! And check out [the story behind Statt Land, Song](https://www.reddit.com/r/astrojs/comments/1klnefw/i_built_a_competitive_music_quiz_with_astro_react/), including tech stack and lessons learned.
 
 export const monthlySites = [
-  'hypertext.tv',
-  'webtui.ironclad.sh',
+  'macthemes.garden',
+  'statt-land-song.ch',
 ]; 
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'hypertext.tv')} />
-  <ShowcaseCard site={await getEntry('showcase', 'webtui.ironclad.sh')} />
+  <ShowcaseCard site={await getEntry('showcase', 'macthemes.garden')} />
+  <ShowcaseCard site={await getEntry('showcase', 'statt-land-song.ch')} />
 </div>
 
 {/* <ShowcaseGridById ids={monthlySites} />  */}
@@ -147,11 +147,12 @@ Grab your popcorn and make a playlist of your faves! 🍿
 
 <YouTubeGrid
   videos={[
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
+     { id: "https://www.youtube.com/watch?v=m-FDi3_55Wo", title: "Astro JS Is the Framework You’re Not Using (Yet)"},
+    { id: "https://www.youtube.com/watch?v=elfQp4WAJy0", title: "React is imploding, and that's a good thing..."},
+    { id: "https://www.youtube.com/watch?v=XiC5pvBrwEA", title: "Reacting to Dan Abramov"},
+    { id: "https://www.youtube.com/watch?v=LpEPcHSRTzQ", title: "Astro.js Reviewed"},
+    { id: "https://www.youtube.com/watch?v=FaQo2vRQQqU", title: "Getting Started with SEO using AstroJs Part 2"},
+    { id: "https://www.youtube.com/watch?v=M4K7Y8yBxSY", title: "Astro Image Optimization"},
     { id: "", title: ""},
     { id: "", title: ""},
     { id: "", title: ""},
@@ -167,28 +168,28 @@ Using a CMS, database, or tool to build? See how it's done!
 
 <YouTubeGrid
   videos={[
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
+    { id: "https://www.youtube.com/watch?v=WofienavPFY", title: "Build a Blog CMS with Astro and Supabase from Scratch"},
+    { id: "https://www.youtube.com/watch?v=MS9twvOP9LM", title: "The simple way I paywalled an Angular/Astro SSG site"},
+    { id: "https://www.youtube.com/watch?v=M1ZOpffxNog", title: "Creating a Snippet Library with Astro.js and Appwrite - Complete Project"},
+    { id: "https://www.youtube.com/watch?v=tCG5GtbIlYI", title: "Piece Type Basics: An ApostropheCMS + Astro Tutorial"},
+    { id: "https://www.youtube.com/watch?v=_spAfke_Rt8&", title: "Advanced Piece Display: An ApostropheCMS + Astro Tutorial"},
+    { id: "https://www.youtube.com/watch?v=_q3W3uA5zno", title: "How to Build an AI-Powered Astro.js Website from Scratch"},
+    { id: "https://www.youtube.com/watch?v=y_bvykbcZ2A", title: "Piny - Visual Tailwind CSS Editor for Astro (Quick intro)"},
+    { id: "https://www.youtube.com/watch?v=wA3DdPa1t3A", title: "Create a Modern AI Marketplace From Scratch in 2025 with Astro.js"},
+    { id: "https://www.youtube.com/watch?v=dsw3JePcA_0", title: "Agrega Autenticación en tu app de Astro y Next.js con Clerk"},
+    { id: "https://www.youtube.com/watch?v=89POBiRiCgc", title: "Docker + Astro + Wordpress Headless!! tutorial completo!!"},
     { id: "", title: ""},
   ]}
 /> 
 
-{/* ### Meetups
+### Meetups
 
-Astro is popular around the globe! Discover what happened at meetups this month.
+Astro is popular around the globe! Discover what happened at meetups and conferences this month.
 
 <YouTubeGrid
   videos={[
 
-    { id: "", title: ""},
+    { id: "https://www.youtube.com/watch?v=igHnQ52lGrg", title: "Astro 🚀: El framework web del que todos están hablando - WTM Madrid 25"},
     { id: "", title: ""},
     { id: "", title: ""},
     { id: "", title: ""},
@@ -200,7 +201,7 @@ Astro is popular around the globe! Discover what happened at meetups this month.
     { id: "", title: ""},
     { id: "", title: ""},
   ]}
-/>  */}
+/>
 
 ### Live coding streams
 
@@ -208,13 +209,12 @@ Watch people build, experiment, and learn!
 
 <YouTubeGrid
   videos={[
+    { id: "https://www.youtube.com/watch?v=eJlpHQZQRfY", title: "Build and Deploy Personal Homepage in Under 2hrs (with mailing list!)"},
+    { id: "https://www.youtube.com/watch?v=YOjFpR3vrEQ", title: "Set Sail for Astro Server Islands"},
+    { id: "https://www.youtube.com/watch?v=GzN2_r4WlKw", title: "Tutorial: Aprende a crear una página personal de links con Astro, TailwindCSS y TypeScript"},
     { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
+    { id: "https://www.youtube.com/watch?v=67T2uKSavt4", title: "Разрабатываю pet project вместе с Cursor AI #2 | Math Battle | Astro JS | Vibe coding"},
+    { id: "https://www.youtube.com/watch?v=ugoQHStYwWA", title: "Pakai Strapi, Astro, N8N & AI Copilot! Vibe Coding!"},
     { id: "", title: ""},
     { id: "", title: ""},
     { id: "", title: ""},
