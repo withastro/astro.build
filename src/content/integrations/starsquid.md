@@ -1,7 +1,8 @@
 ---
 name: starsquid
 title: starsquid
-description: Use your Squidex data in Astro projects. (Formerly starlight-squidex) 
+description: ⚠️ Renamed from starlight-squidex to starsquid. Please migrate! →
+  Use your Squidex data in Astro projects
 categories:
   - loaders
   - recent
