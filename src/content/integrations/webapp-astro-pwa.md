@@ -12,5 +12,5 @@ npmUrl: https://www.npmjs.com/package/webapp-astro-pwa
 repoUrl: https://github.com/aondodawid/WebApp-Astro-PWA
 homepageUrl: https://github.com/aondodawid/WebApp-Astro-PWA#readme
 badge: new
-downloads: 3503
+downloads: 3504
 ---

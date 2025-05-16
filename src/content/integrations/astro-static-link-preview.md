@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-static-link-preview
 repoUrl: https://github.com/NPJigaK/astro-static-link-preview
 homepageUrl: https://github.com/NPJigaK/astro-static-link-preview
 badge: new
-downloads: 339
+downloads: 341
 ---

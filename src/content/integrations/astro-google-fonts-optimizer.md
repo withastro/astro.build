@@ -6,5 +6,5 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-google-fonts-optimizer
 homepageUrl: https://github.com/sebholstein/astro-google-fonts-optimizer
-downloads: 6195
+downloads: 6142
 ---

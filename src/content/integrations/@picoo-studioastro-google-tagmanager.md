@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@picoo-studio/astro-google-tagmanager
 homepageUrl: https://www.npmjs.com/package/@picoo-studio/astro-google-tagmanager
 badge: new
-downloads: 117
+downloads: 118
 ---
