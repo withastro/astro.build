@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/github-discussions-blog-loader
 repoUrl: https://github.com/mattbrailsford/github-discussions-blog-loader
 homepageUrl: https://www.npmjs.com/package/github-discussions-blog-loader
-downloads: 356
+downloads: 343
 ---

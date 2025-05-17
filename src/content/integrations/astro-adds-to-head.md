@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-adds-to-head
 repoUrl: https://github.com/lilnasy/gratelets
 homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/adds-to-head
-downloads: 7194
+downloads: 6710
 ---

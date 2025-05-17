@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-simple-modal
 repoUrl: https://github.com/henrycorredor/astro-simple-modal
 homepageUrl: https://github.com/henrycorredor/astro-simple-modal
 badge: new
-downloads: 241
+downloads: 242
 ---
