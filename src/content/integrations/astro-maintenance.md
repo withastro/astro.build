@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-maintenance
 repoUrl: https://github.com/alexandr-studio/astro-maintenance
 homepageUrl: https://astro-maintenance.alexandr.studio/
 badge: new
-downloads: 371
+downloads: 393
 ---

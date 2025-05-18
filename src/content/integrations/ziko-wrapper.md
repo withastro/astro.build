@@ -9,6 +9,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/ziko-wrapper
 repoUrl: https://github.com/zakarialaoui10/ziko-wrapper
 homepageUrl: https://www.npmjs.com/package/ziko-wrapper
-downloads: 33
+downloads: 35
 image: /assets/integrations/zikojs.svg
 ---

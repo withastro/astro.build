@@ -5,7 +5,7 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/lightnet
 homepageUrl: https://lightnet.community
-downloads: 183
+downloads: 181
 description: Share the message of Jesus and strengthen believers worldwide.
 repoUrl: https://github.com/LightNetDev/lightnet
 ---
