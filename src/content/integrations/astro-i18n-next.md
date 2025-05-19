@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-i18n-next
 homepageUrl: https://www.npmjs.com/package/astro-i18n-next
-downloads: 18
+downloads: 17
 ---

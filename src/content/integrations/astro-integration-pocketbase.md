@@ -8,6 +8,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-integration-pocketbase
 homepageUrl: https://github.com/pawcoding/astro-integration-pocketbase
-downloads: 173
+downloads: 129
 repoUrl: https://github.com/pawcoding/astro-integration-pocketbase
 ---

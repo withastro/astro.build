@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-og
 repoUrl: https://github.com/morinokami/astro-og
 homepageUrl: https://github.com/morinokami/astro-og#readme
 badge: new
-downloads: 486
+downloads: 495
 ---
