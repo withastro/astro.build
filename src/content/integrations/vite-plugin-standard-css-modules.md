@@ -8,6 +8,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/vite-plugin-standard-css-modules
 repoUrl: https://github.com/JulianCataldo/vite-plugin-standard-css-modules
-homepageUrl: https://www.npmjs.com/package/vite-plugin-standard-css-modules
+homepageUrl: https://github.com/JulianCataldo/vite-plugin-standard-css-modules#readme
 downloads: 97
 ---
