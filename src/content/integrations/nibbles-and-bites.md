@@ -6,7 +6,7 @@ categories:
   - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/nibbles-and-bites
-homepageUrl: https://www.npmjs.com/package/nibbles-and-bites
+homepageUrl: https://github.com/AliciaBytes/nibbles-and-bites#readme
 badge: new
-downloads: 215
+downloads: 219
 ---
