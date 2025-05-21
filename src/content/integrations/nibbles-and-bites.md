@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/nibbles-and-bites
 homepageUrl: https://github.com/AliciaBytes/nibbles-and-bites#readme
 badge: new
-downloads: 219
+downloads: 221
 ---

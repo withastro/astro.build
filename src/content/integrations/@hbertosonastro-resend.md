@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-resend
 homepageUrl: https://github.com/hkbertoson/astro-integrations/tree/main/packages/astro-resend
-downloads: 65
+downloads: 66
 ---

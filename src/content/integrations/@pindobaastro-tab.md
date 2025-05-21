@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@pindoba/astro-tab
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/blocks/astro/tab#README.md
 badge: new
-downloads: 50
+downloads: 54
 ---

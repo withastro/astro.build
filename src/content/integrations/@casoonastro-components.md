@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@casoon/astro-components
 repoUrl: https://github.com/casoon/astro-components
 homepageUrl: https://github.com/casoon/astro-components#readme
 badge: new
-downloads: 344
+downloads: 345
 ---
