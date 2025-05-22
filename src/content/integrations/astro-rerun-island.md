@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-rerun-island
 homepageUrl: https://www.npmjs.com/package/astro-rerun-island
-downloads: 31
+downloads: 28
 ---

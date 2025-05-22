@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/unplugin-fonts
 repoUrl: https://github.com/cssninjaStudio/unplugin-fonts
 homepageUrl: https://github.com/cssninjaStudio/unplugin-fonts#readme
-downloads: 350831
+downloads: 356180
 downloadFactor: 0.001
 ---

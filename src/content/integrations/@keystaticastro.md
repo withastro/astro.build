@@ -6,5 +6,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@keystatic/astro
 repoUrl: https://github.com/Thinkmill/keystatic
 homepageUrl: https://github.com/Thinkmill/keystatic#readme
-downloads: 6983
+downloads: 6952
 ---
