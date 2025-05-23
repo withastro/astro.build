@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@stoati/tools-astro
 homepageUrl: https://stoati.fr
 badge: new
-downloads: 133
+downloads: 174
 ---
