@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@codemint/astro-meta
 repoUrl: https://github.com/ArifRabbaniIn/astro-meta
 homepageUrl: https://astro-meta.vercel.app/
-downloads: 138
+downloads: 142
 ---

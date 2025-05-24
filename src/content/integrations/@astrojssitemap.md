@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/sitemap
 image: /assets/integrations/sitemap.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://www.npmjs.com/package/@astrojs/sitemap
-downloads: 850419
+downloads: 847728
 official: true
 ---

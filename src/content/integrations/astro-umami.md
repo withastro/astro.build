@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-umami
 homepageUrl: https://www.npmjs.com/package/astro-umami
-downloads: 14
+downloads: 11
 ---

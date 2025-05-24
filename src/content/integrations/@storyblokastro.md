@@ -10,5 +10,5 @@ repoUrl: https://github.com/storyblok/storyblok-astro
 homepageUrl: https://github.com/storyblok/storyblok-astro#readme
 image: /assets/integrations/storyblok.svg
 toolbar: 1
-downloads: 21232
+downloads: 21035
 ---
