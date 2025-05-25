@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@altano/astro-opengraph-image
 repoUrl: https://github.com/altano/npm-packages
 homepageUrl: https://www.npmjs.com/package/@altano/astro-opengraph-image
-downloads: 11
+downloads: 14
 ---
