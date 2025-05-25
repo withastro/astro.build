@@ -128,6 +128,9 @@ async function unsafeUpdateAllIntegrations() {
 			const { data } = matter.read(entry);
 			existingIntegrations.add(data.name);
 
+			// Skip packages not listed on npm
+			if (!data.npmUrl) return
+
 			if (!searchResults.has(data.name)) {
 				// the integration was deprecated or removed from NPM
 				deprecatedIntegrations.push(data.name);
@@ -218,6 +221,9 @@ async function safeUpdateExistingIntegrations() {
 
 	for (const entry of entries) {
 		const { data } = matter.read(entry);
+
+		// Skip packages not listed on npm
+		if (!data.npmUrl) return
 
 		// only override NPM download stats for safe updates
 		const downloads = await fetchDownloadsForPackage(data.name);
