@@ -5,5 +5,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-test-wei
 homepageUrl: https://www.npmjs.com/package/astro-test-wei
-downloads: 30
+downloads: 24
 ---

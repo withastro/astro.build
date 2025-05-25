@@ -5,5 +5,5 @@ categories:
   - analytics
 npmUrl: https://www.npmjs.com/package/@statsy/astro
 homepageUrl: https://www.npmjs.com/package/@statsy/astro
-downloads: 12
+downloads: 9
 ---

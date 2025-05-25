@@ -1,0 +1,83 @@
+---
+title: 'Astro 5.8'
+description: 'Astro 5.8 is a Nodally fresh update which bumps the minimum required version of Node.js.'
+homepageLink:
+  title: 'Astro 5.8'
+  subtitle: 'Available now!'
+publishDate: '2025-05-19'
+authors:
+  - matt
+coverImage: '/src/content/blog/_images/astro-580/blog-post-5-8.webp'
+socialImage: '/src/content/blog/_images/astro-580/og-astro-5-8.webp'
+lang: 'en'
+---
+
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+import Note from '~/components/Note.astro';
+import Mention from '/src/components/Mention.astro';
+
+**Astro 5.8 is a Nodally fresh update which bumps the minimum required version of Node.js.**
+
+🔄 Keeping things up to date:
+
+- [**Updated minimum Node.js version to 18.20.8**](#updated-minimum-nodejs-version)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Updated minimum Node.js version to 18.20.8
+
+Node.js 18 has now reached end-of-life and will no longer receive security updates or support. Therefore, Astro 5.8 now requires v20.3.0, v22.0.0 or higher. (v19 and v21 are not supported.) To help users upgrade, Astro will temporarily continue to support Node.js 18.20.8, which is the final LTS release of Node.js 18.
+
+We will drop support for Node.js 18 entirely in a future release, so we recommend upgrading to Node.js 22 as soon as possible. See Astro's [Node.js support policy](https://docs.astro.build/en/upgrade-astro/#nodejs-support-and-upgrade-policies) for more details about how and when we upgrade the minimum Maintenance LTS version.
+
+You can check your current Node.js version by running:
+
+```sh
+node -v
+```
+
+You will need to update both your local development environment and any CI/CD environments to use Node.js 18.20.8 or one of the supported versions. You can check the docs for your [deployment platform](https://docs.astro.build/en/guides/deploy/) to see how to set the Node.js version. This might involve choosing an option in a dashboard, setting an environment variable, or adding a configuration file to your project. Many platforms will respect the `NODE_VERSION` environment variable or a [`.nvmrc`](https://github.com/nvm-sh/nvm#nvmrc) file.
+
+For example, to set the Node.js version to 22, you can create a `.nvmrc` file in your project root with the following content:
+
+```ini title=".nvmrc"
+22
+```
+
+See the [nvm docs](https://github.com/nvm-sh/nvm#nvmrc) for more details on how to use `.nvmrc` files.
+
+<Note title="Using Cloudflare Pages?">
+The current build image for Cloudflare Pages uses Node.js 18.17.1 by default, which is no longer supported by Astro. If you are using Cloudflare Pages you should [override the default Node.js version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions) to Node.js 22. This does not affect users of Cloudflare Workers, which uses Node.js 22 by default.
+</Note>
+
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.7 release](/blog/astro-570). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="ben" />, <Mention name="caleb" />, <Mention name="chris" />, <Mention name="ema" />, <Mention name="erika" />, <Mention name="florian" />, <Mention name="fuzzy" />, <Mention name="hideoo" />, <Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />, <Mention name="nate" />, <Mention name="reuben" />, <Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.8 possible, with code and docs additions and improvements, including:
+
+[Adam Matthiesen](https://github.com/Adammatthiesen), [Alan](https://github.com/altano), [Alex Carpenter](https://github.com/alexcarpenter), [Alexey Zimarev](https://github.com/alexeyzimarev), [Angelo Verlain Shema](https://github.com/vixalien), [Ariel K](https://github.com/anaxite), [Armand Philippot](https://github.com/ArmandPhilippot), [Augusto César Perin](https://github.com/augustocesarperin), [Bugo](https://github.com/dragomano), [casungo](https://github.com/casungo), [emily-shen](https://github.com/emily-shen), [Federico Tibaldo](https://github.com/fedetibaldo), [Felix Schneider](https://github.com/trueberryless), [Giles Butler](https://github.com/gilesbutler), [Ginger](https://github.com/gingerchew), [HAL](https://github.com/HALQME), [happydev](https://github.com/moustaphadev), [Hiromasa Fujimori](https://github.com/fhiromasa), [John Memmott](https://github.com/RATIU5), [Jonathan Yeong](https://github.com/jonathanyeong), [JP Wienekus](https://github.com/jpwienekus), [Juan Diaz](https://github.com/JuanPabloDiaz), [Julia March](https://github.com/juliamrch), [Junseong Park](https://github.com/jsparkdev), [Katsuyuki Karasawa](https://github.com/L4Ph), [knj](https://github.com/jp-knj), [Leo Developer](https://github.com/Le0Developer), [Lofty-Brambles](https://github.com/Lofty-Brambles), [Louis Escher](https://github.com/louisescher), [Luiz Gonzaga dos Santos Filho](https://github.com/lfilho), [Luan Rodrigues](https://github.com/LuanGrod), [Marcos Corrochano Arroyo](https://github.com/drixswe), [Martin Trapp](https://github.com/martrapp), [Matt Yoho](https://github.com/mattyoho), [Matthew Justice](https://github.com/justicematthew), [Max Chang](https://github.com/maxchang3), [Michael Stramel](https://github.com/stramel), [Murilo Silva](https://github.com/Zafkiel45), [Ming-jun Lu](https://github.com/mingjunlu), [Niall O'Brien](https://github.com/niallobrien), [Nils Haberkamp](https://github.com/Haberkamp), [Nin3](https://github.com/Nin3lee), [Paul Valladares](https://github.com/dreyfus92), [Petr Paločko](https://github.com/Fakerko), [randomguy-2650](https://github.com/randomguy-2650), [Roman Stetsyk](https://github.com/romanstetsyk), [Sajjad Hashemian](https://github.com/sijad) [situ2001](https://github.com/situ2001), [Soufiane](https://github.com/jazsouf), [Spencer Davies](https://github.com/spencer1573), [Tanishq Manuja](https://github.com/tanishqmanuja), [Thomas Bonnet](https://github.com/thomasbnt), [Tillmann Hübner](https://github.com/ruohki), [vrabe](https://github.com/vrabe), [WP Infusion](https://github.com/wpinfusion), [Zev Ross](https://github.com/zev18),
+[Игорь Теплостанский](https://github.com/teplostanski), [翠](https://github.com/sapphi-red), and [/jb](https://github.com/notjb).
+
+We look forward to seeing what you build with Astro 5.8! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['astro-570', 'astro-560']} />

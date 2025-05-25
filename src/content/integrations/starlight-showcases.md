@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-showcases
 repoUrl: https://github.com/HiDeoo/starlight-showcases
-homepageUrl: https://www.npmjs.com/package/starlight-showcases
-downloads: 2786
+homepageUrl: https://github.com/HiDeoo/starlight-showcases
+downloads: 2657
 ---

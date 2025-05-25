@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-iubenda
 repoUrl: https://github.com/Valyay/astro-iubenda
 homepageUrl: https://github.com/Valyay/astro-iubenda#readme
 badge: new
-downloads: 160
+downloads: 305
 ---

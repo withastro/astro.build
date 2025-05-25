@@ -7,10 +7,8 @@ description: <h3 align="center"> 	<img
   src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transp
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@catppuccin/starlight
 homepageUrl: https://starlight.catppuccin.com/
-badge: new
-downloads: 300
+downloads: 396
 repoUrl: https://github.com/catppuccin/starlight
 ---
