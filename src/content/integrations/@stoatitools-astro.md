@@ -6,7 +6,7 @@ categories:
   - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/@stoati/tools-astro
-homepageUrl: https://stoati.fr
+homepageUrl: https://www.npmjs.com/package/@stoati/tools-astro
 badge: new
 downloads: 185
 ---
