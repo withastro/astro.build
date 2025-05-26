@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@nordic-game-lab/astro-gtm
 repoUrl: https://github.com/nordic-game-lab/nordic-game-lab
 homepageUrl: https://www.npmjs.com/package/@nordic-game-lab/astro-gtm
-downloads: 8
+downloads: 7
 ---
