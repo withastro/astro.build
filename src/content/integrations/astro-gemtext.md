@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-gemtext
 repoUrl: https://github.com/aspizu/astro-gemtext
 homepageUrl: https://github.com/aspizu/astro-gemtext
-downloads: 32
+downloads: 31
 ---

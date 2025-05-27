@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starsquid
 repoUrl: https://github.com/sgalcheung/starsquid
 homepageUrl: https://starsquid.vercel.app/
 badge: new
-downloads: 311
+downloads: 314
 ---

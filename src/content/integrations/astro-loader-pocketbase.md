@@ -6,6 +6,6 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/astro-loader-pocketbase
 homepageUrl: https://github.com/pawcoding/astro-loader-pocketbase
-downloads: 237
+downloads: 235
 repoUrl: https://github.com/pawcoding/astro-loader-pocketbase
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-web-vitals-pocketbase
 repoUrl: https://github.com/pawcoding/astro-web-vitals-pocketbase
 homepageUrl: https://www.npmjs.com/package/astro-web-vitals-pocketbase
 badge: new
-downloads: 227
+downloads: 229
 ---
