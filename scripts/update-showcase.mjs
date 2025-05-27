@@ -517,6 +517,8 @@ const scraper = new ShowcaseScraper({
 		'https://tina.io/',
 		'https://carbondesignsystem.com/',
 		// 2025-05-15 https://sonicjs.com/ gives us all kinds of headaches evaluating
+		// 2025-05-27 - not an Astro site
+		'https://bestbuyclues.com/',
 	],
 });
 await scraper.run();
