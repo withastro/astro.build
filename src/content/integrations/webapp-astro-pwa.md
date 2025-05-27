@@ -10,7 +10,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/webapp-astro-pwa
 repoUrl: https://github.com/aondodawid/WebApp-Astro-PWA
-homepageUrl: https://github.com/aondodawid/WebApp-Astro-PWA#readme
+homepageUrl: https://www.npmjs.com/package/webapp-astro-pwa
 badge: new
 downloads: 3741
 ---

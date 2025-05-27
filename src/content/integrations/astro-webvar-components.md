@@ -9,6 +9,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-webvar-components
 repoUrl: https://github.com/studioalex/astro-webvar-components
-homepageUrl: https://github.com/studioalex/astro-webvar-components#readme
+homepageUrl: https://www.npmjs.com/package/astro-webvar-components
 downloads: 6
 ---
