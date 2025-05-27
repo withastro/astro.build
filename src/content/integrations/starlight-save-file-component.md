@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-save-file-component
 repoUrl: https://github.com/trueberryless-org/starlight-save-file-component
-homepageUrl: https://github.com/trueberryless-org/starlight-save-file-component
+homepageUrl: https://www.npmjs.com/package/starlight-save-file-component
 downloads: 8
 ---

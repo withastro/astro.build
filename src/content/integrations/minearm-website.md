@@ -5,6 +5,6 @@ description: Welcome to Minearm & Website.
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/minearm-website
-homepageUrl: https://github.com/Minearm-RPM/minearm
+homepageUrl: https://www.npmjs.com/package/minearm-website
 downloads: 21
 ---
