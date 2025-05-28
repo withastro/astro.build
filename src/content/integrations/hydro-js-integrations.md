@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/hydro-js-integrations
 repoUrl: https://github.com/Krutsch/hydro-js-integrations
 homepageUrl: https://github.com/Krutsch/hydro-js-integrations#readme
 badge: new
-downloads: 710
+downloads: 724
 ---

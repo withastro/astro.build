@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/tailwind
 image: /assets/integrations/tailwind.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://www.npmjs.com/package/@astrojs/tailwind
-downloads: 697421
+downloads: 714658
 official: true
 ---
