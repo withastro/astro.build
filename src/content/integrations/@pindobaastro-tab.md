@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-tab
 repoUrl: https://github.com/EduardoLopes/pindoba
-homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/blocks/astro/tab#README.md
+homepageUrl: https://www.npmjs.com/package/@pindoba/astro-tab
 badge: new
-downloads: 60
+downloads: 106
 ---

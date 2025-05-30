@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@xexiu/astro-seo
 repoUrl: https://github.com/xexiu/astro-components
 homepageUrl: https://github.com/xexiu/astro-components
-downloads: 27
+downloads: 22
 ---

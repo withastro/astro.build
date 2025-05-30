@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-tina
 homepageUrl: https://www.npmjs.com/package/astro-tina
-downloads: 99
+downloads: 90
 ---

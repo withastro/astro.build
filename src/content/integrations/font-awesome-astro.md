@@ -5,6 +5,6 @@ description: npm license
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/font-awesome-astro
-homepageUrl: https://github.com/mgmka/font-awesome-astro
-downloads: 41
+homepageUrl: https://www.npmjs.com/package/font-awesome-astro
+downloads: 43
 ---

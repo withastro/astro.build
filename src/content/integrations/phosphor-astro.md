@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/phosphor-astro
 repoUrl: https://github.com/seanmcp/phosphor-astro
-homepageUrl: https://github.com/seanmcp/phosphor-astro#readme
-downloads: 562
+homepageUrl: https://www.npmjs.com/package/phosphor-astro
+downloads: 637
 ---

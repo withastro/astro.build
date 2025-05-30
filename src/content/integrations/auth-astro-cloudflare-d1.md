@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
 repoUrl: https://github.com/bearBoy80/auth-astro
-homepageUrl: https://github.com/bearBoy80/auth-astro#readme
-downloads: 35
+homepageUrl: https://www.npmjs.com/package/auth-astro-cloudflare-d1
+downloads: 30
 ---

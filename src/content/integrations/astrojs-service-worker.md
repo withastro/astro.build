@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astrojs-service-worker
 repoUrl: https://github.com/tatethurston/astrojs-service-worker
-homepageUrl: https://github.com/tatethurston/astrojs-service-worker#readme
-downloads: 6698
+homepageUrl: https://www.npmjs.com/package/astrojs-service-worker
+downloads: 6726
 ---

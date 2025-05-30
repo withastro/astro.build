@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-theme-black
 repoUrl: https://github.com/adrian-ub/starlight-theme-black
-homepageUrl: https://github.com/adrian-ub/starlight-theme-black#readme
-downloads: 613
+homepageUrl: https://www.npmjs.com/package/starlight-theme-black
+downloads: 617
 ---
