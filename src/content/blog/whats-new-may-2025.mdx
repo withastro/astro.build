@@ -46,14 +46,15 @@ Let's dive right into it!
 
 Minor releases introduce new features and improvements. Check out what's new!
 
-- [Astro 5.8](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#580) - ???
-- [Starlight 0.35](https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md#0350) - ???
+- [Astro 5.8](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#580) - updates minimum version of Node.js to 18.20.8
 
 ## Astro Adopters
 
-From Ricola, to Google, Bootstrap to Visa, some of the biggest names you know are using Astro!
+From Ricola to Google, Bootstrap to Visa, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
+  'www.ricola.com',
+  'jules.google',
   'getbootstrap.com',
   'design.visa.com',
 ]; 
@@ -61,6 +62,8 @@ export const featuredSites = [
 {/* <ShowcaseGridById ids={featuredSites} /> */}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.ricola.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'jules.google')} />
   <ShowcaseCard site={await getEntry('showcase', 'getbootstrap.com')} />
   <ShowcaseCard site={await getEntry('showcase', 'design.visa.com')} />
 </div>
@@ -95,6 +98,19 @@ Astro wouldn’t be what it is without its community. From Discord support, to d
 
 <Mention name="matt" /> attended Strapi conf, representing Astro and talking about managing content and running open-source projects.
 
+### Discord Hot topics
+
+This month was all about Astro-native component libraries! Thanks to community member `@TWEL` for going back through past discussions and preparing the following list for the community:
+
+- https://starwind.dev/ 
+- https://www.shadcnblocks.com/
+- https://ui.studiocms.dev/docs/
+- https://accessible-astro-starter.incluud.dev/accessible-components/
+- https://ui.full.dev/
+- https://orbitui-docs.vercel.app/
+- https://astrobits.dev/
+
+
 ### Community Calendar
 
 Check the Astro Community Calendar for Discord events like calls with the core team (Talking and Doc'ing, TBD - Talking before deploying), streams and more!
@@ -120,8 +136,8 @@ Because you can never get tired of Astro, here's even more community content!
 
 ### Migration Stories
 
-- []()
-- []()
+- [Our docs are now built with Starlight instead of Docusaurus](https://glasskube.dev/blog/distr-docs/)
+- [Why Bootstrap migrated from Hugo to Astro](https://app.daily.dev/posts/why-bootstrap-migrated-from-hugo-to-astro-nudgxcvbp)
 - []()
 
 
@@ -249,9 +265,13 @@ The latest community-built utilities and integrations to help you build with Ast
 - [Astro Starter Kit: Component Package](https://www.npmjs.com/package/@openpanel/astro) - A template for an Astro component library. Use this template for writing components to use in multiple projects or publish to NPM.
 - [Flotiq Astro SDK](https://www.npmjs.com/package/@flotiq/flotiq-astro-sdk) - Dedicated Astro collections generator for Flotiq Headless CMS.
 - [Astro Mailer](https://www.npmjs.com/package/@hbertoson/astro-mailer) - An Astro integration that enables you to send email notifications via any SMTP service using Nodemailer.
-- [Astro Resend](https://github.com/hkbertoson/astro-integrations/tree/main/packages/astro-resend) - This is an Astro integration that allows you to easily send email notifications for form submissions using Resend in an Astro project.
+- [Astro Resend](https://github.com/hkbertoson/astro-integrations/tree/main/packages/astro-resend) - An Astro integration that allows you to easily send email notifications for form submissions using Resend in an Astro project.
+- [Remark Livecodes for Astro](https://livecodes.io/docs/markdown-to-livecodes/#astro) - An open-source client-side playground with support for Astro.
 - 🌟 [Starlight Custom Navigation](https://github.com/frostybee/starlight-custom-navigation) - Enhance your documentation site with custom page navigation features, including support for keyboard shortcuts.
-- 🌟 []() -
+- 🌟 [Starlight Code Block Fullscreen](https://frostybee.github.io/starlight-codeblock-fullscreen/) - Add fullscreen toggle functionality to Expressive Code blocks in your documentation.
+- [Astro Adapter Nekoweb](https://github.com/indiefellas/astro-adapter-nekoweb) - An adapter for Astro that deploys your app automatically on Nekoweb.
+- [Astro PlantUML](https://www.npmjs.com/package/astro-plantuml) - An Astro integration for rendering PlantUML diagrams in your markdown files.
+- [Astro Tips](https://github.com/xingwangzhe/astro-tips) - Customizable tip and notice blocks for Astro with 18 built-in styles and auto dark mode support.
 
 ... and some built *with* Astro:
 
