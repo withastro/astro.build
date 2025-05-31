@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-windicss
 repoUrl: https://github.com/enpitsuLin/astro-windicss
-homepageUrl: https://www.npmjs.com/package/astro-windicss
+homepageUrl: https://github.com/enpitsuLin/astro-windicss#readme
 downloads: 69
 ---
