@@ -74,11 +74,15 @@ const IconBackgrounds = [
 				{isOfficial && <span class="sr-only">Official</span>}
 			</h3>
 			<p class="line-clamp-2 flex-1">{integration.data.description}</p>
-			<div class="subtle mt-4 flex items-center gap-x-1 justify-self-end text-sm">
-				<Icon name="download" class="s-6" aria-hidden="true" />
-				<span>{downloads}</span>
-				<span class="sr-only">weekly downloads</span>
-			</div>
+			{
+				!!integration.data.downloads && (
+					<div class="subtle mt-4 flex items-center gap-x-1 justify-self-end text-sm">
+						<Icon name="download" class="s-6" aria-hidden="true" />
+						<span>{downloads}</span>
+						<span class="sr-only">weekly downloads</span>
+					</div>
+				)
+			}
 		</div>
 	</CardBody>
 </Card>

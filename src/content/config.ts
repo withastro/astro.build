@@ -129,7 +129,7 @@ export const collections = {
 				z.enum(Array.from(IntegrationCategories.keys()) as [string, ...string[]]),
 			),
 			repoUrl: z.string().url().optional(),
-			npmUrl: z.string().url(),
+			npmUrl: z.string().url().optional(),
 			homepageUrl: z.string().url().optional(),
 			official: z.boolean().default(false),
 			toolbar: z.number().min(1).optional(),
