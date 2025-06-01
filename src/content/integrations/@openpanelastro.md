@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@openpanel/astro
 homepageUrl: https://www.npmjs.com/package/@openpanel/astro
 badge: new
-downloads: 417
+downloads: 418
 ---
