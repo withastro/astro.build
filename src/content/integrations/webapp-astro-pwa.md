@@ -7,10 +7,8 @@ description: A ready-to-use Astro component library for adding Progressive Web
   install prompts, and more. Fully suppor
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/webapp-astro-pwa
 repoUrl: https://github.com/aondodawid/WebApp-Astro-PWA
 homepageUrl: https://www.npmjs.com/package/webapp-astro-pwa
-badge: new
 downloads: 3618
 ---
