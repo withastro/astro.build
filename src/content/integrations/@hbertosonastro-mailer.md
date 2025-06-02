@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-mailer
 homepageUrl: https://github.com/hkbertoson/astro-integrations/tree/main/packages/astro-mailer
 badge: new
-downloads: 113
+downloads: 118
 ---

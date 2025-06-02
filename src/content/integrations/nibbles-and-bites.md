@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/nibbles-and-bites
 homepageUrl: https://www.npmjs.com/package/nibbles-and-bites
-downloads: 115
+downloads: 114
 ---

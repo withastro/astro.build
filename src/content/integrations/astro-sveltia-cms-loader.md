@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-sveltia-cms-loader
 repoUrl: https://github.com/MikeNewXYZ/astro-sveltia-cms-loader
 homepageUrl: https://www.npmjs.com/package/astro-sveltia-cms-loader
-downloads: 18
+downloads: 14
 ---
