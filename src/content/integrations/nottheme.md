@@ -6,5 +6,5 @@ categories:
   - accessibility
 npmUrl: https://www.npmjs.com/package/nottheme
 homepageUrl: https://www.npmjs.com/package/nottheme
-downloads: 10
+downloads: 9
 ---
