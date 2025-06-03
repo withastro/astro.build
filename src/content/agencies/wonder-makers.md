@@ -8,7 +8,7 @@ contactLink: 'mailto:kabat@wondermakers.digital'
 description: 'Web1, Web2, Web3 — that’s what we do! Plus, mobile if you are into those. We are a digital studio with a signature 3D style, building high-performance websites for international clients. Our work makes us who we are. We are proud to cooperate with great clients such as PlayStation, Immutable, Avalanche, AMGI, Elle, and Mercedes-Benz, among others, delivering professional results in every project.'
 ---
 
-**Wonder Makers builds top-tier websites that make brands impossible to ignore**
+**Wonder Makers builds top-tier websites that make brands impossible to ignore.**
 
 We mix **strong design**, clean code, and **smart strategy** to create digital experiences that feel effortless — and perform like hell. No templates. No shortcuts. Just standout work that moves fast and lasts long.
 
