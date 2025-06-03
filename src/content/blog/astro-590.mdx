@@ -193,9 +193,9 @@ For more details, see the [experimental responsive images documentation](https:/
 
 [Astro adapters](https://docs.astro.build/en/reference/adapter-reference/) can [declare whether or not they support certain Astro features](https://docs.astro.build/en/reference/adapter-reference/#building-an-adapter), and whether that support is stable or experimental. 
 
-During builds, Astro will log a warning or error if a site is using features that are not supported by the adapter. However, sometimes an adapter may need to log more specific messages to help users resolve the issue. Previously this could be confusing, as these custom logs were printed in addition to the Astro-generated ones and may appear to contradict them. Astro 5.9 adds an option to allow adapters to suppress the logging for unsupported features.
+During builds, Astro will log a warning or error if a site is using features that are not supported by the adapter. However, sometimes an adapter may need to log more specific messages to help users resolve the issue. Previously this could be confusing, as these custom logs were printed in addition to the Astro-generated ones and may appear to contradict them.
 
-To do so, an adapter author can add `suppress: "all"` (to suppress both the default and custom message) or `suppress: "default"` (to only suppress the default one):
+Astro 5.9 adds an option to allow adapters to suppress the logging for unsupported features. An adapter author can add `suppress: "all"` (to suppress both the default and custom message) or `suppress: "default"` (to only suppress Astro's default message):
 ```ts
 setAdapter({
   name: 'my-astro-integration',
@@ -211,7 +211,7 @@ setAdapter({
 })
 ```
 
-For more details, see [the Adapters API reference](https://docs.astro.build/en/reference/adapter-reference/).
+For more details, see [the Adapters API reference](https://docs.astro.build/en/reference/adapter-reference/#astro-features).
 
 ## Community
 
