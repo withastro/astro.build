@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@shawnsandy/astro-kit
 repoUrl: https://github.com/shawn-sandy/astro-kit
 homepageUrl: https://github.com/shawn-sandy/astro-kit#readme
 badge: new
-downloads: 34
+downloads: 37
 ---

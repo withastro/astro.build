@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@coffic/cosy-ui
 homepageUrl: https://cofficlab.github.io/cosy-ui/en/
-downloads: 2231
+downloads: 2280
 repoUrl: https://github.com/CofficLab/cosy-ui
 ---
