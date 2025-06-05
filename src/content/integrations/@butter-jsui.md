@@ -11,5 +11,5 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/@butter-js/ui
 homepageUrl: https://github.com/HeJimenez00/ButterUI
-downloads: 264
+downloads: 266
 ---

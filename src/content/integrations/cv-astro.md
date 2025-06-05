@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/cv-astro
 repoUrl: https://github.com/tribal2/cv-astro
 homepageUrl: https://www.npmjs.com/package/cv-astro
-downloads: 6
+downloads: 5
 ---
