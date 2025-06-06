@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@bashbers/astro-image-dithering
 repoUrl: https://github.com/bashbers/dithering
 homepageUrl: https://github.com/bashbers/dithering#readme
 badge: new
-downloads: 1134
+downloads: 1088
 ---

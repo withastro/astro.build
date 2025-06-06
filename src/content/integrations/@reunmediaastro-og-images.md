@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@reunmedia/astro-og-images
 homepageUrl: https://github.com/ReunMedia/astro-og-images
 badge: new
-downloads: 137
+downloads: 113
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@zonke-cloud/astro-adapter
 repoUrl: ssh://git@github.com/zonke-inc/sdk-ts
 homepageUrl: https://zonke.dev
-downloads: 87
+downloads: 89
 ---
