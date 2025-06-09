@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-dump
 homepageUrl: https://www.npmjs.com/package/astro-dump
-downloads: 1
+downloads: 0
 ---
