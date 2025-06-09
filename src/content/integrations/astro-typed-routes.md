@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-typed-routes
 repoUrl: https://github.com/bartoszkrawczyk2/astro-typed-routes
-homepageUrl: https://github.com/bartoszkrawczyk2/astro-typed-routes#readme
+homepageUrl: https://www.npmjs.com/package/astro-typed-routes
 downloads: 0
 ---

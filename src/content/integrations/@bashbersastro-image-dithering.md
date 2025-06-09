@@ -6,10 +6,8 @@ description: Astro image dithering plugin - converts png's in project to
 categories:
   - media
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/@bashbers/astro-image-dithering
 repoUrl: https://github.com/bashbers/dithering
 homepageUrl: https://github.com/bashbers/dithering#readme
-badge: new
 downloads: 904
 ---

@@ -4,10 +4,8 @@ title: astro-daisy-theme-toggle
 description: Component to set the DaisyUI light and dark theme of your AstroJS app
 categories:
   - css+ui
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-daisy-theme-toggle
 repoUrl: https://github.com/Grahf0085/astro-daisy-theme-toggle
 homepageUrl: https://github.com/Grahf0085/astro-daisy-theme-toggle
-badge: new
 downloads: 421
 ---
