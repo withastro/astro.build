@@ -181,6 +181,10 @@ export const collections = {
 					.refine((value) => value !== 'Just a moment...', {
 						message:
 							"A showcase entry's title cannot be 'Just a moment...' which usually indicates a loading error.\nMake sure to update the title manually.\n",
+					})
+					.refine((value) => value !== 'Vercel Security Checkpoint', {
+						message:
+							"A showcase entry's title cannot be 'Vercel Security Checkpoint' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					}),
 				image: image(),
 				url: z.string().url(),
