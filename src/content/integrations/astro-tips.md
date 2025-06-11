@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-tips
 repoUrl: https://github.com/xingwangzhe/astro-tips
 homepageUrl: https://www.npmjs.com/package/astro-tips
 badge: new
-downloads: 656
+downloads: 658
 ---
