@@ -8,6 +8,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@forastro/flow
 homepageUrl: https://forastro-docs.onrender.com/libraries/flow
-downloads: 44
+downloads: 45
 repoUrl: https://github.com/louiss0/forastro
 ---

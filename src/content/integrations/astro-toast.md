@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-toast
 homepageUrl: https://www.npmjs.com/package/astro-toast
-downloads: 7
+downloads: 9
 ---

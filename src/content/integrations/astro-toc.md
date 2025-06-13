@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-toc
 repoUrl: https://github.com/theisel/astro-toc
 homepageUrl: https://www.npmjs.com/package/astro-toc
-downloads: 92
+downloads: 94
 ---

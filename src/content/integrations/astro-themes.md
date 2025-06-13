@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-themes
 repoUrl: https://github.com/alex-grover/astro-themes
 homepageUrl: https://www.npmjs.com/package/astro-themes
-downloads: 4260
+downloads: 4292
 ---
