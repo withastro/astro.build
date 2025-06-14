@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/netlify
 image: /assets/integrations/netlify.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/netlify/
-downloads: 107193
+downloads: 108368
 official: true
 ---
