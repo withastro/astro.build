@@ -10,6 +10,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/react
 image: /assets/integrations/react.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://www.npmjs.com/package/@astrojs/react
-downloads: 898089
+downloads: 879839
 official: true
 ---

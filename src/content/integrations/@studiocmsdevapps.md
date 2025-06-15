@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@studiocms/devapps
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
-downloads: 164
+downloads: 159
 ---
