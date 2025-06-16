@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-turnstile
 homepageUrl: https://www.npmjs.com/package/astro-turnstile
-downloads: 77
+downloads: 75
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-global
 repoUrl: https://github.com/lilnasy/gratelets
 homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/global
-downloads: 1421
+downloads: 1355
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-lighthouse
 repoUrl: https://github.com/buk0vec/astro-lighthouse
 homepageUrl: https://github.com/buk0vec/astro-lighthouse
-downloads: 525
+downloads: 522
 ---

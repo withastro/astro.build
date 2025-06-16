@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-toolkit
 repoUrl: https://github.com/spices-solutions/wathqny/blob/main/packages/astro-toolkit/README.md
 homepageUrl: https://www.npmjs.com/package/astro-toolkit
-downloads: 12
+downloads: 13
 ---
