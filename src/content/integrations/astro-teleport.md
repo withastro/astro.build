@@ -8,6 +8,6 @@ categories:
   - frameworks
 npmUrl: https://www.npmjs.com/package/astro-teleport
 repoUrl: https://github.com/ok-98/astro-teleport
-homepageUrl: https://www.npmjs.com/package/astro-teleport
+homepageUrl: https://github.com/ok-98/astro-teleport#readme
 downloads: 56
 ---
