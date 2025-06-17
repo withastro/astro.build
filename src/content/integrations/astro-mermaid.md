@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-mermaid
 repoUrl: https://github.com/joesaby/astro-mermaid
 homepageUrl: https://github.com/joesaby/astro-mermaid#readme
 badge: new
-downloads: 342
+downloads: 407
 ---
