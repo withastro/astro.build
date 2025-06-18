@@ -240,11 +240,11 @@ For complete details, see the [Images guide](https://docs.astro.build/en/guides/
 
 ## Improvements to experimental Content Security Policy
 
-Astro 5.9 shipped experimental support for Content Security Policy (CSP) meta tags, bringing powerful security features to your Astro sites. In 5.10, we've made several improvements based on community feedback. The most important is that we now support generating CSP headers, including for static sites.
+Astro 5.9 shipped experimental support for Content Security Policy (CSP) meta tags, bringing powerful security features to your Astro sites. In 5.10, we've made several improvements based on community feedback. The most important is that we now support generating CSP headers, including for static pages.
 
 On-demand rendered pages will now send Response headers for CSP, rather than meta tags. This improves performance in Chrome, and adds support for more directives, like `report-uri` and `frame-ancestors`, which are not supported in meta tags.
 
-By default prerendered pages will still use meta tags, but there is now core support for generating headers for prerendered pages as well. Eventually this will be implemented in all adapters, but currently only the `@astrojs/netlify` adapter supports it. To enable this, add the `experimentalStaticHeaders` option to your adapter configuration:
+By default, prerendered pages will still use meta tags, but there is now core support for generating headers for prerendered pages as well. Eventually, this will be implemented in all adapters, but currently only the `@astrojs/netlify` adapter supports it. To enable this, add the `experimentalStaticHeaders` option to your adapter configuration:
 
 ```js title="astro.config.mjs" {6}
 import { defineConfig } from 'astro/config';
