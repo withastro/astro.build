@@ -6,5 +6,5 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-typed-links
 homepageUrl: https://www.npmjs.com/package/astro-typed-links
-downloads: 540
+downloads: 525
 ---

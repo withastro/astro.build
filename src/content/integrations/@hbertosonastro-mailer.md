@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@hbertoson/astro-mailer
 homepageUrl: https://github.com/hkbertoson/astro-integrations/tree/main/packages/astro-mailer
-downloads: 48
+downloads: 50
 ---
