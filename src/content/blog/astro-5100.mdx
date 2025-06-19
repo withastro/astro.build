@@ -14,7 +14,7 @@ lang: 'en'
 
 import Mention from '/src/components/Mention.astro';
 
-**🎥 This time we're doing it live – and we're always responsive to your needs**
+**🎥 This time we're doing it live – and we're always responsive to your needs.**
 
 Astro 5.10 brings responsive images for everyone, plus experimental live content collections, CSP improvements, and more
 
@@ -38,13 +38,13 @@ yarn upgrade astro --latest
 
 Astro 5.10 introduces a new experimental feature: live content collections. This powerful addition allows you to fetch content at runtime instead of build time, opening up new possibilities for dynamic, real-time content.
 
-Built-time content collections are perfect for content that doesn't change a lot, or where your site is quick and easy to rebuild when it changes, but what about data that changes frequently, or that needs to be personalized to the user? Live content collections fill this gap by letting you fetch fresh data on every request.
+Built-time content collections are perfect for content that doesn't change a lot, or where your site is quick and easy to rebuild when it changes. But what about data that changes frequently, or that needs to be personalized to the user? Live content collections fill this gap by letting you fetch fresh data on every request.
 
 ### How it works
 
 Live content collections use a new type of loader that fetches data at runtime. Unlike existing loaders that run during the build process, live loaders execute when users visit your pages, ensuring you always have the latest data.
 
-For the best performance you should still use build-time collections where possible, but use live collections for data that needs to be right up-to-date, or where you want to filter or personalize the data based on user input, credentials, or preferences.
+For the best performance you should still use build-time collections where possible. But you can now use live collections for data that needs to be right up-to-date, or where you want to filter or personalize the data based on user input, credentials, or preferences.
 
 To get started, enable experimental live content collections in your Astro config:
 
@@ -73,7 +73,7 @@ export const products = defineLiveCollection({
 
 ### Fetching live data
 
-Use the new `getLiveCollection` and `getLiveEntry` functions to fetch data in your components:
+Use the new `getLiveCollection()` and `getLiveEntry()` functions to fetch data in your components:
 
 ```astro title="src/pages/products/[slug].astro"
 ---
@@ -190,7 +190,7 @@ export default defineConfig({
 });
 ```
 
-**Layout options:** Choose from `constrained`, `fixed`, or `full-width` layouts to control how your images behave:
+**Layout options:** Choose from `constrained`, `fixed`, or `full-width` layouts to control how your images behave. Setting this value on an individual component will override your default layout. For example, you can add the `layout` attribute to create a full-width hero image while keeping the rest of your images constrained to their container:
 
 ```astro
 <Image
@@ -206,7 +206,7 @@ export default defineConfig({
 <Image src="/hero.jpg" alt="Hero image" priority />
 ```
 
-When you add `priority`, Astro automatically sets `loading="eager"`, `decoding="sync"`, and `fetchpriority="high"` to ensure the image loads immediately. Use this sparingly – ideally only one image per page should have priority loading. A good rule of thumb is to check if your [LCP element](https://web.dev/lcp/#lcp-element) is an image, and if so, set the `priority` flag on it.
+When you add `priority`, Astro automatically sets `loading="eager"`, `decoding="sync"`, and `fetchpriority="high"` to ensure the image loads immediately. Use this sparingly – ideally no more than one image per page should have priority loading. Make sure you need this before you use it! Check to see if your [Largest Contentful Paint (LCP) element](https://web.dev/lcp/#lcp-element) is an image, and if so, set the `priority` flag on it to make it visible to your visitors sooner.
 
 **Enhanced cropping controls:** The `fit` and `position` properties give you precise control over how images are cropped and positioned:
 
@@ -223,7 +223,7 @@ When you add `priority`, Astro automatically sets `loading="eager"`, `decoding="
 
 ### Upgrading from experimental responsive images
 
-If you were using experimental responsive images, you should remove the experimental flag from your `astro.config.mjs` file:
+If you were using experimental responsive images, you must remove the experimental flag from your `astro.config.mjs` file and update any `image.experimental` options with their stable versions:
 
 ```js title="astro.config.mjs" del={3} ins={6}
 export default defineConfig({
@@ -236,7 +236,7 @@ export default defineConfig({
 });
 ```
 
-For complete details, see the [Images guide](https://docs.astro.build/en/guides/images/).
+For complete details, see the updated [Images guide](https://docs.astro.build/en/guides/images/#responsive-image-behavior).
 
 ## Improvements to experimental Content Security Policy
 
@@ -244,7 +244,7 @@ Astro 5.9 shipped experimental support for Content Security Policy (CSP) meta ta
 
 On-demand rendered pages will now send Response headers for CSP, rather than meta tags. This improves performance in Chrome, and adds support for more directives, like `report-uri` and `frame-ancestors`, which are not supported in meta tags.
 
-By default, prerendered pages will still use meta tags, but there is now core support for generating headers for prerendered pages as well. Eventually, this will be implemented in all adapters, but currently only the `@astrojs/netlify` and `@astrojs/vercel` adapters support it. To enable this, ensure you have updated to the latest version of the adapter and add the `experimentalStaticHeaders` option to your adapter configuration:
+By default, prerendered pages will still use meta tags, but there is now core support for generating headers for prerendered pages as well via official adapters. Eventually, this will be implemented in all adapters, but currently only the `@astrojs/netlify` and `@astrojs/vercel` adapters support it. To enable this, ensure you have updated to the latest version of the adapter and add the `experimentalStaticHeaders` option to your adapter configuration:
 
 ```js title="astro.config.mjs" {6}
 import { defineConfig } from 'astro/config';
