@@ -265,7 +265,7 @@ For more details, see the [experimental CSP documentation](https://docs.astro.bu
 
 ## Customizable Cloudflare Workers entrypoint
 
-Some Cloudflare Workers features, like [Durable Objects](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/), [Cloudflare Queues](https://developers.cloudflare.com/queues/), and [Cron Triggers](https://developers.cloudflare.com/workers/platform/cron-triggers/) require a custom entrypoint file. Because the `@astrojs/cloudflare` adapter generates the entrypoint used for serving a site, these features have previously not been possible to use with Astro. Astro 5.10 adds support for customizing the entrypoint file used by the `@astrojs/cloudflare` adapter, giving you full control over your Cloudflare Workers setup.
+Some Cloudflare Workers features, like [Durable Objects](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/), [Cloudflare Queues](https://developers.cloudflare.com/queues/), and [Cron Triggers](https://developers.cloudflare.com/workers/platform/cron-triggers/) require a custom entrypoint file. Because the `@astrojs/cloudflare` adapter generates the entrypoint used for serving a site, these features have previously not been possible to use with Astro. This release adds support for customizing the entrypoint file used by the `@astrojs/cloudflare` adapter, giving you full control over your Cloudflare Workers setup.
 
 To customize the entrypoint, add the `workerEntryPoint` option to your `@astrojs/cloudflare` adapter configuration in your `astro.config.mjs` file:
 
@@ -303,6 +303,7 @@ export function createExports(manifest: SSRManifest) {
 	return {
 		default: {
 			async fetch(request, env, ctx) {
+        // Your bindings must also be defined in your `wrangler.toml`/`wrangler.jsonc` file
 				await env.MY_QUEUE.send("log");
 				// Make sure you pass the request to Astro's handler
 				return handle(manifest, app, request, env, ctx);
