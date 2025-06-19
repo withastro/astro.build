@@ -1,6 +1,6 @@
 ---
 title: 'Astro 5.10'
-description: 'Astro 5.10 brings responsive images for everyone, plus experimental live content collections, CSP improvements, and more'
+description: 'Astro 5.10 brings responsive images for everyone, plus experimental live content collections, CSP improvements, and more!'
 homepageLink:
   title: 'Astro 5.10'
   subtitle: 'Available now!'
@@ -16,11 +16,12 @@ import Mention from '/src/components/Mention.astro';
 
 **🎥 This time we're doing it live – and we're always responsive to your needs.**
 
-Astro 5.10 brings responsive images for everyone, plus experimental live content collections, CSP improvements, and more
+Astro 5.10 brings responsive images for everyone, plus experimental live content collections, CSP improvements, and more!
 
 - [**Experimental live content collections**](#experimental-live-content-collections)
 - [**Responsive images are now stable**](#responsive-images-are-now-stable)
 - [**Improvements to experimental Content Security Policy**](#improvements-to-experimental-content-security-policy)
+- [**Customizable Cloudflare Workers entrypoint**](#customizable-cloudflare-workers-entrypoint)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -261,6 +262,64 @@ export default defineConfig({
 ```
 
 For more details, see the [experimental CSP documentation](https://docs.astro.build/en/reference/experimental-flags/csp/).
+
+## Customizable Cloudflare Workers entrypoint
+
+Some Cloudflare Workers features, like [Durable Objects](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/), [Cloudflare Queues](https://developers.cloudflare.com/queues/), and [Cron Triggers](https://developers.cloudflare.com/workers/platform/cron-triggers/) require a custom entrypoint file. Because the `@astrojs/cloudflare` adapter generates the entrypoint used for serving a site, these features have previously not been possible to use with Astro. Astro 5.10 adds support for customizing the entrypoint file used by the `@astrojs/cloudflare` adapter, giving you full control over your Cloudflare Workers setup.
+
+To customize the entrypoint, add the `workerEntryPoint` option to your `@astrojs/cloudflare` adapter configuration in your `astro.config.mjs` file:
+
+```js title="astro.config.mjs" {6-9}
+import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
+
+export default defineConfig({
+	adapter: cloudflare({
+		workerEntryPoint: {
+			path: 'src/worker.ts',
+			namedExports: ['MyDurableObject']
+		}
+	}),
+});
+```
+
+You can then create a custom entrypoint file at the specified path, which can include any additional imports or exports you need for your Workers setup. This example configures a custom entry file that registers a Durable Object and a queue handler:
+
+```ts title="src/worker.ts" "handle(manifest, app, request, env, ctx)"
+import type { SSRManifest } from 'astro';
+
+import { App } from 'astro/app';
+import { handle } from '@astrojs/cloudflare/handler'
+import { DurableObject } from 'cloudflare:workers';
+
+class MyDurableObject extends DurableObject<Env> {
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env)
+	}
+}
+
+export function createExports(manifest: SSRManifest) {
+	const app = new App(manifest);
+	return {
+		default: {
+			async fetch(request, env, ctx) {
+				await env.MY_QUEUE.send("log");
+				// Make sure you pass the request to Astro's handler
+				return handle(manifest, app, request, env, ctx);
+			},
+			async queue(batch, _env) {
+				let messages = JSON.stringify(batch.messages);
+				console.log(`consumed from our queue: ${messages}`);
+			}
+		} satisfies ExportedHandler<Env>,
+		MyDurableObject,
+	}
+}
+```
+
+For more details, see the updated [Cloudflare adapter documentation](https://docs.astro.build/en/guides/integrations-guide/cloudflare#workerentrypoint).
+
+Thanks to [Alexander Niebuhr](https://github.com/alexanderniebuhr) who contributed this feature, and does most of the work on the `@astrojs/cloudflare` adapter!
 
 ## Bug fixes
 
