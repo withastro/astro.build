@@ -1,0 +1,336 @@
+---
+title: 'Astro 5.10'
+description: 'Astro 5.10 brings responsive images for everyone, plus experimental live content collections, CSP improvements, and more!'
+homepageLink:
+  title: 'Astro 5.10'
+  subtitle: 'Available now!'
+publishDate: '2025-06-19'
+authors:
+  - matt
+coverImage: '/src/content/blog/_images/astro-5100/blog-post-5-10.webp'
+socialImage: '/src/content/blog/_images/astro-5100/og-astro-5-10.webp'
+lang: 'en'
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**🎥 This time we're doing it live – and we're always responsive to your needs.**
+
+Astro 5.10 brings responsive images for everyone, plus experimental live content collections, CSP improvements, and more!
+
+- [**Experimental live content collections**](#experimental-live-content-collections)
+- [**Responsive images are now stable**](#responsive-images-are-now-stable)
+- [**Improvements to experimental Content Security Policy**](#improvements-to-experimental-content-security-policy)
+- [**Customizable Cloudflare Workers entrypoint**](#customizable-cloudflare-workers-entrypoint)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental live content collections
+
+Astro 5.10 introduces a new experimental feature: live content collections. This powerful addition allows you to fetch content at runtime instead of build time, opening up new possibilities for dynamic, real-time content.
+
+Built-time content collections are perfect for content that doesn't change a lot, or where your site is quick and easy to rebuild when it changes. But what about data that changes frequently, or that needs to be personalized to the user? Live content collections fill this gap by letting you fetch fresh data on every request.
+
+### How it works
+
+Live content collections use a new type of loader that fetches data at runtime. Unlike existing loaders that run during the build process, live loaders execute when users visit your pages, ensuring you always have the latest data.
+
+For the best performance you should still use build-time collections where possible. But you can now use live collections for data that needs to be right up-to-date, or where you want to filter or personalize the data based on user input, credentials, or preferences.
+
+To get started, enable experimental live content collections in your Astro config:
+
+```js title="astro.config.mjs" ins={3}
+export default defineConfig({
+	experimental: {
+		liveContentCollections: true,
+	},
+});
+```
+
+Create a `src/live.config.ts` file to define your live collections:
+
+```ts title="src/live.config.ts"
+import { defineLiveCollection } from 'astro:content';
+import { storeLoader } from './loaders/store';
+
+export const products = defineLiveCollection({
+	type: 'live',
+	loader: storeLoader({
+		apiKey: process.env.STORE_API_KEY,
+		endpoint: 'https://api.mystore.com/v1',
+	}),
+});
+```
+
+### Fetching live data
+
+Use the new `getLiveCollection()` and `getLiveEntry()` functions to fetch data in your components:
+
+```astro title="src/pages/products/[slug].astro"
+---
+import { getLiveEntry } from 'astro:content';
+
+const { entry: product, error } = await getLiveEntry(
+	'products',
+	Astro.params.slug,
+);
+
+if (error) {
+	console.error('Failed to load product:', error);
+	return Astro.rewrite('/404');
+}
+---
+
+<h1>{product.data.name}</h1>
+<p>
+	{
+		Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+			product.data.price,
+		)
+	}
+</p>
+```
+
+### Rendering live content
+
+Live loaders can generate rendered content, like build-time loaders, making it super easy to display dynamic data in your components:
+
+```astro title="src/pages/products/[slug].astro" "<Content />" "render(product)"
+---
+import { getLiveEntry, render } from 'astro:content';
+
+const { entry: product, error } = await getLiveEntry(
+	'products',
+	Astro.params.slug,
+);
+
+if (error) {
+	console.error('Failed to load product:', error);
+	return Astro.rewrite('/404');
+}
+
+const { Content } = await render(product);
+---
+
+<h1>{product.data.name}</h1>
+
+<Content />
+```
+
+### Flexible filtering
+
+Live loaders support loader-specific query and filter options, allowing you to push filtering logic to the API level for more efficient data fetching. This means you can request exactly the data you need rather than fetching everything and filtering client-side.
+
+```astro title="src/pages/products.astro"
+---
+import { getLiveCollection } from 'astro:content';
+
+const { entries, error } = await getLiveCollection('products', {
+	category: 'electronics',
+	priceRange: { min: 10, max: 100 },
+});
+---
+```
+
+### Error handling
+
+Live content collections provide explicit error handling with result objects that contain either data or an `error` object. This makes runtime behavior predictable and helps you handle failures gracefully.
+
+### Type safety
+
+It wouldn't be Astro if it wasn't built with type-safety in mind, so the API is fully type-safe, with generic types ensuring your data and query options are correctly typed:
+
+```ts
+// Custom loader with typed queries and data
+const { entry, error } = await getLiveEntry('products', {
+	uuid: Astro.params.uuid, // Filter options are type-checked
+});
+// `entry` will be typed
+```
+
+Live content collections are experimental and we're actively seeking feedback from the community. Try them out in your projects and let us know how they work for you!
+
+For more details, including how to build live loaders, see the [experimental live content collections documentation](https://docs.astro.build/en/reference/experimental-flags/live-content-collections/). Give us your feedback on [the RFC](https://github.com/withastro/roadmap/pull/1164).
+
+## Responsive images are now stable
+
+The Astro responsive images feature is now stable and ready for production!
+
+Responsive images automatically generate optimized `srcset` and `sizes` attributes, and can generate the styles needed to ensure your images load quickly and display beautifully across all screen sizes. Say goodbye to layout shifts and slow-loading images that hurt your Core Web Vitals scores.
+
+### Get started with responsive images
+
+The `layout` property defines how your responsive images should resize and determines the `srcset` and `sizes` to generate. You can set this either globally in your Astro config to apply to all images by default, or on a per-image basis in an `<Image />` or `<Picture />` component. To enable this responsive behavior, configure Astro's default global responsive styling that supports the built-in layout options:
+
+```js title="astro.config.mjs" {3-4}
+export default defineConfig({
+	image: {
+		responsiveStyles: true,
+		layout: 'constrained',
+	},
+});
+```
+
+**Layout options:** Choose from `constrained`, `fixed`, or `full-width` layouts to control how your images behave. Setting this value on an individual component will override your default layout. For example, you can add the `layout` attribute to create a full-width hero image while keeping the rest of your images constrained to their container:
+
+```astro
+<Image
+	src="/hero.jpg"
+	alt="A panoramic view of the mountains"
+	layout="full-width"
+/>
+```
+
+**Priority loading:** Use the new `priority` prop to optimize critical images that appear above the fold:
+
+```astro
+<Image src="/hero.jpg" alt="Hero image" priority />
+```
+
+When you add `priority`, Astro automatically sets `loading="eager"`, `decoding="sync"`, and `fetchpriority="high"` to ensure the image loads immediately. Use this sparingly – ideally no more than one image per page should have priority loading. Make sure you need this before you use it! Check to see if your [Largest Contentful Paint (LCP) element](https://web.dev/lcp/#lcp-element) is an image, and if so, set the `priority` flag on it to make it visible to your visitors sooner.
+
+**Enhanced cropping controls:** The `fit` and `position` properties give you precise control over how images are cropped and positioned:
+
+```astro
+<Image
+	src="/profile.jpg"
+	alt="Profile photo"
+	fit="cover"
+	position="center top"
+	width={300}
+	height={300}
+/>
+```
+
+### Upgrading from experimental responsive images
+
+If you were using experimental responsive images, you must remove the experimental flag from your `astro.config.mjs` file and update any `image.experimental` options with their stable versions:
+
+```js title="astro.config.mjs" del={3} ins={6}
+export default defineConfig({
+	experimental: {
+		responsiveImages: true,
+	},
+	image: {
+		responsiveStyles: true,
+	},
+});
+```
+
+For complete details, see the updated [Images guide](https://docs.astro.build/en/guides/images/#responsive-image-behavior).
+
+## Improvements to experimental Content Security Policy
+
+Astro 5.9 shipped experimental support for Content Security Policy (CSP) meta tags, bringing powerful security features to your Astro sites. In 5.10, we've made several improvements based on community feedback. The most important is that we now support generating CSP headers, including for static pages.
+
+On-demand rendered pages will now send Response headers for CSP, rather than meta tags. This improves performance in Chrome, and adds support for more directives, like `report-uri` and `frame-ancestors`, which are not supported in meta tags.
+
+By default, prerendered pages will still use meta tags, but there is now core support for generating headers for prerendered pages as well via official adapters. Eventually, this will be implemented in all adapters, but currently only the `@astrojs/netlify` and `@astrojs/vercel` adapters support it. To enable this, ensure you have updated to the latest version of the adapter and add the `experimentalStaticHeaders` option to your adapter configuration:
+
+```js title="astro.config.mjs" {6}
+import { defineConfig } from 'astro/config';
+import netlify from '@astrojs/netlify';
+
+export default defineConfig({
+	adapter: netlify({
+		experimentalStaticHeaders: true,
+	}),
+	experimental: {
+		csp: true,
+	},
+});
+```
+
+For more details, see the [experimental CSP documentation](https://docs.astro.build/en/reference/experimental-flags/csp/).
+
+## Customizable Cloudflare Workers entrypoint
+
+Some Cloudflare Workers features, like [Durable Objects](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/), [Cloudflare Queues](https://developers.cloudflare.com/queues/), and [Cron Triggers](https://developers.cloudflare.com/workers/platform/cron-triggers/) require a custom entrypoint file. Because the `@astrojs/cloudflare` adapter generates the entrypoint used for serving a site, these features have previously not been possible to use with Astro. This release adds support for customizing the entrypoint file used by the `@astrojs/cloudflare` adapter, giving you full control over your Cloudflare Workers setup.
+
+To customize the entrypoint, add the `workerEntryPoint` option to your `@astrojs/cloudflare` adapter configuration in your `astro.config.mjs` file:
+
+```js title="astro.config.mjs" {6-9}
+import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
+
+export default defineConfig({
+	adapter: cloudflare({
+		workerEntryPoint: {
+			path: 'src/worker.ts',
+			namedExports: ['MyDurableObject']
+		}
+	}),
+});
+```
+
+You can then create a custom entrypoint file at the specified path, which can include any additional imports or exports you need for your Workers setup. This example configures a custom entry file that registers a Durable Object and a queue handler:
+
+```ts title="src/worker.ts" "handle(manifest, app, request, env, ctx)"
+import type { SSRManifest } from 'astro';
+
+import { App } from 'astro/app';
+import { handle } from '@astrojs/cloudflare/handler'
+import { DurableObject } from 'cloudflare:workers';
+
+class MyDurableObject extends DurableObject<Env> {
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env)
+	}
+}
+
+export function createExports(manifest: SSRManifest) {
+	const app = new App(manifest);
+	return {
+		default: {
+			async fetch(request, env, ctx) {
+        // Your bindings must also be defined in your `wrangler.toml`/`wrangler.jsonc` file
+				await env.MY_QUEUE.send("log");
+				// Make sure you pass the request to Astro's handler
+				return handle(manifest, app, request, env, ctx);
+			},
+			async queue(batch, _env) {
+				let messages = JSON.stringify(batch.messages);
+				console.log(`consumed from our queue: ${messages}`);
+			}
+		} satisfies ExportedHandler<Env>,
+		MyDurableObject,
+	}
+}
+```
+
+For more details, see the updated [Cloudflare adapter documentation](https://docs.astro.build/en/guides/integrations-guide/cloudflare#workerentrypoint).
+
+Thanks to [Alexander Niebuhr](https://github.com/alexanderniebuhr) who contributed this feature, and does most of the work on the `@astrojs/cloudflare` adapter!
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.9 release](/blog/astro-590). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="ben" />, <Mention name="caleb" />, <Mention name="chris" />,
+<Mention name="ema" />, <Mention name="erika" />, <Mention name="florian" />,
+<Mention name="fred" />, <Mention name="fuzzy" />, <Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="nate" />, <Mention name="reuben" />, <Mention name="sarah" />,
+and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.9 possible with code and docs additions and improvements, including:
+
+[Alexander Niebuhr](https://github.com/alexanderniebuhr), [Anshul Gupta](https://github.com/ansg191), [Armand Philippot](https://github.com/ArmandPhilippot), [benosmac](https://github.com/benosmac), [Han Seung Min - 한승민](https://github.com/arHSM), [Junseong Park](https://github.com/jsparkdev), [kato takeshi](https://github.com/tkskto), [knj](https://github.com/jp-knj), [liruifengv](https://github.com/liruifengv), [Martin Haug](https://github.com/reknih), [Martin Trapp](https://github.com/martrapp), [Nin3](https://github.com/Nin3lee), [Paul Valladares](https://github.com/dreyfus92), [Quinn Blenkinsop](https://github.com/qw-in), [Thomas Bonnet](https://github.com/thomasbnt), and [zaitovalisher](https://github.com/zaitovalisher)
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['astro-590', 'astro-580']} />
