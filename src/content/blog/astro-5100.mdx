@@ -170,19 +170,9 @@ Responsive images automatically generate optimized `srcset` and `sizes` attribut
 
 ### Get started with responsive images
 
-Most people should enable automatic styles for responsive images in your `astro.config.mjs` file:
+The `layout` property defines how your responsive images should resize and determines the `srcset` and `sizes` to generate. You can set this either globally in your Astro config to apply to all images by default, or on a per-image basis in an `<Image />` or `<Picture />` component. To enable this responsive behavior, configure Astro's default global responsive styling that supports the built-in layout options:
 
-```js title="astro.config.mjs" ins={3}
-export default defineConfig({
-	image: {
-		responsiveStyles: true,
-	},
-});
-```
-
-You enable responsive images by setting a `layout`, either globally in your Astro config or on a per-image basis.
-
-```js title="astro.config.mjs" {4}
+```js title="astro.config.mjs" {3-4}
 export default defineConfig({
 	image: {
 		responsiveStyles: true,
