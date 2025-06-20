@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@myriaddreamin/tylant-theme-toggle
 homepageUrl: https://www.npmjs.com/package/@myriaddreamin/tylant-theme-toggle
 badge: new
-downloads: 63
+downloads: 64
 ---

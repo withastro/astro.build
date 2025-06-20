@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@myriaddreamin/tylant
 homepageUrl: https://www.npmjs.com/package/@myriaddreamin/tylant
 badge: new
-downloads: 59
+downloads: 60
 ---

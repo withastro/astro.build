@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@stoati/tools-astro
 homepageUrl: https://stoati.fr
-downloads: 134
+downloads: 135
 ---
