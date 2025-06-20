@@ -2,8 +2,8 @@ import type { APIRoute } from 'astro';
 import { integrations as LAST_MODIFIED } from '~/data/last-modified.json';
 import {
 	getFilteredIntegrations,
-	validCategories,
 	validateCategories,
+	validCategories,
 } from '~/helpers/integrations.ts';
 import { paginate } from '~/helpers/paginate.ts';
 

@@ -5,17 +5,27 @@
 		"indentWidth": 2,
 		"lineWidth": 100,
 		"formatWithErrors": true,
-		"ignore": ["*.astro"]
+		"includes": ["**", "!**/*.astro"]
 	},
-	"organizeImports": {
-		"enabled": true
-	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true,
 			"a11y": {
 				"noSvgWithoutTitle": "off"
+			},
+			"style": {
+				"noParameterAssign": "error",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useNumberNamespace": "error",
+				"noInferrableTypes": "error",
+				"noUselessElse": "error"
 			}
 		}
 	},
@@ -42,10 +52,21 @@
 	},
 	"overrides": [
 		{
-			"include": ["package.json"],
+			"includes": ["**/*.astro"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["**/package.json"],
 			"json": {
 				"formatter": {
-					"lineWidth": 1
+					"indentStyle": "space"
 				}
 			}
 		}
