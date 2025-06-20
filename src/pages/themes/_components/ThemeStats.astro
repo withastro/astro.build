@@ -13,7 +13,7 @@ const { theme, class: className, ...attrs } = Astro.props;
 let netlifyUrl: URL | undefined;
 if (theme.Theme.repoUrl && typeof theme.Theme.stars !== 'undefined') {
 	const repoRE =
-		/https:\/\/github\.com\/(?<org>[^\/]+)\/(?<repo>[^\/]+)(?:\/tree\/(?<branch>[^\/]+)\/(?<subdirectory>.+))?/i;
+		/https:\/\/github\.com\/(?<org>[^/]+)\/(?<repo>[^/]+)(?:\/tree\/(?<branch>[^/]+)\/(?<subdirectory>.+))?/i;
 	const matches = theme.Theme.repoUrl.match(repoRE);
 	if (matches?.groups) {
 		netlifyUrl = new URL('https://app.netlify.com/start/deploy');

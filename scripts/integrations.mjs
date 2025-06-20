@@ -1,7 +1,7 @@
 // @ts-check
 
 import { differenceInDays } from 'date-fns';
-import integrations from './integrations.json' assert { type: 'json' };
+import integrations from './integrations.json' with { type: 'json' };
 
 const NEW_THRESHOLD_DAYS = 28;
 

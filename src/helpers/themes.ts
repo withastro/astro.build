@@ -1,8 +1,7 @@
 import xss from 'xss';
 
 /** Matches `https://*.astro.build/*` and `https://github.com/withastro/*` */
-const officialDomainRE =
-	/^https:\/\/(?:(?:[^\/]+\.)?astro.build|github\.com\/withastro)(?:\/.*)?$/i;
+const officialDomainRE = /^https:\/\/(?:(?:[^/]+\.)?astro.build|github\.com\/withastro)(?:\/.*)?$/i;
 
 /** Extracts the value of a link’s `href` attribute to a named `href` group. */
 const hrefRE = /<a .*href="(?<href>[^"]+)".*>/i;

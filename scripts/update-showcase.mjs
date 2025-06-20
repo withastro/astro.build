@@ -211,7 +211,7 @@ class ShowcaseScraper {
 			try {
 				const { origin } = new URL(href);
 				return !this.#blocklist.has(origin) && !currentSites.has(origin);
-			} catch (error) {
+			} catch {
 				console.error(`Error parsing URL: ${href}`);
 				return false;
 			}
@@ -243,7 +243,7 @@ class ShowcaseScraper {
 		try {
 			const res = await fetch(url);
 			raw = await res.text();
-		} catch (error) {
+		} catch {
 			console.error('Failed to fetch', url);
 			return false;
 		}
