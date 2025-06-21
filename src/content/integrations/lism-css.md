@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/lism-css
 repoUrl: https://github.com/lism-css/lism-css#main
 homepageUrl: https://www.npmjs.com/package/lism-css
 badge: new
-downloads: 980
+downloads: 988
 ---

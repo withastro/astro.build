@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-toc-generator
 repoUrl: https://github.com/bhargav-bkpatel/astro-toc-generator
 homepageUrl: https://astro-toc-plugin.vercel.app/
 badge: new
-downloads: 619
+downloads: 627
 ---

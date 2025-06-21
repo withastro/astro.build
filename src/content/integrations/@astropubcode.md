@@ -7,5 +7,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@astropub/code
 homepageUrl: https://www.npmjs.com/package/@astropub/code
-downloads: 2238
+downloads: 2244
 ---
