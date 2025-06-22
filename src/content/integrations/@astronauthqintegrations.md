@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astronauthq/integrations
 homepageUrl: https://www.npmjs.com/package/@astronauthq/integrations
-downloads: 19
+downloads: 21
 ---
