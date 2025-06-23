@@ -1,0 +1,18 @@
+---
+import { Time } from '@astro-github-elements/time';
+
+export type Props = {
+	datetime: Date;
+};
+---
+
+<Time
+	format="datetime"
+	datetime={Astro.props.datetime}
+	formatStyle="micro"
+	hour="numeric"
+	day=""
+	month=""
+	weekday=""
+	timeZoneName="short"
+/>
