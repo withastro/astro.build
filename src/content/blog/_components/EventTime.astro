@@ -4,15 +4,23 @@ import { Time } from '@astro-github-elements/time';
 export type Props = {
 	datetime: Date;
 };
----
 
+const fallbackFormat = new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    timeZoneName: 'shortGeneric',
+    timeZone: 'America/New_York',
+});
+
+---
 <Time
 	format="datetime"
 	datetime={Astro.props.datetime}
 	formatStyle="micro"
 	hour="numeric"
+    minute="numeric"
 	day=""
 	month=""
 	weekday=""
-	timeZoneName="short"
-/>
+	timeZoneName="shortGeneric"
+>{fallbackFormat.format(new Date(Astro.props.datetime))}</Time>
