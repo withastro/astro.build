@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrobits
 homepageUrl: https://www.npmjs.com/package/astrobits
 badge: new
-downloads: 153
+downloads: 154
 ---
