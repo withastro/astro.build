@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@4hse/astro-llms-txt
 repoUrl: https://github.com/4hse/astro-llms-txt
 homepageUrl: https://www.4hse.com
 badge: new
-downloads: 207
+downloads: 215
 ---

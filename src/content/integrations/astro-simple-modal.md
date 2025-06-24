@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-simple-modal
 repoUrl: https://github.com/henrycorredor/astro-simple-modal
 homepageUrl: https://github.com/henrycorredor/astro-simple-modal
-downloads: 143
+downloads: 141
 ---
