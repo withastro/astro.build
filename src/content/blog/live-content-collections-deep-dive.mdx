@@ -16,30 +16,32 @@ import Note from '/src/components/Note.astro';
 
 Content collections in Astro have been through several stages of evolution. They were first launched as an incredibly easy and powerful way to manage structured content from files on disk. Initially supporting Markdown, MDX and JSON files, they allow you to build blogs, documentation sites, and more with great developer experience and type-safe data. 
 
-With Astro 5.0, content collections were expanded into a full-fledged Content Layer that supports pluggable loaders for all kinds of data sources, including APIs, CMSs, and more.
+With Astro 5.0, content collections were expanded into a full-fledged Content Layer that supported pluggable loaders for all kinds of data sources, including APIs, CMSs, and more.
 
-In Astro 5.10, content collections take their next step, with experimental support for live content collections. With these you can now fetch content at runtime instead of build time, opening up entirely new possibilities for dynamic, personalized, and real-time content experiences. Whether you're building an e-commerce site with frequently changing inventory, a news site with breaking updates, or a dashboard with live metrics, live content collections provide the flexibility you need while maintaining the type safety and developer experience that makes Astro special.
+In Astro 5.10, content collections take their next step, with experimental support for **live content collections**. With these, you can now fetch content at runtime instead of build time, opening up entirely new possibilities for dynamic, personalized, and real-time content experiences.
+
+Whether you're building an e-commerce site with frequently changing inventory, a news site with breaking updates, or a dashboard with live metrics, Astro's new live content collections provide the flexibility you need while maintaining the type safety and developer experience that makes Astro special.
 
 ## The foundations of Live Content Collections
 
-Before diving into live content collections, it's worth understanding the foundation they're built upon. Astro content collections uses the concept of [loaders](https://docs.astro.build/en/guides/content-collections/) to manage structured data and content in your projects. Each content collection uses a loader to define how entries are populated. During `astro build`, these loaders run to fetch data and populate a local data store. Your pages then query this immutable snapshot using the familiar `getCollection()` and `getEntry()` functions.
+Before diving into live content collections, it's worth understanding the foundation they're built upon: [loaders](https://docs.astro.build/en/guides/content-collections/). Astro content collections use loaders to manage structured data and content in your projects. Each content collection relies on its loader to define how entries are populated. During `astro build`, these loaders run to fetch data and populate a local data store. Your pages then query this immutable snapshot using the `getCollection()` and `getEntry()` functions.
 
-Live content collections take this concept one step further: instead of fetching data at build time, they fetch it at request time, giving you access to the freshest possible data. Think of this as analogous to the difference between a prerendered, static page and a server-rendered page that is rendered on each request. Sometimes you want the speed and reliability of static content, but other times you need the flexibility and dynamism of live data. Just as you can choose between static and server-rendered pages in Astro, you can now choose between build-time and live content collections.
+Live content collections take this concept one step further: instead of fetching data at build time, they fetch it at request time, giving you access to the freshest possible data. Sometimes you want the speed and reliability of static content, but other times you need the flexibility and dynamism of live data. Just as you can choose between static and on-demand rendered pages in Astro, you can now choose between build-time and live content collections.
 
-The beauty of live content collections is that they maintain the same familiar API as regular content collections. If you know how to use `getCollection()` and `getEntry()`, you already know most of what you need to use live collections with `getLiveCollection()` and `getLiveEntry()`.
+Whichever choice you make, you get the same, familiar API from your existing content collections. If you know how to use `getCollection()` and `getEntry()`, you already know most of what you need to use `getLiveCollection()` and `getLiveEntry()`.
 
 ## The architecture of live collections
 
-Unlike build-time content collections that populate a static data store during the build process, live content collections work fundamentally differently:
+Unlike build-time content collections that populate a static data store during the build process, live content collections work fundamentally differently under the hood:
 
 When a page using live content collections is requested:
 
-1. The page calls `getLiveCollection()` or `getLiveEntry()` to fetch data
-2. Data is fetched from the external source (API, database, etc.)
-3. Results are processed and validated against your schema
-4. Data is returned to your page component
+1. The page calls `getLiveCollection()` or `getLiveEntry()` to fetch data.
+2. Data is fetched from the external source (API, database, etc.).
+3. Results are processed and validated against your schema.
+4. Data is returned to your page component.
 
-This architecture means you're always working with fresh data, but it also means each request involves network calls to your data sources. This trade-off is perfect for use cases where data freshness is more important than absolute performance. You can mitigate performance concerns with page caching, and live collections help by providing cache hints that you can use to optimize this. In future Astro will handle more of this for you, but for now you can use the `Cache-Control` and other headers to control how long the data is cached in the browser and on CDNs.
+This architecture means you're always working with fresh data, but it also means each request involves network calls to your data sources. This trade-off is perfect for use cases where data freshness is more important than absolute performance. You can mitigate performance concerns with page caching, and live collections help by providing cache hints that you can use to optimize this. As this experimental feature develops, Astro will eventually handle more of this for you. For now, you can use the `Cache-Control` and other headers to control how long the data is cached in the browser and on CDNs.
 
 ## Setting up Live Content Collections
 
@@ -57,7 +59,9 @@ export default defineConfig({
 });
 ```
 
-Next, create a `src/live.config.ts` file to define your live collections. In this example I'm using some [live loader packages that I created](https://github.com/ascorbic/astro-loaders/), but you can also create your own loaders. Hopefully there will soon be more community loaders available. Maybe you'll even create one yourself! It took me a few hours to add live loader support to the existing feed loader and Bluesky loader packages, so hopefully it's not too hard to get started.
+Next, create a `src/live.config.ts` file to define your live collections, specifying `type: 'live'` and the collection's `loader`.
+
+In this example I'm using [two live loader packages that I created](https://github.com/ascorbic/astro-loaders/), but you will probably need to [create your own loaders](#building-a-live-content-loader) for your own live data sources by following our documentation. We look forward to more community loaders becoming available, so be sure to share what you build! (It took me a few hours to add live loader support to my existing feed loader and Bluesky loader packages for build-time collections, so hopefully it's not too hard to get started.)
 
 ```ts title="src/live.config.ts"
 import { defineLiveCollection } from 'astro:content';
@@ -82,7 +86,7 @@ export const socialPosts = defineLiveCollection({
 
 ## Fetching live data in your pages
 
-Once you've defined your live collections, using them in your pages is very similar to existing build-time content collections, with a few key differences:
+Once you've defined your live collections, using them in your pages is very similar to existing build-time content collections, with a few key differences. In particular, you will want to add some [error handling](#error-handling-and-resilience) since your data is being loaded live from an external source:
 
 ```astro title="src/pages/news.astro" "getLiveCollection" "getLiveCollection('astroNews')"
 ---
@@ -158,6 +162,7 @@ Some ideas for live loaders you could build include:
 - **YouTube or Twitch streams**: Display latest videos, current live streams, viewer engagement stats, live comments
 - **CMS integrations**: Connect to headless CMS APIs . See what can be done with `render()` to provide rendered content
 
+See more about [creating your own loaders](https://docs.astro.build/en/reference/experimental-flags/live-content-collections/#creating-a-live-loader) in our documentation.
 </Note>
 
 ### Creating a Custom API Loader
