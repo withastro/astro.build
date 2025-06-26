@@ -24,7 +24,7 @@ Whether you're building an e-commerce site with frequently changing inventory, a
 
 ## The foundations of Live Content Collections
 
-Before diving into live content collections, it's worth understanding the foundation they're built upon: [loaders](https://docs.astro.build/en/guides/content-collections/). Astro content collections use loaders to manage structured data and content in your projects. Each content collection relies on its loader to define how entries are populated. During `astro build`, these loaders run to fetch data and populate a local data store. Your pages then query this immutable snapshot using the `getCollection()` and `getEntry()` functions.
+Before diving into live content collections, it's worth understanding the foundation they're built upon: [loaders](https://docs.astro.build/en/reference/content-loader-reference/). Astro content collections use loaders to manage structured data and content in your projects. Each content collection relies on its loader to define how entries are populated. During `astro build`, these loaders run to fetch data and populate a local data store. Your pages then query this immutable snapshot using the `getCollection()` and `getEntry()` functions.
 
 Live content collections take this concept one step further: instead of fetching data at build time, they fetch it at request time, giving you access to the freshest possible data. Sometimes you want the speed and reliability of static content, but other times you need the flexibility and dynamism of live data. Just as you can choose between static and on-demand rendered pages in Astro, you can now choose between build-time and live content collections.
 
