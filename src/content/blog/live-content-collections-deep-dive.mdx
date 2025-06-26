@@ -1,0 +1,905 @@
+---
+title: 'Live Content Collections: A Deep Dive'
+description: "Explore Astro 5.10's experimental live content collections - bringing real-time data to your Astro sites with the same familiar API you know and love."
+publishDate: '2025-06-26'
+authors:
+  - matt
+lang: 'en'
+coverImage: '/src/content/blog/_images/solstice-festival/astro-solstice-festival-schedule-cover.webp'
+socialImage: '/src/content/blog/_images/solstice-festival/astro-solstice-festival-schedule-og.webp'
+---
+
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+import Note from '/src/components/Note.astro';
+
+**Live content collections represent the next evolution of content in Astro, bringing real-time data capabilities to the familiar content collections API you already know and love.**
+
+Astro 5.10 saw the first experimental release of live content collections. With these you can now fetch content at runtime instead of build time, opening up entirely new possibilities for dynamic, personalized, and real-time content experiences. Whether you're building an e-commerce site with frequently changing inventory, a news site with breaking updates, or a dashboard with live metrics, live content collections provide the flexibility you need while maintaining the type safety and developer experience that makes Astro special.
+
+## The foundations of Live Content Collections
+
+Before diving into live content collections, it's worth understanding the foundation they're built upon. Astro uses the concept on [content collections](https://docs.astro.build/en/guides/content-collections/) to manage structured data and content in your projects. Initially, content collections were limited to local files in your site repo, but Astro 5.0 expanded this concept into a powerful Content Layer that allows you to define collections of content with all kinds of source, using pluggable [content loaders](https://docs.astro.build/en/guides/content-collections/#defining-the-collection-loader).
+
+Each content collection uses a loader to define how entries are populated. During `astro build`, these loaders run to fetch data and populate a local data store. Your pages then query this immutable snapshot using the familiar `getCollection()` and `getEntry()` functions.
+
+Live content collections take this concept one step further: instead of fetching data at build time, they fetch it at request time, giving you access to the freshest possible data. Think of this as analogous to the difference between a prerendered, static page and a server-rendered page that fetches data on each request. Sometimes you want the speed and reliability of static content, but other times you need the flexibility and dynamism of live data. Just as you can choose between static and server-rendered pages in Astro, you can now choose between build-time and live content collections.
+
+## What are Live Content Collections?
+
+Live content collections are a new type of content collection that fetches data when your pages are rendered, not when the site is built. This fundamental shift enables several powerful capabilities:
+
+- **Real-time data**: Get the latest information on every request
+- **Personalized content**: Filter and customize data based on user context
+- **Dynamic filtering**: Pass query parameters to refine results
+- **API integration**: Connect directly to live APIs with, with custom query logic
+
+The beauty of live content collections is that they maintain the same familiar API as regular content collections. If you know how to use `getCollection()` and `getEntry()`, you already know most of what you need to use live collections.
+
+## The architecture of live collections
+
+Unlike build-time content collections that populate a static data store during the build process, live content collections work fundamentally differently:
+
+When a page using live content collections is requested:
+
+1. The live loader executes at runtime
+2. Data is fetched from the external source (API, database, etc.)
+3. Results are processed and validated against your schema
+4. Data is returned to your page component
+
+This architecture means you're always working with fresh data, but it also means each request involves network calls to your data sources. This trade-off is perfect for use cases where data freshness is more important than absolute performance. You can mitigate performance concerns with page caching, and live collections help by providing cache hints that you can use to optimize this. In future Astro will handle more of this for you, but for now you can use the `Cache-Control` and other headers to control how long the data is cached in the browser and on CDNs.
+
+## Setting up Live Content Collections
+
+Getting started with live content collections requires enabling the experimental flag and creating a live collection configuration:
+
+```ts title="astro.config.mjs" ins={3}
+export default defineConfig({
+	experimental: {
+		liveContentCollections: true,
+	},
+	// Live collections require an adapter for on-demand rendering
+	adapter: node({
+		mode: 'standalone',
+	}),
+});
+```
+
+Next, create a `src/live.config.ts` file to define your live collections. In this example I'm using some [live loader packages that I created](https://github.com/ascorbic/astro-loaders/), but you can also create your own loaders. Hopefully there will soon be more community loaders available. Maybe you'll even create one yourself! It took me a few hours to add live loader support to the existing feed loader and Bluesky loader packages, so hopefully it's not too hard to get started.
+
+```ts title="src/live.config.ts"
+import { defineLiveCollection } from 'astro:content';
+import { liveFeedLoader } from '@ascorbic/feed-loader';
+import { liveBlueskyLoader } from '@ascorbic/bluesky-loader';
+
+export const astroNews = defineLiveCollection({
+	type: 'live',
+	loader: liveFeedLoader({
+		url: 'https://astro.build/rss.xml',
+	}),
+});
+
+export const socialPosts = defineLiveCollection({
+	type: 'live',
+	loader: liveBlueskyLoader({
+		identifier: 'astro.build',
+		limit: 10,
+	}),
+});
+```
+
+## Fetching live data in your pages
+
+Once you've defined your live collections, using them in your pages is very similar to existing build-time content collections, with a few key differences:
+
+```astro title="src/pages/news.astro" "getLiveCollection" "getLiveCollection('astroNews')"
+---
+export const prerender = false;
+
+import { getLiveCollection } from 'astro:content';
+
+// Fetch the latest Astro blog posts
+const { entries: blogPosts, error } = await getLiveCollection('astroNews');
+
+if (error) {
+	console.error('Failed to load news:', error);
+}
+---
+
+<h1>Latest Astro News</h1>
+{
+	error ? (
+		<p>Unable to load news at this time. Please try again later.</p>
+	) : (
+		<div class="news-grid">
+			{blogPosts.map((post) => (
+				<article class="news-card">
+					<h2>
+						<a href={post.data.url}>{post.data.title}</a>
+					</h2>
+					{post.data.description && (
+						<p class="summary">{post.data.description}</p>
+					)}
+				</article>
+			))}
+		</div>
+	)
+}
+```
+
+You can also use `getLiveEntry()` to fetch a single entry by its ID, or using filter parameters:
+
+```astro title="src/pages/social/[id].astro"
+---
+export const prerender = false;
+
+import { getLiveEntry, render } from 'astro:content';
+const postId = Astro.params.id;
+const { entry: post, error } = await getLiveEntry('socialPosts', postId);
+if (error) {
+	console.error('Failed to load post:', error);
+	return Astro.rewrite('/404');
+}
+
+const { Content } = await render(post);
+---
+
+<div class="post">
+	<Content />
+	<div class="engagement-stats">
+		<span>❤️ {post.data.likeCount}</span>
+		<span>🔄 {post.data.repostCount}</span>
+		<span>💬 {post.data.replyCount}</span>
+		{post.data.quoteCount > 0 && <span>📝 {post.data.quoteCount}</span>}
+	</div>
+</div>
+```
+
+## Building a live content loader
+
+Creating custom live loaders allows you to connect to any API or data source, giving you complete control over how data is fetched and processed. The API is designed to be simple, flexible and type-safe, so you can build loaders that suit your specific needs, while keeping the ease-of-use and type safety that Astro is known for. We'd love to see people trying out the experimental API and giving feedback on it, so we can improve it before it becomes stable.
+
+<Note type="tip">
+Some ideas for live loaders you could build include:
+
+- **E-commerce APIs**: Fetch product catalogs, inventory levels, and user-specific recommendations
+- **YouTube or Twitch streams**: Display latest videos, current live streams, viewer engagement stats, live comments
+- **CMS integrations**: Connect to headless CMS APIs . See what can be done with `render()` to provide rendered content
+
+</Note>
+
+### Creating a Custom API Loader
+
+Here's an example of a live loader for an e-commerce API:
+
+```ts title="src/loaders/store-loader.ts"
+import type { LiveLoader } from 'astro:content';
+
+interface Product {
+	id: string;
+	name: string;
+	price: number;
+	category: string;
+	inStock: boolean;
+	description?: string;
+}
+
+interface ProductFilter {
+	category?: string;
+	inStock?: boolean;
+}
+
+export function createStoreLoader(
+	baseUrl: string,
+): LiveLoader<Product, ProductFilter> {
+	return {
+		loadCollection: async (filter) => {
+			try {
+				const url = new URL(`${baseUrl}/products`);
+
+				if (filter?.category) {
+					url.searchParams.set('category', filter.category);
+				}
+				if (filter?.inStock !== undefined) {
+					url.searchParams.set('inStock', filter.inStock.toString());
+				}
+
+				const response = await fetch(url);
+				if (!response.ok) {
+					return {
+						error: new Error(
+							`Failed to fetch products: ${response.statusText}`,
+						),
+					};
+				}
+
+				const data = await response.json();
+				return {
+					entries: data.map((product: Product) => ({
+						id: product.id,
+						data: product,
+					})),
+				};
+			} catch (error) {
+				return {
+					error: error instanceof Error ? error : new Error('Unknown error'),
+				};
+			}
+		},
+
+		loadEntry: async (id) => {
+			try {
+				const response = await fetch(`${baseUrl}/products/${id}`);
+				if (response.status === 404) {
+					return { entry: null };
+				}
+				if (!response.ok) {
+					return {
+						error: new Error(`Failed to fetch product: ${response.statusText}`),
+					};
+				}
+
+				const product = await response.json();
+				return {
+					entry: {
+						id: product.id,
+						data: product,
+					},
+				};
+			} catch (error) {
+				return {
+					error: error instanceof Error ? error : new Error('Unknown error'),
+				};
+			}
+		},
+	};
+}
+```
+
+Then use it in your live collections configuration:
+
+```ts title="src/live.config.ts"
+import { defineLiveCollection, z } from 'astro:content';
+import { createStoreLoader } from './loaders/store-loader';
+
+export const products = defineLiveCollection({
+	type: 'live',
+	loader: createStoreLoader('https://store.example.com'),
+	schema: z.object({
+		id: z.string(),
+		name: z.string(),
+		price: z.number(),
+		category: z.string(),
+		inStock: z.boolean(),
+		description: z.string().optional(),
+	}),
+});
+```
+
+### Loader with rendered content
+
+Live content loaders can support rendered content, making it easy for users to display HTML content fetched from an API. Here's an example of a blog post loader that fetches posts from a CMS and renders the content as HTML:
+
+```ts title="src/loaders/blog-loader.ts"
+import type { LiveLoader } from 'astro:content';
+
+interface BlogPost {
+	title: string;
+	author: string;
+	publishDate: Date;
+	content: string;
+	excerpt: string;
+	tags: string[];
+}
+
+interface BlogFilter {
+	status?: 'published' | 'draft';
+	author?: string;
+}
+
+export function createBlogLoader(
+	baseUrl: string,
+): LiveLoader<BlogPost, BlogFilter> {
+	return {
+		loadCollection: async (filter) => {
+			try {
+				const url = new URL(`${baseUrl}/posts`);
+
+				if (filter?.status) {
+					url.searchParams.set('status', filter.status);
+				}
+				if (filter?.author) {
+					url.searchParams.set('author', filter.author);
+				}
+
+				const response = await fetch(url);
+				if (!response.ok) {
+					return {
+						error: new Error(`Failed to fetch posts: ${response.statusText}`),
+					};
+				}
+
+				const posts = await response.json();
+				return {
+					entries: posts.map((post: any) => ({
+						id: post.slug,
+						data: {
+							title: post.title,
+							author: post.author,
+							publishDate: new Date(post.publishDate),
+							content: post.content,
+							excerpt: post.excerpt,
+							tags: post.tags || [],
+						},
+						rendered: post.html ? { html: post.html } : undefined,
+					})),
+				};
+			} catch (error) {
+				return {
+					error: error instanceof Error ? error : new Error('Unknown error'),
+				};
+			}
+		},
+
+		loadEntry: async (slug) => {
+			try {
+				const response = await fetch(`${baseUrl}/posts/${slug}`);
+				if (response.status === 404) {
+					return { entry: null };
+				}
+				if (!response.ok) {
+					return {
+						error: new Error(`Failed to fetch post: ${response.statusText}`),
+					};
+				}
+
+				const post = await response.json();
+				return {
+					entry: {
+						id: post.slug,
+						data: {
+							title: post.title,
+							author: post.author,
+							publishDate: new Date(post.publishDate),
+							content: post.content,
+							excerpt: post.excerpt,
+							tags: post.tags || [],
+						},
+						rendered: post.html ? { html: post.html } : undefined,
+					},
+				};
+			} catch (error) {
+				return {
+					error: error instanceof Error ? error : new Error('Unknown error'),
+				};
+			}
+		},
+	};
+}
+```
+
+Then use it in your live collections configuration:
+
+```ts title="src/live.config.ts"
+import { defineLiveCollection, z } from 'astro:content';
+import { createBlogLoader } from './loaders/blog-loader';
+
+export const blogPosts = defineLiveCollection({
+	type: 'live',
+	loader: createBlogLoader('https://cms.example.com'),
+	schema: z.object({
+		title: z.string(),
+		author: z.string(),
+		publishDate: z.date(),
+		content: z.string(),
+		excerpt: z.string(),
+		tags: z.array(z.string()),
+	}),
+});
+```
+
+## Live collections vs build-time collections
+
+Understanding when to use live collections versus traditional build-time collections is crucial for building performant applications:
+
+### Use live collections when:
+
+- **Data changes frequently**: Inventory levels, user-generated content, live metrics
+- **Personalization is required**: User-specific recommendations, dashboard data
+- **Real-time accuracy is critical**: News feeds, social media content, live scores
+- **Dynamic filtering is needed**: Search results, filtered product catalogs
+
+### Use build-time collections when:
+
+- **Content is relatively static**: Blog posts, documentation, marketing pages
+- **Performance is paramount**: High-traffic sites where every millisecond counts
+- **You need image transformations or MDX rendering**: Live collections do not support image transformations or MDX rendering
+
+### Hybrid approaches
+
+You can combine both approaches in the same project, and even within the same page. For example, you might use build-time collections for static content like blog posts, while using live collections for dynamic features like comments or user profiles.
+
+```astro title="src/pages/blog/[slug].astro"
+---
+export const prerender = false;
+
+import { getEntry, getLiveCollection } from 'astro:content';
+
+// Blog post content is fetched at build time and cached in the data store. The site is rebuilt when new posts are added
+const post = await getEntry('blog', Astro.params.slug);
+
+// Live comments are fetched at request time, so they always show the latest comments
+const { entries: comments } = await getLiveCollection('comments', {
+	postId: Astro.params.slug,
+});
+---
+
+<!-- Static blog post content -->
+<article>
+	<h1>{post.data.title}</h1>
+	<Content />
+</article>
+
+<!-- Live comments section -->
+<section class="comments">
+	<h2>Comments ({comments.length})</h2>
+	{
+		comments.map((comment) => (
+			<div class="comment">
+				<strong>{comment.data.author}</strong>
+				<p>{comment.data.content}</p>
+			</div>
+		))
+	}
+</section>
+```
+
+Hybrid patterns like these pair well with [server islands](https://docs.astro.build/en/guides/server-islands/), allowing you to create truly hybrid pages where the main content is static but specific components fetch live data. This gives you the best of both worlds: fast static content delivery with dynamic, real-time sections.
+
+```astro title="src/pages/blog/[slug].astro"
+---
+// This page can be prerendered because the main content is static
+import { getEntry, getCollection } from 'astro:content';
+import Comments from '../components/Comments.astro';
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+  }));
+};
+
+const post = await getEntry('blog', Astro.params.slug);
+---
+
+<!-- Static blog post content -->
+<article>
+	<h1>{post.data.title}</h1>
+	<div class="content">
+		<Content />
+	</div>
+</article>
+
+<!-- Dynamic comments loaded via server island -->
+<Comments server:defer postId={Astro.params.slug} />
+```
+
+```astro title="src/components/Comments.astro"
+---
+export const prerender = false;
+
+import { getLiveCollection } from 'astro:content';
+
+interface Props {
+	postId: string;
+}
+
+const { postId } = Astro.props;
+
+// This component runs as a server island, fetching live data
+const { entries: comments, error } = await getLiveCollection('comments', {
+	postId,
+	status: 'approved',
+});
+
+// Cache in the CDN for 10 minutes
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=600'); 
+---
+
+<section>
+	<h2>Comments</h2>
+	{error ? (
+		<p>Unable to load comments at this time.</p>
+	) : comments.length === 0 ? (
+		<p>No comments yet. Be the first to comment!</p>
+	) : (
+		<div class="comments-list">
+			{comments.map((comment) => (
+				<div class="comment">
+					<div class="comment-header">
+						<strong>{comment.data.author}</strong>
+						<time>{comment.data.createdAt.toLocaleDateString()}</time>
+					</div>
+					<p>{comment.data.content}</p>
+				</div>
+			))}
+		</div>
+	)}
+</section>
+```
+
+This approach provides several benefits. This gives you a fast initial page load with static content, while still allowing specific components to fetch live data as needed. It also allows you to cache the live data effectively, improving performance and reducing load on your APIs.
+
+## Error handling and resilience
+
+Live content collections provide explicit error handling that makes your application more resilient:
+
+```astro title="src/pages/dashboard.astro"
+---
+export const prerender = false;
+
+import { getLiveCollection } from 'astro:content';
+
+// Fetch multiple live collections with individual error handling
+const [metricsResult, alertsResult, reportsResult] = await Promise.all([
+	getLiveCollection('metrics'),
+	getLiveCollection('alerts', { severity: 'high' }),
+	getLiveCollection('reports', { recent: true }),
+]);
+
+// Handle errors gracefully
+const metrics = metricsResult.error ? [] : metricsResult.entries;
+const alerts = alertsResult.error ? [] : alertsResult.entries;
+const reports = reportsResult.error ? [] : reportsResult.entries;
+
+const hasErrors =
+	metricsResult.error || alertsResult.error || reportsResult.error;
+---
+
+{
+	hasErrors && (
+		<div class="error-banner">
+			Some dashboard data may be outdated. Please refresh to try again.
+		</div>
+	)
+}
+
+<div class="dashboard">
+	<section class="metrics">
+		<h2>Metrics</h2>
+		{
+			metrics.length === 0 ? (
+				<p>No metrics available</p>
+			) : (
+				<div class="metrics-grid">
+					{metrics.map((metric) => (
+						<div class="metric-card">
+							<h3>{metric.data.name}</h3>
+							<p class="value">{metric.data.value}</p>
+						</div>
+					))}
+				</div>
+			)
+		}
+	</section>
+
+	<section class="alerts">
+		<h2>High Priority Alerts</h2>
+		{
+			alerts.length === 0 ? (
+				<p>No alerts - all systems operational</p>
+			) : (
+				<ul class="alerts-list">
+					{alerts.map((alert) => (
+						<li class="alert">
+							<strong>{alert.data.title}</strong>
+							<p>{alert.data.description}</p>
+						</li>
+					))}
+				</ul>
+			)
+		}
+	</section>
+</div>
+```
+
+## Performance considerations and best practices
+
+When using live content collections, it's important to consider performance implications, especially when using slower or more complex APIs. Here are some best practices to keep in mind:
+
+### Caching with cache hints
+
+Live content collections support cache hints that allow you to provide caching metadata for your responses. This helps optimize performance by enabling proper cache headers and cache invalidation strategies. In future versions of Astro, these cache hints will be used to automatically cache pages, but for now you can use them to set appropriate HTTP headers in your pages.
+
+```ts title="src/loaders/cached-store-loader.ts"
+import type { LiveLoader } from 'astro:content';
+
+interface Product {
+	id: string;
+	name: string;
+	price: number;
+	lastModified: string;
+	category: string;
+}
+
+export function createStoreLoader(baseUrl: string): LiveLoader<Product> {
+	return {
+		loadCollection: async (filter) => {
+			try {
+				const response = await fetch(`${baseUrl}/products`);
+				if (!response.ok) {
+					return {
+						error: new Error(
+							`Failed to fetch products: ${response.statusText}`,
+						),
+					};
+				}
+
+				const products = await response.json();
+
+				return {
+					entries: products.map((product: Product) => ({
+						id: product.id,
+						data: product,
+            cacheHint: {
+              tags: [`product-${product.id}`],
+              lastModified: new Date(product.lastModified),
+            },
+					})),
+					cacheHint: {
+						tags: ['products'],
+					},
+				};
+			} catch (error) {
+				return {
+					error: error instanceof Error ? error : new Error('Unknown error'),
+				};
+			}
+		},
+
+		loadEntry: async (id) => {
+			try {
+				const response = await fetch(`${baseUrl}/products/${id}`);
+				if (response.status === 404) {
+					return { entry: null };
+				}
+				if (!response.ok) {
+					return {
+						error: new Error(`Failed to fetch product: ${response.statusText}`),
+					};
+				}
+
+				const product = await response.json();
+
+				return {
+					entry: {
+						id: product.id,
+						data: product,
+					},
+					cacheHint: {
+						tags: [`product-${id}`],
+						lastModified: new Date(product.lastModified),
+					},
+				};
+			} catch (error) {
+				return {
+					error: error instanceof Error ? error : new Error('Unknown error'),
+				};
+			}
+		},
+	};
+}
+```
+
+Then use the cache hints in your pages to set appropriate HTTP headers:
+
+```astro title="src/pages/products/[id].astro"
+---
+export const prerender = false;
+
+import { getLiveEntry } from 'astro:content';
+
+const {
+	entry: product,
+	error,
+	cacheHint,
+} = await getLiveEntry('products', Astro.params.id);
+
+if (error || !product) {
+	return Astro.redirect('/products');
+}
+
+// Set cache headers based on the cache hint
+if (cacheHint?.lastModified) {
+	Astro.response.headers.set(
+		'Last-Modified',
+		cacheHint.lastModified.toUTCString(),
+	);
+}
+if (cacheHint?.tags) {
+	Astro.response.headers.set('Cache-Tag', cacheHint.tags.join(','));
+}
+
+// Set your own cache control headers
+Astro.response.headers.set('Cache-Control', 'public, max-age=600'); // 10 minutes
+---
+
+<h1>{product.data.name}</h1>
+<p>Price: ${product.data.price}</p>
+```
+
+Note that cache hints provide metadata about your content, but you'll still need to set your own cache headers to control actual caching behavior. Platforms such as Netlify allow you to invalidate caches based on these tags, so you can ensure that your live content remains fresh without unnecessary API calls.
+
+## Real-World Use Cases
+
+### E-commerce Product Catalog
+
+```astro title="src/pages/products/[...slug].astro"
+---
+export const prerender = false;
+
+import { getLiveCollection, getLiveEntry } from 'astro:content';
+
+const slug = Astro.params.slug;
+
+const { entry: product, error } = await getLiveEntry('products', slug);
+
+if (error || !product) {
+	return Astro.redirect('/products');
+}
+
+// Also fetch related products
+const { entries: related } = await getLiveCollection('products', {
+	category: product.data.category,
+	exclude: product.id,
+	limit: 4,
+});
+
+// Render product details and related items...
+---
+```
+
+### News and Social Media Aggregation
+
+Here's an example using community loaders to create a live news and social media dashboard:
+
+```astro title="src/pages/dashboard.astro"
+---
+export const prerender = false;
+
+import { getLiveCollection } from 'astro:content';
+
+// Fetch live RSS feed using community loader
+const { entries: astroNews, error: newsError } =
+	await getLiveCollection('astroNews');
+
+// Fetch live Bluesky posts using community loader
+const { entries: socialPosts, error: socialError } =
+	await getLiveCollection('socialPosts');
+
+const hasErrors = newsError || socialError;
+---
+
+<div class="dashboard">
+	{
+		hasErrors && (
+			<div class="error-banner">
+				Some content may be unavailable. Please refresh to try again.
+			</div>
+		)
+	}
+
+	<section class="news-section">
+		<h2>Latest Tech News</h2>
+		{
+			newsError ? (
+				<p>Unable to load news at this time.</p>
+			) : (
+				<div class="news-grid">
+					{astroNews.map((article) => (
+						<article class="news-card">
+							<h3>
+								<a href={article.data.link} target="_blank">
+									{article.data.title}
+								</a>
+							</h3>
+							<p class="meta">
+								{article.data.pubDate?.toLocaleDateString()} |{' '}
+								{article.data.creator}
+							</p>
+							{article.data.summary && (
+								<p class="summary">{article.data.summary}</p>
+							)}
+						</article>
+					))}
+				</div>
+			)
+		}
+	</section>
+
+	<section class="social-section">
+		<h2>Latest from Bluesky</h2>
+		{
+			socialError ? (
+				<p>Unable to load social posts at this time.</p>
+			) : (
+				<div class="posts-feed">
+					{socialPosts.map((post) => (
+						<div class="post-card">
+							<div class="post-header">
+								<strong>{post.data.author.displayName}</strong>
+								<span class="handle">@{post.data.author.handle}</span>
+								<time>{post.data.createdAt.toLocaleString()}</time>
+							</div>
+							<div class="post-content">
+								{post.rendered && <Fragment set:html={post.rendered.html} />}
+							</div>
+						</div>
+					))}
+				</div>
+			)
+		}
+	</section>
+</div>
+```
+
+### Using Custom Loaders in Pages
+
+Once you've created custom loaders, you can use them in your pages:
+
+```astro title="src/pages/products/[id].astro"
+---
+export const prerender = false;
+
+import { getLiveEntry } from 'astro:content';
+
+// Fetch a single product with error handling
+const { entry: product, error } = await getLiveEntry(
+	'products',
+	Astro.params.id,
+);
+
+if (error) {
+	console.error('Failed to load product:', error);
+	return Astro.redirect('/products');
+}
+
+if (!product) {
+	return Astro.redirect('/products');
+}
+---
+
+<h1>{product.data.name}</h1>
+<p class="price">
+	{
+		new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency: 'USD',
+		}).format(product.data.price)
+	}
+</p>
+<p class="stock-status">
+	{product.data.inStock ? 'In Stock' : 'Out of Stock'}
+</p>
+{
+	product.data.description && (
+		<div class="description">
+			<p>{product.data.description}</p>
+		</div>
+	)
+}
+```
+
+## The Future of Live Content Collections
+
+Live content collections are currently experimental, but they represent an important step forward in Astro's evolution, opening up more use cases for building sites with dynamic, real-time content on Astro while maintaining the developer experience you love. 
+
+## Next steps
+
+Live content collections are experimental in Astro 5.10 and we need your feedback. To get involved:
+
+- [Read the docs](https://docs.astro.build/en/reference/experimental-flags/live-content-collections/) to get started with live content collections in your Astro projects.
+- [Read the RFC](https://github.com/withastro/roadmap/blob/feat/live-loaders/proposals/0055-live-content-loaders.md) and [share your feedback](https://github.com/withastro/roadmap/pull/1164).
+- Take a look at my [live RSS feed loader](https://github.com/ascorbic/astro-loaders/tree/main/packages/feed) and [Bluesky loader](https://github.com/ascorbic/astro-loaders/tree/main/packages/bluesky) packages to see how they work and understand some of the patterns you can use.
+- Build a loader of your own, and share it with the community! Let us know what you build, and we can help promote it.
+
+Live content collections open up exciting new possibilities for building dynamic, real-time web experiences while keeping the developer experience you love. Whether you're building an e-commerce site, a news platform, or a data dashboard, live collections provide the flexibility and power you need to create truly dynamic web applications.
