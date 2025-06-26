@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/gh-discussions-astro-loader
 repoUrl: https://github.com/pricci1/gh-discussions-astro
 homepageUrl: https://www.npmjs.com/package/gh-discussions-astro-loader
 badge: new
-downloads: 56
+downloads: 45
 ---
