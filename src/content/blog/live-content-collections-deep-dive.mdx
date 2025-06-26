@@ -14,26 +14,19 @@ import Note from '/src/components/Note.astro';
 
 **Live content collections represent the next evolution of content in Astro, bringing real-time data capabilities to the familiar content collections API you already know and love.**
 
-Astro 5.10 saw the first experimental release of live content collections. With these you can now fetch content at runtime instead of build time, opening up entirely new possibilities for dynamic, personalized, and real-time content experiences. Whether you're building an e-commerce site with frequently changing inventory, a news site with breaking updates, or a dashboard with live metrics, live content collections provide the flexibility you need while maintaining the type safety and developer experience that makes Astro special.
+Content collections in Astro have been through several stages of evolution. They were first launched as an incredibly easy and powerful way to manage structured content from files on disk. Initially supporting Markdown, MDX and JSOn files, they allow you to build blogs, documentation sites, and more with great developer experience and type-safe data. 
+
+With Astro 5.0, content collections were expanded into a full-fledged Content Layer that supports pluggable loaders for all kinds of data sources, including APIs, CMSs, and more.
+
+In Astro 5.10, content collections take their next step, with experimental support for live content collections. With these you can now fetch content at runtime instead of build time, opening up entirely new possibilities for dynamic, personalized, and real-time content experiences. Whether you're building an e-commerce site with frequently changing inventory, a news site with breaking updates, or a dashboard with live metrics, live content collections provide the flexibility you need while maintaining the type safety and developer experience that makes Astro special.
 
 ## The foundations of Live Content Collections
 
-Before diving into live content collections, it's worth understanding the foundation they're built upon. Astro uses the concept on [content collections](https://docs.astro.build/en/guides/content-collections/) to manage structured data and content in your projects. Initially, content collections were limited to local files in your site repo, but Astro 5.0 expanded this concept into a powerful Content Layer that allows you to define collections of content with all kinds of source, using pluggable [content loaders](https://docs.astro.build/en/guides/content-collections/#defining-the-collection-loader).
+Before diving into live content collections, it's worth understanding the foundation they're built upon. Astro content collections uses the concept of [loaders](https://docs.astro.build/en/guides/content-collections/) to manage structured data and content in your projects. Each content collection uses a loader to define how entries are populated. During `astro build`, these loaders run to fetch data and populate a local data store. Your pages then query this immutable snapshot using the familiar `getCollection()` and `getEntry()` functions.
 
-Each content collection uses a loader to define how entries are populated. During `astro build`, these loaders run to fetch data and populate a local data store. Your pages then query this immutable snapshot using the familiar `getCollection()` and `getEntry()` functions.
+Live content collections take this concept one step further: instead of fetching data at build time, they fetch it at request time, giving you access to the freshest possible data. Think of this as analogous to the difference between a prerendered, static page and a server-rendered page that is rendered on each request. Sometimes you want the speed and reliability of static content, but other times you need the flexibility and dynamism of live data. Just as you can choose between static and server-rendered pages in Astro, you can now choose between build-time and live content collections.
 
-Live content collections take this concept one step further: instead of fetching data at build time, they fetch it at request time, giving you access to the freshest possible data. Think of this as analogous to the difference between a prerendered, static page and a server-rendered page that fetches data on each request. Sometimes you want the speed and reliability of static content, but other times you need the flexibility and dynamism of live data. Just as you can choose between static and server-rendered pages in Astro, you can now choose between build-time and live content collections.
-
-## What are Live Content Collections?
-
-Live content collections are a new type of content collection that fetches data when your pages are rendered, not when the site is built. This fundamental shift enables several powerful capabilities:
-
-- **Real-time data**: Get the latest information on every request
-- **Personalized content**: Filter and customize data based on user context
-- **Dynamic filtering**: Pass query parameters to refine results
-- **API integration**: Connect directly to live APIs with, with custom query logic
-
-The beauty of live content collections is that they maintain the same familiar API as regular content collections. If you know how to use `getCollection()` and `getEntry()`, you already know most of what you need to use live collections.
+The beauty of live content collections is that they maintain the same familiar API as regular content collections. If you know how to use `getCollection()` and `getEntry()`, you already know most of what you need to use live collections with `getLiveCollection()` and `getLiveEntry()`.
 
 ## The architecture of live collections
 
@@ -41,7 +34,7 @@ Unlike build-time content collections that populate a static data store during t
 
 When a page using live content collections is requested:
 
-1. The live loader executes at runtime
+1. The page calls `getLiveCollection()` or `getLiveEntry()` to fetch data
 2. Data is fetched from the external source (API, database, etc.)
 3. Results are processed and validated against your schema
 4. Data is returned to your page component
