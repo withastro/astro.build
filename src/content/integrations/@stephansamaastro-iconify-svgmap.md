@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@stephansama/astro-iconify-svgmap
 repoUrl: https://github.com/stephansama/packages
 homepageUrl: https://packages.stephanrandle.workers.dev/modules/_stephansama_astro-iconify-svgmap
 badge: new
-downloads: 115
+downloads: 117
 ---

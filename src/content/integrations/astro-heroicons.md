@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-heroicons
 repoUrl: https://github.com/seanmcp/astro-heroicons
 homepageUrl: https://github.com/seanmcp/astro-heroicons#readme
-downloads: 2929
+downloads: 2997
 ---
