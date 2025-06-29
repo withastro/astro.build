@@ -25,6 +25,7 @@ Some exciting news from around the Astro ecosystem this month, including:
 - [Latest releases](#latest-releases)
 - [Astro Adopters](#astro-adopters)
 - [Weird Wide Web](#weird-wide-web)
+- [AstrWOW](#astrwow)
 - [Community updates](#community)
 - [Astro in the news, migration stories, how-to articles, and more!](#content)
 - [Watch Party](#watch-party)
@@ -65,32 +66,55 @@ export const featuredSites = [
 </div>
 
 
-
 ## Weird Wide Web
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
 
-- https://giveback.guide/
-- https://passportphotowiz.com/
-- https://tids-logg.netlify.app/ - I got tired of logging my work hours in Notes, so I built a site for it. Auth is handled via Supabase, so feel free to use a temp email if you’d prefer. It’s currently only available in Swedish unfortunately, so that might be a bit of a hurdle.
-- https://asciimoon.com/
-- https://www.iamrob.in/postcards
-- https://studio-dot.fr/ gsap site of the day
-
-- [Mac Theme Gardens](https://macthemes.garden) - A website showcasing more than 3,000 (and counting) Kaleidoscope from the Classic Mac era. And don't forget to read the [story behind creating Mac Theme Gardens with Astro](https://damien.zone/introducing-mac-themes-garden/)!
-- [Statt Land, Song.](https://statt-land-song.ch/) - Test your music knowledge, compete with friends, and race against the clock in this "guess the song" party game! And check out [the story behind Statt Land, Song](https://www.reddit.com/r/astrojs/comments/1klnefw/i_built_a_competitive_music_quiz_with_astro_react/), including tech stack and lessons learned.
+- [Ascii Moon](https://asciimoon.com) - View & cycle through The Moon's phases day to day - rendered in ASCII art.
+- [Give Back Guide](https://giveback.guide/) - A platform that connects travellers with projects and experiences that have a positive impact on people, places and the planet. Their goal is to make it easy for travellers to find and support local projects in their destinations that align with their values.
+- [type](https://type.baby) - An open source, zen, markdown-friendly editor built with Astro. Just start typing!
+- [Deep Time Navigator](https://deep-timeline.oberbrunner.com/) - Visualize world events through deep time, with log scaling, so you can see how the present (a day, a week, a year) smoothly fades into the very deepest past.
+- [TIDS:LOGG](https://tids-logg.netlify.app/) - Keep track of the time you spend with Astro! (And learn a little Swedish at the same time?) A Swedish time-tracking site built with Supabase. 
+- [Passport Pnoto Wiz](https://passportphotowiz.com/) - Create compliant passport photos in seconds, right from your browser.
 
 export const monthlySites = [
-  'macthemes.garden',
-  'statt-land-song.ch',
+  'asciimoon.com',
+  'giveback.guide',
+  'type.baby',
+  'deep-timeline.oberbrunner.com',
+  'studio-dot.fr',
+  'www.blinkpath.com',
+  'www.avax.network',
+  'www.pierremouchan.com',
+  'homerun.today',
+  'www.woodlight.fr',
+  'tids-logg.netlify.app',
+  'passportphotowiz.com',
 ]; 
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'macthemes.garden')} />
-  <ShowcaseCard site={await getEntry('showcase', 'statt-land-song.ch')} />
+  <ShowcaseCard site={await getEntry('showcase', 'asciimoon.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'giveback.guide')} />
+  <ShowcaseCard site={await getEntry('showcase', 'type.baby')} />
+  <ShowcaseCard site={await getEntry('showcase', 'deep-timeline.oberbrunner.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'tids-logg.netlify.app')} />
+  <ShowcaseCard site={await getEntry('showcase', 'passportphotowiz.com')} />
 </div>
 
 {/* <ShowcaseGridById ids={monthlySites} />  */}
+
+## AstrWOW
+
+Didn't think you could do that with Astro? These stunning sites with smooth animations prove you can!
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'studio-dot.fr')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.blinkpath.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.avax.network')} />
+  <ShowcaseCard site={await getEntry('showcase', 'homerun.today')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.pierremouchan.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.woodlight.fr')} />
+</div>
 
 ## Community
 
