@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-windicss
 repoUrl: https://github.com/enpitsuLin/astro-windicss
 homepageUrl: https://www.npmjs.com/package/astro-windicss
-downloads: 10
+downloads: 11
 ---

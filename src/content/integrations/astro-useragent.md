@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-useragent
 repoUrl: https://github.com/codiume/orbit
 homepageUrl: https://www.npmjs.com/package/astro-useragent
-downloads: 3273
+downloads: 3139
 ---
