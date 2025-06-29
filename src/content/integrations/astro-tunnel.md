@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-tunnel
 repoUrl: https://github.com/morinokami/astro-tunnel
 homepageUrl: https://www.npmjs.com/package/astro-tunnel
-downloads: 445
+downloads: 446
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/sifra
 repoUrl: https://github.com/yonkeltron/sifra
 homepageUrl: https://www.npmjs.com/package/sifra
-downloads: 10
+downloads: 11
 ---
