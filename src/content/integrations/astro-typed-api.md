@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-typed-api
 repoUrl: https://github.com/lilnasy/gratelets
 homepageUrl: https://www.npmjs.com/package/astro-typed-api
-downloads: 11
+downloads: 14
 ---

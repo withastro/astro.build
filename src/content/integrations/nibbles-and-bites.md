@@ -5,6 +5,7 @@ description: A composable and accessible component framework
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/nibbles-and-bites
-homepageUrl: https://www.npmjs.com/package/nibbles-and-bites
-downloads: 133
+homepageUrl: https://nibbles-and-bites.polycule.li
+downloads: 134
+repoUrl: https://github.com/AliciaBytes/nibbles-and-bites
 ---
