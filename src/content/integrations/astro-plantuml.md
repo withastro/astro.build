@@ -6,9 +6,7 @@ description: Astro integration that automatically converts PlantUML code blocks
   and more.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-plantuml
 homepageUrl: https://www.npmjs.com/package/astro-plantuml
-badge: new
 downloads: 115
 ---
