@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-themes
 repoUrl: https://github.com/alex-grover/astro-themes
-homepageUrl: https://github.com/alex-grover/astro-themes#readme
+homepageUrl: https://www.npmjs.com/package/astro-themes
 downloads: 4283
 ---

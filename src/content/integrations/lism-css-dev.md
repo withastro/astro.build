@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/lism-css-dev
 repoUrl: https://github.com/lism-css/lism-css#main
-homepageUrl: https://www.lism.style
+homepageUrl: https://www.npmjs.com/package/lism-css-dev
 badge: new
 downloads: 110
 ---

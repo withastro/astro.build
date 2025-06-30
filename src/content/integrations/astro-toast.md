@@ -5,6 +5,6 @@ description: astro-toast is a simple library for displaying toasts on your websi
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-toast
-homepageUrl: https://github.com/julian428/astro-toast
+homepageUrl: https://www.npmjs.com/package/astro-toast
 downloads: 17
 ---
