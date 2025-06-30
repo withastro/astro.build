@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-utils
 repoUrl: https://github.com/warpsio/astro-utils
-homepageUrl: https://www.npmjs.com/package/astro-utils
+homepageUrl: https://github.com/warpsio/astro-utils
 downloads: 20
 ---

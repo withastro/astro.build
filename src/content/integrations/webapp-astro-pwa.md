@@ -9,6 +9,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/webapp-astro-pwa
 repoUrl: https://github.com/aondodawid/WebApp-Astro-PWA
-homepageUrl: https://www.npmjs.com/package/webapp-astro-pwa
+homepageUrl: https://github.com/aondodawid/WebApp-Astro-PWA#readme
 downloads: 121
 ---
