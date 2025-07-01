@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-infinity
 repoUrl: https://github.com/alteredorange/astro-infinity
 homepageUrl: https://github.com/alteredorange/astro-infinity
-downloads: 100
+downloads: 113
 ---
