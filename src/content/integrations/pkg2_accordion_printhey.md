@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/pkg2_accordion_printhey
 homepageUrl: https://www.npmjs.com/package/pkg2_accordion_printhey
-downloads: 6
+downloads: 7
 ---

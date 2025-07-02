@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-content-loader
 repoUrl: https://github.com/dnlzro/astro-content-loader
 homepageUrl: https://github.com/dnlzro/astro-content-loader#readme
 badge: new
-downloads: 582
+downloads: 591
 ---
