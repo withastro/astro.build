@@ -1,0 +1,108 @@
+---
+title: 'Astro 5.11'
+description: 'Astro 5.11 ships more CSP features, and the ability to disable streaming in the Node.js adapter'
+homepageLink:
+  title: 'Astro 5.11'
+  subtitle: 'Available now!'
+publishDate: '2025-07-02'
+authors:
+  - ema
+coverImage: '/src/content/blog/_images/astro-5100/blog-post-5-10.webp'
+socialImage: '/src/content/blog/_images/astro-5100/og-astro-5-10.webp'
+lang: 'en'
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**CSP got more goodies, and you can serve the CSP using your preferred adapter!**
+
+Astro 5.11 is a small minor that ships with new CSP features, and the ability to disable HTML streaming when using the Node.js adapter
+
+- [**CSP with adapters**](#experimental-live-content-collections)
+- [**Opt out from streaming**](#responsive-images-are-now-stable)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## CSP with adapters
+
+Up until now, static pages could serve the CSP header only via element `<meta http-equiv="content-security-poligy">`. This is an inconvenience for some users, because some CSP directives such as `report-uri`, `frame-ancestors`, and `sandbox` don't work when they are served using the `<meta>` element.
+
+From Astro 5.11.0, the adapters `@astrojs/node`, `@astro/netlify` and `@astro/vercel` can now serve the CSP header for static pages using the `Response` headers, allowing to support all directives.
+
+This is a new feature that users can opt in using the new adapter option called `experimentalStaticHeaders`.
+
+```js title="astro.config.mjs" ins={10}
+import { defineConfig } from "astro/config";
+import node from "@astrojs/node";
+
+export default defineConfig({
+    experimental: {
+        csp: true
+    },
+    adapter: node({
+        mode: "standalone",
+        experimentalStaticHeaders: true
+    })
+})
+```
+
+Each adapter will use the hosting platform capabilities to enable this feature:
+- Netlify will use the [framework API](https://docs.netlify.com/frameworks-api/#headers)
+- Vercel will use the [project configuration](https://vercel.com/docs/project-configuration#headers)
+- Node.js will use an internal implementation
+
+We will soon ship support for Cloudflare too, which will use the [`_headers` file](https://developers.cloudflare.com/pages/configuration/headers/).
+
+Under the hood, the adapters leverage a new adapter feature called [`experimentalStaticHeaders`](https://docs.astro.build/en/reference/adapter-reference/#experimentalstaticheaders). If you're an adapter developer, you can now provide full CSP capabilities to your users.
+
+## Opt out from streaming
+
+The `@astrojs/node` adapter can be configured to disable [HTML streaming](https://docs.astro.build/en/guides/on-demand-rendering/#html-streaming) for on demand pages with the new option `experimentalDisableStreaming`.
+
+HTML streaming helps with performance and generally provides a better visitor experience. In most cases, disabling streaming is not recommended.
+
+However, when you need to disable HTML streaming (e.g. your host only supports non-streamed HTML caching at the CDN level), you can now opt out of the default behavior:
+
+```js title="astro.config.mjs" ins={7}
+import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
+
+export default defineConfig({
+  adapter: node({
+    mode: 'standalone',
+    experimentalDisableStreaming: true
+  })
+});
+```
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.11 release](/blog/astro-590). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="ben" />, <Mention name="caleb" />, <Mention name="chris" />,
+<Mention name="ema" />, <Mention name="erika" />, <Mention name="florian" />,
+<Mention name="fred" />, <Mention name="fuzzy" />, <Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="nate" />, <Mention name="reuben" />, <Mention name="sarah" />,
+and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.11 possible with code and docs additions and improvements, including:
+
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['astro-5100', 'astro-590']} />
