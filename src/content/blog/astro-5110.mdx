@@ -37,7 +37,7 @@ yarn upgrade astro --latest
 
 Up until now, static pages could only serve the Content Security Policy (CSP) header via the `<meta http-equiv="content-security-policy">` element. This was an inconvenience for some users because some CSP directives such as `report-uri`, `frame-ancestors`, and `sandbox` are not supported in a `<meta>` element.
 
-From Astro 5.11.0, the official `@astrojs/node`, `@astro/netlify`, and `@astro/vercel` adapters gained support for specifying custom headers for prerendered pages. This means that these adapters can now serve the CSP header for static pages using the `Response` headers, allowing support for all directives, even on prerendered pages.
+Starting in Astro 5.11.0, the official `@astrojs/node`, `@astro/netlify`, and `@astro/vercel` adapters can specify custom headers for prerendered pages. This means that these adapters can now set the CSP header for static pages, allowing support for all directives, even on prerendered pages.
 
 This is an experimental feature available by enabling the new `experimentalStaticHeaders` adapter option:
 
