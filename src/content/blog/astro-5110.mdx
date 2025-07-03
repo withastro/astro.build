@@ -14,9 +14,9 @@ lang: 'en'
 
 import Mention from '/src/components/Mention.astro';
 
-**More expermental Content Security Policy goodies, including serving the CSP using your preferred adapter!**
+**More experimental Content Security Policy goodies, including serving the CSP using your preferred adapter!**
 
-Astro 5.11 is a small minor that ships with new CSP features, and the ability to opt out of HTML streaming when using the Node.js adapter.
+Astro 5.11 is a small minor that ships with new CSP features and the ability to opt out of HTML streaming when using the Node.js adapter.
 
 - [**CSP with adapters**](#csp-with-adapters)
 - [**Disable HTML streaming**](#disable-html-streaming)
@@ -35,9 +35,9 @@ yarn upgrade astro --latest
 
 ## CSP with adapters
 
-Up until now, static pages could only serve the Content Security Policy (CSP) header via the `<meta http-equiv="content-security-policy">` element. This was an inconvenience for some users, because some CSP directives such as `report-uri`, `frame-ancestors`, and `sandbox` are not supported in a `<meta>` element.
+Up until now, static pages could only serve the Content Security Policy (CSP) header via the `<meta http-equiv="content-security-policy">` element. This was an inconvenience for some users because some CSP directives such as `report-uri`, `frame-ancestors`, and `sandbox` are not supported in a `<meta>` element.
 
-Starting in Astro 5.11.0, the official `@astrojs/node`, `@astro/netlify` and `@astro/vercel` adapters can specify custom headers for prerendered pages. This means that these adapters can now set the CSP header for static pages, allowing support for all directives, even on prerendered pages.
+From Astro 5.11.0, the official `@astrojs/node`, `@astro/netlify`, and `@astro/vercel` adapters gained support for specifying custom headers for prerendered pages. This means that these adapters can now serve the CSP header for static pages using the `Response` headers, allowing support for all directives, even on prerendered pages.
 
 This is an experimental feature available by enabling the new `experimentalStaticHeaders` adapter option:
 
@@ -62,7 +62,7 @@ Under the hood, the adapters leverage a new Adapter API feature called [`experim
 
 ## Disable HTML streaming
 
-The `@astrojs/node` adapter can now be configured to disable [HTML streaming](https://docs.astro.build/en/guides/on-demand-rendering/#html-streaming) for on demand pages with the new option `experimentalDisableStreaming`.
+The `@astrojs/node` adapter can now be configured to disable [HTML streaming](https://docs.astro.build/en/guides/on-demand-rendering/#html-streaming) for on-demand pages with the new `experimentalDisableStreaming` option.
 
 HTML streaming helps with performance and generally provides a better visitor experience. In most cases, disabling streaming is not recommended.
 
