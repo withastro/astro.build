@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-basic-auth
 repoUrl: https://github.com/tylergannon/astro-integrations
 homepageUrl: https://github.com/tylergannon/astro-integrations#readme
-downloads: 9
+downloads: 14
 ---
