@@ -56,11 +56,6 @@ export default defineConfig({
 })
 ```
 
-Each adapter will use the hosting platform capabilities to enable this feature:
-- Netlify will use the [Framework API](https://docs.netlify.com/frameworks-api/#headers)
-- Vercel will use the [project configuration](https://vercel.com/docs/project-configuration#headers)
-- Node.js will use an internal implementation
-
 We will soon ship support for Cloudflare too, which will use the [`_headers` file](https://developers.cloudflare.com/pages/configuration/headers/).
 
 Under the hood, the adapters leverage a new Adapter API feature called [`experimentalStaticHeaders`](https://docs.astro.build/en/reference/adapter-reference/#experimentalstaticheaders). If you're an adapter developer, you can now provide full CSP capabilities to your users.
