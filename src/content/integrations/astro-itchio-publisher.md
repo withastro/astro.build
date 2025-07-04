@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-itchio-publisher
 repoUrl: https://github.com/ArtechFuz3D/astro-itchio-publisher
 homepageUrl: https://artechfuz3d.github.io/astro-itchio-publisher
-downloads: 18
+downloads: 19
 ---
