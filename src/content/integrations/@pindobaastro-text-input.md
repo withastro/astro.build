@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-text-input
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-text-input
-downloads: 586
+downloads: 594
 ---
