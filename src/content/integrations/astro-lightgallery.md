@@ -2,7 +2,8 @@
 name: astro-lightgallery
 title: astro-lightgallery
 description: Astro component for lightgallery, JavaScript gallery for building
-  beautiful image and video galleries for the web and the mobile
+  beautiful image and video galleries and carousel (including thumbnail) for the
+  web and the mobile
 categories:
   - uncategorized
   - recent

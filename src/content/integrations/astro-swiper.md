@@ -2,7 +2,7 @@
 name: astro-swiper
 title: astro-swiper
 description: Astro component for swiper, dedicated to slider / carousel / photo
-  swiper / slide
+  swiper / slide, including thumbnails
 categories:
   - uncategorized
   - recent

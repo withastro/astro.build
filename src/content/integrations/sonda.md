@@ -1,8 +1,8 @@
 ---
 name: sonda
 title: sonda
-description: Universal visualizer and analyzer for JavaScript and CSS bundles.
-  Works with most popular bundlers and frameworks.
+description: Universal bundle analyzer and visualizer that works with most
+  popular bundlers and frameworks.
 categories:
   - performance+seo
   - toolbar
