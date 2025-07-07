@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-svg-loaders
 repoUrl: https://github.com/codiume/orbit
-homepageUrl: https://www.npmjs.com/package/astro-svg-loaders
+homepageUrl: https://github.com/codiume/orbit
 downloads: 163
 ---
