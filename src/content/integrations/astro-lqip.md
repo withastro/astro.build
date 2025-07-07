@@ -1,8 +1,8 @@
 ---
 name: astro-lqip
 title: astro-lqip
-description: '<img src="./assets/cover.png" alt="Cover" width="896" height="280"
-  style="object-fit: cover" />'
+description: Native extended Astro component for generating low quality image
+  placeholders (LQIP).
 categories:
   - media
   - recent

@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-thumbor-image
 repoUrl: https://github.com/KreischerPanoptic/astro-thumbor-image
-homepageUrl: https://github.com/KreischerPanoptic/astro-thumbor-image#readme
+homepageUrl: https://www.npmjs.com/package/astro-thumbor-image
 downloads: 15
 ---

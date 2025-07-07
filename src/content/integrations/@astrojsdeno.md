@@ -8,7 +8,7 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astrojs/deno
 image: /assets/integrations/deno.svg
 repoUrl: https://github.com/withastro/astro
-homepageUrl: https://docs.astro.build/en/guides/integrations-guide/deno/
+homepageUrl: https://www.npmjs.com/package/@astrojs/deno
 downloads: 604
 official: true
 ---
