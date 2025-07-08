@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-posthog
 repoUrl: https://github.com/jop-software/astro-posthog
 homepageUrl: https://github.com/jop-software/astro-posthog#readme
 badge: new
-downloads: 91
+downloads: 178
 ---
