@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-client-pragma
 repoUrl: https://github.com/mohamedradime/astro-client-pragma
 homepageUrl: https://github.com/mohamedradime/astro-client-pragma#readme
 badge: new
-downloads: 56
+downloads: 59
 ---
