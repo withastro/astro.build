@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-svgs
 repoUrl: https://github.com/ACP-CODE/astro-svgs
 homepageUrl: https://github.com/ACP-CODE/astro-svgs#readme
-downloads: 516
+downloads: 518
 ---
