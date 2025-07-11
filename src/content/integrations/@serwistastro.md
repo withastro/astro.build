@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@serwist/astro
 repoUrl: https://github.com/serwist/serwist
 homepageUrl: https://serwist.pages.dev
-downloads: 226
+downloads: 189
 ---

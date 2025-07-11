@@ -8,5 +8,5 @@ categories:
   - accessibility
 npmUrl: https://www.npmjs.com/package/astro-carousel
 homepageUrl: https://www.npmjs.com/package/astro-carousel
-downloads: 740
+downloads: 820
 ---
