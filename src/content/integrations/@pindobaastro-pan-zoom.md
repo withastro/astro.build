@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@pindoba/astro-pan-zoom
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/ui/astro/pan-zoom#README.md
 badge: new
-downloads: 403
+downloads: 405
 ---
