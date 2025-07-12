@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/gh-discussions-astro-loader
 repoUrl: https://github.com/pricci1/gh-discussions-astro
 homepageUrl: https://www.npmjs.com/package/gh-discussions-astro-loader
-downloads: 29
+downloads: 25
 ---
