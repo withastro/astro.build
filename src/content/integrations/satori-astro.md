@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/satori-astro
 homepageUrl: https://www.npmjs.com/package/satori-astro
-downloads: 409
+downloads: 403
 ---
