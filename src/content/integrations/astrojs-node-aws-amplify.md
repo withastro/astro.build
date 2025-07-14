@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrojs-node-aws-amplify
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/node/
-downloads: 4106
+downloads: 4018
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-typst
 repoUrl: https://github.com/OverflowCat/astro-typst
 homepageUrl: https://www.npmjs.com/package/astro-typst
-downloads: 1300
+downloads: 1301
 ---
