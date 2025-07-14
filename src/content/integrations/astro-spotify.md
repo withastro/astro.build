@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-spotify
 repoUrl: https://github.com/Pramuspl/astro-spotify
-homepageUrl: https://github.com/Pramuspl/astro-spotify#readme
+homepageUrl: https://www.npmjs.com/package/astro-spotify
 downloads: 30
 ---

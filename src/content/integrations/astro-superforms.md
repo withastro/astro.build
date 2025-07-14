@@ -6,6 +6,6 @@ description: "Astro integration to use Sveltekit Superforms in your Astro +
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-superforms
-homepageUrl: https://github.com/gbouteiller/astro-superforms
+homepageUrl: https://www.npmjs.com/package/astro-superforms
 downloads: 83
 ---
