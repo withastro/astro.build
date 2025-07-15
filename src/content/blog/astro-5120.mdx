@@ -1,0 +1,127 @@
+---
+title: 'Astro 5.12'
+description: 'Astro 5.12 ships TOML support for content loaders, experimental raw environment values, and improved Netlify adapter development experience!'
+homepageLink:
+  title: 'Astro 5.12'
+  subtitle: 'Available now!'
+publishDate: '2025-07-17'
+authors:
+  - matt
+coverImage: '/src/content/blog/_images/astro-5120/blog-post-cover-astro-5120.webp'
+socialImage: '/src/content/blog/_images/astro-5120/og-astro-5120.webp'
+lang: 'en'
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**⚽ Astro 5.12 knocks it into the back of the net, with an upgraded Netlify dev experience, TOML support in content loaders, and more!**
+
+The starting lineup includes:
+
+- [**TOML support for content loaders**](#toml-support-for-content-loaders)
+- [**New Netlify dev experience**](#new-netlify-dev-experience)
+- [**Experimental raw environment values**](#experimental-raw-environment-values)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## TOML support for content loaders
+
+Astro 5.12 brings native support for TOML files in content collections. Astro's [`file()` and `glob()` content loaders](https://docs.astro.build/en/reference/content-loader-reference/#built-in-loaders) have had you covered for Markdown, JSON, and YAML files, and now you can use TOML files as well.
+
+To use TOML files in your content collections, simply add a `.toml` file to your collection directory. For example, if you have a directory of TOML fileslike this:
+
+```toml title="src/content/spacecraft/apollo.toml"
+name = "Apollo"
+launch_date = "1969-07-16"
+crew = ["Neil Armstrong", "Buzz Aldrin", "Michael Collins"]
+```
+
+You can then create a content collection that includes the TOML files:
+
+```ts title="src/content/config.ts" "glob({ pattern: '*.toml', base: './src/content/spacecraft' })"
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const spacecraft = defineCollection({
+	loader: glob({ pattern: '*.toml', base: './src/content/spacecraft' }),
+	schema: z.object({
+		name: z.string(),
+		launch_date: z.coerce().date(),
+		crew: z.array(z.string()),
+	}),
+});
+export const collections = { spacecraft };
+```
+
+You can then access the TOML content in your Astro components:
+
+```astro title="src/pages/spacecraft.astro"
+---
+import { getCollection } from 'astro:content';
+
+const spacecraft = await getCollection('spacecraft');
+---
+
+<ul>
+	{
+		spacecraft.map((item) => (
+			<li>
+				<h2>{item.name}</h2>
+				<p>Launch Date: {item.launch_date.toLocaleDateString()}</p>
+				<p>Crew: {item.crew.join(', ')}</p>
+			</li>
+		))
+	}
+</ul>
+```
+
+## New Netlify dev experience
+
+...
+
+## Experimental raw environment values
+
+A new experimental configuration option allows you to opt out of Astro's automatic type coercion for environment variable values in `import.meta.env`. By default, Astro converts string values like `"true"`, `"false"`, `"1"`, and `"0"` to their respective types, but this can be unexpected since environment variables are generally expected to be strings. This was not intended behavior, and was the result of a feature that was removed in Astro 5.0. Nevertheless, removing this would be a breaking change, so we are introducing an experimental option to opt out of this behavior. This will probably become the default behavior in a future release.
+
+Enable this feature in your Astro configuration:
+
+```js title="astro.config.mjs" ins={3}
+export default defineConfig({
+	experimental: {
+		rawEnvValues: true,
+	},
+});
+```
+
+This experimental option only affects the `import.meta.env` object and doesn't impact the `astro:env` module.
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.11 release](/blog/astro-5110). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="ben" />, <Mention name="caleb" />,
+<Mention name="chris" />, <Mention name="ema" />, <Mention name="erika" />,
+<Mention name="florian" />, <Mention name="fred" />, <Mention name="fuzzy" />,
+<Mention name="hideoo" />, <Mention name="luiz" />, <Mention name="matt" />,
+<Mention name="matthew" />, <Mention name="nate" />, <Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.12 possible with code and docs additions and improvements.
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['astro-5110', 'astro-5100']} />
