@@ -9,6 +9,7 @@ socialImage: '/src/content/blog/_images/starlight-035/og-starlight-035.webp'
 ---
 
 import Image from '~/components/BlogContentImage.astro';
+import ImageFigure from '~/components/ImageFigure.astro';
 import Mention from '~/components/Mention.astro';
 import AsideIcons from './_images/starlight-035/starlight-aside-icons.mp4';
 
@@ -37,10 +38,10 @@ Starlight 0.35 takes this one step further, allowing you to override an aside’
 	muted
 	playsinline
 	class="mx-auto w-full max-w-full rounded-lg border border-astro-gray-500"
->
-	<source src={AsideIcons} type="video/mp4" />
-	Sorry, your browser doesn't support embedded videos.
-</video>
+	aria-label="Animation of a Starlight tip aside cycling between different icons."
+	role="img"
+	src={AsideIcons}
+></video>
 
 Add an `icon` attribute to your aside to customize the icon, with support across Markdown, MDX, and Markdoc pages:
 
