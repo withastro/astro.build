@@ -87,7 +87,37 @@ const spacecraft = await getCollection('spacecraft');
 
 ## New Netlify dev experience
 
-...
+The [Netlify adapter](https://docs.astro.build/en/guides/integrations-guide/netlify/) is now powered by Netlify's very own [Vite plugin](https://docs.netlify.com/frameworks/vite/#vite-plugin) during development, bringing Netlify's entire platform and primitives to your local dev environment!
+
+### The power of Netlify on localhost
+
+Until now, using Netlify primitives with Astro during local development required running your project through the [Netlify CLI](https://docs.netlify.com/cli/get-started/).  The new adapter embeds these capabilities directly into Astro's dev server instead.
+
+After upgrading to the latest version of the adapter, running`astro dev` will provide:
+
+- A **Local Netlify Image CDN** for [Astro Images](https://docs.astro.build/en/guides/images/)
+- A **Local Blobs Server** for [sessions](https://docs.astro.build/en/guides/sessions/) 
+- **[Redirects, rewrites](https://docs.netlify.com/routing/redirects/) and [headers](https://docs.netlify.com/routing/headers/#app)**  from your Netlify config
+- The **[Netlify Edge Context](https://docs.astro.build/en/guides/integrations-guide/netlify/#accessing-edge-context-from-your-site)** in on-demand pages
+
+#### Environment variables
+
+These features are a zero-config upgrade, requiring no changes to your project.
+
+Additionally, you can configure the optional `devFeatures` object to automatically populate your development server with the [environment variables](https://docs.netlify.com/environment-variables/overview/) from your [linked](https://docs.netlify.com/cli/get-started/#link-and-unlink-sites) Netlify site:
+
+```js
+import { defineConfig } from 'astro/config'
+import netlify from '@astrojs/netlify'
+
+export default defineConfig({
+  adapter: netlify({
+    devFeatures: {
+      environmentVariables: true,
+    },
+  })
+})
+```
 
 ## Experimental raw environment values
 
@@ -118,7 +148,7 @@ The Astro core team is:
 <Mention name="florian" />, <Mention name="fred" />, <Mention name="fuzzy" />,
 <Mention name="hideoo" />, <Mention name="luiz" />, <Mention name="matt" />,
 <Mention name="matthew" />, <Mention name="nate" />, <Mention name="reuben" />,
-<Mention name="sarah" />, and <Mention name="yan" />.
+<Mention name="sarah" />, <Mention name="yan" /> and <Mention name="chee" />.
 
 Thanks to all the other contributors who helped make Astro 5.12 possible with code and docs additions and improvements.
 
