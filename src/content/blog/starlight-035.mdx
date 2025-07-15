@@ -10,7 +10,7 @@ socialImage: '/src/content/blog/_images/starlight-035/og-starlight-035.webp'
 
 import Image from '~/components/BlogContentImage.astro';
 import Mention from '~/components/Mention.astro';
-import AnchorLinks from './_images/starlight-034/starlight-anchor-links.webp';
+import AsideIcons from './_images/starlight-035/starlight-aside-icons.mp4';
 
 **🌟 Starlight 0.35 is hoping to be your summer icon with a release that makes customizing your docs easier than ever.**
 
@@ -31,14 +31,16 @@ npx @astrojs/upgrade
 Starlight’s [asides](https://starlight.astro.build/guides/authoring-content/#asides) make it easy to add styled notes, warnings, or other kinds of callouts to your docs pages.
 Starlight 0.35 takes this one step further, allowing you to override an aside’s icon.
 
-<Image
-	src={AnchorLinks}
-	alt="A subheading in the Starlight docs showing a pointer cursor hovering over an anchor link icon."
-/>
-
-<div class="text-red-500 text-2xl">
-	^ This image needs replacing. Little demo of changing icons.
-</div>
+<video
+	autoplay
+	loop
+	muted
+	playsinline
+	class="mx-auto w-full max-w-full rounded-lg border border-astro-gray-500"
+>
+	<source src={AsideIcons} type="video/mp4" />
+	Sorry, your browser doesn't support embedded videos.
+</video>
 
 Add an `icon` property to your aside to customize the icon, with support across Markdown, MDX, and Markdoc pages:
 
