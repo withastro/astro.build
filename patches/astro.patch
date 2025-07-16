@@ -1,0 +1,21 @@
+diff --git a/dist/assets/services/sharp.js b/dist/assets/services/sharp.js
+index 1971757d9732a872e4699f468d049d995999b903..e52f4641418851b9578ae29931657f7362ea263a 100644
+--- a/dist/assets/services/sharp.js
++++ b/dist/assets/services/sharp.js
+@@ -3,6 +3,7 @@ import {
+   baseService,
+   parseQuality
+ } from "./service.js";
++
+ let sharp;
+ const qualityTable = {
+   low: 25,
+@@ -41,7 +42,7 @@ const sharpService = {
+     if (transform.format === "svg") return { data: inputBuffer, format: "svg" };
+     const result = sharp(inputBuffer, {
+       failOnError: false,
+-      pages: -1,
++      // pages: -1,
+       limitInputPixels: config.service.config.limitInputPixels
+     });
+     result.rotate();

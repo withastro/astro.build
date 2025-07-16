@@ -211,7 +211,7 @@ class ShowcaseScraper {
 			try {
 				const { origin } = new URL(href);
 				return !this.#blocklist.has(origin) && !currentSites.has(origin);
-			} catch (error) {
+			} catch {
 				console.error(`Error parsing URL: ${href}`);
 				return false;
 			}
@@ -243,7 +243,7 @@ class ShowcaseScraper {
 		try {
 			const res = await fetch(url);
 			raw = await res.text();
-		} catch (error) {
+		} catch {
 			console.error('Failed to fetch', url);
 			return false;
 		}
@@ -521,6 +521,15 @@ const scraper = new ShowcaseScraper({
 		'https://bestbuyclues.com/',
 		// 2025-06-10 - not an Astro site
 		'https://mohamed-ibrahim-omar.vercel.app/',
+		// 2025-06-29 already added as secure version
+		'http://www.thenexim.com/',
+		'https://www.thenexim.com/',
+		// 2025-06-29 no visible progress that they are switching to Astro
+		'https://sonicjs.com/',
+		// 2025-06-29 stupid SEO marketing link
+		'https://www.google.com/search?q=site%253Ashevafood.com',
+		// 2025-06-29 no evidence it's Astro, we already have one of their similar sites
+		'https://clampcalculator.com/',
 	],
 });
 await scraper.run();

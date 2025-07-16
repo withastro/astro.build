@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astropix
 repoUrl: https://github.com/alexanderniebuhr/astropix
 homepageUrl: https://www.npmjs.com/package/astropix
-downloads: 8
+downloads: 14
 ---

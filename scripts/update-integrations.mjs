@@ -145,7 +145,7 @@ async function unsafeUpdateAllIntegrations() {
 				try {
 					const response = await fetch(details.homepageUrl, { method: 'HEAD' });
 					fixHomepageUrl = response.status >= 400;
-				} catch (error) {
+				} catch {
 					// such an error may occur when the hostname is unknown
 					fixHomepageUrl = true;
 				}
