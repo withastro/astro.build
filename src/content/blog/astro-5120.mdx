@@ -38,7 +38,7 @@ yarn upgrade astro --latest
 
 Astro 5.12 brings native support for TOML files in content collections. Astro's [`file()` and `glob()` content loaders](https://docs.astro.build/en/reference/content-loader-reference/#built-in-loaders) have had you covered for Markdown, JSON, and YAML files, and now you can use TOML files as well.
 
-To use TOML files in your content collections, simply add a `.toml` file to your collection directory. For example, if you have a directory of TOML fileslike this:
+There's no configuration needed to enable TOML support: just add `.toml` files to a collection using a built-in loader. For example, if you have a directory of TOML files like this:
 
 ```toml title="src/content/spacecraft/apollo.toml"
 name = "Apollo"
@@ -91,7 +91,7 @@ const spacecraft = await getCollection('spacecraft');
 
 ## Experimental raw environment values
 
-A new experimental configuration option allows you to opt out of Astro's automatic type coercion for environment variable values in `import.meta.env`. By default, Astro converts string values like `"true"`, `"false"`, `"1"`, and `"0"` to their respective types, but this can be unexpected since environment variables are generally expected to be strings. This was not intended behavior, and was the result of a feature that was removed in Astro 5.0. Nevertheless, removing this would be a breaking change, so we are introducing an experimental option to opt out of this behavior. This will probably become the default behavior in a future release.
+A new experimental configuration option allows you to opt out of Astro's automatic type coercion for environment variable values in `import.meta.env`. By default, Astro converts string values like `"true"`, `"false"`, `"1"`, and `"0"` to their respective types, but this can be unexpected since environment variables are generally expected to be strings. This was not intended behavior, and was the result of a feature that was removed in Astro 5.0. Removing this for everyone would be a breaking change, so we are introducing an experimental option to opt out of this behavior. This will probably become the default in a future release.
 
 Enable this feature in your Astro configuration:
 
