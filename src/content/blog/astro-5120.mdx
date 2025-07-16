@@ -103,9 +103,9 @@ After upgrading to the latest version of the adapter, running `astro dev` will p
 
 ### Configuring dev features
 
-Along with these features comes a way to configure them. The Netlify adapter now accepts a `devFeatures` option in its configuration, allowing you to enable or disable specific features during development. You can set this to `true` or `false` to enable or disable all features, or you can configure them individually. Currently the features you can configure are:
+Along with these features comes a way to configure them. The Netlify adapter now accepts a `devFeatures` option in its configuration to customize which features are enabled during development. Currently, the features you can configure are:
 
-- `images`: Enables the local Netlify Image CDN for Astro images during dev. Default to `true`.
+- `images`: Enables the local Netlify Image CDN for Astro images during dev. Defaults to `true`.
 - `environmentVariables`: Automatically populates your development server with environment variables from your linked Netlify site. Defaults to `false`.
 
 You pass this as an option to the Netlify adapter in your Astro configuration file:
@@ -144,6 +144,8 @@ export default defineConfig({
 ```
 
 This experimental option only affects the `import.meta.env` object and doesn't impact the `astro:env` module that powers Astro's [type-safe environment variables](https://docs.astro.build/en/guides/environment-variables/#type-safe-environment-variables).
+
+Thanks to [Adam Langbert](https://github.com/adamhl8) who contributed this feature.
 
 ## Bug fixes
 
