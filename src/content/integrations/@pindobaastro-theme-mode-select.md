@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-theme-mode-select
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-theme-mode-select
-downloads: 742
+downloads: 745
 ---

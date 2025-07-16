@@ -9,5 +9,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@terrahq/astro-core
 homepageUrl: https://www.npmjs.com/package/@terrahq/astro-core
-downloads: 165
+downloads: 179
 ---

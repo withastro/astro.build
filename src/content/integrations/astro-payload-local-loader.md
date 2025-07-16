@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-payload-local-loader
 homepageUrl: https://github.com/jliguori1312/payload-astro-template/tree/main/astro-payload-local-loader
 badge: new
-downloads: 76
+downloads: 77
 ---
