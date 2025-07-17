@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-theme-provider
 repoUrl: https://github.com/astrolicious/astro-theme-provider
 homepageUrl: https://astro-theme-provider.netlify.app/
-downloads: 797
+downloads: 767
 ---
