@@ -4,10 +4,8 @@ title: "@coffic/cosy-ui"
 description: An astro component library
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@coffic/cosy-ui
-homepageUrl: https://www.npmjs.com/package/@coffic/cosy-ui
-badge: new
-downloads: 1649
+homepageUrl: https://cofficlab.github.io/cosy-ui/en/
+downloads: 3120
 repoUrl: https://github.com/CofficLab/cosy-ui
 ---

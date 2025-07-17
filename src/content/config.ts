@@ -181,6 +181,10 @@ export const collections = {
 					.refine((value) => value !== 'Just a moment...', {
 						message:
 							"A showcase entry's title cannot be 'Just a moment...' which usually indicates a loading error.\nMake sure to update the title manually.\n",
+					})
+					.refine((value) => value !== 'Vercel Security Checkpoint', {
+						message:
+							"A showcase entry's title cannot be 'Vercel Security Checkpoint' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					}),
 				image: image(),
 				url: z.string().url(),
@@ -204,5 +208,20 @@ export const collections = {
 					.array()
 					.default([]),
 			}),
+	}),
+	agencies: defineCollection({
+		loader: glob({ base: './src/content/agencies', pattern: '**/*.md' }),
+		schema: ({ image }) =>
+			z
+				.object({
+					name: z.string(),
+					location: z.string(),
+					url: z.string().url(),
+					contactLink: z.string().url().or(z.string().startsWith('mailto:')).optional(),
+					image: image(),
+					imageAlt: z.string(),
+					description: z.string(),
+				})
+				.strict(),
 	}),
 };

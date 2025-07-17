@@ -7,8 +7,8 @@ import ImageGallery from '~/components/ImageGallery.astro';
 import { THEMES_API_URL } from '~/helpers/constants.ts';
 import { sanitizeThemeDescription } from '~/helpers/themes.ts';
 import MainLayout from '~/layouts/MainLayout.astro';
-import ThemeCTAs from '../_components/ThemeCTAs.astro';
 import ThemeCard from '../_components/ThemeCard.astro';
+import ThemeCTAs from '../_components/ThemeCTAs.astro';
 import ThemeStats from '../_components/ThemeStats.astro';
 import type { ThemeAndAuthor } from '../_types/index.ts';
 
@@ -16,9 +16,11 @@ export const prerender = false;
 
 const slug = Astro.params.slug as string;
 
-const theme = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`).then((res) =>
-	res.json(),
-);
+const res = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`);
+
+if (res.status === 404) return Astro.redirect('/404');
+
+const theme = await res.json();
 
 const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 	`${THEMES_API_URL}/api/themes/related?slug=${slug}`,
@@ -30,12 +32,12 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 	description={theme.Theme.description}
 	image={{ src: theme.Theme.image, alt: theme.Theme.title }}
 >
-	<div class="grid-container gap-y-0">
+	<div class="gap-y-0 grid-container">
 		{
 			theme.Theme.images.length > 0 ? (
 				<ImageGallery
 					images={[theme.Theme.image, ...theme.Theme.images]}
-					class="bleed-full mx-auto w-full border-astro-gray-500 xl:border-x xl:border-b"
+					class="mx-auto border-astro-gray-500 xl:border-x xl:border-b w-full bleed-full"
 					style="max-width: var(--container-width, 1280px)"
 				/>
 			) : (
@@ -44,34 +46,34 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 					height={900}
 					width={1600}
 					alt=""
-					class="mx-auto aspect-video w-full border-astro-gray-500 object-cover object-top xl:border-x xl:border-b"
+					class="mx-auto border-astro-gray-500 xl:border-x xl:border-b w-full object-cover object-top aspect-video"
 					loading="eager"
 				/>
 			)
 		}
-		<div class="flex flex-col border-astro-gray-500 md:flex-row xl:border-x">
-			<section class="flex w-full flex-col gap-6 py-6 md:gap-8 md:p-8 lg:gap-10 lg:px-20 lg:py-10">
+		<div class="flex md:flex-row flex-col border-astro-gray-500 xl:border-x">
+			<section class="flex flex-col gap-6 md:gap-8 lg:gap-10 md:p-8 lg:px-20 py-6 lg:py-10 w-full">
 				<a
-					href="/themes/"
+					href="/themes/1/"
 					data-astro-prefetch
-					class="flex items-center gap-2 self-start text-sm text-astro-gray-200"
+					class="flex items-center self-start gap-2 text-astro-gray-200 text-sm"
 				>
 					<Icon name="left-arrow" class="s-6" aria-hidden="true" />
 					<span class="pr-2">Back to themes</span>
 				</a>
 				<div>
-					<h1 class="heading-3 mb-4 sm:heading-2">{theme.Theme.title}</h1>
-					<p class="text-lg text-astro-gray-200 lg:text-xl">{theme.Theme.description}</p>
-					<ThemeCTAs theme={theme} class="py-6 md:hidden" />
-					<hr class="border-astro-gray-500 md:hidden" />
-					<ThemeStats theme={theme} class="py-4 md:hidden" />
+					<h1 class="mb-4 heading-3 sm:heading-2">{theme.Theme.title}</h1>
+					<p class="text-astro-gray-200 text-lg lg:text-xl">{theme.Theme.description}</p>
+					<ThemeCTAs theme={theme} class="md:hidden py-6" />
+					<hr class="md:hidden border-astro-gray-500" />
+					<ThemeStats theme={theme} class="md:hidden py-4" />
 				</div>
-				<hr class="hidden border-astro-gray-500 md:block" />
+				<hr class="hidden md:block border-astro-gray-500" />
 				<article class="prose" set:html={sanitizeThemeDescription(theme.Theme.body)} />
 			</section>
 
 			<aside
-				class="hidden w-full divide-y divide-astro-gray-500 border-astro-gray-500 md:block md:max-w-md md:border-l"
+				class="hidden md:block border-astro-gray-500 md:border-l divide-y divide-astro-gray-500 w-full md:max-w-md"
 			>
 				<ThemeCTAs theme={theme} class="p-6 lg:p-8 xl:p-10" />
 				<hr class="border-astro-gray-500" />
@@ -80,8 +82,8 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 		</div>
 		{
 			relatedThemes.length > 0 && (
-				<div class="related bleed-full relative border-t border-astro-gray-500">
-					<div class="grid-container gap-y-10 pb-0 pt-20">
+				<div class="relative border-astro-gray-500 border-t related bleed-full">
+					<div class="gap-y-10 grid-container pt-20 pb-0">
 						<CardGridGroup
 							title="Other themes to consider"
 							cta={{ href: '/themes/', text: 'View more themes' }}
@@ -106,7 +108,7 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 		}
 
 		.related::before {
-			@apply bg-grid absolute aspect-square w-full;
+			@apply absolute bg-grid w-full aspect-square;
 			content: '';
 			mask-image: linear-gradient(to bottom, white, transparent);
 		}

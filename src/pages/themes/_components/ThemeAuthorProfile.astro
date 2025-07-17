@@ -11,9 +11,9 @@ const { author } = Astro.props;
 ---
 
 <a
-	href="/themes/"
+	href="/themes/1/"
 	data-astro-prefetch
-	class="flex items-center gap-2 self-start text-sm text-astro-gray-200 mb-4"
+	class="flex items-center self-start gap-2 mb-4 text-astro-gray-200 text-sm"
 >
 	<Icon name="left-arrow" class="s-6" aria-hidden="true" />
 	<span class="pr-2">Back to all themes</span>
@@ -24,13 +24,13 @@ const { author } = Astro.props;
 		src={author.avatar ?? ''}
 		height={48}
 		width={48}
-		class="size-12 lg:w-full h-fit"
+		class="lg:w-full h-fit size-12"
 		alt=""
 	/>
-	<h1 class="border-astro-gray-500 lg:hidden heading-3">{author.name}</h1>
+	<h1 class="lg:hidden border-astro-gray-500 heading-3">{author.name}</h1>
 	<div class="flex flex-col gap-4 pt-2 lg:pt-8 w-full">
-		<div class="flex items-baseline justify-between">
-			<small class="code text-astro-gray-200">Joined</small>
+		<div class="flex justify-between items-baseline">
+			<small class="text-astro-gray-200 code">Joined</small>
 			{
 				new Date(author.createdAt).toLocaleDateString('en-US', {
 					year: 'numeric',
@@ -43,8 +43,8 @@ const { author } = Astro.props;
 			author.url && (
 				<>
 					<hr class="border-astro-gray-500" />
-					<div class="flex items-baseline justify-between">
-						<small class="code text-astro-gray-200">Website</small>
+					<div class="flex justify-between items-baseline">
+						<small class="text-astro-gray-200 code">Website</small>
 						<a class="link" href={author.url}>
 							{author.url.replace(/^https?:\/\/|\/$/g, '')}
 						</a>

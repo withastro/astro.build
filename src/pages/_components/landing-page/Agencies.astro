@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Link from '../Link.astro';
+import SectionCopy from '../SectionCopy.astro';
+
+const agencies = (await getCollection('agencies')).sort(() => (Math.random() > 0.5 ? 1 : -1));
+---
+
+<section class="mt-20 md:mt-24 lg:mt-28 xl:mt-36 relative space-y-12">
+	<div class="w-full max-w-screen-xl mx-auto px-4 sm:px-8">
+		<SectionCopy
+			label="Astro Partner Agencies"
+			title="Get professional Astro support"
+			description="Find the right team for your project with an Astro Partner Agency. From landing pages to e-commerce, get the expert assistance you need."
+		>
+			<Link slot="call-to-action" href="/agencies/" class="secondary">Explore partner agencies</Link
+			>
+		</SectionCopy>
+	</div>
+
+	<div class:list={['w-full max-w-screen-xl mx-auto px-4 sm:px-8', 'relative']}>
+		<ul class="grid fluid-cols-40 sm:fluid-cols-48 gap-2">
+			{
+				agencies.map(({ data, id }) => (
+					<li>
+						<a href={`/agencies/${id}/`} class="rounded-lg">
+							<span class="sr-only">{data.name}</span>
+							<Image
+								src={data.image}
+								alt=""
+								width="400"
+								class="rounded-lg w-full outline outline-1 -outline-offset-1 outline-white/20 transition-all duration-300 ease-out hover:opacity-80 hover:outline-white/65"
+							/>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		{/* Background blur */}
+		<div
+			class:list={[
+				// Positioning
+				'absolute -inset-x-[600px] lg:-right-[300px] -inset-y-72 md:-inset-48 lg:-inset-y-32 -rotate-[7deg]',
+				'z-blur',
+				// Style
+				'bg-red-pink-gradient mask-radial-gradient opacity-30',
+			]}
+		>
+		</div>
+	</div>
+</section>

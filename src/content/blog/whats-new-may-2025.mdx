@@ -1,0 +1,290 @@
+---
+title: "What's new in Astro - May 2025"
+description: "May 2025 - Michelin + ApostropheCMS case study, new Astro course from James Q Quick, and more!"
+publishDate: "May 31, 2025"
+authors:
+  - sarah
+coverImage: "/src/content/blog/_images/whats-new-shared.webp"
+socialImage: "/src/content/blog/_images/whats-new-may/og.webp"
+lang: "en"
+startDate: "2025-05-01"
+endDate: "2025-06-01"
+---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
+import ShowcaseGridById from './_whats-new-components/ShowcaseGridById.astro';
+import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
+import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
+import { Tweet } from 'astro-embed';
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+import { getEntry } from 'astro:content';
+import Mention from "/src/components/Mention.astro";
+
+Some exciting news from around the Astro ecosystem this month, including:
+
+- [Updates from Mission Control](#updates-from-mission-control)
+- [Latest releases](#latest-releases)
+- [Astro Adopters](#astro-adopters)
+- [Weird Wide Web](#weird-wide-web)
+- [Community updates](#community)
+- [Astro in the news, migration stories, how-to articles, and more!](#content)
+- [Watch Party](#watch-party)
+- [Tips & Tools](#tips--tools)
+- [Themes & Templates](#themes--templates)
+- [Showcase](#showcase)
+- [Starlight in the wild](#starlight-in-the-wild)
+
+
+Let's dive right into it!
+
+## Updates from Mission Control 
+
+- 🚀 [Learn Astro with James Q Quick on Scrimba](https://scrimba.com/intro-to-astro-c00ar0fi5u?via=astro)
+- 🤝 [Case Study: Michelin, ApostropheCMS, and Astro](https://apostrophecms.com/case-studies/michelin-apostrophecms-astro)
+
+## Latest releases
+
+Minor releases introduce new features and improvements. Check out what's new!
+
+- [Astro 5.8](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#580) - updates minimum version of Node.js to 18.20.8
+
+## Astro Adopters
+
+From Ricola to Google, Bootstrap to Visa, some of the biggest names you know are using Astro!
+
+export const featuredSites = [
+  'www.ricola.com',
+  'jules.google',
+  'getbootstrap.com',
+  'design.visa.com',
+]; 
+
+{/* <ShowcaseGridById ids={featuredSites} /> */}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.ricola.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'jules.google')} />
+  <ShowcaseCard site={await getEntry('showcase', 'getbootstrap.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'design.visa.com')} />
+</div>
+
+
+
+## Weird Wide Web
+
+Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
+
+- [Mac Theme Gardens](https://macthemes.garden) - A website showcasing more than 3,000 (and counting) Kaleidoscope from the Classic Mac era. And don't forget to read the [story behind creating Mac Theme Gardens with Astro](https://damien.zone/introducing-mac-themes-garden/)!
+- [Statt Land, Song.](https://statt-land-song.ch/) - Test your music knowledge, compete with friends, and race against the clock in this "guess the song" party game! And check out [the story behind Statt Land, Song](https://www.reddit.com/r/astrojs/comments/1klnefw/i_built_a_competitive_music_quiz_with_astro_react/), including tech stack and lessons learned.
+
+export const monthlySites = [
+  'macthemes.garden',
+  'statt-land-song.ch',
+]; 
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'macthemes.garden')} />
+  <ShowcaseCard site={await getEntry('showcase', 'statt-land-song.ch')} />
+</div>
+
+{/* <ShowcaseGridById ids={monthlySites} />  */}
+
+## Community
+
+Astro wouldn’t be what it is without its community. From Discord support, to documentation improvements, to translations, to code contributions, Astro welcomes it all.
+
+### Astro Team News
+
+<Mention name="matt" /> attended Strapi conf, representing Astro and talking about managing content and running open-source projects.
+
+### Discord Hot topics
+
+This month was all about Astro-native component libraries! Thanks to community member `@TWEL` for going back through past discussions and preparing the following list for the community:
+
+- [Starwind UI](https://starwind.dev/)
+- [Shadcn Blocks](https://www.shadcnblocks.com/)
+- [`@studiocms/ui`](https://ui.studiocms.dev/docs/)
+- [Accessible Astro](https://accessible-astro-starter.incluud.dev/accessible-components/)
+- [Fulldev UI](https://ui.full.dev/)
+- [OrbitUI](https://orbitui-docs.vercel.app/)
+- [Astrobits](https://astrobits.dev/)
+
+## Content
+
+Here's what caught our attention this month: 
+
+- 🛍 See [how Anil built SmartGamer: an SEO-Driven Amazon Gaming Deal Tracker](https://theonlyanil.com/work/smartgamer.mdx/) with Astro, Svelte, and Supabase.
+- 🔒 Learn how to set up [authentication and authorization in Astro with LogRocket](https://blog.logrocket.com/astro-authentication-authorization).
+- ⌚ Find out how Sean C Davis always sets up a new Astro project in [My first five minutes in Astro](https://www.seancdavis.com/posts/my-first-five-minutes-in-astro/).
+- 🎬 [Get started with the Sessions API in Astro](https://astrothem.es/blog/astro-sessions-guide/) with a helpful article by Nathan Lawson.
+- ⚡ Dan Abramov explains [React Server Components (RSC) for Astro developers](https://overreacted.io/rsc-for-astro-developers/), which spawned not one, but two video reactions (that we know of...)
+
+Because you can never get tired of Astro, here's even more community content!
+
+### Migration Stories
+
+- [Distr docs are now built with Starlight instead of Docusaurus](https://glasskube.dev/blog/distr-docs/)
+- [Why Bootstrap migrated from Hugo to Astro](https://app.daily.dev/posts/why-bootstrap-migrated-from-hugo-to-astro-nudgxcvbp)
+
+### How-to Articles
+
+- [On-Demand ISR For Astro on Vercel](https://www.shawn.so/blog/isr-astro-vercel-on-demand-incremental-static-regeneration/)
+- [How to build a secure file upload system in Astro](https://blog.logrocket.com/how-to-build-secure-file-upload-system-astro/)
+- [How to make your Starlight sidebar items look better](https://blog.trueberryless.org/blog/starlight-sidebar-whitespace/)
+- [Using Pages CMS for static site content management](https://css-tricks.com/using-pages-cms-for-static-site-content-management/)
+- [No Server, No Database: Smarter Related Posts in Astro with `transformers.js`](https://alexop.dev/posts/semantic-related-posts-astro-transformersjs/)
+- [One command to build blogs with Typst](https://forum.typst.app/t/one-command-to-build-blogs-with-typst/4388)
+
+Find these and **all how-to articles** from previous monthly blog posts at [Astro Tips](https://astro-tips.dev)!
+
+### ... and more!
+
+- [Dependency injection in Astro](https://florian-lefebvre.dev/blog/dependency-injection-in-astro/)
+- [Astro Integrations Explained](https://lou.gg/blog/astro-integrations-explained)
+- [Vue.js Client-Side Routing in Astro SSR Apps](https://flori.dev/reads/astro-vue-router)
+- [Same Document View Transitions](https://events-3bg.pages.dev/jotter/same-doc/)
+- [Astro for my Fan-site: Some Fun Party Tricks](https://aria.dog/barks/astro-for-my-fan-site/)
+- [The AHA Stack (Astro, HTMX, Alpine.js) Masterclass](https://flaviocopes.com/courses/aha-stack/)
+
+## Watch Party
+
+Grab your popcorn and make a playlist of your faves! 🍿
+
+<YouTubeGrid
+  videos={[
+    { id: "https://www.youtube.com/watch?v=m-FDi3_55Wo", title: "Astro JS Is the Framework You’re Not Using (Yet)"},
+    { id: "https://www.youtube.com/watch?v=1kRIveFMN34", title: "TBD - experimental CSP preview"},
+    { id: "https://www.youtube.com/watch?v=4NalxnRaeo4", title: "Talking and Doc'ing w. Team Docs"},
+    { id: "https://www.youtube.com/watch?v=nhNbjt4q9Ms", title: "New Astro content entries from the CLI"},
+    { id: "https://www.youtube.com/watch?v=elfQp4WAJy0", title: "React is imploding, and that's a good thing..."},
+    { id: "https://www.youtube.com/watch?v=XiC5pvBrwEA", title: "Reacting to Dan Abramov"},
+    { id: "https://www.youtube.com/watch?v=LpEPcHSRTzQ", title: "Astro.js Reviewed"},
+    { id: "https://www.youtube.com/watch?v=FaQo2vRQQqU", title: "Getting Started with SEO using AstroJs Part 2"},
+    { id: "https://www.youtube.com/watch?v=M4K7Y8yBxSY", title: "Astro Image Optimization"},
+    { id: "https://www.youtube.com/watch?v=O6Ow-UOHGak", title: "Lo tim React, Vue, atau udah pernah coba Astro JS juga?"},
+  ]}
+/> 
+
+### Astro ❤'s your fave tech
+
+Using a CMS, database, or tool to build? See how it's done!
+
+<YouTubeGrid
+  videos={[
+    { id: "https://www.youtube.com/watch?v=SRt3JFcHBMk", title: "StrapiConf - Matt Kane: Building faster content-driven sites with Astro"},
+    { id: "https://www.youtube.com/watch?v=WofienavPFY", title: "Build a Blog CMS with Astro and Supabase from Scratch"},
+    { id: "https://www.youtube.com/watch?v=MS9twvOP9LM", title: "The simple way I paywalled an Angular/Astro SSG site"},
+    { id: "https://www.youtube.com/watch?v=M1ZOpffxNog", title: "Creating a Snippet Library with Astro.js and Appwrite - Complete Project"},
+    { id: "https://www.youtube.com/watch?v=tCG5GtbIlYI", title: "ApostropheCMS + Astro: Piece Type Basics"},
+    { id: "https://www.youtube.com/watch?v=_spAfke_Rt8&", title: "ApostropheCMS + Astro: Advanced Piece Display"},
+    { id: "https://www.youtube.com/watch?v=_q3W3uA5zno", title: "How to Build an AI-Powered Astro.js Website from Scratch"},
+    { id: "https://www.youtube.com/watch?v=y_bvykbcZ2A", title: "Piny - Visual Tailwind CSS Editor for Astro (Quick intro)"},
+    { id: "https://www.youtube.com/watch?v=wA3DdPa1t3A", title: "Create a Modern AI Marketplace From Scratch in 2025 with Astro.js"},
+    { id: "https://www.youtube.com/watch?v=dsw3JePcA_0", title: "Agrega Autenticación en tu app de Astro y Next.js con Clerk"},
+    { id: "https://www.youtube.com/watch?v=89POBiRiCgc", title: "Docker + Astro + Wordpress Headless!! tutorial completo!!"},
+  ]}
+/> 
+
+### Meetups
+
+Astro is popular around the globe! Discover what happened at meetups and conferences this month.
+
+<YouTubeGrid
+  videos={[
+
+    { id: "https://www.youtube.com/watch?v=igHnQ52lGrg", title: "Astro 🚀: El framework web del que todos están hablando - WTM Madrid 25"},
+  ]}
+/>
+
+### Live coding streams
+
+Watch people build, experiment, and learn!
+
+<YouTubeGrid
+  videos={[
+    { id: "https://www.youtube.com/watch?v=eJlpHQZQRfY", title: "Build and Deploy Personal Homepage in Under 2hrs (with mailing list!)"},
+    { id: "https://www.youtube.com/watch?v=YOjFpR3vrEQ", title: "Set Sail for Astro Server Islands"},
+    { id: "https://www.youtube.com/watch?v=GzN2_r4WlKw", title: "Tutorial: Aprende a crear una página personal de links con Astro, TailwindCSS y TypeScript"},
+    { id: "https://www.youtube.com/watch?v=IE6px_LS_r8", title: "Let's deploy an Astro site with Appwrite!"},
+    { id: "https://www.youtube.com/watch?v=67T2uKSavt4", title: "Разрабатываю pet project вместе с Cursor AI #2 | Math Battle | Astro JS | Vibe coding"},
+    { id: "https://www.youtube.com/watch?v=ugoQHStYwWA", title: "Pakai Strapi, Astro, N8N & AI Copilot! Vibe Coding!"},
+  ]}
+/> 
+
+## Tips & Tools
+
+The latest community-built utilities and integrations to help you build with Astro. 🛠
+
+- [Astro Prettier Response](https://www.npmjs.com/package/@altano/astro-prettier-response) - This package injects a middleware that runs the Prettier formatter for all output to make it unminified and pretty.
+- [Astro Strapi Blocks](https://github.com/VirtusLab-Open-Source/astro-strapi-blocks) - Astro blocks for Strapi Rich Text Block field.
+- [Piny Tailwind Visual Editor](https://getpiny.com/) - A VSCode extension that lets you visually edit Tailwind CSS right in your React and Astro files.
+- [Astro Image Dithering](https://github.com/bashbers/astro-image-dithering) - Dither your images before serving them to your audience for quicker image loading times combined with a lower carbon footprint.
+- [Remark Auto Diff](https://github.com/HiDeoo/remark-auto-diff) - A remark plugin providing an alternative syntax to author diff code blocks in Markdown.
+- [Schema-driven Astro Starter Kit](https://github.com/greynewell/schema-driven-astro-starter) - A production-ready starter kit that brings structured data, SEO optimization, and schema-driven development to your Astro projects.
+- [Astro Loader i18n](https://github.com/openscript/astro-loader-i18n) - An Astro glob content loader for i18n files and folder structures.
+- [WebApp Astro PWA](https://github.com/aondodawid/WebApp-Astro-PWA) - A ready-to-use Astro component library for adding Progressive Web App (PWA) support to your Astro projects.
+- [Astro Simple Modal](https://github.com/henrycorredor/astro-simple-modal) - A simple and highly customizable modal for Astro — minimal setup, full styling control.
+- [Astro Maintenance](https://github.com/alexandr-studio/astro-maintenance) - Easily add maintenance and coming soon pages to your Astro site.
+- [Astro Iubenda](https://github.com/Valyay/astro-iubenda) - This Astro integration fetches and provides Iubenda Privacy Policy, Cookie Policy, and Terms & Conditions content for your Astro project.
+- [Light-Auth](https://lightauth.github.io/) - A lightweight, secure, and easy-to-implement authentication framework with an [Astro Hello World example](https://github.com/lightauth/light-auth-astro-sample-one).
+- [Astro Wordpress ACF Generator](https://github.com/sijad/astro-wordpress/tree/main/packages/acf-generator) - A php code generator for WordPress Advanced Custom Fields (ACF).
+- [Astro Daisy Theme Toggle](https://github.com/Grahf0085/astro-daisy-theme-toggle) - Component to add a dark and light theme to your AstroJS and DaisyUI project.
+- [Astro OG Images](https://github.com/ReunMedia/astro-og-images) - Yet another Astro integration to generate Open Graph images. More lightweight than most alternatives.
+- [Astro Starter Kit: Component Package](https://www.npmjs.com/package/@openpanel/astro) - A template for an Astro component library. Use this template for writing components to use in multiple projects or publish to NPM.
+- [Flotiq Astro SDK](https://www.npmjs.com/package/@flotiq/flotiq-astro-sdk) - Dedicated Astro collections generator for Flotiq Headless CMS.
+- [Astro Mailer](https://www.npmjs.com/package/@hbertoson/astro-mailer) - An Astro integration that enables you to send email notifications via any SMTP service using Nodemailer.
+- [Astro Resend](https://github.com/hkbertoson/astro-integrations/tree/main/packages/astro-resend) - An Astro integration that allows you to easily send email notifications for form submissions using Resend in an Astro project.
+- [Remark Livecodes for Astro](https://livecodes.io/docs/markdown-to-livecodes/#astro) - An open-source client-side playground with support for Astro.
+- 🌟 [Starlight Custom Navigation](https://github.com/frostybee/starlight-custom-navigation) - Enhance your documentation site with custom page navigation features, including support for keyboard shortcuts.
+- 🌟 [Starlight Code Block Fullscreen](https://frostybee.github.io/starlight-codeblock-fullscreen/) - Add fullscreen toggle functionality to Expressive Code blocks in your documentation.
+- [Astro Adapter Nekoweb](https://github.com/indiefellas/astro-adapter-nekoweb) - An adapter for Astro that deploys your app automatically on Nekoweb.
+- [Astro PlantUML](https://www.npmjs.com/package/astro-plantuml) - An Astro integration for rendering PlantUML diagrams in your markdown files.
+- [Astro Tips](https://github.com/xingwangzhe/astro-tips) - Customizable tip and notice blocks for Astro with 18 built-in styles and auto dark mode support.
+- [Vemetric Astro SDK](https://vemetric.com/docs/sdks/astro) - Track your data via the Astro SDK for Vemetric.
+- [Astroboard](https://github.com/wpplumber/astroboard) - Transform your Umbraco CMS with a dynamic dashboard.
+- [Inox Tools Cut-short](https://inox-tools.fryuni.dev/cut-short#pre-rendering) - An Astro integration that lets you stop processing a request instantly and send back a custom response, now with a `cancelPrerender` option to dynamically skip the generation of a specific page. Instead of rendering a 404 page, this utility ensures the page is completely omitted from your final static output.
+
+... and some built *with* Astro:
+
+- [Astro Life in Weeks](https://github.com/juanchiparra/astro-life-in-weeks) - An Astro project to create your own "Your Life in Weeks", an interactive visualization where each rectangle represents a week of your life.
+- [Ubikute Relay](https://ark.sudovanilla.org/Korbs/Ubikute-Relay/) - A new Status page for communities and organizations to selfhost, with frontend built on Astro.
+- [html2astro](https://html2astro.mb-js.site/) - Drag & drop your HTML. Instantly convert to an Astro project.
+- [Historical Timeline Calculator](https://timeline.design/) - Create and export a graphic of historical timelines.
+
+
+## Themes & Templates
+
+Several new Astro themes were added to the [Astro theme directory](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme!
+
+<ThemeGrid date={frontmatter.startDate} />
+
+
+## Showcase
+
+Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
+
+{/* 
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
+*/}
+
+export const excludedSites = [...featuredSites, ...monthlySites]
+
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
+
+
+## Starlight in the wild
+
+It's always exciting to stumble across more docs built with Starlight. Here's what our community noticed this month:
+
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
+
+## That’s a wrap! 👋
+
+Thanks for another great month! We can't wait to see what you build next month!
+
+*Want to be in this post next month? Share your Astro websites, projects, apps, tools, blog posts, demos, and videos in the `#showcase` channel in [our Discord](https://astro.build/chat) and/or tag us on social media!*
+
+## Previously…
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={[ 'whats-new-april-2025', 'whats-new-march-2025']} />

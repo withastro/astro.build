@@ -4,8 +4,13 @@
 		line-height: 1.75em;
 	}
 
-	.prose > p {
+	.prose > p,
+	.prose > blockquote > p {
 		@apply my-4;
+	}
+	.prose > blockquote {
+		padding-left: 2rem;
+		border-left: 1px solid;
 	}
 
 	.prose > hr {
@@ -50,6 +55,11 @@
 		@apply font-mono inline-block font-bold text-astro-pink-light;
 	}
 
+	/* Workaround for when li first node is wrapped in a p */
+	.prose li > p:first-child {
+		@apply inline-block;
+	}
+
 	.prose li {
 		@apply my-0.5;
 	}
@@ -58,7 +68,7 @@
 		@apply text-astro-pink-light underline underline-offset-2 hover:no-underline;
 	}
 
-	.prose > p code {
+	.prose :where(code):not(:where(pre, h1, h2, h3, h4, h5, h6) code) {
 		@apply mx-0.5 inline-block rounded-lg bg-astro-gray-500 px-2 align-baseline text-sm leading-6 text-astro-gray-100;
 	}
 
@@ -67,8 +77,8 @@
 		text-decoration: inherit;
 	}
 
-	.prose > .expressive-code pre {
-		@apply my-6 rounded-md border border-astro-gray-400;
+	.prose .expressive-code {
+		@apply my-6;
 	}
 
 	.prose table {

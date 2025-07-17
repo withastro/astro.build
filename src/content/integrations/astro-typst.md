@@ -3,10 +3,9 @@ name: astro-typst
 title: astro-typst
 description: Use Typst within Astro
 categories:
-  - css+ui
-  - frameworks
+  - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-typst
 repoUrl: https://github.com/OverflowCat/astro-typst
-homepageUrl: https://github.com/OverflowCat/astro-typst
-downloads: 375
+homepageUrl: https://www.npmjs.com/package/astro-typst
+downloads: 1338
 ---

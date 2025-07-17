@@ -1,7 +1,7 @@
 ---
 name: "@playform/compress"
 title: "@playform/compress"
-description: 🗜️ Compress —
+description: Compress 🗜️
 categories:
   - css+ui
   - media
@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@playform/compress
 image: /assets/integrations/@playform/compress.svg
 repoUrl: https://github.com/PlayForm/Compress
 homepageUrl: HTTPS://GitHub.Com/PlayForm/Compress#readme
-downloads: 31831
+downloads: 43900
 ---

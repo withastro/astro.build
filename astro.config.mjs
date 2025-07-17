@@ -4,9 +4,9 @@ import mdx from '@astrojs/mdx';
 import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+import { defineConfig } from 'astro/config';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
-import { defineConfig } from 'astro/config';
 import houston from './houston.theme.json';
 
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
@@ -22,7 +22,17 @@ export default defineConfig({
 		}),
 		astroExpressiveCode({
 			themes: [houston],
-			frames: false,
+			styleOverrides: {
+				borderRadius: '0.375rem',
+				borderColor: 'rgb(84 88 100)',
+			},
+			defaultProps: {
+				overridesByLang: {
+					'bash,sh,shell': {
+						frame: 'none',
+					},
+				},
+			},
 		}),
 		icon({
 			svgoOptions: {

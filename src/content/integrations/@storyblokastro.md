@@ -6,9 +6,9 @@ categories:
   - uncategorized
   - toolbar
 npmUrl: https://www.npmjs.com/package/@storyblok/astro
-repoUrl: https://github.com/storyblok/storyblok-astro
-homepageUrl: https://github.com/storyblok/storyblok-astro#readme
+repoUrl: https://github.com/storyblok/monoblok
+homepageUrl: https://github.com/storyblok/monoblok/tree/main/packages/astro#readme
 image: /assets/integrations/storyblok.svg
 toolbar: 1
-downloads: 18243
+downloads: 27424
 ---

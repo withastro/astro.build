@@ -211,7 +211,7 @@ class ShowcaseScraper {
 			try {
 				const { origin } = new URL(href);
 				return !this.#blocklist.has(origin) && !currentSites.has(origin);
-			} catch (error) {
+			} catch {
 				console.error(`Error parsing URL: ${href}`);
 				return false;
 			}
@@ -243,7 +243,7 @@ class ShowcaseScraper {
 		try {
 			const res = await fetch(url);
 			raw = await res.text();
-		} catch (error) {
+		} catch {
 			console.error('Failed to fetch', url);
 			return false;
 		}
@@ -503,6 +503,33 @@ const scraper = new ShowcaseScraper({
 		'https://calc.codingbroz.com/',
 		// 2025-03-10
 		'https://snowdaycal.org',
+		// 2025-03-30 - theme demo advertising itself
+		'https://astro-sassify-template.pages.dev/',
+		'https://demo.sonicjs.com',
+		// 2025-04-14 - not Astro (yet? 😁)
+		'https://www.linkedin.com',
+		// 2025-05-15 no evidence Astro
+		'https://www.vvidhya.com/',
+		'https://www.idealo.de/',
+		// 2025-05-15 - updated their domain which is already added
+		'https://pvcnt.github.io/mergeable/',
+		// 2025-05-15 - in a showcase description of a valid Astro site
+		'https://tina.io/',
+		'https://carbondesignsystem.com/',
+		// 2025-05-15 https://sonicjs.com/ gives us all kinds of headaches evaluating
+		// 2025-05-27 - not an Astro site
+		'https://bestbuyclues.com/',
+		// 2025-06-10 - not an Astro site
+		'https://mohamed-ibrahim-omar.vercel.app/',
+		// 2025-06-29 already added as secure version
+		'http://www.thenexim.com/',
+		'https://www.thenexim.com/',
+		// 2025-06-29 no visible progress that they are switching to Astro
+		'https://sonicjs.com/',
+		// 2025-06-29 stupid SEO marketing link
+		'https://www.google.com/search?q=site%253Ashevafood.com',
+		// 2025-06-29 no evidence it's Astro, we already have one of their similar sites
+		'https://clampcalculator.com/',
 	],
 });
 await scraper.run();

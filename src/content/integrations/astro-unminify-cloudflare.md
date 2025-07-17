@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-unminify-cloudflare
 repoUrl: https://github.com/altipla-consulting/astro-unminify-cloudflare
-homepageUrl: https://github.com/altipla-consulting/astro-unminify-cloudflare#readme
-downloads: 4
+homepageUrl: https://www.npmjs.com/package/astro-unminify-cloudflare
+downloads: 9
 ---

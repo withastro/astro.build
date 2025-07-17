@@ -1,0 +1,274 @@
+---
+title: 'Astro 5.6'
+description: 'Astro 5.6 brings first-class astro:env and experimental session support to Cloudflare, and gives more control over prefetching.'
+homepageLink:
+  title: 'Astro 5.6'
+  subtitle: 'Available now!'
+publishDate: '2025-04-03'
+authors:
+  - matt
+  - ema
+coverImage: '/src/content/blog/_images/astro-560/blog-post-5-6.webp'
+socialImage: '/src/content/blog/_images/astro-560/og-astro-5-6.webp'
+lang: 'en'
+---
+
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+import Note from '~/components/Note.astro';
+import Mention from '/src/components/Mention.astro';
+
+**Astro 5.6 brings first-class `astro:env` and experimental session support to Cloudflare, and gives more control over prefetching.**
+
+☁️ Soar through the clouds with these new features in Astro:
+
+- [**Global `astro:env` on Cloudflare**](#global-astroenv-on-cloudflare)
+- [**Experimental sessions on Cloudflare**](#experimental-sessions-on-cloudflare)
+- [**New prefetch eagerness option**](#new-prefetch-eagerness-option)
+- [**Custom fetch option for prerendered error pages**](#custom-fetch-option-for-prerendered-error-pages)
+- [**New `load()` method for experimental sessions**](#new-load-method-for-experimental-sessions)
+- [**Improved config validation**](#improved-config-validation)
+- [**Breaking changes to the experimental SVG API**](#breaking-changes-to-the-experimental-svg-api)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Global `astro:env` on Cloudflare
+
+Since Astro 5, you have been able to access [type-safe environment variables using `astro:env`](https://docs.astro.build/en/guides/environment-variables/#type-safe-environment-variables). However, environment variables in Cloudflare were only accessible within a request — limiting when and where you could use them. For example, if you wanted to use a shared API client instance, you couldn't use environment variables if instantiating outside of a request. This could be confusing and was different from our other adapters.
+
+Astro 5.6 lifts this restriction, meaning you can now access your environment variables globally throughout your server code and brings the Cloudflare adapter in line with the other official adapters. This is possible thanks to [enhancements in Cloudflare Workers](https://developers.cloudflare.com/changelog/2025-03-17-importable-env/) that are now implemented in Astro.
+
+```js
+import { defineMiddleware } from 'astro:middleware';
+import { API_URL } from 'astro:env/server';
+import { createClient } from './client.js';
+
+// Astro 5.5: undefined
+// Astro 5.6: string
+const client = createClient(API_URL);
+
+export const onRequest = defineMiddleware((ctx, next) => {
+	ctx.locals.client = client;
+	return next();
+});
+```
+
+This improvement creates a more consistent developer experience across all Astro server environments, and means you don't need to worry about figuring out what counts as request scope or global scope. 
+
+## Experimental sessions on Cloudflare
+
+The [Astro sessions API](https://docs.astro.build/en/reference/experimental-flags/sessions/) is an experimental feature that allows you to easily store user data between requests. It uses pluggable backends for storage, which are automatically configured when using the Node or Netlify adapters.
+
+With Astro 5.6, we've brought that simplified integration to Cloudflare, too. Astro now automatically configures Cloudflare KV storage when you're using sessions with the Cloudflare adapter. This means your session data can be reliably stored and accessed across Cloudflare's global network with minimal configuration.
+
+Getting started is three steps:
+
+1. Create a KV namespace using the Wrangler CLI:
+
+   ```sh
+   npx wrangler kv namespace create "SESSION"
+   ```
+
+2. Declare the KV namespace in your Wrangler config:
+
+   ```jsonc
+   // wrangler.json
+   {
+     "kv_namespaces": [
+       {
+         "binding": "SESSION",
+         "id": "<SESSION_ID>"
+       }
+     ]
+   }
+   ```
+
+3. Enable experimental sessions in your Astro config:
+
+   ```js
+   // astro.config.mjs
+   export default defineConfig({
+     adapter: cloudflare(),
+     experimental: {
+       sessions: true,
+     },
+   });
+   ```
+
+You can then use sessions in your server code:
+
+```astro
+---
+export const prerender = false;
+const cart = await Astro.session.get('cart');
+---
+
+<a href="/checkout">🛒 {cart?.length ?? 0} items</a>
+```
+
+For more information, see the [experimental sessions docs](https://docs.astro.build/en/reference/experimental-flags/sessions/).
+
+<Note title="Note">
+Writes to Cloudflare KV are [eventually consistent](https://developers.cloudflare.com/kv/concepts/how-kv-works/#consistency) between regions. This means that changes are available immediately within the same region, but may take up to 60 seconds to propagate globally. This won't affect most users as they are unlikely to switch regions between requests, but may be a consideration for some use cases such as VPN users.
+</Note>
+
+## New Prefetch Eagerness Option
+
+Find the perfect balance between speed and resource usage with Astro's new prefetch eagerness controls. With the experimental [`clientPrerender`](https://docs.astro.build/en/reference/experimental-flags/client-prerender/) flag enabled, you can use the `eagerness` option on `prefetch()` to suggest to the browser how eagerly it should prefetch/prerender link targets.
+
+This new option, which aligns with the browser's [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/speculationrules), gives you fine-grained control over how aggressively the browser should prefetch or prerender your links:
+
+```astro
+---
+---
+<script>
+// Control prefetching eagerness
+import { prefetch } from 'astro:prefetch';
+
+// Let's be strategic about this resource-intensive page
+prefetch('/data-heavy-dashboard', { eagerness: 'conservative' });
+
+// This page is critical to the user journey, load it ASAP!
+prefetch('/product-details'); // defaults to `{ eagerness: 'immediate' }`
+
+// For most pages, a balanced approach works best
+prefetch('/about', { eagerness: 'moderate' });
+</script>
+```
+
+You can choose from three eagerness levels:
+
+- `'immediate'`: Prefetch immediately, if resource limits allow
+- `'eager'`: Link is likely to be needed, so fetch at the earliest opportunity
+- `'moderate'`: Let the browser decide when to prefetch
+- `'conservative'`: Only prefetch when highly likely to be needed
+
+This feature is particularly valuable when dealing with large numbers of links where you might otherwise run into [browser limits in place to guard against over-speculating](https://developer.chrome.com/blog/speculation-rules-improvements#chrome-limits).
+
+Thanks to community member [Marocco2](https://github.com/Marocco2) for contributing this feature!
+
+## Custom Fetch Option for Prerendered Error Pages
+
+When an on-demand rendered page needs to display an error, your adapter may need to fetch a prerendered error page from somewhere other than your server. Currently, this is done by making a request using the default `fetch` implementation, which may not be suitable for all use cases. For example, the page may be served from a location that can't be called recursively, or the page may be stored elsewhere.
+
+Astro 5.6 adds a new optional `prerenderedErrorPageFetch` option in the Adapter API to allow adapters to provide custom implementations for fetching prerendered error pages.
+
+The following example provides a custom fetch for `500.html` and `404.html`, reading them from disk instead of performing an HTTP call:
+```js 
+return app.render(request, {
+  prerenderedErrorPageFetch: async (url: string): Promise<Response> => {
+    if (url.includes("/500")) {
+        const content = await fs.promises.readFile("500.html", "utf-8");
+        return new Response(content, {
+          status: 500,
+          headers: { "Content-Type": "text/html" },
+        });
+    }
+    const content = await fs.promises.readFile("404.html", "utf-8");
+      return new Response(content, {
+        status: 404,
+        headers: { "Content-Type": "text/html" },
+      });
+});
+```
+If no value is provided, Astro will use `fetch`, and make a request to `/500` or `/404` as appropriate. This is the same behavior as in previous versions of Astro.
+
+Read more about this feature in the [Adapter API reference](https://docs.astro.build/en/reference/adapter-reference/#prerenderederrorpagefetch).
+
+Thanks to [Yury Michurin](https://github.com/yurynix) for contributing this feature!
+
+## New `load()` method for experimental sessions
+
+When using [the experimental Sessions API](https://docs.astro.build/en/reference/experimental-flags/sessions/), you don't normally need to worry about managing the session ID and cookies: Astro automatically reads the user's cookies and loads the correct session when needed. However, sometimes you need more control over which session to load.
+
+The new `load()` method allows you to manually load a session by ID. This is useful if you are handling the session ID yourself, or if you want to keep track of a session without using cookies. For example, you might want to restore a session from a logged-in user on another device, or work with an API endpoint that doesn't use cookies.
+
+```ts
+// src/pages/api/cart.ts
+import type { APIRoute } from 'astro';
+
+export const GET: APIRoute = async ({ session, request }) => {
+  // Load the session from a header instead of cookies
+  const sessionId = request.headers.get('x-session-id');
+  await session.load(sessionId);
+  const cart = await session.get('cart');
+  return Response.json({ cart });
+};
+```
+
+If a session with that ID doesn't exist, a new one will be created. This allows you to generate a session ID in the client if needed. 
+
+For more information, see the [experimental sessions docs](https://docs.astro.build/en/reference/experimental-flags/sessions/).
+
+## Improved Config Validation
+
+Astro now validates your config after every integration is run, making it easier to catch issues early and pinpoint the source of any problems. This is particularly useful when using multiple integrations, as it helps ensure that they are all compatible with each other and with your Astro project.
+
+## Breaking changes to the experimental SVG API
+
+The [experimental SVG RFC](https://github.com/withastro/roadmap/pull/1035) has been under heavy discussion, and for that we thank you all for chiming in! As result of discussions, we decided to *temporarily* remove certain features. That's just how it goes with an experimental API sometimes! 
+
+But, this doesn't mean they're gone for good! Removing them now at this early stage gives us time to have separate discussions and build features back based on your feedback, striking the right balance between DX, accessibility best practices, and sensible defaults.
+
+These items are no longer available and must be removed from your code:
+
+- The `title` prop has been removed until we can settle on the correct balance between developer experience and accessibility. Please replace any `title` props on your components with `aria-label`:
+  ```diff lang="astro"
+  - <Logo title="My Company Logo" />
+  + <Logo aria-label="My Company Logo" />
+  ```
+- Sprite mode has been temporarily removed while we consider a new implementation that addresses how this feature was being used in practice. This means that there are no longer multiple `mode` options, and all SVGs will be inline. All instances of `mode` must be removed from your project as you can no longer control a mode:
+  ```diff lang="astro"
+  - <Logo mode="inline" />
+  + <Logo /> // Always inline
+  ```
+  ```diff lang="js"
+  import { defineConfig } from 'astro'
+
+  export default defineConfig({
+    experimental: {
+  -   svg: {
+  -     mode: 'sprite'
+  -   },
+  +   svg: true
+    }
+  });
+  ```
+- The default `role` is no longer applied due to developer feedback. Please add the appropriate `role` on each component individually as needed:
+  ```diff lang="astro"
+  - <Logo />
+  + <Logo role="img" /> // To keep the role that was previously applied by default
+  ```
+- The `size` prop has been removed to better work in combination with `viewBox` and additional styles/attributes. Please replace `size` with explicit `width` and `height` attributes:
+  ```diff lang="astro"
+  - <Logo size={64} />
+  + <Logo width={64} height={64} />
+  ```
+
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.5 release](/blog/astro-550). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="ben" />, <Mention name="caleb" />, <Mention name="chris" />, <Mention name="ema" />, <Mention name="erika" />, <Mention name="florian" />, <Mention name="fuzzy" />, <Mention name="hideoo" />, <Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />, <Mention name="nate" />, <Mention name="reuben" />, <Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.6 possible, including [Edward Brunetiere](https://github.com/P4tt4te), [Martin Trapp](https://github.com/martrapp), [Vardhaman Bhandari](https://github.com/Vardhaman619), [Marocco2](https://github.com/Marocco2), [Yury Michurin](https://github.com/yurynix) and [Michael Stramel](https://github.com/stramel).
+
+We look forward to seeing what you build with Astro 5.6! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
+
+import RelatedPosts from './_components/RelatedPosts.astro';
+
+<RelatedPosts slugs={['astro-550', 'astro-540']} />

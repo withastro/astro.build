@@ -8,8 +8,7 @@ export interface Props {
 
 const { src, alt = '' } = Astro.props;
 
-const maxColumnWidth = 768 * 2; // 768px * 2 pixel density
-const width = Math.min(maxColumnWidth);
+const width = 768 * 2; // 768px * 2 pixel density
 const height = (width / src.width) * src.height;
 ---
 
