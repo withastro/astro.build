@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-copy
 homepageUrl: https://www.npmjs.com/package/astro-copy
-downloads: 11
+downloads: 12
 ---

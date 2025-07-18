@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sumitgohil/astro-opengraph-image
 repoUrl: https://github.com/sumitgohil/astro-opengraph-image
 homepageUrl: https://github.com/sumitgohil/astro-opengraph-image
-downloads: 53
+downloads: 52
 ---
