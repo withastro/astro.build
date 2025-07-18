@@ -1,8 +1,8 @@
 ---
 title: 'Unleashing creativity'
-description: 'Why CodeTV chose Astro to build its content streaming platform'
+description: 'How CodeTV built a video streaming platform with Astro and Mux'
 seo:
-  title: 'Unleashing creativity: Why CodeTV chose Astro to build its content streaming platform'
+  title: 'Unleashing creativity: How CodeTV built a video streaming platform with Astro and Mux'
   description: 'How Astro gives CodeTV everything they need to run a subscription-based TV service.'
 coverGradientFrom: '#3245FF'
 coverGradientTo: '#BC52EE'
@@ -24,8 +24,8 @@ import Blockquote from '~/components/Blockquote.astro';
 <div class="space-y-8 text-white">
 	<div class="text-2xl leading-normal tracking-normal text-astro-gray-100">
 		[CodeTV](https://codetv.dev/) features video programming for developers
-		ranging from live coding sessions to game shows. They needed a platform that
-		could handle a complex data architecture and deliver a high performance
+		ranging from live coding sessions to game shows. They needed a framework
+		that could handle a complex data architecture and deliver a high performance
 		streaming platform for subscribers.
 	</div>
 </div>
@@ -52,7 +52,7 @@ CodeTV needed to do a lot, and do it reliably, so that Lengstorf could spend his
 
 ## Requirements
 
-To be a full-fledged media platform, CodeTV needed a solution that was easy to integrate with a variety of services: content management system (CMS), authentication, e-commerce, video streaming, digital asset management, site search, as well as complex workflow automation connecting everything together.
+To be a full-fledged media platform, CodeTV needed a solution that was easy to integrate with a variety of services: content management system (CMS), Mux video streaming, authentication, e-commerce, digital asset management, site search, as well as complex workflow automation connecting everything together.
 
 With all of that going on, there was no room for bloat. CodeTV needed to be lightweight and performant. And, the code needed to be easy to organize and maintain. Astro's "opt in to complexity" model was exactly what was needed.
 
@@ -65,18 +65,18 @@ With all of that going on, there was no room for bloat. CodeTV needed to be ligh
 	<Fragment slot="caption">— Jason Lengstorf, CodeTV</Fragment>
 </Blockquote>
 
-Astro's ability to integrate with any headless CMS was the perfect fit for Lengstorf’s choice of Sanity for content management.
-But, could Astro be a full, subscription-based, video-on-demand streaming service provider?
+Lengstorf chose Mux to provide adaptive bit-rate streaming of subscriber-only video content.
+Astro’s native support for web components made integrating Mux’s lightweight video components a breeze. Next up would be integrating everything else needed for a full, subscription-based, video-on-demand streaming service provider.
 
 ## Solution and implementation
 
-Even with complex content hierarchies including multiple shows, seasons, hosts, guests, and more, rendering fast, performant pages was no problem with Astro.
+Even with complex content hierarchies including multiple shows, seasons, hosts, guests, and more, rendering fast, performant pages and streaming video on demand was no problem with Astro.
 
 Although CodeTV serves its users a dynamic and personalized experience, with Astro it was possible to prerender static HTML for almost every page, improving load times and reducing costs.
-Astro's server islands allow CodeTV to defer the loading of personalized dynamic content without blocking the rendering of content common to all users.
+Astro's server islands allowed CodeTV to defer the loading of personalized dynamic content without blocking the rendering of content common to all users.
 
-Adding the necessary integrations to CodeTV to build out the streaming platform went smoothly: Clerk for authentication, Stripe for payment processing, Mux for streaming video, Inngest for background tasks.
-Everything integrated well with the architecture of enhancing prerendered pages with server islands.
+Adding the necessary integrations to CodeTV to build out the streaming platform went smoothly: Clerk for authentication, Stripe for payment processing, Mux for streaming video, Sanity for content management, Inngest for background tasks.
+Everything integrated well by enhancing prerendered pages with server islands.
 Subscription payments, a user dashboard, custom subscriber content… whatever they threw at Astro, it "just worked," says Lengstorf.
 
 <Blockquote>
