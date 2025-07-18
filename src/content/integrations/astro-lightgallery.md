@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-lightgallery
 repoUrl: https://github.com/pascal-brand38/astro-lightGallery
 homepageUrl: https://pascal-brand38.github.io/astro-dev/packages/astro-lightgallery
 badge: new
-downloads: 1389
+downloads: 1435
 ---

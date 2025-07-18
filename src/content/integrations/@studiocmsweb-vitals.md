@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/web-vitals
 repoUrl: https://github.com/withstudiocms/web-vitals
 homepageUrl: https://github.com/withstudiocms/web-vitals#readme
 badge: new
-downloads: 174
+downloads: 215
 ---
