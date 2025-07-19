@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-plain
 homepageUrl: https://www.npmjs.com/package/astro-plain
-downloads: 55
+downloads: 53
 ---
