@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astrojs-bootstrap
 repoUrl: https://github.com/Susmita-Dey/astrojs-bootstrap
-homepageUrl: https://www.npmjs.com/package/astrojs-bootstrap
+homepageUrl: https://github.com/Susmita-Dey/astrojs-bootstrap#readme
 downloads: 12
 ---

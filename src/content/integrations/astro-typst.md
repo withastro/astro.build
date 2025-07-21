@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-typst
 repoUrl: https://github.com/OverflowCat/astro-typst
-homepageUrl: https://www.npmjs.com/package/astro-typst
+homepageUrl: https://github.com/OverflowCat/astro-typst
 downloads: 1344
 ---
