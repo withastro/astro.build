@@ -29,10 +29,10 @@ const allPages = [...Array(page.lastPage).keys()].map((num) => {
 const allPosts = await getCollection('blog');
 
 const featuredPosts = [
-	'images',
-	'2023-web-framework-performance-report',
-	'hybrid-rendering',
+	'year-in-review-2024',
+	'content-layer-deep-dive',
 	'netlify-official-deployment-partner',
+	'2023-web-framework-performance-report',
 ]
 	.map((slug) => allPosts.find((post) => post.slug === slug))
 	.filter(Boolean) as CollectionEntry<'blog'>[];
