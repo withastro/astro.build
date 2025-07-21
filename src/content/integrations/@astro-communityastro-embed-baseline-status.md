@@ -7,6 +7,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@astro-community/astro-embed-baseline-status
 repoUrl: https://github.com/delucis/astro-embed
-homepageUrl: https://www.npmjs.com/package/@astro-community/astro-embed-baseline-status
+homepageUrl: https://astro-embed.netlify.app/components/baseline-status/
 downloads: 38403
 ---
