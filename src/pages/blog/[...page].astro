@@ -7,6 +7,7 @@ import SidebarLayout from '~/components/SidebarLayout.astro';
 import SidebarPanel from '~/components/SidebarPanel.astro';
 import Layout from '~/layouts/MainLayout.astro';
 import BlogPostPreview from './_components/BlogPostPreview.astro';
+import Promo from './_components/Promo.astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const posts = [...(await getCollection('blog')), ...(await getCollection('caseStudies'))];
@@ -84,6 +85,7 @@ const featuredPosts = [
 					<span class="code">RSS</span>
 				</a>
 			</SidebarPanel>
+			<SidebarPanel><Promo /></SidebarPanel>
 		</Fragment>
 
 		<div class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20">
