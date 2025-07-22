@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-m3e
 repoUrl: https://github.com/fabesmo/astro-m3e
 homepageUrl: https://github.com/fabesmo/astro-m3e#readme
 badge: new
-downloads: 338
+downloads: 349
 ---

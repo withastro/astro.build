@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@chisel-ui/astro
 image: /assets/integrations/chisel-ui.svg
 repoUrl: https://github.com/chisel-ui/astro
 homepageUrl: https://www.npmjs.com/package/@chisel-ui/astro
-downloads: 30
+downloads: 51
 ---
