@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const promos = await getCollection('promos');
+const promo = promos[Math.floor(Math.random() * promos.length)];
+const { eyebrow, title, description, image, href } = promo.data;
+const labelId = `promo-${promo.id}`;
+---
+
+<aside
+	class:list={[
+		'relative',
+		'flex flex-col gap-4',
+		'transition-transform duration-300 ease-out hover:scale-[1.03]',
+	]}
+	aria-labelledby={labelId}
+>
+	<div class="flex flex-col gap-2.5 text-gray-400 text-sm">
+		{eyebrow && <p class="font-mono" set:html={eyebrow} />}
+		<a
+			id={labelId}
+			{href}
+			set:html={title}
+			class="heading-5 text-white after:absolute after:inset-0"
+		/>
+		<p class="text-pretty" set:html={description} />
+	</div>
+	{image && <Image {...image} width={224 * 1.5} />}
+</aside>
