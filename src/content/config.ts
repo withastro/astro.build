@@ -224,4 +224,20 @@ export const collections = {
 				})
 				.strict(),
 	}),
+	promos: defineCollection({
+		loader: file('./src/content/promos/promos.yml'),
+		schema: ({ image }) =>
+			z.object({
+				href: z.string(),
+				title: z.string(),
+				eyebrow: z.string().optional(),
+				description: z.string(),
+				image: z
+					.object({
+						alt: z.string(),
+						src: image(),
+					})
+					.optional(),
+			}),
+	}),
 };
