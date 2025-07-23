@@ -53,20 +53,24 @@ Minor releases introduce new features and improvements. Check out what's new!
 
 ## Astro Adopters
 
-From Unilever to Cash App, the US government to OpenAI, some of the biggest names you know are using Astro!
+From Netlify to Microsoft to Matrix, some of the biggest names you know are using Astro!
+
+(Netlify docs, Prompty.ai, Matrix conference - waiting for)
 
 export const featuredSites = [
   'www.unilever.com',
-  'design.cash.app,'
+  'design.cash.app,',
+  'conference.matrix.org',
 ]; 
 
-{/* <ShowcaseGridById ids={featuredSites} /> */}
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={monthlySites} />  */}
+
+{/* Use for grids of 2 per row  */}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
   <ShowcaseCard site={await getEntry('showcase', 'www.unilever.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'design.cash.app')} />
-  <ShowcaseCard site={await getEntry('showcase', 'pages.nist.gov')} />
-  <ShowcaseCard site={await getEntry('showcase', 'openai.github.io')} />
+  <ShowcaseCard site={await getEntry('showcase', 'conference.matrix.org')} />
 </div>
 
 
