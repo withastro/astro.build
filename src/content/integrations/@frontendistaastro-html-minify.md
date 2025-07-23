@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@frontendista/astro-html-minify
 repoUrl: https://github.com/frontendista/astro-html-minify
 homepageUrl: https://github.com/frontendista/astro-html-minify
-downloads: 75
+downloads: 74
 ---
