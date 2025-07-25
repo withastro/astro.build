@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@zilchcarbon/astro-components
 homepageUrl: https://www.npmjs.com/package/@zilchcarbon/astro-components
 badge: new
-downloads: 692
+downloads: 1066
 ---

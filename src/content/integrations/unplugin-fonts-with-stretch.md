@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/unplugin-fonts-with-stretch
 repoUrl: https://github.com/cssninjaStudio/unplugin-fonts
 homepageUrl: https://www.npmjs.com/package/unplugin-fonts-with-stretch
-downloads: 16
+downloads: 22
 ---
