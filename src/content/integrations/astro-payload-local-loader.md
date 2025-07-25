@@ -6,5 +6,5 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/astro-payload-local-loader
 homepageUrl: https://github.com/jliguori1312/payload-astro-template/tree/main/astro-payload-local-loader
-downloads: 26
+downloads: 23
 ---
