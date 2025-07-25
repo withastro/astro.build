@@ -28,6 +28,7 @@ const labelId = `promo-${promo.id}`;
 				{href}
 				set:html={title}
 				class="heading-5 @xl:heading-4 text-white after:absolute after:inset-0"
+				onclick={`window.fathom?.trackEvent(${JSON.stringify(`Promo - ${promo.id}`)})`}
 			/>
 			<p class="text-pretty" set:html={description} />
 		</div>
