@@ -97,7 +97,7 @@ export const collections = {
 						'This should be pre-optimized as a WebP to ensure good performance.',
 				),
 			lang: z.enum(['en']).default('en').describe('The language of this blog post (optional)'),
-			related: z.array(reference('blog')).default([]),
+			related: z.array(reference('blog').or(reference('caseStudies'))).default([]),
 		}),
 	}),
 	caseStudies: defineCollection({

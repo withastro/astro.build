@@ -1,12 +1,12 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { ReferenceDataEntry } from 'astro:content';
 import BlogLinkCard from './BlogLinkCard.astro';
 
 interface Props {
-	slugs: Array<CollectionEntry<'blog' | 'caseStudies'>['slug']>;
+	posts: Array<ReferenceDataEntry<'blog' | 'caseStudies'>>;
 }
 ---
 
 <div class="my-6 grid gap-8 lg:gap-10 grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))]">
-	{Astro.props.slugs.map((slug) => <BlogLinkCard {slug} />)}
+	{Astro.props.posts.map((entry) => <BlogLinkCard {entry} />)}
 </div>
