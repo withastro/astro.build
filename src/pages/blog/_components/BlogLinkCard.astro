@@ -11,7 +11,9 @@ const { entry } = Astro.props;
 const post = await getEntry(entry);
 
 if (!post) {
-	throw new Error(`Could not find post with slug \`${JSON.stringify(Astro.props.entry)}\``);
+	throw new Error(
+		`Could not find post in the \`${JSON.stringify(entry.collection)}\` collection with slug \`${JSON.stringify(entry.id)}\`.`,
+	);
 }
 
 const image = await resolveCoverImage(post);
