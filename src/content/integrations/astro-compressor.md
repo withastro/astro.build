@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-compressor
 repoUrl: ssh://git@github.com/sondr3/astro-compressor
 homepageUrl: https://github.com/sondr3/astro-compressor#readme
-downloads: 38504
+downloads: 37725
 ---

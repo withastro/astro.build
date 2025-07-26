@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@studiocms/mdx
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
-downloads: 351
+downloads: 361
 ---
