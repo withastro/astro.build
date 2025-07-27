@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@ascorbic/youtube-loader
 repoUrl: https://github.com/ascorbic/astro-loaders
 homepageUrl: https://github.com/ascorbic/astro-loaders
 badge: new
-downloads: 95
+downloads: 97
 ---

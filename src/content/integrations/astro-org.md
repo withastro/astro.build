@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-org
 repoUrl: https://github.com/rasendubi/uniorg
 homepageUrl: https://github.com/rasendubi/uniorg#readme
-downloads: 59
+downloads: 49
 ---
