@@ -1,12 +1,11 @@
 ---
-import type { ReferenceDataEntry } from 'astro:content';
 import BlogLinkCard from './BlogLinkCard.astro';
 
 interface Props {
-	posts: Array<ReferenceDataEntry<'blog' | 'caseStudies'>>;
+	posts: Array<string>;
 }
 ---
 
 <div class="my-6 grid gap-8 lg:gap-10 grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))]">
-	{Astro.props.posts.map((entry) => <BlogLinkCard {entry} />)}
+	{Astro.props.posts.map((id) => <BlogLinkCard {id} />)}
 </div>

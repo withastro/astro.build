@@ -1,19 +1,17 @@
 ---
 import { Image } from 'astro:assets';
-import { getEntry, type ReferenceDataEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 import Card from '~/components/Card.astro';
 import { resolveCoverImage } from '~/content/blog/_resolveImage.js';
 
 interface Props {
-	entry: ReferenceDataEntry<'blog' | 'caseStudies'>;
+	id: string;
 }
-const { entry } = Astro.props;
-const post = await getEntry(entry);
+const { id } = Astro.props;
+const post = (await getEntry('blog', id)) || (await getEntry('caseStudies', id));
 
 if (!post) {
-	throw new Error(
-		`Could not find post in the \`${JSON.stringify(entry.collection)}\` collection with slug \`${JSON.stringify(entry.id)}\`.`,
-	);
+	throw new Error(`Could not find blog post or case study with ID \`${JSON.stringify(id)}\`.`);
 }
 
 const image = await resolveCoverImage(post);
