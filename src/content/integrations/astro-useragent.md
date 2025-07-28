@@ -6,6 +6,6 @@ categories:
   - accessibility
 npmUrl: https://www.npmjs.com/package/astro-useragent
 repoUrl: https://github.com/codiume/orbit
-homepageUrl: https://www.npmjs.com/package/astro-useragent
+homepageUrl: https://github.com/codiume/orbit
 downloads: 1938
 ---
