@@ -5,6 +5,6 @@ description: Astro cloudflare turnstile integration
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-turnstile
-homepageUrl: https://www.npmjs.com/package/astro-turnstile
+homepageUrl: https://github.com/hkbertoson/astro-turnstile
 downloads: 89
 ---
