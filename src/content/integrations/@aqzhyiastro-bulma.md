@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@aqzhyi/astro-bulma
 repoUrl: https://github.com/aqzhyi/oh-my-monorepo
 homepageUrl: https://github.com/aqzhyi/oh-my-monorepo#readme
-downloads: 7
+downloads: 6
 ---

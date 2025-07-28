@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/simple-stack-query
 repoUrl: https://github.com/bholmesdev/simple-stack
 homepageUrl: https://www.npmjs.com/package/simple-stack-query
-downloads: 517
+downloads: 500
 ---

@@ -8,5 +8,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-plantuml
 homepageUrl: https://www.npmjs.com/package/astro-plantuml
-downloads: 207
+downloads: 194
 ---

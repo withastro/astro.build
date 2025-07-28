@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/astro-mcserverstatus
 homepageUrl: https://matthiesen.xyz
-downloads: 11
+downloads: 10
 ---
