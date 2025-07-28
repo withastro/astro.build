@@ -7,6 +7,7 @@ import SidebarLayout from '~/components/SidebarLayout.astro';
 import SidebarPanel from '~/components/SidebarPanel.astro';
 import Layout from '~/layouts/MainLayout.astro';
 import BlogPostPreview from './_components/BlogPostPreview.astro';
+import Promo from './_components/Promo.astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const posts = [...(await getCollection('blog')), ...(await getCollection('caseStudies'))];
@@ -74,6 +75,7 @@ const featuredPosts = [
 					}
 				</ul>
 			</SidebarPanel>
+			<SidebarPanel class="overflow-clip"><Promo /></SidebarPanel>
 			<SidebarPanel>
 				<h2 class="code">Subscribe</h2>
 				<p class="body mb-6 mt-4 text-astro-gray-200">

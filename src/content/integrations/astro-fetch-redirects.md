@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-fetch-redirects
 homepageUrl: https://www.npmjs.com/package/astro-fetch-redirects
-downloads: 6
+downloads: 4
 ---

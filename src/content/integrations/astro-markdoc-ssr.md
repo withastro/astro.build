@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-markdoc-ssr
 homepageUrl: https://www.npmjs.com/package/astro-markdoc-ssr
-downloads: 13
+downloads: 8
 ---
