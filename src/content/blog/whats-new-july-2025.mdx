@@ -85,7 +85,7 @@ Some sites from the last month that show off what you can do with Astro that are
 - [Rig Designer](https://www.rigdesigner.com/) - Rig Designer is the all-in-one camera rig builder and creator hub. Select from over 170,000 products to add to your camera rig. Publish and show off your completed rigs to the world!
 - [Postnord i Kalendern](https://postnord-i-kalendern.se/) - Keep track of PostNord delivery directly in your calendar.
 - [Title Thumb](https://titlethumb.com/) - Instant preview for YouTube titles and thumbnails. See how it looks on desktop, mobile, and TVs.
-- [Guestbook](https://davidumoru.me/guestbook) - Leave a message and get a travel stamp based on your country! Built with AstroDB.
+- [David Umoru's Guestbook](https://davidumoru.me/guestbook) - Leave a message and get a travel stamp based on your country! Built with AstroDB.
 
 export const monthlySites = [
   'color-contrast.incluud.dev',
@@ -96,6 +96,7 @@ export const monthlySites = [
   'davidumoru.me',
 ]; 
 
+{/*
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
   <ShowcaseCard site={await getEntry('showcase', 'color-contrast.incluud.dev')} />
   <ShowcaseCard site={await getEntry('showcase', 'glypheditor.com')} />
@@ -104,20 +105,26 @@ export const monthlySites = [
   <ShowcaseCard site={await getEntry('showcase', 'titlethumb.com')} />
   <ShowcaseCard site={await getEntry('showcase', 'davidumoru.me')} />
 </div>
+*/}
 
-{/* <ShowcaseGridById ids={monthlySites} />  */}
+<ShowcaseGridById ids={monthlySites} />
 
 ## Cosmic Canvas
 
 Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
 
+export const canvasSites = [
+  'chimborazo.netlify.app',
+  'chromobase.huma-num.fr',
+  'calicutstj.mx',
+  'luonmodels.vercel.app',
+]; 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'studio-dot.fr')} />
-  <ShowcaseCard site={await getEntry('showcase', 'www.blinkpath.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'www.avax.network')} />
-  <ShowcaseCard site={await getEntry('showcase', 'homerun.today')} />
-  <ShowcaseCard site={await getEntry('showcase', 'www.pierremouchan.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'www.woodlight.fr')} />
+  <ShowcaseCard site={await getEntry('showcase', 'chimborazo.netlify.app')} />
+  <ShowcaseCard site={await getEntry('showcase', 'chromobase.huma-num.fr')} />
+  <ShowcaseCard site={await getEntry('showcase', 'calicutstj.mx')} />
+  <ShowcaseCard site={await getEntry('showcase', 'luonmodels.vercel.app')} />
 </div>
 
 ## Community
@@ -342,7 +349,7 @@ Looking for even more inspiration? See all the community member websites submitt
 <MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
 */}
 
-export const excludedSites = [...featuredSites, ...monthlySites]
+export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites]
 
 <MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
 
