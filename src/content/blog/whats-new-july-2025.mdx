@@ -85,16 +85,24 @@ Some sites from the last month that show off what you can do with Astro that are
 - [Rig Designer](https://www.rigdesigner.com/) - Rig Designer is the all-in-one camera rig builder and creator hub. Select from over 170,000 products to add to your camera rig. Publish and show off your completed rigs to the world!
 - [Postnord i Kalendern](https://postnord-i-kalendern.se/) - Keep track of PostNord delivery directly in your calendar.
 - [Title Thumb](https://titlethumb.com/) - Instant preview for YouTube titles and thumbnails. See how it looks on desktop, mobile, and TVs.
-- [Astroboard](https://astroboard.website) - Real-time analytics, content insights, and team collaboration—right in your Umbraco CMS backoffice. A dashboard built with Astro, for your Astro site!
-
-
+- [Guestbook](https://davidumoru.me/guestbook) - Leave a message and get a travel stamp based on your country! Built with AstroDB.
 
 export const monthlySites = [
-  'asciimoon.com',
+  'color-contrast.incluud.dev',
+  'glypheditor.com',
+  'www.rigdesigner.com',
+  'postnord-i-kalendern.se',
+  'titlethumb.com',
+  'davidumoru.me',
 ]; 
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'asciimoon.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'color-contrast.incluud.dev')} />
+  <ShowcaseCard site={await getEntry('showcase', 'glypheditor.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.rigdesigner.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'postnord-i-kalendern.se')} />
+  <ShowcaseCard site={await getEntry('showcase', 'titlethumb.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'davidumoru.me')} />
 </div>
 
 {/* <ShowcaseGridById ids={monthlySites} />  */}
