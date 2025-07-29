@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro_ui/button
 homepageUrl: https://www.npmjs.com/package/@astro_ui/button
-downloads: 4
+downloads: 3
 ---

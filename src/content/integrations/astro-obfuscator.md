@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-obfuscator
 repoUrl: https://github.com/CarlosSLoureiro/astro-obfuscator
 homepageUrl: https://github.com/CarlosSLoureiro/astro-obfuscator#readme
 badge: new
-downloads: 414
+downloads: 415
 ---
