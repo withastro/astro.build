@@ -123,20 +123,22 @@ const structuredData = {
 					<Content />
 				</article>
 				<hr class="2xl:hidden -mx-16 basis-[calc(100%+8rem)] border-astro-gray-500" />
-				<div
-					class="w-full 2xl:w-0 2xl:mt-24 flex flex-col 2xl:before:h-full"
-				>
+				<div class="w-full 2xl:w-0 2xl:mt-24 flex flex-col 2xl:before:h-full">
 					<div class="2xl:ml-[9rem] 2xl:w-56 2xl:sticky 2xl:bottom-12">
 						<Promo />
 					</div>
 				</div>
 				{
 					data.related.length > 0 && (
-						<hr class="-mx-16 basis-[calc(100%+8rem)] border-astro-gray-500" />
-						<nav aria-labelledby="_related-posts">
-							<h2 class="heading-3" id="_related-posts">Related Posts</h2>
-							<RelatedPosts posts={data.related} />
-						</nav>
+						<>
+							<hr class="-mx-16 basis-[calc(100%+8rem)] border-astro-gray-500" />
+							<nav aria-labelledby="_related-posts">
+								<h2 class="heading-3" id="_related-posts">
+									Related Posts
+								</h2>
+								<RelatedPosts posts={data.related} />
+							</nav>
+						</>
 					)
 				}
 			</div>
