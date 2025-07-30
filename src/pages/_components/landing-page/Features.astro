@@ -2,6 +2,7 @@
 import SectionCopy from '../SectionCopy.astro';
 import ContentCollectionsFeatureCard from './ContentCollectionsFeatureCard.astro';
 import FeaturesCard from './FeaturesCard.astro';
+import ImagesFeatureCard from './ImagesFeatureCard.astro';
 import ViewTransitionsFeatureCard from './ViewTransitionsFeatureCard.astro';
 import ZeroJsFeatureCard from './ZeroJsFeatureCard.astro';
 ---
@@ -22,10 +23,16 @@ import ZeroJsFeatureCard from './ZeroJsFeatureCard.astro';
 
 		<ViewTransitionsFeatureCard />
 
+		<ImagesFeatureCard />
 		<FeaturesCard
-			title="Optimized Images"
-			href="https://docs.astro.build/en/guides/images/#astro-components-for-images"
-			description="Eliminate layout shift and serve highly optimized, responsive images with Astro’s built-in components and utilities."
+			title="UI Integrations"
+			href="https://docs.astro.build/en/guides/framework-components/"
+			description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
+		/>
+		<FeaturesCard
+			title="File-Based Routing"
+			href="https://docs.astro.build/en/guides/routing/"
+			description="Astro’s flexible routing system lets you understand your site’s structure at a glance."
 		/>
 		<FeaturesCard
 			title="Middleware"
@@ -38,6 +45,11 @@ import ZeroJsFeatureCard from './ZeroJsFeatureCard.astro';
 			description="Write type-safe backend functions that you can call directly from your frontend JavaScript client code."
 		/>
 		<FeaturesCard
+			title="Simple Server Templating"
+			href="https://docs.astro.build/en/basics/astro-components/"
+			description="If you know HTML, you already know enough to write your first Astro component. Build powerful server components everyone on your team understands."
+		/>
+		<FeaturesCard
 			title="Environment Variables"
 			href="https://docs.astro.build/en/guides/environment-variables/"
 			description="Avoid common configuration mistakes with a built-in API to manage your environment variables."
@@ -48,14 +60,14 @@ import ZeroJsFeatureCard from './ZeroJsFeatureCard.astro';
 			description="Add an integration to instantly customize your project for Netlify, Vercel, AWS, or your favorite hosting platform."
 		/>
 		<FeaturesCard
-			title="UI Integrations"
-			href="https://docs.astro.build/en/guides/framework-components/"
-			description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
-		/>
-		<FeaturesCard
 			title="Dev Toolbar"
 			href="https://docs.astro.build/en/guides/dev-toolbar/"
 			description="Extend your development environment with apps and integrations for the built-in development toolbar."
+		/>
+		<FeaturesCard
+			title="Instant Page Loads"
+			href="https://docs.astro.build/en/guides/prefetch/"
+			description="Optimize page loading with intelligent automatic prefetching. Pick from the built-in presets or tailor a strategy perfect for your site."
 		/>
 	</div>
 </section>
