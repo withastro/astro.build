@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/van-mdx
 homepageUrl: https://www.npmjs.com/package/van-mdx
 badge: new
-downloads: 212
+downloads: 213
 ---
