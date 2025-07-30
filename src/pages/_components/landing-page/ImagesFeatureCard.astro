@@ -1,0 +1,203 @@
+---
+
+---
+
+<a
+	href="https://docs.astro.build/en/guides/images/#astro-components-for-images"
+	class="group md:col-span-2 grid grid-cols-1 md:grid-cols-2 bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+>
+	{/* Illustration */}
+	<div aria-hidden="true" class="relative p-4 min-h-52 md:min-h-40 md:col-start-2">
+		{/* Dotted pattern background */}
+		<div
+			class="absolute top-0 left-0 size-full opacity-30 group-hover:opacity-70 transition duration-500 [mask-image:radial-gradient(closest-side,#ffffff_40%,transparent_100%)]"
+		>
+			<div
+				class="w-full h-full [mask-image:radial-gradient(#fff_0.5px,transparent_0.5px)] [mask-size:5px_5px] bg-blue-purple-gradient"
+			>
+			</div>
+		</div>
+		{/* Optimized image graphic */}
+		<div
+			class:list={[
+				'absolute top-1/2 left-1/2',
+				'transition duration-500',
+				'-translate-x-[5%] -translate-y-1/3 scale-75 opacity-75 blur-[6px] grayscale',
+				'group-hover:-translate-y-2/3 group-hover:scale-100 group-hover:opacity-100 group-hover:blur-0 group-hover:grayscale-0',
+				'group-hover:z-10',
+			]}
+		>
+			{/*Blue–purple glow behind image */}
+			<div
+				class="absolute -inset-1 rounded-full bg-blue-purple-gradient transition duration-500 opacity-0 group-hover:opacity-40 -z-10 blur-xl"
+			>
+			</div>
+			{/* Pixel size */}
+			<span
+				class:list={[
+					'absolute -bottom-3 -right-3 py-1 px-[5px] text-white font-mono tracking-wide text-sm bg-astro-gray-600 border border-white/5',
+					'flex items-center gap-1',
+				]}
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 19 18" width="18">
+					<path
+						fill="url(#optimized-img-bolt-gradient)"
+						d="M15.42 7.16a.75.75 0 0 0-.67-.41H11v-4.5a.75.75 0 0 0-.98-.75.75.75 0 0 0-.38.27l-6 8.25a.75.75 0 0 0-.06.75.75.75 0 0 0 .67.48H8v4.5a.75.75 0 0 0 1.36.44l6-8.25a.75.75 0 0 0 .06-.78ZM9.5 13.44V10.5a.75.75 0 0 0-.75-.75h-3L9.5 4.56V7.5a.75.75 0 0 0 .75.75h3L9.5 13.44Z"
+					></path>
+					<defs>
+						<linearGradient
+							id="optimized-img-bolt-gradient"
+							x1="15.5"
+							x2="2.89"
+							y1="1.46"
+							y2="2"
+							gradientUnits="userSpaceOnUse"
+						>
+							<stop stop-color="#F8E42E"></stop>
+							<stop offset="1" stop-color="#FF7D54"></stop>
+						</linearGradient>
+					</defs>
+				</svg>
+				800px
+			</span>
+			{/* Colorful image representing optimized file */}
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 100 75"
+				width="100"
+				height="75"
+			>
+				<g clip-path="url(#clip-to-round-rect-2)">
+					<rect width="100" height="75" fill="url(#img-optim-bg-gradient-2)" rx="8"></rect>
+					<g filter="url(#blur-img-icon-2)">
+						<path
+							fill="url(#img-optim-img-gradient)"
+							d="M65.34 22.02a8 8 0 0 1 11.32 0l52.32 52.32a8 8 0 0 1 0 11.32l-52.32 52.32a8 8 0 0 1-11.32 0L13.02 85.66a8 8 0 0 1 0-11.32l52.32-52.32ZM25 13a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z"
+						></path>
+					</g>
+				</g>
+				<rect width="99" height="74" x=".5" y=".5" stroke="#fff" stroke-opacity=".05" rx="7.5"
+				></rect>
+				<defs>
+					<linearGradient
+						id="img-optim-bg-gradient-2"
+						x1=".25"
+						x2="99.75"
+						y1="62.68"
+						y2="13.43"
+						gradientUnits="userSpaceOnUse"
+					>
+						<stop stop-color="#1D2025"></stop>
+						<stop offset="1" stop-color="#2D3039"></stop>
+					</linearGradient>
+					<linearGradient
+						id="img-optim-img-gradient"
+						x1=".25"
+						x2="99.75"
+						y1="62.68"
+						y2="13.43"
+						gradientUnits="userSpaceOnUse"
+					>
+						<stop stop-color="#3245FF"></stop>
+						<stop offset="1" stop-color="#BC52EE"></stop>
+					</linearGradient>
+					<clipPath id="clip-to-round-rect-2">
+						<rect width="100" height="75" fill="#fff" rx="8"></rect>
+					</clipPath>
+					<filter
+						id="blur-img-icon-2"
+						width="128.65"
+						height="135.32"
+						x="6.67"
+						y="9"
+						color-interpolation-filters="sRGB"
+						filterUnits="userSpaceOnUse"
+					>
+						<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+						<feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+						<feGaussianBlur result="effect1_foregroundBlur_4664_80025" stdDeviation="2"
+						></feGaussianBlur>
+					</filter>
+				</defs>
+			</svg>
+		</div>
+		{/* Unoptimized image graphic */}
+		<div
+			class:list={[
+				'absolute top-1/2 left-1/2',
+				'drop-shadow-lg',
+				'transition duration-500',
+				'-translate-x-[95%] -translate-y-2/3 scale-100 opacity-100 blur-0',
+				'group-hover:-translate-y-1/3 group-hover:scale-75 group-hover:opacity-75 group-hover:blur-[6px]',
+			]}
+		>
+			{/* Pixel size */}
+			<span
+				class="absolute -bottom-3 -right-3 p-[5px] text-astro-gray-200 font-mono tracking-wide text-sm bg-astro-gray-600 border border-white/5"
+			>
+				3600px
+			</span>
+			{/* Gray image representing unoptimized original file */}
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 100 75"
+				width="100"
+				height="75"
+			>
+				<g clip-path="url(#clip-to-round-rect-1)">
+					<rect width="100" height="75" fill="url(#img-optim-bg-gradient-1)" rx="8"></rect>
+					<g filter="url(#blur-img-icon-1)">
+						<path
+							fill="#fff"
+							fill-opacity=".2"
+							d="M65.34 22.02a8 8 0 0 1 11.32 0l52.32 52.32a8 8 0 0 1 0 11.32l-52.32 52.32a8 8 0 0 1-11.32 0L13.02 85.66a8 8 0 0 1 0-11.32l52.32-52.32ZM25 13a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z"
+						></path>
+					</g>
+				</g>
+				<rect width="99" height="74" x=".5" y=".5" stroke="#fff" stroke-opacity=".05" rx="7.5"
+				></rect>
+				<defs>
+					<linearGradient
+						id="img-optim-bg-gradient-1"
+						x1=".25"
+						x2="99.75"
+						y1="62.68"
+						y2="13.43"
+						gradientUnits="userSpaceOnUse"
+					>
+						<stop stop-color="#1D2025"></stop>
+						<stop offset="1" stop-color="#2D3039"></stop>
+					</linearGradient>
+					<clipPath id="clip-to-round-rect-1">
+						<rect width="100" height="75" fill="#fff" rx="8"></rect>
+					</clipPath>
+					<filter
+						id="blur-img-icon-1"
+						width="128.65"
+						height="135.32"
+						x="6.67"
+						y="9"
+						color-interpolation-filters="sRGB"
+						filterUnits="userSpaceOnUse"
+					>
+						<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+						<feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+						<feGaussianBlur result="effect1_foregroundBlur_4664_80025" stdDeviation="2"
+						></feGaussianBlur>
+					</filter>
+				</defs>
+			</svg>
+		</div>
+	</div>
+
+	{/* Text */}
+	<div class="p-4 xl:p-6 space-y-2 md:row-start-1 md:col-start-1">
+		<h3 class="text-base text-white font-semibold">Optimized Images</h3>
+		<p class="text-astro-gray-200 font-light text-sm xl:text-base md:text-pretty">
+			Eliminate layout shift and serve highly optimized, modern image formats with Astro’s built-in
+			components and utilities.
+		</p>
+	</div>
+</a>
