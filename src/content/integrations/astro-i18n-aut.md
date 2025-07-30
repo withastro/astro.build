@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-i18n-aut
 repoUrl: https://github.com/jlarmstrongiv/astro-i18n-aut
 homepageUrl: https://github.com/jlarmstrongiv/astro-i18n-aut/#readme
-downloads: 5551
+downloads: 5605
 image: /assets/integrations/astro-i18n-aut.svg
 ---

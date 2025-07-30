@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/cloudinary-image-service
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
 badge: new
-downloads: 264
+downloads: 265
 ---

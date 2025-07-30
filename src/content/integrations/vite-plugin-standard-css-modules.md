@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/vite-plugin-standard-css-modules
 repoUrl: https://github.com/JulianCataldo/vite-plugin-standard-css-modules
 homepageUrl: https://www.npmjs.com/package/vite-plugin-standard-css-modules
-downloads: 423
+downloads: 431
 ---
