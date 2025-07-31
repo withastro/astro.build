@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astrojs-mixpanel
 repoUrl: https://github.com/litlynx/astrojs-mixpanel
-homepageUrl: https://github.com/litlynx/astrojs-mixpanel#readme
+homepageUrl: https://www.npmjs.com/package/astrojs-mixpanel
 badge: new
 downloads: 194
 ---

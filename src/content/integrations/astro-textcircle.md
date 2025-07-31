@@ -7,6 +7,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-textcircle
 repoUrl: https://github.com/LoStisWorld/astro-textcircle
-homepageUrl: https://github.com/LoStisWorld/astro-textcircle#readme
+homepageUrl: https://www.npmjs.com/package/astro-textcircle
 downloads: 5
 ---
