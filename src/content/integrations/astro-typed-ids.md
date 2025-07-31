@@ -7,5 +7,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-typed-ids
 homepageUrl: https://github.com/florian-lefebvre/astro-typed-ids
-downloads: 11
+downloads: 10
 ---
