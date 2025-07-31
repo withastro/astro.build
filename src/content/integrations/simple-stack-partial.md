@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/simple-stack-partial
 repoUrl: https://github.com/bholmesdev/simple-stack
-homepageUrl: https://www.npmjs.com/package/simple-stack-partial
+homepageUrl: https://github.com/bholmesdev/simple-stack#readme
 downloads: 7
 ---
