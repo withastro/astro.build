@@ -7,7 +7,13 @@ authors:
 coverImage: "/src/content/blog/_images/whats-new-shared.webp"
 socialImage: "/src/content/blog/_images/whats-new-january/og.webp"
 lang: "en"
+startDate: "2024-01-01"
+endDate: "2024-02-01"
+related:
+  - whats-new-december-2023
+  - whats-new-november-2023
 ---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
 import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
 import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
 
@@ -211,7 +217,8 @@ export const sites = [
   { url: 'https://bloombacker.com/', title: '@jumpingback' },
 ];
 
-<ShowcaseGrid items={sites} />
+{/* <ShowcaseGrid items={sites} /> */}
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 
 ### Starlight in the wild
 
@@ -235,6 +242,7 @@ export const starlightSites = [
 { url: 'https://gibbok.github.io/typescript-book/', title: 'gibbok' },
 ];
 
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 <ShowcaseGrid items={starlightSites} />
 
 *Want to be on this list next month? Post your Astro websites, projects, apps, tools, blog posts, demos, and videos in our `#showcase` channel in [our Discord](https://astro.build/chat)!*

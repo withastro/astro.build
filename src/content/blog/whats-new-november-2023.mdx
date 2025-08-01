@@ -7,7 +7,12 @@ authors:
 coverImage: "/src/content/blog/_images/whats-new-shared.webp"
 socialImage: "/src/content/blog/_images/whats-new-november/og.webp"
 lang: "en"
+startDate: "2023-11-01"
+endDate: "2023-12-01"
+related:
+  - whats-new-october-2023
 ---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
 
 ## Releases
 
@@ -101,7 +106,8 @@ export const sites = [
   { url: 'https://kreativan.dev/', title: '@kreativan.' },
 ];
 
-<ShowcaseGrid items={sites} />
+{/* <ShowcaseGrid items={sites} /> */}
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 
 ### Starlight in the wild
 
@@ -123,6 +129,7 @@ export const starlightSites = [
   { url: 'https://shelterprotocol.net/', title: 'Shelter Protocol' },
 ];
 
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 <ShowcaseGrid items={starlightSites} />
 
 ## The “State of JS” Survey!

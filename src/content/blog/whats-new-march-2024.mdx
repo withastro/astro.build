@@ -7,7 +7,13 @@ authors:
 coverImage: "/src/content/blog/_images/whats-new-shared.webp"
 socialImage: "/src/content/blog/_images/whats-new-march/og.webp"
 lang: "en"
+startDate: "2024-03-01"
+endDate: "2024-04-01"
+related:
+  - whats-new-february-2024
+  - whats-new-january-2024
 ---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
 import ShowcaseGrid from './_whats-new-components/ShowcaseGrid.astro';
 import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
 import { YouTube } from '@astro-community/astro-embed-youtube';
@@ -184,7 +190,8 @@ export const sites = [
 	{ url: 'https://ecommerce-project-creative.netlify.app/', title:'@roboxgamer52'},
 ];
 
-<ShowcaseGrid items={sites} />
+{/* <ShowcaseGrid items={sites} /> */}
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 
 ### Starlight in the wild
 
@@ -205,6 +212,7 @@ export const starlightSites = [
 	{url: 'https://astro-embed.netlify.app/', title: 'astro-embed'}
 ];
 
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 <ShowcaseGrid items={starlightSites} />
 
 *Want to be on this list next month? Post your Astro websites, projects, apps, tools, blog posts, demos, and videos in our `#showcase` channel in [our Discord](https://astro.build/chat)!*

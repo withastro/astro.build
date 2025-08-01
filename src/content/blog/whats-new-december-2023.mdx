@@ -7,7 +7,13 @@ authors:
 coverImage: "/src/content/blog/_images/whats-new-shared.webp"
 socialImage: "/src/content/blog/_images/whats-new-december/og.webp"
 lang: "en"
+startDate: "2023-12-01"
+endDate: "2024-01-01"
+related:
+  - whats-new-november-2023
+  - whats-new-october-2023
 ---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
 
 From all of us at Astro, we'd like to thank you for spending 2023 with us!
 
@@ -182,7 +188,8 @@ export const sites = [
   { url: 'https://gruppoedoardo.it/', title: '@Proibito04'},
 ];
 
-<ShowcaseGrid items={sites} />
+{/* <ShowcaseGrid items={sites} /> */}
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 
 ### Starlight in the wild
 
@@ -212,4 +219,5 @@ export const starlightSites = [
   { url: 'https://contribute.docs.astro.build/', title: 'Astro Docs Docs (AD²)'},
 ];
 
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} />
 <ShowcaseGrid items={starlightSites} />
