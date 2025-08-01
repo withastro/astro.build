@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@pindoba/astro-card
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-card
 badge: new
-downloads: 60
+downloads: 61
 ---
