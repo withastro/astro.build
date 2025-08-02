@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@birdgg/astro-type-writter
 homepageUrl: https://www.npmjs.com/package/@birdgg/astro-type-writter
-downloads: 3
+downloads: 1
 ---

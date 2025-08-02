@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-lqip
 repoUrl: https://github.com/felixicaza/astro-lqip
 homepageUrl: https://github.com/felixicaza/astro-lqip
 badge: new
-downloads: 379
+downloads: 391
 ---
