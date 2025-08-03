@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/zastro-websockets-node
 repoUrl: https://github.com/zachhandley/ZAstroWebsockets
 homepageUrl: https://github.com/zachhandley/ZAstroWebsockets#readme
 badge: new
-downloads: 420
+downloads: 421
 ---

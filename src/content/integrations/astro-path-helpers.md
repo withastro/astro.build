@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-path-helpers
 repoUrl: https://github.com/heycassidy/astro-path-helpers
 homepageUrl: https://github.com/heycassidy/astro-path-helpers
-downloads: 90
+downloads: 89
 ---

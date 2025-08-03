@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-get-remote-img
 repoUrl: https://github.com/WALKAL0NE/astro-get-remote-assets
 homepageUrl: https://github.com/WALKAL0NE/astro-get-remote-assets#readme
 badge: new
-downloads: 315
+downloads: 323
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/stripe-astro-loader
 repoUrl: https://github.com/notrab/stripe-astro-loader
 homepageUrl: https://www.npmjs.com/package/stripe-astro-loader
-downloads: 67
+downloads: 64
 ---
