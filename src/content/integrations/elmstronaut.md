@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/elmstronaut
 repoUrl: https://github.com/feedbackone/elmstronaut
-homepageUrl: https://www.npmjs.com/package/elmstronaut
-downloads: 22
+homepageUrl: https://github.com/feedbackone/elmstronaut
+downloads: 12
 ---

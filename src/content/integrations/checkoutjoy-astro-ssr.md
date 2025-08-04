@@ -6,6 +6,6 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/checkoutjoy-astro-ssr
 repoUrl: https://github.com/mdwt/checkoutjoy-astro-ssr
-homepageUrl: https://www.npmjs.com/package/checkoutjoy-astro-ssr
-downloads: 6
+homepageUrl: https://github.com/mdwt/checkoutjoy-astro-ssr#readme
+downloads: 1
 ---

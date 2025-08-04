@@ -1,4 +1,4 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import authors from '../data/authors/authors.json';
@@ -97,6 +97,7 @@ export const collections = {
 						'This should be pre-optimized as a WebP to ensure good performance.',
 				),
 			lang: z.enum(['en']).default('en').describe('The language of this blog post (optional)'),
+			related: z.array(z.string()).default([]),
 		}),
 	}),
 	caseStudies: defineCollection({
@@ -223,5 +224,21 @@ export const collections = {
 					description: z.string(),
 				})
 				.strict(),
+	}),
+	promos: defineCollection({
+		loader: file('./src/content/promos/promos.yml'),
+		schema: ({ image }) =>
+			z.object({
+				href: z.string(),
+				title: z.string(),
+				eyebrow: z.string().optional(),
+				description: z.string(),
+				image: z
+					.object({
+						alt: z.string(),
+						src: image(),
+					})
+					.optional(),
+			}),
 	}),
 };

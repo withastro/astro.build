@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-simple-modal
 repoUrl: https://github.com/henrycorredor/astro-simple-modal
-homepageUrl: https://github.com/henrycorredor/astro-simple-modal
+homepageUrl: https://kurilabs.com/projects/astro-simple-modal
 downloads: 308
 ---

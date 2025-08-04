@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-tips
 repoUrl: https://github.com/xingwangzhe/astro-tips
-homepageUrl: https://www.npmjs.com/package/astro-tips
-downloads: 467
+homepageUrl: https://github.com/xingwangzhe/astro-tips
+downloads: 97
 ---

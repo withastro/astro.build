@@ -5,6 +5,6 @@ description: An Astro integration for the Contentful Headless CMS
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/contentful-astro
-homepageUrl: https://www.npmjs.com/package/contentful-astro
-downloads: 4
+homepageUrl: https://github.com/ajsummerfield/contentful-astro#readme
+downloads: 6
 ---

@@ -19,7 +19,7 @@ const { bgClass = 'bg-black', ...head } = Astro.props;
 <html
 	lang="en"
 	class:list={[
-		'astro-gray-700 overflow-x-hidden break-words text-astro-gray-100 [color-scheme:dark] [word-break:break-word]',
+		'astro-gray-700 overflow-x-clip break-words text-astro-gray-100 [color-scheme:dark] [word-break:break-word]',
 		bgClass,
 		Astro.props.class,
 	]}
@@ -27,7 +27,7 @@ const { bgClass = 'bg-black', ...head } = Astro.props;
 	<head>
 		<BaseHead {...head} />
 	</head>
-	<body class="flex min-h-screen max-w-screen flex-col overflow-x-hidden">
+	<body class="flex min-h-screen max-w-screen flex-col overflow-x-clip">
 		<SkipLink />
 		<div
 			id="nav"

@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@swup/astro
 repoUrl: https://github.com/swup/astro
 homepageUrl: https://swup.js.org
-downloads: 54907
+downloads: 73950
 ---

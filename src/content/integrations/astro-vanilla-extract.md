@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-vanilla-extract
 repoUrl: https://github.com/codiume/orbit
-homepageUrl: https://www.npmjs.com/package/astro-vanilla-extract
-downloads: 49
+homepageUrl: https://github.com/codiume/orbit
+downloads: 16
 ---

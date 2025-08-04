@@ -6,6 +6,6 @@ description: An Astro integration to get typed ids for Content Layer entries,
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-typed-ids
-homepageUrl: https://www.npmjs.com/package/astro-typed-ids
-downloads: 13
+homepageUrl: https://github.com/florian-lefebvre/astro-typed-ids
+downloads: 10
 ---
