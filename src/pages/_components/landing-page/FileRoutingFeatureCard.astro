@@ -36,18 +36,18 @@ import { Icon } from 'astro-icon/components';
 		<div class="w-56 mx-auto perspective">
 			{/* File tree */}
 			<ul
-				class="transition duration-1000 text-sm text-astro-gray-200 antialiased leading-prose pl-3 pt-2.5 pb-20 rounded-lg border border-white/20 bg-clip-padding bg-gradient-to-tr from-[#1D2025] to-[#2D3039] shadow-md mask-linear-gradient-to-b"
+				class="transition duration-1000 text-sm text-astro-gray-200 antialiased leading-prose pl-2 pt-1.5 pb-20 rounded-lg border border-white/20 bg-clip-padding bg-gradient-to-tr from-[#1D2025] to-[#2D3039] shadow-md mask-linear-gradient-to-b"
 			>
-				<li class="grayscale group-hover:grayscale-0 transition duration-1000">
+				<li data-file-tree class="grayscale group-hover:grayscale-0 transition duration-1000">
 					<span class="flex gap-1 items-center">
 						<Icon name="chevron" size="10px" class="m-1" /> pages
 					</span>
-					<ul class="pl-4">
+					<ul>
 						<li>
 							<span class="flex gap-1 items-center">
 								<Icon name="chevron" size="10px" class="m-1" /> api
 							</span>
-							<ul class="pl-4">
+							<ul>
 								<li class="flex gap-1 items-center">
 									<svg xmlns="http://www.w3.org/2000/svg" width="18" viewBox="0 0 18 18">
 										<path
@@ -76,15 +76,21 @@ import { Icon } from 'astro-icon/components';
 							<span class="flex gap-1 items-center">
 								<Icon name="chevron" size="10px" class="m-1" /> blog
 							</span>
-							<ul class="pl-4">
+							<ul>
 								<li class="flex gap-1 items-center">
-									<Icon name="logos/astro-color" /> [slug.astro]
+									<Icon name="logos/astro-color" width={18} /> [slug.astro]
 								</li>
 							</ul>
 						</li>
-						<li class="flex gap-1 items-center"><Icon name="logos/astro-color" /> 404.astro</li>
-						<li class="flex gap-1 items-center"><Icon name="logos/astro-color" /> about.astro</li>
-						<li class="flex gap-1 items-center"><Icon name="logos/astro-color" /> index.astro</li>
+						<li class="flex gap-1 items-center">
+							<Icon name="logos/astro-color" width={18} /> 404.astro
+						</li>
+						<li class="flex gap-1 items-center">
+							<Icon name="logos/astro-color" width={18} /> about.astro
+						</li>
+						<li class="flex gap-1 items-center">
+							<Icon name="logos/astro-color" width={18} /> index.astro
+						</li>
 					</ul>
 				</li>
 			</ul>
@@ -108,6 +114,15 @@ import { Icon } from 'astro-icon/components';
 			.group:hover & {
 				transform: none;
 			}
+		}
+	}
+	[data-file-tree] {
+		ul {
+			@apply pl-2;
+		}
+
+		li {
+			@apply border-l border-astro-gray-400 pl-2;
 		}
 	}
 </style>
