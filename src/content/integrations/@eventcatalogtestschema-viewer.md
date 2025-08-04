@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@eventcatalogtest/schema-viewer
 homepageUrl: https://www.npmjs.com/package/@eventcatalogtest/schema-viewer
-downloads: 11
+downloads: 7
 ---
