@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-seo-schema
 repoUrl: https://github.com/codiume/orbit
-homepageUrl: https://github.com/codiume/orbit
+homepageUrl: https://www.npmjs.com/package/astro-seo-schema
 downloads: 28809
 ---

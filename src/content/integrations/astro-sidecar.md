@@ -7,6 +7,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-sidecar
 repoUrl: https://github.com/JulianCataldo/astro-sidecar
-homepageUrl: https://github.com/JulianCataldo/astro-sidecar#readme
+homepageUrl: https://www.npmjs.com/package/astro-sidecar
 downloads: 12
 ---

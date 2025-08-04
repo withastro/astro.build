@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-social-images
 repoUrl: https://github.com/Princesseuh/astro-social-images
-homepageUrl: https://github.com/Princesseuh/astro-social-images#readme
+homepageUrl: https://www.npmjs.com/package/astro-social-images
 downloads: 27
 ---

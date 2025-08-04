@@ -6,10 +6,8 @@ description: Astro integration to download remote assets from CMS and update
 categories:
   - media
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-get-remote-img
 repoUrl: https://github.com/WALKAL0NE/astro-get-remote-assets
 homepageUrl: https://github.com/WALKAL0NE/astro-get-remote-assets#readme
-badge: new
 downloads: 213
 ---

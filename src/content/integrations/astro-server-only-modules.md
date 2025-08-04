@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-server-only-modules
 repoUrl: https://github.com/lilnasy/gratelets
-homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/server-only-modules
+homepageUrl: https://www.npmjs.com/package/astro-server-only-modules
 downloads: 51
 ---

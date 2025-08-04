@@ -9,6 +9,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-svgs
 repoUrl: https://github.com/ACP-CODE/astro-svgs
-homepageUrl: https://github.com/ACP-CODE/astro-svgs#readme
+homepageUrl: https://www.npmjs.com/package/astro-svgs
 downloads: 646
 ---

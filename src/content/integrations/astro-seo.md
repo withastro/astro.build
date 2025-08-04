@@ -6,7 +6,7 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-seo
 repoUrl: https://github.com/jonasmerlin/astro-seo
-homepageUrl: https://github.com/jonasmerlin/astro-seo#readme
+homepageUrl: https://www.npmjs.com/package/astro-seo
 downloads: 140172
 image: /assets/integrations/astro-seo.png
 ---

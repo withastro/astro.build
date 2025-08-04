@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-social-share
 repoUrl: https://github.com/silent1mezzo/astro-social-share
-homepageUrl: https://github.com/silent1mezzo/astro-social-share#readme
+homepageUrl: https://www.npmjs.com/package/astro-social-share
 downloads: 2336
 ---
