@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
-import pLimit from 'p-limit';
 import slugify from 'slugify';
 import glob from 'tiny-glob';
 import * as yaml from 'yaml';
@@ -123,8 +122,6 @@ async function unsafeUpdateAllIntegrations() {
 	const existingIntegrations = new Set();
 	/** @type {string[]} */
 	const deprecatedIntegrations = [];
-
-	const fetchLimit = pLimit(10);
 
 	// loop through all integrations already published to the catalog
 	await Promise.all(
