@@ -1,15 +1,18 @@
 ---
-const { href, title, description } = Astro.props;
+import type { ComponentProps } from 'astro/types';
+// biome-ignore lint/style/useImportType: Biome doesn’t know we’re using this component
+import CardText from './feature-cards/CardText.astro';
+
+interface Props extends ComponentProps<typeof CardText> {
+	href: string;
+}
+
+const { href, ...props } = Astro.props;
 ---
 
 <a
 	href={href}
 	class="flex flex-col bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
 >
-	<div class="p-4 xl:p-6 space-y-2">
-		<h3 class="text-base text-white font-semibold">{title}</h3>
-		<p class="text-astro-gray-200 font-light text-sm xl:text-base text-pretty">
-			{description}
-		</p>
-	</div>
+	<CardText {...props} />
 </a>

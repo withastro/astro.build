@@ -1,0 +1,15 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	class?: string;
+}
+const { title, description, class: classNames = '' } = Astro.props;
+---
+
+<div class:list={['p-4 xl:p-6 space-y-2', classNames]}>
+	<h3 class="text-base text-white font-semibold">{title}</h3>
+	<p class="text-astro-gray-200 font-light text-sm xl:text-base text-pretty">
+		{description}
+	</p>
+</div>
