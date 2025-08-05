@@ -19,7 +19,7 @@ export function limitedFetch(url, init = {}) {
 				headers: { 'User-Agent': 'astro.build/integrations; v1', ...init.headers },
 			});
 
-			if (!res.ok) {
+			if (!res.ok && res.status !== 404) {
 				console.error(`[${url}] ${res.status} ${res.statusText} (Attempt ${attempt})`);
 				throw new Error();
 			}
