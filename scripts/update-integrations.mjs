@@ -2,9 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
+import pLimit from 'p-limit';
 import slugify from 'slugify';
 import glob from 'tiny-glob';
 import * as yaml from 'yaml';
+import { limitedFetch } from './fetch.mjs';
 import {
 	badgeForPackage,
 	blocklist,
@@ -122,6 +124,8 @@ async function unsafeUpdateAllIntegrations() {
 	/** @type {string[]} */
 	const deprecatedIntegrations = [];
 
+	const fetchLimit = pLimit(10);
+
 	// loop through all integrations already published to the catalog
 	await Promise.all(
 		entries.map(async (entry) => {
@@ -143,7 +147,7 @@ async function unsafeUpdateAllIntegrations() {
 				// if not, replace it by the link to the package on npm
 				let fixHomepageUrl = false;
 				try {
-					const response = await fetch(details.homepageUrl, { method: 'HEAD' });
+					const response = await limitedFetch(details.homepageUrl, { method: 'HEAD' });
 					fixHomepageUrl = response.status >= 400;
 				} catch {
 					// such an error may occur when the hostname is unknown
