@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/expressive-code-fullscreen
 repoUrl: https://github.com/frostybee/expressive-code-fullscreen
 homepageUrl: https://github.com/frostybee/expressive-code-fullscreen
 badge: new
-downloads: 220
+downloads: 227
 ---

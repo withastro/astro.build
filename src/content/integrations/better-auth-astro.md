@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/better-auth-astro
 repoUrl: https://ryanleecode/systemfsoftware
 homepageUrl: https://www.npmjs.com/package/better-auth-astro
 badge: new
-downloads: 605
+downloads: 526
 ---
