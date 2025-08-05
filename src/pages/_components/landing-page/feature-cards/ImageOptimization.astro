@@ -1,12 +1,13 @@
 ---
-import CardText from './CardText.astro';
+import FeatureCard from './FeatureCard.astro';
 ---
 
-<a
+<FeatureCard
+	title="Optimized Images"
+	description="Eliminate layout shift and serve highly optimized, modern image formats with Astro’s built-in components and utilities."
 	href="https://docs.astro.build/en/guides/images/#astro-components-for-images"
-	class="group md:col-span-2 grid grid-cols-1 md:grid-cols-2 bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	layout="wide"
 >
-	{/* Illustration */}
 	<div aria-hidden="true" class="relative p-4 min-h-52 md:min-h-40 md:col-start-2">
 		{/* Dotted pattern background */}
 		<div
@@ -179,11 +180,4 @@ import CardText from './CardText.astro';
 			</svg>
 		</div>
 	</div>
-
-	{/* Text */}
-	<CardText
-		title="Optimized Images"
-		description="Eliminate layout shift and serve highly optimized, modern image formats with Astro’s built-in components and utilities."
-		class="md:row-start-1 md:col-start-1"
-	/>
-</a>
+</FeatureCard>

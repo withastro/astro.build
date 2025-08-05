@@ -1,17 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components';
-import CardText from './CardText.astro';
+import FeatureCard from './FeatureCard.astro';
 ---
 
-<a
+<FeatureCard
+	title="File-Based Routing"
+	description="Astro’s flexible routing system lets you understand your site’s structure at a glance."
 	href="https://docs.astro.build/en/guides/routing/"
-	class="row-span-2 group flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	layout="tall"
+	flip
 >
-	<CardText
-		title="File-Based Routing"
-		description="Astro’s flexible routing system lets you understand your site’s structure at a glance."
-	/>
-
 	<div aria-hidden="true" class="max-h-56 relative p-4">
 		{/* Dotted pattern background */}
 		<div
@@ -99,7 +97,7 @@ import CardText from './CardText.astro';
 		>
 		</div>
 	</div>
-</a>
+</FeatureCard>
 
 <style>
 	.perspective {

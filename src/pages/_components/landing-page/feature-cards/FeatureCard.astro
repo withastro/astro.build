@@ -1,18 +1,44 @@
 ---
-import type { ComponentProps } from 'astro/types';
-// biome-ignore lint/style/useImportType: Biome doesn’t know we’re using this component
-import CardText from './CardText.astro';
+import type { HTMLAttributes } from 'astro/types';
 
-interface Props extends ComponentProps<typeof CardText> {
+interface Props extends HTMLAttributes<'div'> {
+	/** Docs link for this feature. */
 	href: string;
+	/** Feature title. */
+	title: string;
+	/** Feature description. */
+	description: string;
+	/** Set this card’s layout in the grid: `tall` takes up two rows, `wide` takes up two columns. */
+	layout?: 'default' | 'tall' | 'wide';
+	/** Render slot content after card text instead of before. */
+	flip?: boolean;
 }
 
-const { href, ...props } = Astro.props;
+const { href, title, description, layout = 'default', flip = false, ...props } = Astro.props;
 ---
 
 <a
 	href={href}
-	class="flex flex-col bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	class:list={[
+		'group',
+		'flex flex-col',
+		'bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden',
+		{
+			default: '',
+			tall: 'row-span-2 justify-between',
+			wide: 'md:col-span-2 md:grid md:grid-cols-2',
+		}[layout],
+	]}
+	{...props}
 >
-	<CardText {...props} />
+	{!flip && <slot />}
+	<div
+		class:list={['p-4 xl:p-6 space-y-2', { 'md:row-start-1 md:col-start-1': layout === 'wide' }]}
+	>
+		<h3 class="text-base text-white font-semibold">{title}</h3>
+		<p class="text-astro-gray-200 font-light text-sm xl:text-base text-pretty">
+			{description}
+		</p>
+	</div>
+	{flip && <slot />}
 </a>

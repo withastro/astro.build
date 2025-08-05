@@ -1,10 +1,12 @@
 ---
-import CardText from './CardText.astro';
+import FeatureCard from './FeatureCard.astro';
 ---
 
-<a
+<FeatureCard
+	title="View Transitions"
+	description="Seamlessly morph, fade, and swipe across pages with built-in, browser-native View Transition APIs."
 	href="https://docs.astro.build/en/guides/view-transitions/"
-	class="row-span-2 group flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	layout="tall"
 >
 	<div
 		class="pt-4 px-4 lg:pt-6 min-h-52 space-y-2 mix-blend-luminosity group-hover:mix-blend-normal"
@@ -34,9 +36,4 @@ import CardText from './CardText.astro';
 			</div>
 		</div>
 	</div>
-
-	<CardText
-		title="View Transitions"
-		description="Seamlessly morph, fade, and swipe across pages with built-in, browser-native View Transition APIs."
-	/>
-</a>
+</FeatureCard>

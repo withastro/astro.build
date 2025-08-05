@@ -1,10 +1,12 @@
 ---
-import CardText from './CardText.astro';
+import FeatureCard from './FeatureCard.astro';
 ---
 
-<a
+<FeatureCard
+	title="Simple Server Templating"
+	description="If you know HTML, you already know enough to write your first Astro component. Build powerful server components everyone on your team understands."
 	href="https://docs.astro.build/en/basics/astro-components/"
-	class="row-span-2 group flex flex-col bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	layout="tall"
 >
 	<div aria-hidden="true" class="max-h-56 min-h-52 relative p-4">
 		{/* Glows */}
@@ -110,9 +112,4 @@ import CardText from './CardText.astro';
 			</div>
 		</div>
 	</div>
-
-	<CardText
-		title="Simple Server Templating"
-		description="If you know HTML, you already know enough to write your first Astro component. Build powerful server components everyone on your team understands."
-	/>
-</a>
+</FeatureCard>

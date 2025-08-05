@@ -1,10 +1,12 @@
 ---
-import CardText from './CardText.astro';
+import FeatureCard from './FeatureCard.astro';
 ---
 
-<a
+<FeatureCard
 	href="https://docs.astro.build/en/basics/astro-components/"
-	class="group row-span-2 flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	title="Zero JavaScript, By Default"
+	description="Astro only ships the JavaScript you need and automatically strips away the rest for a faster website."
+	layout="tall"
 >
 	<div class="pt-4 px-4 lg:pt-6 min-h-52 space-y-2 relative">
 		<div
@@ -28,9 +30,4 @@ import CardText from './CardText.astro';
 			0
 		</p>
 	</div>
-
-	<CardText
-		title="Zero JavaScript, By Default"
-		description="Astro only ships the JavaScript you need and automatically strips away the rest for a faster website."
-	/>
-</a>
+</FeatureCard>

@@ -1,12 +1,14 @@
 ---
 import { Icon } from 'astro-icon/components';
-import CardText from './CardText.astro';
+import FeatureCard from './FeatureCard.astro';
 ---
 
-<a
+<FeatureCard
 	id="content-collections"
+	title="Content Collections"
+	description="Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation."
 	href="https://docs.astro.build/en/guides/content-collections/"
-	class="group row-span-2 flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	layout="tall"
 >
 	<div class="pt-4 lg:pt-6 min-h-52">
 		<div class="size-full flex items-center justify-between overflow-hidden">
@@ -96,12 +98,7 @@ import CardText from './CardText.astro';
 			</div>
 		</div>
 	</div>
-
-	<CardText
-		title="Content Collections"
-		description="Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation."
-	/>
-</a>
+</FeatureCard>
 
 <style>
 	#scanner-inlet {
