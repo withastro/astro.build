@@ -1,28 +1,13 @@
 import { z } from 'astro/zod';
 import { format, subDays } from 'date-fns';
-import pLimit from 'p-limit';
-import pRetry from 'p-retry';
-
-const fetchLimit = pLimit(10);
+import { limitedFetch } from './fetch.mjs';
 
 /**
  * @param {string | URL} url
  */
-function fetchJson(url) {
-	return pRetry(async (attempt) => {
-		// Back off retries to give time to recover from 429 Too Many Requests errors.
-		await new Promise((resolve) => setTimeout(resolve, 2000 * (attempt - 1)));
-		return fetchLimit(async () => {
-			const res = await fetch(url, { headers: { 'User-Agent': 'astro.build/integrations; v1' } });
-
-			if (!res.ok) {
-				console.error(`[${url}] ${res.status} ${res.statusText} (Attempt ${attempt})`);
-				throw new Error();
-			}
-
-			return await res.json();
-		});
-	});
+async function fetchJson(url) {
+	const res = await limitedFetch(url);
+	return await res.json();
 }
 
 const API_BASE_URL = 'https://api.npmjs.org/';
