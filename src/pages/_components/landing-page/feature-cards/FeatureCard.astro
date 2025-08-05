@@ -17,11 +17,11 @@ interface Props extends HTMLAttributes<'div'> {
 const { href, title, description, layout = 'default', flip = false, ...props } = Astro.props;
 ---
 
-<a
-	href={href}
+<div
 	class:list={[
-		'group',
+		'group relative',
 		'flex flex-col',
+		'has-[:focus-visible]:outline has-[:focus-visible]:outline-astro-pink-light',
 		'bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden',
 		{
 			default: '',
@@ -35,10 +35,17 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 	<div
 		class:list={['p-4 xl:p-6 space-y-2', { 'md:row-start-1 md:col-start-1': layout === 'wide' }]}
 	>
-		<h3 class="text-base text-white font-semibold">{title}</h3>
+		<h3 class="text-base text-white font-semibold">
+			<a
+				{href}
+				class="after:absolute after:inset-0 after:z-10 supports-[selector(:has(:focus-visible))]:focus-visible:outline-none"
+			>
+				{title}
+			</a>
+		</h3>
 		<p class="text-astro-gray-200 font-light text-sm xl:text-base text-pretty">
 			{description}
 		</p>
 	</div>
 	{flip && <slot />}
-</a>
+</div>
