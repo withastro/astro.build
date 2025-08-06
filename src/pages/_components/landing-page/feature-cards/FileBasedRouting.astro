@@ -22,11 +22,11 @@ import FeatureCard from './FeatureCard.astro';
 		</div>
 		{/* Glows */}
 		<div
-			class="absolute -bottom-8 left-1/2 -translate-x-full bg-blue-purple-gradient size-40 rounded-full blur-3xl opacity-5 group-hocus:opacity-60 transition duration-[1.5s]"
+			class="absolute -bottom-8 left-1/2 -translate-x-full bg-blue-purple-gradient size-40 rounded-full blur-3xl opacity-5 group-hocus:opacity-60 transition motion-safe:duration-[1.5s]"
 		>
 		</div>
 		<div
-			class="absolute top-8 left-1/2 translate-x-8 bg-red-pink-gradient size-24 rounded-full blur-2xl opacity-5 group-hocus:opacity-40 transition duration-[1.5s]"
+			class="absolute top-8 left-1/2 translate-x-8 bg-red-pink-gradient size-24 rounded-full blur-2xl opacity-5 group-hocus:opacity-40 transition motion-safe:duration-[1.5s]"
 		>
 		</div>
 		{/* Card */}
@@ -104,14 +104,17 @@ import FeatureCard from './FeatureCard.astro';
 		perspective: 500px;
 		transform-style: preserve-3d;
 		perspective-origin: 50% 30%;
-		& > ul {
-			will-change: transform;
-			transform: rotateZ(-10deg) rotateY(20deg) rotateX(40deg) translateX(5%) translateY(-10%)
-				translateZ(50px);
-			.group:hover &,
-			.group:has(:focus-visible) &,
-			.group.in-viewport & {
-				transform: none;
+
+		@media (prefers-reduced-motion: no-preference) {
+			& > ul {
+				will-change: transform;
+				transform: rotateZ(-10deg) rotateY(20deg) rotateX(40deg) translateX(5%) translateY(-10%)
+					translateZ(50px);
+				.group:hover &,
+				.group:has(:focus-visible) &,
+				.group.in-viewport & {
+					transform: none;
+				}
 			}
 		}
 	}
