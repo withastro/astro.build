@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-reading-time
 repoUrl: https://github.com/mogeko/mogeko
 homepageUrl: https://github.com/mogeko/mogeko/tree/master/packages/astro-reading-time#readme
-downloads: 57
+downloads: 61
 ---
