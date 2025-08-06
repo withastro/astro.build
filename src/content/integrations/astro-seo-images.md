@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-seo-images
 homepageUrl: https://github.com/davidwarrington/astro-seo-images
-downloads: 98
+downloads: 25
 ---

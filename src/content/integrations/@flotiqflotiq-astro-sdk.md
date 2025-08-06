@@ -6,5 +6,5 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/@flotiq/flotiq-astro-sdk
 homepageUrl: https://www.npmjs.com/package/@flotiq/flotiq-astro-sdk
-downloads: 13
+downloads: 11
 ---
