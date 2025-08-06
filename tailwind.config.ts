@@ -297,5 +297,16 @@ export default {
 		}),
 
 		containerQueries,
+
+		plugin(function hocusPlugin(api) {
+			api.addVariant(
+				'hocus',
+				'&:where(:hover, :focus-visible, :has(:focus-visible), .in-viewport)',
+			);
+			api.addVariant(
+				'group-hocus',
+				'.group:where(:hover, :focus-visible, :has(:focus-visible), .in-viewport) &',
+			);
+		}),
 	],
 } satisfies Config;

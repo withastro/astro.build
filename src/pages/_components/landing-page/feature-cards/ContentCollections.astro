@@ -149,12 +149,12 @@ import FeatureCard from './FeatureCard.astro';
 		animation-play-state: paused;
 	}
 
-	#content-collections:hover #unscanned-docs-container {
+	#content-collections:where(:hover, :has(:focus-visible), .in-viewport) #unscanned-docs-container {
 		animation-play-state: running;
 		animation: marquee 50s linear infinite;
 	}
 
-	#content-collections:hover #scanned-docs-container {
+	#content-collections:where(:hover, :has(:focus-visible), .in-viewport) #scanned-docs-container {
 		animation-play-state: running;
 		animation: marquee 50s linear infinite;
 	}
@@ -177,23 +177,3 @@ import FeatureCard from './FeatureCard.astro';
 		}
 	}
 </style>
-
-<script>
-	const canHover = window.matchMedia('(hover: hover)').matches;
-	if (!canHover) {
-		const container = document.getElementById('content-collections')!;
-		const unscannedDocsContainer = document.getElementById('unscanned-docs-container')!;
-		const scannedDocsContainer = document.getElementById('scanned-docs-container')!;
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				const playState = entries[0].isIntersecting ? 'running' : 'paused';
-				scannedDocsContainer.style.animationPlayState = playState;
-				unscannedDocsContainer.style.animationPlayState = playState;
-			},
-			{ root: null, threshold: 0.8 },
-		);
-
-		observer.observe(container);
-	}
-</script>

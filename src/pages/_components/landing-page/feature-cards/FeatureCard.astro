@@ -18,6 +18,7 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 ---
 
 <div
+	data-track-visibility
 	class:list={[
 		'group relative',
 		'flex flex-col',
@@ -49,3 +50,41 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 	</div>
 	{flip && <slot />}
 </div>
+
+<script>
+	// This script tracks the visibility within the viewport of feature cards for devices where hover
+	// is not supported with the main input method, most commonly this means touch devices like phones
+	// and tablets.
+	// On these devices, when a card is within the viewport, we toggle an `in-viewport` class.
+	// This allows animations and hover states to be triggered when scrolled to on devices where these
+	// would never be triggered on hover.
+
+	const elementsToObserve = document.querySelectorAll('[data-track-visibility]');
+
+	/** Toggle the `in-viewport` class name on an element. */
+	const markVisible = (el: Element, isVisible: boolean) =>
+		el.classList.toggle('in-viewport', isVisible);
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) markVisible(entry.target, entry.isIntersecting);
+		},
+		{ threshold: 0.8 },
+	);
+
+	/** Utility that enables/disables observation of the elements we’re tracking. */
+	const toggleObservation = (hasHover: boolean) => {
+		elementsToObserve.forEach((el) => {
+			observer[hasHover ? 'unobserve' : 'observe'](el);
+			// Clear viewport state if hover has been enabled.
+			if (hasHover) markVisible(el, false);
+		});
+	};
+
+	// Check if the device supports hover with the primary input device.
+	const hasHoverMediaQuery = window.matchMedia('(hover: hover)');
+
+	// Enable/disable observation and watch for changes to hover support.
+	toggleObservation(hasHoverMediaQuery.matches);
+	hasHoverMediaQuery.addEventListener('change', (event) => toggleObservation(event.matches));
+</script>
