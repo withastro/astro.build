@@ -65,9 +65,18 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 	const markVisible = (el: Element, isVisible: boolean) =>
 		el.classList.toggle('in-viewport', isVisible);
 
-	const observer = new IntersectionObserver(
+	/** Intersection observer that removes `in-viewport` class when an element fully exits the viewport. */
+	const offScreenObserver = new IntersectionObserver((entries) => {
+		for (const entry of entries) {
+			if (!entry.isIntersecting) markVisible(entry.target, false);
+		}
+	});
+	/** Intersection observer that adds `in-viewport` class when an element has mostly entered the viewport. */
+	const onScreenObserver = new IntersectionObserver(
 		(entries) => {
-			for (const entry of entries) markVisible(entry.target, entry.isIntersecting);
+			for (const entry of entries) {
+				if (entry.isIntersecting) markVisible(entry.target, true);
+			}
 		},
 		{ threshold: 0.8 },
 	);
@@ -75,9 +84,11 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 	/** Utility that enables/disables observation of the elements we’re tracking. */
 	const toggleObservation = (hasHover: boolean) => {
 		elementsToObserve.forEach((el) => {
-			observer[hasHover ? 'unobserve' : 'observe'](el);
 			// Clear viewport state if hover has been enabled.
 			if (hasHover) markVisible(el, false);
+			const method = hasHover ? 'unobserve' : 'observe';
+			offScreenObserver[method](el);
+			onScreenObserver[method](el);
 		});
 	};
 
