@@ -82,7 +82,10 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 	};
 
 	// Check if the device supports hover with the primary input device.
-	const hasHoverMediaQuery = window.matchMedia('(hover: hover)');
+	// We rely on `pointer: fine` in addition to the hover query to work around touch devices that
+	// report hover support due to connected styluses even when they shouldn’t. (Observed in Chrome &
+	// Samsung Internet on a Xiaomi tablet and Samsung phone.)
+	const hasHoverMediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 	// Enable/disable observation and watch for changes to hover support.
 	toggleObservation(hasHoverMediaQuery.matches);
