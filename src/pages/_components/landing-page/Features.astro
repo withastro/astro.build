@@ -31,7 +31,24 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 			title="UI Integrations"
 			href="https://docs.astro.build/en/guides/framework-components/"
 			description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
-		/>
+			flip
+		>
+			<div
+				class="px-4 pb-4 xl:px-6 flex gap-4 xl:gap-6 items-center grayscale opacity-65 group-hocus:opacity-100 group-hocus:grayscale-0 transition duration-500"
+			>
+				{
+					[
+						'logos/angular',
+						'logos/preact-logomark',
+						'logos/qwik',
+						'logos/react-logomark',
+						'logos/solidjs-icon',
+						'logos/svelte-logomark',
+						'logos/vue-logomark',
+					].map((name) => <Icon {name} class="w-7 h-auto" />)
+				}
+			</div>
+		</Card>
 
 		<FileBasedRouting />
 
@@ -47,6 +64,29 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 			description="Write type-safe backend functions that you can call directly from your frontend JavaScript client code."
 		/>
 
+		<Card
+			title="Deployment Adapters"
+			href="https://astro.build/integrations/?search=&categories%5B%5D=adapters"
+			description="One-line configuration for Netlify, Vercel, AWS, or your favorite hosting platform."
+			flip
+		>
+			<div
+				class="px-4 pb-4 xl:px-6 flex gap-4 xl:gap-6 items-center grayscale opacity-65 group-hocus:opacity-100 group-hocus:grayscale-0 transition duration-500"
+			>
+				{
+					[
+						'logos/node',
+						'logos/cloudflare-logomark',
+						'logos/vercel-logomark',
+						'logos/netlify-logomark',
+						'logos/sst',
+						'logos/deno',
+						'logos/aws',
+					].map((name) => <Icon {name} class="w-7 h-auto" />)
+				}
+			</div>
+		</Card>
+
 		<ServerTemplating />
 
 		<Card
@@ -54,11 +94,7 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 			href="https://docs.astro.build/en/guides/environment-variables/"
 			description="Avoid common configuration mistakes with a built-in API to manage your environment variables."
 		/>
-		<Card
-			title="Deployment Adapters"
-			href="https://astro.build/integrations/?search=&categories%5B%5D=adapters"
-			description="Add an integration to instantly customize your project for Netlify, Vercel, AWS, or your favorite hosting platform."
-		/>
+
 		<Card
 			title="Dev Toolbar"
 			href="https://docs.astro.build/en/guides/dev-toolbar/"
