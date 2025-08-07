@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-gtm
 repoUrl: https://github.com/codiume/orbit
 homepageUrl: https://github.com/codiume/orbit
 badge: new
-downloads: 227
+downloads: 229
 ---

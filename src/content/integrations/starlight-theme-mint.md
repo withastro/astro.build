@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starlight-theme-mint
 repoUrl: https://github.com/nexmoe/starlight-theme-mint
 homepageUrl: https://www.npmjs.com/package/starlight-theme-mint
 badge: new
-downloads: 388
+downloads: 390
 ---
