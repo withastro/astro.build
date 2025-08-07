@@ -1,0 +1,58 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Icon } from 'astro-icon/components';
+import Image from 'astro/components/Image.astro';
+import type { ComponentProps } from 'astro/types';
+import ThemeContainer from './ecosystem-tabs/ThemeContainer.astro';
+import Link from '../Link.astro';
+
+interface Props {
+	themes: ComponentProps<typeof ThemeContainer>['theme'][];
+	moreCard?: {
+		href: string;
+		image: ImageMetadata;
+		title: string;
+	};
+	moreLink?: {
+		href: string;
+		title: string;
+	};
+}
+
+const { moreCard, moreLink, themes } = Astro.props;
+---
+
+<div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
+	{themes.map((theme) => <ThemeContainer theme={theme} />)}
+	{
+		moreCard && (
+			<div class="size-fit group relative">
+				<Image
+					width={800}
+					class="width-full rounded-xl isolate select-none"
+					src={moreCard.image}
+					alt="An image showing all types of content driven websites you can build with Astro"
+				/>
+				<div class="m-auto size-full landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/20 group-hover:to-astro-dark-900/50 rounded-xl">
+					<Link href={moreCard.href} class="secondary">
+						<span>{moreCard.title}</span>
+						<Icon name="ri/arrow-right-line" size={18} />
+					</Link>
+				</div>
+			</div>
+		)
+	}
+</div>
+{
+	moreLink && (
+		<a
+			href={moreLink.href}
+			class="mt-4 px-2 sm:px-4 group flex items-center justify-start gap-2 text-astro-gray-200 hover:text-astro-gray-100"
+		>
+			<span class="underline underline-offset-2 decoration-[0.5px] decoration-transparent group-hover:decoration-astro-gray-100">
+				{moreLink.title}
+			</span>
+			<Icon name="ri/arrow-right-line" size={18} />
+		</a>
+	)
+}
