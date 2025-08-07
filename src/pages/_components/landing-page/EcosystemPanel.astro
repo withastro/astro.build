@@ -4,7 +4,6 @@ import { Icon } from 'astro-icon/components';
 import Image from 'astro/components/Image.astro';
 import type { ComponentProps } from 'astro/types';
 import ThemeContainer from './ecosystem-tabs/ThemeContainer.astro';
-import Link from '../Link.astro';
 
 interface Props {
 	themes: ComponentProps<typeof ThemeContainer>['theme'][];
@@ -33,11 +32,17 @@ const { moreCard, moreLink, themes } = Astro.props;
 					src={moreCard.image}
 					alt="An image showing all types of content driven websites you can build with Astro"
 				/>
-				<div class="m-auto size-full landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/20 group-hover:to-astro-dark-900/50 rounded-xl">
-					<Link href={moreCard.href} class="secondary">
+				<div class="m-auto size-full landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/20 group-hover:to-astro-dark-900/50 rounded-xl has-[:focus-visible]:outline has-[:focus-visible]:outline-astro-pink-light">
+					<a
+						href={moreCard.href}
+						class:list={[
+							'px-4 py-2 inline-flex items-center justify-center gap-2 rounded-full border text-base font-normal font-sans font-bold border-astro-dark-100/30 group-hover:border-astro-dark-100/60 text-astro-gray-200 group-hover:text-astro-gray-100 bg-astro-dark-600/50',
+							'after:absolute after:inset-0 after:z-10 supports-[selector(:has(:focus-visible))]:focus-visible:outline-none',
+						]}
+					>
 						<span>{moreCard.title}</span>
 						<Icon name="ri/arrow-right-line" size={18} />
-					</Link>
+					</a>
 				</div>
 			</div>
 		)
