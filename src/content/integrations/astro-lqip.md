@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-lqip
 repoUrl: https://github.com/felixicaza/astro-lqip
 homepageUrl: https://github.com/felixicaza/astro-lqip
-downloads: 424
+downloads: 427
 ---

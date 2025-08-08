@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-markdoc-renderer
 repoUrl: https://github.com/flexdinesh/blogster
 homepageUrl: https://www.npmjs.com/package/astro-markdoc-renderer
-downloads: 1315
+downloads: 1309
 ---
