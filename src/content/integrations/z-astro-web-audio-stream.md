@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/z-astro-web-audio-stream
 repoUrl: https://github.com/ZachHandley/WebAudioStream
 homepageUrl: https://github.com/ZachHandley/WebAudioStream#readme
 badge: new
-downloads: 60
+downloads: 53
 ---
