@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-etag
 repoUrl: https://github.com/Ovyerus/astro-etag
 homepageUrl: https://github.com/Ovyerus/astro-etag
 badge: new
-downloads: 70
+downloads: 47
 ---
