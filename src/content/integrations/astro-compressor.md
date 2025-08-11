@@ -1,7 +1,7 @@
 ---
 name: astro-compressor
 title: astro-compressor
-description: A gzip and brotli compressor for Astro
+description: A gzip, brotli and zstd compressor for Astro
 categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-compressor
