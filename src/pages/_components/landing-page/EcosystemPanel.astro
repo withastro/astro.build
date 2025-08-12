@@ -32,11 +32,11 @@ const { moreCard, moreLink, themes } = Astro.props;
 					src={moreCard.image}
 					alt=""
 				/>
-				<div class="m-auto size-full landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/20 group-hover:to-astro-dark-900/50 rounded-xl has-[:focus-visible]:outline has-[:focus-visible]:outline-astro-pink-light">
+				<div class="m-auto size-full landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/20 transition-colors ease-in-out duration-300 group-hover:bg-astro-dark-900/40 rounded-xl has-[:focus-visible]:outline has-[:focus-visible]:outline-astro-pink-light">
 					<a
 						href={moreCard.href}
 						class:list={[
-							'px-4 py-2 inline-flex items-center justify-center gap-2 rounded-full border text-base font-normal font-sans font-bold border-astro-dark-100/30 group-hover:border-astro-dark-100/60 text-astro-gray-200 group-hover:text-astro-gray-100 bg-astro-dark-600/50',
+							'px-4 py-2 inline-flex items-center justify-center gap-2 rounded-full border text-base font-normal font-sans font-bold border-astro-dark-100/30 transition-colors ease-in-out duration-300 group-hover:border-astro-dark-100/60 text-astro-gray-200 group-hover:text-astro-gray-100 bg-astro-dark-600/50',
 							'after:absolute after:inset-0 after:z-10 supports-[selector(:has(:focus-visible))]:focus-visible:outline-none',
 						]}
 					>
