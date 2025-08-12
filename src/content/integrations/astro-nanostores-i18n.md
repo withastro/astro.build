@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-nanostores-i18n
 repoUrl: https://github.com/openscript/astro-i18n
 homepageUrl: https://github.com/openscript/astro-i18n/tree/main/libs/astro-nanostores-i18n
 badge: new
-downloads: 468
+downloads: 535
 ---
