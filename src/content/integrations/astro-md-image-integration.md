@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-md-image-integration
 repoUrl: https://github.com/userquin/astro-md-image-integration
 homepageUrl: https://github.com/userquin/astro-md-image-integration
-downloads: 7
+downloads: 6
 ---

@@ -6,6 +6,6 @@ categories:
   - analytics
 npmUrl: https://www.npmjs.com/package/@yeskunall/astro-umami
 homepageUrl: https://github.com/yeskunall/astro-umami#readme
-downloads: 2722
+downloads: 2639
 repoUrl: https://github.com/yeskunall/astro-umami
 ---
