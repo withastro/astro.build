@@ -6,10 +6,8 @@ description: Astro integration that auto-adds the proper client:* directive to
   component.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-client-pragma
 repoUrl: https://github.com/mohamedradime/astro-client-pragma
 homepageUrl: https://github.com/mohamedradime/astro-client-pragma#readme
-badge: new
-downloads: 67
+downloads: 6
 ---
