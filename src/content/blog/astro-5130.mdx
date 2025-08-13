@@ -180,11 +180,9 @@ type UserTableInferInsert = {
 
 ## Local support for Cloudflare KV
 
-The adapter `@astrojs/cloudflare` refactors the internal solution that powers Astro Sessions.
+The newest release of the Cloudflare adapter includes local support for [Cloudflare Workers KV](https://developers.cloudflare.com/kv/) when running `astro dev`. This internal refactoring is a drop-in replacement for powering Astro sessions and does not require any change to your existing project code.
 
-The adapter now uses Cloudflare's local support for [Cloudflare KV](https://developers.cloudflare.com/kv/). This internal change is a drop-in replacement and does not require any change to your projectct code.
-
-However, you can now connect to the remote [Cloudflare KV Namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) if desired and use production data during local development.
+However, you can now choose to connect to the remote [Cloudflare KV Namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) if desired and use production data during local development.
 
 ## Bug fixes
 
