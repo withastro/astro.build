@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@vyxos/astro-i18next
 repoUrl: https://github.com/vyxos/astro-i18next
 homepageUrl: https://github.com/vyxos/astro-i18next#readme
 badge: new
-downloads: 391
+downloads: 400
 ---
