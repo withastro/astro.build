@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/modular-station
 homepageUrl: https://www.npmjs.com/package/@inox-tools/modular-station
-downloads: 5030
+downloads: 5191
 ---

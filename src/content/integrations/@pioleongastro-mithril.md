@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@pioleong/astro-mithril
 repoUrl: https://github.com/pioleong/astro-mithril
 homepageUrl: https://github.com/pioleong/astro-mithril
 badge: new
-downloads: 132
+downloads: 133
 ---
