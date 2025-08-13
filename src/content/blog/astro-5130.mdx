@@ -100,9 +100,7 @@ This is useful for multi-framework setups on the same domain as your Astro site 
 
 You can specify any additional sitemaps in your `sitemap` configuration:
 
-Example:
-
-```js
+```js title="astro.config.mjs" ins={8-11}
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
@@ -134,7 +132,7 @@ Astro needs to be able to load your 404 page in order to return it in a response
 
 To use this feature, set the `experimentalErrorPageHost` adapter option in your Astro configuration to the desired host URL. For example, if your server is running on localhost and served via a proxy, you can ensure the prerendered error pages are fetched via the localhost URL:
 
-```js
+```js title="astro.config.mjs" ins={7}
 import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 
@@ -154,11 +152,11 @@ For more information on enabling and using this experimental feature, see the [`
 
 We are sure you'll be `({ enum: ['happy', 'thrilled', 'over the moon'] })` about this update to Astro DB!
 
-The latest release brings long-awaited enum support for text columns in Astro DB tables. This behavior better aligns with user expectations and with the underlying Drizzle implementation.
+The latest release of `@astrojs/db` brings long-awaited enum support for text columns in Astro DB tables. This behavior better aligns with user expectations and with the underlying Drizzle implementation.
 
 Note that this is used exclusively to generate types, and no runtime validation will be performed. Removing, adding, and changing values should be handled in your own project code.
 
-```ts
+```js title="astro.config.mjs" {8}
 import { column, defineTable } from 'astro:db';
 
 // Table definition
