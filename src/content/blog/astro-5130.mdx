@@ -49,7 +49,7 @@ However, you can still access your environment variables through `process.env` a
 
 Astro 5.13 includes a new `experimental.staticImportMetaEnv` flag that updates the behavior of `import.meta.env` to align with [Vite's handling of environment variables](https://vite.dev/guide/env-and-mode.html#env-variables) and for better ease of use with Astro's current implementations and features. This flag supersedes the previous `rawEnvVariables` as a more complete solution for handling private meta environment variables. **This will become the default behavior in Astro 6.0**, and this early preview is introduced as an experimental feature. 
 
-Currently, non-public `import.meta.env` environment variables are replaced by a reference to `process.env`. Additionally, Astro may also convert the value type of your environment variables used through `import.meta.env`, which can prevent access to some values such as the strings `"true"` (which is converted to a boolean value), and `"1"` (which is converted to a number).
+Currently, non-public `import.meta.env` environment variables are replaced by a reference to `process.env`. Additionally, Astro may also convert the value type of your environment variables used through `import.meta.env`, which can prevent access to some values, such as the strings `"true"` (which is converted to a boolean value), and `"1"` (which is converted to a number).
 
 The `experimental.staticImportMetaEnv` flag simplifies Astro's default behavior, making it easier to understand and use. Astro will no longer replace any `import.meta.env` environment variables with a `process.env` call, nor will it coerce values. Instead, your private meta environment variables will always be inlined.
 
@@ -61,7 +61,7 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
    experimental: {
      rawEnvValues: true,
-     staticImportMetaEnv: true,
+     staticImportMetaEnv: true
    }
 });
 ```
@@ -83,8 +83,8 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   experimental: {
-    chromeDevtoolsWorkspace: true,
-  },
+    chromeDevtoolsWorkspace: true
+  }
 });
 ```
 
