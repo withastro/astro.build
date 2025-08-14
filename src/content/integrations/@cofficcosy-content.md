@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@coffic/cosy-content
 repoUrl: https://github.com/CosyZone/cosy
 homepageUrl: https://www.npmjs.com/package/@coffic/cosy-content
 badge: new
-downloads: 2521
+downloads: 2525
 ---
