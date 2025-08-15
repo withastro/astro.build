@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/zastro-websockets-cloudflare
 repoUrl: https://github.com/zachhandley/ZAstroWebsockets
 homepageUrl: https://github.com/zachhandley/ZAstroWebsockets#readme
 badge: new
-downloads: 379
+downloads: 383
 ---

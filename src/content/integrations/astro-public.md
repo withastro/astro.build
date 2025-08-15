@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-public
 repoUrl: https://github.com/brycerussell/astro-public
 homepageUrl: https://github.com/brycerussell/astro-public
-downloads: 3398
+downloads: 3414
 ---

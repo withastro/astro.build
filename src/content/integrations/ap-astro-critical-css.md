@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/ap-astro-critical-css
 repoUrl: https://github.com/mlukasz7/astro-critical-css
 homepageUrl: https://github.com/mlukasz7/astro-critical-css#readme
-downloads: 9
+downloads: 0
 ---

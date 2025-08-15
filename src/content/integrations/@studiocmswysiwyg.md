@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@studiocms/wysiwyg
 repoUrl: https://github.com/withstudiocms/experiments
 homepageUrl: https://studiocms.dev
-downloads: 324
+downloads: 323
 ---
