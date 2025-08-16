@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-theme-mecure
 homepageUrl: https://www.npmjs.com/package/astro-theme-mecure
-downloads: 117
+downloads: 124
 ---
