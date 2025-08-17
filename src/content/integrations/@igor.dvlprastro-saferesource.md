@@ -5,6 +5,7 @@ description: 🎐 Adds CSP-compliant inline scripts and styles to Astro! 🎠
 categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-saferesource
+image: /assets/integrations/@igor.dvlpr/astro-saferesource.png
 repoUrl: https://github.com/igorskyflyer/npm-astro-saferesource
 homepageUrl: https://github.com/igorskyflyer/npm-astro-saferesource
 downloads: 16
