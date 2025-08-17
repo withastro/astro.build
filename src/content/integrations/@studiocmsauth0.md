@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@studiocms/auth0
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
 badge: new
-downloads: 123
+downloads: 125
 ---
