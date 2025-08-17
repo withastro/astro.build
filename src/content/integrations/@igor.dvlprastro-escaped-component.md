@@ -5,7 +5,7 @@ description: 🏃🏻‍♂️‍➡️ An Astro component that holds only HTML-
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-escaped-component
-image:  /assets/integrations/@igor.dvlpr/astro-escaped-component.png
+image: /assets/integrations/@igor.dvlpr/astro-escaped-component.png
 repoUrl: https://github.com/igorskyflyer/npm-astro-escaped-component
 homepageUrl: https://github.com/igorskyflyer/npm-astro-escaped-component
 downloads: 4
