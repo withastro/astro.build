@@ -8,6 +8,7 @@ categories:
   - css+ui
   - recent
 npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-render-component
+image: /assets/integrations/@igor.dvlpr/astro-render-component.png
 repoUrl: https://github.com/igorskyflyer/npm-astro-render-component
 homepageUrl: https://github.com/igorskyflyer/npm-astro-render-component
 badge: new
