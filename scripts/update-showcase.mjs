@@ -534,7 +534,7 @@ const scraper = new ShowcaseScraper({
 		'https://topgyalgurung.me/',
 		'https://peakpointconstruction.com/',
 		// 2025-08-18 - site moved
-		'https://teaclient.net/'
+		'https://teaclient.net/',
 	],
 });
 await scraper.run();
