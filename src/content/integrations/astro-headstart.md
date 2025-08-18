@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-headstart
 repoUrl: https://github.com/san4d/astro-headstart
 homepageUrl: https://github.com/san4d/astro-headstart#readme
 badge: new
-downloads: 311
+downloads: 312
 ---

@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@hedystia/astro-bun
 repoUrl: https://github.com/Zastinian/astro-bun
 homepageUrl: https://github.com/Zastinian/astro-bun
-downloads: 521
+downloads: 507
 ---

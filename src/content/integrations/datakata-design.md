@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/datakata-design
 homepageUrl: https://www.npmjs.com/package/datakata-design
-downloads: 1
+downloads: 2
 ---
