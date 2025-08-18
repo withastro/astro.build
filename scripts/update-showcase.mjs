@@ -533,6 +533,8 @@ const scraper = new ShowcaseScraper({
 		// 2025-08-03 no evidence they are Astro
 		'https://topgyalgurung.me/',
 		'https://peakpointconstruction.com/',
+		// 2025-08-18 - site moved
+		'https://teaclient.net/'
 	],
 });
 await scraper.run();
