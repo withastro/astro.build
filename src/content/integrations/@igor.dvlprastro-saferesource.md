@@ -8,4 +8,5 @@ npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-saferesource
 repoUrl: https://github.com/igorskyflyer/npm-astro-saferesource
 homepageUrl: https://github.com/igorskyflyer/npm-astro-saferesource
 downloads: 17
+image: /assets/integrations/@igor.dvlpr/astro-saferesource.png
 ---
