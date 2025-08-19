@@ -14,7 +14,7 @@ import type { ThemeAndAuthor, ThemeCategory, ThemeTool } from './_types/index.ts
 
 export const prerender = false;
 
-const currentPage = Astro.params.page && Number.parseInt(Astro.params.page);
+const currentPage = Astro.params.page && Number.parseInt(Astro.params.page, 10);
 
 // invalid page number!
 if (!currentPage || Number.isNaN(currentPage)) {

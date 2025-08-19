@@ -17,7 +17,7 @@ export const prerender = false;
 // with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 // otherwise, try to parse the page number from the URL
 const currentPage =
-	typeof Astro.params.page === 'undefined' ? 1 : Number.parseInt(Astro.params.page);
+	typeof Astro.params.page === 'undefined' ? 1 : Number.parseInt(Astro.params.page, 10);
 
 // invalid page number!
 if (!currentPage || Number.isNaN(currentPage)) {
