@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@celestio/astro-selfie
 repoUrl: https://github.com/celest-io/astro-selfie
 homepageUrl: https://github.com/celest-io/astro-selfie#readme
 badge: new
-downloads: 248
+downloads: 255
 ---

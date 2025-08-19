@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/wildcard-resolver
 repoUrl: https://github.com/zakarialaoui10/wildcard-resolver
 homepageUrl: https://github.com/zakarialaoui10/wildcard-resolver#readme
 badge: new
-downloads: 210
+downloads: 215
 ---

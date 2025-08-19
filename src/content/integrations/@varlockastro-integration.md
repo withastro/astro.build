@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@varlock/astro-integration
 repoUrl: https://github.com/dmno-dev/varlock
 homepageUrl: https://github.com/dmno-dev/varlock#readme
 badge: new
-downloads: 292
+downloads: 365
 ---

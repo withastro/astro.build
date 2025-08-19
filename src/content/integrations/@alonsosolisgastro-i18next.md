@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@alonsosolisg/astro-i18next
 repoUrl: https://github.com/alonsosolisg/astro-i18next
 homepageUrl: https://astro-i18next.yassinedoghri.com/
 badge: new
-downloads: 66
+downloads: 68
 ---

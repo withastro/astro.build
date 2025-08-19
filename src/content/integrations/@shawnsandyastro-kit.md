@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@shawnsandy/astro-kit
 repoUrl: https://github.com/shawn-sandy/astro-kit
 homepageUrl: https://www.npmjs.com/package/@shawnsandy/astro-kit
-downloads: 6
+downloads: 5
 ---
