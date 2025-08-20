@@ -1,4 +1,4 @@
-import { defineCollection, reference } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import authors from '../data/authors/authors.json';

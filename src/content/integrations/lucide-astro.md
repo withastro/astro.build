@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/lucide-astro
 repoUrl: https://github.com/dzeiocom/lucide-astro
 homepageUrl: https://www.npmjs.com/package/lucide-astro
-downloads: 28315
+downloads: 29719
 ---
