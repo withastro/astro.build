@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-obfuscate
 repoUrl: https://github.com/TrueWinter/astro-obfuscate
 homepageUrl: https://github.com/TrueWinter/astro-obfuscate
-downloads: 142
+downloads: 151
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/zastro-websockets-cloudflare
 repoUrl: https://github.com/zachhandley/ZAstroWebsockets
 homepageUrl: https://github.com/zachhandley/ZAstroWebsockets#readme
-downloads: 74
+downloads: 55
 ---

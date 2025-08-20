@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-auto-alias
 repoUrl: https://github.com/zakarialaoui10/astro-auto-alias
 homepageUrl: https://github.com/zakarialaoui10/astro-auto-alias#readme
 badge: new
-downloads: 311
+downloads: 313
 ---
