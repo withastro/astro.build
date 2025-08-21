@@ -43,7 +43,8 @@ export const GET: APIRoute = async (ctx) => {
 
 	// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 	// otherwise, try to parse the page number from the URL
-	const currentPage = typeof ctx.params.page === 'undefined' ? 1 : Number.parseInt(ctx.params.page);
+	const currentPage =
+		typeof ctx.params.page === 'undefined' ? 1 : Number.parseInt(ctx.params.page, 10);
 	const limit = ctx.url.searchParams.get('limit');
 	let pageSize = 25;
 
@@ -104,7 +105,7 @@ export const ALL: APIRoute = ({ request }) => {
 };
 
 function toInt(str: string): number {
-	const value = Number.parseInt(str);
+	const value = Number.parseInt(str, 10);
 	if (Number.isNaN(value)) {
 		throw new Error(`"${str}" is not a valid number`);
 	}

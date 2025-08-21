@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-assets-manifest
 repoUrl: https://github.com/Olympe-Studio/astro-assets-manifest
 homepageUrl: https://github.com/Olympe-Studio/astro-assets-manifest#readme
-downloads: 18
+downloads: 42
 ---

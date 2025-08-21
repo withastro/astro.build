@@ -72,12 +72,12 @@ async function main() {
 	if (main.find((item) => item.increment === 'major'))
 		version = version
 			.split('.')
-			.map((v, i) => (i === 0 ? Number.parseInt(v) + 1 : 0))
+			.map((v, i) => (i === 0 ? Number.parseInt(v, 10) + 1 : 0))
 			.join('.');
 	else if (main.find((item) => item.increment === 'minor'))
 		version = version
 			.split('.')
-			.map((v, i) => (i === 1 ? Number.parseInt(v) + 1 : 0))
+			.map((v, i) => (i === 1 ? Number.parseInt(v, 10) + 1 : 0))
 			.join('.');
 	const versionSlug = version.split('.').join('');
 	const versionShort = version.split('.').slice(0, 2).join('.');

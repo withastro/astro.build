@@ -7,6 +7,6 @@ categories:
   - frameworks
 npmUrl: https://www.npmjs.com/package/lefan-custom-elements-ssr
 repoUrl: https://github.com/thepassle/custom-elements-ssr
-homepageUrl: https://www.npmjs.com/package/lefan-custom-elements-ssr
-downloads: 8
+homepageUrl: https://github.com/thepassle/custom-elements-ssr#readme
+downloads: 5
 ---

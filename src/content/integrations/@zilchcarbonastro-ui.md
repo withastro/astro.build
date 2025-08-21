@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@zilchcarbon/astro-ui
 homepageUrl: https://www.npmjs.com/package/@zilchcarbon/astro-ui
-downloads: 151
+downloads: 17
 ---
