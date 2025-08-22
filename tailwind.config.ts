@@ -1,3 +1,4 @@
+import containerQueries from '@tailwindcss/container-queries';
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 
@@ -293,6 +294,19 @@ export default {
 					maskImage: 'linear-gradient(to bottom, white 0%, white 33%, transparent 90%)',
 				},
 			});
+		}),
+
+		containerQueries,
+
+		plugin(function hocusPlugin(api) {
+			api.addVariant(
+				'hocus',
+				'&:where(:hover, :focus-visible, :has(:focus-visible), .in-viewport)',
+			);
+			api.addVariant(
+				'group-hocus',
+				'.group:where(:hover, :focus-visible, :has(:focus-visible), .in-viewport) &',
+			);
 		}),
 	],
 } satisfies Config;

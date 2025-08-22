@@ -8,8 +8,8 @@ categories:
   - css+ui
   - frameworks
 npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-post-excerpt
-image: /assets/integrations/astro-post-excerpt.png
+image: /assets/integrations/@igor.dvlpr/astro-post-excerpt.png
 repoUrl: https://github.com/igorskyflyer/npm-astro-post-excerpt
 homepageUrl: https://github.com/igorskyflyer/npm-astro-post-excerpt
-downloads: 125
+downloads: 558
 ---

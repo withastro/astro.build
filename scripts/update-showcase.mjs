@@ -530,6 +530,11 @@ const scraper = new ShowcaseScraper({
 		'https://www.google.com/search?q=site%253Ashevafood.com',
 		// 2025-06-29 no evidence it's Astro, we already have one of their similar sites
 		'https://clampcalculator.com/',
+		// 2025-08-03 no evidence they are Astro
+		'https://topgyalgurung.me/',
+		'https://peakpointconstruction.com/',
+		// 2025-08-18 - site moved
+		'https://teaclient.net/',
 	],
 });
 await scraper.run();

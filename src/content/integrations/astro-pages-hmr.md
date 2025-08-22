@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-pages-hmr
 repoUrl: https://github.com/bluwy/astro-pages-hmr
 homepageUrl: https://github.com/bluwy/astro-pages-hmr#readme
-downloads: 13
+downloads: 11
 ---

@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const promos = await getCollection('promos');
+const promo = promos[Math.floor(Math.random() * promos.length)];
+const { eyebrow, title, description, image, href } = promo.data;
+const labelId = `promo-${promo.id}`;
+---
+
+<div class="@container relative">
+	<div
+		class="@sm:hidden absolute bottom-0 aspect-square inset-x-0 bg-blue-purple-gradient opacity-35 rounded-full blur-2xl -rotate-45"
+	>
+	</div>
+	<aside
+		class:list={[
+			'relative',
+			'flex flex-col @md:flex-row-reverse @md:justify-end gap-4',
+			'transition-transform duration-300 ease-out hover:scale-[1.03]',
+		]}
+		aria-labelledby={labelId}
+	>
+		<div class="flex flex-col gap-2.5 text-gray-400 text-sm @xl:text-base">
+			{eyebrow && <p class="font-mono" set:html={eyebrow} />}
+			<a
+				id={labelId}
+				{href}
+				set:html={title}
+				class="heading-5 @xl:heading-4 text-white after:absolute after:inset-0"
+				onclick={`window.fathom?.trackEvent(${JSON.stringify(`Promo - ${promo.id}`)})`}
+			/>
+			<p class="text-pretty" set:html={description} />
+		</div>
+		{
+			image && (
+				<Image
+					{...image}
+					width={224 * 1.5}
+					class="w-full object-cover border border-astro-gray-500 @md:max-w-56 @md:h-full"
+				/>
+			)
+		}
+	</aside>
+</div>

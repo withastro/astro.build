@@ -8,6 +8,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-xelement
 repoUrl: https://github.com/aFuzzyBear/xelement
-homepageUrl: https://www.npmjs.com/package/astro-xelement
-downloads: 233
+homepageUrl: https://github.com/aFuzzyBear/xelement
+downloads: 62
 ---

@@ -6,5 +6,5 @@ categories:
   - analytics
 npmUrl: https://www.npmjs.com/package/@astroutils/analytics
 homepageUrl: https://github.com/gurkz-oss/astroutils/wiki/analytics
-downloads: 22
+downloads: 1
 ---

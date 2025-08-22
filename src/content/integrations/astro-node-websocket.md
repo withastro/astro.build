@@ -5,6 +5,7 @@ description: Use WebSockets in your Astro SSR Apps
 categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-node-websocket
-homepageUrl: https://www.npmjs.com/package/astro-node-websocket
-downloads: 43
+homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/node-websocket
+downloads: 199
+repoUrl: https://github.com/lilnasy/gratelets
 ---

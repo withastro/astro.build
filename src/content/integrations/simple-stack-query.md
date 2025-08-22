@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/simple-stack-query
 repoUrl: https://github.com/bholmesdev/simple-stack
-homepageUrl: https://www.npmjs.com/package/simple-stack-query
-downloads: 463
+homepageUrl: https://github.com/bholmesdev/simple-stack#readme
+downloads: 406
 ---

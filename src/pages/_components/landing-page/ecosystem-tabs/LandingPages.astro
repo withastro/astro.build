@@ -1,14 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components';
 import astroplate from '../../../_assets/themes/astroplate.png';
 import atom from '../../../_assets/themes/atom.png';
 import moreLPThemes from '../../../_assets/themes/more-lp-themes.png';
 import positivus from '../../../_assets/themes/positivus.png';
 import sendit from '../../../_assets/themes/sendit.png';
 import stone from '../../../_assets/themes/stone.png';
-import Link from '../../Link.astro';
-import ThemeContainer from './ThemeContainer.astro';
+import EcosystemPanel from '../EcosystemPanel.astro';
 
 const themes = [
 	{
@@ -49,22 +46,11 @@ const themes = [
 ];
 ---
 
-<div class="p-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl">
-	{themes.map((theme) => <ThemeContainer theme={theme} />)}
-	<div class="size-fit group relative">
-		<Image
-			width={800}
-			class="width-full rounded-xl isolate select-none"
-			src={moreLPThemes}
-			alt="An image showing all types of content driven websites you can build with Astro"
-		/>
-		<div
-			class="m-auto size-full landing-section absolute inset-0 z-10 bg-gradient-to-b from-transparent to-30% to-astro-dark-900/20 group-hover:to-astro-dark-900/50 rounded-xl"
-		>
-			<Link href="/themes" class="secondary">
-				<span>Browse more themes</span>
-				<Icon name="ri:arrow-right-line" size={18} />
-			</Link>
-		</div>
-	</div>
-</div>
+<EcosystemPanel
+	{themes}
+	moreCard={{
+		href: '/themes/1/?search=&categories%5B%5D=landing-page',
+		image: moreLPThemes,
+		title: 'Browse more landing page themes',
+	}}
+/>

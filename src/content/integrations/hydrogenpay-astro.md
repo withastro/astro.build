@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/hydrogenpay-astro
 repoUrl: https://github.com/HydrogenAfrica/hydrogenpay-astro
-homepageUrl: https://www.npmjs.com/package/hydrogenpay-astro
-downloads: 5
+homepageUrl: https://github.com/HydrogenAfrica/hydrogenpay-astro.git
+downloads: 81
 ---

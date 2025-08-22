@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astros-style
 repoUrl: https://github.com/warpsio/astros-style
-homepageUrl: https://www.npmjs.com/package/astros-style
-downloads: 8
+homepageUrl: https://github.com/warpsio/astros-style
+downloads: 0
 ---

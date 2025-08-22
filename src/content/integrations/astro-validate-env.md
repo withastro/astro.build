@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-validate-env
 repoUrl: https://github.com/adamhl8/astro-validate-env
-homepageUrl: https://www.npmjs.com/package/astro-validate-env
-downloads: 276
+homepageUrl: https://github.com/adamhl8/astro-validate-env
+downloads: 8
 ---

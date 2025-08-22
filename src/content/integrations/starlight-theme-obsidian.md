@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-theme-obsidian
 repoUrl: https://github.com/Fevol/starlight-theme-obsidian
-homepageUrl: https://www.npmjs.com/package/starlight-theme-obsidian
-downloads: 2717
+homepageUrl: https://github.com/Fevol/starlight-theme-obsidian#readme
+downloads: 3363
 ---

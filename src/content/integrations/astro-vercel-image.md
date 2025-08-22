@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-vercel-image
 repoUrl: https://github.com/jcblw/astro-vercel-image
-homepageUrl: https://www.npmjs.com/package/astro-vercel-image
-downloads: 5
+homepageUrl: https://github.com/jcblw/astro-vercel-image
+downloads: 0
 ---

@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-vitesse
 repoUrl: https://github.com/adrian-ub/astro-vitesse
-homepageUrl: https://www.npmjs.com/package/astro-vitesse
-downloads: 627
+homepageUrl: https://github.com/adrian-ub/astro-vitesse#readme
+downloads: 643
 ---
