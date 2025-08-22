@@ -39,14 +39,19 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 			>
 				{
 					[
-						'logos/react-logomark',
-						'logos/vue-logomark',
-						'logos/svelte-logomark',
-						'logos/angular',
-						'logos/preact-logomark',
-						'logos/solidjs-icon',
-						'logos/qwik',
-					].map((name) => <Icon {name} class="w-7 h-auto" />)
+						{ name: 'React', icon: 'logos/react-logomark' },
+						{ name: 'Vue', icon: 'logos/vue-logomark' },
+						{ name: 'Svelte', icon: 'logos/svelte-logomark' },
+						{ name: 'Angular', icon: 'logos/angular' },
+						{ name: 'Preact', icon: 'logos/preact-logomark' },
+						{ name: 'Solid', icon: 'logos/solidjs-icon' },
+						{ name: 'Qwik', icon: 'logos/qwik' },
+					].map(({ name, icon }) => (
+						<>
+							<Icon name={icon} class="w-7 h-auto" aria-hidden="true" />
+							<span class="sr-only">{name}</span>
+						</>
+					))
 				}
 			</div>
 		</Card>
@@ -76,14 +81,19 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 			>
 				{
 					[
-						'logos/node',
-						'logos/cloudflare-logomark',
-						'logos/vercel-logomark',
-						'logos/netlify-logomark',
-						'logos/sst',
-						'logos/deno',
-						'logos/aws',
-					].map((name) => <Icon {name} class="w-7 h-auto" />)
+						{ name: 'Node.js', icon: 'logos/node' },
+						{ name: 'Cloudflare', icon: 'logos/cloudflare-logomark' },
+						{ name: 'Vercel', icon: 'logos/vercel-logomark' },
+						{ name: 'Netlify', icon: 'logos/netlify-logomark' },
+						{ name: 'SST', icon: 'logos/sst' },
+						{ name: 'Deno', icon: 'logos/deno' },
+						{ name: 'AWS', icon: 'logos/aws' },
+					].map(({ name, icon }) => (
+						<>
+							<Icon name={icon} class="w-7 h-auto" aria-hidden="true" />
+							<span class="sr-only">{name}</span>
+						</>
+					))
 				}
 			</div>
 		</Card>
