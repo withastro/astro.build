@@ -15,10 +15,18 @@ interface Props extends HTMLAttributes<'div'> {
 }
 
 const { href, title, description, layout = 'default', flip = false, ...props } = Astro.props;
+
+const cardId = `feature-card-${title
+	.replaceAll(/[^0-9A-z-]/g, '-')
+	.replaceAll(/-+/g, '-')
+	.toLowerCase()}`;
+const descriptionId = `${cardId}-description`;
 ---
 
-<div
+<article
 	data-track-visibility
+	aria-labelledby={cardId}
+	aria-describedby={descriptionId}
 	class:list={[
 		'group relative',
 		'flex flex-col',
@@ -36,7 +44,7 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 	<div
 		class:list={['p-4 xl:p-6 space-y-2', { 'md:row-start-1 md:col-start-1': layout === 'wide' }]}
 	>
-		<h3 class="text-base text-white font-semibold">
+		<h3 id={cardId} class="text-base text-white font-semibold">
 			<a
 				{href}
 				class="after:absolute after:inset-0 after:z-10 supports-[selector(:has(:focus-visible))]:focus-visible:outline-none"
@@ -44,12 +52,12 @@ const { href, title, description, layout = 'default', flip = false, ...props } =
 				{title}
 			</a>
 		</h3>
-		<p class="text-astro-gray-200 font-light text-sm xl:text-base text-pretty">
+		<p id={descriptionId} class="text-astro-gray-200 font-light text-sm xl:text-base text-pretty">
 			{description}
 		</p>
 	</div>
 	{flip && <slot />}
-</div>
+</article>
 
 <script>
 	// This script tracks the visibility within the viewport of feature cards for devices where hover
