@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-early-hints
 repoUrl: https://github.com/itsmatteomanf/astro-components
 homepageUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-early-hints
-downloads: 176
+downloads: 178
 ---

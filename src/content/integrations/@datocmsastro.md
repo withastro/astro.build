@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@datocms/astro
 repoUrl: https://github.com/datocms/astro-datocms
 homepageUrl: https://github.com/datocms/astro-datocms
-downloads: 1753
+downloads: 1745
 ---

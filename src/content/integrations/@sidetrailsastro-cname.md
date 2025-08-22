@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@sidetrails/astro-cname
 repoUrl: https://github.com/sidetrails/astro-integrations
 homepageUrl: https://github.com/sidetrails/astro-integrations#readme
 badge: new
-downloads: 69
+downloads: 70
 ---

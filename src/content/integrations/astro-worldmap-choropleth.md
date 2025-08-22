@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-worldmap-choropleth
 homepageUrl: https://www.npmjs.com/package/astro-worldmap-choropleth
 badge: new
-downloads: 256
+downloads: 328
 ---
