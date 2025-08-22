@@ -1,0 +1,33 @@
+---
+import FeatureCard from './FeatureCard.astro';
+---
+
+<FeatureCard
+	href="https://docs.astro.build/en/basics/astro-components/"
+	title="Zero JavaScript, By Default"
+	description="Astro only ships the JavaScript you need and automatically strips away the rest for a faster website."
+	layout="tall"
+>
+	<div class="pt-4 px-4 lg:pt-6 min-h-52 space-y-2 relative" aria-hidden="true">
+		<div
+			class="absolute top-0 left-0 size-full opacity-30 group-hocus:opacity-70 transition duration-500 [mask-image:radial-gradient(closest-side,#ffffff_40%,transparent_100%)]"
+		>
+			<div
+				class="w-full h-full [mask-image:radial-gradient(#fff_0.5px,transparent_0.5px)] [mask-size:5px_5px] bg-blue-purple-gradient"
+			>
+			</div>
+		</div>
+		<p
+			class:list={[
+				'absolute top-0 left-1/2 -translate-x-1/2',
+				'font-bold text-[12.5rem] leading-none [-webkit-text-stroke:2px_rgba(255,255,255,0.06)] drop-shadow-lg bg-clip-text text-transparent',
+				'transition duration-500 ease-in-out',
+				'opacity-70 bg-gradient-to-b from-astro-gray-400 to-astro-gray-600/50',
+				'group-hocus:opacity-100 group-hocus:from-astro-green/70 group-hocus:to-astro-blue/40',
+				'motion-safe:group-hocus:scale-110',
+			]}
+		>
+			0
+		</p>
+	</div>
+</FeatureCard>

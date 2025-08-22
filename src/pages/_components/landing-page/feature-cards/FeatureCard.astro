@@ -1,0 +1,112 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
+	/** Docs link for this feature. */
+	href: string;
+	/** Feature title. */
+	title: string;
+	/** Feature description. */
+	description: string;
+	/** Set this card’s layout in the grid: `tall` takes up two rows, `wide` takes up two columns. */
+	layout?: 'default' | 'tall' | 'wide';
+	/** Render slot content after card text instead of before. */
+	flip?: boolean;
+}
+
+const { href, title, description, layout = 'default', flip = false, ...props } = Astro.props;
+
+const cardId = `feature-card-${title
+	.replaceAll(/[^0-9A-z-]/g, '-')
+	.replaceAll(/-+/g, '-')
+	.toLowerCase()}`;
+const descriptionId = `${cardId}-description`;
+---
+
+<article
+	data-track-visibility
+	aria-labelledby={cardId}
+	aria-describedby={descriptionId}
+	class:list={[
+		'group relative',
+		'flex flex-col',
+		'has-[:focus-visible]:outline has-[:focus-visible]:outline-astro-pink-light',
+		'bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden',
+		{
+			default: '',
+			tall: 'row-span-2 justify-between',
+			wide: 'md:col-span-2 md:grid md:grid-cols-2',
+		}[layout],
+	]}
+	{...props}
+>
+	{!flip && <slot />}
+	<div
+		class:list={['p-4 xl:p-6 space-y-2', { 'md:row-start-1 md:col-start-1': layout === 'wide' }]}
+	>
+		<h3 id={cardId} class="text-base text-white font-semibold">
+			<a
+				{href}
+				class="after:absolute after:inset-0 after:z-10 supports-[selector(:has(:focus-visible))]:focus-visible:outline-none"
+			>
+				{title}
+			</a>
+		</h3>
+		<p id={descriptionId} class="text-astro-gray-200 font-light text-sm xl:text-base text-pretty">
+			{description}
+		</p>
+	</div>
+	{flip && <slot />}
+</article>
+
+<script>
+	// This script tracks the visibility within the viewport of feature cards for devices where hover
+	// is not supported with the main input method, most commonly this means touch devices like phones
+	// and tablets.
+	// On these devices, when a card is within the viewport, we toggle an `in-viewport` class.
+	// This allows animations and hover states to be triggered when scrolled to on devices where these
+	// would never be triggered on hover.
+
+	const elementsToObserve = document.querySelectorAll('[data-track-visibility]');
+
+	/** Toggle the `in-viewport` class name on an element. */
+	const markVisible = (el: Element, isVisible: boolean) =>
+		el.classList.toggle('in-viewport', isVisible);
+
+	/** Intersection observer that removes `in-viewport` class when an element fully exits the viewport. */
+	const offScreenObserver = new IntersectionObserver((entries) => {
+		for (const entry of entries) {
+			if (!entry.isIntersecting) markVisible(entry.target, false);
+		}
+	});
+	/** Intersection observer that adds `in-viewport` class when an element has mostly entered the viewport. */
+	const onScreenObserver = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) {
+				if (entry.isIntersecting) markVisible(entry.target, true);
+			}
+		},
+		{ threshold: 0.8 },
+	);
+
+	/** Utility that enables/disables observation of the elements we’re tracking. */
+	const toggleObservation = (hasHover: boolean) => {
+		elementsToObserve.forEach((el) => {
+			// Clear viewport state if hover has been enabled.
+			if (hasHover) markVisible(el, false);
+			const method = hasHover ? 'unobserve' : 'observe';
+			offScreenObserver[method](el);
+			onScreenObserver[method](el);
+		});
+	};
+
+	// Check if the device supports hover with the primary input device.
+	// We rely on `pointer: fine` in addition to the hover query to work around touch devices that
+	// report hover support due to connected styluses even when they shouldn’t. (Observed in Chrome &
+	// Samsung Internet on a Xiaomi tablet and Samsung phone.)
+	const hasHoverMediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+	// Enable/disable observation and watch for changes to hover support.
+	toggleObservation(hasHoverMediaQuery.matches);
+	hasHoverMediaQuery.addEventListener('change', (event) => toggleObservation(event.matches));
+</script>

@@ -1,18 +1,21 @@
 ---
 import { Icon } from 'astro-icon/components';
+import FeatureCard from './FeatureCard.astro';
 ---
 
-<a
+<FeatureCard
 	id="content-collections"
+	title="Content Collections"
+	description="Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter validation."
 	href="https://docs.astro.build/en/guides/content-collections/"
-	class="group flex flex-col justify-between bg-astro-dark-800 border border-astro-dark-100/20 hover:border-astro-dark-100/40 rounded-xl xl:rounded-2xl overflow-hidden"
+	layout="tall"
 >
-	<div class="pt-4 lg:pt-6 min-h-52">
+	<div class="pt-4 lg:pt-6 min-h-52" aria-hidden="true">
 		<div class="size-full flex items-center justify-between overflow-hidden">
 			<div class="w-1/2 h-full min-h-40 relative flex items-center overflow-hidden">
 				<div
 					id="unscanned-docs-container"
-					class="absolute right-1 motion-reduce:right-4 flex items-center justify-center gap-8"
+					class="absolute motion-safe:right-1 right-4 flex items-center justify-center gap-8"
 				>
 					{
 						Array(10).fill(
@@ -53,7 +56,7 @@ import { Icon } from 'astro-icon/components';
 
 				<div
 					id="scanned-docs-container"
-					class="absolute z-10 -left-[59.5rem] motion-reduce:left-4 flex items-center justify-center gap-8"
+					class="absolute z-10 motion-safe:-left-[59.5rem] left-4 flex items-center justify-center gap-8"
 				>
 					{
 						Array(10).fill(
@@ -95,15 +98,7 @@ import { Icon } from 'astro-icon/components';
 			</div>
 		</div>
 	</div>
-
-	<div class="p-4 xl:p-6 space-y-2">
-		<h3 class="text-base text-white font-semibold">Content Collections</h3>
-		<p class="text-astro-gray-200 font-light text-sm xl:text-base md:text-balance">
-			Organize your Markdown and MDX with built-in TypeScript type-safety and frontmatter
-			validation.
-		</p>
-	</div>
-</a>
+</FeatureCard>
 
 <style>
 	#scanner-inlet {
@@ -121,47 +116,18 @@ import { Icon } from 'astro-icon/components';
 		);
 	}
 
-	@media screen and (max-width: 1023px) {
-		#unscanned-docs-container {
-			animation-name: marquee;
-			animation-duration: 50s;
-			animation-play-state: paused;
-			animation-timing-function: linear;
-			animation-iteration-count: infinite;
-		}
-		#scanned-docs-container {
-			animation-name: marquee;
-			animation-duration: 50s;
-			animation-play-state: paused;
-			animation-timing-function: linear;
-			animation-iteration-count: infinite;
-		}
-	}
-
-	#unscanned-docs-container {
-		animation: marquee 50s linear infinite;
-	}
-
+	#unscanned-docs-container,
 	#scanned-docs-container {
 		animation: marquee 50s linear infinite;
-	}
-
-	#content-collections #unscanned-docs-container {
 		animation-play-state: paused;
 	}
 
-	#content-collections #scanned-docs-container {
-		animation-play-state: paused;
-	}
-
-	#content-collections:hover #unscanned-docs-container {
-		animation-play-state: running;
-		animation: marquee 50s linear infinite;
-	}
-
-	#content-collections:hover #scanned-docs-container {
-		animation-play-state: running;
-		animation: marquee 50s linear infinite;
+	@media (prefers-reduced-motion: no-preference) {
+		#content-collections:where(:hover, :has(:focus-visible), .in-viewport)
+			#unscanned-docs-container,
+		#content-collections:where(:hover, :has(:focus-visible), .in-viewport) #scanned-docs-container {
+			animation-play-state: running;
+		}
 	}
 
 	@keyframes marquee {
@@ -172,36 +138,4 @@ import { Icon } from 'astro-icon/components';
 			transform: translateX(100%);
 		}
 	}
-
-	@media (prefers-reduced-motion) {
-		#unscanned-docs-container {
-			animation-play-state: paused;
-		}
-		#scanned-docs-container {
-			animation-play-state: paused;
-		}
-	}
 </style>
-
-<script>
-	const container = document.getElementById('content-collections')!;
-	const unscannedDocsContainer = document.getElementById('unscanned-docs-container')!;
-	const scannedDocsContainer = document.getElementById('scanned-docs-container')!;
-
-	const observer = new IntersectionObserver(
-		(entries) => {
-			const intersecting = entries[0].isIntersecting;
-
-			if (intersecting && window.innerWidth < 1023) {
-				unscannedDocsContainer.style.animationPlayState = 'running';
-				scannedDocsContainer.style.animationPlayState = 'running';
-			} else if (!intersecting && window.innerWidth < 1023) {
-				unscannedDocsContainer.style.animationPlayState = 'paused';
-				scannedDocsContainer.style.animationPlayState = 'paused';
-			}
-		},
-		{ root: null, threshold: 0.8 },
-	);
-
-	observer.observe(container);
-</script>

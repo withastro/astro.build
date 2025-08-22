@@ -1,0 +1,130 @@
+---
+import { Icon } from 'astro-icon/components';
+import FeatureCard from './FeatureCard.astro';
+---
+
+<FeatureCard
+	title="File-Based Routing"
+	description="Astro’s flexible routing system lets you understand your site’s structure at a glance."
+	href="https://docs.astro.build/en/guides/routing/"
+	layout="tall"
+	flip
+>
+	<div aria-hidden="true" class="max-h-56 relative p-4">
+		{/* Dotted pattern background */}
+		<div
+			class="absolute top-0 left-0 size-full opacity-30 group-hocus:opacity-70 transition duration-500 [mask-image:radial-gradient(closest-side,#ffffff_40%,transparent_100%)]"
+		>
+			<div
+				class="w-full h-full [mask-image:radial-gradient(#fff_0.5px,transparent_0.5px)] [mask-size:5px_5px] bg-blue-purple-gradient"
+			>
+			</div>
+		</div>
+		{/* Glows */}
+		<div
+			class="absolute -bottom-24 left-1/2 -translate-x-[80%] bg-blue-purple-gradient size-80 mask-radial-gradient opacity-5 group-hocus:opacity-40 transition motion-safe:duration-[1.5s]"
+		>
+		</div>
+		<div
+			class="absolute -top-8 left-1/2 bg-red-pink-gradient size-52 mask-radial-gradient opacity-5 group-hocus:opacity-25 transition motion-safe:duration-[1.5s]"
+		>
+		</div>
+		{/* Card */}
+		<div class="w-56 mx-auto perspective">
+			{/* File tree */}
+			<ul
+				class="transition duration-1000 text-sm text-astro-gray-200 antialiased leading-prose pl-2 pt-1.5 pb-20 rounded-lg border border-white/20 bg-clip-padding bg-gradient-to-tr from-[#1D2025] to-[#2D3039] shadow-md mask-linear-gradient-to-b"
+			>
+				<li data-file-tree class="grayscale group-hocus:grayscale-0 transition duration-1000">
+					<span class="flex gap-1 items-center">
+						<Icon name="chevron" size="10px" class="m-1" /> pages
+					</span>
+					<ul>
+						<li>
+							<span class="flex gap-1 items-center">
+								<Icon name="chevron" size="10px" class="m-1" /> api
+							</span>
+							<ul>
+								<li class="flex gap-1 items-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" viewBox="0 0 18 18">
+										<path
+											fill="url(#paint0_linear_4680_22813)"
+											d="M8.5 5.94h.1-2.47v7.35h-1.8V5.94H1.88V4.63H8.5v1.31Zm5.65 5.13a.97.97 0 0 0-.1-.44 1.77 1.77 0 0 0-.25-.37c-.1-.07-.23-.16-.42-.25a37.9 37.9 0 0 1-.64-.25l-.19-.07c-1-.3-1.8-.66-2.38-1.09a2.1 2.1 0 0 1-.78-1.66 2 2 0 0 1 .94-1.73 3.68 3.68 0 0 1 2.28-.65c.95 0 1.73.27 2.34.8.57.52.86 1.14.86 1.88h-1.66c0-.22-.04-.4-.1-.56-.08-.15-.19-.3-.34-.46a1.9 1.9 0 0 0-1.16-.34c-.46 0-.82.09-1.06.27a.92.92 0 0 0-.37.79c0 .27.15.52.44.74.12.09.3.18.55.27.19.08.48.18.88.3a5.8 5.8 0 0 1 2.15 1.06c.5.42.74 1 .74 1.76 0 .37-.08.7-.22 1-.15.3-.36.55-.64.74a3.8 3.8 0 0 1-2.3.64 3.9 3.9 0 0 1-2.48-.74 2.36 2.36 0 0 1-1-2.08h1.74c0 .5.17.88.5 1.16a2.55 2.55 0 0 0 1.3.35c.53 0 .89-.1 1.09-.28.18-.3.28-.56.28-.79Z"
+										></path>
+										<defs>
+											<linearGradient
+												id="paint0_linear_4680_22813"
+												x1="15.88"
+												x2="2.04"
+												y1="4.56"
+												y2="13.7"
+												gradientUnits="userSpaceOnUse"
+											>
+												<stop stop-color="#4AF2C8"></stop>
+												<stop offset="1" stop-color="#2F4CB3"></stop>
+											</linearGradient>
+										</defs>
+									</svg>
+									json.ts
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="flex gap-1 items-center">
+								<Icon name="chevron" size="10px" class="m-1" /> blog
+							</span>
+							<ul>
+								<li class="flex gap-1 items-center">
+									<Icon name="logos/astro-color" width={18} /> [slug.astro]
+								</li>
+							</ul>
+						</li>
+						<li class="flex gap-1 items-center">
+							<Icon name="logos/astro-color" width={18} /> 404.astro
+						</li>
+						<li class="flex gap-1 items-center">
+							<Icon name="logos/astro-color" width={18} /> about.astro
+						</li>
+						<li class="flex gap-1 items-center">
+							<Icon name="logos/astro-color" width={18} /> index.astro
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div
+			class="absolute pointer-events-none inset-0 bg-gradient-to-b from-transparent via-transparent to-astro-dark-800"
+		>
+		</div>
+	</div>
+</FeatureCard>
+
+<style>
+	.perspective {
+		perspective: 500px;
+		transform-style: preserve-3d;
+		perspective-origin: 50% 30%;
+
+		@media (prefers-reduced-motion: no-preference) {
+			& > ul {
+				will-change: transform;
+				transform: rotateZ(-10deg) rotateY(20deg) rotateX(40deg) translateX(5%) translateY(-10%)
+					translateZ(50px);
+				.group:hover &,
+				.group:has(:focus-visible) &,
+				.group.in-viewport & {
+					transform: none;
+				}
+			}
+		}
+	}
+	[data-file-tree] {
+		ul {
+			@apply pl-2;
+		}
+
+		li {
+			@apply border-l border-astro-gray-400 pl-2;
+		}
+	}
+</style>
