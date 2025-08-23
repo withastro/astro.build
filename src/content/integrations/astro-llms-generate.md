@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-llms-generate
 repoUrl: https://github.com/nermalcat69/astro-llms
 homepageUrl: https://github.com/nermalcat69/astro-llms
 badge: new
-downloads: 735
+downloads: 750
 ---

@@ -11,6 +11,6 @@ npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-render-component
 repoUrl: https://github.com/igorskyflyer/npm-astro-render-component
 homepageUrl: https://github.com/igorskyflyer/npm-astro-render-component
 badge: new
-downloads: 133
+downloads: 134
 image: /assets/integrations/@igor.dvlpr/astro-render-component.png
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-spa
 repoUrl: https://github.com/RafidMuhymin/astro-spa
 homepageUrl: https://github.com/RafidMuhymin/astro-spa#readme
-downloads: 222
+downloads: 218
 ---
