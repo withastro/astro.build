@@ -16,13 +16,27 @@ import Sponsors from './_components/landing-page/Sponsors.astro';
 	image={{ src: '/og/astro.jpg', alt: 'Astro - Build the web you want.' }}
 >
 	<Hero />
-	<Intro />
-	<Islands />
-	<Integrations />
-	<Features />
-	<Ecosystem />
-	<Agencies />
-	<FinalCTA />
-	<Sponsors />
-	<div class="h-20 sm:h-36"></div>
+	<div class="flex flex-col layout-optim">
+		<Intro />
+		<Islands />
+		<Integrations />
+	</div>
+	<div class="flex flex-col layout-optim">
+		<Features />
+	</div>
+	<div class="flex flex-col layout-optim">
+		<Ecosystem />
+		<Agencies />
+		<FinalCTA />
+	</div>
+	<div class="flex flex-col layout-optim">
+		<Sponsors />
+		<div class="h-20 sm:h-36"></div>
+	</div>
+	<style>
+		.layout-optim {
+			content-visibility: auto;
+			contain-intrinsic-size: auto 1000px;
+		}
+	</style>
 </MainLayout>
