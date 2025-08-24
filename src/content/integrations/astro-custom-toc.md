@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-custom-toc
 repoUrl: https://github.com/Robot-Inventor/astro-custom-toc
 homepageUrl: https://github.com/Robot-Inventor/astro-custom-toc#readme
-downloads: 797
+downloads: 762
 ---
