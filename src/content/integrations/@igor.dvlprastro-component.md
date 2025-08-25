@@ -11,4 +11,5 @@ repoUrl: https://github.com/igorskyflyer/npm-astro-component
 homepageUrl: https://github.com/igorskyflyer/npm-astro-component
 badge: new
 downloads: 189
+image: /assets/integrations/@igor.dvlpr/astro-component.png
 ---
