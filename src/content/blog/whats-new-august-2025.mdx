@@ -47,29 +47,32 @@ Let's dive right into it!
 
 Minor releases introduce new features and improvements. Check out what's new!
 
-- [Astro 5.13](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#5130) - new Content Security Policy (CSP) features, the ability to opt out of HTML streaming when using the Node.js adapter, and more!
+- [Astro 5.13](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#5130) - , and more!
 
 ## Astro Adopters
 
-From A to B to C, some of the biggest names you know are using Astro!
+From Travelodge to NixOS. to Drizzle to Mocha, some of the biggest names you know are using Astro!
 
 
 export const featuredSites = [
-  'docs.netlify.com',
-  'prompty.ai',
-  'conference.matrix.org',
+  'orm.drizzle.team',
+  'nixos.org',
+  'pricefinder.travelodge.co.uk',
+  'mochajs.org',
 ]; 
 
 {/* Use for grids of 2 per row  */}
-{/*
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'www.unilever.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'conference.matrix.org')} />
+  <ShowcaseCard site={await getEntry('showcase', 'pricefinder.travelodge.co.uk')} />
+  <ShowcaseCard site={await getEntry('showcase', 'nixos.org')} />
+  <ShowcaseCard site={await getEntry('showcase', 'orm.drizzle.team')} />
+  <ShowcaseCard site={await getEntry('showcase', 'mochajs.org')} />
 </div>
-*/}
+
 
 {/* Can use when there are multiples of 3  */}
-<ShowcaseGridById ids={featuredSites} /> 
+{/* <ShowcaseGridById ids={featuredSites} />  */}
 
 See more companies using Astro in our [site showcase](/showcase/), and explore Astro for corporate or enterprise use with one of our [agency partners](/agencies/)!
 
@@ -77,23 +80,25 @@ See more companies using Astro in our [site showcase](/showcase/), and explore A
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
 
+- https://github.com/dnlzro/horizon and https://sky.dlazaro.ca/
+
+- https://geolineup.com/
+
+
 
 export const monthlySites = [
-  '',
+  'geolineup.com',
+  'sky.dlazaro.ca',
 ]; 
 
-{/*
+{/* Use for grids of 2 per row  */}
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'color-contrast.incluud.dev')} />
-  <ShowcaseCard site={await getEntry('showcase', 'glypheditor.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'www.rigdesigner.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'postnord-i-kalendern.se')} />
-  <ShowcaseCard site={await getEntry('showcase', 'titlethumb.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'davidumoru.me')} />
+  <ShowcaseCard site={await getEntry('showcase', 'geolineup.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'sky.dlazaro.ca')} />
 </div>
-*/}
 
-<ShowcaseGridById ids={monthlySites} />
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={monthlySites} /> */}
 
 ## Cosmic Canvas
 
@@ -167,19 +172,20 @@ Using a CMS, database, or AI tool to build Astro? See how it's done!
 
 <YouTubeGrid
   videos={[
-    { id: "https://www.youtube.com/watch?v=ZZWOj6kwWxc", title: "Astro and Convex"},
-    { id: "https://www.youtube.com/watch?v=TyEIXeq0KD0", title: "Deploy on Gitlip"},
-    { id: "https://www.youtube.com/watch?v=wqc85X2rpEY", title: "GPT‑5 IS HERE and.....WOW"},
+    { id: "https://www.youtube.com/watch?v=VVs9RytpTfc", title: "Astro Composer Plugin for Obsidian"},
     { id: "https://www.youtube.com/watch?v=WI-_gVBoBBg", title: "Strapi Headless CMS"},
-    { id: "https://www.youtube.com/watch?v=MrPC6wnfQYA", title: "Import Scripts from Blogger and GitHub to Astro"},
-    { id: "https://www.youtube.com/watch?v=pBt4nsNKv8Q", title: "Is One-Shot Prompting Worth It with Opus 4.1 or ChatGpt5? (Tested)"},
-    { id: "https://www.youtube.com/watch?v=q0hkoRJH5xQ", title: "Loveable to Astro using Cursor AI"},
-    { id: "https://www.youtube.com/watch?v=MG4vneGrnUI", title: "Github CoPilot in VSCode with Astro.build"},
     { id: "https://www.youtube.com/watch?v=dcQVQvBT-EM", title: "Astro + Contentful Headless CMS + Tailwind CSS Crash Course"},
     { id: "https://www.youtube.com/watch?v=J2sEBaCc0g8", title: "Add Subscriptions to your Astro Website in Minutes!"},
     { id: "https://www.youtube.com/watch?v=UI2TUB_mIKA", title: "How I Self-Hosted my Astro Website"},
+    { id: "https://www.youtube.com/watch?v=MrPC6wnfQYA", title: "Import Scripts from Blogger and GitHub to Astro"},
+    { id: "https://www.youtube.com/watch?v=ZZWOj6kwWxc", title: "Astro and Convex"},
+    { id: "https://www.youtube.com/watch?v=TyEIXeq0KD0", title: "Deploy Astro on Gitlip"},
     { id: "https://www.youtube.com/watch?v=vRObZymavO4", title: "Astro + Headless WordPress: The Ultimate Jamstack Guide"},
     { id: "https://www.youtube.com/watch?v=x6pjyeQ_6V0", title: "Display Latest YouTube Videos on Your Astro Blog (SSG + SSR)"},
+    { id: "https://www.youtube.com/watch?v=q0hkoRJH5xQ", title: "Loveable to Astro using Cursor AI"},
+    { id: "https://www.youtube.com/watch?v=MG4vneGrnUI", title: "Github CoPilot in VSCode with Astro.build"},
+    { id: "https://www.youtube.com/watch?v=wqc85X2rpEY", title: "GPT‑5 IS HERE and.....WOW"},
+    { id: "https://www.youtube.com/watch?v=pBt4nsNKv8Q", title: "Is One-Shot Prompting Worth It with Opus 4.1 or ChatGpt5? (Tested)"},
   ]}
 /> 
 
@@ -203,7 +209,7 @@ Astro is popular around the globe! Discover what happened at meetups and confere
 <YouTubeGrid
   videos={[
     { id: "https://www.youtube.com/watch?v=Z3RY-sLlkLY", title: "React Day Berlin - Astro Markdown, Remark"},
-    { id: "", title: ""},
+
     { id: "", title: ""},
     { id: "", title: ""},
 
@@ -229,6 +235,12 @@ Watch people build, experiment, and learn!
 ## Tips & Tools
 
 The latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
+
+- [Astro Editor](https://github.com/dannysmith/astro-editor) - Reads your Zod schemas and transforms frontmatter into smart forms.
+
+... and some built with Astro!
+
+- [Lili's LLM Chat App](https://github.com/L1lith/Lilis-LLM-Chat) - A simple & secure LLM chat app
 
 ## Themes & Templates
 
