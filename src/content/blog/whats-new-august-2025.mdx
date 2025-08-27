@@ -51,7 +51,7 @@ Minor releases introduce new features and improvements. Check out what's new!
 
 ## Astro Adopters
 
-From Travelodge to NixOS. to Drizzle to Mocha, some of the biggest names you know are using Astro!
+From Travelodge to NixOS, to Drizzle to Mocha, some of the biggest names you know are using Astro!
 
 
 export const featuredSites = [
@@ -62,7 +62,6 @@ export const featuredSites = [
 ]; 
 
 {/* Use for grids of 2 per row  */}
-
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
   <ShowcaseCard site={await getEntry('showcase', 'pricefinder.travelodge.co.uk')} />
   <ShowcaseCard site={await getEntry('showcase', 'nixos.org')} />
@@ -105,10 +104,20 @@ export const monthlySites = [
 Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
 
 export const canvasSites = [
-  '',
+  'ledefile.renault.com',
+  'www.thelonelypixel.co.uk',
 ]; 
 
-<ShowcaseGridById ids={canvasSites} />
+{/* Use for grids of 2 per row  */}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'ledefile.renault.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.thelonelypixel.co.uk')} />
+</div>
+
+
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={canvasSites} /> */}
 
 
 ## Community
