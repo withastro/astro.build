@@ -21,6 +21,7 @@ import { Tweet } from 'astro-embed';
 import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
 import { getEntry } from 'astro:content';
 import Mention from "/src/components/Mention.astro";
+import { BlueskyPost } from 'astro-embed';
 
 Some exciting news from around the Astro ecosystem this month, including:
 
@@ -88,6 +89,7 @@ Some sites from the last month that show off what you can do with Astro that are
 export const monthlySites = [
   'geolineup.com',
   'sky.dlazaro.ca',
+  'toshawk.com',
 ]; 
 
 {/* Use for grids of 2 per row  */}
@@ -145,6 +147,14 @@ We even discovered some new video content:
   ]}
 /> 
 
+And if Notion is more your thing, then check out Jason Lengstorf's [proof-of-concept using Notion as a CMS to power an Astro site](https://github.com/jlengstorf/astro-notion-as-a-cms).
+
+
+<BlueskyPost id="https://bsky.app/profile/did:plc:ga3wlji66r5mxqch6wh7nq4v/post/3lw3yunfods2j" />
+
+Or maybe the hottest take of all: [GitHub as a CMS?](https://lukealexdavis.co.uk/posts/github-as-a-cms/)
+
+
 ### Did you know?
 
 
@@ -153,6 +163,11 @@ We even discovered some new video content:
 
 Here's what caught our attention this month: 
 
+- Discover why agency Digital Empr [made the switch from WordPress to Astro + Sanity](https://digitalempr.ro/presa/from-wordpress-to-astro-sanity-why-our-agency-made-the-switch) to build client sites and how it transformed their workflow.
+- Find out [why Sarthak Mishra spent weeks perfecting an Astro TOC component](https://sarthakmishra.com/blog/building-perfect-toc-component): a deep dive into building a Table of Contents component with sophisticated visual debugging and pixel-perfect active state detection.
+- Is it [time for modern CSS to kill the SPA](https://www.jonoalderson.com/conjecture/its-time-for-modern-css-to-kill-the-spa/) or to [reject the false binary between static sites and SPAs](https://www.lorenstew.art/blog/progressive-complexity-manifesto)? Some heavy questions to ponder while many were on holidays!
+- Compare [the best UI libraries for Astro](https://get.supportsquid.ink/d/10-the-best-ui-library-for-astro) with a detailed look at almost a dozen contenders!
+- Martin and his VT Bag of Tricks shares a round up of [view transition fails and fixes](https://vtbag.dev/tips/view-transition-fails-and-fixes/): quirks, caveats, and little gremlins that can cancel your animation, plus what you can do about them. Applicable whether you use Astro's client router or native view transitions in Astro directly!
 
 
 Because you can never get tired of Astro, here's even more community content!
@@ -160,20 +175,22 @@ Because you can never get tired of Astro, here's even more community content!
 ### Migration Stories
 
 - [Why I changed my tech stack](https://blog.devtalan.com/tech-stack-for-2026/) - to include Astro, of course!
+- [New portfolio site](https://edward-vonschondorf.dev/blog/new-portfolio-site/) - from mockup to deployment.
+- [Astro vs. Next.js: A Nuanced Choice](https://ctrixcode.vercel.app/blog/astro-vs-nextjs) - how and why they ultimately chose Astro.
 
 ### How-to Articles
 
 - [Building a Newsletter System Without the Headache](https://sarthakmishra.com/blog/building-newsletter-with-astro-cloudflare-and-resend) - using Cloudflare and Resend
 - [Building a personal photo stream for Astro/Cactus-theme](https://walterra.dev/blog/2025-08-04-photo-stream-astro)
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
+- [I finally added Bluesky comments and likes to my blog (and you can too!)](https://brittanyellich.com/bluesky-comments-likes/)
+- [Adding Spotify now playing to Astro](https://www.tommyp.org/blog/adding-spotify-now-playing-to-astro)
+- [How to fully autogenerate Starlight sidebars (without losing control)](https://blog.trueberryless.org/blog/starlight-autogenerate-whole-sidebar/)
+- [Astro + Wordpress: post previews](https://wpengine.com/builders/astro-wordpress-post-previews/)
+- [Power your Astro blog with Markdown View, Copy buttons to LLMS + Voice Resumes](https://nikuscs.com/blog/07-astro-copy-llms-button/)
+- [How to use PagesCMS with Astro](https://lexingtonthemes.com/blog/posts/how-to-use-pagescms-with-astro/)
+- [Building an automated photo gallery with Astro](https://conragan.com/blog/2025/automated-astrojs-photo-gallery/)
+- [Add Google Analytics to Astro: the complete guide](https://farrosfr.com/blog/add-google-analytics-to-astro-the-complete-guide/)
+- [Building a TypeSafe SDK with TypeScript for a Headless Statamic website using Astro](https://www.luckymedia.dev/blog/building-a-typesafe-sdk-with-typescript-for-a-headless-statamic-website-using-astro)
 - []()
 - []()
 - []()
@@ -300,6 +317,25 @@ Watch people build, experiment, and learn!
 The latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
 
 - [Astro Editor](https://github.com/dannysmith/astro-editor) - Reads your Zod schemas and transforms frontmatter into smart forms.
+- 🌟 [Starlight changelogs](https://github.com/HiDeoo/starlight-changelogs) - Display changelogs right alongside your project documentation.
+- 🌟 [Starlight contextual menu](https://github.com/corsfix/starlight-contextual-menu) - Add a contextual menu to your Starlight documentation quick access to AI-optimized content.
+- [Starlight GitHub alerts](https://github.com/HiDeoo/starlight-github-alerts) - Render GitHub alerts as Starlight asides.
+- 🌟 [Starlight plugin icons](https://github.com/Rettend/starlight-plugin-icons) - Add icons to Astro Starlight: sidebar, codeblocks, filetree.
+- 🌟 []()
+- 🌟 []()
+- 🌟 []()
+- [Astro Tailwind 4 auto reference](https://github.com/bitgumbo/astro-tw-autoreference) - Automatically inject tailwind `@reference` directives in Astro component style blocks.
+- [Astrojs Hyperapp](https://github.com/zaceno/astrojs-hyperapp) - Static/server rendered Hyperapp components with Astro.
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
 
 ... and some built with Astro!
 
