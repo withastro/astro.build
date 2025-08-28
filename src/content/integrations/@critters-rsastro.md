@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@critters-rs/astro
 repoUrl: https://github.com/michaelhthomas/critters-rs
 homepageUrl: https://github.com/michaelhthomas/critters-rs#readme
-downloads: 1400
+downloads: 1328
 ---
