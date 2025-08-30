@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-simple-feature-flags
 repoUrl: https://github.com/sushichan044/astro-simple-feature-flags
 homepageUrl: https://github.com/sushichan044/astro-simple-feature-flags#readme
 badge: new
-downloads: 432
+downloads: 443
 ---

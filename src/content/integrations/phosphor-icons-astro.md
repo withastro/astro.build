@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/phosphor-icons-astro
 repoUrl: https://github.com/smastrom/phosphor-icons-astro
 homepageUrl: https://github.com/smastrom/phosphor-icons-astro
-downloads: 71
+downloads: 72
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jop-software/astro-matomo
 repoUrl: https://github.com/jop-software/astro-matomo
 homepageUrl: https://github.com/jop-software/astro-matomo#readme
-downloads: 341
+downloads: 335
 ---

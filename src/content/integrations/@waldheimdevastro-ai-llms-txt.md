@@ -9,6 +9,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@waldheimdev/astro-ai-llms-txt
 homepageUrl: https://www.waldheim.dev
 badge: new
-downloads: 276
+downloads: 277
 repoUrl: https://gitlab.com/waldheimdev/astro-ai-llms.txt
 ---
