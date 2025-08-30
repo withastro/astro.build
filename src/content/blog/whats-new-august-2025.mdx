@@ -1,6 +1,6 @@
 ---
 title: "What's new in Astro - August 2025"
-description: 'August 2025 - stuff, and more!'
+description: 'August 2025 - 1 million Astro VSCode extension installs, easier ways to contribute to Astro, and more!'
 publishDate: "August 31, 2025"
 authors:
   - sarah
@@ -43,31 +43,34 @@ Let's dive right into it!
 
 ## Updates from Mission Control 
 
+- 🚀 [Astro's most popular integration](https://astro.build/integrations/) passes 1 million monthly downloads
+- 🧑‍💻 1 million installs of the [Astro VSCode extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode)
+- 🆘 Want to contribute? We updated our [contributing page](https://docs.astro.build/en/contribute/) with a direct link to all open issues marked `help wanted` or `good first issue` across all Astro repos!
+
 
 ## Latest releases
 
 Minor releases introduce new features and improvements. Check out what's new!
 
-- [Astro 5.13](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#5130) - , and more!
+- [Astro 5.13](https://github.com/withastro/astro/blob/refs/heads/main/packages/astro/CHANGELOG.md#5130) - experimental improvements to environment variable handling, support for Chrome DevTools workspaces, and more!
 
 ## Astro Adopters
 
-From Travelodge to NixOS, to Drizzle to Mocha, some of the biggest names you know are using Astro!
-
+From Travelodge to Renault, NixOS to Drizzle, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
   'orm.drizzle.team',
   'nixos.org',
   'pricefinder.travelodge.co.uk',
-  'mochajs.org',
+  'ledefile.renault.com',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
   <ShowcaseCard site={await getEntry('showcase', 'pricefinder.travelodge.co.uk')} />
+  <ShowcaseCard site={await getEntry('showcase', 'ledefile.renault.com',)} />
   <ShowcaseCard site={await getEntry('showcase', 'nixos.org')} />
   <ShowcaseCard site={await getEntry('showcase', 'orm.drizzle.team')} />
-  <ShowcaseCard site={await getEntry('showcase', 'mochajs.org')} />
 </div>
 
 
@@ -80,16 +83,14 @@ See more companies using Astro in our [site showcase](/showcase/), and explore A
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
 
-- https://github.com/dnlzro/horizon and https://sky.dlazaro.ca/
-
-- https://geolineup.com/
+- Play a [geography sorting game](https://geolineup.com/) built with Astro! Test your knowledge as you drag and drop city names to put them in order from north to south.
+- Why look out the window when you can view [the current sky at your approximate location](https://sky.dlazaro.ca/), rendered as a CSS gradient? ((source code)[https://github.com/dnlzro/horizon])
 
 
 
 export const monthlySites = [
   'geolineup.com',
   'sky.dlazaro.ca',
-  'toshawk.com',
 ]; 
 
 {/* Use for grids of 2 per row  */}
