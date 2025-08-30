@@ -1,14 +1,14 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import heroBackground from '../landing-page/_assets/HeroBackground.png';
-
-const background = await getImage({ src: heroBackground, quality: 10, width: 256 });
 ---
 
-<img
+<Image
+	src={heroBackground}
+	quality={10}
+	width={256}
+	priority
 	loading="eager"
-	fetchpriority="high"
-	src={background.src}
 	alt=""
 	class="blur-lg absolute -z-50 -translate-x-1/2 inset-x-1/2 -inset-y-full w-[2353px] h-[1969px] object-cover max-w-[unset]"
 />
