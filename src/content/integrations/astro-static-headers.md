@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-static-headers
 repoUrl: https://github.com/abemedia/astro-static-headers
 homepageUrl: https://github.com/abemedia/astro-static-headers#readme
 badge: new
-downloads: 72
+downloads: 73
 ---
