@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@sofidevo/astro-dynamic-header
 repoUrl: https://github.com/SofiDevO/astro-dynamic-header
-homepageUrl: https://github.com/SofiDevO/astro-dynamic-header#readme
+homepageUrl: https://base-astro-psi.vercel.app/fullscreen-demo
 badge: new
 downloads: 1440
 ---
