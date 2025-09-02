@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-mail-obfuscation
 repoUrl: https://github.com/andreas-brunner/astro-mail-obfuscation
 homepageUrl: https://www.npmjs.com/package/astro-mail-obfuscation
-downloads: 781
+downloads: 814
 ---

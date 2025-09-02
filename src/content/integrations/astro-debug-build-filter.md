@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-debug-build-filter
 homepageUrl: https://www.npmjs.com/package/astro-debug-build-filter
 badge: new
-downloads: 428
+downloads: 577
 ---

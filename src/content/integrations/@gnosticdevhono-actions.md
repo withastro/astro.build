@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
 homepageUrl: https://github.com/gnosticdev/hono-actions
 badge: new
-downloads: 444
+downloads: 1078
 ---
