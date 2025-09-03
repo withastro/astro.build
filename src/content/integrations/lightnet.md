@@ -5,7 +5,7 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/lightnet
 homepageUrl: https://lightnet.community
-downloads: 348
+downloads: 349
 description: LightNet
 repoUrl: https://github.com/LightNetDev/lightnet
 ---

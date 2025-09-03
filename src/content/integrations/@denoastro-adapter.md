@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@deno/astro-adapter
 repoUrl: https://github.com/denoland/deno-astro-adapter
 homepageUrl: https://github.com/denoland/deno-astro-adapter/
-downloads: 4661
+downloads: 4915
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astrojs-hyperapp
 repoUrl: https://github.com/zaceno/astrojs-hyperapp
 homepageUrl: https://github.com/zaceno/astrojs-hyperapp#readme
 badge: new
-downloads: 831
+downloads: 844
 ---

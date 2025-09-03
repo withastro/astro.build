@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-uploader
 repoUrl: https://github.com/syhily/astro-uploader
 homepageUrl: https://github.com/syhily/astro-uploader#readme
-downloads: 300
+downloads: 301
 ---
