@@ -4,10 +4,8 @@ title: starlight-theme-mint
 description: Starlight theme inspired by Mintlify
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/starlight-theme-mint
 repoUrl: https://github.com/nexmoe/starlight-theme-mint
 homepageUrl: https://www.npmjs.com/package/starlight-theme-mint
-badge: new
-downloads: 730
+downloads: 431
 ---

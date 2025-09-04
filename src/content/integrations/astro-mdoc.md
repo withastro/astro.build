@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-mdoc
 homepageUrl: https://www.npmjs.com/package/astro-mdoc
-downloads: 56
+downloads: 44
 ---
