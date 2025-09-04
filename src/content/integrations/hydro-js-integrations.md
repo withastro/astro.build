@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/hydro-js-integrations
 repoUrl: https://github.com/Krutsch/hydro-js-integrations
 homepageUrl: https://github.com/Krutsch/hydro-js-integrations#readme
-downloads: 8
+downloads: 9
 ---

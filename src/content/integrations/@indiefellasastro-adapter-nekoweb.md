@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@indiefellas/astro-adapter-nekoweb
 repoUrl: https://github.com/indiefellas/astro-adapter-nekoweb
 homepageUrl: https://github.com/indiefellas/astro-adapter-nekoweb
-downloads: 186
+downloads: 183
 ---
