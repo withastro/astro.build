@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-startup-code
 homepageUrl: https://www.npmjs.com/package/astro-startup-code
 badge: new
-downloads: 232
+downloads: 236
 ---

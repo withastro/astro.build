@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-variables
 homepageUrl: https://github.com/varharrie/astro-variables#readme
 badge: new
-downloads: 210
+downloads: 213
 ---
