@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-remove-comments
 homepageUrl: https://www.npmjs.com/package/astro-remove-comments
 badge: new
-downloads: 24
+downloads: 18
 ---
