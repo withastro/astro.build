@@ -7,7 +7,7 @@ categories:
   - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
-homepageUrl: https://github.com/gnosticdev/hono-actions
+homepageUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
 badge: new
 downloads: 1186
 ---
