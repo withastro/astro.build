@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-decap-cms-oauth
 repoUrl: https://github.com/dorukgezici/astro-decap-cms-oauth
 homepageUrl: https://github.com/dorukgezici/astro-decap-cms-oauth
-downloads: 1273
+downloads: 1269
 ---
