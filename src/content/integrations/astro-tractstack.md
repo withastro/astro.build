@@ -1,7 +1,7 @@
 ---
 name: astro-tractstack
 title: astro-tractstack
-description: Astro integration for TractStack - build adaptive websites with HTMX and Go
+description: Astro integration for TractStack - redeeming the web from boring experiences
 categories:
   - uncategorized
   - recent
