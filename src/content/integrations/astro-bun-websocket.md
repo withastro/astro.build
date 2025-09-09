@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-bun-websocket
 homepageUrl: https://www.npmjs.com/package/astro-bun-websocket
-downloads: 33
+downloads: 35
 ---
