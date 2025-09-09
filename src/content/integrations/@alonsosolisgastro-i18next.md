@@ -5,10 +5,8 @@ description: An astro integration of i18next + some utility components to help
   you translate your astro websites!
 categories:
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/@alonsosolisg/astro-i18next
 repoUrl: https://github.com/alonsosolisg/astro-i18next
 homepageUrl: https://astro-i18next.yassinedoghri.com/
-badge: new
-downloads: 68
+downloads: 7
 ---
