@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@jaydixit/astro-utils
 repoUrl: https://github.com/yourusername/astro-monorepo
 homepageUrl: https://github.com/yourusername/astro-monorepo#readme
 badge: new
-downloads: 279
+downloads: 286
 ---
