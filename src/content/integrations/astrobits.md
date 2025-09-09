@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astrobits
 homepageUrl: https://www.npmjs.com/package/astrobits
-downloads: 16
+downloads: 15
 ---
