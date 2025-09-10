@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/van-mdx
 homepageUrl: https://www.npmjs.com/package/van-mdx
-downloads: 120
+downloads: 117
 ---
