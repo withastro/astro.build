@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/mjo-astro-lit
 repoUrl: https://github.com/manujoz/-mjo-astro-lit
 homepageUrl: https://github.com/manujoz/-mjo-astro-lit#readme
 badge: new
-downloads: 137
+downloads: 138
 ---

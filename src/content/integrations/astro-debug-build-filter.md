@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-debug-build-filter
 homepageUrl: https://nathanchere.com.au/projects/astro-debug-build-filter
 badge: new
-downloads: 708
+downloads: 711
 repoUrl: https://gitlab.com/nathanchere/astro-debug-build-filter
 ---

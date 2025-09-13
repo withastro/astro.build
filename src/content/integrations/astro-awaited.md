@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-awaited
 repoUrl: https://github.com/matheusbronca/astro-awaited
 homepageUrl: https://github.com/matheusbronca/astro-awaited
 badge: new
-downloads: 1005
+downloads: 1079
 ---
