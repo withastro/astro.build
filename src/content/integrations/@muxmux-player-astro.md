@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mux/mux-player-astro
 homepageUrl: https://mux.com/player
 badge: new
-downloads: 154
+downloads: 156
 ---

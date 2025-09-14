@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@sofidevo/astro-dynamic-header
 repoUrl: https://github.com/SofiDevO/astro-dynamic-header
 homepageUrl: https://base-astro-psi.vercel.app/fullscreen-demo
 badge: new
-downloads: 1931
+downloads: 1939
 ---

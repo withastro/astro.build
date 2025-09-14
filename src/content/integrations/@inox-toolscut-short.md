@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/cut-short
 homepageUrl: https://www.npmjs.com/package/@inox-tools/cut-short
-downloads: 82
+downloads: 80
 ---
