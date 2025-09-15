@@ -9,4 +9,5 @@ npmUrl: https://www.npmjs.com/package/@mux/mux-player-astro
 homepageUrl: https://mux.com/player
 badge: new
 downloads: 159
+repoUrl: https://github.com/muxinc/elements
 ---

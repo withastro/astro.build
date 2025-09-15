@@ -6,7 +6,8 @@ categories:
   - media
   - recent
 npmUrl: https://www.npmjs.com/package/@mux/mux-uploader-astro
-homepageUrl: https://mux.com/uploader
+homepageUrl: https://www.npmjs.com/package/@mux/mux-uploader-astro
 badge: new
 downloads: 154
+repoUrl: https://github.com/muxinc/elements
 ---
