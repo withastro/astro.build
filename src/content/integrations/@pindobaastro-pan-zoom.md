@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-pan-zoom
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-pan-zoom
-downloads: 109
+downloads: 108
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-remixicon
 repoUrl: https://github.com/LoganQiu/astro-remixicon
 homepageUrl: https://github.com/LoganQiu/astro-remixicon
 badge: new
-downloads: 80
+downloads: 84
 ---
