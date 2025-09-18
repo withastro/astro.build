@@ -1,0 +1,117 @@
+---
+title: 'Unleashing creativity'
+description: 'How CodeTV built a video streaming platform with Astro and Mux'
+seo:
+  title: 'Unleashing creativity: How CodeTV built a video streaming platform with Astro and Mux'
+  description: 'How Astro gives CodeTV everything they need to run a subscription-based TV service.'
+coverGradientFrom: '#3245FF'
+coverGradientTo: '#BC52EE'
+publishDate: 'September 9, 2025'
+authors:
+  - astro-team
+lang: 'en'
+socialImage: /src/content/caseStudies/_images/codetv/social-image.webp
+coverImage: /src/content/caseStudies/_images/codetv/cover-image.webp
+headerImage: /src/content/caseStudies/_images/codetv/header.png
+---
+
+import showsGraphic from './_images/codetv/codetv-shows.webp';
+import coreWebVitalsGraphic from './_images/codetv/codetv-cwv.webp';
+import BlogContentImage from '~/components/BlogContentImage.astro';
+import ImageFigure from '~/components/ImageFigure.astro';
+import Blockquote from '~/components/Blockquote.astro';
+
+<div class="space-y-8 text-white">
+	<div class="text-2xl leading-normal tracking-normal text-astro-gray-100">
+		[CodeTV](https://codetv.dev/) features video programming for developers
+		ranging from live coding sessions to game shows. They needed a framework
+		that could handle a complex data architecture and deliver a high performance
+		streaming platform for subscribers.
+	</div>
+</div>
+
+Tired of every live-streamed event feeling the same, Jason Lengstorf set out to create engaging video content for developers.
+CodeTV's shows focus on original concepts and high production value to provide a true TV-like alternative for those tired of watching yet another Zoom call posted to YouTube.
+
+With Astro, Lengstorf had the tools to build an entire media platform that handled content and performance needs and "just worked," keeping his primary focus on creating original programming.
+
+<ImageFigure caption="CodeTV’s offerings include multiple types of shows.">
+	<BlogContentImage
+		src={showsGraphic}
+		alt="Four TV screens featuring CodeTV shows: Web Dev Challenge, Leet Heat, Learn With Jason, and Unspoken Tech."
+	/>
+</ImageFigure>
+
+## Challenges
+
+When Jason Lengstorf found success with his web series "Learn with Jason," he realized that he wanted to produce more, and varied, video content. He dreamed of expanding his educational content to include scripted shows with characters you invest in, and game shows where devs face off head-to-head.
+
+But to move in this new direction, he needed a new kind of website. Lengstorf realized, "I'm making TV. What does TV look like?" He noticed that established media streaming platforms such as Netflix, Hulu, and Nebula all followed a consistent architecture with specific features: intuitive navigation through several series, tracking watched content, notifications for new content, as well as self-serve subscriber controls for payments and account info.
+
+CodeTV needed to do a lot, and do it reliably, so that time was spent creating content and not troubleshooting its delivery platform.
+
+## Requirements
+
+To be a full-fledged media platform, CodeTV needed a solution that was easy to integrate with a variety of services: a content management system (CMS), Mux video streaming, authentication, e-commerce, digital asset management, site search, as well as complex workflow automation connecting everything together.
+
+With all of that going on, there was no room for bloat. CodeTV needed to be lightweight and performant. And, the code needed to be easy to organize and maintain. Astro's "opt in to complexity" model was exactly what was needed.
+
+<Blockquote>
+	<Fragment slot="quote">
+		If I want to add some client interactivity or if I want to add a server
+		island, that's all on the table. And it’s opt-in per component. That felt
+		really good.
+	</Fragment>
+	<Fragment slot="caption">— Jason Lengstorf, CodeTV</Fragment>
+</Blockquote>
+
+CodeTV chose Mux to provide adaptive bit-rate streaming of subscriber-only video content.
+Astro’s native support for web components made integrating Mux’s lightweight video player a breeze. Next up would be integrating everything else needed for a full, subscription-based, video-on-demand streaming service provider.
+
+## Solution and implementation
+
+Astro's rendering strategies were key in keeping viewers tuned in. Even though CodeTV serves its users a dynamic and personalized experience, Astro's static-by-default philosophy made it easy to prerender static HTML for almost every page, improving load times and reducing costs.
+Astro's server islands allowed CodeTV to defer the loading of personalized dynamic content without blocking the rendering of content common to all users.
+
+Rendering fast, performant pages and streaming video on demand was no problem with Astro. Even with complex content hierarchies including multiple shows, seasons, hosts, guests, and more, navigating CodeTV feels as quick as changing the channel.
+
+Astro's extensibility meant that adding the necessary integrations to CodeTV to build out the streaming platform went smoothly: Mux for streaming video, Clerk for authentication, Stripe for payment processing, Sanity for content management, Inngest for background tasks, and deployed to Netlify.
+Everything integrated well by enhancing prerendered pages with server islands.
+Subscription payments, a user dashboard, custom subscriber content… whatever they threw at Astro, it "just worked," says Lengstorf.
+
+<Blockquote>
+	<Fragment slot="quote">
+		I just keep adding more stuff to it, each time thinking, "Maybe this is the
+		thing that will stop me." But so far, I haven't found the limits yet. And,
+		I'm starting to doubt that they even exist.
+	</Fragment>
+	<Fragment slot="caption">— Jason Lengstorf, CodeTV</Fragment>
+</Blockquote>
+
+Astro’s flexible support for UI frameworks sped up migration time by enabling the reuse of existing React components in the new site.
+There was no need to rebuild a site search solution, because Astro was fully compatible with the React code from the original Learn With Jason site.
+
+## Results
+
+Now, most of Lengstorf's time is spent working on content, his original goal, because maintaining the CodeTV website can be almost an afterthought.
+But when it's time to add new features, it is easy to jump back into Astro code. Astro's mental model and code organization make sense, and there are no struggles optimizing API calls or database latency.
+Astro's prerendering was the solution almost every time they wanted to improve performance.
+
+The result is a content-heavy site that feels dynamic and responsive to viewers, scoring excellently across desktop and mobile devices in the Core Web Vitals metrics.
+
+<ImageFigure caption="Real-world Core Web Vital metrics collected from the CrUX Report. CodeTV has good performance on desktop and mobile in the key metrics: Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift.">
+	<BlogContentImage
+		src={coreWebVitalsGraphic}
+		alt="Real World Core Web Vitals (p75): 1.5s LCP, 45ms INP, 0.0 CLS."
+	/>
+</ImageFigure>
+
+The original plan had been "make it work, then make it fast." But with Astro it was fast right away, because as Lengstorf noted, "That's just the nature of how you build on Astro." As a complex, content-heavy, media streaming platform with several integrations and automated workflows, CodeTV proved that Astro's limits might not exist.
+
+<Blockquote>
+	<Fragment slot="quote">
+		I was like, "Let's see how far we can push this thing before it breaks." And
+		I just never found the breaking point.
+	</Fragment>
+	<Fragment slot="caption">— Jason Lengstorf, CodeTV</Fragment>
+</Blockquote>

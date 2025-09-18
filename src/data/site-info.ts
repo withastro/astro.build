@@ -1,14 +1,16 @@
 export type SocialLink = {
-	me?: string;
 	/** Longer descriptive label, e.g. `"Join the Astro community on Discord"` */
 	text: string;
 	/** Short label with the name of the platform, e.g. `"Discord"`*/
 	label: string;
+	/** Icon name for use with `astro-icon`, e.g. `"social/discord"`. */
 	icon: string;
+	/** URL for our profile on the external platform. */
 	href: string;
-	/** Platform ID, e.g. `"discord"` */
+	/** Platform ID, e.g. `"discord"`. Used for `astro.build/on/PLATFORM` redirects. */
 	platform: string;
-	footerOnly?: boolean;
+	/** Whether this platform should be linked in the site header */
+	showInHeader?: boolean;
 };
 
 export type SiteInfo = {
@@ -34,16 +36,13 @@ const siteInfo: SiteInfo = {
 	socialLinks: [
 		{
 			platform: 'bluesky',
-			footerOnly: true,
 			icon: 'social/bluesky',
-			me: 'https://bsky.app/profile/astro.build',
 			label: 'Bluesky',
 			text: 'Follow Astro on Bluesky',
 			href: 'https://bsky.app/profile/astro.build',
 		},
 		{
 			platform: 'discord',
-			footerOnly: true,
 			href: '/chat',
 			icon: 'social/discord',
 			label: 'Discord',
@@ -54,35 +53,43 @@ const siteInfo: SiteInfo = {
 			icon: 'social/github',
 			label: 'GitHub',
 			text: "Go to Astro's GitHub repo",
-			me: 'https://github.com/withastro/',
 			href: 'https://github.com/withastro/astro',
+			showInHeader: true,
+		},
+		{
+			platform: 'linkedin',
+			icon: 'social/linkedin',
+			label: 'LinkedIn',
+			text: 'Follow Astro on LinkedIn',
+			href: 'https://www.linkedin.com/company/withastro',
 		},
 		{
 			platform: 'mastodon',
-			footerOnly: true,
 			icon: 'social/mastodon',
-			me: 'https://m.webtoo.ls/@astro',
 			label: 'Mastodon',
 			text: 'Follow Astro on Mastodon',
 			href: 'https://m.webtoo.ls/@astro',
 		},
 		{
 			platform: 'reddit',
-			footerOnly: true,
 			icon: 'social/reddit',
-			me: 'https://www.reddit.com/r/withastro/',
 			label: 'Reddit',
 			text: 'Join the official Astro community on Reddit',
 			href: 'https://www.reddit.com/r/withastro/',
 		},
 		{
 			platform: 'twitter',
-			footerOnly: true,
 			icon: 'social/twitter',
-			me: 'https://x.com/astrodotbuild',
 			href: 'https://x.com/astrodotbuild',
 			label: 'X.com',
 			text: 'Follow Astro on x.com (formerly Twitter)',
+		},
+		{
+			platform: 'youtube',
+			icon: 'social/youtube',
+			href: 'https://www.youtube.com/@astrodotbuild',
+			label: 'YouTube',
+			text: 'Follow Astro on YouTube',
 		},
 	],
 };

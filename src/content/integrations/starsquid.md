@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starsquid
 repoUrl: https://github.com/sgalcheung/starsquid
 homepageUrl: https://starsquid.vercel.app/
-downloads: 17
+downloads: 11
 ---

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import Card from '~/components/Card.astro';
+import siteInfo from '~/data/site-info.js';
 import MainLayout from '~/layouts/MainLayout.astro';
 import houston from './_components/houston.png';
 import PressAssetCard from './_components/PressAssetCard.astro';
@@ -18,36 +19,11 @@ const socialLinks = [
 		href: 'mailto:press@astro.build',
 	},
 	'separator',
-	{
-		text: 'Bluesky',
-		icon: 'social/bluesky',
-		href: 'https://astro.build/on/bluesky',
-	},
-	{
-		text: 'Discord',
-		icon: 'social/discord',
-		href: 'https://astro.build/chat',
-	},
-	{
-		text: 'GitHub',
-		icon: 'social/github',
-		href: 'https://astro.build/on/github',
-	},
-	{
-		text: 'Mastodon',
-		icon: 'social/mastodon',
-		href: 'https://astro.build/on/mastodon',
-	},
-	{
-		text: 'X/Twitter',
-		icon: 'social/twitter',
-		href: 'https://astro.build/on/twitter',
-	},
-	{
-		text: 'YouTube',
-		icon: 'social/youtube',
-		href: 'https://www.youtube.com/@astrodotbuild',
-	},
+	...siteInfo.socialLinks.map((link) => ({
+		text: link.label,
+		icon: link.icon,
+		href: `https://astro.build/on/${link.platform}`,
+	})),
 ] satisfies Array<{ text: string; icon: string; href: string } | 'separator'>;
 ---
 

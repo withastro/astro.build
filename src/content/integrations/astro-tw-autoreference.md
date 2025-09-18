@@ -6,10 +6,8 @@ description: Automaticaly inject tailwind @reference directives into Astro
 categories:
   - css+ui
   - utilities
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-tw-autoreference
 repoUrl: https://github.com/bitgumbo/astro-tw-autoreference
 homepageUrl: https://github.com/bitgumbo/astro-tw-autoreference
-badge: new
-downloads: 228
+downloads: 42
 ---
