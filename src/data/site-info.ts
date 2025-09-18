@@ -8,7 +8,8 @@ export type SocialLink = {
 	href: string;
 	/** Platform ID, e.g. `"discord"` */
 	platform: string;
-	footerOnly?: boolean;
+	/** Whether this platform should be linked in the site header */
+	showInHeader?: boolean;
 };
 
 export type SiteInfo = {
@@ -34,7 +35,6 @@ const siteInfo: SiteInfo = {
 	socialLinks: [
 		{
 			platform: 'bluesky',
-			footerOnly: true,
 			icon: 'social/bluesky',
 			me: 'https://bsky.app/profile/astro.build',
 			label: 'Bluesky',
@@ -43,7 +43,6 @@ const siteInfo: SiteInfo = {
 		},
 		{
 			platform: 'discord',
-			footerOnly: true,
 			href: '/chat',
 			icon: 'social/discord',
 			label: 'Discord',
@@ -56,10 +55,10 @@ const siteInfo: SiteInfo = {
 			text: "Go to Astro's GitHub repo",
 			me: 'https://github.com/withastro/',
 			href: 'https://github.com/withastro/astro',
+			showInHeader: true,
 		},
 		{
 			platform: 'mastodon',
-			footerOnly: true,
 			icon: 'social/mastodon',
 			me: 'https://m.webtoo.ls/@astro',
 			label: 'Mastodon',
@@ -68,7 +67,6 @@ const siteInfo: SiteInfo = {
 		},
 		{
 			platform: 'reddit',
-			footerOnly: true,
 			icon: 'social/reddit',
 			me: 'https://www.reddit.com/r/withastro/',
 			label: 'Reddit',
@@ -77,7 +75,6 @@ const siteInfo: SiteInfo = {
 		},
 		{
 			platform: 'twitter',
-			footerOnly: true,
 			icon: 'social/twitter',
 			me: 'https://x.com/astrodotbuild',
 			href: 'https://x.com/astrodotbuild',
