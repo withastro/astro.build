@@ -3,9 +3,11 @@ export type SocialLink = {
 	text: string;
 	/** Short label with the name of the platform, e.g. `"Discord"`*/
 	label: string;
+	/** Icon name for use with `astro-icon`, e.g. `"social/discord"`. */
 	icon: string;
+	/** URL for our profile on the external platform. */
 	href: string;
-	/** Platform ID, e.g. `"discord"` */
+	/** Platform ID, e.g. `"discord"`. Used for `astro.build/on/PLATFORM` redirects. */
 	platform: string;
 	/** Whether this platform should be linked in the site header */
 	showInHeader?: boolean;
