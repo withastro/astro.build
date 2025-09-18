@@ -58,6 +58,14 @@ const siteInfo: SiteInfo = {
 			showInHeader: true,
 		},
 		{
+			platform: 'linkedin',
+			icon: 'social/linkedin',
+			label: 'LinkedIn',
+			text: 'Follow Astro on LinkedIn',
+			me: 'https://www.linkedin.com/company/withastro',
+			href: 'https://www.linkedin.com/company/withastro',
+		},
+		{
 			platform: 'mastodon',
 			icon: 'social/mastodon',
 			me: 'https://m.webtoo.ls/@astro',
@@ -80,6 +88,14 @@ const siteInfo: SiteInfo = {
 			href: 'https://x.com/astrodotbuild',
 			label: 'X.com',
 			text: 'Follow Astro on x.com (formerly Twitter)',
+		},
+		{
+			platform: 'youtube',
+			icon: 'social/youtube',
+			me: 'https://www.youtube.com/@astrodotbuild',
+			href: 'https://www.youtube.com/@astrodotbuild',
+			label: 'YouTube',
+			text: 'Follow Astro on YouTube',
 		},
 	],
 };
