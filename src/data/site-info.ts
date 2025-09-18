@@ -1,5 +1,4 @@
 export type SocialLink = {
-	me?: string;
 	/** Longer descriptive label, e.g. `"Join the Astro community on Discord"` */
 	text: string;
 	/** Short label with the name of the platform, e.g. `"Discord"`*/
@@ -36,7 +35,6 @@ const siteInfo: SiteInfo = {
 		{
 			platform: 'bluesky',
 			icon: 'social/bluesky',
-			me: 'https://bsky.app/profile/astro.build',
 			label: 'Bluesky',
 			text: 'Follow Astro on Bluesky',
 			href: 'https://bsky.app/profile/astro.build',
@@ -53,7 +51,6 @@ const siteInfo: SiteInfo = {
 			icon: 'social/github',
 			label: 'GitHub',
 			text: "Go to Astro's GitHub repo",
-			me: 'https://github.com/withastro/',
 			href: 'https://github.com/withastro/astro',
 			showInHeader: true,
 		},
@@ -62,13 +59,11 @@ const siteInfo: SiteInfo = {
 			icon: 'social/linkedin',
 			label: 'LinkedIn',
 			text: 'Follow Astro on LinkedIn',
-			me: 'https://www.linkedin.com/company/withastro',
 			href: 'https://www.linkedin.com/company/withastro',
 		},
 		{
 			platform: 'mastodon',
 			icon: 'social/mastodon',
-			me: 'https://m.webtoo.ls/@astro',
 			label: 'Mastodon',
 			text: 'Follow Astro on Mastodon',
 			href: 'https://m.webtoo.ls/@astro',
@@ -76,7 +71,6 @@ const siteInfo: SiteInfo = {
 		{
 			platform: 'reddit',
 			icon: 'social/reddit',
-			me: 'https://www.reddit.com/r/withastro/',
 			label: 'Reddit',
 			text: 'Join the official Astro community on Reddit',
 			href: 'https://www.reddit.com/r/withastro/',
@@ -84,7 +78,6 @@ const siteInfo: SiteInfo = {
 		{
 			platform: 'twitter',
 			icon: 'social/twitter',
-			me: 'https://x.com/astrodotbuild',
 			href: 'https://x.com/astrodotbuild',
 			label: 'X.com',
 			text: 'Follow Astro on x.com (formerly Twitter)',
@@ -92,7 +85,6 @@ const siteInfo: SiteInfo = {
 		{
 			platform: 'youtube',
 			icon: 'social/youtube',
-			me: 'https://www.youtube.com/@astrodotbuild',
 			href: 'https://www.youtube.com/@astrodotbuild',
 			label: 'YouTube',
 			text: 'Follow Astro on YouTube',
