@@ -6,10 +6,8 @@ description: Use Lit components within Astro, adapted from @astrojs/lit due to
 categories:
   - css+ui
   - frameworks
-  - recent
 npmUrl: https://www.npmjs.com/package/mjo-astro-lit
 repoUrl: https://github.com/manujoz/-mjo-astro-lit
 homepageUrl: https://github.com/manujoz/-mjo-astro-lit#readme
-badge: new
 downloads: 138
 ---

@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-tree-view
 repoUrl: https://github.com/EduardoLopes/pindoba
-homepageUrl: https://github.com/EduardoLopes/pindoba/tree/main/packages/ui/astro/tree-view#README.md
+homepageUrl: https://www.npmjs.com/package/@pindoba/astro-tree-view
 badge: new
 downloads: 123
 ---
