@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-awaited
 repoUrl: https://github.com/matheusbronca/astro-awaited
 homepageUrl: https://github.com/matheusbronca/astro-awaited
-downloads: 1153
+downloads: 2
 ---

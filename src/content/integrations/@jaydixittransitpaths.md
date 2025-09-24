@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@jaydixit/transitpaths
 repoUrl: https://github.com/jaydixit/transitpaths
 homepageUrl: https://www.npmjs.com/package/@jaydixit/transitpaths
 badge: new
-downloads: 211
+downloads: 231
 ---

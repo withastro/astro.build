@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@bearstudio/astro-typed-routes
 homepageUrl: https://www.npmjs.com/package/@bearstudio/astro-typed-routes
 badge: new
-downloads: 321
+downloads: 345
 ---
