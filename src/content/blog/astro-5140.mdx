@@ -46,9 +46,11 @@ yarn upgrade astro --latest
 
 Astro 5.14 makes it easier to spot and fix common errors in dynamic routing before they cause problems in production.
 
-Previously, when two dynamic routes `/[foo]` and `/[bar]` returned values on their `getStaticPaths` that resulted in the same final path, only one of the routes would be rendered while the other would be silently ignored. Now, when this happens, a warning will be displayed explaining which routes collided and on which path.
+Previously, when two dynamic routes such as `/blog/[slug]` and `/blog/[...all]` tried to prerender the same path (e.g. `/blog/post-1` ), Astro rendered only the [highest priority route](https://docs.astro.build/en/guides/routing/#route-priority-order) for the conflicting path while the other would be silently ignored. This allowed your site to build successfully, although you may have discovered that some pages were rendered by unexpected routes.
 
-Additionally, a new experimental flag `failOnPrerenderCollision` can be used to fail the build when such a collision occurs:
+Now, when this happens, a warning will be displayed explaining which routes collided and on which path.
+
+Additionally, a new experimental flag `failOnPrerenderCollision` can be used to fail the build with a helpful error when such a collision occurs. Set the following flag in your Astro config for "Houston's helping hand" to force you to explicitly address any routing conflicts:
 
 ```js
 // astro.config.mjs
@@ -59,7 +61,7 @@ export default defineConfig({
 });
 ```
 
-We recommend enabling this flag now to catch errors early. It will become the default behavior in a future release.
+See more in the [experimental prerender conflict error](https://docs.astro.build/en/reference/experimental-flags/fail-on-prerender-conflict/) documentation.
 
 ## `routePattern` in `getStaticPaths`
 
