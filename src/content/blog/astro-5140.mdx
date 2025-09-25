@@ -1,0 +1,305 @@
+---
+title: 'Astro 5.14'
+description: 'Astro 5.14 has a bumper harvest of features and DX improvements to warm the cockles of your heart, with new routing tools, async Svelte rendering, React 19 actions support, and more!'
+homepageLink:
+  title: 'Astro 5.14'
+  subtitle: 'Available now!'
+publishDate: '2025-09-25'
+authors:
+  - matt
+coverImage: '/src/content/blog/_images/astro-5140/blog-post-cover-astro-5140.webp'
+socialImage: '/src/content/blog/_images/astro-5140/og-astro-5140.webp'
+lang: 'en'
+related:
+  - astro-5130
+  - astro-5120
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**🍂 Astro 5.14 has a bumper harvest of features and DX improvements to warm the cockles of your heart, with new routing tools, async Svelte rendering, React 19 actions support, and more!**
+
+Sit back with a warm, spiced beverage and enjoy this crop of features:
+
+- [**Prerendered route collision warnings**](#prerendered-route-collision-warnings)
+- [**Route patterns in `getStaticPaths`**](#routepattern-in-getstaticpaths)
+- [**Async rendering support for Svelte**](#async-rendering-support-for-svelte)
+- [**React 19 Actions integration**](#react-19-actions-integration)
+- [**`SvgComponent` type**](#svgcomponent-type)
+- [**Non-Node.js libSQL support for Astro DB**](#non-nodejs-libsql-support-for-astro-db)
+- [**Sitemap namespaces configuration**](#sitemap-namespaces-configuration)
+- [**Programmatic access to font data**](#getfontdata-for-programmatic-font-access)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Prerendered route collision warnings
+
+Astro 5.14 makes it easier to spot and fix common errors in dynamic routing before they cause problems in production.
+
+Previously, when two dynamic routes such as `/blog/[slug]` and `/blog/[...all]` tried to prerender the same path (e.g. `/blog/post-1` ), Astro rendered only the [highest priority route](https://docs.astro.build/en/guides/routing/#route-priority-order) for the conflicting path while the other would be silently ignored. This allowed your site to build successfully, although you may have discovered that some pages were rendered by unexpected routes.
+
+Now, when this happens, a warning will be displayed explaining which routes collided and on which path.
+
+Additionally, a new experimental flag `failOnPrerenderCollision` can be used to fail the build with a helpful error when such a collision occurs. Set the following flag in your Astro config for "Houston's helping hand" to force you to explicitly address any routing conflicts:
+
+```js
+// astro.config.mjs
+export default defineConfig({
+	experimental: {
+		failOnPrerenderCollision: true,
+	},
+});
+```
+
+See more in the [experimental prerender conflict error](https://docs.astro.build/en/reference/experimental-flags/fail-on-prerender-conflict/) documentation.
+
+## `routePattern` in `getStaticPaths`
+
+Astro 5.14 makes it easier to work with complex dynamic routes in `getStaticPaths()`.
+
+A new `routePattern` property is now available in the `getStaticPaths` context. This provides the original, dynamic segment definition in a routing file path (e.g. `/[...locale]/[files]/[slug]`) from the Astro render context that would not otherwise be available within the scope of `getStaticPaths()`. This can be useful to calculate the `params` and `props` for each page route.
+
+For example, you can now localize your route segments and return an array of static paths by passing `routePattern` to a custom `getLocalizedData()` helper function. The `params` object will be set with explicit values for each route segment (e.g. `locale`, `files`, and `slug`). Then, these values will be used to generate the routes and can be used in your page template via `Astro.params`.
+
+```astro
+// src/pages/[...locale]/[files]/[slug].astro
+---
+import { getLocalizedData } from "../../../utils/i18n";
+export async function getStaticPaths({ routePattern }) {
+  const response = await fetch('...');
+  const data = await response.json();
+  console.log(routePattern); // [...locale]/[files]/[slug]
+  // Call your custom helper with `routePattern` to generate the static paths
+  return data.flatMap((file) => getLocalizedData(file, routePattern));
+}
+const { locale, files, slug } = Astro.params;
+---
+```
+
+For more information about this advanced routing pattern, see Astro's [routing reference](https://docs.astro.build/en/reference/routing-reference/#routepattern).
+
+Thanks to [Robin Bühler](https://github.com/openscript) for contributing this feature!
+
+## Async rendering support for Svelte
+
+This release adds support for Svelte's async rendering feature.
+
+Svelte 5.36 added experimental support for async rendering, allowing you to use `await` in your components in several new places. This already worked out of the box with client-rendered components, but server-rendered components needed some extra help. This update adds support for async server rendering in Svelte components used in Astro.
+
+To use async rendering, you must enable it in your Svelte config:
+
+```js
+// svelte.config.js
+export default {
+	compilerOptions: {
+		experimental: {
+			async: true,
+		},
+	},
+};
+```
+
+Then you can use `await` in your Svelte components:
+
+```svelte title="src/components/MySvelteComponent.svelte"
+<script>
+  let data = await fetch('/api/data').then(res => res.json());
+</script>
+<h1>{data.title}</h1>
+```
+
+See [the Svelte docs](https://svelte.dev/docs/svelte/await-expressions) for more information on using `await` in Svelte components, including inside `$derived` blocks and directly in markup.
+
+## React 19 Actions integration
+
+React 19 introduced [`useActionState()`](https://react.dev/reference/react/useActionState), a hook that allows you to update state based on the result of a form action.
+
+The newly-stable `getActionState()` and `withState()` functions integrate Astro Actions with `useActionState()`, making it easy to build progressively enhanced forms with React and Astro Actions.
+
+This example calls a `like` action that accepts a `postId` and returns the number of likes. Pass this action to the `withState()` function to apply progressive enhancement info, and apply to `useActionState()` to track the result:
+
+```tsx
+import { actions } from 'astro:actions';
+import { withState } from '@astrojs/react/actions';
+import { useActionState } from 'react';
+
+export function Like({ postId }: { postId: string }) {
+	const [state, action, pending] = useActionState(
+		withState(actions.like),
+		0, // initial likes
+	);
+
+	return (
+		<form action={action}>
+			<input type="hidden" name="postId" value={postId} />
+			<button disabled={pending}>{state} ❤️</button>
+		</form>
+	);
+}
+```
+
+You can also access the state stored by `useActionState()` from your action handler. Call `getActionState()` with the API context, and optionally apply a type to the result:
+
+```tsx
+import { defineAction } from 'astro:actions';
+import { z } from 'astro/zod';
+import { getActionState } from '@astrojs/react/actions';
+
+export const server = {
+	like: defineAction({
+		input: z.object({
+			postId: z.string(),
+		}),
+		handler: async ({ postId }, ctx) => {
+			const currentLikes = getActionState<number>(ctx);
+			// write to database
+			return currentLikes + 1;
+		},
+	}),
+};
+```
+
+If you were previously using the experimental version of this feature, you will need to update your code to use the new stable exports:
+
+```diff
+- import { experimental_getActionState, experimental_withState } from '@astrojs/react/actions';
++ import { getActionState, withState } from '@astrojs/react/actions';
+```
+
+See [the React integration guide](https://docs.astro.build/en/guides/integrations-guide/react/#integrate-actions-with-useactionstate) for more information on using React 19 with Astro Actions.
+
+## SvgComponent type
+
+Astro now exports a built-in `SvgComponent` type for SVG imports. When you import an SVG file in an Astro component, it is treated as a component that you can use in your markup. Until now, getting the type of an SVG component was a bit awkward. You can now directly import the `SvgComponent` from `astro/types` instead:
+
+```diff
+-type SvgComponent = typeof import("*.svg")
++import type { SvgComponent } from "astro/types"
+```
+
+See [the SVG docs](https://docs.astro.build/en/guides/images/#svg-components) for more information on using SVGs in Astro.
+
+Thanks to [ADTC](https://github.com/ADTC) for contributing this improvement!
+
+## Non-Node.js libSQL support for Astro DB
+
+Astro DB now supports libSQL when deploying to Cloudflare and other non-Node.js environments.
+
+This release adds a new libSQL `web` driver that runs in web-based runtimes such as Cloudflare workerd and Deno. The new `mode` configuration option lets you set your client connection type: `node` (default) or `web`.
+
+The default db `node` driver mode behaves exactly as before, so existing sites don't need any update. However, if you have previously been unable to use Astro DB because you required a non-Node.js libSQL client, you can now install and configure the libSQL web driver by setting `mode: 'web'` in your `db` configuration:
+
+```ts
+import db from '@astrojs/db';
+import { defineConfig } from 'astro/config';
+
+// https://astro.build/config
+export default defineConfig({
+	integrations: [db({ mode: 'web' })],
+});
+```
+
+For more information, see the [`@astrojs/db` documentation](https://docs.astro.build/en/guides/integrations-guide/db/#mode).
+
+Thanks to [Adam Matthiesen](https://github.com/Adammatthiesen) who contributed this feature and so much more to the Astro DB integration!
+
+## Sitemap namespaces configuration
+
+By default, the sitemap standard includes several XML namespaces that may not be necessary for all sites. As of Astro 5.14, you can now configure which namespaces to include in your sitemap XML.
+Excluding unused namespaces can help create cleaner, more focused sitemaps that are faster for search engines to parse and use less bandwidth. If your site doesn't have news content, videos, or multiple languages, you can exclude those namespaces to reduce XML bloat.
+
+The `namespaces` option allows you to configure `news`, `xhtml`, `image`, and `video` namespaces independently. All namespaces are enabled by default for backward compatibility and no change to existing projects is necessary. But now, you can choose to streamline your XML and avoid unnecessary code.
+
+For example, to exclude the video namespace from your sitemap, set `video: false` in your configuration:
+
+```js
+// astro.config.mjs
+import { sitemap } from '@astrojs/sitemap';
+
+export default {
+	integrations: [
+		sitemap({
+			namespaces: {
+				video: false,
+				// other namespaces remain enabled by default
+			},
+		}),
+	],
+};
+```
+
+The generated XML will not include the `xmlns:video` namespace.
+
+Thanks to [Julián Colombo](https://github.com/jdcolombo) for contributing this feature!
+
+## `getFontData` for programmatic font access
+
+The experimental Fonts API now includes a way to access font data programmatically. The `getFontData()` helper function from `astro:assets` provides access to font family data and file URLs for low-level access.
+
+```ts
+import { getFontData } from 'astro:assets';
+
+const data = getFontData('--font-roboto');
+```
+
+For example, `getFontData()` can get the font buffer from the URL when using [satori](https://github.com/vercel/satori) to generate OpenGraph images:
+
+```tsx
+// src/pages/og.png.ts
+
+import type { APIRoute } from 'astro';
+import { getFontData } from 'astro:assets';
+import satori from 'satori';
+
+export const GET: APIRoute = (context) => {
+	const data = getFontData('--font-roboto');
+
+	const svg = await satori(<div style={{ color: 'black' }}>hello, world</div>, {
+		width: 600,
+		height: 400,
+		fonts: [
+			{
+				name: 'Roboto',
+				data: await fetch(new URL(data[0].src[0].url, context.url.origin)).then(
+					(res) => res.arrayBuffer(),
+				),
+				weight: 400,
+				style: 'normal',
+			},
+		],
+	});
+
+	// ...
+};
+```
+
+See the [experimental Fonts API documentation](https://docs.astro.build/en/reference/experimental-flags/fonts/#accessing-font-data-programmatically) for more information.
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.13 release](/blog/astro-5130). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="ben" />, <Mention name="caleb" />,
+<Mention name="chris" />, <Mention name="ema" />, <Mention name="erika" />,
+<Mention name="florian" />, <Mention name="fred" />, <Mention name="fuzzy" />,
+<Mention name="hideoo" />, <Mention name="luiz" />, <Mention name="matt" />,
+<Mention name="matthew" />, <Mention name="reuben" />, <Mention name="sarah" />, 
+and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.14 possible with code and docs additions and improvements, including:
+
+[0xJoeDev](https://github.com/0xJoeDev), [Adam Matthiesen](https://github.com/Adammatthiesen), [ADTC](https://github.com/ADTC), [Álvaro Mondéjar Rubio](https://github.com/mondeja), [Andrey](https://github.com/ankddev), [Ariel K](https://github.com/anaxite), [Armand Philippot](https://github.com/ArmandPhilippot), [Bugo](https://github.com/dragomano), [Dave Kiss](https://github.com/davekiss), [Eyozy](https://github.com/Eyozy), [Felix Schneider](https://github.com/trueberryless), [Fred K. Schott](https://github.com/FredKSchott), [Gabriel Woitechen](https://github.com/wtchnm), [Gourav Khunger](https://github.com/gouravkhunger), [Guan Un](https://github.com/thisisguan), [Hadi Baalbaki](https://github.com/blazingh), [Hunter Bertoson](https://github.com/hkbertoson), [InertSloth 🦥](https://github.com/InertSloth), [Jack Platten](https://github.com/plttn), [Jack Smith](https://github.com/jacksmithxyz), [Joe](https://github.com/moonclavedev), [Jon Darby](https://github.com/jonmichaeldarby), [julesyoungberg](https://github.com/julesyoungberg), [Julián Colombo](https://github.com/jdcolombo), [Junseong Park](https://github.com/jsparkdev), [Justin Hall](https://github.com/wKovacs64), [knj](https://github.com/jp-knj), [Light](https://github.com/idawnlight), [liruifengv](https://github.com/liruifengv), [Louis Escher](https://github.com/louisescher), [Manuel Meister](https://github.com/manuelmeister), [Martin Trapp](https://github.com/martrapp), [Matthew Conto](https://github.com/drfuzzyness), [Matthew Justice](https://github.com/JusticeMatthew), [Maurici Abad Gutierrez](https://github.com/mauriciabad), [mcorrochanoa](https://github.com/mcorrochanoa), [Michael Hoser](https://github.com/ramdacxp), [Mikaël Sévigny](https://github.com/sevignator), [Oliver Speir](https://github.com/OliverSpeir), [paul valladares](https://github.com/dreyfus92), [Platol](https://github.com/platoltheme), [prajwal](https://github.com/Prajwalg19), [Robin Bühler](https://github.com/openscript), [Roman](https://github.com/GameRoMan), [Sebastian Beltran](https://github.com/bjohansebas), [Sherqo](https://github.com/sharqawycs), [Stephanie Lin](https://github.com/lin-stephanie), [Tanishq Manuja](https://github.com/tanishqmanuja), [Tarik](https://github.com/wpplumber), [Thomas Bonnet](https://github.com/thomasbnt), [ugu](https://github.com/kabutoa), [vrabe](https://github.com/vrabe), [WavyCat](https://github.com/wavy-cat), [Waxer59](https://github.com/Waxer59), and [Zubair Ibn Zamir](https://github.com/2u841r)
