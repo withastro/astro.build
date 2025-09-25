@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astropub/icons
 repoUrl: https://github.com/astro-community/icons
 homepageUrl: https://github.com/astro-community/icons#readme
-downloads: 641
+downloads: 647
 ---

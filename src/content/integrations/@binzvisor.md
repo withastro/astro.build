@@ -8,5 +8,5 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@binz/visor
 homepageUrl: https://github.com/binzcodes/visor#readme
-downloads: 61
+downloads: 59
 ---
