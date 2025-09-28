@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@clerk/astro
 repoUrl: https://github.com/clerk/javascript
 homepageUrl: https://clerk.com/
-downloads: 30596
+downloads: 31731
 ---

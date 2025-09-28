@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-photostream
 repoUrl: https://github.com/walterra/astro-photostream
 homepageUrl: https://github.com/walterra/astro-photostream
 badge: new
-downloads: 783
+downloads: 777
 ---
