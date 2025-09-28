@@ -23,6 +23,8 @@ import { getEntry } from 'astro:content';
 import Mention from "/src/components/Mention.astro";
 import { BlueskyPost } from 'astro-embed';
 import { LinkPreview } from 'astro-embed';
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+import astroHappyHour from '/src/content/blog/_images/whats-new-september/2025/astro-happy-hour.jpg';
 
 Some exciting news from around the Astro ecosystem this month, including:
 
@@ -129,15 +131,44 @@ export const canvasSites = [
 
 ### Astro Team News
 
+We're excited to announce our newest Astro maintainer, [Louis Escher](https://github.com/louisescher)! Please join us in welcoming yet another amazing contributor to the ranks!
+
+#### **Upcoming Events**
+
 Heading to [ViteConf](https://viteconf.amsterdam) in October? You'll be able to meet speakers <Mention name="matt" />, <Mention name="sarah" />, and several other core members of the Astro team who will be attending!
 
-- Astro Happy Hour?
-- newest 
+We'll also be sticking around a little longer in Amsterdam and would love to meet you! More details to come, but you can save the date. Drinks are on Netlify!
 
-### Discord Hot Topics
+<BlogContentImage 
+  src={astroHappyHour} 
+  alt="An invitation to save the date for Astro Happy Hour in Amsterdam, 11 October with a large Houston floating in an Amsterdam city canal. Sponsored by Netlify."
+/>
 
+And get ready for <Mention name="reuben"/> speaking at React Advanced London in November, who will help you [Navigate Islands of Interactivity](https://reactadvanced.com/#person-reuben-tier).
+
+### Hot topics
+
+Hot on the heels of the announcement of our [partnership with Mux](https://astro.build/blog/mux-official-video-partner/), this month saw two new Mux Astro integrations, a new Astro docs [guide for using Mux in Astro](https://docs.astro.build/en/guides/media/mux/), and community videos about how to get started from some of our favourite Astro content creators! 
+
+<YouTubeGrid 
+  maxCols={2}
+  videos={[
+    { id: "https://www.youtube.com/watch?v=eYzZbmCE_T4", title: "Upload and play videos in Astro (with Mux!)"},
+    { id: "https://www.youtube.com/watch?v=1jSKczvzckg", title: "Build Your Own Video Course Platform in 30 Minutes using Astro.js & Mux!"},
+  ]}
+/> 
+
+Did you know that [CodeTV already runs on Astro + Mux](https://astro.build/case-studies/codetv/)? (Sorry not sorry that Jason might now want to update to the official native components. 😂)
 
 ### Did you know?
+
+We recently added an improvement to our pull request (PR) workflow that helps contributors help *you* understand the changes they have made to the Astro codebase. 
+
+Our new workflow automatically checks any changesets and validates them against our [changeset writing and style guidelines](https://contribute.docs.astro.build/docs-for-code-changes/changesets/). It helps us ensure that changes are described helpfully and consistently, with a focus on the user-facing changes so that readers will always know what an implementation detail means when it comes to the code in your own project. And, this workflow will also catch things like improper Markdown heading levels that will break formatting when your changeset is added to the full `CHANGELOG.md`.
+
+We're proud of Astro's commitment to documenting our code changes, from patch releases to major upgrade guides. Thank you <Mention name="matt" /> for contributing this feature!
+
+<LinkPreview id="https://github.com/withastro/astro/pull/14447"/>
 
 
 ## Content
@@ -230,18 +261,34 @@ Watch people build, experiment, and learn!
 
 The latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
 
-- []()
-
+- [Astro Takumi](https://github.com/vikas5914/astro-takumi) - Generate Open Graph images for your Astro site using Takumi.
+- [Astro Open Telemetry](https://github.com/dvelasquez/astro-prometheus-integration/tree/main/packages/astro-opentelemetry-integration) - Provides comprehensive OpenTelemetry observability for your Astro site running on Node.js.
+- [Astro Layout Grid](https://github.com/iaslfw/astro-layoutgrid) - A lightweight, zero-dependency responsive grid overlay component for Astro that helps developers align content with visual precision.
+- [Astro Tree View](https://www.npmjs.com/package/@pindoba/astro-tree-view) - A flexible and accessible tree view component for Astro applications.
+- [Astrolab UI](https://www.npmjs.com/package/astrolab-ui) - Astrolab brings all your repositories' Astro components into one place where you can view and modify your props and slots on the fly.
+- [Astro LinkedIn Insight](https://github.com/icruzdevelopment/astro-linkedin-insight) - An Astro component and helper feature for integrating the LinkedIn Insight tag into your website.
+- [Astro Awaited](https://github.com/matheusbronca/astro-awaited) - Enables you to render fallback placeholders while server-side data is being fetched
+- [Astro PlantUML](https://www.npmjs.com/package/@thwbh/astro-plantuml) - An Astro integration for rendering PlantUML diagrams in your markdown files.
+- [Mux Uploader Astro](https://www.npmjs.com/package/@mux/mux-uploader-astro) - A Mux-flavored Astro video uploader component.
+- [Mux Player Astro](https://www.npmjs.com/package/@mux/mux-player-astro) - A Mux-flavored Astro video player component.
+- [Astro Utils](https://www.npmjs.com/package/@jaydixit/astro-utils) - A collection of utility components and plugins for Astro projects.
+- [Basis UI](https://github.com/zhengyishen0/basis-ui) - A Shadcn-style component library purely designed for Astro.
+- [Astro Favi Link](https://github.com/gingerchew/astro-favi-link) - Add stylish favicons to your external links with ease.
 
 ... and some built with Astro!
 
-- []()
+- [Z-Links](https://zlinks.netlify.app/) - With Z-links, you can organize all your links into folders, making it easy to keep bookmarks, team resources, and projects neatly accessible.
+- [Git Diff Viewer](https://github.com/trueberryless-org/git-diff-viewer) - View the diff of a file on a public GitHub repo since a specific date.
 
 ## Themes & Templates
 
 Several new Astro themes were added to the [Astro theme directory](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme!
 
 <ThemeGrid date={frontmatter.startDate} />
+
+... and check out these new themes for Starlight!
+
+- [Starlight Galaxy](https://github.com/frostybee/starlight-theme-galaxy)
 
 ## Showcase
 
