@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-tractstack
 repoUrl: https://github.com/AtRiskMedia/astro-tractstack
 homepageUrl: https://github.com/AtRiskMedia/astro-tractstack#readme
 badge: new
-downloads: 4119
+downloads: 4361
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/zastro-websockets-node
 repoUrl: https://github.com/zachhandley/ZAstroWebsockets
 homepageUrl: https://github.com/zachhandley/ZAstroWebsockets#readme
-downloads: 8
+downloads: 7
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-linkedin-insight-tag
 repoUrl: https://github.com/icruzdevelopment/astro-linkedin-insight
 homepageUrl: https://github.com/icruzdevelopment/astro-linkedin-insight#readme
 badge: new
-downloads: 177
+downloads: 178
 ---
