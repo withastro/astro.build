@@ -1,7 +1,7 @@
 ---
 name: astro-loader-storyblok
 title: astro-loader-storyblok
-description: Storyblok loader for the Astro Content Layer API.
+description: Astro content loader for Storyblok
 categories:
   - loaders
   - recent
