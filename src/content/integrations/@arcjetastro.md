@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@arcjet/astro
 repoUrl: https://github.com/arcjet/arcjet-js
 homepageUrl: https://arcjet.com
-downloads: 1119
+downloads: 1104
 ---
