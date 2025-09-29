@@ -50,13 +50,13 @@ Previously, when two dynamic routes such as `/blog/[slug]` and `/blog/[...all]` 
 
 Now, when this happens, a warning will be displayed explaining which routes collided and on which path.
 
-Additionally, a new experimental flag `failOnPrerenderCollision` can be used to fail the build with a helpful error when such a collision occurs. Set the following flag in your Astro config for "Houston's helping hand" to force you to explicitly address any routing conflicts:
+Additionally, a new experimental flag `failOnPrerenderConflict` can be used to fail the build with a helpful error when such a collision occurs. Set the following flag in your Astro config for "Houston's helping hand" to force you to explicitly address any routing conflicts:
 
 ```js
 // astro.config.mjs
 export default defineConfig({
 	experimental: {
-		failOnPrerenderCollision: true,
+		failOnPrerenderConflict: true,
 	},
 });
 ```
