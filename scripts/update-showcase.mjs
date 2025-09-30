@@ -538,6 +538,8 @@ const scraper = new ShowcaseScraper({
 		// 2025-09-24 - not Astro
 		'https://chicsaledaily.com/',
 		'https://rabbittranslate.com/',
+		// 2025-09-30
+		'https://mnyorba.github.io/',
 	],
 });
 await scraper.run();
