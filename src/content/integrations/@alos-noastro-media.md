@@ -9,7 +9,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@alos-no/astro-media
 repoUrl: https://github.com/alos-no/astro-media
-homepageUrl: https://github.com/alos-no/astro-media#readme
+homepageUrl: https://www.npmjs.com/package/@alos-no/astro-media
 badge: new
 downloads: 72
 ---
