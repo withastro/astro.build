@@ -5,5 +5,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-redirects
 homepageUrl: https://www.npmjs.com/package/astro-cloudflare-redirects
-downloads: 102
+downloads: 109
 ---

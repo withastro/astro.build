@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@casoon/astro-components
 repoUrl: https://github.com/casoon/astro-components
 homepageUrl: https://github.com/casoon/astro-components#readme
-downloads: 38
+downloads: 37
 ---
