@@ -1,6 +1,6 @@
 ---
 title: "What's new in Astro - September 2025"
-description: 'August 2025 - funding, 3 million downloads, state of JS, and more!'
+description: 'August 2025 - Partnerships and sponsorships, 3 million npm downloads, State of JS survey, and more!'
 publishDate: "September 30, 2025"
 authors:
   - sarah
@@ -49,9 +49,12 @@ Let's dive right into it!
 
 ## Updates from Mission Control 
 
-- 🚀 Reply to the [State of JS survey](https://survey.devographics.com/en-US/survey/state-of-js/2025)
-- 🧑‍💻 3 million monthly npm installs
-- 👋 funding announcements
+- 🚀 Take the [State of JS survey](https://survey.devographics.com/en-US/survey/state-of-js/2025)
+- 📈 Astro passes 3 million monthly npm installs
+- 🤝 Partnership announcements with [Mux](/blog/mux-official-video-partner/), [Webflow](/blog/webflow-official-partner/), and [Cloudflare](/blog/cloudflare-official-partner/)
+- 🥳 Cloudflare, Webflow and Netlify announce they are joining forces to support the open web and projects like Astro and TanStack on [Cloudflare's blog](https://blog.cloudflare.com/cloudflare-astro-tanstack/) and [Netlify's blog](https://www.netlify.com/blog/supporting-an-open-web-with-netlify-cloudflare/)
+- 🤖 [AI code gen apps built in Webflow are powered by Astro](https://webflow.com/blog/webflow-conf-2025-keynote-recap)
+
 
 
 
@@ -63,20 +66,20 @@ Minor releases introduce new features and improvements. Check out what's new!
 
 ## Astro Adopters
 
-From A to B, C to D, some of the biggest names you know are using Astro!
+From Google to KaOs, Verdens Gang (VG) to Bernie Sanders, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
-  'orm.drizzle.team',
-  'nixos.org',
-  'pricefinder.travelodge.co.uk',
+  'genkit.dev',
+  'kaosx.us',
+  'www.vg.no',
   'ledefile.renault.com',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'pricefinder.travelodge.co.uk')} />
-  <ShowcaseCard site={await getEntry('showcase', 'ledefile.renault.com',)} />
-  <ShowcaseCard site={await getEntry('showcase', 'nixos.org')} />
+  <ShowcaseCard site={await getEntry('showcase', 'genkit.dev')} />
+  <ShowcaseCard site={await getEntry('showcase', 'kaosx.us',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.vg.no')} />
   <ShowcaseCard site={await getEntry('showcase', 'orm.drizzle.team')} />
 </div>
 
@@ -90,20 +93,18 @@ See more companies using Astro in our [site showcase](/showcase/), and explore A
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
 
-- site 1
-- Maybe the shade map one?
-
-
+- Feed your music addiction and track artists, generes, and playlists in [Recent Music](https://recentmusic.com/).
+- Add custom word lists and help your child [learn to read](https://learntoread-astro.netlify.app/) with this flash-card inspired Astro site!
 
 export const monthlySites = [
-  'geolineup.com',
-  'sky.dlazaro.ca',
+  'recentmusic.com',
+  'learntoread-astro.netlify.app',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'geolineup.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'sky.dlazaro.ca')} />
+  <ShowcaseCard site={await getEntry('showcase', 'recentmusic.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'learntoread-astro.netlify.app')} />
 </div>
 
 {/* Can use when there are multiples of 3  */}
@@ -114,15 +115,15 @@ export const monthlySites = [
 Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
 
 export const canvasSites = [
-  'ledefile.renault.com',
-  'www.thelonelypixel.co.uk',
+  'aksell.no',
+  'www.rfdesign.au',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'ledefile.renault.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'www.thelonelypixel.co.uk')} />
+  <ShowcaseCard site={await getEntry('showcase', 'aksell.no')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.rfdesign.au')} />
 </div>
 
 
@@ -251,7 +252,7 @@ Using a CMS, database, or AI tool to build Astro? See how it's done!
   ]}
 /> 
 
-### Learn Astro
+{/* ### Learn Astro
 
 New to Astro? See the latest introductory videos around the web!
 
@@ -261,7 +262,7 @@ New to Astro? See the latest introductory videos around the web!
     { id: "", title: ""},
     { id: "", title: ""},
   ]}
-/> 
+/>  */}
 
 ### Meetups
 
@@ -271,8 +272,6 @@ Astro is popular around the globe! Discover what happened at meetups and confere
   maxCols={2}
   videos={[
     { id: "https://www.youtube.com/watch?v=V9zdVseehxk", title: "4Developers Łódź 2024: Maciek Palmowski - Is Astro the ultimate front-end framework?"},
-    { id: "", title: ""},
-    { id: "", title: ""},
   ]}
 /> 
 
@@ -285,7 +284,6 @@ Watch people build, experiment, and learn!
     { id: "https://www.youtube.com/watch?v=1jSKczvzckg", title: "Watch Me Code an Events Website using Astro"},
     { id: "https://www.youtube.com/watch?v=pZP4AM6Kw10", title: "Cards dinamicas con astro"},
     { id: "https://www.youtube.com/watch?v=StYZr3X-cIA", title: "Construyendo con IA a costo $0"},
-    { id: "", title: ""},
   ]}
 /> 
 
