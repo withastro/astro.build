@@ -25,9 +25,7 @@ import { BlueskyPost } from 'astro-embed';
 import { LinkPreview } from 'astro-embed';
 import BlogContentImage from '/src/components/BlogContentImage.astro';
 import astroHappyHour from '/src/content/blog/_images/whats-new-september/2025/astro-happy-hour.jpg';
-import builtWithAstro from '/src/content/blog/_images/whats-new-september/2025/built-with-astro.webp';
-import friendsOfHouston from '/src/content/blog/_images/whats-new-september/2025/friends-of-houston.webp';
-import friendsOfHoustonGif from '/src/content/blog/_images/whats-new-september/2025/friends-of-houston.gif';
+
 
 Some exciting news from around the Astro ecosystem this month, including:
 
@@ -141,11 +139,13 @@ We're excited to announce our newest Astro maintainer, [Louis Escher](https://gi
 
 We heard you liked webrings, so we've created two pixel-perfect badges you can add to your site to show your love for Astro and Houston!
 
-<BlogContentImage src={builtWithAstro} />
-<BlogContentImage src={friendsOfHouston} />
+<div class="grid sm:grid-cols-2 gap-0">
+<img src="/assets/blog/whats-new/built-with-astro.webp" alt="Built with Astro" />
+<img src="/assets/blog/whats-new/friends-of-houston.webp" alt="Friends of Houston" />
+</div>
 
 (You want shiny? We got shiny.)
-<BlogContentImage src={friendsOfHoustonGif} />
+![](/assets/blog/whats-new/friends-of-houston.gif)
 
 
 #### **Upcoming Events**
