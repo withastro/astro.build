@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-remixicon
 repoUrl: https://github.com/LoganQiu/astro-remixicon
 homepageUrl: https://github.com/LoganQiu/astro-remixicon
-downloads: 32
+downloads: 30
 ---
