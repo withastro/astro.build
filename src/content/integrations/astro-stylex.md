@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-stylex
 repoUrl: https://github.com/lilnasy/gratelets
 homepageUrl: https://www.npmjs.com/package/astro-stylex
-downloads: 96
+downloads: 101
 ---

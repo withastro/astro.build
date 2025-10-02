@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mux/mux-player-astro
 homepageUrl: https://mux.com/player
 badge: new
-downloads: 351
+downloads: 554
 repoUrl: https://github.com/muxinc/elements
 ---

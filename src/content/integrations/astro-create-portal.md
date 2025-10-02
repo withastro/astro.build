@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-create-portal
 repoUrl: https://github.com/Bl4cky99/astro-create-portal
 homepageUrl: https://github.com/Bl4cky99/astro-create-portal#readme
 badge: new
-downloads: 240
+downloads: 246
 ---
