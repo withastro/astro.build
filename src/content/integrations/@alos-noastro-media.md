@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@alos-no/astro-media
 repoUrl: https://github.com/alos-no/astro-media
 homepageUrl: https://github.com/alos-no/astro-media#readme
 badge: new
-downloads: 154
+downloads: 157
 ---

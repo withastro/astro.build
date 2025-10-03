@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mux/mux-uploader-astro
 homepageUrl: https://www.npmjs.com/package/@mux/mux-uploader-astro
 badge: new
-downloads: 293
+downloads: 305
 repoUrl: https://github.com/muxinc/elements
 ---
