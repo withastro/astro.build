@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-llms-txt
 repoUrl: https://github.com/codiume/orbit
 homepageUrl: https://github.com/codiume/orbit
-downloads: 6
+downloads: 7
 ---

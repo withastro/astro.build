@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrolab-ui
 homepageUrl: https://www.npmjs.com/package/astrolab-ui
 badge: new
-downloads: 1115
+downloads: 510
 ---
