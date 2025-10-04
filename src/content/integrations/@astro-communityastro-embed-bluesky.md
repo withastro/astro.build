@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astro-community/astro-embed-bluesky
 repoUrl: https://github.com/delucis/astro-embed
 homepageUrl: https://astro-embed.netlify.app/components/bluesky/
-downloads: 46881
+downloads: 49856
 ---

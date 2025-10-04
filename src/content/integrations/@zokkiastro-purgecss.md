@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@zokki/astro-purgecss
 repoUrl: https://gitea.zokki.net/zokki/astro-purgecss
-homepageUrl: https://gitea.zokki.net/zokki/astro-purgecss
-downloads: 4
+homepageUrl: https://www.npmjs.com/package/@zokki/astro-purgecss
+downloads: 10
 ---

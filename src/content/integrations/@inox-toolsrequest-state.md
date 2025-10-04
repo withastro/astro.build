@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-state
 homepageUrl: https://www.npmjs.com/package/@inox-tools/request-state
-downloads: 5156
+downloads: 5337
 ---

@@ -24,6 +24,13 @@ const exclusiveSponsors = [
 		caption: 'Official Partner',
 		href: 'https://webflow.com/feature/cloud?utm_source=Astro&utm_medium=tech-partner&utm_campaign=fy26-astro&utm_content=fy26-homepage-sponsors',
 	},
+	{
+		height: 68,
+		label: 'Cloudflare',
+		src: 'sponsors/cloudflare',
+		caption: 'Official Partner',
+		href: 'https://www.cloudflare.com/?utm_source=astro&utm_medium=astro&utm_campaign=astro',
+	},
 ];
 
 const mainSponsors = [
@@ -80,7 +87,27 @@ const sponsors = [
 		src: 'sponsors/databento',
 		href: 'https://databento.com/?utm_source=astro&utm_medium=sponsor&utm_content=display',
 	},
+	{
+		height: 25,
+		label: 'Localazy',
+		src: 'sponsors/localazy',
+		href: 'https://localazy.com/',
+	},
 ];
+
+/** Iterate over an array in chunks of a given size. */
+function* chunk<T>(array: T[], chunkSize: number) {
+	for (let i = 0; i < array.length; i += chunkSize) {
+		yield array.slice(i, i + chunkSize);
+	}
+}
+/** Break an array into rows of 2 or 3 items, choosing the column count that results in the fullest final row. */
+function rows<T>(array: T[]): T[][] {
+	const columnCount = array.length % 2 > array.length % 3 ? 3 : 2;
+	return [...chunk(array, columnCount)];
+}
+
+const largeSponsorRows = [...rows(exclusiveSponsors), ...rows(mainSponsors)];
 ---
 
 <section class="mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-xl mx-auto px-4 sm:px-8">
@@ -94,12 +121,12 @@ const sponsors = [
 		class="mt-8 lg:mt-10 max-w-4xl w-full mx-auto border border-astro-dark-100/20 bg-astro-dark-800 rounded-xl sm:rounded-2xl overflow-hidden"
 	>
 		{
-			[exclusiveSponsors, mainSponsors].map((group) => (
+			largeSponsorRows.map((group, index, rows) => (
 				<div
 					class:list={[
 						{ 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3' }[group.length],
 						'lg:h-60 lg:grid lg:grid-rows-[1fr_auto_auto_1fr] lg:gap-y-4 text-center items-center justify-center lg:divide-x divide-y lg:divide-y-0 divide-astro-dark-100/20',
-						'first:border-b first:border-astro-dark-100/20',
+						{ 'border-b border-astro-dark-100/20': index < rows.length - 1 },
 					]}
 				>
 					{group.map((sponsor) => (
