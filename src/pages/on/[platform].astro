@@ -16,5 +16,5 @@ const mastodon = siteInfo.socialLinks.find((link) => link.platform === 'mastodon
 const { link } = Astro.props;
 ---
 
-{mastodon && <link rel="me" href={mastodon.me ?? mastodon.href} />}
+{mastodon && <link rel="me" href={mastodon.href} />}
 <meta http-equiv="refresh" content={`0;URL='${link.href}'`} />

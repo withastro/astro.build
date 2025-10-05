@@ -4,7 +4,7 @@ import AstroLogo from './AstroLogo.astro';
 import HeaderDropDown from './HeaderDropDown.astro';
 import SocialLinks from './SocialLinks.astro';
 
-const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly);
+const socialLinks = siteInfo.socialLinks.filter((link) => link.showInHeader);
 ---
 
 <nav class="w-full flex items-center justify-between">

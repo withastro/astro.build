@@ -1,13 +1,12 @@
 ---
 name: astro-worldmap-choropleth
 title: astro-worldmap-choropleth
-description: An interactive world map component for Astro with search
-  functionality, configurable data views, and customizable modal content.
+description: Interactive world map component for Astro with choropleth data
+  visualization, country grid, and customizable views
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-worldmap-choropleth
 homepageUrl: https://www.npmjs.com/package/astro-worldmap-choropleth
-badge: new
-downloads: 259
+downloads: 954
+repoUrl: https://github.com/your-username/astro-worldmap-choropleth
 ---

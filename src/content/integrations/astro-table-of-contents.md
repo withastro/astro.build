@@ -6,10 +6,8 @@ description: Toc integration for Astro projects, providing a simple way to
   static and dynamic content.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-table-of-contents
 repoUrl: https://github.com/elstron/astro-table-of-contents
 homepageUrl: https://github.com/elstron/astro-table-of-contents#readme
-badge: new
-downloads: 1125
+downloads: 358
 ---

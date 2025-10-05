@@ -535,6 +535,11 @@ const scraper = new ShowcaseScraper({
 		'https://peakpointconstruction.com/',
 		// 2025-08-18 - site moved
 		'https://teaclient.net/',
+		// 2025-09-24 - not Astro
+		'https://chicsaledaily.com/',
+		'https://rabbittranslate.com/',
+		// 2025-09-30
+		'https://mnyorba.github.io/',
 	],
 });
 await scraper.run();

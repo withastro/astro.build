@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-minimalistic-theme
 homepageUrl: https://www.npmjs.com/package/starlight-minimalistic-theme
-downloads: 1
+downloads: 2
 ---

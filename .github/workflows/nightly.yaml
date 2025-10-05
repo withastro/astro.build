@@ -10,9 +10,15 @@ jobs:
     name: Update Integrations
     if: github.repository_owner == 'withastro'
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
     steps:
       - name: Check out code using Git
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          token: ${{ secrets.FREDKBOT_GITHUB_TOKEN }}
 
       - name: Setup Node.js & install dependencies
         uses: ./.github/actions/setup-node-pnpm
@@ -32,3 +38,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@778341af668090896ca464160c2def5d1d1a3eb0 # v6.0.1
         with:
           commit_message: "ci: safe update for existing themes & integrations"
+          commit_author: Houston (Bot) <108291165+astrobot-houston@users.noreply.github.com>
+          commit_user_name: Houston (Bot)
+          commit_user_email: <108291165+astrobot-houston@users.noreply.github.com>

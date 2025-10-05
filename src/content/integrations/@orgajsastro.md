@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@orgajs/astro
 repoUrl: https://github.com/orgapp/orgajs
 homepageUrl: https://github.com/orgapp/orgajs#readme
-downloads: 5
+downloads: 8
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/aik-mod
 repoUrl: https://github.com/Fryuni/inox-tools
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 1187
+downloads: 1594
 ---

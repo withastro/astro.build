@@ -5,6 +5,7 @@ description: Use WebSockets in your Astro SSR Apps and run it on Bun
 categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-bun-websocket
-homepageUrl: https://www.npmjs.com/package/astro-bun-websocket
-downloads: 20
+homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/bun-websocket
+downloads: 120
+repoUrl: https://github.com/lilnasy/gratelets
 ---

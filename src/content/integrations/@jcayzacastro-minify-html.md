@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jcayzac/astro-minify-html
 repoUrl: https://github.com/jcayzac/copepod-modules
 homepageUrl: https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-minify-html#readme
-downloads: 15
+downloads: 10
 ---
