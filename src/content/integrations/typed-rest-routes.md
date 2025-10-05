@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/typed-rest-routes
 homepageUrl: https://www.npmjs.com/package/typed-rest-routes
-downloads: 60
+downloads: 62
 ---
