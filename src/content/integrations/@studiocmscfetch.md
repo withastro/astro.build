@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@studiocms/cfetch
 repoUrl: https://github.com/withstudiocms/cfetch
 homepageUrl: https://studiocms.dev
-downloads: 118
+downloads: 119
 ---

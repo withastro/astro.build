@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@thwbh/astro-plantuml
 homepageUrl: https://www.npmjs.com/package/@thwbh/astro-plantuml
 badge: new
-downloads: 8
+downloads: 7
 ---

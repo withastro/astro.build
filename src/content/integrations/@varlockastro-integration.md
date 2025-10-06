@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@varlock/astro-integration
 repoUrl: https://github.com/dmno-dev/varlock
 homepageUrl: https://github.com/dmno-dev/varlock#readme
-downloads: 394
+downloads: 379
 ---
