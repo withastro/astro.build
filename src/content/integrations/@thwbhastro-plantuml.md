@@ -6,9 +6,7 @@ description: Astro integration that automatically converts PlantUML code blocks
   and more. This is a fork of Jose Sebastians project.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@thwbh/astro-plantuml
 homepageUrl: https://www.npmjs.com/package/@thwbh/astro-plantuml
-badge: new
 downloads: 7
 ---
