@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@coffic/astro-users
 repoUrl: https://github.com/CosyZone/astro-users
 homepageUrl: https://github.com/CosyZone/astro-users#readme
 badge: new
-downloads: 962
+downloads: 970
 ---

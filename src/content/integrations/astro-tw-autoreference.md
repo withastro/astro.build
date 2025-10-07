@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-tw-autoreference
 repoUrl: https://github.com/bitgumbo/astro-tw-autoreference
 homepageUrl: https://github.com/bitgumbo/astro-tw-autoreference
-downloads: 12
+downloads: 11
 ---

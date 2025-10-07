@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-iubenda
 repoUrl: https://github.com/Valyay/astro-iubenda
 homepageUrl: https://github.com/Valyay/astro-iubenda#readme
-downloads: 221
+downloads: 220
 ---

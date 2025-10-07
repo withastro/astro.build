@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/stormlit
 homepageUrl: https://github.com/frodrish/stormlit#readme
 badge: new
-downloads: 149
+downloads: 231
 ---

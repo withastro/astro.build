@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-google-reviews
 repoUrl: https://github.com/wally-website/wally-astro
 homepageUrl: https://github.com/wally-website/wally-astro/tree/main/packages/astro-google-reviews#readme
 badge: new
-downloads: 243
+downloads: 246
 ---
