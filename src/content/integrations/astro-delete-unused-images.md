@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-delete-unused-images
 repoUrl: https://github.com/TrueWinter/astro-delete-unused-images
 homepageUrl: https://github.com/TrueWinter/astro-delete-unused-images#readme
-downloads: 132
+downloads: 129
 ---
