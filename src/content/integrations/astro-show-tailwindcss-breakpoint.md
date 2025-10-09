@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-show-tailwindcss-breakpoint
 repoUrl: https://github.com/jonasgeiler/astro-show-tailwindcss-breakpoint
 homepageUrl: https://github.com/jonasgeiler/astro-show-tailwindcss-breakpoint#readme
-downloads: 1581
+downloads: 1580
 ---
