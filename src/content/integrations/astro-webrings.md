@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-webrings
 homepageUrl: https://www.npmjs.com/package/astro-webrings
 badge: new
-downloads: 265
+downloads: 266
 ---
