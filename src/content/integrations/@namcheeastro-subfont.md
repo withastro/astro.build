@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@namchee/astro-subfont
 repoUrl: https://github.com/Namchee/fontsubs
 homepageUrl: https://github.com/Namchee/fontsubs#readme
-downloads: 207
+downloads: 210
 ---

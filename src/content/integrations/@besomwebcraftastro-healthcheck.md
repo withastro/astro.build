@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@besomwebcraft/astro-healthcheck
 repoUrl: https://github.com/Besom-Webcraft/astro-healthcheck
 homepageUrl: https://github.com/Besom-Webcraft/astro-healthcheck#readme
-downloads: 30
+downloads: 28
 ---
