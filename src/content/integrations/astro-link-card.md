@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-link-card
 repoUrl: https://github.com/Robot-Inventor/astro-link-card
 homepageUrl: https://github.com/Robot-Inventor/astro-link-card#readme
-downloads: 206
+downloads: 136
 ---

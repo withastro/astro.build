@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/nibbles-and-bites
 homepageUrl: https://nibbles-and-bites.polycule.li
-downloads: 75
+downloads: 67
 repoUrl: https://github.com/AliciaBytes/nibbles-and-bites
 ---
