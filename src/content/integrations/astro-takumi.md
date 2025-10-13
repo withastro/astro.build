@@ -6,10 +6,8 @@ categories:
   - performance+seo
   - css+ui
   - frameworks
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-takumi
 repoUrl: https://github.com/vikas5914/astro-takumi
 homepageUrl: https://github.com/vikas5914/astro-takumi
-badge: new
 downloads: 24
 ---
