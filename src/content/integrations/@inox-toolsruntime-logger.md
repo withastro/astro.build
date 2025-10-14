@@ -6,5 +6,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/runtime-logger
 homepageUrl: https://www.npmjs.com/package/@inox-tools/runtime-logger
-downloads: 3798
+downloads: 3502
 ---
