@@ -3,7 +3,7 @@ export type ThemeAndAuthor = {
 	Author: Author;
 };
 
-export type Theme = {
+type Theme = {
 	id: number;
 	slug: string;
 	title: string;
@@ -29,16 +29,6 @@ export type Theme = {
 	sellingThroughPortal: boolean;
 	stripeProductId?: string;
 	stripePriceId?: string;
-};
-
-export type ThemeHasCategory = {
-	themeId: number;
-	categoryId: number;
-};
-
-export type ThemeHasTool = {
-	themeId: number;
-	toolId: number;
 };
 
 export type Author = {

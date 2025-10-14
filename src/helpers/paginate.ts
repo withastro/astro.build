@@ -1,6 +1,6 @@
 import type { Page } from 'astro';
 
-export type PaginateOptions<T> = {
+type PaginateOptions<T> = {
 	data: T[];
 	pageSize?: number;
 	currentPage?: number;
@@ -64,13 +64,13 @@ export const paginate = <T>({
 	};
 };
 
-export type PageLink = {
+type PageLink = {
 	pageNum: number;
 	text: string;
 	href: string;
 };
 
-export type Ellipsis = {
+type Ellipsis = {
 	text: string;
 	pageNum?: never;
 	href?: never;
