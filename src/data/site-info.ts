@@ -13,7 +13,7 @@ export type SocialLink = {
 	showInHeader?: boolean;
 };
 
-export type SiteInfo = {
+type SiteInfo = {
 	name: string;
 	title: string;
 	description: string;
