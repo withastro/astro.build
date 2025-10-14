@@ -10,4 +10,5 @@ repoUrl: https://github.com/wally-website/wally-astro
 homepageUrl: https://github.com/wally-website/wally-astro/tree/main/packages/astro-google-reviews#readme
 badge: new
 downloads: 251
+image: /assets/integrations/astro-google-reviews.png
 ---
