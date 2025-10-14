@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@pindoba/astro-tree-view
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-tree-view
 badge: new
-downloads: 22
+downloads: 19
 ---
