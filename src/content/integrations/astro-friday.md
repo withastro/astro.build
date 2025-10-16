@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-friday
 repoUrl: https://github.com/byronogis/astro-friday
 homepageUrl: https://github.com/byronogis/astro-friday#readme
 badge: new
-downloads: 1322
+downloads: 1330
 ---

@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-component
 repoUrl: https://github.com/igorskyflyer/npm-astro-component
 homepageUrl: https://github.com/igorskyflyer/npm-astro-component
-downloads: 13
+downloads: 16
 image: /assets/integrations/@igor.dvlpr/astro-component.png
 ---

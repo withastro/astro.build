@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-markdown-blocks
 repoUrl: https://github.com/delucis/starlight-markdown-blocks
 homepageUrl: https://delucis.github.io/starlight-markdown-blocks/
-downloads: 137
+downloads: 124
 ---

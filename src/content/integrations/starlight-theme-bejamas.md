@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starlight-theme-bejamas
 repoUrl: https://github.com/bejamas/ui
 homepageUrl: https://www.npmjs.com/package/starlight-theme-bejamas
 badge: new
-downloads: 611
+downloads: 681
 ---
