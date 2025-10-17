@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@kindspells/astro-shield
 repoUrl: https://github.com/kindspells/astro-shield
 homepageUrl: https://astro-shield.kindspells.dev
-downloads: 3720
+downloads: 3801
 ---

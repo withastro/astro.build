@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-framework7
 repoUrl: https://github.com/grenovles/astro-framework7
 homepageUrl: https://github.com/grenovales/astro-framework7
-downloads: 9
+downloads: 13
 ---

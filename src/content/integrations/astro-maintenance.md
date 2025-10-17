@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-maintenance
 repoUrl: https://github.com/alexandr-studio/astro-maintenance
 homepageUrl: https://astro-maintenance.alexandr.studio/
-downloads: 3484
+downloads: 3535
 ---

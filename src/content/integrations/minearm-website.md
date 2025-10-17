@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/minearm-website
 homepageUrl: https://github.com/Minearm-RPM/minearm
-downloads: 2
+downloads: 8
 ---
