@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-custom-embeds
 repoUrl: https://github.com/flo-bit/astro-custom-embeds
 homepageUrl: https://github.com/flo-bit/astro-custom-embeds#readme
-downloads: 124
+downloads: 112
 ---

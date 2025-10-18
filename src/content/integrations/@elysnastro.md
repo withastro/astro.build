@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@elysn/astro
 repoUrl: https://github.com/elysn/ui
 homepageUrl: https://www.npmjs.com/package/@elysn/astro
-downloads: 5
+downloads: 6
 ---

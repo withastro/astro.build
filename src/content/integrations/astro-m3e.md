@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-m3e
 repoUrl: https://github.com/fabesmo/astro-m3e
 homepageUrl: https://github.com/fabesmo/astro-m3e#readme
-downloads: 361
+downloads: 362
 ---

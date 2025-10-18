@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@azhirov/astro-icon
 repoUrl: https://github.com/azhirov/astro-icon
 homepageUrl: https://github.com/natemoo-re/astro-icon#readme
-downloads: 12
+downloads: 13
 ---

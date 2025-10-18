@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-kinde
 repoUrl: https://github.com/JacobWeinbren/astro-kinde#main
 homepageUrl: https://github.com/JacobWeinbren/astro-kinde/tree/main#readme
-downloads: 283
+downloads: 282
 ---

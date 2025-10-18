@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@fujocoded/astro-dev-only
 repoUrl: https://github.com/fujowebdev/fujocoded-plugins
 homepageUrl: https://github.com/fujowebdev/fujocoded-plugins#readme
-downloads: 27
+downloads: 52
 ---

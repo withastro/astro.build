@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/expressive-code-language-badge
 repoUrl: https://github.com/frostybee/expressive-code-language-badge
 homepageUrl: https://github.com/frostybee/expressive-code-language-badge
 badge: new
-downloads: 80
+downloads: 82
 ---

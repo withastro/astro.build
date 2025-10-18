@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@fulldevlabs/fullui
 homepageUrl: https://ui.full.dev/
-downloads: 107
+downloads: 106
 ---

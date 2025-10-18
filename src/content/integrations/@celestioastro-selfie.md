@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@celestio/astro-selfie
 repoUrl: https://github.com/celest-io/astro-selfie
 homepageUrl: https://github.com/celest-io/astro-selfie#readme
-downloads: 40
+downloads: 41
 ---

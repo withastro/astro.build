@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-nico-embed
 repoUrl: https://github.com/Robot-Inventor/astro-nico-embed
 homepageUrl: https://github.com/Robot-Inventor/astro-nico-embed#readme
-downloads: 35
+downloads: 36
 ---

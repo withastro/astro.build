@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-markdown-prerender
 repoUrl: https://github.com/johnzanussi/astro-markdown-prerender
 homepageUrl: https://github.com/johnzanussi/astro-markdown-prerender#readme
-downloads: 4
+downloads: 3
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-quiz
 repoUrl: https://github.com/FelipeIzolan/astro-quiz
 homepageUrl: https://github.com/FelipeIzolan/astro-quiz#readme
-downloads: 2
+downloads: 3
 ---

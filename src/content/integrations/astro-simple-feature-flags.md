@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-simple-feature-flags
 repoUrl: https://github.com/sushichan044/astro-simple-feature-flags
 homepageUrl: https://github.com/sushichan044/astro-simple-feature-flags#readme
-downloads: 70
+downloads: 64
 ---

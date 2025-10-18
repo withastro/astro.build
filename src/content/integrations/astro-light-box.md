@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-light-box
 repoUrl: https://github.com/jonasfroeller/astro.image.lightbox
 homepageUrl: https://github.com/jonasfroeller/astro.image.lightbox#readme
-downloads: 45
+downloads: 46
 ---

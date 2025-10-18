@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/spaceship-monolith
 repoUrl: https://github.com/aitorllj93/astro-loader-obsidian
 homepageUrl: https://github.com/aitorllj93/astro-loader-obsidian
-downloads: 249
+downloads: 250
 ---

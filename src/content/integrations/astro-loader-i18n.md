@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-i18n
 repoUrl: https://github.com/openscript/astro-i18n
 homepageUrl: https://github.com/openscript/astro-i18n/tree/main/libs/astro-loader-i18n
-downloads: 833
+downloads: 822
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-nanostores-i18n
 repoUrl: https://github.com/openscript/astro-i18n
 homepageUrl: https://github.com/openscript/astro-i18n/tree/main/libs/astro-nanostores-i18n
-downloads: 238
+downloads: 239
 ---

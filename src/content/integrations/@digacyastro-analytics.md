@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@digacy/astro-analytics
 repoUrl: https://github.com/surya-ven/astrolib
 homepageUrl: https://github.com/surya-ven/astrolib/tree/main/packages/analytics
-downloads: 9
+downloads: 14
 ---
