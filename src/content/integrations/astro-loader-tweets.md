@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-tweets
 repoUrl: https://github.com/lin-stephanie/astro-loaders
 homepageUrl: https://github.com/lin-stephanie/astro-loaders/blob/main/packages/astro-loader-tweets/
-downloads: 125
+downloads: 126
 ---

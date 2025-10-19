@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-page-transition
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://www.npmjs.com/package/astro-page-transition
-downloads: 59
+downloads: 116
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-merge-styles
 repoUrl: ssh://git@github.com/rellfy/astro-merge-styles
 homepageUrl: https://github.com/rellfy/astro-merge-styles
-downloads: 6
+downloads: 12
 ---

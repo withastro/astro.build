@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ykocaman/astro-medium-loader
 repoUrl: https://github.com/ykocaman/astro-medium-loader
 homepageUrl: https://github.com/ykocaman/astro-medium-loader/blob/main/README.md
-downloads: 112
+downloads: 114
 ---

@@ -11,5 +11,5 @@ image: /assets/integrations/@igor.dvlpr/astro-easynav-button.png
 npmUrl: https://www.npmjs.com/package/@igor.dvlpr/astro-easynav-button
 repoUrl: https://github.com/igorskyflyer/astro-easynav-button
 homepageUrl: https://github.com/igorskyflyer/astro-easynav-button
-downloads: 116
+downloads: 275
 ---

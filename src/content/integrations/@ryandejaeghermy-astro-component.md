@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@ryandejaegher/my-astro-component
 homepageUrl: https://www.npmjs.com/package/@ryandejaegher/my-astro-component
-downloads: 4
+downloads: 8
 ---

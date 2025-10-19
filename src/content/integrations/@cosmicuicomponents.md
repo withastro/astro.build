@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@cosmicui/components
 repoUrl: https://github.com/juanpa77/CosmicUI
 homepageUrl: https://www.npmjs.com/package/@cosmicui/components
-downloads: 96
+downloads: 177
 ---

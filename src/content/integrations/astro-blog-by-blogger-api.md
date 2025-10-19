@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-blog-by-blogger-api
 repoUrl: ssh://git@github.com/Grd92/astro-blog-by-blogger-api
 homepageUrl: https://github.com/Grd92/astro-blog-by-blogger-api
-downloads: 274
+downloads: 347
 ---

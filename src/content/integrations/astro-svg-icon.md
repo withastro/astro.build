@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-svg-icon
 repoUrl: https://github.com/karesztrk/astro-svg-icon
 homepageUrl: https://karolytorok.netlify.app/blog/styling-an-svg/
-downloads: 14
+downloads: 18
 ---

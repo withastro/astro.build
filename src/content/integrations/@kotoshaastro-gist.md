@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@kotosha/astro-gist
 repoUrl: https://github.com/kotosha-real/astro-gist
 homepageUrl: https://github.com/kotosha-real/astro-gist#readme
-downloads: 59
+downloads: 122
 ---

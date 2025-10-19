@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrojs-image-ssr-fix
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/image/
-downloads: 30
+downloads: 51
 ---

@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-console-cleaner
 repoUrl: https://github.com/zachhandley/astrojs-remove-console-log
 homepageUrl: https://github.com/zachhandley/astrojs-remove-console-log#readme
-downloads: 56
+downloads: 62
 ---

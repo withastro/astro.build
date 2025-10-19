@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-theme-template
 homepageUrl: https://www.npmjs.com/package/starlight-theme-template
-downloads: 3
+downloads: 5
 ---

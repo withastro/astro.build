@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@lyrasearch/plugin-astro
 repoUrl: https://github.com/LyraSearch/plugin-astro
 homepageUrl: https://www.npmjs.com/package/@lyrasearch/plugin-astro
-downloads: 10
+downloads: 34
 ---

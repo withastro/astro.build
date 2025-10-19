@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@cutexiaocai/astro-markdown-render
 repoUrl: https://github.com/astro-community/md
 homepageUrl: https://github.com/astro-community/md
 badge: new
-downloads: 174
+downloads: 175
 ---

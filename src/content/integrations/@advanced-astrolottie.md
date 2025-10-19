@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@advanced-astro/lottie
 repoUrl: https://github.com/advanced-astro/lottie
 homepageUrl: https://github.com/advanced-astro/lottie#readme.md
-downloads: 117
+downloads: 114
 ---

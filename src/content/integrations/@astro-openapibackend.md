@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/backend
 homepageUrl: https://www.npmjs.com/package/@astro-openapi/backend
-downloads: 48
+downloads: 77
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-suspense
 repoUrl: https://github.com/charlie-hadden/astro-suspense
 homepageUrl: https://github.com/charlie-hadden/astro-suspense#readme
-downloads: 140
+downloads: 146
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-keycloak-integration
 homepageUrl: https://www.npmjs.com/package/astro-keycloak-integration
-downloads: 5
+downloads: 10
 ---

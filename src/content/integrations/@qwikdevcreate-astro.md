@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@qwikdev/create-astro
 repoUrl: https://github.com/QwikDev/astro
 homepageUrl: https://github.com/QwikDev/astro#readme
-downloads: 38
+downloads: 31
 ---

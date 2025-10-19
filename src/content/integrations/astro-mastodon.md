@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-mastodon
 repoUrl: ssh://git@github.com/rosnovsky/astro-mastodon
 homepageUrl: https://github.com/rosnovsky/astro-mastodon#readme
-downloads: 206
+downloads: 232
 ---

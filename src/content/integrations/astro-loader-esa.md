@@ -7,5 +7,5 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/astro-loader-esa
 homepageUrl: https://www.npmjs.com/package/astro-loader-esa
-downloads: 8
+downloads: 18
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-decap-cms-preview-template
 repoUrl: https://github.com/advanced-astro/astro-decap-cms
 homepageUrl: https://github.com/advanced-astro/astro-decap-cms
-downloads: 43
+downloads: 71
 ---

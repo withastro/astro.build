@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-integration-windicss
 repoUrl: ttps://github.com/dv-dn/astro-integration-windicss
 homepageUrl: https://github.com/dv-dn/astro-integration-windicss
-downloads: 9
+downloads: 32
 ---

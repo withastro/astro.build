@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/sb-astro-sdk
 homepageUrl: https://www.npmjs.com/package/sb-astro-sdk
-downloads: 6
+downloads: 10
 ---

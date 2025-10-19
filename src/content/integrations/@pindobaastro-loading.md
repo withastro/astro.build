@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-loading
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-loading
-downloads: 127
+downloads: 128
 ---

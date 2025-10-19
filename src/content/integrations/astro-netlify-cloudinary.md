@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-netlify-cloudinary
 homepageUrl: https://www.npmjs.com/package/astro-netlify-cloudinary
-downloads: 494
+downloads: 589
 ---

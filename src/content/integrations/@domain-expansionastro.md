@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@domain-expansion/astro
 homepageUrl: https://github.com/astro-expansion/domain-expansion
-downloads: 92
+downloads: 253
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@corex-ui/astro
 repoUrl: https://github.com/corex-ui/corex-ui
 homepageUrl: https://corex-ui.com
 badge: new
-downloads: 1062
+downloads: 1068
 ---

@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@xexiu/astro-speech
 repoUrl: https://github.com/xexiu/astro-components
 homepageUrl: https://github.com/xexiu/astro-components
-downloads: 19
+downloads: 85
 ---

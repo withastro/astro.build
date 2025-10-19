@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@angius/astro-jsonc
 repoUrl: https://github.com/Atulin/astro-jsonc
 homepageUrl: https://github.com/Atulin/astro-jsonc#readme
-downloads: 8
+downloads: 21
 ---

@@ -6,5 +6,5 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/image-uploader-astro-toolbar-integration
 homepageUrl: https://www.npmjs.com/package/image-uploader-astro-toolbar-integration
-downloads: 3
+downloads: 4
 ---

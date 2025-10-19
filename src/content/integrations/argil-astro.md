@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/argil-astro
 repoUrl: https://gitlab.com/argil-data/argil-astro
 homepageUrl: https://gitlab.com/argil-data/argil-astro#readme
-downloads: 3
+downloads: 20
 ---

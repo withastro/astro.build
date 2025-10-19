@@ -6,5 +6,5 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/@reunmedia/astro-og-images
 homepageUrl: https://github.com/ReunMedia/astro-og-images
-downloads: 13
+downloads: 20
 ---

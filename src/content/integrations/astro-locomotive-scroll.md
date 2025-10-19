@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-locomotive-scroll
 homepageUrl: https://www.npmjs.com/package/astro-locomotive-scroll
-downloads: 13
+downloads: 41
 ---

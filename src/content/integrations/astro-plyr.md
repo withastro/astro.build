@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-plyr
 repoUrl: https://github.com/Liumingxun/astro-plyr
 homepageUrl: https://github.com/Liumingxun/astro-plyr#readme
-downloads: 22
+downloads: 36
 ---

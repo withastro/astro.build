@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@skyfall-powered/simple-icons-astro
 repoUrl: https://github.com/dzeiocom/simple-icons-astro
 homepageUrl: https://www.npmjs.com/package/@skyfall-powered/simple-icons-astro
-downloads: 12
+downloads: 72
 ---

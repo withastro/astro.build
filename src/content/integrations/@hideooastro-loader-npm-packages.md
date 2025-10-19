@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@hideoo/astro-loader-npm-packages
 repoUrl: https://github.com/HiDeoo/astro-loader-npm-packages
 homepageUrl: https://github.com/HiDeoo/astro-loader-npm-packages
-downloads: 96
+downloads: 97
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ngdangtu/astro-toml
 repoUrl: https://gitlab.com/ndt-deps/astro-pkg
 homepageUrl: https://gitlab.com/ndt-deps/astro-pkg/tree/main/packages/loaders/toml/toml.note.md
-downloads: 30
+downloads: 81
 ---

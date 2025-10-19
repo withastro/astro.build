@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-partytown-resolveurl-2
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/partytown/
-downloads: 1
+downloads: 4
 ---

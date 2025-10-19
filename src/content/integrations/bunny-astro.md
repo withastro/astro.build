@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/bunny-astro
 repoUrl: https://github.com/jlarmstrongiv/bunny-astro
 homepageUrl: https://bunny-launcher.net/adapters/astro/
-downloads: 54
+downloads: 80
 ---

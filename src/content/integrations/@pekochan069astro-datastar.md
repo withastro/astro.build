@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pekochan069/astro-datastar
 repoUrl: https://github.com/pekochan069/astro-datastar
 homepageUrl: https://github.com/pekochan069/astro-datastar
-downloads: 6
+downloads: 40
 ---

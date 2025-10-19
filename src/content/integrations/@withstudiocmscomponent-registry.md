@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@withstudiocms/component-registry
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
-downloads: 330
+downloads: 325
 ---

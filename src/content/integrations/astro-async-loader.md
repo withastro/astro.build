@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-async-loader
 repoUrl: https://github.com/jonasfroeller/astro.async.loader
 homepageUrl: https://github.com/jonasfroeller/astro.async.loader#readme
-downloads: 10
+downloads: 14
 ---

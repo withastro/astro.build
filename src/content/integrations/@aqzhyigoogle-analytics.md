@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@aqzhyi/google-analytics
 repoUrl: https://github.com/Aqzhyi/oh-my-monorepo
 homepageUrl: https://github.com/Aqzhyi/oh-my-monorepo#readme
-downloads: 84
+downloads: 223
 ---

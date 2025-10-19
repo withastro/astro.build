@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/zastro-service-worker
 repoUrl: https://github.com/zachhandley/astro-service-worker
 homepageUrl: https://github.com/zachhandley/astro-service-worker#readme
-downloads: 11
+downloads: 14
 ---

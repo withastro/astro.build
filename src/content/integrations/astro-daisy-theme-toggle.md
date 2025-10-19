@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-daisy-theme-toggle
 repoUrl: https://github.com/Grahf0085/astro-daisy-theme-toggle
 homepageUrl: https://github.com/Grahf0085/astro-daisy-theme-toggle
-downloads: 22
+downloads: 25
 ---

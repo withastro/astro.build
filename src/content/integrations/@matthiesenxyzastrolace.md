@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/astrolace
 homepageUrl: https://matthiesen.xyz
-downloads: 359
+downloads: 352
 ---

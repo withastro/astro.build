@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/typegen
 homepageUrl: https://www.npmjs.com/package/@astro-openapi/typegen
-downloads: 18
+downloads: 50
 ---

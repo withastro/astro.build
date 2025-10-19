@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@miseya/astro-decap-cms
 repoUrl: https://github.com/miseya/astro-decap-cms
 homepageUrl: https://github.com/miseya/astro-decap-cms
-downloads: 26
+downloads: 83
 ---

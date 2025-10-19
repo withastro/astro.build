@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-base-document
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://www.npmjs.com/package/astro-base-document
-downloads: 30
+downloads: 50
 ---

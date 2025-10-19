@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/google-react-recaptcha-v2
 repoUrl: https://github.com/AndresH11/google-react-recaptcha-v2
 homepageUrl: https://github.com/AndresH11/google-react-recaptcha-v2/blob/main/README.md
-downloads: 21
+downloads: 22
 ---

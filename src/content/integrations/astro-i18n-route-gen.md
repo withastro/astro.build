@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-i18n-route-gen
 homepageUrl: https://github.com/aitorcas23/astro-i18n-route-gen
-downloads: 8
+downloads: 10
 ---

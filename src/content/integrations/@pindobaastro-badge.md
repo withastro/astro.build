@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pindoba/astro-badge
 repoUrl: https://github.com/EduardoLopes/pindoba
 homepageUrl: https://www.npmjs.com/package/@pindoba/astro-badge
-downloads: 102
+downloads: 103
 ---

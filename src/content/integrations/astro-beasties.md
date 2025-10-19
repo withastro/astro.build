@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-beasties
 repoUrl: https://github.com/PlayForm/Inline
 homepageUrl: HTTPS://GitHub.Com/PlayForm/Inline#readme
-downloads: 149
+downloads: 148
 ---

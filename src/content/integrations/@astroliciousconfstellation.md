@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astrolicious/confstellation
 repoUrl: https://github.com/UserName/@astrolicious/confstellation
 homepageUrl: https://www.npmjs.com/package/@astrolicious/confstellation
-downloads: 19
+downloads: 63
 ---

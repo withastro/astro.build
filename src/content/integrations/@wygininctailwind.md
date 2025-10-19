@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@wygininc/tailwind
 homepageUrl: https://www.npmjs.com/package/@wygininc/tailwind
-downloads: 47
+downloads: 123
 ---

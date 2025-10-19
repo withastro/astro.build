@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@laughingzhu/astro-link-preview
 repoUrl: https://github.com/LaughingZhu/astro-link-preview
 homepageUrl: https://github.com/LaughingZhu/astro-link-preview
-downloads: 85
+downloads: 425
 ---

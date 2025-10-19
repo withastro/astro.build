@@ -6,5 +6,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/adom-typography
 homepageUrl: https://github.com/adominguez/adom-typography
-downloads: 42
+downloads: 78
 ---

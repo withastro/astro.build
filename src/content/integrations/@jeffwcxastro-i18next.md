@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jeffwcx/astro-i18next
 repoUrl: https://github.com/jeffwcx/astro-i18next
 homepageUrl: https://jeffwcx.github.io/astro-i18next/
-downloads: 21
+downloads: 61
 ---

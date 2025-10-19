@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jcayzac/astro-markdown-tree-dump
 repoUrl: https://github.com/jcayzac/copepod-modules
 homepageUrl: https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-markdown-tree-dump#readme
-downloads: 17
+downloads: 27
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@renhiyama/astro-db
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/db/
-downloads: 3
+downloads: 21
 ---

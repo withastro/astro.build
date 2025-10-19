@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@codemint/astro-ui
 repoUrl: https://github.com/ArifRabbaniIn/astro-ui
 homepageUrl: https://github.com/ArifRabbaniIn/astro-ui
-downloads: 279
+downloads: 277
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/is-wdsssx
 repoUrl: ssh://git@github.com/apophis51/package
 homepageUrl: https://github.com/apophis51/package#readme
-downloads: 1
+downloads: 4
 ---

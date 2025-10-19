@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-llms-txt-generator
 repoUrl: ssh://git@github.com/aligundogdu/astro-llms-txt
 homepageUrl: https://github.com/aligundogdu/astro-llms-txt
-downloads: 29
+downloads: 30
 ---

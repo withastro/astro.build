@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@otterstack/sanity-img-astro
 repoUrl: https://github.com/otterdev-io/otterstack
 homepageUrl: https://www.npmjs.com/package/@otterstack/sanity-img-astro
-downloads: 443
+downloads: 433
 ---

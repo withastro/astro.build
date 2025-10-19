@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-microsoft-clarity
 repoUrl: https://github.com/wanghaisheng/astro-microsoft-clarity
 homepageUrl: https://www.npmjs.com/package/astro-microsoft-clarity
-downloads: 4
+downloads: 7
 ---

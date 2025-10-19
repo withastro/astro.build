@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/rehype-smart-links
 repoUrl: https://github.com/EveSunMaple/rehype-smart-links
 homepageUrl: https://rehype-smart-links.vercel.app/
-downloads: 7
+downloads: 5
 ---

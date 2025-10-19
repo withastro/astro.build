@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@lagoss/astro
 repoUrl: https://github.com/lagossapp/lagoss
 homepageUrl: https://github.com/lagossapp/lagoss/tree/main/packages/integrations/astro
-downloads: 8
+downloads: 22
 ---
