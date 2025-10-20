@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/lism-css
 repoUrl: https://github.com/lism-css/lism-css#main
-homepageUrl: https://www.npmjs.com/package/lism-css
+homepageUrl: https://www.lism.style
 downloads: 319
 ---
