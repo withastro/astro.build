@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-auto-alias
 repoUrl: https://github.com/zakarialaoui10/astro-auto-alias
 homepageUrl: https://github.com/zakarialaoui10/astro-auto-alias#readme
-downloads: 30
+downloads: 34
 ---
