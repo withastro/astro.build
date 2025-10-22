@@ -8,5 +8,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@matthiesenxyz/astrodtsbuilder
 homepageUrl: https://github.com/matthiesenxyz/astrodtsbuilder
-downloads: 284
+downloads: 286
 ---

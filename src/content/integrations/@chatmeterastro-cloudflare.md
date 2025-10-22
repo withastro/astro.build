@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@chatmeter/astro-cloudflare
 repoUrl: https://github.com/adrianlyjak/withastro-adapters
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/cloudflare/
-downloads: 68
+downloads: 67
 ---
