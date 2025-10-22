@@ -1,28 +1,24 @@
 ---
-interface Props {
-	stats?: {
-		amount: string;
-		text: string;
-		source?: string;
-		url?: string;
-	}[];
-}
+import data from '../data/stats.json';
 
-const stats = Astro.props.stats || [
+/** Formatter for compact representations of quantities, e.g. `2.1M` or `17k`. */
+const formatter = new Intl.NumberFormat('en', { notation: 'compact' });
+
+const stats = [
 	{
-		amount: '📦 1.9M',
+		amount: `📦 ${formatter.format(data.downloads)}`,
 		text: 'monthly downloads',
 		source: 'NPM downloads',
 		url: 'https://www.npmjs.com/package/astro',
 	},
 	{
-		amount: '🌐 82k',
+		amount: `🌐 ${formatter.format(data.followers.twitter)}`,
 		text: 'X/Twitter Followers',
 		source: '@astrodotbuild',
 		url: 'https://x.com/astrodotbuild',
 	},
 	{
-		amount: '⭐ 50k',
+		amount: `⭐ ${formatter.format(data.stars)}`,
 		text: 'GitHub Stars',
 		source: 'withastro/astro',
 		url: 'https://github.com/withastro/astro',
