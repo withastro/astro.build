@@ -12,10 +12,11 @@ const stats = [
 		url: 'https://www.npmjs.com/package/astro',
 	},
 	{
-		amount: `🌐 ${formatter.format(data.followers.twitter)}`,
-		text: 'X/Twitter Followers',
-		source: '@astrodotbuild',
-		url: 'https://x.com/astrodotbuild',
+		amount: `🌐 ${formatter.format(data.followers.twitter + data.followers.mastodon + data.followers.bluesky)}`,
+		text: 'social media followers',
+		source: `<a href="https://bsky.app/profile/astro.build" class="link">Bluesky</a> /
+			<a href="https://m.webtoo.ls/@astro/" class="link">Mastodon</a> /
+			<a href="https://twitter.com/astrodotbuild" class="link">X</a>`,
 	},
 	{
 		amount: `⭐ ${formatter.format(data.stars)}`,
@@ -52,11 +53,14 @@ const stats = [
 			<p class="flex flex-col items-start gap-2.5 leading-none text-white font-light">
 				<span class="font-heading text-4xl lg:text-5xl whitespace-nowrap">{amount}</span>
 				<span class="text-sm xl:text-base">{text}</span>
-				{source && (
-					<a href={url} class="link text-xs">
-						{source}
-					</a>
-				)}
+				{source &&
+					(url ? (
+						<a href={url} class="link text-xs">
+							{source}
+						</a>
+					) : (
+						<span class="text-xs" set:html={source} />
+					))}
 			</p>
 		))
 	}
