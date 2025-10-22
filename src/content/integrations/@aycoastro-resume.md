@@ -6,7 +6,7 @@ description: This facilitates the creation and usage of global, immutable data
 categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@ayco/astro-resume
-homepageUrl: https://ayco.io/sh/astro-resume
+homepageUrl: https://www.npmjs.com/package/@ayco/astro-resume
 downloads: 2866
 repoUrl: https://git.sr.ht/~ayoayco/astro-resume
 ---
