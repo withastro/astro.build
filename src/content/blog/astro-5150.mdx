@@ -42,7 +42,7 @@ yarn upgrade astro --latest
 
 Astro 5.15 introduces automatic skew protection for Netlify deployments, ensuring your site's client and server versions stay perfectly synchronized.
 
-Deployment skew is a sneaky issue that occurs when users load newer client assets while the server is still running older code. This can cause subtle bugs and unexpected behavior that are hard to track down. With Netlify skew protection, this is now a thing of the past.
+Deployment skew is a sneaky issue that occurs when users load older client assets while the server is running newer code. This can cause subtle bugs and unexpected behavior that are hard to track down. With Netlify skew protection, this is now a thing of the past.
 
 When you deploy to Netlify, Astro automatically includes your deployment ID in all asset requests and API calls. This allows Netlify to detect and handle any version mismatches automatically—no configuration needed. Your site just works, even during rapid deployments or when users are on slow connections that might load assets across deployment boundaries.
 
