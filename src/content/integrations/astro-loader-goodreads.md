@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-goodreads
 repoUrl: https://github.com/sadmanca/astro-loader-goodreads
 homepageUrl: https://github.com/sadmanca/astro-loader-goodreads#readme
-downloads: 147
+downloads: 138
 ---

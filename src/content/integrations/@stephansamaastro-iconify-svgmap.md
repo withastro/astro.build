@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@stephansama/astro-iconify-svgmap
 repoUrl: https://github.com/stephansama/packages
 homepageUrl: https://packages.stephansama.info/api/@stephansama/astro-iconify-svgmap
-downloads: 51
+downloads: 50
 ---

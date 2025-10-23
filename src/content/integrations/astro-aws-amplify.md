@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-aws-amplify
 homepageUrl: https://github.com/alexnguyennz/astro-aws-amplify
-downloads: 7291
+downloads: 7512
 ---
