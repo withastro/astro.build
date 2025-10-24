@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@meeghele/astro-shield
 repoUrl: https://github.com/meeghele/astro-shield
 homepageUrl: https://www.npmjs.com/package/@meeghele/astro-shield
 badge: new
-downloads: 568
+downloads: 574
 ---
