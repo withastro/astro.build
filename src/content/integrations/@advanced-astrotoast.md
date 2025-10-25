@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@advanced-astro/toast
 homepageUrl: https://www.npmjs.com/package/@advanced-astro/toast
-downloads: 20
+downloads: 21
 ---

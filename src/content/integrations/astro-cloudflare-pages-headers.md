@@ -8,6 +8,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-pages-headers
 homepageUrl: https://github.com/martinsilha/astro-cloudflare-pages-headers
-downloads: 1415
+downloads: 1448
 image: /assets/integrations/astro-cloudflare-pages-headers.png
 ---

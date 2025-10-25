@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astro-community/astro-embed-baseline-status
 repoUrl: https://github.com/delucis/astro-embed
 homepageUrl: https://astro-embed.netlify.app/components/baseline-status/
-downloads: 62259
+downloads: 62914
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@winner-fed/unplugin-fonts
 homepageUrl: https://www.npmjs.com/package/@winner-fed/unplugin-fonts
-downloads: 24
+downloads: 25
 ---

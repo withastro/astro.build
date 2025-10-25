@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-storyblok-image-service
 homepageUrl: https://www.npmjs.com/package/astro-storyblok-image-service
-downloads: 262
+downloads: 264
 ---

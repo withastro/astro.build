@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sidetrails/astro-cname
 repoUrl: https://github.com/sidetrails/astro-integrations
 homepageUrl: https://github.com/sidetrails/astro-integrations#readme
-downloads: 20
+downloads: 21
 ---

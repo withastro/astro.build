@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-teleport
 repoUrl: https://github.com/ok-98/astro-teleport
 homepageUrl: https://github.com/ok-98/astro-teleport#readme
-downloads: 32
+downloads: 30
 ---
