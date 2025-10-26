@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@lloydjatkinson/astro-snipcart-design-system
 homepageUrl: https://www.npmjs.com/package/@lloydjatkinson/astro-snipcart-design-system
-downloads: 157
+downloads: 158
 ---

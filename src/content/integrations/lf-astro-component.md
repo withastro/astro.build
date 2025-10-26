@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/lf-astro-component
 homepageUrl: https://github.com/owner/project#readme
 badge: new
-downloads: 258
+downloads: 264
 ---

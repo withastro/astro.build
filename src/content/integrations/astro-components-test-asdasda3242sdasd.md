@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-components-test-asdasda3242sdasd
 homepageUrl: https://www.npmjs.com/package/astro-components-test-asdasda3242sdasd
 badge: new
-downloads: 15
+downloads: 14
 ---

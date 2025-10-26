@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@simplestack/query
 repoUrl: https://github.com/bholmesdev/simple-stack
 homepageUrl: https://github.com/bholmesdev/simple-stack#readme
 badge: new
-downloads: 6
+downloads: 8
 ---
