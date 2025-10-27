@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/ecp-astro
 repoUrl: https://github.com/scottrepreneur/ecp-astro
 homepageUrl: https://github.com/scottrepreneur/ecp-astro#readme
 badge: new
-downloads: 18
+downloads: 20
 ---
