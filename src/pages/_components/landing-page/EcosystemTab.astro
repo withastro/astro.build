@@ -8,7 +8,6 @@ const { label, isActive = false } = Astro.props;
 
 <button
 	role="tab"
-	data-tab={label.toLowerCase()}
 	id={label.toLowerCase().replaceAll(/\s+/g, '-')}
 	tabindex={isActive ? '0' : '-1'}
 	aria-selected={isActive ? 'true' : 'false'}
