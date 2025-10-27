@@ -6,6 +6,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/lightnet
 homepageUrl: https://lightnet.community
 downloads: 591
-description: LightNet
+description: LightNet makes it easy to run your own digital media library.
 repoUrl: https://github.com/LightNetDev/lightnet
 ---

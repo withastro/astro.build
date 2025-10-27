@@ -1,8 +1,8 @@
 ---
 name: astro-loader-github-releases
 title: astro-loader-github-releases
-description: Astro loader for loading GitHub releases from a user's commit
-  history or a list of repositories.
+description: Astro loader for fetching GitHub releases, supporting both
+  build-time and runtime retrieval.
 categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/astro-loader-github-releases
