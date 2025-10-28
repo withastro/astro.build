@@ -540,6 +540,11 @@ const scraper = new ShowcaseScraper({
 		'https://rabbittranslate.com/',
 		// 2025-09-30
 		'https://mnyorba.github.io/',
+		// 2025-10-28 - not Astro
+		'https://designcember.com/',
+		'https://theconnecto.com/',
+		'https://flyonui.com/',
+		'https://www.lnr.agency/',
 	],
 });
 await scraper.run();
