@@ -547,6 +547,8 @@ const scraper = new ShowcaseScraper({
 		'https://www.lnr.agency/',
 		// 2025-10-28 - low quality
 		'https://combinationsumcalculator.pro/',
+		// 2025-10-28 - NSFW Astro site
+		'https://www.explainsthejoke.com',
 	],
 });
 await scraper.run();
