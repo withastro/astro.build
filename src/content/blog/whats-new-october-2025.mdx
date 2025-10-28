@@ -1,0 +1,298 @@
+---
+title: "What's new in Astro - October 2025"
+description: 'October 2025 - stuff, and more!'
+publishDate: "October 31, 2025"
+authors:
+  - sarah
+coverImage: "/src/content/blog/_images/whats-new-shared.webp"
+socialImage: "/src/content/blog/_images/whats-new-october/og.webp"
+lang: "en"
+startDate: "2025-10-01"
+endDate: "2025-11-01"
+related:
+  - whats-new-september-2025
+  - whats-new-august-2025
+
+---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
+import ShowcaseGridById from './_whats-new-components/ShowcaseGridById.astro';
+import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
+import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
+import { Tweet } from 'astro-embed';
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+import { getEntry } from 'astro:content';
+import Mention from "/src/components/Mention.astro";
+import { BlueskyPost } from 'astro-embed';
+import { LinkPreview } from 'astro-embed';
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+import astroHappyHour from '/src/content/blog/_images/whats-new-september/2025/astro-happy-hour.jpg';
+import winningDesigns from '/src/content/blog/_images/whats-new-october/2025/winningdesigns.webp';
+
+
+Some exciting news from around the Astro ecosystem this month, including:
+
+- [Updates from Mission Control](#updates-from-mission-control)
+- [Latest releases](#latest-releases)
+- [Astro Adopters](#astro-adopters)
+- [Weird Wide Web](#weird-wide-web)
+- [Cosmic Canvas](#cosmic-canvas)
+- [Community updates](#community)
+- [Reading List](#content)
+- [Watch Party](#watch-party)
+- [Tips & Tools](#tips--tools)
+- [Themes & Templates](#themes--templates)
+- [Site Showcase](#showcase)
+- [Starlight in the wild](#starlight-in-the-wild)
+
+
+Let's dive right into it!
+
+## Updates from Mission Control 
+
+- 🚀 Astro happy hour
+- 🔮 [The future of Astro](https://www.youtube.com/watch?v=KSMfTVdAFjU) as predicted by <Mention name="matt" /> at ViteConf2025! 
+- 📈 design contest winner
+- 🤖 astro 6 roadmap, keep up with what's coming
+- new theme-author role in Discord
+- Astro Luma
+
+
+## Latest releases
+
+Minor releases introduce new features and improvements. Check out what's new!
+
+- [Astro 5.15](/blog/astro-5150/) - Netlify skew protection, granular font preload filtering, new adapter APIs, and more! [CHANGELOG](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md#5150)
+
+## Astro Adopters
+
+From Google to Reuters, some of the biggest names you know are using Astro!
+
+export const featuredSites = [
+  'geminicli.com',
+  'reuters-graphics.github.io',
+]; 
+
+{/* Use for grids of 2 per row  */}
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'geminicli.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'reuters-graphics.github.io',)} />
+</div>
+
+
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={featuredSites} />  */}
+
+See more companies using Astro in our [site showcase](/showcase/), and explore Astro for corporate or enterprise use with one of our [agency partners](/agencies/)!
+
+## Weird Wide Web
+
+Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
+
+- [RARE□TV](https://www.rarecube.tv/) is a complete digital broadcasting platform built in Astro to connect streamers with their audiences and provide diverse and direct revenue opportunities.
+- No missing pieces in this set! Take a break and build online puzzles at [Jigsaw King](https://www.jigsawking.com/).
+- Astro is perfect for your content-focused sites, and both [MiniNote](https://mininote.app/) and [Online Notes](https://onlinenotes.net) want to help you organize your thoughts with online digital notetaking apps.
+
+export const monthlySites = [
+  'www.rarecube.tv',
+  'www.jigsawking.com',
+  'mininote.app',
+  'onlinenotes.net',
+]; 
+
+{/* Use for grids of 2 per row  */}
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.rarecube.tv')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.jigsawking.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'mininote.app')} />
+  <ShowcaseCard site={await getEntry('showcase', 'onlinenotes.net')} />
+</div>
+
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={monthlySites} /> */}
+
+## Cosmic Canvas
+
+Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
+
+export const canvasSites = [
+  'geniestudio.app',
+  'astrodither.robertborghesi.is',
+]; 
+
+{/* Use for grids of 2 per row  */}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'geniestudio.app')} />
+  <ShowcaseCard site={await getEntry('showcase', 'astrodither.robertborghesi.is')} />
+</div>
+
+
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={canvasSites} /> */}
+
+
+## Community
+
+### Astro Team News
+
+We're excited to announce our newest Astro core maintainer, <Mention name="armand" />! You'll see Armand taking charge on several documentation initiatives, as well as keeping our French translations up to date, and contributing to several areas of the codebase. Please join us in welcoming him!
+
+### Spirit of Astro winning designs
+
+Congratulations to [Christina Martinez](https://christinacodes.dev/), [Louis Escher](https://lou.gg/), and [Hazim Sami](https://bsky.app/profile/hazims.bsky.social) for their winning design entries!
+
+<BlogContentImage 
+  src={winningDesigns} 
+  alt="A row of summer-themed Astro merch, including pastel bucket hats, a tie-dyed t-shirt, and a colorful beach towel."
+/>
+
+You can read the [Spirit of Astro winning designs](https://astro.build/blog/spirit-of-astro-winners/) blog post to learn more about each design, or head straight over to the [Astro merch store](https://shop.astro.build/collections/community/) and put some in your shopping cart today!
+
+### Hot topics
+
+
+### Did you know?
+
+
+
+## Content
+
+Here's what caught our attention this month: 
+
+
+Because you can never get tired of Astro, here's even more community content!
+
+### Migration Stories
+
+- []()
+
+
+
+### How-to Articles
+
+- []()
+
+Find these and **all how-to articles** from previous monthly blog posts at [Astro Tips](https://astro-tips.dev)!
+
+### ... and more!
+
+- []()
+
+
+## Watch Party
+
+Be sure to follow [Astro's official YouTube channel](https://www.youtube.com/astrodotbuild) for content from the team!
+
+### Astro on demand
+
+Grab your popcorn and make a playlist of your faves! 🍿
+
+<YouTubeGrid
+  maxCols={2}
+  videos={[
+    { id: "https://www.youtube.com/watch?v=VglIaMtiXk4", title: "Astro.js in 90 Seconds"},
+    { id: "https://www.youtube.com/watch?v=ts-kJeSy3F0", title: "Next.js is dead - Here's the best tech stack for SEO websites"},
+  ]}
+/> 
+
+### Astro ❤'s your fave tech
+
+Using a CMS, database, or AI tool to build Astro? See how it's done!
+
+<YouTubeGrid
+  maxCols={3}
+  videos={[
+    { id: "https://www.youtube.com/watch?v=mP6RBmHlHGQ", title: "Content Island CLI - Starlight"},
+    { id: "https://www.youtube.com/watch?v=yK2kdaclldg", title: "Build a Website with AI - Astro + Cloudflare Workers"},
+    { id: "https://www.youtube.com/watch?v=30cSuyVkxs4", title: "Easy Steps to Add Uploads to Your Course Site using Astro.js and Mux!"},
+  ]}
+/> 
+
+### Learn Astro
+
+New to Astro? See the latest introductory videos around the web!
+
+<YouTubeGrid
+  maxCols={2}
+  videos={[
+    { id: "https://www.youtube.com/watch?v=X8OBCxMYZIE", title: "Astro Nasıl Çalışır? Blog Projesi Üzerinden İnceliyoruz"},
+    { id: "https://www.youtube.com/watch?v=75inhpxpxgc", title: "How to Use Images in Astro with React, Svelte, or Vue"},
+  ]}
+/>
+
+### Meetups
+
+Astro is popular around the globe! Discover what happened at meetups and conferences this month.
+
+<YouTubeGrid
+  maxCols={2}
+  videos={[
+    { id: "https://www.youtube.com/watch?v=KSMfTVdAFjU", title: "Matt Kane | The Future of Astro | ViteConf 2025"},
+    { id: "https://www.youtube.com/watch?v=f_yujEtuJf0", title: "From WordPress to Astro - EdinburghJS - October 2025"},
+  ]}
+/> 
+
+### Live coding streams
+
+Watch people build, experiment, and learn!
+
+<YouTubeGrid
+  maxCols={3}
+  videos={[
+    { id: "https://www.youtube.com/watch?v=W3Q83xHmaJg", title: "Handling images in Astro"},
+    { id: "https://www.youtube.com/watch?v=0PQiSG_hHzE", title: "Building a mini LMS using Astro.js, Appwrite and Mux- Part One"},
+    { id: "https://www.youtube.com/watch?v=MNH-At82UyM", title: "Building a mini LMS using Astro.js, Appwrite and Mux- Part Two"},
+  ]}
+/> 
+
+
+## Tips & Tools
+
+The latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
+
+- []()
+
+... and some built with Astro!
+
+- []()
+
+## Themes & Templates
+
+Several new Astro themes were added to the [Astro theme directory](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme!
+
+<ThemeGrid date={frontmatter.startDate} />
+
+... and check out these new themes for Starlight!
+
+- [Starlight Galaxy](https://github.com/frostybee/starlight-theme-galaxy)
+
+## Showcase
+
+
+Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
+
+{/* 
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
+*/}
+
+
+export const extraSitesToExclude = [
+  'spellcast.fm',
+];
+
+export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites, ...extraSitesToExclude]
+
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
+
+
+## Starlight in the wild
+
+It's always exciting to stumble across more docs built with Starlight. Here's what our community noticed this month:
+
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} />
+
+## That’s a wrap! 👋
+
+Thanks for another great month! We can't wait to see what you build next month!
+
+*Want to be in this post next month? Share your Astro websites, projects, apps, tools, blog posts, demos, and videos in the `#showcase` channel in [our Discord](https://astro.build/chat) and/or tag us on social media!*
