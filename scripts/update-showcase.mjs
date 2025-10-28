@@ -545,6 +545,7 @@ const scraper = new ShowcaseScraper({
 		'https://theconnecto.com/',
 		'https://flyonui.com/',
 		'https://www.lnr.agency/',
+		'https://60fps.fr/',
 		// 2025-10-28 - low quality
 		'https://combinationsumcalculator.pro/',
 		// 2025-10-28 - NSFW Astro site
