@@ -545,6 +545,8 @@ const scraper = new ShowcaseScraper({
 		'https://theconnecto.com/',
 		'https://flyonui.com/',
 		'https://www.lnr.agency/',
+		// 2025-10-28 - low quality
+		'https://combinationsumcalculator.pro/',
 	],
 });
 await scraper.run();
