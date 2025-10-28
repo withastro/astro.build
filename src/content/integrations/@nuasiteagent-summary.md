@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@nuasite/agent-summary
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://github.com/nuasite/nuasite#readme
 badge: new
-downloads: 1508
+downloads: 2467
 ---

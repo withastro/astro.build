@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-theme-galaxy
 repoUrl: https://github.com/frostybee/starlight-theme-galaxy
 homepageUrl: https://github.com/frostybee/starlight-theme-galaxy
-downloads: 973
+downloads: 1001
 ---

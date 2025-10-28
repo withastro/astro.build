@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-color-scheme
 repoUrl: https://github.com/surjithctly/astro-color-scheme
 homepageUrl: https://github.com/surjithctly/astro-color-scheme#readme
-downloads: 1045
+downloads: 1049
 ---
