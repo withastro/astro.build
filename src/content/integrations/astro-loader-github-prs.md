@@ -1,7 +1,8 @@
 ---
 name: astro-loader-github-prs
 title: astro-loader-github-prs
-description: Astro loader for loading GitHub pull requests with a search query.
+description: Astro loader for fetching GitHub Pull Requests, supporting both
+  build-time and runtime retrieval.
 categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/astro-loader-github-prs

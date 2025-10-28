@@ -6,7 +6,7 @@ categories:
   - uncategorized
   - recent
 npmUrl: https://www.npmjs.com/package/lf-astro-component
-homepageUrl: https://github.com/owner/project#readme
+homepageUrl: https://www.npmjs.com/package/lf-astro-component
 badge: new
 downloads: 271
 ---
