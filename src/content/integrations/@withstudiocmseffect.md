@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@withstudiocms/effect
 repoUrl: https://github.com/withstudiocms/studiocms
 homepageUrl: https://studiocms.dev
-downloads: 187
+downloads: 173
 ---
