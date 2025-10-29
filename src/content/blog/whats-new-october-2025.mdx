@@ -49,14 +49,16 @@ Let's dive right into it!
 
 ## Updates from Mission Control 
 
-- 🚀 Astro happy hour
+
 - 🔮 [The future of Astro](https://www.youtube.com/watch?v=KSMfTVdAFjU) as predicted by <Mention name="matt" /> at ViteConf2025! 
-- 📈 design contest winner
+- Biome [announces support for `.astro` files](https://biomejs.dev/blog/biome-v2-3/)!
+- 📈 Astro is the 3rd-fastest growing language on GitHub according to [Octoverse 2025](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/#the-fastest-growing-languages-by-percentage-growth). (And in 2nd place? Typst - one of this month's [Astro Adopters](#astro-adopters)! Do we get to count that, too?)
+
+Probably for community section
 - 🤖 astro 6 roadmap, keep up with what's coming
 - new theme-author role in Discord
 - Astro Luma - https://luma.com/astrodotbuild
-- Biome support for Astro
-- Astro 3rd-fastest growing language on GitHub according to [Octoverse 2025](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/#the-fastest-growing-languages-by-percentage-growth)
+- 🚀 Astro happy hour
 
 
 ## Latest releases
@@ -67,22 +69,25 @@ Minor releases introduce new features and improvements. Check out what's new!
 
 ## Astro Adopters
 
-From Google to Reuters, some of the biggest names you know are using Astro!
+From Google to Reuters to Typst, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
   'geminicli.com',
   'reuters-graphics.github.io',
+  'typst.app',
 ]; 
 
 {/* Use for grids of 2 per row  */}
+{/* 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
   <ShowcaseCard site={await getEntry('showcase', 'geminicli.com')} />
   <ShowcaseCard site={await getEntry('showcase', 'reuters-graphics.github.io',)} />
 </div>
+*/}
 
 
 {/* Can use when there are multiples of 3  */}
-{/* <ShowcaseGridById ids={featuredSites} />  */}
+<ShowcaseGridById ids={featuredSites} />
 
 See more companies using Astro in our [site showcase](/showcase/), and explore Astro for corporate or enterprise use with one of our [agency partners](/agencies/)!
 
