@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@nuasite/components
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://github.com/nuasite/nuasite#readme
 badge: new
-downloads: 2165
+downloads: 2297
 ---

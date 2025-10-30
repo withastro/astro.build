@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-chatty-gpt
 repoUrl: https://github.com/unfolding-io/astro-chatty-gpt
 homepageUrl: https://astrochattygpt.unfolding.io
 badge: new
-downloads: 387
+downloads: 391
 ---
