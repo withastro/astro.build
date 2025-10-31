@@ -550,6 +550,8 @@ const scraper = new ShowcaseScraper({
 		'https://combinationsumcalculator.pro/',
 		// 2025-10-28 - NSFW Astro site
 		'https://www.explainsthejoke.com',
+		// 2025-10-31 - template/demo site
+		'https://astro-portfolio-template-tbl.netlify.app/',
 	],
 });
 await scraper.run();
