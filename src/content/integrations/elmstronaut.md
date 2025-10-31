@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/elmstronaut
 repoUrl: https://github.com/feedbackone/elmstronaut
 homepageUrl: https://github.com/feedbackone/elmstronaut
-downloads: 10
+downloads: 12
 ---
