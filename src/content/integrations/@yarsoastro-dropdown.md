@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@yarso/astro-dropdown
 repoUrl: https://github.com/yarso-su/astro-dropdown
 homepageUrl: https://github.com/yarso-su/astro-dropdown#readme
 badge: new
-downloads: 164
+downloads: 166
 ---

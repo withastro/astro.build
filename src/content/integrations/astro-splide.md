@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-splide
 repoUrl: https://github.com/pascal-brand38/astro-splide
 homepageUrl: https://pascal-brand38.github.io/astro-dev/packages/astro-splide
-downloads: 490
+downloads: 491
 ---

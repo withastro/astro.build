@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-webrings
 homepageUrl: https://github.com/louisescher/astro-webrings#readme
 badge: new
-downloads: 477
+downloads: 351
 repoUrl: https://github.com/louisescher/astro-webrings
 ---
