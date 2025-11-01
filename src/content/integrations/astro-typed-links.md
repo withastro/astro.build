@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-typed-links
 homepageUrl: https://github.com/florian-lefebvre/astro-typed-links#readme
-downloads: 357
+downloads: 367
 repoUrl: https://github.com/florian-lefebvre/astro-typed-links
 ---

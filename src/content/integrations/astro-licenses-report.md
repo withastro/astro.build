@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-licenses-report
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://code.juliancataldo.com/component/astro-licenses-report
-downloads: 126
+downloads: 128
 ---

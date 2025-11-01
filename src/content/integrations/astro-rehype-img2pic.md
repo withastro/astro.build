@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-rehype-img2pic
 homepageUrl: https://www.npmjs.com/package/astro-rehype-img2pic
-downloads: 107
+downloads: 38
 ---
