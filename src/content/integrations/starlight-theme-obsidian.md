@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-theme-obsidian
 repoUrl: https://github.com/Fevol/starlight-theme-obsidian
 homepageUrl: https://github.com/Fevol/starlight-theme-obsidian#readme
-downloads: 2333
+downloads: 2263
 ---

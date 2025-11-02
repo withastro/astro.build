@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@onhive.io/astro-loader
 repoUrl: ssh://git@github.com/instytutfi/hive-astro-loader
 homepageUrl: https://onhive.io/tools/hive-astro-loader/
-downloads: 42
+downloads: 36
 ---

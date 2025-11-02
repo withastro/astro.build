@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@corex-ui/astro
 repoUrl: https://github.com/corex-ui/corex-ui
 homepageUrl: https://corex-ui.com
-downloads: 2019
+downloads: 1951
 ---

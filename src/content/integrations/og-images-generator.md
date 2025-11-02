@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/og-images-generator
 repoUrl: https://github.com/JulianCataldo/og-images-generator
 homepageUrl: https://github.com/JulianCataldo/og-images-generator#readme
-downloads: 128
+downloads: 98
 ---
