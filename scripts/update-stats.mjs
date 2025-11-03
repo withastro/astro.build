@@ -47,6 +47,25 @@ data.stars = github.stargazers_count;
 data.followers.mastodon = mastodon.followers_count;
 data.followers.bluesky = bluesky.followersCount;
 
+// Fetch the latest Astro Twitter followers count from the Twitter API.
+// Conditional because it’s the one API that needs authorization.
+if (process.env.TWITTER_BEARER_TOKEN) {
+	const twitter = z
+		.object({
+			data: z.object({
+				public_metrics: z.object({ followers_count: z.number() }),
+			}),
+		})
+		.parse(
+			await fetch(
+				'https://api.x.com/2/users/by/username/astrodotbuild?user.fields=public_metrics',
+				{ headers: { Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}` } },
+			).then((res) => res.json()),
+		);
+	console.log(`✔︎ Twitter followers: ${twitter.data.public_metrics.followers_count}`);
+	data.followers.twitter = twitter.data.public_metrics.followers_count;
+}
+
 // Write updated stats back to src/data/stats.json.
 console.log('‣ Writing updated stats to src/data/stats.json...');
 await writeFile('src/data/stats.json', JSON.stringify(data, null, '\t'));
