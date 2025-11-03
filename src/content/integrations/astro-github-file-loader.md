@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-github-file-loader
 repoUrl: https://github.com/gingerchew/astro-github-file-loader
 homepageUrl: https://github.com/gingerchew/astro-github-file-loader
-downloads: 114
+downloads: 106
 ---

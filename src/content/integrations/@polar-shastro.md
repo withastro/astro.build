@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@polar-sh/astro
 homepageUrl: https://www.npmjs.com/package/@polar-sh/astro
-downloads: 587
+downloads: 573
 ---

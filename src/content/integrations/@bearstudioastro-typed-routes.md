@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@bearstudio/astro-typed-routes
 homepageUrl: https://www.npmjs.com/package/@bearstudio/astro-typed-routes
-downloads: 46
+downloads: 42
 ---

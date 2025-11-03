@@ -7,5 +7,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-devtoolbar-tailwind
 homepageUrl: https://github.com/futurethemes/astro-devtoolbar-tailwind
-downloads: 136
+downloads: 135
 ---
