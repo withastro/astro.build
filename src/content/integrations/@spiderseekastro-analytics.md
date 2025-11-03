@@ -1,7 +1,8 @@
 ---
 name: "@spiderseek/astro-analytics"
 title: "@spiderseek/astro-analytics"
-description: An Astro Integration for Spiderseek AI Analytics and Tracking.
+description: Astro Integration for Spiderseek. The World's Smallest Website
+  Analytics and Tracking Script.
 categories:
   - analytics
   - performance+seo
