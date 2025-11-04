@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-tractstack
 repoUrl: https://github.com/AtRiskMedia/astro-tractstack
 homepageUrl: https://github.com/AtRiskMedia/astro-tractstack#readme
-downloads: 2953
+downloads: 2879
 ---
