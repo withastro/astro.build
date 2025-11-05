@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-hashnode
 repoUrl: https://github.com/raisedadead/astro-loader-hashnode
 homepageUrl: https://github.com/raisedadead/astro-loader-hashnode#readme
-downloads: 760
+downloads: 777
 ---

@@ -8,6 +8,6 @@ categories:
   - frameworks
 npmUrl: https://www.npmjs.com/package/astro-opengraph-images
 homepageUrl: https://github.com/shepherdjerred/astro-opengraph-images
-downloads: 2294
+downloads: 2385
 repoUrl: https://github.com/shepherdjerred/astro-opengraph-images
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astronauthq/workbench
 homepageUrl: https://www.npmjs.com/package/@astronauthq/workbench
-downloads: 129
+downloads: 130
 ---
