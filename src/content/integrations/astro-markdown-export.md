@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-markdown-export
 repoUrl: https://github.com/shaheemMPM/astro-markdown-export
 homepageUrl: https://github.com/shaheemMPM/astro-markdown-export#readme
 badge: new
-downloads: 97
+downloads: 30
 ---

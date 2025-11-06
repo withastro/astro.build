@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-view-transition-script
 repoUrl: https://github.com/byronogis/astro-view-transition-script
 homepageUrl: https://github.com/byronogis/astro-view-transition-script#readme
 badge: new
-downloads: 713
+downloads: 718
 ---
