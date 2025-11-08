@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-llms-generate
 repoUrl: https://github.com/nermalcat69/astro-llms
 homepageUrl: https://github.com/nermalcat69/astro-llms
-downloads: 2413
+downloads: 2368
 ---

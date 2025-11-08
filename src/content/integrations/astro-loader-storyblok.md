@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-storyblok
 repoUrl: https://github.com/romainpi/astro-loader-storyblok
 homepageUrl: https://github.com/romainpi/astro-loader-storyblok#readme
-downloads: 1939
+downloads: 1811
 ---
