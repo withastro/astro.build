@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@loos/test
 repoUrl: https://github.com/lism-css/lism-css#main
-homepageUrl: https://www.lism.style
+homepageUrl: https://www.npmjs.com/package/@loos/test
 downloads: 422
 ---
