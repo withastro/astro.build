@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/more-apartments-astro-integration
 repoUrl: https://github.com/more-apartments/astro-integration
-homepageUrl: https://github.com/more-apartments/astro-integration#readme
+homepageUrl: https://www.npmjs.com/package/more-apartments-astro-integration
 badge: new
 downloads: 1182
 ---
