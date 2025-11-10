@@ -1,7 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import authors from '../data/authors/authors.json';
+import authors from './data/authors/authors.json';
 
 export const IntegrationCategories = new Map([
 	['recent', 'Recently Added'],
@@ -53,6 +53,7 @@ export const collections = {
 				.strict(),
 	}),
 	blog: defineCollection({
+		loader: glob({ base: './src/content/blog', pattern: '*.mdx' }),
 		schema: z.object({
 			title: z.string().describe('The blog post title.'),
 			description: z
@@ -101,6 +102,7 @@ export const collections = {
 		}),
 	}),
 	caseStudies: defineCollection({
+		loader: glob({ base: './src/content/caseStudies', pattern: '*.mdx' }),
 		schema: z
 			.object({
 				seo: seoSchema.optional(),
@@ -119,6 +121,7 @@ export const collections = {
 			.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
 	integrations: {
+		loader: glob({ base: './src/content/integrations', pattern: '*.md' }),
 		schema: z.object({
 			name: z.string().describe('Name of the package as it is published to NPM'),
 			title: z
@@ -140,6 +143,7 @@ export const collections = {
 		}),
 	},
 	pages: defineCollection({
+		loader: glob({ base: './src/content/pages', pattern: '**/*.md' }),
 		schema: ({ image }) =>
 			z.discriminatedUnion('pageLayout', [
 				z.object({
@@ -157,9 +161,11 @@ export const collections = {
 			]),
 	}),
 	partials: {
+		loader: glob({ base: './src/content/partials', pattern: '*.md' }),
 		schema: z.object({}),
 	},
 	quotes: {
+		loader: glob({ base: './src/content/quotes', pattern: '*.md' }),
 		schema: z.object({
 			author: z.object({
 				handle: z.string(),
@@ -173,7 +179,13 @@ export const collections = {
 		}),
 	},
 	showcase: defineCollection({
-		type: 'data',
+		loader: glob({
+			base: './src/content/showcase',
+			pattern: '*.yml',
+			// Showcase filenames are based on the site URL, and we don’t want Astro to strip out periods,
+			// so we just remove the file extension and otherwise do nothing.
+			generateId: ({ entry }) => entry.split('.').slice(0, -1).join('.'),
+		}),
 		schema: ({ image }) =>
 			z.object({
 				title: z

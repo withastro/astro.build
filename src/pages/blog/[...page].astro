@@ -35,7 +35,7 @@ const featuredPosts = [
 	'netlify-official-deployment-partner',
 	'2023-web-framework-performance-report',
 ]
-	.map((slug) => allPosts.find((post) => post.slug === slug))
+	.map((slug) => allPosts.find((post) => post.id === slug))
 	.filter(Boolean) as CollectionEntry<'blog'>[];
 ---
 
@@ -65,7 +65,7 @@ const featuredPosts = [
 							<li>
 								<a
 									class="body link-underline border-astro-pink-light text-lg text-astro-pink-light"
-									href={`/blog/${post.slug}/`}
+									href={`/blog/${post.id}/`}
 									data-astro-prefetch
 								>
 									{post?.data.title}
