@@ -4,7 +4,7 @@ import { resolveCoverImage } from '~/content/blog/_resolveImage.js';
 
 export type Props = {
 	post: {
-		slug: string;
+		id: string;
 		data: {
 			title: string;
 			description: string;
@@ -21,7 +21,7 @@ const image = await resolveCoverImage(post);
 
 <article
 	class="relative border border-astro-gray-500 bg-astro-gray-600 p-4 pt-0 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
-	aria-labelledby={post.slug}
+	aria-labelledby={post.id}
 >
 	<div class="-mx-4">
 		{
@@ -39,9 +39,9 @@ const image = await resolveCoverImage(post);
 	</div>
 
 	<div class="mt-6 flex flex-col gap-x-16 gap-y-4">
-		<h2 class="heading-4 md:heading-3" id={post.slug}>
+		<h2 class="heading-4 md:heading-3" id={post.id}>
 			<a
-				href={`/case-studies/${post.slug}/`}
+				href={`/case-studies/${post.id}/`}
 				data-astro-prefetch
 				class="outline-none after:absolute after:inset-0"
 			>
