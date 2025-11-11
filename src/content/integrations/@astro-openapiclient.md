@@ -8,5 +8,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/client
 homepageUrl: https://www.npmjs.com/package/@astro-openapi/client
-downloads: 71
+downloads: 70
 ---

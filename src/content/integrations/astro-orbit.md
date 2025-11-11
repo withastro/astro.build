@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-orbit
 repoUrl: https://github.com/delta-incubator/astro-orbit
 homepageUrl: https://github.com/delta-incubator/astro-orbit#readme
 badge: new
-downloads: 94
+downloads: 99
 ---

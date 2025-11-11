@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
 homepageUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
-downloads: 147
+downloads: 145
 ---
