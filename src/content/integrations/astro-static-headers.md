@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-static-headers
 repoUrl: https://github.com/abemedia/astro-static-headers
 homepageUrl: https://github.com/abemedia/astro-static-headers#readme
-downloads: 98
+downloads: 99
 ---

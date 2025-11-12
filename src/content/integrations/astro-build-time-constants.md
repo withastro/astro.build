@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-build-time-constants
 repoUrl: https://github.com/pascal-brand38/astro-build-time-constants
 homepageUrl: https://pascal-brand38.github.io/astro-dev/packages/astro-build-time-constants/
-downloads: 123
+downloads: 127
 ---
