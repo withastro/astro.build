@@ -95,6 +95,8 @@ jobs:
 
       - name: Run update:stats script
         run: pnpm run update:stats
+        env:
+          TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
 
       - name: Create Pull Request
         id: createpr
