@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/spectre-ui
 repoUrl: https://github.com/phcdevworks/spectre-ui
 homepageUrl: https://github.com/phcdevworks/spectre-ui#readme
 badge: new
-downloads: 221
+downloads: 222
 ---

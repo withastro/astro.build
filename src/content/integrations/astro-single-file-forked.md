@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-single-file-forked
 repoUrl: https://github.com/onmax/astro-single-file
 homepageUrl: https://github.com/onmax/astro-single-file
-downloads: 24
+downloads: 21
 ---
