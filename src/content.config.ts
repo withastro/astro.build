@@ -143,7 +143,7 @@ export const collections = {
 		}),
 	},
 	pages: defineCollection({
-		loader: glob({ base: './src/content/pages', pattern: '**/*.md' }),
+		loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
 		schema: ({ image }) =>
 			z.discriminatedUnion('pageLayout', [
 				z.object({
