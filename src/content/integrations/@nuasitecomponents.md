@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@nuasite/components
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://github.com/nuasite/nuasite/blob/main/packages/components/README.md
 badge: new
-downloads: 3177
+downloads: 3224
 image: /assets/integrations/@nuasite/nuasite-default-icon.png
 ---

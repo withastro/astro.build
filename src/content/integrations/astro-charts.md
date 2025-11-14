@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-charts
 repoUrl: https://github.com/wobsoriano/astro-charts
 homepageUrl: https://www.npmjs.com/package/astro-charts
-downloads: 61
+downloads: 59
 ---

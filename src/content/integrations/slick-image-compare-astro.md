@@ -6,5 +6,5 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/slick-image-compare-astro
 homepageUrl: https://www.npmjs.com/package/slick-image-compare-astro
-downloads: 55
+downloads: 54
 ---
