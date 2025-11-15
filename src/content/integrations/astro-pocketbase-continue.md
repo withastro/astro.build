@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-pocketbase-continue
 homepageUrl: https://gitea.garandplg.com/GarandPLG/astro-pocketbase-continue
 badge: new
-downloads: 203
+downloads: 201
 ---

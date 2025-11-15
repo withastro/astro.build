@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/simple-stack-stream
 repoUrl: https://github.com/bholmesdev/simple-stack
 homepageUrl: https://github.com/bholmesdev/simple-stack#readme
-downloads: 1447
+downloads: 1444
 ---

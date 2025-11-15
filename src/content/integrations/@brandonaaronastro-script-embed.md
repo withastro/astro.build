@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@brandonaaron/astro-script-embed
 repoUrl: https://github.com/brandonaaron/astro-script-embed
 homepageUrl: https://github.com/brandonaaron/astro-script-embed#readme
-downloads: 33
+downloads: 26
 ---

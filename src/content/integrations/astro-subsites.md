@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-subsites
 repoUrl: ssh://git@gitlab.com/aimedev/astro-subsites
 homepageUrl: https://gitlab.com/aimedev/astro-subsites#readme
-downloads: 18
+downloads: 30
 ---
