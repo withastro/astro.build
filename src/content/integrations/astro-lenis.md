@@ -7,5 +7,5 @@ categories:
 image: /assets/integrations/astro-lenis.png
 npmUrl: https://www.npmjs.com/package/astro-lenis
 homepageUrl: https://www.npmjs.com/package/astro-lenis
-downloads: 339
+downloads: 333
 ---

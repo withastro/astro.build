@@ -9,5 +9,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-theme-gruvbox
 homepageUrl: https://starlight-theme-gruvbox.otterlord.dev/
-downloads: 11
+downloads: 13
 ---
