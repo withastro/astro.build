@@ -1,8 +1,8 @@
 ---
 name: astro-orbit
 title: astro-orbit
-description: A comprehensive theme package for Astro projects featuring a modern
-  design system, reusable components, and Tailwind CSS v4 integration
+description: A theme package for Astro projects featuring a design system,
+  reusable components, and Tailwind CSS v4 integration
 categories:
   - css+ui
   - recent
