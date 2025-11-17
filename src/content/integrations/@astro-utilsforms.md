@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astro-utils/forms
 repoUrl: https://github.com/withastro-utils/utils
 homepageUrl: https://withastro-utils.github.io/docs/
-downloads: 1269
+downloads: 1098
 ---
