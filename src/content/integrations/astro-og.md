@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-og
 repoUrl: https://github.com/morinokami/astro-og
 homepageUrl: https://github.com/morinokami/astro-og#readme
-downloads: 1073
+downloads: 1062
 ---

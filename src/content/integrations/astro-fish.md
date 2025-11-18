@@ -9,4 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-fish
 repoUrl: https://github.com/felishh77/astro-fish
 homepageUrl: https://github.com/felishh77/astro-fish
 badge: new
+downloads: 914
 ---

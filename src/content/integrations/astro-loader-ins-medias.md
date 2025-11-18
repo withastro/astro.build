@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-loader-ins-medias
 repoUrl: https://github.com/lin-stephanie/astro-loaders
 homepageUrl: https://github.com/lin-stephanie/astro-loaders/blob/main/packages/astro-loader-ins-medias/
 badge: new
-downloads: 211
+downloads: 213
 ---

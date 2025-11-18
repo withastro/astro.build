@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/gd_ui_components
 homepageUrl: https://www.npmjs.com/package/gd_ui_components
-downloads: 19
+downloads: 10
 ---
