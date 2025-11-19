@@ -48,11 +48,11 @@ Enable SVG optimization in your Astro config:
 
 ```js
 // astro.config.mjs
+import { defineConfig } from 'astro/config';
+
 export default defineConfig({
   experimental: {
-    svg: {
-      optimize: true,
-    },
+    svgo: true,
   },
 });
 ```
