@@ -1,0 +1,171 @@
+---
+title: 'Astro 5.16'
+description: 'Astro 5.16 brings automatic SVG optimization with SVGO, interactive CLI shortcuts, and improved developer experience across the board.'
+homepageLink:
+  title: 'Astro 5.16'
+  subtitle: 'Available now!'
+publishDate: '2025-11-20'
+authors:
+  - matthew
+# coverImage: '/src/content/blog/_images/astro-5160/blog-post-cover-astro-5160.webp'
+# socialImage: '/src/content/blog/_images/astro-5160/og-astro-5160.webp'
+lang: 'en'
+related:
+  - astro-5150
+  - astro-5140
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**Astro 5.16 brings automatic SVG optimization, interactive CLI improvements, and a collection of DX enhancements.**
+
+Explore what's new in this release:
+
+- [**SVG optimization with SVGO**](#svg-optimization-with-svgo)
+- [**Interactive shortcuts for `astro preview`**](#interactive-shortcuts-for-astro-preview)
+- [**Better agent support with `astro add --yes`**](#better-agent-support-with-astro-add---yes)
+- [**`ActionInputSchema` utility type for type-safe actions**](#actioninputschema-utility-type-for-type-safe-actions)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## SVG optimization with SVGO
+
+Astro 5.16 adds experimental support for automatic SVG optimization using SVGO, a powerful tool that reduces SVG file sizes without compromising quality.
+
+SVG files can often be optimized significantly—removing unnecessary metadata, simplifying paths, and eliminating redundant attributes. By integrating SVGO into Astro's asset pipeline, your SVGs are now automatically optimized during the build process, reducing bandwidth and improving page load times.
+
+Enable SVG optimization in your Astro config:
+
+```js
+// astro.config.mjs
+export default defineConfig({
+  experimental: {
+    svg: {
+      optimize: true,
+    },
+  },
+});
+```
+
+By default, SVGO runs with its recommended settings. You can customize the optimization behavior by passing SVGO configuration options:
+
+```js
+// astro.config.mjs
+export default defineConfig({
+  experimental: {
+    svg: {
+      optimize: true,
+      svgoConfig: {
+        plugins: [
+          'removeViewBox',
+          'removeMetadata',
+          'cleanupEnableBackground',
+        ],
+      },
+    },
+  },
+});
+```
+
+This gives you fine-grained control over which optimizations to apply. SVGO handles errors gracefully—if optimization fails for any reason, Astro falls back to serving the original SVG content, ensuring your site continues to work flawlessly.
+
+See the [SVG optimization documentation](https://docs.astro.build/en/reference/experimental-flags/svg/) for more details on configuration options and SVGO plugins.
+
+## Interactive shortcuts for `astro preview`
+
+The `astro preview` command now supports interactive keyboard shortcuts, making it easier to control the preview server without typing commands. Similar to `astro dev`, you can now use keyboard shortcuts to interact with the running server.
+
+Press `q` and then `Enter` to quit the preview server:
+
+```
+> Local:     http://localhost:4321/
+- press q + enter to quit
+```
+
+This small but important DX improvement eliminates the need to manually terminate the process with `Ctrl+C` or force-kill the shell, making the preview experience more intuitive and consistent with the development server workflow.
+
+## Better agent support with `astro add --yes`
+
+As coding agents and AI tools become more prevalent in development workflows, Astro is making it easier to work with them. The `astro add` command now displays a helpful hint about the `--yes` flag, making it clear how agents can automate Astro integrations without getting stuck on interactive prompts.
+
+With this update, AI agents and automation tools can seamlessly run:
+
+```sh
+astro add react --yes
+```
+
+And the first time you run `astro add` interactively, you'll see a subtle hint:
+
+```
+astro add react
+# Output:
+# 💡 Tip: Use --yes to skip prompts (useful for scripts and AI agents)
+```
+
+This empowers agents to configure Astro projects autonomously, whether you're using Claude Code, Cursor, Copilot, or any other AI-assisted development tool. No more getting stuck waiting for interactive confirmations—agents can now fully automate your Astro setup.
+
+## `ActionInputSchema` utility type for type-safe actions
+
+Astro Actions now include the `ActionInputSchema` utility type, making it easier to extract and work with the input schema from your action definitions. This is particularly useful when building abstractions or creating reusable action handlers.
+
+With `ActionInputSchema`, you can get the exact type of your action's input schema:
+
+```ts
+import { type ActionInputSchema, defineAction } from 'astro:actions';
+import { z } from 'astro/zod';
+
+const contactAction = defineAction({
+  accept: 'form',
+  input: z.object({
+    email: z.string().email(),
+    message: z.string(),
+  }),
+  handler: ({ email, message }) => {
+    // Handle the contact form
+    return { success: true };
+  },
+});
+
+// Extract the schema type
+type ContactSchema = ActionInputSchema<typeof contactAction>;
+
+// Get the actual input type
+type ContactInput = z.input<ContactSchema>;
+// Result: { email: string; message: string }
+```
+
+This is especially valuable when you're:
+- Creating wrapper functions around actions
+- Building form submission abstractions
+- Sharing action types across your codebase
+
+`ActionInputSchema` makes it possible for developers less fluent in advanced TypeScript patterns to still get proper type inference without manually duplicating your schema definitions.
+
+## Other improvements
+
+- **82 MB dependency reduction for Netlify adapter** – Updated `@netlify/functions` to v5, removing 310 transitive dependencies and shaving 82 MB from the Netlify adapter's dependency tree. This significantly reduces bundle size for users deploying with Netlify. ([#14716](https://github.com/withastro/astro/pull/14716))
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.15 release](/blog/astro-5150/). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="ben" />, <Mention name="caleb" />,
+<Mention name="chris" />, <Mention name="ema" />, <Mention name="erika" />, <Mention name="florian" />,
+<Mention name="fred" />, <Mention name="hideoo" />, <Mention name="luiz" />, <Mention name="matt" />,
+<Mention name="matthew" />, <Mention name="reuben" />, <Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.16 possible!
