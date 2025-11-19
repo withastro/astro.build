@@ -63,18 +63,17 @@ By default, SVGO runs with its recommended settings. You can customize the optim
 // astro.config.mjs
 export default defineConfig({
   experimental: {
-    svg: {
-      optimize: true,
-      svgoConfig: {
-        plugins: [
-          'removeViewBox',
-          'removeMetadata',
-          'cleanupEnableBackground',
-        ],
-      },
-    },
-  },
-});
+    svgo: {
+      plugins: [
+        'preset-default',
+        {
+          name: 'removeViewBox',
+          active: false
+        }
+      ]
+    }
+  }
+})
 ```
 
 This gives you fine-grained control over which optimizations to apply. SVGO handles errors gracefully—if optimization fails for any reason, Astro falls back to serving the original SVG content, ensuring your site continues to work flawlessly.
