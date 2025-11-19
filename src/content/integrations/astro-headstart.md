@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-headstart
 repoUrl: https://github.com/san4d/astro-headstart
 homepageUrl: https://github.com/san4d/astro-headstart#readme
-downloads: 22
+downloads: 21
 ---

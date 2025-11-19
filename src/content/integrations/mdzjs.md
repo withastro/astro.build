@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/mdzjs
 homepageUrl: https://www.npmjs.com/package/mdzjs
-downloads: 39
+downloads: 214
 ---

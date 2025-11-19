@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@barcia/astro-youtube
 repoUrl: https://github.com/barcia/astro-utils
 homepageUrl: https://github.com/barcia/astro-utils
-downloads: 16
+downloads: 14
 ---

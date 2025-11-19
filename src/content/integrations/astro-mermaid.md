@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-mermaid
 repoUrl: https://github.com/joesaby/astro-mermaid
 homepageUrl: https://github.com/joesaby/astro-mermaid#readme
-downloads: 60271
+downloads: 62504
 ---
