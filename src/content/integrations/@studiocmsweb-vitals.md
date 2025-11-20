@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@studiocms/web-vitals
 repoUrl: https://github.com/withstudiocms/web-vitals
 homepageUrl: https://github.com/withstudiocms/web-vitals#readme
-downloads: 1189
+downloads: 1132
 ---
