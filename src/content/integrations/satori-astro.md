@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/satori-astro
 homepageUrl: https://github.com/florian-lefebvre/satori-astro#readme
-downloads: 380
+downloads: 307
 repoUrl: https://github.com/florian-lefebvre/satori-astro
 ---
