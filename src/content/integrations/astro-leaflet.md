@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-leaflet
 repoUrl: https://github.com/pascal-brand38/astro-leaflet
 homepageUrl: https://pascal-brand38.github.io/astro-dev/packages/astro-leaflet/
-downloads: 237
+downloads: 195
 ---

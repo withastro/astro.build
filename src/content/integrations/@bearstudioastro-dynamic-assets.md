@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@bearstudio/astro-dynamic-assets
 repoUrl: https://github.com/BearStudio/astro-dynamic-assets
 homepageUrl: https://github.com/BearStudio/astro-dynamic-assets#readme
 badge: new
-downloads: 182
+downloads: 183
 ---
