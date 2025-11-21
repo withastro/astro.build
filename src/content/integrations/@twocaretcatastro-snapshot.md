@@ -6,6 +6,7 @@ categories:
   - media
   - performance+seo
   - recent
+image: /assets/integrations/@twocaretcat/astro-snapshot.svg
 npmUrl: https://www.npmjs.com/package/@twocaretcat/astro-snapshot
 repoUrl: https://github.com/twocaretcat/astro-snapshot
 homepageUrl: https://johng.io/p/astro-snapshot
