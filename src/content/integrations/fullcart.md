@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/fullcart
 homepageUrl: https://www.npmjs.com/package/fullcart
-downloads: 18
+downloads: 19
 ---

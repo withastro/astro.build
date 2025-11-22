@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@cedgetec-utils/astro-components
 homepageUrl: https://www.npmjs.com/package/@cedgetec-utils/astro-components
 badge: new
-downloads: 465
+downloads: 466
 ---

@@ -7,7 +7,7 @@ categories:
 npmUrl: https://www.npmjs.com/package/@spotlightjs/astro
 repoUrl: ssh://git@github.com/getsentry/spotlight
 homepageUrl: https://www.npmjs.com/package/@spotlightjs/astro
-downloads: 10661
+downloads: 10539
 image: /assets/integrations/spotlightjs.svg
 toolbar: 2
 ---
