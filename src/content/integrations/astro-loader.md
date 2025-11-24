@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader
 repoUrl: https://github.com/adrian-ub/astro-loader
 homepageUrl: https://github.com/adrian-ub/astro-loader#readme
-downloads: 235
+downloads: 234
 ---

@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-html-minifier-next
 repoUrl: https://github.com/jonasgeiler/astro-html-minifier-next
 homepageUrl: https://github.com/jonasgeiler/astro-html-minifier-next#readme
-downloads: 1280
+downloads: 1283
 ---

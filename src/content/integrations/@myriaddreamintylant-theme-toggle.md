@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@myriaddreamin/tylant-theme-toggle
 homepageUrl: https://www.npmjs.com/package/@myriaddreamin/tylant-theme-toggle
-downloads: 6
+downloads: 8
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/zephyr-astro-integration
 repoUrl: https://github.com/ZephyrCloudIO/zephyr-packages
 homepageUrl: https://github.com/ZephyrCloudIO/zephyr-packages/tree/main/libs/zephyr-astro-integration#readme
 badge: new
-downloads: 763
+downloads: 428
 ---
