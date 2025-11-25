@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-plugin-icons
 repoUrl: https://github.com/Rettend/starlight-plugin-icons
 homepageUrl: https://github.com/Rettend/starlight-plugin-icons#readme
-downloads: 367
+downloads: 351
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/lf-astro-component
 homepageUrl: https://www.npmjs.com/package/lf-astro-component
-downloads: 30
+downloads: 27
 ---

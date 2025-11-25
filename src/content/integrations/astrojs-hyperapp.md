@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrojs-hyperapp
 repoUrl: https://github.com/zaceno/astrojs-hyperapp
 homepageUrl: https://github.com/zaceno/astrojs-hyperapp#readme
-downloads: 11
+downloads: 21
 ---

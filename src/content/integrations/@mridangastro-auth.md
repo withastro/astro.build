@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@mridang/astro-auth
 repoUrl: https://github.com/mridang/astro-auth
 homepageUrl: https://github.com/mridang/astro-auth
 badge: new
-downloads: 354
+downloads: 355
 ---
