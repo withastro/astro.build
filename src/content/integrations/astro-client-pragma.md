@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-client-pragma
 repoUrl: https://github.com/mohamedradime/astro-client-pragma
 homepageUrl: https://github.com/mohamedradime/astro-client-pragma#readme
-downloads: 9
+downloads: 8
 ---
