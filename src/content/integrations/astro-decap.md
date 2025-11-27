@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-decap
 homepageUrl: https://www.npmjs.com/package/astro-decap
-downloads: 30
+downloads: 36
 ---

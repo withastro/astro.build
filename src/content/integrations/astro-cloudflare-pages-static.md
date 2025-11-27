@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-cloudflare-pages-static
 repoUrl: https://github.com/mattlyons0/astro-cloudflare-pages-static
 homepageUrl: https://github.com/mattlyons0/astro-cloudflare-pages-static#readme
 badge: new
-downloads: 295
+downloads: 300
 ---

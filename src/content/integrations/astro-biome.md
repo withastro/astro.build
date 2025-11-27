@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@playform/format
 repoUrl: https://github.com/PlayForm/Format
 homepageUrl: HTTPS://GitHub.Com/PlayForm/Format#readme
-downloads: 2925
+downloads: 2932
 image: /assets/integrations/@playform/format.svg
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/gui-elements
 homepageUrl: https://www.npmjs.com/package/@astro-openapi/gui-elements
-downloads: 32
+downloads: 33
 ---
