@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@lekoarts/trakt-loader
 repoUrl: https://github.com/LekoArts/astro-loaders
 homepageUrl: https://github.com/LekoArts/astro-loaders
 badge: new
-downloads: 184
+downloads: 186
 ---
