@@ -1,7 +1,9 @@
 ---
 name: "@twocaretcat/astro-snapshot"
 title: "@twocaretcat/astro-snapshot"
-description: Astro integration for generating screenshots of pages using Puppeteer.
+description: An Astro integration for generating screenshots of your pages
+  automatically at build time. Perfect for creating social images, content
+  previews, dynamic icons, and more!
 categories:
   - media
   - performance+seo
@@ -9,7 +11,7 @@ categories:
 image: /assets/integrations/@twocaretcat/astro-snapshot.svg
 npmUrl: https://www.npmjs.com/package/@twocaretcat/astro-snapshot
 repoUrl: https://github.com/twocaretcat/astro-snapshot
-homepageUrl: https://johng.io/p/astro-snapshot
+homepageUrl: https://github.com/twocaretcat/astro-snapshot
 badge: new
 downloads: 423
 ---
