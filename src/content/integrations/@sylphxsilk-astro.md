@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@sylphx/silk-astro
 repoUrl: https://github.com/sylphxltd/silk
-homepageUrl: https://sylphx.com
+homepageUrl: https://www.npmjs.com/package/@sylphx/silk-astro
 badge: new
 downloads: 469
 ---

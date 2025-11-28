@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@codemint/astro-meta
 repoUrl: https://github.com/ArifRabbaniIn/astro-meta
-homepageUrl: https://astro-meta.vercel.app/
+homepageUrl: https://www.npmjs.com/package/@codemint/astro-meta
 downloads: 61
 ---

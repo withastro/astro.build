@@ -6,6 +6,6 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/starsquid
 repoUrl: https://github.com/sgalcheung/starsquid
-homepageUrl: https://starsquid.vercel.app/
+homepageUrl: https://www.npmjs.com/package/starsquid
 downloads: 13
 ---

@@ -9,6 +9,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-seo-plugin
 repoUrl: https://github.com/bhargav-bkpatel/astro-seo-plugin
-homepageUrl: https://astro-seo-plugin.vercel.app/
+homepageUrl: https://www.npmjs.com/package/astro-seo-plugin
 downloads: 173
 ---

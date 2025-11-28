@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@konami-emoji-blast/astro
 repoUrl: https://github.com/JoshuaKGoldberg/emoji-blast
-homepageUrl: https://emojiblast.dev
+homepageUrl: https://www.npmjs.com/package/@konami-emoji-blast/astro
 downloads: 2985
 ---

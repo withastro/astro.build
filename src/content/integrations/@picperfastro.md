@@ -7,7 +7,7 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@picperf/astro
 repoUrl: https://github.com/alexmacarthur/picperf-javascript
-homepageUrl: https://picperf.io
+homepageUrl: https://www.npmjs.com/package/@picperf/astro
 image: /assets/integrations/picperf.svg
 downloads: 9
 ---
