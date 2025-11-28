@@ -552,6 +552,10 @@ const scraper = new ShowcaseScraper({
 		'https://www.explainsthejoke.com',
 		// 2025-10-31 - template/demo site
 		'https://astro-portfolio-template-tbl.netlify.app/',
+		// 2025-11-28 - not Astro
+		'https://astroeditor.danny.is/',
+		// 2025-11-28 - added manually
+		'https://www.99percentoffsale.com/',
 	],
 });
 await scraper.run();
