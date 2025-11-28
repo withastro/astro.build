@@ -87,27 +87,26 @@ See more companies using Astro in our [site showcase](/showcase/), and explore A
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
 
-- [Tilly](https://www.tilly.social/en/) hosts its marketing site, offline-capable PWA, and API routes together in one Astro project. Tilly is an open-source personal relationship manager with client-side sync, offline-first design, and optional agentic AI assistance... and the entire React app is its own Astro island!
-- No missing pieces in this set! Take a break and put some puzzles together at [Jigsaw King](https://www.jigsawking.com/). Sound on for those satisfying "clicks" when pieces fit together!
-- Astro is perfect for your content sites, and both [MiniNote](https://mininote.app/) and [Online Notes](https://onlinenotes.net) want to help you organize your thoughts with these online digital notetaking apps created with Astro.
+- Track and improve your typing speed with [Typefaster](https://typefaster.net/), built using Astro and Vue.
+- [Picto Rally](https://picto-rally.com/) is an online drawing game for 2 or more people. Take turns drawing and guessing over a messaging service, or play a live game with a group of people!
+- [Point Poker](https://thepointpoker.com/) is a free planning poker & scrum estimation tool for agile teams with Fibonacci cards, real-time collaboration, and instant consensus tracking.
 
 export const monthlySites = [
-  'www.jigsawking.com',
-  'www.tilly.social',
-  'mininote.app',
-  'onlinenotes.net',
+  'typefaster.net',
+  'picto-rally.com',
+  'www.thepointpoker.com',
 ]; 
 
 {/* Use for grids of 2 per row  */}
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+{/* <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
   <ShowcaseCard site={await getEntry('showcase', 'www.tilly.social')} />
   <ShowcaseCard site={await getEntry('showcase', 'www.jigsawking.com')} />
   <ShowcaseCard site={await getEntry('showcase', 'mininote.app')} />
   <ShowcaseCard site={await getEntry('showcase', 'onlinenotes.net')} />
-</div>
+</div> */}
 
 {/* Can use when there are multiples of 3  */}
-{/* <ShowcaseGridById ids={monthlySites} /> */}
+<ShowcaseGridById ids={monthlySites} /> 
 
 ## Cosmic Canvas
 
