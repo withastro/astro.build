@@ -10,6 +10,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/svelte
 image: /assets/integrations/svelte.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/svelte/
-downloads: 260201
+downloads: 260784
 official: true
 ---

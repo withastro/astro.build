@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-posthog
 repoUrl: https://github.com/jop-software/astro-posthog
 homepageUrl: https://github.com/jop-software/astro-posthog#readme
-downloads: 31
+downloads: 34
 ---
