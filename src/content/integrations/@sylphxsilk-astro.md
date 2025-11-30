@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@sylphx/silk-astro
 repoUrl: https://github.com/sylphxltd/silk
 homepageUrl: https://sylphx.com
 badge: new
-downloads: 469
+downloads: 471
 ---

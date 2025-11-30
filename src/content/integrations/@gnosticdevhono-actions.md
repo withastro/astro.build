@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
 homepageUrl: https://github.com/gnosticdev/astro-hono-actions
-downloads: 1025
+downloads: 1003
 ---
