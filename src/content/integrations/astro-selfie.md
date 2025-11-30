@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-selfie
 repoUrl: https://github.com/vadimdemedes/astro-selfie
 homepageUrl: https://github.com/vadimdemedes/astro-selfie#readme
-downloads: 94
+downloads: 90
 ---

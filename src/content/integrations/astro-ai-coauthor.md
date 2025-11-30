@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-ai-coauthor
 repoUrl: https://github.com/AltairaLabs/astro-ai-coauther
 homepageUrl: https://altairalabs.github.io/astro-ai-coauther
 badge: new
-downloads: 301
+downloads: 302
 ---
