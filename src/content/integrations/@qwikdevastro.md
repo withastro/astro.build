@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@qwikdev/astro
 repoUrl: https://github.com/QwikDev/astro
 homepageUrl: https://github.com/QwikDev/astro#readme
 image: /assets/integrations/qwik.svg
-downloads: 5148
+downloads: 5022
 ---

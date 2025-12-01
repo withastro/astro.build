@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/more-apartments-astro-integration
 repoUrl: https://github.com/more-apartments/astro-integration
 homepageUrl: https://www.npmjs.com/package/more-apartments-astro-integration
 badge: new
-downloads: 1648
+downloads: 1577
 ---

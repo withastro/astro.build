@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-variables
 homepageUrl: https://github.com/varharrie/astro-variables#readme
-downloads: 13
+downloads: 10
 ---
