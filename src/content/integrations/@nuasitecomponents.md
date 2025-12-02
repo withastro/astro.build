@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@nuasite/components
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://github.com/nuasite/nuasite/blob/main/packages/components/README.md
-downloads: 1042
+downloads: 1113
 image: /assets/integrations/@nuasite/nuasite-default-icon.png
 ---

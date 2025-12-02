@@ -6,6 +6,6 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-node-websocket
 homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/node-websocket
-downloads: 116
+downloads: 117
 repoUrl: https://github.com/lilnasy/gratelets
 ---
