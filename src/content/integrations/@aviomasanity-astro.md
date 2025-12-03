@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@avioma/sanity-astro
 repoUrl: ssh://git@github.com/AVIOMA/sanity-astro
 homepageUrl: https://www.sanity.io/plugins/sanity-astro
 badge: new
-downloads: 544
+downloads: 551
 ---

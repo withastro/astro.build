@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@wkovacs64/astro-vercel-static-headers
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/vercel/
-downloads: 42
+downloads: 40
 ---
