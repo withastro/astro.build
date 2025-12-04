@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-linkedin-insight-tag
 repoUrl: https://github.com/icruzdevelopment/astro-linkedin-insight
 homepageUrl: https://github.com/icruzdevelopment/astro-linkedin-insight#readme
-downloads: 60
+downloads: 62
 ---
