@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@bisaek/astro-cms
 homepageUrl: https://www.npmjs.com/package/@bisaek/astro-cms
-downloads: 12
+downloads: 13
 ---

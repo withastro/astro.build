@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-ion-theme
 homepageUrl: https://louisescher.github.io/starlight-ion-theme/
-downloads: 451
+downloads: 455
 ---
