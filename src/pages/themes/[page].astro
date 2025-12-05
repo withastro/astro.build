@@ -79,13 +79,16 @@ const priceFilter: FilterGroup = {
 	})),
 };
 
-const allThemes: ThemeAndAuthor[] = await fetch(
-	`${THEMES_API_URL}/api/themes?${Astro.url.searchParams}`,
+const params = new URLSearchParams(Astro.url.searchParams)
+params.set('page', currentPage.toString())
+
+const { themes, count }: { themes: ThemeAndAuthor[], count: number } = await fetch(
+	`${THEMES_API_URL}/api/themes?${params}`,
 ).then((res) => res.json());
 
 // take all matching themes and create a paginated list of results
 const paginatedResults = paginate({
-	data: allThemes.filter((theme) => !theme.Theme.featured),
+	data: [...new Array(count).keys()],
 	pageSize: 18,
 	currentPage,
 	route: '/themes/[page]',
@@ -98,8 +101,6 @@ const { page, allPages } = paginatedResults;
 if (allPages.length && !page) {
 	return Astro.redirect(allPages[0]);
 }
-
-const themes = page.data;
 ---
 
 <MainLayout title="Themes" image={{ src: '/og/themes.jpg', alt: 'Explore the possibilities' }}>
