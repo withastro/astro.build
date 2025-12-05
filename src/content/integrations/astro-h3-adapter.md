@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-h3-adapter
 homepageUrl: https://www.npmjs.com/package/astro-h3-adapter
-downloads: 6
+downloads: 7
 ---

@@ -8,5 +8,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astrolab-ui
 homepageUrl: https://www.npmjs.com/package/astrolab-ui
-downloads: 29
+downloads: 30
 ---

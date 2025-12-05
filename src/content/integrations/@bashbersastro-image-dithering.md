@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@bashbers/astro-image-dithering
 repoUrl: https://github.com/bashbers/dithering
 homepageUrl: https://github.com/bashbers/dithering#readme
-downloads: 43
+downloads: 44
 ---

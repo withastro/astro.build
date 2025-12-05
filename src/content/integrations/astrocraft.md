@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrocraft
 repoUrl: https://github.com/brycerussell/astrocraft
 homepageUrl: https://minecraft-theme.netlify.app
-downloads: 3
+downloads: 4
 ---
