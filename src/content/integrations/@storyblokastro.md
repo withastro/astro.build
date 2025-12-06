@@ -10,5 +10,5 @@ repoUrl: https://github.com/storyblok/monoblok
 homepageUrl: https://github.com/storyblok/monoblok/tree/main/packages/astro#readme
 image: /assets/integrations/storyblok.svg
 toolbar: 1
-downloads: 27884
+downloads: 28159
 ---

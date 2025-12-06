@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-spaceship
 repoUrl: https://github.com/aitorllj93/astro-loader-obsidian
 homepageUrl: https://github.com/aitorllj93/astro-loader-obsidian
-downloads: 134
+downloads: 135
 ---
