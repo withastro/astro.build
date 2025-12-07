@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-i18n-pages
 repoUrl: https://github.com/QuentinDutot/astro-i18n-pages
 homepageUrl: https://github.com/QuentinDutot/astro-i18n-pages#readme
-downloads: 5
+downloads: 6
 ---

@@ -13,5 +13,5 @@ npmUrl: https://www.npmjs.com/package/@twocaretcat/astro-snapshot
 repoUrl: https://github.com/twocaretcat/astro-snapshot
 homepageUrl: https://github.com/twocaretcat/astro-snapshot
 badge: new
-downloads: 478
+downloads: 404
 ---
