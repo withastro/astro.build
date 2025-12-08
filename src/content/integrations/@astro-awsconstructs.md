@@ -9,6 +9,6 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/@astro-aws/constructs
 repoUrl: ssh://git@github.com/lukeshay/astro-aws
-homepageUrl: https://www.npmjs.com/package/@astro-aws/constructs
-downloads: 370
+homepageUrl: https://www.astro-aws.org/
+downloads: 369
 ---

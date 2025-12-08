@@ -6,10 +6,8 @@ description: A comprehensive Auth.js integration for Astro applications with
   control
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@mridang/astro-auth
 repoUrl: https://github.com/mridang/astro-auth
 homepageUrl: https://github.com/mridang/astro-auth
-badge: new
-downloads: 368
+downloads: 83
 ---
