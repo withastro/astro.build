@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-toc-generator
 repoUrl: https://github.com/bhargav-bkpatel/astro-toc-generator
 homepageUrl: https://astro-toc-plugin.vercel.app/
-downloads: 26
+downloads: 25
 ---

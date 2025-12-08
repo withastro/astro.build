@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@felixicaza/astro-capo
 repoUrl: https://github.com/felixicaza/astro-capo
 homepageUrl: https://github.com/felixicaza/astro-capo
 badge: new
-downloads: 180
+downloads: 181
 ---

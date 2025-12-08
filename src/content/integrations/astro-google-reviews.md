@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-google-reviews
 repoUrl: https://github.com/wally-website/wally-astro
 homepageUrl: https://github.com/wally-website/wally-astro/tree/main/packages/astro-google-reviews#readme
-downloads: 30
+downloads: 27
 image: /assets/integrations/astro-google-reviews.png
 ---
