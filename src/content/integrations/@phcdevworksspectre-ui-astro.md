@@ -1,7 +1,7 @@
 ---
 name: "@phcdevworks/spectre-ui-astro"
 title: "@phcdevworks/spectre-ui-astro"
-description: Astro integration layer for the Spectre design system
+description: Astro integration layer for the Spectre design system.
 categories:
   - uncategorized
   - recent
