@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-components-test-asdasda3242sdasd
 homepageUrl: https://www.npmjs.com/package/astro-components-test-asdasda3242sdasd
-downloads: 5
+downloads: 6
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-fontawesome
 repoUrl: https://github.com/luluvia/astro-fontawesome
 homepageUrl: https://github.com/luluvia/astro-fontawesome#readme
-downloads: 195
+downloads: 215
 ---
