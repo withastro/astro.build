@@ -1,0 +1,34 @@
+---
+import { Code } from 'astro-expressive-code/components';
+---
+
+<div class="bg-[#07040F] p-1 rounded-[20px]">
+	<div class="w-full h-80 xl:h-96 min-h-80 code">
+		<Code
+			lang="astro"
+			meta="{2, 12}"
+			code={`---
+import BuyButton from '../components/BuyButton.jsx';
+import { getProductDetails } from "ecommerce-package";
+import ProductPageLayout from '../layouts/ProductPageLayout.astro';
+
+const product = await getProductDetails(Astro.params.slug);
+---
+
+<ProductPageLayout>
+	<img src={product.imageUrl} alt={product.imageAlt} />
+	<h2>{product.name}</h2>
+	<BuyButton id={product.id} client:load />
+</ProductPageLayout>`}
+		/>
+	</div>
+</div>
+
+<style>
+	.code :global(:is(.expressive-code, figure, pre)) {
+		height: 100%;
+	}
+	.code :global(:is(pre)) {
+		@apply border border-astro-dark-100/20 rounded-2xl;
+	}
+</style>
