@@ -6,10 +6,8 @@ description: "Reusable Astro media components: optimized images, and videos with
 categories:
   - media
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/@alos-no/astro-media
 repoUrl: https://github.com/Alos-no/Astro-Smart-Media
 homepageUrl: https://github.com/Alos-no/Astro-Smart-Media
-badge: new
-downloads: 695
+downloads: 157
 ---

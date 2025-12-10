@@ -6,5 +6,5 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/astro-cdn-loader
 homepageUrl: https://github.com/anmoti/astro-cdn-loader
-downloads: 14
+downloads: 5
 ---

@@ -540,6 +540,22 @@ const scraper = new ShowcaseScraper({
 		'https://rabbittranslate.com/',
 		// 2025-09-30
 		'https://mnyorba.github.io/',
+		// 2025-10-28 - not Astro
+		'https://designcember.com/',
+		'https://theconnecto.com/',
+		'https://flyonui.com/',
+		'https://www.lnr.agency/',
+		'https://60fps.fr/',
+		// 2025-10-28 - low quality
+		'https://combinationsumcalculator.pro/',
+		// 2025-10-28 - NSFW Astro site
+		'https://www.explainsthejoke.com',
+		// 2025-10-31 - template/demo site
+		'https://astro-portfolio-template-tbl.netlify.app/',
+		// 2025-11-28 - not Astro
+		'https://astroeditor.danny.is/',
+		// 2025-11-28 - added manually
+		'https://www.99percentoffsale.com/',
 	],
 });
 await scraper.run();

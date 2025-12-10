@@ -6,7 +6,7 @@ import { resolveCoverImage } from '~/content/blog/_resolveImage.js';
 export type Props = {
 	isCaseStudy: boolean;
 	post: {
-		slug: string;
+		id: string;
 		data: {
 			title: string;
 			description: string;
@@ -24,7 +24,7 @@ const image = await resolveCoverImage(post);
 
 <article
 	class="relative border border-astro-gray-500 bg-astro-gray-600 p-4 outline-astro-pink-light transition-transform duration-300 ease-out focus-within:outline hover:scale-[1.03]"
-	aria-labelledby={post.slug}
+	aria-labelledby={post.id}
 >
 	<header>
 		<time class="code text-astro-gray-200" datetime={post.data.publishDate.toISOString()}>
@@ -48,9 +48,9 @@ const image = await resolveCoverImage(post);
 	</div>
 
 	<div class="mt-6 grid gap-x-16 gap-y-4 md:grid-cols-2">
-		<h3 class="heading-4 md:heading-3" id={post.slug}>
+		<h3 class="heading-4 md:heading-3" id={post.id}>
 			<a
-				href={isCaseStudy ? `/case-studies/${post.slug}/` : `/blog/${post.slug}/`}
+				href={isCaseStudy ? `/case-studies/${post.id}/` : `/blog/${post.id}/`}
 				data-astro-prefetch
 				class="outline-none after:absolute after:inset-0"
 			>

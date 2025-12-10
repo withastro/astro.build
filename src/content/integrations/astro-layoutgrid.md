@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-layoutgrid
 repoUrl: https://github.com/iaslfw/astro-layoutgrid
 homepageUrl: https://astro-layoutgrid-demo.netlify.app
-downloads: 43
+downloads: 21
 ---
