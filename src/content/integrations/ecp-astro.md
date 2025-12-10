@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/ecp-astro
 repoUrl: https://github.com/scottrepreneur/ecp-astro
 homepageUrl: https://github.com/scottrepreneur/ecp-astro#readme
-downloads: 7
+downloads: 8
 ---

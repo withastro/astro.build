@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/mysong-compress
 repoUrl: https://github.com/mysongstudio/mysong-compress
 homepageUrl: https://github.com/mysongstudio/mysong-compress#readme
-downloads: 10
+downloads: 11
 ---
