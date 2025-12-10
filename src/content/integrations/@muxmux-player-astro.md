@@ -4,10 +4,8 @@ title: "@mux/mux-player-astro"
 description: An open source Mux player for Astro that Just Works™
 categories:
   - media
-  - recent
 npmUrl: https://www.npmjs.com/package/@mux/mux-player-astro
-homepageUrl: https://mux.com/player
-badge: new
-downloads: 159
+homepageUrl: https://www.npmjs.com/package/@mux/mux-player-astro
+downloads: 2125
 repoUrl: https://github.com/muxinc/elements
 ---

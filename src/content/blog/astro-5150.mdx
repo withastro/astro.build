@@ -1,0 +1,157 @@
+---
+title: 'Astro 5.15'
+description: 'Astro 5.15 introduces Netlify skew protection, granular font preload filtering, and new adapter APIs for customizing fetch headers and assets.'
+homepageLink:
+  title: 'Astro 5.15'
+  subtitle: 'Available now!'
+publishDate: '2025-10-23'
+authors:
+  - matthew
+coverImage: '/src/content/blog/_images/astro-5150/blog-post-cover-astro-5150.webp'
+socialImage: '/src/content/blog/_images/astro-5150/og-astro-5150.webp'
+lang: 'en'
+related:
+  - astro-5140
+  - astro-5130
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**🎃 Astro 5.15 brings automatic Netlify skew protection, granular font preload filtering, and powerful new APIs for adapters.**
+
+Explore what's new in this release:
+
+- [**Netlify skew protection**](#netlify-skew-protection)
+- [**New adapter APIs for customizing headers and assets**](#new-adapter-apis-for-customizing-headers-and-assets)
+- [**Granular font preload filtering**](#granular-font-preload-filtering)
+- [**Other improvements**](#other-improvements)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Netlify skew protection
+
+Astro 5.15 introduces automatic skew protection for Netlify deployments, ensuring your site's client and server versions stay perfectly synchronized.
+
+Deployment skew is a sneaky issue that occurs when users load older client assets while the server is running newer code. This can cause subtle bugs and unexpected behavior that are hard to track down. With Netlify skew protection, this is now a thing of the past.
+
+When you deploy to Netlify, Astro automatically includes your deployment ID in all asset requests and API calls. This allows Netlify to detect and handle any version mismatches automatically—no configuration needed. Your site just works, even during rapid deployments or when users are on slow connections that might load assets across deployment boundaries.
+
+If you're making custom fetch requests in your application, you can also access the deployment ID directly:
+
+```ts
+const deployId = import.meta.env.DEPLOY_ID;
+const response = await fetch('/api/endpoint', {
+  headers: {
+    'x-deploy-id': deployId,
+  },
+});
+```
+
+Netlify skew protection works seamlessly across all of Astro's core features, including View Transitions, Server Islands, Prefetch, and Astro Actions, giving you peace of mind across your entire site.
+
+## New adapter APIs for customizing headers and assets
+
+Behind the scenes, Netlify's skew protection is powered by a new set of core APIs that allow adapters to customize both headers and asset query parameters across Astro's systems.
+
+Astro now exposes a `client` configuration option in the `AstroAdapter` interface, allowing adapters to specify:
+
+- **`internalFetchHeaders`** - Custom headers that should be automatically included in all fetch calls made by Astro's core systems (Actions, View Transitions, Server Islands, and Prefetch)
+- **`assetQueryParams`** - Query parameters that should be automatically appended to asset URLs
+
+This gives hosting platforms the hooks they need to implement sophisticated features like skew protection without requiring manual configuration from developers.
+
+Here's how an adapter configures these options in the `astro:config:done` hook:
+
+```ts
+// exampleAdapter/index.ts
+export default function exampleAdapter() {
+  return {
+    name: 'example-adapter',
+    hooks: {
+      'astro:config:done': async ({ setAdapter }) => {
+        setAdapter({
+          name: 'example-adapter',
+          serverEntrypoint: 'example-adapter/ssr.js',
+          client: {
+            internalFetchHeaders: () => {
+              const deployId = process.env.DEPLOY_ID;
+              if (deployId) {
+                return { 'x-deploy-id': deployId };
+              }
+              return {};
+            },
+            assetQueryParams: process.env.DEPLOY_ID
+              ? new URLSearchParams({ deployId: process.env.DEPLOY_ID })
+              : undefined,
+          },
+        });
+      },
+    },
+  };
+}
+```
+
+The Vercel adapter now also benefits from these new APIs. Previously, Vercel's skew protection had some limitations and bugs that prevented it from working correctly across all of Astro's features. With this update, the Vercel adapter now uses the same new APIs to provide reliable skew protection when the `VERCEL_SKEW_PROTECTION_ENABLED` environment variable is enabled, bringing it to feature parity with Netlify.
+
+## Granular font preload filtering
+
+The experimental Fonts API now supports granular control over which font variants get preloaded. Previously, you could only choose to preload all variants of a font or none at all. Now you can specify exactly which weights, styles, and subsets should be preloaded, helping you optimize performance by downloading only what you actually use.
+
+When using the `<Font>` component, you can pass a `preload` array to filter variants:
+
+```astro
+---
+import { Font } from 'astro:assets';
+---
+
+<Font
+  cssVariable="--font-roboto"
+  preload={[
+    { subset: 'latin', style: 'normal' },
+    { weight: '400' },
+  ]}
+/>
+```
+
+This example will only preload the Latin subset in normal style and any font files with a weight of `400`. For variable weight fonts (which support a range like `100`–`900`), Astro intelligently matches them against your filter criteria. Requesting weight `400` will include a variable font that covers the `100`–`900` range, since it supports that weight.
+
+You can filter on any combination of:
+- **`weight`** - Specific font weight (e.g., `'400'`, `'700'`)
+- **`style`** - Font style (e.g., `'normal'`, `'italic'`)
+- **`subset`** - Font subset (e.g., `'latin'`, `'cyrillic'`)
+
+This gives you fine-grained control over your font loading strategy, reducing unnecessary downloads while maintaining design flexibility.
+
+## Other improvements
+
+- **Copy button for stack traces** – The error overlay now includes a copy button to easily share stack traces with LLMs and AI editors for faster debugging. Thanks to [Deveesh Shetty](https://github.com/dev-shetty) for contributing this feature! ([#14489](https://github.com/withastro/astro/pull/14489))
+- **Wrangler configuration scaffolding** – The `astro add` CLI now automatically scaffolds `wrangler.jsonc` when adding Cloudflare integration. Thanks to [Oliver Speir](https://github.com/OliverSpeir) for updating our Cloudflare documentation with updated guidance! ([#14564](https://github.com/withastro/astro/pull/14564))
+- **Node.js 18 deprecation** – The Vercel adapter now marks Node.js 18 as deprecated in favor of newer LTS versions. Thanks to [Jacob Lamb](https://github.com/jacobdalamb) for this contribution! ([#14555](https://github.com/withastro/astro/pull/14555))
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.14 release](/blog/astro-5140). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+ <Mention name="ema" />, <Mention name="erika" />, <Mention name="florian" />, 
+<Mention name="fred" />, <Mention name="hideoo" />, <Mention name="luiz" />,
+<Mention name="matt" />, <Mention name="matthew" />, <Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.15 possible with code and docs additions and improvements, including:
+
+[Abdelrahman Abdelfattah](https://github.com/abdo-spices), [Alasdair McLeay](https://github.com/penx), [Alvaro Saburido](https://github.com/alvarosabu), [aprici7y](https://github.com/aprici7y), [Aron Homberg](https://github.com/kyr0), [Bartosz Kapciak](https://github.com/toxeeec), [Brian Dukes](https://github.com/bdukes), [Deveesh Shetty](https://github.com/dev-shetty), [Dinotaurent](https://github.com/Dinotaurent), [Edward Brunetiere](https://github.com/P4tt4te), [Elian](https://github.com/ElianCodes), [Ewelina Bierć](https://github.com/erbierc), [Eyoz](https://github.com/Eyozy), [Felix Schneider](https://github.com/trueberryless), [Hunter Bertoson](https://github.com/hkbertoson), [Jacob Lamb](https://github.com/jacobdalamb), [James Joseph Finn](https://github.com/JamesJosephFinn), [Jeffrey Yasskin](https://github.com/jyasskin), [Jonas Geiler](https://github.com/jonasgeiler), [Junseong Park](https://github.com/jsparkdev), [kato takeshi](https://github.com/tkskto), [Kenzo Wada](https://github.com/Kenzo-Wada), [knj](https://github.com/jp-knj), [liruifengv](https://github.com/liruifengv), [Louis Escher](https://github.com/louisescher), [Mads Erik Forberg](https://github.com/forberg), [Martin Trapp](https://github.com/martrapp), [Matthew Justice](https://github.com/JusticeMatthew), [Maurici Abad Gutierrez](https://github.com/mauriciabad), [Nin3](https://github.com/Nin3lee), [Olcan EBREM](https://github.com/olcanebrem), [Oliver Speir](https://github.com/OliverSpeir), [Paul Sachs](https://github.com/paul-sachs), [paul valladares](https://github.com/dreyfus92), [randomguy-2650](https://github.com/randomguy-2650), [Razon Yang](https://github.com/razonyang), [Ricardo Cuauro](https://github.com/odracirdev), [Robin Bühler](https://github.com/openscript), [Sankalpa Acharya](https://github.com/sankalpaacharya), [Sebastian Beltran](https://github.com/bjohansebas), [Steven](https://github.com/styfle), [Tarik](https://github.com/tarikrital), [Thomas Bonnet](https://github.com/thomasbnt), [Timon Jurschitsch](https://github.com/DerTimonius), [vrabe](https://github.com/vrabe), [Xidorn Quan](https://github.com/upsuper), and [Yorukot](https://github.com/yorukot)

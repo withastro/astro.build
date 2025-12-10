@@ -5,6 +5,7 @@ description: Use WebSockets in your Astro SSR Apps and run it on Deno
 categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-deno-websocket
-homepageUrl: https://www.npmjs.com/package/astro-deno-websocket
-downloads: 7
+homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/deno-websocket
+downloads: 8
+repoUrl: https://github.com/lilnasy/gratelets
 ---

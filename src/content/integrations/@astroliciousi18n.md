@@ -6,6 +6,7 @@ description: Yet another i18n integration for Astro with server and client
 categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@astrolicious/i18n
-homepageUrl: https://github.com/astrolicious/i18n
-downloads: 616
+homepageUrl: https://github.com/astrolicious/i18n#readme
+downloads: 363
+repoUrl: https://github.com/astrolicious/i18n
 ---

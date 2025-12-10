@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@futurethemes/galaxy
 homepageUrl: https://www.npmjs.com/package/@futurethemes/galaxy
-downloads: 1
+downloads: 24
 ---

@@ -5,6 +5,7 @@ description: Display a progress bar between page navigations when using View Tra
 categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-loading-indicator
-homepageUrl: https://github.com/florian-lefebvre/astro-loading-indicator
-downloads: 7234
+homepageUrl: https://github.com/florian-lefebvre/astro-loading-indicator#readme
+downloads: 5495
+repoUrl: https://github.com/florian-lefebvre/astro-loading-indicator
 ---

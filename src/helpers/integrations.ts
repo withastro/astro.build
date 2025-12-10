@@ -1,8 +1,8 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { IntegrationCategories } from '~/content/config.js';
+import { IntegrationCategories } from '~/content.config.js';
 import type { MapKeys } from './types.ts';
 
-export interface IntegrationOptions {
+interface IntegrationOptions {
 	search?: string | null;
 	categories?: MapKeys<typeof IntegrationCategories> | null;
 	toolbar?: boolean;

@@ -5,10 +5,8 @@ description: A zero-dependency layout grid component for AstroJS.
 categories:
   - toolbar
   - utilities
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-layoutgrid
 repoUrl: https://github.com/iaslfw/astro-layoutgrid
-homepageUrl: https://github.com/iaslfw/astro-layoutgrid#readme
-badge: new
-downloads: 208
+homepageUrl: https://astro-layoutgrid-demo.netlify.app
+downloads: 21
 ---

@@ -6,9 +6,7 @@ description: View your Astro components in one place, letting you preview them
 categories:
   - toolbar
   - utilities
-  - recent
 npmUrl: https://www.npmjs.com/package/astrolab-ui
 homepageUrl: https://www.npmjs.com/package/astrolab-ui
-badge: new
-downloads: 1085
+downloads: 31
 ---
