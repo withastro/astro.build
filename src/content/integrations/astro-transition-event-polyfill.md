@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-transition-event-polyfill
 repoUrl: https://github.com/louisescher/astro-transition-event-polyfill
 homepageUrl: https://github.com/louisescher/astro-transition-event-polyfill#readme
-downloads: 1898
+downloads: 1929
 ---

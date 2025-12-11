@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ansiversa/components
 homepageUrl: https://www.npmjs.com/package/@ansiversa/components
 badge: new
-downloads: 2156
+downloads: 2180
 ---

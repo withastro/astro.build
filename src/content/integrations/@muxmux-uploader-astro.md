@@ -6,6 +6,6 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/@mux/mux-uploader-astro
 homepageUrl: https://www.npmjs.com/package/@mux/mux-uploader-astro
-downloads: 1045
+downloads: 1114
 repoUrl: https://github.com/muxinc/elements
 ---
