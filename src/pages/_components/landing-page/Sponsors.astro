@@ -94,7 +94,7 @@ function rows<T>(array: T[]): T[][] {
 	return [...chunk(array, columnCount)];
 }
 
-const largeSponsorRows = [...rows(exclusiveSponsors), /*...rows(mainSponsors)*/];
+const largeSponsorRows = [...rows(exclusiveSponsors) /*...rows(mainSponsors)*/];
 ---
 
 <section class="mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-xl mx-auto px-4 sm:px-8">
