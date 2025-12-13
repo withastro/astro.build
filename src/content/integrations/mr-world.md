@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/mr-world
 repoUrl: https://github.com/jlarmstrongiv/mr-world
 homepageUrl: https://github.com/jlarmstrongiv/mr-world/#readme
-downloads: 44
+downloads: 48
 image: /assets/integrations/mr-world.png
 ---
