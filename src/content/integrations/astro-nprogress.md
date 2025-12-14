@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-nprogress
 repoUrl: https://github.com/byronogis/astro-nprogress
 homepageUrl: https://github.com/byronogis/astro-nprogress#readme
-downloads: 91
+downloads: 88
 ---
