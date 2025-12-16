@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-worldmap-choropleth
 homepageUrl: https://www.npmjs.com/package/astro-worldmap-choropleth
-downloads: 55
+downloads: 58
 repoUrl: https://github.com/your-username/astro-worldmap-choropleth
 ---

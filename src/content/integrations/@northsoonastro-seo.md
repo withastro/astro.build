@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@northsoon/astro-seo
 repoUrl: https://github.com/ByManuelCaballero/astro-seo
 homepageUrl: https://github.com/ByManuelCaballero/astro-seo#readme
 badge: new
-downloads: 264
+downloads: 269
 ---
