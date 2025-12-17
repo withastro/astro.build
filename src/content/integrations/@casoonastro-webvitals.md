@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@casoon/astro-webvitals
 repoUrl: https://github.com/casoon/astro-webvitals
 homepageUrl: https://github.com/casoon/astro-webvitals#readme
 badge: new
-downloads: 654
+downloads: 664
 ---

@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@sahillangoo/astro-ui
 homepageUrl: https://www.npmjs.com/package/@sahillangoo/astro-ui
-downloads: 7
+downloads: 11
 ---

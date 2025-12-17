@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@edgeone/astro
 repoUrl: https://github.com/TencentEdgeOne/astro-adapter
 homepageUrl: https://github.com/TencentEdgeOne/astro-adapter
 badge: new
-downloads: 1250
+downloads: 1384
 ---
