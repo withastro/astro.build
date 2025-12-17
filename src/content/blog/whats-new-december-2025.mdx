@@ -8,7 +8,7 @@ coverImage: "/src/content/blog/_images/whats-new-shared.webp"
 socialImage: "/src/content/blog/_images/whats-new-november/og.webp"
 lang: "en"
 startDate: "2025-12-01"
-endDate: "2026-01-02"
+endDate: "2026-01-01"
 related:
   - whats-new-november-2025
   - whats-new-october-2025
@@ -57,32 +57,26 @@ Let's dive right into it!
 
 Minor releases introduce new features and improvements. Check out what's new!
 
-- [Astro 6.0-alpha](https://github.com/withastro/astro/blob/next/packages/astro/CHANGELOG.md#600-alpha1) - an early alpha release of Astro v6, including .... and more!
+- [Astro 6.0-alpha](https://github.com/withastro/astro/blob/next/packages/astro/CHANGELOG.md#600-alpha1) - an early alpha release of Astro v6 and sneak peek of the [v5 -> v6 upgrade guide draft](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) if you're adventurous enough to try it!
 
 ## Astro Adopters
 
-From Cloudflare to Microsoft to Digital Ocean, from Adobe to Todoist to Tele2/Comviq, some of the biggest names you know are using Astro!
+From Chrome to the Sorbonne, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
-  'sandbox.cloudflare.com',
-  'aspire.dev',
-  'gradientai-sdk.digitalocean.com',
-  'maxjapan.adobe.com',
-  'www.todoist.com',
-  'www.tele2.se',
+  'chrome.dev',
+  'nubis.bis-sorbonne.fr',
 ]; 
 
 {/* Use for grids of 2 per row  */}
-{/* 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'geminicli.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'reuters-graphics.github.io',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'chrome.dev')} />
+  <ShowcaseCard site={await getEntry('showcase', 'nubis.bis-sorbonne.fr',)} />
 </div>
-*/}
 
-
-{/* Can use when there are multiples of 3  */}
-<ShowcaseGridById ids={featuredSites} />
+{/* Use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={featuredSites} /> */}
 
 See more companies using Astro in our [site showcase](/showcase/), and explore Astro for corporate or enterprise use with one of our [agency partners](/agencies/)!
 
@@ -90,41 +84,41 @@ See more companies using Astro in our [site showcase](/showcase/), and explore A
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, or just plain fun!
 
-- How old was that actor in that movie? Which movies featured actors who were the same age as you are now? Let [AgeMDB](https://agemdb.com) tell you! 
-- [Picto Rally](https://picto-rally.com/) is an online drawing game for 2 or more people. Take turns drawing and guessing over a messaging service, or play a live game with a group of people!
-- Track and improve your typing speed with [Typefaster](https://typefaster.net/), built using Astro and Vue.
+- Find a partner and challenge them to a [game of Othello](https://othello.djmetzle.io/)! (And if you're curious, take a look at the [source code](https://github.com/djmetzle/astro-othello)) 
+- [Tally - Word Counter](https://tally.johng.io/en) is a free, open-source, distraction-free online tool to count the number of characters, words, paragraphs, and lines in your text in real time. Choose your language, options, and even theme... then hit that word count!
+- Need a smart looking image for blog posts or social sharing? [Release Image Generator](https://release-image-generator.trueberryless.org/) create beautiful, customizable images with patterns and text. Perfect for professional-looking announcements!
 
 export const monthlySites = [
-  'agemdb.com',
-  'picto-rally.com',
-  'typefaster.net',
+  'othello.djmetzle.io',
+  'tally.johng.io',
+  'release-image-generator.trueberryless.org'
 ]; 
 
 {/* Use for grids of 2 per row  */}
-{/* <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'typefaster.net')} />
-  <ShowcaseCard site={await getEntry('showcase', 'picto-rally.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'www.thepointpoker.com')} />
-  <ShowcaseCard site={await getEntry('showcase', 'agemdb.com')} />
-</div> */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'othello.djmetzle.io')} />
+  <ShowcaseCard site={await getEntry('showcase', 'tally.johng.io')} />
+</div> 
+*/}
 
 {/* Can use when there are multiples of 3  */}
-<ShowcaseGridById ids={monthlySites} /> 
+<ShowcaseGridById ids={monthlySites} />
 
 ## Cosmic Canvas
 
 Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
 
 export const canvasSites = [
-  'alphanull.de',
-  'alexislours.com',
+  'six.locomotive.ca',
+  'giannantoniodemalde.com',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'alphanull.de')} />
-  <ShowcaseCard site={await getEntry('showcase', 'alexislours.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'six.locomotive.ca')} />
+  <ShowcaseCard site={await getEntry('showcase', 'giannantoniodemalde.com')} />
 </div>
 
 
