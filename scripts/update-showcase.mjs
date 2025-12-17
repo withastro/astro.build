@@ -556,6 +556,8 @@ const scraper = new ShowcaseScraper({
 		'https://astroeditor.danny.is/',
 		// 2025-11-28 - added manually
 		'https://www.99percentoffsale.com/',
+		// 2025-12-17 renamed
+		'https://hybrid-astro-ui.vercel.app/',
 	],
 });
 await scraper.run();
