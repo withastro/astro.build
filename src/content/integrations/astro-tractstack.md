@@ -1,7 +1,8 @@
 ---
 name: astro-tractstack
 title: astro-tractstack
-description: Astro integration for TractStack - redeeming the web from boring experiences
+description: Astro integration for TractStack - the digital experience platform
+  (DXP) for the missing middle
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-tractstack
