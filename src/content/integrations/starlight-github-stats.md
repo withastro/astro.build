@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-github-stats
 homepageUrl: https://www.npmjs.com/package/starlight-github-stats
 badge: new
-downloads: 97
+downloads: 98
 ---
