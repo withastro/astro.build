@@ -1,7 +1,7 @@
 ---
 name: "@studiocms/devapps"
 title: "@studiocms/devapps"
-description: A dedicated CMS for Astro DB. Built from the ground up by the Astro community.
+description: Devapps for StudioCMS Astro projects, including a WordPress importer.
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@studiocms/devapps
