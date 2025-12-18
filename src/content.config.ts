@@ -42,15 +42,14 @@ export const collections = {
 		loader: file('src/data/authors/authors.json'),
 		schema: ({ image }) =>
 			z
-				.object({
+				.strictObject({
 					image: image().optional(),
 					name: z.string(),
-					twitter: z.string().url().optional(),
-					mastodon: z.string().url().optional(),
-					bluesky: z.string().url().optional(),
-					github: z.string().url().optional(),
+					twitter: z.url().optional(),
+					mastodon: z.url().optional(),
+					bluesky: z.url().optional(),
+					github: z.url().optional(),
 				})
-				.strict(),
 	}),
 	blog: defineCollection({
 		loader: glob({ base: './src/content/blog', pattern: '*.mdx' }),
@@ -132,9 +131,9 @@ export const collections = {
 			categories: z.array(
 				z.enum(Array.from(IntegrationCategories.keys()) as [string, ...string[]]),
 			),
-			repoUrl: z.string().url().optional(),
-			npmUrl: z.string().url(),
-			homepageUrl: z.string().url().optional(),
+			repoUrl: z.url().optional(),
+			npmUrl: z.url(),
+			homepageUrl: z.url().optional(),
 			official: z.boolean().default(false),
 			toolbar: z.number().min(1).optional(),
 			downloads: z.number().min(0).default(0),
@@ -174,7 +173,7 @@ export const collections = {
 					alt: z.string().optional(),
 				}),
 			}),
-			url: z.string().url(),
+			url: z.url(),
 			published: z.date(),
 		}),
 	},
@@ -192,11 +191,11 @@ export const collections = {
 					.string()
 					.min(1)
 					.refine((value) => value !== 'Just a moment...', {
-						message:
+						error:
 							"A showcase entry's title cannot be 'Just a moment...' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					})
 					.refine((value) => value !== 'Vercel Security Checkpoint', {
-						message:
+						error:
 							"A showcase entry's title cannot be 'Vercel Security Checkpoint' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					}),
 				image: image(),
@@ -226,16 +225,15 @@ export const collections = {
 		loader: glob({ base: './src/content/agencies', pattern: '**/*.md' }),
 		schema: ({ image }) =>
 			z
-				.object({
+				.strictObject({
 					name: z.string(),
 					location: z.string(),
-					url: z.string().url(),
-					contactLink: z.string().url().or(z.string().startsWith('mailto:')).optional(),
+					url: z.url(),
+					contactLink: z.url().or(z.string().startsWith('mailto:')).optional(),
 					image: image(),
 					imageAlt: z.string(),
 					description: z.string(),
 				})
-				.strict(),
 	}),
 	promos: defineCollection({
 		loader: file('./src/content/promos/promos.yml'),
