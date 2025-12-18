@@ -119,7 +119,7 @@ export const collections = {
 			// adding this extra flag to differentiate it in lists
 			.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
-	integrations: {
+	integrations: defineCollection({
 		loader: glob({ base: './src/content/integrations', pattern: '*.md' }),
 		schema: z.object({
 			name: z.string().describe('Name of the package as it is published to NPM'),
@@ -140,7 +140,7 @@ export const collections = {
 			downloadFactor: z.number().min(0).default(1),
 			badge: z.string().optional(),
 		}),
-	},
+	}),
 	pages: defineCollection({
 		loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
 		schema: ({ image }) =>
@@ -159,11 +159,11 @@ export const collections = {
 				}),
 			]),
 	}),
-	partials: {
+	partials: defineCollection({
 		loader: glob({ base: './src/content/partials', pattern: '*.md' }),
 		schema: z.object({}),
-	},
-	quotes: {
+	}),
+	quotes: defineCollection({
 		loader: glob({ base: './src/content/quotes', pattern: '*.md' }),
 		schema: z.object({
 			author: z.object({
@@ -176,7 +176,7 @@ export const collections = {
 			url: z.url(),
 			published: z.date(),
 		}),
-	},
+	}),
 	showcase: defineCollection({
 		loader: glob({
 			base: './src/content/showcase',
