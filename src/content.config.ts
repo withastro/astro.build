@@ -27,14 +27,14 @@ const seoSchema = z.object({
 			src: z.string().default('/og/social.jpg'),
 			alt: z.string().default('Build the web you want'),
 		})
-		.default({}),
+		.prefault({}),
 	pageType: z.enum(['website', 'article']).default('website'),
 	robots: z
 		.object({
 			index: z.boolean().default(true),
 			follow: z.boolean().default(true),
 		})
-		.default({}),
+		.prefault({}),
 });
 
 export const collections = {
