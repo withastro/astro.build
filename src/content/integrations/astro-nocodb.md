@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-nocodb
 repoUrl: https://github.com/dofbi/astro-nocodb
 homepageUrl: https://github.com/dofbi/astro-nocodb
 badge: new
-downloads: 329
+downloads: 335
 ---
