@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@newgentdigital/auto-param-astro
 repoUrl: https://github.com/newgentdigital/auto-param-astro
 homepageUrl: https://github.com/newgentdigital/auto-param-astro
 badge: new
-downloads: 395
+downloads: 402
 ---
