@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@coffic/cosy-content
 repoUrl: https://github.com/CosyZone/cosy
 homepageUrl: https://www.npmjs.com/package/@coffic/cosy-content
-downloads: 544
+downloads: 548
 ---

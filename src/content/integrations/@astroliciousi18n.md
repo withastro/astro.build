@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@astrolicious/i18n
 homepageUrl: https://github.com/astrolicious/i18n#readme
-downloads: 297
+downloads: 302
 repoUrl: https://github.com/astrolicious/i18n
 ---
