@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@yarso/astro-dropdown
 repoUrl: https://github.com/yarso-su/astro-dropdown
 homepageUrl: https://github.com/yarso-su/astro-dropdown#readme
-downloads: 13
+downloads: 12
 ---

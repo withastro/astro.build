@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ascorbic/csv-loader
 repoUrl: github.com:ascorbic/astro-loaders
 homepageUrl: https://github.com/ascorbic/astro-loaders
-downloads: 2160
+downloads: 2258
 ---
