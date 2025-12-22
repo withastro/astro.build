@@ -1,7 +1,8 @@
 ---
 name: studiocms
 title: studiocms
-description: Astro Native CMS for AstroDB. Built from the ground up by the Astro community.
+description: A Community-Driven Astro native CMS. Built from the ground up by
+  the Astro community.
 categories:
   - uncategorized
 image: /assets/integrations/studiocms-master.svg

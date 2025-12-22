@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@sitebender/components
 repoUrl: https://github.com/site-bender/components
-homepageUrl: https://github.com/site-bender/components#readme
+homepageUrl: https://www.npmjs.com/package/@sitebender/components
 downloads: 21
 ---
