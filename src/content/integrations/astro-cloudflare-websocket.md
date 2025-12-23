@@ -6,6 +6,6 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-websocket
 homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/cloudflare-websocket
-downloads: 251
+downloads: 262
 repoUrl: https://github.com/lilnasy/gratelets
 ---

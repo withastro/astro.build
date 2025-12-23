@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/gab-astro-compress
 repoUrl: https://github.com/jgabriel98/astro-compress
 homepageUrl: https://github.com/jgabriel98/astro-compress#readme
 badge: new
-downloads: 631
+downloads: 633
 ---
