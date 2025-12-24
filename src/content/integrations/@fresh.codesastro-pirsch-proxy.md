@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@fresh.codes/astro-pirsch-proxy
 repoUrl: https://github.com/freshcodes/astro-pirsch-proxy
 homepageUrl: https://github.com/freshcodes/astro-pirsch-proxy#readme
 badge: new
-downloads: 347
+downloads: 351
 ---
