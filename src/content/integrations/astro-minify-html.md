@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-minify-html
 repoUrl: https://github.com/leoortizz/astro-minify-html
 homepageUrl: https://github.com/leoortizz/astro-minify-html.git
-downloads: 72
+downloads: 73
 ---
