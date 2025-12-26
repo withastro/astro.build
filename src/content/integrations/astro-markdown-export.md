@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-markdown-export
 repoUrl: https://github.com/shaheemMPM/astro-markdown-export
 homepageUrl: https://github.com/shaheemMPM/astro-markdown-export#readme
-downloads: 38
+downloads: 39
 ---

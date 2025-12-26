@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@affiliate.fm/astro-content-ai-translator
 repoUrl: https://github.com/affiliatefm/astro-content-ai-translator
 homepageUrl: https://github.com/affiliatefm/astro-content-ai-translator#readme
 badge: new
-downloads: 1359
+downloads: 1361
 ---

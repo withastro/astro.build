@@ -6,6 +6,6 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-deno-websocket
 homepageUrl: https://github.com/lilnasy/gratelets/tree/main/packages/deno-websocket
-downloads: 10
+downloads: 11
 repoUrl: https://github.com/lilnasy/gratelets
 ---
