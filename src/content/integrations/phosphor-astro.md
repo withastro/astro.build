@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/phosphor-astro
 repoUrl: https://github.com/seanmcp/phosphor-astro
 homepageUrl: https://github.com/seanmcp/phosphor-astro#readme
-downloads: 47404
+downloads: 44509
 ---

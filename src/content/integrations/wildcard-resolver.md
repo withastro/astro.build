@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/wildcard-resolver
 repoUrl: https://github.com/zakarialaoui10/wildcard-resolver
 homepageUrl: https://github.com/zakarialaoui10/wildcard-resolver#readme
-downloads: 10
+downloads: 7
 ---

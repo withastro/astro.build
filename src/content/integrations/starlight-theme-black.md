@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-theme-black
 repoUrl: https://github.com/adrian-ub/starlight-theme-black
 homepageUrl: https://github.com/adrian-ub/starlight-theme-black#readme
-downloads: 4592
+downloads: 4386
 ---
