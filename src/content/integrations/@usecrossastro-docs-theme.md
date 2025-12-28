@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@usecross/astro-docs-theme
 repoUrl: https://github.com/patrick91/cross-auth
 homepageUrl: https://github.com/patrick91/cross-auth#readme
 badge: new
-downloads: 16
+downloads: 12
 ---

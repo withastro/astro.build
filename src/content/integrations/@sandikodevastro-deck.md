@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@sandikodev/astro-deck
 repoUrl: https://github.com/sandikodev/astro-deck
 homepageUrl: https://github.com/sandikodev/astro-deck#readme
 badge: new
-downloads: 445
+downloads: 455
 ---

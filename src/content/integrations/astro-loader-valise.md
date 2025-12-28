@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-valise
 repoUrl: https://github.com/zakj/astro-loader-valise
 homepageUrl: https://github.com/zakj/astro-loader-valise
-downloads: 4
+downloads: 5
 ---

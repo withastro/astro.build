@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@zilchcarbon/astro-components
 homepageUrl: https://www.npmjs.com/package/@zilchcarbon/astro-components
-downloads: 48
+downloads: 28
 ---
