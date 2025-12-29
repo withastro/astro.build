@@ -6,10 +6,8 @@ description: A lightweight Web Vitals monitoring component for Astro with debug
 categories:
   - performance+seo
   - analytics
-  - recent
 npmUrl: https://www.npmjs.com/package/@casoon/astro-webvitals
 repoUrl: https://github.com/casoon/astro-webvitals
 homepageUrl: https://github.com/casoon/astro-webvitals#readme
-badge: new
-downloads: 891
+downloads: 766
 ---

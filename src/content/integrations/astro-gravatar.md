@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-gravatar
 repoUrl: https://github.com/imjlk/astro-gravatar
-homepageUrl: https://astro-gravatar.and.guide
+homepageUrl: https://www.npmjs.com/package/astro-gravatar
 badge: new
-downloads: 101
+downloads: 102
 ---

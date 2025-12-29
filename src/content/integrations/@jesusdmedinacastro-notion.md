@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@jesusdmedinac/astro-notion
 homepageUrl: https://www.npmjs.com/package/@jesusdmedinac/astro-notion
-downloads: 2
+downloads: 4
 ---
