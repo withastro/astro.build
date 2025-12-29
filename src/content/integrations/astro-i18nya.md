@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-i18nya
 repoUrl: https://github.com/FyraLabs/i18nya
 homepageUrl: https://github.com/FyraLabs/i18nya#readme
 badge: new
-downloads: 154
+downloads: 150
 ---
