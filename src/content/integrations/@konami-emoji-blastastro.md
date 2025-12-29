@@ -1,7 +1,7 @@
 ---
 name: "@konami-emoji-blast/astro"
 title: "@konami-emoji-blast/astro"
-description: Hooks up konami-code-js to trigger emoji-blast in React. 🎇
+description: Hooks up konami-code-js to trigger emoji-blast in Astro. 🎇
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@konami-emoji-blast/astro
