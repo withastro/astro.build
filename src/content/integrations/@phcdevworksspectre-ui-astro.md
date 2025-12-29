@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@phcdevworks/spectre-ui-astro
 repoUrl: https://github.com/phcdevworks/spectre-ui-astro
 homepageUrl: https://github.com/phcdevworks/spectre-ui-astro#readme
 badge: new
-downloads: 410
+downloads: 349
 ---

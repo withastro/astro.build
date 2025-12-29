@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-shortlinks
 repoUrl: https://github.com/Ovyerus/astro-shortlinks
 homepageUrl: https://github.com/Ovyerus/astro-shortlinks
 badge: new
-downloads: 124
+downloads: 128
 ---

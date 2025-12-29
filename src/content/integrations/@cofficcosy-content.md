@@ -4,8 +4,10 @@ title: "@coffic/cosy-content"
 description: Cosy Content
 categories:
   - uncategorized
+  - recent
 npmUrl: https://www.npmjs.com/package/@coffic/cosy-content
-repoUrl: https://github.com/CosyZone/cosy
-homepageUrl: https://www.npmjs.com/package/@coffic/cosy-content
-downloads: 351
+repoUrl: https://github.com/CosyZone/cosy-content
+homepageUrl: https://ui.coffic.cn/en
+downloads: 562
+badge: new
 ---
