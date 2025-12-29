@@ -558,6 +558,15 @@ const scraper = new ShowcaseScraper({
 		'https://www.99percentoffsale.com/',
 		// 2025-12-17 renamed
 		'https://hybrid-astro-ui.vercel.app/',
+		// 2025-12-30 can't confirm Astro
+		'https://travlagent.com/',
+		// 2025-12-30 Already added manually
+		'https://giannantoniodemalde.com/',
+		'https://fr.benchwiseunderflow.in/',
+		//2025-12-30 not an Astro site
+		'https://dev.to/pascal_cescato_692b7a8a20/from-wordpress-to-astro-three-days-to-reclaim-control-5dn2',
+		// 2025-12-30 NSFW
+		'https://justfuckinguseastro.com/',
 	],
 });
 await scraper.run();
