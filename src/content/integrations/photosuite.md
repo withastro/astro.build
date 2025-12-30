@@ -8,7 +8,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/photosuite
 repoUrl: https://github.com/achuanya/photosuite
-homepageUrl: https://photosuite.lhasa.icu
+homepageUrl: https://www.npmjs.com/package/photosuite
 badge: new
-downloads: 345
+downloads: 360
 ---
