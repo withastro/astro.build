@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@gladtek/launch-cooper
 homepageUrl: https://www.npmjs.com/package/@gladtek/launch-cooper
 badge: new
-downloads: 161
+downloads: 165
 ---

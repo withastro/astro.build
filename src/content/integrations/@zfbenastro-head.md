@@ -12,5 +12,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@zfben/astro-head
 repoUrl: https://github.com/zfben/astro-head
 homepageUrl: https://github.com/zfben/astro-head
-downloads: 18
+downloads: 15
 ---

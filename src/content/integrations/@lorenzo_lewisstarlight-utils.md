@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@lorenzo_lewis/starlight-utils
 repoUrl: https://github.com/lorenzolewis/starlight-utils
 homepageUrl: https://starlight-utils.pages.dev
-downloads: 2426
+downloads: 2431
 ---

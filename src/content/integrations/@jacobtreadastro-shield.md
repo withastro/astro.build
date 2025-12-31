@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@jacobtread/astro-shield
 repoUrl: https://github.com/kindspells/astro-shield
 homepageUrl: https://astro-shield.kindspells.dev
 badge: new
-downloads: 127
+downloads: 31
 ---
