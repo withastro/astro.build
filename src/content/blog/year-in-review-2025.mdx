@@ -1,0 +1,428 @@
+---
+title: "2025 year in review"
+description: "Revisit everything that happened in Astro last year: new feature releases, survey results, Astro Together, and more!"
+# TODO: Update the date below when publishing
+publishDate: "December 17, 2025"
+authors:
+  - shinya
+  - sarah
+# TODO: Update the images below when publishing
+coverImage: "/src/content/blog/_images/year-in-review-2024/blog-post-2024-in-review.webp"
+socialImage: "/src/content/blog/_images/year-in-review-2024/og-2024-in-review.webp"
+lang: "en"
+---
+
+import Tweet from "/src/components/Tweet.astro";
+import Note from "/src/components/Note.astro";
+import Mention from "/src/components/Mention.astro";
+import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import BlogContentImage from "/src/components/BlogContentImage.astro";
+import islandDiag from "/src/content/blog/_images/future-of-astro-server-islands/dark-mode-server-islands-diag.webp";
+import astroBuild from "/src/content/blog/_images/year-in-review-2024/astro-build.webp";
+import starHistory from "/src/content/blog/_images/year-in-review-2025/star-history.webp";
+import npmTrends from "/src/content/blog/_images/year-in-review-2025/npm-trends.webp";
+import octoverse from "/src/content/blog/_images/year-in-review-2025/octoverse.webp";
+import mcpInspector from "/src/content/blog/_images/year-in-review-2025/mcp-inspector.webp";
+import chromeDevtoolsWorkspace from "/src/content/blog/_images/year-in-review-2025/chrome-devtools-workspace.webp";
+
+<Note title="Editor’s Note">
+
+This is a guest post written by Shinya Fujino, an active Astro community member and contributor.
+
+</Note>
+
+
+## Introduction
+
+
+## Project health indicators
+
+### Release Versions
+
+As of the start of 2025, Astro was at [v5.1.2](https://github.com/withastro/astro/releases/tag/astro%405.1.2), and by the time of writing this article near the end of the year, [v5.16.6](https://github.com/withastro/astro/releases/tag/astro%405.16.6) has been released. Including alpha versions, **there were a total of 113 releases in 2025**.
+
+For those who are curious about the details of each release, you can check [the full list of Astro releases on GitHub](https://github.com/withastro/astro/releases).
+
+### GitHub Stars
+
+Astro surpassed 50,000 GitHub stars in early 2025 and has now reached approximately 55,200. This represents an increase of nearly 7,000 stars since the beginning of 2025.
+
+While 55,000 stars is already an impressive number, do you know where that places Astro among all repositories on GitHub? At the time of writing this article, only 295 repositories have more than 55,000 stars! Astro is ranked 293rd overall, placing it alongside projects such as [FFmpeg](https://github.com/FFmpeg/FFmpeg) and [OpenAI Codex](https://github.com/openai/codex). This shows that reaching 55,000 stars is a significant milestone.
+
+Below is a [GitHub Star History](https://www.star-history.com/#withastro/astro) chart, which shows that Astro has steadily gained stars over the years.
+
+<BlogContentImage src={starHistory} alt="A chart showing the increase of GitHub stars since the project's beginning (with zero stars) in 2021. The line tends up and to the right mostly linearly, with a slight jump in late 2022." />
+
+
+### NPM Downloads
+
+Data from [npm trends](https://npmtrends.com/astro) shows that Astro had approximately 360,000 weekly downloads at the start of 2024, but this number grew to over 900,000 by the end of the year. This is about a two and a half times increase, showing that adoption has been accelerating compared to past years. This suggests that Astro is being adopted across a wide range of project types.
+
+<BlogContentImage src={npmTrends} alt="" />
+
+### Octoverse 2025
+
+Astro was one of the fastest growing languages on GitHub in 2025!
+
+<BlogContentImage src={octoverse} alt="Comparing August 2025 to August 2024, the fastest-growing languages by year-over-year growth are Luau (+194%), Typst (+108%), Astro (+78%), Blade (+67%), and TypeScript (+67%)." />
+
+You may be thinking, "Wait, is Astro really a language?" That is a fair question, but if GitHub's language experts say so, who are we to argue? In any case, it's exciting to see Astro recognized in this way.
+
+For more details, check out [the GitHub Octoverse 2025 website](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/#the-fastest-growing-languages-by-percentage-growth).
+
+
+## New and Updated Features
+
+### Live Content Collections
+
+Content collections, introduced in Astro [v2.0](https://astro.build/blog/introducing-content-collections/), have been a powerful feature that allows you to manage and use local content such as Markdown and MDX files in a type safe manner. In [v5.0](https://astro.build/blog/astro-5/), this concept was expanded into the Content Layer API, enabling content fetched from external CMSs and APIs to be handled with the same level of type safety. However, because this content is fetched at build time, supporting highly dynamic or personalized content was difficult.
+
+With the experimental introduction of live content collections in [v5.10.0](https://astro.build/blog/astro-5100/), it is now possible to fetch data at runtime instead of build time. This allows sites to access the latest data in a type safe way without requiring a rebuild whenever content is updated.
+
+To enable this feature, you need to configure [on-demand rendering](https://docs.astro.build/en/guides/on-demand-rendering/) and then add the `experimental.liveContentCollections` flag to your Astro config file:
+
+```mjs title="astro.config.mjs"
+{
+  experimental: {
+    liveContentCollections: true,
+  },
+}
+```
+
+Then, in `src/live.config.ts`, define your live collections using the `defineLiveCollection` function:
+
+```ts title="src/live.config.ts"
+import { defineLiveCollection } from 'astro:content';
+import { storeLoader } from '@mystore/astro-loader';
+
+const products = defineLiveCollection({
+  loader: storeLoader({
+    apiKey: process.env.STORE_API_KEY,
+    endpoint: 'https://api.mystore.com/v1',
+  }),
+});
+
+export const collections = { products };
+```
+
+Once this setup is complete, you can access live data using the `getLiveCollection` and `getLiveEntry` functions:
+
+```ts
+---
+export const prerender = false; // Not needed in 'server' mode
+
+import { getLiveCollection, getLiveEntry } from 'astro:content';
+
+// Get all products
+const { entries: allProducts, error } = await getLiveCollection('products');
+if (error) {
+  // Handle error appropriately
+  console.error(error.message);
+}
+
+// Get products with a filter (if supported by your loader)
+const { entries: electronics } = await getLiveCollection('products', { category: 'electronics' });
+---
+```
+
+Did you notice the similarities with the existing API? In short, `src/content.config.ts` and `src/live.config.ts`, [`defineCollection`](https://docs.astro.build/en/reference/modules/astro-content/#definecollection) and `defineLiveCollection`, as well as [`getCollection`](https://docs.astro.build/en/reference/modules/astro-content/#getcollection)/[`getEntry`](https://docs.astro.build/en/reference/modules/astro-content/#getentry) and `getLiveCollection`/`getLiveEntry`, are designed to work in almost the same way. This really highlights the elegance of Astro's API design.
+
+However, because live content is fetched at runtime, you need to handle unexpected errors and consider performance optimizations like caching. The good news is that Astro provides APIs to help you do exactly that.
+
+Although it was not covered here, you can still use Zod when defining collections and distribute your custom loaders on npm, just as before. For more details, check out [the official documentation on live content collections](https://docs.astro.build/en/reference/experimental-flags/live-content-collections/).
+
+
+### Responsive Images
+
+Images are an essential part of most websites, but displaying them correctly across various devices is far from trivial. Screen size, resolution, and image format are just a few of the factors developers need to consider when rendering images on the screen. To address these challenges flexibly, Astro already provides a variety of options, and in [v5.10.0](https://astro.build/blog/astro-5100/), it introduced a new behavior that makes responsive images much easier to implement.
+
+To use the new responsive behavior, set [`image.responsiveStyles`](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles) to `true` in your Astro config file and specify [responsive image properties](https://docs.astro.build/en/reference/modules/astro-assets/#responsive-image-properties) on the `<Image />` component. In the example below, setting the `layout` property makes the image scale to fit the container while maintaining its aspect ratio, without exceeding the specified dimensions.
+
+```mjs title="astro.config.mjs"
+{
+  image: {
+    responsiveStyles: true,
+  },
+}
+```
+
+```astro
+---
+import { Image } from 'astro:assets';
+import myImage from '../assets/my_image.png';
+---
+
+<Image
+  src={myImage}
+  alt="A description of my image."
+  layout="constrained"
+  width={800}
+  height={600}
+/>
+```
+
+This `<Image />` component will generate the following HTML output:
+
+```html
+<img
+  src="/_astro/my_image.hash3.webp"
+  srcset="/_astro/my_image.hash1.webp 640w,
+      /_astro/my_image.hash2.webp 750w,
+      /_astro/my_image.hash3.webp 800w,
+      /_astro/my_image.hash4.webp 828w,
+      /_astro/my_image.hash5.webp 1080w,
+      /_astro/my_image.hash6.webp 1280w,
+      /_astro/my_image.hash7.webp 1600w"
+  alt="A description of my image"
+  sizes="(min-width: 800px) 800px, 100vw"
+  loading="lazy"
+  decoding="async"
+  fetchpriority="auto"
+  width="800"
+  height="600"
+  style="--fit: cover; --pos: center;"
+  data-astro-image="constrained"
+>
+```
+
+The generated markup may look verbose at first glance, but the key points are fairly simple:
+
+- The `srcset` attribute is generated automatically so the browser can choose the most appropriate image size for the current screen.
+- The `sizes` attribute reflects the layout constraints defined by the `layout`, `width`, and `height` props.
+- Astro applies scoped styles using `data-astro-image` attributes to ensure images resize correctly without requiring manual CSS.
+
+In addition, the following global styles are generated and applied by Astro to ensure that your images resize correctly:
+
+```css
+:where([data-astro-image]) {
+  object-fit: var(--fit);
+  object-position: var(--pos);
+}
+:where([data-astro-image='full-width']) {
+  width: 100%;
+}
+:where([data-astro-image='constrained']) {
+  max-width: 100%;
+}
+```
+
+With the new responsive behavior, the necessary `srcset` and `sizes` values are generated automatically, and the appropriate styles for proper resizing are applied. Additionally, a `priority` property has been added to make it possible to load certain images with higher priority.
+
+It is also worth noting that Astro [v5.7.0](https://astro.build/blog/astro-570/#svg-components) introduced support for importing SVG files as Astro components. This is another handy feature, so be sure to give it a try!
+
+```astro
+---
+import Logo from './path/to/svg/file.svg';
+---
+
+<Logo width={64} height={64} fill="currentColor" />
+```
+
+[Check out the official docs to learn more about responsive images in Astro](https://docs.astro.build/en/guides/images/#responsive-image-behavior).
+
+### Fonts
+
+Fonts are also a crucial part of websites, but loading them efficiently can be just as challenging as images. Choosing the right loading strategy, defining fallbacks, and adding preload hints all require careful configuration. Astro previously did not provide a built in approach for working with fonts, but [v5.7.0](https://astro.build/blog/astro-570/#experimental-fonts-api) introduced an experimental Fonts API. With this API, Astro can handle web font optimizations such as preload links, optimized fallbacks, and opinionated defaults.
+
+To enable this feature, configure an `experimental.fonts` object with at least one font:
+
+```mjs title="astro.config.mjs"
+import { defineConfig, fontProviders } from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    fonts: [{
+      provider: fontProviders.google(),
+      name: "Roboto",
+      cssVariable: "--font-roboto"
+    }]
+  }
+});
+```
+
+Then, add the `<Font />` component and site-wide styling in your `<head>`:
+
+```astro
+---
+import { Font } from 'astro:assets';
+---
+
+<Font cssVariable="--font-roboto" preload />
+
+<style>
+body {
+  font-family: var(--font-roboto);
+}
+</style>
+```
+
+And that's it! CSS `@font-face` rules and font preload tags are automatically generated for you.
+
+The Fonts API also supports providers beyond Google, allows detailed control over the downloaded font files, and even makes it possible to build your own font provider. Be sure to give the new API a try.
+
+[Check out the official docs to learn more about the Fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/).
+
+### Sessions
+
+Astro [v5.7.0](https://astro.build/blog/astro-570/#sessions-api) introduced the Sessions API as a stable feature. This makes it possible to store data on the server side across multiple requests from the same user, allowing you to handle user data, shopping carts, and other stateful information without worrying about data size limits.
+
+Session data can be accessed from Astro components, pages, API endpoints, actions, and middleware. When accessing session data from Astro components or pages, you use `Astro.session`, while in other contexts you use `context.session`. In either case, the `session` object behaves identically. The example below demonstrates how to read cart data from the session in an Astro component:
+
+```astro
+---
+export const prerender = false; // Not needed with 'server' output
+const cart = await Astro.session?.get('cart');
+---
+
+<a href="/checkout">🛒 {cart?.length ?? 0} items</a>
+```
+
+For many use cases, [`session.get()`](https://docs.astro.build/en/reference/api-reference/#get) and [`session.set()`](https://docs.astro.build/en/reference/api-reference/#set) are all you need. That said, the Sessions API also includes [`session.regenerate()`](https://docs.astro.build/en/reference/api-reference/#regenerate) and [`session.destroy()`](https://docs.astro.build/en/reference/api-reference/#destroy) to handle session ID regeneration and cleanup, along with [`session.load()`](https://docs.astro.build/en/reference/api-reference/#load) for loading a session by ID. When running on Node, Cloudflare, or Netlify, the adapter automatically configures a storage driver for session handling. In other environments, sessions can still be used by specifying a driver manually.
+
+[Check out the official docs to learn more about the Sessions API](https://docs.astro.build/en/guides/sessions/).
+
+### Content Security Policy
+
+Content Security Policy (CSP) is an important security layer that helps protect websites from cross-site scripting (XSS) and other code injection attacks. While CSP is typically implemented using `nonce` headers that require server-side generation for each request, Astro [v5.9.0](https://astro.build/blog/astro-590/#experimental-content-security-policy-support) introduced experimental support for a hash-based approach using `<meta>` tags. This solution works seamlessly across all rendering modes (static pages, server-rendered pages, and SPAs) without the complexity of server-side nonce management.
+
+When CSP is enabled, Astro automatically generates a `<meta>` element containing hashes for all scripts and styles used on the page, including those loaded dynamically. To enable this feature, add the `experimental.csp` option to your Astro config file:
+
+```mjs title="astro.config.mjs"
+{
+  experimental: {
+    csp: true,
+  }
+}
+```
+
+You can also pass an object to configure additional options such as [`algorithm`](https://docs.astro.build/en/reference/experimental-flags/csp/#algorithm) to specify the hash algorithm, [`directives`](https://docs.astro.build/en/reference/experimental-flags/csp/#directives) to apply custom CSP directives, and [`scriptDirective`/`styleDirective`](https://docs.astro.build/en/reference/experimental-flags/csp/#styledirective-and-scriptdirective) to specify allowed sources or provide additional hashes for external resources.
+
+For more advanced use cases, Astro provides runtime APIs through the `Astro.csp` object, allowing you to add directives or hashes on a per-page basis. You can use methods like [`csp.insertDirective()`](https://docs.astro.build/en/reference/experimental-flags/csp/#cspinsertdirective), [`csp.insertStyleHash()`](https://docs.astro.build/en/reference/experimental-flags/csp/#cspinsertstylehash), and [`csp.insertScriptHash()`](https://docs.astro.build/en/reference/experimental-flags/csp/#cspinsertscripthash) to customize the CSP for individual pages.
+
+It is worth noting that inline scripts require custom hashes to be provided, and the `<ClientRouter />` component is not compatible with this feature. Be sure to test your CSP configuration using `astro build` and `astro preview`, as CSP is not enforced in development mode.
+
+[Check out the official docs to learn more about Content Security Policy in Astro](https://docs.astro.build/en/reference/experimental-flags/csp/).
+
+### Astro Docs MCP Server
+
+While 2025 has been widely described as the year of [vibe coding](https://x.com/karpathy/status/1886192184808149383), Astro has been steadily moving forward with support for AI tools as well. The Astro docs now include a new "[Build with AI](https://docs.astro.build/en/guides/build-with-ai/)" page, which provides information about `llms.txt` and offers tips for developing Astro projects with AI. The most extensively covered topic on that page is the Astro Docs MCP Server, which is introduced below.
+
+[Model Context Protocol](https://modelcontextprotocol.io/) (MCP) is a standard for AI tools to access external systems. With MCP servers, AI tools can perform actions such as searching documentation, running code, and other tasks.
+
+The Astro Docs MCP Server, which was released in July 2025, is an MCP server that allows AI tools to access the official Astro documentation. By using this server, AI tools can avoid relying on outdated recommendations and understand current best practices.
+
+Because the process of connecting to an MCP server depends on the tool being used, it is not described here. If you want to try it out quickly, [the official MCP inspector](https://modelcontextprotocol.io/docs/tools/inspector) is a convenient option. Launch the inspector using the `npx @modelcontextprotocol/inspector` command, choose **Streamable HTTP** as the Transport Type, and enter `https://mcp.docs.astro.build/mcp` as the URL. After clicking **Connect**, the inspector will connect to the MCP server. When you click **List Tools**, the `search_astro_docs` tool will appear as an available AI tool. Selecting it and providing any Astro related topic as the query allows you to see the raw documentation data that the AI will receive:
+
+<BlogContentImage src={mcpInspector} alt="A screenshot of the MCP Inspector connected to the Astro Docs MCP Server, showing the 'search_astro_docs' tool and documentation data for 'Astro islands'." />
+
+[Check out the official docs for more information on the Astro Docs MCP Server](https://docs.astro.build/en/guides/build-with-ai/).
+
+### `astro:config`
+
+In [v5.7.0](https://astro.build/blog/astro-570/), Astro added support for importing a subset of the Astro configuration in a type safe way. The `astro:config` virtual module provides two submodules, `/client` and `/server`, which are designed to be used depending on the runtime environment.
+
+Currently, the following values are available from `/client` and `/server`. Note that information related to directory paths is intentionally excluded from `/client` for security reasons:
+
+- `/client`
+  - [`i18n`](https://docs.astro.build/en/reference/configuration-reference/#i18n)
+  - [`trailingSlash`](https://docs.astro.build/en/reference/configuration-reference/#trailingslash)
+  - [`base`](https://docs.astro.build/en/reference/configuration-reference/#base)
+  - [`build.format`](https://docs.astro.build/en/reference/configuration-reference/#buildformat)
+  - [`site`](https://docs.astro.build/en/reference/configuration-reference/#site)
+  - [`compressHTML`](https://docs.astro.build/en/reference/configuration-reference/#compresshtml)
+- `/server`
+  - All of the above
+  - [`build.client`](https://docs.astro.build/en/reference/configuration-reference/#buildclient)
+  - [`build.server`](https://docs.astro.build/en/reference/configuration-reference/#buildserver)
+  - [`srcDir`](https://docs.astro.build/en/reference/configuration-reference/#srcdir)
+  - [`cacheDir`](https://docs.astro.build/en/reference/configuration-reference/#cachedir)
+  - [`outDir`](https://docs.astro.build/en/reference/configuration-reference/#outdir)
+  - [`publicDir`](https://docs.astro.build/en/reference/configuration-reference/#publicdir)
+  - [`root`](https://docs.astro.build/en/reference/configuration-reference/#root)
+
+You can use these values to create a variety of utilities. For example, the Astro docs provide an example of a function that appends a trailing slash conditionally, shown below:
+
+```ts
+import { trailingSlash } from "astro:config/client";
+
+function addForwardSlash(path) {
+  if (trailingSlash === "always") {
+    return path.endsWith("/") ? path : path + "/";
+  } else {
+    return path;
+  }
+}
+```
+
+[Check out the official docs to learn more about the `astro:config` module](https://docs.astro.build/en/reference/modules/astro-config/).
+
+### Chrome DevTools Workspaces
+
+Experimental support for [Chrome DevTools workspaces](https://developer.chrome.com/docs/devtools/workspaces) was added in Astro [v5.13.0](https://astro.build/blog/astro-5130/). This allows you to connect your local development environment to Chrome DevTools as a workspace and edit project files directly from DevTools.
+
+To enable this feature, add the `experimental.chromeDevtoolsWorkspace` flag to your Astro config file:
+
+```mjs title="astro.config.mjs"
+{
+  experimental: {
+    chromeDevtoolsWorkspace: true,
+  },
+}
+```
+
+With this enabled, Astro automatically generates the configuration file required for Chrome DevTools workspaces. You can then open your project in Chrome and click **Connect** in the **Sources > Workspaces** tab in DevTools. Your project files will then be displayed in DevTools as shown below:
+
+<BlogContentImage src={chromeDevtoolsWorkspace} alt="Chrome DevTools workspace connected to an Astro project, showing project files and an Astro page open side by side." />
+
+[Check out the official docs to learn more about Chrome DevTools workspaces integration](https://docs.astro.build/en/reference/experimental-flags/chrome-devtools-workspace/).
+
+### Performance and Stability Improvements
+
+There were not only new features, but also many improvements to existing ones. Some of the highlights, listed below, include options for keeping trailing slash usage consistent and warning about prerendered route collisions. It is nice to see application quality improve without having to make large changes to the codebase.
+
+- [Trailing slash redirects](https://astro.build/blog/astro-520/#trailing-slash-redirects)
+- [Faster page rendering](https://astro.build/blog/astro-530/#faster-page-rendering)
+- [Remote image optimization in Markdown](https://astro.build/blog/astro-540/#remote-image-optimization-in-markdown)
+- [Experimental: preserve order of style and script tags](https://astro.build/blog/astro-550/#experimental-preserve-order-of-style-and-script-tags)
+- [Prerendered route collision warnings](https://astro.build/blog/astro-5140/#prerendered-route-collision-warnings)
+- [SVG optimization with SVGO](https://astro.build/blog/astro-5160/#svg-optimization-with-svgo)
+
+
+## Related Projects
+
+### Starlight
+
+### Biome
+
+### Oxc
+
+### Vite+
+
+
+## Other Topics
+
+### Vite Conf
+
+### Astro Mart
+
+### Astro TSC
+
+### Astro Agency Partner Program
+
+### Official Partners
+
+### React Vulnerabilities
+
+### Built with Astro
+
+
+## Looking Ahead to 2026 and Astro v6
+
+
+## Closing Thoughts
+
+
+<Note title="About the author">
+Hey, my name is <Mention name="shinya" />. I'm a web developer living in Tokyo, Japan. I'm interested in what the future of the web will be like and I would like to be a part of it in some way.
+</Note>
