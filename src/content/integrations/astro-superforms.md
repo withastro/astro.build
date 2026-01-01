@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-superforms
 homepageUrl: https://github.com/gbouteiller/astro-superforms
-downloads: 49
+downloads: 48
 ---
