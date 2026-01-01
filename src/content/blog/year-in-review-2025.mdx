@@ -2,7 +2,7 @@
 title: "2025 year in review"
 description: "Revisit everything that happened in Astro last year: new feature releases, survey results, Astro Together, and more!"
 # TODO: Update the date below when publishing
-publishDate: "December 17, 2025"
+publishDate: "January 3, 2026"
 authors:
   - shinya
   - sarah
@@ -400,6 +400,8 @@ There were not only new features, but also many improvements to existing ones. S
 - [Sharp](https://sharp.pixelplumbing.com/)
 - [Gemini CLI](https://geminicli.com)
 
+Starlight itself also continued to evolve throughout 2025, with updates including route data middleware, multi-site search support, automatic heading anchor links, and CSS cascade layers, among many others. To keep up with all the improvements, be sure to follow the [Starlight releases on GitHub](https://github.com/withastro/starlight/releases).
+
 ### Biome
 
 [Biome](https://biomejs.dev/), which provides formatter and linter features for multiple languages such as JavaScript, JSON, and CSS, introduced full support for several frameworks including Astro in [v2.3](https://biomejs.dev/blog/biome-v2-3/). This means formatting and linting for Astro now work out of the box. Once you experience how fast Biome is, it is hard to go back, so if you have not tried it yet, this is a great time to do so!
@@ -440,23 +442,100 @@ The official Astro merch shop has been reintroduced as [Astro Mart](https://shop
 
 In April 2025, Astro launched [the Astro Agency Partner Program](https://astro.build/blog/astro-agency-partners/), designed to connect businesses seeking professional development services with agencies that specialize in Astro. The program includes an agency directory, lead generation support, official certification with partner badges, direct access to resources from the Astro team, and a financial model that supports continued investment in the open source project. Launch partners include [Bejamas](https://astro.build/agencies/bejamas/), [Lucky Media](https://astro.build/agencies/lucky-media/), [EXDST](https://astro.build/agencies/exdst/), and [58agents](https://astro.build/agencies/58agents/). If you are looking for expert help building your next Astro project, be sure to check out the [partner directory](https://astro.build/partners/).
 
-### Official Partners
+### Official Sponsors
 
-### React Vulnerabilities
+2025 was a landmark year for Astro's sustainability, with several companies stepping up as official sponsors. In September, [Mux](https://astro.build/blog/mux-official-video-partner/) became the official video partner with a $5,000 monthly sponsorship and released two Astro integrations for video playback and uploading. [Webflow](https://astro.build/blog/webflow-official-partner/) announced a $150,000 donation, with their AI code generation tool built entirely on Astro. [Cloudflare](https://astro.build/blog/cloudflare-official-partner/) also contributed $150,000 and became the official hosting partner. Later in November, [Stainless](https://astro.build/blog/stainless-astro-launch/) joined as a sponsor partner, launching their Stainless Docs Platform built on Starlight. Notably, [Cloudflare and Netlify collaborated](https://blog.cloudflare.com/cloudflare-astro-tanstack/) to support open source projects together, demonstrating that even competitors can unite for the benefit of the web. All of these contributions go directly toward long-term maintenance of the Astro open source project.
 
 ### Built with Astro
 
 import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
 import { getEntry } from 'astro:content';
 
+Many websites were built with Astro in 2025, and the sites below are some of my personal favorites. If you find an Astro site you like, go ahead and post about it on social media. If you have built your own Astro project, sharing it on [Companies & Websites Using Astro](https://github.com/withastro/roadmap/discussions/521) is also a good option.
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
   <ShowcaseCard site={await getEntry('showcase', 'agents.cloudflare.com')} />
   <ShowcaseCard site={await getEntry('showcase', 'design.visa.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'chrome.dev')} />
   <ShowcaseCard site={await getEntry('showcase', 'hypertext.tv')} />
 </div>
 
 
 ## Looking Ahead to 2026 and Astro v6
+
+Astro has a public [Project Roadmap](https://github.com/withastro/roadmap) where its future development direction is discussed. Here, we will take a brief look at some proposals at Stage 2 or above that are expected to be added to Astro, giving a preview of what is coming in 2026.
+
+### Route Caching
+
+Route caching is an API that aims to provide declarative cache control based on web standards in a platform independent way. Below is a sample taken from [the RFC](https://github.com/withastro/roadmap/pull/1245), which shows that you can configure values such as `maxAge`, `swr`, and `tags` on a per route basis, and invalidate caches by `path` or `tag`. It is also designed to support cache invalidation in combination with the `cacheHints` returned from `getLiveEntry()` in the Live Content Collections mentioned earlier:
+
+```astro title="Basic route caching"
+---
+// src/pages/products/[id].astro
+import { getEntry } from 'astro:content';
+
+const product = await getEntry('products', Astro.params.id);
+
+Astro.cache({
+  lastModified: product.updatedAt,
+  maxAge: 300,  // Cache for 5 minutes
+  swr: 3600,    // Stale-while-revalidate for 1 hour
+  tags: ['products', `product:${product.id}`]
+});
+---
+<h1>{product.data.name}</h1>
+<p>{product.data.description}</p>
+```
+
+```ts title="Cache invalidation by path"
+// src/pages/api/webhook.ts
+export const POST: APIRoute = ({ cache }) => {
+  // Invalidate by path
+  cache.invalidate({ path: "/products/laptop" });
+
+  return Response.json({ ok: true });
+};
+```
+
+```ts title="Cache invalidation by tag"
+// src/pages/api/webhook.ts
+export const POST: APIRoute = ({ cache }) => {
+  // Invalidate by tag
+  cache.invalidate({ tag: "products" });
+
+  return Response.json({ ok: true });
+};
+```
+
+```ts title="Integration with live collections"
+---
+// src/pages/products/[slug].astro
+import { getLiveEntry, render } from 'astro:content';
+
+const { entry, cacheHint } = await getLiveEntry('products', Astro.params.slug);
+
+// Apply cache hints from the live collection loader
+Astro.cache(cacheHint);
+
+const { Content } = await render(entry);
+---
+<h1>{entry.data.name}</h1>
+<Content />
+```
+
+Although this API is not finalized yet, it is great to see how a declarative approach can make configuration shorter and easier to understand compared to manual setup. It is also helpful that different cache invalidation mechanisms across platforms can be unified behind a single API. Once this lands in Astro, more complex caching strategies such as ISR should become much easier to implement.
+
+### Tracing Hooks for Astro
+
+https://github.com/withastro/roadmap/issues/1208
+
+This is a proposal to add a low overhead, general purpose instrumentation hook system to the Astro core. Distributed tracing is an effective way to identify application performance bottlenecks, but integrating OpenTelemetry directly into Astro would significantly increase the number of dependencies. Instead, this proposal introduces a mechanism that allows operations such as page rendering, middleware execution, and component rendering to be measured using before and after hooks. When no listeners are registered, overhead is kept to a minimum, while observability can still be achieved through integrations such as `@astrojs/opentelemetry`.
+
+This proposal is currently at Stage 2, and if you are interested, you can share feedback by commenting on [the proposal](https://github.com/withastro/roadmap/issues/1208) or on [the related pull request](https://github.com/withastro/astro/pull/13782). If you have any thoughts or questions, be sure to check them out.
+
+### Astro v6
+
+While 2025 did not see a major version release, Astro v6 is planned for 2026. Although the details of the new features are still under wraps, v6 is expected to bring a variety of improvements, including the stabilization of experimental features and enhancements to existing functionality. [Discussions around the v6 scope](https://github.com/withastro/roadmap/discussions/1174) and [draft migration guides](https://github.com/withastro/docs/pull/12322) are already available, so those who are curious can join in by offering feedback or reviewing the proposals.
 
 
 ## Closing Thoughts
