@@ -12,7 +12,7 @@ socialImage: "/src/content/blog/_images/year-in-review-2024/og-2024-in-review.we
 lang: "en"
 ---
 
-import Tweet from "/src/components/Tweet.astro";
+import { Tweet } from 'astro-embed';
 import Note from "/src/components/Note.astro";
 import Mention from "/src/components/Mention.astro";
 import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
@@ -257,7 +257,7 @@ body {
 </style>
 ```
 
-And that's it! CSS `@font-face` rules and font preload tags are automatically generated for you.
+With this setup, CSS `@font-face` rules and font preload tags are automatically generated for you.
 
 The Fonts API also supports providers beyond Google, allows detailed control over the downloaded font files, and even makes it possible to build your own font provider. Be sure to give the new API a try.
 
@@ -393,28 +393,67 @@ There were not only new features, but also many improvements to existing ones. S
 
 ### Starlight
 
+[Starlight](https://starlight.astro.build/) is an official theme for building documentation sites with Astro. Since it was released in 2023, it has been steadily gaining popularity, and in 2025 it was used for documentation by many different projects. There are too many to list them all here, but below are a few well known examples:
+
+- [Nx](https://nx.dev/)
+- [OpenCode](https://opencode.ai/)
+- [Sharp](https://sharp.pixelplumbing.com/)
+- [Gemini CLI](https://geminicli.com)
+
 ### Biome
+
+[Biome](https://biomejs.dev/), which provides formatter and linter features for multiple languages such as JavaScript, JSON, and CSS, introduced full support for several frameworks including Astro in [v2.3](https://biomejs.dev/blog/biome-v2-3/). This means formatting and linting for Astro now work out of the box. Once you experience how fast Biome is, it is hard to go back, so if you have not tried it yet, this is a great time to do so!
 
 ### Oxc
 
+[Oxc](https://oxc.rs/) is a collection of JavaScript tools written in Rust. One of these tools is [Oxlint](https://oxc.rs/docs/guide/usage/linter.html), which reached [v1.0](https://oxc.rs/blog/2025-06-10-oxlint-stable.html) in July 2025 and now supports linting `.astro` files as well. Currently, linting support is limited to code inside `<script>` tags, but performance is already impressive and comparable to Biome. Since Oxc also provides a formatter called [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html), it will be interesting to see its future progress toward broader Astro support.
+
 ### Vite+
+
+There is little doubt that [Vite](https://vite.dev/) is one of the most important tools in modern web development. Astro runs on top of Vite, and a wide range of frameworks including [Nuxt](https://nuxt.com/), [SvelteKit](https://svelte.dev/docs/kit), and [TanStack Start](https://tanstack.com/start) rely on it in their own ecosystems as well. During [ViteConf 2025](https://viteconf.amsterdam/), its creator Evan You presented [Vite+](https://viteplus.dev/), which he calls the unified toolchain for the web. Vite+ is scheduled to reach public preview in early 2026. Although the details have not yet been fully revealed, it is expected to enhance the development experience for many frameworks, including Astro. If this sounds interesting, be sure to request early access on the Vite+ website.
 
 
 ## Other Topics
 
 ### Vite Conf
 
+On October 9 and 10, 2025, [ViteConf](https://viteconf.amsterdam/) took place in Amsterdam, the Netherlands. Sarah Rainsberger and Matt Kane from the Astro team spoke about making meaningful contributions to open source projects and shared updates on where Astro is today and what is coming next. If you have not seen the talks yet, definitely check them out:
+
+<YouTubeGrid
+  maxCols={2}
+  videos={[
+      { id: 'https://www.youtube.com/watch?v=bzogTYPv65M&list=PLqGQbXn_GDmkJaoykvHCUmXUPjhgH2bVr' },
+      { id: 'https://www.youtube.com/watch?v=KSMfTVdAFjU&list=PLqGQbXn_GDmkJaoykvHCUmXUPjhgH2bVr' },
+  ]}
+/>
+
+By the way, below is a photo taken by Evan You, the creator of Vue and Vite, showing Fred K. Schott and Matt Kane from the Astro team in conversation with Tanner Linsley from TanStack. ViteConf is truly an exciting conference where developers from many different projects come together like this!
+
+<script async src="https://platform.twitter.com/widgets.js"></script>
+<Tweet id="https://x.com/youyuxi/status/1976719870570959139" />
+
 ### Astro Mart
 
-### Astro TSC
+The official Astro merch shop has been reintroduced as [Astro Mart](https://shop.astro.build/). Both the designs and product lineup have been refreshed, and international shipping is now available. You can also purchase items created by the winners of [the Spirit of Astro Design Contest](https://astro.build/blog/spirit-of-astro-winners/). Be sure to check it out and grab some Astro merch.
 
 ### Astro Agency Partner Program
+
+In April 2025, Astro launched [the Astro Agency Partner Program](https://astro.build/blog/astro-agency-partners/), designed to connect businesses seeking professional development services with agencies that specialize in Astro. The program includes an agency directory, lead generation support, official certification with partner badges, direct access to resources from the Astro team, and a financial model that supports continued investment in the open source project. Launch partners include [Bejamas](https://astro.build/agencies/bejamas/), [Lucky Media](https://astro.build/agencies/lucky-media/), [EXDST](https://astro.build/agencies/exdst/), and [58agents](https://astro.build/agencies/58agents/). If you are looking for expert help building your next Astro project, be sure to check out the [partner directory](https://astro.build/partners/).
 
 ### Official Partners
 
 ### React Vulnerabilities
 
 ### Built with Astro
+
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+import { getEntry } from 'astro:content';
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'agents.cloudflare.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'design.visa.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'hypertext.tv')} />
+</div>
 
 
 ## Looking Ahead to 2026 and Astro v6
