@@ -35,6 +35,15 @@ This is a guest post written by Shinya Fujino, an active Astro community member 
 
 ## Introduction
 
+**Happy New Year, Astronauts!**
+
+In this article, I will highlight some of the most important aspects of Astro in 2025, focusing on project health indicators, related projects, and notable events that stood out to me. We will look back on Astro journey throughout 2025 and also touch briefly on what lies ahead in 2026. It is a bit of a long read, but whether you are a long time Astro user or new to Astro, I hope you will find something useful here.
+
+If you are interested, I have also written similar articles for 2023 and 2024, so feel free to check them out as well:
+
+- [2024 Year in Review](https://astro.build/blog/year-in-review-2024/)
+- [2023 Year in Review in Japanese](https://zenn.dev/morinokami/articles/astro-2023-2024)
+
 
 ## Project health indicators
 
@@ -57,7 +66,7 @@ Below is a [GitHub Star History](https://www.star-history.com/#withastro/astro) 
 
 ### NPM Downloads
 
-Data from [npm trends](https://npmtrends.com/astro) shows that Astro had approximately 360,000 weekly downloads at the start of 2024, but this number grew to over 900,000 by the end of the year. This is about a two and a half times increase, showing that adoption has been accelerating compared to past years. This suggests that Astro is being adopted across a wide range of project types.
+Data from [npm trends](https://npmtrends.com/astro) shows that Astro had approximately 360,000 weekly downloads at the start of 2025, but this number grew to over 900,000 by the end of the year. This is about a two and a half times increase, showing that adoption has been accelerating compared to past years. This suggests that Astro is being adopted across a wide range of project types.
 
 <BlogContentImage src={npmTrends} alt="" />
 
@@ -78,7 +87,7 @@ For more details, check out [the GitHub Octoverse 2025 website](https://github.b
 
 Content collections, introduced in Astro [v2.0](https://astro.build/blog/introducing-content-collections/), have been a powerful feature that allows you to manage and use local content such as Markdown and MDX files in a type safe manner. In [v5.0](https://astro.build/blog/astro-5/), this concept was expanded into the Content Layer API, enabling content fetched from external CMSs and APIs to be handled with the same level of type safety. However, because this content is fetched at build time, supporting highly dynamic or personalized content was difficult.
 
-With the experimental introduction of live content collections in [v5.10.0](https://astro.build/blog/astro-5100/), it is now possible to fetch data at runtime instead of build time. This allows sites to access the latest data in a type safe way without requiring a rebuild whenever content is updated.
+With the experimental introduction of live content collections in [v5.10.0](https://astro.build/blog/astro-5100/#experimental-live-content-collections), it is now possible to fetch data at runtime instead of build time. This allows sites to access the latest data in a type safe way without requiring a rebuild whenever content is updated.
 
 To enable this feature, you need to configure [on-demand rendering](https://docs.astro.build/en/guides/on-demand-rendering/) and then add the `experimental.liveContentCollections` flag to your Astro config file:
 
@@ -126,16 +135,20 @@ const { entries: electronics } = await getLiveCollection('products', { category:
 ---
 ```
 
-Did you notice the similarities with the existing API? In short, `src/content.config.ts` and `src/live.config.ts`, [`defineCollection`](https://docs.astro.build/en/reference/modules/astro-content/#definecollection) and `defineLiveCollection`, as well as [`getCollection`](https://docs.astro.build/en/reference/modules/astro-content/#getcollection)/[`getEntry`](https://docs.astro.build/en/reference/modules/astro-content/#getentry) and `getLiveCollection`/`getLiveEntry`, are designed to work in almost the same way. This really highlights the elegance of Astro's API design.
+Did you notice the similarities with the existing APIs? In short, `src/content.config.ts` and `src/live.config.ts`, [`defineCollection`](https://docs.astro.build/en/reference/modules/astro-content/#definecollection) and `defineLiveCollection`, as well as [`getCollection`](https://docs.astro.build/en/reference/modules/astro-content/#getcollection)/[`getEntry`](https://docs.astro.build/en/reference/modules/astro-content/#getentry) and `getLiveCollection`/`getLiveEntry`, are designed to work in almost the same way. This really highlights the elegance of Astro's API design.
 
 However, because live content is fetched at runtime, you need to handle unexpected errors and consider performance optimizations like caching. The good news is that Astro provides APIs to help you do exactly that.
 
 Although it was not covered here, you can still use Zod when defining collections and distribute your custom loaders on npm, just as before. For more details, check out [the official documentation on live content collections](https://docs.astro.build/en/reference/experimental-flags/live-content-collections/).
 
+If you are interested in learning through video, you may also want to check out the following:
+
+<YouTube id="Ky_Bpu7d5z8" params="list=PL8Qn4kutqAEuDiRlQ7TD2lthxTKtrbQTc&index=2" posterQuality="high" />
+
 
 ### Responsive Images
 
-Images are an essential part of most websites, but displaying them correctly across various devices is far from trivial. Screen size, resolution, and image format are just a few of the factors developers need to consider when rendering images on the screen. To address these challenges flexibly, Astro already provides a variety of options, and in [v5.10.0](https://astro.build/blog/astro-5100/), it introduced a new behavior that makes responsive images much easier to implement.
+Images are an essential part of most websites, but displaying them correctly across various devices is far from trivial. Screen size, resolution, and image format are just a few of the factors developers need to consider when rendering images on the screen. To address these challenges flexibly, Astro already provides a variety of options, and in [v5.10.0](https://astro.build/blog/astro-5100/#responsive-images-are-now-stable), it introduced a new behavior that makes responsive images much easier to implement.
 
 To use the new responsive behavior, set [`image.responsiveStyles`](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles) to `true` in your Astro config file and specify [responsive image properties](https://docs.astro.build/en/reference/modules/astro-assets/#responsive-image-properties) on the `<Image />` component. In the example below, setting the `layout` property makes the image scale to fit the container while maintaining its aspect ratio, without exceeding the specified dimensions.
 
@@ -221,6 +234,10 @@ import Logo from './path/to/svg/file.svg';
 
 [Check out the official docs to learn more about responsive images in Astro](https://docs.astro.build/en/guides/images/#responsive-image-behavior).
 
+If you are interested in learning through video, you may also want to check out the following:
+
+<YouTube id="Z6w4G_6k7rw" params="list=PL8Qn4kutqAEuDiRlQ7TD2lthxTKtrbQTc&index=3" posterQuality="high"/>
+
 ### Fonts
 
 Fonts are also a crucial part of websites, but loading them efficiently can be just as challenging as images. Choosing the right loading strategy, defining fallbacks, and adding preload hints all require careful configuration. Astro previously did not provide a built in approach for working with fonts, but [v5.7.0](https://astro.build/blog/astro-570/#experimental-fonts-api) introduced an experimental Fonts API. With this API, Astro can handle web font optimizations such as preload links, optimized fallbacks, and opinionated defaults.
@@ -304,6 +321,10 @@ It is worth noting that inline scripts require custom hashes to be provided, and
 
 [Check out the official docs to learn more about Content Security Policy in Astro](https://docs.astro.build/en/reference/experimental-flags/csp/).
 
+If you are interested in learning through video, you may also want to check out the following:
+
+<YouTube id="3r9ThIMYzsU" params="list=PL8Qn4kutqAEuDiRlQ7TD2lthxTKtrbQTc&index=1" posterQuality="high"/>
+
 ### Astro Docs MCP Server
 
 While 2025 has been widely described as the year of [vibe coding](https://x.com/karpathy/status/1886192184808149383), Astro has been steadily moving forward with support for AI tools as well. The Astro docs now include a new "[Build with AI](https://docs.astro.build/en/guides/build-with-ai/)" page, which provides information about `llms.txt` and offers tips for developing Astro projects with AI. The most extensively covered topic on that page is the Astro Docs MCP Server, which is introduced below.
@@ -320,7 +341,7 @@ Because the process of connecting to an MCP server depends on the tool being use
 
 ### `astro:config`
 
-In [v5.7.0](https://astro.build/blog/astro-570/), Astro added support for importing a subset of the Astro configuration in a type safe way. The `astro:config` virtual module provides two submodules, `/client` and `/server`, which are designed to be used depending on the runtime environment.
+In [v5.7.0](https://astro.build/blog/astro-570/#config-imports), Astro added support for importing a subset of the Astro configuration in a type safe way. The `astro:config` virtual module provides two submodules, `/client` and `/server`, which are designed to be used depending on the runtime environment.
 
 Currently, the following values are available from `/client` and `/server`. Note that information related to directory paths is intentionally excluded from `/client` for security reasons:
 
@@ -359,7 +380,7 @@ function addForwardSlash(path) {
 
 ### Chrome DevTools Workspaces
 
-Experimental support for [Chrome DevTools workspaces](https://developer.chrome.com/docs/devtools/workspaces) was added in Astro [v5.13.0](https://astro.build/blog/astro-5130/). This allows you to connect your local development environment to Chrome DevTools as a workspace and edit project files directly from DevTools.
+Experimental support for [Chrome DevTools workspaces](https://developer.chrome.com/docs/devtools/workspaces) was added in Astro [v5.13.0](https://astro.build/blog/astro-5130/#experimental-chrome-devtools-workspace-support). This allows you to connect your local development environment to Chrome DevTools as a workspace and edit project files directly from DevTools.
 
 To enable this feature, add the `experimental.chromeDevtoolsWorkspace` flag to your Astro config file:
 
@@ -419,7 +440,7 @@ There is little doubt that [Vite](https://vite.dev/) is one of the most importan
 
 ### Vite Conf
 
-On October 9 and 10, 2025, [ViteConf](https://viteconf.amsterdam/) took place in Amsterdam, the Netherlands. Sarah Rainsberger and Matt Kane from the Astro team spoke about making meaningful contributions to open source projects and shared updates on where Astro is today and what is coming next. If you have not seen the talks yet, definitely check them out:
+On October 9 and 10, 2025, [ViteConf](https://viteconf.amsterdam/) took place in Amsterdam, the Netherlands. Sarah Rainsberger and Matt Kane from the Astro team spoke about making meaningful contributions to open source projects and shared updates on where Astro is today and what is coming next. If you have not watched the talks yet, definitely check them out:
 
 <YouTubeGrid
   maxCols={2}
@@ -527,8 +548,6 @@ Although this API is not finalized yet, it is great to see how a declarative app
 
 ### Tracing Hooks for Astro
 
-https://github.com/withastro/roadmap/issues/1208
-
 This is a proposal to add a low overhead, general purpose instrumentation hook system to the Astro core. Distributed tracing is an effective way to identify application performance bottlenecks, but integrating OpenTelemetry directly into Astro would significantly increase the number of dependencies. Instead, this proposal introduces a mechanism that allows operations such as page rendering, middleware execution, and component rendering to be measured using before and after hooks. When no listeners are registered, overhead is kept to a minimum, while observability can still be achieved through integrations such as `@astrojs/opentelemetry`.
 
 This proposal is currently at Stage 2, and if you are interested, you can share feedback by commenting on [the proposal](https://github.com/withastro/roadmap/issues/1208) or on [the related pull request](https://github.com/withastro/astro/pull/13782). If you have any thoughts or questions, be sure to check them out.
@@ -539,6 +558,8 @@ While 2025 did not see a major version release, Astro v6 is planned for 2026! Al
 
 
 ## Closing Thoughts
+
+Whew, that was a long one. Thank you so much for reading through to the end! Looking back, I hope this article conveyed just how much the Astro ecosystem has matured. Further enhancements to existing features like Content Collections, as well as the introduction of thoughtful APIs for traditionally difficult areas such as responsive images and fonts, feel very much in line with Astro philosophy. Content caching is another area that often causes pain for developers due to its close ties to infrastructure, so I am particularly excited about the APIs aiming to address those challenges. I cannot wait to see what new features and improvements Astro brings in 2026.
 
 
 <Note title="About the author">
