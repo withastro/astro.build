@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@dotnetthailand/minimal-portfolio-theme
 homepageUrl: https://www.npmjs.com/package/@dotnetthailand/minimal-portfolio-theme
-downloads: 6
+downloads: 8
 ---

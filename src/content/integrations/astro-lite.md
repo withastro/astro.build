@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-lite
 repoUrl: https://github.com/MarcosKlender/astrolite
 homepageUrl: https://astro-lite.netlify.app
-downloads: 3
+downloads: 4
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-friday
 repoUrl: https://github.com/byronogis/astro-friday
 homepageUrl: https://github.com/byronogis/astro-friday#readme
-downloads: 383
+downloads: 370
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-pages-static
 repoUrl: https://github.com/mattlyons0/astro-cloudflare-pages-static
 homepageUrl: https://github.com/mattlyons0/astro-cloudflare-pages-static#readme
-downloads: 77
+downloads: 75
 ---

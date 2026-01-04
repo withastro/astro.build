@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sensinum/astro-strapi-loader
 repoUrl: https://github.com/VirtusLab-Open-Source/astro-strapi-loader
 homepageUrl: https://github.com/VirtusLab-Open-Source/astro-strapi-loader#readme
-downloads: 138
+downloads: 131
 ---

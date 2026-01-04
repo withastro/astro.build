@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@writenex/astro
 repoUrl: https://github.com/erlandv/writenex
 homepageUrl: https://writenex.com/astro
 badge: new
-downloads: 2052
+downloads: 2053
 ---
