@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@studiocms/ui
 repoUrl: https://github.com/withstudiocms/ui
-homepageUrl: https://ui.studiocms.dev
+homepageUrl: https://www.npmjs.com/package/@studiocms/ui
 downloads: 1970
 ---

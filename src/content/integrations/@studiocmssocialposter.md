@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@studiocms/socialposter
 repoUrl: https://github.com/withstudiocms/experiments
-homepageUrl: https://studiocms.dev
+homepageUrl: https://www.npmjs.com/package/@studiocms/socialposter
 downloads: 4
 ---

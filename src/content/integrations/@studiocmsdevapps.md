@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@studiocms/devapps
 repoUrl: https://github.com/withstudiocms/studiocms
-homepageUrl: https://studiocms.dev
+homepageUrl: https://www.npmjs.com/package/@studiocms/devapps
 downloads: 255
 ---

@@ -8,6 +8,6 @@ categories:
 image: /assets/integrations/studiocms-master.svg
 npmUrl: https://www.npmjs.com/package/studiocms
 repoUrl: https://github.com/withstudiocms/studiocms
-homepageUrl: https://studiocms.dev
+homepageUrl: https://www.npmjs.com/package/studiocms
 downloads: 1279
 ---
