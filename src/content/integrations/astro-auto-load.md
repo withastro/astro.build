@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-auto-load
 homepageUrl: https://www.npmjs.com/package/astro-auto-load
 badge: new
-downloads: 2092
+downloads: 2096
 ---

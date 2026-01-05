@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-content-viewer
 repoUrl: https://github.com/dofbi/astro-content-viewer
 homepageUrl: https://github.com/dofbi/astro-content-viewer
 badge: new
-downloads: 449
+downloads: 451
 ---
