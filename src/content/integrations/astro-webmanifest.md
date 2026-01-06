@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-webmanifest
 repoUrl: https://github.com/alextim/astro-lib
 homepageUrl: https://github.com/alextim/astro-lib/tree/main/packages/astro-webmanifest#readme
-downloads: 13386
+downloads: 13676
 ---
