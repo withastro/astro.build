@@ -32,7 +32,6 @@ This is a guest post written by Shinya Fujino, an active Astro community member 
 
 </Note>
 
-
 ## Introduction
 
 **Happy New Year, Astronauts!**
@@ -49,7 +48,7 @@ If you are interested, I have also written similar articles for 2023 and 2024, s
 
 ### Release Versions
 
-As of the start of 2025, Astro was at [v5.1.2](https://github.com/withastro/astro/releases/tag/astro%405.1.2), and by the time of writing this article near the end of the year, [v5.16.6](https://github.com/withastro/astro/releases/tag/astro%405.16.6) has been released. Including alpha versions, **there were a total of 113 releases in 2025**.
+As of the start of 2025, Astro was at [v5.1.2](https://github.com/withastro/astro/releases/tag/astro%405.1.2), and by the time of writing this article near the end of the year, [v5.16.6](https://github.com/withastro/astro/releases/tag/astro%405.16.6) has been released. Including [v6 alpha](#astro-v6) versions, **there were a total of 113 releases in 2025**.
 
 For those who are curious about the details of each release, you can check [the full list of Astro releases on GitHub](https://github.com/withastro/astro/releases).
 
@@ -504,6 +503,12 @@ Many websites were built with Astro in 2025, and the sites below are some of my 
 
 Astro has a public [Project Roadmap](https://github.com/withastro/roadmap) where its future development direction is discussed. Here, we will take a brief look at some proposals at Stage 2 or above that are expected to be added to Astro, giving a preview of what is coming in 2026.
 
+### Astro v6
+
+While 2025 did not see a major version release, Astro v6 is right around the corner! An alpha version of v5 was first released in December 2025 with support for workerd in dev mode for Cloudflare, an update to Zod 4, the stabilization of many experimental features, and more. (See the [v6 branch CHANGELOG.md](https://github.com/withastro/astro/blob/next/packages/astro/CHANGELOG.md) for complete details.) Most of the v6 scope is already included in the alpha releases, and the first v6 beta release with an accompanying blog post is planned in the very near future!
+
+ You can upgrade to the latest available v6 version using our [v6 Upgrade Guide](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) which details all breaking changes that might require changes to your existing project code.
+
 ### Route Caching
 
 Route caching is an API that aims to provide declarative cache control based on web standards in a platform independent way. Below is a sample taken from [the RFC](https://github.com/withastro/roadmap/pull/1245), which shows that you can configure values such as `maxAge`, `swr`, and `tags` on a per route basis, and invalidate caches by `path` or `tag`. It is also designed to support cache invalidation in combination with the `cacheHints` returned from `getLiveEntry()` in the Live Content Collections mentioned earlier:
@@ -570,15 +575,9 @@ This is a proposal to add a low overhead, general purpose instrumentation hook s
 
 This proposal is currently at Stage 2, and if you are interested, you can share feedback by commenting on [the proposal](https://github.com/withastro/roadmap/issues/1208) or on [the related pull request](https://github.com/withastro/astro/pull/13782). If you have any thoughts or questions, be sure to check them out.
 
-### Astro v6
-
-While 2025 did not see a major version release, Astro v6 is planned for 2026! Although the details of the new features are still under wraps, v6 is expected to bring a variety of improvements, including the stabilization of experimental features and enhancements to existing functionality. [Discussions around the v6 scope](https://github.com/withastro/roadmap/discussions/1174) and [draft migration guides](https://github.com/withastro/docs/pull/12322) are already available, so those who are curious can join in by offering feedback or reviewing the proposals.
-
-
 ## Closing Thoughts
 
 Whew, that was a long one. Thank you so much for reading through to the end! Looking back, I hope this article conveyed just how much the Astro ecosystem has matured. Further enhancements to existing features like Content Collections, as well as the introduction of thoughtful APIs for traditionally difficult areas such as responsive images and fonts, feel very much in line with Astro philosophy. Content caching is another area that often causes pain for developers due to its close ties to infrastructure, so I am particularly excited about the APIs aiming to address those challenges. I cannot wait to see what new features and improvements Astro brings in 2026.
-
 
 <Note title="About the author">
 Hey, my name is <Mention name="shinya" />. I'm a web developer living in Tokyo, Japan. I'm interested in what the future of the web will be like and I would like to be a part of it in some way.
