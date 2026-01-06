@@ -96,8 +96,11 @@ In the 2025 JavaScript Rising Stars, Astro ranked 4th in the Back-end/Full-stack
 
 It is worth noting that the JavaScript Rising Stars site is built with Astro. [The repository is also publicly available](https://github.com/bestofjs/javascript-risingstars), so feel free to take a look if you are interested.
 
-
 ## New and Updated Features
+
+2025 saw several new Astro features, many released behind experimental flags in 2025 that will be available by default in the upcoming v6 major release in early 2026.
+
+You can enable the experimental flags mentioned below, or [install the latest v6 preview release](https://v6.docs.astro.build/en/guides/upgrade-to/v6/#upgrade-astro) to try them out!
 
 ### Live Content Collections
 
@@ -105,7 +108,7 @@ Content collections, introduced in Astro [v2.0](https://astro.build/blog/introdu
 
 With the experimental introduction of live content collections in [v5.10.0](https://astro.build/blog/astro-5100/#experimental-live-content-collections), it is now possible to fetch data at runtime instead of build time. This allows sites to access the latest data in a type safe way without requiring a rebuild whenever content is updated.
 
-To enable this feature, you need to configure [on-demand rendering](https://docs.astro.build/en/guides/on-demand-rendering/) and then add the `experimental.liveContentCollections` flag to your Astro config file:
+To enable this feature in Astro 5 (available by default in Astro 6), you need to configure [on-demand rendering](https://docs.astro.build/en/guides/on-demand-rendering/) and then add the `experimental.liveContentCollections` flag to your Astro config file:
 
 ```mjs title="astro.config.mjs"
 {
@@ -155,7 +158,7 @@ Did you notice the similarities with the existing APIs? In short, `src/content.c
 
 However, because live content is fetched at runtime, you need to handle unexpected errors and consider performance optimizations like caching. The good news is that Astro provides APIs to help you do exactly that.
 
-Although it was not covered here, you can still use Zod when defining collections and distribute your custom loaders on npm, just as before. For more details, check out [the official documentation on live content collections](https://docs.astro.build/en/reference/experimental-flags/live-content-collections/).
+Although it was not covered here, you can still use Zod when defining collections and distribute your custom loaders on npm, just as before. For more details, check out [the official documentation on experimental live content collections](https://docs.astro.build/en/reference/experimental-flags/live-content-collections/).
 
 If you are interested in learning through video, you may also want to check out the following:
 
@@ -166,7 +169,7 @@ If you are interested in learning through video, you may also want to check out 
 
 Images are an essential part of most websites, but displaying them correctly across various devices is far from trivial. Screen size, resolution, and image format are just a few of the factors developers need to consider when rendering images on the screen. To address these challenges flexibly, Astro already provides a variety of options, and in [v5.10.0](https://astro.build/blog/astro-5100/#responsive-images-are-now-stable), it introduced a new behavior that makes responsive images much easier to implement.
 
-To use the new responsive behavior, set [`image.responsiveStyles`](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles) to `true` in your Astro config file and specify [responsive image properties](https://docs.astro.build/en/reference/modules/astro-assets/#responsive-image-properties) on the `<Image />` component. In the example below, setting the `layout` property makes the image scale to fit the container while maintaining its aspect ratio, without exceeding the specified dimensions.
+To use the new responsive behavior, set [`image.responsiveStyles`](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles) to `true` in your Astro config file and specify [a `layout` value](https://docs.astro.build/en/reference/modules/astro-assets/#layout) on the `<Image />` component to determine how the image should resize when its container changes size. In the example below, setting the `layout` property makes the image scale to fit the container while maintaining its aspect ratio, without exceeding the specified dimensions.
 
 ```mjs title="astro.config.mjs"
 {
@@ -258,7 +261,7 @@ If you are interested in learning through video, you may also want to check out 
 
 Fonts are also a crucial part of websites, but loading them efficiently can be just as challenging as images. Choosing the right loading strategy, defining fallbacks, and adding preload hints all require careful configuration. Astro previously did not provide a built in approach for working with fonts, but [v5.7.0](https://astro.build/blog/astro-570/#experimental-fonts-api) introduced an experimental Fonts API. With this API, Astro can handle web font optimizations such as preload links, optimized fallbacks, and opinionated defaults.
 
-To enable this feature, configure an `experimental.fonts` object with at least one font:
+To enable this feature in Astro v5 (available by default in v6), configure an `experimental.fonts` object with at least one font:
 
 ```mjs title="astro.config.mjs"
 import { defineConfig, fontProviders } from "astro/config";
@@ -294,7 +297,7 @@ With this setup, CSS `@font-face` rules and font preload tags are automatically 
 
 The Fonts API also supports providers beyond Google, allows detailed control over the downloaded font files, and even makes it possible to build your own font provider. Be sure to give the new API a try.
 
-[Check out the official docs to learn more about the Fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/).
+[Check out the official docs to learn more about the experimental Fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/).
 
 ### Sessions
 
@@ -319,7 +322,7 @@ For many use cases, [`session.get()`](https://docs.astro.build/en/reference/api-
 
 Content Security Policy (CSP) is an important security layer that helps protect websites from cross-site scripting (XSS) and other code injection attacks. While CSP is typically implemented using `nonce` headers that require server-side generation for each request, Astro [v5.9.0](https://astro.build/blog/astro-590/#experimental-content-security-policy-support) introduced experimental support for a hash-based approach using `<meta>` tags. This solution works seamlessly across all rendering modes (static pages, server-rendered pages, and SPAs) without the complexity of server-side nonce management.
 
-When CSP is enabled, Astro automatically generates a `<meta>` element containing hashes for all scripts and styles used on the page, including those loaded dynamically. To enable this feature, add the `experimental.csp` option to your Astro config file:
+When CSP is enabled, Astro automatically generates a `<meta>` element containing hashes for all scripts and styles used on the page, including those loaded dynamically. To enable this feature in Astro 5 (available by default in v6), add the `experimental.csp` option to your Astro config file:
 
 ```mjs title="astro.config.mjs"
 {
@@ -335,7 +338,7 @@ For more advanced use cases, Astro provides runtime APIs through the `Astro.csp`
 
 It is worth noting that inline scripts require custom hashes to be provided, and the `<ClientRouter />` component is not compatible with this feature. Be sure to test your CSP configuration using `astro build` and `astro preview`, as CSP is not enforced in development mode.
 
-[Check out the official docs to learn more about Content Security Policy in Astro](https://docs.astro.build/en/reference/experimental-flags/csp/).
+[Check out the official docs to learn more about experimental Content Security Policy in Astro](https://docs.astro.build/en/reference/experimental-flags/csp/).
 
 If you are interested in learning through video, you may also want to check out the following:
 
