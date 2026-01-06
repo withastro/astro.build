@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-readwise
 repoUrl: https://github.com/baraqkamsani/astro-loader-readwise
 homepageUrl: https://github.com/baraqkamsani/astro-loader-readwise#readme
-downloads: 5
+downloads: 4
 ---
