@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/expressive-code-fullscreen
 repoUrl: https://github.com/frostybee/expressive-code-fullscreen
 homepageUrl: https://github.com/frostybee/expressive-code-fullscreen
-downloads: 1202
+downloads: 1201
 ---

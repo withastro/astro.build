@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/lism-css-dev
 repoUrl: https://github.com/lism-css/lism-css#main
 homepageUrl: https://www.npmjs.com/package/lism-css-dev
-downloads: 15
+downloads: 16
 ---

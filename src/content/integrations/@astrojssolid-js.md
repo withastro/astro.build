@@ -10,6 +10,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/solid-js
 image: /assets/integrations/solid.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/solid-js/
-downloads: 74576
+downloads: 76356
 official: true
 ---
