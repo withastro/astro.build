@@ -53,8 +53,8 @@ importers:
         specifier: ^5.16.6
         version: 5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
       astro-embed:
-        specifier: ^0.10.0
-        version: 0.10.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))
+        specifier: ^0.12.0
+        version: 0.12.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))
       astro-expressive-code:
         specifier: ^0.41.5
         version: 0.41.5(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))
@@ -159,13 +159,19 @@ packages:
   '@astro-community/astro-embed-bluesky@0.1.6':
     resolution: {integrity: sha512-3y6Y3cRelLnR9AYMItmEAjcr83KAEa6WvsxQ1eHq1cPBzICXknuzphaZlmQZ+QG5NTtmEJD+2lQWrFba/BfM1A==}
 
-  '@astro-community/astro-embed-integration@0.9.0':
-    resolution: {integrity: sha512-E/rLvgofFgHbvLoMARQrbTQ+WUWqkamqCt00LNFqFqL6KIXWo3QoqI3vSzZkA+wMErfHaMLdVz3Z938s7RbsgA==}
+  '@astro-community/astro-embed-gist@0.1.0':
+    resolution: {integrity: sha512-wP3EoBZZjDoPLH6TZzem8jDJxOuweDoK5zWmSra0QBKz3Lry1tZGCwKII5mlnOL2AmTKLrfqrBXTxSGwb7AimQ==}
+
+  '@astro-community/astro-embed-integration@0.11.0':
+    resolution: {integrity: sha512-xmwXN8039zUT0/lBO2GUr8cm5t/v+9Fh8QkPUhTWy+A7RR0+PwT1M3PBm8q01A1rK9q0myOyFHEcSOp+WkH5tg==}
     peerDependencies:
       astro: ^5.0.0 || ^6.0.0-alpha
 
   '@astro-community/astro-embed-link-preview@0.3.1':
     resolution: {integrity: sha512-TI++efm08+kJqxqA7bvxBr7+Zt4yCceA6s3wvAQJ87eiaxbLqAFUSQ+paQD66ET9dIC+IuKzHOMwsoDfqBidYw==}
+
+  '@astro-community/astro-embed-mastodon@0.1.0':
+    resolution: {integrity: sha512-IEgoBps2OI+Ayov77B08KVTmgMDvPLimXkUj76/po8SMc/Cjq5/2dByaOBqU/sk5brHZlacR+9ZbtO/JOoihXA==}
 
   '@astro-community/astro-embed-twitter@0.5.10':
     resolution: {integrity: sha512-5opDlH12zGE1lpZ998PApIfIePXDKsGPSRQcGJqlR/kvCMl3UJDG2mQw3aAB9NvkY5ptavIWYK6A+soUTQuO0g==}
@@ -1312,6 +1318,9 @@ packages:
   '@types/unist@3.0.2':
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
 
+  '@types/unist@3.0.3':
+    resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
+
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
 
@@ -1545,8 +1554,8 @@ packages:
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
 
-  astro-embed@0.10.0:
-    resolution: {integrity: sha512-kKxaXyN6Iz4fxv944aJtXewyyotUbTOI+53wxW7SwoGOWFAA6BfKyATcjqvuYPUaQm+1Fp1/3kdz7UJdLAwTBw==}
+  astro-embed@0.12.0:
+    resolution: {integrity: sha512-Hp/zfIFsibBSCXEC09Lk38uYq5IJyXClbNASiT/06fqrMvgWJzPEPvtnCEo1qIw8hxIh+4+esAJoktu5YKRIEA==}
     peerDependencies:
       astro: ^5.0.0 || ^6.0.0-alpha
 
@@ -2012,9 +2021,6 @@ packages:
 
   css-select@5.1.0:
     resolution: {integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==}
-
-  css-selector-parser@1.4.1:
-    resolution: {integrity: sha512-HYPSb7y/Z7BNDCOrakL4raGO2zltZkbeXyAd6Tg9obzix6QhzxCotdBl6VT0Dv4vZfJGVz3WL/xaEI9Ly3ul0g==}
 
   css-selector-parser@3.0.5:
     resolution: {integrity: sha512-3itoDFbKUNx1eKmVpYMFyqKX04Ww9osZ+dLgrk6GEv6KMVeXUhUnp4I5X+evw+u3ZxVU6RFXSSRxlTeMh8bA+g==}
@@ -4765,8 +4771,8 @@ packages:
   unist-util-remove-position@5.0.0:
     resolution: {integrity: sha512-Hp5Kh3wLxv0PHj9m2yZhhLt58KzPtEYKQQ4yxfYFEO7EvHwzyDYnduhHnY1mDxoqr7VUwVuHXk9RXKIiYS1N8Q==}
 
-  unist-util-select@4.0.3:
-    resolution: {integrity: sha512-1074+K9VyR3NyUz3lgNtHKm7ln+jSZXtLJM4E22uVuoFn88a/Go2pX8dusrt/W+KWH1ncn8jcd8uCQuvXb/fXA==}
+  unist-util-select@5.1.0:
+    resolution: {integrity: sha512-4A5mfokSHG/rNQ4g7gSbdEs+H586xyd24sdJqF1IWamqrLHvYb+DH48fzxowyOhOfK7YSqX+XlCojAyuuyyT2A==}
 
   unist-util-stringify-position@4.0.0:
     resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
@@ -5286,23 +5292,33 @@ snapshots:
     dependencies:
       '@atproto/api': 0.13.23
 
-  '@astro-community/astro-embed-integration@0.9.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))':
+  '@astro-community/astro-embed-gist@0.1.0':
+    dependencies:
+      '@astro-community/astro-embed-utils': 0.2.0
+
+  '@astro-community/astro-embed-integration@0.11.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))':
     dependencies:
       '@astro-community/astro-embed-bluesky': 0.1.6
+      '@astro-community/astro-embed-gist': 0.1.0
       '@astro-community/astro-embed-link-preview': 0.3.1
+      '@astro-community/astro-embed-mastodon': 0.1.0
       '@astro-community/astro-embed-twitter': 0.5.10
       '@astro-community/astro-embed-vimeo': 0.3.12
       '@astro-community/astro-embed-youtube': 0.5.10
-      '@types/unist': 2.0.10
+      '@types/unist': 3.0.3
       astro: 5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
       astro-auto-import: 0.4.5(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))
-      unist-util-select: 4.0.3
+      unist-util-select: 5.1.0
 
   '@astro-community/astro-embed-link-preview@0.3.1':
     dependencies:
       '@astro-community/astro-embed-utils': 0.2.0
       '@parse5/tools': 0.7.0(parse5@8.0.0)
       parse5: 8.0.0
+
+  '@astro-community/astro-embed-mastodon@0.1.0':
+    dependencies:
+      '@astro-community/astro-embed-utils': 0.2.0
 
   '@astro-community/astro-embed-twitter@0.5.10':
     dependencies:
@@ -6719,6 +6735,8 @@ snapshots:
 
   '@types/unist@3.0.2': {}
 
+  '@types/unist@3.0.3': {}
+
   '@types/yauzl@2.10.3':
     dependencies:
       '@types/node': 24.10.4
@@ -7028,12 +7046,14 @@ snapshots:
       acorn: 8.15.0
       astro: 5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
 
-  astro-embed@0.10.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)):
+  astro-embed@0.12.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)):
     dependencies:
       '@astro-community/astro-embed-baseline-status': 0.2.2
       '@astro-community/astro-embed-bluesky': 0.1.6
-      '@astro-community/astro-embed-integration': 0.9.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))
+      '@astro-community/astro-embed-gist': 0.1.0
+      '@astro-community/astro-embed-integration': 0.11.0(astro@5.16.6(patch_hash=30de4f6d8536b97dc204448416f53fbf99be7ef9086f4b4ad7748a35ac728f2f)(@netlify/blobs@10.4.1)(@types/node@24.10.4)(jiti@2.6.1)(rollup@4.36.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))
       '@astro-community/astro-embed-link-preview': 0.3.1
+      '@astro-community/astro-embed-mastodon': 0.1.0
       '@astro-community/astro-embed-twitter': 0.5.10
       '@astro-community/astro-embed-vimeo': 0.3.12
       '@astro-community/astro-embed-youtube': 0.5.10
@@ -7632,8 +7652,6 @@ snapshots:
       domhandler: 5.0.3
       domutils: 3.2.2
       nth-check: 2.1.1
-
-  css-selector-parser@1.4.1: {}
 
   css-selector-parser@3.0.5: {}
 
@@ -11037,10 +11055,11 @@ snapshots:
       '@types/unist': 3.0.2
       unist-util-visit: 5.0.0
 
-  unist-util-select@4.0.3:
+  unist-util-select@5.1.0:
     dependencies:
-      '@types/unist': 2.0.10
-      css-selector-parser: 1.4.1
+      '@types/unist': 3.0.3
+      css-selector-parser: 3.0.5
+      devlop: 1.1.0
       nth-check: 2.1.1
       zwitch: 2.0.4
 
