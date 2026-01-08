@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@nuasite/agent-summary
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://github.com/nuasite/nuasite/blob/main/packages/agent-summary/README.md
-downloads: 1231
+downloads: 1252
 image: /assets/integrations/@nuasite/nuasite-default-icon.png
 ---
