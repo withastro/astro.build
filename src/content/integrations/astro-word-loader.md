@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-word-loader
 repoUrl: https://github.com/gingerchew/astro-word-loader
 homepageUrl: https://astro-word-loader.netlify.app
-downloads: 4
+downloads: 8
 ---

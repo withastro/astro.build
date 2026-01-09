@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/super-tips
 homepageUrl: https://www.npmjs.com/package/super-tips
 badge: new
-downloads: 195
+downloads: 197
 ---

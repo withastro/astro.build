@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/expressive-code-collapsible
 repoUrl: https://github.com/frostybee/expressive-code-collapsible
 homepageUrl: https://github.com/frostybee/expressive-code-collapsible
 badge: new
-downloads: 178
+downloads: 188
 ---
