@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/xlsx-transformer
 repoUrl: https://github.com/zakarialaoui10/xls-transformer
 homepageUrl: https://github.com/zakarialaoui10/xls-transformer#readme
-downloads: 8
+downloads: 10
 ---
