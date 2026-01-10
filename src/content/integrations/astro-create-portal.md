@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-create-portal
 repoUrl: https://github.com/Bl4cky99/astro-create-portal
 homepageUrl: https://github.com/Bl4cky99/astro-create-portal#readme
-downloads: 13
+downloads: 12
 image: /assets/integrations/astro-create-portal.png
 ---

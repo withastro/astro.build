@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sylphx/silk-astro
 repoUrl: https://github.com/sylphxltd/silk
 homepageUrl: https://sylphx.com
-downloads: 43
+downloads: 25
 ---

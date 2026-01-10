@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@casoon/astro-speed-measure
 repoUrl: https://github.com/casoon/astro-speed-measure
 homepageUrl: https://github.com/casoon/astro-speed-measure#readme
 badge: new
-downloads: 93
+downloads: 70
 ---
