@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-fish
 repoUrl: https://github.com/felishh77/astro-fish
 homepageUrl: https://github.com/felishh77/astro-fish
-downloads: 76
+downloads: 75
 ---

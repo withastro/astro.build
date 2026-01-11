@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/athlefi-ui
 repoUrl: https://github.com/athlefi/athlefi-ui
 homepageUrl: https://github.com/athlefi/athlefi-ui#readme
 badge: new
-downloads: 1218
+downloads: 1230
 ---
