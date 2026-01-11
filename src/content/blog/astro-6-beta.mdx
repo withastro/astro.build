@@ -1,7 +1,7 @@
 ---
 title: "Astro 6 Beta"
 description: "Astro 6 Beta introduces native Cloudflare Workers support in development, powered by workerd and Vite's Environment API. Develop your edge applications with the same runtime as production."
-publishDate: "2025-12-06T00:00:00+00:00"
+publishDate: "2026-01-13T00:00:00+00:00"
 authors:
   - matthew
 # coverImage: "/src/content/blog/_images/astro-6-beta/blog-post-6-beta.webp"
@@ -23,6 +23,7 @@ import BlogContentImage from "/src/components/BlogContentImage.astro"
 - __[`astro dev` now supports workerd](#cloudflare-workers-development)__
 - __[Vite Environment API integration](#vite-environment-api-foundation)__
 - __[Stabilized live collections](#live-collections-stabilized)__
+- __[Content Security Policy stabilized](#content-security-policy-stabilized)__
 
 To try Astro 6 Beta, run the `create astro` command:
 
@@ -137,6 +138,22 @@ if (error) return Astro.redirect('/404');
 <h1>{product.data.title}</h1>
 ```
 
+## Content Security Policy Stabilized
+
+Content Security Policy (CSP) support, previously experimental, is now stable in Astro 6. CSP helps protect your site against cross-site scripting (XSS) and other code injection attacks by controlling which resources can be loaded.
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  csp: {
+    mode: 'auto',
+  },
+});
+```
+
+Astro automatically generates and injects the appropriate CSP headers and nonces for your scripts and styles.
+
 ## Breaking Changes & Migration
 
 Astro 6 includes several breaking changes as we clean up deprecated APIs and align with new standards. Key changes:
@@ -146,6 +163,7 @@ Astro 6 includes several breaking changes as we clean up deprecated APIs and ali
 - **Integration API** - Updates to adapter interfaces, route data, and SSR manifest
 - **Cloudflare adapter** - Breaking changes to `Astro.locals.runtime` and custom entrypoint patterns
 - **i18n** - Changed default behavior for `i18n.redirectToDefaultLocale`
+- **Zod 4** - Upgraded to Zod 4, Zod 3 no longer supported
 
 See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/) for detailed migration steps for each change.
 
