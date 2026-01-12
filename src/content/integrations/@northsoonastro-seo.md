@@ -5,10 +5,8 @@ description: SEO component for Astro with full TypeScript support,
   auto-generated .d.ts declaration files, and IDE autocompletion
 categories:
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/@northsoon/astro-seo
 repoUrl: https://github.com/ByManuelCaballero/astro-seo
 homepageUrl: https://github.com/ByManuelCaballero/astro-seo#readme
-badge: new
 downloads: 84
 ---

@@ -5,10 +5,8 @@ description: Visual editor for Astro content collections - WYSIWYG editing for
   your Astro site
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@writenex/astro
 repoUrl: https://github.com/erlandv/writenex
 homepageUrl: https://writenex.com/astro
-badge: new
 downloads: 995
 ---
