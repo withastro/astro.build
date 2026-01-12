@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mridang/astro-auth
 repoUrl: https://github.com/mridang/astro-auth
 homepageUrl: https://github.com/mridang/astro-auth
-downloads: 17
+downloads: 15
 ---

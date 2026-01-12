@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@phcdevworks/spectre-ui-astro
 repoUrl: https://github.com/phcdevworks/spectre-ui-astro
 homepageUrl: https://github.com/phcdevworks/spectre-ui-astro#readme
-downloads: 243
+downloads: 237
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@astroscope/boot
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/boot#readme
 badge: new
-downloads: 187
+downloads: 196
 ---
