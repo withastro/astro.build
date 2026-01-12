@@ -126,7 +126,7 @@ const products = defineLiveCollection({
 export const collections = { products };
 ```
 
-Access live data with error handling:
+And since anything an happen when making a live data request (e.g. network issues, API errors, validation problems), the API is designed to make error handling explicit:
 
 ```astro
 ---
