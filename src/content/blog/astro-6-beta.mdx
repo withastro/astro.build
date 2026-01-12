@@ -53,7 +53,7 @@ This is the headline feature of Astro 6: you can now develop Astro applications 
 
 Until now, the Astro Cloudflare integration simulated the Cloudflare Workers runtime during development. You'd work against special APIs like `Astro.locals.runtime` that provided polyfills and mocks of Cloudflare's platform, then deploy to production and hope everything worked. Issues with Durable Objects, KV namespaces, R2 storage, Workers Analytics Engine, and other Cloudflare features would only surface after deployment.
 
-With Astro 6 Beta, `astro dev` now runs your entire application using **workerd**—the same JavaScript engine that powers production. You develop directly against the real runtime and can use Cloudflare's standard APIs like the `cloudflare:workers` module, catching issues during development rather than in production. The special simulation APIs like `Astro.locals.runtime` are no longer needed.
+With Astro 6 Beta, `astro dev` now runs your entire application using **workerd**, the same JavaScript engine that powers production. You develop directly against the real runtime and can use Cloudflare's standard APIs like the `cloudflare:workers` module, catching issues during development rather than in production. The special simulation APIs like `Astro.locals.runtime` are no longer needed.
 
 ### What is workerd?
 
