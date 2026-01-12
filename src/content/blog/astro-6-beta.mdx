@@ -59,12 +59,7 @@ With Astro 6 Beta, `astro dev` now runs your entire application using **workerd*
 
 ### What is workerd?
 
-[workerd](https://github.com/cloudflare/workerd) is Cloudflare's open-source JavaScript and WebAssembly runtime. Built on V8 (the same engine Chromium and Node.js use), workerd is:
-
-- **Standards-compliant** - Uses web platform APIs, making code portable across runtimes
-- **Production-identical** - The exact runtime powering Cloudflare Workers
-- **Event-driven** - Optimized for serverless, request-driven architectures
-- **Lightweight** - Designed to be portable and embeddable
+[workerd](https://github.com/cloudflare/workerd) is Cloudflare's open-source JavaScript and WebAssembly runtime. Built on V8 (the same engine powering Chromium and Node.js), it's the actual runtime that runs Cloudflare Workers in production—not a simulation or polyfill.
 
 By embedding workerd into the Astro dev server, we've created a development experience that mirrors production exactly.
 
