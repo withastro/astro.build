@@ -1,7 +1,7 @@
 ---
 name: "@astroscope/boot"
 title: "@astroscope/boot"
-description: Boot integration for Astro
+description: Startup and graceful shutdown hooks for Astro SSR
 categories:
   - uncategorized
   - recent

@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@affiliate.fm/astro-content-ai-translator
 repoUrl: https://github.com/affiliatefm/astro-content-ai-translator
-homepageUrl: https://github.com/affiliatefm/astro-content-ai-translator#readme
+homepageUrl: https://affiliate.fm/tools/astro-content-ai-translator/
 badge: new
 downloads: 1546
 ---

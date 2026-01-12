@@ -1,8 +1,7 @@
 ---
 name: astro-tractstack
 title: astro-tractstack
-description: Astro integration for TractStack - the digital experience platform
-  (DXP) for the missing middle
+description: Astro integration for TractStack - the free web press by At Risk Media
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-tractstack
