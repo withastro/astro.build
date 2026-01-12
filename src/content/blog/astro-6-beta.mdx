@@ -107,6 +107,8 @@ Astro has refactored internally to use this new API, which allows us to:
 2. **Support any runtime** - We can now add support for Deno, Bun, Cloudflare Workers, and other runtimes.
 3. **Align development with production** - Each environment can match its target production runtime exactly.
 
+### Dev and prod: better together
+
 Beyond enabling workerd support, this refactor has brought the development and production codepaths much closer together. By using the same runtime and APIs in dev as in prod, we've already discovered and fixed numerous subtle bugs that existed only in development or only in production. This architectural change alone improves reliability for all Astro users. This is the foundation that makes Cloudflare Workers support possible, and it opens the door for broader runtime support in future Astro releases.
 
 ## Live Collections Stabilized
