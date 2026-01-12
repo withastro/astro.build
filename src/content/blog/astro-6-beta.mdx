@@ -147,8 +147,12 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   csp: {
-    mode: 'auto',
-  },
+    scriptDirective: {
+      resources: [
+        "'self'", "https://cdn.example.com"
+      ]
+    }
+  }
 });
 ```
 
