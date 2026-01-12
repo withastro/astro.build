@@ -140,7 +140,13 @@ if (error) return Astro.redirect('/404');
 
 ## Content Security Policy Stabilized
 
-Content Security Policy (CSP) support, previously experimental, is now stable in Astro 6. CSP helps protect your site against cross-site scripting (XSS) and other code injection attacks by controlling which resources can be loaded.
+Content Security Policy (CSP) support, previously released as an experimental feature in Astro 5.9, is now stable in Astro 6. CSP helps protect your site against cross-site scripting (XSS) and other code injection attacks by controlling which resources can be loaded.
+
+This was Astro’s most upvoted feature request so far, and we carefully designed the feature to work in all Astro render modes (static pages, dynamic pages and single page applications), with maximum flexibility and type-safety in mind.
+
+This feature is compatible with all of Astro's official adapters (Cloudflare, Netlify, Node, Vercel) and tie end result is that Astro’s CSP will generate the <meta> element for you, with all the hashes of the scripts and styles that will be used in the page, even the ones that will be loaded dynamically!
+
+You can now configure `csp: true` in your Astro config for default protection, or you can further customize the `<meta>` element by enabling this feature with a configuration object that includes additional options:
 
 ```js title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
