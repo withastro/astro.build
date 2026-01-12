@@ -16,7 +16,7 @@ import BlogContentImage from "/src/components/BlogContentImage.astro"
 
 **Introducing Astro 6 Beta!** We're excited to announce the first beta release of Astro 6, bringing native Cloudflare Workers development support to Astro. Develop your edge applications using the exact same runtime that powers production, catching issues before they happen.
 
-This release also includes several performance improvements and feature stabilizations of existing experimental features including live content collections, CSP, and the Fonts API.
+This release also includes several performance improvements and feature stabilizations of existing experimental features including live content collections, CSP, and the [Fonts API](https://v6.docs.astro.build/en/guides/fonts/).
 
 **What is Astro?** [Astro](https://astro.build/) is the web framework for building content-driven websites including blogs, marketing, and e-commerce. If you need a website that loads fast with great SEO, then Astro is for you.
 
@@ -139,6 +139,8 @@ if (error) return Astro.redirect('/404');
 <h1>{product.data.title}</h1>
 ```
 
+See the [live content collections documentation](https://v6.docs.astro.build/en/guides/content-collections/#live-content-collections) for more examples and configuration options.
+
 ## Content Security Policy Stabilized
 
 Content Security Policy (CSP) support, previously released as an experimental feature in Astro 5.9, is now stable in Astro 6. CSP helps protect your site against cross-site scripting (XSS) and other code injection attacks by controlling which resources can be loaded.
@@ -163,7 +165,7 @@ export default defineConfig({
 });
 ```
 
-Astro automatically generates and injects the appropriate CSP headers and nonces for your scripts and styles.
+Astro automatically generates and injects the appropriate CSP headers and nonces for your scripts and styles. See the [CSP configuration reference](https://v6.docs.astro.build/en/reference/configuration-reference/#securitycsp) for all available options.
 
 ## Breaking Changes & Migration
 
@@ -176,7 +178,7 @@ Astro 6 includes several breaking changes as we clean up deprecated APIs and ali
 - **i18n** - Changed default behavior for `i18n.redirectToDefaultLocale`
 - **Zod 4** - Upgraded to Zod 4, Zod 3 no longer supported
 
-See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/) for detailed migration steps for each change.
+See the [upgrade guide](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) for detailed migration steps for each change.
 
 ## Stability & Roadmap
 
