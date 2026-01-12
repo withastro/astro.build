@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@yarso/astro-theme-toggler
 repoUrl: https://github.com/yarso-su/astro-theme-toggler
 homepageUrl: https://github.com/yarso-su/astro-theme-toggler#readme
-downloads: 11
+downloads: 10
 ---

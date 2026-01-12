@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-dynamic-component
 repoUrl: https://github.com/shjyh/astro-dynamic-component
 homepageUrl: https://github.com/shjyh/astro-dynamic-component#readme
 badge: new
-downloads: 343
+downloads: 119
 ---

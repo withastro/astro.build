@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-yandex-metrika
 repoUrl: https://github.com/ufocoder/astro-yandex-metrika
 homepageUrl: https://github.com/ufocoder/astro-yandex-metrika
-downloads: 30
+downloads: 31
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@sweetcorn/astro
 repoUrl: https://github.com/delucis/sweetcorn
 homepageUrl: https://delucis.github.io/sweetcorn/
 badge: new
-downloads: 753
+downloads: 858
 ---

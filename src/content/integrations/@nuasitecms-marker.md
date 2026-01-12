@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@nuasite/cms-marker
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://github.com/nuasite/nuasite/blob/main/packages/cms-marker/README.md
 badge: new
-downloads: 811
+downloads: 824
 ---
