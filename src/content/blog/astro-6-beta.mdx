@@ -108,9 +108,11 @@ Beyond enabling workerd support, this refactor has brought the development and p
 
 ## Live Collections Stabilized
 
-Live content collections—introduced experimentally in Astro 5.10—are now stable in Astro 6. These allow you to fetch content at runtime from CMSs, APIs, databases, and other sources, with a unified API that works across all your content.
+Astro 5.10's experimental live content collections are now stable in Astro 6. These build on Astro's type-safe content collections that already allow you to fetch content either locally or from CMSs, APIs, databases, and other sources, with a unified API that works across all your content.
 
-Unlike build-time collections, live collections update without requiring a rebuild:
+Live collections unlock the missing piece: updating data in real time without requiring a rebuild. With custom data loaders, live collections are the perfect solution for your frequently updating data sources requiring up-to-the-moment data freshness, such as live stock prices or inventory.
+
+Live collections use a different API under the hood, but the configuration and helper functions are designed to feel familiar for those already using Astro's build-time content collections:
 
 ```ts title="src/live.config.ts"
 import { defineLiveCollection } from 'astro:content';
