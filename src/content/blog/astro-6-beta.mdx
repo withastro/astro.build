@@ -14,7 +14,7 @@ homepageLink:
 
 import BlogContentImage from "/src/components/BlogContentImage.astro"
 
-**Introducing Astro 6 Beta!** We're excited to announce the first beta release of Astro 6, bringing native Cloudflare Workers development support to Astro. Develop your edge applications using the exact same runtime that powers production—catch issues before they happen.
+**Introducing Astro 6 Beta!** We're excited to announce the first beta release of Astro 6, bringing native Cloudflare Workers development support to Astro. Develop your edge applications using the exact same runtime that powers production, catching issues before they happen.
 
 This release also includes several performance improvements and feature stabilizations of existing experimental features including live content collections, CSP, and the Fonts API.
 
@@ -49,7 +49,7 @@ Check out [our v6 upgrade guide](https://v6.docs.astro.build/en/guides/upgrade-t
 
 ## `astro dev` now supports workerd
 
-This is the headline feature of Astro 6: you can now develop Astro applications that run on Cloudflare using **workerd**, Cloudflare's open-source JavaScript runtime. This means your development environment is no longer an approximation of production—it's the same runtime, same APIs, same behavior.
+This is the headline feature of Astro 6: you can now develop Astro applications that run on Cloudflare using **workerd**, Cloudflare's open-source JavaScript runtime. This means your development environment is no longer an approximation of production: it's the same runtime, same APIs, same behavior.
 
 ### Why This Matters
 
@@ -59,7 +59,7 @@ With Astro 6 Beta, `astro dev` now runs your entire application using **workerd*
 
 ### What is workerd?
 
-[workerd](https://github.com/cloudflare/workerd) is Cloudflare's open-source JavaScript and WebAssembly runtime. Built on V8 (the same engine powering Chromium and Node.js), it's the actual runtime that runs Cloudflare Workers in production—not a simulation or polyfill.
+[workerd](https://github.com/cloudflare/workerd) is Cloudflare's open-source JavaScript and WebAssembly runtime. Built on V8 (the same engine powering Chromium and Node.js), it's the actual runtime that runs Cloudflare Workers in production, not a simulation or polyfill.
 
 By embedding workerd into the Astro dev server, we've created a development experience that mirrors production exactly.
 
@@ -94,7 +94,7 @@ This feature is built on top of **Vite 6's new Environment API**, a major archit
 
 ### What Changed
 
-Previously, Vite only understood two implicit environments: client and server (optional). With Vite 6, frameworks can define as many environments as needed—each with independent plugins, transforms, HMR channels, and runtime configurations.
+Previously, Vite only understood two implicit environments: client and server (optional). With Vite 6, frameworks can define as many environments as needed, each with independent plugins, transforms, HMR channels, and runtime configurations.
 
 Astro has refactored internally to use this new API, which allows us to:
 
