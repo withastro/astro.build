@@ -18,7 +18,7 @@ import BlogContentImage from "/src/components/BlogContentImage.astro"
 
 **Introducing Astro 6 Beta!** We're excited to announce the first beta release of Astro 6, featuring a redesigned development server, significant rendering performance improvements, and new built-in APIs for working with CSP, Fonts, and live content collections.  
 
-**The new Astro 6 development server refactor brings Astro's development and production codepaths much closer together and increases stability for Astro on all runtimes**. Now, you can develop your Astro project using the same runtime as production. Notably, this unlocks first-class support for Astro on Cloudflare Workers (for example, `workerd` for Cloudflare), with more access to runtime-specific primitives and a more true-to-life development experience.
+**The new Astro 6 development server refactor brings Astro's development and production codepaths much closer together and increases stability for Astro on all runtimes**. Now, you can develop your Astro project using the same runtime as production. Notably, this unlocks first-class support for Astro on [Cloudflare Workers](https://developers.cloudflare.com/workers/), with more access to runtime-specific primitives and a more true-to-life development experience.
 
 To try Astro 6 Beta, run the `create astro` command:
 
@@ -40,11 +40,13 @@ yarn add astro@beta
 
 Check out [our v6 upgrade guide](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) for full details and migration guidance for breaking changes.
 
-This is the headline feature of Astro 6: a redesigned development server.
+## A redesigned `astro dev`
 
-Astro 6 was the chance to significantly improve how Astro manages different run time environments (client, server, and prerender) with an internal refactor to use **Vite's Environment API** which closes the gap between prod and dev.
+The headline feature of Astro 6 is a completely redesigned.
 
-Previously, code that worked locally could behave differently once deployed. Platform-specific features often couldn't be tested until after deployment. In some cases, Astro even had separate logic paths for “dev” and “prod,” increasing the chance of edge-case bugs.
+Astro 6 was the chance to significantly improve how Astro manages different environments (client, server, and prerender) with an internal refactor to use **[Vite's Environment API](https://vite.dev/guide/api-environment)** which closes the gap between prod and dev.
+
+Previously, code that worked locally could behave somewhat differently once deployed. Platform-specific features often couldn't be tested until after deployment. In some cases, Astro even had separate logic paths for “dev” and “prod,” increasing the chance of edge-case bugs.
 
 By leveraging this API internally, Astro can now run your web application inside the same runtime you deploy to, with the same JavaScript engine, the same globals, and the same platform APIs available during development.
 
@@ -53,7 +55,7 @@ This refactor enables Astro to:
 1. **Run against real runtimes** – Development can execute inside the same runtime as production.
 2. **Support more platforms** – Cloudflare Workers today, with a foundation that supports additional runtimes in the future.
 
-By using the same runtime and APIs in dev as in prod, we've already discovered and fixed numerous subtle bugs that existed only in development or only in production.
+By unifying the development and production code paths we've already discovered and fixed numerous subtle bugs that existed only in development or only in production.
 
 This change makes Astro 6 more stable for projects on all runtimes, including non-Node.js environments. All users of Astro will enjoy greater stability and reliability as a result of this upgrade!
 
@@ -62,7 +64,7 @@ This change makes Astro 6 more stable for projects on all runtimes, including no
 
 Cloudflare Workers are the most complete example of what the new `astro dev` makes possible today.
 
-Until now, the Astro Cloudflare integration simulated the Workers runtime during development. You'd work against special APIs like `Astro.locals.runtime` that provided polyfills and mocks of Cloudflare's platform, then deploy and hope everything behaved the same in production.
+Until now, the Astro Cloudflare integration simulated the Workers runtime during development. You'd work against special Astro-specific APIs like `Astro.locals.runtime` that provided polyfills and mocks of Cloudflare's platform, then deploy and hope everything behaved the same in production.
 
 With Astro 6 Beta, `astro dev` can now run your entire application using **workerd**, Cloudflare's open-source JavaScript runtime. This is the same runtime that powers Cloudflare Workers in production—not a simulation or polyfill.
 
