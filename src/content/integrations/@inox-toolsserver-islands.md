@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@inox-tools/server-islands
 homepageUrl: https://www.npmjs.com/package/@inox-tools/server-islands
-downloads: 13
+downloads: 17
 ---

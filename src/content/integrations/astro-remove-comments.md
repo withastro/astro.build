@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-remove-comments
 homepageUrl: https://www.npmjs.com/package/astro-remove-comments
-downloads: 76
+downloads: 78
 ---

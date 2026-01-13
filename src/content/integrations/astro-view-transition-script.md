@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-view-transition-script
 repoUrl: https://github.com/byronogis/astro-view-transition-script
 homepageUrl: https://github.com/byronogis/astro-view-transition-script#readme
-downloads: 100
+downloads: 103
 ---

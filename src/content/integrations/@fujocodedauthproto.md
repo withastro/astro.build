@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@fujocoded/authproto
 repoUrl: https://github.com/FujoWebDev/fujocoded-plugins
 homepageUrl: https://github.com/FujoWebDev/fujocoded-plugins#readme
-downloads: 121
+downloads: 122
 ---
