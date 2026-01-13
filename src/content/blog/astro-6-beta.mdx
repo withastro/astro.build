@@ -79,17 +79,31 @@ When you run `astro dev` with Cloudflare support, you now have access to:
 - **Environment variables & secrets** – Full config support
 - **Hot Module Replacement (HMR)** – Real-time updates while running inside workerd
 
+Access your Cloudflare bindings directly using the `cloudflare:workers` module:
+
+```astro
+---
+import { env } from "cloudflare:workers";
+
+// Access KV storage directly - works in both dev and production
+const kv = env.MY_KV_NAMESPACE;
+await kv.put("visits", "1");
+const visits = await kv.get("visits");
+---
+<p>Visits: {visits}</p>
+```
+
 The Cloudflare adapter has also been significantly enhanced alongside the new dev server:
 
 - **`astro preview`** now works with Cloudflare, letting you test your built application locally before deploying
 - **Integration API updates** for custom entrypoints and dev server configuration
 - **Improved error messages** when your code differs from production behavior
 
-### Still Improving
-
 We're actively refining Cloudflare support as we work toward the stable Astro 6 release. Currently, prerendered (static) builds do not run through workerd, but they will before v6 is released.
 
 If you encounter issues or unexpected behavior, please let us know. This feedback is especially important as we expand runtime support beyond Node.js.
+
+See the [Cloudflare adapter changelog](https://github.com/withastro/astro/blob/next/packages/integrations/cloudflare/CHANGELOG.md) for the full list of changes and improvements.
 
 ## Live Collections (Stable)
 
@@ -167,7 +181,7 @@ See the [upgrade guide](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) fo
 
 ## Stability & Roadmap
 
-**Astro 6 is beta software.** This is our initial release of these features, and we'll be refining them before the stable v6.0 release. We're actively looking for feedback:
+**Astro 6 is currently beta software.** This is our initial release of these features, and we'll be refining them before the stable v6.0 release. We're actively looking for feedback:
 
 - Are you hitting edge cases with workerd development?
 - Do you need runtime support beyond Cloudflare?
