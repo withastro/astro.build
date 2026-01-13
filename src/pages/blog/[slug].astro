@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
+import { type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
 import { format } from 'date-fns';
 import Avatar from '~/components/Avatar.astro';
 import { resolveCoverImage, resolveSocialImage } from '~/content/blog/_resolveImage.js';
@@ -17,15 +17,15 @@ export async function getStaticPaths() {
 	const blog = await getCollection('blog');
 
 	return blog.map((post) => ({
-		params: { slug: post.slug },
+		params: { slug: post.id },
 		props: { post },
 	}));
 }
 
 const { post } = Astro.props;
 
-const { data, render } = post;
-const { Content } = await render();
+const { data } = post;
+const { Content } = await render(post);
 
 const coverImage = await resolveCoverImage(post);
 const socialImage = await resolveSocialImage(post);

@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import MainLayout from '~/layouts/MainLayout.astro';
 
 export async function getStaticPaths() {
@@ -8,7 +8,7 @@ export async function getStaticPaths() {
 
 	return pages.map((page) => {
 		return {
-			params: { slug: page.slug },
+			params: { slug: page.id },
 			props: { page },
 		};
 	});
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props as { page: CollectionEntry<'pages'> };
 const { seo, pageLayout } = page.data;
-const { Content } = await page.render();
+const { Content } = await render(page);
 ---
 
 <MainLayout {...seo}>

@@ -1,11 +1,11 @@
 ---
 name: fulldev-ui
 title: fulldev-ui
-description: A component library built for Astro
+description: Astro UI component and block library compatible with shadcn/ui
 categories:
-  - uncategorized
+  - css+ui
 npmUrl: https://www.npmjs.com/package/fulldev-ui
 repoUrl: https://github.com/fulldotdev/ui
-homepageUrl: https://ui.full.dev/
-downloads: 1709
+homepageUrl: https://ui.full.dev
+downloads: 1296
 ---

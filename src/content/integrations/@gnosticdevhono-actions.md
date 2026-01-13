@@ -6,6 +6,6 @@ description: Define server actions with built-in validation, error handling, and
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
-homepageUrl: https://www.npmjs.com/package/@gnosticdev/hono-actions
-downloads: 443
+homepageUrl: https://github.com/gnosticdev/astro-hono-actions
+downloads: 473
 ---

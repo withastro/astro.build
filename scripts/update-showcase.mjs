@@ -540,6 +540,33 @@ const scraper = new ShowcaseScraper({
 		'https://rabbittranslate.com/',
 		// 2025-09-30
 		'https://mnyorba.github.io/',
+		// 2025-10-28 - not Astro
+		'https://designcember.com/',
+		'https://theconnecto.com/',
+		'https://flyonui.com/',
+		'https://www.lnr.agency/',
+		'https://60fps.fr/',
+		// 2025-10-28 - low quality
+		'https://combinationsumcalculator.pro/',
+		// 2025-10-28 - NSFW Astro site
+		'https://www.explainsthejoke.com',
+		// 2025-10-31 - template/demo site
+		'https://astro-portfolio-template-tbl.netlify.app/',
+		// 2025-11-28 - not Astro
+		'https://astroeditor.danny.is/',
+		// 2025-11-28 - added manually
+		'https://www.99percentoffsale.com/',
+		// 2025-12-17 renamed
+		'https://hybrid-astro-ui.vercel.app/',
+		// 2025-12-30 can't confirm Astro
+		'https://travlagent.com/',
+		// 2025-12-30 Already added manually
+		'https://giannantoniodemalde.com/',
+		'https://fr.benchwiseunderflow.in/',
+		//2025-12-30 not an Astro site
+		'https://dev.to/pascal_cescato_692b7a8a20/from-wordpress-to-astro-three-days-to-reclaim-control-5dn2',
+		// 2025-12-30 NSFW
+		'https://justfuckinguseastro.com/',
 	],
 });
 await scraper.run();

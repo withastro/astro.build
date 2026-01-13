@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-navigation
 repoUrl: https://github.com/tony-sull/astro-navigation
 homepageUrl: https://github.com/tony-sull/astro-navigation#readme
-downloads: 111
+downloads: 215
 ---
