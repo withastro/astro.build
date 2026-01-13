@@ -14,18 +14,11 @@ homepageLink:
 
 import BlogContentImage from "/src/components/BlogContentImage.astro"
 
-**Introducing Astro 6 Beta!** We're excited to announce the first beta release of Astro 6, bringing native Cloudflare Workers development support to Astro. Develop your edge applications using the exact same runtime that powers production, catching issues before they happen.
+*[Astro](https://astro.build/) is the web framework for building content-driven websites including blogs, marketing, and e-commerce. If you need a website that loads fast with great SEO, then Astro is for you.*
 
-This release also includes several performance improvements and feature stabilizations of existing experimental features including live content collections, CSP, and the [Fonts API](https://v6.docs.astro.build/en/guides/fonts/).
+**Introducing Astro 6 Beta!** We're excited to announce the first beta release of Astro 6, featuring a redesigned development server, significant rendering performance improvements, and new built-in APIs for working with CSP, Fonts, and live content collections.  
 
-**What is Astro?** [Astro](https://astro.build/) is the web framework for building content-driven websites including blogs, marketing, and e-commerce. If you need a website that loads fast with great SEO, then Astro is for you.
-
-**Release highlights include:**
-
-- __[`astro dev` now supports workerd](#cloudflare-workers-development)__
-- __[Vite Environment API integration](#vite-environment-api-foundation)__
-- __[Stabilized live collections](#live-collections-stabilized)__
-- __[Content Security Policy stabilized](#content-security-policy-stabilized)__
+**The new Astro 6 development server unlocks first-class support for Astro on Cloudflare Workers and other non-Node.js JavaScript runtimes,** where previously our support had been more limited to Node.js. Now, You can develop your Astro project using the same runtime as production (ex: workerd for Cloudflare), with more access to runtime-specific primitives and a more true-to-life development experience.
 
 To try Astro 6 Beta, run the `create astro` command:
 
@@ -47,38 +40,48 @@ yarn add astro@beta
 
 Check out [our v6 upgrade guide](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) for full details and migration guidance for breaking changes.
 
-## `astro dev` now supports workerd
+## A redesigned `astro dev`
 
-This is the headline feature of Astro 6: you can now develop Astro applications that run on Cloudflare using **workerd**, Cloudflare's open-source JavaScript runtime. This means your development environment is no longer an approximation of production: it's the same runtime, same APIs, same behavior.
+This is the headline feature of Astro 6: a redesigned development server.
 
-### Why This Matters
+In previous versions, Astro's dev server ran on Node.js, and would attempt to *simulate* any non-Node.js deployment environments as closely as possible. This was workable for most users, but it relied on brittle polyfills, mocks, and framework-specific shims to reproduce correct production behavior.
 
-Until now, the Astro Cloudflare integration simulated the Cloudflare Workers runtime during development. You'd work against special APIs like `Astro.locals.runtime` that provided polyfills and mocks of Cloudflare's platform, then deploy to production and hope everything worked. Issues with Durable Objects, KV namespaces, R2 storage, Workers Analytics Engine, and other Cloudflare features would only surface after deployment.
+It didn't always work. Code that worked locally could behave differently once deployed. Platform-specific features often couldn't be exercised until after deployment. In some cases, Astro even had separate logic paths for “dev” and “prod,” increasing the chance of edge-case bugs.
 
-With Astro 6 Beta, `astro dev` now runs your entire application using **workerd**, the same JavaScript engine that powers production. You develop directly against the real runtime and can use Cloudflare's standard APIs like the `cloudflare:workers` module, catching issues during development rather than in production. The special simulation APIs like `Astro.locals.runtime` are no longer needed.
+### Vite to the rescue!
 
-### What is workerd?
+Astro 6 was a chance to finally do something about this. The new **Vite Environment API** had just been released, which added proper support for non-Node.js environments to Vite. By leveraging this API internally, Astro can now run your web application inside the same runtime you deploy to, with the same JavaScript engine, the same globals, and the same platform APIs available during development.
 
-[workerd](https://github.com/cloudflare/workerd) is Cloudflare's open-source JavaScript and WebAssembly runtime. Built on V8 (the same engine powering Chromium and Node.js), it's the actual runtime that runs Cloudflare Workers in production, not a simulation or polyfill.
+This refactor enables Astro to:
 
-By embedding workerd into the Astro dev server, we've created a development experience that mirrors production exactly.
+1. **Abstract away Node.js assumptions** – The dev server is no longer tied to Node-specific APIs.
+2. **Run against real runtimes** – Development can execute inside the same runtime as production.
+3. **Support more platforms** – Cloudflare Workers today, with a foundation that supports additional runtimes in the future.
 
-### Development Features You Get
+
+This change makes Astro 6 more stable for project on all runtimes, including Node.js. This refactor allowed us to bring Astro's development and production codepaths much closer together. By using the same runtime and APIs in dev as in prod, we've already discovered and fixed numerous subtle bugs that existed only in development or only in production.
+
+
+## Spotlight: Astro 6 on Cloudflare Workers
+
+Cloudflare Workers are the most complete example of what the new `astro dev` makes possible today.
+
+Until now, the Astro Cloudflare integration simulated the Workers runtime during development. You'd work against special APIs like `Astro.locals.runtime` that provided polyfills and mocks of Cloudflare's platform, then deploy and hope everything behaved the same in production.
+
+With Astro 6 Beta, `astro dev` can now run your entire application using **workerd**, Cloudflare's open-source JavaScript runtime. This is the same runtime that powers Cloudflare Workers in production—not a simulation or polyfill.
+
+In Astro 6, you can now develop directly against real platform APIs, catching issues during development rather than after deployment. The special simulation APIs like `Astro.locals.runtime` are no longer needed.
 
 When you run `astro dev` with Cloudflare support, you now have access to:
 
-- **Durable Objects** - Test stateful serverless objects locally
-- **KV Namespaces** - Develop with Cloudflare's key-value storage
-- **R2 Storage** - Work with object storage in dev
-- **Workers Analytics Engine** - Test analytics collection
-- **Environment variables & secrets** - Full config support
-- **Hot Module Replacement (HMR)** - Real-time updates while developing in workerd
+- **Durable Objects** – Test stateful serverless objects locally
+- **KV Namespaces** – Develop against real key-value storage
+- **R2 Storage** – Work with object storage in dev
+- **Workers Analytics Engine** – Test analytics collection
+- **Environment variables & secrets** – Full config support
+- **Hot Module Replacement (HMR)** – Real-time updates while running inside workerd
 
-All with the same JavaScript engine and APIs as production.
-
-### Adapter Improvements
-
-The Cloudflare adapter has been significantly enhanced for this release:
+The Cloudflare adapter has also been significantly enhanced alongside the new dev server:
 
 - **`astro preview`** now works with Cloudflare, letting you test your built application locally before deploying
 - **Integration API updates** for custom entrypoints and dev server configuration
@@ -86,27 +89,11 @@ The Cloudflare adapter has been significantly enhanced for this release:
 
 ### Still Improving
 
-We're actively improving workerd support as we work toward the stable Astro 6 release. Currently, prerendered (static) builds do not run through workerd, but they will before v6 is released. If you encounter issues or unexpected behavior, please let us know so we can refine the experience.
+We're actively refining Cloudflare support as we work toward the stable Astro 6 release. Currently, prerendered (static) builds do not run through workerd, but they will before v6 is released.
 
-## Vite Environment API Foundation
+If you encounter issues or unexpected behavior, please let us know. This feedback is especially important as we expand runtime support beyond Node.js.
 
-This feature is built on top of **Vite 6's new Environment API**, a major architectural change in Vite that allows frameworks to define and manage multiple independent runtime environments within a single dev server.
-
-### What Changed
-
-Previously, Vite only understood two implicit environments: client and server (optional). With Vite 6, frameworks can define as many environments as needed, each with independent plugins, transforms, HMR channels, and runtime configurations.
-
-Astro has refactored internally to use this new API, which allows us to:
-
-1. **Abstract away Node.js assumptions** - The dev server is no longer tied to Node.js-specific APIs.
-2. **Support any runtime** - We can now add support for Deno, Bun, Cloudflare Workers, and other runtimes.
-3. **Align development with production** - Each environment can match its target production runtime exactly.
-
-### Dev and prod: better together
-
-Beyond enabling workerd support, this refactor has brought the development and production codepaths much closer together. By using the same runtime and APIs in dev as in prod, we've already discovered and fixed numerous subtle bugs that existed only in development or only in production. This architectural change alone improves reliability for all Astro users. This is the foundation that makes Cloudflare Workers support possible, and it opens the door for broader runtime support in future Astro releases.
-
-## Live Collections Stabilized
+## Live Collections (Stable)
 
 Astro 5.10's experimental live content collections are now stable in Astro 6. These build on Astro's type-safe content collections that already allow you to fetch content either locally or from CMSs, APIs, databases, and other sources, with a unified API that works across all your content.
 
@@ -141,11 +128,11 @@ if (error) return Astro.redirect('/404');
 
 See the [live content collections documentation](https://v6.docs.astro.build/en/guides/content-collections/#live-content-collections) for more examples and configuration options.
 
-## Content Security Policy Stabilized
+## Content Security Policy (Stable)
 
 Content Security Policy (CSP) support, previously released as an experimental feature in Astro 5.9, is now stable in Astro 6. CSP helps protect your site against cross-site scripting (XSS) and other code injection attacks by controlling which resources can be loaded.
 
-This was Astro’s most upvoted feature request so far, and we carefully designed the feature to work in all Astro render modes (static pages, dynamic pages and single page applications), with maximum flexibility and type-safety in mind.
+This was Astro's most upvoted feature request so far, and we carefully designed the feature to work in all Astro render modes (static pages, dynamic pages and single page applications), with maximum flexibility and type-safety in mind.
 
 This feature is compatible with all of Astro's official adapters (Cloudflare, Netlify, Node, Vercel) and tie end result is that Astro's CSP will generate the `<meta>` element for you, with all the hashes of the scripts and styles that will be used in the page, even the ones that will be loaded dynamically!
 
