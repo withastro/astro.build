@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@ilijazm/astro-styled-background-component
 repoUrl: https://github.com/IlijazM/astro-styled-background-components
 homepageUrl: https://github.com/IlijazM/astro-styled-background-components#readme
 badge: new
-downloads: 271
+downloads: 283
 ---

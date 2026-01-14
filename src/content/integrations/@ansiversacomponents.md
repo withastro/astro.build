@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@ansiversa/components
 homepageUrl: https://www.npmjs.com/package/@ansiversa/components
-downloads: 9049
+downloads: 8359
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sandikodev/astro-deck
 repoUrl: https://github.com/sandikodev/astro-deck
 homepageUrl: https://github.com/sandikodev/astro-deck#readme
-downloads: 36
+downloads: 41
 ---
