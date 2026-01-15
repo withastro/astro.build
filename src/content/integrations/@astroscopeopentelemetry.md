@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@astroscope/opentelemetry
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/opentelemetry#readme
 badge: new
-downloads: 418
+downloads: 525
 ---
