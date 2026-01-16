@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/yalidine-astro
 repoUrl: https://github.com/Darknab/yalidine-sdk
 homepageUrl: https://github.com/Darknab/yalidine-sdk
 badge: new
-downloads: 359
+downloads: 362
 ---

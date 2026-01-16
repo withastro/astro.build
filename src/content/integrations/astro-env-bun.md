@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-env-bun
 repoUrl: https://github.com/raiondesu/astro-env-bun
 homepageUrl: https://www.npmjs.com/package/astro-env-bun
 badge: new
-downloads: 203
+downloads: 204
 ---
