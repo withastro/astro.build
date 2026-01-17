@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/starlight-github-stats
 homepageUrl: https://www.npmjs.com/package/starlight-github-stats
-downloads: 12
+downloads: 11
 ---

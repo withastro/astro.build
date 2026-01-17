@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-fatsoma
 repoUrl: https://github.com/velohost/astro-fatsoma
 homepageUrl: https://velohost.co.uk/plugins/astro-plugins/astro-fatsoma/
 badge: new
-downloads: 507
+downloads: 517
 ---

@@ -10,5 +10,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@thebcms/components-astro
 homepageUrl: https://www.npmjs.com/package/@thebcms/components-astro
-downloads: 17
+downloads: 14
 ---
