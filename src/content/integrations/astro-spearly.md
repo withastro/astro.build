@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-spearly
 homepageUrl: https://www.npmjs.com/package/astro-spearly
 badge: new
-downloads: 22
+downloads: 18
 ---

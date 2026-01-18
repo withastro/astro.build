@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@coffic/cosy-content
 repoUrl: https://github.com/CosyZone/cosy-content
 homepageUrl: https://ui.coffic.cn/en
-downloads: 292
+downloads: 0
 badge: new
 ---

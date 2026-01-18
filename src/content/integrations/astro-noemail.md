@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-noemail
 repoUrl: https://github.com/velohost/astro-noemail
 homepageUrl: https://velohost.co.uk/plugins/astro-noemail/
 badge: new
-downloads: 86
+downloads: 87
 ---
