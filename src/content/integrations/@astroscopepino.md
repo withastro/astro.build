@@ -1,7 +1,7 @@
 ---
 name: "@astroscope/pino"
 title: "@astroscope/pino"
-description: Pino HTTP logging middleware for Astro SSR
+description: Pino logging for Astro — request-scoped context, pino-http style API
 categories:
   - uncategorized
   - recent

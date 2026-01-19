@@ -1,7 +1,8 @@
 ---
 name: "@astroscope/csrf"
 title: "@astroscope/csrf"
-description: CSRF protection integration for Astro with path exclusions and proxy support
+description: CSRF protection with path exclusions — for webhooks, OIDC
+  callbacks, and third-party integrations
 categories:
   - uncategorized
   - recent

@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@vyxos/astro-i18next
 repoUrl: https://github.com/vyxos/astro-i18next
-homepageUrl: https://github.com/vyxos/astro-i18next#readme
+homepageUrl: https://www.npmjs.com/package/@vyxos/astro-i18next
 downloads: 7
 ---

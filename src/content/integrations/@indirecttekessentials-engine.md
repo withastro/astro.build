@@ -10,7 +10,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@indirecttek/essentials-engine
 repoUrl: https://github.com/indirecttek/essentials-engine
-homepageUrl: https://github.com/indirecttek/essentials-engine#readme
+homepageUrl: https://www.npmjs.com/package/@indirecttek/essentials-engine
 badge: new
 downloads: 549
 ---
