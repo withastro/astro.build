@@ -1,7 +1,7 @@
 ---
 name: "@astroscope/proxy"
 title: "@astroscope/proxy"
-description: HTTP proxy handler for Astro SSR
+description: HTTP proxy for Astro — strangler fig migrations and API gateway
 categories:
   - uncategorized
   - recent
