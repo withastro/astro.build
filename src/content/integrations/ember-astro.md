@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/ember-astro
 repoUrl: https://github.com/ember-tooling/ember-astro
 homepageUrl: https://github.com/ember-tooling/ember-astro#readme
-downloads: 137
+downloads: 138
 ---

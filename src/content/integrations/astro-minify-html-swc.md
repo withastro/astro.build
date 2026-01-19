@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-minify-html-swc
 repoUrl: https://github.com/ocavue/astro-minify-html-swc
 homepageUrl: https://github.com/ocavue/astro-minify-html-swc#readme
-downloads: 2184
+downloads: 2111
 ---

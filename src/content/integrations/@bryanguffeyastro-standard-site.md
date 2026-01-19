@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@bryanguffey/astro-standard-site
 repoUrl: https://github.com/musicjunkieg/astro-standard-site
 homepageUrl: https://github.com/musicjunkieg/astro-standard-site#readme
 badge: new
-downloads: 324
+downloads: 325
 ---

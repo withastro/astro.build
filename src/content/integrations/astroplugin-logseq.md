@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astroplugin-logseq
 repoUrl: https://github.com/benjypng/astroplugin-logseq
 homepageUrl: https://github.com/benjypng/astroplugin-logseq#readme
 badge: new
-downloads: 984
+downloads: 994
 ---

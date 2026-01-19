@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-i18nya
 repoUrl: https://github.com/FyraLabs/i18nya
 homepageUrl: https://github.com/FyraLabs/i18nya#readme
-downloads: 637
+downloads: 639
 ---

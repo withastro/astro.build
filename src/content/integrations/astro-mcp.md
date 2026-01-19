@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-mcp
 repoUrl: https://github.com/morinokami/astro-mcp
 homepageUrl: https://github.com/morinokami/astro-mcp#readme
-downloads: 3180
+downloads: 3186
 ---
