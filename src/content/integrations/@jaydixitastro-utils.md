@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jaydixit/astro-utils
 repoUrl: https://github.com/yourusername/astro-monorepo
 homepageUrl: https://www.npmjs.com/package/@jaydixit/astro-utils
-downloads: 12
+downloads: 11
 ---

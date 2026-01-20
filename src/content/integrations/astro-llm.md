@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-llm
 repoUrl: https://github.com/velohost/astro-llm
 homepageUrl: https://velohost.co.uk/plugins/astro-llm/
 badge: new
-downloads: 148
+downloads: 149
 ---

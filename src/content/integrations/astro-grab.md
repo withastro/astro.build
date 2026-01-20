@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-grab
 homepageUrl: https://astro-grab.nickradford.dev
 badge: new
-downloads: 950
+downloads: 953
 ---
