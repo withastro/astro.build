@@ -1,0 +1,183 @@
+---
+title: Supporting the future of Astro
+authors:
+  - chris
+description: Help make Astro a sustainable open source project by sponsoring our community maintainers.
+publishDate: 'January 21, 2026'
+socialImage: '/src/content/blog/_images/supporting-the-future-of-astro/og.webp'
+coverImage: '/src/content/blog/_images/supporting-the-future-of-astro/cover.webp'
+related:
+  - joining-cloudflare
+---
+
+On Friday we announced [The Astro Technology Company is joining Cloudflare](/blog/joining-cloudflare/)!
+With this news out of the bag, let’s talk about Astro’s path to a sustainable future.
+
+## How Astro is funded
+
+In 2021, The Astro Technology Company [raised some money](https://astro.build/blog/the-astro-technology-company/) to support development of Astro and work on growing a business around the framework.
+This gave Astro two ways to fund our development:
+
+1. A company aligned with Astro’s vision
+2. An open source model of sponsors and partners
+
+This has been a huge success.
+To date, we have been able to disperse more than $500,000 in open source sponsorships to Astro’s maintainers and community.
+
+More than half of Astro’s core maintainers are community contributors and Astro is what it is today because we have been able to support their work financially.
+
+Thank you to Astro’s [sponsors](https://opencollective.com/astrodotbuild), [agency partners](https://astro.build/agencies/), [theme sponsors](https://astro.build/themes/) — and [merch purchasers!](https://shop.astro.build/) — for making this possible.
+Building Astro is a community effort and we couldn’t have done it without you.
+
+Today, this hasn’t changed.
+Full-time employees of The Astro Technology Company are now employees of Cloudflare, and will continue to work on Astro full-time.
+The contributions of other core maintainers will continue to be supported by sponsorships.
+
+## How you can help
+
+Depend on Astro?
+Want to support Astro’s community maintainers?
+**Sponsor us!**
+
+Visit [Open Collective](https://opencollective.com/astrodotbuild) or [GitHub Sponsors](https://github.com/sponsors/withastro) and choose from a list of contribution tiers.
+For more details, check out [our partnerships page](https://astro.build/partnerships/) to see how we can work together.
+
+Sponsorships have paid for maintainers to:
+
+- Lead Astro’s [documentation efforts](https://docs.astro.build/)
+- Develop [Starlight](http://starlight.astro.build/)
+- Add [font optimization](https://docs.astro.build/en/reference/experimental-flags/fonts/) support to Astro
+- Design [type-safe environment variables](https://docs.astro.build/en/guides/environment-variables/#type-safe-environment-variables)
+- Manage docs [translations across 14 languages](https://astro.build/blog/astro-i18n/)
+- Maintain our [theme portal](https://astro.build/themes/) and [integration catalog](https://astro.build/integrations/)
+- Grow our vibrant [Discord community](http://astro.build/chat)
+- Publish our [monthly newsletter](https://buttondown.com/withastro/archive/)
+- Plan [Astro 6](https://astro.build/blog/astro-6-beta/)
+- Fix sooooo many bugs
+- …and much more!
+
+In addition, sponsorships have allowed us to support vital contributions to the Astro ecosystem like [Volar](https://volarjs.dev/), [Expressive Code](https://expressive-code.com/), and [ESLint support](https://github.com/ota-meshi/eslint-plugin-astro).
+
+Help us build the web you want to see!
+
+## Thank you
+
+Thank you to all our sponsors past and present for supporting our work and placing your trust in our vision.
+Astro’s current sponsors include:
+
+import { Icon } from 'astro-icon/components';
+import StripWidth from '../../pages/_components/landing-page/StripWidth.astro';
+
+export const Sponsor = (sponsor) => (
+	<li class="!p-0 !m-0 max-w-full flex-grow flex before:!hidden">
+		<a
+			href={sponsor.href}
+			class="text-white w-full grid place-content-center p-8 bg-white/5 border-white/10 hocus:bg-white/10 transition-colors border rounded-2xl"
+		>
+			<span class="sr-only">{sponsor.label}</span>
+			<StripWidth>
+				<Icon
+					class="max-w-full"
+					name={sponsor.src}
+					height={sponsor.height}
+					aria-hidden="true"
+				/>
+			</StripWidth>
+		</a>
+	</li>
+);
+
+export const SmallSponsor = (sponsor) => (
+	<li class="!p-0 !m-0 max-w-full flex-grow flex before:!hidden">
+		<a
+			class="w-full flex place-content-center place-items-center p-3 sm:p-4 text-nowrap bg-white/5 border-white/10 hocus:bg-white/10 transition-colors border rounded-2xl text-white font-medium leading-none no-underline h-[3.5em]"
+			href={sponsor.href}
+		>
+			{sponsor.src ? (
+				<>
+					<Icon
+						name={sponsor.src}
+						aria-hidden="true"
+						class="max-w-full h-full"
+					/>
+					<span class="sr-only">{sponsor.label}</span>
+				</>
+			) : (
+				sponsor.label
+			)}
+		</a>
+	</li>
+);
+
+<ul class="flex flex-wrap gap-2 sm:gap-4 grid-cols-2 !p-0">
+	<Sponsor
+		label="Netlify"
+		src="sponsors/netlify"
+		href="https://www.netlify.com/?utm_campaign=Astro-2024&utm_source=astro-referral"
+		height="74"
+	/>
+	<Sponsor
+		label="Webflow"
+		src="sponsors/webflow"
+		href="https://webflow.com/feature/cloud?utm_source=Astro&utm_medium=tech-partner&utm_campaign=fy26-astro&utm_content=fy26-homepage-sponsors"
+		height="32"
+	/>
+	<Sponsor
+		label="Cloudflare"
+		src="sponsors/cloudflare"
+		href="https://www.cloudflare.com/?utm_source=astro&utm_medium=astro&utm_campaign=astro"
+		height="68"
+	/>
+	<Sponsor
+		label="Mux"
+		src="sponsors/mux"
+		href="https://www.mux.com/?utm_campaign=21819274-Astro&utm_source=astro"
+		height="26"
+	/>
+</ul>
+
+<ul class="flex gap-2 flex-wrap sm:gap-4 sm:justify-center !p-0 text-sm sm:text-lg">
+	<SmallSponsor label="58agents GmbH" href="https://www.58agents.com/" />
+	<SmallSponsor
+		label="Bejamas"
+		href="https://bejamas.com/services"
+		src="sponsors/bejamas"
+	/>
+	<SmallSponsor
+		label="Bits&Letters"
+		href="https://www.bitsandletters.com/?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm"
+		src="sponsors/bits-letters"
+	/>
+	<SmallSponsor label="EXDST" href="https://exdst.com/" />
+	<SmallSponsor
+		label="Lucky Media"
+		href="https://www.luckymedia.dev/astro-development-agency"
+		src="sponsors/lucky-media"
+	/>
+	<SmallSponsor
+		label="Seibert Group GmbH"
+		href="https://seibert.biz/astroagency"
+		src="sponsors/seibert"
+	/>
+	<SmallSponsor label="Arcjet" href="https://arcjet.com/?ref=astro.build" />
+	<SmallSponsor
+		label="Handsontable"
+		src="sponsors/handsontable"
+		href="https://handsontable.com/"
+	/>
+	<SmallSponsor label="Datadog" href="https://www.datadoghq.com/" />
+	<SmallSponsor label="Duende Software" href="https://duendesoftware.com/" />
+	<SmallSponsor
+		label="Databento"
+		src="sponsors/databento"
+		href="https://databento.com/?utm_source=astro&utm_medium=sponsor&utm_content=display"
+	/>
+	<SmallSponsor
+		label="Localazy"
+		src="sponsors/localazy"
+		href="https://localazy.com/"
+	/>
+	<SmallSponsor label="Monogram" href="https://monogram.io/" />
+	<SmallSponsor label="Chris Jennings" href="https://chrisjennings.com/" />
+	<SmallSponsor label="fulldev" href="https://full.dev/" />
+</ul>
