@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/photosuite
 repoUrl: https://github.com/achuanya/photosuite
 homepageUrl: https://www.npmjs.com/package/photosuite
 badge: new
-downloads: 493
+downloads: 649
 ---

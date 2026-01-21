@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/fulldev-ui
 repoUrl: https://github.com/fulldotdev/ui
 homepageUrl: https://ui.full.dev
-downloads: 1416
+downloads: 1222
 ---
