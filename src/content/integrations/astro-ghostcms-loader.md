@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-ghostcms-loader
 repoUrl: https://github.com/MatthiesenXYZ/ghostcms-loader
 homepageUrl: https://matthiesen.dev
-downloads: 10
+downloads: 22
 ---

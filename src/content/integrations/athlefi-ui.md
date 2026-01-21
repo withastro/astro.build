@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/athlefi-ui
 repoUrl: https://github.com/athlefi/athlefi-ui
-homepageUrl: https://github.com/athlefi/athlefi-ui#readme
+homepageUrl: https://www.npmjs.com/package/athlefi-ui
 badge: new
-downloads: 1113
+downloads: 1239
 ---
