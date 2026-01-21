@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-auto-load
 homepageUrl: https://www.npmjs.com/package/astro-auto-load
-downloads: 240
+downloads: 245
 ---

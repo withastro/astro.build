@@ -9,6 +9,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-breadcrumbs
 repoUrl: https://github.com/felix-berlin/astro-breadcrumbs
 homepageUrl: https://www.npmjs.com/package/astro-breadcrumbs
-downloads: 15270
+downloads: 15622
 image: /assets/integrations/astro-breadcrumbs.svg
 ---

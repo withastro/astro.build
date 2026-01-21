@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@astro-community/astro-embed-gist
 repoUrl: https://github.com/delucis/astro-embed
 homepageUrl: https://astro-embed.netlify.app/components/gist/
 badge: new
-downloads: 4956
+downloads: 5546
 ---
