@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-strip-whitespace
 repoUrl: https://github.com/SegaraRai/strip-whitespace
 homepageUrl: https://github.com/SegaraRai/strip-whitespace#readme
 badge: new
-downloads: 231
+downloads: 232
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@astroscope/i18n
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/i18n#readme
 badge: new
-downloads: 597
+downloads: 598
 ---

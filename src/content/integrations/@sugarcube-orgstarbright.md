@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sugarcube-org/starbright
 repoUrl: https://github.com/mark-tomlinson-dev/starbright
 homepageUrl: https://github.com/mark-tomlinson-dev/starbright
-downloads: 14
+downloads: 9
 ---

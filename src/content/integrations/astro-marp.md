@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-marp
 repoUrl: https://github.com/astro-marp/astro-marp
 homepageUrl: https://github.com/astro-marp/astro-marp#readme
-downloads: 28
+downloads: 24
 ---

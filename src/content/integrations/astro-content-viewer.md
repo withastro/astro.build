@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-content-viewer
 repoUrl: https://github.com/dofbi/astro-content-viewer
 homepageUrl: https://github.com/dofbi/astro-content-viewer
-downloads: 187
+downloads: 173
 ---
