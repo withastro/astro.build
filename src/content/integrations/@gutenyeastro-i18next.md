@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@gutenye/astro-i18next
 repoUrl: https://github.com/gutenye/astro-i18next
 homepageUrl: https://github.com/gutenye/astro-i18next#readme
 badge: new
-downloads: 1063
+downloads: 1064
 ---

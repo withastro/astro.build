@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-broken-links-checker
 repoUrl: https://github.com/imazen/astro-broken-link-checker
 homepageUrl: https://github.com/imazen/astro-broken-link-checker#readme
 badge: new
-downloads: 717
+downloads: 890
 ---
