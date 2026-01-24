@@ -1,0 +1,217 @@
+---
+title: 'Astro 5.17'
+description: 'Astro 5.17 brings configurable dev toolbar placement, async file parsing, partitioned cookies, and powerful new image optimization options.'
+homepageLink:
+  title: 'Astro 5.17'
+  subtitle: 'Available now!'
+publishDate: '2025-01-24'
+authors:
+  - matthew
+coverImage: '/src/content/blog/_images/astro-5170/blog-post-cover-astro-5170.webp'
+socialImage: '/src/content/blog/_images/astro-5170/og-astro-5170.webp'
+lang: 'en'
+related:
+  - astro-5160
+  - astro-5150
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**Astro 5.17 brings configurable dev toolbar placement, async file parsing, partitioned cookies, and powerful new image optimization options.**
+
+Explore what's new in this release:
+
+- [**Configure dev toolbar placement**](#configure-dev-toolbar-placement)
+- [**Async parsing in the `file()` loader**](#async-parsing-in-the-file-loader)
+- [**Partitioned cookies support**](#partitioned-cookies-support)
+- [**Background color for image transformations**](#background-color-for-image-transformations)
+- [**Sharp kernel selection for image resizing**](#sharp-kernel-selection-for-image-resizing)
+- [**`retainBody` option for `glob()` loader**](#retainbody-option-for-glob-loader)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Configure dev toolbar placement
+
+The dev toolbar now supports a project-wide `placement` configuration option, allowing you to set a default position that persists across team members and environments.
+
+Previously, toolbar placement could only be controlled through the UI, with preferences stored in `localStorage`. This meant every team member had to manually adjust the placement, and settings would be lost when clearing browser data. Sites with bottom-center UI elements like chat widgets or cookie banners had no way to avoid conflicts with the toolbar.
+
+Add the new `devToolbar.placement` option to your Astro config:
+
+```js
+// astro.config.mjs
+export default defineConfig({
+  devToolbar: {
+    placement: 'bottom-left',
+  },
+});
+```
+
+Valid values are `'bottom-left'`, `'bottom-center'`, and `'bottom-right'`. The configuration acts as a project default while still respecting user preferences—individual developers can override the setting through the toolbar UI, and their choice will be preserved in `localStorage`.
+
+## Async parsing in the `file()` loader
+
+The `parser()` option in the `file()` loader now supports async functions, enabling more complex data processing workflows.
+
+This enhancement allows you to perform asynchronous operations during file parsing, such as fetching additional data, making API calls, or running intensive computations without blocking the build process:
+
+```js
+// astro.config.mjs
+import { defineCollection } from 'astro:content';
+import { file } from 'astro/loaders';
+
+const data = defineCollection({
+  loader: file('src/data/products.json', {
+    parser: async (text) => {
+      const products = JSON.parse(text);
+      
+      // Fetch additional data asynchronously
+      const enrichedProducts = await Promise.all(
+        products.map(async (product) => {
+          const details = await fetchProductDetails(product.id);
+          return { ...product, ...details };
+        })
+      );
+      
+      return enrichedProducts;
+    },
+  }),
+});
+```
+
+This change is backward compatible—existing synchronous parser functions continue to work without modification.
+
+## Partitioned cookies support
+
+Astro now supports partitioned cookies through the new `partitioned` option on `Astro.cookies.set()`, enabling better privacy controls for embedded contexts.
+
+Partitioned cookies are part of the Privacy Sandbox initiative and allow cookies to be isolated per top-level site. This is particularly useful when your Astro application is embedded in an iframe, as partitioned cookies provide a way to maintain session state while respecting modern privacy standards:
+
+```astro
+---
+// Set a partitioned cookie
+Astro.cookies.set('session', sessionId, {
+  partitioned: true,
+  secure: true, // Required for partitioned cookies
+  sameSite: 'none', // Typically used with partitioned cookies
+});
+---
+```
+
+When `partitioned` is set to `true`, the cookie will be tied to the top-level site's partition, preventing cross-site tracking while still allowing necessary functionality in embedded scenarios.
+
+See the [MDN documentation on partitioned cookies](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Privacy_sandbox/Partitioned_cookies) for more details on browser support and use cases.
+
+## Background color for image transformations
+
+The new `background` property on image transformations allows you to control the background color when converting images to formats that don't support transparency.
+
+Previously, images converted to formats like JPEG use a black background. You can now specify any color using standard CSS color syntax:
+
+```astro
+---
+import { Image } from 'astro:assets';
+import myImage from './my-image.png';
+---
+
+<!-- Use a white background when converting to JPEG -->
+<Image src={myImage} format="jpeg" background="white" alt="Product" />
+
+<!-- Or use any CSS color syntax -->
+<Image src={myImage} format="jpeg" background="rgb(248 250 252)" alt="Hero" />
+<Image src={myImage} format="jpeg" background="#f8fafc" alt="Banner" />
+```
+
+The `background` property accepts any syntax supported by the `color-string` library, giving you flexibility in how you specify colors. This is especially useful when maintaining brand consistency or ensuring proper contrast in converted images.
+
+The same property is available when using `getImage()`:
+
+```js
+import { getImage } from 'astro:assets';
+import heroImage from './hero.png';
+
+const optimizedImage = await getImage({
+  src: heroImage,
+  format: 'jpeg',
+  background: 'white',
+});
+```
+
+## Sharp kernel selection for image resizing
+
+The Sharp image service now supports configuring the resize kernel algorithm through a new `kernel` configuration option, giving you fine-grained control over image quality.
+
+By default, Sharp uses the `lanczos3` kernel for downsizing. Different kernels can produce noticeably different results depending on the characteristics of your source images—some excel at preserving sharp edges, while others produce smoother results:
+
+```js
+// astro.config.mjs
+export default defineConfig({
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        kernel: 'mks2021'
+      }
+    }
+  }
+})
+```
+
+Available kernel options include `nearest`, `cubic`, `mitchell`, `lanczos2`, `lanczos3` (default), and `mks2021`. Each kernel offers different trade-offs between sharpness, smoothness, and performance. See [Sharp's resize documentation](https://sharp.pixelplumbing.com/api-resize/#resize) for detailed information on each option.
+
+Note that this configuration applies to all images on your site and cannot yet be configured on a per-image basis.
+
+## `retainBody` option for `glob()` loader
+
+The `glob()` loader now includes a `retainBody` option to help reduce the size of your data store, particularly beneficial for large content collections.
+
+By default, Astro stores the raw body of each content file in `entry.body` in addition to the rendered HTML. For sites with very large collections, this can significantly increase your deployed data store size:
+
+```js
+// astro.config.mjs
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const blog = defineCollection({
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/content/blog',
+    retainBody: false
+  }),
+});
+```
+
+When `retainBody` is set to `false`:
+- `entry.body` will be `undefined` instead of containing the raw file contents
+- The rendered HTML remains available in `entry.rendered.html` for Markdown files
+- The `entry.filePath` property still points to the original file
+- For MDX collections, this can dramatically reduce data store size
+
+This is particularly useful for very large sites that have encountered JSON string size limits or want to optimize their deployment size. The option defaults to `true` to maintain backward compatibility.
+
+## Bug fixes
+
+As always, we've been working hard on fixing issues since the [5.16 release](/blog/astro-5160/). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />, <Mention name="ema" />, 
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />, <Mention name="hideoo" />, 
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />, <Mention name="reuben" />, 
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 5.17 possible with code and docs additions and improvements, including:
+
+[Alejandro Romano](https://github.com/Arecsu), [Andreas Deininger](https://github.com/deining), [Arman](https://github.com/armannaj), [Azat S.](https://github.com/azat-io), [BuckyBuck135](https://github.com/BuckyBuck135), [David Dal Busco](https://github.com/peterpeterparker), [DevVali](https://github.com/DevVali), [Elvis Mao](https://github.com/Edit-Mr), [Eryk Baran](https://github.com/gacek1123), [Felix Schneider](https://github.com/trueberryless), [Franco Victorio](https://github.com/fvictorio), [Fredrik Norlin](https://github.com/fredriknorlin), [Gökhan Kurt](https://github.com/KurtGokhan), [Jacob Lamb](https://github.com/jacobdalamb), [John L. Armstrong IV](https://github.com/jlarmstrongiv), [Junseong Park](https://github.com/jsparkdev), [knj](https://github.com/jp-knj), [ktym4a](https://github.com/ktym4a), [ld-web](https://github.com/ld-web), [Louis Escher](https://github.com/louisescher), [Lumynous](https://github.com/lumynou5), [MareStare](https://github.com/MareStare), [Marta Karaś](https://github.com/MartaKar), [Mateusz Malinkiewicz](https://github.com/mmalinkiewicz), [Maurici Abad Gutierrez](https://github.com/mauriciabad), [Mehdi El Fadil](https://github.com/mef), [Michael Stramel](https://github.com/stramel), [Michał Paśko](https://github.com/mpasko90), [Ming-jun Lu](https://github.com/mingjunlu), [nemu](https://github.com/erbierc), [Néstor](https://github.com/Nsttt), [Olusegun Durojaye](https://github.com/GeoSegun), [paul valladares](https://github.com/dreyfus92), [Philippe Serhal](https://github.com/serhalp), [pioupia](https://github.com/pioupia), [randomguy-2650](https://github.com/randomguy-2650), [Roman](https://github.com/GameRoMan), [Roman Hauksson](https://github.com/RomanHauksson), [Sarah Krasnik Bedell](https://github.com/sarahkb125), [Sebastian Beltran](https://github.com/bjohansebas), [Sergio](https://github.com/SergioDiez), [Thomas Bonnet](https://github.com/thomasbnt), and [vrabe](https://github.com/vrabe)
