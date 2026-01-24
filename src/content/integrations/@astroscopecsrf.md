@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@astroscope/csrf
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/csrf#readme
 badge: new
-downloads: 462
+downloads: 376
 ---

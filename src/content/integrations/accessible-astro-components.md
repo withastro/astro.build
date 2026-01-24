@@ -8,6 +8,6 @@ npmUrl: https://www.npmjs.com/package/accessible-astro-components
 image: /assets/integrations/accessible-astro-components.png
 repoUrl: https://github.com/incluud/accessible-astro-components
 homepageUrl: https://accessible-astro.incluud.dev/components/overview/
-downloads: 14157
+downloads: 14632
 url: https://components.accessible-astro.dev/
 ---
