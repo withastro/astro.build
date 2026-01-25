@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/@nurodev/astro-bun
 homepageUrl: https://github.com/nurodev/astro-bun
-downloads: 3399
+downloads: 3401
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@gladtek/astro-bynder
 homepageUrl: https://www.npmjs.com/package/@gladtek/astro-bynder
 badge: new
-downloads: 74
+downloads: 75
 ---

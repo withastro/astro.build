@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starlight-dot-md
 repoUrl: https://github.com/morinokami/starlight-dot-md
 homepageUrl: https://github.com/morinokami/starlight-dot-md#readme
 badge: new
-downloads: 371
+downloads: 387
 ---
