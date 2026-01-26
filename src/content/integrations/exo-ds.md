@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/exo-ds
 repoUrl: https://github.com/raunaqgupta/exo
 homepageUrl: https://www.npmjs.com/package/exo-ds
 badge: new
-downloads: 23
+downloads: 21
 ---

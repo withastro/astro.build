@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-startup-code
 homepageUrl: https://www.npmjs.com/package/astro-startup-code
-downloads: 168
+downloads: 169
 ---

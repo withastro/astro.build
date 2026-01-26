@@ -11,5 +11,5 @@ image: /assets/integrations/@twocaretcat/astro-snapshot.svg
 npmUrl: https://www.npmjs.com/package/@twocaretcat/astro-snapshot
 repoUrl: https://github.com/twocaretcat/astro-snapshot
 homepageUrl: https://github.com/twocaretcat/astro-snapshot
-downloads: 9
+downloads: 12
 ---
