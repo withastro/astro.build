@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@mashehu/astropub-md
 repoUrl: https://github.com/mashehu/astropub-md
 homepageUrl: https://github.com/mashehu/astropub-md
 badge: new
-downloads: 180
+downloads: 186
 ---

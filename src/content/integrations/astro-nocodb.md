@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-nocodb
 repoUrl: https://github.com/dofbi/astro-nocodb
 homepageUrl: https://github.com/dofbi/astro-nocodb
-downloads: 22
+downloads: 21
 ---

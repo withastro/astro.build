@@ -1,14 +1,11 @@
 ---
 name: photosuite
 title: photosuite
-description: A zero-config Astro integration for better images (Lightbox, EXIF,
-  Path resolution).
+description: 一款零配置的 Astro 图片增强集成，支持灯箱、自动拼图、EXIF 信息及路径解析。
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/photosuite
 repoUrl: https://github.com/achuanya/photosuite
-homepageUrl: https://www.npmjs.com/package/photosuite
-badge: new
-downloads: 406
+homepageUrl: https://photosuite.lhasa.icu
+downloads: 418
 ---
