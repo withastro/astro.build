@@ -10,4 +10,5 @@ repoUrl: https://github.com/wuchalejs/wuchale
 homepageUrl: https://wuchale.dev
 badge: new
 downloads: 881
+image: /assets/integrations/@wuchale/astro.svg
 ---
