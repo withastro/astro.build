@@ -1,12 +1,12 @@
 ---
 title: 'Astro 5.17'
-description: 'Astro 5.17 brings configurable dev toolbar placement, async file parsing, partitioned cookies, and powerful new image optimization options.'
+description: 'Astro 5.17 brings configurable dev toolbar placement, support for partitioned cookies, and powerful new image optimization options.'
 homepageLink:
   title: 'Astro 5.17'
   subtitle: 'Available now!'
 publishDate: '2025-01-24'
 authors:
-  - matthew
+  - erika
 coverImage: '/src/content/blog/_images/astro-5170/blog-post-cover-astro-5170.webp'
 socialImage: '/src/content/blog/_images/astro-5170/og-astro-5170.webp'
 lang: 'en'
@@ -17,7 +17,7 @@ related:
 
 import Mention from '/src/components/Mention.astro';
 
-**Astro 5.17 brings configurable dev toolbar placement, async file parsing, partitioned cookies, and powerful new image optimization options.**
+**Astro 5.17 introduces configurable dev toolbar placement, async file parsing, partitioned cookies, and new image optimization upgrades.**
 
 Explore what's new in this release:
 
@@ -57,13 +57,15 @@ export default defineConfig({
 });
 ```
 
-Valid values are `'bottom-left'`, `'bottom-center'`, and `'bottom-right'`. The configuration acts as a project default while still respecting user preferences—individual developers can override the setting through the toolbar UI, and their choice will be preserved in `localStorage`.
+The configuration acts as a project default while still respecting user preferences. Individual developers can override the setting through the toolbar UI, if they desire.
+
+Read our guide on the [Astro dev toolbar](https://docs.astro.build/en/guides/dev-toolbar/) for more details on available placement options and usage.
 
 ## Async parsing in the `file()` loader
 
 The `parser()` option in the `file()` loader now supports async functions, enabling more complex data processing workflows.
 
-This enhancement allows you to perform asynchronous operations during file parsing, such as fetching additional data, making API calls, or running intensive computations without blocking the build process:
+This enhancement allows you to perform asynchronous operations during file parsing, such as fetching additional data or making API calls:
 
 ```js
 // astro.config.mjs
@@ -89,7 +91,7 @@ const data = defineCollection({
 });
 ```
 
-This change is backward compatible—existing synchronous parser functions continue to work without modification.
+Existing synchronous parser functions continue to work without modification, but you can now take advantage of async capabilities for more advanced scenarios.
 
 ## Partitioned cookies support
 
@@ -110,13 +112,13 @@ Astro.cookies.set('session', sessionId, {
 
 When `partitioned` is set to `true`, the cookie will be tied to the top-level site's partition, preventing cross-site tracking while still allowing necessary functionality in embedded scenarios.
 
-See the [MDN documentation on partitioned cookies](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Privacy_sandbox/Partitioned_cookies) for more details on browser support and use cases.
+Read our section on [cookies in Astro](https://docs.astro.build/en/guides/on-demand-rendering/#cookies) for more information on using cookies effectively.
 
 ## Background color for image transformations
 
 The new `background` property on image transformations allows you to control the background color when converting images to formats that don't support transparency.
 
-Previously, images converted to formats like JPEG use a black background. You can now specify any color using standard CSS color syntax:
+Previously, images converted to formats like JPEG would use a black background. You can now specify any color using standard CSS color syntax:
 
 ```astro
 ---
@@ -132,8 +134,6 @@ import myImage from './my-image.png';
 <Image src={myImage} format="jpeg" background="#f8fafc" alt="Banner" />
 ```
 
-The `background` property accepts any syntax supported by the `color-string` library, giving you flexibility in how you specify colors. This is especially useful when maintaining brand consistency or ensuring proper contrast in converted images.
-
 The same property is available when using `getImage()`:
 
 ```js
@@ -147,11 +147,13 @@ const optimizedImage = await getImage({
 });
 ```
 
+If you'd like to see all the other options available for image transformations, check out the [Astro Images guide](https://docs.astro.build/en/guides/images/) on our docs.
+
 ## Sharp kernel selection for image resizing
 
 The Sharp image service now supports configuring the resize kernel algorithm through a new `kernel` configuration option, giving you fine-grained control over image quality.
 
-By default, Sharp uses the `lanczos3` kernel for downsizing. Different kernels can produce noticeably different results depending on the characteristics of your source images—some excel at preserving sharp edges, while others produce smoother results:
+By default, Sharp uses the `lanczos3` kernel for downsizing. Different kernels can produce noticeably different results depending on the characteristics of your source images, some excel at preserving sharp edges, while others produce smoother results:
 
 ```js
 // astro.config.mjs
@@ -167,9 +169,9 @@ export default defineConfig({
 })
 ```
 
-Available kernel options include `nearest`, `cubic`, `mitchell`, `lanczos2`, `lanczos3` (default), and `mks2021`. Each kernel offers different trade-offs between sharpness, smoothness, and performance. See [Sharp's resize documentation](https://sharp.pixelplumbing.com/api-resize/#resize) for detailed information on each option.
+Note that this configuration applies to all images on your site and cannot currently be configured on a per-image basis.
 
-Note that this configuration applies to all images on your site and cannot yet be configured on a per-image basis.
+Each kernel offers different trade-offs between sharpness, smoothness, and performance. See [Sharp's resize documentation](https://sharp.pixelplumbing.com/api-resize/#resize) for detailed information on all the available kernel options.
 
 ## `retainBody` option for `glob()` loader
 
@@ -214,4 +216,4 @@ The Astro core team is:
 
 Thanks to all the other contributors who helped make Astro 5.17 possible with code and docs additions and improvements, including:
 
-[Alejandro Romano](https://github.com/Arecsu), [Andreas Deininger](https://github.com/deining), [Arman](https://github.com/armannaj), [Azat S.](https://github.com/azat-io), [BuckyBuck135](https://github.com/BuckyBuck135), [David Dal Busco](https://github.com/peterpeterparker), [DevVali](https://github.com/DevVali), [Elvis Mao](https://github.com/Edit-Mr), [Eryk Baran](https://github.com/gacek1123), [Felix Schneider](https://github.com/trueberryless), [Franco Victorio](https://github.com/fvictorio), [Fredrik Norlin](https://github.com/fredriknorlin), [Gökhan Kurt](https://github.com/KurtGokhan), [Jacob Lamb](https://github.com/jacobdalamb), [John L. Armstrong IV](https://github.com/jlarmstrongiv), [Junseong Park](https://github.com/jsparkdev), [knj](https://github.com/jp-knj), [ktym4a](https://github.com/ktym4a), [ld-web](https://github.com/ld-web), [Louis Escher](https://github.com/louisescher), [Lumynous](https://github.com/lumynou5), [MareStare](https://github.com/MareStare), [Marta Karaś](https://github.com/MartaKar), [Mateusz Malinkiewicz](https://github.com/mmalinkiewicz), [Maurici Abad Gutierrez](https://github.com/mauriciabad), [Mehdi El Fadil](https://github.com/mef), [Michael Stramel](https://github.com/stramel), [Michał Paśko](https://github.com/mpasko90), [Ming-jun Lu](https://github.com/mingjunlu), [nemu](https://github.com/erbierc), [Néstor](https://github.com/Nsttt), [Olusegun Durojaye](https://github.com/GeoSegun), [paul valladares](https://github.com/dreyfus92), [Philippe Serhal](https://github.com/serhalp), [pioupia](https://github.com/pioupia), [randomguy-2650](https://github.com/randomguy-2650), [Roman](https://github.com/GameRoMan), [Roman Hauksson](https://github.com/RomanHauksson), [Sarah Krasnik Bedell](https://github.com/sarahkb125), [Sebastian Beltran](https://github.com/bjohansebas), [Sergio](https://github.com/SergioDiez), [Thomas Bonnet](https://github.com/thomasbnt), and [vrabe](https://github.com/vrabe)
+TODO
