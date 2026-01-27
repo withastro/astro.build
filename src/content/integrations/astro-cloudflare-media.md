@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-media
 homepageUrl: https://www.npmjs.com/package/astro-cloudflare-media
 badge: new
-downloads: 94
+downloads: 95
 ---

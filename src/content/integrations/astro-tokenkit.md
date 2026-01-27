@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-tokenkit
 repoUrl: https://github.com/oamm/astro-tokenkit
 homepageUrl: https://github.com/oamm/astro-tokenkit#readme
 badge: new
-downloads: 498
+downloads: 850
 ---
