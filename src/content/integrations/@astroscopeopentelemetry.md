@@ -6,10 +6,8 @@ description: OpenTelemetry for Astro — tracing, metrics, and component
 categories:
   - analytics
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/@astroscope/opentelemetry
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/opentelemetry#readme
-badge: new
-downloads: 701
+downloads: 443
 ---

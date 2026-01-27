@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-consent
 repoUrl: https://github.com/velohost/astro-consent
 homepageUrl: https://velohost.co.uk/
 badge: new
-downloads: 1526
+downloads: 1549
 ---

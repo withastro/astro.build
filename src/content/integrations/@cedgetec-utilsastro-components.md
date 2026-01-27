@@ -5,5 +5,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@cedgetec-utils/astro-components
 homepageUrl: https://www.npmjs.com/package/@cedgetec-utils/astro-components
-downloads: 20
+downloads: 11
 ---

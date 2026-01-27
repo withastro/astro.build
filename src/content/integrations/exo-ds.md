@@ -4,10 +4,8 @@ title: exo-ds
 description: A collection of tree-shakeable Astro components
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/exo-ds
-repoUrl: https://github.com/raunaqgupta/exo
+repoUrl: https://github.com/raunaqgupta/exo-ds
 homepageUrl: https://www.npmjs.com/package/exo-ds
-badge: new
-downloads: 135
+downloads: 116
 ---
