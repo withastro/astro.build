@@ -61,6 +61,8 @@ The configuration acts as a project default while still respecting user preferen
 
 Read our guide on the [Astro dev toolbar](https://docs.astro.build/en/guides/dev-toolbar/) for more details on available placement options and usage.
 
+Thanks to [Tony Narlock](https://github.com/tony) who contributed this feature!
+
 ## Async parsing in the `file()` loader
 
 The `parser()` option in the `file()` loader now supports async functions, enabling more complex data processing workflows.
@@ -93,6 +95,8 @@ const data = defineCollection({
 
 Existing synchronous parser functions continue to work without modification, but you can now take advantage of async capabilities for more advanced scenarios.
 
+Thanks to [Patrick Arlt](https://github.com/patrickarlt) who contributed this feature!
+
 ## Partitioned cookies support
 
 Astro now supports partitioned cookies through the new `partitioned` option on `Astro.cookies.set()`, enabling better privacy controls for embedded contexts.
@@ -113,6 +117,8 @@ Astro.cookies.set('session', sessionId, {
 When `partitioned` is set to `true`, the cookie will be tied to the top-level site's partition, preventing cross-site tracking while still allowing necessary functionality in embedded scenarios.
 
 Read our section on [cookies in Astro](https://docs.astro.build/en/guides/on-demand-rendering/#cookies) for more information on using cookies effectively.
+
+Thanks to [John Mortlock](https://github.com/jmortlock) who contributed this feature!
 
 ## Background color for image transformations
 
@@ -149,6 +155,8 @@ const optimizedImage = await getImage({
 
 If you'd like to see all the other options available for image transformations, check out the [Astro Images guide](https://docs.astro.build/en/guides/images/) in our docs.
 
+Thanks to [Julien Cayzac](https://github.com/jcayzac) who contributed this feature!
+
 ## Sharp kernel selection for image resizing
 
 The Sharp image service now supports configuring the resize kernel algorithm through a new `kernel` configuration option, giving you fine-grained control over image quality.
@@ -174,6 +182,8 @@ export default defineConfig({
 Note that this configuration applies to all images on your site and cannot currently be configured on a per-image basis.
 
 Each kernel offers different trade-offs between sharpness, smoothness, and performance. See [Sharp's resize documentation](https://sharp.pixelplumbing.com/api-resize/#resize) for detailed information on all the available kernel options.
+
+Thanks to [Mark Ignacio](https://github.com/mark-ignacio) who contributed this feature!
 
 ## `retainBody` option for `glob()` loader
 
