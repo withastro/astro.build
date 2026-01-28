@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-security
 repoUrl: https://github.com/velohost/astro-security
 homepageUrl: https://velohost.co.uk/plugins/astro-security/
 badge: new
-downloads: 213
+downloads: 217
 ---

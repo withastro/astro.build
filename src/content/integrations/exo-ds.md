@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/exo-ds
 repoUrl: https://github.com/raunaqgupta/exo-ds
 homepageUrl: https://www.npmjs.com/package/exo-ds
-downloads: 21
+downloads: 117
 ---

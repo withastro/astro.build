@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@casoon/astro-webvitals
 repoUrl: https://github.com/casoon/astro-webvitals
 homepageUrl: https://github.com/casoon/astro-webvitals#readme
-downloads: 324
+downloads: 307
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-pdf
 repoUrl: https://github.com/lameuler/astro-pdf
 homepageUrl: https://ler.quest/astro-pdf/
-downloads: 587
+downloads: 632
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@cribops/astro
 repoUrl: https://github.com/cloudbedrock/cribops-astro
 homepageUrl: https://cribops.com/astro
 badge: new
-downloads: 133
+downloads: 139
 ---

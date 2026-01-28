@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/gila-astro-csp
 repoUrl: https://github.com/petryx/gila-astro-csp
 homepageUrl: https://gilasecurity.com
 badge: new
-downloads: 127
+downloads: 130
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@bearstudio/astro-dynamic-assets
 repoUrl: https://github.com/BearStudio/astro-dynamic-assets
 homepageUrl: https://github.com/BearStudio/astro-dynamic-assets#readme
-downloads: 4
+downloads: 2
 ---

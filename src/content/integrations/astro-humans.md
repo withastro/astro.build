@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-humans
 repoUrl: https://github.com/velohost/astro-humans
 homepageUrl: https://velohost.co.uk/plugins/astro-humans/
 badge: new
-downloads: 151
+downloads: 154
 ---
