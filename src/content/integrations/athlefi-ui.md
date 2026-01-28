@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/athlefi-ui
 repoUrl: https://github.com/athlefi/athlefi-ui
 homepageUrl: https://www.npmjs.com/package/athlefi-ui
-downloads: 172
+downloads: 164
 ---

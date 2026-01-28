@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@fresh.codes/astro-pirsch-proxy
 repoUrl: https://github.com/freshcodes/astro-pirsch-proxy
 homepageUrl: https://github.com/freshcodes/astro-pirsch-proxy#readme
-downloads: 102
+downloads: 104
 ---

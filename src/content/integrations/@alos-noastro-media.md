@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@alos-no/astro-media
 repoUrl: https://github.com/Alos-no/Astro-Smart-Media
 homepageUrl: https://github.com/Alos-no/Astro-Smart-Media
-downloads: 209
+downloads: 201
 ---
