@@ -5,6 +5,6 @@ description: Astro integration to ease the use of PocketBase in your Astro proje
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-pocketbase-continue
-homepageUrl: https://gitea.garandplg.com/GarandPLG/astro-pocketbase-continue
+homepageUrl: https://www.npmjs.com/package/astro-pocketbase-continue
 downloads: 8
 ---
