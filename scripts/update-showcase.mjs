@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import ghActions from '@actions/core';
+import * as ghActions from '@actions/core';
 import octokit from '@octokit/graphql';
 import { parseHTML } from 'linkedom';
 import puppeteer from 'puppeteer';
