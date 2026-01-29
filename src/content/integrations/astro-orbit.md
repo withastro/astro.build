@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-orbit
 repoUrl: https://github.com/delta-incubator/astro-orbit
 homepageUrl: https://github.com/delta-incubator/astro-orbit#readme
-downloads: 11
+downloads: 12
 ---

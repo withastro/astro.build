@@ -9,6 +9,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-compress
 repoUrl: https://github.com/PlayForm/Compress
 homepageUrl: HTTPS://GitHub.Com/PlayForm/Compress?tab=readme-ov-file
-downloads: 128475
+downloads: 131269
 downloadFactor: 0.25
 ---

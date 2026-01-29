@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-webrings
 homepageUrl: https://github.com/louisescher/astro-webrings#readme
-downloads: 92
+downloads: 93
 repoUrl: https://github.com/louisescher/astro-webrings
 ---

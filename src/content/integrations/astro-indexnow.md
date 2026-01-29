@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-indexnow
 repoUrl: https://github.com/velohost/astro-indexnow
 homepageUrl: https://velohost.co.uk/astro-indexnow
-downloads: 1905
+downloads: 1910
 ---

@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@wuchale/astro
 repoUrl: https://github.com/wuchalejs/wuchale
 homepageUrl: https://wuchale.dev
 badge: new
-downloads: 905
+downloads: 848
 image: /assets/integrations/@wuchale/astro.svg
 ---
