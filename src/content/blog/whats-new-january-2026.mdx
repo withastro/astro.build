@@ -69,15 +69,15 @@ Minor releases introduce new features and improvements. Pre-releases introduce b
 From Chrome to the Sorbonne, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
-  'chrome.dev',
-  'nubis.bis-sorbonne.fr',
+  'medievalscrolls.fas.harvard.edu',
+  'www.tagesanzeiger.ch',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'chrome.dev')} />
-  <ShowcaseCard site={await getEntry('showcase', 'nubis.bis-sorbonne.fr',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'medievalscrolls.fas.harvard.edu')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.tagesanzeiger.ch',)} />
 </div>
 
 {/* Use when there are multiples of 3  */}
@@ -94,41 +94,56 @@ Some sites from the last month that show off what you can do with Astro that are
 - Need a smart looking image for blog posts or social sharing? [Release Image Generator](https://release-image-generator.trueberryless.org/) create beautiful, customizable images with patterns and text. Perfect for professional-looking announcements!
 
 export const monthlySites = [
-  'othello.djmetzle.io',
-  'tally.johng.io',
-  'release-image-generator.trueberryless.org'
+  'www.rdldn.co.uk',
+  'sonde.blue',
+  'tippingpoint.watch',
+  'democracy-direct.com',  
 ]; 
 
 {/* Use for grids of 2 per row  */}
-{/* 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'othello.djmetzle.io')} />
-  <ShowcaseCard site={await getEntry('showcase', 'tally.johng.io')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.rdldn.co.uk')} />
+  <ShowcaseCard site={await getEntry('showcase', 'sonde.blue')} />
+  <ShowcaseCard site={await getEntry('showcase', 'tippingpoint.watch')} />
+
 </div> 
-*/}
 
 {/* Can use when there are multiples of 3  */}
+{/*  
 <ShowcaseGridById ids={monthlySites} />
+ <ShowcaseCard site={await getEntry('showcase', 'democracy-direct.com')} />
+  */}
 
 ## Cosmic Canvas
 
 Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
 
 export const canvasSites = [
-  'six.locomotive.ca',
-  'giannantoniodemalde.com',
+  'astro-infinity.space',
+  'sotoh.openhomefoundation.org',
+  'tiken.dev',
+  'typeface.us',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'six.locomotive.ca')} />
-  <ShowcaseCard site={await getEntry('showcase', 'giannantoniodemalde.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'astro-infinity.space')} />
+  <ShowcaseCard site={await getEntry('showcase', 'sotoh.openhomefoundation.org')} />
+  <ShowcaseCard site={await getEntry('showcase', 'tiken.dev')} />
+  
 </div>
+
+{/* 
+<ShowcaseCard site={await getEntry('showcase', 'typeface.us')} />
+*/}
 
 
 {/* Can use when there are multiples of 3  */}
 {/* <ShowcaseGridById ids={canvasSites} /> */}
+
 
 
 ## Community
@@ -152,6 +167,7 @@ Here's what caught our attention this month:
 - **Bryan Guffey** shows how to [bring your Astro blog to ATProto with `astro-standard-site`](https://impulsivestatic.leaflet.pub/3mbngcvusks2w) to making your content easier to discover, index, and move across the ATmosphere.
 - The verdict is in: "Performance: Actually, Genuinely Fast" now that **Lewis Kori** migrated [From Gridsome to Astro: Rebuilding My Personal Site for the Next Phase](https://lewiskori.com/blog/from-gridsome-to-astro-rebuilding-my-personal-site-for-the-next-phase/)
 - Read the case study of [Shift64 - Built with Astro](https://shift64.com/blog/shift64-built-with-astro) who  needed a framework that matched their philosophy: speed, flexibility, and no unnecessary bloat. Astro was the natural choice.
+- Looking to get the most out of your Starlight site, or just want inspiration? [Awesome Starlight](https://github.com/trueberryless-org/awesome-starlight) by **truberryless-org** can help take your docs to the next level!
 - One of our newest Japanese contributors **Sakku** blogged about their experience [contributing translations to Astro Docs](https://saku-space.com/blog/astro-docs-translation-beginner/) and [reporting an issue via GitHub Discussions](https://saku-space.com/blog/astro-docs-idea-discussion/). These posts give you a great idea of what it's like to contribute to Astro, and how to get started. Check out their full blog for even more posts about Astro! (Japenese).
 
 Because you can never get tired of Astro, here's even more community content!
@@ -172,6 +188,7 @@ Because you can never get tired of Astro, here's even more community content!
 - [The right way to add Orama search to Astro](https://sarthakmishra.com/blog/orama-astro)
 - [Hosting images on my Cloudflare blog with R2](https://www.emgoto.com/astro-blog-cloudflare-r2/)
 - [Building My Personal Blog Using Notion and Cloudflare Pages (for free)](https://soumyadeeppurkait.xyz/blog/host-blog-notion-cloudflare/)
+
 
 Find these and **all how-to articles** from previous monthly blog posts at [Astro Tips](https://astro-tips.dev)!
 
@@ -221,6 +238,29 @@ Watch people build, experiment, and learn!
 /> 
 
 ## Tips & Tools
+
+This month saw several new goodies for managing your content and UI:
+
+export const ToolSites = [
+  'sitepins.com',
+  'ui.studiocms.dev',
+  'contentisland.net',
+  'placer-toolkit.vercel.app',
+  'www.hyperui.dev',
+  'frontmatter.tech',
+  'bearnie.dev',
+]; 
+
+{/* Use for grids of 2 per row  */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'othello.djmetzle.io')} />
+  <ShowcaseCard site={await getEntry('showcase', 'tally.johng.io')} />
+</div> 
+*/}
+
+{/* Can use when there are multiples of 3  */}
+<ShowcaseGridById ids={ToolSites} />
 
 The latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
 
@@ -291,9 +331,27 @@ The latest community-built [utilities and integrations](/integrations/) to help 
 - 🌟 [Starlight Telescope](https://github.com/frostybee/starlight-telescope) - A Starlight plugin to quickly navigate to any page in your Starlight docs with fuzzy search and keyboard-first navigation.
 
 
-... and some built with Astro!
+... and some built with Astro: utility sites from the last month that get the job done!
 
-- 
+export const monthlyTools = [
+  'colorsandfonts.com',
+  'collagepen.com',
+  'qpost.dev',
+  'debackground.com',
+  'svgfix.net',
+  'useconverter.com',
+]; 
+
+{/* Use for grids of 2 per row  */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'othello.djmetzle.io')} />
+  <ShowcaseCard site={await getEntry('showcase', 'tally.johng.io')} />
+</div> 
+*/}
+
+{/* Can use when there are multiples of 3  */}
+<ShowcaseGridById ids={monthlyTools} />
 
 ## Themes & Templates
 
@@ -311,7 +369,7 @@ Looking for even more inspiration? See all the community member websites submitt
 export const extraSitesToExclude = [
 ];
 
-export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites, ...extraSitesToExclude]
+export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites, ...extraSitesToExclude, ...monthlyTools, ...ToolSites]
 
 <MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
 
