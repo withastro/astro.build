@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-ym
 repoUrl: https://github.com/KochGO/astro-ym
 homepageUrl: https://github.com/KochGO/astro-ym#readme
 badge: new
-downloads: 501
+downloads: 533
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@duffcloudservices/cms-astro
 repoUrl: https://github.com/duffn84/dcs-again
 homepageUrl: https://www.npmjs.com/package/@duffcloudservices/cms-astro
 badge: new
-downloads: 171
+downloads: 175
 ---

@@ -6,6 +6,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@wticons/astro
 homepageUrl: https://github.com/OzzyCzech/wticons#readme
-downloads: 142
+downloads: 213
 repoUrl: ssh://git@github.com/OzzyCzech/wticons
 ---

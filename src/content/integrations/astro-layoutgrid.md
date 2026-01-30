@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-layoutgrid
 repoUrl: https://github.com/iaslfw/astro-layoutgrid
 homepageUrl: https://www.npmjs.com/package/astro-layoutgrid
-downloads: 7
+downloads: 13
 ---

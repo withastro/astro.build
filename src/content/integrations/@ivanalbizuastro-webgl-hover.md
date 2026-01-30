@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@ivanalbizu/astro-webgl-hover
 repoUrl: https://github.com/ivanalbizu/astro-webgl-hover
 homepageUrl: https://github.com/ivanalbizu/astro-webgl-hover#readme
 badge: new
-downloads: 786
+downloads: 794
 ---
