@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-d2
 repoUrl: https://github.com/HiDeoo/astro-d2
 homepageUrl: https://github.com/HiDeoo/astro-d2
-downloads: 6302
+downloads: 6507
 ---

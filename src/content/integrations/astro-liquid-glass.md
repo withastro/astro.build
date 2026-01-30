@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-liquid-glass
 homepageUrl: https://www.npmjs.com/package/astro-liquid-glass
 badge: new
-downloads: 100
+downloads: 103
 ---

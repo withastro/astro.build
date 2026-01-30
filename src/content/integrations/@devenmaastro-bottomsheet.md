@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@devenma/astro-bottomsheet
 repoUrl: https://github.com/devenma/astro-bottomsheet
 homepageUrl: https://github.com/devenma/astro-bottomsheet#readme
 badge: new
-downloads: 208
+downloads: 210
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-htaccess
 repoUrl: https://github.com/BadMannersXYZ/astro-htaccess
 homepageUrl: https://github.com/BadMannersXYZ/astro-htaccess
-downloads: 94
+downloads: 105
 ---
