@@ -1,0 +1,15 @@
+---
+name: "@wyattjoh/astro-cache"
+title: "@wyattjoh/astro-cache"
+description: Astro integration providing disk-backed SWR
+  (stale-while-revalidate) and memo caching utilities powered by flat-cache and
+  [stale-while-revalidate-cache](https://github.com/nicolo-ribaudo/stale-while-reval
+categories:
+  - uncategorized
+  - recent
+npmUrl: https://www.npmjs.com/package/@wyattjoh/astro-cache
+repoUrl: https://github.com/wyattjoh/astro-cache
+homepageUrl: https://github.com/wyattjoh/astro-cache#readme
+badge: new
+downloads: 261
+---
