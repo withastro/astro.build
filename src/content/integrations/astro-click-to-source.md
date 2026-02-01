@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-click-to-source
 repoUrl: https://github.com/invisible1988/astro-click-to-source
 homepageUrl: https://github.com/invisible1988/astro-click-to-source#readme
-downloads: 65
+downloads: 63
 ---

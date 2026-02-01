@@ -8,6 +8,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/ember-astro
 repoUrl: https://github.com/ember-tooling/ember-astro
 homepageUrl: https://github.com/ember-tooling/ember-astro#readme
-downloads: 60
+downloads: 42
 image: /assets/integrations/ember-astro.svg
 ---

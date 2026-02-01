@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mdocify/components
 repoUrl: https://github.com/lazosee/mdocify-components
 homepageUrl: https://github.com/lazosee/mdocify-components#readme
-downloads: 53
+downloads: 52
 ---

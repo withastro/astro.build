@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-llm-translator
 repoUrl: https://github.com/AsterisMono/astro-llm-translator
 homepageUrl: https://github.com/AsterisMono/astro-llm-translator
 badge: new
-downloads: 342
+downloads: 353
 ---

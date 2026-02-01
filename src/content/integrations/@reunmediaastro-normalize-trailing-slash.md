@@ -7,5 +7,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@reunmedia/astro-normalize-trailing-slash
 homepageUrl: https://github.com/ReunMedia/astro-normalize-trailing-slash
-downloads: 11
+downloads: 12
 ---

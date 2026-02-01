@@ -7,5 +7,5 @@ categories:
   - analytics
 npmUrl: https://www.npmjs.com/package/@picoo-studio/astro-google-tagmanager
 homepageUrl: https://www.npmjs.com/package/@picoo-studio/astro-google-tagmanager
-downloads: 5
+downloads: 8
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@lpdsgn/astro-themes
 repoUrl: https://github.com/LPdsgn/astro-themes
 homepageUrl: https://github.com/LPdsgn/astro-themes#readme
 badge: new
-downloads: 400
+downloads: 406
 ---
