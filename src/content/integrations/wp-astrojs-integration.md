@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/wp-astrojs-integration
 repoUrl: https://github.com/JUVOJustin/astrojs-wp-integration
 homepageUrl: https://github.com/JUVOJustin/astrojs-wp-integration#readme
 badge: new
-downloads: 275
+downloads: 184
 ---

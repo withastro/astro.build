@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/better-auth-astro
 repoUrl: https://ryanleecode/systemfsoftware
 homepageUrl: https://www.npmjs.com/package/better-auth-astro
-downloads: 7
+downloads: 6
 ---

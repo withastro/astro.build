@@ -5,7 +5,7 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@lightnet/decap-admin
 homepageUrl: https://lightnet.community
-downloads: 141
+downloads: 139
 description: Experimental Admin UI for LightNet based on Decap CMS.
 repoUrl: https://github.com/LightNetDev/lightnet
 ---

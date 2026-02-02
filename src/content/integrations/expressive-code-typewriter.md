@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/expressive-code-typewriter
 repoUrl: https://github.com/frostybee/expressive-code-typewriter
 homepageUrl: https://github.com/frostybee/expressive-code-typewriter
 badge: new
-downloads: 278
+downloads: 280
 ---
