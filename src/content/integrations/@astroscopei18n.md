@@ -1,8 +1,8 @@
 ---
 name: "@astroscope/i18n"
 title: "@astroscope/i18n"
-description: i18n for Astro + React islands — automatic tree-shaking, parallel
-  loading, any translation source
+description: i18n for Astro + React islands — MessageFormat 2, automatic
+  tree-shaking, parallel loading, any translation source
 categories:
   - uncategorized
   - recent
