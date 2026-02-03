@@ -39,9 +39,7 @@ const npmRegistrySchema = z.object({
 		.union([
 			z.string(),
 			// If the package.json’s repo field is an object, convert it to a string:
-			z
-				.object({ url: z.string() })
-				.transform(({ url }) => url),
+			z.object({ url: z.string() }).transform(({ url }) => url),
 		])
 		.optional(),
 	time: z.object({ created: z.string(), modified: z.string() }),
