@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@ivanalbizu/astro-particle-image-viewer
 repoUrl: https://github.com/ivanalbizu/astro-particle-image-viewer
 homepageUrl: https://github.com/ivanalbizu/astro-particle-image-viewer#readme
 badge: new
-downloads: 82
+downloads: 182
 ---

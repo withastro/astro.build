@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starlight-tags
 repoUrl: https://github.com/frostybee/starlight-tags
 homepageUrl: https://github.com/frostybee/starlight-tags
 badge: new
-downloads: 457
+downloads: 464
 ---

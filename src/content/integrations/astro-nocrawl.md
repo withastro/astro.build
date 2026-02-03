@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-nocrawl
 repoUrl: https://github.com/velohost/astro-nocrawl
 homepageUrl: https://velohost.co.uk/plugins/astro-nocrawl/
 badge: new
-downloads: 109
+downloads: 110
 ---

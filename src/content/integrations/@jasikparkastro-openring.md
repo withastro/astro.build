@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@jasikpark/astro-openring
 repoUrl: https://tangled.org/caleb.jasik.xyz/astro-openring
 homepageUrl: https://tangled.org/caleb.jasik.xyz/astro-openring/
 badge: new
-downloads: 134
+downloads: 135
 ---

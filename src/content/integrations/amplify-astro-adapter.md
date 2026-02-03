@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/amplify-astro-adapter
 homepageUrl: https://www.npmjs.com/package/amplify-astro-adapter
 badge: new
-downloads: 406
+downloads: 408
 ---

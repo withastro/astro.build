@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-redirects
 homepageUrl: https://www.npmjs.com/package/astro-redirects
 badge: new
-downloads: 1270
+downloads: 1279
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-status
 repoUrl: https://github.com/velohost/astro-status
 homepageUrl: https://velohost.co.uk/plugins/astro-status/
 badge: new
-downloads: 294
+downloads: 296
 ---

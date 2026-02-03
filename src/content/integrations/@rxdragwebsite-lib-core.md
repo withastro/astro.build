@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@rxdrag/website-lib-core
 homepageUrl: https://www.npmjs.com/package/@rxdrag/website-lib-core
-downloads: 2893
+downloads: 2913
 ---
