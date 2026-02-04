@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-head-check
 repoUrl: https://github.com/velohost/astro-head
 homepageUrl: https://github.com/velohost/astro-head
 badge: new
-downloads: 325
+downloads: 328
 ---

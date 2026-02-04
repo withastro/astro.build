@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@flash-analytics/astro
 homepageUrl: https://www.npmjs.com/package/@flash-analytics/astro
 badge: new
-downloads: 397
+downloads: 409
 ---

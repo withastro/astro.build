@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-http
 repoUrl: https://github.com/velohost/astro-http
 homepageUrl: https://github.com/velohost/astro-http
 badge: new
-downloads: 241
+downloads: 244
 ---

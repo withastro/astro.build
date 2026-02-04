@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/super-tips
 homepageUrl: https://www.npmjs.com/package/super-tips
-downloads: 16
+downloads: 17
 ---

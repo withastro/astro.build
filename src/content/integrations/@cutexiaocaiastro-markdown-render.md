@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@cutexiaocai/astro-markdown-render
 repoUrl: https://github.com/astro-community/md
 homepageUrl: https://github.com/astro-community/md
-downloads: 13
+downloads: 14
 ---

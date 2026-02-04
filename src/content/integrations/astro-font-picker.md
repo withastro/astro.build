@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-font-picker
 homepageUrl: https://github.com/randombits-dev/astro-font-picker
-downloads: 1886
+downloads: 1772
 ---

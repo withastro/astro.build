@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/wp-astrojs-integration
 repoUrl: https://github.com/JUVOJustin/astrojs-wp-integration
 homepageUrl: https://github.com/JUVOJustin/astrojs-wp-integration#readme
-downloads: 100
+downloads: 112
 ---

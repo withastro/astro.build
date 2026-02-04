@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@onreza/astro
 homepageUrl: https://www.npmjs.com/package/@onreza/astro
 badge: new
-downloads: 522
+downloads: 567
 ---
