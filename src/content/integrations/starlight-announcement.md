@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/starlight-announcement
 repoUrl: https://github.com/frostybee/starlight-announcement
 homepageUrl: https://github.com/frostybee/starlight-announcement
 badge: new
-downloads: 250
+downloads: 258
 ---

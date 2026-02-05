@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@altano/astro-prettier-response
 repoUrl: https://github.com/altano/npm-packages
 homepageUrl: https://github.com/altano/npm-packages/tree/main/packages/astro-prettier-response
-downloads: 27
+downloads: 28
 ---

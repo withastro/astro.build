@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-sanity-assets
 repoUrl: https://github.com/kolossal-io/astro-sanity-assets
 homepageUrl: https://github.com/kolossal-io/astro-sanity-assets
-downloads: 119
+downloads: 104
 image: /assets/integrations/astro-sanity-assets.png
 ---

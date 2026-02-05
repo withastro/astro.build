@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-takumi
 repoUrl: https://github.com/vikas5914/astro-takumi
 homepageUrl: https://github.com/vikas5914/astro-takumi
-downloads: 227
+downloads: 226
 ---
