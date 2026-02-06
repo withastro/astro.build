@@ -6,5 +6,5 @@ categories:
   - toolbar
 npmUrl: https://www.npmjs.com/package/astro-grab
 homepageUrl: https://astro-grab.nickradford.dev
-downloads: 290
+downloads: 300
 ---

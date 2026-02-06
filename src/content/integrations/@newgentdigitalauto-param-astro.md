@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@newgentdigital/auto-param-astro
 repoUrl: https://github.com/newgentdigital/auto-param-astro
 homepageUrl: https://github.com/newgentdigital/auto-param-astro
-downloads: 205
+downloads: 207
 ---

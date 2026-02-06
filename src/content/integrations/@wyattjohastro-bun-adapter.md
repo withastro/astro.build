@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@wyattjoh/astro-bun-adapter
 repoUrl: https://github.com/wyattjoh/astro-bun-adapter
 homepageUrl: https://github.com/wyattjoh/astro-bun-adapter#readme
 badge: new
-downloads: 749
+downloads: 765
 ---

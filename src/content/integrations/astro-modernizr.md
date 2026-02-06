@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-modernizr
 homepageUrl: https://github.com/YonicDev/astro-modernizr
-downloads: 17
+downloads: 15
 ---

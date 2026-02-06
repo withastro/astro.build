@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/expressive-code-language-badge
 repoUrl: https://github.com/frostybee/expressive-code-language-badge
 homepageUrl: https://github.com/frostybee/expressive-code-language-badge
-downloads: 944
+downloads: 1138
 ---

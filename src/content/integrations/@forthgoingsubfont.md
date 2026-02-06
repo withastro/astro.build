@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@forthgoing/subfont
 homepageUrl: https://www.npmjs.com/package/@forthgoing/subfont
 badge: new
-downloads: 582
+downloads: 588
 ---

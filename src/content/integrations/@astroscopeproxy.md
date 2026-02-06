@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astroscope/proxy
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/proxy#readme
-downloads: 791
+downloads: 884
 ---
