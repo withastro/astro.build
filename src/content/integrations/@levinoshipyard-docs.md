@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@levino/shipyard-docs
 repoUrl: https://github.com/levino/shipyard
 homepageUrl: https://shipyard.levinkeller.de
-downloads: 1739
+downloads: 1642
 ---

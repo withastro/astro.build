@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@edgeone/astro
 repoUrl: https://github.com/TencentEdgeOne/astro-adapter
 homepageUrl: https://github.com/TencentEdgeOne/astro-adapter
-downloads: 4156
+downloads: 4351
 image: /assets/integrations/@edgeone/edgeone-astro.svg
 ---

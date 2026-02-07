@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-canonical
 repoUrl: https://github.com/velohost/astro-canonical
 homepageUrl: https://github.com/velohost/astro-canonical
 badge: new
-downloads: 56
+downloads: 52
 ---

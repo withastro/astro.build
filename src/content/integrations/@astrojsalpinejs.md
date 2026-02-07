@@ -11,6 +11,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/alpinejs
 image: /assets/integrations/alpinejs.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/alpinejs
-downloads: 54794
+downloads: 53678
 official: true
 ---

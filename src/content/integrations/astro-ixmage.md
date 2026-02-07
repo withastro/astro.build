@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-ixmage
 repoUrl: https://github.com/readonlychild/astro-ixmage
 homepageUrl: https://github.com/readonlychild/astro-ixmage#readme
-downloads: 9
+downloads: 10
 ---
