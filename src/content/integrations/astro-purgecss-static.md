@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-purgecss-static
 repoUrl: https://github.com/KreskoLab/astro-purgecss-static
 homepageUrl: https://github.com/KreskoLab/astro-purgecss-static
-downloads: 11
+downloads: 12
 ---

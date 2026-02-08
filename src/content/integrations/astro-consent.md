@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-consent
 repoUrl: https://github.com/velohost/astro-consent
 homepageUrl: https://velohost.co.uk/
-downloads: 318
+downloads: 277
 ---

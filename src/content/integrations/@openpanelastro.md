@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@openpanel/astro
 homepageUrl: https://www.npmjs.com/package/@openpanel/astro
-downloads: 1407
+downloads: 1388
 ---
