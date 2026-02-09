@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-build-id
 repoUrl: https://github.com/velohost/astro-build-id
 homepageUrl: https://velohost.co.uk/plugins/astro-build-id/
 badge: new
-downloads: 39
+downloads: 32
 ---
