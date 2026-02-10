@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-obsidian-graph
 homepageUrl: https://github.com/GamerGirlandCo/astro-obsidian-graph
 badge: new
-downloads: 1786
+downloads: 1806
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@bitfresh/astro-clarity
 repoUrl: https://github.com/bitfresh/astro-clarity
 homepageUrl: https://github.com/bitfresh/astro-clarity#readme
 badge: new
-downloads: 233
+downloads: 235
 ---

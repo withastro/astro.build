@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-sessionkit
 repoUrl: https://github.com/oamm/astro-sessionkit
 homepageUrl: https://github.com/oamm/astro-sessionkit#readme
 badge: new
-downloads: 1050
+downloads: 1051
 ---
