@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@daks.dev/astro.sdk
 repoUrl: https://github.com/daks-dev/astro
-homepageUrl: https://daks.dev/
-downloads: 107
+homepageUrl: https://www.npmjs.com/package/@daks.dev/astro.sdk
+downloads: 108
 ---

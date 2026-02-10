@@ -5,10 +5,8 @@ description: Astro integration that strips inter-node whitespace in Astro and
   Svelte templates.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-strip-whitespace
 repoUrl: https://github.com/SegaraRai/strip-whitespace
 homepageUrl: https://github.com/SegaraRai/strip-whitespace#readme
-badge: new
-downloads: 250
+downloads: 251
 ---

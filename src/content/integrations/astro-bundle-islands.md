@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-bundle-islands
 repoUrl: https://github.com/mathhulk/astro-bundle-islands
 homepageUrl: https://github.com/mathhulk/astro-bundle-islands#readme
-downloads: 3
+downloads: 5
 ---
