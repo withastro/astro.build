@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@jctechstudio/ui
 repoUrl: https://github.com/JCTechStudio/kori
 homepageUrl: https://github.com/JCTechStudio/kori
 badge: new
-downloads: 110
+downloads: 112
 ---

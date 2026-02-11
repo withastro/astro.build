@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@inox-tools/sitemap-ext
 repoUrl: https://github.com/Fryuni/inox-tools
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 4393
+downloads: 4483
 ---

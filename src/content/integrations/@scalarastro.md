@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@scalar/astro
 repoUrl: https://github.com/scalar/scalar
 homepageUrl: https://github.com/scalar/scalar
-downloads: 4902
+downloads: 5205
 ---
