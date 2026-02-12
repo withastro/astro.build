@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-llm
 repoUrl: https://github.com/velohost/astro-llm
 homepageUrl: https://velohost.co.uk/plugins/astro-llm/
-downloads: 145
+downloads: 151
 ---

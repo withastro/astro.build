@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astroscope/i18n
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/i18n#readme
-downloads: 1196
+downloads: 1202
 ---

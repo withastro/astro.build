@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jaydixit/transitpaths
 repoUrl: https://github.com/jaydixit/transitpaths
 homepageUrl: https://www.npmjs.com/package/@jaydixit/transitpaths
-downloads: 13
+downloads: 15
 ---

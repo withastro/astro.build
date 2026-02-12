@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@gutenye/astro-i18next
 repoUrl: https://github.com/gutenye/astro-i18next
 homepageUrl: https://github.com/gutenye/astro-i18next#readme
-downloads: 199
+downloads: 202
 ---

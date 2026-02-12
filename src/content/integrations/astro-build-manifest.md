@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-build-manifest
 repoUrl: https://github.com/velohost/astro-build-manifest
 homepageUrl: https://velohost.co.uk/plugins/astro-build-manifest/
-downloads: 17
+downloads: 16
 ---

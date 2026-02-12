@@ -6,5 +6,5 @@ categories:
   - media
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-media
 homepageUrl: https://www.npmjs.com/package/astro-cloudflare-media
-downloads: 26
+downloads: 24
 ---

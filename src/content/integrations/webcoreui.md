@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/webcoreui
 repoUrl: https://github.com/Frontendland/webcoreui
 homepageUrl: https://webcoreui.dev
-downloads: 2724
+downloads: 2754
 ---
