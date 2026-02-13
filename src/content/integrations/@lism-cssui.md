@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@lism-css/ui
 repoUrl: https://github.com/lism-css/lism-css#main
 homepageUrl: https://www.npmjs.com/package/@lism-css/ui
-downloads: 217
+downloads: 216
 ---

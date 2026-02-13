@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@gamesome/route-builder
 repoUrl: https://github.com/Gamesome-ab/route-builder
 homepageUrl: https://github.com/Gamesome-ab/route-builder#readme
-downloads: 72
+downloads: 69
 ---

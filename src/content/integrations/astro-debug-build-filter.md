@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-debug-build-filter
 homepageUrl: https://www.npmjs.com/package/astro-debug-build-filter
-downloads: 6
+downloads: 11
 repoUrl: https://gitlab.com/nathanchere/astro-debug-build-filter
 ---

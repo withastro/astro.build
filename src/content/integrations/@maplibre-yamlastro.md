@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@maplibre-yaml/astro
 homepageUrl: https://www.npmjs.com/package/@maplibre-yaml/astro
 badge: new
-downloads: 87
+downloads: 89
 ---

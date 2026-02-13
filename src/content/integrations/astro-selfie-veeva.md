@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-selfie-veeva
 repoUrl: https://github.com/dylanhthomas/astro-selfie-veeva
 homepageUrl: https://github.com/dylanhthomas/astro-selfie-veeva#readme
-downloads: 25
+downloads: 27
 ---

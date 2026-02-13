@@ -6,5 +6,5 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@gladtek/launch-cooper
 homepageUrl: https://www.npmjs.com/package/@gladtek/launch-cooper
-downloads: 36
+downloads: 38
 ---

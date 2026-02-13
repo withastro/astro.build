@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-snowfall
 repoUrl: https://github.com/fermeridamagni/astro-snowfall
 homepageUrl: https://fermeridamagni.github.io/astro-snowfall
 badge: new
-downloads: 194
+downloads: 195
 ---

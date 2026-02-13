@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-neo
 repoUrl: https://github.com/neopilot-ai/astro-neo
 homepageUrl: https://github.com/neopilot-ai/astro-neo#readme
 badge: new
-downloads: 105
+downloads: 109
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-noindex
 repoUrl: https://github.com/velohost/astro-noindex
 homepageUrl: https://velohost.co.uk/plugins/astro-noindex/
-downloads: 27
+downloads: 26
 ---

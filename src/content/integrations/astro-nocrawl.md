@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-nocrawl
 repoUrl: https://github.com/velohost/astro-nocrawl
 homepageUrl: https://velohost.co.uk/plugins/astro-nocrawl/
-downloads: 12
+downloads: 15
 ---

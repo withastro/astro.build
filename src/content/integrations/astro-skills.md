@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-skills
 repoUrl: https://github.com/fredkschott/astro-skills
 homepageUrl: https://github.com/fredkschott/astro-skills#readme
 badge: new
-downloads: 1826
+downloads: 2064
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-spearly
 homepageUrl: https://www.npmjs.com/package/astro-spearly
-downloads: 7
+downloads: 6
 ---
