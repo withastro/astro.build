@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/zephyr-astro-integration
 repoUrl: https://github.com/ZephyrCloudIO/zephyr-packages
 homepageUrl: https://github.com/ZephyrCloudIO/zephyr-packages/tree/main/libs/zephyr-astro-integration#readme
-downloads: 2742
+downloads: 2610
 ---

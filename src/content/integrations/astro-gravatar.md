@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-gravatar
 repoUrl: https://github.com/imjlk/astro-gravatar
 homepageUrl: https://www.npmjs.com/package/astro-gravatar
-downloads: 6
+downloads: 4
 ---

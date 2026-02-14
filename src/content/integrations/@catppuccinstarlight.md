@@ -9,6 +9,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@catppuccin/starlight
 homepageUrl: https://starlight.catppuccin.com/
-downloads: 3537
+downloads: 3323
 repoUrl: https://github.com/catppuccin/starlight
 ---

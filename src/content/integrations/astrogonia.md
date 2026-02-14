@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astrogonia
 repoUrl: https://github.com/monokrome/astrogonia
 homepageUrl: https://github.com/monokrome/astrogonia#readme
 badge: new
-downloads: 365
+downloads: 368
 ---

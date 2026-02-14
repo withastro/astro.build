@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-xmdx
 repoUrl: https://github.com/jp-knj/xmdx
 homepageUrl: https://github.com/jp-knj/xmdx#readme
 badge: new
-downloads: 636
+downloads: 715
 ---

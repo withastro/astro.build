@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/gila-astro-csp
 repoUrl: https://github.com/petryx/gila-astro-csp
 homepageUrl: https://gilasecurity.com
-downloads: 12
+downloads: 10
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/stormlit
 homepageUrl: https://github.com/frodrish/stormlit#readme
-downloads: 3
+downloads: 5
 ---

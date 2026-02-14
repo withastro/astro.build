@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sweetcorn/astro
 repoUrl: https://github.com/delucis/sweetcorn
 homepageUrl: https://delucis.github.io/sweetcorn/
-downloads: 83
+downloads: 80
 ---
