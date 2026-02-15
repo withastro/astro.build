@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@sensinum/astro-strapi-blocks
 repoUrl: https://github.com/VirtusLab-Open-Source/astro-strapi-blocks
 homepageUrl: https://github.com/VirtusLab-Open-Source/astro-strapi-blocks#readme
-downloads: 1096
+downloads: 1068
 ---

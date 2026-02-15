@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astroplugin-logseq
 repoUrl: https://github.com/benjypng/astroplugin-logseq
 homepageUrl: https://github.com/benjypng/astroplugin-logseq#readme
-downloads: 114
+downloads: 98
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-journey
 repoUrl: https://github.com/uray-lu/astro-journey
 homepageUrl: https://github.com/uray-lu/astro-journey#readme
 badge: new
-downloads: 403
+downloads: 404
 ---

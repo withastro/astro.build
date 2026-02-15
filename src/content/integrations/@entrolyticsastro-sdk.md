@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@entrolytics/astro-sdk
 repoUrl: https://github.com/entrolytics/astro-sdk
 homepageUrl: https://entrolytics.click
 badge: new
-downloads: 38
+downloads: 42
 ---

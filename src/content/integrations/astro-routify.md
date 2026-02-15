@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-routify
 repoUrl: ssh://git@github.com/oamm/astro-routify
 homepageUrl: https://github.com/oamm/astro-routify#readme
-downloads: 347
+downloads: 346
 ---

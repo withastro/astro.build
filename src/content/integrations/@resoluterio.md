@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@resolute/rio
 repoUrl: https://github.com/resolute/rio
 homepageUrl: https://www.npmjs.com/package/@resolute/rio
-downloads: 58
+downloads: 50
 ---

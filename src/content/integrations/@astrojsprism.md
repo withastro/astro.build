@@ -9,7 +9,7 @@ npmUrl: https://www.npmjs.com/package/@astrojs/prism
 image: /assets/integrations/prism.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/syntax-highlighting/#prism-
-downloads: 4746106
+downloads: 4693766
 downloadFactor: 0.0005
 official: true
 ---

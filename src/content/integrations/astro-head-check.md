@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-head-check
 repoUrl: https://github.com/velohost/astro-head
 homepageUrl: https://github.com/velohost/astro-head
-downloads: 38
+downloads: 35
 ---
