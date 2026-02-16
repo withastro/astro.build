@@ -5,6 +5,7 @@ description: Immediately halt request processing and return custom responses eff
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/cut-short
-homepageUrl: https://www.npmjs.com/package/@inox-tools/cut-short
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
 downloads: 288
+repoUrl: https://github.com/Fryuni/inox-tools
 ---

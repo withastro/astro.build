@@ -7,10 +7,8 @@ description: A Vite plugin for Astro that prerenders components to static HTML
 categories:
   - performance+seo
   - css+ui
-  - recent
 npmUrl: https://www.npmjs.com/package/vite-plugin-astro-prerender
 repoUrl: https://github.com/ishaanparlikar/vite-plugin-astro-prerender
 homepageUrl: https://ishaanparlikar.github.io/astro-lazy-plugin-demo
-badge: new
 downloads: 136
 ---

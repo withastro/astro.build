@@ -6,6 +6,7 @@ description: Utilities for testing your own Astro integrations and libraries
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
-homepageUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
 downloads: 2223
+repoUrl: https://github.com/Fryuni/inox-tools
 ---

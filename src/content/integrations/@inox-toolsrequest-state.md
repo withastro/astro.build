@@ -5,6 +5,7 @@ description: Shared request state between server and client
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-state
-homepageUrl: https://www.npmjs.com/package/@inox-tools/request-state
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
 downloads: 6774
+repoUrl: https://github.com/Fryuni/inox-tools
 ---

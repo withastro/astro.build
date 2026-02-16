@@ -8,4 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@richardnbanks/astro-loader-youtube
 homepageUrl: https://github.com/richardnbanks/astro-loader-youtube
 downloads: 170
+repoUrl: https://github.com/richardnbanks/astro-loader-youtube
 ---
