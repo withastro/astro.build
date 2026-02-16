@@ -5,6 +5,7 @@ description: Common tools and utilities for working with Server Islands.
 categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@inox-tools/server-islands
-homepageUrl: https://www.npmjs.com/package/@inox-tools/server-islands
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
 downloads: 238
+repoUrl: https://github.com/Fryuni/inox-tools
 ---
