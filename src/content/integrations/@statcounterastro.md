@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@statcounter/astro
 homepageUrl: https://www.npmjs.com/package/@statcounter/astro
 badge: new
-downloads: 125
+downloads: 213
 ---

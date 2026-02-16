@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@imjp/writenex-astro
 repoUrl: https://github.com/jaainil/writenex
 homepageUrl: https://github.com/jaainil/writenex
 badge: new
-downloads: 263
+downloads: 268
 ---
