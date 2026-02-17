@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@myriaddreamin/tylant
 homepageUrl: https://www.npmjs.com/package/@myriaddreamin/tylant
-downloads: 28
+downloads: 27
 ---

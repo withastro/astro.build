@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrojs-mixpanel
 repoUrl: https://github.com/litlynx/astrojs-mixpanel
 homepageUrl: https://github.com/litlynx/astrojs-mixpanel#readme
-downloads: 115
+downloads: 118
 ---

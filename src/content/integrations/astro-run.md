@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-run
 repoUrl: https://github.com/natemoo-re/astro-run
 homepageUrl: https://www.npmjs.com/package/astro-run
-downloads: 4
+downloads: 5
 ---

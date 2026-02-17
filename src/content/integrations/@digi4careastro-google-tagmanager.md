@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@digi4care/astro-google-tagmanager
 repoUrl: https://github.com/digi4care/astro-google-tagmanager
 homepageUrl: https://github.com/digi4care/astro-google-tagmanager
-downloads: 7363
+downloads: 7482
 ---

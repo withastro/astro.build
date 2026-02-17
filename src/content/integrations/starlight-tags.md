@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-tags
 repoUrl: https://github.com/frostybee/starlight-tags
 homepageUrl: https://github.com/frostybee/starlight-tags
-downloads: 422
+downloads: 430
 ---

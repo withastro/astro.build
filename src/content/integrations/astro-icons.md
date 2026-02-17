@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-icons
 repoUrl: https://github.com/panchaow/astro-icons
 homepageUrl: https://github.com/panchaow/astro-icons#readme
-downloads: 67
+downloads: 71
 ---

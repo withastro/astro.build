@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/expressive-code-typewriter
 repoUrl: https://github.com/frostybee/expressive-code-typewriter
 homepageUrl: https://github.com/frostybee/expressive-code-typewriter
-downloads: 5
+downloads: 7
 ---

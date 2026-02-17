@@ -7,5 +7,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/herb-info
 homepageUrl: https://www.npmjs.com/package/herb-info
-downloads: 209
+downloads: 219
 ---

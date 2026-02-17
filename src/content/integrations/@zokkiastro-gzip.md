@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@zokki/astro-gzip
 repoUrl: https://gitea.zokki.net/zokki/astro-gzip
 homepageUrl: https://www.npmjs.com/package/@zokki/astro-gzip
-downloads: 13
+downloads: 18
 ---

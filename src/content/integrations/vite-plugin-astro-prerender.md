@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/vite-plugin-astro-prerender
 repoUrl: https://github.com/ishaanparlikar/vite-plugin-astro-prerender
 homepageUrl: https://ishaanparlikar.github.io/astro-lazy-plugin-demo
-downloads: 136
+downloads: 119
 ---

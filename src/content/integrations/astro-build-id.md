@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-build-id
 repoUrl: https://github.com/velohost/astro-build-id
 homepageUrl: https://velohost.co.uk/plugins/astro-build-id/
-downloads: 21
+downloads: 19
 ---

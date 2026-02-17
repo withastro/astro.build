@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/modular-station
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 3545
+downloads: 3769
 repoUrl: https://github.com/Fryuni/inox-tools
 ---

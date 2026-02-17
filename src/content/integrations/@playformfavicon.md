@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@playform/favicon
 repoUrl: https://github.com/PlayForm/Favicon
 homepageUrl: HTTPS://GitHub.Com/PlayForm/Favicon?tab=readme-ov-file
 badge: new
-downloads: 185
+downloads: 188
 ---
