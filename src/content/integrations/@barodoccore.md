@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@barodoc/core
 repoUrl: https://github.com/barocss/barodoc
 homepageUrl: https://github.com/barocss/barodoc#readme
 badge: new
-downloads: 306
+downloads: 309
 ---

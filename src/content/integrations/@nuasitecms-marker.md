@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@nuasite/cms-marker
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://www.npmjs.com/package/@nuasite/cms-marker
-downloads: 6316
+downloads: 6333
 ---

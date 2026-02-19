@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@munat/components
 repoUrl: https://github.com/chasm/components
 homepageUrl: https://www.npmjs.com/package/@munat/components
-downloads: 83
+downloads: 84
 ---

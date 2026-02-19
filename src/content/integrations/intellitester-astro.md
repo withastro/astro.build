@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/intellitester-astro
 repoUrl: https://forge.blackleafdigital.com/zachhandley/Intellitester
 homepageUrl: https://github.com/ZachHandley/Intellitester
-downloads: 2626
+downloads: 1557
 ---

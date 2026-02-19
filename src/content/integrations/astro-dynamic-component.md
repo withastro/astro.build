@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-dynamic-component
 repoUrl: https://github.com/shjyh/astro-dynamic-component
 homepageUrl: https://github.com/shjyh/astro-dynamic-component#readme
-downloads: 115
+downloads: 114
 ---

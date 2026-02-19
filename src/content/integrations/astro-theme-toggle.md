@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-theme-toggle
 repoUrl: https://github.com/ocavue/astro-theme-toggle
 homepageUrl: https://github.com/ocavue/astro-theme-toggle#readme
-downloads: 15383
+downloads: 15563
 ---

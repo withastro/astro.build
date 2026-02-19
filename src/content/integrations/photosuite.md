@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/photosuite
 repoUrl: https://github.com/achuanya/photosuite
 homepageUrl: https://photosuite.lhasa.icu
-downloads: 329
+downloads: 244
 ---
