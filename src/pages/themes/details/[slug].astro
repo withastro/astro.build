@@ -65,6 +65,22 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 					<h1 class="mb-4 heading-3 sm:heading-2">{theme.Theme.title}</h1>
 					<p class="text-astro-gray-200 text-lg lg:text-xl">{theme.Theme.description}</p>
 					<ThemeCTAs theme={theme} class="md:hidden py-6" />
+					{
+            (categories.length > 0 || tools.length > 0) && (
+              <div class='flex justify-start items-center gap-2 mt-4'>
+                {categories.map((category) => (
+                  <span class='px-2 py-1 border border-divider rounded-md text-astro-gray-200'>
+                    {category?.name}
+                  </span>
+                ))}
+                {tools.map((tool) => (
+                  <span class='px-2 py-1 border border-divider rounded-md text-astro-gray-200'>
+                    {tool?.name}
+                  </span>
+                ))}
+              </div>
+            )
+          }
 					<hr class="md:hidden border-astro-gray-500" />
 					<ThemeStats theme={theme} class="md:hidden py-4" />
 				</div>
