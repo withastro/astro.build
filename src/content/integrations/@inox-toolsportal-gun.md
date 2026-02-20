@@ -7,6 +7,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/portal-gun
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 277
+downloads: 210
 repoUrl: https://github.com/Fryuni/inox-tools
 ---

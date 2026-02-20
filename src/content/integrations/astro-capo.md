@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-capo
 repoUrl: https://github.com/natemoo-re/astro-capo
 homepageUrl: https://github.com/natemoo-re/astro-capo#readme
-downloads: 13446
+downloads: 13138
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-http
 repoUrl: https://github.com/velohost/astro-http
 homepageUrl: https://github.com/velohost/astro-http
-downloads: 20
+downloads: 19
 ---
