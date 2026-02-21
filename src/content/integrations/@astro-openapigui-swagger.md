@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@astro-openapi/gui-swagger
 homepageUrl: https://www.npmjs.com/package/@astro-openapi/gui-swagger
-downloads: 60
+downloads: 59
 ---

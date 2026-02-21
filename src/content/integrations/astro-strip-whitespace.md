@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-strip-whitespace
 repoUrl: https://github.com/SegaraRai/strip-whitespace
 homepageUrl: https://github.com/SegaraRai/strip-whitespace#readme
-downloads: 23
+downloads: 22
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@six-tech/starlight-theme-six
 repoUrl: https://github.com/six-tech/Six.StarlightTheme
 homepageUrl: https://github.com/six-tech/Six.StarlightTheme#readme
-downloads: 304
+downloads: 297
 ---

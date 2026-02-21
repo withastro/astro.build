@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-fatsoma
 repoUrl: https://github.com/velohost/astro-fatsoma
 homepageUrl: https://velohost.co.uk/plugins/astro-plugins/astro-fatsoma/
-downloads: 52
+downloads: 51
 ---
