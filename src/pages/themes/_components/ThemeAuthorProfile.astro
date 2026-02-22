@@ -19,7 +19,13 @@ const { author } = Astro.props;
 	<span class="pr-2">Back to all themes</span>
 </a>
 <div class="flex lg:flex-col flex-wrap items-center gap-4">
-	<Image src={author.avatar ?? ''} height={300} width={300} class="lg:w-full h-fit size-12" alt="" />
+	<Image
+		src={author.avatar ?? ''}
+		height={300}
+		width={300}
+		class="lg:w-full h-fit size-12"
+		alt=""
+	/>
 	<h1 class="lg:hidden border-astro-gray-500 heading-3">{author.name}</h1>
 	<div class="flex flex-col gap-4 pt-2 lg:pt-8 w-full">
 		<div class="flex justify-between items-baseline">
