@@ -7,6 +7,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/content-utils
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 353
+downloads: 347
 repoUrl: https://github.com/Fryuni/inox-tools
 ---
