@@ -73,7 +73,7 @@ const description = `Explore Astro themes by ${author}. Find a design to launch 
 					<h1 class="heading-3 max-lg:hidden">{themes[0].Author.name}</h1>
 				</header>
 				<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
-					{themes.map((theme) => <ThemeCard as="h2" theme={theme} />)}
+					{themes.map((theme) => theme.Theme && <ThemeCard as="h2" {theme} />)}
 				</CardGrid>
 			</CardGridGroup>
 			{
