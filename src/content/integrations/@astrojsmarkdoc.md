@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/markdoc
 image: /assets/integrations/markdoc.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/markdoc/
-downloads: 59186
+downloads: 57275
 official: true
 ---

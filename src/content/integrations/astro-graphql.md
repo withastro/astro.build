@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-graphql
 repoUrl: https://github.com/dofbi/astro-graphql
 homepageUrl: https://github.com/dofbi/astro-graphql
-downloads: 5
+downloads: 4
 ---

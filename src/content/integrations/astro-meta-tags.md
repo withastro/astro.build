@@ -6,6 +6,6 @@ categories:
   - toolbar
 npmUrl: https://www.npmjs.com/package/astro-meta-tags
 homepageUrl: https://github.com/patrick91/astro-meta-tags#readme
-downloads: 6003
+downloads: 5680
 repoUrl: https://github.com/patrick91/astro-meta-tags
 ---

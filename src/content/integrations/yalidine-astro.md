@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/yalidine-astro
 repoUrl: https://github.com/Darknab/yalidine-sdk
 homepageUrl: https://github.com/Darknab/yalidine-sdk
-downloads: 29
+downloads: 25
 ---

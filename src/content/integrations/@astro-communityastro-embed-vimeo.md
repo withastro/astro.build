@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@astro-community/astro-embed-vimeo
 repoUrl: https://github.com/delucis/astro-embed
 homepageUrl: https://astro-embed.netlify.app/components/vimeo/
-downloads: 87393
+downloads: 84274
 ---
