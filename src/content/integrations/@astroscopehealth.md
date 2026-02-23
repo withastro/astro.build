@@ -1,7 +1,7 @@
 ---
 name: "@astroscope/health"
 title: "@astroscope/health"
-description: Health check endpoints for Astro — livez, readyz, startupz probes
+description: Kubernetes-style health probes integration for Astro
 categories:
   - uncategorized
   - recent

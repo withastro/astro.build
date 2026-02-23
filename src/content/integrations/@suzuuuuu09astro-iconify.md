@@ -7,10 +7,8 @@ categories:
   - media
   - css+ui
   - performance+seo
-  - recent
 npmUrl: https://www.npmjs.com/package/@suzuuuuu09/astro-iconify
 repoUrl: https://github.com/suzuuuuu09/astro-iconify
 homepageUrl: https://github.com/manuelmeister/astro-iconify#readme
-badge: new
 downloads: 62
 ---

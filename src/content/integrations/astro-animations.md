@@ -1,7 +1,8 @@
 ---
 name: astro-animations
 title: astro-animations
-description: Lightweight animation components for Astro
+description: A lightweight animation integration for Astro, using modern CSS.
+  Dependency free, <7kB compressed.
 categories:
   - uncategorized
   - recent
