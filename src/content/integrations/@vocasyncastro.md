@@ -12,4 +12,5 @@ repoUrl: https://github.com/sayedhfatimi/vocasync-astro
 homepageUrl: https://github.com/sayedhfatimi/vocasync-astro#readme
 badge: new
 downloads: 563
+image: /assets/integrations/@vocasync/astro.png
 ---

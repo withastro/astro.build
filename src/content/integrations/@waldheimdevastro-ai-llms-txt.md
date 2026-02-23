@@ -6,7 +6,7 @@ description: "Astro Integration: llms.txt generator (AI-optimized summary of all
 categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@waldheimdev/astro-ai-llms-txt
-homepageUrl: https://www.waldheim.dev
+homepageUrl: https://github.com/Waldheim-dev/astro-ai-llms-txt-generator
 downloads: 13
-repoUrl: https://gitlab.com/waldheimdev/astro-ai-llms.txt
+repoUrl: https://github.com/Waldheim-dev/astro-ai-llms-txt-generator
 ---
