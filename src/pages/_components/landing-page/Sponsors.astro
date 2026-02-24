@@ -24,7 +24,9 @@ const exclusiveSponsors = [
 		caption: 'Official Partner',
 		href: 'https://www.cloudflare.com/?utm_source=astro&utm_medium=astro&utm_campaign=astro',
 	},
-	// Temporarily moved here to keep the layout tidy
+];
+
+const mainSponsors = [
 	{
 		height: 26,
 		label: 'Mux',
@@ -32,10 +34,14 @@ const exclusiveSponsors = [
 		caption: 'Official Video Partner',
 		href: 'https://www.mux.com?utm_campaign=21819274-Astro&utm_source=astro',
 	},
+	{
+		height: 32,
+		label: 'ImageKit',
+		src: 'sponsors/imagekit',
+		caption: 'Official Image Partner',
+		href: 'https://imagekit.io/?utm_source=astro&utm_medium=astro&utm_campaign=astro',
+	},
 ];
-
-// const mainSponsors = [
-// ];
 
 const sponsors = [
 	{
@@ -49,12 +55,6 @@ const sponsors = [
 		label: 'ArcJet',
 		src: 'sponsors/arcjet',
 		href: 'https://arcjet.com/?ref=astro.build',
-	},
-	{
-		height: 23,
-		label: 'HandsOnTable',
-		src: 'sponsors/handsontable',
-		href: 'https://handsontable.com/',
 	},
 	{
 		height: 60,
@@ -94,7 +94,7 @@ function rows<T>(array: T[]): T[][] {
 	return [...chunk(array, columnCount)];
 }
 
-const largeSponsorRows = [...rows(exclusiveSponsors) /*...rows(mainSponsors)*/];
+const largeSponsorRows = [...rows(exclusiveSponsors), ...rows(mainSponsors)];
 ---
 
 <section class="mt-20 md:mt-24 lg:mt-28 xl:mt-36 w-full max-w-screen-xl mx-auto px-4 sm:px-8">
