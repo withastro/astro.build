@@ -8,4 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mmnl.crngl/astro-ui
 homepageUrl: https://www.npmjs.com/package/@mmnl.crngl/astro-ui
 badge: new
+downloads: 1348
 ---

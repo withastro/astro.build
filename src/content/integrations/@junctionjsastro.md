@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@junctionjs/astro
 repoUrl: https://github.com/tyssejc/junction
 homepageUrl: https://github.com/tyssejc/junction#readme
 badge: new
-downloads: 522
+downloads: 600
 ---

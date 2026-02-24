@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/amplify-astro-adapter
 homepageUrl: https://www.npmjs.com/package/amplify-astro-adapter
-downloads: 73
+downloads: 66
 ---

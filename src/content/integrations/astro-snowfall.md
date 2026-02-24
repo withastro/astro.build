@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-snowfall
 repoUrl: https://github.com/fermeridamagni/astro-snowfall
 homepageUrl: https://fermeridamagni.github.io/astro-snowfall
-downloads: 36
+downloads: 31
 ---

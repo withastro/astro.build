@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@imjp/writenex-astro
 repoUrl: https://github.com/jaainil/writenex
 homepageUrl: https://github.com/jaainil/writenex
-downloads: 179
+downloads: 213
 ---

@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-integration-kit
 homepageUrl: https://github.com/florian-lefebvre/astro-integration-kit#readme
-downloads: 62762
+downloads: 75798
 repoUrl: https://github.com/florian-lefebvre/astro-integration-kit
 ---

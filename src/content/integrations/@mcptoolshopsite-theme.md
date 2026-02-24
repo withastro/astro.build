@@ -9,4 +9,5 @@ npmUrl: https://www.npmjs.com/package/@mcptoolshop/site-theme
 repoUrl: https://github.com/mcp-tool-shop-org/site-theme
 homepageUrl: https://github.com/mcp-tool-shop-org/site-theme
 badge: new
+downloads: 191
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-ym
 repoUrl: https://github.com/KochGO/astro-ym
 homepageUrl: https://github.com/KochGO/astro-ym#readme
-downloads: 285
+downloads: 269
 ---

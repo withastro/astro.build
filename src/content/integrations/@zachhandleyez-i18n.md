@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@zachhandley/ez-i18n
 repoUrl: https://github.com/zachhandley/ez-i18n
 homepageUrl: https://github.com/zachhandley/ez-i18n#readme
-downloads: 1084
+downloads: 1415
 ---

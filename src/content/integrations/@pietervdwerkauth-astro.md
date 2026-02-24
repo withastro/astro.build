@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@pietervdwerk/auth-astro
 repoUrl: https://github.com/nowaythatworked/auth-astro
 homepageUrl: https://github.com/nowaythatworked/auth-astro#readme
-downloads: 24
+downloads: 35
 ---

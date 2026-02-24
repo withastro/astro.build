@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/f5xc-docs-theme
 repoUrl: https://github.com/f5xc-salesdemos/docs-theme
 homepageUrl: https://f5xc-salesdemos.github.io/docs-theme
 badge: new
-downloads: 4687
+downloads: 7245
 ---

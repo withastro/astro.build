@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@wyattjoh/astro-cache
 repoUrl: https://github.com/wyattjoh/astro-cache
 homepageUrl: https://github.com/wyattjoh/astro-cache#readme
 badge: new
-downloads: 600
+downloads: 604
 ---
