@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-tokenkit
 repoUrl: https://github.com/oamm/astro-tokenkit
 homepageUrl: https://github.com/oamm/astro-tokenkit#readme
-downloads: 2068
+downloads: 1576
 ---

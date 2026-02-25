@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/accessible-astro-launcher
 repoUrl: https://github.com/incluud/accessible-astro-launcher
 homepageUrl: https://github.com/incluud/accessible-astro-launcher#readme
-downloads: 602
+downloads: 610
 ---

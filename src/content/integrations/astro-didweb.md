@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-didweb
 repoUrl: https://github.com/trm217/astro-did
 homepageUrl: https://github.com/trm217/astro-did#readme
 badge: new
-downloads: 355
+downloads: 362
 ---

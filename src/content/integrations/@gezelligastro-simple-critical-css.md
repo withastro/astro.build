@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@gezellig/astro-simple-critical-css
 repoUrl: https://github.com/gezellig-limited/astro-simple-critical-css
 homepageUrl: https://github.com/gezellig-limited/astro-simple-critical-css
 badge: new
-downloads: 101
+downloads: 104
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@agentcms/agentcms
 repoUrl: https://github.com/agentcms/agentcms
 homepageUrl: https://github.com/agentcms/agentcms#readme
 badge: new
-downloads: 739
+downloads: 742
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@astroscope/health
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/health#readme
 badge: new
-downloads: 266
+downloads: 353
 ---

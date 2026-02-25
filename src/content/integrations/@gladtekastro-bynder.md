@@ -5,5 +5,5 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/@gladtek/astro-bynder
 homepageUrl: https://www.npmjs.com/package/@gladtek/astro-bynder
-downloads: 8
+downloads: 6
 ---

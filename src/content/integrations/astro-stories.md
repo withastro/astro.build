@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-stories
 homepageUrl: https://www.npmjs.com/package/astro-stories
-downloads: 6
+downloads: 7
 ---

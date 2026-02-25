@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ivanalbizu/astro-swiperjs-webgl
 repoUrl: https://github.com/ivanalbizu/astro-swiperjs-webgl
 homepageUrl: https://github.com/ivanalbizu/astro-swiperjs-webgl#readme
-downloads: 103
+downloads: 20
 ---

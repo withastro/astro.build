@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@mashehu/astropub-md
 repoUrl: https://github.com/mashehu/astropub-md
 homepageUrl: https://github.com/mashehu/astropub-md
-downloads: 150
+downloads: 151
 ---
