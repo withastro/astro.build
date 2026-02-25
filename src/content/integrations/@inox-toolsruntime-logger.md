@@ -5,6 +5,7 @@ description: Expose Astro Integration Logger at runtime for consistent output
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/runtime-logger
-homepageUrl: https://www.npmjs.com/package/@inox-tools/runtime-logger
-downloads: 2445
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
+downloads: 4231
+repoUrl: https://github.com/Fryuni/inox-tools
 ---

@@ -5,6 +5,7 @@ description: Make your Nanostores concurrent safe and shared from server to clie
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-nanostores
-homepageUrl: https://www.npmjs.com/package/@inox-tools/request-nanostores
-downloads: 4144
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
+downloads: 5658
+repoUrl: https://github.com/Fryuni/inox-tools
 ---

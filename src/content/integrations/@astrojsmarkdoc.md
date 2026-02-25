@@ -6,8 +6,9 @@ categories:
   - uncategorized
   - official
 npmUrl: https://www.npmjs.com/package/@astrojs/markdoc
+image: /assets/integrations/markdoc.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/markdoc/
-downloads: 51662
+downloads: 72734
 official: true
 ---

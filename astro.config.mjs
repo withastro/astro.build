@@ -50,7 +50,7 @@ export default defineConfig({
 		sitemap(),
 	],
 	image: {
-		domains: ['v1.screenshot.11ty.dev', 'storage.googleapis.com'],
+		domains: ['v1.screenshot.11ty.dev', 'storage.googleapis.com', 'avatars.githubusercontent.com'],
 	},
 	vite: {
 		ssr: {

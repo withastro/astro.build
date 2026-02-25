@@ -4,10 +4,10 @@ title: sonda
 description: Universal bundle analyzer and visualizer that works with most
   popular bundlers and frameworks.
 categories:
-  - performance+seo
   - toolbar
+  - performance+seo
 npmUrl: https://www.npmjs.com/package/sonda
 repoUrl: https://github.com/filipsobol/sonda
 homepageUrl: https://sonda.dev
-downloads: 210952
+downloads: 200483
 ---

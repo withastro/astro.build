@@ -5,6 +5,7 @@ description: Warp-drive search for Astro sites using Pagefind
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/star-warp
-homepageUrl: https://www.npmjs.com/package/@inox-tools/star-warp
-downloads: 186
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
+downloads: 264
+repoUrl: https://github.com/Fryuni/inox-tools
 ---

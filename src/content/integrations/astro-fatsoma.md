@@ -5,10 +5,8 @@ description: An Astro integration that fetches live event data from the Fatsoma
   API and keeps event listings automatically up to date.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/astro-fatsoma
 repoUrl: https://github.com/velohost/astro-fatsoma
 homepageUrl: https://velohost.co.uk/plugins/astro-plugins/astro-fatsoma/
-badge: new
-downloads: 594
+downloads: 35
 ---

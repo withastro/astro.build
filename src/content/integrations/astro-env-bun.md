@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-env-bun
 repoUrl: https://github.com/raiondesu/astro-env-bun
 homepageUrl: https://www.npmjs.com/package/astro-env-bun
-downloads: 24
+downloads: 8
 ---

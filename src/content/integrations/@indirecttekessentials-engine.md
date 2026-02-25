@@ -7,10 +7,8 @@ description: A white-label, config-driven Astro component library for rapidly
   handles the rest.
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@indirecttek/essentials-engine
 repoUrl: https://github.com/indirecttek/essentials-engine
 homepageUrl: https://www.npmjs.com/package/@indirecttek/essentials-engine
-badge: new
-downloads: 565
+downloads: 588
 ---

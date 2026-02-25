@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import ghActions from '@actions/core';
+import * as ghActions from '@actions/core';
 import octokit from '@octokit/graphql';
 import { parseHTML } from 'linkedom';
 import puppeteer from 'puppeteer';
@@ -567,6 +567,10 @@ const scraper = new ShowcaseScraper({
 		'https://dev.to/pascal_cescato_692b7a8a20/from-wordpress-to-astro-three-days-to-reclaim-control-5dn2',
 		// 2025-12-30 NSFW
 		'https://justfuckinguseastro.com/',
+		// 2026-01-29 site taken down
+		'https://starlight-toc-overview-customizer.trueberryless.org/',
+		'https://trackademic.online/',
+		'https://pedrorivera.me/',
 	],
 });
 await scraper.run();

@@ -6,6 +6,7 @@ description: Utilities to work with content collections on an Astro project from
 categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/content-utils
-homepageUrl: https://www.npmjs.com/package/@inox-tools/content-utils
-downloads: 208
+homepageUrl: https://github.com/Fryuni/inox-tools#readme
+downloads: 363
+repoUrl: https://github.com/Fryuni/inox-tools
 ---

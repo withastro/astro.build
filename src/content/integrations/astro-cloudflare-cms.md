@@ -7,5 +7,5 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/astro-cloudflare-cms
 homepageUrl: https://www.npmjs.com/package/astro-cloudflare-cms
-downloads: 3
+downloads: 5
 ---
