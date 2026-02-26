@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@waldheimdev/astro-ai-llms-txt
 homepageUrl: https://github.com/Waldheim-dev/astro-ai-llms-txt-generator
-downloads: 216
+downloads: 215
 repoUrl: https://github.com/Waldheim-dev/astro-ai-llms-txt-generator
 ---

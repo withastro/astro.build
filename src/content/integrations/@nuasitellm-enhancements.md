@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@nuasite/llm-enhancements
 repoUrl: https://github.com/nuasite/nuasite
 homepageUrl: https://github.com/nuasite/nuasite/blob/main/packages/llm-enhancements/README.md
-downloads: 6887
+downloads: 6302
 ---

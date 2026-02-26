@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@vite-pwa/astro
 repoUrl: https://github.com/vite-pwa/astro
 homepageUrl: https://github.com/vite-pwa/astro#readme
-downloads: 38615
+downloads: 38638
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-inline-review
 repoUrl: https://github.com/viv/astro-inline-review
 homepageUrl: https://github.com/viv/astro-inline-review#readme
 badge: new
-downloads: 95
+downloads: 96
 ---

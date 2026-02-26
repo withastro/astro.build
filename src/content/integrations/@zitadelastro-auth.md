@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@zitadel/astro-auth
 repoUrl: https://github.com/zitadel/astro-auth
 homepageUrl: https://github.com/zitadel/astro-auth
 badge: new
-downloads: 218
+downloads: 221
 ---

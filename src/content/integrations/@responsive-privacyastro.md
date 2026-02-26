@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@responsive-privacy/astro
 repoUrl: https://github.com/draftlab-org/responsive-privacy
 homepageUrl: https://github.com/draftlab-org/responsive-privacy/tree/main/packages/astro
 badge: new
-downloads: 167
+downloads: 169
 ---
