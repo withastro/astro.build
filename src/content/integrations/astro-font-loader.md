@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-font-loader
 repoUrl: https://github.com/iveelsm/astro-font-loader
 homepageUrl: https://github.com/iveelsm/astro-font-loader#readme
 badge: new
-downloads: 1057
+downloads: 1094
 ---

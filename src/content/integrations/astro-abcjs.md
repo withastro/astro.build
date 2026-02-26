@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-abcjs
 repoUrl: https://github.com/brylie/astro-abcjs
 homepageUrl: https://github.com/brylie/astro-abcjs#readme
-downloads: 44
+downloads: 41
 ---

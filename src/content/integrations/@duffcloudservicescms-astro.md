@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@duffcloudservices/cms-astro
 repoUrl: https://github.com/duffn84/dcs-again
 homepageUrl: https://www.npmjs.com/package/@duffcloudservices/cms-astro
-downloads: 18
+downloads: 16
 ---
