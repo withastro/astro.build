@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/@mcptoolshop/site-theme
 repoUrl: https://github.com/mcp-tool-shop-org/site-theme
-homepageUrl: https://github.com/mcp-tool-shop-org/site-theme
+homepageUrl: https://mcp-tool-shop-org.github.io/site-theme/
 badge: new
 downloads: 1130
 ---
