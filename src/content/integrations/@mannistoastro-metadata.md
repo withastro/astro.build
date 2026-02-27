@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@mannisto/astro-metadata
 repoUrl: https://github.com/eremannisto/astro-metadata
 homepageUrl: https://github.com/eremannisto/astro-metadata#readme
 badge: new
-downloads: 1085
+downloads: 1088
 ---

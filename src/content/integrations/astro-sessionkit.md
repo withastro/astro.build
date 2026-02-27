@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-sessionkit
 repoUrl: https://github.com/oamm/astro-sessionkit
 homepageUrl: https://github.com/oamm/astro-sessionkit#readme
-downloads: 1320
+downloads: 1280
 ---
