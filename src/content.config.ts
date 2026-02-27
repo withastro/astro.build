@@ -27,30 +27,28 @@ const seoSchema = z.object({
 			src: z.string().default('/og/social.jpg'),
 			alt: z.string().default('Build the web you want'),
 		})
-		.default({}),
+		.prefault({}),
 	pageType: z.enum(['website', 'article']).default('website'),
 	robots: z
 		.object({
 			index: z.boolean().default(true),
 			follow: z.boolean().default(true),
 		})
-		.default({}),
+		.prefault({}),
 });
 
 export const collections = {
 	authors: defineCollection({
 		loader: file('src/data/authors/authors.json'),
 		schema: ({ image }) =>
-			z
-				.object({
-					image: image().optional(),
-					name: z.string(),
-					twitter: z.string().url().optional(),
-					mastodon: z.string().url().optional(),
-					bluesky: z.string().url().optional(),
-					github: z.string().url().optional(),
-				})
-				.strict(),
+			z.strictObject({
+				image: image().optional(),
+				name: z.string(),
+				twitter: z.url().optional(),
+				mastodon: z.url().optional(),
+				bluesky: z.url().optional(),
+				github: z.url().optional(),
+			}),
 	}),
 	blog: defineCollection({
 		loader: glob({ base: './src/content/blog', pattern: '*.mdx' }),
@@ -120,7 +118,7 @@ export const collections = {
 			// adding this extra flag to differentiate it in lists
 			.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
-	integrations: {
+	integrations: defineCollection({
 		loader: glob({ base: './src/content/integrations', pattern: '*.md' }),
 		schema: z.object({
 			name: z.string().describe('Name of the package as it is published to NPM'),
@@ -132,16 +130,16 @@ export const collections = {
 			categories: z.array(
 				z.enum(Array.from(IntegrationCategories.keys()) as [string, ...string[]]),
 			),
-			repoUrl: z.string().url().optional(),
-			npmUrl: z.string().url(),
-			homepageUrl: z.string().url().optional(),
+			repoUrl: z.url().optional(),
+			npmUrl: z.url(),
+			homepageUrl: z.url().optional(),
 			official: z.boolean().default(false),
 			toolbar: z.number().min(1).optional(),
 			downloads: z.number().min(0).default(0),
 			downloadFactor: z.number().min(0).default(1),
 			badge: z.string().optional(),
 		}),
-	},
+	}),
 	pages: defineCollection({
 		loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
 		schema: ({ image }) =>
@@ -160,11 +158,11 @@ export const collections = {
 				}),
 			]),
 	}),
-	partials: {
+	partials: defineCollection({
 		loader: glob({ base: './src/content/partials', pattern: '*.md' }),
 		schema: z.object({}),
-	},
-	quotes: {
+	}),
+	quotes: defineCollection({
 		loader: glob({ base: './src/content/quotes', pattern: '*.md' }),
 		schema: z.object({
 			author: z.object({
@@ -174,10 +172,10 @@ export const collections = {
 					alt: z.string().optional(),
 				}),
 			}),
-			url: z.string().url(),
+			url: z.url(),
 			published: z.date(),
 		}),
-	},
+	}),
 	showcase: defineCollection({
 		loader: glob({
 			base: './src/content/showcase',
@@ -192,11 +190,11 @@ export const collections = {
 					.string()
 					.min(1)
 					.refine((value) => value !== 'Just a moment...', {
-						message:
+						error:
 							"A showcase entry's title cannot be 'Just a moment...' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					})
 					.refine((value) => value !== 'Vercel Security Checkpoint', {
-						message:
+						error:
 							"A showcase entry's title cannot be 'Vercel Security Checkpoint' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					}),
 				image: image(),
@@ -225,17 +223,15 @@ export const collections = {
 	agencies: defineCollection({
 		loader: glob({ base: './src/content/agencies', pattern: '**/*.md' }),
 		schema: ({ image }) =>
-			z
-				.object({
-					name: z.string(),
-					location: z.string(),
-					url: z.string().url(),
-					contactLink: z.string().url().or(z.string().startsWith('mailto:')).optional(),
-					image: image(),
-					imageAlt: z.string(),
-					description: z.string(),
-				})
-				.strict(),
+			z.strictObject({
+				name: z.string(),
+				location: z.string(),
+				url: z.url(),
+				contactLink: z.url().or(z.string().startsWith('mailto:')).optional(),
+				image: image(),
+				imageAlt: z.string(),
+				description: z.string(),
+			}),
 	}),
 	promos: defineCollection({
 		loader: file('./src/content/promos/promos.yml'),
