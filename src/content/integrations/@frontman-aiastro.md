@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@frontman-ai/astro
 repoUrl: https://github.com/frontman-ai/frontman
 homepageUrl: https://frontman.sh
 badge: new
-downloads: 1229
+downloads: 1326
 ---

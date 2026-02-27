@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/runtime-logger
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 4166
+downloads: 4184
 repoUrl: https://github.com/Fryuni/inox-tools
 ---

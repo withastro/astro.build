@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-annotate
 repoUrl: https://github.com/jan-nikolov/astro-annotate
 homepageUrl: https://github.com/jan-nikolov/astro-annotate#readme
 badge: new
-downloads: 475
+downloads: 477
 ---

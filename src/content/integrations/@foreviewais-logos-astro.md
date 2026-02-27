@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@foreview/ais-logos-astro
 repoUrl: https://github.com/foreview/aisafety-logos
 homepageUrl: https://github.com/foreview/aisafety-logos#readme
 badge: new
-downloads: 66
+downloads: 68
 ---
