@@ -45,8 +45,7 @@ jobs:
   showcase:
     name: Update Showcase Sites
     if: github.repository_owner == 'withastro'
-    # Puppeteer is breaking with ubuntu-24.04, so we’re still using 22 for this workflow
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code using Git
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2

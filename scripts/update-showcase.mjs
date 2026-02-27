@@ -1,13 +1,10 @@
 import fs from 'node:fs/promises';
 import * as ghActions from '@actions/core';
 import octokit from '@octokit/graphql';
+import { chromium } from '@playwright/test';
 import { parseHTML } from 'linkedom';
-import puppeteer from 'puppeteer';
-import { downloadBrowser } from 'puppeteer/lib/esm/puppeteer/node/install.js';
 import sharp from 'sharp';
 import * as yaml from 'yaml';
-
-await downloadBrowser();
 
 class ShowcaseScraper {
 	/** A GraphQL client that uses our authorization token by default. */
@@ -63,7 +60,7 @@ class ShowcaseScraper {
 		}
 
 		console.log(`Scraping ${sites.astro.length} new Astro site(s)...`);
-		const browser = await puppeteer.launch();
+		const browser = await chromium.launch();
 		for (const url of sites.astro) {
 			const { success, title } = await ShowcaseScraper.#addShowcaseSite(url, browser);
 			if (success) {
@@ -312,7 +309,7 @@ class ShowcaseScraper {
 	/**
 	 * Add a URL to the Astro showcase, scraping the site, and creating a data file and screenshots.
 	 * @param {string} url URL to visit
-	 * @param {import('puppeteer').Browser} browser
+	 * @param {import('@playwright/test').Browser} browser
 	 * @returns {Promise<{ success: boolean; title: string | undefined }>}
 	 */
 	static async #addShowcaseSite(url, browser) {
@@ -334,27 +331,30 @@ class ShowcaseScraper {
 	}
 
 	/**
-	 * Loads the URL with Puppeteer to extract the page metadata and take a screenshot.
+	 * Loads the URL with Playwright to extract the page metadata and take a screenshot.
 	 * @param {string} url URL of the page to visit
-	 * @param {import('puppeteer').Browser} browser
+	 * @param {import('@playwright/test').Browser} browser
 	 * @returns {Promise<{ screenshot: Buffer; title: string; isStarlight: boolean }>}
 	 */
 	static async #scrapeSite(url, browser) {
+		console.log('Creating new context');
+		const context = await browser.newContext({
+			viewport: { width: 1280, height: 720 },
+			deviceScaleFactor: 1.4,
+		});
 		console.log('Creating new page');
-		const page = await browser.newPage();
-		console.log('Setting viewport');
-		await page.setViewport({ width: 1280, height: 720, deviceScaleFactor: 1.4 });
+		const page = await context.newPage();
 		console.log('Navigating to', url);
 		await page.goto(url);
 		// Some pages animate elements in on load, so we give them some time to settle:
 		// wait for 2 seconds + 1 frame, then wait for page to be idle.
 		console.log('Waiting for page to settle');
+		// Waiting for 2s is done using Playwright’s built-in `waitForTimeout()` rather than a
+		// `setTimeout()` to prevent invalid context errors if a navigation happens during the timeout.
+		await page.waitForTimeout(2000);
 		await page.evaluate(() => {
 			return new Promise((resolve) => {
-				setTimeout(
-					() => requestAnimationFrame(() => requestIdleCallback(resolve, { timeout: 2000 })),
-					2000,
-				);
+				requestAnimationFrame(() => requestIdleCallback(resolve, { timeout: 2000 }));
 			});
 		});
 		console.log('Getting title');

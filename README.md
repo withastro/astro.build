@@ -8,15 +8,13 @@ The [themes catalog](https://astro.build/themes/) is now powered by the [Astro D
 
 ## Updating the Showcase
 
-The [showcase](https://astro.build/showcase) doesn't depend on any data from GitHub or NPM. All showcase data is pulled from the [content collection](/src/content/showcase/). Similar to themes, optimized images should be saved to the collection's [\_images directory](/src/content/showcase/_images/), ideally as format with a `{image}.webp` file at 800px wide and `{image}@2x.webp` at 1600px wide.
+The [showcase](https://astro.build/showcase) doesn't depend on any data from GitHub or NPM. All showcase data is pulled from the [content collection](/src/content/showcase/). Optimized images should be saved to the collection's [directory](/src/content/showcase/) in a `.webp` file, have the dimensions of 1600 × 900 pixels, and named after the site’s domain, e.g. `example.com.webp`.
 
 A weekly [GitHub workflow](/.github/workflows/weekly.yaml) pulls URLs posted in [a dedicated GitHub discussion](https://github.com/withastro/roadmap/discussions/521) and opens a PR to add data and screenshots for these sites to the repo. You can also run this script locally and commit the results manually:
 
 ```sh
 pnpm update:showcase
 ```
-
-> TODO: A future PR will migrate to `astro:assets` for image optimization and get away from the manual image optimization shenanigans.
 
 ## Updating Integrations
 
