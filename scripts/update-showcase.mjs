@@ -60,7 +60,7 @@ class ShowcaseScraper {
 		}
 
 		console.log(`Scraping ${sites.astro.length} new Astro site(s)...`);
-		const browser = await chromium.launch({ channel: "chrome" });
+		const browser = await chromium.launch({ channel: 'chrome' });
 		for (const url of sites.astro) {
 			const { success, title } = await ShowcaseScraper.#addShowcaseSite(url, browser);
 			if (success) {
