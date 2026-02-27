@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@itsmatteomanf/astro-robots-txt
 repoUrl: https://github.com/itsmatteomanf/astro-components
 homepageUrl: https://github.com/itsmatteomanf/astro-components/tree/main/packages/astro-robots-txt#readme
-downloads: 361
+downloads: 364
 ---

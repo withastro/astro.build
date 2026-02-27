@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/mdzjs
 homepageUrl: https://github.com/zakarialaoui10/mdzjs#readme
-downloads: 1265
+downloads: 1269
 repoUrl: https://github.com/zakarialaoui10/mdzjs
 ---

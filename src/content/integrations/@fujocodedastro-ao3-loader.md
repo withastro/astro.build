@@ -6,6 +6,6 @@ categories:
   - loaders
 npmUrl: https://www.npmjs.com/package/@fujocoded/astro-ao3-loader
 homepageUrl: https://github.com/FujoWebDev/fujocoded-plugins#readme
-downloads: 126
+downloads: 127
 repoUrl: https://github.com/FujoWebDev/fujocoded-plugins
 ---
