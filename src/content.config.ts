@@ -41,15 +41,14 @@ export const collections = {
 	authors: defineCollection({
 		loader: file('src/data/authors/authors.json'),
 		schema: ({ image }) =>
-			z
-				.strictObject({
-					image: image().optional(),
-					name: z.string(),
-					twitter: z.url().optional(),
-					mastodon: z.url().optional(),
-					bluesky: z.url().optional(),
-					github: z.url().optional(),
-				})
+			z.strictObject({
+				image: image().optional(),
+				name: z.string(),
+				twitter: z.url().optional(),
+				mastodon: z.url().optional(),
+				bluesky: z.url().optional(),
+				github: z.url().optional(),
+			}),
 	}),
 	blog: defineCollection({
 		loader: glob({ base: './src/content/blog', pattern: '*.mdx' }),
@@ -224,16 +223,15 @@ export const collections = {
 	agencies: defineCollection({
 		loader: glob({ base: './src/content/agencies', pattern: '**/*.md' }),
 		schema: ({ image }) =>
-			z
-				.strictObject({
-					name: z.string(),
-					location: z.string(),
-					url: z.url(),
-					contactLink: z.url().or(z.string().startsWith('mailto:')).optional(),
-					image: image(),
-					imageAlt: z.string(),
-					description: z.string(),
-				})
+			z.strictObject({
+				name: z.string(),
+				location: z.string(),
+				url: z.url(),
+				contactLink: z.url().or(z.string().startsWith('mailto:')).optional(),
+				image: image(),
+				imageAlt: z.string(),
+				description: z.string(),
+			}),
 	}),
 	promos: defineCollection({
 		loader: file('./src/content/promos/promos.yml'),
