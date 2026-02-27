@@ -571,6 +571,11 @@ const scraper = new ShowcaseScraper({
 		'https://starlight-toc-overview-customizer.trueberryless.org/',
 		'https://trackademic.online/',
 		'https://pedrorivera.me/',
+		// 2026-02-27
+		'https://mattstein.com/',
+		'https://absurdityindex.org/',
+		'https://www.nchikt.site/',
+		'https://www.svgtopngs.com/',
 	],
 });
 await scraper.run();
