@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starwind
 repoUrl: https://github.com/starwind-ui/starwind-ui
 homepageUrl: https://github.com/starwind-ui/starwind-ui#readme
-downloads: 1290
+downloads: 1288
 ---

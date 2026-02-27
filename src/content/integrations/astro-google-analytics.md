@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-google-analytics
 repoUrl: https://github.com/JulianCataldo/web-garden
 homepageUrl: https://www.npmjs.com/package/astro-google-analytics
-downloads: 2563
+downloads: 2547
 ---

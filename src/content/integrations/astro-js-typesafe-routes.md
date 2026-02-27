@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-js-typesafe-routes
 repoUrl: https://github.com/JumboDaniel/astro-js-typed-routes
 homepageUrl: https://github.com/JumboDaniel/astro-js-typed-routes
 badge: new
-downloads: 276
+downloads: 451
 ---
