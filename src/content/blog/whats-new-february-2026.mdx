@@ -50,30 +50,33 @@ Let's dive right into it!
 
 ## Updates from Mission Control 
 
-[HTTP Archive results](https://bsky.app/profile/did:plc:uwbl4k3tza7eyjv3morkrld2/post/3mekxko22hc2p)
-
-[State of JS](https://2025.stateofjs.com/en-US/libraries/meta-frameworks/):
-- #2 in usage (two years in a row)
-- #1 in interest (four years in a row)
-- #1 in satisfaction (3 years in a row)
-- #1 in positivity (3 years in a row)
+- 📈 Astro adoption is up in the [HTTP Archive results](https://bsky.app/profile/did:plc:uwbl4k3tza7eyjv3morkrld2/post/3mekxko22hc2p)
+    - 11.8% on mobile
+    - 14.6% on desktop sites
+- 🏆 Astro shines in the [2025 State of JS](https://2025.stateofjs.com/en-US/libraries/meta-frameworks/):
+    - #2 in usage (two years in a row)
+    - #1 in interest (four years in a row)
+    - #1 in satisfaction (3 years in a row)
+    - #1 in positivity (3 years in a row)
 
 ## Latest releases
 
 Minor releases introduce new features and improvements. Pre-releases introduce breaking changes, stabilize features, and provide improvements. Check out what's new!
 
 - [Astro 5.18](https://github.com/withastro/astro/releases/tag/astro%405.18.0) - a new option to configure the maximum size of Astro Actions request bodies, and an `X-Forwarded-Proto` validation fix!
-- [Astro 6.0-beta-16](https://github.com/withastro/astro/releases/tag/astro%406.0.0-beta.16) - the latest beta release of Astro v6 and sneak peek of the [v5 -> v6 upgrade guide draft](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) with up-to-the-minute v6 docs, so you can feel free to try it!
+- [Astro 6.0-beta-17](https://github.com/withastro/astro/releases/tag/astro%406.0.0-beta.17) - the latest beta release of Astro v6 and sneak peek of the [v5 -> v6 upgrade guide draft](https://v6.docs.astro.build/en/guides/upgrade-to/v6/) with up-to-the-minute v6 docs, so you can feel free to try it!
 
 ## Astro Adopters
 
-From Aftonbladet to Mr. Beast/Salesforce, to the Mars Company to Fathom, some of the biggest names you know are using Astro!
+From Aftonbladet to Mr. Beast/Salesforce, to the Mars Company to Fathom, to Mocha to Pokemon, some of the biggest names you know are using Astro!
 
 export const featuredSites = [
   'www.aftonbladet.se',
   'mrbeast.salesforce.com',
   'www.nomnomnow.com',
   'usefathom.com',
+  'mochajs.org',
+  'www.pokemon.co.jp',
 ]; 
 
 {/* Use for grids of 2 per row  */}
@@ -83,6 +86,8 @@ export const featuredSites = [
   <ShowcaseCard site={await getEntry('showcase', 'mrbeast.salesforce.com',)} />
   <ShowcaseCard site={await getEntry('showcase', 'www.nomnomnow.com')} />
   <ShowcaseCard site={await getEntry('showcase', 'usefathom.com',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'mochajs.org')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.pokemon.co.jp',)} />
 </div>
 
 {/* Use when there are multiples of 3  */}
@@ -95,20 +100,19 @@ See more companies using Astro in our [site showcase](/showcase/), and explore A
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, empowering, or just plain fun!
 
 export const monthlySites = [
-  'www.rdldn.co.uk',
-  'sonde.blue',
-  'tippingpoint.watch',
-  'democracy-direct.com',  
+  'www.ingridhartman.com',
+  'rodydavis.dev',
+  'pyrepl.dev',
+  'www.sidekick.agency_not-found',  
 ]; 
 
 {/* Use for grids of 2 per row  */}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'www.rdldn.co.uk')} />
-  <ShowcaseCard site={await getEntry('showcase', 'sonde.blue')} />
-  <ShowcaseCard site={await getEntry('showcase', 'tippingpoint.watch')} />
-  <ShowcaseCard site={await getEntry('showcase', 'democracy-direct.com')} />
- 
+  <ShowcaseCard site={await getEntry('showcase', 'www.ingridhartman.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'rodydavis.dev')} />
+  <ShowcaseCard site={await getEntry('showcase', 'pyrepl.dev')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.sidekick.agency_not-found')} />
 </div> 
 
 {/* Can use when there are multiples of 3  */}
@@ -124,19 +128,19 @@ export const monthlySites = [
 Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
 
 export const canvasSites = [
-  'astro-infinity.space',
-  'sotoh.openhomefoundation.org',
-  'tiken.dev',
-  'typeface.us',
+  'aptosnetwork.com',
+  'junodesign.app',
+  'joffreyspitzer.com',
+  'debian.com.mx',
 ]; 
 
 {/* Use for grids of 2 per row  */}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'astro-infinity.space')} />
-  <ShowcaseCard site={await getEntry('showcase', 'sotoh.openhomefoundation.org')} />
-  <ShowcaseCard site={await getEntry('showcase', 'tiken.dev')} />
-  <ShowcaseCard site={await getEntry('showcase', 'typeface.us')} />
+  <ShowcaseCard site={await getEntry('showcase', 'aptosnetwork.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'junodesign.app')} />
+  <ShowcaseCard site={await getEntry('showcase', 'joffreyspitzer.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'debian.com.mx')} />
 </div>
 
 {/* Can use when there are multiples of 3  */}
@@ -237,28 +241,6 @@ Grab your popcorn and make a playlist of your faves! 🍿
     { id: "https://www.youtube.com/watch?v=iVvDiZoIWL4", title: "Part 5 Astro Build an Orders Management Dashboard with Astro"},
     { id: "https://www.youtube.com/watch?v=BwXC34odV5c", title: "Part 6 | Lesson 1 – Building a Customer Management Page Using Astro"},
     { id: "https://www.youtube.com/watch?v=3DYk2kc3XDA", title: 'Goodbye to the slowness of Next.js? Why Astro is the next "rocket" in Front-end (practical course)'},
-    { id: "", title: ""},
-  ]}
-/> 
-
-### Live coding streams
-
-Watch people build, experiment, and learn!
-
-<YouTubeGrid
-  maxCols={3}
-  videos={[
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
-    { id: "", title: ""},
     { id: "", title: ""},
   ]}
 /> 
