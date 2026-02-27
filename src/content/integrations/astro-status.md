@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-status
 repoUrl: https://github.com/velohost/astro-status
-homepageUrl: https://velohost.co.uk/plugins/astro-status/
+homepageUrl: https://www.npmjs.com/package/astro-status
 downloads: 24
 ---

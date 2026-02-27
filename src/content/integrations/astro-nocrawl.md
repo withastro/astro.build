@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-nocrawl
 repoUrl: https://github.com/velohost/astro-nocrawl
-homepageUrl: https://velohost.co.uk/plugins/astro-nocrawl/
+homepageUrl: https://www.npmjs.com/package/astro-nocrawl
 downloads: 12
 ---

@@ -6,10 +6,8 @@ description: A custom Astro content loader that combines multiple RSS/Atom feeds
   tool for generating webrings
 categories:
   - uncategorized
-  - recent
 npmUrl: https://www.npmjs.com/package/@jasikpark/astro-openring
 repoUrl: https://tangled.org/caleb.jasik.xyz/astro-openring
 homepageUrl: https://www.npmjs.com/package/@jasikpark/astro-openring
-badge: new
 downloads: 124
 ---

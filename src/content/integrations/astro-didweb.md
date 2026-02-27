@@ -7,7 +7,7 @@ categories:
   - recent
 npmUrl: https://www.npmjs.com/package/astro-didweb
 repoUrl: https://github.com/trm217/astro-did
-homepageUrl: https://github.com/trm217/astro-did#readme
+homepageUrl: https://www.npmjs.com/package/astro-didweb
 badge: new
 downloads: 368
 ---

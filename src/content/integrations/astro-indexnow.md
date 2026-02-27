@@ -6,6 +6,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-indexnow
 repoUrl: https://github.com/velohost/astro-indexnow
-homepageUrl: https://velohost.co.uk/astro-indexnow
+homepageUrl: https://www.npmjs.com/package/astro-indexnow
 downloads: 2586
 ---

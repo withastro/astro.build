@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-humans
 repoUrl: https://github.com/velohost/astro-humans
-homepageUrl: https://velohost.co.uk/plugins/astro-humans/
+homepageUrl: https://www.npmjs.com/package/astro-humans
 downloads: 13
 ---

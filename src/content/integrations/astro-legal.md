@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-legal
 repoUrl: https://github.com/velohost/astro-legal
-homepageUrl: https://velohost.co.uk/plugins/astro-legal/
+homepageUrl: https://www.npmjs.com/package/astro-legal
 downloads: 10
 ---

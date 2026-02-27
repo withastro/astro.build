@@ -7,6 +7,6 @@ categories:
   - accessibility
 npmUrl: https://www.npmjs.com/package/starwind
 repoUrl: https://github.com/starwind-ui/starwind-ui
-homepageUrl: https://github.com/starwind-ui/starwind-ui#readme
+homepageUrl: https://starwind.dev/
 downloads: 1288
 ---

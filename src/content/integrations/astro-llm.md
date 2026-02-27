@@ -7,6 +7,6 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/astro-llm
 repoUrl: https://github.com/velohost/astro-llm
-homepageUrl: https://velohost.co.uk/plugins/astro-llm/
+homepageUrl: https://www.npmjs.com/package/astro-llm
 downloads: 96
 ---

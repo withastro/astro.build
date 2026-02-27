@@ -7,6 +7,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-consent
 repoUrl: https://github.com/velohost/astro-consent
-homepageUrl: https://velohost.co.uk/
+homepageUrl: https://www.npmjs.com/package/astro-consent
 downloads: 554
 ---
