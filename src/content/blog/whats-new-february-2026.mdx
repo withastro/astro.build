@@ -18,16 +18,11 @@ import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.ast
 import ShowcaseGridById from './_whats-new-components/ShowcaseGridById.astro';
 import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
 import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
-import { Tweet } from 'astro-embed';
 import { YouTube } from 'astro-embed';
 import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
 import { getEntry } from 'astro:content';
 import Mention from "/src/components/Mention.astro";
-import { BlueskyPost } from 'astro-embed';
-import { LinkPreview } from 'astro-embed';
-import BlogContentImage from '/src/components/BlogContentImage.astro';
-import astroHappyHour from '/src/content/blog/_images/whats-new-september/2025/astro-happy-hour.jpg';
-import winningDesigns from '/src/content/blog/_images/whats-new-october/2025/winningdesigns.webp';
+import Note from '~/components/Note.astro';
 
 
 Some exciting news from around the Astro ecosystem this month, including:
@@ -319,7 +314,15 @@ export const monthlyTools = [
 
 ## Themes & Templates
 
-Several new Astro themes were added to the [Astro theme catalogue](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme! [Submit your own themes in the Astro developer portal](https://portal.astro.build).
+Several new Astro themes were added to the [Astro theme catalogue](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme!
+
+<Note type="tip">
+We are temporarily pausing new theme submissions in the Astro Developer Portal.
+
+This will allow us to prepare the Theme Catalogue for v6 themes, and theme authors some extra time to upgrade their existing themes.
+
+Next month, we will feature all the themes that have been updated to Astro v6!
+</Note>
 
 <ThemeGrid date={frontmatter.startDate} />
 
@@ -349,12 +352,12 @@ Spot someone using Starlight for their docs? We want to know about it! [Submit i
 
 ## That’s a wrap! 👋
 
-Thanks for starting a brand new year with us!
+Thanks for spending another month with us!
 
 To get your sites, themes, articles, videos, integrations, and more included in next month's round up blog post and newsletter, submit/share them (as appropriate):
 
 - :star: to the [site showcase](/showcase/submit/)
-- :art: to the [theme catalogue](https://portal.astro.build/)
+- :art: to the [theme catalogue](https://portal.astro.build/) - (Please update your existing v5 themes!)
 - :package: with the [proper keyword in your `package.json`](https://docs.astro.build/en/reference/publish-to-npm/#packagejson-data)
 - :speech_balloon: on social media tagging the Astro account
 - ... and of course, in [our Discord `#showcase` channel](https://astro.build/chat)!
