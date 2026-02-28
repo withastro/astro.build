@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-journey
 repoUrl: https://github.com/uray-lu/astro-journey
 homepageUrl: https://github.com/uray-lu/astro-journey#readme
-downloads: 43
+downloads: 30
 ---

@@ -10,5 +10,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ze-moreno/astro-markdown-runtime
 homepageUrl: https://www.npmjs.com/package/@ze-moreno/astro-markdown-runtime
 badge: new
-downloads: 466
+downloads: 471
 ---

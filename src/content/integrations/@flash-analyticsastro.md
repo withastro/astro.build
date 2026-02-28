@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@flash-analytics/astro
 homepageUrl: https://www.npmjs.com/package/@flash-analytics/astro
-downloads: 156
+downloads: 154
 ---

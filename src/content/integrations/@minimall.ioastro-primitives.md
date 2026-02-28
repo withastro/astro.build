@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@minimall.io/astro-primitives
 repoUrl: https://github.com/minimall-io/astro-primitives
 homepageUrl: https://github.com/minimall-io/astro-primitives/tree/main
 badge: new
-downloads: 67
+downloads: 68
 ---

@@ -8,5 +8,4 @@ categories:
 npmUrl: https://www.npmjs.com/package/@spaire/astro
 homepageUrl: https://www.npmjs.com/package/@spaire/astro
 badge: new
-downloads: 104
 ---

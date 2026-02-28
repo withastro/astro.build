@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/cut-short
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 167
+downloads: 165
 repoUrl: https://github.com/Fryuni/inox-tools
 ---
