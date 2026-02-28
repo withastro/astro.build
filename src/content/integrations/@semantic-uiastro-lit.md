@@ -7,5 +7,5 @@ categories:
   - frameworks
 npmUrl: https://www.npmjs.com/package/@semantic-ui/astro-lit
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/lit/
-downloads: 11648
+downloads: 11576
 ---

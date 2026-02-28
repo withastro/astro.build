@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-llm-translator
 repoUrl: https://github.com/AsterisMono/astro-llm-translator
 homepageUrl: https://github.com/AsterisMono/astro-llm-translator
-downloads: 181
+downloads: 179
 ---

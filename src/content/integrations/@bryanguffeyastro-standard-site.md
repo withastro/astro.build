@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@bryanguffey/astro-standard-site
 repoUrl: https://github.com/musicjunkieg/astro-standard-site
 homepageUrl: https://github.com/musicjunkieg/astro-standard-site#readme
-downloads: 46
+downloads: 44
 ---

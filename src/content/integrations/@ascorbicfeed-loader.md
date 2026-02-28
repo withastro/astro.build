@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@ascorbic/feed-loader
 repoUrl: https://github.com/ascorbic/astro-loaders
 homepageUrl: https://github.com/ascorbic/astro-loaders
-downloads: 1774
+downloads: 1766
 ---

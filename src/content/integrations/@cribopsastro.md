@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@cribops/astro
 repoUrl: https://github.com/cloudbedrock/cribops-astro
 homepageUrl: https://www.npmjs.com/package/@cribops/astro
-downloads: 27
+downloads: 28
 ---
