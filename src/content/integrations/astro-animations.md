@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-animations
 repoUrl: https://github.com/SaintSin/astro-animations
 homepageUrl: https://github.com/SaintSin/astro-animations
 badge: new
-downloads: 499
+downloads: 500
 ---

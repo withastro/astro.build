@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-dot-md
 repoUrl: https://github.com/morinokami/starlight-dot-md
 homepageUrl: https://github.com/morinokami/starlight-dot-md#readme
-downloads: 46
+downloads: 42
 ---

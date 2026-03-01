@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/expressive-code-collapsible
 repoUrl: https://github.com/frostybee/expressive-code-collapsible
 homepageUrl: https://github.com/frostybee/expressive-code-collapsible
-downloads: 10304
+downloads: 10490
 ---

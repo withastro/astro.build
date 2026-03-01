@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-typograf
 homepageUrl: https://www.npmjs.com/package/astro-typograf
-downloads: 2090
+downloads: 2047
 ---

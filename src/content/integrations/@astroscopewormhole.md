@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@astroscope/wormhole
 repoUrl: https://github.com/smnbbrv/astroscope
 homepageUrl: https://github.com/smnbbrv/astroscope/tree/main/packages/wormhole#readme
 badge: new
-downloads: 206
+downloads: 211
 ---

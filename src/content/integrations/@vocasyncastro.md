@@ -11,6 +11,6 @@ npmUrl: https://www.npmjs.com/package/@vocasync/astro
 repoUrl: https://github.com/sayedhfatimi/vocasync-astro
 homepageUrl: https://github.com/sayedhfatimi/vocasync-astro#readme
 badge: new
-downloads: 567
+downloads: 568
 image: /assets/integrations/@vocasync/astro.png
 ---

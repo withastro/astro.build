@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-pure
 repoUrl: https://github.com/cworld1/astro-theme-pure
 homepageUrl: https://astro-pure.js.org/
-downloads: 806
+downloads: 830
 ---

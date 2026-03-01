@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/webgl-images-view-transitions
 repoUrl: https://github.com/ivanalbizu/webgl-images-view-transitions
 homepageUrl: https://github.com/ivanalbizu/webgl-images-view-transitions#readme
-downloads: 15
+downloads: 13
 ---

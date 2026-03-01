@@ -7,6 +7,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/astro-tests
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 2785
+downloads: 2805
 repoUrl: https://github.com/Fryuni/inox-tools
 ---
