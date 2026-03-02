@@ -576,6 +576,10 @@ const scraper = new ShowcaseScraper({
 		'https://absurdityindex.org/',
 		'https://www.nchikt.site/',
 		'https://www.svgtopngs.com/',
+		// 2026-03-02
+		'https://summersidechoir.ca/',
+		'https://nchikt.site/',
+		'https://bax.sorai.tw/',
 	],
 });
 await scraper.run();
