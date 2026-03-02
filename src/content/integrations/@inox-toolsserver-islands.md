@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@inox-tools/server-islands
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 144
+downloads: 141
 repoUrl: https://github.com/Fryuni/inox-tools
 ---

@@ -60,7 +60,7 @@ class ShowcaseScraper {
 		}
 
 		console.log(`Scraping ${sites.astro.length} new Astro site(s)...`);
-		const browser = await chromium.launch();
+		const browser = await chromium.launch({ channel: 'chrome' });
 		for (const url of sites.astro) {
 			const { success, title } = await ShowcaseScraper.#addShowcaseSite(url, browser);
 			if (success) {
@@ -571,6 +571,15 @@ const scraper = new ShowcaseScraper({
 		'https://starlight-toc-overview-customizer.trueberryless.org/',
 		'https://trackademic.online/',
 		'https://pedrorivera.me/',
+		// 2026-02-27
+		'https://mattstein.com/',
+		'https://absurdityindex.org/',
+		'https://www.nchikt.site/',
+		'https://www.svgtopngs.com/',
+		// 2026-03-02
+		'https://summersidechoir.ca/',
+		'https://nchikt.site/',
+		'https://bax.sorai.tw/',
 	],
 });
 await scraper.run();

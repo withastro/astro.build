@@ -7,6 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/@wuchale/astro
 repoUrl: https://github.com/wuchalejs/wuchale
 homepageUrl: https://wuchale.dev
-downloads: 405
+downloads: 399
 image: /assets/integrations/@wuchale/astro.svg
 ---
