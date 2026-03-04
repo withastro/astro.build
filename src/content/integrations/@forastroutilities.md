@@ -5,6 +5,6 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/@forastro/utilities
 homepageUrl: https://forastro-docs.onrender.com/libraries/utilities
-downloads: 106
+downloads: 103
 repoUrl: https://github.com/louiss0/forastro
 ---

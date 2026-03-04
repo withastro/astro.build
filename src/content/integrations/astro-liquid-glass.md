@@ -7,5 +7,5 @@ categories:
   - css+ui
 npmUrl: https://www.npmjs.com/package/astro-liquid-glass
 homepageUrl: https://www.npmjs.com/package/astro-liquid-glass
-downloads: 20
+downloads: 18
 ---
