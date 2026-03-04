@@ -53,9 +53,46 @@ Cloudflare users now get workerd in development, prerendering, and in production
 
 ## Built-in Fonts API
 
-New fonts API makes it easy to use font provides like Google with automatic optimization.
+Almost every website these days uses custom fonts. However, it can be surprisingly complicated to get them right: Why do I get a Flash of Unstyled Text? Should I add a preload link? What about preconnect links? Do I self-host or rely on a third-party provider?
 
+Astro provides a way to use fonts from your filesystem and various font providers (e.g. Fontsource, Google) through a unified, fully customizable, and type-safe API.
 
+Web fonts can impact page performance at both load time and rendering time. This API helps you keep your site performant with automatic web font optimizations including preload links, optimized fallbacks, and opinionated defaults.
+
+The Fonts API focuses on performance and privacy by downloading and caching fonts so they’re served from your site. This can avoid sending user data to third-party sites, and also ensures that a consistent set of fonts is available to all your visitors.
+
+To enable this feature, configure an `fonts` object with one or more fonts:
+
+```js title="astro.config.mjs"
+import { defineConfig, fontProviders } from "astro/config";
+
+export default defineConfig({
+    experimental: {
+        fonts: [{
+            provider: fontProviders.fontsource(),
+            name: "Roboto",
+            cssVariable: "--font-roboto"
+        }]
+    }
+});
+```
+
+Then, add a `<Font />` component and site-wide styling in your `<head>`:
+
+```astro title="src/components/Head.astro"
+---
+import { Font } from "astro:assets"
+---
+
+<Font cssVariable="--font-roboto" preload />
+<style>
+body {
+    font-family: var(--font-roboto);
+}
+</style>
+```
+
+Head over to the [fonts guide](https://docs.astro.build/en/guides/fonts/) to learn more.
 
 ## Live Collections
 
