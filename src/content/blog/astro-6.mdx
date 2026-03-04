@@ -195,11 +195,56 @@ Astro now powered by Rust, with a compiler, built in Rust.
 
 ## Experimental: Queued Rendering
 
-A new rendering strategy that improves performance by X%. Will become default in Astro 7.
-  - NEW: opt-in via experimental.queuedRendering flag
-  - Queue-based two-pass rendering engine (no recursion)
-  - Sub-features: pooling (reuse nodes across static page renders), contentCache (cache node values)
-  - Early benchmarks show significant speed and memory improvements for large projects
+Queued rendering leverage a new rendering strategy that is based on a queue. This new strategy is designed to replace the current strategy in Astro v7.
+
+When Astro tries to render a JSX element or an Astro component, it does so with a recursion. The rendering functions are called inside themselves. 
+
+While recursion works most of the time, sometimes it can create some memory pressure, especially when working with tree-like structures.
+ 
+With queued rendering, the components of the tree are first collected in an ordered list, and then they are iterated and rendered. Some early benchmarks have shown improvements up to 2x in rendering speed.
+
+Enable the new strategy by enabling the experimental flag:
+
+```js ins={5-7}
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    queuedRendering: {
+      enabled: true
+    }
+  }
+})
+````
+
+Queued rendering comes with two other sub-features: node pooling and content cache.
+
+### Node Pooling
+
+This is a technique to save node types inside an internal cache while rendering multiple pages. The cache is populated during the rendering of page, and reused when the next page is rendered. 
+
+This feature is exclusively meant when building an Astro website, so by design this feature is automatically turned off when rendering dynamic pages. 
+
+Node pooling is automatically enabled when you enabled queued rendering. If you wish to disable it, you can set the size of the pool to zero. Or you can increase its default value.
+
+```js ins={7} ins="3000"
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    queuedRendering: {
+      enabled: true,
+      poolSize: 3000
+    }
+  }
+})
+```
+
+
+{/*  NEW: opt-in via experimental.queuedRendering flag */}
+{/*  Queue-based two-pass rendering engine (no recursion) */}
+{/*  Sub-features: pooling (reuse nodes across static page renders), contentCache (cache node values) */}
+{/*  Early benchmarks show significant speed and memory improvements for large projects */}
 
 ## Experimental: SVG Optimization
 
