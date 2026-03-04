@@ -1,9 +1,10 @@
 ---
 title: 'Astro 6.0'
 description: ''
-publishDate: ''
+publishDate: 2026-03-10
 authors:
   - matthew
+  - ema
 coverImage: ''
 socialImage: ''
 lang: 'en'
@@ -14,9 +15,9 @@ homepageLink:
 
 import BlogContentImage from '/src/components/BlogContentImage.astro';
 
-<!-- Intro paragraph: what is Astro 6, highlight the biggest features -->
+{/*  Intro paragraph: what is Astro 6, highlight the biggest features */}
 
-<!-- "What is Astro?" boilerplate paragraph -->
+{/*  "What is Astro?" boilerplate paragraph */}
 
 **Release highlights include:**
 
@@ -30,54 +31,50 @@ import BlogContentImage from '/src/components/BlogContentImage.astro';
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
 - **[Experimental: SVG Optimization](#experimental-svg-optimization)**
 
-<!-- Install / upgrade instructions -->
+{/*  Install / upgrade instructions */}
 
 ## A redesigned `astro dev`
 
 We've redesigned `astro dev` to better align with production.
 
-<!-- Vite Environment API refactor, closing the gap between dev and prod -->
-<!-- Benefits: run against real runtimes, support more platforms, unified code paths -->
-<!-- Dev and prod now share the same code paths, eliminating subtle env-only bugs -->
+{/*  Vite Environment API refactor, closing the gap between dev and prod */}
+{/*  Benefits: run against real runtimes, support more platforms, unified code paths */}
+{/*  Dev and prod now share the same code paths, eliminating subtle env-only bugs */}
 
 ### Astro on Cloudflare Workers
 
 Cloudflare users now get workerd in development, prerendering, and in production.
 
-<!-- First-class workerd support in dev via Vite Environment API -->
-<!-- Real platform APIs: Durable Objects, KV, R2, Workers Analytics Engine -->
-<!-- Access bindings via `cloudflare:workers` module (no more `Astro.locals.runtime`) -->
-<!-- `astro preview` now works with Cloudflare -->
-<!-- Cloudflare Pages dropped in favor of Workers -->
+{/*  First-class workerd support in dev via Vite Environment API */}
+{/*  Real platform APIs: Durable Objects, KV, R2, Workers Analytics Engine */}
+{/*  Access bindings via `cloudflare:workers` module (no more `Astro.locals.runtime`) */}
+{/*  `astro preview` now works with Cloudflare */}
+{/*  Cloudflare Pages dropped in favor of Workers */}
 
 ## Built-in Fonts API
 
 New fonts API makes it easy to use font provides like Google with automatic optimization.
 
-<!-- NEW: Stable from experimental. Unified API for custom fonts -->
-<!-- Providers: Google, Fontsource, Bunny, plus new `npm` provider for node_modules fonts -->
-<!-- Configure in astro.config.mjs with `fonts` option, use `<Font />` component -->
-<!-- Automatic optimizations: preloading, fallback font generation -->
-<!-- CSS variable-based approach: `cssVariable` prop -->
+
 
 ## Live Collections
 
 Use the Content Layer API you love with live collections that don't require a rebuild.
 
-<!-- Stable from experimental (5.10), real-time data without rebuilds -->
-<!-- Configuration with defineLiveCollection in src/live.config.ts -->
-<!-- Query with getLiveCollection() and getLiveEntry(), with built-in error handling -->
-<!-- Supports filters and custom queries if loader supports them -->
+{/*  Stable from experimental (5.10), real-time data without rebuilds */}
+{/*  Configuration with defineLiveCollection in src/live.config.ts */}
+{/*  Query with getLiveCollection() and getLiveEntry(), with built-in error handling */}
+{/*  Supports filters and custom queries if loader supports them */}
 
 ## Content Security Policy
 
 Astro is now compatible with the most strict CSP policies, and becomes one of the only frameworks to do so. Enterprise, etc.
 
-<!-- Stable from experimental (5.9), XSS/injection protection -->
-<!-- Config moved from experimental.csp to security.csp -->
-<!-- Works in all render modes (static, dynamic, SPA), all official adapters -->
-<!-- Simple `csp: true` or customizable config with scriptDirective etc. -->
-<!-- Responsive images now compatible with CSP (build-time styles via class/data-* attributes) -->
+{/*  Stable from experimental (5.9), XSS/injection protection */}
+{/*  Config moved from experimental.csp to security.csp */}
+{/*  Works in all render modes (static, dynamic, SPA), all official adapters */}
+{/*  Simple `csp: true` or customizable config with scriptDirective etc. */}
+{/*  Responsive images now compatible with CSP (build-time styles via class/data-* attributes) */}
 
 ## Upgraded Packages
 
@@ -85,54 +82,54 @@ Astro is now compatible with the most strict CSP policies, and becomes one of th
 
 Use all of the latest features.
 
-<!-- Upgraded from Vite 6 to Vite 7 -->
-<!-- Affects all framework integrations (React, Vue, Svelte, Solid, Preact, MDX) -->
+{/*  Upgraded from Vite 6 to Vite 7 */}
+{/*  Affects all framework integrations (React, Vue, Svelte, Solid, Preact, MDX) */}
 
 ### Shiki 4
 
 Better because of...
 
-<!-- Upgraded syntax highlighting to Shiki v4 -->
+{/*  Upgraded syntax highlighting to Shiki v4 */}
 
 ### Zod 4
 
 Great new features including...
 
-<!-- Upgraded schema validation to Zod v4 -->
-<!-- Zod now imported from `astro/zod` instead of `z` from `astro:content` -->
+{/*  Upgraded schema validation to Zod v4 */}
+{/*  Zod now imported from `astro/zod` instead of `z` from `astro:content` */}
 
 ## Experimental: Rust Compiler
 
 Astro now powered by Rust, with a compiler, built in Rust.
 
-<!-- NEW: opt-in via experimental.rustCompiler flag -->
-<!-- Faster, better error messages, better JS/TS/CSS support -->
-<!-- Requires separate @astrojs/compiler-rs install -->
-<!-- More strict about invalid HTML (e.g. unclosed tags) -->
-<!-- Early development, may differ from Go-based compiler -->
+{/*  NEW: opt-in via experimental.rustCompiler flag */}
+{/*  Faster, better error messages, better JS/TS/CSS support */}
+{/*  Requires separate @astrojs/compiler-rs install */}
+{/*  More strict about invalid HTML (e.g. unclosed tags) */}
+{/*  Early development, may differ from Go-based compiler */}
 
 ## Experimental: Queued Rendering
 
 A new rendering strategy that improves performance by X%. Will become default in Astro 7.
 
-<!-- NEW: opt-in via experimental.queuedRendering flag -->
-<!-- Queue-based two-pass rendering engine (no recursion) -->
-<!-- Sub-features: pooling (reuse nodes across static page renders), contentCache (cache node values) -->
-<!-- Early benchmarks show significant speed and memory improvements for large projects -->
+{/*  NEW: opt-in via experimental.queuedRendering flag */}
+{/*  Queue-based two-pass rendering engine (no recursion) */}
+{/*  Sub-features: pooling (reuse nodes across static page renders), contentCache (cache node values) */}
+{/*  Early benchmarks show significant speed and memory improvements for large projects */}
 
 ## Experimental: SVG Optimization
 
 Automatic optimization of your SVGs.
 
-<!-- Opt-in via experimental.svgo flag -->
-<!-- Uses SVGO to optimize SVG markup (strip comments, redundant attributes, minify paths) -->
-<!-- SVGs stay as SVGs — no format conversion -->
-<!-- SVG imports become inline Astro components rendered as <svg> elements -->
+{/*  Opt-in via experimental.svgo flag */}
+{/*  Uses SVGO to optimize SVG markup (strip comments, redundant attributes, minify paths) */}
+{/*  SVGs stay as SVGs — no format conversion */}
+{/*  SVG imports become inline Astro components rendered as <svg> elements */}
 
 ## Getting Started
 
-<!-- Install commands for new and existing projects -->
+{/*  Install commands for new and existing projects */}
 
 ## Thank You
 
-<!-- Community thanks, social links, GitHub issues link -->
+{/*  Community thanks, social links, GitHub issues link */}
