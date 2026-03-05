@@ -5,5 +5,6 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_24
+    pkgs.corepack
   ];
 }
