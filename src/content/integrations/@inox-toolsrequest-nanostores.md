@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-nanostores
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 5413
+downloads: 5289
 repoUrl: https://github.com/Fryuni/inox-tools
 ---
