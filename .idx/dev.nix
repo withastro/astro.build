@@ -1,10 +1,10 @@
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
-  channel = "stable-25.11";
+  channel = "unstable";
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.nodejs_24
+    pkgs.fnm
     pkgs.corepack
   ];
 }
