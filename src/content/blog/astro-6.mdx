@@ -36,7 +36,7 @@ Here are the highlights:
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
 - **[Experimental: SVG Optimization](#experimental-svg-optimization)**
 
-One more thing: Astro 6 includes an experimental new **Rust compiler** for `.astro` components. It's an early step, but an important one. As we continue investing in Rust-powered parts of Astro, we're unlocking better performance, stronger scalability for large sites, and a faster path to bigger improvements in upcoming 6.x releases.
+**One more thing**: Astro 6 includes an experimental new **Rust compiler** for `.astro` components. It's an early step, but an important one. As we continue investing in Rust-powered parts of Astro, we're unlocking better performance, stronger scalability for large sites, and a faster path to bigger improvements in upcoming 6.x releases.
 
 To upgrade an existing project to Astro 6, use the automated `@astrojs/upgrade` CLI tool:
 
@@ -56,21 +56,19 @@ npm create astro@latest
 
 ## A redesigned `astro dev`
 
-We've redesigned `astro dev` to better align with production.
+Astro 6 includes a major refactor of the development server to bring development and production much closer together.
 
-- Vite Environment API refactor, closing the gap between dev and prod
-- Benefits: run against real runtimes, support more platforms, unified code paths
-- Dev and prod now share the same code paths, eliminating subtle env-only bugs -- We got several during this refactor
+As Astro evolved from static-first toward broader server rendering support, dev and prod ended up following different internal paths. Over time, that divergence created edge-case behavior that was difficult to reproduce and debug across environments.
+
+In Astro 6, we reworked `astro dev` around Vite's Environment API so Astro can run against real runtimes during development, with shared code paths that better reflect production behavior. The result is a more predictable development experience and fewer bugs caused by environment-specific differences.
 
 ### Astro on Cloudflare Workers
 
-Cloudflare users now get workerd in development, prerendering, and in production.
+The clearest example of this shift is the rebuilt `@astrojs/cloudflare` adapter.
 
-- First-class workerd support in dev via Vite Environment API
-- Real platform APIs: Durable Objects, KV, R2, Workers Analytics Engine
-- Access bindings via `cloudflare:workers` module (no more `Astro.locals.runtime`)
-- `astro preview` now works with Cloudflare
-- Cloudflare Pages dropped in favor of Workers
+With Astro 6, Cloudflare's `workerd` runtime now powers development, prerendering, and production. Instead of relying on the old `Astro.locals.runtime` simulation APIs, you can develop directly against Cloudflare's platform APIs using `cloudflare:workers`, including environment bindings, Durable Objects, KV, and R2.
+
+That means behavior in development is far closer to what runs in production, so issues are caught earlier and platform-specific features are easier to build with confidence.
 
 ## Built-in Fonts API
 
@@ -117,12 +115,52 @@ Head over to the [fonts guide](https://docs.astro.build/en/guides/fonts/) to lea
 
 ## Live Collections
 
-Use the Content Layer API you love with live collections that don't require a rebuild.
+Live Collections are now stable in Astro 6, bringing Content Collections to content that changes frequently, without requiring a rebuild.
 
-- Stable from experimental (5.10), real-time data without rebuilds
-- Configuration with defineLiveCollection in src/live.config.ts
-- Query with getLiveCollection() and getLiveEntry(), with built-in error handling
-- Supports filters and custom queries if loader supports them
+Content Collections (introduced in Astro 2.0) gave Astro a type-safe way to work with local content, and Astro 5.0 expanded that model with loaders for remote sources. Live Collections complete that evolution by letting you fetch frequently updated content at request time with the same collection-first workflow.
+
+Use `defineLiveCollection()` to define a live source in `src/live.config.ts`:
+
+```ts title="src/live.config.ts"
+import { defineLiveCollection } from 'astro:content';
+import { z } from 'astro:schema';
+import { cmsLoader } from './loaders/my-cms';
+
+const updates = defineLiveCollection({
+	loader: cmsLoader({ apiKey: process.env.MY_API_KEY }),
+	schema: z.object({
+		slug: z.string(),
+		title: z.string(),
+		excerpt: z.string(),
+		publishedAt: z.coerce.date(),
+	}),
+});
+
+export const collections = { updates };
+```
+
+Then query live content in your page with built-in error handling:
+
+```astro
+---
+import { getLiveEntry } from 'astro:content';
+
+const { entry: update, error } = await getLiveEntry(
+	'updates',
+	Astro.params.slug,
+);
+
+if (error || !update) {
+	return Astro.redirect('/404');
+}
+---
+
+<h1>{update.data.title}</h1>
+<p>{update.data.excerpt}</p>
+<time>{update.data.publishedAt.toDateString()}</time>
+```
+
+That means editorial content like announcements, changelogs, and documentation updates can appear immediately, while still benefiting from Astro's type-safe content APIs.
 
 ## Content Security Policy
 
