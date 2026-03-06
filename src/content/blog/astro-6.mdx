@@ -148,7 +148,7 @@ Use `defineLiveCollection()` to define a live source in `src/live.config.ts`:
 
 ```ts title="src/live.config.ts"
 import { defineLiveCollection } from 'astro:content';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 import { cmsLoader } from './loaders/my-cms';
 
 const updates = defineLiveCollection({
