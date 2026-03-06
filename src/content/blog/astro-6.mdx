@@ -230,7 +230,7 @@ export default defineConfig({
 });
 ```
 
-Astro implements CPS by hashing all script and styles shipped in page; this technique allows Astro support static pages and dynamic pages. Astro injects the CSP header using `<meta http-equiv="Content-Security-Policy">` in static pages, while dynamic pages are served using a `Request` header. If your adapter supports the adapter feature `staticHeaders`, CSP is served via `Request` header for static pages too.
+Astro implements CSP by hashing all script and styles shipped in page; this technique allows Astro support static pages and dynamic pages. Astro injects the CSP header using `<meta http-equiv="Content-Security-Policy">` in static pages, while dynamic pages are served using a `Request` header. If your adapter supports the adapter feature `staticHeaders`, CSP is served via `Request` header for static pages too.
 
 As part of the stabilization, CSP is now supported out of box for [responsive images](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles). The styles for images are calculated at build-time, and the styles are applied using a mix CSS classes and `data-*` attributes.
 
