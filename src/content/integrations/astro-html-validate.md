@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-html-validate
 repoUrl: https://github.com/martinsilha/astro-html-validate
 homepageUrl: https://github.com/martinsilha/astro-html-validate#readme
 badge: new
-downloads: 447
+downloads: 472
 ---
