@@ -28,11 +28,11 @@ Here are the highlights:
 
 - **[A redesigned `astro dev`](#a-redesigned-astro-dev)**
 - **[Astro on Cloudflare Workers](#astro-on-cloudflare-workers)**
+- **[Experimental: Rust Compiler](#experimental-rust-compiler)**
 - **[Built-in Fonts API](#built-in-fonts-api)**
 - **[Live Collections](#live-collections)**
 - **[Content Security Policy](#content-security-policy)**
 - **[Upgraded Packages](#upgraded-packages)**
-- **[Experimental: Rust Compiler](#experimental-rust-compiler)**
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
 
 **One more thing**: Astro 6 includes an experimental new **Rust compiler** for `.astro` components. It's an early step, but an important one. As we continue investing in Rust-powered parts of Astro, we're unlocking better performance, stronger scalability for large sites, and a faster path to bigger improvements in upcoming 6.x releases.
@@ -68,6 +68,32 @@ The clearest example of this shift is the rebuilt `@astrojs/cloudflare` adapter.
 With Astro 6, Cloudflare's `workerd` runtime now powers development, prerendering, and production. Instead of relying on the old `Astro.locals.runtime` simulation APIs, you can develop directly against Cloudflare's platform APIs using `cloudflare:workers`, including environment bindings, Durable Objects, KV, and R2.
 
 That means behavior in development is far closer to what runs in production, so issues are caught earlier and platform-specific features are easier to build with confidence.
+
+## Experimental: Rust Compiler
+
+Astro 6 introduces an experimental new Rust compiler for `.astro` components — and it's fast.
+
+This is one of the biggest bets in this release: faster compilation, stronger diagnostics, and a path to scaling Astro further for larger and more complex sites.
+
+And yes, we vibe-coded this with AI. What started as an experiment while updating our Go-based compiler for Astro 6 moved from "can this work?" to "this is actually good enough to ship." We hit parity quickly, then pushed beyond it.
+
+You can try it today as an experimental feature:
+
+```js
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
+		rustCompiler: true,
+	},
+});
+```
+
+We expect this to become the default compiler in Astro 7.
+
+One important migration note: the Rust compiler is stricter about invalid HTML, especially around omitted tags and table structure. In return, you get clearer errors and a stronger foundation for better editor tooling.
+
+This is just the beginning. We're actively exploring more Rust-powered parts of Astro, especially in the build pipeline, with more to share soon.
 
 ## Built-in Fonts API
 
@@ -230,16 +256,6 @@ When defining schemas, import Zod from `astro/zod` rather than `astro:content`.
 
 See the [upgrade guide](https://v6.docs.astro.build/en/guides/upgrade-to/v6/#zod-4) for tips on common things that need to change with Zod 4.
 
-## Experimental: Rust Compiler
-
-Astro now powered by Rust, with a compiler, built in Rust.
-
-- NEW: opt-in via experimental.rustCompiler flag
-- Faster, better error messages, better JS/TS/CSS support
-- Requires separate @astrojs/compiler-rs install
-- More strict about invalid HTML (e.g. unclosed tags)
-- Early development, may differ from Go-based compiler
-
 ## Experimental: Queued Rendering
 
 Queued rendering leverage a new rendering strategy that is based on a queue. This new strategy is designed to replace the current strategy in Astro v7.
@@ -305,7 +321,6 @@ export default defineConfig({
 	},
 });
 ```
-
 
 ## Thank You
 
