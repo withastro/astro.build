@@ -80,13 +80,11 @@ To enable this feature, configure an `fonts` object with one or more fonts:
 import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
-    experimental: {
-        fonts: [{
-            provider: fontProviders.fontsource(),
-            name: "Roboto",
-            cssVariable: "--font-roboto"
-        }]
-    }
+    fonts: [{
+        provider: fontProviders.fontsource(),
+        name: "Roboto",
+        cssVariable: "--font-roboto"
+    }]
 });
 ```
 
