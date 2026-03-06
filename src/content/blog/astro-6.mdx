@@ -5,6 +5,7 @@ publishDate: 2026-03-10
 authors:
   - matthew
   - ema
+  - florian
 coverImage: ''
 socialImage: ''
 lang: 'en'
@@ -15,16 +16,11 @@ homepageLink:
 
 import BlogContentImage from '/src/components/BlogContentImage.astro';
 
-# Intro here
+Astro 6 is here! 🎊
 
-- Astro 6 is a major refactor of the framework around Vite's Environment APIs.
-  - The new Rust compiler.
-  - `astro build` completely refactored.
-- Framing: this is a refactor release with minimal changes needed from users.
-  - This sets us up to make big improvements in the future.
-    - Like this framing but also makes it sound like the present is bad. Need to resolve that.
-- Still a lot of new features in Astro 6:
-**Release highlights include:**
+After a 2 month beta period we're excited to announce the release of Astro 6. This release represents a major effort to drastically refactor Astro's  development server and much of the build command as well. The result is a dev/build experience that are much closer to each other. More on this below.
+
+Astro 6 is not without major new features, however, and these are the **highlights**:
 
 - **[A redesigned `astro dev`](#a-redesigned-astro-dev)**
 - **[Astro on Cloudflare Workers](#astro-on-cloudflare-workers)**
@@ -36,17 +32,23 @@ import BlogContentImage from '/src/components/BlogContentImage.astro';
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
 - **[Experimental: SVG Optimization](#experimental-svg-optimization)**
 
-- We're now experimenting with automating tasks in the monorepo using AI.
-  - Advantages:
-    - Automated triage gives contributors more information to fix bugs.
-      - We've noticed an uptick in external contributors since making these changes.
-        - Stats if possible
-    - Niche issues that the core team wasn't able to prioritize can now be fixed easier.
-    - Core team able to spend more time on big issues like performance and features.
-    - Security scans lets us get in front of security issues before they hit users.
-  - Frame as early experiments seeing good results.
+As you can see, Astro 6 also includes some experimental features we are excited to make available as stable in Astro 6 minors. One of these is the new **Rust compiler** for .astro components. With a more stable foundation in Astro 6 we are prepared to tackle some of the bigger challenges and the Rust compiler is us dipping our toes into powering *more* of Astro with Rust, especially around the build which has been difficult to scale to very large sites in JavaScript. More on this in the future.
 
-- Install / upgrade instructions
+To upgrade an existing project to Astro 6, use the automated `@astrojs/upgrade` CLI tool:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+```
+
+New projects, simply
+
+```sh
+npm create astro@latest
+```
 
 ## A redesigned `astro dev`
 
