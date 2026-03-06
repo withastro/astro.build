@@ -18,9 +18,13 @@ import BlogContentImage from '/src/components/BlogContentImage.astro';
 
 Astro 6 is here! 🎊
 
-After a 2 month beta period we're excited to announce the release of Astro 6. This release represents a major effort to drastically refactor Astro's  development server and much of the build command as well. The result is a dev/build experience that are much closer to each other. More on this below.
+Following a two-month beta, Astro 6 introduces a broad set of new capabilities across developer experience, deployment, performance, and security.
 
-Astro 6 is not without major new features, however, and these are the **highlights**:
+Highlights include a redesigned `astro dev`, Astro on Cloudflare Workers, a built-in Fonts API, Live Collections, and stable Content Security Policy.
+
+Alongside these features, we completed a major refactor of Astro's dev server and much of the build command to bring dev and production closer together. The result is fewer "works in dev, breaks in prod" surprises today, plus a platform that lets us ship ambitious improvements faster throughout upcoming Astro 6.x releases.
+
+Here are the highlights:
 
 - **[A redesigned `astro dev`](#a-redesigned-astro-dev)**
 - **[Astro on Cloudflare Workers](#astro-on-cloudflare-workers)**
@@ -32,7 +36,7 @@ Astro 6 is not without major new features, however, and these are the **highligh
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
 - **[Experimental: SVG Optimization](#experimental-svg-optimization)**
 
-As you can see, Astro 6 also includes some experimental features we are excited to make available as stable in Astro 6 minors. One of these is the new **Rust compiler** for .astro components. With a more stable foundation in Astro 6 we are prepared to tackle some of the bigger challenges and the Rust compiler is us dipping our toes into powering *more* of Astro with Rust, especially around the build which has been difficult to scale to very large sites in JavaScript. More on this in the future.
+One more thing: Astro 6 includes an experimental new **Rust compiler** for `.astro` components. It's an early step, but an important one. As we continue investing in Rust-powered parts of Astro, we're unlocking better performance, stronger scalability for large sites, and a faster path to bigger improvements in upcoming 6.x releases.
 
 To upgrade an existing project to Astro 6, use the automated `@astrojs/upgrade` CLI tool:
 
@@ -53,18 +57,20 @@ npm create astro@latest
 ## A redesigned `astro dev`
 
 We've redesigned `astro dev` to better align with production.
-  - Vite Environment API refactor, closing the gap between dev and prod
-  - Benefits: run against real runtimes, support more platforms, unified code paths
-  -  Dev and prod now share the same code paths, eliminating subtle env-only bugs -- We got several during this refactor
+
+- Vite Environment API refactor, closing the gap between dev and prod
+- Benefits: run against real runtimes, support more platforms, unified code paths
+- Dev and prod now share the same code paths, eliminating subtle env-only bugs -- We got several during this refactor
 
 ### Astro on Cloudflare Workers
 
 Cloudflare users now get workerd in development, prerendering, and in production.
-  - First-class workerd support in dev via Vite Environment API
-  - Real platform APIs: Durable Objects, KV, R2, Workers Analytics Engine
-  - Access bindings via `cloudflare:workers` module (no more `Astro.locals.runtime`)
-  - `astro preview` now works with Cloudflare
-  - Cloudflare Pages dropped in favor of Workers
+
+- First-class workerd support in dev via Vite Environment API
+- Real platform APIs: Durable Objects, KV, R2, Workers Analytics Engine
+- Access bindings via `cloudflare:workers` module (no more `Astro.locals.runtime`)
+- `astro preview` now works with Cloudflare
+- Cloudflare Pages dropped in favor of Workers
 
 ## Built-in Fonts API
 
@@ -79,14 +85,16 @@ The Fonts API focuses on performance and privacy by downloading and caching font
 To enable this feature, configure an `fonts` object with one or more fonts:
 
 ```js title="astro.config.mjs"
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
-    fonts: [{
-        provider: fontProviders.fontsource(),
-        name: "Roboto",
-        cssVariable: "--font-roboto"
-    }]
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: 'Roboto',
+			cssVariable: '--font-roboto',
+		},
+	],
 });
 ```
 
@@ -94,14 +102,14 @@ Then, add a `<Font />` component and site-wide styling in your `<head>`:
 
 ```astro title="src/components/Head.astro"
 ---
-import { Font } from "astro:assets"
+import { Font } from 'astro:assets';
 ---
 
 <Font cssVariable="--font-roboto" preload />
 <style>
-body {
-    font-family: var(--font-roboto);
-}
+	body {
+		font-family: var(--font-roboto);
+	}
 </style>
 ```
 
@@ -110,10 +118,11 @@ Head over to the [fonts guide](https://docs.astro.build/en/guides/fonts/) to lea
 ## Live Collections
 
 Use the Content Layer API you love with live collections that don't require a rebuild.
-  - Stable from experimental (5.10), real-time data without rebuilds
-  - Configuration with defineLiveCollection in src/live.config.ts
-  - Query with getLiveCollection() and getLiveEntry(), with built-in error handling
-  - Supports filters and custom queries if loader supports them
+
+- Stable from experimental (5.10), real-time data without rebuilds
+- Configuration with defineLiveCollection in src/live.config.ts
+- Query with getLiveCollection() and getLiveEntry(), with built-in error handling
+- Supports filters and custom queries if loader supports them
 
 ## Content Security Policy
 
@@ -122,40 +131,40 @@ Content Security Policy is now stable, and we're proud to say that Astro is the 
 Enabling CSP in Astro is easy as every feature, and you can opt-in using Astro's sensible defaults. The `csp` flag has been moved under the `security` setting:
 
 ```js ins={4-6} del={7-9}
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  security: {
-    csp: true
-  },
-  experimental: {
-    csp: true
-  }
-})
+	security: {
+		csp: true,
+	},
+	experimental: {
+		csp: true,
+	},
+});
 ```
 
 By setting the option to `true`, many of the Astro features are supported out of the box. Additional options can use used to customize your CSP experience. You can change the hashing algorithm, add more directives and hashes, if you have external scripts or styles:
 
 ```js
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  security: {
-    csp: {
-      algorithm: 'SHA-512',
-      directives: [
-        "default-src 'self'",
-        "img-src 'self' https://images.cdn.example.com"
-      ],
-      styleDirective: {
-        hashes: ['sha384-styleHash']
-      },
-      scriptDirective: {
-        hashes: ['sha384-scriptHash']
-      }
-    }
-  }
-})
+	security: {
+		csp: {
+			algorithm: 'SHA-512',
+			directives: [
+				"default-src 'self'",
+				"img-src 'self' https://images.cdn.example.com",
+			],
+			styleDirective: {
+				hashes: ['sha384-styleHash'],
+			},
+			scriptDirective: {
+				hashes: ['sha384-scriptHash'],
+			},
+		},
+	},
+});
 ```
 
 Astro implements CPS by hashing all script and styles shipped in page; this technique allows Astro support static pages and dynamic pages. Astro injects the CSP header using `<meta http-equiv="Content-Security-Policy">` in static pages, while dynamic pages are served using a `Request` header. If your adapter supports the adapter feature `staticHeaders`, CSP is served via `Request` header for static pages too.
@@ -166,80 +175,81 @@ As part of the stabilization, CSP is now supported out of box for [responsive im
 
 ### Vite 7
 
-Astro v6 and all the packages under the `@astrojs` npm organisation have been upgraded to use Vite v7. 
+Astro v6 and all the packages under the `@astrojs` npm organisation have been upgraded to use Vite v7.
 
 Vite v7 has become the minimum version required, so if your Astro project uses a custom version of Vite, you'll have to update it.
 
-{/*  Upgraded from Vite 6 to Vite 7 */}
-{/*  Affects all framework integrations (React, Vue, Svelte, Solid, Preact, MDX) */}
+{/* Upgraded from Vite 6 to Vite 7 */}
+{/* Affects all framework integrations (React, Vue, Svelte, Solid, Preact, MDX) */}
 
 ### Shiki 4
 
 Shiki v4 dropped support for Node.js v18, which means you'll need to upgrade the version of your runtime.
 
-{/*  Upgraded syntax highlighting to Shiki v4 */}
+{/* Upgraded syntax highlighting to Shiki v4 */}
 
 ### Zod 4
 
 Great new features including...
 
-{/*  Upgraded schema validation to Zod v4 */}
-{/*  Zod now imported from `astro/zod` instead of `z` from `astro:content` */}
+{/* Upgraded schema validation to Zod v4 */}
+{/* Zod now imported from `astro/zod` instead of `z` from `astro:content` */}
 
 ## Experimental: Rust Compiler
 
 Astro now powered by Rust, with a compiler, built in Rust.
-  - NEW: opt-in via experimental.rustCompiler flag
-  - Faster, better error messages, better JS/TS/CSS support
-  - Requires separate @astrojs/compiler-rs install
-  - More strict about invalid HTML (e.g. unclosed tags)
-  - Early development, may differ from Go-based compiler
+
+- NEW: opt-in via experimental.rustCompiler flag
+- Faster, better error messages, better JS/TS/CSS support
+- Requires separate @astrojs/compiler-rs install
+- More strict about invalid HTML (e.g. unclosed tags)
+- Early development, may differ from Go-based compiler
 
 ## Experimental: Queued Rendering
 
 Queued rendering leverage a new rendering strategy that is based on a queue. This new strategy is designed to replace the current strategy in Astro v7.
 
-When Astro tries to render a JSX element or an Astro component, it does so with a recursion. The rendering functions are called inside themselves. 
+When Astro tries to render a JSX element or an Astro component, it does so with a recursion. The rendering functions are called inside themselves.
 
 While recursion works most of the time, sometimes it can create some memory pressure, especially when working with tree-like structures.
- 
+
 With queued rendering, the components of the tree are first collected in an ordered list, and then they are iterated and rendered. Some early benchmarks have shown improvements up to 2x in rendering speed.
 
 Enable the new strategy by enabling the experimental flag:
 
 ```js ins={5-7}
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  experimental: {
-    queuedRendering: {
-      enabled: true
-    }
-  }
-})
-````
+	experimental: {
+		queuedRendering: {
+			enabled: true,
+		},
+	},
+});
+```
 
 Queued rendering comes with two other sub-features: node pooling and content cache.
 
 ### Node Pooling
 
-This is a technique to save node types inside an internal cache while rendering multiple pages. The cache is populated during the rendering of a page, and reused when the next page is rendered. 
+This is a technique to save node types inside an internal cache while rendering multiple pages. The cache is populated during the rendering of a page, and reused when the next page is rendered.
 
-This feature is exclusively meant when building an Astro website, so by design this feature is automatically turned off when rendering dynamic pages. 
+This feature is exclusively meant when building an Astro website, so by design this feature is automatically turned off when rendering dynamic pages.
 
 Node pooling is automatically enabled when you enabled queued rendering. If you wish to disable it, you can set the size of the pool to zero. Or you can increase its default value.
 
 ```js ins={7} ins="3000"
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  experimental: {
-    queuedRendering: {
-      enabled: true,
-      poolSize: 3000
-    }
-  }
-})
+	experimental: {
+		queuedRendering: {
+			enabled: true,
+			poolSize: 3000,
+		},
+	},
+});
 ```
 
 ### Content cache
@@ -249,38 +259,38 @@ A feature that allows caching the content generated by components. This is parti
 The feature is turned off by default, and you can enable it by setting `contentCache` to `true`:
 
 ```js ins={7}
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  experimental: {
-    queuedRendering: {
-      enabled: true,
-      contentCache: true
-    }
-  }
-})
+	experimental: {
+		queuedRendering: {
+			enabled: true,
+			contentCache: true,
+		},
+	},
+});
 ```
 
-
-{/*  NEW: opt-in via experimental.queuedRendering flag */}
-{/*  Queue-based two-pass rendering engine (no recursion) */}
-{/*  Sub-features: pooling (reuse nodes across static page renders), contentCache (cache node values) */}
-{/*  Early benchmarks show significant speed and memory improvements for large projects */}
+{/* NEW: opt-in via experimental.queuedRendering flag */}
+{/* Queue-based two-pass rendering engine (no recursion) */}
+{/* Sub-features: pooling (reuse nodes across static page renders), contentCache (cache node values) */}
+{/* Early benchmarks show significant speed and memory improvements for large projects */}
 
 ## Experimental: SVG Optimization
 
 {/* Florian: I don't think we should talk about svg optimization in this post because this has been introduced in astro.build/blog/astro-5160 already, and its API will change */}
 
 Automatic optimization of your SVGs.
-  - Opt-in via experimental.svgo flag
-  - Uses SVGO to optimize SVG markup (strip comments, redundant attributes, minify paths)
-  - SVGs stay as SVGs — no format conversion
-  - SVG imports become inline Astro components rendered as `<svg>` elements
+
+- Opt-in via experimental.svgo flag
+- Uses SVGO to optimize SVG markup (strip comments, redundant attributes, minify paths)
+- SVGs stay as SVGs — no format conversion
+- SVG imports become inline Astro components rendered as `<svg>` elements
 
 ## Getting Started
 
-{/*  Install commands for new and existing projects */}
+{/* Install commands for new and existing projects */}
 
 ## Thank You
 
-{/*  Community thanks, social links, GitHub issues link */}
+{/* Community thanks, social links, GitHub issues link */}
