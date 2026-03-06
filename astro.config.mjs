@@ -60,5 +60,6 @@ export default defineConfig({
 	adapter: netlify({ imageCDN: false }),
 	experimental: {
 		contentIntellisense: true,
+		rustCompiler: true,
 	},
 });
