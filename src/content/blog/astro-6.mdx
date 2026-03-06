@@ -34,7 +34,6 @@ Here are the highlights:
 - **[Upgraded Packages](#upgraded-packages)**
 - **[Experimental: Rust Compiler](#experimental-rust-compiler)**
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
-- **[Experimental: SVG Optimization](#experimental-svg-optimization)**
 
 **One more thing**: Astro 6 includes an experimental new **Rust compiler** for `.astro` components. It's an early step, but an important one. As we continue investing in Rust-powered parts of Astro, we're unlocking better performance, stronger scalability for large sites, and a faster path to bigger improvements in upcoming 6.x releases.
 
@@ -211,27 +210,25 @@ As part of the stabilization, CSP is now supported out of box for [responsive im
 
 ## Upgraded Packages
 
+The following are major packages used within Astro projects that you might need to know about:
+
 ### Vite 7
 
-Astro v6 and all the packages under the `@astrojs` npm organisation have been upgraded to use Vite v7.
+Astro 6 and packages under the `@astrojs` npm organization now use Vite 7.
 
-Vite v7 has become the minimum version required, so if your Astro project uses a custom version of Vite, you'll have to update it.
-
-{/* Upgraded from Vite 6 to Vite 7 */}
-{/* Affects all framework integrations (React, Vue, Svelte, Solid, Preact, MDX) */}
+If your project pins a custom Vite version, update it to v7 or later before upgrading. We hope to have support for the upcoming Vite 8 in a minor version of Astro 6.x.
 
 ### Shiki 4
 
-Shiki v4 dropped support for Node.js v18, which means you'll need to upgrade the version of your runtime.
-
-{/* Upgraded syntax highlighting to Shiki v4 */}
+Astro now uses Shiki 4 for code highlighting in the `<Code />` component and for Markdown/MDX code blocks.
 
 ### Zod 4
 
-Great new features including...
+Astro 6 upgrades content schema validation to Zod 4.
 
-{/* Upgraded schema validation to Zod v4 */}
-{/* Zod now imported from `astro/zod` instead of `z` from `astro:content` */}
+When defining schemas, import Zod from `astro/zod` rather than `astro:content`.
+
+See the [upgrade guide](https://v6.docs.astro.build/en/guides/upgrade-to/v6/#zod-4) for tips on common things that need to change with Zod 4.
 
 ## Experimental: Rust Compiler
 
@@ -309,25 +306,6 @@ export default defineConfig({
 });
 ```
 
-{/* NEW: opt-in via experimental.queuedRendering flag */}
-{/* Queue-based two-pass rendering engine (no recursion) */}
-{/* Sub-features: pooling (reuse nodes across static page renders), contentCache (cache node values) */}
-{/* Early benchmarks show significant speed and memory improvements for large projects */}
-
-## Experimental: SVG Optimization
-
-{/* Florian: I don't think we should talk about svg optimization in this post because this has been introduced in astro.build/blog/astro-5160 already, and its API will change */}
-
-Automatic optimization of your SVGs.
-
-- Opt-in via experimental.svgo flag
-- Uses SVGO to optimize SVG markup (strip comments, redundant attributes, minify paths)
-- SVGs stay as SVGs — no format conversion
-- SVG imports become inline Astro components rendered as `<svg>` elements
-
-## Getting Started
-
-{/* Install commands for new and existing projects */}
 
 ## Thank You
 
