@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-icon-sprite
 repoUrl: https://github.com/Livog/astro-icon-sprite
 homepageUrl: https://github.com/Livog/astro-icon-sprite#readme
 badge: new
-downloads: 462
+downloads: 473
 ---

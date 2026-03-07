@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@mannisto/astro-i18n
 repoUrl: https://github.com/eremannisto/astro-i18n
 homepageUrl: https://github.com/eremannisto/astro-i18n#readme
 badge: new
-downloads: 1331
+downloads: 1368
 ---

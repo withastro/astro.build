@@ -8,5 +8,4 @@ categories:
 npmUrl: https://www.npmjs.com/package/@knolljo/astro-sveltia-cms
 homepageUrl: https://www.npmjs.com/package/@knolljo/astro-sveltia-cms
 badge: new
-downloads: 488
 ---
