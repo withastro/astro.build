@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/unplugin-fonts-for-vite-7
 repoUrl: https://github.com/cssninjaStudio/unplugin-fonts
 homepageUrl: https://github.com/cssninjaStudio/unplugin-fonts#readme
-downloads: 19
+downloads: 18
 ---

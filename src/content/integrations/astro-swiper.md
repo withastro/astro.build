@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-swiper
 repoUrl: https://github.com/pascal-brand38/astro-swiper
 homepageUrl: https://github.com/pascal-brand38/astro-swiper
-downloads: 5745
+downloads: 5904
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@bezbeli/alert
 repoUrl: https://github.com/bezbeli/alert
 homepageUrl: https://github.com/bezbeli/alert#readme
 badge: new
-downloads: 1064
+downloads: 1066
 ---
