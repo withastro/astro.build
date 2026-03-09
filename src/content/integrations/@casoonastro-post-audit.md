@@ -1,7 +1,7 @@
 ---
 name: "@casoon/astro-post-audit"
 title: "@casoon/astro-post-audit"
-description: "Fast post-build auditor for Astro sites: SEO, links, and
+description: "Astro integration for post-build auditing: SEO, links, and
   lightweight WCAG checks"
 categories:
   - performance+seo

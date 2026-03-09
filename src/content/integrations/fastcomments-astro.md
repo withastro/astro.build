@@ -1,7 +1,7 @@
 ---
 name: fastcomments-astro
 title: fastcomments-astro
-description: Astro components for FastComments
+description: Astro components for FastComments, a live commenting system.
 categories:
   - css+ui
   - recent

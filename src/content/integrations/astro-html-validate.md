@@ -11,4 +11,5 @@ repoUrl: https://github.com/martinsilha/astro-html-validate
 homepageUrl: https://github.com/martinsilha/astro-html-validate#readme
 badge: new
 downloads: 597
+image: /assets/integrations/astro-html-validate.svg
 ---

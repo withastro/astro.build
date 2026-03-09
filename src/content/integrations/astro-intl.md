@@ -1,14 +1,14 @@
 ---
 name: astro-intl
 title: astro-intl
-description: Sistema de internacionalización simple y type-safe para Astro,
-  inspirado en next-intl
+description: Simple and type-safe internationalization system for Astro.
 categories:
-  - uncategorized
+  - accessibility
   - recent
 npmUrl: https://www.npmjs.com/package/astro-intl
 repoUrl: https://github.com/ErickCSS/astro-intl
 homepageUrl: https://github.com/ErickCSS/astro-intl#readme
 badge: new
 downloads: 1072
+image: /assets/integrations/astro-intl.svg
 ---
