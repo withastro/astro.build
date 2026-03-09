@@ -104,9 +104,9 @@ Head over to the [fonts guide](https://docs.astro.build/en/guides/fonts/) to lea
 
 ## Live Collections
 
-Live Collections are now stable in Astro 6, bringing Content Collections to content that changes frequently, without requiring a rebuild.
+Live Collections are now stable in Astro 6, bringing request-time content fetching to Astro's Content Collections.
 
-Content Collections (introduced in Astro 2.0) gave Astro a type-safe way to work with local content, and Astro 5.0 expanded that model with loaders for remote sources. Live Collections extend that evolution by letting you fetch frequently updated content at request time with the same collection-first workflow.
+Content Collections have been a core part of Astro since 2.0. But they've always required a rebuild when content changed. Live Collections fetch content at request time instead, using the same APIs, with no rebuild step required. Your content updates the moment it's published, without touching your build pipeline. That means CMS content, API data, and editorial updates all go live instantly.
 
 Use `defineLiveCollection()` to define a live source in `src/live.config.ts`:
 
@@ -149,7 +149,7 @@ if (error || !update) {
 <time>{update.data.publishedAt.toDateString()}</time>
 ```
 
-That means editorial content like announcements, changelogs, and documentation updates can appear immediately, while still benefiting from Astro's type-safe content APIs.
+Head over to the [content collections guide](https://docs.astro.build/en/guides/content-collections/) to learn more.
 
 ## Content Security Policy
 
