@@ -153,7 +153,7 @@ Head over to the [content collections guide](https://docs.astro.build/en/guides/
 
 ## Content Security Policy
 
-Astro's Content Security Policy API is now stable in Astro 6. Astro is the first meta-framework to offer built-in CSP configuration for both static and dynamic pages, in both server and serverless environments.
+Astro's Content Security Policy API is now stable in Astro 6. Astro is one of the first JavaScript meta-frameworks to offer built-in CSP configuration for both static and dynamic pages, in both server and serverless environments.
 
 CSP is deceptively hard to implement in a framework like Astro. It requires knowing every script and style on a page so they can be hashed and included in the policy. For static pages, that can be computed at build time. But for dynamic pages, content can change per request — which means hashing on the fly and injecting the right headers at runtime. Supporting both modes in a single, unified API is why no other meta-framework has done this before.
 
@@ -194,25 +194,15 @@ Head over to the [security configuration reference](https://docs.astro.build/en/
 
 ## Upgraded Packages
 
-The following are major upgrades for dependencies used by all Astro projects:
+Astro 6 includes major upgrades to several core dependencies:
 
-### Vite 7
+- **Vite 7** is now used across Astro and all `@astrojs` packages. If your project pins a custom Vite version, update it to v7 or later before upgrading.
+- **Shiki 4** now powers code highlighting in the `<Code />` component and Markdown/MDX code blocks.
+- **Zod 4** now powers content schema validation. When defining schemas, import Zod from `astro/zod` rather than `astro:content`.
 
-Astro 6 and packages under the `@astrojs` npm organization now use Vite 7.
+Astro 6 also now requires **Node 22** or later, dropping support for deprecated (and soon-to-be-deprecated) Node 18 and Node 20. Node 22 is faster, more secure, and lets us drop polyfills for older Node versions — resulting in a smaller, more maintainable package and better performance in Astro across the board.
 
-If your project pins a custom Vite version, update it to v7 or later before upgrading. We hope to have support for the upcoming Vite 8 in a minor version of Astro 6.x.
-
-### Shiki 4
-
-Astro now uses Shiki 4 for code highlighting in the `<Code />` component and for Markdown/MDX code blocks.
-
-### Zod 4
-
-Astro 6 upgrades content schema validation to Zod 4.
-
-When defining schemas, import Zod from `astro/zod` rather than `astro:content`.
-
-See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/#zod-4) for tips on common things that need to change with Zod 4.
+See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/) for detailed migration steps.
 
 ## Experimental: Rust Compiler
 
