@@ -63,15 +63,11 @@ The rebuilt `@astrojs/cloudflare` adapter now runs `workerd` at every stage: dev
 
 ## Built-in Fonts API
 
-Almost every website these days uses custom fonts. However, it can be surprisingly complicated to get them right: Why do I get a Flash of Unstyled Text? Should I add a preload link? What about preconnect links? Do I self-host or rely on a third-party provider?
+Almost every website uses custom fonts, but getting them right is surprisingly complicated. There are performance tradeoffs, privacy concerns, and a dozen small decisions that are easy to get wrong.
 
-Astro provides a way to use fonts from your filesystem and various font providers (e.g. Fontsource, Google) through a unified, fully customizable, and type-safe API.
+Astro 6 adds a built-in Fonts API that takes care of the hard parts for you. You configure your fonts from local files or providers like Google and Fontsource, and Astro handles the rest: downloading and caching for self-hosting, generating optimized fallbacks, and adding preload links — keeping your site fast and your users' data private.
 
-Web fonts can impact page performance at both load time and rendering time. This API helps you keep your site performant with automatic web font optimizations including preload links, optimized fallbacks, and opinionated defaults.
-
-The Fonts API focuses on performance and privacy by downloading and caching fonts so they’re served from your site. This can avoid sending user data to third-party sites, and also ensures that a consistent set of fonts is available to all your visitors.
-
-To enable this feature, configure an `fonts` object with one or more fonts:
+To get started, configure a `fonts` object with one or more fonts that you'd like to use in your project:
 
 ```js title="astro.config.mjs"
 import { defineConfig, fontProviders } from 'astro/config';
@@ -79,15 +75,15 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
 	fonts: [
 		{
-			provider: fontProviders.fontsource(),
 			name: 'Roboto',
 			cssVariable: '--font-roboto',
+			provider: fontProviders.fontsource(),
 		},
 	],
 });
 ```
 
-Then, add a `<Font />` component and site-wide styling in your `<head>`:
+Then, add a `<Font />` component and styling wherever you need it — a global layout, a single page, or a specific section of your site:
 
 ```astro title="src/components/Head.astro"
 ---
@@ -101,6 +97,8 @@ import { Font } from 'astro:assets';
 	}
 </style>
 ```
+
+Behind the scenes, Astro downloads the font files, generates optimized fallback fonts, and adds the right preload hints — so you get best-practice font loading without configuring it yourself.
 
 Head over to the [fonts guide](https://docs.astro.build/en/guides/fonts/) to learn more.
 
