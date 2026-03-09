@@ -34,6 +34,7 @@ Here are the highlights:
 - **[Content Security Policy](#content-security-policy)**
 - **[Upgraded Packages](#upgraded-packages)**
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
+- **[Experimental: Route Caching](#experimental-route-caching)**
 
 **One more thing**: Astro 6 includes an experimental new **Rust compiler** for `.astro` components. It's an early step, but an important one. As we continue investing in Rust-powered parts of Astro, we're unlocking better performance, stronger scalability for large sites, and a faster path to bigger improvements in upcoming 6.x releases.
 
@@ -279,6 +280,95 @@ export default defineConfig({
 ```
 
 Queued rendering comes with two other sub-features: node pooling and content cache.
+
+## Experimental: Route Caching
+
+Astro 6 includes an experimental route caching API that gives you a platform-agnostic way to cache server-rendered responses using web standard cache semantics.
+
+Today, if you want to cache SSR responses, you either set headers manually or rely on adapter-level conventions such as ISR, that vary between hosts. Route caching gives you a single API that works the same way everywhere: you set caching directives in your routes, and Astro translates them into the appropriate headers or runtime behavior depending on your adapter.
+
+Enable route caching by configuring a cache provider in your Astro config:
+
+```js
+import { defineConfig } from 'astro/config';
+import { memoryCache } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
+		cache: {
+			provider: memoryCache(),
+		},
+	},
+});
+```
+
+Then use `Astro.cache` in `.astro` pages or `context.cache` in API routes to control caching per-request:
+
+```astro
+---
+Astro.cache.set({
+	maxAge: 120,    // Cache for 2 minutes
+	swr: 60,        // Serve stale for 1 minute while revalidating
+	tags: ['home'], // Tag for targeted invalidation
+});
+---
+<html><body>Cached page</body></html>
+```
+
+You can also invalidate cached entries by tag or path:
+
+```ts
+await context.cache.invalidate({ tags: ['data'] });
+await context.cache.invalidate({ path: '/api/data' });
+```
+
+Route caching works alongside [live collections](#live-collections) to allow automatic tracing of dependencies between pages and content entries. When a content entry is updated, any cached responses that depend on it can be automatically invalidated. To associate a page with a content entry, use `cache.set(entry)` in your page:
+
+```astro
+---
+import { getEntry } from 'astro:content';
+const product = await getEntry('products', Astro.params.slug);
+Astro.cache.set(product);
+---
+<html><body>{product.data.name}</body></html>
+```
+
+To invalidate all cached responses that depend on a content entry, use `cache.invalidate(entry)`:
+
+```ts
+import { getLiveEntry } from 'astro:content';
+
+export async function POST({ cache }) {
+  const { entry } = await getLiveEntry('products', 'featured');
+  if (entry) {
+    await cache.invalidate(entry);
+  }
+  return Response.json({ ok: true });
+}
+```
+
+To set default cache options without needing to add code to every page, you can set `experimental.routeRules` that apply caching rules based on route patterns:
+
+```js
+import { defineConfig } from 'astro/config';
+import { memoryCache } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
+		cache: {
+			provider: memoryCache(),
+		},
+		routeRules: {
+			'/api/*': { swr: 600 },
+			'/products/*': { maxAge: 3600, tags: ['products'] },
+		},
+	},
+});
+```
+
+This initial release includes a simple in-memory cache provider, which works best with the Node.js adapter. We will be adding cache providers for all of Astro's supported deployment platforms in the next few weeks. We also hope there will be community-built providers for CDN services, and other storage types such as Redis. Get in touch [on Discord](https://astro.build/chat) if you're interested in building one!
+
+For more details, see the experimental [route caching docs](https://docs.astro.build/en/reference/experimental-flags/route-caching/).
 
 ## Community
 
