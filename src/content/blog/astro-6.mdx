@@ -17,15 +17,11 @@ homepageLink:
 
 import Mention from '/src/components/Mention.astro';
 
-Astro 6 is here! 🎊
+**Astro 6 is here!** Astro 6 introduces a broad set of new capabilities including a built-in Fonts API, Content Security Policy API, and support for Live Content Collections that work with your externally-hosted content through the unified Astro content layer.
 
-Following a two-month beta, Astro 6 introduces a broad set of new capabilities across developer experience, deployment, performance, and security.
+Alongside these new features, we also completed a major refactor of the Astro dev server and much of the build pipeline. Powered by Vite's new Environment API, Astro can now run your exact production runtime during development. That means fewer "works in dev, breaks in prod" surprises — especially on non-Node.js runtimes like Cloudflare Workers, Bun, and Deno.
 
-Highlights include a redesigned `astro dev`, Astro on Cloudflare Workers, a built-in Fonts API, Live Collections, and stable Content Security Policy.
-
-Alongside these features, we completed a major refactor of Astro's dev server and much of the build command to bring dev and production closer together. The result is fewer "works in dev, breaks in prod" surprises today, plus a platform that lets us ship ambitious improvements faster throughout upcoming Astro 6.x releases.
-
-Here are the highlights:
+Full release highlights include:
 
 - **[A redesigned `astro dev`](#a-redesigned-astro-dev)**
 - **[Astro on Cloudflare Workers](#astro-on-cloudflare-workers)**
@@ -33,12 +29,11 @@ Here are the highlights:
 - **[Live Collections](#live-collections)**
 - **[Content Security Policy](#content-security-policy)**
 - **[Upgraded Packages](#upgraded-packages)**
-- **[Experimental: Rust Compiler](#experimental-rust-compiler)**
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
 - **[Experimental: Route Caching](#experimental-route-caching)**
 - **[Community](#community)**
 
-**One more thing**: Astro 6 includes an experimental new **Rust compiler** for `.astro` components. It's an early step, but an important one. As we continue investing in Rust-powered parts of Astro, we're unlocking better performance, stronger scalability for large sites, and a faster path to bigger improvements in upcoming 6.x releases.
+**One more thing**: Astro 6 includes an experimental new Rust compiler — the successor to our original Go-based `.astro` compiler. It's still early, but the results are already impressive (and in some cases, even more reliable than our current Go compiler). We'll continue to invest in Rust-powered tooling throughout the 6.x release line to improve performance and scalability for large sites.
 
 To upgrade an existing project to Astro 6, use the automated `@astrojs/upgrade` CLI tool:
 
@@ -265,9 +260,9 @@ Read our reference on [the Rust compiler](https://docs.astro.build/en/reference/
 
 Astro 6 introduces an experimental new rendering strategy with some early benchmarks showing improvements of up to 2x in rendering speed!
 
-Queued rendering is based on a two-pass process where the first pass traverses the tree of components, emits an ordered queue, and then the queue is rendered. This has led to both speed and memory improvements over the current recursion-based process, where rendering functions end up being called inside themselves. 
+Queued rendering is based on a two-pass process where the first pass traverses the tree of components, emits an ordered queue, and then the queue is rendered. This has led to both speed and memory improvements over the current recursion-based process, where rendering functions end up being called inside themselves.
 
-This new strategy is designed to replace the current strategy in Astro v7. 
+This new strategy is designed to replace the current strategy in Astro v7.
 
 Enable the new strategy by enabling the experimental flag:
 
@@ -311,11 +306,12 @@ Then use `Astro.cache` in `.astro` pages or `context.cache` in API routes to con
 ```astro
 ---
 Astro.cache.set({
-	maxAge: 120,    // Cache for 2 minutes
-	swr: 60,        // Serve stale for 1 minute while revalidating
+	maxAge: 120, // Cache for 2 minutes
+	swr: 60, // Serve stale for 1 minute while revalidating
 	tags: ['home'], // Tag for targeted invalidation
 });
 ---
+
 <html><body>Cached page</body></html>
 ```
 
@@ -334,6 +330,7 @@ import { getEntry } from 'astro:content';
 const product = await getEntry('products', Astro.params.slug);
 Astro.cache.set(product);
 ---
+
 <html><body>{product.data.name}</body></html>
 ```
 
@@ -343,11 +340,11 @@ To invalidate all cached responses that depend on a content entry, use `cache.in
 import { getLiveEntry } from 'astro:content';
 
 export async function POST({ cache }) {
-  const { entry } = await getLiveEntry('products', 'featured');
-  if (entry) {
-    await cache.invalidate(entry);
-  }
-  return Response.json({ ok: true });
+	const { entry } = await getLiveEntry('products', 'featured');
+	if (entry) {
+		await cache.invalidate(entry);
+	}
+	return Response.json({ ok: true });
 }
 ```
 
@@ -378,9 +375,12 @@ For more details, see the experimental [route caching docs](https://docs.astro.b
 
 The Astro core team is:
 
-<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />, <Mention name="ema" />, 
-<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />, <Mention name="hideoo" />, 
-<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />, <Mention name="reuben" />, 
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
 <Mention name="sarah" />, and <Mention name="yan" />.
 
 Special thanks to everyone who contributed to Astro 6 with code, docs, reviews, and testing, including:
