@@ -76,9 +76,13 @@ Astro 6 introduces an experimental new Rust compiler for `.astro` components —
 
 This is one of the biggest bets in this release: faster compilation, stronger diagnostics, and a path to scaling Astro further for larger and more complex sites.
 
-And yes, we vibe-coded this with AI. What started as an experiment while updating our Go-based compiler for Astro 6 moved from "can this work?" to "this is actually good enough to ship." We hit parity quickly, then pushed beyond it.
+What started as an AI experiment while updating our Go-based compiler for Astro 6 quickly moved from "can this work?" to "this is actually good enough to ship.". We hope to make it the default compiler in a future major release of Astro.
 
-You can try it today as an experimental feature:
+You can try it today as an experimental feature by enabling the `rustCompiler` flag in your Astro config, and installing the `@astrojs/compiler-rs` package in your project:
+
+```sh
+npm install @astrojs/compiler-rs
+```
 
 ```js
 import { defineConfig } from 'astro/config';
@@ -90,11 +94,9 @@ export default defineConfig({
 });
 ```
 
-We expect this to become the default compiler in Astro 7.
+We're actively exploring more Rust-powered parts of Astro in order to improve performance, with more to share soon.
 
-One important migration note: the Rust compiler is stricter about invalid HTML (e.g. omitted tags) and fixes known issues with tables. In return, you get clearer errors and a stronger foundation for better editor tooling.
-
-This is just the beginning. We're actively exploring more Rust-powered parts of Astro, especially in the build pipeline, with more to share soon.
+Read our reference on [the Rust compiler](https://docs.astro.build/en/reference/experimental-flags/rust-compiler/) for more details.
 
 ## Built-in Fonts API
 
