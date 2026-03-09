@@ -1,7 +1,8 @@
 ---
 name: "@mcptoolshop/site-theme"
 title: "@mcptoolshop/site-theme"
-description: Shared Astro theme for MCP Tool Shop org repo landing pages
+description: Multi-template Astro toolkit for landing pages, docs, product
+  sites, and SaaS dashboards
 categories:
   - uncategorized
   - recent

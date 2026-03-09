@@ -6,11 +6,9 @@ description: VocaSync integration for Astro - Text-to-speech synthesis and
 categories:
   - media
   - accessibility
-  - recent
 npmUrl: https://www.npmjs.com/package/@vocasync/astro
 repoUrl: https://github.com/sayedhfatimi/vocasync-astro
 homepageUrl: https://github.com/sayedhfatimi/vocasync-astro#readme
-badge: new
 downloads: 95
 image: /assets/integrations/@vocasync/astro.png
 ---
