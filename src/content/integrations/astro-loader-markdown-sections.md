@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-markdown-sections
 homepageUrl: https://www.npmjs.com/package/astro-loader-markdown-sections
 badge: new
-downloads: 209
+downloads: 210
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@puralex/astro-markdown-for-agents
 repoUrl: https://github.com/magnifito/astro-markdown-for-agents
 homepageUrl: https://github.com/magnifito/astro-markdown-for-agents#readme
 badge: new
-downloads: 281
+downloads: 282
 ---
