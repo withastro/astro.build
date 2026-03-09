@@ -153,24 +153,22 @@ Head over to the [content collections guide](https://docs.astro.build/en/guides/
 
 ## Content Security Policy
 
-Content Security Policy is now stable, and we're proud to say that Astro is the first meta-framework to support it for both static and dynamic pages, as well as in both server and serverless environments... in classic Astro fashion.
+Astro's Content Security Policy API is now stable in Astro 6. Astro is the first meta-framework to offer built-in CSP configuration for both static and dynamic pages, in both server and serverless environments.
 
-Enabling CSP in Astro is easy as every feature, and you can opt-in using Astro's sensible defaults. The `csp` flag has been moved under the `security` setting:
+CSP is deceptively hard to implement in a framework like Astro. It requires knowing every script and style on a page so they can be hashed and included in the policy. For static pages, that can be computed at build time. But for dynamic pages, content can change per request — which means hashing on the fly and injecting the right headers at runtime. Supporting both modes in a single, unified API is why no other meta-framework has done this before.
 
-```js ins={4-6} del={7-9}
+Getting started is simple. Enable CSP with a single flag, and Astro handles the rest — automatically hashing all scripts and styles in your pages and generating the appropriate CSP headers:
+
+```js ins={4} del={5}
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-	security: {
-		csp: true,
-	},
-	experimental: {
-		csp: true,
-	},
+	security: { csp: true },
+	experimental: { csp: true },
 });
 ```
 
-By setting the option to `true`, many of the Astro features are supported out of the box. Additional options can use used to customize your CSP experience. You can change the hashing algorithm, add more directives and hashes, if you have external scripts or styles:
+That's all you need for most sites. When you need more control — custom hashing algorithms, additional directives for external scripts or styles — the full configuration API is available:
 
 ```js
 import { defineConfig } from 'astro/config';
@@ -183,20 +181,16 @@ export default defineConfig({
 				"default-src 'self'",
 				"img-src 'self' https://images.cdn.example.com",
 			],
-			styleDirective: {
-				hashes: ['sha384-styleHash'],
-			},
-			scriptDirective: {
-				hashes: ['sha384-scriptHash'],
-			},
+			styleDirective: { hashes: ['sha384-styleHash'] },
+			scriptDirective: { hashes: ['sha384-scriptHash'] },
 		},
 	},
 });
 ```
 
-Astro implements CSP by hashing all script and styles shipped in page; this technique allows Astro support static pages and dynamic pages. Astro injects the CSP header using `<meta http-equiv="Content-Security-Policy">` in static pages, while dynamic pages are served using a `Request` header. If your adapter supports the adapter feature `staticHeaders`, CSP is served via `Request` header for static pages too.
+As part of this stabilization, CSP also works with Astro's [responsive images](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles) out of the box. Responsive image styles are calculated at build time and applied using CSS classes and `data-*` attributes, so they can be hashed and included in your CSP policy automatically — no extra configuration needed.
 
-As part of the stabilization, CSP is now supported out of box for [responsive images](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles). The styles for images are calculated at build-time, and the styles are applied using a mix CSS classes and `data-*` attributes.
+Head over to the [security configuration reference](https://docs.astro.build/en/reference/configuration-reference/#security) to learn more.
 
 ## Upgraded Packages
 
