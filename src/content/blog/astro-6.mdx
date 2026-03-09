@@ -24,7 +24,7 @@ Alongside these new features, we also completed a major refactor of the Astro de
 Full release highlights include:
 
 - **[A redesigned `astro dev`](#a-redesigned-astro-dev)**
-- **[Astro on Cloudflare Workers](#astro-on-cloudflare-workers)**
+- **[Improved Cloudflare support](#a-redesigned-astro-dev)**
 - **[Built-in Fonts API](#built-in-fonts-api)**
 - **[Live Collections](#live-collections)**
 - **[Content Security Policy](#content-security-policy)**
@@ -53,19 +53,13 @@ npm create astro@latest
 
 ## A redesigned `astro dev`
 
-Astro 6 includes a major refactor of the development server to bring development and production much closer together.
+Astro's dev server was originally built for Node.js — and for most Astro users, that worked great. But as non-Node runtimes like Cloudflare Workers, Bun, and Deno gained traction, that assumption became a blind spot. Developers targeting these platforms had no way to run their actual production runtime during development, so the behavior you saw locally didn't always match what you shipped.
 
-As Astro evolved from static-first toward broader server rendering support, dev and prod ended up following different internal paths. Over time, that divergence created edge-case behavior that was difficult to reproduce and debug across environments.
+Astro 6 changes that. By leveraging Vite's new Environment API, `astro dev` can now run a custom runtime environement during development. The dev server and build pipeline now share the same code paths, unifying your development experience with production.
 
-In Astro 6, we reworked `astro dev` around Vite's Environment API so Astro can run against real runtimes during development, with shared code paths that better reflect production behavior. The result is a more predictable development experience and fewer bugs caused by environment-specific differences.
+For Cloudflare users, this original gap was especially painful. The dev server ran on Node.js, but production ran on Cloudflare's `workerd` runtime. Bugs only showed up after deploy. Cloudflare bindings — KV, D1, R2, Durable Objects — weren't available during development at all. You were coding blind and hoping it worked in production.
 
-### Astro on Cloudflare Workers
-
-The clearest example of this shift is the rebuilt `@astrojs/cloudflare` adapter.
-
-With Astro 6, Cloudflare's `workerd` runtime now powers development, prerendering, and production. Instead of relying on the old `Astro.locals.runtime` simulation APIs, you can develop directly against Cloudflare's platform APIs using `cloudflare:workers`, including environment bindings, Durable Objects, KV, and R2.
-
-That means behavior in development is far closer to what runs in production, so issues are caught earlier and platform-specific features are easier to build with confidence.
+The rebuilt `@astrojs/cloudflare` adapter now runs `workerd` at every stage: development, prerendering, and production. You develop directly against Cloudflare's platform APIs using `cloudflare:workers`, with full access to your bindings locally. No more simulation layers, and no more `Astro.locals.runtime` workarounds. This work grew out of our [official partnership with Cloudflare](/blog/cloudflare-official-partner/) announced last year, with the goal of making Cloudflare a first-class Astro runtime.
 
 ## Built-in Fonts API
 
