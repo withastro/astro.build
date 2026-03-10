@@ -150,7 +150,7 @@ if (error || !update) {
 <time>{update.data.publishedAt.toDateString()}</time>
 ```
 
-Live Content Collections use the same familiar APIs as build-time collections (`getCollection()`, `getEntry()`, schemas, loaders), so there's no new mental model to learn. If your content needs real-time freshness, swap `defineCollection` for `defineLiveCollection` and your content goes live on every request. If it doesn't, keep using build-time collections for the best performance. Both can coexist in the same project.
+Live Content Collections use the same familiar APIs as build-time collections (`getCollection()`, `getEntry()`, schemas, loaders), so there's no new mental model to learn. If your content needs real-time freshness, define a live collection with a live loader and your content goes live on every request. If it doesn't, keep using build-time collections for the best performance. Both can coexist in the same project.
 
 For more on live content collections, see the [content collections guide](https://docs.astro.build/en/guides/content-collections/).
 
