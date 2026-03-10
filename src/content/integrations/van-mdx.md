@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/van-mdx
 homepageUrl: https://github.com/zakarialaoui10/van-mdx#readme
-downloads: 435
+downloads: 440
 repoUrl: https://github.com/zakarialaoui10/van-mdx
 ---

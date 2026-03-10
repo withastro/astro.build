@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@altano/astro-html-to-image
 repoUrl: https://github.com/altano/npm-packages
 homepageUrl: https://www.npmjs.com/package/@altano/astro-html-to-image
-downloads: 14
+downloads: 15
 ---

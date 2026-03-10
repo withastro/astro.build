@@ -7,5 +7,5 @@ categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@forthgoing/subfont
 homepageUrl: https://www.npmjs.com/package/@forthgoing/subfont
-downloads: 21
+downloads: 24
 ---

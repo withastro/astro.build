@@ -6,5 +6,5 @@ categories:
   - adapters
 npmUrl: https://www.npmjs.com/package/astro-wordpress
 homepageUrl: https://www.npmjs.com/package/astro-wordpress
-downloads: 25
+downloads: 26
 ---

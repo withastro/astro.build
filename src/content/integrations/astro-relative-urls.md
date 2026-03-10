@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-relative-urls
 repoUrl: https://github.com/Dr0f0x/astro-relative-urls
 homepageUrl: https://github.com/Dr0f0x/astro-relative-urls#readme
-downloads: 87
+downloads: 21
 ---

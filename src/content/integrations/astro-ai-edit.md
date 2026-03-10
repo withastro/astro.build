@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-ai-edit
 homepageUrl: https://www.npmjs.com/package/astro-ai-edit
 badge: new
-downloads: 261
+downloads: 281
 ---

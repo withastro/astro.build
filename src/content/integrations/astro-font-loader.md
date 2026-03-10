@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-font-loader
 repoUrl: https://github.com/iveelsm/astro-font-loader
 homepageUrl: https://github.com/iveelsm/astro-font-loader#readme
-downloads: 949
+downloads: 842
 ---

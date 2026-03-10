@@ -9,5 +9,4 @@ npmUrl: https://www.npmjs.com/package/@joknoll/astro-sveltia-cms
 repoUrl: https://github.com/joknoll/astro-sveltia-cms
 homepageUrl: https://github.com/joknoll/astro-sveltia-cms#readme
 badge: new
-downloads: 139
 ---

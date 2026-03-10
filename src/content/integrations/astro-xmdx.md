@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-xmdx
 repoUrl: https://github.com/jp-knj/xmdx
 homepageUrl: https://github.com/jp-knj/xmdx#readme
-downloads: 3161
+downloads: 3274
 ---

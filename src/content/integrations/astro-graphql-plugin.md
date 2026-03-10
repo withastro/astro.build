@@ -8,6 +8,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-graphql-plugin
 homepageUrl: https://github.com/interledger/astro-graphql-plugin#readme
-downloads: 1617
+downloads: 1692
 repoUrl: https://github.com/interledger/astro-graphql-plugin
 ---
