@@ -1,6 +1,6 @@
 ---
 title: 'Astro 6.0'
-description: 'Astro 6 is here with a refactored dev server, an experimental Rust compiler, live collections, CSP, and more.'
+description: 'Astro 6 is here with a refactored dev server, an experimental Rust compiler, live content collections, CSP, and more.'
 publishDate: 2026-03-10
 authors:
   - matthew
@@ -26,7 +26,7 @@ Full release highlights include:
 - **[A redesigned `astro dev`](#a-redesigned-astro-dev)**
 - **[Improved Cloudflare support](#a-redesigned-astro-dev)**
 - **[Built-in Fonts API](#built-in-fonts-api)**
-- **[Live Collections](#live-collections)**
+- **[Live Content Collections](#live-content-collections)**
 - **[Content Security Policy](#content-security-policy)**
 - **[Upgraded Packages](#upgraded-packages)**
 - **[Experimental: Queued Rendering](#experimental-queued-rendering)**
@@ -55,7 +55,7 @@ npm create astro@latest
 
 Astro's dev server was originally built for Node.js — and for most Astro users, that worked great. But as non-Node runtimes like Cloudflare Workers, Bun, and Deno gained traction, that assumption became a blind spot. Developers targeting these platforms had no way to run their actual production runtime during development, so the behavior you saw locally didn't always match what you shipped.
 
-Astro 6 changes that. By leveraging Vite's new Environment API, `astro dev` can now run a custom runtime environement during development. The dev server and build pipeline now share the same code paths, unifying your development experience with production.
+Astro 6 changes that. By leveraging Vite's new Environment API, `astro dev` can now run a custom runtime environment during development. The dev server and build pipeline now share the same code paths, unifying your development experience with production.
 
 For Cloudflare users, this original gap was especially painful. The dev server ran on Node.js, but production ran on Cloudflare's `workerd` runtime. Bugs only showed up after deploy. Cloudflare bindings — KV, D1, R2, Durable Objects — weren't available during development at all. You were coding blind and hoping it worked in production.
 
@@ -100,13 +100,13 @@ import { Font } from 'astro:assets';
 
 Behind the scenes, Astro downloads the font files, generates optimized fallback fonts, and adds the right preload hints — so you get best-practice font loading without configuring it yourself.
 
-Head over to the [fonts guide](https://docs.astro.build/en/guides/fonts/) to learn more.
+To learn more, check out the [fonts guide](https://docs.astro.build/en/guides/fonts/).
 
-## Live Collections
+## Live Content Collections
 
-Live Collections are now stable in Astro 6, bringing request-time content fetching to Astro's Content Collections.
+Live Content Collections are now stable in Astro 6, bringing request-time content fetching to Astro's unified content layer.
 
-Content Collections have been a core part of Astro since 2.0. But they've always required a rebuild when content changed. Live Collections fetch content at request time instead, using the same APIs, with no rebuild step required. Your content updates the moment it's published, without touching your build pipeline. That means CMS content, API data, and editorial updates all go live instantly.
+Content Collections have been a core part of Astro since 2.0. But they've always required a rebuild when content changed. Live Content Collections fetch content at request time instead, using the same APIs, with no rebuild step required. Your content updates the moment it's published, without touching your build pipeline. That means CMS content, API data, and editorial updates all go live instantly.
 
 Use `defineLiveCollection()` to define a live source in `src/live.config.ts`:
 
@@ -149,7 +149,9 @@ if (error || !update) {
 <time>{update.data.publishedAt.toDateString()}</time>
 ```
 
-Head over to the [content collections guide](https://docs.astro.build/en/guides/content-collections/) to learn more.
+Live Content Collections use the same familiar APIs as build-time collections (`getCollection()`, `getEntry()`, schemas, loaders), so there's no new mental model to learn. If your content needs real-time freshness, swap `defineCollection` for `defineLiveCollection` and your content goes live on every request. If it doesn't, keep using build-time collections for the best performance. Both coexist happily in the same project.
+
+For more on live content collections, see the [content collections guide](https://docs.astro.build/en/guides/content-collections/).
 
 ## Content Security Policy
 
@@ -190,7 +192,7 @@ export default defineConfig({
 
 As part of this stabilization, CSP also works with Astro's [responsive images](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles) out of the box. Responsive image styles are calculated at build time and applied using CSS classes and `data-*` attributes, so they can be hashed and included in your CSP policy automatically — no extra configuration needed.
 
-Head over to the [security configuration reference](https://docs.astro.build/en/reference/configuration-reference/#security) to learn more.
+See the [security configuration reference](https://docs.astro.build/en/reference/configuration-reference/#security) for full details.
 
 ## Upgraded Packages
 
@@ -206,13 +208,11 @@ See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/) for d
 
 ## Experimental: Rust Compiler
 
-Astro 6 introduces an experimental new Rust compiler for `.astro` components — and it's fast.
+Astro 6 includes an experimental new Rust compiler — the successor to our original Go-based `.astro` compiler.
 
-This is one of the biggest bets in this release: faster compilation, stronger diagnostics, and a path to scaling Astro further for larger and more complex sites.
+What started as an AI experiment while updating our Go compiler for Astro 6 quickly moved from "can this work?" to "why isn't this the default?" The new compiler is faster, produces stronger diagnostics, and in some cases is even more reliable than our current Go compiler. We hope to make it the default in a future major release.
 
-What started as an AI experiment while updating our Go-based compiler for Astro 6 quickly moved from "can this work?" to "this is actually good enough to ship.". We hope to make it the default compiler in a future major release of Astro.
-
-You can try it today as an experimental feature by enabling the `rustCompiler` flag in your Astro config, and installing the `@astrojs/compiler-rs` package in your project:
+You can try it today by enabling the `rustCompiler` flag and installing the `@astrojs/compiler-rs` package:
 
 ```sh
 npm install @astrojs/compiler-rs
@@ -228,19 +228,17 @@ export default defineConfig({
 });
 ```
 
-We're actively exploring more Rust-powered parts of Astro in order to improve performance, with more to share soon.
+We're actively exploring more Rust-powered tooling across Astro, with more to share soon.
 
-Read our reference on [the Rust compiler](https://docs.astro.build/en/reference/experimental-flags/rust-compiler/) for more details.
+Read our reference documentation on [the Rust compiler](https://docs.astro.build/en/reference/experimental-flags/rust-compiler/) for more details.
 
 ## Experimental: Queued Rendering
 
-Astro 6 introduces an experimental new rendering strategy with some early benchmarks showing improvements of up to 2x in rendering speed!
+Astro 6 introduces an experimental new rendering strategy, with early benchmarks showing up to 2x faster rendering.
 
-Queued rendering is based on a two-pass process where the first pass traverses the tree of components, emits an ordered queue, and then the queue is rendered. This has led to both speed and memory improvements over the current recursion-based process, where rendering functions end up being called inside themselves.
+Today, Astro renders components recursively. Rendering functions call themselves as they walk the component tree. Queued rendering replaces this with a two-pass approach: the first pass traverses the tree and emits an ordered queue, then the second pass renders it. The result is both faster and more memory-efficient, and we plan to make it the default rendering strategy in Astro v7.
 
-This new strategy is designed to replace the current strategy in Astro v7.
-
-Enable the new strategy by enabling the experimental flag:
+Try it today by enabling the experimental flag:
 
 ```js ins={5-7}
 import { defineConfig } from 'astro/config';
@@ -254,15 +252,15 @@ export default defineConfig({
 });
 ```
 
-This new rendering engine can be further customized with additional sub-features: node pooling and content cache. See the [experimental queued rendering documentation](https://docs.astro.build/en/reference/experimental-flags/queued-rendering/) for more on this feature.
+See the [experimental queued rendering documentation](https://docs.astro.build/en/reference/experimental-flags/queued-rendering/) for more on this feature, including additional options like node pooling and content caching.
 
 ## Experimental: Route Caching
 
 Astro 6 includes an experimental route caching API that gives you a platform-agnostic way to cache server-rendered responses using web standard cache semantics.
 
-Today, if you want to cache SSR responses, you either set headers manually or rely on adapter-level conventions such as ISR, that vary between hosts. Route caching gives you a single API that works the same way everywhere: you set caching directives in your routes, and Astro translates them into the appropriate headers or runtime behavior depending on your adapter.
+Caching SSR responses today is harder than it should be. Every host does it differently, and there's no standard way to control it from your application code. Route caching gives you a single, platform-agnostic API: set caching directives in your routes, and Astro handles the rest regardless of where you deploy.
 
-Enable route caching by configuring a cache provider in your Astro config:
+Enable route caching by configuring a cache provider in your Astro config. A cache provider tells Astro where to store cached responses. Astro ships with a built-in `memoryCache` provider to get you started:
 
 ```js
 import { defineConfig } from 'astro/config';
@@ -270,14 +268,12 @@ import { memoryCache } from 'astro/config';
 
 export default defineConfig({
 	experimental: {
-		cache: {
-			provider: memoryCache(),
-		},
+		cache: { provider: memoryCache() },
 	},
 });
 ```
 
-Then use `Astro.cache` in `.astro` pages or `context.cache` in API routes to control caching per-request:
+Then use `Astro.cache` (or `context.cache`, in API routes) to control caching per-request. You can set cache duration, stale-while-revalidate windows, and tags for targeted invalidation. In this example, we set the cache headers for the response, customized to the request:
 
 ```astro
 ---
@@ -291,56 +287,14 @@ Astro.cache.set({
 <html><body>Cached page</body></html>
 ```
 
-You can also invalidate cached entries by tag or path:
+This is where Astro's unified content layer really shines. Route caching integrates directly with [live content collections](#live-content-collections), automatically tracing dependencies between pages and content entries. When a content entry changes, any cached responses that depend on it are invalidated automatically:
 
 ```ts
-await context.cache.invalidate({ tags: ['data'] });
-await context.cache.invalidate({ path: '/api/data' });
-```
-
-Route caching works alongside [live collections](#live-collections) to allow automatic tracing of dependencies between pages and content entries. When a content entry is updated, any cached responses that depend on it can be automatically invalidated. To associate a page with a content entry, use `cache.set(entry)` in your page:
-
-```astro
----
 import { getEntry } from 'astro:content';
 const product = await getEntry('products', Astro.params.slug);
+
+// When the product changes, Astro will invalidate this cached page:
 Astro.cache.set(product);
----
-
-<html><body>{product.data.name}</body></html>
-```
-
-To invalidate all cached responses that depend on a content entry, use `cache.invalidate(entry)`:
-
-```ts
-import { getLiveEntry } from 'astro:content';
-
-export async function POST({ cache }) {
-	const { entry } = await getLiveEntry('products', 'featured');
-	if (entry) {
-		await cache.invalidate(entry);
-	}
-	return Response.json({ ok: true });
-}
-```
-
-To set default cache options without needing to add code to every page, you can set `experimental.routeRules` that apply caching rules based on route patterns:
-
-```js
-import { defineConfig } from 'astro/config';
-import { memoryCache } from 'astro/config';
-
-export default defineConfig({
-	experimental: {
-		cache: {
-			provider: memoryCache(),
-		},
-		routeRules: {
-			'/api/*': { swr: 600 },
-			'/products/*': { maxAge: 3600, tags: ['products'] },
-		},
-	},
-});
 ```
 
 This initial release includes a simple in-memory cache provider, which works best with the Node.js adapter. We will be adding cache providers for all of Astro's supported deployment platforms in the next few weeks. We also hope there will be community-built providers for CDN services, and other storage types such as Redis. Get in touch [on Discord](https://astro.build/chat) if you're interested in building one!
