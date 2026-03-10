@@ -57,7 +57,7 @@ Astro's dev server was originally built for Node.js — and for most Astro users
 
 Astro 6 changes that. By leveraging Vite's new Environment API, `astro dev` can now run a custom runtime environment during development. The dev server and build pipeline now share the same code paths, unifying your development experience with production.
 
-For Cloudflare users, this original gap was especially painful. The dev server ran on Node.js, but production ran on Cloudflare's `workerd` runtime. Bugs only showed up after deploy. Cloudflare bindings — KV, D1, R2, Durable Objects — weren't available during development at all. You were coding blind and hoping it worked in production.
+For Cloudflare users, this gap was especially painful. The dev server ran on Node.js, but production ran on Cloudflare's `workerd` runtime. Bugs only showed up after deploy. Cloudflare bindings — KV, D1, R2, Durable Objects — weren't available during development at all. You were coding blind and hoping it worked in production.
 
 The rebuilt `@astrojs/cloudflare` adapter now runs `workerd` at every stage: development, prerendering, and production. You develop directly against Cloudflare's platform APIs using `cloudflare:workers`, with full access to your bindings locally. No more simulation layers, and no more `Astro.locals.runtime` workarounds. This work grew out of our [official partnership with Cloudflare](/blog/cloudflare-official-partner/) announced last year, with the goal of making Cloudflare a first-class Astro runtime.
 
@@ -149,7 +149,7 @@ if (error || !update) {
 <time>{update.data.publishedAt.toDateString()}</time>
 ```
 
-Live Content Collections use the same familiar APIs as build-time collections (`getCollection()`, `getEntry()`, schemas, loaders), so there's no new mental model to learn. If your content needs real-time freshness, swap `defineCollection` for `defineLiveCollection` and your content goes live on every request. If it doesn't, keep using build-time collections for the best performance. Both coexist happily in the same project.
+Live Content Collections use the same familiar APIs as build-time collections (`getCollection()`, `getEntry()`, schemas, loaders), so there's no new mental model to learn. If your content needs real-time freshness, swap `defineCollection` for `defineLiveCollection` and your content goes live on every request. If it doesn't, keep using build-time collections for the best performance. Both can coexist in the same project.
 
 For more on live content collections, see the [content collections guide](https://docs.astro.build/en/guides/content-collections/).
 
@@ -202,7 +202,7 @@ Astro 6 includes major upgrades to several core dependencies:
 - **Shiki 4** now powers code highlighting in the `<Code />` component and Markdown/MDX code blocks.
 - **Zod 4** now powers content schema validation. When defining schemas, import Zod from `astro/zod` rather than `astro:content`.
 
-Astro 6 also now requires **Node 22** or later, dropping support for deprecated (and soon-to-be-deprecated) Node 18 and Node 20. Node 22 is faster, more secure, and lets us drop polyfills for older Node versions — resulting in a smaller, more maintainable package and better performance in Astro across the board.
+Astro 6 also now requires **Node 22** or later, dropping support for Node 18 and Node 20, which have reached or are approaching end-of-life. Node 22 is faster, more secure, and lets us drop polyfills for older Node versions — resulting in a smaller, more maintainable package and better performance in Astro across the board.
 
 See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/) for detailed migration steps.
 
