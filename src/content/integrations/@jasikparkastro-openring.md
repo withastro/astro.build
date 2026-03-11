@@ -9,5 +9,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jasikpark/astro-openring
 repoUrl: https://tangled.org/caleb.jasik.xyz/astro-openring
 homepageUrl: https://www.npmjs.com/package/@jasikpark/astro-openring
-downloads: 115
+downloads: 109
 ---
