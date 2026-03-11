@@ -7,4 +7,6 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-loader-markdown-sections
 homepageUrl: https://www.npmjs.com/package/astro-loader-markdown-sections
 badge: new
+downloads: 210
+repoUrl: https://github.com/abhijit-hota/astro-loader-markdown-sections
 ---

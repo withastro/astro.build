@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-telescope
 repoUrl: https://github.com/frostybee/starlight-telescope
 homepageUrl: https://github.com/frostybee/starlight-telescope
-downloads: 168
+downloads: 40
 ---

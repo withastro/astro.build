@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/request-state
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 7165
+downloads: 6969
 repoUrl: https://github.com/Fryuni/inox-tools
 ---

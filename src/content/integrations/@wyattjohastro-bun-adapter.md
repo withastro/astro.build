@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@wyattjoh/astro-bun-adapter
 repoUrl: https://github.com/wyattjoh/astro-bun-adapter
 homepageUrl: https://github.com/wyattjoh/astro-bun-adapter#readme
-downloads: 714
+downloads: 196
 ---

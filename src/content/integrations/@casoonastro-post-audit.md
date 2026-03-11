@@ -1,7 +1,7 @@
 ---
 name: "@casoon/astro-post-audit"
 title: "@casoon/astro-post-audit"
-description: "Fast post-build auditor for Astro sites: SEO, links, and
+description: "Astro integration for post-build auditing: SEO, links, and
   lightweight WCAG checks"
 categories:
   - performance+seo
@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@casoon/astro-post-audit
 repoUrl: https://github.com/casoon/astro-post-audit
 homepageUrl: https://github.com/casoon/astro-post-audit#readme
 badge: new
-downloads: 78
+downloads: 796
 ---
