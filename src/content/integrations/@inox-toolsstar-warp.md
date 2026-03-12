@@ -6,6 +6,6 @@ categories:
   - utilities
 npmUrl: https://www.npmjs.com/package/@inox-tools/star-warp
 homepageUrl: https://github.com/Fryuni/inox-tools#readme
-downloads: 336
+downloads: 341
 repoUrl: https://github.com/Fryuni/inox-tools
 ---

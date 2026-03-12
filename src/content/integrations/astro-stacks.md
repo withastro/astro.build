@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/astro-stacks
 repoUrl: https://github.com/Livog/astro-stacks
 homepageUrl: https://github.com/Livog/astro-stacks#readme
 badge: new
-downloads: 444
+downloads: 447
 ---

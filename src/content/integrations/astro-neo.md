@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-neo
 repoUrl: https://github.com/neopilot-ai/astro-neo
 homepageUrl: https://github.com/neopilot-ai/astro-neo#readme
-downloads: 26
+downloads: 25
 ---

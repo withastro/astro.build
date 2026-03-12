@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-skills
 repoUrl: https://github.com/fredkschott/astro-skills
 homepageUrl: https://github.com/fredkschott/astro-skills#readme
-downloads: 6990
+downloads: 7066
 ---

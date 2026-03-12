@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-securitytxt
 repoUrl: https://github.com/dirsigler/astro-securitytxt
 homepageUrl: https://github.com/dirsigler/astro-securitytxt#readme
 badge: new
-downloads: 289
+downloads: 302
 ---

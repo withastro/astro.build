@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-etag
 repoUrl: https://github.com/Ovyerus/astro-etag
 homepageUrl: https://github.com/Ovyerus/astro-etag
-downloads: 25
+downloads: 26
 ---
