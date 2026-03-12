@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/fastcomments-astro
 repoUrl: https://github.com/FastComments/fastcomments-astro
 homepageUrl: https://docs.fastcomments.com/guide-lib-astro.html
 badge: new
-downloads: 307
+downloads: 308
 ---

@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@maplibre-yaml/astro
 homepageUrl: https://www.npmjs.com/package/@maplibre-yaml/astro
-downloads: 17
+downloads: 16
 ---

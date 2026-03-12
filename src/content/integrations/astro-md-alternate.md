@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-md-alternate
 repoUrl: https://github.com/gxjansen/astro-md-alternate
 homepageUrl: https://github.com/gxjansen/astro-md-alternate
 badge: new
-downloads: 119
+downloads: 120
 ---

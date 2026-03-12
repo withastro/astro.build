@@ -1,0 +1,323 @@
+---
+title: 'Astro 6.0'
+description: 'Astro 6 is here with a refactored dev server, an experimental Rust compiler, live content collections, CSP, and more.'
+publishDate: 2026-03-10
+authors:
+  - matthew
+  - ema
+  - florian
+  - matt
+coverImage: '/src/content/blog/_images/astro-600/blog-post-astro-6.webp'
+socialImage: '/src/content/blog/_images/astro-600/og-astro-6.webp'
+lang: 'en'
+homepageLink:
+  title: 'Astro 6.0'
+  subtitle: 'Available now!'
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**Astro 6 is here!** Astro 6 introduces a broad set of new capabilities, including a built-in Fonts API, Content Security Policy API, and support for Live Content Collections that work with your externally-hosted content through the unified Astro content layer.
+
+Alongside these new features, we also completed a major refactor of the Astro dev server and much of the build pipeline. Powered by Vite's new Environment API, Astro can now run your exact production runtime during development. That means fewer "works in dev, breaks in prod" surprises — especially on non-Node.js runtimes like Cloudflare Workers, Bun, and Deno.
+
+Full release highlights include:
+
+- **[A redesigned `astro dev`](#a-redesigned-astro-dev)**
+- **[Improved Cloudflare support](#a-redesigned-astro-dev)**
+- **[Built-in Fonts API](#built-in-fonts-api)**
+- **[Live Content Collections](#live-content-collections)**
+- **[Content Security Policy](#content-security-policy)**
+- **[Upgraded Packages](#upgraded-packages)**
+- **[Experimental: Rust Compiler](#experimental-rust-compiler)**
+- **[Experimental: Queued Rendering](#experimental-queued-rendering)**
+- **[Experimental: Route Caching](#experimental-route-caching)**
+- **[Community](#community)**
+
+**One more thing**: Astro 6 includes an [experimental new Rust compiler](#experimental-rust-compiler) — the successor to our original Go-based `.astro` compiler. It's still early, but the results are already impressive (and in some cases, even more reliable than our current Go compiler). We'll continue to invest in Rust-powered tooling throughout the 6.x release line to improve performance and scalability for large sites.
+
+## Upgrade now
+
+To upgrade an existing project to Astro 6, use the automated `@astrojs/upgrade` CLI tool:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+```
+
+For new projects, simply use:
+
+```sh
+npm create astro@latest
+```
+
+## A redesigned `astro dev`
+
+Astro's dev server was originally built for Node.js — and for most Astro users, that worked great. But as non-Node runtimes like Cloudflare Workers, Bun, and Deno gained traction, that assumption became a blind spot. Developers targeting these platforms had no way to run their actual production runtime during development, so the behavior you saw locally didn't always match what you shipped.
+
+Astro 6 changes that. By leveraging Vite's new Environment API, `astro dev` can now run a custom runtime environment during development. The dev server and build pipeline now share the same code paths, unifying your development experience with production.
+
+For Cloudflare users, this gap was especially painful. The dev server ran on Node.js, but production ran on Cloudflare's `workerd` runtime. Bugs only showed up after the deploy. Cloudflare bindings — KV, D1, R2, Durable Objects — weren't available during development at all. You were coding blind and hoping it would work in production.
+
+The rebuilt `@astrojs/cloudflare` adapter now runs `workerd` at every stage: development, prerendering, and production. You develop directly against Cloudflare's platform APIs using `cloudflare:workers`, with full access to your bindings locally. No more simulation layers, and no more `Astro.locals.runtime` workarounds. This work grew out of our [official partnership with Cloudflare](/blog/cloudflare-official-partner/) announced last year, with the goal of making Cloudflare a first-class Astro runtime.
+
+## Built-in Fonts API
+
+Almost every website uses custom fonts, but getting them right is surprisingly complicated. There are performance tradeoffs, privacy concerns, and a dozen small decisions that are easy to get wrong.
+
+Astro 6 adds a built-in Fonts API that takes care of the hard parts for you. You configure your fonts from local files or providers like Google and Fontsource, and Astro handles the rest: downloading and caching for self-hosting, generating optimized fallbacks, and adding preload links — keeping your site fast and your users' data private.
+
+To get started, configure a `fonts` object with one or more fonts that you'd like to use in your project:
+
+```js title="astro.config.mjs"
+import { defineConfig, fontProviders } from 'astro/config';
+
+export default defineConfig({
+	fonts: [
+		{
+			name: 'Roboto',
+			cssVariable: '--font-roboto',
+			provider: fontProviders.fontsource(),
+		},
+	],
+});
+```
+
+Then, add a `<Font />` component and styling wherever you need it — a global layout, a single page, or a specific section of your site:
+
+```astro title="src/components/Head.astro"
+---
+import { Font } from 'astro:assets';
+---
+
+<Font cssVariable="--font-roboto" preload />
+<style is:global>
+	body {
+		font-family: var(--font-roboto);
+	}
+</style>
+```
+
+Behind the scenes, Astro downloads the font files, generates optimized fallback fonts, and adds the right preload hints — so you get best-practice font loading without configuring it yourself.
+
+To learn more, check out the [fonts guide](https://docs.astro.build/en/guides/fonts/).
+
+## Live Content Collections
+
+Live Content Collections are now stable in Astro 6, bringing request-time content fetching to Astro's unified content layer.
+
+Content Collections have been a core part of Astro since 2.0. But they've always required a rebuild when content changed. Live Content Collections fetch content at request time instead, using the same APIs, with no rebuild step required. Your content updates the moment it's published, without touching your build pipeline. That means CMS content, API data, and editorial updates all go live instantly.
+
+Use `defineLiveCollection()` to define a live source in `src/live.config.ts`:
+
+```ts title="src/live.config.ts"
+import { defineLiveCollection } from 'astro:content';
+import { z } from 'astro/zod';
+import { cmsLoader } from './loaders/my-cms';
+
+const updates = defineLiveCollection({
+	loader: cmsLoader({ apiKey: process.env.MY_API_KEY }),
+	schema: z.object({
+		slug: z.string(),
+		title: z.string(),
+		excerpt: z.string(),
+		publishedAt: z.coerce.date(),
+	}),
+});
+
+export const collections = { updates };
+```
+
+Then query live content in your page with built-in error handling:
+
+```astro
+---
+import { getLiveEntry } from 'astro:content';
+
+const { entry: update, error } = await getLiveEntry(
+	'updates',
+	Astro.params.slug,
+);
+
+if (error || !update) {
+	return Astro.redirect('/404');
+}
+---
+
+<h1>{update.data.title}</h1>
+<p>{update.data.excerpt}</p>
+<time>{update.data.publishedAt.toDateString()}</time>
+```
+
+Live Content Collections use the same familiar APIs as build-time collections (`getCollection()`, `getEntry()`, schemas, loaders), so there's no new mental model to learn. If your content needs real-time freshness, define a live collection with a live loader and your content goes live on every request. If it doesn't, keep using build-time collections for the best performance. Both can coexist in the same project.
+
+For more on live content collections, see the [content collections guide](https://docs.astro.build/en/guides/content-collections/).
+
+## Content Security Policy
+
+Astro's Content Security Policy API is now stable in Astro 6. Astro is one of the first JavaScript meta-frameworks to offer built-in CSP configuration for both static and dynamic pages, in both server and serverless environments.
+
+CSP is deceptively hard to implement in a framework like Astro. It requires knowing every script and style on a page so they can be hashed and included in the policy. For static pages, that can be computed at build time. But for dynamic pages, content can change per request — which means hashing on the fly and injecting the right headers at runtime. Supporting both modes in a single, unified API is why no other meta-framework has done this before.
+
+Getting started is simple. Enable CSP with a single flag, and Astro handles the rest — automatically hashing all scripts and styles in your pages and generating the appropriate CSP headers:
+
+```js ins={4} del={5}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	security: { csp: true },
+	experimental: { csp: true },
+});
+```
+
+That's all you need for most sites. When you need more control — custom hashing algorithms, additional directives for external scripts or styles — the full configuration API is available:
+
+```js
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	security: {
+		csp: {
+			algorithm: 'SHA-512',
+			directives: [
+				"default-src 'self'",
+				"img-src 'self' https://images.cdn.example.com",
+			],
+			styleDirective: { hashes: ['sha384-styleHash'] },
+			scriptDirective: { hashes: ['sha384-scriptHash'] },
+		},
+	},
+});
+```
+
+As part of this stabilization, CSP also works with Astro's [responsive images](https://docs.astro.build/en/reference/configuration-reference/#imageresponsivestyles) out of the box. Responsive image styles are calculated at build time and applied using CSS classes and `data-*` attributes, so they can be hashed and included in your CSP policy automatically — no extra configuration needed.
+
+See the [security configuration reference](https://docs.astro.build/en/reference/configuration-reference/#security) for full details.
+
+## Upgraded Packages
+
+Astro 6 includes major upgrades to several core dependencies:
+
+- **Vite 7** is now used across Astro and all `@astrojs` packages. If your project pins a custom Vite version, update it to v7 or later before upgrading.
+- **Shiki 4** now powers code highlighting in the `<Code />` component and Markdown/MDX code blocks.
+- **Zod 4** now powers content schema validation. When defining schemas, import Zod from `astro/zod` rather than `astro:content`.
+
+Astro 6 also now requires **Node 22** or later, dropping support for Node 18 and Node 20, which have reached or are approaching end-of-life. Node 22 is faster, more secure, and lets us drop polyfills for older Node versions — resulting in a smaller, more maintainable package and better performance in Astro across the board.
+
+See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/#dependency-upgrades) for detailed migration steps.
+
+## Experimental: Rust Compiler
+
+Astro 6 includes an experimental new Rust compiler — the successor to our original Go-based `.astro` compiler.
+
+What started as an AI experiment while updating our Go compiler for Astro 6 quickly moved from "can this work?" to "why isn't this the default?" The new compiler is faster, produces stronger diagnostics, and in some cases is even more reliable than our current Go compiler. We hope to make it the default in a future major release.
+
+You can try it today by enabling the `rustCompiler` flag and installing the `@astrojs/compiler-rs` package:
+
+```sh
+npm install @astrojs/compiler-rs
+```
+
+```js
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
+		rustCompiler: true,
+	},
+});
+```
+
+We're actively exploring more Rust-powered tooling across Astro, with more to share soon.
+
+Read our reference documentation on [the Rust compiler](https://docs.astro.build/en/reference/experimental-flags/rust-compiler/) for more details.
+
+## Experimental: Queued Rendering
+
+Astro 6 introduces an experimental new rendering strategy, with early benchmarks showing up to 2x faster rendering.
+
+Today, Astro renders components recursively. Rendering functions call themselves as they walk the component tree. Queued rendering replaces this with a two-pass approach: the first pass traverses the tree and emits an ordered queue, then the second pass renders it. The result is both faster and more memory-efficient, and we plan to make it the default rendering strategy in Astro v7.
+
+Try it today by enabling the experimental flag:
+
+```js ins={5-7}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
+		queuedRendering: {
+			enabled: true,
+		},
+	},
+});
+```
+
+See the [experimental queued rendering documentation](https://docs.astro.build/en/reference/experimental-flags/queued-rendering/) for more on this feature, including additional options like node pooling and content caching.
+
+## Experimental: Route Caching
+
+Astro 6 includes an experimental route caching API that gives you a platform-agnostic way to cache server-rendered responses using web standard cache semantics.
+
+Caching SSR responses today is harder than it should be. Every host does it differently, and there's no standard way to control it from your application code. Route caching gives you a single, platform-agnostic API: set caching directives in your routes, and Astro handles the rest regardless of where you deploy.
+
+Enable route caching by configuring a cache provider in your Astro config. A cache provider tells Astro where to store cached responses. Astro ships with a built-in `memoryCache` provider to get you started:
+
+```js
+import { defineConfig } from 'astro/config';
+import { memoryCache } from 'astro/config';
+
+export default defineConfig({
+	experimental: {
+		cache: { provider: memoryCache() },
+	},
+});
+```
+
+Then use `Astro.cache` (or `context.cache`, in API routes) to control caching per-request. You can set cache duration, stale-while-revalidate windows, and tags for targeted invalidation. In this example, we set the cache headers for the response, customized to the request:
+
+```astro
+---
+Astro.cache.set({
+	maxAge: 120, // Cache for 2 minutes
+	swr: 60, // Serve stale for 1 minute while revalidating
+	tags: ['home'], // Tag for targeted invalidation
+});
+---
+
+<html><body>Cached page</body></html>
+```
+
+This is where Astro's unified content layer really shines. Route caching integrates directly with [live content collections](#live-content-collections), automatically tracing dependencies between pages and content entries. When a content entry changes, any cached responses that depend on it are invalidated automatically:
+
+```ts
+import { getEntry } from 'astro:content';
+const product = await getEntry('products', Astro.params.slug);
+
+// When the product changes, Astro will invalidate this cached page:
+Astro.cache.set(product);
+```
+
+This initial release includes a simple in-memory cache provider, which works best with the Node.js adapter. We will be adding cache providers for all of Astro's supported deployment platforms in the next few weeks. We also hope there will be community-built providers for CDN services, and other storage types such as Redis. Get in touch [on Discord](https://astro.build/chat) if you're interested in building one!
+
+For more details, see the experimental [route caching docs](https://docs.astro.build/en/reference/experimental-flags/route-caching/).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Special thanks to everyone who contributed to Astro 6 with code, docs, reviews, and testing, including:
+
+[0xRozier](https://github.com/0xRozier), [Abdelrahman Abdelfattah](https://github.com/abdo-spices), [Adam Matthiesen](https://github.com/Adammatthiesen), [Adrian](https://github.com/adriandlam), [ADTC](https://github.com/ADTC), [Ahmad Yasser](https://github.com/AhmadYasser1), [Alasdair McLeay](https://github.com/penx), [Alejandro Romano](https://github.com/Arecsu), [Alex](https://github.com/SvetimFM), [Alex Launi](https://github.com/lamalex), [Andreas Deininger](https://github.com/deining), [Andrey](https://github.com/codenomnom), [Andrey Gurtovoy](https://github.com/jt3k), [andy](https://github.com/aprici7y), [Antony Faris](https://github.com/antonyfaris), [Ariel K](https://github.com/anaxite), [Aron Homberg](https://github.com/kyr0), [Ash Hitchcock](https://github.com/ashhitch), [Azat S.](https://github.com/azat-io), [Bartosz Kapciak](https://github.com/toxeeec), [Brian Dukes](https://github.com/bdukes), [btea](https://github.com/btea), [Cameron Pak](https://github.com/cameronapak), [Cameron Smith](https://github.com/cameronraysmith), [cid](https://github.com/ixchio), [CyberFlame](https://github.com/CyberFlameGO), [Danilo Velasquez Urrutia](https://github.com/dvelasquez), [Darknab](https://github.com/Darknab), [Deleted user](https://github.com/ghost), [Deveesh Shetty](https://github.com/dev-shetty), [Dom Christie](https://github.com/domchristie), [Dominik G.](https://github.com/dominikg), [Dream](https://github.com/eureka928), [Drew Powers](https://github.com/drwpow), [Edgar](https://github.com/grundmanise), [Edward Brunetiere](https://github.com/P4tt4te), [ellielok](https://github.com/ellielok), [Eric Grill](https://github.com/EricGrill), [Eryk Baran](https://github.com/gacek1123), [everdimension](https://github.com/everdimension), [fabon](https://github.com/fabon-f), [Felix Schneider](https://github.com/trueberryless), [fkatsuhiro](https://github.com/fkatsuhiro), [Fred K. Schott](https://github.com/FredKSchott), [Fredrik Norlin](https://github.com/fredriknorlin), [Gokhan Kurt](https://github.com/KurtGokhan), [Henri Fournier](https://github.com/hfournier), [Hunter Bertoson](https://github.com/hkbertoson), [Ibim Braide](https://github.com/iclectic), [Jack Platten](https://github.com/plttn), [Jack Shelton](https://github.com/thejackshelton), [James Garbutt](https://github.com/43081j), [James Opstad](https://github.com/jamesopstad), [Jeffrey Yasskin](https://github.com/jyasskin), [jmgala](https://github.com/jmgala), [joel hansson](https://github.com/qzio), [Johan Rouve](https://github.com/ooga), [John L. Armstrong IV](https://github.com/jlarmstrongiv), [John Mortlock](https://github.com/jmortlock), [Jonas Geiler](https://github.com/jonasgeiler), [Josh Soref](https://github.com/jsoref), [Julián Colombo](https://github.com/jdcolombo), [Julian Wolf](https://github.com/jwoyo), [Julien Cayzac](https://github.com/jcayzac), [Junseong Park](https://github.com/jsparkdev), [Justin Francos](https://github.com/jfrancos), [kato takeshi](https://github.com/tkskto), [Kedar Vartak](https://github.com/kedarvartak), [Kendell](https://github.com/KTibow), [Kevin Brown](https://github.com/webstackdev), [knj](https://github.com/jp-knj), [Koos Looijesteijn](https://github.com/kslstn), [Kristijan](https://github.com/eldair), [KTrain](https://github.com/KTrain5169), [ktym4a](https://github.com/ktym4a), [Lieke](https://github.com/leekeh), [Light](https://github.com/idawnlight), [Louis Escher](https://github.com/louisescher), [Luky Setiawan](https://github.com/Slackluky), [Mads Erik Forberg](https://github.com/forberg), [Manuel Meister](https://github.com/manuelmeister), [Mark Ignacio](https://github.com/mark-ignacio), [Martin Trapp](https://github.com/martrapp), [Matheus Baroni](https://github.com/CloudyWSA), [Matthew Conto](https://github.com/drfuzzyness), [Matthew Justice](https://github.com/JusticeMatthew), [Maurici Abad Gutierrez](https://github.com/mauriciabad), [Mehdi El Fadil](https://github.com/mef), [Michael Payne](https://github.com/mikepayne02), [Michael Stramel](https://github.com/stramel), [Mike Pagé](https://github.com/mikepage), [MkDev11](https://github.com/MkDev11), [Morten Oftedal](https://github.com/MortenOftedal), [nemu](https://github.com/erbierc), [Ntale Swamadu](https://github.com/Ntale3), [Ocavue (Jiajin Wen)](https://github.com/ocavue), [Olcan EBREM](https://github.com/olcanebrem), [Oliver Speir](https://github.com/OliverSpeir), [Olivier Dusabimana](https://github.com/diokey), [Patrick Arlt](https://github.com/patrickarlt), [Phaneendra](https://github.com/9thQuadrant), [Philippe Serhal](https://github.com/serhalp), [Raanelom](https://github.com/Raanelom), [Rafael Yasuhide Sudo](https://github.com/rururux), [Rahul Dogra](https://github.com/rahuld109), [randomguy-2650](https://github.com/randomguy-2650), [Razon Yang](https://github.com/razonyang), [Robin Bühler](https://github.com/openscript), [Roman](https://github.com/gameroman), [Roman Hauksson-Neill](https://github.com/RomanHauksson), [Roman Kholiavko](https://github.com/kholiavko-roman), [sanchezmaldonadojesusadrian14-coder](https://github.com/sanchezmaldonadojesusadrian14-coder), [Sebastian Beltran](https://github.com/bjohansebas), [Shinya Fujino](https://github.com/morinokami), [Simen Sagholen Førrisdal](https://github.com/simensfo), [Stel Clementine](https://github.com/stelcodes), [Steven](https://github.com/styfle), [Tanishq Manuja](https://github.com/tanishqmanuja), [Tee Ming](https://github.com/teemingc), [Timo Behrmann](https://github.com/z0mt3c), [Tony Narlock](https://github.com/tony), [Umut Keltek](https://github.com/umutkeltek), [Varun Chawla](https://github.com/veeceey), [Victor Berchet](https://github.com/vicb), [Vladyslav Shevchenko](https://github.com/astrochemx), [Volpeon](https://github.com/volpeon), [Willow (GHOST)](https://github.com/ghostdevv), [Xidorn Quan](https://github.com/upsuper), [Yagiz Nizipli](https://github.com/anonrig), [yy](https://github.com/NAM-MAN), [五月七日千緒](https://github.com/tuyuritio), and [翠](https://github.com/sapphi-red)
+
+We hope you enjoy Astro 6. If you run into issues or want to share feedback, please join us on [Discord](https://astro.build/chat), post on [GitHub](https://github.com/withastro/astro/issues), or reach out on [Bluesky](https://bsky.app/profile/astro.build), [Twitter](https://twitter.com/astrodotbuild), and [Mastodon](https://m.webtoo.ls/@astro).
