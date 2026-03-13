@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/@casoon/astro-post-audit
 repoUrl: https://github.com/casoon/astro-post-audit
 homepageUrl: https://github.com/casoon/astro-post-audit#readme
 badge: new
-downloads: 803
+downloads: 818
 ---

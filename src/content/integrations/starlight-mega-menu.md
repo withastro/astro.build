@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-mega-menu
 homepageUrl: https://www.npmjs.com/package/starlight-mega-menu
 badge: new
-downloads: 2053
+downloads: 2092
 ---

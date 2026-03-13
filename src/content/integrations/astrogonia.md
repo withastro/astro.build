@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astrogonia
 repoUrl: https://github.com/monokrome/astrogonia
 homepageUrl: https://github.com/monokrome/astrogonia#readme
-downloads: 30
+downloads: 25
 ---

@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/jaamd
 repoUrl: https://github.com/lancher-dev/jaamd
 homepageUrl: https://github.com/lancher-dev/jaamd#readme
 badge: new
-downloads: 1446
+downloads: 1450
 ---

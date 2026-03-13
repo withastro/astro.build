@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@polgubau/astro-reveal
 repoUrl: https://github.com/polgubau/astro-reveal
 homepageUrl: https://github.com/polgubau/astro-reveal#readme
 badge: new
-downloads: 152
+downloads: 155
 ---

@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/astro-dev-toolbar-json-ld
 repoUrl: https://github.com/skix123/astro-dev-toolbar-json-ld
 homepageUrl: https://github.com/skix123/astro-dev-toolbar-json-ld#readme
 badge: new
-downloads: 183
+downloads: 184
 ---

@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@robinmordasiewicz/f5xc-docs-theme
 repoUrl: https://github.com/robinmordasiewicz/f5xc-docs-theme
 homepageUrl: https://robinmordasiewicz.github.io/f5xc-docs-theme
-downloads: 1560
+downloads: 520
 ---
