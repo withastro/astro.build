@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/@astrojs/cloudflare
 image: /assets/integrations/cloudflare.svg
 repoUrl: https://github.com/withastro/astro
 homepageUrl: https://docs.astro.build/en/guides/integrations-guide/cloudflare/
-downloads: 890111
+downloads: 890778
 official: true
 ---

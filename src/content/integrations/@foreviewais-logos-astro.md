@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@foreview/ais-logos-astro
 repoUrl: https://github.com/foreview/aisafety-logos
 homepageUrl: https://github.com/foreview/aisafety-logos#readme
-downloads: 14
+downloads: 13
 ---
