@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@entrolytics/astro-sdk
 repoUrl: https://github.com/entrolytics/astro-sdk
 homepageUrl: https://entrolytics.click
-downloads: 17
+downloads: 16
 ---

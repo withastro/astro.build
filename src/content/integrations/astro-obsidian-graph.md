@@ -6,5 +6,5 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/astro-obsidian-graph
 homepageUrl: https://github.com/GamerGirlandCo/astro-obsidian-graph
-downloads: 164
+downloads: 115
 ---

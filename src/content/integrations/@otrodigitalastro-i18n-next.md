@@ -10,5 +10,5 @@ npmUrl: https://www.npmjs.com/package/@otrodigital/astro-i18n-next
 repoUrl: https://github.com/otrodigital/astro-i18n-next
 homepageUrl: https://astro-i18n-next.otro.digital
 badge: new
-downloads: 902
+downloads: 910
 ---

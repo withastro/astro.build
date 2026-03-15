@@ -8,5 +8,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-terminal-themes
 repoUrl: https://github.com/danlourenco/astro-terminal-themes
 homepageUrl: https://github.com/danlourenco/astro-terminal-themes#readme
-downloads: 6
+downloads: 4
 ---

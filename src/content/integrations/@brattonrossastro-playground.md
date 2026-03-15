@@ -6,5 +6,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@brattonross/astro-playground
 repoUrl: https://github.com/brattonross/astro-playground
 homepageUrl: https://github.com/brattonross/astro-playground
-downloads: 64
+downloads: 65
 ---
