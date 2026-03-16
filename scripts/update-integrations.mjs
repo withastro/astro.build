@@ -1,10 +1,7 @@
+// @ts-check
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import matter from 'gray-matter';
-import slugify from 'slugify';
-import glob from 'tiny-glob';
-import * as yaml from 'yaml';
 import { limitedFetch } from './fetch.mjs';
 import {
 	badgeForPackage,
@@ -42,10 +39,28 @@ function updateLastModified() {
 	fs.writeFileSync(pathname, JSON.stringify(data, null, '\t'), { encoding: 'utf8' });
 }
 
-async function getIntegrationFiles() {
-	return await glob('src/content/integrations/*.md', {
-		cwd: path.resolve(fileURLToPath(import.meta.url), '../..'),
-	});
+/**
+ * @typedef {NonNullable<Awaited<ReturnType<typeof fetchWithOverrides>>>} IntegrationData
+ */
+
+/**
+ * @returns {IntegrationData[]}
+ */
+function getIntegrationsData() {
+	try {
+		const rawJson = fs.readFileSync('src/content/integrations.json', 'utf-8');
+		return JSON.parse(rawJson);
+	} catch (error) {
+		console.error('Error reading integrations data:', error);
+		return [];
+	}
+}
+
+/**
+ * @param {IntegrationData[]} data
+ */
+function setIntegrationsData(data) {
+	fs.writeFileSync('src/content/integrations.json', JSON.stringify(data, null, '\t'), 'utf-8');
 }
 
 /**
@@ -82,6 +97,7 @@ function normalizePackageDetails(data, pkg) {
 	}
 
 	return {
+		id: data.name,
 		name: data.name,
 		title: data.name,
 		description: markdownToPlainText(data.description),
@@ -117,55 +133,43 @@ async function unsafeUpdateAllIntegrations() {
 	const packagesMap = await searchByKeywords(keywords);
 	const searchResults = new Set([...packagesMap.keys()].filter((pkg) => !blocklist.includes(pkg)));
 
-	const entries = await getIntegrationFiles();
+	const existingEntries = getIntegrationsData();
 
 	const existingIntegrations = new Set();
 	/** @type {string[]} */
 	const deprecatedIntegrations = [];
 
 	// loop through all integrations already published to the catalog
-	await Promise.all(
-		entries.map(async (entry) => {
-			const { data } = matter.read(entry);
+	const updatedEntries = await Promise.all(
+		existingEntries.map(async (data) => {
 			existingIntegrations.add(data.name);
 
 			if (!searchResults.has(data.name)) {
 				// the integration was deprecated or removed from NPM
 				deprecatedIntegrations.push(data.name);
-				fs.rmSync(entry);
-			} else {
-				// fetch the latest NPM data, keeping any local overrides like description or icon
-				// skipping download counts here since existing integrations will be updated
-				// automatically in a separate GitHub Action.
-				const details = await fetchWithOverrides(data.name, false);
-				if (!details) return;
-
-				// check if the homepageurl is valid
-				// if not, replace it by the link to the package on npm
-				let fixHomepageUrl = false;
-				try {
-					const response = await limitedFetch(details.homepageUrl, { method: 'HEAD' });
-					fixHomepageUrl = response.status >= 400;
-				} catch {
-					// such an error may occur when the hostname is unknown
-					fixHomepageUrl = true;
-				}
-				if (fixHomepageUrl) {
-					details.homepageUrl = `https://www.npmjs.com/package/${data.name}`;
-				}
-
-				const frontmatter = yaml.stringify({
-					...data,
-					...details,
-					badges: undefined,
-				});
-
-				fs.writeFileSync(
-					entry,
-					`---
-${frontmatter}---\n`,
-				);
+				return null;
 			}
+			// fetch the latest NPM data, keeping any local overrides like description or icon
+			// skipping download counts here since existing integrations will be updated
+			// automatically in a separate GitHub Action.
+			const updatedData = await fetchWithOverrides(data.name, false);
+			if (!updatedData) return data;
+
+			// check if the homepageurl is valid
+			// if not, replace it by the link to the package on npm
+			let fixHomepageUrl = false;
+			try {
+				const response = await limitedFetch(updatedData.homepageUrl, { method: 'HEAD' });
+				fixHomepageUrl = response.status >= 400;
+			} catch {
+				// such an error may occur when the hostname is unknown
+				fixHomepageUrl = true;
+			}
+			if (fixHomepageUrl) {
+				updatedData.homepageUrl = `https://www.npmjs.com/package/${data.name}`;
+			}
+
+			return { ...data, ...updatedData };
 		}),
 	);
 
@@ -174,27 +178,14 @@ ${frontmatter}---\n`,
 		(pkg) => !existingIntegrations.has(pkg),
 	);
 
-	await Promise.all(
-		newIntegrations.map(async (entry) => {
-			const details = await fetchWithOverrides(entry);
-			if (!details) return;
+	for (const entry of newIntegrations) {
+		const details = await fetchWithOverrides(entry);
+		if (details) {
+			updatedEntries.push(details);
+		}
+	}
 
-			const frontmatter = yaml.stringify(details);
-
-			const slug = slugify(entry);
-			const file = path.resolve(
-				path.dirname(fileURLToPath(import.meta.url)),
-				`../src/content/integrations/${slug}.md`,
-			);
-
-			fs.writeFileSync(
-				file,
-				`---
-${frontmatter}---\n`,
-			);
-		}),
-	);
-
+	setIntegrationsData(updatedEntries.filter((entry) => entry !== null));
 	updateLastModified();
 
 	// logging in case we need to audit the nightly job
@@ -215,26 +206,14 @@ Updated: ${existingIntegrations.size - deprecatedIntegrations.length} integratio
 }
 
 async function safeUpdateExistingIntegrations() {
-	const entries = await getIntegrationFiles();
+	const entries = getIntegrationsData();
 
 	for (const entry of entries) {
-		const { data } = matter.read(entry);
-
 		// only override NPM download stats for safe updates
-		const downloads = await fetchDownloadsForPackage(data.name);
-
-		const frontmatter = yaml.stringify({
-			...data,
-			downloads,
-			badges: undefined,
-		});
-
-		fs.writeFileSync(
-			entry,
-			`---
-${frontmatter}---\n`,
-		);
+		entry.downloads = await fetchDownloadsForPackage(entry.name);
 	}
+
+	setIntegrationsData(entries);
 }
 
 const args = process.argv.slice(2);
