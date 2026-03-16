@@ -5,7 +5,7 @@ description: Use your own authored service worker with Astro
 categories:
   - performance+seo
 npmUrl: https://www.npmjs.com/package/@ayco/astro-sw
-repoUrl: https://github.com/ayoayco/astro-sw
-homepageUrl: https://github.com/ayoayco/astro-sw
+repoUrl: https://git.ayo.run/ayo/astro-sw
+homepageUrl: https://www.npmjs.com/package/@ayco/astro-sw
 downloads: 487
 ---

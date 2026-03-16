@@ -6,6 +6,6 @@ categories:
   - uncategorized
 npmUrl: https://www.npmjs.com/package/@coursebuilder/astro
 repoUrl: https://github.com/joelhooks/course-builder
-homepageUrl: https://github.com/joelhooks/course-builder#readme
+homepageUrl: https://www.npmjs.com/package/@coursebuilder/astro
 downloads: 64
 ---

@@ -1,7 +1,7 @@
 ---
 name: "@astrojs/cloudflare"
 title: "@astrojs/cloudflare"
-description: Deploy your site to Cloudflare Workers/Pages
+description: Deploy your site to Cloudflare Workers
 categories:
   - adapters
   - official

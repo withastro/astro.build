@@ -7,4 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/starlight-ion-theme
 homepageUrl: https://louisescher.github.io/starlight-ion-theme/
 downloads: 924
+repoUrl: https://github.com/louisescher/starlight-ion-theme
 ---
