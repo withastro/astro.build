@@ -61,7 +61,7 @@ function getIntegrationsData() {
  */
 function setIntegrationsData(data) {
 	// Sort by package name to ensure consistent order and clean git diffs.
-	data.sort((a, b) => a.name.localeCompare(b.name));
+	data.sort((a, b) => a.id.localeCompare(b.id));
 	fs.writeFileSync('src/content/integrations.json', JSON.stringify(data, null, '\t'), 'utf-8');
 }
 
@@ -100,8 +100,6 @@ function normalizePackageDetails(data, pkg) {
 
 	return {
 		id: data.name,
-		name: data.name,
-		title: data.name,
 		description: markdownToPlainText(data.description),
 		categories: uniqCategories,
 		npmUrl,
@@ -144,17 +142,17 @@ async function unsafeUpdateAllIntegrations() {
 	// loop through all integrations already published to the catalog
 	const updatedEntries = await Promise.all(
 		existingEntries.map(async (data) => {
-			existingIntegrations.add(data.name);
+			existingIntegrations.add(data.id);
 
-			if (!searchResults.has(data.name)) {
+			if (!searchResults.has(data.id)) {
 				// the integration was deprecated or removed from NPM
-				deprecatedIntegrations.push(data.name);
+				deprecatedIntegrations.push(data.id);
 				return null;
 			}
 			// fetch the latest NPM data, keeping any local overrides like description or icon
 			// skipping download counts here since existing integrations will be updated
 			// automatically in a separate GitHub Action.
-			const updatedData = await fetchWithOverrides(data.name, false);
+			const updatedData = await fetchWithOverrides(data.id, false);
 			if (!updatedData) return data;
 
 			// check if the homepageurl is valid
@@ -168,7 +166,7 @@ async function unsafeUpdateAllIntegrations() {
 				fixHomepageUrl = true;
 			}
 			if (fixHomepageUrl) {
-				updatedData.homepageUrl = `https://www.npmjs.com/package/${data.name}`;
+				updatedData.homepageUrl = `https://www.npmjs.com/package/${data.id}`;
 			}
 
 			return { ...data, ...updatedData };
@@ -212,7 +210,7 @@ async function safeUpdateExistingIntegrations() {
 
 	for (const entry of entries) {
 		// only override NPM download stats for safe updates
-		entry.downloads = await fetchDownloadsForPackage(entry.name);
+		entry.downloads = await fetchDownloadsForPackage(entry.id);
 	}
 
 	setIntegrationsData(entries);

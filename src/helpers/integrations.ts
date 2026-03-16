@@ -30,8 +30,7 @@ export async function getFilteredIntegrations(options: IntegrationOptions = {}) 
 		// if a search term was used, filter down checking name/title/description
 		if (searchRegex) {
 			return (
-				searchRegex.test(integration.data.name) ||
-				searchRegex.test(integration.data.title) ||
+				searchRegex.test(integration.data.id) ||
 				(integration.data.description && searchRegex.test(integration.data.description))
 			);
 		}
@@ -66,7 +65,7 @@ function sortIntegrations(a: CollectionEntry<'integrations'>, b: CollectionEntry
 	const bDownloads = b.data.downloadFactor * b.data.downloads;
 
 	if (aDownloads === bDownloads) {
-		return b.data.name.localeCompare(a.data.name);
+		return b.data.id.localeCompare(a.data.id);
 	}
 
 	return bDownloads - aDownloads;
