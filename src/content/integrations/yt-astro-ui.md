@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/yt-astro-ui
 repoUrl: https://github.com/qwert2001qwert-alex/yt-astro-ui
 homepageUrl: https://astro-ui.dev.yatoday.es
-downloads: 52
+downloads: 51
 ---

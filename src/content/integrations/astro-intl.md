@@ -9,6 +9,6 @@ npmUrl: https://www.npmjs.com/package/astro-intl
 repoUrl: https://github.com/ErickCSS/astro-intl
 homepageUrl: https://github.com/ErickCSS/astro-intl#readme
 badge: new
-downloads: 1106
+downloads: 1111
 image: /assets/integrations/astro-intl.svg
 ---

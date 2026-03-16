@@ -9,5 +9,5 @@ npmUrl: https://www.npmjs.com/package/@openpolicy/astro
 repoUrl: https://github.com/jamiedavenport/openpolicy
 homepageUrl: https://github.com/jamiedavenport/openpolicy#readme
 badge: new
-downloads: 383
+downloads: 478
 ---

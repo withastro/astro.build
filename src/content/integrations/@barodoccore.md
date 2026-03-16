@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@barodoc/core
 repoUrl: https://github.com/barocss/barodoc
 homepageUrl: https://github.com/barocss/barodoc#readme
-downloads: 1172
+downloads: 1163
 ---

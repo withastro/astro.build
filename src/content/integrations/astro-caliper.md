@@ -11,5 +11,5 @@ npmUrl: https://www.npmjs.com/package/astro-caliper
 repoUrl: https://github.com/forde/astro-caliper
 homepageUrl: https://github.com/forde/astro-caliper#readme
 badge: new
-downloads: 861
+downloads: 867
 ---

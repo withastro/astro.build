@@ -7,5 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/@jctechstudio/ui
 repoUrl: https://github.com/JCTechStudio/kori
 homepageUrl: https://github.com/JCTechStudio/kori
-downloads: 3
+downloads: 4
 ---
