@@ -60,6 +60,8 @@ function getIntegrationsData() {
  * @param {IntegrationData[]} data
  */
 function setIntegrationsData(data) {
+	// Sort by package name to ensure consistent order and clean git diffs.
+	data.sort((a, b) => a.name.localeCompare(b.name));
 	fs.writeFileSync('src/content/integrations.json', JSON.stringify(data, null, '\t'), 'utf-8');
 }
 
