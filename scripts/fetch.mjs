@@ -11,8 +11,6 @@ const fetchLimit = pLimit(10);
  */
 export function limitedFetch(url, init = {}) {
 	return pRetry(async (attempt) => {
-		// Back off retries to give time to recover from 429 Too Many Requests errors.
-		await new Promise((resolve) => setTimeout(resolve, 2000 * (attempt - 1)));
 		return fetchLimit(async () => {
 			const res = await fetch(url, {
 				...init,
