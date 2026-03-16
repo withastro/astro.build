@@ -33,7 +33,7 @@ export async function fetchDownloadsForPackage(pkg) {
 const npmRegistrySchema = z.object({
 	name: z.string(),
 	description: z.string().optional(),
-	homepage: z.string().url().optional(),
+	homepage: z.url().optional(),
 	keywords: z.string().array().default([]),
 	repository: z
 		.union([
