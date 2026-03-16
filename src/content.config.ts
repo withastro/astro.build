@@ -121,10 +121,7 @@ export const collections = {
 	integrations: defineCollection({
 		loader: file('./src/content/integrations.json'),
 		schema: z.object({
-			name: z.string().describe('Name of the package as it is published to NPM'),
-			title: z
-				.string()
-				.describe('Title of the integration as it should be shown in the Integrations catalog'),
+			id: z.string().describe('Name of the package as it is published to NPM'),
 			description: z.string().optional(),
 			image: z.string().optional(),
 			categories: z.array(
