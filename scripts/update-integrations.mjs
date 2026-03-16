@@ -161,8 +161,13 @@ async function unsafeUpdateAllIntegrations() {
 			// if not, replace it by the link to the package on npm
 			let fixHomepageUrl = false;
 			try {
-				const response = await limitedFetch(updatedData.homepageUrl, { method: 'HEAD' });
-				fixHomepageUrl = response.status >= 400;
+				const homepageUrl = new URL(updatedData.homepageUrl);
+				if (homepageUrl.hostname === 'www.npmjs.com') {
+					fixHomepageUrl = homepageUrl.pathname !== `/package/${data.id}`;
+				} else {
+					const response = await limitedFetch(updatedData.homepageUrl, { method: 'HEAD' });
+					fixHomepageUrl = response.status >= 400;
+				}
 			} catch {
 				// such an error may occur when the hostname is unknown
 				fixHomepageUrl = true;
