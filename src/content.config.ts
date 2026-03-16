@@ -119,7 +119,7 @@ export const collections = {
 			.transform((study) => ({ ...study, isCaseStudy: true })),
 	}),
 	integrations: defineCollection({
-		loader: glob({ base: './src/content/integrations', pattern: '*.md' }),
+		loader: file('./src/content/integrations.json'),
 		schema: z.object({
 			name: z.string().describe('Name of the package as it is published to NPM'),
 			title: z
