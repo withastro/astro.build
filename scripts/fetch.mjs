@@ -19,7 +19,9 @@ export function limitedFetch(url, init = {}) {
 				headers: { 'User-Agent': 'astro.build/integrations; v1', ...init.headers },
 			});
 
-			if (!res.ok && res.status !== 404) {
+			// Return early for forbidden, not found, or method not allowed responses.
+			// These are unlikely to change with retries.
+			if (!res.ok && ![403, 404, 405].includes(res.status)) {
 				console.error(`[${url}] ${res.status} ${res.statusText} (Attempt ${attempt})`);
 				throw new Error();
 			}
