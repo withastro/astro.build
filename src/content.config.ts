@@ -195,7 +195,7 @@ export const collections = {
 							"A showcase entry's title cannot be 'Vercel Security Checkpoint' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					}),
 				image: image(),
-				url: z.string().url(),
+				url: z.url(),
 				featured: z.number().min(1).optional(),
 				highlight: z.boolean().default(false),
 				dateAdded: z.date(),
