@@ -7,4 +7,5 @@ categories:
 npmUrl: https://www.npmjs.com/package/astro-turnstile
 homepageUrl: https://github.com/hkbertoson/astro-turnstile
 downloads: 312
+repoUrl: https://github.com/hkbertoson/astro-turnstile
 ---
