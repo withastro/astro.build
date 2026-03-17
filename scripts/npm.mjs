@@ -63,7 +63,7 @@ export async function fetchPackageCreationTime(pkg) {
  *
  * @param {string[]} keywords The keywords used to search npm, ex: `astro-component`
  * @param {string | undefined} ranking The sort order for results, default: `quality`
- * @returns Map of search results, keyed by package name
+ * @returns Array of search results
  */
 export async function searchByKeywords(keywords, ranking = 'quality') {
 	const objects = [];
