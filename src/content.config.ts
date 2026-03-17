@@ -138,6 +138,7 @@ export const collections = {
 			downloads: z.number().min(0).default(0),
 			downloadFactor: z.number().min(0).default(1),
 			badge: z.string().optional(),
+			created: z.string(),
 		}),
 	}),
 	pages: defineCollection({

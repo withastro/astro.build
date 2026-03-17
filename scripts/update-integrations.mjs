@@ -3,16 +3,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { limitedFetch } from './fetch.mjs';
+import integrations from './integrations.json' with { type: 'json' };
 import {
 	badgeForPackage,
 	blocklist,
 	getCategoriesForKeyword,
 	getOverrides,
 	getToolbarPackagePriority,
-	isNewPackage,
 } from './integrations.mjs';
 import { markdownToPlainText } from './markdown.mjs';
-import { fetchDetailsForPackage, fetchDownloadsForPackage, searchByKeywords } from './npm.mjs';
+import { fetchPackageCreationTime, searchByKeywords } from './npm.mjs';
 
 /** @param {string} pkg */
 function isOfficial(pkg) {
@@ -40,7 +40,7 @@ function updateLastModified() {
 }
 
 /**
- * @typedef {NonNullable<Awaited<ReturnType<typeof fetchWithOverrides>>>} IntegrationData
+ * @typedef {NonNullable<Awaited<ReturnType<typeof applyOverrides>>>} IntegrationData
  */
 
 /**
@@ -66,28 +66,28 @@ function setIntegrationsData(data) {
 }
 
 /**
- * @param {NonNullable<Awaited<ReturnType<typeof fetchDetailsForPackage>>>} data
- * @param {string} pkg
+ * @param {Awaited<ReturnType<typeof searchByKeywords>>[number] & { created: string }} data
  */
-function normalizePackageDetails(data, pkg) {
+function normalizePackageDetails(data) {
 	const keywordCategories = (data.keywords ?? []).flatMap(getCategoriesForKeyword);
 
 	if (keywordCategories.length === 0) {
 		keywordCategories.push('uncategorized');
 	}
 
-	const toolbar = getToolbarPackagePriority(pkg);
-	const official = isOfficial(pkg);
+	const toolbar = getToolbarPackagePriority(data.name);
+	const official = isOfficial(data.name);
+	const badge = badgeForPackage(data);
 
 	const otherCategories = [
 		official ? 'official' : undefined,
 		toolbar ? 'toolbar' : undefined,
-		isNewPackage(data) ? 'recent' : undefined,
+		badge === 'new' ? 'recent' : undefined,
 	].filter(Boolean);
 
 	const uniqCategories = Array.from(new Set([...keywordCategories, ...otherCategories]));
 
-	const npmUrl = `https://www.npmjs.com/package/${pkg}`;
+	const npmUrl = `https://www.npmjs.com/package/${data.name}`;
 
 	const repoUrl = data.repository && sanitizeGitHubUrl(data.repository);
 
@@ -108,34 +108,29 @@ function normalizePackageDetails(data, pkg) {
 		repoUrl,
 		homepageUrl,
 		official: official === true ? true : undefined,
+		downloads: data.downloads,
+		toolbar,
+		badge,
+		created: data.created,
 	};
 }
 
-/** @param {string} pkg */
-async function fetchWithOverrides(pkg, includeDownloads = true) {
-	const details = await fetchDetailsForPackage(pkg);
-	if (!details) return;
-	const integrationOverrides = getOverrides(pkg) || {};
-
-	const badge = badgeForPackage(details);
-	const toolbar = getToolbarPackagePriority(pkg);
+/**
+ * @param {Awaited<ReturnType<typeof searchByKeywords>>[number] & { created: string }} details
+ */
+function applyOverrides(details) {
+	const integrationOverrides = getOverrides(details.name) || {};
 
 	return {
-		...normalizePackageDetails(details, pkg),
+		...normalizePackageDetails(details),
 		...integrationOverrides,
-		badge,
-		toolbar,
-		...(includeDownloads ? { downloads: await fetchDownloadsForPackage(pkg) } : {}),
 	};
 }
 
 async function unsafeUpdateAllIntegrations() {
-	const keywords = ['astro-component', 'withastro', 'astro-integration'];
-
 	// Search the npm registry for integrations.
-	const searchResults = await searchByKeywords(keywords);
-	const packageNames = new Set(
-		[...searchResults.map(({ name }) => name)].filter((pkg) => !blocklist.includes(pkg)),
+	const searchResults = (await searchByKeywords(integrations.keywords)).filter(
+		({ name }) => !blocklist.includes(name),
 	);
 
 	const existingEntries = getIntegrationsData();
@@ -149,16 +144,14 @@ async function unsafeUpdateAllIntegrations() {
 		existingEntries.map(async (data) => {
 			existingPackageNames.add(data.name);
 
-			if (!packageNames.has(data.name)) {
+			const searchResult = searchResults.find(({ name }) => name === data.name);
+			if (!searchResult) {
 				// the integration was deprecated or removed from NPM
 				deprecatedIntegrations.push(data.name);
 				return null;
 			}
-			// fetch the latest NPM data, keeping any local overrides like description or icon
-			// skipping download counts here since existing integrations will be updated
-			// automatically in a separate GitHub Action.
-			const updatedData = await fetchWithOverrides(data.name, false);
-			if (!updatedData) return data;
+
+			const updatedData = applyOverrides({ ...data, ...searchResult });
 
 			// check if the homepageurl is valid
 			// if not, replace it by the link to the package on npm
@@ -179,18 +172,17 @@ async function unsafeUpdateAllIntegrations() {
 				updatedData.homepageUrl = `https://www.npmjs.com/package/${data.name}`;
 			}
 
-			return { ...data, ...updatedData };
+			return updatedData;
 		}),
 	);
 
 	// find new integrations that haven't been published yet
-	const newIntegrations = Array.from(packageNames.keys()).filter(
-		(pkg) => !existingPackageNames.has(pkg),
-	);
+	const newIntegrations = searchResults.filter((pkg) => !existingPackageNames.has(pkg.name));
 
 	for (const entry of newIntegrations) {
-		const details = await fetchWithOverrides(entry);
-		if (details) {
+		const fullDetails = await fetchPackageCreationTime(entry.name);
+		if (fullDetails) {
+			const details = applyOverrides({ ...entry, created: fullDetails.time.created });
 			updatedEntries.push(details);
 		}
 	}
@@ -203,7 +195,7 @@ async function unsafeUpdateAllIntegrations() {
 Updated: ${existingPackageNames.size - deprecatedIntegrations.length} integrations`;
 
 	if (newIntegrations.length) {
-		stats += `\n\nAdded:\n${newIntegrations.map((pkg) => `+ ${pkg}`).join('\n')}`;
+		stats += `\n\nAdded:\n${newIntegrations.map((pkg) => `+ ${pkg.name}`).join('\n')}`;
 	}
 
 	if (deprecatedIntegrations.length) {
@@ -216,11 +208,16 @@ Updated: ${existingPackageNames.size - deprecatedIntegrations.length} integratio
 }
 
 async function safeUpdateExistingIntegrations() {
+	const searchResults = await searchByKeywords(integrations.keywords);
 	const entries = getIntegrationsData();
 
 	for (const entry of entries) {
 		// only override NPM download stats for safe updates
-		entry.downloads = await fetchDownloadsForPackage(entry.name);
+		const searchResult = searchResults.find(({ name }) => name === entry.name);
+		if (!searchResult) {
+			continue;
+		}
+		entry.downloads = searchResult.downloads;
 	}
 
 	setIntegrationsData(entries);

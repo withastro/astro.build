@@ -20,13 +20,13 @@ const keywordToCategories = Object.entries(integrations.categories).reduce(
 	/** @type {Map<string, Set<string>>} */ (new Map()),
 );
 
-/** @param {{ time?: { created: string } }} pkg  */
-export function isNewPackage(pkg) {
-	if (!pkg.time?.created) {
+/** @param {{ created: string }} pkg  */
+function isNewPackage(pkg) {
+	if (!pkg.created) {
 		return false;
 	}
 
-	const date = new Date(pkg.time.created);
+	const date = new Date(pkg.created);
 	const today = new Date();
 	return differenceInDays(today, date) <= NEW_THRESHOLD_DAYS;
 }

@@ -1,7 +1,6 @@
 // @ts-check
 
 import { z } from 'astro/zod';
-import { format, subDays } from 'date-fns';
 import { limitedFetch } from './fetch.mjs';
 
 /**
@@ -12,39 +11,11 @@ async function fetchJson(url) {
 	return await res.json();
 }
 
-const API_BASE_URL = 'https://api.npmjs.org/';
 const REGISTRY_BASE_URL = 'https://registry.npmjs.org/';
-
-const END_DATE = format(new Date(), 'yyyy-MM-dd');
-const START_DATE = format(subDays(new Date(), 30), 'yyyy-MM-dd');
-
 const PAGE_SIZE = 100;
 
-/**
- * Gets the number of weekly downloads for an npm package.
- *
- * @param {string} pkg Name of the package published on npm
- * @returns {Promise<number>} The number of weekly downloads for the package
- */
-export async function fetchDownloadsForPackage(pkg) {
-	return fetchJson(`${API_BASE_URL}downloads/point/${START_DATE}:${END_DATE}/${pkg}`)
-		.then((res) => res.downloads)
-		.catch(() => 0);
-}
-
 const npmRegistrySchema = z.object({
-	name: z.string(),
-	description: z.string().optional(),
-	homepage: z.url().optional(),
-	keywords: z.string().array().default([]),
-	repository: z
-		.union([
-			z.string(),
-			// If the package.json’s repo field is an object, convert it to a string:
-			z.object({ url: z.string() }).transform(({ url }) => url),
-		])
-		.optional(),
-	time: z.object({ created: z.string(), modified: z.string() }),
+	time: z.object({ created: z.string() }),
 });
 
 const npmSearchObjectSchema = z
@@ -58,8 +29,6 @@ const npmSearchObjectSchema = z
 				homepage: z.string().optional(),
 				repository: z.string().optional(),
 			}),
-			/** Date the latest version was published */
-			date: z.string(),
 		}),
 	})
 	// Transform the data into the same shape returned by the single package endpoint.
@@ -69,7 +38,6 @@ const npmSearchObjectSchema = z
 		homepage: data.package.links.homepage,
 		keywords: data.package.keywords,
 		repository: data.package.links.repository,
-		time: { modified: data.package.date },
 		downloads: data.downloads.monthly,
 	}));
 
@@ -79,7 +47,7 @@ const npmSearchObjectSchema = z
  * @param {string} pkg Name of the package published to npm
  * @returns JSON data as returned by the npm registry
  */
-export async function fetchDetailsForPackage(pkg) {
+export async function fetchPackageCreationTime(pkg) {
 	const registryData = await fetchJson(`${REGISTRY_BASE_URL}${pkg}`);
 	const result = npmRegistrySchema.safeParse(registryData);
 	if (result.success) {
