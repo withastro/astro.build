@@ -137,14 +137,14 @@ async function unsafeUpdateAllIntegrations() {
 
 	const existingEntries = getIntegrationsData();
 
-	const existingIntegrations = new Set();
+	const existingPackageNames = new Set();
 	/** @type {string[]} */
 	const deprecatedIntegrations = [];
 
 	// loop through all integrations already published to the catalog
 	const updatedEntries = await Promise.all(
 		existingEntries.map(async (data) => {
-			existingIntegrations.add(data.name);
+			existingPackageNames.add(data.name);
 
 			if (!searchResults.has(data.name)) {
 				// the integration was deprecated or removed from NPM
@@ -182,7 +182,7 @@ async function unsafeUpdateAllIntegrations() {
 
 	// find new integrations that haven't been published yet
 	const newIntegrations = Array.from(searchResults.keys()).filter(
-		(pkg) => !existingIntegrations.has(pkg),
+		(pkg) => !existingPackageNames.has(pkg),
 	);
 
 	for (const entry of newIntegrations) {
@@ -197,7 +197,7 @@ async function unsafeUpdateAllIntegrations() {
 
 	// logging in case we need to audit the nightly job
 	let stats = `\n--- Update Integrations ---
-Updated: ${existingIntegrations.size - deprecatedIntegrations.length} integrations`;
+Updated: ${existingPackageNames.size - deprecatedIntegrations.length} integrations`;
 
 	if (newIntegrations.length) {
 		stats += `\n\nAdded:\n${newIntegrations.map((pkg) => `+ ${pkg}`).join('\n')}`;
