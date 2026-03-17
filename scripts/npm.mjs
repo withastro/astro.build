@@ -67,7 +67,7 @@ export async function fetchDetailsForPackage(pkg) {
  *
  * @param {string[]} keywords The keywords used to search npm, ex: `astro-component`
  * @param {string | undefined} ranking The sort order for results, default: `quality`
- * @returns {Promise<Map<string, any>>} Map of search results, keyed by package name
+ * @returns {Promise<{ package: { name: string; }; downloads: { monthly: number } }[]>} Map of search results, keyed by package name
  */
 export async function searchByKeywords(keywords, ranking = 'quality') {
 	const objects = [];
@@ -98,16 +98,11 @@ export async function searchByKeywords(keywords, ranking = 'quality') {
 		objects.push(...keywordObjects);
 	}
 
-	return objects
-		.filter(({ package: pkg }) => {
-			// remove any published forks of official @astrojs integrations
-			return (
-				pkg.links.repository !== 'https://github.com/withastro/astro' ||
-				pkg.name.startsWith('@astrojs/')
-			);
-		})
-		.reduce((acc, next) => {
-			acc.set(next.package.name, next);
-			return acc;
-		}, new Map());
+	return objects.filter(({ package: pkg }) => {
+		// remove any published forks of official @astrojs integrations
+		return (
+			pkg.links.repository !== 'https://github.com/withastro/astro' ||
+			pkg.name.startsWith('@astrojs/')
+		);
+	});
 }

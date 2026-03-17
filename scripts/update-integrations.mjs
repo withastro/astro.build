@@ -132,8 +132,11 @@ async function fetchWithOverrides(pkg, includeDownloads = true) {
 async function unsafeUpdateAllIntegrations() {
 	const keywords = ['astro-component', 'withastro', 'astro-integration'];
 
-	const packagesMap = await searchByKeywords(keywords);
-	const searchResults = new Set([...packagesMap.keys()].filter((pkg) => !blocklist.includes(pkg)));
+	// Search the npm registry for integrations.
+	const searchResults = await searchByKeywords(keywords);
+	const packageNames = new Set(
+		[...searchResults.map((pkg) => pkg.package.name)].filter((pkg) => !blocklist.includes(pkg)),
+	);
 
 	const existingEntries = getIntegrationsData();
 
@@ -146,7 +149,7 @@ async function unsafeUpdateAllIntegrations() {
 		existingEntries.map(async (data) => {
 			existingPackageNames.add(data.name);
 
-			if (!searchResults.has(data.name)) {
+			if (!packageNames.has(data.name)) {
 				// the integration was deprecated or removed from NPM
 				deprecatedIntegrations.push(data.name);
 				return null;
@@ -181,7 +184,7 @@ async function unsafeUpdateAllIntegrations() {
 	);
 
 	// find new integrations that haven't been published yet
-	const newIntegrations = Array.from(searchResults.keys()).filter(
+	const newIntegrations = Array.from(packageNames.keys()).filter(
 		(pkg) => !existingPackageNames.has(pkg),
 	);
 
