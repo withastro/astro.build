@@ -1,3 +1,5 @@
+// @ts-check
+
 import { z } from 'astro/zod';
 import { format, subDays } from 'date-fns';
 import { limitedFetch } from './fetch.mjs';
@@ -45,6 +47,32 @@ const npmRegistrySchema = z.object({
 	time: z.object({ created: z.string(), modified: z.string() }),
 });
 
+const npmSearchObjectSchema = z
+	.object({
+		downloads: z.object({ monthly: z.number() }),
+		package: z.object({
+			name: z.string(),
+			description: z.string().optional(),
+			keywords: z.string().array().default([]),
+			links: z.object({
+				homepage: z.string().optional(),
+				repository: z.string().optional(),
+			}),
+			/** Date the latest version was published */
+			date: z.string(),
+		}),
+	})
+	// Transform the data into the same shape returned by the single package endpoint.
+	.transform((data) => ({
+		name: data.package.name,
+		description: data.package.description,
+		homepage: data.package.links.homepage,
+		keywords: data.package.keywords,
+		repository: data.package.links.repository,
+		time: { modified: data.package.date },
+		downloads: data.downloads.monthly,
+	}));
+
 /**
  * Gets details for a package from the npm registry
  *
@@ -67,7 +95,7 @@ export async function fetchDetailsForPackage(pkg) {
  *
  * @param {string[]} keywords The keywords used to search npm, ex: `astro-component`
  * @param {string | undefined} ranking The sort order for results, default: `quality`
- * @returns {Promise<{ package: { name: string; }; downloads: { monthly: number } }[]>} Map of search results, keyed by package name
+ * @returns Map of search results, keyed by package name
  */
 export async function searchByKeywords(keywords, ranking = 'quality') {
 	const objects = [];
@@ -98,11 +126,11 @@ export async function searchByKeywords(keywords, ranking = 'quality') {
 		objects.push(...keywordObjects);
 	}
 
-	return objects.filter(({ package: pkg }) => {
-		// remove any published forks of official @astrojs integrations
-		return (
-			pkg.links.repository !== 'https://github.com/withastro/astro' ||
-			pkg.name.startsWith('@astrojs/')
-		);
-	});
+	return z
+		.array(npmSearchObjectSchema)
+		.parse(objects)
+		.filter(({ repository, name }) => {
+			// remove any published forks of official @astrojs integrations
+			return repository !== 'https://github.com/withastro/astro' || name.startsWith('@astrojs/');
+		});
 }

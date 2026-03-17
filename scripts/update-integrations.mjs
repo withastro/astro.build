@@ -135,7 +135,7 @@ async function unsafeUpdateAllIntegrations() {
 	// Search the npm registry for integrations.
 	const searchResults = await searchByKeywords(keywords);
 	const packageNames = new Set(
-		[...searchResults.map((pkg) => pkg.package.name)].filter((pkg) => !blocklist.includes(pkg)),
+		[...searchResults.map(({ name }) => name)].filter((pkg) => !blocklist.includes(pkg)),
 	);
 
 	const existingEntries = getIntegrationsData();
