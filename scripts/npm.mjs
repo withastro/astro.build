@@ -94,11 +94,14 @@ export async function searchByKeywords(keywords, ranking = 'quality') {
 		objects.push(...keywordObjects);
 	}
 
-	return z
+	const packages = z
 		.array(npmSearchObjectSchema)
 		.parse(objects)
 		.filter(({ repository, name }) => {
 			// remove any published forks of official @astrojs integrations
 			return repository !== 'https://github.com/withastro/astro' || name.startsWith('@astrojs/');
 		});
+
+	// deduplicate packages in case multiple keywords lead to the same package
+	return [...new Map(packages.map((pkg) => [pkg.name, pkg])).values()];
 }
