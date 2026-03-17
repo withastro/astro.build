@@ -10,21 +10,26 @@ const fetchLimit = pLimit(10);
  * @returns {Promise<Response>}
  */
 export function limitedFetch(url, init = {}) {
-	return pRetry(async (attempt) => {
-		// Back off retries to give time to recover from 429 Too Many Requests errors.
-		await new Promise((resolve) => setTimeout(resolve, 2000 * (attempt - 1)));
-		return fetchLimit(async () => {
-			const res = await fetch(url, {
-				...init,
-				headers: { 'User-Agent': 'astro.build/integrations; v1', ...init.headers },
+	return pRetry(
+		async (attempt) => {
+			return fetchLimit(async () => {
+				const res = await fetch(url, {
+					...init,
+					headers: { 'User-Agent': 'astro.build/integrations; v1', ...init.headers },
+				});
+
+				// Return early for forbidden, not found, or method not allowed responses.
+				// These are unlikely to change with retries.
+				if (!res.ok && ![403, 404, 405].includes(res.status)) {
+					console.error(`[${url}] ${res.status} ${res.statusText} (Attempt ${attempt})`);
+					throw new Error();
+				}
+
+				return res;
 			});
-
-			if (!res.ok && res.status !== 404) {
-				console.error(`[${url}] ${res.status} ${res.statusText} (Attempt ${attempt})`);
-				throw new Error();
-			}
-
-			return res;
-		});
-	});
+		},
+		{
+			retries: 5,
+		},
+	);
 }
