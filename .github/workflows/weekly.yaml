@@ -25,9 +25,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Format generated files
-        run: pnpm run format
-
       - name: Create Pull Request
         id: createpr
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
@@ -35,7 +32,7 @@ jobs:
           branch: ci/docgen-integrations
           token: ${{ secrets.FREDKBOT_GITHUB_TOKEN }}
           author: Houston (Bot) <108291165+astrobot-houston@users.noreply.github.com>
-          add-paths: src/content/**/*.md,src/data/last-modified.json
+          add-paths: src/content/integrations.json,src/data/last-modified.json
           commit-message: "ci: update integrations"
           title: "ci: update integrations"
           body: |
