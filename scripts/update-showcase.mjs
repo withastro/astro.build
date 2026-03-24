@@ -580,6 +580,9 @@ const scraper = new ShowcaseScraper({
 		'https://summersidechoir.ca/',
 		'https://nchikt.site/',
 		'https://bax.sorai.tw/',
+		// 2026-03-24
+		'https://www.x.com/',
+		'https://verbpal.com/',
 	],
 });
 await scraper.run();
