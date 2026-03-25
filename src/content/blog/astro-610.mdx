@@ -94,7 +94,9 @@ See the [`retext-smartypants` options](https://github.com/retextjs/retext-smarty
 
 ## i18n fallback routes for integrations
 
-Astro 6.1 exposes `fallbackRoutes` on every route in the `astro:routes:resolved` hook, giving integrations access to the additional routes Astro generates for locales that don't have their own content when using `fallbackType: 'rewrite'`.
+When using i18n with `fallbackType: 'rewrite'`, Astro generates additional routes for locales that don't have their own content. But those routes were invisible to integrations, meaning `@astrojs/sitemap` would silently omit fallback pages from your generated sitemap even though Astro was correctly building the HTML files for them.
+
+Fixing the sitemap was straightforward, but it revealed a broader gap: integrations had no way to discover fallback routes at all. So rather than patch the sitemap in isolation, Astro 6.1 exposes `fallbackRoutes` on every route in the `astro:routes:resolved` hook, giving any integration access to the full picture:
 
 ```js
 {
@@ -108,7 +110,7 @@ Astro 6.1 exposes `fallbackRoutes` on every route in the `astro:routes:resolved`
 }
 ```
 
-We've already put this to use in `@astrojs/sitemap`, which now automatically includes i18n fallback pages in the generated sitemap. Previously, these routes were invisible to integrations, meaning fallback pages were silently missing from your sitemap.
+`@astrojs/sitemap` now uses this to automatically include i18n fallback pages in the generated sitemap.
 
 Learn more about [i18n fallback routing](https://docs.astro.build/en/guides/internationalization/#fallback) in the Astro docs.
 
