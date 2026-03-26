@@ -4,11 +4,17 @@ import ThemeCard from './ThemeCard.astro';
 
 interface Props {
 	date: string;
+	excluded: [];
 }
 
-const themes = await fetch(
+const allThemes = await fetch(
 	new URL(`/api/themes/monthly?month=${Astro.props.date}`, THEMES_API_URL),
 ).then((res) => res.json());
+
+const excluded = Astro.props.excluded;
+const slugs = allThemes.map((theme) => theme.Theme.slug);
+const themeSlugs = slugs.filter((slug) => !excluded.includes(slug));
+const themes = allThemes.filter((theme) => themeSlugs.includes(theme.Theme.slug));
 ---
 
 <ul
