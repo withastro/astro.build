@@ -1,0 +1,138 @@
+---
+title: 'Astro 6.1'
+description: 'Astro 6.1 introduces codec-specific Sharp image defaults, advanced SmartyPants configuration, and i18n fallback routes for integrations.'
+homepageLink:
+  title: 'Astro 6.1'
+  subtitle: 'Available now!'
+publishDate: '2026-03-26'
+authors:
+  - fred
+coverImage: '/src/content/blog/_images/astro-610/blog-post-astro-6.1.webp'
+socialImage: '/src/content/blog/_images/astro-610/og-astro-6.1.jpg'
+lang: 'en'
+related:
+  - astro-6
+  - astro-5170
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**Astro 6.1 is here!** Astro 6.1 gives you global control over image encoding with codec-specific defaults for Sharp, so you can configure JPEG, WebP, AVIF, and PNG settings once in your Astro config instead of on every image.
+
+Explore what's new in this release:
+
+- [**Sharp codec-specific image defaults**](#sharp-codec-specific-image-defaults)
+- [**Advanced SmartyPants configuration**](#advanced-smartypants-configuration)
+- [**i18n fallback routes for integrations**](#i18n-fallback-routes-for-integrations)
+- [**Smoother view transitions on mobile**](#other-improvements)
+- [**Vite 8 compatibility warning**](#other-improvements)
+- [**React hydration fixes**](#other-improvements)
+- [**CSRF protection behind reverse proxies**](#other-improvements)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Sharp codec-specific image defaults
+
+[Sharp](https://docs.astro.build/en/guides/images/#default-image-service), Astro's built-in image service, has always supported fine-grained encoding options — mozjpeg compression for JPEG, effort levels for WebP and AVIF, compression levels for PNG. Sharp's defaults work great for most projects, but if you needed consistent encoding settings across a large number of images, the only option was to set them on every `<Image />` individually.
+
+Astro 6.1 adds `image.service.config` to set codec-specific defaults once in your Astro config, applied to every image processed during the build:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	image: {
+		service: {
+			config: {
+				jpeg: { mozjpeg: true },
+				webp: { effort: 6, alphaQuality: 80 },
+				avif: { effort: 4, chromaSubsampling: '4:2:0' },
+				png: { compressionLevel: 9 },
+			},
+		},
+	},
+});
+```
+
+Per-image `quality` still takes precedence when set, so global defaults and per-image overrides work together without conflict. See the [image service configuration reference](https://docs.astro.build/en/reference/configuration-reference/#imageservice) for the full list of supported options.
+
+## Advanced SmartyPants configuration
+
+If your Markdown content targets a non-English audience, you've probably noticed that [SmartyPants](https://daringfireball.net/projects/smartypants/) — the library Astro uses to automatically convert punctuation into its typographic equivalents — assumes English conventions. French guillemets (`«»`), German quotation marks (`„"`), or old-school em-dash handling weren't possible without disabling SmartyPants entirely and handling it yourself.
+
+Astro 6.1 opens up the full SmartyPants configuration, so you can customize each transformation individually:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+	markdown: {
+		smartypants: {
+			dashes: 'oldschool',
+			openingQuotes: { double: '«', single: '‹' },
+			closingQuotes: { double: '»', single: '›' },
+			ellipses: 'unspaced',
+			quotes: false,
+		},
+	},
+});
+```
+
+See the [`retext-smartypants` options](https://github.com/retextjs/retext-smartypants?tab=readme-ov-file#fields) for the full list of supported settings.
+
+## i18n fallback routes for integrations
+
+Astro 6.1 exposes `fallbackRoutes` on every route in the `astro:routes:resolved` hook, giving integrations access to the additional routes Astro generates for locales that don't have their own content when using `fallbackType: 'rewrite'`.
+
+```js
+{
+	'astro:routes:resolved': ({ routes }) => {
+		for (const route of routes) {
+			const fallbacks = route.fallbackRoutes.map((f) => f.pathname);
+			console.log(route.pathname, '->', fallbacks);
+			// '/about/' -> ['/fr/about/', '/de/about/']
+		}
+	}
+}
+```
+
+We've already put this to use in `@astrojs/sitemap`, which now automatically includes i18n fallback pages in the generated sitemap. Previously, these routes were invisible to integrations, meaning fallback pages were silently missing from your sitemap.
+
+Learn more about [i18n fallback routing](https://docs.astro.build/en/guides/internationalization/#fallback) in the Astro docs.
+
+## Other improvements
+
+- **Smoother view transitions on mobile** — The client router now skips view transition animations when the browser is already providing its own visual transition, such as a swipe gesture on iOS Safari. This eliminates the double-animation flicker that could occur when navigating back and forward with gestures. ([#16025](https://github.com/withastro/astro/pull/16025))
+- **Vite 8 compatibility warning** — Astro now warns on dev server startup when Vite 8 is detected at the top level of your project. The `astro add cloudflare` command also automatically adds a `"overrides": { "vite": "^7" }` entry to your `package.json`, preventing a common crash when using packages like `@tailwindcss/vite`. ([#16062](https://github.com/withastro/astro/pull/16062))
+- **React hydration fixes** — Multiple fixes for React hydration errors, including conditional slot rendering and `experimentalReactChildren` mismatches. ([#15378](https://github.com/withastro/astro/pull/15378), [#15146](https://github.com/withastro/astro/pull/15146))
+- **CSRF protection behind reverse proxies** — `checkOrigin` now correctly reads `X-Forwarded-Proto` during `astro dev` when behind a TLS-terminating reverse proxy, preventing false 403 errors on form submissions. ([#16043](https://github.com/withastro/astro/pull/16043))
+
+For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 6.1 possible with code and docs additions and improvements, including:
+
+[0xRozier](https://github.com/0xRozier), [Adam Matthiesen](https://github.com/Adammatthiesen), [Adam Page](https://github.com/adampage), [Ahmad Yasser](https://github.com/AhmadYasser1), [AitorMT](https://github.com/AitorMT), [Alex Dombroski](https://github.com/alexanderdombroski), [B Sai Thrishul](https://github.com/crazylogic03), [bashrocks](https://github.com/bashrocks), [Ben Limmer](https://github.com/blimmer), [Bernd Strehl](https://github.com/Strernd), [Burra Karthikeya](https://github.com/Karthikeya1500), [Calvin Liang](https://github.com/Calvin-LL), [chaegumi](https://github.com/chaegumi), [Chase McCoy](https://github.com/chasemccoy), [Corbin Crutchley](https://github.com/crutchcorn), [Daniel Bodky](https://github.com/mocdaniel), [Daniil Sivak](https://github.com/seroperson), [Dario Piotrowicz](https://github.com/dario-piotrowicz), [dataCenter430](https://github.com/dataCenter430), [Dawid Gaweł](https://github.com/dmgawel), [Desel72](https://github.com/Desel72), [Em Poulter](https://github.com/empoulter-uclan), [Eveeifyeve](https://github.com/Eveeifyeve), [farshad](https://github.com/fa-sharp), [Felix Schneider](https://github.com/trueberryless), [Felmon](https://github.com/felmonon), [fkatsuhiro](https://github.com/fkatsuhiro), [Giray](https://github.com/aqiray), [Gokhan Kurt](https://github.com/KurtGokhan), [Greg L. Turnquist](https://github.com/gregturn), [hank00111](https://github.com/hank00111), [Haz](https://github.com/diegohaz), [Jack Lukic](https://github.com/jlukic), [jahndan](https://github.com/jahndan), [Jason P. Cochrane](https://github.com/jpc-ae), [Jimmy](https://github.com/CaiJimmy), [Junseong Park](https://github.com/jsparkdev), [Kedar Vartak](https://github.com/kedarvartak), [Kevin Z](https://github.com/kevinzunigacuellar), [Koji Wakamiya](https://github.com/koji-1009), [Kumar Gautam](https://github.com/Gautam-Bharadwaj), [Kyle McLean](https://github.com/kylemclean), [ld-web](https://github.com/ld-web), [Leif Marcus](https://github.com/leifmarcus), [Louis Escher](https://github.com/louisescher), [Martin Trapp](https://github.com/martrapp), [Matthew Justice](https://github.com/JusticeMatthew), [Natan Sągol](https://github.com/merlinnot), [Oliver Speir](https://github.com/OliverSpeir), [oliverlynch](https://github.com/oliverlynch), [Ossaid](https://github.com/ossaidqadri), [paul valladares](https://github.com/dreyfus92), [Paweł Grzybek](https://github.com/pawelgrzybek), [pierreeurope](https://github.com/pierreeurope), [Rafael Yasuhide Sudo](https://github.com/rururux), [Raymond Camden](https://github.com/cfjedimaster), [Sakku 🦉](https://github.com/Yusaku01), [Sam Richard](https://github.com/Snugug), [Sanjaiyan Parthipan](https://github.com/sanjaiyan-dev), [Sebastian Beltran](https://github.com/bjohansebas), [Shinya Fujino](https://github.com/morinokami), [Sora](https://github.com/vogel0831), [Tay](https://github.com/buley), [teinett](https://github.com/teinett), [Thomas Bonnet](https://github.com/thomasbnt), [Tom Callahan](https://github.com/thomas-callahan-collibra), [Tomasz Cz-Sokołow](https://github.com/soklovsk), [Tristan Bessoussa](https://github.com/tristanbes), [Vagno](https://github.com/VagnoDev), [vrabe](https://github.com/vrabe), [Will (liruifengv)](https://github.com/liruifengv), [xyamzw](https://github.com/xyamzwqwq), [Yevhen Amelin](https://github.com/numrut), [マルコス](https://github.com/nimpow), and [もっちー](https://github.com/mochi-yu)
