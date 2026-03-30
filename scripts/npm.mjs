@@ -99,7 +99,7 @@ export async function searchByKeywords(keywords, ranking = 'quality') {
 		.parse(objects)
 		.filter(({ repository, name }) => {
 			// remove any published forks of official @astrojs integrations
-			return repository !== 'https://github.com/withastro/astro' || name.startsWith('@astrojs/');
+			return !repository?.includes('github.com/withastro/astro') || name.startsWith('@astrojs/');
 		});
 
 	// deduplicate packages in case multiple keywords lead to the same package
