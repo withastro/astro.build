@@ -41,6 +41,16 @@ export const GET: APIRoute = async (ctx) => {
 		category.trim().replace(/\s+/g, '+'),
 	);
 
+	const since = getParam('since') || '1970-01-01';
+	if (!/^\d{4}-\d{2}-\d{2}$/.test(since)) {
+		return Response.json(
+			{
+				error: `Invalid "since" parameter: must be a YYYY-MM-DD (ISO 8601) date, e.g. ${new Date().toISOString().split('T')[0]}`,
+			},
+			{ status: 400 },
+		);
+	}
+
 	// with '[...page]' rest routes we'll get undefined for the first page, default that to 1
 	// otherwise, try to parse the page number from the URL
 	const currentPage =
@@ -68,7 +78,9 @@ export const GET: APIRoute = async (ctx) => {
 			{ status: 400 },
 		);
 	}
-	const filteredIntegrations = await getFilteredIntegrations({ search, categories });
+	const filteredIntegrations = (await getFilteredIntegrations({ search, categories })).filter(
+		(i) => i.data.created > since,
+	);
 
 	// take all matching integrations and create a paginated list of results
 	const paginatedResults = paginate({
