@@ -350,64 +350,20 @@ export const monthlyTools = [
 {/* Can use when there are multiples of 3  */}
 <ShowcaseGridById ids={monthlyTools} />
 
-
 ## Themes & Templates
 
 This month, several Astro themes were updated to v6 in the [Astro theme catalogue](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme!
 
 <Note title="Note for theme authors">
-We will be reopening the Astro Developer Portal to new theme submissions this week! Please be patient as we handle reviewing everyone's new themes from the past month in addition to our normal volume of regular submissions.
-
-**All new themes submitted must be updated to Astro v6 (stable).** Your demo site must also be a deployment of your v6 theme.
-
-If you update an existing theme to v6, please be sure to **also update your listing** with a clear statement that your theme has been updated for v6 **and let us know** in the appropriate Discord `#themes` thread. (Alternatively, you can [file an issue on the astro.build repo](https://github.com/withastro/astro.build/issues) with the title `Update theme to v6 - [slug]`). We will prioritize listing v6 themes before themes running earlier versions that require users to upgrade themselves, so don't be shy about your upgrade!
-
-Next month, we will return to listing all the themes that have been added/updated in the month of April.
+We will be reopening the Astro Developer Portal to new theme submissions this week! Thanks in advance for your patience as we handle reviewing everyone's new themes from the past month in addition to our normal volume of regular submissions.
 </Note>
 
-export const excludedThemes=[
-  // partial list of themes that were updated in the database but are not v6
-  // used to make sure manual excluding would work
-  // either continue, or change dates on back end
-  'supabase-serverside',
-  'nikola-tesla',
-  'sendit',
-  'astro-terminal',
-  'payflo-fintech-saas-payroll-theme',
-  'volks-typo',
-  'maucariapacom-church-starter',
-  'astroship-pro',
-  'vitesse-theme-for-astro',
-  'starpod',
-  'astrogency',
-  'minty-fresh-saas',
-  'astroship',
-  'saral',
-  'asterris',
-  'positivus',
-  'low-power-blog',
-  't3ma-blog',
-  'minimalistic-astro-blog',
-  'bitdoze-astro-theme',
-  'storyteller',
-  'techventure-modern-podcast-website-template',
-  'astro-resume-astro-geeks',
-  'spark',
-  'fomalhaut',
-  'mintaka',
-  'astro-milidev',
-  'simple-portfolio',
-]
-
-<ThemeGrid date={frontmatter.startDate} excluded={excludedThemes} />
+<ThemeGrid date={frontmatter.startDate} />
 
 ## Showcase
 
 Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
 
-{/* 
-<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
-*/}
 export const extraSitesToExclude = [
 ];
 
