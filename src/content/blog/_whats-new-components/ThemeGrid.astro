@@ -3,12 +3,25 @@ import { THEMES_API_URL } from '~/helpers/constants.ts';
 import ThemeCard from './ThemeCard.astro';
 
 interface Props {
-	date: string;
+	date?: string;
+	version?: string;
+	updatedBefore?: string;
 }
 
-const themes = await fetch(
-	new URL(`/api/themes/monthly?month=${Astro.props.date}`, THEMES_API_URL),
-).then((res) => res.json());
+const { date, version, updatedBefore } = Astro.props;
+
+let url: URL
+if (date) {
+  url = new URL(`/api/themes/monthly?month=${date}`, THEMES_API_URL);
+} else {
+	const params = new URLSearchParams();
+	if (version) params.append('version', version);
+	if (updatedBefore) params.append('updatedBefore', updatedBefore);
+	url = new URL(`/api/themes?${params.toString()}`, THEMES_API_URL);
+}
+console.log(url)
+
+const themes = await fetch(url).then((res) => res.json());
 ---
 
 <ul
