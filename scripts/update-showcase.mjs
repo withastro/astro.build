@@ -583,6 +583,8 @@ const scraper = new ShowcaseScraper({
 		// 2026-03-24
 		'https://www.x.com/',
 		'https://verbpal.com/',
+		// 2026-03-30
+		'https://x.com/',
 	],
 });
 await scraper.run();
