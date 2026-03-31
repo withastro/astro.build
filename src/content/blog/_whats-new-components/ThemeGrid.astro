@@ -10,16 +10,16 @@ interface Props {
 
 const { date, version, updatedBefore } = Astro.props;
 
-let url: URL
+let url: URL;
 if (date) {
-  url = new URL(`/api/themes/monthly?month=${date}`, THEMES_API_URL);
+	url = new URL(`/api/themes/monthly?month=${date}`, THEMES_API_URL);
 } else {
 	const params = new URLSearchParams();
 	if (version) params.append('version', version);
 	if (updatedBefore) params.append('updatedBefore', updatedBefore);
 	url = new URL(`/api/themes?${params.toString()}`, THEMES_API_URL);
 }
-console.log(url)
+console.log(url);
 
 const themes = await fetch(url).then((res) => res.json());
 ---
