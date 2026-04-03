@@ -46,7 +46,7 @@ export default defineConfig({
 				],
 			},
 		}),
-		mdx(),
+		mdx({ optimize: true }),
 		sitemap(),
 	],
 	image: {
