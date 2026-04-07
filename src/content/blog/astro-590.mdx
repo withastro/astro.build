@@ -109,7 +109,7 @@ export default defineConfig({
                 resources: ["self", "https://styles.cdn.example.com"]
             },
 
-            // add more information to the `style-src` directive
+            // add more information to the `script-src` directive
             scriptDirective: {
                 hashes: [
                   "sha384-somehash" // hash generated for some external script e.g. analytics, jQuery, etc.
@@ -117,7 +117,7 @@ export default defineConfig({
                 // **Override** default resources
                 resources: ["self", "https://script.cdn.example.com"],
                 // Toggle the keyword `strict-dynamic`
-                scriptDynamic: true
+                strictDynamic: true
             }
         }
     }
