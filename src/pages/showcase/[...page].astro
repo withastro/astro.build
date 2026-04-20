@@ -15,7 +15,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 		(a, b) => getWeight(a) - getWeight(b),
 	);
 
-	// seperate out sites that display with a larger thumbnail
+	// separate out sites that display with a larger thumbnail
 	const highlighted = sortedShowcase.filter((site) => site.data.highlight);
 
 	// build final showcase array by interleaving 1 highlighted item for every 4 non-highlighted items
