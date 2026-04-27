@@ -44,6 +44,36 @@ yarn upgrade astro --latest
 
 ## SVG optimizer
 
+Astro's experimental SVG optimization has been redesigned with a new `svgOptimizer` option that replaces the previous `svgo` flag. Instead of being tied directly to SVGO, the new API introduces an `SvgOptimizer` interface that any optimization library can implement. Astro ships with a built-in `svgoOptimizer()` based on [SVGO](https://svgo.dev/), but you can now swap in alternatives like [OxVG](https://github.com/nicolo-ribaudo/oxvg).
+
+```js title="astro.config.mjs"
+import { defineConfig, svgoOptimizer } from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    svgOptimizer: svgoOptimizer()
+  }
+});
+```
+
+When enabled, all imported SVG files used as components are optimized at build time for smaller file sizes and better performance. You can pass a [SVGO configuration object](https://svgo.dev/) to customize the optimization:
+
+```js title="astro.config.mjs"
+import { defineConfig, svgoOptimizer } from "astro/config";
+
+export default defineConfig({
+  experimental: {
+    svgOptimizer: svgoOptimizer({
+      plugins: ["preset-default", { name: "removeViewBox" }]
+    })
+  }
+});
+```
+
+If you were previously using `experimental.svgo`, update your config to use the new `svgOptimizer` option instead.
+
+For more information, see the [experimental SVG optimization docs](https://docs.astro.build/en/reference/experimental-flags/svg-optimization/).
+
 ## `allowedHosts` for preview servers
 
 Astro's [`server.allowedHosts`](https://docs.astro.build/en/reference/configuration-reference/#serverallowedhosts) option is now passed down to adapter preview servers. This means adapters that implement a custom [preview server](https://docs.astro.build/en/reference/adapter-reference/#previewserver) can now respect your `allowedHosts` configuration, letting you control which hostnames are accepted when running `astro preview` behind a reverse proxy or with custom local domains.
