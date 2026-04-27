@@ -92,6 +92,29 @@ If you're an adapter author, `allowedHosts` is now available on the `options` ob
 
 ## `"jsx"` option for `compressHTML`
 
+The `compressHTML` option now accepts a `"jsx"` value that strips whitespace using JSX rules. If you work with both Astro and React components, this means whitespace behaves the same way across your entire project — no more mental shift when jumping between `.astro` and `.tsx` files.
+
+```js title="astro.config.mjs"
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  compressHTML: "jsx"
+});
+```
+
+With `"jsx"` mode, multi-line indented text is collapsed into a single line with spaces between words, while whitespace inside `<pre>` tags is preserved. This follows the same whitespace handling used by Babel, TypeScript, and esbuild.
+
+For example, this template:
+
+```astro
+<p>
+  Hello
+  world
+</p>
+```
+
+Produces `<p>Hello world</p>` with `"jsx"` mode, matching what you'd expect from a JSX component.
+
 ## Experimental: Advanced Routing
 
 Astro 6.2 introduces experimental support for advanced routing, giving you full control over how requests are handled in your Astro application. Instead of relying on Astro's built-in request pipeline, you can now compose individual handlers — or bring your own framework like [Hono](https://hono.dev/) — and decide exactly what runs and in what order.
