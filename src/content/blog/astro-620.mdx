@@ -23,7 +23,7 @@ import Mention from '/src/components/Mention.astro';
 Explore what's new in this release:
 
 - [**SVG optimizer**](#svg-optimizer)
-- [**`allowedHosts` for Cloudflare preview**](#allowedhosts-for-cloudflare-preview)
+- [**`allowedHosts` for preview servers**](#allowedhosts-for-preview-servers)
 - [**`"jsx"` option for `compressHTML`**](#jsx-option-for-compresshtml)
 - [**Experimental: Advanced Routing**](#experimental-advanced-routing)
 - [**Experimental: `getFontFileURL()`**](#experimental-getfontfileurl)
@@ -44,7 +44,21 @@ yarn upgrade astro --latest
 
 ## SVG optimizer
 
-## `allowedHosts` for Cloudflare preview
+## `allowedHosts` for preview servers
+
+Astro's [`server.allowedHosts`](https://docs.astro.build/en/reference/configuration-reference/#serverallowedhosts) option is now passed down to adapter preview servers. This means adapters that implement a custom [preview server](https://docs.astro.build/en/reference/adapter-reference/#previewserver) can now respect your `allowedHosts` configuration, letting you control which hostnames are accepted when running `astro preview` behind a reverse proxy or with custom local domains.
+
+```js title="astro.config.mjs"
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  server: {
+    allowedHosts: [".example.com"]
+  }
+});
+```
+
+If you're an adapter author, `allowedHosts` is now available on the `options` object passed to your preview entrypoint. See the [adapter reference](https://docs.astro.build/en/reference/adapter-reference/#previewserver) for details.
 
 ## `"jsx"` option for `compressHTML`
 
