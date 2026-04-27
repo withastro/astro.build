@@ -193,6 +193,54 @@ For more information on enabling and using this feature in your project, see the
 
 ## Experimental: `getFontFileURL()`
 
+You can now load font file data during prerendering using the new `experimental_getFontFileURL()` helper exported from `astro:assets`. This makes it possible to use Astro-managed fonts with tools like [satori](https://github.com/vercel/satori) for generating Open Graph images at build time — something that previously required workarounds with undocumented internal paths.
+
+```ts title="src/pages/og.png.ts"
+import type { APIRoute } from "astro";
+import { fontData, experimental_getFontFileURL } from "astro:assets";
+import satori from "satori";
+import { html } from "satori-html";
+import sharp from "sharp";
+
+export const GET: APIRoute = async (context) => {
+  const fontPath = fontData["--font-roboto"][0]?.src[0]?.url;
+
+  if (fontPath === undefined) {
+    throw new Error("Cannot find the font path.");
+  }
+
+  const url = experimental_getFontFileURL(fontPath, context.url);
+  const data = await fetch(url).then((res) => res.arrayBuffer());
+
+  const svg = await satori(
+    html`<div style="color: black;">hello, world</div>`,
+    {
+      width: 600,
+      height: 400,
+      fonts: [
+        {
+          name: "Roboto",
+          data,
+          weight: 400,
+          style: "normal",
+        },
+      ],
+    },
+  );
+
+  const pngBuffer = await sharp(Buffer.from(svg))
+    .resize(600, 400)
+    .png()
+    .toBuffer();
+
+  return new Response(new Uint8Array(pngBuffer), {
+    headers: { "Content-Type": "image/png" },
+  });
+};
+```
+
+For more information, see the [Fonts API documentation](https://docs.astro.build/en/guides/fonts/#accessing-font-data-programmatically).
+
 ## Experimental Logger
 
 It's now possible to control the Astro logger with custom loggers. As part of the experimental feature, Astro ships with built-in loggers, such as a JSON logger. If you use coding agents to work with Astro, structured logs will definitely help your workflow.
