@@ -1,0 +1,22 @@
+---
+
+//const date = '2026-04-01';
+
+interface Props {
+	date: string;
+}
+
+const { date } = Astro.props
+const integrations = await fetch(
+  `https://astro.build/api/v1/integrations?since=${date}&limit=300`,
+)
+  .then((res) => res.json())
+  .then((res) =>
+    res.data
+      .sort((a, b) => b - a)
+      .map((i) => `- [${i.id}](${i.homepageUrl}): ${i.description}`)
+      .join("\n"),
+  );
+
+console.log(integrations);
+---

@@ -19,7 +19,6 @@ if (date) {
 	if (updatedBefore) params.append('updatedBefore', updatedBefore);
 	url = new URL(`/api/themes?${params.toString()}`, THEMES_API_URL);
 }
-console.log(url);
 
 const themes = await fetch(url).then((res) => res.json());
 ---
