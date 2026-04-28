@@ -1,6 +1,6 @@
 ---
 title: 'Astro 6.2'
-description: 'Astro 6.2 is out!'
+description: 'Astro 6.2 introduces experimental advanced routing with Hono support, an SVG optimizer API, a custom logger, and more.'
 homepageLink:
   title: 'Astro 6.2'
   subtitle: 'Available now!'
@@ -18,17 +18,17 @@ related:
 
 import Mention from '/src/components/Mention.astro';
 
-**Astro 6.2 is out!**
+**Astro 6.2 is here!** This release brings experimental advanced routing, giving you full control over your request pipeline — compose individual handlers, bring your own framework like Hono, and decide exactly what runs and in what order.
 
 Explore what's new in this release:
 
 - [**SVG optimizer**](#svg-optimizer)
-- [**`allowedHosts` for preview servers**](#allowedhosts-for-preview-servers)
-- [**`"jsx"` option for `compressHTML`**](#jsx-option-for-compresshtml)
 - [**Experimental: Advanced Routing**](#experimental-advanced-routing)
 - [**Experimental: `getFontFileURL()`**](#experimental-getfontfileurl)
 - [**Experimental Logger**](#experimental-logger)
 - [**Astro v7 alpha**](#astro-v7-alpha)
+- [**`allowedHosts` for preview servers**](#other-improvements)
+- [**`"jsx"` option for `compressHTML`**](#other-improvements)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -74,50 +74,11 @@ If you were previously using `experimental.svgo`, update your config to use the 
 
 For more information, see the [experimental SVG optimization docs](https://docs.astro.build/en/reference/experimental-flags/svg-optimization/).
 
-## `allowedHosts` for preview servers
-
-Astro's [`server.allowedHosts`](https://docs.astro.build/en/reference/configuration-reference/#serverallowedhosts) option is now passed down to adapter preview servers. This means adapters that implement a custom [preview server](https://docs.astro.build/en/reference/adapter-reference/#previewserver) can now respect your `allowedHosts` configuration, letting you control which hostnames are accepted when running `astro preview` behind a reverse proxy or with custom local domains.
-
-```js title="astro.config.mjs"
-import { defineConfig } from "astro/config";
-
-export default defineConfig({
-  server: {
-    allowedHosts: [".example.com"]
-  }
-});
-```
-
-If you're an adapter author, `allowedHosts` is now available on the `options` object passed to your preview entrypoint. See the [adapter reference](https://docs.astro.build/en/reference/adapter-reference/#previewserver) for details.
-
-## `"jsx"` option for `compressHTML`
-
-The `compressHTML` option now accepts a `"jsx"` value that strips whitespace using JSX rules. If you work with both Astro and React components, this means whitespace behaves the same way across your entire project — no more mental shift when jumping between `.astro` and `.tsx` files.
-
-```js title="astro.config.mjs"
-import { defineConfig } from "astro/config";
-
-export default defineConfig({
-  compressHTML: "jsx"
-});
-```
-
-With `"jsx"` mode, multi-line indented text is collapsed into a single line with spaces between words, while whitespace inside `<pre>` tags is preserved. This follows the same whitespace handling used by Babel, TypeScript, and esbuild.
-
-For example, this template:
-
-```astro
-<p>
-  Hello
-  world
-</p>
-```
-
-Produces `<p>Hello world</p>` with `"jsx"` mode, matching what you'd expect from a JSX component.
-
 ## Experimental: Advanced Routing
 
-Astro 6.2 introduces experimental support for advanced routing, giving you full control over how requests are handled in your Astro application. Instead of relying on Astro's built-in request pipeline, you can now compose individual handlers — or bring your own framework like [Hono](https://hono.dev/) — and decide exactly what runs and in what order.
+Astro's built-in request pipeline handles middleware, actions, i18n, and page rendering in a fixed order that works great for most projects. But as applications grow, you might need auth to run before rendering and logging after, or want to mount an API from another library, add rate limiting, or run platform-specific logic before Astro sees the request. Today, you're working around the framework rather than with it — and some requests never even reach your middleware.
+
+Astro 6.2 introduces experimental support for advanced routing, giving you full control over how requests are handled. Compose individual handlers, bring your own framework like [Hono](https://hono.dev/), and decide exactly what runs and in what order.
 
 Enable this feature in your Astro config:
 
@@ -247,7 +208,7 @@ It's now possible to control the Astro logger with custom loggers. As part of th
 
 ### JSON logger
 
-You can enable JSON logging via configuration using `experiemtal.logger`, or via CLI using the flag `--experimentalJson`:
+You can enable JSON logging via configuration using `experimental.logger`, or via CLI using the flag `--experimentalJson`:
 
 ```js title="astro.config.mjs"
 import { defineConfig, logHandlers } from "astro/config";
@@ -284,7 +245,7 @@ export default defineConfig({
 
 ```ts title="@org/custom-logger.ts"
 import type { AstroLoggerDestination, AstroLoggerMessage } from "astro";
-import { matchesLevel } from "astor/logger";
+import { matchesLevel } from "astro/logger";
 
 function customLogger(level = 'info'): AstroLoggerDestination {
   return {
@@ -323,9 +284,12 @@ npm install astro@alpha
 
 We'd love your feedback — please report any issues you encounter on [GitHub](https://github.com/withastro/astro/issues).
 
-## Bug fixes
+## Other improvements
 
-As always, we've been working hard on fixing issues since the [6.1 release](/blog/astro-610). See [the changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md) for all the details.
+- **`allowedHosts` for preview servers** — Astro's [`server.allowedHosts`](https://docs.astro.build/en/reference/configuration-reference/#serverallowedhosts) option is now passed down to adapter preview servers, letting you control which hostnames are accepted when running `astro preview` behind a reverse proxy or with custom local domains. If you're an adapter author, `allowedHosts` is now available on the `options` object passed to your preview entrypoint. See the [adapter reference](https://docs.astro.build/en/reference/adapter-reference/#previewserver) for details.
+- **`"jsx"` option for `compressHTML`** — The `compressHTML` option now accepts a `"jsx"` value that strips whitespace using JSX rules, so whitespace behaves the same way across `.astro` and `.tsx` files. Multi-line indented text is collapsed into a single line with spaces between words, while whitespace inside `<pre>` tags is preserved.
+
+For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
 
 ## Community
 
