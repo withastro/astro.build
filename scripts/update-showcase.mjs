@@ -585,6 +585,14 @@ const scraper = new ShowcaseScraper({
 		'https://verbpal.com/',
 		// 2026-03-30
 		'https://x.com/',
+		// 2026-04-29
+		'https://www.npmjs.com/',
+		'https://archilas.com',
+		'https://codeinclusive.co.uk/',
+		'https://pickleball-wiki.com/',
+		'https://nmtoftlbs.com/', 
+		'https://deckbuildingcincinnati.com/', 
+		'https://shadcnspace.com/',
 	],
 });
 await scraper.run();
