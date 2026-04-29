@@ -590,8 +590,8 @@ const scraper = new ShowcaseScraper({
 		'https://archilas.com',
 		'https://codeinclusive.co.uk/',
 		'https://pickleball-wiki.com/',
-		'https://nmtoftlbs.com/', 
-		'https://deckbuildingcincinnati.com/', 
+		'https://nmtoftlbs.com/',
+		'https://deckbuildingcincinnati.com/',
 		'https://shadcnspace.com/',
 	],
 });
