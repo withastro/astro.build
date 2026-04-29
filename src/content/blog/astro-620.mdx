@@ -1,6 +1,6 @@
 ---
 title: 'Astro 6.2'
-description: 'Astro 6.2 introduces experimental advanced routing with Hono support, an SVG optimizer API, a custom logger, and more.'
+description: 'Astro 6.2 introduces an experimental custom logger with JSON output, an SVG optimizer API, a new font file URL helper, and more.'
 homepageLink:
   title: 'Astro 6.2'
   subtitle: 'Available now!'
@@ -18,14 +18,13 @@ related:
 
 import Mention from '/src/components/Mention.astro';
 
-**Astro 6.2 is here!** This release brings experimental advanced routing, giving you full control over your request pipeline — compose individual handlers, bring your own framework like Hono, and decide exactly what runs and in what order.
+**Astro 6.2 is here!** This release brings an experimental custom logger with built-in JSON output, perfect for structured logging and coding agents. It also includes a new SVG optimizer API, a font file URL helper, and more.
 
 Explore what's new in this release:
 
-- [**SVG optimizer**](#svg-optimizer)
-- [**Experimental: Advanced Routing**](#experimental-advanced-routing)
-- [**Experimental: `getFontFileURL()`**](#experimental-getfontfileurl)
 - [**Experimental Logger**](#experimental-logger)
+- [**SVG optimizer**](#svg-optimizer)
+- [**Experimental: `getFontFileURL()`**](#experimental-getfontfileurl)
 - [**Astro v7 alpha**](#astro-v7-alpha)
 - [**`allowedHosts` for preview servers**](#other-improvements)
 - [**`"jsx"` option for `compressHTML`**](#other-improvements)
@@ -73,84 +72,6 @@ export default defineConfig({
 If you were previously using `experimental.svgo`, update your config to use the new `svgOptimizer` option instead.
 
 For more information, see the [experimental SVG optimization docs](https://docs.astro.build/en/reference/experimental-flags/svg-optimization/).
-
-## Experimental: Advanced Routing
-
-Astro's built-in request pipeline handles middleware, actions, i18n, and page rendering in a fixed order that works great for most projects. But as applications grow, you might need auth to run before rendering and logging after, or want to mount an API from another library, add rate limiting, or run platform-specific logic before Astro sees the request. Today, you're working around the framework rather than with it — and some requests never even reach your middleware.
-
-Astro 6.2 introduces experimental support for advanced routing, giving you full control over how requests are handled. Compose individual handlers, bring your own framework like [Hono](https://hono.dev/), and decide exactly what runs and in what order.
-
-Enable this feature in your Astro config:
-
-```js title="astro.config.mjs"
-import { defineConfig } from "astro/config";
-
-export default defineConfig({
-  experimental: {
-    advancedRouting: true
-  }
-});
-```
-
-### Quick start with `astro()`
-
-Create a `src/app.ts` file that uses the combined `astro()` handler to run the full Astro pipeline:
-
-```ts title="src/app.ts"
-import { FetchState, astro } from 'astro/fetch';
-
-export default {
-  fetch(request: Request) {
-    const state = new FetchState(request);
-    return astro(state);
-  }
-};
-```
-
-Or use Hono for a familiar middleware-based approach:
-
-```ts title="src/app.ts"
-import { astro } from 'astro/hono';
-import { Hono } from 'hono';
-
-const app = new Hono();
-app.use(astro());
-
-export default app;
-```
-
-### Composing individual handlers
-
-The real power comes from composing individual handlers. Each step of the Astro pipeline, including actions, middleware, pages, i18n, and more, is available as a separate function. This lets you interleave your own logic with Astro's built-in features:
-
-```ts title="src/app.ts"
-import { Hono } from 'hono';
-import { logger } from 'hono/logger';
-import { actions, middleware, pages, i18n } from 'astro/hono';
-
-const app = new Hono();
-
-// Your own middleware runs first.
-app.use(logger());
-app.use(async (c, next) => {
-  if (new URL(c.req.url).pathname.startsWith('/admin')) {
-    return c.redirect('/login');
-  }
-  return next();
-});
-
-// Astro handlers in the order you choose.
-app.use(actions());
-app.use(middleware());
-app.use(pages());
-app.use(i18n());
-
-export default app;
-```
-
-Both `astro/fetch` and `astro/hono` export the same set of handlers: `astro`, `trailingSlash`, `redirects`, `sessions`, `actions`, `middleware`, `pages`, `cache`, and `i18n`.
-
-For more information on enabling and using this feature in your project, see the [Experimental Advanced Routing docs](https://docs.astro.build/en/reference/experimental-flags/advanced-routing/).
 
 ## Experimental: `getFontFileURL()`
 
