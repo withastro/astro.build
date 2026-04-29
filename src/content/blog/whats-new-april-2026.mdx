@@ -61,27 +61,26 @@ Minor releases introduce new features and improvements. Check out what's new!
 
 - [Astro 6.2](https://astro.build/blog/astro-620/) - experimental advanced routing with Hono support, an SVG optimizer API, a custom logger, and more.
 
-
 ## Astro Adopters
 
-From X to Y, some of the biggest sites from around the globe are using Astro!
-
-- Todoist https://www.todoist.com/
-- Crunchroll/Sony Pictures www.crunchyrollanimay.com
-- Cloudflare emDash
-- GitHub https://github.github.com/gh-stack/
-
+From Sony to Cloudflare, from GitHub to Todoist, some of the biggest sites from around the globe are using Astro.
 
 export const featuredSites = [
+  'www.crunchyrollanimay.com',
+  'docs.emdashcms.com',
+  'github.github.com-gh-stack',
+  'www.todoist.com',
 ]; 
 
+
 {/* Use for grids of 2 per row  */}
-{/* 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'slug1')} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug2',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.crunchyrollanimay.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'docs.emdashcms.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'www.todoist.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'github.github.com-gh-stack')} />
 </div>
-*/}
 
 {/* Use when there are multiples of 3  */}
 {/* <ShowcaseGridById ids={featuredSites} /> */}
@@ -92,30 +91,18 @@ See more companies using Astro in our [site showcase](/showcase/), and explore A
 
 Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, empowering, or just plain fun!
 
-https://utdhub.uk/
-https://starframer.com/
-https://devrelish.tech/
-https://kayak-fishing.netlify.app/
-https://sleepdogs.org/
-https://gamelance.in/
-https://www.ssdwiki.com/
-https://create.michaelgrills.ca/
-https://savoiretre.asmat.ca/
-https://www.ninjatype.com/
-https://isitagentready.com/
-
 export const monthlySites = [
 ]; 
 
 {/* Use for grids of 2 per row  */}
-{/* 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'slug1')} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug2',)} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug3')} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug4',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'devrelish.tech')} />
+  <ShowcaseCard site={await getEntry('showcase', 'sleepdogs.org',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'savoiretre.asmat.ca',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'ninjatype.com',)} />
 </div>
- */}
+ 
 
 {/* Use when there are multiples of 3  */}
 {/* <ShowcaseGridById ids={monthlySites} /> */}
@@ -124,11 +111,10 @@ export const monthlySites = [
 
 Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
 
-- https://pixila.net
-- https://www.wondermakers.digital/
-- https://www.thorgal.com/
-
 export const canvasSites = [
+  'www.wondermakers.digital',
+  'pixila.net',
+  'www.thorgal.com',
 ];
 
 {/* Use for grids of 2 per row  */}
@@ -142,7 +128,7 @@ export const canvasSites = [
  */}
 
 {/* Use when there are multiples of 3  */}
-{/* <ShowcaseGridById ids={canvasSites} /> */}
+<ShowcaseGridById ids={canvasSites} />
 
 ## Community
 
@@ -286,22 +272,18 @@ Watch people build, experiment, and learn!
 
 This month saw several new goodies for managing your content and UI:
 
-- https://github.com/Snugug/nebula-cms 
-- https://github.com/emdash-cms/emdash
-- https://github.com/mintlify/astro
-- https://astrocomponents.dev/
-- https://yeet.md/
-
 export const contentTools = [
+  'astrocomponents.dev',
+  'yeet.md',
 ]; 
 
 {/* Use for grids of 2 per row  */}
-{/* 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'slug1')} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug2')} />
+  <ShowcaseCard site={await getEntry('showcase', 'astrocomponents.dev')} />
+  <ShowcaseCard site={await getEntry('showcase', 'yeet.md')} />
 </div> 
-*/}
+
 
 {/* Can use when there are multiples of 3  */}
 {/* <ShowcaseGridById ids={contentTools} /> */}
@@ -341,6 +323,7 @@ The latest community-built [utilities and integrations](/integrations/) to help 
 - [astro-tinylytics](https://github.com/tylerbutler/tools-monorepo/tree/main/packages/astro-tinylytics#astro-tinylytics): Astro components for Tinylytics analytics, kudos buttons, and webmentions.
 - [astro-meta-engine](https://github.com/TheElegantCoding/astro-meta-engine#readme): Powerful, type-safe metadata and JSON-LD engine for Astro.
 - [astro-gtm-lite](https://github.com/tfmurad/astro-gtm-lite#readme): Lightweight Google Tag Manager compatible with Astro View Transitions (client router).
+- [@mintlify/astro](https://github.com/mintlify/astro) - Syncs Mintlify-style docs content into Astro content collections and provides MDX components for rendering docs pages.
 - [astro-dgmo](https://github.com/diagrammo/astro-dgmo#readme): Astro integration to render DGMO diagrams from fenced code blocks at build time.
 - [astro-opengraph](https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph) - An integration to create and manage your Open Graph images, including a dev toolbar app to preview the image and the `og` meta tags on the page.
 - [@ayco/astro-resume](https://git.ayo.run/ayo/astro-resume): Utilities for serializing data from the server for use in the client.
@@ -360,7 +343,7 @@ The latest community-built [utilities and integrations](/integrations/) to help 
 
 - [star-lite-docs](https://github.com/gruntlord5/star-lite-docs#readme): Starlight-style documentation theme for EmDash CMS — Astro integration + emdash plugin in one package.
 - [phage-cms](https://www.npmjs.com/package/phage-cms): Astro integration: Phage CMS (Cloudflare KV/R2, block editor, API routes).
-- [nebula-cms](https://github.com/Snugug/nebula-cms#readme): A native CMS for Astro.
+- [nebula-cms](https://github.com/Snugug/nebula-cms#readme): A streamlined, Git-based Content Management System built specifically for Astro.
 - [@a83/orbiter-integration](https://github.com/aeon022/orbiter#readme): Astro integration for Orbiter CMS — admin UI, virtual modules, injected routes.
 - [clay-cms](https://www.npmjs.com/package/clay-cms): The missing CMS interface for your Astro project.
 
@@ -382,21 +365,18 @@ The latest community-built [utilities and integrations](/integrations/) to help 
 
 ... and some built with Astro: utility sites from the last month that get the job done!
 
-- [Colors and Fonts](https://www.colorsandfonts.com/)
-
-
 export const monthlyTools = [
+  'colorsandfonts.com',
+  'isitagentready.com',
 ]; 
 
 {/* Use for grids of 2 per row  */}
-{/* 
+
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <ShowcaseCard site={await getEntry('showcase', 'slug1')} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug2',)} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug3')} />
-  <ShowcaseCard site={await getEntry('showcase', 'slug4',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'colorsandfonts.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'isitagentready.com',)} />
 </div>
- */}
+
 
 {/* Can use when there are multiples of 3  */}
 {/* <ShowcaseGridById ids={monthlyTools} /> */}
@@ -420,7 +400,7 @@ export const extraSitesToExclude = [
 
 export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites, ...extraSitesToExclude, ...contentTools, ...monthlyTools]
 
-<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
 
 Want your site to be included? [Submit it to the Astro Showcase Site](https://astro.build/showcase/submit/).
 
