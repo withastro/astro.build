@@ -1,0 +1,32 @@
+---
+import { z } from 'astro/zod';
+
+interface Props {
+	/** @example '2026-04-01' */
+	date: string;
+}
+
+const { date } = Astro.props;
+
+const integrations = z
+	.object({
+		data: z.array(
+			z.object({
+				id: z.string(),
+				homepageUrl: z.string(),
+				description: z.string().default(''),
+			}),
+		),
+	})
+	.parse(
+		await fetch(`https://astro.build/api/v1/integrations?since=${date}&limit=300`).then((res) =>
+			res.json(),
+		),
+	);
+const integrationsList = integrations.data
+	.sort((a, b) => a.id.localeCompare(b.id))
+	.map((i) => `- [${i.id}](${i.homepageUrl}): ${i.description}`)
+	.join('\n');
+
+console.log(integrationsList);
+---
