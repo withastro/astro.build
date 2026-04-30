@@ -43,7 +43,7 @@ yarn upgrade astro --latest
 
 ## SVG optimizer
 
-Astro's experimental SVG optimization has been redesigned with a new `svgOptimizer` option that replaces the previous `svgo` flag. Instead of being tied directly to SVGO, the new API introduces an `SvgOptimizer` interface that any optimization library can implement. Astro ships with a built-in `svgoOptimizer()` based on [SVGO](https://svgo.dev/), but you can now swap in alternatives like [OxVG](https://github.com/nicolo-ribaudo/oxvg).
+Astro's experimental SVG optimization has been redesigned with a new `svgOptimizer` option that replaces the previous `svgo` flag. Instead of being tied directly to SVGO, the new API introduces an `SvgOptimizer` interface that any optimization library can implement. Astro ships with a built-in `svgoOptimizer()` based on [SVGO](https://svgo.dev/), but you can now swap in alternatives like [OxVG](https://github.com/noahbald/oxvg).
 
 ```js title="astro.config.mjs"
 import { defineConfig, svgoOptimizer } from "astro/config";
