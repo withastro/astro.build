@@ -22,8 +22,8 @@ import Mention from '/src/components/Mention.astro';
 
 Explore what's new in this release:
 
-- [**Experimental Logger**](#experimental-logger)
 - [**SVG optimizer**](#svg-optimizer)
+- [**Experimental Logger**](#experimental-logger)
 - [**Experimental: `getFontFileURL()`**](#experimental-getfontfileurl)
 - [**Astro v7 alpha**](#astro-v7-alpha)
 - [**`allowedHosts` for preview servers**](#other-improvements)
@@ -72,56 +72,6 @@ export default defineConfig({
 If you were previously using `experimental.svgo`, update your config to use the new `svgOptimizer` option instead.
 
 For more information, see the [experimental SVG optimization docs](https://docs.astro.build/en/reference/experimental-flags/svg-optimization/).
-
-## Experimental: `getFontFileURL()`
-
-You can now load font file data during prerendering using the new `experimental_getFontFileURL()` helper exported from `astro:assets`. This makes it possible to use Astro-managed fonts with tools like [Satori](https://github.com/vercel/satori) for generating Open Graph images at build time, something that previously required workarounds with undocumented internal paths.
-
-```ts title="src/pages/og.png.ts"
-import type { APIRoute } from "astro";
-import { fontData, experimental_getFontFileURL } from "astro:assets";
-import satori from "satori";
-import { html } from "satori-html";
-import sharp from "sharp";
-
-export const GET: APIRoute = async (context) => {
-  const fontPath = fontData["--font-roboto"][0]?.src[0]?.url;
-
-  if (fontPath === undefined) {
-    throw new Error("Cannot find the font path.");
-  }
-
-  const url = experimental_getFontFileURL(fontPath, context.url);
-  const data = await fetch(url).then((res) => res.arrayBuffer());
-
-  const svg = await satori(
-    html`<div style="color: black;">hello, world</div>`,
-    {
-      width: 600,
-      height: 400,
-      fonts: [
-        {
-          name: "Roboto",
-          data,
-          weight: 400,
-          style: "normal",
-        },
-      ],
-    },
-  );
-
-  const pngBuffer = await sharp(Buffer.from(svg))
-    .resize(600, 400)
-    .png()
-    .toBuffer();
-
-  return new Response(new Uint8Array(pngBuffer), {
-    headers: { "Content-Type": "image/png" },
-  });
-};
-```
-
-For more information, see the [Fonts API documentation](https://docs.astro.build/en/guides/fonts/#accessing-font-data-programmatically).
 
 ## Experimental Logger
 
@@ -183,6 +133,56 @@ export default customLogger;
 For more information on enabling and using this feature in your project, see the [Experimental Logger docs](https://docs.astro.build/en/reference/experimental-flags/logger/).
 
 For a complete overview and to give feedback on this experimental API, see the [Custom logger RFC](https://github.com/withastro/roadmap/blob/logger/proposals/0059-custom-logger.md).
+
+## Experimental: `getFontFileURL()`
+
+You can now load font file data during prerendering using the new `experimental_getFontFileURL()` helper exported from `astro:assets`. This makes it possible to use Astro-managed fonts with tools like [Satori](https://github.com/vercel/satori) for generating Open Graph images at build time, something that previously required workarounds with undocumented internal paths.
+
+```ts title="src/pages/og.png.ts"
+import type { APIRoute } from "astro";
+import { fontData, experimental_getFontFileURL } from "astro:assets";
+import satori from "satori";
+import { html } from "satori-html";
+import sharp from "sharp";
+
+export const GET: APIRoute = async (context) => {
+  const fontPath = fontData["--font-roboto"][0]?.src[0]?.url;
+
+  if (fontPath === undefined) {
+    throw new Error("Cannot find the font path.");
+  }
+
+  const url = experimental_getFontFileURL(fontPath, context.url);
+  const data = await fetch(url).then((res) => res.arrayBuffer());
+
+  const svg = await satori(
+    html`<div style="color: black;">hello, world</div>`,
+    {
+      width: 600,
+      height: 400,
+      fonts: [
+        {
+          name: "Roboto",
+          data,
+          weight: 400,
+          style: "normal",
+        },
+      ],
+    },
+  );
+
+  const pngBuffer = await sharp(Buffer.from(svg))
+    .resize(600, 400)
+    .png()
+    .toBuffer();
+
+  return new Response(new Uint8Array(pngBuffer), {
+    headers: { "Content-Type": "image/png" },
+  });
+};
+```
+
+For more information, see the [Fonts API documentation](https://docs.astro.build/en/guides/fonts/#accessing-font-data-programmatically).
 
 ## Astro v7 alpha
 
