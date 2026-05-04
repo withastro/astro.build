@@ -24,8 +24,7 @@ Explore what's new in this release:
 
 - [**Experimental: Advanced Routing**](#experimental-advanced-routing)
 - [**Support redirects on external image URLs**](#support-redirects-on-external-image-urls)
-- [**Resilient island hydration**](#resilient-island-hydration)
-- [**SVG processing gated behind a flag**](#svg-processing-gated-behind-a-flag)
+- [**SVG image processing disabled by default**](#svg-image-processing-disabled-by-default)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -155,17 +154,26 @@ export default defineConfig({
 });
 ```
 
-## Resilient island hydration
 
-<!-- TODO: Flesh out this section -->
+## SVG image processing disabled by default
 
-Astro islands now automatically recover from transient import failures during hydration. If a network hiccup causes a component's JavaScript to fail to load, Astro will retry the import before giving up. A new cancelable `astro:hydration-error` event is also dispatched, giving you control over error handling when hydration does fail.
+Astro's Sharp image service can rasterize SVG files into other formats like PNG or WebP. However, this runs `librsvg` under the hood, and SVG files can contain embedded scripts and other active content. Processing untrusted SVGs this way is a potential security risk.
 
-## SVG processing gated behind a flag
+Starting in Astro 6.3, SVG image processing is disabled by default. If you pass an SVG source to the image optimization pipeline, Astro will now throw a helpful error instead of silently processing it.
 
-<!-- TODO: Flesh out this section -->
+If you trust your SVG sources and want to restore the previous behavior, set the new `image.dangerouslyAllowSVG` option:
 
-SVG processing is now gated behind the `experimental.svgOptimizer` flag. This change ensures SVG optimization is explicitly opt-in.
+```js title="astro.config.mjs"
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  image: {
+    dangerouslyAllowSVG: true,
+  }
+});
+```
+
+This change does not affect importing SVGs as components — it only applies to rasterizing SVG sources through the image optimization pipeline (e.g. converting an SVG to PNG via `<Image />`).
 
 ## Other improvements
 
