@@ -18,7 +18,7 @@ related:
 
 import Mention from '/src/components/Mention.astro';
 
-**Astro 6.3 is here!** This release brings experimental advanced routing, giving you full control over your request pipeline — compose individual handlers, bring your own framework like Hono, and decide exactly what runs and in what order.
+**Astro 6.3 is here!** This release brings experimental advanced routing, giving you full control over your request pipeline. Compose individual handlers, bring your own framework like Hono, and decide exactly what runs and in what order.
 
 Explore what's new in this release:
 
@@ -40,7 +40,7 @@ yarn upgrade astro --latest
 
 ## Experimental: Advanced Routing
 
-Astro's built-in request pipeline handles middleware, actions, i18n, and page rendering in a fixed order that works great for most projects. But as applications grow, you might need auth to run before rendering and logging after, or want to mount an API from another library, add rate limiting, or run platform-specific logic before Astro sees the request. Today, you're working around the framework rather than with it — and some requests never even reach your middleware.
+Astro's built-in request pipeline handles middleware, actions, i18n, and page rendering in a fixed order that works great for most projects. But as applications grow, you might need auth to run before rendering and logging after, or want to mount an API from another library, add rate limiting, or run platform-specific logic before Astro sees the request. Today, you're working around the framework rather than with it, and some requests never even reach your middleware.
 
 Astro 6.3 introduces experimental support for advanced routing, giving you full control over how requests are handled. Compose individual handlers, bring your own framework like [Hono](https://hono.dev/), and decide exactly what runs and in what order.
 
@@ -118,7 +118,7 @@ For more information on enabling and using this feature in your project, see the
 
 ## Support redirects on external image URLs
 
-When optimizing remote images, Astro previously failed silently if the image URL returned a redirect. This was a problem for CDNs and image services that use redirects to route requests to the correct edge node or storage bucket — your images would just disappear from the build without explanation.
+When optimizing remote images, Astro previously failed silently if the image URL returned a redirect. This was a problem for CDNs and image services that use redirects to route requests to the correct edge node or storage bucket. Your images would just disappear from the build without explanation.
 
 Astro 6.3 now follows up to 10 redirects when fetching remote images. Every URL in the redirect chain is validated against your `image.remotePatterns` and `image.domains` configuration, so you stay in control of which hosts Astro is allowed to fetch from. If a redirect leads to a host that isn't in your allowlist, Astro will throw a helpful error instead of silently ignoring the image.
 
@@ -134,8 +134,8 @@ export default defineConfig({
 
 ```astro
 ---
-// Redirects to https://cdn.example.com/assets/image.png — works!
-// Redirects to https://malicious.com/image.png — throws an error
+// Redirects to https://cdn.example.com/assets/image.png - works!
+// Redirects to https://malicious.com/image.png - throws an error
 ---
 <Image src="https://example.com/assets/image.png" width="1920" height="1080" alt="An example image." />
 ```
@@ -173,7 +173,7 @@ export default defineConfig({
 });
 ```
 
-This change does not affect importing SVGs as components — it only applies to rasterizing SVG sources through the image optimization pipeline (e.g. converting an SVG to PNG via `<Image />`).
+This change does not affect importing SVGs as components. It only applies to rasterizing SVG sources through the image optimization pipeline (e.g. converting an SVG to PNG via `<Image />`).
 
 ## Other improvements
 
