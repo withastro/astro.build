@@ -161,14 +161,14 @@ Astro's Sharp image service can rasterize SVG files into other formats like PNG 
 
 Starting in Astro 6.3, SVG image processing is disabled by default. If you pass an SVG source to the image optimization pipeline, Astro will now throw a helpful error instead of silently processing it.
 
-If you trust your SVG sources and want to restore the previous behavior, set the new `image.dangerouslyAllowSVG` option:
+If you trust your SVG sources and want to restore the previous behavior, set the new `image.dangerouslyProcessSVG` option:
 
 ```js title="astro.config.mjs"
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
   image: {
-    dangerouslyAllowSVG: true,
+    dangerouslyProcessSVG: true,
   }
 });
 ```
