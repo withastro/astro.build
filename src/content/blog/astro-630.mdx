@@ -177,7 +177,7 @@ This change does not affect importing SVGs as components. It only applies to ras
 
 ## Other improvements
 
-- **`consume()` method for `AstroCookies`**: A new `consume()` instance method on `AstroCookies` marks cookies as consumed and returns the `Set-Cookie` header values. After consumption, any subsequent `set()` calls will log a warning since the headers have already been sent. This replaces the static `AstroCookies.consume(cookies)` method, which is now deprecated but kept for backward compatibility with existing adapters.
+- **A new `consume()` method for `AstroCookies`**: this method marks cookies as consumed and returns the `Set-Cookie` header values. After consumption, any subsequent `set()` calls will log a warning since the headers have already been sent. This replaces the static `AstroCookies.consume(cookies)` method, which is now deprecated but kept for backward compatibility with existing adapters.
 
 For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
 
