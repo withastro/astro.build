@@ -42,7 +42,7 @@ yarn upgrade astro --latest
 
 Astro 6.3 introduces experimental support for advanced routing: full control over how requests flow through your application, with first-class support for frameworks like [Hono](https://hono.dev/).
 
-Proxy certain paths to another service and let Astro handle the rest:
+Your app exports the fetch handler pattern used by Cloudflare Workers, Deno, and Bun. Proxy certain paths to another service and let Astro handle the rest:
 
 ```ts title="src/app.ts"
 import { FetchState, astro } from 'astro/fetch';
