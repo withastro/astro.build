@@ -89,58 +89,6 @@ Sätteri doesn't run remark or rehype plugins. If you depend on plugins from the
 
 We hope to make Sätteri the default Markdown processor in a future major version of Astro. To give feedback on the Rust processor and the new API, see the [Native Markdown / MDX RFC](https://github.com/withastro/roadmap/pull/1364).
 
-## CDN cache providers for Cloudflare, Netlify, and Vercel
-
-Astro's [experimental route caching](https://docs.astro.build/en/reference/experimental-flags/route-caching/) lets you cache server-rendered routes at the edge of the platform you're already deploying to. Previously, configuring that cache meant wiring up platform-specific headers and invalidation APIs by hand. Astro 6.4 adds first-party cache providers for Cloudflare, Netlify, and Vercel that do that work for you.
-
-Each provider hooks into its platform's native CDN cache and exposes the same `Astro.cache.set()` API in your pages and routes. For example, on Cloudflare:
-
-```js title="astro.config.mjs"
-import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare';
-import { cacheCloudflare } from '@astrojs/cloudflare/cache';
-
-export default defineConfig({
-  adapter: cloudflare(),
-  experimental: {
-    cache: {
-      provider: cacheCloudflare(),
-    },
-  },
-});
-```
-
-```astro
----
-Astro.cache.set({ maxAge: 300, tags: ['products'] });
-const data = await fetchProducts();
----
-<ProductList items={data} />
-```
-
-The equivalent providers are available as `cacheNetlify()` from `@astrojs/netlify/cache` and `cacheVercel()` from `@astrojs/vercel/cache`. All three set the appropriate platform-specific cache headers (`Cloudflare-CDN-Cache-Control`, `Netlify-CDN-Cache-Control`, `Vercel-CDN-Cache-Control`, and so on) and support both tag-based and path-based invalidation:
-
-```ts title="src/pages/api/purge.ts"
-export async function POST({ request, cache }) {
-  await cache.invalidate({ tags: ['products'] });
-  return new Response('Purged');
-}
-```
-
-You can also set cache rules for groups of routes from your config using `routeRules`:
-
-```js title="astro.config.mjs"
-experimental: {
-  cache: { provider: cacheCloudflare() },
-  routeRules: {
-    '/products/*': { maxAge: 3600, tags: ['products'] },
-    '/api/*': { maxAge: 60, swr: 600 },
-  },
-},
-```
-
-Cache hits are served directly from the CDN's edge, so your function or worker is never invoked. For more information on enabling and using this feature, see the [experimental route caching docs](https://docs.astro.build/en/reference/experimental-flags/route-caching/).
-
 ## Cloudflare helpers for advanced routing
 
 If you're using [experimental advanced routing](https://docs.astro.build/en/reference/experimental-flags/advanced-routing/) (added in [Astro 6.3](/blog/astro-630/#experimental-advanced-routing)) on Cloudflare, `@astrojs/cloudflare` now ships a `cf()` helper that wires up the Cloudflare-specific bits for you: SESSION KV binding injection, static asset serving via the ASSETS binding, `locals.cfContext`, client address from `cf-connecting-ip`, `waitUntil`, and prerendered error pages.
