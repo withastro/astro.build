@@ -32,12 +32,13 @@ const npmSearchObjectSchema = z
 		}),
 	})
 	// Transform the data into the same shape returned by the single package endpoint.
+	// For optional strings we ensure they return `undefined`, if the string is empty.
 	.transform((data) => ({
 		name: data.package.name,
-		description: data.package.description,
-		homepage: data.package.links.homepage,
+		description: data.package.description || undefined,
+		homepage: data.package.links.homepage || undefined,
 		keywords: data.package.keywords,
-		repository: data.package.links.repository,
+		repository: data.package.links.repository || undefined,
 		downloads: data.downloads.monthly,
 	}));
 
