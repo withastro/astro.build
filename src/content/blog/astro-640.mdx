@@ -1,0 +1,200 @@
+---
+title: 'Astro 6.4'
+description: 'Astro 6.4 introduces a new pluggable Markdown processor API, a Rust-based Markdown processor for faster builds, first-party CDN cache providers for your favorite platforms, and a stable custom logger.'
+homepageLink:
+  title: 'Astro 6.4'
+  subtitle: 'Available now!'
+publishDate: '2026-05-28'
+authors:
+  - ema
+  - erika
+  - matt
+coverImage: '/src/content/blog/_images/astro-640/blog-post-astro-6.4.webp'
+socialImage: '/src/content/blog/_images/astro-640/og-astro-6.4.jpg'
+lang: 'en'
+related:
+  - astro-630
+  - astro-620
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**Astro 6.4 is here!** On today's menu: Astro's Markdown pipeline is now pluggable. A new `markdown.processor` config option lets you swap out the default unified pipeline, a new Rust-based processor for you to try out, first-party CDN cache providers for Cloudflare, Netlify, and Vercel, and stabilized custom logging.
+
+Explore what's new in this release:
+
+- [**New `markdown.processor` API**](#new-markdownprocessor-api)
+- [**Faster Markdown builds with Sätteri**](#faster-markdown-builds-with-sätteri)
+- [**CDN cache providers for Cloudflare, Netlify, and Vercel**](#cdn-cache-providers-for-cloudflare-netlify-and-vercel)
+- [**Stable custom logger**](#stable-custom-logger)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## New `markdown.processor` API
+
+Astro's Markdown pipeline has always been built around [unified](https://unifiedjs.com/) (remark, rehype, and friends). That ecosystem is powerful, having thousands of plugins available, but perhaps it's not up to your taste. Astro 6.4 adds a new `markdown.processor` configuration option that lets you swap that pipeline out entirely.
+
+The default processor is still `unified()`, so existing projects keep working without any changes. Your remark and rehype plugins continue to behave the same. They just live on the processor now, instead of the top-level `markdown` config:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
+import remarkToc from 'remark-toc';
+
+export default defineConfig({
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkToc],
+    }),
+  },
+});
+```
+
+The existing top-level `markdown.remarkPlugins`, `markdown.rehypePlugins`, `markdown.remarkRehype`, `markdown.gfm`, and `markdown.smartypants` options still work, but they're now deprecated in favor of passing them to `unified({...})`, and will be removed in Astro 8.0.
+
+For more information, see the updated [Markdown guide](https://docs.astro.build/en/guides/markdown-content/).
+
+## Faster Markdown builds with Sätteri
+
+A pluggable processor API also means Astro can ship other Markdown processors. Astro 6.4 introduces a new `@astrojs/markdown-satteri` package, with a new processor based on [Sätteri](https://satteri.bruits.org/), a Markdown and MDX pipeline written in Rust.
+
+Sätteri is much faster than the default unified-based pipeline, and it implements many Markdown features natively that previously required plugins. To try it out, install the package and set it as your processor:
+
+```sh
+npm install @astrojs/markdown-satteri
+```
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { satteri } from '@astrojs/markdown-satteri';
+
+export default defineConfig({
+  markdown: {
+    processor: satteri({
+      features: { directive: true },
+    }),
+  },
+});
+```
+
+Sätteri doesn't run remark or rehype plugins. If you depend on plugins from the unified ecosystem, you'll need to either stay on `unified()` for now or port them to [Sätteri MDAST or HAST plugins](https://satteri.bruits.org/docs/plugins/).
+
+We hope to make Sätteri the default Markdown processor in a future major version of Astro. To give feedback on the Rust processor and the new API, see the [Native Markdown / MDX RFC](https://github.com/withastro/roadmap/pull/1364).
+
+## CDN cache providers for Cloudflare, Netlify, and Vercel
+
+Astro's [experimental route caching](https://docs.astro.build/en/reference/experimental-flags/route-caching/) lets you cache server-rendered routes at the edge of the platform you're already deploying to. Previously, configuring that cache meant wiring up platform-specific headers and invalidation APIs by hand. Astro 6.4 adds first-party cache providers for Cloudflare, Netlify, and Vercel that do that work for you.
+
+Each provider hooks into its platform's native CDN cache and exposes the same `Astro.cache.set()` API in your pages and routes. For example, on Cloudflare:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
+import { cacheCloudflare } from '@astrojs/cloudflare/cache';
+
+export default defineConfig({
+  adapter: cloudflare(),
+  experimental: {
+    cache: {
+      provider: cacheCloudflare(),
+    },
+  },
+});
+```
+
+```astro
+---
+Astro.cache.set({ maxAge: 300, tags: ['products'] });
+const data = await fetchProducts();
+---
+<ProductList items={data} />
+```
+
+The equivalent providers are available as `cacheNetlify()` from `@astrojs/netlify/cache` and `cacheVercel()` from `@astrojs/vercel/cache`. All three set the appropriate platform-specific cache headers (`Cloudflare-CDN-Cache-Control`, `Netlify-CDN-Cache-Control`, `Vercel-CDN-Cache-Control`, and so on) and support both tag-based and path-based invalidation:
+
+```ts title="src/pages/api/purge.ts"
+export async function POST({ request, cache }) {
+  await cache.invalidate({ tags: ['products'] });
+  return new Response('Purged');
+}
+```
+
+You can also set cache rules for groups of routes from your config using `routeRules`:
+
+```js title="astro.config.mjs"
+experimental: {
+  cache: { provider: cacheCloudflare() },
+  routeRules: {
+    '/products/*': { maxAge: 3600, tags: ['products'] },
+    '/api/*': { maxAge: 60, swr: 600 },
+  },
+},
+```
+
+Cache hits are served directly from the CDN's edge, so your function or worker is never invoked. For more information on enabling and using this feature, see the [experimental route caching docs](https://docs.astro.build/en/reference/experimental-flags/route-caching/).
+
+## Stable custom logger
+
+The custom logger we [introduced as experimental in Astro 6.2](/blog/astro-620/#experimental-logger) is now stable. Set it directly on the top-level `logger` config, no flag required:
+
+```js title="astro.config.mjs"
+import { defineConfig, logHandlers } from 'astro/config';
+
+export default defineConfig({
+  logger: logHandlers.json({
+    pretty: true,
+    level: 'warn',
+  }),
+});
+```
+
+Astro now ships with three built-in handlers: `json`, `node`, and `console`. The JSON handler is particularly handy for on-demand rendering, where you typically want to pipe logs into an aggregation service like Kibana, Logstash, Grafana, etc.
+
+On top of that, `context.logger` is now always available in API routes and middleware, even when you haven't configured a custom logger. That makes it easier to write code that logs consistently no matter how the project is configured.
+
+If you were already using the experimental flag, just drop the `experimental.` prefix:
+
+```diff lang="js" title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+-  experimental: {
+-    logger: {
+-      entrypoint: '@org/custom-logger',
+-    },
+-  },
++  logger: {
++    entrypoint: '@org/custom-logger',
++  },
+});
+```
+
+For more details, see the [logger reference](https://docs.astro.build/en/reference/configuration-reference/#logger).
+
+## Other improvements
+
+For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 6.4 possible with code and docs additions and improvements.
