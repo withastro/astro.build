@@ -1,14 +1,12 @@
 ---
 title: 'Astro 6.4'
-description: 'Astro 6.4 introduces a new pluggable Markdown processor API, a Rust-based Markdown processor for faster builds, first-party CDN cache providers for your favorite platforms, and a stable custom logger.'
+description: 'Astro 6.4 introduces a new pluggable Markdown processor API, a Rust-based Markdown processor for faster builds, and first-party CDN cache providers for your favorite platforms.'
 homepageLink:
   title: 'Astro 6.4'
   subtitle: 'Available now!'
 publishDate: '2026-05-28'
 authors:
-  - ema
   - erika
-  - matt
 coverImage: '/src/content/blog/_images/astro-640/blog-post-astro-6.4.webp'
 socialImage: '/src/content/blog/_images/astro-640/og-astro-6.4.jpg'
 lang: 'en'
@@ -19,14 +17,14 @@ related:
 
 import Mention from '/src/components/Mention.astro';
 
-**Astro 6.4 is here!** On today's menu: Astro's Markdown pipeline is now pluggable. A new `markdown.processor` config option lets you swap out the default unified pipeline, a new Rust-based processor for you to try out, first-party CDN cache providers for Cloudflare, Netlify, and Vercel, and stabilized custom logging.
+**Astro 6.4 is here!** On today's menu: a pluggable Markdown pipeline, a new Rust-based Markdown processor for you to try, and first-party CDN cache providers for Cloudflare, Netlify, and Vercel.
 
 Explore what's new in this release:
 
 - [**New `markdown.processor` API**](#new-markdownprocessor-api)
 - [**Faster Markdown builds with Sätteri**](#faster-markdown-builds-with-sätteri)
 - [**CDN cache providers for Cloudflare, Netlify, and Vercel**](#cdn-cache-providers-for-cloudflare-netlify-and-vercel)
-- [**Stable custom logger**](#stable-custom-logger)
+- [**Cloudflare helpers for advanced routing**](#cloudflare-helpers-for-advanced-routing)
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
 
@@ -44,7 +42,7 @@ yarn upgrade astro --latest
 
 Astro's Markdown pipeline has always been built around [unified](https://unifiedjs.com/) (remark, rehype, and friends). That ecosystem is powerful, having thousands of plugins available, but perhaps it's not up to your taste. Astro 6.4 adds a new `markdown.processor` configuration option that lets you swap that pipeline out entirely.
 
-The default processor is still `unified()`, so existing projects keep working without any changes. Your remark and rehype plugins continue to behave the same. They just live on the processor now, instead of the top-level `markdown` config:
+The default processor is still `unified()`, so existing projects keep working without any changes. Your remark and rehype plugins continue to behave the same, but they are now configured directly on the processor, instead of in the top-level `markdown` config:
 
 ```js title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
@@ -68,7 +66,7 @@ For more information, see the updated [Markdown guide](https://docs.astro.build/
 
 A pluggable processor API also means Astro can ship other Markdown processors. Astro 6.4 introduces a new `@astrojs/markdown-satteri` package, with a new processor based on [Sätteri](https://satteri.bruits.org/), a Markdown and MDX pipeline written in Rust.
 
-Sätteri is much faster than the default unified-based pipeline, and it implements many Markdown features natively that previously required plugins. To try it out, install the package and set it as your processor:
+Sätteri is much faster than the default unified-based pipeline, and it implements many Markdown features natively that previously required plugins. In our own testing, switching the Astro and Cloudflare docs site to Sätteri shaved over a minute off their respective build time. To try it out, install the package and set it as your processor:
 
 ```sh
 npm install @astrojs/markdown-satteri
@@ -143,43 +141,43 @@ experimental: {
 
 Cache hits are served directly from the CDN's edge, so your function or worker is never invoked. For more information on enabling and using this feature, see the [experimental route caching docs](https://docs.astro.build/en/reference/experimental-flags/route-caching/).
 
-## Stable custom logger
+## Cloudflare helpers for advanced routing
 
-The custom logger we [introduced as experimental in Astro 6.2](/blog/astro-620/#experimental-logger) is now stable. Set it directly on the top-level `logger` config, no flag required:
+If you're using [experimental advanced routing](https://docs.astro.build/en/reference/experimental-flags/advanced-routing/) (added in [Astro 6.3](/blog/astro-630/#experimental-advanced-routing)) on Cloudflare, `@astrojs/cloudflare` now ships a `cf()` helper that wires up the Cloudflare-specific bits for you: SESSION KV binding injection, static asset serving via the ASSETS binding, `locals.cfContext`, client address from `cf-connecting-ip`, `waitUntil`, and prerendered error pages.
 
-```js title="astro.config.mjs"
-import { defineConfig, logHandlers } from 'astro/config';
+With a custom fetch handler, use `cf()` from `@astrojs/cloudflare/fetch`:
 
-export default defineConfig({
-  logger: logHandlers.json({
-    pretty: true,
-    level: 'warn',
-  }),
-});
+```ts title="src/app.ts"
+import { astro, FetchState } from 'astro/fetch';
+import { cf } from '@astrojs/cloudflare/fetch';
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    const state = new FetchState(request);
+    const asset = await cf(state, env, ctx);
+    if (asset) return asset;
+    return astro(state);
+  },
+};
 ```
 
-Astro now ships with three built-in handlers: `json`, `node`, and `console`. The JSON handler is particularly handy for on-demand rendering, where you typically want to pipe logs into an aggregation service like Kibana, Logstash, Grafana, etc.
+With Hono, use `cf()` from `@astrojs/cloudflare/hono` as middleware.
 
-On top of that, `context.logger` is now always available in API routes and middleware, even when you haven't configured a custom logger. That makes it easier to write code that logs consistently no matter how the project is configured.
+```ts title="src/app.ts"
+import { Hono } from 'hono';
+import { actions, middleware, pages, i18n } from 'astro/hono';
+import { cf } from '@astrojs/cloudflare/hono';
 
-If you were already using the experimental flag, just drop the `experimental.` prefix:
+const app = new Hono<{ Bindings: Env }>();
 
-```diff lang="js" title="astro.config.mjs"
-import { defineConfig } from 'astro/config';
+app.use(cf());
+app.use(actions());
+app.use(middleware());
+app.use(pages());
+app.use(i18n());
 
-export default defineConfig({
--  experimental: {
--    logger: {
--      entrypoint: '@org/custom-logger',
--    },
--  },
-+  logger: {
-+    entrypoint: '@org/custom-logger',
-+  },
-});
+export default app;
 ```
-
-For more details, see the [logger reference](https://docs.astro.build/en/reference/configuration-reference/#logger).
 
 ## Other improvements
 
