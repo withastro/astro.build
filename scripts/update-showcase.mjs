@@ -672,6 +672,10 @@ const scraper = new ShowcaseScraper({
 		'https://haitang.app',
 		// 2026-05-25 - closes #2408 (moved to 11ty and new domain)
 		'https://jak2k.schwanenberg.name',
+		// 2026-05-26
+		'https://arklavo.com',
+		'https://apps.apple.com',
+		'https://play.google.com',
 	],
 });
 await scraper.run();
