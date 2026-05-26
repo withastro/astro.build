@@ -1,0 +1,23 @@
+[build.environment]
+NODE_OPTIONS = "--max-old-space-size=4096"
+
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
+
+[plugins.inputs.thresholds]
+accessibility = 0.98
+
+[[plugins.inputs.audits]]
+path = ""
+
+[[plugins.inputs.audits]]
+path = "blog/"
+
+[[plugins.inputs.audits]]
+path = "themes/"
+
+[[plugins.inputs.audits]]
+path = "showcase/"
+
+[[plugins.inputs.audits]]
+path = "integrations/"

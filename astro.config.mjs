@@ -1,20 +1,20 @@
 // @ts-check
 
 import mdx from '@astrojs/mdx';
-import netlify from '@astrojs/netlify';
+import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import { defineConfig } from 'astro/config';
+import { defineConfig, sessionDrivers } from 'astro/config';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import houston from './houston.theme.json';
 
-/* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
-const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
+/* On Cloudflare Workers Builds, CF_PAGES_URL is set to the preview URL for non-production deploys */
+const PREVIEW_SITE = process.env.CF_PAGES_URL;
 
 // https://astro.build/config
 export default defineConfig({
-	site: NETLIFY_PREVIEW_SITE || 'https://astro.build',
+	site: PREVIEW_SITE || 'https://astro.build',
 	prefetch: true,
 	integrations: [
 		tailwind({
@@ -57,7 +57,8 @@ export default defineConfig({
 			noExternal: ['smartypants'],
 		},
 	},
-	adapter: netlify({ imageCDN: false }),
+	adapter: cloudflare({ imageService: 'compile' }),
+	session: { driver: sessionDrivers.lruCache() },
 	experimental: {
 		contentIntellisense: true,
 		rustCompiler: true,
