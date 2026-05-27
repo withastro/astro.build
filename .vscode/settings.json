@@ -21,10 +21,20 @@
 	},
 
 	// prefer .js extension on imports
-	"javascript.preferences.importModuleSpecifierEnding": "js",
-	"typescript.preferences.importModuleSpecifierEnding": "js",
+	"js/ts.preferences.importModuleSpecifierEnding": "js",
 
 	// use local typescript version
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"astro.content-intellisense": true
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
+	"astro.content-intellisense": true,
+
+	"json.schemas": [
+		{
+			"fileMatch": ["src/content/integrations.json"],
+			"url": "./.astro/collections/integrations.schema.json"
+		}
+	],
+
+	"yaml.schemas": {
+		"./.astro/collections/showcase.schema.json": "src/content/showcase/*.yml"
+	}
 }
