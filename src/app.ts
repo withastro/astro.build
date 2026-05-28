@@ -11,6 +11,10 @@ export default {
 		}
 
 		const state = new FetchState(request);
-		return astro(state);
+		const response = await astro(state);
+
+		console.log(`[app] ${request.method} ${url.pathname} -> ${response.status} (route: ${state.routeData?.route ?? 'none'}, type: ${state.routeData?.type ?? 'none'})`);
+
+		return response;
 	},
 };
