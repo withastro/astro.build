@@ -20,13 +20,12 @@ globalThis.fetch = async function patchedFetch(input: RequestInfo | URL, init?: 
 };
 
 export default {
-	async fetch(request: Request, env: Record<string, unknown>): Promise<Response> {
+	async fetch(request: Request): Promise<Response> {
 		const url = new URL(request.url);
 		const headers = Object.fromEntries(request.headers.entries());
 		console.log(`[app] incoming: ${request.method} ${url.pathname}${url.search}`);
 		console.log(`[app] full URL: ${request.url}`);
 		console.log(`[app] headers: ${JSON.stringify(headers)}`);
-		console.log(`[app] env keys: ${Object.keys(env).join(', ')}`);
 
 		// Proxy /fonts/* to fonts-cdn.astro.build
 		if (url.pathname.startsWith('/fonts/')) {
