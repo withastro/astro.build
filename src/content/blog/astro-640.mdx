@@ -1,0 +1,147 @@
+---
+title: 'Astro 6.4'
+description: 'Astro 6.4 introduces a new pluggable Markdown processor API, a Rust-based Markdown processor for faster builds, and helpers to wire up experimental advanced routing with Cloudflare.'
+homepageLink:
+  title: 'Astro 6.4'
+  subtitle: 'Available now!'
+publishDate: '2026-05-28'
+authors:
+  - erika
+coverImage: '/src/content/blog/_images/astro-640/blog-post-astro-6.4.webp'
+socialImage: '/src/content/blog/_images/astro-640/og-astro-6.4.jpg'
+lang: 'en'
+related:
+  - astro-630
+  - astro-620
+---
+
+import Mention from '/src/components/Mention.astro';
+
+**Astro 6.4 is here!** On today's menu: a pluggable Markdown pipeline, a new Rust-based Markdown processor for you to try, and helpers to facilitate the use of experimental advanced routing with Cloudflare.
+
+Explore what's new in this release:
+
+- [**New `markdown.processor` API**](#new-markdownprocessor-api)
+- [**Faster Markdown builds with Sätteri**](#faster-markdown-builds-with-sätteri)
+- [**Cloudflare helpers for advanced routing**](#cloudflare-helpers-for-advanced-routing)
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## New `markdown.processor` API
+
+Astro's Markdown pipeline has always been built around [unified](https://unifiedjs.com/) (remark, rehype, and friends). That ecosystem is powerful, having thousands of plugins available, but perhaps it's not up to your taste. Astro 6.4 adds a new `markdown.processor` configuration option that lets you swap that pipeline out entirely.
+
+The default processor is still `unified()`, so existing projects keep working without any changes. Your remark and rehype plugins continue to behave the same, but they are now configured directly on the processor, instead of in the top-level `markdown` config:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
+import remarkToc from 'remark-toc';
+
+export default defineConfig({
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkToc],
+    }),
+  },
+});
+```
+
+The existing top-level `markdown.remarkPlugins`, `markdown.rehypePlugins`, `markdown.remarkRehype`, `markdown.gfm`, and `markdown.smartypants` options still work, but they're now deprecated in favor of passing them to `unified({...})`, and will be removed in Astro 8.0.
+
+For more information, see the updated [Markdown guide](https://docs.astro.build/en/guides/markdown-content/).
+
+## Faster Markdown builds with Sätteri
+
+A pluggable processor API also means Astro can ship other Markdown processors. Astro 6.4 introduces a new `@astrojs/markdown-satteri` package, with a new processor based on [Sätteri](https://satteri.bruits.org/), a Markdown and MDX pipeline written in Rust.
+
+Sätteri is much faster than the default unified-based pipeline, and it implements many Markdown features natively that previously required plugins. In our own testing, switching the Astro and Cloudflare docs site to Sätteri shaved over a minute off their respective build time. To try it out, install the package and set it as your processor:
+
+```sh
+npm install @astrojs/markdown-satteri
+```
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { satteri } from '@astrojs/markdown-satteri';
+
+export default defineConfig({
+  markdown: {
+    processor: satteri({
+      features: { directive: true },
+    }),
+  },
+});
+```
+
+Sätteri doesn't run remark or rehype plugins. If you depend on plugins from the unified ecosystem, you'll need to either stay on `unified()` for now or port them to [Sätteri MDAST or HAST plugins](https://satteri.bruits.org/docs/plugins/).
+
+We hope to make Sätteri the default Markdown processor in a future major version of Astro. To give feedback on the Rust processor and the new API, see the [Native Markdown / MDX RFC](https://github.com/withastro/roadmap/pull/1364).
+
+## Cloudflare helpers for advanced routing
+
+If you're using [experimental advanced routing](https://docs.astro.build/en/reference/experimental-flags/advanced-routing/) (added in [Astro 6.3](/blog/astro-630/#experimental-advanced-routing)) on Cloudflare, `@astrojs/cloudflare` now ships a `cf()` helper that wires up the Cloudflare-specific bits for you: SESSION KV binding injection, static asset serving via the ASSETS binding, `locals.cfContext`, client address from `cf-connecting-ip`, `waitUntil`, and prerendered error pages.
+
+With a custom fetch handler, use `cf()` from `@astrojs/cloudflare/fetch`:
+
+```ts title="src/app.ts"
+import { astro, FetchState } from 'astro/fetch';
+import { cf } from '@astrojs/cloudflare/fetch';
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    const state = new FetchState(request);
+    const asset = await cf(state, env, ctx);
+    if (asset) return asset;
+    return astro(state);
+  },
+};
+```
+
+With Hono, use `cf()` from `@astrojs/cloudflare/hono` as middleware.
+
+```ts title="src/app.ts"
+import { Hono } from 'hono';
+import { actions, middleware, pages, i18n } from 'astro/hono';
+import { cf } from '@astrojs/cloudflare/hono';
+
+const app = new Hono<{ Bindings: Env }>();
+
+app.use(cf());
+app.use(actions());
+app.use(middleware());
+app.use(pages());
+app.use(i18n());
+
+export default app;
+```
+
+## Other improvements
+
+For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to all the other contributors who helped make Astro 6.4 possible with code and docs additions and improvements, including:
+
+[Alexander Flodin](https://github.com/alexanderflodin), [Alexis Aguilar](https://github.com/alexisintech), [Arnas Donauskas](https://github.com/ArnasDon), [Barry](https://github.com/barry3406), [David Large](https://github.com/David-Large), [divyeshb13](https://github.com/divyeshb13), [Dor Alagem](https://github.com/DORI2001), [Eli Kent [SSW]](https://github.com/kulesy), [Eric Mika](https://github.com/kitschpatrol), [Felipe Arce](https://github.com/pipe1os), [Felix Schneider](https://github.com/trueberryless), [fkatsuhiro](https://github.com/fkatsuhiro), [Great Journey](https://github.com/greatjourney589), [Harsh Agarwal](https://github.com/harshagarwalnyu), [helio-cf](https://github.com/helio-cf), [Henri Koskenranta](https://github.com/cheets), [Igor Koop](https://github.com/igor-koop), [Jon Ege Ronnenberg](https://github.com/dotnetCarpenter), [Joost de Valk](https://github.com/jdevalk), [Jordan Demaison](https://github.com/demaisj), [Junseong Park](https://github.com/jsparkdev), [knj](https://github.com/jp-knj), [LongYC](https://github.com/LongYC), [Louis Escher](https://github.com/louisescher), [Matt Wicks [SSW]](https://github.com/wicksipedia), [Mochammad Farros Fatchur Roji](https://github.com/farrosfr), [oab24413gmai](https://github.com/oab24413gmai), [ocavue](https://github.com/ocavue), [Quetzal Rivera](https://github.com/Eptagone), [Rafael Yasuhide Sudo](https://github.com/rururux), [randomguy-2650](https://github.com/randomguy-2650), [Sakku 🦉](https://github.com/Yusaku01), [Shinya Fujino](https://github.com/morinokami), [Tarik](https://github.com/tarikrital), [Thomas Bonnet](https://github.com/thomasbnt), [Vincent 🌿](https://github.com/spacebagel), [vrabe](https://github.com/vrabe), [WavyCat](https://github.com/wavy-cat), [Zubair Ibn Zamir](https://github.com/2u841r), and [芋](https://github.com/isyuah)
