@@ -6,7 +6,12 @@ globalThis.fetch = async function patchedFetch(input: RequestInfo | URL, init?: 
 	console.log(`[fetch] -> ${url}`);
 	try {
 		const res = await originalFetch(input, init);
-		console.log(`[fetch] <- ${url} ${res.status} ${res.headers.get('content-type') ?? 'no content-type'}`);
+		const contentType = res.headers.get('content-type') ?? 'no content-type';
+		console.log(`[fetch] <- ${url} ${res.status} ${contentType}`);
+		if (!res.ok) {
+			const body = await res.clone().text();
+			console.error(`[fetch] ERROR BODY ${url}: ${body.slice(0, 1000)}`);
+		}
 		return res;
 	} catch (err) {
 		console.error(`[fetch] FAILED ${url}`, err);
