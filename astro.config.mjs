@@ -60,7 +60,6 @@ export default defineConfig({
 	adapter: cloudflare({ imageService: 'compile', prerenderEnvironment: 'node' }),
 	session: { driver: sessionDrivers.lruCache() },
 	experimental: {
-		advancedRouting: true,
 		contentIntellisense: true,
 		rustCompiler: true,
 	},
