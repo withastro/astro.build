@@ -56,6 +56,9 @@ export default defineConfig({
 		ssr: {
 			noExternal: ['smartypants'],
 		},
+		optimizeDeps: {
+			include: ['astro-icon > @iconify/utils'],
+		},
 	},
 	adapter: cloudflare({ imageService: 'compile' }),
 	session: { driver: sessionDrivers.lruCache() },
