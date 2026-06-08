@@ -34,11 +34,12 @@ Blog post cover and social images are set as frontmatter properties and should p
 
 Cloudflare Workers has a 25 MB per-file size limit for static assets. Files that exceed this limit are hosted on an R2 bucket and served via `site-assets.astro.build`.
 
-To upload a new large asset:
+To upload a new large asset (requires access to the Cloudflare account):
 
-1. Install [Wrangler](https://developers.cloudflare.com/workers/wrangler/) if you haven't already:
+1. Install [Wrangler](https://developers.cloudflare.com/workers/wrangler/) and log in if you haven't already:
    ```sh
    pnpm add -g wrangler
+   wrangler login
    ```
 
 2. Upload the file to the `site-assets` R2 bucket:
