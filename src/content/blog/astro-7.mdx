@@ -1,0 +1,166 @@
+---
+title: 'Astro 7.0'
+description: 'TODO'
+publishDate: 2026-06-15
+authors:
+  - matthew
+coverImage: '/src/content/blog/_images/astro-700/blog-post-astro-7.webp'
+socialImage: '/src/content/blog/_images/astro-700/og-astro-7.webp'
+lang: 'en'
+homepageLink:
+  title: 'Astro 7.0'
+  subtitle: 'Available now!'
+---
+
+import Mention from '/src/components/Mention.astro';
+
+{/* TODO: Intro paragraph — the big story of Astro 7 */}
+
+Full release highlights include:
+
+- **[Vite 8](#vite-8)**
+- **[Performance](#performance)**
+  - **[Rust Compiler](#rust-compiler)**
+  - **[Sätteri: Markdown & MDX in Rust](#sätteri-markdown--mdx-in-rust)**
+  - **[Queued Rendering](#queued-rendering)**
+- **[Advanced Routing](#advanced-routing)**
+- **[AI Enhancements](#ai-enhancements)**
+  - **[Background Dev Server](#background-dev-server)**
+  - **[JSON Logging](#json-logging)**
+- **[Community](#community)**
+
+## Upgrade now
+
+To upgrade an existing project to Astro 7, use the automated `@astrojs/upgrade` CLI tool:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+```
+
+For new projects, simply use:
+
+```sh
+npm create astro@latest
+```
+
+{/* TODO: Link to migration guide once docs are finalized */}
+
+## Vite 8
+
+{/*
+  - Astro 7 upgrades from Vite 7 to Vite 8
+  - Link: AST-15
+  - TODO: What's notable in Vite 8 for Astro users?
+  - TODO: Any breaking changes from Vite 8 that affect Astro projects?
+*/}
+
+## Performance
+
+{/*
+  TODO: Intro paragraph tying together the three Rust-powered improvements below.
+  The theme: Astro 7 is the fastest Astro ever — the compiler, the Markdown pipeline,
+  and the rendering engine have all been rewritten or replaced with faster alternatives.
+  TODO: Include combined performance data once available (AST-165)
+  - Build time comparisons (Vite 8 + Sätteri + Rust compiler)
+  - Dev server startup comparisons
+*/}
+
+### Rust Compiler
+
+{/*
+  - Graduated from experimental (introduced in Astro 6) to stable default
+  - Successor to the Go-based .astro compiler
+  - Faster, stronger diagnostics, more reliable
+  - Now the default — no experimental flag needed
+  - @astrojs/compiler-rs is no longer a separate install
+  - Link: AST-136
+*/}
+
+### Sätteri: Markdown & MDX in Rust
+
+{/*
+  - Sätteri is now the default Markdown processor (replaces unified/remark/rehype)
+  - Introduced in Astro 6.4 as an opt-in processor via markdown.processor config
+  - Much faster than unified pipeline — shaved over a minute off Astro and Cloudflare docs builds
+  - Implements many Markdown features natively that previously required plugins
+  - unified() still available via @astrojs/markdown-remark for projects that depend on remark/rehype plugins
+  - Deprecated remark/rehype top-level config options removed (deprecated in 6.4)
+  - Link: AST-162, AST-141
+  - RFC: https://github.com/withastro/roadmap/pull/1364
+*/}
+
+### Queued Rendering
+
+{/*
+  - Graduated from experimental (introduced in Astro 6) to stable default
+  - Replaces recursive rendering with a two-pass approach: traverse + ordered queue, then render
+  - Faster and more memory-efficient
+  - Early benchmarks showed up to 2x faster rendering
+  - Now the default rendering strategy — no flag needed
+  - Link: AST-166
+*/}
+
+## Advanced Routing
+
+{/*
+  - Graduated from experimental (introduced in Astro 6.3) to stable
+  - Application Entrypoint RFC: https://github.com/withastro/roadmap/discussions/1320
+  - Define a custom src/app.ts entrypoint for full control over request handling
+  - Use with Hono or a custom fetch handler
+  - Middleware, actions, pages, i18n all composable as Hono middleware
+  - Works with Cloudflare (cf() helpers from @astrojs/cloudflare), Node, etc.
+  - Link: AST-137, AST-148
+  - TODO: Include a code example (Hono or fetch handler)
+*/}
+
+## AI Enhancements
+
+{/*
+  TODO: Intro paragraph — Astro 7 includes features designed to make Astro
+  a better platform for AI-powered development workflows.
+*/}
+
+### Background Dev Server
+
+{/*
+  - New `astro dev --background` CLI command
+  - Runs the dev server as a background process
+  - Designed for AI agent workflows — agents can start/stop the dev server programmatically
+  - Dev server lockfile for process coordination
+  - RFC: https://github.com/withastro/roadmap/discussions/1308
+  - Link: AST-135, AST-145
+*/}
+
+### JSON Logging
+
+{/*
+  - New structured JSON logging output
+  - Configurable log format via logger config
+  - Machine-readable output for AI agents, log aggregation, monitoring
+  - Proposal: https://github.com/withastro/roadmap/discussions/908
+  - Link: AST-41, AST-42, AST-146
+*/}
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+{/* TODO: Run contributor script to generate contributor list (AST-171) */}
+
+Special thanks to everyone who contributed to Astro 7 with code, docs, reviews, and testing, including:
+
+{/* TODO: contributor list goes here */}
+
+We hope you enjoy Astro 7. If you run into issues or want to share feedback, please join us on [Discord](https://astro.build/chat), post on [GitHub](https://github.com/withastro/astro/issues), or reach out on [Bluesky](https://bsky.app/profile/astro.build), [Twitter](https://twitter.com/astrodotbuild), and [Mastodon](https://m.webtoo.ls/@astro).
