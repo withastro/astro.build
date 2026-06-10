@@ -1,6 +1,6 @@
 ---
 title: 'Astro 7.0'
-description: 'TODO'
+description: 'Astro 7.0 brings faster builds with Vite 8, a new Rust compiler, Advanced Routing, background dev server support, and structured logging.'
 publishDate: 2026-06-15
 authors:
   - matthew
@@ -15,9 +15,9 @@ homepageLink:
 
 import Mention from '/src/components/Mention.astro';
 
-**Astro 7 is here!** This release is all about speed. The `.astro` compiler has been rewritten in Rust. Markdown and MDX processing now runs through Satteri, a new Rust-powered pipeline. The rendering engine has been replaced with a faster queue-based approach. Together with Vite 8 and its new Rolldown bundler, Astro 7 builds are 15-61% faster across the board.
+**Astro 7 is here!** This release is all about speed. The `.astro` compiler has been rewritten in Rust. Markdown and MDX processing now runs through a new Rust-powered pipeline. The rendering engine has been replaced with a faster queue-based approach. Together with Vite 8 and its new Rolldown bundler, Astro 7 builds are 15-61% faster in our benchmarks.
 
-Astro 7 also introduces Advanced Routing, giving you a `src/fetch.ts` entrypoint with full control over the request pipeline. And for AI-assisted development, Astro now auto-detects coding agents, runs the dev server in the background, and outputs structured JSON logs.
+Astro 7 also introduces Advanced Routing, giving you a `src/fetch.ts` entrypoint with full control over Astro's request pipeline. For AI-assisted development, Astro can now detect coding agents, run the dev server in the background, and output structured JSON logs when agents need machine-readable feedback.
 
 Full release highlights include:
 
@@ -54,24 +54,24 @@ npm create astro@latest
 
 ## Vite 8
 
-Astro 7 upgrades to [Vite 8](https://vite.dev/blog/announcing-vite8), the most significant Vite release in years. The headline change: Vite now ships [Rolldown](https://rolldown.rs/), a Rust-based bundler that replaces both esbuild and Rollup with a single, unified bundler. Rolldown is [10-30x faster than Rollup](https://github.com/rolldown/benchmarks) in benchmarks while maintaining full plugin compatibility.
+Astro 7 upgrades to [Vite 8](https://vite.dev/blog/announcing-vite8), the most significant Vite release in years. The headline change: Vite now ships [Rolldown](https://rolldown.rs/), a Rust-based bundler that replaces both esbuild and Rollup with a single, unified bundler. Rolldown is [10-30x faster than Rollup](https://github.com/rolldown/benchmarks) in benchmarks while supporting the same Rollup and Vite plugin APIs.
 
-For Astro users, this means faster builds with no configuration changes. Vite 8 includes a compatibility layer that auto-converts existing `esbuild` and `rollupOptions` configuration to their Rolldown equivalents, so most projects will work without any changes. If your project uses custom Vite plugins, they should continue to work since Rolldown supports the same plugin API as Rollup.
+For Astro users, this means faster builds with no configuration changes for most projects. Vite 8 includes a compatibility layer that auto-converts existing `esbuild` and `rollupOptions` configuration to their Rolldown equivalents. If your project uses custom Vite plugins, most of them should continue to work because Rolldown supports the same plugin API as Rollup.
 
 ## Performance
 
-Astro 7 is the fastest version of Astro to date. As usage has grown, more and more teams have been pushing the boundaries of what type of site can be built with Astro. After we released Astro 6 and its big internal refactor, we set our sights on helping scale to bigger and bigger sites.
+Astro 7 is the fastest version of Astro to date. As usage has grown, more teams have been pushing the boundaries of what type of site can be built with Astro. After we released Astro 6 and its big internal refactor, we set our sights on helping Astro scale to larger and more complex sites.
 
 This is how Astro builds work:
 
-1. Build the site; it's pages, content, and client components, into JavaScript bundles.
-2. Run the bundled code like it's a little server; create requests for each of the prerendered pages and save the resulting HTML.
+1. Bundle the site's pages, content, and client components into JavaScript.
+2. Run the bundled code like a little server, create requests for each prerendered page, and save the resulting HTML.
 
-Astro 7 improves both steps, but focuses on the first, bundling the site, and it does it by moving the slowest parts into Rust-compiled native code. The generation step is also faster, thanks to a new rendering strategy that more effectively queues sections to be rendered.
+Astro 7 improves both steps, but focuses on the first: bundling the site. The biggest gains come from moving some of the slowest parts of the build into native code written in Rust. The generation step is also faster, thanks to a new rendering strategy that more effectively queues sections to be rendered.
 
 In our testing, overall build times improved by 15–61%, with some sites building **more than twice as fast**. Sites where `.astro` compilation and Markdown processing make up a larger share of the build see the biggest gains, since those are exactly the parts that moved to Rust.
 
-These benchmarks, run on a MacBook Pro Apple M4 Pro, 48 GB, showed the following numbers:
+These benchmarks were run on a MacBook Pro Apple M4 Pro with 48 GB of memory:
 
 | Website | Before | After |
 | -- | -- |-- |
@@ -97,7 +97,7 @@ We built a new compiler for the `.astro` component format, now written in Rust. 
   <span>Hello</span>{' '}<span>World</span>
   ```
 
-Moving to Rust allowed us to compile with native binaries instead of the WASM-backed approach of the previous Go version. This pattern is now standard in the JavaScript tooling world, used by projects such as Rolldown and Lightning CSS. Under the hood, the new compiler is built on [oxc](https://oxc.rs/) for parsing and [Lightning CSS](https://lightningcss.dev/) for CSS scoping.
+Moving to Rust allowed us to ship native binaries for supported platforms, with a WASM fallback for environments that need it. This pattern is now standard in the JavaScript tooling world, used by projects such as Rolldown and Lightning CSS. Under the hood, the new compiler is built on [oxc](https://oxc.rs/) for parsing and [Lightning CSS](https://lightningcss.dev/) for CSS scoping.
 
 In isolation, the Rust compiler showed a roughly 6% improvement in build times on docs.astro.build. That's because `.astro` compilation is rarely the bottleneck; Markdown processing and bundling typically dominate build time. But every bit adds up, especially on large sites with thousands of pages, and the compiler's gains compound with the other performance improvements in this release.
 
@@ -148,9 +148,9 @@ The content cache technique has been greatly descoped. The Astro renderer now ca
 
 ## Advanced Routing
 
-{/* TODO: intro paragraph */}
+Astro started as a static site generator with file-based routing. Over time, features like middleware, redirects, rewrites, Actions, sessions, and i18n gave Astro apps more server-side power, but they also made the request lifecycle harder to control. If you needed auth to run before Actions, logging to wrap only page rendering, or a non-Astro API to handle some requests first, you had to work around the pipeline instead of composing it directly.
 
-In Astro 7 you can now take full control over request handling by adding a `src/fetch.ts` file to your project. This file exports the standard `fetch` handler pattern popularized by [Cloudflare Workers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [Deno](https://docs.deno.com/runtime/fundamentals/http_server/), and [Bun](https://bun.sh/docs/api/http#bun-serve).
+In Astro 7 you can now take full control over Astro's request pipeline by adding a `src/fetch.ts` file to your project. This file exports the standard `fetch` handler pattern popularized by [Cloudflare Workers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [Deno](https://docs.deno.com/runtime/fundamentals/http_server/), and [Bun](https://bun.sh/docs/api/http#bun-serve).
 
 ```ts title="src/fetch.ts"
 import { astro, FetchState } from 'astro/fetch';
@@ -159,9 +159,10 @@ export default {
   fetch(request: Request) {
     const state = new FetchState(request);
 
-    // Proxy requests to a backend API
+    // Forward API requests to a backend service
     if (state.url.pathname.startsWith('/api')) {
-      return fetch(new URL(state.url.pathname, 'https://backend-api.example.com'));
+      const url = new URL(state.url.pathname + state.url.search, 'https://backend-api.example.com');
+      return fetch(new Request(url, request));
     }
 
     // Fallback to Astro pages / endpoints
@@ -170,7 +171,7 @@ export default {
 }
 ```
 
-The API is also compatible with [Hono](https://hono.dev/), allowing you to bring in the ecosystem of Hono middleware into your Astro application:
+The API is also compatible with [Hono](https://hono.dev/), allowing you to bring Hono middleware into your Astro application:
 
 ```ts title="src/fetch.ts"
 import { astro } from 'astro/hono';
@@ -208,47 +209,50 @@ If you don't add a `src/fetch.ts` file, Astro behaves exactly as it does today.
 
 ## AI Enhancements
 
-Software development has completely changed in the last 6 months. AI coding agents are increasingly the primary interface developers use to build sites and they need different things from a dev server than humans do. Astro 7 is our first step to make Astro a first-class platform for agent-driven development.
+AI coding agents are now part of many developers' workflows, and they need different things from a dev server than humans do. Astro 7 is our first step toward making Astro a better platform for agent-driven development.
 
 ### Background Dev Server
 
-AI agents struggle with long-running processes. They shell out, wait for exit, and read output, but a dev server never exits. Agents hang, start duplicate servers, lose track of running instances, or leave zombie processes behind. We see this as part of Astro's automated issue triage as well, with agents some times spending more timing fumbling with dev servers than testing out code.
+AI agents struggle with long-running processes. They shell out, wait for exit, and read output, but a dev server never exits. Agents hang, start duplicate servers, lose track of running instances, or leave zombie processes behind. We see this as part of Astro's automated issue triage as well, with agents sometimes spending more time fumbling with dev servers than testing code.
 
-Astro 7 adds `astro dev --background`, which starts the dev server as a managed background process. Even better, **Astro auto-detects when it's running inside an AI agent** and enables background mode automatically, so no flags are needed. If no agent is detected, `astro dev` behaves exactly as before.
+Astro 7 adds `astro dev --background`, which starts the dev server as a managed background process. **Astro can also detect when it's running inside an AI agent** and enable background mode automatically, so no flags are needed in agent workflows. If no agent is detected, `astro dev` behaves exactly as before.
 
 ```sh
 $ astro dev --background
-{"pid": 12345, "url": "http://localhost:4321"}
+[astro] Dev server running at http://localhost:4321 (pid 12345)
+  Stop:   astro dev stop
+  Status: astro dev status
+  Logs:   astro dev logs
 ```
 
-The server starts, blocks until it's ready to accept requests, then prints a single JSON line and detaches. No polling, no sleeping, no parsing ANSI output for "Local:".
+The command blocks until the server is ready to accept requests, reports the URL and process ID, then detaches. No polling, no sleeping, no parsing terminal output for "Local:".
 
 A **lockfile** prevents duplicate instances. If an agent tries to start a second server, it gets back the existing instance's details instead of spawning a conflicting process:
 
 ```sh
 $ astro dev --background
-{"pid": 12345, "url": "http://localhost:4321", "existing": true}
+[astro] Dev server already running at http://localhost:4321 (pid 12345)
 ```
 
 You can check status, read logs, and stop the server from separate shell sessions:
 
 ```sh
 $ astro dev status
-{"running": true, "pid": 12345, "url": "http://localhost:4321"}
+[astro] Dev server running at http://localhost:4321 (pid 12345)
 
 $ astro dev stop
-{"stopped": true, "pid": 12345}
+[astro] Stopped dev server (pid 12345).
 ```
 
-You can also stream logs in real time with `astro dev logs --follow`, which exits automatically when the server dies.
+You can also read the background server's logs with `astro dev logs`.
 
-Every command is idempotent and forgiving. Stopping when not running succeeds silently, starting when already running returns the existing instance. Agents are bad at tracking state, and the CLI doesn't punish them for it.
+Every command is idempotent and forgiving. Stopping when not running succeeds silently, and starting when already running returns the existing instance. Agents often lose track of process state, and the CLI doesn't punish them for it.
 
-All running dev servers also expose a `/_astro/status` health endpoint that agents can query for HMR status and errors, giving them a reliable feedback loop after editing files.
+All running dev servers also expose a `/_astro/status` health endpoint that agents can query to confirm the server is alive and ready to accept requests.
 
 ### JSON Logging
 
-Astro's logger is now fully configurable. For agents, JSON logging is enabled by default when using `--background`. For everyone else, it's available via the CLI or configuration:
+Astro's logger is now fully configurable. For agents, JSON logging is enabled automatically when agent detection turns on background mode. For everyone else, it's available via the CLI or configuration:
 
 ```sh
 astro dev --json
@@ -264,7 +268,7 @@ export default defineConfig({
 
 JSON logging was [the most upvoted feature request](https://github.com/withastro/roadmap/discussions/908) on our roadmap, and not just because of AI. Teams deploying Astro SSR to production need structured logs for integration with log aggregation services like Kibana, CloudWatch, and Grafana/Loki. Astro's previous logging was hardcoded for human readability: colors, box-drawing characters, multi-line error formatting. None of that is parseable by machines.
 
-The new logger API also supports custom log handlers and a `compose()` API for combining multiple loggers. For example, you can send JSON to your log aggregation service while keeping human-readable output in the console during development:
+The new logger API also supports custom log handlers and a `compose()` API for combining multiple loggers. For example, you can keep human-readable output in the console while also writing JSON logs for tools that need structured output:
 
 ```js title="astro.config.mjs"
 import { defineConfig, logHandlers } from "astro/config";
@@ -272,7 +276,7 @@ import { defineConfig, logHandlers } from "astro/config";
 export default defineConfig({
   logger: logHandlers.compose(
     logHandlers.console(),
-    logHandlers.json({ destination: '/var/log/astro.log' })
+    logHandlers.json()
   )
 })
 ```
