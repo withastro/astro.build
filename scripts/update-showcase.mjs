@@ -683,6 +683,12 @@ const scraper = new ShowcaseScraper({
 		'https://rodydavis.github.io/',
 		'https://offerte.be/',
 		'https://portfolio-yuri.vercel.app',
+		// 2026-06-10 - project deprecated, redirects to deprecation notice
+		'https://minecraft-essentials.github.io/',
+		// 2026-06-10 - redirects to unrelated Russian ad network
+		'https://qvant.ru/',
+		// 2026-06-10 - original site gone, redirects to third-party marketing page
+		'https://frugpt.com/',
 		// Migrated to Framer - 2026/06/26
 		'https://evos.com.au/',
 		'https://finbox.in/',
