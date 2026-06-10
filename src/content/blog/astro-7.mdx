@@ -24,7 +24,7 @@ Full release highlights include:
 - **[Vite 8](#vite-8)**
 - **[Performance](#performance)**
   - **[Rust Compiler](#rust-compiler)**
-  - **[Sätteri: Markdown & MDX in Rust](#sätteri-markdown--mdx-in-rust)**
+  - **[Markdown & MDX in Rust](#sätteri-markdown--mdx-in-rust)**
   - **[Queued Rendering](#queued-rendering)**
 - **[Advanced Routing](#advanced-routing)**
 - **[AI Enhancements](#ai-enhancements)**
@@ -101,7 +101,8 @@ Moving to Rust allowed us to compile with native binaries instead of the WASM-ba
 
 In isolation, the Rust compiler showed a roughly 6% improvement in build times on docs.astro.build. That's because `.astro` compilation is rarely the bottleneck; Markdown processing and bundling typically dominate build time. But every bit adds up, especially on large sites with thousands of pages, and the compiler's gains compound with the other performance improvements in this release.
 
-### Sätteri: Markdown & MDX in Rust
+### Markdown & MDX in Rust
+
 
 {/*
   - Sätteri is now the default Markdown processor (replaces unified/remark/rehype)
