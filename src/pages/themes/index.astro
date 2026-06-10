@@ -12,7 +12,7 @@ import Portfolio from './_assets/portfolio.webp';
 import ThemeCard from './_components/ThemeCard.astro';
 import type { ThemeAndAuthor } from './_types/index.ts';
 
-export const prerender = true;
+export const prerender = false;
 
 if (Astro.url.searchParams.size > 0) {
 	Astro.redirect(`/themes/1/${Astro.url.searchParams.toString()}`, 301);
