@@ -676,6 +676,13 @@ const scraper = new ShowcaseScraper({
 		'https://arklavo.com',
 		'https://apps.apple.com',
 		'https://play.google.com',
+		// 2026-06-10 - redirects to non-Astro site
+		'https://www.antstack.com/',
+		'https://alexliesenfeld.github.io/',
+		'https://internetoflife.org/',
+		'https://rodydavis.github.io/',
+		'https://offerte.be/',
+		'https://portfolio-yuri.vercel.app',
 	],
 });
 await scraper.run();
