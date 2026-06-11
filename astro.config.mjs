@@ -58,8 +58,27 @@ export default defineConfig({
 		ssr: {
 			noExternal: ['smartypants'],
 		},
+		optimizeDeps: {
+			include: [
+				'astro-icon > @iconify/utils > debug',
+				// TODO: once Expressive Code is refactored/fixed, remove this workaround for
+				// Expressive Code relying on CJS dependencies like postcss not compatible
+				// with non-Node.js compatible environments like Cloudflare.
+				'astro-expressive-code/components',
+				'astro-expressive-code>hast-util-select',
+				'astro-expressive-code>rehype',
+				'astro-expressive-code>unist-util-visit',
+				'astro-expressive-code>rehype-format',
+				'astro-expressive-code>hastscript',
+				'astro-expressive-code>hast-util-from-html',
+				'astro-expressive-code>hast-util-to-string',
+				'astro-expressive-code>@expressive-code/core>postcss',
+			],
+		},
 	},
-	adapter: cloudflare({ imageService: 'compile', prerenderEnvironment: 'node' }),
+	adapter: cloudflare({
+		imageService: 'compile',
+	}),
 	session: { driver: sessionDrivers.lruCache() },
 	experimental: {
 		contentIntellisense: true,
