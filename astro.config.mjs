@@ -9,10 +9,10 @@ import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import houston from './houston.theme.json';
 
-/* On Cloudflare Workers Builds, WORKERS_CI_BRANCH is set to the branch name for non-production deploys */
-const PREVIEW_SITE = process.env.WORKERS_CI_BRANCH
-	? `https://${process.env.WORKERS_CI_BRANCH}.previews.astro.build`
-	: undefined;
+/* On Cloudflare Workers Builds, WORKERS_CI_BRANCH is set to the branch name */
+const branch = process.env.WORKERS_CI_BRANCH;
+const PREVIEW_SITE =
+	branch && branch !== 'main' ? `https://${branch}.previews.astro.build` : undefined;
 
 // https://astro.build/config
 export default defineConfig({
