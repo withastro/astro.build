@@ -24,6 +24,7 @@ export default defineConfig({
 		}),
 		astroExpressiveCode({
 			themes: [houston],
+			shiki: { engine: 'javascript' },
 			styleOverrides: {
 				borderRadius: '0.375rem',
 				borderColor: 'rgb(84 88 100)',
@@ -73,6 +74,7 @@ export default defineConfig({
 				'astro-expressive-code>hast-util-from-html',
 				'astro-expressive-code>hast-util-to-string',
 				'astro-expressive-code>@expressive-code/core>postcss',
+				'astro-expressive-code>@expressive-code/core>postcss-nested',
 			],
 		},
 	},
