@@ -1,7 +1,7 @@
 // @ts-check
 
-import mdx from '@astrojs/mdx';
 import cloudflare from '@astrojs/cloudflare';
+import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig, sessionDrivers } from 'astro/config';
