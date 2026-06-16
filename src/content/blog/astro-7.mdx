@@ -241,7 +241,7 @@ The new implementation doesn't create a full list anymore, instead the list is r
 
 Astro started as a static site generator with file-based routing. Over time, features like middleware, redirects, rewrites, Actions, sessions, and i18n gave Astro apps more server-side power, but they also made the request lifecycle harder to control. If you needed auth to run before Actions, logging to wrap only page rendering, or a non-Astro API to handle some requests first, you had to work around the pipeline instead of composing it directly.
 
-In Astro 7 you can now take full control over Astro's request pipeline by adding a `src/fetch.ts` file to your project. This file exports the standard `fetch` handler pattern popularized by [Cloudflare Workers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [Deno](https://docs.deno.com/runtime/fundamentals/http_server/), and [Bun](https://bun.sh/docs/api/http#bun-serve).
+In Astro 7, you can now take full control over Astro's request pipeline by adding a `src/fetch.ts` file to your project. This file exports the standard `fetch` handler pattern popularized by [Cloudflare Workers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [Deno](https://docs.deno.com/runtime/fundamentals/http_server/), and [Bun](https://bun.sh/docs/api/http#bun-serve).
 
 ```ts title="src/fetch.ts"
 import { astro, FetchState } from 'astro/fetch';
