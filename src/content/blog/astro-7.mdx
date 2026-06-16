@@ -107,7 +107,7 @@ In isolation, the Rust compiler showed a roughly 6% improvement in build times o
 
 ### Markdown & MDX in Rust
 
-Astro 7 replaces the default Markdown and MDX pipeline with [Sätteri](https://satteri.bruits.org/), a Rust-powered processor created by Astro core team member <Mention name="erika" />. Switching the Astro docs and Cloudflare docs builds to Sätteri each shaved over a minute off their build times, making Markdown-heavy sites the biggest winners in Astro 7.
+Astro 7 replaces the default Markdown and MDX pipeline with [Sätteri](https://satteri.bruits.org/), a Rust-powered processor created by Astro core team member <Mention name="erika" />. Switching the Astro docs and Cloudflare docs builds to Sätteri shaved over a minute off their build times, making Markdown-heavy sites the biggest winners in Astro 7.
 
 Until now, Astro's Markdown pipeline ran on [unified](https://unifiedjs.com/) (remark, rehype, and a long tail of JavaScript dependencies). On large sites with thousands of pages, that pipeline was often the slowest phase of the build: each file parsed through JavaScript, run through plugin after plugin over the full AST, then serialized back to HTML. In Astro 6.4, we [made the pipeline pluggable](/blog/astro-640/#new-markdownprocessor-api) and shipped Sätteri as an opt-in alternative. Astro 7 makes it the default.
 
