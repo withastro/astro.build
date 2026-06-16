@@ -24,7 +24,7 @@ Full release highlights include:
 - **[Vite 8](#vite-8)**
 - **[Performance](#performance)**
   - **[Rust Compiler](#rust-compiler)**
-  - **[Markdown & MDX in Rust](#sätteri-markdown--mdx-in-rust)**
+  - **[Markdown & MDX in Rust](#markdown--mdx-in-rust)**
   - **[Queued Rendering](#queued-rendering)**
 - **[Advanced Routing](#advanced-routing)**
 - **[AI Enhancements](#ai-enhancements)**
@@ -107,17 +107,61 @@ In isolation, the Rust compiler showed a roughly 6% improvement in build times o
 
 ### Markdown & MDX in Rust
 
+Astro 7 replaces the default Markdown and MDX pipeline with [Sätteri](https://satteri.bruits.org/), a Rust-powered processor created by Astro core team member <Mention name="erika" />. Switching the Astro docs and Cloudflare docs builds to Sätteri each shaved over a minute off their build times, making Markdown-heavy sites the biggest winners in Astro 7.
 
-{/*
-  - Sätteri is now the default Markdown processor (replaces unified/remark/rehype)
-  - Introduced in Astro 6.4 as an opt-in processor via markdown.processor config
-  - Much faster than unified pipeline — shaved over a minute off Astro and Cloudflare docs builds
-  - Implements many Markdown features natively that previously required plugins
-  - unified() still available via @astrojs/markdown-remark for projects that depend on remark/rehype plugins
-  - Deprecated remark/rehype top-level config options removed (deprecated in 6.4)
-  - Link: AST-162, AST-141
-  - RFC: https://github.com/withastro/roadmap/pull/1364
-*/}
+Until now, Astro's Markdown pipeline ran on [unified](https://unifiedjs.com/) (remark, rehype, and a long tail of JavaScript dependencies). On large sites with thousands of pages, that pipeline was often the slowest phase of the build: each file parsed through JavaScript, run through plugin after plugin over the full AST, then serialized back to HTML. In Astro 6.4, we [made the pipeline pluggable](/blog/astro-640/#new-markdownprocessor-api) and shipped Sätteri as an opt-in alternative. Astro 7 makes it the default.
+
+Under the hood, Sätteri uses [pulldown-cmark](https://github.com/pulldown-cmark/pulldown-cmark) for CommonMark parsing and [OXC](https://oxc.rs/) for MDX expression parsing, both native Rust. It ships platform-specific binaries with a WASM fallback, the same approach used by the new `.astro` compiler. Speed isn't the only win, though. Sätteri also implements many Markdown features natively that previously required separate plugins:
+
+| Feature | unified | Sätteri |
+| -- | -- | -- |
+| GFM (tables, footnotes, strikethrough, task lists) | `remark-gfm` plugin | Built-in, on by default |
+| Smart punctuation (curly quotes, em dashes) | `remark-smartypants` plugin | Built-in |
+| Heading IDs (`## Heading {#custom-id}`) | `remark-heading-id` or similar plugin | Built-in |
+| Container directives (`:::note`) | `remark-directive` plugin | Built-in |
+| Math (`$x^2$`, `$$\sum$$`) | `remark-math` plugin | Built-in |
+| Frontmatter (YAML, TOML) | `remark-frontmatter` plugin | Built-in |
+| Superscript / subscript | `remark-supersub` or similar plugin | Built-in |
+| Wikilinks (`[[Page]]`) | `remark-wiki-link` plugin | Built-in |
+
+Non-default features are enabled through the `features` option:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { satteri } from '@astrojs/markdown-satteri';
+
+export default defineConfig({
+  markdown: {
+    processor: satteri({
+      features: {
+        directive: true,
+        math: true,
+        headingAttributes: true,
+      },
+    }),
+  },
+});
+```
+
+Sätteri has its own plugin API too. Plugins declare which node types they care about and skip the rest, instead of walking the entire tree on every pass. This makes adding plugins much cheaper than in unified, where every plugin traverses every node.
+
+If you depend on remark or rehype plugins, the unified-based pipeline is still available via `@astrojs/markdown-remark`:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
+import remarkToc from 'remark-toc';
+
+export default defineConfig({
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkToc],
+    }),
+  },
+});
+```
+
+Learn more about Sätteri's features and plugin API at [satteri.bruits.org](https://satteri.bruits.org/).
 
 ### Queued Rendering
 
