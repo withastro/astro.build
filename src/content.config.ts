@@ -2,7 +2,22 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import authors from './data/authors/authors.json';
-import { IntegrationCategories } from './data/integration-categories.js';
+
+export const IntegrationCategories = new Map([
+	['recent', 'Recently Added'],
+	['official', 'Official'],
+	['frameworks', 'Frameworks'],
+	['loaders', 'Content Loaders'],
+	['adapters', 'Adapters'],
+	['css+ui', 'CSS + UI'],
+	['performance+seo', 'Performance + SEO'],
+	['analytics', 'Analytics'],
+	['accessibility', 'Accessibility'],
+	['media', 'Images + Media'],
+	['toolbar', 'Dev Toolbar'],
+	['utilities', 'Utilities'],
+	['uncategorized', 'Uncategorized'],
+] as const);
 
 const seoSchema = z.object({
 	title: z.string().min(5).max(120),

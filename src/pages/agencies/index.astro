@@ -8,9 +8,8 @@ import GemIcon from '~/components/GemIcon.astro';
 import MainLayout from '~/layouts/MainLayout.astro';
 import BecomeAPartnerCTA from './_components/BecomeAPartnerCTA.astro';
 
-// TODO: re-enable once Cloudflare supports CDN-Cache-Control in front of a worker
-// export const prerender = false;
-// Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+export const prerender = false;
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
 
 const agencies = (await getCollection('agencies')).sort(() => (Math.random() > 0.5 ? 1 : -1));
 

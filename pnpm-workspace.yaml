@@ -1,11 +1,13 @@
 autoInstallPeers: true
 
+patchedDependencies:
+  astro: patches/astro.patch
+
 allowBuilds:
   '@parcel/watcher': false
   esbuild: false
   puppeteer: false
   sharp: false
-  workerd: false
 
 # Require dependencies to be at least 3 days old before allowing them to be installed.
 minimumReleaseAge: 4320
