@@ -90,7 +90,6 @@ We built a new compiler for the `.astro` component format, now written in Rust. 
 - **No more HTML correction.** The Go compiler silently rewrote your markup to be "valid HTML" by reordering elements, auto-closing tags, and moving nodes around in ways that often surprised users and caused hard-to-debug issues. The new compiler treats your markup as-is.
 - **JSX-style strictness.** Unclosed tags like `<div>Hello` and unterminated attributes like `<div class="Hello >` now produce errors instead of being silently corrected. These are real bugs in templates that the old compiler silently ignored in an attempt to behave like the browser.
 - **JSX whitespace handling.** Whitespace between elements is now collapsed following JSX conventions, matching the behavior of React and other JSX-based frameworks. For example, newlines between inline elements no longer produce a visible space:
-
   ```astro
   <!-- Before: renders as "Hello World" (with a space) -->
   <!-- After: renders as "HelloWorld" (no space) -->
