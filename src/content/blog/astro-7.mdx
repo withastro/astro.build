@@ -232,7 +232,7 @@ export function renderComponentToString(root: unknown): string {
 
 The first implementation of the strategy worked on a two-pass phase:  create an ordered list of components (nodes), and loop the list and render the components.
 
-The new implementation doesn't create a full list anymore, instead the list is rendered (flushed) while it's looped. This final approach is faster than the first iteration, and needs less memory compared to the recursive approach. Early benchmarks showed that it's
+The new implementation doesn't create a full list anymore, instead the list is rendered (flushed) while it's looped. This final approach is faster than the first iteration, and needs less memory compared to the recursive approach.
 
 [^1]: The savings are visible in expressions-dense pages. Static pages wouldn't see much savings.
 
