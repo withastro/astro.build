@@ -102,7 +102,7 @@ We built a new compiler for the `.astro` component format, now written in Rust. 
 
 Moving to Rust allowed us to ship native binaries for supported platforms, with a WASM fallback for environments that need it. This pattern is now standard in the JavaScript tooling world, used by projects such as Rolldown and Lightning CSS. Under the hood, the new compiler is built on [oxc](https://oxc.rs/) for parsing and [Lightning CSS](https://lightningcss.dev/) for CSS scoping.
 
-In isolation, the Rust compiler showed a roughly 6% improvement in build times on docs.astro.build. That's because `.astro` compilation is rarely the bottleneck; Markdown processing and bundling typically dominate build time. But every bit adds up, especially on large sites with thousands of pages, and the compiler's gains compound with the other performance improvements in this release.
+In isolation, the Rust compiler showed a roughly 6% improvement in build times on [https://docs.astro.build](https://docs.astro.build). That's because `.astro` compilation is rarely the bottleneck; Markdown processing and bundling typically dominate build time. But every bit adds up, especially on large sites with thousands of pages, and the compiler's gains compound with the other performance improvements in this release.
 
 ### Markdown & MDX in Rust
 
