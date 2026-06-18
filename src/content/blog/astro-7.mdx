@@ -194,7 +194,7 @@ export function renderComponentToString(node: unknown): string {
 		destination += renderComponentToString(child);
 	}
 
-	destination += `</${node.name}>`; // opening tag
+	destination += `</${node.name}>`; // closing tag
 
 	return destination;
 }
