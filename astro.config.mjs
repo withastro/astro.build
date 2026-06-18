@@ -5,6 +5,7 @@ import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import houston from './houston.theme.json';
@@ -57,9 +58,11 @@ export default defineConfig({
 			noExternal: ['smartypants'],
 		},
 	},
+	markdown: {
+		processor: unified(),
+	},
 	adapter: netlify({ imageCDN: false }),
 	experimental: {
 		contentIntellisense: true,
-		rustCompiler: true,
 	},
 });
