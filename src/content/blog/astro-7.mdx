@@ -180,7 +180,7 @@ export default defineConfig({
 })
 ```
 
-Previously, Astro rendered pages using a recursive approach where children were rendered using the same `render*` function. Below, some pseudocode that explains it:
+Previously, Astro rendered pages using a recursive approach where children were rendered using the same `render*` function, like in the following pseudocode:
 
 ```ts title="render.ts"
 export function renderComponentToString(node: unknown): string {
