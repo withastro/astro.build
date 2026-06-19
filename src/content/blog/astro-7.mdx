@@ -340,12 +340,14 @@ export default defineConfig({
 
 Where route caching really shines is its integration with [live content collections](https://docs.astro.build/en/guides/content-collections/#live-content-collections). A live loader can attach a cache hint to the data it returns, with tags for invalidation and a last-modified time for freshness. Pass that entry straight to `Astro.cache.set()` and Astro reads the hint for you, no manual headers required:
 
-```ts
+```astro title="src/pages/products/[id].astro"
+---
 import { getLiveEntry } from 'astro:content';
 const { entry } = await getLiveEntry('products', Astro.params.id);
 
 // Astro reads the loader's cache hint from the entry:
 Astro.cache.set(entry);
+---
 ```
 
 Cached responses can be purged on demand with `cache.invalidate()`, by tag or by path. For example, you can expose a webhook endpoint for your CMS to call whenever content changes. This maps to each provider's invalidation API, clearing every affected response without a rebuild:
