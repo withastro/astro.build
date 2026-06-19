@@ -303,7 +303,7 @@ If you don't add a `src/fetch.ts` file, Astro behaves exactly as it does today.
 
 ## Route Caching
 
-Caching on-demand rendered responses is harder than it should be. Every host does it differently, and there has never been a standard way to control it from your application code. Astro 7 introduces [route caching](https://docs.astro.build/en/guides/caching/) to solve this. First released experimentally [in Astro 6](/blog/astro-6/#experimental-route-caching), this is now stable, and adds a single platform-agnostic API for caching: set directives in your routes and Astro handles the rest wherever you deploy.
+Caching on-demand rendered responses is harder than it should be. Every host does it differently, and there has never been a standard way to control it from your application code. Astro 7 introduces [route caching](https://docs.astro.build/en/guides/caching/) to solve this. First released experimentally [in Astro 6](/blog/astro-6/#experimental-route-caching), the feature is now stable and adds a single platform-agnostic API for caching: set directives in your routes, and Astro handles the rest wherever you deploy.
 
 You configure a cache provider once, then use `Astro.cache` in your pages (or `context.cache` in API routes and middleware) to control caching per response, based on standard HTTP caching semantics. Astro ships with a built-in `memoryCache` provider to get you started:
 
