@@ -380,7 +380,7 @@ When route caching shipped in Astro 6, it came with a single in-memory provider 
 
 Rather than storing responses in memory, these providers push your caching directives down to the host's edge network, for even faster responses. Cache hits are then served straight from the CDN, without invoking your server function at all.
 
-In a future release these providers will be enabled automatically, but during the experimental phase you should add them manually. Import the provider for your adapter and set it as your cache provider:
+In a future release, these providers will be enabled automatically, but during the experimental phase you should add them manually. Import the provider for your adapter and set it as your cache provider:
 
 ```js title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
