@@ -5,6 +5,7 @@ publishDate: 2026-06-22
 authors:
   - matthew
   - ema
+  - matt
 coverImage: '/src/content/blog/_images/astro-700/blog-post-astro-7.webp'
 socialImage: '/src/content/blog/_images/astro-700/og-astro-7.jpg'
 lang: 'en'
@@ -14,8 +15,9 @@ homepageLink:
 ---
 
 import Mention from '/src/components/Mention.astro';
+import Note from '/src/components/Note.astro';
 
-**Astro 7 is here!** This release is all about speed. The `.astro` compiler has been rewritten in Rust. Markdown and MDX processing now runs through a new Rust-powered pipeline. The rendering engine has been replaced with a faster queue-based approach. Together with Vite 8 and its new Rolldown bundler, Astro 7 builds are 15-61% faster in our benchmarks.
+**Astro 7 is here!** This release is all about speed. The `.astro` compiler has been rewritten in Rust. Markdown and MDX processing now runs through a new Rust-powered pipeline. The rendering engine has been replaced with a faster queue-based approach. Together with Vite 8 and its new Rolldown bundler, Astro 7 builds are 15-61% faster in our benchmarks. The fastest build is the one that doesn't happen at all, so Astro 7 also stabilizes route caching and adds experimental CDN cache providers for Netlify, Vercel, and Cloudflare.
 
 Astro 7 also introduces Advanced Routing, giving you a `src/fetch.ts` entrypoint with full control over Astro's request pipeline. For AI-assisted development, Astro can now detect coding agents, run the dev server in the background, and output structured JSON logs when agents need machine-readable feedback.
 
@@ -27,6 +29,8 @@ Full release highlights include:
   - **[Markdown & MDX in Rust](#markdown--mdx-in-rust)**
   - **[Queued Rendering](#queued-rendering)**
 - **[Advanced Routing](#advanced-routing)**
+- **[Route Caching](#route-caching)**
+  - **[CDN Cache Providers](#cdn-cache-providers)**
 - **[AI Enhancements](#ai-enhancements)**
   - **[Background Dev Server](#background-dev-server)**
   - **[JSON Logging](#json-logging)**
@@ -296,6 +300,114 @@ export default app;
 ```
 
 If you don't add a `src/fetch.ts` file, Astro behaves exactly as it does today.
+
+## Route Caching
+
+Caching on-demand rendered responses is harder than it should be. Every host does it differently, and there has never been a standard way to control it from your application code. Astro 7 introduces [route caching](https://docs.astro.build/en/guides/caching/) to solve this. First released experimentally [in Astro 6](/blog/astro-6/#experimental-route-caching), this is now stable, and adds a single platform-agnostic API for caching: set directives in your routes and Astro handles the rest wherever you deploy.
+
+You configure a cache provider once, then use `Astro.cache` in your pages (or `context.cache` in API routes and middleware) to control caching per response, based on standard HTTP caching semantics. Astro ships with a built-in `memoryCache` provider to get you started:
+
+```js title="astro.config.mjs"
+import { defineConfig, memoryCache } from 'astro/config';
+
+export default defineConfig({
+  cache: {
+    provider: memoryCache(),
+  },
+});
+```
+
+```astro title="src/pages/products/[id].astro"
+---
+Astro.cache.set({
+  maxAge: 120, // Cache for 2 minutes
+  swr: 60, // Serve stale for 1 minute while revalidating
+  tags: ['products'], // Tag for targeted invalidation
+});
+---
+```
+
+You can also define caching rules for groups of routes declaratively in your config with `routeRules`, keeping caching out of your route code entirely:
+
+```js title="astro.config.mjs"
+export default defineConfig({
+  cache: { provider: memoryCache() },
+  routeRules: {
+    '/blog/[...path]': { maxAge: 300, swr: 60 },
+  },
+});
+```
+
+Where route caching really shines is its integration with [live content collections](https://docs.astro.build/en/guides/content-collections/#live-content-collections). A live loader can attach a cache hint to the data it returns, with tags for invalidation and a last-modified time for freshness. Pass that entry straight to `Astro.cache.set()` and Astro reads the hint for you, no manual headers required:
+
+```ts
+import { getLiveEntry } from 'astro:content';
+const { entry } = await getLiveEntry('products', Astro.params.id);
+
+// Astro reads the loader's cache hint from the entry:
+Astro.cache.set(entry);
+```
+
+Cached responses can be purged on demand with `cache.invalidate()`, by tag or by path. For example, you can expose a webhook endpoint for your CMS to call whenever content changes. This maps to each provider's invalidation API, clearing every affected response without a rebuild:
+
+```ts title="src/pages/api/revalidate.ts"
+import type { APIRoute } from 'astro';
+
+export const POST: APIRoute = async ({ request, cache }) => {
+  // A real implementation would validate the request and check a secret token before invalidating.
+
+  const { slug } = await request.json();
+
+  // Invalidate every response tagged 'products'...
+  await cache.invalidate({ tags: ["products"] });
+
+  // ...invalidate every page that used a particular entry...
+  await cache.invalidate({ tags: [`products:${slug}`] });
+
+  // ...or purge a single path directly.
+  await cache.invalidate({ path: `/products/${slug}` });
+
+  return new Response('Revalidated');
+};
+```
+
+
+If you tried route caching while it was experimental, the only change is to move `cache` and `routeRules` out of the `experimental` block to the top level of your config. The API is otherwise unchanged. See the [route caching guide](https://docs.astro.build/en/guides/caching/) for the full reference.
+
+### CDN Cache Providers
+
+When route caching shipped in Astro 6, it came with a single in-memory provider to use with the Node adapter. Astro 7 adds experimental CDN providers for Netlify, Vercel, and Cloudflare (in private beta).
+
+Rather than storing responses in memory, these providers push your caching directives down to the host's edge network, for even faster responses. Cache hits are then served straight from the CDN, without invoking your server function at all.
+
+In a future release these providers will be enabled automatically, but during the experimental phase you should add them manually. Import the provider for your adapter and set it as your cache provider:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import netlify from '@astrojs/netlify';
+import { cacheNetlify } from '@astrojs/netlify/cache';
+
+export default defineConfig({
+  adapter: netlify(),
+  cache: {
+    provider: cacheNetlify(),
+  },
+});
+```
+
+Each adapter exports a provider from its `/cache` entrypoint:
+
+| Adapter | Import | Provider |
+| -- | -- | -- |
+| Netlify | `@astrojs/netlify/cache` | `cacheNetlify()` |
+| Vercel | `@astrojs/vercel/cache` | `cacheVercel()` |
+| Cloudflare <sup>[⚠️](#private-beta)</sup>| `@astrojs/cloudflare/cache` | `cacheCloudflare()` |
+
+The same `Astro.cache`, `routeRules`, and `cache.invalidate()` APIs work with every provider. Each one translates your directives into the platform's native cache-control headers and tag- or path-based purges.
+
+<Note title="Private beta"><a name="private-beta"></a>
+The Cloudflare provider requires the Cloudflare Workers Cache feature, which is currently in private beta. Without beta access it does not work and should not be used.
+</Note>
 
 ## AI Enhancements
 
