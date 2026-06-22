@@ -21,11 +21,19 @@ function isOfficial(pkg) {
 
 /** @param {string} url */
 function sanitizeGitHubUrl(url) {
-	return url
+	const sanitizedUrl = url
 		.replace('git+', '')
 		.replace('.git', '')
 		.replace('git:', 'https:')
 		.replace('git@github.com:', 'https://github.com/');
+
+	// Sometimes the repository field is just a GitHub repo path, e.g. `owner/repo`.
+	// In that case, we want to convert it to a full GitHub URL.
+	if (/^[a-z0-9_-]+\/[a-z0-9_-]+$/i.test(sanitizedUrl)) {
+		return `https://github.com/${sanitizedUrl}`;
+	}
+
+	return sanitizedUrl;
 }
 
 function updateLastModified() {
