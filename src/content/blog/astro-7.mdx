@@ -77,6 +77,7 @@ In our testing, overall build times improved by 15–61%, with some sites buildi
 
 These benchmarks were run on a MacBook Pro Apple M4 Pro with 48 GB of memory:
 
+<div style="overflow-x: auto;">
 | Website | Before | After |
 | -- | -- |-- |
 | [https://docs.astro.build](https://docs.astro.build) (~6,313 pages) | 114.54s | 73.53s |
@@ -85,6 +86,7 @@ These benchmarks were run on a MacBook Pro Apple M4 Pro with 48 GB of memory:
 | [https://developers.cloudflare.com](https://developers.cloudflare.com) (8,431 pages) | 386.89s | 261.94s |
 | [https://tauri.app](https://tauri.app) (7,117 pages) | 86.12s | 55.33s |
 | [https://aspire.dev](https://aspire.dev) (13,275 pages) | 385.84s | 326.11s |
+</div>
 
 
 ### Rust Compiler
@@ -116,6 +118,7 @@ Until now, Astro's Markdown pipeline ran on [unified](https://unifiedjs.com/) (r
 
 Under the hood, Sätteri uses [pulldown-cmark](https://github.com/pulldown-cmark/pulldown-cmark) for CommonMark parsing and [Oxc](https://oxc.rs/) for MDX expression parsing, both native Rust. It ships platform-specific binaries with a WASM fallback, the same approach used by the new `.astro` compiler. Speed isn't the only win, though. Sätteri also implements many Markdown features natively that previously required separate plugins:
 
+<div style="overflow-x: auto;">
 | Feature | unified | Sätteri |
 | -- | -- | -- |
 | GFM (tables, footnotes, strikethrough, task lists) | `remark-gfm` plugin | Built-in, on by default |
@@ -126,6 +129,7 @@ Under the hood, Sätteri uses [pulldown-cmark](https://github.com/pulldown-cmark
 | Frontmatter (YAML, TOML) | `remark-frontmatter` plugin | Built-in |
 | Superscript / subscript | `remark-supersub` or similar plugin | Built-in |
 | Wikilinks (`[[Page]]`) | `remark-wiki-link` plugin | Built-in |
+</div>
 
 Non-default features are enabled through the `features` option:
 
@@ -399,11 +403,13 @@ export default defineConfig({
 
 Each adapter exports a provider from its `/cache` entrypoint:
 
+<div style="overflow-x: auto;">
 | Adapter | Import | Provider |
 | -- | -- | -- |
 | Netlify | `@astrojs/netlify/cache` | `cacheNetlify()` |
 | Vercel | `@astrojs/vercel/cache` | `cacheVercel()` |
 | Cloudflare <sup>[⚠️](#private-beta)</sup>| `@astrojs/cloudflare/cache` | `cacheCloudflare()` |
+</div>
 
 The same `Astro.cache`, `routeRules`, and `cache.invalidate()` APIs work with every provider. Each one translates your directives into the platform's native cache-control headers and tag- or path-based purges.
 
