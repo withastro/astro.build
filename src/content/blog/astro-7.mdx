@@ -1,0 +1,506 @@
+---
+title: 'Astro 7.0'
+description: 'Astro 7.0 brings faster builds with Vite 8, a new Rust compiler, Advanced Routing, background dev server support, and structured logging.'
+publishDate: 2026-06-22
+authors:
+  - matthew
+  - ema
+  - matt
+coverImage: '/src/content/blog/_images/astro-700/blog-post-astro-7.webp'
+socialImage: '/src/content/blog/_images/astro-700/og-astro-7.jpg'
+lang: 'en'
+homepageLink:
+  title: 'Astro 7.0'
+  subtitle: 'Available now!'
+---
+
+import Mention from '/src/components/Mention.astro';
+import Note from '/src/components/Note.astro';
+
+**Astro 7 is here!** This release is all about speed. The `.astro` compiler has been rewritten in Rust. Markdown and MDX processing now runs through a new Rust-powered pipeline. The rendering engine has been replaced with a faster queue-based approach. Together with Vite 8 and its new Rolldown bundler, Astro 7 builds are 15-61% faster in our benchmarks. The fastest build is the one that doesn't happen at all, so Astro 7 also stabilizes route caching and adds experimental CDN cache providers for Netlify, Vercel, and Cloudflare.
+
+Astro 7 also introduces Advanced Routing, giving you a `src/fetch.ts` entrypoint with full control over Astro's request pipeline. For AI-assisted development, Astro can now detect coding agents, run the dev server in the background, and output structured JSON logs when agents need machine-readable feedback.
+
+Full release highlights include:
+
+- **[Vite 8](#vite-8)**
+- **[Performance](#performance)**
+  - **[Rust Compiler](#rust-compiler)**
+  - **[Markdown & MDX in Rust](#markdown--mdx-in-rust)**
+  - **[Queued Rendering](#queued-rendering)**
+- **[Advanced Routing](#advanced-routing)**
+- **[Route Caching](#route-caching)**
+  - **[CDN Cache Providers](#cdn-cache-providers)**
+- **[AI Enhancements](#ai-enhancements)**
+  - **[Background Dev Server](#background-dev-server)**
+  - **[JSON Logging](#json-logging)**
+- **[Community](#community)**
+
+## Upgrade now
+
+To upgrade an existing project to Astro 7, use the automated `@astrojs/upgrade` CLI tool:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+```
+
+For new projects, simply use:
+
+```sh
+npm create astro@latest
+```
+
+See the [upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v7/) for detailed migration steps.
+
+## Vite 8
+
+Astro 7 upgrades to [Vite 8](https://vite.dev/blog/announcing-vite8), the most significant Vite release in years. The headline change: Vite now ships [Rolldown](https://rolldown.rs/), a Rust-based bundler that replaces both esbuild and Rollup with a single, unified bundler. Rolldown is [10-30x faster than Rollup](https://github.com/rolldown/benchmarks) in benchmarks while supporting the same Rollup and Vite plugin APIs.
+
+For Astro users, this means faster builds with no configuration changes for most projects. Vite 8 includes a compatibility layer that auto-converts existing `esbuild` and `rollupOptions` configuration to their Rolldown equivalents. If your project uses custom Vite plugins, most of them should continue to work because Rolldown supports the same plugin API as Rollup.
+
+## Performance
+
+Astro 7 is the fastest version of Astro to date. As usage has grown, more teams have been pushing the boundaries of what type of site can be built with Astro. After we released Astro 6 and its big internal refactor, we set our sights on helping Astro scale to larger and more complex sites.
+
+This is how Astro builds work:
+
+1. Bundle the site's pages, content, and client components into JavaScript.
+2. Run the bundled code like a little server, create requests for each prerendered page, and save the resulting HTML.
+
+Astro 7 improves both steps, but focuses on the first: bundling the site. The biggest gains come from moving some of the slowest parts of the build into native code written in Rust. The generation step is also faster, thanks to a new rendering strategy that more effectively queues sections to be rendered.
+
+In our testing, overall build times improved by 15–61%, with some sites building **more than twice as fast**. Sites where `.astro` compilation and Markdown processing make up a larger share of the build see the biggest gains, since those are exactly the parts that moved to Rust.
+
+These benchmarks were run on a MacBook Pro Apple M4 Pro with 48 GB of memory:
+
+| Website | Before | After |
+| -- | -- |-- |
+| [https://docs.astro.build](https://docs.astro.build) (~6,313 pages) | 114.54s | 73.53s |
+| [https://astro.build](https://astro.build) (~308 pages) | 62.70s | 24.24s |
+| [https://biomejs.dev](https://biomejs.dev) (~6,488 pages) | 176.39s | 149.90s |
+| [https://developers.cloudflare.com](https://developers.cloudflare.com) (8,431 pages) | 386.89s | 261.94s |
+| [https://tauri.app](https://tauri.app) (7,117 pages) | 86.12s | 55.33s |
+| [https://aspire.dev](https://aspire.dev) (13,275 pages) | 385.84s | 326.11s |
+
+
+### Rust Compiler
+
+We built a new compiler for the `.astro` component format, now written in Rust. The compiler is a full rewrite of our previous Go-based compiler that is mostly backwards compatible, except for:
+
+- **No more HTML correction.** The Go compiler silently rewrote your markup to be "valid HTML" by reordering elements, auto-closing tags, and moving nodes around in ways that often surprised users and caused hard-to-debug issues. The new compiler treats your markup as-is.
+- **JSX-style strictness.** Unclosed tags like `<div>Hello` and unterminated attributes like `<div class="Hello >` now produce errors instead of being silently corrected. These are real bugs in templates that the old compiler silently ignored in an attempt to behave like the browser.
+- **JSX whitespace handling.** Whitespace between elements is now collapsed following JSX conventions, matching the behavior of React and other JSX-based frameworks. For example, newlines between inline elements no longer produce a visible space:
+  ```astro
+  <!-- Before: renders as "Hello World" (with a space) -->
+  <!-- After: renders as "HelloWorld" (no space) -->
+  <span>Hello</span>
+  <span>World</span>
+
+  <!-- To preserve the space, use an explicit expression: -->
+  <span>Hello</span>{' '}<span>World</span>
+  ```
+
+Moving to Rust allowed us to ship native binaries for supported platforms, with a WASM fallback for environments that need it. This pattern is now standard in the JavaScript tooling world, used by projects such as Rolldown and Lightning CSS. Under the hood, the new compiler is built on [oxc](https://oxc.rs/) for parsing and [Lightning CSS](https://lightningcss.dev/) for CSS scoping.
+
+In isolation, the Rust compiler showed a roughly 6% improvement in build times on [https://docs.astro.build](https://docs.astro.build). That's because `.astro` compilation is rarely the bottleneck; Markdown processing and bundling typically dominate build time. But every bit adds up, especially on large sites with thousands of pages, and the compiler's gains compound with the other performance improvements in this release.
+
+### Markdown & MDX in Rust
+
+Astro 7 replaces the default Markdown and MDX pipeline with [Sätteri](https://satteri.bruits.org/), a Rust-powered processor created by Astro core team member <Mention name="erika" />. Switching the Astro docs and Cloudflare docs builds to Sätteri shaved over a minute off their build times, making Markdown-heavy sites the biggest winners in Astro 7.
+
+Until now, Astro's Markdown pipeline ran on [unified](https://unifiedjs.com/) (remark, rehype, and a long tail of JavaScript dependencies). On large sites with thousands of pages, that pipeline was often the slowest phase of the build: each file parsed through JavaScript, run through plugin after plugin over the full AST, then serialized back to HTML. In Astro 6.4, we [made the pipeline pluggable](/blog/astro-640/#new-markdownprocessor-api) and shipped Sätteri as an opt-in alternative. Astro 7 makes it the default.
+
+Under the hood, Sätteri uses [pulldown-cmark](https://github.com/pulldown-cmark/pulldown-cmark) for CommonMark parsing and [Oxc](https://oxc.rs/) for MDX expression parsing, both native Rust. It ships platform-specific binaries with a WASM fallback, the same approach used by the new `.astro` compiler. Speed isn't the only win, though. Sätteri also implements many Markdown features natively that previously required separate plugins:
+
+| Feature | unified | Sätteri |
+| -- | -- | -- |
+| GFM (tables, footnotes, strikethrough, task lists) | remark-gfm plugin | Built-in, on by default |
+| Smart punctuation (curly quotes, em dashes) | remark-smartypants plugin | Built-in |
+| Heading IDs | remark-heading-id or similar plugin | Built-in |
+| Container directives | remark-directive plugin | Built-in |
+| Math | remark-math plugin | Built-in |
+| Frontmatter (YAML, TOML) | remark-frontmatter plugin | Built-in |
+| Superscript / subscript | remark-supersub or similar plugin | Built-in |
+| Wikilinks | remark-wiki-link plugin | Built-in |
+
+Non-default features are enabled through the `features` option:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { satteri } from '@astrojs/markdown-satteri';
+
+export default defineConfig({
+  markdown: {
+    processor: satteri({
+      features: {
+        directive: true,
+        math: true,
+        headingAttributes: true,
+      },
+    }),
+  },
+});
+```
+
+Sätteri has its own plugin API too. Plugins declare which node types they care about and skip the rest, instead of walking the entire tree on every pass. This makes adding plugins much cheaper than in unified, where every plugin traverses every node.
+
+If you depend on remark or rehype plugins, the unified-based pipeline is still available via `@astrojs/markdown-remark`:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
+import remarkToc from 'remark-toc';
+
+export default defineConfig({
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkToc],
+    }),
+  },
+});
+```
+
+Learn more about Sätteri's features and plugin API at [satteri.bruits.org](https://satteri.bruits.org/).
+
+### Queued Rendering
+
+Queued rendering was introduced in Astro 6.0 as an experimental option and is now stable and the default rendering engine. It's **~2.4× faster**[^1] in speed!
+
+```js title="astro.config.mjs" del={5-9}
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+	experimental: {
+		queuedRendering: {
+			enabled: true,
+			pooling: true,
+			contentCache: 1000
+		}
+	}
+})
+```
+
+Previously, Astro rendered pages using a recursive approach where children were rendered using the same `render*` function, like in the following pseudocode:
+
+```ts title="render.ts"
+export function renderComponentToString(node: unknown): string {
+	let destination = "";
+	destination += `<${node.name}>`; // opening tag
+
+	// render attributes
+
+	for (const child of node.children) {
+		// Here's where we recurse the children by calling renderComponentToString
+		destination += renderComponentToString(child);
+	}
+
+	destination += `</${node.name}>`; // closing tag
+
+	return destination;
+}
+```
+
+The new engine uses a queue (or stack) and a single loop. The queue is populated with child nodes in the correct order, and the loop keeps rendering nodes until the queue is drained.
+The following pseudocode is an oversimplified version of the real deal, but it should provide a clear picture:
+
+```ts title="render.ts"
+export function renderComponentToString(root: unknown): string {
+	let destination = "";
+	destination += `<${root.name}>`; // opening tag
+
+	// this is our queue, populated and flushed as we render
+	let stack = [root];
+
+	while (stack.length > 0) {
+		const node = stack.pop();
+
+		if (Array.isArray(node)) {
+			// The nodes at the very end must be rendered to destination first
+			for (let i = node.length - 1; i >= 0; i--) stack.push(node[i]);
+			continue;
+		}
+
+		const nodeType = typeof node;
+		if (nodeType === 'string') {
+			destination += escapeHTML(node as string);
+		}
+	}
+	destination += `</${root.name}>`; // opening tag
+	return destination;
+}
+```
+
+The first implementation of the strategy worked on a two-pass phase:  create an ordered list of components (nodes), and loop the list and render the components.
+
+The new implementation doesn't create a full list anymore, instead the list is rendered (flushed) while it's looped. This final approach is faster than the first iteration, and needs less memory compared to the recursive approach.
+
+[^1]: The savings are visible in expressions-dense pages. Static pages wouldn't see much savings.
+
+## Advanced Routing
+
+Astro started as a static site generator with file-based routing. Over time, features like middleware, redirects, rewrites, Actions, sessions, and i18n gave Astro apps more server-side power, but they also made the request lifecycle harder to control. If you needed auth to run before Actions, logging to wrap only page rendering, or a non-Astro API to handle some requests first, you had to work around the pipeline instead of composing it directly.
+
+In Astro 7, you can now take full control over Astro's request pipeline by adding a `src/fetch.ts` file to your project. This file exports the standard `fetch` handler pattern popularized by [Cloudflare Workers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [Deno](https://docs.deno.com/runtime/fundamentals/http_server/), and [Bun](https://bun.sh/docs/api/http#bun-serve).
+
+```ts title="src/fetch.ts"
+import { astro, FetchState } from 'astro/fetch';
+
+export default {
+  fetch(request: Request) {
+    const state = new FetchState(request);
+
+    // Forward API requests to a backend service
+    if (state.url.pathname.startsWith('/api')) {
+      const url = new URL(state.url.pathname + state.url.search, 'https://backend-api.example.com');
+      return fetch(new Request(url, request));
+    }
+
+    // Fallback to Astro pages/endpoints
+    return astro(state);
+  }
+}
+```
+
+The API is also compatible with [Hono](https://hono.dev/), allowing you to bring Hono middleware into your Astro application:
+
+```ts title="src/fetch.ts"
+import { astro } from 'astro/hono';
+import { Hono } from 'hono';
+import { basicAuth } from 'hono/basic-auth';
+
+const app = new Hono();
+app.use(basicAuth({ username: 'admin', password: 'secret' }));
+app.use(astro());
+
+export default app;
+```
+
+For advanced usage, you can compose individual Astro features as separate middleware, giving you full control over the request pipeline. If you've ever used Astro middleware and been frustrated that your auth check ran *after* Astro Actions, or that you couldn't log response timing without wrapping everything yourself, you can now put your code exactly where it needs to be:
+
+```ts title="src/fetch.ts"
+import { Hono } from 'hono';
+import { actions, middleware, pages, i18n } from 'astro/hono';
+import { auth } from './middleware/auth';
+import { timing } from './middleware/timing';
+
+const app = new Hono();
+
+app.use(i18n());
+app.use(auth());       // Auth runs before actions, no unauthenticated calls
+app.use(actions());
+app.use(middleware());
+app.use(timing());     // Timing wraps only page rendering
+app.use(pages());
+
+export default app;
+```
+
+If you don't add a `src/fetch.ts` file, Astro behaves exactly as it does today.
+
+## Route Caching
+
+Caching on-demand rendered responses is harder than it should be. Every host does it differently, and there has never been a standard way to control it from your application code. Astro 7 introduces [route caching](https://docs.astro.build/en/guides/caching/) to solve this. First released experimentally [in Astro 6](/blog/astro-6/#experimental-route-caching), the feature is now stable and adds a single platform-agnostic API for caching: set directives in your routes, and Astro handles the rest wherever you deploy.
+
+You configure a cache provider once, then use `Astro.cache` in your pages (or `context.cache` in API routes and middleware) to control caching per response, based on standard HTTP caching semantics. Astro ships with a built-in `memoryCache()` provider to get you started:
+
+```js title="astro.config.mjs"
+import { defineConfig, memoryCache } from 'astro/config';
+
+export default defineConfig({
+  cache: {
+    provider: memoryCache(),
+  },
+});
+```
+
+```astro title="src/pages/products/[id].astro"
+---
+Astro.cache.set({
+  maxAge: 120, // Cache for 2 minutes
+  swr: 60, // Serve stale for 1 minute while revalidating
+  tags: ['products'], // Tag for targeted invalidation
+});
+---
+```
+
+You can also define caching rules for groups of routes declaratively in your config with `routeRules`, keeping caching out of your route code entirely:
+
+```js title="astro.config.mjs"
+export default defineConfig({
+  cache: { provider: memoryCache() },
+  routeRules: {
+    '/blog/[...path]': { maxAge: 300, swr: 60 },
+  },
+});
+```
+
+Where route caching really shines is its integration with [live content collections](https://docs.astro.build/en/guides/content-collections/#live-content-collections). A live loader can attach a cache hint to the data it returns, with tags for invalidation and a last-modified time for freshness. Pass that entry straight to `Astro.cache.set()` and Astro reads the hint for you, no manual headers required:
+
+```astro title="src/pages/products/[id].astro"
+---
+import { getLiveEntry } from 'astro:content';
+const { entry } = await getLiveEntry('products', Astro.params.id);
+
+// Astro reads the loader's cache hint from the entry:
+Astro.cache.set(entry);
+---
+```
+
+Cached responses can be purged on demand with `cache.invalidate()`, by tag or by path. For example, you can expose a webhook endpoint for your CMS to call whenever content changes. This maps to each provider's invalidation API, clearing every affected response without a rebuild:
+
+```ts title="src/pages/api/revalidate.ts"
+import type { APIRoute } from 'astro';
+
+export const POST: APIRoute = async ({ request, cache }) => {
+  // A real implementation would validate the request and check a secret token before invalidating.
+
+  const { slug } = await request.json();
+
+  // Invalidate every response tagged 'products'...
+  await cache.invalidate({ tags: ["products"] });
+
+  // ...invalidate every page that used a particular entry...
+  await cache.invalidate({ tags: [`products:${slug}`] });
+
+  // ...or purge a single path directly.
+  await cache.invalidate({ path: `/products/${slug}` });
+
+  return new Response('Revalidated');
+};
+```
+
+
+If you tried route caching while it was experimental, the only change is to move `cache` and `routeRules` out of the `experimental` block to the top level of your config. The API is otherwise unchanged. See the [route caching guide](https://docs.astro.build/en/guides/caching/) for the full reference.
+
+### CDN Cache Providers
+
+When route caching shipped in Astro 6, it came with a single in-memory provider to use with the Node adapter. Astro 7 adds experimental CDN providers for Netlify, Vercel, and Cloudflare (in private beta).
+
+Rather than storing responses in memory, these providers push your caching directives down to the host's edge network, for even faster responses. Cache hits are then served straight from the CDN, without invoking your server function at all.
+
+In a future release, these providers will be enabled automatically, but during the experimental phase you should add them manually. Import the provider for your adapter and set it as your cache provider:
+
+```js title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import netlify from '@astrojs/netlify';
+import { cacheNetlify } from '@astrojs/netlify/cache';
+
+export default defineConfig({
+  adapter: netlify(),
+  cache: {
+    provider: cacheNetlify(),
+  },
+});
+```
+
+Each adapter exports a provider from its `/cache` entrypoint:
+
+| Adapter | Import | Provider |
+| -- | -- | -- |
+| Netlify | `@astrojs/netlify/cache` | `cacheNetlify()` |
+| Vercel | `@astrojs/vercel/cache` | `cacheVercel()` |
+| Cloudflare <sup>[⚠️](#private-beta)</sup>| `@astrojs/cloudflare/cache` | `cacheCloudflare()` |
+
+The same `Astro.cache`, `routeRules`, and `cache.invalidate()` APIs work with every provider. Each one translates your directives into the platform's native cache-control headers and tag- or path-based purges.
+
+<Note title="Private beta"><a name="private-beta"></a>
+The Cloudflare provider requires the Cloudflare Workers Cache feature, which is currently in private beta. Without beta access, it does not work and should not be used.
+</Note>
+
+## AI Enhancements
+
+AI coding agents are now part of many developers' workflows, and they need different things from a dev server than humans do. Astro 7 is our first step toward making Astro a better platform for agent-driven development.
+
+### Background Dev Server
+
+AI agents struggle with long-running processes. They shell out, wait for exit, and read output, but a dev server never exits. Agents hang, start duplicate servers, lose track of running instances, or leave zombie processes behind. We see this as part of Astro's automated issue triage as well, with agents sometimes spending more time fumbling with dev servers than testing code.
+
+Astro 7 adds `astro dev --background`, which starts the dev server as a managed background process. **Astro can also detect when it's running inside an AI agent** and enable background mode automatically, so no flags are needed in agent workflows. If no agent is detected, `astro dev` behaves exactly as before.
+
+```sh
+$ astro dev --background
+Dev server running at http://localhost:4321 (pid 12345)
+  Stop:   astro dev stop
+  Status: astro dev status
+  Logs:   astro dev logs
+```
+
+The command blocks until the server is ready to accept requests, reports the URL and process ID, then detaches. No polling, no sleeping, no parsing terminal output for "Local:".
+
+A **lockfile** prevents duplicate instances. If an agent tries to start a second server, it gets back the existing instance's details instead of spawning a conflicting process:
+
+```sh
+$ astro dev --background
+Dev server already running at http://localhost:4321 (pid 12345)
+```
+
+You can check status and stop the server from separate shell sessions:
+
+```sh
+$ astro dev status
+Dev server running at http://localhost:4321 (pid 12345, uptime 123s, background)
+
+$ astro dev stop
+Stopped dev server (pid 12345).
+```
+
+You can also read the background server's logs with `astro dev logs`.
+
+Every command is idempotent and forgiving. Stopping when not running succeeds silently, and starting when already running returns the existing instance. Agents often lose track of process state, and the CLI doesn't punish them for it.
+
+All running dev servers also expose a `/_astro/status` health endpoint that agents can query to confirm the server is alive and ready to accept requests.
+
+### JSON Logging
+
+Astro's logger is now fully configurable. For agents, JSON logging is enabled automatically when agent detection turns on background mode. For everyone else, it's available via the CLI or configuration:
+
+```sh
+astro dev --json
+```
+
+```js title="astro.config.mjs"
+import { defineConfig, logHandlers } from "astro/config";
+
+export default defineConfig({
+  logger: logHandlers.json()
+})
+```
+
+JSON logging was [the most upvoted feature request](https://github.com/withastro/roadmap/discussions/908) on our roadmap, and not just because of AI. Teams deploying Astro SSR to production need structured logs for integration with log aggregation services like Kibana, CloudWatch, and Grafana/Loki. Astro's previous logging was hardcoded for human readability: colors, box-drawing characters, multi-line error formatting. None of that is parseable by machines.
+
+The new logger API also supports custom log handlers and a `compose()` API for combining multiple loggers. For example, you can keep human-readable output in the console while also writing JSON logs for tools that need structured output:
+
+```js title="astro.config.mjs"
+import { defineConfig, logHandlers } from "astro/config";
+
+export default defineConfig({
+  logger: logHandlers.compose(
+    logHandlers.console(),
+    logHandlers.json()
+  )
+})
+```
+
+Learn more about Astro's support for AI tooling in [the AI guide](https://docs.astro.build/en/guides/build-with-ai/).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Special thanks to everyone who contributed to Astro 7 with code, docs, reviews, and testing, including:
+
+[0x K.](https://github.com/0xbejaxer), [0xRozier](https://github.com/0xRozier), [AceCodePt](https://github.com/AceCodePt), [Adam Chalemian](https://github.com/adamchal), [Adam Matthiesen](https://github.com/Adammatthiesen), [Adam McKee](https://github.com/eighty4), [Adam Page](https://github.com/adampage), [Agus Setiawan](https://github.com/agussetia1496-collab), [Ahmad Yasser](https://github.com/AhmadYasser1), [Alejandro Romano](https://github.com/Arecsu), [Alex](https://github.com/SvetimFM), [Alex Dombroski](https://github.com/alexanderdombroski), [Alex Launi](https://github.com/lamalex), [Alexander Flodin](https://github.com/alexanderflodin), [Alexis Aguilar](https://github.com/alexisintech), [Aly Cerruti](https://github.com/s5bug), [Amar Reddy](https://github.com/AmarReddy4), [Andreas Deininger](https://github.com/deining), [Andrei Alba](https://github.com/andreialba), [Antony Faris](https://github.com/antonyfaris), [Ariel K](https://github.com/anaxite), [Ash Hitchcock](https://github.com/ashhitch), [atsbob](https://github.com/atsbob), [B Sai Thrishul](https://github.com/crazylogic03), [Barry](https://github.com/barry3406), [Ben Limmer](https://github.com/blimmer), [Bernd Strehl](https://github.com/Strernd), [BitToby](https://github.com/bittoby), [btea](https://github.com/btea), [Burra Karthikeya](https://github.com/Karthikeya1500), [buschtrisha77](https://github.com/buschtrisha77), [Calvin Liang](https://github.com/Calvin-LL), [Cameron Pak](https://github.com/cameronapak), [Cameron Smith](https://github.com/cameronraysmith), [Carlos Lázaro Costa](https://github.com/Carleslc), [chaegumi](https://github.com/chaegumi), [Chan](https://github.com/enjoyandlove), [Chase McCoy](https://github.com/chasemccoy), [ChrisLaRocque](https://github.com/ChrisLaRocque), [Ciaran Moran](https://github.com/iCiaran), [Corbin Crutchley](https://github.com/crutchcorn), [CyberFlame](https://github.com/CyberFlameGO), [Daniel Bodky](https://github.com/mocdaniel), [Daniel Lo Nigro](https://github.com/Daniel15), [Daniel Zamyatin](https://github.com/ViVaLaDaniel), [Daniil Sivak](https://github.com/seroperson), [Dario Piotrowicz](https://github.com/dario-piotrowicz), [dataCenter430](https://github.com/dataCenter430), [Dawid Gaweł](https://github.com/dmgawel), [Desel72](https://github.com/Desel72), [dfedoryshchev](https://github.com/dfedoryshchev), [Dom Christie](https://github.com/domchristie), [done](https://github.com/dominikg), [Dor Alagem](https://github.com/DORI2001), [Dream](https://github.com/eureka0928), [Ed Melly](https://github.com/edmelly), [Ed Melly](https://github.com/edmelly-pg), [Edgar](https://github.com/grundmanise), [Ellie](https://github.com/ellielok), [Em Poulter](https://github.com/empoulter-uclan), [Eric Grill](https://github.com/EricGrill), [Eric Mika](https://github.com/kitschpatrol), [Eryk Baran](https://github.com/gacek1123), [Eveeifyeve](https://github.com/Eveeifyeve), [fabon](https://github.com/fabon-f), [farshad](https://github.com/fa-sharp), [Felipe Arce](https://github.com/pipe1os), [Felix Schneider](https://github.com/trueberryless), [Felmon](https://github.com/felmonon), [fkatsuhiro](https://github.com/fkatsuhiro), [G Taki@MAX](https://github.com/g-taki), [Giray](https://github.com/aqiray), [Gokhan Kurt](https://github.com/KurtGokhan), [Great Journey](https://github.com/greatjourney589), [Greg L. Turnquist](https://github.com/gregturn), [Harsh Agarwal](https://github.com/harshagarwalnyu), [Haz](https://github.com/diegohaz), [helio-cf](https://github.com/helio-cf), [Henri Fournier](https://github.com/hfournier), [Henri Koskenranta](https://github.com/cheets), [Henry](https://github.com/henrybrewer00-dotcom), [Igor Koop](https://github.com/igor-koop), [Jack Lukic](https://github.com/jlukic), [Jack Moorhouse](https://github.com/moverperfect), [Jack Shelton](https://github.com/thejackshelton), [jahndan](https://github.com/jahndan), [James Basoo](https://github.com/jbasoo), [James Garbutt](https://github.com/43081j), [James Murty](https://github.com/jmurty), [James Opstad](https://github.com/jamesopstad), [Jason P. Cochrane](https://github.com/jpc-ae), [Jett Way](https://github.com/jettwayio), [Jimmy](https://github.com/CaiJimmy), [joel hansson](https://github.com/qzio), [John Mortlock](https://github.com/jmortlock), [Johnny Noble](https://github.com/johnnydecimal), [Jon Ege Ronnenberg](https://github.com/dotnetCarpenter), [Joost de Valk](https://github.com/jdevalk), [Jordan Demaison](https://github.com/demaisj), [Josh Soref](https://github.com/jsoref), [JPette1783](https://github.com/JPette1783), [Julian Wolf](https://github.com/jwoyo), [Julien Cayzac](https://github.com/jcayzac), [Junseong Park](https://github.com/jsparkdev), [Justin Francos](https://github.com/jfrancos), [Kai](https://github.com/kailauber), [kato takeshi](https://github.com/tkskto), [Kedar Vartak](https://github.com/kedarvartak), [Kendell](https://github.com/KTibow), [Kevin Brown](https://github.com/webstackdev), [knj](https://github.com/jp-knj), [Koji Wakamiya](https://github.com/koji-1009), [Konrad Szajna](https://github.com/iseraph-dev), [Kristijan](https://github.com/eldair), [KTrain](https://github.com/KTrain5169), [Kumar Gautam](https://github.com/Gautam-Bharadwaj), [Kyle McLean](https://github.com/kylemclean), [Lee Freeman](https://github.com/leefreemanxyz), [Leif Marcus](https://github.com/leifmarcus), [Leonie](https://github.com/spaceemotion), [Lieke](https://github.com/leekeh), [liruifengv](https://github.com/liruifengv), [LongYC](https://github.com/LongYC), [Louis Escher](https://github.com/louisescher), [Luke Deen Taylor](https://github.com/controversial), [MA2153](https://github.com/MA2153), [Mark Ignacio](https://github.com/mark-ignacio), [Martin DONADIEU](https://github.com/riderx), [Martin Heidegger](https://github.com/martinheidegger), [Martin Trapp](https://github.com/martrapp), [Matheus Baroni](https://github.com/CloudyWSA), [Mathieu Mafille](https://github.com/mathieumaf), [Matthew Justice](https://github.com/JusticeMatthew), [Matthias](https://github.com/not-matthias), [Matthieu Tremblay](https://github.com/matt-trem), [Mavik](https://github.com/themavik), [Max Malkin](https://github.com/maxmalkin), [maxim](https://github.com/maximslo), [meyer](https://github.com/meyer), [Michael Giraldo](https://github.com/michaelgiraldo), [Mike Pagé](https://github.com/mikepage), [Milo](https://github.com/milo417), [Minh Lê](https://github.com/DucMinhNe), [Misrilal](https://github.com/Misrilal-Sah), [MkDev11](https://github.com/MkDev11), [Mochammad Farros Fatchur Roji](https://github.com/farrosfr), [moktamd](https://github.com/moktamd), [Naren](https://github.com/narendraio), [Natan Sągol](https://github.com/merlinnot), [Nicolò Paternoster](https://github.com/adv0r), [Ntale Swamadu](https://github.com/Ntale3), [oab24413gmai](https://github.com/oab24413gmai), [ocavue](https://github.com/ocavue), [Oliver Speir](https://github.com/OliverSpeir), [oliverlynch](https://github.com/oliverlynch), [Ossaid](https://github.com/ossaidqadri), [Patrick Linnane](https://github.com/p-linnane), [Peter Philipp](https://github.com/das-peter), [Phaneendra](https://github.com/9thQuadrant), [Pierre G.](https://github.com/gllmt), [pierreeurope](https://github.com/pierreeurope), [Quetzal Rivera](https://github.com/Eptagone), [R A](https://github.com/ubutatu), [Raanelom](https://github.com/Raanelom), [Rafael Yasuhide Sudo](https://github.com/rururux), [Rahul Dogra](https://github.com/rahuld109), [Rayan Salhab](https://github.com/cyphercodes), [Rodrigo Santos](https://github.com/rodrigosdev), [Rohan Santhosh Kumar](https://github.com/Rohan5commit), [Roman](https://github.com/gameroman), [Roman Kholiavko](https://github.com/kholiavko-roman), [Sam Richard](https://github.com/Snugug), [sanchezmaldonadojesusadrian14-coder](https://github.com/sanchezmaldonadojesusadrian14-coder), [Sanjaiyan Parthipan](https://github.com/sanjaiyan-dev), [sanjibani](https://github.com/sanjibani), [Schahin](https://github.com/SchahinRohani), [Sebastian Beltran](https://github.com/bjohansebas), [Sebastien Barre](https://github.com/sebastienbarre), [Shinya Fujino](https://github.com/morinokami), [Stefan Machhammer](https://github.com/stefanmachhammer), [Stel Clementine](https://github.com/stelcodes), [Tay](https://github.com/buley), [Tee Ming](https://github.com/teemingc), [thelazylama](https://github.com/thelazylamaGit), [Timo Behrmann](https://github.com/z0mt3c), [tmimmanuel](https://github.com/tmimmanuel), [Tobias Breit](https://github.com/pdig-tobiasbreit), [Tom Callahan](https://github.com/thomas-callahan-collibra), [Tomasz Cz-Sokołow](https://github.com/soklovsk), [travisBREAKS](https://github.com/travisbreaks), [Tristan Bessoussa](https://github.com/tristanbes), [Umut Keltek](https://github.com/umutkeltek), [Utpal Sen](https://github.com/senutpal), [Vagno](https://github.com/VagnoDev), [Varun Chawla](https://github.com/veeceey), [Victor Berchet](https://github.com/vicb), [Vladyslav Shevchenko](https://github.com/astrochemx), [Yagiz Nizipli](https://github.com/anonrig), [yy](https://github.com/NAM-MAN), and [翠](https://github.com/sapphi-red)
+
+We hope you enjoy Astro 7. If you run into issues or want to share feedback, please join us on [Discord](https://astro.build/chat), post on [GitHub](https://github.com/withastro/astro/issues), or reach out on [Bluesky](https://bsky.app/profile/astro.build), [Twitter](https://twitter.com/astrodotbuild), and [Mastodon](https://m.webtoo.ls/@astro).
