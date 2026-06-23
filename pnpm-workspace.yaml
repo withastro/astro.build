@@ -11,3 +11,11 @@ allowBuilds:
 
 # Require dependencies to be at least 3 days old before allowing them to be installed.
 minimumReleaseAge: 4320
+minimumReleaseAgeExclude:
+  # Astro v7 packages are too new for the 3-day policy
+  - 'astro@7.0.0'
+  - '@astrojs/mdx@7.0.0'
+  - '@astrojs/netlify@8.0.0'
+  - '@astrojs/markdown-satteri@0.3.1'
+  # Transitive dependency pulled in by astro v7
+  - 'nanoid@3.3.15'
