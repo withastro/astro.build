@@ -52,14 +52,8 @@ export default defineConfig({
 	image: {
 		domains: ['v1.screenshot.11ty.dev', 'storage.googleapis.com', 'avatars.githubusercontent.com'],
 	},
-	vite: {
-		ssr: {
-			noExternal: ['smartypants'],
-		},
-	},
 	adapter: netlify({ imageCDN: false }),
 	experimental: {
 		contentIntellisense: true,
-		rustCompiler: true,
 	},
 });
