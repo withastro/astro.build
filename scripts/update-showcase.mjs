@@ -683,6 +683,14 @@ const scraper = new ShowcaseScraper({
 		'https://rodydavis.github.io/',
 		'https://offerte.be/',
 		'https://portfolio-yuri.vercel.app',
+		// Migrated to Framer - 2026/06/26
+		'https://evos.com.au/',
+		'https://finbox.in/',
+		'https://evenbloom.com/',
+		'https://www.rendair.ai/',
+		'https://www.sweenystudio.com/',
+		'https://witchywellness.app',
+		'https://elysegiroux.com',
 	],
 });
 await scraper.run();
