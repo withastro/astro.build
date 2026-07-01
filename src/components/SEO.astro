@@ -11,10 +11,10 @@ export type SEOMetadata = {
 	canonicalURL?: URL | string | null;
 	locale?: string;
 };
-export type OpenGraph = Partial<SEOMetadata> & {
+export type OpenGraph = {
 	type?: string;
 };
-export type Twitter = Partial<SEOMetadata> & {
+export type Twitter = {
 	handle?: string;
 	card?: 'summary' | 'summary_large_image';
 };
@@ -29,42 +29,29 @@ const {
 	image,
 	locale = 'en',
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
+	og: ogProps = {},
+	twitter: twitterProps = {},
 } = Astro.props;
 
 const og = {
-	name,
-	title,
-	description,
-	canonicalURL,
-	image,
-	locale,
 	type: 'website',
-	...Astro.props.og,
+	...ogProps,
 } satisfies OpenGraph;
 
 const twitter = {
-	name,
-	title,
-	description,
-	canonicalURL,
-	image,
-	locale,
 	card: 'summary_large_image',
-	...Astro.props.twitter,
+	...twitterProps,
 } satisfies Twitter;
 
 /**
  * Enforce some standard canonical URL formatting across the site.
  */
 function formatCanonicalURL(url: string | URL) {
-	const path = url.toString();
-	const hasQueryParams = path.includes('?');
-	// If there are query params, make sure the URL has no trailing slash
-	if (hasQueryParams) {
-		path.replace(/\/?$/, '');
-	}
-	// otherwise, canonical URL always has a trailing slash
-	return path.replace(/\/?$/, hasQueryParams ? '' : '/');
+  const value = url.toString();
+
+  return value.includes('?')
+    ? value.replace(/\/?$/, '')
+    : value.replace(/\/?$/, '/');
 }
 ---
 
@@ -73,22 +60,18 @@ function formatCanonicalURL(url: string | URL) {
 <meta name="description" content={description} />
 
 {/* OpenGraph Tags */}
-<meta property="og:title" content={og.title} />
+<meta property="og:title" content={title} />
 <meta property="og:type" content={og.type} />
-{og.canonicalURL && <meta property="og:url" content={formatCanonicalURL(og.canonicalURL)} />}
-<meta property="og:locale" content={og.locale} />
-<meta property="og:description" content={og.description} />
-<meta property="og:site_name" content={og.name} />
-{og.image && <meta property="og:image" content={og.image.src} />}
-{og.image && <meta property="og:image:alt" content={og.image.alt} />}
+{canonicalURL && <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />}
+<meta property="og:locale" content={locale} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={name} />
+{image && <meta property="og:image" content={image.src} />}
+{image && <meta property="og:image:alt" content={image.alt} />}
 
 {/* Twitter Tags */}
 {twitter.card && <meta name="twitter:card" content={twitter.card} />}
 {twitter.handle && <meta name="twitter:site" content={twitter.handle} />}
-<meta name="twitter:title" content={twitter.title} />
-<meta name="twitter:description" content={twitter.description} />
-{twitter.image && <meta name="twitter:image" content={twitter.image.src} />}
-{twitter.image && <meta name="twitter:image:alt" content={twitter.image.alt} />}
 
 {
 	/*
