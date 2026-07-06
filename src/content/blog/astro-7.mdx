@@ -378,7 +378,7 @@ If you tried route caching while it was experimental, the only change is to move
 
 ### CDN Cache Providers
 
-When route caching shipped in Astro 6, it came with a single in-memory provider to use with the Node adapter. Astro 7 adds experimental CDN providers for Netlify, Vercel, and Cloudflare (in private beta).
+When route caching shipped in Astro 6, it came with a single in-memory provider to use with the Node adapter. Astro 7 adds experimental CDN providers for Netlify, Vercel, and Cloudflare.
 
 Rather than storing responses in memory, these providers push your caching directives down to the host's edge network, for even faster responses. Cache hits are then served straight from the CDN, without invoking your server function at all.
 
@@ -406,10 +406,6 @@ Each adapter exports a provider from its `/cache` entrypoint:
 | Cloudflare <sup>[⚠️](#private-beta)</sup>| `@astrojs/cloudflare/cache` | `cacheCloudflare()` |
 
 The same `Astro.cache`, `routeRules`, and `cache.invalidate()` APIs work with every provider. Each one translates your directives into the platform's native cache-control headers and tag- or path-based purges.
-
-<Note title="Private beta"><a name="private-beta"></a>
-The Cloudflare provider requires the Cloudflare Workers Cache feature, which is currently in private beta. Without beta access, it does not work and should not be used.
-</Note>
 
 ## AI Enhancements
 
