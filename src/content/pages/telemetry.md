@@ -18,7 +18,7 @@ We track general usage information about Astro and different configuration optio
 - Command invoked (`astro build`, `astro dev`, `astro preview`, etc.)
 - Astro version
 - General machine information (e.g. number of CPUs, macOS/Windows/Linux, CI environment, etc.)
-- Development environment (e.g. whether — and which — AI coding agent invoked the CLI)
+- Development environment (e.g. which AI coding agent invoked the CLI, if any)
 - General configuration information (Integrations, adapters, markdown options, etc.)
 - Sanitized error information
 - Toolbar usage (e.g. built-in apps being used)
