@@ -2,7 +2,7 @@
 seo:
   title: Telemetry
   description: Astro collects anonymous telemetry data about general usage to help inform our roadmap. Participation is optional and you may opt-out at any time.
-updated_date: 2026-05-28
+updated_date: 2026-07-13
 ---
 
 The `astro` CLI collects **anonymous telemetry data** about general usage. Participation is optional, and you may opt-out at any time.
@@ -18,7 +18,7 @@ We track general usage information about Astro and different configuration optio
 - Command invoked (`astro build`, `astro dev`, `astro preview`, etc.)
 - Astro version
 - General machine information (e.g. number of CPUs, macOS/Windows/Linux, CI environment, etc.)
-- Development environment (e.g. whether the CLI was invoked by an AI coding agent)
+- Development environment (e.g. whether — and which — AI coding agent invoked the CLI)
 - General configuration information (Integrations, adapters, markdown options, etc.)
 - Sanitized error information
 - Toolbar usage (e.g. built-in apps being used)
