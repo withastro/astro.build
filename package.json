@@ -8,6 +8,7 @@
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
+		"deploy": "wrangler deploy",
 		"lint": "biome lint",
 		"format": "pnpm run format:code && pnpm run format:imports",
 		"format:code": "biome format --write && prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache",
@@ -21,13 +22,12 @@
 	"dependencies": {
 		"@astro-community/astro-embed-youtube": "^0.5.10",
 		"@astrojs/check": "0.9.9",
+		"@astrojs/cloudflare": "^14.1.2",
 		"@astrojs/mdx": "^7.0.2",
-		"@astrojs/netlify": "^8.1.1",
 		"@astrojs/rss": "4.0.19",
 		"@astrojs/sitemap": "3.7.3",
 		"@astrojs/tailwind": "^6.0.2",
 		"@biomejs/biome": "2.5.3",
-		"@netlify/plugin-lighthouse": "^6.0.4",
 		"@preact/signals-core": "^1.14.4",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@types/node": "^24.13.3",
@@ -55,6 +55,7 @@
 		"mdast-util-to-string": "^4.0.0",
 		"p-limit": "^7.3.0",
 		"p-retry": "^8.0.0",
+		"wrangler": "^4.0.0",
 		"yaml": "^2.9.0"
 	},
 	"packageManager": "pnpm@11.11.0"

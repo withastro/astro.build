@@ -1,20 +1,22 @@
 // @ts-check
 
+import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
-import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import { defineConfig } from 'astro/config';
+import { defineConfig, sessionDrivers } from 'astro/config';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import houston from './houston.theme.json';
 
-/* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
-const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
+/* On Cloudflare Workers Builds, WORKERS_CI_BRANCH is set to the branch name for non-production deploys */
+const PREVIEW_SITE = process.env.WORKERS_CI_BRANCH
+	? `https://${process.env.WORKERS_CI_BRANCH}.previews.astro.build`
+	: undefined;
 
 // https://astro.build/config
 export default defineConfig({
-	site: NETLIFY_PREVIEW_SITE || 'https://astro.build',
+	site: PREVIEW_SITE || 'https://astro.build',
 	prefetch: true,
 	integrations: [
 		tailwind({
@@ -22,6 +24,7 @@ export default defineConfig({
 		}),
 		astroExpressiveCode({
 			themes: [houston],
+			shiki: { engine: 'javascript' },
 			styleOverrides: {
 				borderRadius: '0.375rem',
 				borderColor: 'rgb(84 88 100)',
@@ -52,7 +55,33 @@ export default defineConfig({
 	image: {
 		domains: ['v1.screenshot.11ty.dev', 'storage.googleapis.com', 'avatars.githubusercontent.com'],
 	},
-	adapter: netlify({ imageCDN: false }),
+	vite: {
+		ssr: {
+			noExternal: ['smartypants'],
+		},
+		optimizeDeps: {
+			include: [
+				'astro-icon > @iconify/utils > debug',
+				// TODO: once Expressive Code is refactored/fixed, remove this workaround for
+				// Expressive Code relying on CJS dependencies like postcss not compatible
+				// with non-Node.js compatible environments like Cloudflare.
+				'astro-expressive-code/components',
+				'astro-expressive-code>hast-util-select',
+				'astro-expressive-code>rehype',
+				'astro-expressive-code>unist-util-visit',
+				'astro-expressive-code>rehype-format',
+				'astro-expressive-code>hastscript',
+				'astro-expressive-code>hast-util-from-html',
+				'astro-expressive-code>hast-util-to-string',
+				'astro-expressive-code>@expressive-code/core>postcss',
+				'astro-expressive-code>@expressive-code/core>postcss-nested',
+			],
+		},
+	},
+	adapter: cloudflare({
+		imageService: 'cloudflare-binding',
+	}),
+	session: { driver: sessionDrivers.lruCache() },
 	experimental: {
 		contentIntellisense: true,
 	},
