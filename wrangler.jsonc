@@ -1,0 +1,17 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "astro-build",
+	"compatibility_date": "2025-05-13",
+	// Don't expose the production *.workers.dev URL; the site is served via its custom domain.
+	"workers_dev": false,
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true,
+	},
+	"r2_buckets": [
+		{
+			"bucket_name": "site-assets",
+			"binding": "site_assets",
+		},
+	],
+}
