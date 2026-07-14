@@ -16,7 +16,7 @@ homepageLink:
 import Mention from '/src/components/Mention.astro';
 import Note from '/src/components/Note.astro';
 
-**Astro 7.1 is here!** This release is about giving you more control: run multiple dev servers side by side with a new `--no-lock` flag, and shape pagination URLs to match how you actually deploy your site with a `format` function on `paginate()`. It also adds new CSP directives for finer-grained script and style policies, an option to lower memory usage for large content collections, and an experimental way to chunk content storage.
+**Astro 7.1 is here!** This release is about giving you more control: run multiple dev servers side by side with a new `--ignore-lock` flag, and shape pagination URLs to match how you actually deploy your site with a `format` function on `paginate()`. It also adds new CSP directives for finer-grained script and style policies, an option to lower memory usage for large content collections, and an experimental way to chunk content storage.
 
 Explore what's new in this release:
 
@@ -99,13 +99,13 @@ Sometimes you want a second dev server without giving up the one you already hav
 
 Astro 7 introduced a lockfile so that AI coding agents don't accidentally spin up duplicate dev servers for the same project. As a side effect, running `astro dev` while another instance was already active would just error out, even when you started it yourself on purpose.
 
-Astro 7.1 brings that workflow back with a new `--no-lock` flag that skips the lockfile check, so you can start as many dev servers as you like for the same project:
+Astro 7.1 brings that workflow back with a new `--ignore-lock` flag that skips the lockfile check, so you can start as many dev servers as you like for the same project:
 
 ```sh
-astro dev --no-lock
+astro dev --ignore-lock
 ```
 
-The instance started with `--no-lock` runs independently of the others, which means `astro dev stop`, `astro dev status`, and `astro dev logs` won't know about it. It's for cases like this one, where you just need a quick, throwaway second server, not another one you'll manage long-term.
+The instance started with `--ignore-lock` runs independently of the others, which means `astro dev stop`, `astro dev status`, and `astro dev logs` won't know about it. It's for cases like this one, where you just need a quick, throwaway second server, not another one you'll manage long-term.
 
 ## Lower memory usage for large content collections
 
