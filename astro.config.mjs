@@ -9,10 +9,16 @@ import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import houston from './houston.theme.json';
 
-/* On Cloudflare Workers Builds, WORKERS_CI_BRANCH is set to the branch name for non-production deploys */
-const PREVIEW_SITE = process.env.WORKERS_CI_BRANCH
-	? `https://${process.env.WORKERS_CI_BRANCH}.previews.astro.build`
-	: undefined;
+/*
+ * On Cloudflare Workers Builds, WORKERS_CI_BRANCH is set to the branch name for every build,
+ * including production. Only use the branch preview URL for non-production branches, otherwise
+ * production would resolve to https://main.previews.astro.build (see issue #2542).
+ */
+const PRODUCTION_BRANCH = 'main';
+const PREVIEW_SITE =
+	process.env.WORKERS_CI_BRANCH && process.env.WORKERS_CI_BRANCH !== PRODUCTION_BRANCH
+		? `https://${process.env.WORKERS_CI_BRANCH}.previews.astro.build`
+		: undefined;
 
 // https://astro.build/config
 export default defineConfig({
