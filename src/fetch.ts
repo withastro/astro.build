@@ -1,5 +1,5 @@
 import type { Fetchable } from 'astro';
-import { FetchState, astro } from 'astro/fetch';
+import { astro, FetchState } from 'astro/fetch';
 
 export default {
 	async fetch(request: Request): Promise<Response> {
