@@ -28,4 +28,4 @@ Our clients have seen remarkable improvements:
 
 We're a small, senior team. You talk to the people doing the work from the first call to the final handoff.
 
-[See what we've built](https://www.luckymedia.dev/astro-development) · · · · · · [Talk to our founders](https://www.luckymedia.dev/contact)
+[See what we've built](https://www.luckymedia.dev/case-studies/technology/astro) · · · · · · [Talk to our founders](https://www.luckymedia.dev/contact)
