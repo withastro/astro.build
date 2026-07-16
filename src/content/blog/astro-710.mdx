@@ -126,6 +126,31 @@ const docs = defineCollection({
 
 With `deferRender: true`, entries are stored without being rendered during sync. Rendering happens later, on demand, when a page actually needs it, the same way `.mdx` files have always worked. You give up caching rendered HTML across builds, but for large, heavy collections that's a worthwhile trade for lower memory usage during sync.
 
+## Logger improvements
+
+If you have a custom logger, you can now provide a `URL` type. Useful if rely on `import.meta.url`:
+
+```js title="astro.config.mjs" ins={6-9} ins="'unsafe-line'"
+import { defineConfig } from "astro/config"
+
+export default defineConfig({
+	logger: {
+		entrypoint: new URL("./src/custom-logger.js", import.meta.url)
+	}
+})
+```
+
+Additionally, you can use `AstroRuntimeLogger`. This is a useful type you can use in those files that use the runtime Astro logger:
+
+```ts title="src/utils/requestHandler.ts" ins="AstroRuntimeLogger"
+import type { AstroRuntimeLogger } from "astro";
+
+export function handleRequest(req: Request, astroLogger: AstroRuntimeLogger) {
+	astroLogger.info("Comming request");
+}
+```
+
+
 ## Experimental content storage
 
 Historically, content collections save their data into one single, deserialized file called `.astro/data-store.json`. However, for users that have big content collections, this could be a problem because there are some platforms that impose some restrictions of the size of the files.
