@@ -130,15 +130,6 @@ With `deferRender: true`, entries are stored without being rendered during sync.
 
 Custom loggers can now be configured consistently with other APIs you might be using (e.g. fonts or sessions). Passing a URL allows you to override the configuration at runtime or use Vite's built-in features:
 
-```js title="astro.config.mjs" ins={6-9} ins="'unsafe-line'"
-import { defineConfig } from "astro/config"
-
-export default defineConfig({
-	logger: {
-		entrypoint: new URL("./src/custom-logger.js", import.meta.url)
-	}
-})
-```
 
 Additionally, you can use `AstroRuntimeLogger`. This is a useful type you can use in those files that use the runtime Astro logger:
 
@@ -146,7 +137,7 @@ Additionally, you can use `AstroRuntimeLogger`. This is a useful type you can us
 import type { AstroRuntimeLogger } from "astro";
 
 export function handleRequest(req: Request, astroLogger: AstroRuntimeLogger) {
-	astroLogger.info("Comming request");
+	astroLogger.info("Incoming request");
 }
 ```
 
