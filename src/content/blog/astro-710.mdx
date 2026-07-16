@@ -49,7 +49,7 @@ Astro CSP now has built-in support for the following directives, giving you more
 
 These resources are specialized versions of the `script-src` and `style-src` counterparts, and they will allow you to solve problems that you couldn't before.
 
-For example, you can now accept inline styles as unsafe, without giving up safety for external CSS file, like in the following example.
+For example, you can now accept inline styles as unsafe, without giving up safety for external CSS file:
 
 ```js title="astro.config.mjs" ins={6-9} ins="'unsafe-line'"
 import { defineConfig } from "astro/config"
@@ -109,7 +109,7 @@ The instance started with `--ignore-lock` runs independently of the others, whic
 
 ## Lower memory usage for large content collections
 
-The `glob()` loader renders your Markdown entries as soon as it syncs your content collection, and caches the rendered HTML so it doesn't have to do that work again on the next build. For most sites that's a great trade: sync is a little more expensive, but rebuilds are fast.
+The `glob()` loader renders your Markdown entries as soon as it syncs your content collection, and caches the rendered HTML so it doesn't have to do that work again on the next build. For most sites, that's a great trade: sync is a little more expensive, but rebuilds are fast.
 
 That trade gets more expensive as a collection grows, or as rendering produces more output than its source Markdown. Caching all of that rendered HTML in memory during sync adds up.
 
@@ -128,7 +128,7 @@ With `deferRender: true`, entries are stored without being rendered during sync.
 
 ## Logger improvements
 
-If you have a custom logger, you can now provide a `URL` type. Useful if rely on `import.meta.url`:
+Custom loggers can now be configured consistently with other APIs you might be using (e.g. fonts or sessions). Passing a URL allows you to override the configuration at runtime or use Vite's built-in features:
 
 ```js title="astro.config.mjs" ins={6-9} ins="'unsafe-line'"
 import { defineConfig } from "astro/config"
@@ -153,9 +153,9 @@ export function handleRequest(req: Request, astroLogger: AstroRuntimeLogger) {
 
 ## Experimental content storage
 
-Historically, content collections save their data into one single, deserialized file called `.astro/data-store.json`. However, for users that have big content collections, this could be a problem because there are some platforms that impose some restrictions of the size of the files.
+Historically, content collections save their data into one single, deserialized file called `.astro/data-store.json`. However, for users who have big content collections, this could be a problem because there are some platforms that impose restrictions on the size of files.
 
-Astro has now and experimental flag called `experimental.collectionStorage` that allows you to chunk the data into multiple files:
+Astro now has an experimental flag called `experimental.collectionStorage` that allows you to chunk the data into multiple files:
 
 ```js title="astro.config.mjs" ins={4-6}
 import { defineConfig } from "astro/config"
