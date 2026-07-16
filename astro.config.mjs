@@ -67,6 +67,7 @@ export default defineConfig({
 		},
 		optimizeDeps: {
 			include: [
+				'@preact/signals-core',
 				'astro-icon > @iconify/utils > debug',
 				// TODO: once Expressive Code is refactored/fixed, remove this workaround for
 				// Expressive Code relying on CJS dependencies like postcss not compatible
