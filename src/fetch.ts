@@ -11,11 +11,19 @@ export default {
 		// failures on preview deployments).
 		if (url.pathname.startsWith('/fonts/')) {
 			const fontsUrl = `https://fonts-cdn.astro.build${url.pathname.replace('/fonts/', '/')}${url.search}`;
-			return fetch(fontsUrl, {
-				headers: {
-					Origin: 'https://astro.build',
-				},
-			});
+			try {
+				return await fetch(fontsUrl, {
+					headers: {
+						Origin: 'https://astro.build',
+					},
+				});
+			} catch (error) {
+				// The font CDN can be unreachable (e.g. in local dev the origin-locked
+				// host isn't resolvable). Degrade to a 404 so a failed font request
+				// doesn't surface as a 500 that breaks the whole page.
+				console.error(`[fonts] failed to proxy ${fontsUrl}:`, error);
+				return new Response('Font not found', { status: 404 });
+			}
 		}
 
 		const state = new FetchState(request);
