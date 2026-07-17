@@ -709,6 +709,10 @@ const scraper = new ShowcaseScraper({
 		'https://vortexa.com/',
 		'https://www.futuresuper.com.au/',
 		'https://www.lucidmotors.com/',
+		// 2026-07-17 - redirects to a destination no longer running Astro / duplicate showcase entry
+		'https://www.lizardshield.org/',
+		'https://starlight-detector.trueberryless.org',
+		'https://yoyle.city',
 	],
 });
 await scraper.run();
