@@ -691,6 +691,18 @@ const scraper = new ShowcaseScraper({
 		'https://www.sweenystudio.com/',
 		'https://witchywellness.app',
 		'https://elysegiroux.com',
+		// Migrated to Next.js - 2026/07/02
+		'https://cooooolt.com',
+		'https://docs.openstatus.dev/',
+		'https://hi-interns.com/',
+		'https://moment.com/',
+		'https://mueller-solutions.dev',
+		'https://pricingpatterns.com/',
+		'https://votes.decisiondeskhq.com/',
+		'https://safetychain.com',
+		'https://vortexa.com/',
+		'https://www.futuresuper.com.au/',
+		'https://www.lucidmotors.com/',
 	],
 });
 await scraper.run();
