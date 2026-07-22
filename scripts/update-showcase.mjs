@@ -771,6 +771,18 @@ const scraper = new ShowcaseScraper({
 		'https://x7md.net',
 		'https://yuxxeun.now.sh',
 		'https://zawody.agilix.dog',
+		// Migrated away from Astro - 2026/07/17
+		'https://farrosfr.com',
+		'https://ffbloggen.nl/',
+		'https://naim.blog',
+		'https://codenanshu.in',
+		'https://corset.dev/',
+		'https://tapcounter.top/',
+		'https://www.crossriver.com/',
+		'https://samaya.ai/',
+		'https://varda.com/',
+		// Duplicate showcase entry - 2026-07-22 - redirects to vtbag.dev, already listed separately
+		'https://vtbag.pages.dev/',
 	],
 });
 await scraper.run();
