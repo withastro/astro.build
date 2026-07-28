@@ -155,8 +155,14 @@ Never miss an Astro event by subscribing to the [Astro Luma Calendar](https://lu
 
 **Need to write text around these items!!**
 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'codetv-gsap-cloud.webflow.io')} />
+</div>
+
 - [CodeTV GSAP Webflow contest](https://codetv-gsap-cloud.webflow.io/)
 - https://okaydev.co/articles/sweep-the-day-away (blog about CodeTV entry)
+
+
 
 <YouTubeGrid
   maxCols={2}
@@ -412,6 +418,7 @@ Looking for even more inspiration? See all the community member websites submitt
 <MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
 */}
 export const extraSitesToExclude = [
+    "codetv-gsap-cloud.webflow.io",
 ];
 
 export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites, ...extraSitesToExclude, ...contentTools, ...monthlyTools]
