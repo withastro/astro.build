@@ -28,7 +28,6 @@ import Note from '~/components/Note.astro';
 
 {/*
 import MonthlyTools from './_whats-new-components/MonthlyTools.astro';
-
 <MonthlyTools date={frontmatter.startDate} /> 
 */}
 
@@ -66,7 +65,7 @@ Minor releases introduce new features and improvements. Check out what's new!
 
 ## Astro Adopters
 
-From Mozilla to Supabase, from Framework to System76, some of the biggest names you know are using Astro!
+From Mozilla to Supabase, from Framework to System76, some of the biggest names you know are using Astro Starlight for docs!
 
 export const featuredSites = [
   "www.thunderbolt.io",
@@ -98,8 +97,6 @@ export const monthlySites = [
 'howtostore.food',
 'quiz-camisetas.moisesvalero.es',
 'stitchopia.com',
-
-
 ]; 
 
 {/* Use for grids of 2 per row  */}
@@ -218,8 +215,7 @@ Be sure to follow [Astro's official YouTube channel](https://www.youtube.com/ast
 
 Grab your popcorn and make a playlist of your faves! 🍿
 
-<YouTubeGrid
-  maxCols={3}
+<YouTubeGrid maxCols={3}
   videos={[
     { id: "https://www.youtube.com/watch?v=A2JTsIeNqow", title: "Web dev is finally healing"},
     { id: "https://www.youtube.com/watch?v=KBOgV7kuSm8", title: "What Astro's new compiler means for you"},
@@ -239,6 +235,8 @@ Grab your popcorn and make a playlist of your faves! 🍿
 
 ## Tips & Tools
 
+- [Starlight Layouts](https://github.com/dagilleland/starlight-layouts) is a tutorial and live demo site for overriding Starlight components to build custom page layouts, while keeping Starlight's own defaults available on every page that doesn't opt in. Learn how to override Starlight's components to build custom page layouts and how to package and publish your custom page layouts as Starlight plugins.
+
 {/* This month saw several new goodies for managing your content and UI: */}
 
 export const contentTools = [
@@ -257,127 +255,97 @@ export const contentTools = [
 
 The latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
 
-**Raw script dump -- need to go through!!**
 
-- [@42a/ael-astro](https://www.42a.ai): Astro integration for the 42a Agentic Enablement Layer: markdown page variants, llms.txt and an MCP server for your site with one integrations entry.
-- [@achimismaili/easy-web-seo](https://github.com/achimismaili/easy-web#readme): Shared SEO primitives for @achimismaili/easy-web-* consumer instances — Astro integration wrapping @astrojs/sitemap with i18n hreflang, dynamic robots.txt route with noIndex mode, and `<SeoHead>` component (canonical, OpenGraph, Twitter Cards, hreflang, the
-- [@adkinn/astro-ai-readiness](https://github.com/adkinn/astro-ai-readiness#readme): AI Readiness toolkit for Astro — six JSON-LD components plus llms.txt, llms-full.txt, agents.md, robots.txt, and .well-known/mcp.json outputs.
-- [@advastro/astro-component-tester](https://github.com/advanced-astro/astro-component-tester#readme): Utility to test Astro components
-- [@ai2web/astro](https://www.npmjs.com/package/@ai2web/astro): Astro integration that serves all AI2Web routes (/ai2w, /.well-known/ai2w, llms.txt, agent.json, actions) from one manifest.
-- [@astro-slides/core](https://jluterek.github.io/astro-slides/): Astro integration, Vite plugins, and the slide compilation pipeline.
-- [@astroscope/node](https://github.com/entwico/astroscope/tree/main/packages/node#readme): Opinionated, cloud-friendly Node adapter for Astro: boot lifecycle, health probes, request logging, telemetry, CSRF and static serving run as plain code around server.listen()
-- [@avovix/astro-loader-payload](https://github.com/avovix/bridge/tree/main/packages/astro-loader-payload#readme): Astro content layer loader for PayloadCMS, with build-time and live collections and full typed.
+- [@advastro/astro-component-tester](https://github.com/advanced-astro/astro-component-tester#readme): Utility to help you write tests for your Astro components.
+- [@astro-slides/core](https://jluterek.github.io/astro-slides/): Author decks in Markdown and MDX. Present in the browser. Export to PDF, PNG, and editable PowerPoint.
+- [@astroscope/node](https://github.com/entwico/astroscope/tree/main/packages/node#readme): Opinionated, cloud-friendly Node adapter for Astro: boot lifecycle, health probes, request logging, telemetry, CSRF and static serving run as plain code around `server.listen()`
 - [@ceynri/astro-toc-rail](https://github.com/ceynri/astro-toc-rail#readme): A restrained, PC-only rail-style table of contents for long-form Astro articles, with 2D scroll progress and a reading percentage.
-- [@cmsstatic/astro](https://github.com/Thinkmill/keystatic#readme): 
-- [@codeyam/cms](https://github.com/codeyam-ai/codeyam-cms): An installable, Git-backed content management system for Astro sites. Ships an Astro integration that injects a /admin dashboard plus an integrate CLI that wires the CMS into any Astro project. Designed for static (GitHub Pages) and server-rendered site
-- [@component-anatomy/astro](https://github.com/julien-deramond/component-anatomy#readme): Astro integration for component-anatomy — SSR-rendered anatomy panels with live hover sync
-- [@coszone/koharu-astro](https://github.com/cosZone/koharu-suite#readme): Typed Koharu Suite client and Astro 6/7 Live Content Collection loaders.
-- [@dagilleland/layout-dashboard](https://gilleland.ca/starlight-layouts/tutorial/dashboard-layout/): Full-width Starlight layout for a widget grid, plus reusable DashboardGrid/Widget stat-tile components usable in any Starlight page. One of four layout packages from Starlight Layouts.
-- [@dagilleland/layout-full-width](https://gilleland.ca/starlight-layouts/tutorial/full-width-layout/): Starlight layout that drops the right-hand table of contents and lets page content use the full available width. One of four layout packages from Starlight Layouts.
-- [@dagilleland/layout-minimal](https://gilleland.ca/starlight-layouts/tutorial/minimal-layout/): Starlight layout that strips a page down to just header and content — no navigation sidebar, no table of contents. One of four layout packages from Starlight Layouts.
-- [@dagilleland/layout-with-aside](https://gilleland.ca/starlight-layouts/tutorial/aside-layout/): Starlight layout that adds a callout panel alongside the default table of contents, without replacing it. One of four layout packages from Starlight Layouts.
-- [@dagilleland/starlight-plugin-layouts](https://gilleland.ca/starlight-layouts/tutorial/starlight-plugin/): Starlight plugin that bundles all four Starlight Layouts packages and registers their component overrides automatically — no override files to create.
-- [@deskcrew/astro](https://deskcrew.io/integrations/astro): Astro integration that adds the DeskCrew support widget (live chat, instant answers and a help center) to every page.
-- [@documental-xyz/core](https://github.com/Documental-xyz/Core#readme): Documental Core — geo-narrative static sites with CMS
-- [@elrond25/astro-sandpack](https://www.npmjs.com/package/@elrond25/astro-sandpack): A plug-and-play Sandpack interactive coding environment for Astro.
-- [@foresightjs/astro](https://foresightjs.com/): Astro integration for ForesightJS. Predictive prefetching that fires before hover, configured like Astro's built-in prefetch strategies.
-- [@formvue/embed-astro](https://formvue.com): Native Astro component for FormVue lead-capture embeds with zero UI-framework configuration.
-- [@gansotech/astro-datasource-gitlab](https://github.com/ganso-technologies/astro-datasource-gitlab#readme): Astro content loader that fetches Markdown docs and their assets from a GitLab repository over the REST API. Built for Starlight docs sites, works with any content collection.
-- [@gcwjkj/dfgrow-base](https://dfgrow.com): Dengfeng Growth — reusable Astro SEO/GEO/performance infrastructure for client websites
-- [@givebest/astro-grab](https://astro-grab.nickradford.dev): Grab context for coding agents directly from your astro site.
-- [@goodbyenjn/astro-mdx](https://github.com/goodbyenjn/astro/tree/main/packages/integrations/mdx): [Forked] Add support for MDX pages in your Astro site, and process Markdown files with the same MDX pipeline
-- [@igorskyflyer/astro-component](https://github.com/igorskyflyer/npm-astro-component): 🚀 A CLI tool for bootstrapping Astro components with test-ready scaffolding, render logic, props, slots, and Vitest setup included.  🧪
-- [@ilha/astro](https://github.com/ilhajs/ilha/tree/main/packages/astro#readme): Astro integration for Ilha islands
-- [@jorgejhms/astro-seo-meta-tags](https://github.com/jorgejhms/astro-seo-meta-tags#readme): A drop-in Astro component for SEO meta tags: Open Graph, Twitter Cards, canonical URLs and JSON-LD structured data (Product schema).
-- [@knutle/writenex-astro](https://github.com/knutle/writenex): Visual editor for Astro content collections - WYSIWYG editing for your Astro site.
-- [@kurkle/astro-chartjs-editor](https://github.com/kurkle/astro-chartjs-editor#readme): Editable Chart.js samples in Astro Markdown
-- [@kyro-cms/astro](https://github.com/danielDozie/kyro-cms#readme): Astro 5+ integration, Content Layer loaders, Actions, Middleware, Dev Toolbar widget, and Zero-JS components for Kyro CMS
-- [@liquidglassjs/core](https://github.com/amir-abushanab/liquid-glass-js/tree/main/packages/core#readme): SVG-first liquid glass for the web (feDisplacementMap on live DOM), with WebGL + QR escape hatches. Recreated from the technique described in Aave's "Building Glass for the Web".
-- [@mano8/astro-prompt-m8](https://github.com/mano8/astro-prompt-m8#readme): Astro integration and headless client for prompt-engine-m8.
-- [@mano8/astro-reparto-m8](https://github.com/DocentesTools/astro-reparto-m8#readme): Astro integration and headless client for reparto-docente-m8.
-- [@markgrafhq/starlight-markgraf](https://github.com/markgrafhq/starlight-markgraf#readme): Starlight/Astro integration for embedding markgraf animations. Transforms ```markgraf fenced code blocks into a live player and exposes a `<Markgraf src="…" />` component.
-- [@mattthehat/astro-cms](https://github.com/mattthehat/astro-cms#readme): Config-driven admin CMS for Astro: one resource config renders a full list/create/edit/view/delete screen with search, filters, sorting and pagination, DB-agnostic via a small adapter interface.
+- [@igorskyflyer/astro-component](https://github.com/igorskyflyer/npm-astro-component): A CLI tool for bootstrapping Astro components with test-ready scaffolding, render logic, props, slots, and Vitest setup included.
+- [@liquidglassjs/core](https://github.com/amir-abushanab/liquid-glass-js/tree/main/packages/core#readme): SVG-first liquid glass for the web with WebGL + QR escape hatches. Provides `<LiquidGlass>` and `<LiquidGlassFont>` Astro components.
 - [@mattthehat/astro-forms](https://github.com/mattthehat/astro-forms#readme): Config-driven forms for Astro: one typed config renders the form and parses + validates the submission, with per-field return types inferred.
-- [@mcorg/astro-translate](https://github.com/mcendon/astro-translate): The translate integration for Astro
-- [@menestrel/astro](https://menestrel.dev): Astro Content Layer loader and components for Menestrel: typed content collections, immutable snapshots, zero runtime requests
-- [@mosketerosgroup/mosketeros-ui](https://www.npmjs.com/package/@mosketerosgroup/mosketeros-ui): UI library for Mosketeros Group
-- [@onlyfonts/unifont](https://onlyfonts.ai): unifont provider for onlyfonts — use the privacy-first, EU-hosted onlyfonts font CDN in Astro, Nuxt, and anything built on unifont
-- [@pago-sh/astro](https://www.npmjs.com/package/@pago-sh/astro): Integração da pago.sh para Astro
-- [@plutotcool/payload-astro-preview](https://github.com/plutotcool/payload-astro-preview#readme): Signed draft preview sessions between a Payload CMS and an Astro site.
+- [@onlyfonts/unifont](https://onlyfonts.ai): unifont provider for onlyfonts — use the privacy-first, EU-hosted onlyfonts font CDN in Astro, Nuxt, and anything built on unifont.
 - [@prosefly/astro-theme-lotus](https://astro-theme-lotus.prosefly.dev): An installable documentation theme for Astro.
-- [@respectify/astro](https://www.npmjs.com/package/@respectify/astro): Respectify-powered commenting for Astro — AI moderation, spam filtering, and beautiful UX out of the box.
-- [@respectify/astro-moderation](https://www.npmjs.com/package/@respectify/astro-moderation): Thin Astro integration for Respectify comment moderation — API key in, approve/block + feedback out.
-- [@space-coast-devs/astro-discord-membership](https://github.com/SpaceCoastDevs/astro-discord-membership#readme): Astro integration that adds Discord-based community membership — auth, member directory, profiles, and email verification.
-- [@stellayazilim/mcp-starlight](https://github.com/stellayazilim/mcp-starlight#readme): Give any Astro Starlight docs site an MCP server. Build-time catalog + stdio server over npx — no hosting required, works on GitHub Pages. Locale- and version-aware.
-- [@storesynk/astro](https://www.npmjs.com/package/@storesynk/astro): Astro integration for Storesynk — server-rendered Shopify data inside Storesynk tags, adopted flash-free by the client runtime.
-- [@styleflow.app/astro](https://styleflow.app): StyleFlow authoring for Astro: `<S as="...">` and `<S.*>` primitives that declare intent (tone, layoutRole, ty/v/w) instead of visual values.
-- [@system76/satteri-relative-markdown-links](https://github.com/system76/satteri-relative-markdown-links): Rewrite relative markdown links to site page paths, as a satteri mdast plugin.
-- [@thenewdynamic/astro-debug-actions](https://github.com/theNewDynamic/astro-debug-actions): Astro integration for a dev-only debug panel with breakpoint visualization
-- [@vdaluz/astro-affiliate](https://github.com/vdaluz/astro-affiliate#readme): FTC-compliant affiliate-link catalog resolver and disclosure components - proven in production on vdaluz.com and imperfectsystems.com.
-- [@vdaluz/astro-blog](https://github.com/vdaluz/astro-blog#readme): Token-driven Astro blog components, related-posts scoring, a schema factory, and Shiki config - proven in production on vdaluz.com and imperfectsystems.com.
-- [@vdaluz/astro-og-cards](https://github.com/vdaluz/astro-og-cards#readme): Build-time OG/social-card generation (satori + sharp) and meta-tag emission for Astro - proven in production on vdaluz.com and imperfectsystems.com.
-- [@vdaluz/astro-opt-in-analytics](https://github.com/vdaluz/astro-opt-in-analytics#readme): Consent-first analytics for Astro: an opt-in prompt, a script gate, and zero tracking requests until the visitor says yes - proven in production on vdaluz.com and imperfectsystems.com.
-- [@verbaly/astro](https://verbaly-web.vercel.app/docs/frameworks/astro): Astro integration for Verbaly: write-in-source extraction for .astro files plus automatic per-locale static rendering.
-- [@viget/choreo](https://github.com/viget/choreo#readme): Choreo — minimal, library-agnostic component orchestration for Astro: automatic DOM detection, dependency-ordered initialization, global event coordination, and cleanup.
-- [@xingwangzhe/stalux](https://stalux.needhelp.icu): A powerful, modern Astro blog theme — use as template or install as plugin
-- [@xsynaptic/astro-image-loader](https://github.com/xsynaptic/astro-lab/tree/main/packages/astro-image-loader#readme): An Astro content layer loader that treats images as content entries, with incremental sync, caching, and pluggable metadata extraction
-- [@xsynaptic/satteri-reading-time](https://github.com/xsynaptic/astro-lab/tree/main/packages/satteri-reading-time#readme): Sätteri mdast plugin that computes multilingual reading time and injects it into Astro frontmatter.
-- [astro-aeo](https://zaai.com/astro-aeo/): Answer Engine Optimization for Astro: .md companion pages, llms.txt, llms-full.txt, robots.txt AI-bot policies, domain-profile.json, sitemap auto-wiring, JSON-LD components, and a validator CLI.
-- [astro-asciinema](https://github.com/nhedger/astro-asciinema#readme): Astro integration and component for embedding asciinema terminal recordings
-- [astro-asset-map](https://github.com/vfshera/astro-asset-map#readme): Type-safe asset lookup for Astro.
-- [astro-biel](https://docs.biel.ai/installation/astro): Ask AI bot for technical documentation.
-- [astro-chat-widget](https://chat-widget.egor-solovev.dev/): Self-contained AI chat widget for Astro sites: streaming SSE answers, native `<dialog>`, iOS-keyboard-proof mobile sheet, zero framework runtime.
-- [astro-d1-comments](https://github.com/jedibrillo/astro-d1-comments#readme): Self-hosted comments for Astro sites on Cloudflare Workers: D1 storage, Turnstile spam protection, pending-by-default moderation with a built-in admin page and CLI.
-- [astro-downgrade-heading](https://github.com/nhedger/astro-downgrade-heading#readme): Astro integration and plugins for downgrading Markdown heading levels
-- [astro-emit-asset](https://github.com/delucis/astro-emit-asset): Emit static assets from Astro components and endpoints
-- [astro-font-preload](https://github.com/Araluma/astro-font-preload#readme): Astro integration: inject `<link rel=preload>` for your fonts and render-blocking CSS into every built page, plus _headers Link lines so Early Hints (103) fetches them during server-think time. Fails loud instead of silently shipping a FOIT regression.
-- [astro-lilypond](https://lilypond.ky.fyi): An Astro integration for rendering Lilypond markup to music notation.
-- [astro-link-validator](https://github.com/rodgtr1/astro-link-validator#readme): An Astro integration that validates links during build time
-- [astro-madao](https://github.com/blazardsky/madao#readme): Markdown alternative for easier AI access to your Astro site.
-- [astro-mailkite](https://mailkite.dev/docs): MailKite for Astro — receive inbound email as a signed webhook route in your Astro app, and send over your verified domain.
-- [astro-mermaid-satteri](https://github.com/mrSamDev/astro-mermaid-satteri#readme): Astro integration for rendering Mermaid diagrams with Sätteri, auto dark/light theme switching, and View Transitions support.
-- [astro-mesurer](https://github.com/OliverSpeir/mesurer-astro-toolbar#readme): Measure and align elements from the Astro dev toolbar with Mesurer.
+- [@vdaluz/astro-affiliate](https://github.com/vdaluz/astro-affiliate#readme): FTC-compliant affiliate-link catalog resolver and disclosure components.
+- [@vdaluz/astro-blog](https://github.com/vdaluz/astro-blog#readme): Token-driven Astro blog components, related-posts scoring, a schema factory, and Shiki config.
+- [@vdaluz/astro-og-cards](https://github.com/vdaluz/astro-og-cards#readme): Build-time OG/social-card generation (satori + sharp) and meta-tag emission for Astro.
+- [@vdaluz/astro-opt-in-analytics](https://github.com/vdaluz/astro-opt-in-analytics#readme): Consent-first analytics for Astro: an opt-in prompt, a script gate, and zero tracking requests until the visitor says yes.
+- [astro-asset-map](https://github.com/vfshera/astro-asset-map#readme): Type-safe asset lookup for Astro. Reference files in `src/assets` without writing import statements.
+- [astro-chat-widget](https://github.com/eeegoloauq/astro-chat-widget): Self-contained AI chat widget for Astro sites: streaming SSE answers, native `<dialog>`, iOS-keyboard-proof mobile sheet, zero framework runtime.
+- [astro-emit-asset](https://github.com/delucis/astro-emit-asset): Emit static assets from Astro components and endpoints. For open graph images, generated PDFs, audio files, and more.
+- [astro-font-preload](https://github.com/Araluma/astro-font-preload#readme): Inject `<link rel=preload>` for your fonts and render-blocking CSS into every built page, plus _headers Link lines so Early Hints (103) fetches them during server-think time.
+- [astro-link-validator](https://github.com/rodgtr1/astro-link-validator#readme): An Astro integration that validates links during build time.
 - [astro-no-image-endpoint](https://github.com/unix/astro-no-image-endpoint/blob/main/README.md): Remove Astro's unused image endpoint runtime to reduce server bundle size.
-- [astro-seo-kit](https://github.com/rodgtr1/astro-seo-kit#readme): Complete, type-safe SEO head tags for Astro — Open Graph, Twitter/X cards, canonical URLs, article metadata and JSON-LD.
-- [astro-shotpipe](https://shotpipe.io): Dynamic Open Graph images for Astro via Shotpipe — zero build-time cost, zero-signup setup. URLs are signed locally at build time and rendered lazily on first crawler hit.
 - [astro-theme-popular](https://mariatta.ca/hugo-theme-popular/): Popular: a warm, community-first Astro theme for meetups, clubs and fan communities. Ships as an Astro integration.
-- [astro-wysiwyg](https://github.com/pbjorklund/astro-wysiwyg#readme): Edit rendered Astro and Markdown text in place and save it to source files during development.
-- [astrotation](https://github.com/dpush91/astrotation#readme): Visual feedback for AI coding agents on Astro sites — annotate elements in the dev toolbar, agents receive them live over MCP
 - [cool-astro-forms](https://github.com/nipun-arora/cool-astro-forms#readme): The lead-ops platform for Astro forms: abandonment capture, recovery emails, quote payments, and a self-hosted admin. No external services, just SQLite and SMTP. MIT.
-- [ddys-astro](https://www.npmjs.com/package/ddys-astro): Official Astro integration for the DDYS API with injected pages, endpoints, components, content loader, caching, SEO helpers, diagnostics, and request form.
-- [drycms](https://github.com/drystackdev/drystackdev): A CMS for Astro, inspired by Keystatic. Ships the Astro integration, admin UI and visual inline editor, backed by Cloudflare R2.
 - [globe-svg](https://github.com/eeegoloauq/globe-svg#readme): Build-time CLI that renders an orthographic globe with highlighted regions into a crisp static SVG — zero runtime JavaScript, no mapping libraries on your page.
-- [hsl-trade-ui](https://hejianbo1994.github.io/hsl-trade-ui/): HSL Trade Astro UI 组件库 — 面向交易业务场景
-- [payload-live-preview](https://github.com/relative23/payload-live-preview#readme): Live preview for Payload CMS in Astro and any SSR/static frontend (SvelteKit, Nuxt, Next.js, plain HTML). Patches the DOM live, no rebuild.
-- [rangefind-astro](https://rangefind.dev/docs/plugins/): Astro integration for Rangefind — builds a static search index at astro build time and ships a drop-in search component.
-- [soames-astro-theme](https://github.com/orbivision/soames-astro-theme#readme): Shared Astro theme for the Soames ecosystem (WordPress headless + React islands). Successor to soames-gatsby-theme.
-- [starlight-biel](https://docs.biel.ai/installation/starlight): Ask AI bot for technical documentation.
-- [starlight-mcp](https://github.com/bkspace/starlight-mcp#readme): Give your Astro or Starlight docs site an MCP server — search_docs, get_doc and list_docs over stateless streamable HTTP. Astro integration, pure fetch handler, and Cloudflare static-assets glue included.
-- [starlight-theme-mdbook](https://github.com/2u841r/starlight-theme-mdbook): Starlight theme that looks and feels like rust-lang's mdBook — layout, chrome, and 4 built-in color schemes plus 2 bonus daisyUI-ported themes.
-
 
 ### SEO/AEO
 
+- [@adkinn/astro-ai-readiness](https://github.com/adkinn/astro-ai-readiness#readme): AI Readiness toolkit for Astro — six JSON-LD components plus llms.txt, llms-full.txt, agents.md, robots.txt, and .well-known/mcp.json outputs.
+- [@ai2web/astro](https://www.npmjs.com/package/@ai2web/astro): Astro integration that serves all AI2Web routes (/ai2w, /.well-known/ai2w, llms.txt, agent.json, actions) from one manifest.
+- [@jorgejhms/astro-seo-meta-tags](https://github.com/jorgejhms/astro-seo-meta-tags#readme): A drop-in Astro component for SEO meta tags: Open Graph, Twitter Cards, canonical URLs and JSON-LD structured data (Product schema).
+- [astro-aeo](https://zaai.com/astro-aeo/): Answer Engine Optimization for Astro: .md companion pages, llms.txt, llms-full.txt, robots.txt AI-bot policies, domain-profile.json, sitemap auto-wiring, JSON-LD components, and a validator CLI.
+- [astro-seo-kit](https://github.com/rodgtr1/astro-seo-kit#readme): Complete, type-safe SEO head tags for Astro — Open Graph, Twitter/X cards, canonical URLs, article metadata and JSON-LD.
 
 ### CMS/text editors
 
-
+- [@menestrel/astro](https://menestrel.dev): Astro Content Layer loader and components for Menestrel: typed content collections, immutable snapshots, zero runtime requests.
+- [@knutle/writenex-astro](https://github.com/knutle/writenex): Visual editor for Astro content collections - WYSIWYG editing for your Astro site.
+- [@kyro-cms/astro](https://github.com/danielDozie/kyro-cms#readme): Astro-native headless CMS with multi-database adapters, multi-protocol APIs, and an admin dashboard built-in.
+- [@mano8/astro-prompt-m8](https://github.com/mano8/astro-prompt-m8#readme): Astro integration and headless client for prompt-engine-m8.
+- [@mano8/astro-reparto-m8](https://github.com/DocentesTools/astro-reparto-m8#readme): Astro integration and headless client for reparto-docente-m8.
+- [@mattthehat/astro-cms](https://github.com/mattthehat/astro-cms#readme): Config-driven admin CMS for Astro: one resource config renders a full list/create/edit/view/delete screen with search, filters, sorting and pagination, DB-agnostic via a small adapter interface.
+- [astro-wysiwyg](https://github.com/pbjorklund/astro-wysiwyg#readme): Edit rendered Astro and Markdown text in place and save it to source files during development.
 
 ### Markdown, Text, and more
 
-
+- [@system76/satteri-relative-markdown-links](https://github.com/system76/satteri-relative-markdown-links): Rewrite relative markdown links to site page paths, as a satteri mdast plugin.
+- [@xsynaptic/satteri-reading-time](https://github.com/xsynaptic/astro-lab/tree/main/packages/satteri-reading-time#readme): Sätteri mdast plugin that computes multilingual reading time and injects it into Astro frontmatter.
+- [astro-downgrade-heading](https://github.com/nhedger/astro-downgrade-heading#readme): Astro integration and plugins for downgrading Markdown heading levels.
+- [astro-lilypond](https://lilypond.ky.fyi): An Astro integration for rendering Lilypond markup to music notation.
+- [astro-madao](https://github.com/blazardsky/madao#readme): Markdown alternative for easier AI access to your Astro site.
+- [astro-mermaid-satteri](https://github.com/mrSamDev/astro-mermaid-satteri#readme): Astro integration for rendering Mermaid diagrams with Sätteri, auto dark/light theme switching, and View Transitions support.
+- [@kurkle/astro-chartjs-editor](https://github.com/kurkle/astro-chartjs-editor#readme): Editable Chart.js samples in Astro Markdown.
 
 ### Content loaders
 
+- [@avovix/astro-loader-payload](https://github.com/avovix/bridge/tree/main/packages/astro-loader-payload#readme): Astro content layer loader for PayloadCMS, with build-time and live collections and full typed.
+- [@coszone/koharu-astro](https://github.com/cosZone/koharu-suite#readme): Typed Koharu Suite client and Astro 6/7 Live Content Collection loaders.
+- [@xsynaptic/astro-image-loader](https://github.com/xsynaptic/astro-lab/tree/main/packages/astro-image-loader#readme): An Astro content layer loader that treats images as content entries, with incremental sync, caching, and pluggable metadata extraction.
 
 ### Dev toolbar apps
 
+- [astro-mesurer](https://github.com/OliverSpeir/mesurer-astro-toolbar#readme): Measure and align elements from the Astro dev toolbar.
+- [@thenewdynamic/astro-debug-actions](https://github.com/theNewDynamic/astro-debug-actions): Astro integration for a dev-only debug panel with breakpoint visualization.
+- [astrotation](https://github.com/dpush91/astrotation#readme): Visual feedback for AI coding agents on Astro sites — annotate elements in the dev toolbar, agents receive them live over MCP.
 
 ### Starlight
 
-
+- [@gansotech/astro-datasource-gitlab](https://github.com/ganso-technologies/astro-datasource-gitlab#readme): Astro content loader that fetches Markdown docs and their assets from a GitLab repository over the REST API. Built for Starlight docs sites, works with any content collection.
+- [@markgrafhq/starlight-markgraf](https://github.com/markgrafhq/starlight-markgraf#readme): Starlight/Astro integration for embedding markgraf animations. Transforms ```markgraf fenced code blocks into a live player and exposes a `<Markgraf src="…" />` component.
+- [@stellayazilim/mcp-starlight](https://github.com/stellayazilim/mcp-starlight#readme): Give any Astro Starlight docs site an MCP server. Build-time catalog + stdio server over npx — no hosting required, works on GitHub Pages. Locale- and version-aware.\
+- [starlight-biel](https://docs.biel.ai/installation/starlight): Add a Beil AI chatbot or AI search widget to your Starlight site for technical documentation.
+- [starlight-mcp](https://github.com/bkspace/starlight-mcp#readme): Give your Starlight docs site an MCP server — `search_docs`, `get_doc` and `list_docs` over stateless streamable HTTP. Astro integration, pure fetch handler, and Cloudflare static-assets glue included.
+- [starlight-theme-mdbook](https://github.com/2u841r/starlight-theme-mdbook): Starlight theme that looks and feels like rust-lang's mdBook — layout, chrome, and 4 built-in color schemes plus 2 bonus daisyUI-ported themes.
 
 ### Astro integrations by and for other tools
+
+- [@component-anatomy/astro](https://github.com/julien-deramond/component-anatomy/tree/main/packages/astro): Astro integration for component-anatomy — SSR-rendered anatomy panels with live hover sync.
+- [@deskcrew/astro](https://deskcrew.io/integrations/astro): Astro integration that adds the DeskCrew support widget (live chat, instant answers and a help center) to every page.
+- [@foresightjs/astro](https://foresightjs.com/): Astro integration for ForesightJS. Predictive prefetching that fires before hover, configured like Astro's built-in prefetch strategies.
+- [@ilha/astro](https://github.com/ilhajs/ilha/tree/main/packages/astro#readme): An Astro integration that renders and hydrates Ilha islands as Astro components.
+- [@plutotcool/payload-astro-preview](https://github.com/plutotcool/payload-astro-preview#readme): Signed draft preview sessions between a Payload CMS and an Astro site.
+- [@space-coast-devs/astro-discord-membership](https://github.com/SpaceCoastDevs/astro-discord-membership#readme): Astro integration that adds Discord-based community membership — auth, member directory, profiles, and email verification.
+- [@storesynk/astro](https://www.npmjs.com/package/@storesynk/astro): Astro integration for Storesynk — server-rendered Shopify data inside Storesynk tags, adopted flash-free by the client runtime.
+- [@verbaly/astro](https://verbaly-web.vercel.app/docs/frameworks/astro): Astro integration for Verbaly: write-in-source extraction for .astro files plus automatic per-locale static rendering.
+- [astro-asciinema](https://github.com/nhedger/astro-asciinema#readme): Astro integration and component for embedding asciinema terminal recordings.
+- [astro-biel](https://docs.biel.ai/installation/astro): Add a Beil AI chatbot or AI search widget to your Astro site.
+- [astro-d1-comments](https://github.com/jedibrillo/astro-d1-comments#readme): Self-hosted comments for Astro sites on Cloudflare Workers: D1 storage, Turnstile spam protection, pending-by-default moderation with a built-in admin page and CLI.
+- [astro-shotpipe](https://shotpipe.io/docs#eleventy): Dynamic Open Graph images for Astro via Shotpipe — zero build-time cost, zero-signup setup. URLs are signed locally at build time and rendered lazily on first crawler hit.
+- [ddys-astro](https://www.npmjs.com/package/ddys-astro): Official Astro integration for the DDYS API with injected pages, endpoints, components, content loader, caching, SEO helpers, diagnostics, and request form.
+- [payload-live-preview](https://github.com/relative23/payload-live-preview#readme): Live preview for Payload CMS in Astro and any SSR/static frontend (SvelteKit, Nuxt, Next.js, plain HTML). Patches the DOM live, no rebuild.
+- [rangefind-astro](https://rangefind.dev/docs/plugins/): Astro integration for Rangefind — builds a static search index at astro build time and ships a drop-in search component.
+- [soames-astro-theme](https://github.com/orbivision/soames-astro-theme#readme): Shared Astro theme for the Soames ecosystem (WordPress headless + React islands). Successor to soames-gatsby-theme.
 
 
 ... and some built with Astro: utility sites from the last month that get the job done!
