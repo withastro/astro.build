@@ -44,7 +44,7 @@ yarn upgrade astro --latest
 
 Astro is often used to build large static sites: docs, blogs, and marketing sites that can run to thousands of pages. On those sites, a few dynamic routes, like `[...slug].astro`, usually account for the bulk of the pages, each rendering an entry from a content collection. As the content grows, so does the build, even when a given build only changes a handful of pages.
 
-Astro 7 already made the bundling phase much faster with Rolldown and a Rust-based Markdown pipeline. What was left is the generation phase, where Astro renders each prerendered route to HTML. Until now Astro re-rendered every static page on every build, even when nothing about that page had changed. Incremental static builds target that phase.
+Astro 7 already made the bundling phase much faster with Rolldown and a Rust-based Markdown pipeline. What was left is the generation phase, where Astro renders each prerendered route to HTML. Until now Astro re-rendered every static page on every build, even when nothing about that page had changed. Incremental static builds targets that phase.
 
 Turn it on with the `experimental.incrementalBuild` flag:
 
