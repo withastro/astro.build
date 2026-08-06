@@ -79,7 +79,7 @@ const { post } = Astro.props;
 <h1>{post.data.title}</h1>
 ```
 
-The `cacheKey` covers your data. Astro handles the code side for you: during the build it walks each route's module graph, including its layouts, components, and imported assets, and hashes the result. If the template or anything it imports changes, that hash changes and every path on the route is re-rendered. A page is only reused when both its dependency hash and its `cacheKey` match the previous build.
+The `cacheKey` covers your data. Astro handles the code side for you: during the build it hashes each route's full module graph, including its template, layouts, components, imported assets, and the package code they pull in. If any of that changes, the hash changes and every path on the route is re-rendered. A page is only reused when both this module hash and its `cacheKey` match the previous build.
 
 Paths without a `cacheKey` are always rendered, so opting a route in is an explicit decision and existing projects build exactly as they do today until you choose otherwise. The cache lives in `cacheDir` (by default `node_modules/.astro/`) next to the content layer and image caches, so CI systems that already persist that directory can reuse it across runs.
 
