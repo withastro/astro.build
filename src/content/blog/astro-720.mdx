@@ -44,7 +44,7 @@ yarn upgrade astro --latest
 
 Astro is often used to build large static sites: docs, blogs, and marketing sites that can run to thousands of pages. On those sites, a few dynamic routes, like `[...slug].astro`, usually account for the bulk of the pages, each rendering an entry from a content collection. As the content grows, so does the build, even when a given build only changes a handful of pages.
 
-Astro 7 already made the bundling phase much faster with Rolldown and a Rust-based Markdown pipeline. What was left is the generation phase, where Astro renders each prerendered route to HTML. Until now Astro re-rendered every static page on every build, even when nothing about that page had changed. Incremental static builds targets that phase.
+[Astro 7](/blog/astro-7/) already made the bundling phase much faster with Rolldown and a Rust-based Markdown pipeline. What was left is the generation phase, where Astro renders each prerendered route to HTML. Until now Astro re-rendered every static page on every build, even when nothing about that page had changed. Incremental static builds targets that phase.
 
 Turn it on with the `experimental.incrementalBuild` flag:
 
@@ -99,7 +99,7 @@ export default defineConfig({
 });
 ```
 
-With `session: false`, the adapters for Cloudflare, Netlify, and Node skip wiring up their default session driver, and the session runtime is removed from the bundle. `Astro.session` is `undefined`, which is a state its type already allowed, so existing `if (Astro.session)` checks keep working without a new error to handle.
+With `session: false`, the adapters for Cloudflare, Netlify, and Node skip wiring up their default session driver, and the session runtime is removed from the bundle. `Astro.session` is `undefined`, which is a state its type already allowed, so existing `if (Astro.session)` checks keep working without a new error to handle. See [Disabling sessions](https://docs.astro.build/en/guides/sessions/#disabling-sessions) in the docs for the details.
 
 You don't have to set the flag to benefit. Astro now tree-shakes the session runtime out of any project where no driver is wired, whether that's `session: false`, no `session` config at all, or a `session` object without a driver. Projects that do configure a driver see no change.
 
