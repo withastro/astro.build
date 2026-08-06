@@ -1,0 +1,160 @@
+---
+title: 'Astro 7.2'
+description: 'Astro 7.2 adds experimental incremental static builds, an option to opt out of session support, background mode for astro preview, and relative logger entrypoints.'
+publishDate: '2026-08-06'
+authors:
+  - matthew
+coverImage: '/src/content/blog/_images/astro-720/blog-post-astro-7.2.webp'
+socialImage: '/src/content/blog/_images/astro-720/og-astro-7.2.jpg'
+lang: 'en'
+homepageLink:
+  title: 'Astro 7.2'
+  subtitle: 'Available now!'
+related:
+  - astro-710
+  - astro-7
+---
+
+import Mention from '/src/components/Mention.astro';
+import Note from '/src/components/Note.astro';
+
+**Astro 7.2 is here!** The headline feature is experimental incremental static builds, which let Astro skip regenerating prerendered pages whose code and data haven't changed since the last build. This release also adds a way to opt out of session support, a background mode for `astro preview`, and a smaller way to point at a custom logger.
+
+Explore what's new in this release:
+
+- **[Experimental: incremental static builds](#experimental-incremental-static-builds)**
+- **[Opt out of session support](#opt-out-of-session-support)**
+- **[Background mode for astro preview](#background-mode-for-astro-preview)**
+- **[Relative logger entrypoints](#relative-logger-entrypoints)**
+- **[Community](#community)**
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Experimental: incremental static builds
+
+Astro is often used to build large static sites: docs, blogs, and marketing sites that can run to thousands of pages. On those sites, a few dynamic routes, like `[...slug].astro`, usually account for the bulk of the pages, each rendering an entry from a content collection. As the content grows, so does the build, even when a given build only changes a handful of pages.
+
+[Astro 7](/blog/astro-7/) already made the bundling phase much faster with Rolldown and a Rust-based Markdown pipeline. What was left is the generation phase, where Astro renders each prerendered route to HTML. Until now Astro re-rendered every static page on every build, even when nothing about that page had changed. Incremental static builds targets that phase.
+
+Turn it on with the `experimental.incrementalBuild` flag:
+
+```js title="astro.config.mjs" ins={4-6}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    incrementalBuild: true,
+  },
+});
+```
+
+A route opts in by returning a `cacheKey` for each path from `getStaticPaths()`. The `cacheKey` should change whenever the data used to render that path changes. For content collections, `entry.digest` is a good fit, since it changes whenever the entry's content changes:
+
+```astro title="src/pages/blog/[slug].astro" ins={9}
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+    cacheKey: post.digest,
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<h1>{post.data.title}</h1>
+```
+
+The `cacheKey` covers your data. Astro handles the code side for you: during the build it hashes each route's full module graph, including its template, layouts, components, imported assets, and the package code they pull in. If any of that changes, the hash changes and every path on the route is re-rendered. A page is only reused when both this module hash and its `cacheKey` match the previous build.
+
+Paths without a `cacheKey` are always rendered, so opting a route in is an explicit decision and existing projects build exactly as they do today until you choose otherwise. The cache lives in `cacheDir` (by default `node_modules/.astro/`) next to the content layer and image caches, so CI systems that already persist that directory can reuse it across runs.
+
+This is an early, experimental feature and we want to hear how it holds up on real sites. To read the full design or leave feedback, see the [incremental static builds RFC](https://github.com/withastro/roadmap/pull/1404).
+
+## Opt out of session support
+
+When a session driver is configured, Astro bundles its session runtime into your SSR output. That is what you want if you use `Astro.session`, but projects that never touch sessions were still paying for the code to be parsed on every cold start.
+
+Astro 7.2 adds a `session: false` option to opt out entirely:
+
+```js title="astro.config.mjs" ins={4}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  session: false,
+});
+```
+
+With `session: false`, the adapters for Cloudflare, Netlify, and Node skip wiring up their default session driver, and the session runtime is removed from the bundle. `Astro.session` is `undefined`, which is a state its type already allowed, so existing `if (Astro.session)` checks keep working without a new error to handle. See [Disabling sessions](https://docs.astro.build/en/guides/sessions/#disabling-sessions) in the docs for the details.
+
+You don't have to set the flag to benefit. Astro now tree-shakes the session runtime out of any project where no driver is wired, whether that's `session: false`, no `session` config at all, or a `session` object without a driver. Projects that do configure a driver see no change.
+
+## Background mode for astro preview
+
+Astro 7 added a background mode for `astro dev` so you (or an AI coding agent) could start the dev server, keep working, and manage it with follow-up commands. Astro 7.2 brings the same to `astro preview`:
+
+```sh
+astro preview --background
+```
+
+The preview server runs in the background and writes to its own log file. You can then check on it or shut it down with the matching subcommands:
+
+```sh
+astro preview status
+astro preview logs
+astro preview stop
+```
+
+`astro dev` and `astro preview` share the same background machinery, so the two behave consistently, including automatic background mode when an agent is driving.
+
+## Relative logger entrypoints
+
+Astro 7.1 let you configure a custom logger by passing a URL to `logger.entrypoint`. Astro 7.2 adds support for a plain relative string, matching how other entrypoint-style options work:
+
+```js title="astro.config.mjs" ins={5}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  logger: {
+    entrypoint: './src/custom-logger.js',
+  },
+});
+```
+
+The URL form still works. This is a small convenience so you don't have to reach for `new URL(..., import.meta.url)` when a relative path is all you need.
+
+## Other improvements
+
+For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Special thanks to everyone who contributed to Astro 7.2 with code, docs, reviews, and testing, including:
+
+[Adam Chalemian](https://github.com/adamchal), [Alisson Nunes](https://github.com/Alynva), [Anuj Raja](https://github.com/anujraja), [Araluma](https://github.com/Araluma), [Barry](https://github.com/barry166), [Bjorn Lu](https://github.com/bluwy), [Daedalus](https://github.com/Daedalus-Icarus), [Danillo Estrela](https://github.com/danilloestrela), [David Pine](https://github.com/IEvangelist), [Dawid Gaweł](https://github.com/dmgawel), [deepanshu88](https://github.com/deepanshu88), [Eldar Dadashov](https://github.com/eldardada), [emerson lopes](https://github.com/emerson-d-lopes), [Felmon Fekadu](https://github.com/felmonon), [Gary Ritchie](https://github.com/gtritchie), [HakuRan](https://github.com/WBhlietue), [Hashim Khan](https://github.com/Hashim1999164), [i-am-KaleemSajjad](https://github.com/iamkaleemsajjad-hue), [Jiwon Yoon](https://github.com/jiwonyoon-dev), [Junseong Park](https://github.com/jsparkdev), [Lazizbek Ergashev](https://github.com/lazerg), [Louis Escher](https://github.com/louisescher), [Melih Arık](https://github.com/meliharik), [Mochammad Farros Fatchur Roji](https://github.com/farrosfr), [Nick Snyder](https://github.com/nicksnyder), [ocavue](https://github.com/ocavue), [Oliver Speir](https://github.com/OliverSpeir), [Ondřej Úlehla](https://github.com/ondraulehla), [paul valladares](https://github.com/dreyfus92), [paulrudy](https://github.com/paulrudy), [QVinto](https://github.com/QVinto), [Roman](https://github.com/gameroman), [Sebastian Beltran](https://github.com/bjohansebas), [Tarik](https://github.com/tarikrital), [thelazylama](https://github.com/thelazylamaGit), and [uniboxx](https://github.com/uniboxx)
+
+We hope you enjoy Astro 7.2. If you run into issues or want to share feedback, please join us on [Discord](https://astro.build/chat), post on [GitHub](https://github.com/withastro/astro/issues), or reach out on [Bluesky](https://bsky.app/profile/astro.build), [Twitter](https://twitter.com/astrodotbuild), and [Mastodon](https://m.webtoo.ls/@astro).
