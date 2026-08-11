@@ -9,3 +9,10 @@ allowBuilds:
 
 # Require dependencies to be at least 3 days old before allowing them to be installed.
 minimumReleaseAge: 4320
+minimumReleaseAgeExclude:
+  - '@astrojs/expressive-code-core-preview'
+  - '@astrojs/expressive-code-shiki-preview'
+
+overrides:
+  '@expressive-code/core': npm:@astrojs/expressive-code-core-preview@0.0.0-workerd.6a68848.1
+  '@expressive-code/plugin-shiki': npm:@astrojs/expressive-code-shiki-preview@0.0.0-workerd.6a68848
