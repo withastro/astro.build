@@ -4,8 +4,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
+		"dev": "MINIFLARE_WORKERD_V8_FLAGS=--no-maglev astro dev",
+		"start": "MINIFLARE_WORKERD_V8_FLAGS=--no-maglev astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"deploy": "wrangler deploy",

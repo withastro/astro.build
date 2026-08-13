@@ -16,3 +16,6 @@ minimumReleaseAgeExclude:
 overrides:
   '@expressive-code/core': npm:@astrojs/expressive-code-core-preview@0.0.0-workerd.6a68848.1
   '@expressive-code/plugin-shiki': npm:@astrojs/expressive-code-shiki-preview@0.0.0-workerd.6a68848
+  # 4.20260730.0 adds MINIFLARE_WORKERD_V8_FLAGS, used by the dev script to work
+  # around a V8 Maglev bug that fatally OOMs workerd (see dev/start in package.json).
+  miniflare: 4.20260730.0
