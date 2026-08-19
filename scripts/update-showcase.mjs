@@ -783,6 +783,16 @@ const scraper = new ShowcaseScraper({
 		'https://varda.com/',
 		// Duplicate showcase entry - 2026-07-22 - redirects to vtbag.dev, already listed separately
 		'https://vtbag.pages.dev/',
+		// 2026-08-14 - remove redirected domains
+		'https://forevervm.com/docs/',
+		// 2026-08-14 - remove migrated sites
+		'https://web.koyu.space/',
+		'https://lorenzofiori.art',
+		'https://typable.studio',
+		'https://www.deskpro.com',
+		'https://crecto.dev/',
+		'https://kestrel-task.cn',
+		'https://singletechnologies.com',
 	],
 });
 await scraper.run();
