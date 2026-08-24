@@ -9,3 +9,8 @@ allowBuilds:
 
 # Require dependencies to be at least 3 days old before allowing them to be installed.
 minimumReleaseAge: 4320
+
+overrides:
+  # 4.20260730.0 adds MINIFLARE_WORKERD_V8_FLAGS support, used by the dev script
+  # to work around a V8 Maglev bug that fatally OOMs workerd.
+  miniflare: 4.20260730.0
