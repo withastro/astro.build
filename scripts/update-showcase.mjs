@@ -793,6 +793,14 @@ const scraper = new ShowcaseScraper({
 		'https://crecto.dev/',
 		'https://kestrel-task.cn',
 		'https://singletechnologies.com',
+		// 2026-08-14 - remove parked domains
+		'https://astropatterns.dev',
+		'https://codegenie.codes/',
+		'https://www.cs000.dev',
+		'https://www.fedesign.space/',
+		'https://joinfirefish.org',
+		'https://frugalthinker.com/',
+		'http://www.jerrywski.dev',
 		// 2026-08-15 - remove various cms migrations
 		'https://www.chrisnowicki.io',
 		'https://webehindthis.com/',
