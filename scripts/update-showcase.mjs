@@ -810,6 +810,8 @@ const scraper = new ShowcaseScraper({
 		// 2026-08-25 - remove porkbun parked domains
 		'https://aigentic.blog/',
 		'https://astromade.studio/',
+		// 2026-08-25 - remove wordpress gambling hijack
+		'https://aidailynews.io/',
 	],
 });
 await scraper.run();
