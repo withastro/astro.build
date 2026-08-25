@@ -801,6 +801,12 @@ const scraper = new ShowcaseScraper({
 		'https://joinfirefish.org',
 		'https://frugalthinker.com/',
 		'http://www.jerrywski.dev',
+		// 2026-08-15 - remove various cms migrations
+		'https://www.chrisnowicki.io',
+		'https://webehindthis.com/',
+		'https://slickhornranch.com',
+		'https://www.vbridge.eu',
+		'https://octopus.com/devops/',
 	],
 });
 await scraper.run();
