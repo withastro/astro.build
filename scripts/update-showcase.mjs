@@ -807,6 +807,8 @@ const scraper = new ShowcaseScraper({
 		'https://slickhornranch.com',
 		'https://www.vbridge.eu',
 		'https://octopus.com/devops/',
+		// 2026-08-25 - remove wordpress gambling hijack
+		'https://aidailynews.io/',
 	],
 });
 await scraper.run();
