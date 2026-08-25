@@ -807,6 +807,9 @@ const scraper = new ShowcaseScraper({
 		'https://slickhornranch.com',
 		'https://www.vbridge.eu',
 		'https://octopus.com/devops/',
+		// 2026-08-25 - remove porkbun parked domains
+		'https://aigentic.blog/',
+		'https://astromade.studio/',
 	],
 });
 await scraper.run();
