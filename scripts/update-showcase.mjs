@@ -793,6 +793,12 @@ const scraper = new ShowcaseScraper({
 		'https://crecto.dev/',
 		'https://kestrel-task.cn',
 		'https://singletechnologies.com',
+		// 2026-08-15 - remove various cms migrations
+		'https://www.chrisnowicki.io',
+		'https://webehindthis.com/',
+		'https://slickhornranch.com',
+		'https://www.vbridge.eu',
+		'https://octopus.com/devops/',
 	],
 });
 await scraper.run();
