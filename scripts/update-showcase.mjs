@@ -812,6 +812,8 @@ const scraper = new ShowcaseScraper({
 		'https://astromade.studio/',
 		// 2026-08-25 - remove wordpress gambling hijack
 		'https://aidailynews.io/',
+		// 2026-08-25 - duplicate of room-tba.uplb.tools (site migrated domains)
+		'https://room-tba.uplbtools.me',
 	],
 });
 await scraper.run();
