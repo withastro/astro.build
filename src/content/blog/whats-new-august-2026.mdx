@@ -1,0 +1,387 @@
+---
+title: "What's new in Astro - August 2026"
+description: "August 2026 - stuff, and more!"
+publishDate: "August 31, 2026"
+authors:
+  - sarah
+coverImage: "/src/content/blog/_images/whats-new-shared.webp"
+socialImage: "/src/content/blog/_images/whats-new-july/og.webp"
+lang: "en"
+startDate: "2026-08-01"
+endDate: "2026-09-01"
+related:
+  - whats-new-july-2026
+  - whats-new-june-2026
+  
+---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
+import ShowcaseGridById from './_whats-new-components/ShowcaseGridById.astro';
+import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
+import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
+import { YouTube } from 'astro-embed';
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+import { getEntry } from 'astro:content';
+import Mention from "/src/components/Mention.astro";
+import Note from '~/components/Note.astro';
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+import astroPlayground from '/src/content/blog/_images/whats-new-august/astroplayground.webp';
+import hackathonWinner1 from '/src/content/blog/_images/whats-new-august/hackathonwinner1.webp';
+import hackathonWinner2 from '/src/content/blog/_images/whats-new-august/hackathonwinner2.webp';
+import hackathonWinner3 from '/src/content/blog/_images/whats-new-august/hackathonwinner3.webp';
+
+
+{/* Uncomment to load integrations in console for copy / paste */}
+
+{/*
+import MonthlyTools from './_whats-new-components/MonthlyTools.astro';
+<MonthlyTools date={frontmatter.startDate} /> 
+*/}
+
+
+Some exciting news from around the Astro ecosystem this month, including:
+
+- [Updates from Mission Control](#updates-from-mission-control)
+- [Latest releases](#latest-releases)
+- [Astro Adopters](#astro-adopters)
+- [Weird Wide Web](#weird-wide-web)
+- [Cosmic Canvas](#cosmic-canvas)
+- [Community updates](#community)
+- [Reading List](#content)
+- [Watch Party](#watch-party)
+- [Tips & Tools](#tips--tools)
+- [Themes & Templates](#themes--templates)
+- [Site Showcase](#showcase)
+- [Starlight in the wild](#starlight-in-the-wild)
+
+
+Let's dive right into it!
+
+## Updates from Mission Control 
+
+- 🛝 [Astro Component Playground](#for-you-from-the-team)
+- 🇩🇪 [Astro Together Germany](#astro-team-news)
+
+
+## Latest releases
+
+Minor releases introduce new features and improvements. Check out what's new!
+
+- [Astro 7.2](/blog/astro-720) - experimental incremental static builds, background mode for `astro preview`, relative logger entrypoints, and more!
+
+
+## Astro Adopters
+
+From Evil Martians to Microsoft, some of the biggest names you know are using Astro Starlight for docs!
+
+export const featuredSites = [
+  "evilmartians.com",
+  "azure.github.io",
+  "dotnet.github.io",
+]; 
+
+{/* Use for grids of 2 per row  */}
+
+{/* <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'evilmartians.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'supabase.github.io')} />
+  <ShowcaseCard site={await getEntry('showcase', 'resources.frame.work')} />
+  <ShowcaseCard site={await getEntry('showcase', 'system76.com')} />
+</div> */}
+
+{/* Use when there are multiples of 3  */}
+<ShowcaseGridById ids={featuredSites} />
+
+See more companies using Astro in our [site showcase](/showcase/), and explore Astro for corporate or enterprise use with one of our [agency partners](/agencies/)!
+
+## Weird Wide Web
+
+Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, empowering, or just plain fun!
+
+export const monthlySites = [
+'openappscout.com',
+'levadas.live',
+'thecuriousthing.com',
+]; 
+
+{/* Use for grids of 2 per row  */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.achimloobes.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'howtostore.food',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'quiz-camisetas.moisesvalero.es')} />
+  <ShowcaseCard site={await getEntry('showcase', 'stitchopia.com',)} />
+</div>
+  */}
+
+{/* Use when there are multiples of 3  */}
+<ShowcaseGridById ids={monthlySites} />
+
+## Cosmic Canvas
+
+Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
+
+export const canvasSites = [
+  'www.achimloobes.com',
+  'insemantic.com',
+  'www.majed.art',    
+];
+
+{/* Use for grids of 2 per row  */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.marqy.party')} />
+  <ShowcaseCard site={await getEntry('showcase', 'rad.cm',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'internationalmediabuying.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'orainer.com',)} />
+</div>
+  */}
+
+{/* Use when there are multiples of 3  */}
+<ShowcaseGridById ids={canvasSites} />
+
+## Community
+
+### Astro Team News
+
+See Astro maintainers around the globe, and in your living room!
+
+- <Mention name="kenji" /> will be at [Vue Fes Japan](https://vuefes.jp/2026/en/speaker/jp-knj) this October! 
+- [ViteConf](https://viteconf.org) is back online for 2026, with talks by <Mention name="fred" />, <Mention name="matthew" />, and <Mention name="sarah" />!
+
+And it's finally happening, Astro is coming to Germany! Join Astro Maintainers on September 5th in Wiesbaden at our [Partner Agency Seibert](/agencies/seibert/)'s HQ for talks, demos, and exclusive swag!
+
+Visit the Astro Together FRA x Seibert event page for more details and to grab your spot via the link below, as spaces are limited. We're looking forward to seeing you there!
+
+[Sign up for Astro Together FRA x Seibert](https://go.seibert.group/astro-together-fra-seibert-2026)
+
+Never miss an Astro event by subscribing to the [Astro Luma Calendar](https://luma.com/astrodotbuild).
+
+### For you, from the team
+
+There's a new place for asking, searching (and answering!) Astro support questions. In addition to our Discord support forums, you can now visit our [Community Support repo on GitHub](https://github.com/withastro/community-support/discussions) and participate in the Discussion! Thanks <Mention name="florian" / > for kicking off this community project!
+
+Have you ever wanted to write an Astro component without making a whole new project? Try the new [Astro Playground](https://play.astro.build/) from <Mention name="ema" />. Under the hood, every playground session spins up its own real Astro Compiler instance in a Dynamic Worker, so what you see is exactly what you'd get locally. Built with Svelte for the UI.
+
+<BlogContentImage src={astroPlayground} />
+
+### Around the ecosystem
+
+Last month, [Webflow](https://webflow.io) and [CodeTV](https://codetv.dev) issued a challenge: build with Astro, animate with GSAP, and deploy to Webflow and create a landing website that really lands!
+
+Congratulations to the winning sites:
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+  <BlogContentImage src={hackathonWinner1} />
+  <BlogContentImage src={hackathonWinner2} />
+  <BlogContentImage src={hackathonWinner3} />
+</div>
+
+See these and even more amazing entries on the [Hackathon recap](https://codetv-gsap-cloud.webflow.io/)!
+
+### Partner Pulse
+
+Find out what's new with our official partners this month:
+
+- [ImageKit](https://imagekit.io) now offers integration with Astro for seamless image and video optimization, transformation, and delivery. Optimized images and videos delivered in the right format for your user's device through their global CDN.  
+- the Rosey CloudCannon Connector is an open-source translation workflow for static sites, available as an [Astro multilingual starter template](https://cloudcannon.com/templates/astro-multilingual-starter/) with English, French, and German already configured.
+
+Thanks to all of our [official partners, sponsors](https://astro.build/#:~:text=Astro%20is%20free%2C%20open%2Dsource%20software%20made%20possible%20by%20these%20wonderful%20sponsors), and individual contributors! Want to contribute to the open source project yourself? Visit the [Astro Open Collective page](https://opencollective.com/astrodotbuild/) or consider [partnering with us](https://astro.build/partnerships/)!
+
+(And, see why we need your help to [support the future of Astro](https://astro.build/blog/supporting-the-future-of-astro/)).
+
+### Shout-outs
+
+Think we don't notice you? Think again! This month, we'd like to give some 🌮 to:
+
+- [`@thelazylamaGit`](https://github.com/thelazylamaGit) for taking care of CSS handling during HMR across several PRs. Thank you for contributing to Astro!
+
+## Content
+
+Here's what caught our attention this month: 
+
+- Astro core maintainer **Matthew Phillips** https://blog.cloudflare.com/astro-issue-triage
+- https://tina.io/docs/frameworks/astro new TinaCMS + Astro guide
+- https://www.reddit.com/r/astrojs/comments/1vkw0fu/cut_my_astro_rebuild_time_39_with_72s_incremental/
+- https://www.reddit.com/r/astrojs/comments/1vctad5/repair_status_tracker/
+- https://pro.starwind.dev/blog/upgrading-starwind-pro-to-astro-7
+- https://flaviocopes.com/how-astro-is-built/
+- https://flaviocopes.com/optimize-astro-build-deploy-time/
+- https://www.afteractive.com/blog/webflow-cloud-astro
+- https://www.tfbdigital.com/blogs/webflow-to-astro-migration
+
+
+Because you can never get tired of Astro, here's even more community content!
+
+### Migration Stories
+
+- [Harky goes Astro](https://www.harksingh.com/posts/harky-goes-astro)
+- [Moving my Astro blog to Laravel Cloud](https://hedger.ch/posts/2026/astro-laravel-cloud)
+- [Personal site redesign and Leaflet Integration](https://jsutherland.leaflet.pub/3mrpxalwcuk2i)
+- [How Nomio migrated from Webflow to CloudCannon in 2.5 days with Claude and Astro](https://cloudcannon.com/customers/nomio/) and https://x.com/CloudCannon/status/2086778180463960259#m
+- [Moving the web towards agent-first](https://mega.dev/goodbye-webflow)
+
+
+### How-to Articles
+
+- [How to design Astro content collections that scale](https://www.zerocms.io/resources/guides/content-collections-deep-dive)
+- https://thomasbnt.dev/blog/comment-creer-son-blog-personnel-avec-astro/
+- https://finance.biggo.com/news/f71e7e9776cd3a32 and https://finance.biggo.com/podcast/f71e7e9776cd3a32 and 
+- [Rendering Remote Content in Astro Using React Components](https://dev.to/kabartolo/rendering-remote-mdx-in-astro-using-react-components-3p8h)
+- [How to Migrate a Site From Webflow to Astro](https://ypakala.com/notes/en/migrate-webflow-site-to-astro/)
+- [Generate Dynamic OG Images in Astro with Orshot](https://orshot.com/blog/astro-dynamic-og-images)
+- [Members Area on an Astro 7 Website: How It Works](https://hansmartens.dev/blog/members-area-astro-7/)
+- [Client Portal on an Astro 7 Website: How It Works](https://hansmartens.dev/blog/client-portal-astro-7/)
+- [Cheating at search for Astro docs](https://hevmind.com/writing/cheating-at-search-for-astro-docs/)
+
+### ... and more!
+
+
+
+## Watch Party
+
+Be sure to follow [Astro's official YouTube channel](https://www.youtube.com/astrodotbuild) for content from the team!
+
+### Astro on demand
+
+Grab your popcorn and make a playlist of your faves! 🍿
+
+<YouTubeGrid maxCols={3}
+  videos={[
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+  ]}
+/> 
+
+## Tips & Tools
+
+- [astro-sharp](https://github.com/davidwhitney/AstroSharp): Write the coded parts of an Astro site in C# instead of TypeScript. Components, pages, content loaders, actions, endpoints and middleware can all be authored in C#, while Node and Vite continue to drive the build.
+- [starlight to skills](https://github.com/HiDeoo/starlight-to-skills/): Turn Starlight documentation pages into reviewed, discoverable, and up-to-date agent skills.
+- https://stacki.build/
+
+{/* This month saw several new goodies for managing your content and UI: */}
+
+export const contentTools = [
+]; 
+
+{/* Use for grids of 2 per row  */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'slug1')} />
+  <ShowcaseCard site={await getEntry('showcase', 'slug2')} />
+</div> 
+*/}
+
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={contentTools} /> */}
+
+See some of the latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
+
+
+### SEO/AEO
+
+
+
+### CMS/text editors
+
+
+### Markdown, Text, and more
+
+
+### Content loaders
+
+
+### Dev toolbar apps
+
+
+### Starlight
+
+
+### Astro integrations by and for other tools
+
+
+{/* ... and some built with Astro: utility sites from the last month that get the job done! */}
+
+
+export const monthlyTools = [
+]; 
+
+
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'slug1')} />
+  <ShowcaseCard site={await getEntry('showcase', 'slug2',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'slug3')} />
+  <ShowcaseCard site={await getEntry('showcase', 'slug4',)} />
+</div>
+ */}
+
+{/* Can use when there are multiples of 3  */}
+{/* <ShowcaseGridById ids={monthlyTools} /> */}
+
+## Themes & Templates
+
+Several Astro themes were added or updated to v6 or v7 in the [Astro theme catalogue](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme!
+
+export const excludedThemes=[
+  
+]
+
+<ThemeGrid date={frontmatter.startDate} excluded={excludedThemes} />
+
+## Showcase
+
+Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
+
+{/* 
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
+*/}
+export const extraSitesToExclude = [
+    "codetv-gsap-cloud.webflow.io",
+    "loadingtoday.webflow.io",
+    "immortal-snail.webflow.io",
+];
+
+export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites, ...extraSitesToExclude, ...contentTools, ...monthlyTools]
+
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
+
+Want your site to be included? [Submit it to the Astro Showcase Site](https://astro.build/showcase/submit/).
+
+## Starlight in the wild
+
+It's always exciting to stumble across more docs built with Starlight. Here's what our community noticed this month:
+
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} />
+
+Spot someone using Starlight for their docs? We want to know about it! [Submit it to the Astro Showcase Site](https://astro.build/showcase/submit/).
+
+## That’s a wrap! 👋
+
+Thanks for spending another month with us!
+
+<Note>
+Want to be considered for next month's post? Submit or share your sites, themes, articles, videos, integrations, and more:
+
+- ⭐ to the [site showcase](/showcase/submit/)
+- 🎨 to the [theme catalogue](https://portal.astro.build/) - (Please update your existing themes to v7!)
+- 📦 with the [proper keyword in your `package.json`](https://docs.astro.build/en/reference/publish-to-npm/#packagejson-data)
+- 💬 on social media tagging the Astro account
+- ... and of course, in [our Discord `#showcase` channel](https://astro.build/chat)!
+</Note>
