@@ -108,7 +108,38 @@ The Cloudflare adapter uses this internally to preserve cookies, sessions, and C
 
 ## Logger for image services and cache providers
 
-TODO: describe the feature.
+Astro's [custom logger](/blog/astro-710/#logger-improvements) lets you route Astro's own output to your logging setup, but custom image services and cache providers couldn't take advantage of it. If they needed to warn about something, like an unsupported image format or a skipped cache entry, their only option was `console.warn()`, which ignores your configured log level, destination, or the `--silent` flag entirely.
+
+Astro 7.3 passes a `logger` into both extension points. Image services receive it as an argument to their hooks:
+
+```ts
+import type { LocalImageService } from 'astro';
+
+const service: LocalImageService = {
+  // ...
+  async transform(inputBuffer, transform, imageConfig, logger) {
+    logger.warn(`Could not optimize "${transform.src}". Passing it through unchanged.`);
+    return { data: inputBuffer, format: 'png' };
+  },
+};
+```
+
+Cache providers receive it on the context passed to `onRequest()`:
+
+```ts
+import type { CacheProvider } from 'astro';
+
+const provider: CacheProvider = {
+  name: 'my-cache',
+  async onRequest({ request, url, logger }, next) {
+    logger.warn(`Skipping cache for ${url.pathname} because the response sets a cookie.`);
+    return next();
+  },
+  // ...
+};
+```
+
+Astro's own built-in Sharp image service and `memoryCache()` provider have been updated to use this too, so their warnings behave the same as the rest of Astro's output.
 
 ## Other improvements
 
