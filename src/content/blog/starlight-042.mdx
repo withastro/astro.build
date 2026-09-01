@@ -1,0 +1,102 @@
+---
+title: Starlight 0.42
+description: Less JavaScript, and more JavaScript, all in one release.
+publishDate: 2026-09-02
+authors:
+  - chris
+coverImage: '/src/content/blog/_images/starlight-042/cover-starlight-042.webp'
+socialImage: '/src/content/blog/_images/starlight-042/og-starlight-042.webp'
+related:
+  - starlight-039
+  - starlight-035
+---
+
+Starlight is Astro’s official package for building fast, accessible documentation websites, with all the features you need built in.
+
+Today, we have a riddle for you: how can one Starlight release contain both less JavaScript and more JavaScript? Read on to find out!
+
+Here’s what’s on the agenda:
+
+- [**Less JavaScript with the Popover API**](#less-javascript-with-the-popover-api)
+- [**Goodbye TypeScript, hello JavaScript**](#goodbye-typescript-hello-javascript)
+- [**Performance improvements**](#performance-improvements)
+- [**Accessibility improvements**](#accessibility-improvements)
+
+To upgrade an existing Starlight site, use the automated `@astrojs/upgrade` CLI tool.
+This will update Starlight, Astro, and any other integrations you are using:
+
+```sh
+npx @astrojs/upgrade
+```
+
+See the [Starlight CHANGELOG](https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md) for migration guidance and full details of breaking changes.
+
+## Less JavaScript with the Popover API
+
+Thanks to the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API), Starlight’s mobile menu now works even if a user’s JavaScript fails or is disabled:
+
+import popover from './_images/starlight-042/popover.mp4';
+
+<figure>
+	<video
+		autoplay
+		loop
+		muted
+		playsinline
+		class="border border-neutral-600 rounded-2xl"
+	>
+		<source src={popover} />
+		Sorry, your browser doesn't support embedded videos.
+	</video>
+	<figcaption class="my-4 text-center text-sm">
+		Demonstration of the mobile menu in the Starlight docs working even when
+		JavaScript is explicitly disabled in dev tools.
+	</figcaption>
+</figure>
+
+There are [more reasons why JavaScript may not work](https://piccalil.li/blog/a-handful-of-reasons-javascript-wont-be-available/) than you might think, so leaning on browser primitives like this makes for faster and more robust websites.
+See [the implementation PR](https://github.com/withastro/starlight/pull/4121) for more details.
+
+## Goodbye TypeScript, hello JavaScript
+
+A cool quirk of Astro projects is that you can publish TypeScript files to npm and they work when people install them.
+This is great for quick prototyping — no need to figure out a build step, just publish your source code — and it’s how Starlight has been published since the beginning.
+
+However, distributing TypeScript files comes at a cost.
+Users who typecheck with `tsc` will end up type checking your code, because TypeScript will check any `.ts` file it finds, even if it is in `node_modules`.
+In some case, type performance in the editor can also suffer.
+For a large project like Starlight these problems add up.
+
+So Starlight v0.42 comes with 100% more JavaScript!
+We now compile our source files, ship type definitions instead of TypeScript, and users should see faster type checking.
+
+## Performance improvements
+
+We’re always working to improve build times.
+Recent releases include several incremental improvements:
+
+- The latest release of [Sätteri](https://satteri.bruits.org/) enabled us to optimise some of our components and Markdown plugins and reduce Starlight’s dependency count.
+- Sidebar data processing is now up to 1,400× faster, which will be particularly noticeable in sites with large or deeply nested sidebars.
+
+## Accessibility improvements
+
+As of version 0.41.3, the Starlight mobile menu traps focus while open to prevent users tabbing into the page while it is hidden below the menu.
+This makes the keyboard navigation experience on small or zoomed-in viewports less confusing as is required by [WCAG Success Criterion 2.4.11 Focus Not Obscured](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html).
+
+## Community
+
+import Mention from '~/components/Mention.astro';
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Thanks to everyone who contributed to our recent releases with PRs and reviews, including [Alejandro Beltran](https://github.com/alebelcor), [Andreas Deininger](https://github.com/deining), [Andrei Alba](https://github.com/andreialba), [Ariel K](https://github.com/anaxite), [Ashutosh](https://github.com/AshutoshRaj97), [Axiaobo](https://github.com/Axiaobo7788), [Bugo](https://github.com/dragomano), [Burak Yavuz](https://github.com/BouRock), [Cammy](https://github.com/miichom), [David Garcia](https://github.com/dgarcia360), [David W](https://github.com/dionysuzx), [Dhruv Mishra](https://github.com/theconsummate), [Dieter Luypaert](https://github.com/moeriki), [Erkan Altınörs](https://github.com/erkanaltinors), [Felix Schneider](https://github.com/trueberryless), [Franco Kaddour](https://github.com/FrancoKaddour), [FrostyBee](https://github.com/frostybee), [Godwin Pinto](https://github.com/godwinpinto), [Goudarz Jafari](https://github.com/Goudarz), [Hippo](https://github.com/hippotastic), [Junseong Park](https://github.com/jsparkdev), [Ky Decker](https://github.com/kydecker), [Lorenzo Lewis](https://github.com/lorenzolewis), [Louis Escher](https://github.com/louisescher), [Max Ostapenko](https://github.com/max-ostapenko), [Mochammad Farros Fatchur Roji](https://github.com/farrosfr), [ocavue](https://github.com/ocavue), [Olabode Lawal-Shittabey](https://github.com/babblebey), [Pascale Beier](https://github.com/PascaleBeier), [Paweł Cisło](https://github.com/pyxelr), [Phil Ewels](https://github.com/ewels), [Phill](https://github.com/SavPhill), [pixelizing](https://github.com/pixelizing), [Shinya Fujino](https://github.com/morinokami), [Sudeep](https://github.com/sudeep2003), [Tahoe](https://github.com/morceaudebois), [Tarık Coşkun](https://github.com/tarikcoskun), [Tatsunori Uchino](https://github.com/tats-u), [Tia Zanella](https://github.com/skhell), [Timothy Jordan](https://github.com/timothyjordan), [Vladyslav Shevchenko](https://github.com/astrochemx), [Will Klein](https://github.com/willklein), [Zubair Ibn Zamir](https://github.com/2u841r), and [樱花乱飘](https://github.com/Ying-Luan).
+
+We look forward to seeing what you build with Starlight! If you have questions, comments, or just want to say hi, drop by the [Astro Discord](https://astro.build/chat).
