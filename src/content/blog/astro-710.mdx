@@ -51,16 +51,18 @@ These resources are specialized versions of the `script-src` and `style-src` cou
 
 For example, you can now accept inline styles as unsafe, without giving up safety for external CSS file:
 
-```js title="astro.config.mjs" ins={6-9} ins="'unsafe-line'"
+```js title="astro.config.mjs" ins={6-11} ins="'unsafe-line'"
 import { defineConfig } from "astro/config"
 
 export default defineConfig({
 	security: {
 		csp: {
-			styleDirective: [{
-				resource: "'unsafe-line'",
-				kind: "attribute"
-			}]
+			styleDirective: {
+				resources: [{
+					resource: "'unsafe-line'",
+					kind: "attribute"
+				}]
+			}
 		}
 	}
 })
