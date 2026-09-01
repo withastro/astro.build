@@ -54,7 +54,7 @@ import popover from './_images/starlight-042/popover.mp4';
 	</figcaption>
 </figure>
 
-There are [more reasons why JavaScript may not work](https://piccalil.li/blog/a-handful-of-reasons-javascript-wont-be-available/) than you might think, so leaning on browser primitives like this makes for faster and more robust websites.
+There are [more reasons why JavaScript may not work](https://piccalil.li/blog/a-handful-of-reasons-javascript-wont-be-available/) than you might think, so leaning on browser primitives like this makes for faster and more robust websites, while shipping less client-side JS.
 See [the implementation PR](https://github.com/withastro/starlight/pull/4121) for more details.
 
 ## Goodbye TypeScript, hello JavaScript
@@ -64,11 +64,12 @@ This is great for quick prototyping — no need to figure out a build step, just
 
 However, distributing TypeScript files comes at a cost.
 Users who typecheck with `tsc` will end up type checking your code, because TypeScript will check any `.ts` file it finds, even if it is in `node_modules`.
+And they’ll typecheck with their TypeScript configuration, not yours.
 In some case, type performance in the editor can also suffer.
 For a large project like Starlight these problems add up.
 
 So Starlight v0.42 comes with 100% more JavaScript!
-We now compile our source files, ship type definitions instead of TypeScript, and users should see faster type checking.
+We now compile our source files, ship type definitions instead of TypeScript, and users should see faster type checking. (Don’t worry though, the average Starlight site will still ship [3–13× less JavaScript to end users than comparable tools](https://httparchive.org/reports/techreport/tech?median-weight-over-time=js&tech=Starlight,MkDocs,Sphinx,VitePress,Nextra,GitBook,Docusaurus&geo=ALL&rank=ALL&page=1#comparison-page-weight).)
 
 ## Performance improvements
 
