@@ -57,10 +57,12 @@ import { defineConfig } from "astro/config"
 export default defineConfig({
 	security: {
 		csp: {
-			styleDirective: [{
-				resource: "'unsafe-line'",
-				kind: "attribute"
-			}]
+			styleDirective: {
+				resources: [{
+					resource: "'unsafe-line'",
+					kind: "attribute"
+				}]
+			}
 		}
 	}
 })
