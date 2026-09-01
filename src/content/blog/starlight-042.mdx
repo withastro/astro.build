@@ -57,7 +57,7 @@ A cool quirk of Astro projects is that you can publish TypeScript files to npm a
 This is great for quick prototyping — no need to figure out a build step, just publish your source code — and it’s how Starlight has been published since the beginning.
 
 However, distributing TypeScript files comes at a cost.
-Users who typecheck with `tsc` will end up type checking your code, because TypeScript will check any `.ts` file it finds, even if it is in `node_modules`.
+Users who typecheck with `tsc` can end up type checking your code, because TypeScript will check any imported `.ts` file it finds, even if it is in `node_modules`.
 And they’ll typecheck with their TypeScript configuration, not yours.
 In some case, type performance in the editor can also suffer.
 For a large project like Starlight these problems add up.
