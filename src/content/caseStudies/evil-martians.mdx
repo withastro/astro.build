@@ -1,0 +1,94 @@
+---
+title: 'Affordable and Fast Migration'
+description: 'How Evil Martians moved 367 blog posts off Gatsby in eight days without rewriting a single React component.'
+seo:
+  title: 'Affordable and Fast Migration'
+  description: 'How Evil Martians moved 367 blog posts off Gatsby in eight days without rewriting a single React component.'
+coverGradientFrom: '#3245FF'
+coverGradientTo: '#BC52EE'
+publishDate: 'September 8, 2026'
+authors:
+  - astro-team
+lang: 'en'
+socialImage: /src/content/caseStudies/_images/codetv/social-image.webp
+coverImage: /src/content/caseStudies/_images/codetv/cover-image.webp
+headerImage: /src/content/caseStudies/_images/codetv/header.png
+---
+
+Evil Martians is a design and engineering consultancy for devtools, cybersecurity, and AI startups, and the team behind open source projects including imgproxy, Lefthook, and AnyCable. Their website is the main landing platform for their customers and the home of Martian Chronicles, a technical blog read by 500,000 developers every year. It has ~1,037 built HTML pages running deep on Gatsby since September 2022.
+
+By late 2023, it was clear that Gatsby was winding down, but for three years running, Evil Martians couldn't justify a migration. For a busy consultancy, this meant pulling engineers off client projects indefinitely, a costly and labourous prospect. But to the team's surprise, in August 2026, a single engineer moved the entire website to Astro in just eight days.
+
+Two things were already in place before the clock started. The image pipeline had already moved from Gatsby to imgproxy months earlier, and the route-by-route migration plan was written in markdown before any code moved. 
+
+Astro enabled Evil Martians to move the entire existing React component library practically untouched. The cutover commit deleted 17,601 more lines than it added, and every route shipped hydrating as a single whole-page island. This was deliberately a broad boundary because Astro makes it possible to migrate first, then gradually shrink each React island later. 
+
+On day eight, with the components unchanged and every route a whole-page island, the homepage went from 2.1 MB to 1.8. Today, after narrowing the homepage to per-section islands, it's 1.1 MB. That's 61% less JavaScript at load than Gatsby, and a mobile Lighthouse performance score of 90, up from 66.
+
+Homepage JavaScript at load fell 61% and mobile Lighthouse performance rose from 66 to 90.
+
+Challenges
+Since the end of 2023, it was becoming clear that Gastby was winding down: stable releases to npm fell from 367 in 2019 to 6 in all of 2025. This showed up as costs to evilmartians.com accumulated over time:
+
+17 Gatsby plugins in package.json alongside the framework itself, and 4 dependencies that needed hand-written patches to behave
+
+A GraphQL data layer sitting in front of a static site, with components and pages pulling their data through a Gatsby-specific hooks
+
+Dependency advisories accumulating with no upstream fix available, on a tree nobody was going to update
+
+A shrinking pool of Evil Martians who could safely touch the code
+
+Requirements
+The Evil Martians team was looking for a way to make the migration manageable. This meant three non-negotiables:
+
+Whatever replaced Gatsby had to accept existing React components.
+
+The GraphQL layer had to be replaced with something proportionate. The replacement had to cover pages, components and a custom content pipeline without becoming its own migration.
+
+The new framework had to be built alongside the old one in the same repo, route group by route group. This way costs of pausing migration on any given day would be minimal.
+
+Solution and Implementation
+Astro checked off all three requirements:
+
+Astro leaves the component framework up to you: Svelte, Vue, Solid, React. pnpm astro add react pulled in @astrojs/react, and our component library came across unchanged.
+
+Content collections replaced the GraphQL layer. Where a page used to declare a query, it now awaits the data it needs. The content pipeline didn't have to change at all, though we'd like to revisit it — LiquidJS, JSX, and the transformers all still run, just behind collections instead of resolvers.
+
+Both frameworks built from the same repo. Astro went up alongside Gatsby, one route group at a time, while Gatsby kept serving production. We checked each group locally and on Netlify deploy previews. Nothing went live until the whole site was ready, so stopping between merges would have cost us nothing.
+
+We shipped whole-page islands first, since Astro lets you set the hydration boundary later. Moving a route was mostly wrapping it and adding a client: directive because the components themselves didn't change. Narrowing it afterward is the same directive with a different value: mostly client:idle, client:load for the menu, client:visible for what's below the fold.
+
+Rita Klubochkina, Sr. Frontend Engineer at Evil Martians
+
+Evil Martians use imgproxy for image processing which already let them delete a chunk of Gatsby-specific plugin config. As imgproxy isn't tied to a framework, it remained almost intact.
+
+The migration was steady, route group by route group. The team identified components pulled by each group, matched that to the Gastby-specific data each page queried and translated that into Astro equivalent.
+
+Since the components stayed intact, an LLM could handle most of the repetitive translation. Evil Martians moved the build from Webpack to Vite, replacing plugins, migrating page skeletons, and writing the adapters that let the existing content pipeline keep running as-is. As the model kept Gatsby's architecture decisions unless told otherwise, the team had to keep an eye out for that. 
+
+The snapshot tests also remained. Written before the migration, they caught most issues. Whatever the tests missed showed up on preview builds. Reviewing diffs and testing by hand is actually what took most of the time
+
+Results
+17 Gatsby plugins and 4 patched dependencies are now gone. package.json is down from 108 to 86 direct dependencies. Cold builds stayed at around 4 minutes; the content pipeline came across unchanged, so the part of the build that takes the time didn't change either.
+
+| Homepage assets, uncompressed | Gatsby (last production deploy) | Astro, whole-page islands | Astro, per-section islands
+| --- | --- | --- | --- |
+| HTML | 650.1 KB | 390.6 KB | 302.4 KB |
+| JavaScript | 1,280.9 KB | 1,018.0 KB | 496.9 KB |
+| Data JSON for the page itself | 18.4 KB | — | — |
+| CSS inlined in the HTML | 158.2 KB | 155.6 KB |
+| Fonts | 195.3 KB | 195.3 KB | 195.3 KB |
+| SVG | 51.9 KB | ≈51.9 KB | 16.6 KB |
+| Total | ≈2.1 MB | ≈1.8 MB | ≈1.1 MB
+
+Gatsby inlined CSS into the HTML; Astro ships it as a separate file. The 158 KB is inside Gatsby's 650 KB HTML figure and outside Astro's.
+
+The homepage essentially became twice as light! On the wire, where Brotli compresses minified JavaScript roughly 3:1, the homepage went from 123.8 KB of HTML and 373.5 KB of JavaScript on Gatsby to 69.6KB and 185.5KB today.
+
+Deleting the GraphQL layer deleted its prefetch behavior. Gatsby pulled 13.6 MB of query results for links nobody had clicked yet, more than six times the weight of the page itself, while Astro waits for a hover before fetching anything.
+
+The homepage stopped hydrating as one whole-page island and started hydrating per section: the hero comes up on idle from a 9.2KB chunk, everything below the fold waits until you scroll to it, and build-constant data that used to be inlined into the HTML on every route (56.3 KB of it, now 2.3 KB) ships as content-hashed, cacheable modules instead.
+
+Islands also made it obvious where the weight was. The biggest thing loading on the homepage was the site search modal, on every route, open or not. Deferring it to first open took 437 KB off load across the site.
+
+Gatsby-to-Astro's migration guide  was very helpful.
