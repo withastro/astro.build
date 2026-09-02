@@ -1,6 +1,6 @@
 ---
 title: 'Astro 7.3'
-description: 'Astro 7.3 adds response finalizers for custom fetch handlers, a way to run multiple preview servers at once, and a runtime logger for image services and cache providers.'
+description: "Astro 7.3 adds an `--ignore-lock` flag for `astro preview` and passes Astro's runtime logger into custom image services and cache providers."
 publishDate: '2026-09-03'
 authors:
   - matthew
@@ -18,12 +18,11 @@ related:
 import Mention from '/src/components/Mention.astro';
 import Note from '/src/components/Note.astro';
 
-**Astro 7.3 is here!** The highlight is `state.addResponseFinalizer()`, a new API that lets custom fetch handlers register logic to run against the final response, no matter what part of your code calls `astro()`. Cloudflare's custom worker entrypoints use it to restore cookies, sessions, and CDN caching. This release also brings the `--ignore-lock` flag to `astro preview` so you can run multiple preview servers at once, and passes Astro's runtime logger into custom image services and cache providers.
+**Astro 7.3 is here!** This release brings the `--ignore-lock` flag to `astro preview`, so you can run more than one preview server at once, and passes Astro's runtime logger into custom image services and cache providers, so their warnings respect your logging setup instead of writing straight to the console.
 
 Explore what's new in this release:
 
 - **[Run multiple preview servers at once](#run-multiple-preview-servers-at-once)**
-- **[Response finalizers for custom fetch handlers](#response-finalizers-for-custom-fetch-handlers)**
 - **[Logger for image services and cache providers](#logger-for-image-services-and-cache-providers)**
 - **[Community](#community)**
 
@@ -50,61 +49,6 @@ astro preview --ignore-lock
 There are some cases where you might want multiple dev or preview servers running. One example is when doing playwright tests. Now you can pass `--ignore-lock` to allow them to run at once.
 
 These instances run independently, so they're meant for quick, one-off servers rather than ones you manage with `astro preview stop` or `status`.
-
-## Response finalizers for custom fetch handlers
-
-Astro 7 introduced [`astro/fetch`](https://docs.astro.build/en/guides/routing/#advanced-routing), a set of composable handlers for building custom request pipelines around a shared `FetchState` object. The all-in-one `astro()` handler runs Astro's full pipeline, and you can wrap it to add your own logic:
-
-```js
-import { FetchState, astro } from 'astro/fetch';
-
-export default {
-  async fetch(request) {
-    const state = new FetchState(request);
-    // custom pre-processing here...
-    const response = await astro(state);
-    // custom post-processing here...
-    return response;
-  },
-};
-```
-
-Custom fetch handlers get access to `state`, but nothing that lets them act on the response itself. That doesn't exist until `astro()` returns it. If you needed to run logic against the response, you had to write a separate function just for that step and remember to call it at the right point.
-
-That's exactly the situation for Cloudflare's custom worker entrypoints, which need to attach cookies, sessions, and CDN cache headers to every response.
-
-Astro 7.3 adds `state.addResponseFinalizer()` to solve this. Register a finalizer anywhere you have access to `state`, and it runs automatically after `astro()` produces a response, no matter who called it:
-
-```js
-import { FetchState, astro } from 'astro/fetch';
-
-export default {
-  async fetch(request) {
-    const state = new FetchState(request);
-    state.addResponseFinalizer((response) => {
-      response.headers.set('X-Platform', 'custom');
-      return response;
-    });
-    return astro(state);
-  },
-};
-```
-
-If you're composing handlers yourself instead of using `astro()`, call `state.finalize(response)` explicitly once you have a response, so registered finalizers still run:
-
-```js
-import { FetchState, i18n, pages } from 'astro/fetch';
-
-export default {
-  async fetch(request) {
-    const state = new FetchState(request);
-    const response = await i18n(state, await pages(state));
-    return state.finalize(response);
-  },
-};
-```
-
-The Cloudflare adapter uses this internally to preserve cookies, sessions, and CDN caching for custom worker entrypoints, without changing the `fetch()` code you write.
 
 ## Logger for image services and cache providers
 
