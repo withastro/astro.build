@@ -10,12 +10,6 @@ allowBuilds:
 # Require dependencies to be at least 3 days old before allowing them to be installed.
 minimumReleaseAge: 4320
 
-overrides:
-  # @astrojs/cloudflare depends on @cloudflare/vite-plugin, which requires this
-  # miniflare version (or newer) for its `convertV4MiniflareOptions` export.
-  # It still supports MINIFLARE_WORKERD_V8_FLAGS, used by the dev script to
-  # work around a V8 Maglev bug that fatally OOMs workerd.
-  miniflare: 5.20260815.0-alpha
 
 minimumReleaseAgeExclude:
   - '@astrojs/markdown-satteri@0.3.8'
