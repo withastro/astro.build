@@ -1,6 +1,6 @@
 ---
 title: 'Astro 7.3'
-description: "Astro 7.3 adds an --ignore-lock flag for astro preview and passes Astro's runtime logger into custom image services and cache providers."
+description: "Astro 7.3 adds an --ignore-lock flag for astro preview, passes Astro's runtime logger into custom image services and cache providers, and ships a finalize() helper for Cloudflare custom worker entrypoints."
 publishDate: '2026-09-03'
 authors:
   - matthew
@@ -18,12 +18,13 @@ related:
 import Mention from '/src/components/Mention.astro';
 import Note from '/src/components/Note.astro';
 
-**Astro 7.3 is here!** This release brings the `--ignore-lock` flag to `astro preview`, so you can run more than one preview server at once. It also passes Astro's runtime logger into custom image services and cache providers, so their warnings respect your logging setup instead of writing straight to the console.
+**Astro 7.3 is here!** This release brings the `--ignore-lock` flag to `astro preview`, so you can run more than one preview server at once. It also passes Astro's runtime logger into custom image services and cache providers, so their warnings respect your logging setup instead of writing straight to the console. Alongside the release, `@astrojs/cloudflare` ships a `finalize()` helper for custom worker entrypoints.
 
 Explore what's new in this release:
 
 - **[Run multiple preview servers at once](#run-multiple-preview-servers-at-once)**
 - **[Logger for image services and cache providers](#logger-for-image-services-and-cache-providers)**
+- **[Cloudflare finalize() helper for custom fetch handlers](#cloudflare-finalize-helper-for-custom-fetch-handlers)**
 - **[Community](#community)**
 
 To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
@@ -84,6 +85,27 @@ const provider: CacheProvider = {
 ```
 
 Astro's own built-in Sharp image service and `memoryCache()` provider have been updated to use this too, so their warnings behave the same as the rest of Astro's output.
+
+## Cloudflare finalize() helper for custom fetch handlers
+
+If you have a custom worker entrypoint on Cloudflare, `@astrojs/cloudflare` now ships a `finalize()` helper that applies cookies and Cloudflare's CDN cache defaults to the response coming out of an `astro/fetch` pipeline:
+
+```ts title="src/worker.ts"
+import { astro, FetchState } from 'astro/fetch';
+import { cf, finalize } from '@astrojs/cloudflare/fetch';
+
+export default {
+  async fetch(request: Request, env: Env, context: ExecutionContext) {
+    const state = new FetchState(request);
+    const asset = await cf(state, env, context);
+    if (asset) return asset;
+
+    return finalize(state, await astro(state));
+  },
+};
+```
+
+With Hono, the `@astrojs/cloudflare/hono` middleware applies these headers automatically, so there's nothing extra to call.
 
 ## Other improvements
 
