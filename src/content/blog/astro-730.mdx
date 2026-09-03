@@ -1,0 +1,130 @@
+---
+title: 'Astro 7.3'
+description: "Astro 7.3 adds an --ignore-lock flag for astro preview, passes Astro's runtime logger into custom image services and cache providers, and ships a finalize() helper for Cloudflare custom worker entrypoints."
+publishDate: '2026-09-03'
+authors:
+  - matthew
+coverImage: '/src/content/blog/_images/astro-730/blog-post-astro-7.3.webp'
+socialImage: '/src/content/blog/_images/astro-730/og-astro-7.3.jpg'
+lang: 'en'
+homepageLink:
+  title: 'Astro 7.3'
+  subtitle: 'Available now!'
+related:
+  - astro-720
+  - astro-710
+---
+
+import Mention from '/src/components/Mention.astro';
+import Note from '/src/components/Note.astro';
+
+**Astro 7.3 is here!** This release brings the `--ignore-lock` flag to `astro preview`, so you can run more than one preview server at once. It also passes Astro's runtime logger into custom image services and cache providers, so their warnings respect your logging setup instead of writing straight to the console. Alongside the release, `@astrojs/cloudflare` ships a `finalize()` helper for custom worker entrypoints.
+
+Explore what's new in this release:
+
+- **[Run multiple preview servers at once](#run-multiple-preview-servers-at-once)**
+- **[Logger for image services and cache providers](#logger-for-image-services-and-cache-providers)**
+- **[Cloudflare finalize() helper for custom fetch handlers](#cloudflare-finalize-helper-for-custom-fetch-handlers)**
+- **[Community](#community)**
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Run multiple preview servers at once
+
+Astro 7.1 added an `--ignore-lock` flag to `astro dev` so you could run more than one dev server at once, bypassing the [lockfile](https://docs.astro.build/en/reference/cli-reference/#--background) that keeps AI agents from spinning up duplicates. Astro 7.2 added that lockfile to `astro preview` too, but without the same escape hatch. Astro 7.3 closes that gap.
+
+```sh
+astro preview --ignore-lock
+```
+
+There are some cases where you might want multiple dev or preview servers running. One example is when doing Playwright tests. Now you can pass `--ignore-lock` to allow them to run at once.
+
+These instances run independently, so they're meant for quick, one-off servers rather than ones you manage with `astro preview stop` or `status`.
+
+## Logger for image services and cache providers
+
+Astro's [custom logger](/blog/astro-710/#logger-improvements) lets you route Astro's own output to your logging setup, but custom image services and cache providers couldn't take advantage of it. If they needed to warn about something, like an unsupported image format or a skipped cache entry, their only option was `console.warn()`, which ignores your configured log level, destination, or the `--silent` flag entirely.
+
+Astro 7.3 passes a `logger` into both extension points. Image services receive it as an argument to their hooks:
+
+```ts
+import type { LocalImageService } from 'astro';
+
+const service: LocalImageService = {
+  // ...
+  async transform(inputBuffer, transform, imageConfig, logger) {
+    logger.warn(`Could not optimize "${transform.src}". Passing it through unchanged.`);
+    return { data: inputBuffer, format: 'png' };
+  },
+};
+```
+
+Cache providers receive it on the context passed to `onRequest()`:
+
+```ts
+import type { CacheProvider } from 'astro';
+
+const provider: CacheProvider = {
+  name: 'my-cache',
+  async onRequest({ request, url, logger }, next) {
+    logger.warn(`Skipping cache for ${url.pathname} because the response sets a cookie.`);
+    return next();
+  },
+  // ...
+};
+```
+
+Astro's own built-in Sharp image service and `memoryCache()` provider have been updated to use this too, so their warnings behave the same as the rest of Astro's output.
+
+## Cloudflare finalize() helper for custom fetch handlers
+
+If you have a custom worker entrypoint on Cloudflare, `@astrojs/cloudflare` now ships a `finalize()` helper that applies cookies and Cloudflare's CDN cache defaults to the response coming out of an `astro/fetch` pipeline:
+
+```ts title="src/worker.ts"
+import { astro, FetchState } from 'astro/fetch';
+import { cf, finalize } from '@astrojs/cloudflare/fetch';
+
+export default {
+  async fetch(request: Request, env: Env, context: ExecutionContext) {
+    const state = new FetchState(request);
+    const asset = await cf(state, env, context);
+    if (asset) return asset;
+
+    return finalize(state, await astro(state));
+  },
+};
+```
+
+With Hono, the `@astrojs/cloudflare/hono` middleware applies these headers automatically, so there's nothing extra to call.
+
+## Other improvements
+
+For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Special thanks to everyone who contributed to Astro 7.3 with code, docs, reviews, and testing, including:
+
+[Aleksandr Smyshliaev](https://github.com/asmyshlyaev177), [Alisson Nunes](https://github.com/Alynva), [Angel Marfil](https://github.com/angelmarfil), [angelo 🦈](https://github.com/an-jello), [Arnold](https://github.com/arnold2710), [Ashleigh Yeoman](https://github.com/ashleigh-yeoman), [Barry](https://github.com/barry166), [bulebrainbrand](https://github.com/bulebrainbrand), [Chuck Reynolds](https://github.com/chuckreynolds), [Constantine](https://github.com/Constantine1916), [Daniel](https://github.com/danielmlr), [Dawid Gaweł](https://github.com/dmgawel), [Eknath](https://github.com/eknathdj), [Eric Clemmons](https://github.com/ericclemmons), [Eric Park](https://github.com/ericswpark), [Espen Hovlandsdal](https://github.com/rexxars), [Ethan Stoner](https://github.com/ethanstoner), [Felix Schneider](https://github.com/trueberryless), [fkatsuhiro](https://github.com/fkatsuhiro), [Jawad Ali](https://github.com/contactjawad), [Johannes Grof │ Dev](https://github.com/jx-grxf), [Junseong Park](https://github.com/jsparkdev), [Kesley David](https://github.com/KesleyDavid), [Konrad Szajna](https://github.com/iseraph-dev), [Kosta](https://github.com/dobrodob), [Kynson Szetau](https://github.com/Kynson), [Lazizbek Ergashev](https://github.com/lazerg), [ld-web](https://github.com/ld-web), [Linserin Yang](https://github.com/Linserin), [Louis Escher](https://github.com/louisescher), [markws62](https://github.com/markws62), [Marnik Bercx](https://github.com/mbercx), [Martin Trapp](https://github.com/martrapp), [Miklós Csepella](https://github.com/elspecal), [Miodrag Obradovic](https://github.com/Kjubikstronk), [mkismy](https://github.com/mkismy), [Ngo Quoc Viet](https://github.com/NgoQuocViet2001), [ocavue](https://github.com/ocavue), [paul valladares](https://github.com/dreyfus92), [Roman](https://github.com/gameroman), [Sakku 🦉](https://github.com/Yusaku01), [Sebastiaan Saarloos](https://github.com/sebastiaan1997), [Shinya Fujino](https://github.com/morinokami), [swaggysnippets](https://github.com/swaggysnippets), [Tarik Ermis](https://github.com/tarikermis), [thelazylama](https://github.com/thelazylamaGit), [Thomas Bonnet](https://github.com/thomasbnt), [tianrking](https://github.com/tianrking), [Ujjwal Gupta](https://github.com/lucid-codr), [Wahid Rizka Fathurrohman](https://github.com/wahidrizka), [Waqas Ahmed](https://github.com/wakqasahmed), [Yoann Fleury](https://github.com/yoannfleurydev), and [翠](https://github.com/sapphi-red)
+
+We hope you enjoy Astro 7.3. If you run into issues or want to share feedback, please join us on [Discord](https://astro.build/chat), post on [GitHub](https://github.com/withastro/astro/issues), or reach out on [Bluesky](https://bsky.app/profile/astro.build), [Twitter](https://twitter.com/astrodotbuild), and [Mastodon](https://m.webtoo.ls/@astro).
