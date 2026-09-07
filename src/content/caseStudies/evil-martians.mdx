@@ -31,7 +31,7 @@ import metricsGraphic from './_images/evil-martians/evil-martians-metrics.webp';
 
 By late 2023, it was clear that Gatsby was winding down, but for three years running, Evil Martians couldn't justify a migration. For a busy consultancy, this would mean pulling engineers off client projects, a costly and laborious prospect. But to the team's surprise, in August 2026, **a single engineer moved the entire website to Astro in just eight days**.
 
-Using the existing React components without any changes, the homepage weight decreased from 2.1 MB to 1.8 MB. After fully converting to Astro’s [islands architecture](https://docs.astro.build/en/concepts/islands/), the team saw this drop even further to 1.1 MB. Homepage **JavaScript at load fell 61% overall and mobile Lighthouse performance scores rose from 66 to 90**.
+Homepage JavaScript at load fell 61% overall and mobile Lighthouse performance scores rose from 66 to 90. Without changing any existing React components, their homepage weight decreased from 2.1 MB to 1.8 MB. After optimizing their hydration strategy and fully converting to Astro’s [islands architecture](https://docs.astro.build/en/concepts/islands/), the team saw this drop even further to 1.1 MB.
 
 <ImageFigure caption="Improvements from Evil Martians’ migration to Astro">
 	<BlogContentImage
@@ -42,7 +42,7 @@ Using the existing React components without any changes, the homepage weight dec
 
 ## Challenges
 
-Since the end of 2023, it was becoming clear to Evil Martians that Gatsby was winding down and could not be the future of their corporate website and blog infrastructure. As the site grew to 1000+ HTML pages, maintenance costs and code fragility were accelerating over time:
+Gatsby was winding down and could not be the future of Evil Martians' corporate website and blog infrastructure. As their site grew to 1000+ HTML pages, maintenance costs and code fragility were accelerating over time:
 
 - **17 Gatsby plugins** in `package.json` alongside the framework itself, and **4 dependencies** that needed hand-written patches to behave.
 - **A GraphQL data layer** sitting in front of a static site, with components and pages pulling their data through Gatsby-specific hooks.
