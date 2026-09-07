@@ -25,19 +25,13 @@ Check out our website for more about [our services](https://www.bitsandletters.c
 
 ### What clients say about us
 
-<blockquote>
-<p><strong>Our new website looks so good and is amazingly fast.</strong> This launch really made it feel like a new chapter starting for us.</p>
-<div>
-&mdash; Paige Schwartz, CEO at <a href="https://www.bitsandletters.com/work/copytree?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm">Copytree</a>
-</div>
-</blockquote>
+> **Our new website looks so good and is amazingly fast.** This launch really made it feel like a new chapter starting for us.
+>
+> — Paige Schwartz, CEO at [Copytree](https://www.bitsandletters.com/work/copytree?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm)
 
-<blockquote>
-<p><strong>B&amp;L helped us scale from our day-one build to a site that runs like it's backed by a full design team.</strong> They gave us the systems, structure, and speed to keep up with growth—without adding overhead.</p>
-<div>
-&mdash; Stephie Glaser, Developer Marketer at <a href="https://www.bitsandletters.com/work/oso-webflow-site?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm">Oso</a>
-</div>
-</blockquote>
+> **B&L helped us scale from our day-one build to a site that runs like it's backed by a full design team.** They gave us the systems, structure, and speed to keep up with growth—without adding overhead.
+>
+> — Stephie Glaser, Developer Marketer at [Oso](https://www.bitsandletters.com/work/oso-webflow-site?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm)
 
 ### The details that matter
 
