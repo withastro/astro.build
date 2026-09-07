@@ -23,7 +23,7 @@ For example:
 
 Check out our website for more about [our services](https://www.bitsandletters.com/services?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm) and [how we think about the work](https://www.bitsandletters.com/ideas?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm).
 
-## What clients say about us
+### What clients say about us
 
 <blockquote>
 <p><strong>Our new website looks so good and is amazingly fast.</strong> This launch really made it feel like a new chapter starting for us.</p>
@@ -39,10 +39,10 @@ Check out our website for more about [our services](https://www.bitsandletters.c
 </div>
 </blockquote>
 
-## The details that matter
+### The details that matter
 
 Every site we build meets **WCAG accessibility standards**, follows **security best practices**, and **performs well on slow connections**. These aren’t extras we bolt on at the end—they’re built into our process from day one, so your site works well for everyone who visits it.
 
-## Deep collaboration, direct access
+### Deep collaboration, direct access
 
 You shouldn't have to wonder if your project is on track, or wait for the next meeting to ask a quick question. Every client project gets **a dedicated, shared Slack channel and Notion workspace**, in addition to regular video calls and status reports.
