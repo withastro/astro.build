@@ -78,23 +78,21 @@ Astro's framework-agnostic, islands architecture and strong plugin ecosystem mad
 
 Astro's content collections replaced the GraphQL layer, with no changes needed to the team's custom content pipeline at all. The existing LiquidJS and JSX transformers continued to run, just behind content collection loaders instead of Gatsby GraphQL resolvers.
 
-Astro's routing system allowed the migration to progress incrementally, with both frameworks built from the same project repository simultaneously. The team continuously deployed the new Astro project, while the Gatsby project kept serving production. When the migration was complete, Evil Martians switched over to the Astro site with zero risk or downtime. This allowed the migration to progress at its own pace, without affecting production.
-
 ## Results
 
 Evil Martians was facing an aging framework, a GraphQL layer that was overkill for a static site, and a shrinking pool of engineers to maintain it.
 
-The migration to Astro allowed the team to ship a set of islands, first as full-pages, then with each section hydrating independently. This change alone reduced the amount of JavaScript shipped on load by 61%.
+The migration to Astro allowed the team to progressively refactor existing React components, eventually using Astro’s fine-grained control to hydrate each section independently. This change alone reduced the amount of JavaScript shipped on load by 61%.
 
 Islands also made it obvious which parts of the site were heavy. The team discovered that the heaviest element on the homepage was the site search modal. Previously, this was loaded up front on every page, whether opened or not. Deferring this to first open as an island removed 437 KB of load-time JavaScript across the site.
 
-Deleting the GraphQL layer also deleted its expensive prefetch behavior. Gatsby pulled 13.6 MB of query results for links nobody had clicked yet, more than six times the weight of the page itself. The Astro version of the site waits for a hover before fetching any data.
+Deleting the GraphQL layer also deleted its expensive prefetch behavior. Gatsby pulled 13.6 MB of query results for links nobody had clicked yet, more than six times the weight of the page itself. Astro’s prefetch feature optimizes navigations, but is much less aggressive, only prefetching linked pages on hover.
 
 Additionally, Evil Martians improved performance and security by reducing dependencies. 17 Gatsby plugins and 4 patched dependencies are now gone. `package.json` is down from 108 to 86 direct dependencies.
 
 ### Performance gains
 
-The migration to Astro was a clear success. The team was able to migrate the entire site in just eight working days, without rewriting a single React component. The homepage went from 2.1 MB to 1.8 MB initially, and after fully converting to islands architecture, it's now 1.1 MB. Homepage JavaScript at load fell 61%, and mobile Lighthouse performance rose from 66 to 90.
+The migration to Astro was a clear success. The following table breaks down the various savings in homepage asset sizes.
 
 | Homepage assets<br/>(uncompressed) |                 Gatsby |                  Astro |   Change |
 | ---------------------------------- | ---------------------: | ---------------------: | -------: |
