@@ -29,7 +29,7 @@ import metricsGraphic from './_images/evil-martians/evil-martians-metrics.webp';
 	</div>
 </div>
 
-By late 2023, it was clear that Gatsby was winding down, but for three years running, Evil Martians couldn't justify a migration. For a busy consultancy, this would mean pulling engineers off client projects, a costly and laborious prospect. But to the team's surprise, in August 2026, **a single engineer moved the entire website to Astro in just eight days**.
+For three years running, Evil Martians couldn't justify a website migration from Gatsby, even though the framework was winding down. For a busy consultancy, this would mean pulling engineers off client projects, a costly and laborious prospect. But to the team's surprise, in August 2026, **a single engineer moved the entire website to Astro in just eight days**.
 
 Homepage JavaScript at load fell 61% overall and mobile Lighthouse performance scores rose from 66 to 90. Without changing any existing React components, their homepage weight decreased from 2.1 MB to 1.8 MB. After optimizing their hydration strategy and fully converting to Astro’s [islands architecture](https://docs.astro.build/en/concepts/islands/), the team saw this drop even further to 1.1 MB.
 
@@ -42,14 +42,14 @@ Homepage JavaScript at load fell 61% overall and mobile Lighthouse performance s
 
 ## Challenges
 
-Gatsby was winding down and could not be the future of Evil Martians' corporate website and blog infrastructure. As their site grew to 1000+ HTML pages, maintenance costs and code fragility were accelerating over time:
+Evil Martians realized that Gatsby could not be the future of their corporate website and blog infrastructure. As their site grew to 1000+ HTML pages, maintenance costs and code fragility were accelerating over time:
 
 - **17 Gatsby plugins** in `package.json` alongside the framework itself, and **4 dependencies** that needed hand-written patches to behave.
 - **A GraphQL data layer** sitting in front of a static site, with components and pages pulling their data through Gatsby-specific hooks.
 - **Dependency security advisories accumulating** with no upstream fix available, in a tree nobody was going to update.
 - A **shrinking pool of Evil Martians with specialized Gatsby knowledge** who could safely touch the code.
 
-Evil Martians needed to migrate to a modern framework to reduce technical debt and keep the site maintainable. But they also needed to do it with as little downtime as possible.
+They needed to migrate to a modern framework to reduce technical debt and keep the site maintainable. But they also needed to do it with as little downtime as possible.
 
 ## Requirements
 
@@ -67,7 +67,7 @@ Astro's framework-agnostic, islands architecture and strong plugin ecosystem mad
 
 <Blockquote>
 	<Fragment slot="quote">
-		Astro allowed us to ship quickly. We starting with whole-page islands first,
+		Astro allowed us to ship quickly. We started with whole-page islands first,
 		then refined our hydration strategy. Since our React components stayed
 		intact, an LLM could handle most of the repetitive translation.
 	</Fragment>
@@ -76,15 +76,15 @@ Astro's framework-agnostic, islands architecture and strong plugin ecosystem mad
 	</Fragment>
 </Blockquote>
 
-Astro's content collections replaced the GraphQL layer, and the team didn't have to change the content pipeline at all. The existing LiquidJS and JSX transformers continued to run, just behind content collection loaders instead of Gatsby GraphQL resolvers.
+Astro's content collections replaced the GraphQL layer, with no changes needed to the team's custom content pipeline at all. The existing LiquidJS and JSX transformers continued to run, just behind content collection loaders instead of Gatsby GraphQL resolvers.
 
-Astro's routing system allowed the migration to progress incrementally, with both frameworks built from the same project repository simultaneously. The team continuously deployed the new Astro project, while the Gatsby project kept serving production. When the migration was complete, Evil Martians switched over to the Astro site with zero risk or downtime. This allowed the migration to progress at its own pace, one route group at a time, without affecting production.
+Astro's routing system allowed the migration to progress incrementally, with both frameworks built from the same project repository simultaneously. The team continuously deployed the new Astro project, while the Gatsby project kept serving production. When the migration was complete, Evil Martians switched over to the Astro site with zero risk or downtime. This allowed the migration to progress at its own pace, without affecting production.
 
 ## Results
 
 Evil Martians was facing an aging framework, a GraphQL layer that was overkill for a static site, and a shrinking pool of engineers to maintain it.
 
-The migration to Astro allowed the team to ship the homepage as a set of islands, first as full-pages, then with each section hydrating independently. This change alone reduced the amount of JavaScript shipped on load by 61%.
+The migration to Astro allowed the team to ship a set of islands, first as full-pages, then with each section hydrating independently. This change alone reduced the amount of JavaScript shipped on load by 61%.
 
 Islands also made it obvious which parts of the site were heavy. The team discovered that the heaviest element on the homepage was the site search modal. Previously, this was loaded up front on every page, whether opened or not. Deferring this to first open as an island removed 437 KB of load-time JavaScript across the site.
 
@@ -94,7 +94,7 @@ Additionally, Evil Martians improved performance and security by reducing depend
 
 ### Performance gains
 
-The migration to Astro was a clear success. The team was able to migrate the entire site in just eight days, without rewriting a single React component. The homepage went from 2.1 MB to 1.8 MB, and after fully converting to islands architecture, it's now 1.1 MB. Homepage JavaScript at load fell 61%, and mobile Lighthouse performance rose from 66 to 90.
+The migration to Astro was a clear success. The team was able to migrate the entire site in just eight days, without rewriting a single React component. The homepage went from 2.1 MB to 1.8 MB initially, and after fully converting to islands architecture, it's now 1.1 MB. Homepage JavaScript at load fell 61%, and mobile Lighthouse performance rose from 66 to 90.
 
 | Homepage assets<br/>(uncompressed) |                 Gatsby |                  Astro |   Change |
 | ---------------------------------- | ---------------------: | ---------------------: | -------: |
