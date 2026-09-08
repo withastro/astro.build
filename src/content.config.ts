@@ -179,6 +179,10 @@ export const collections = {
 					.refine((value) => value !== 'Vercel Security Checkpoint', {
 						error:
 							"A showcase entry's title cannot be 'Vercel Security Checkpoint' which usually indicates a loading error.\nMake sure to update the title manually.\n",
+					})
+					.refine((value) => value !== 'Checking your browser before accessing. Just a moment...', {
+						error:
+							"A showcase entry's title cannot be 'Checking your browser before accessing. Just a moment...' which usually indicates a loading error.\nMake sure to update the title manually.\n",
 					}),
 				image: image(),
 				url: z.url(),
