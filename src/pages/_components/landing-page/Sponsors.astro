@@ -109,7 +109,9 @@ function* chunk<T>(array: T[], chunkSize: number) {
 }
 /** Break an array into rows of 2 or 3 items, choosing the column count that results in the fullest final row. */
 function rows<T>(array: T[]): T[][] {
-	const columnCount = array.length % 2 > array.length % 3 ? 3 : 2;
+	const remainder2 = array.length % 2;
+	const remainder3 = array.length % 3;
+	const columnCount = remainder3 === 0 ? 3 : remainder2 === 0 ? 2 : remainder3 > remainder2 ? 3 : 2;
 	return [...chunk(array, columnCount)];
 }
 
