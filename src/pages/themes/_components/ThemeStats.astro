@@ -42,20 +42,18 @@ if (theme.Theme.repoUrl && typeof theme.Theme.stars !== 'undefined') {
 			<Avatar theme={theme} />
 		</a>
 	</div>
-	{
-		netlifyUrl && !theme.Theme.paid && (
-			<>
-				<hr class="border-astro-gray-500" />
-				<a
-					href={netlifyUrl}
-					class="link flex flex-row items-center gap-2"
-					target="_blank"
-					onclick="fathom.trackEvent('Theme Details - Deploy to Netlify');"
-				>
-					<img src="/assets/integrations/netlify-dark.svg" width="20" height="20" alt="" />
-					Deploy to Netlify
-				</a>
-			</>
-		)
-	}
+	{netlifyUrl && !theme.Theme.paid && (
+		<>
+			<hr class="border-astro-gray-500" />
+			<a
+				href={netlifyUrl}
+				class="link flex flex-row items-center gap-2"
+				target="_blank"
+				onclick="fathom.trackEvent('Theme Details - Deploy to Netlify');"
+			>
+				<img src="/assets/integrations/netlify-dark.svg" width="20" height="20" alt="" />
+				Deploy to Netlify
+			</a>
+		</>
+	)}
 </div>

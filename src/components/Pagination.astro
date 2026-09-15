@@ -32,61 +32,57 @@ const collapsedPages = collapseRange(page, pages);
 
 <nav aria-label={ariaLabel} {...attrs}>
 	<ul class="flex items-center gap-4">
-		{
-			page.url.prev && (
-				<li class="prev rounded-full border border-white">
+		{page.url.prev && (
+			<li class="prev rounded-full border border-white">
+				<a
+					href={ensureTrailingSlash(page.url.prev)}
+					data-astro-prefetch
+					class="flex h-10 w-10 items-center justify-center"
+				>
+					<span class="sr-only">
+						Go to page {page.currentPage - 1} of {page.lastPage}
+					</span>
+					<Icon name="left-arrow" class="s-6" aria-hidden="true" />
+				</a>
+			</li>
+		)}
+		{collapsedPages.map((link) => (
+			<li class="hidden sm:inline-block">
+				{!link.href ? (
+					<p>{link.text}</p>
+				) : (
 					<a
-						href={ensureTrailingSlash(page.url.prev)}
-						data-astro-prefetch
-						class="flex h-10 w-10 items-center justify-center"
+						href={ensureTrailingSlash(link.href)}
+						class:list={[
+							'relative flex h-10 w-10 items-center justify-center rounded-md border border-transparent transition-colors duration-150',
+							link.pageNum !== page.currentPage && 'hover:border-white focus:border-white',
+						]}
+						aria-current={link.pageNum === page.currentPage ? 'page' : undefined}
 					>
-						<span class="sr-only">
-							Go to page {page.currentPage - 1} of {page.lastPage}
-						</span>
-						<Icon name="left-arrow" class="s-6" aria-hidden="true" />
+						{link.pageNum}
 					</a>
-				</li>
-			)
-		}
-		{
-			collapsedPages.map((link) => (
-				<li class="hidden sm:inline-block">
-					{!link.href ? (
-						<p>{link.text}</p>
-					) : (
-						<a
-							href={ensureTrailingSlash(link.href)}
-							class:list={[
-								'relative flex h-10 w-10 items-center justify-center rounded-md border border-transparent transition-colors duration-150',
-								link.pageNum !== page.currentPage && 'hover:border-white focus:border-white',
-							]}
-							aria-current={link.pageNum === page.currentPage ? 'page' : undefined}
-						>
-							{link.pageNum}
-						</a>
-					)}
-				</li>
-			))
-		}
+				)}
+			</li>
+		))}
 		<li class="sm:hidden">
-			<p aria-current="page">Page {page.currentPage} of {page.lastPage}</p>
+			<p aria-current="page">
+				Page {page.currentPage} of {page.lastPage}
+			</p>
 		</li>
-		{
-			page.url.next && (
-				<li class="next ease rounded-full border border-white transition-colors duration-150">
-					<a
-						href={ensureTrailingSlash(page.url.next)}
-						data-astro-prefetch
-						class="flex h-10 w-10 items-center justify-center"
-					>
-						<span class="sr-only">
-							Go to page {page.currentPage + 1} of {page.lastPage}
-						</span>
-						<Icon name="right-arrow" class="s-6" aria-hidden="true" />
-					</a>
-				</li>
-			)
-		}
+		{page.url.next && (
+			<li class="next ease rounded-full border border-white transition-colors duration-150">
+				<a
+					href={ensureTrailingSlash(page.url.next)}
+					data-astro-prefetch
+					class="flex h-10 w-10 items-center justify-center"
+				>
+					<span class="sr-only">
+						Go to page {page.currentPage + 1} of {page.lastPage}
+					</span>
+					<Icon name="right-arrow" class="s-6" aria-hidden="true" />
+				</a>
+			</li>
+		)}
 	</ul>
 </nav>
 

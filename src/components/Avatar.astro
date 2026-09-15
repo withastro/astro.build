@@ -15,20 +15,18 @@ if (!image && name) {
 }
 ---
 
-{
-	image && (
-		<img
-			class:list={[
-				'my-0 inline-block rounded-full border border-astro-gray-100',
-				lg ? 'h-6 w-6 md:h-10 md:w-10' : 'h-6 w-6',
-			]}
-			src={image}
-			alt=""
-			aria-hidden="true"
-			width={48}
-			height={48}
-			loading="eager"
-			decoding="async"
-		/>
-	)
-}
+{image && (
+	<img
+		class:list={[
+			'my-0 inline-block rounded-full border border-astro-gray-100',
+			lg ? 'h-6 w-6 md:h-10 md:w-10' : 'h-6 w-6',
+		]}
+		src={image}
+		alt=""
+		aria-hidden="true"
+		width={48}
+		height={48}
+		loading="eager"
+		decoding="async"
+	/>
+)}

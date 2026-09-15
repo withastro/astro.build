@@ -20,9 +20,7 @@ const { label, score, size = 'size-5', icon, glow } = Astro.props;
 		{label}
 	</p>
 
-	<div
-		class="h-8 sm:h-10 w-full flex items-center gap-2 outline outline-offset-2 sm:outline-offset-4 outline-1 outline-astro-gray-500 group-data-[glow]:outline-astro-gray-400 rounded-lg"
-	>
+	<div class="h-8 sm:h-10 w-full flex items-center gap-2 outline outline-offset-2 sm:outline-offset-4 outline-1 outline-astro-gray-500 group-data-[glow]:outline-astro-gray-400 rounded-lg">
 		<div
 			style={{ width: `${score}%` }}
 			class="px-2 h-full flex items-center gap-2 bg-astro-gray-500 group-data-[glow]:bg-blue-green-gradient rounded-lg"
@@ -30,9 +28,7 @@ const { label, score, size = 'size-5', icon, glow } = Astro.props;
 			<Icon name={icon} class={size} aria-label={`${label} logo`} />
 		</div>
 		<p class="sr-only">{label} Core Web Vitals Passing</p>
-		<p
-			class="text-lg sm:text-xl group-data-[glow]:text-2xl sm:group-data-[glow]:text-3xl font-semibold text-astro-gray-300 group-data-[glow]:text-astro-green"
-		>
+		<p class="text-lg sm:text-xl group-data-[glow]:text-2xl sm:group-data-[glow]:text-3xl font-semibold text-astro-gray-300 group-data-[glow]:text-astro-green">
 			{score + '%'}
 		</p>
 	</div>

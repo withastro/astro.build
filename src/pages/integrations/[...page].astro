@@ -82,9 +82,7 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 >
 	<div class="bg-grid relative">
 		<div class="grid-container">
-			<h1
-				class="heading-3 mx-auto w-full max-w-screen-xl pt-24 text-center text-balance sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
-			>
+			<h1 class="heading-3 mx-auto w-full max-w-screen-xl pt-24 text-center text-balance sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40">
 				Kick it into lightspeed with integrations
 			</h1>
 		</div>
@@ -103,59 +101,57 @@ const recentlyAddedHref = `${Astro.url.pathname}?${recentlyAddedSearch.toString(
 			<SubmitIntegration class="hidden lg:block" />
 		</Fragment>
 
-		{
-			integrations.length > 0 ? (
-				<div class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10">
-					<h2 class="sr-only">Integrations</h2>
+		{integrations.length > 0 ? (
+			<div class="flex flex-col items-center gap-8 pb-10 pt-8 sm:px-4 sm:pb-12 md:gap-10 md:pb-16 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-10 xl:px-10">
+				<h2 class="sr-only">Integrations</h2>
 
-					{showRecentlyAdded && recentlyAdded.length > 0 && (
-						<CardGridGroup
-							title="Recently added"
-							cta={
-								recentlyAdded.length > 3
-									? { href: recentlyAddedHref, text: 'View all new integrations' }
-									: undefined
-							}
-						>
-							<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
-								{recentlyAdded.slice(0, 3).map((integration) => (
-									<IntegrationCard integration={integration} />
-								))}
-							</CardGrid>
-						</CardGridGroup>
-					)}
-
+				{showRecentlyAdded && recentlyAdded.length > 0 && (
 					<CardGridGroup
-						title={
-							showRecentlyAdded && recentlyAdded.length > 0
-								? 'Popular integrations'
-								: search
-									? `Results for "${search}"`
-									: undefined
+						title="Recently added"
+						cta={
+							recentlyAdded.length > 3
+								? { href: recentlyAddedHref, text: 'View all new integrations' }
+								: undefined
 						}
 					>
 						<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
-							{integrations.map((integration) => (
+							{recentlyAdded.slice(0, 3).map((integration) => (
 								<IntegrationCard integration={integration} />
 							))}
 						</CardGrid>
 					</CardGridGroup>
+				)}
 
-					{allPages.length > 1 && (
-						<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
-					)}
-				</div>
-			) : (
-				<div class="flex flex-col items-center gap-12 py-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
-					<p>
-						<strong>0</strong> results found for integrations matching <strong>"{search}"</strong>
-					</p>
-					<a href="/integrations/" data-astro-prefetch class="button button-primary">
-						Clear filters
-					</a>
-				</div>
-			)
-		}
+				<CardGridGroup
+					title={
+						showRecentlyAdded && recentlyAdded.length > 0
+							? 'Popular integrations'
+							: search
+								? `Results for "${search}"`
+								: undefined
+					}
+				>
+					<CardGrid class="w-full max-w-screen-xl sm:grid-cols-2 xl:grid-cols-3">
+						{integrations.map((integration) => (
+							<IntegrationCard integration={integration} />
+						))}
+					</CardGrid>
+				</CardGridGroup>
+
+				{allPages.length > 1 && (
+					<Pagination restRoute page={page} allPages={allPages} class="mx-auto" />
+				)}
+			</div>
+		) : (
+			<div class="flex flex-col items-center gap-12 py-8 text-center sm:px-4 md:px-8 lg:px-10 lg:pt-10">
+				<p>
+					<strong>0</strong> results found for integrations matching <strong>"{search}"</strong>
+				</p>
+				<a href="/integrations/" data-astro-prefetch class="button button-primary">
+					Clear filters
+				</a>
+			</div>
+		)}
 
 		<SubmitIntegration class="lg:hidden" />
 	</SidebarLayout>

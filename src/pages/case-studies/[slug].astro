@@ -42,24 +42,19 @@ const authors = await Promise.all(data.authors.map((author) => getEntry('authors
 	<div
 		class="z-blur -mb-64 h-64 w-full opacity-[0.85] lg:-mb-80 lg:h-96"
 		style={`background-image: linear-gradient(120deg,${data.coverGradientFrom} 0%,${data.coverGradientTo} 100%);`}
-	>
-	</div>
-	{
-		headerImage && (
-			<Image
-				src={headerImage}
-				loading="eager"
-				width={512}
-				densities={[1, 1.5]}
-				alt=""
-				class="mx-auto max-w-full max-h-64 max-w-lg w-full object-contain px-8 py-12 lg:p-0 lg:mb-16"
-			/>
-		)
-	}
+	></div>
+	{headerImage && (
+		<Image
+			src={headerImage}
+			loading="eager"
+			width={512}
+			densities={[1, 1.5]}
+			alt=""
+			class="mx-auto max-w-full max-h-64 max-w-lg w-full object-contain px-8 py-12 lg:p-0 lg:mb-16"
+		/>
+	)}
 
-	<div
-		class="mx-auto max-w-full bg-black px-8 py-5 sm:py-8 md:z-10 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20"
-	>
+	<div class="mx-auto max-w-full bg-black px-8 py-5 sm:py-8 md:z-10 md:px-10 md:py-12 lg:p-12 lg:py-16 xl:p-16 xl:py-20">
 		<header class="mx-auto w-full max-w-4xl text-center">
 			<p class="code text-astro-gray-200">
 				Case Study &bull;{' '}
@@ -75,16 +70,14 @@ const authors = await Promise.all(data.authors.map((author) => getEntry('authors
 			</h1>
 			<div class="code flex flex-wrap items-center justify-center gap-4 text-astro-gray-200">
 				<span>By</span>
-				{
-					authors.map((author) => {
-						return (
-							<div class="flex items-center gap-2">
-								<Avatar name={author.id} lg />
-								<span>{author.data.name}</span>
-							</div>
-						);
-					})
-				}
+				{authors.map((author) => {
+					return (
+						<div class="flex items-center gap-2">
+							<Avatar name={author.id} lg />
+							<span>{author.data.name}</span>
+						</div>
+					);
+				})}
 			</div>
 		</header>
 
@@ -94,9 +87,7 @@ const authors = await Promise.all(data.authors.map((author) => getEntry('authors
 			<Content />
 		</article>
 
-		<footer
-			class="mx-auto mt-8 flex w-full max-w-prose flex-col items-center gap-6 overflow-hidden rounded-lg border border-astro-purple bg-astro-gray-700 px-4 pt-4 md:flex-row md:pt-0"
-		>
+		<footer class="mx-auto mt-8 flex w-full max-w-prose flex-col items-center gap-6 overflow-hidden rounded-lg border border-astro-purple bg-astro-gray-700 px-4 pt-4 md:flex-row md:pt-0">
 			<div class="flex flex-1 flex-col gap-2 text-center md:my-5 md:pt-0 md:text-left">
 				<h2 class="heading-4">Take Astro for a spin</h2>
 				<p class="text-sm">Discover what our flexible framework can do for you!</p>
@@ -105,8 +96,10 @@ const authors = await Promise.all(data.authors.map((author) => getEntry('authors
 				href="https://docs.astro.build"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="button button-primary button-sm -mt-3 mb-3 md:my-0">Get Started</a
+				class="button button-primary button-sm -mt-3 mb-3 md:my-0"
 			>
+				Get Started
+			</a>
 			<Image src={houstonWink} alt="" class="-mb-px md:order-first md:self-end md:pt-4" />
 		</footer>
 	</div>

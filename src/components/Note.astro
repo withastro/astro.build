@@ -12,16 +12,14 @@ const titleId = title?.replace(/[^\w]/g, '-').replace(/-+/g, '-').toLowerCase();
 	aria-labelledby={titleId}
 >
 	<div class="flex my-3 gap-3 flex-col items-start">
-		{
-			title && (
-				<p
-					id={titleId}
-					class="code m-px -translate-y-px -translate-x-px rounded-md bg-orange-yellow-gradient px-3 py-1 text-sm font-bold uppercase tracking-widest text-astro-gray-700"
-				>
-					{title}
-				</p>
-			)
-		}
+		{title && (
+			<p
+				id={titleId}
+				class="code m-px -translate-y-px -translate-x-px rounded-md bg-orange-yellow-gradient px-3 py-1 text-sm font-bold uppercase tracking-widest text-astro-gray-700"
+			>
+				{title}
+			</p>
+		)}
 		<div class="space-y-3">
 			<slot />
 		</div>

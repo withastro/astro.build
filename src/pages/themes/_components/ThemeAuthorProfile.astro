@@ -30,26 +30,22 @@ const { author } = Astro.props;
 	<div class="flex flex-col gap-4 pt-2 lg:pt-8 w-full">
 		<div class="flex justify-between items-baseline">
 			<small class="text-astro-gray-200 code">Joined</small>
-			{
-				new Date(author.createdAt).toLocaleDateString('en-US', {
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric',
-				})
-			}
+			{new Date(author.createdAt).toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+			})}
 		</div>
-		{
-			author.url && (
-				<>
-					<hr class="border-astro-gray-500" />
-					<div class="flex justify-between items-baseline">
-						<small class="text-astro-gray-200 code">Website</small>
-						<a class="link" href={author.url}>
-							{author.url.replace(/^https?:\/\/|\/$/g, '')}
-						</a>
-					</div>
-				</>
-			)
-		}
+		{author.url && (
+			<>
+				<hr class="border-astro-gray-500" />
+				<div class="flex justify-between items-baseline">
+					<small class="text-astro-gray-200 code">Website</small>
+					<a class="link" href={author.url}>
+						{author.url.replace(/^https?:\/\/|\/$/g, '')}
+					</a>
+				</div>
+			</>
+		)}
 	</div>
 </div>

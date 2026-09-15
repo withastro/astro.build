@@ -12,13 +12,11 @@ interface Props {
 ---
 
 <astro-image-gallery class="my-8 grid gap-2 lg:-mx-16 xl:-mx-24" data-hide-caption>
-	{
-		Astro.props.images.map(async ({ src, alt }) => (
-			<button aria-label={`Zoom image: ${alt}`}>
-				<Image {src} {alt} width={300} data-hires-src={src.src} />
-			</button>
-		))
-	}
+	{Astro.props.images.map(async ({ src, alt }) => (
+		<button aria-label={`Zoom image: ${alt}`}>
+			<Image {src} {alt} width={300} data-hires-src={src.src} />
+		</button>
+	))}
 
 	<template>
 		<dialog class="astro-image-gallery-dialog">
@@ -268,7 +266,6 @@ interface Props {
 		}
 		customElements.define('astro-image-gallery', AstroImageGallery);
 	</script>
-
 	<style is:global>
 		:root {
 			--astro-image-gallery-animation-duration: 150ms;

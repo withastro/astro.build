@@ -19,20 +19,14 @@ const logos = [
 ] satisfies Array<{ icon: string; label: string; classes?: string }>;
 ---
 
-<div
-	class="mt-8 sm:mt-16 xs:p-6 mx-auto w-full max-w-screen-lg xl:max-w-screen-2xl space-y-5 sm:space-y-8 p-4 sm:p-8"
->
+<div class="mt-8 sm:mt-16 xs:p-6 mx-auto w-full max-w-screen-lg xl:max-w-screen-2xl space-y-5 sm:space-y-8 p-4 sm:p-8">
 	<div class="landing-section gap-4 sm:gap-6">
 		<p class="font-light text-balance">Used by the largest companies around the world:</p>
 
-		<div
-			class="astro-user-logos flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-10 sm:gap-y-8 px-4 max-h-64 -mb-16 sm:mb-0"
-		>
-			{
-				logos.map((logo) => (
-					<Icon name={logo.icon} class:list={['w-auto', logo.classes]} aria-label={logo.label} />
-				))
-			}
+		<div class="astro-user-logos flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-10 sm:gap-y-8 px-4 max-h-64 -mb-16 sm:mb-0">
+			{logos.map((logo) => (
+				<Icon name={logo.icon} class:list={['w-auto', logo.classes]} aria-label={logo.label} />
+			))}
 		</div>
 	</div>
 </div>

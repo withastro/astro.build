@@ -24,18 +24,16 @@ const image = await resolveCoverImage(post);
 	aria-labelledby={post.id}
 >
 	<div class="-mx-4">
-		{
-			image && (
-				<Image
-					src={image}
-					width="766"
-					widths={[766, 1500]}
-					sizes="90vw"
-					alt=""
-					loading={imageLoading}
-				/>
-			)
-		}
+		{image && (
+			<Image
+				src={image}
+				width="766"
+				widths={[766, 1500]}
+				sizes="90vw"
+				alt=""
+				loading={imageLoading}
+			/>
+		)}
 	</div>
 
 	<div class="mt-6 flex flex-col gap-x-16 gap-y-4">

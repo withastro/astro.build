@@ -10,9 +10,7 @@ const { summary, class: className, ...attrs } = Astro.props;
 ---
 
 <details class:list={['group', className]} {...attrs}>
-	<summary
-		class="accordion code flex cursor-pointer list-none items-center justify-between text-astro-gray-200"
-	>
+	<summary class="accordion code flex cursor-pointer list-none items-center justify-between text-astro-gray-200">
 		<span>{summary}</span>
 		<Icon
 			name="chevron"
