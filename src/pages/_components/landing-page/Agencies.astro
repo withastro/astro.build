@@ -14,8 +14,9 @@ const agencies = (await getCollection('agencies')).sort(() => (Math.random() > 0
 			title="Get professional Astro support"
 			description="Find the right team for your project with an Astro Partner Agency. From landing pages to e-commerce, get the expert assistance you need."
 		>
-			<Link slot="call-to-action" href="/agencies/" class="secondary">Explore partner agencies</Link
-			>
+			<Link slot="call-to-action" href="/agencies/" class="secondary">
+				Explore partner agencies
+			</Link>
 		</SectionCopy>
 	</div>
 
@@ -26,21 +27,19 @@ const agencies = (await getCollection('agencies')).sort(() => (Math.random() > 0
 				agencies.length < 6 ? 'lg:fluid-cols-56' : 'sm:fluid-cols-48',
 			]}
 		>
-			{
-				agencies.map(({ data, id }) => (
-					<li>
-						<a href={`/agencies/${id}/`} class="rounded-lg">
-							<span class="sr-only">{data.name}</span>
-							<Image
-								src={data.image}
-								alt=""
-								width="400"
-								class="rounded-lg w-full outline outline-1 -outline-offset-1 outline-white/20 transition-all duration-300 ease-out hover:opacity-80 hover:outline-white/65"
-							/>
-						</a>
-					</li>
-				))
-			}
+			{agencies.map(({ data, id }) => (
+				<li>
+					<a href={`/agencies/${id}/`} class="rounded-lg">
+						<span class="sr-only">{data.name}</span>
+						<Image
+							src={data.image}
+							alt=""
+							width="400"
+							class="rounded-lg w-full outline outline-1 -outline-offset-1 outline-white/20 transition-all duration-300 ease-out hover:opacity-80 hover:outline-white/65"
+						/>
+					</a>
+				</li>
+			))}
 		</ul>
 		{/* Background blur */}
 		<div
@@ -51,7 +50,6 @@ const agencies = (await getCollection('agencies')).sort(() => (Math.random() > 0
 				// Style
 				'bg-red-pink-gradient mask-radial-gradient opacity-30',
 			]}
-		>
-		</div>
+		></div>
 	</div>
 </section>

@@ -17,9 +17,7 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 		description="Astro comes with everything you need to build a modern website. Need more? Extend Astro with integrations."
 	/>
 
-	<div
-		class="mt-4 sm:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 grid-flow-dense"
-	>
+	<div class="mt-4 sm:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 grid-flow-dense">
 		<ContentCollections />
 
 		<ZeroJS />
@@ -34,25 +32,21 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 			description="Bring your favorite UI frameworks and component libraries with Astro's flexible island architecture."
 			flip
 		>
-			<div
-				class="px-4 pb-4 xl:px-6 flex gap-4 xl:gap-6 items-center grayscale opacity-65 group-hocus:opacity-100 group-hocus:grayscale-0 transition duration-500"
-			>
-				{
-					[
-						{ name: 'React', icon: 'logos/react-logomark' },
-						{ name: 'Vue', icon: 'logos/vue-logomark' },
-						{ name: 'Svelte', icon: 'logos/svelte-logomark' },
-						{ name: 'Angular', icon: 'logos/angular' },
-						{ name: 'Preact', icon: 'logos/preact-logomark' },
-						{ name: 'Solid', icon: 'logos/solidjs-icon' },
-						{ name: 'Qwik', icon: 'logos/qwik' },
-					].map(({ name, icon }) => (
-						<>
-							<Icon name={icon} class="w-7 h-auto" aria-hidden="true" />
-							<span class="sr-only">{name}</span>
-						</>
-					))
-				}
+			<div class="px-4 pb-4 xl:px-6 flex gap-4 xl:gap-6 items-center grayscale opacity-65 group-hocus:opacity-100 group-hocus:grayscale-0 transition duration-500">
+				{[
+					{ name: 'React', icon: 'logos/react-logomark' },
+					{ name: 'Vue', icon: 'logos/vue-logomark' },
+					{ name: 'Svelte', icon: 'logos/svelte-logomark' },
+					{ name: 'Angular', icon: 'logos/angular' },
+					{ name: 'Preact', icon: 'logos/preact-logomark' },
+					{ name: 'Solid', icon: 'logos/solidjs-icon' },
+					{ name: 'Qwik', icon: 'logos/qwik' },
+				].map(({ name, icon }) => (
+					<>
+						<Icon name={icon} class="w-7 h-auto" aria-hidden="true" />
+						<span class="sr-only">{name}</span>
+					</>
+				))}
 			</div>
 		</Card>
 
@@ -76,25 +70,21 @@ import ZeroJS from './feature-cards/ZeroJS.astro';
 			description="One-line configuration for Netlify, Vercel, AWS, or your favorite hosting platform."
 			flip
 		>
-			<div
-				class="px-4 pb-4 xl:px-6 flex gap-4 xl:gap-6 items-center grayscale opacity-65 group-hocus:opacity-100 group-hocus:grayscale-0 transition duration-500"
-			>
-				{
-					[
-						{ name: 'Node.js', icon: 'logos/node' },
-						{ name: 'Cloudflare', icon: 'logos/cloudflare-logomark' },
-						{ name: 'Vercel', icon: 'logos/vercel-logomark' },
-						{ name: 'Netlify', icon: 'logos/netlify-logomark' },
-						{ name: 'SST', icon: 'logos/sst' },
-						{ name: 'Deno', icon: 'logos/deno' },
-						{ name: 'AWS', icon: 'logos/aws' },
-					].map(({ name, icon }) => (
-						<>
-							<Icon name={icon} class="w-7 h-auto" aria-hidden="true" />
-							<span class="sr-only">{name}</span>
-						</>
-					))
-				}
+			<div class="px-4 pb-4 xl:px-6 flex gap-4 xl:gap-6 items-center grayscale opacity-65 group-hocus:opacity-100 group-hocus:grayscale-0 transition duration-500">
+				{[
+					{ name: 'Node.js', icon: 'logos/node' },
+					{ name: 'Cloudflare', icon: 'logos/cloudflare-logomark' },
+					{ name: 'Vercel', icon: 'logos/vercel-logomark' },
+					{ name: 'Netlify', icon: 'logos/netlify-logomark' },
+					{ name: 'SST', icon: 'logos/sst' },
+					{ name: 'Deno', icon: 'logos/deno' },
+					{ name: 'AWS', icon: 'logos/aws' },
+				].map(({ name, icon }) => (
+					<>
+						<Icon name={icon} class="w-7 h-auto" aria-hidden="true" />
+						<span class="sr-only">{name}</span>
+					</>
+				))}
 			</div>
 		</Card>
 

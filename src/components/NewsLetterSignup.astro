@@ -7,16 +7,14 @@ const { skipText = false } = Astro.props;
 ---
 
 <div class={`${skipText ? 'mx-auto' : ''} flex flex-col md:max-lg:w-1/2 lg:max-w-sm`}>
-	{
-		!skipText && (
-			<>
-				<p class="font-semibold md:text-xl">Let's keep in touch</p>
-				<p class="mb-4 pt-2 text-astro-gray-200 lg:text-balance">
-					Enter your email to stay up to date with the latest updates from Astro.
-				</p>
-			</>
-		)
-	}
+	{!skipText && (
+		<>
+			<p class="font-semibold md:text-xl">Let's keep in touch</p>
+			<p class="mb-4 pt-2 text-astro-gray-200 lg:text-balance">
+				Enter your email to stay up to date with the latest updates from Astro.
+			</p>
+		</>
+	)}
 	<form
 		action="https://buttondown.email/api/emails/embed-subscribe/withastro"
 		method="post"
@@ -24,7 +22,9 @@ const { skipText = false } = Astro.props;
 		onsubmit="window.open('https://buttondown.email/withastro', 'popupwindow')"
 		class="flex flex-col justify-between"
 	>
-		<label for="bd-email" class="sr-only">Email</label>
+		<label for="bd-email" class="sr-only">
+			Email
+		</label>
 		<input
 			class="mb-2 h-10 rounded-lg border border-astro-gray-600 bg-astro-dark-900 px-3 py-1 text-astro-gray-100 focus:outline-none focus:ring-[1px] focus:ring-astro-gray-400"
 			type="email"

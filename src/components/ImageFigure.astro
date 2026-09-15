@@ -7,16 +7,14 @@ export type Props = {
 
 <figure>
 	<slot />
-	{
-		Astro.props.caption && (
-			<figcaption
-				class:list={[
-					'font-mono mt-3 text-sm text-astro-gray-300',
-					{ 'text-center': Astro.props.centered },
-				]}
-			>
-				{Astro.props.caption}
-			</figcaption>
-		)
-	}
+	{Astro.props.caption && (
+		<figcaption
+			class:list={[
+				'font-mono mt-3 text-sm text-astro-gray-300',
+				{ 'text-center': Astro.props.centered },
+			]}
+		>
+			{Astro.props.caption}
+		</figcaption>
+	)}
 </figure>

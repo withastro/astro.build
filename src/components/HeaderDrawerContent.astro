@@ -66,47 +66,45 @@ type Nav = Array<Link | Group>;
 	aria-label="Primary"
 	class="text-xl flex flex-col divide-y divide-astro-gray-500 pb-12 text-left [&>*]:p-6"
 >
-	{
-		nav.map((item) =>
-			'href' in item ? (
-				// Top-level link
-				<a
-					class="link"
-					href={item.href}
-					data-astro-prefetch={item.prefetch ? '' : undefined}
-					set:text={item.label}
-				/>
-			) : (
-				// Drop-down group
-				<details class="group">
-					<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
-						{item.label}
-						<Icon
-							name="chevron"
-							aria-hidden="true"
-							class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
-						/>
-					</summary>
-					<div class="mt-4 flex flex-col gap-4 text-xl font-light">
-						{item.items.map((link) => (
-							<a
-								href={link.href}
-								data-astro-prefetch={link.prefetch ? '' : undefined}
-								class="link flex items-center gap-4"
-							>
-								<Icon name={link.icon} size="24" /> {link.label}{' '}
-								{link.badge && (
-									<span class="text-sm leading-none font-mono py-1 px-1.5 rounded bg-astro-blue/40 border border-astro-blue">
-										{link.badge}
-									</span>
-								)}
-							</a>
-						))}
-					</div>
-				</details>
-			),
-		)
-	}
+	{nav.map((item) =>
+		'href' in item ? (
+			// Top-level link
+			<a
+				class="link"
+				href={item.href}
+				data-astro-prefetch={item.prefetch ? '' : undefined}
+				set:text={item.label}
+			/>
+		) : (
+			// Drop-down group
+			<details class="group">
+				<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
+					{item.label}
+					<Icon
+						name="chevron"
+						aria-hidden="true"
+						class="inline-block size-3 rotate-0 transition-transform group-open:-rotate-180 duration-300"
+					/>
+				</summary>
+				<div class="mt-4 flex flex-col gap-4 text-xl font-light">
+					{item.items.map((link) => (
+						<a
+							href={link.href}
+							data-astro-prefetch={link.prefetch ? '' : undefined}
+							class="link flex items-center gap-4"
+						>
+							<Icon name={link.icon} size="24" /> {link.label}{' '}
+							{link.badge && (
+								<span class="text-sm leading-none font-mono py-1 px-1.5 rounded bg-astro-blue/40 border border-astro-blue">
+									{link.badge}
+								</span>
+							)}
+						</a>
+					))}
+				</div>
+			</details>
+		),
+	)}
 
 	<div class="flex flex-wrap justify-between gap-12 gap-y-6">
 		<SocialLinks links={siteInfo.socialLinks} />

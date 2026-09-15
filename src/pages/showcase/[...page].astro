@@ -47,9 +47,7 @@ const description = "Explore what's possible with Astro and get inspired for you
 >
 	<div class="hero relative">
 		<div class="grid-container">
-			<h1
-				class="heading-3 mx-auto w-full max-w-screen-xl pt-24 text-center text-balance sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40"
-			>
+			<h1 class="heading-3 mx-auto w-full max-w-screen-xl pt-24 text-center text-balance sm:heading-2 lg:heading-1 md:pt-32 lg:pt-40">
 				Explore the infinite possibilities of Astro
 			</h1>
 		</div>
@@ -57,20 +55,18 @@ const description = "Explore what's possible with Astro and get inspired for you
 
 	<div class="backgrounds grid-container relative">
 		<ul class="grid gap-5 md:grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3">
-			{
-				showcase.map((site, i) => (
-					<>
-						<li class:list={{ 'md:col-span-2 md:row-span-2': site.data.highlight }}>
-							<ShowcaseCard site={site} />
+			{showcase.map((site, i) => (
+				<>
+					<li class:list={{ 'md:col-span-2 md:row-span-2': site.data.highlight }}>
+						<ShowcaseCard site={site} />
+					</li>
+					{i === 5 && (
+						<li class="md:col-span-2 lg:col-span-3">
+							<SubmitSite />
 						</li>
-						{i === 5 && (
-							<li class="md:col-span-2 lg:col-span-3">
-								<SubmitSite />
-							</li>
-						)}
-					</>
-				))
-			}
+					)}
+				</>
+			))}
 		</ul>
 
 		<Pagination restRoute allPages={allPages} page={page} class="mx-auto" />

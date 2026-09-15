@@ -51,17 +51,15 @@ const IconBackgrounds = [
 						!integration.data.image && ['icon', randomFromArray(IconBackgrounds)],
 					]}
 				>
-					{
-						integration.data.image ? (
-							<img
-								src={integration.data.image}
-								alt=""
-								class="h-full w-full object-contain object-center"
-							/>
-						) : (
-							<Icon name={iconName} class="h-full w-full text-astro-gray-700" />
-						)
-					}
+					{integration.data.image ? (
+						<img
+							src={integration.data.image}
+							alt=""
+							class="h-full w-full object-contain object-center"
+						/>
+					) : (
+						<Icon name={iconName} class="h-full w-full text-astro-gray-700" />
+					)}
 				</div>
 			</header>
 			<h3

@@ -40,7 +40,9 @@ const socialLinks = [
 		<div class="grid-container overflow-hidden border-t border-astro-gray-500 pt-16">
 			<div class="flex flex-col gap-16 md:flex-row md:items-start">
 				<section class="space-y-4" aria-labelledby="this-is-astro">
-					<h2 class="heading-3" id="this-is-astro">This is Astro</h2>
+					<h2 class="heading-3" id="this-is-astro">
+						This is Astro
+					</h2>
 					<p class="body-large text-astro-gray-200">
 						Astro is a web framework that takes the best from the early internet (think HTML and
 						CSS) and puts it to work in a next-gen architecture to make every Astro site, and the
@@ -53,22 +55,22 @@ const socialLinks = [
 				<section class="shrink-0" aria-labelledby="keep-in-touch">
 					<Card>
 						<div class="space-y-4 px-10 py-8 text-white">
-							<h3 class="heading-3" id="keep-in-touch">Keep in touch</h3>
+							<h3 class="heading-3" id="keep-in-touch">
+								Keep in touch
+							</h3>
 							<ul class="flex flex-wrap gap-x-4 gap-y-3 md:flex-col">
-								{
-									socialLinks.map((link) =>
-										link === 'separator' ? (
-											<hr class="border-astro-gray-500" />
-										) : (
-											<li>
-												<a href={link.href} class="flex items-center gap-2 font-medium underline">
-													<Icon name={link.icon} class="s-6" />
-													{link.text}
-												</a>
-											</li>
-										),
-									)
-								}
+								{socialLinks.map((link) =>
+									link === 'separator' ? (
+										<hr class="border-astro-gray-500" />
+									) : (
+										<li>
+											<a href={link.href} class="flex items-center gap-2 font-medium underline">
+												<Icon name={link.icon} class="s-6" />
+												{link.text}
+											</a>
+										</li>
+									),
+								)}
 							</ul>
 						</div>
 					</Card>
@@ -76,7 +78,9 @@ const socialLinks = [
 			</div>
 
 			<section class="space-y-14" aria-labelledby="assets">
-				<h2 class="heading-3" id="assets">Brand Assets</h2>
+				<h2 class="heading-3" id="assets">
+					Brand Assets
+				</h2>
 				<ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					<PressAssetCard
 						name="Logo on light"
@@ -135,41 +139,39 @@ const socialLinks = [
 			</section>
 
 			<section aria-labelledby="guidelines" class="flex flex-col gap-14">
-				<h2 class="heading-3" id="guidelines">Guidelines</h2>
+				<h2 class="heading-3" id="guidelines">
+					Guidelines
+				</h2>
 
 				<div class="flex flex-col gap-24">
 					<div class="flex flex-col gap-14 md:flex-row">
 						<div class="flex flex-col gap-4 grow">
 							<h3 class="heading-4">How to use the Astro logo</h3>
 							<ul class="flex flex-col gap-4 text-astro-gray-200">
-								{
-									[
-										'Use our logo to link to Astro’s website or GitHub repository',
-										'Use our logo to show your product has built-in Astro support',
-										'Use our logo in a blog post or video about Astro',
-									].map((rule) => (
-										<li class="flex gap-x-2.5">
-											<Icon name="approval-check" class="s-6 shrink-0 text-astro-green" /> {rule}
-										</li>
-									))
-								}
+								{[
+									'Use our logo to link to Astro’s website or GitHub repository',
+									'Use our logo to show your product has built-in Astro support',
+									'Use our logo in a blog post or video about Astro',
+								].map((rule) => (
+									<li class="flex gap-x-2.5">
+										<Icon name="approval-check" class="s-6 shrink-0 text-astro-green" /> {rule}
+									</li>
+								))}
 							</ul>
 						</div>
 						<div class="flex flex-col gap-4 grow">
 							<h3 class="heading-4">Things to avoid</h3>
 							<ul class="flex flex-col gap-4 text-astro-gray-200">
-								{
-									[
-										'Don’t use the Astro logo for your app or website’s icon',
-										'Don’t include the Astro logo in your own logo',
-										'Don’t modify the Astro logo or change its colors',
-										'Don’t sell products featuring the Astro logo without permission',
-									].map((rule) => (
-										<li class="flex gap-x-2.5">
-											<Icon name="x-close-cancel" class="s-6 shrink-0 text-astro-red" /> {rule}
-										</li>
-									))
-								}
+								{[
+									'Don’t use the Astro logo for your app or website’s icon',
+									'Don’t include the Astro logo in your own logo',
+									'Don’t modify the Astro logo or change its colors',
+									'Don’t sell products featuring the Astro logo without permission',
+								].map((rule) => (
+									<li class="flex gap-x-2.5">
+										<Icon name="x-close-cancel" class="s-6 shrink-0 text-astro-red" /> {rule}
+									</li>
+								))}
 							</ul>
 						</div>
 					</div>
@@ -276,14 +278,8 @@ const socialLinks = [
 			</section>
 		</div>
 
-		<div
-			class="absolute left-0 top-[-150px] z-blur h-[800px] w-[70vw] -translate-x-2/3 bg-red-pink-gradient opacity-30 mask-radial-gradient"
-		>
-		</div>
+		<div class="absolute left-0 top-[-150px] z-blur h-[800px] w-[70vw] -translate-x-2/3 bg-red-pink-gradient opacity-30 mask-radial-gradient"></div>
 
-		<div
-			class="absolute right-0 top-[-150px] z-blur h-[800px] w-[70vw] translate-x-2/3 bg-orange-yellow-gradient opacity-30 mask-radial-gradient"
-		>
-		</div>
+		<div class="absolute right-0 top-[-150px] z-blur h-[800px] w-[70vw] translate-x-2/3 bg-orange-yellow-gradient opacity-30 mask-radial-gradient"></div>
 	</div>
 </MainLayout>

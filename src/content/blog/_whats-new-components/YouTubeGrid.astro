@@ -15,13 +15,11 @@ const { maxCols = 3, videos } = Astro.props;
 		{ 'lg:grid-cols-3': maxCols === 3 },
 	]}
 >
-	{
-		videos.map(({ id, title }) => (
-			<li class="before:!hidden">
-				<YouTube {id} {title} />
-			</li>
-		))
-	}
+	{videos.map(({ id, title }) => (
+		<li class="before:!hidden">
+			<YouTube {id} {title} />
+		</li>
+	))}
 </ul>
 
 <style>

@@ -10,12 +10,10 @@ const latestBlogPost = blogPostsWithBanner
 	.pop();
 ---
 
-{
-	latestBlogPost && (
-		<PillLink
-			href={`/blog/${latestBlogPost.id}/`}
-			title={latestBlogPost.data.homepageLink!.title}
-			subtitle={latestBlogPost.data.homepageLink!.subtitle}
-		/>
-	)
-}
+{latestBlogPost && (
+	<PillLink
+		href={`/blog/${latestBlogPost.id}/`}
+		title={latestBlogPost.data.homepageLink!.title}
+		subtitle={latestBlogPost.data.homepageLink!.subtitle}
+	/>
+)}

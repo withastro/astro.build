@@ -79,27 +79,25 @@ const socialLinks = siteInfo.socialLinks;
 			<NewsLetterSignup />
 
 			<div class="gap-12 sm:gap-16 lg:gap-20 flex flex-wrap xl:grid xl:grid-cols-4">
-				{
-					groups.map(({ title, links }, index) => (
-						<section class="group flex flex-col basis-32">
-							<h2
-								id={`footerHeading${index}`}
-								class="mb-4 label-base leading-none text-white font-semibold"
-							>
-								{title}
-							</h2>
-							<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
-								{links.map(({ href, label }) => (
-									<li>
-										<a href={href} class="whitespace-nowrap link flex gap-2 items-center">
-											{label}
-										</a>
-									</li>
-								))}
-							</ul>
-						</section>
-					))
-				}
+				{groups.map(({ title, links }, index) => (
+					<section class="group flex flex-col basis-32">
+						<h2
+							id={`footerHeading${index}`}
+							class="mb-4 label-base leading-none text-white font-semibold"
+						>
+							{title}
+						</h2>
+						<ul aria-labelledby={`footerHeading${index}`} class="flex flex-col gap-2">
+							{links.map(({ href, label }) => (
+								<li>
+									<a href={href} class="whitespace-nowrap link flex gap-2 items-center">
+										{label}
+									</a>
+								</li>
+							))}
+						</ul>
+					</section>
+				))}
 			</div>
 		</nav>
 		<hr class="border-astro-gray-500" />

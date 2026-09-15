@@ -60,22 +60,22 @@ const featuredPosts = [
 				<h2 class="code">Popular posts</h2>
 
 				<ul class="mt-4 space-y-4">
-					{
-						featuredPosts.map((post) => (
-							<li>
-								<a
-									class="body link-underline border-astro-pink-light text-lg text-astro-pink-light"
-									href={`/blog/${post.id}/`}
-									data-astro-prefetch
-								>
-									{post?.data.title}
-								</a>
-							</li>
-						))
-					}
+					{featuredPosts.map((post) => (
+						<li>
+							<a
+								class="body link-underline border-astro-pink-light text-lg text-astro-pink-light"
+								href={`/blog/${post.id}/`}
+								data-astro-prefetch
+							>
+								{post?.data.title}
+							</a>
+						</li>
+					))}
 				</ul>
 			</SidebarPanel>
-			<SidebarPanel class="overflow-clip"><Promo /></SidebarPanel>
+			<SidebarPanel class="overflow-clip">
+				<Promo />
+			</SidebarPanel>
 			<SidebarPanel>
 				<h2 class="code">Subscribe</h2>
 				<p class="body mb-6 mt-4 text-astro-gray-200">
@@ -90,17 +90,15 @@ const featuredPosts = [
 
 		<div class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20">
 			<ul class="flex max-w-screen-md flex-col gap-y-4 md:gap-y-6 lg:gap-y-8">
-				{
-					page.data.map((post, index) => (
-						<li>
-							<BlogPostPreview
-								post={post}
-								isCaseStudy={'isCaseStudy' in post.data}
-								imageLoading={index === 0 ? 'eager' : 'lazy'}
-							/>
-						</li>
-					))
-				}
+				{page.data.map((post, index) => (
+					<li>
+						<BlogPostPreview
+							post={post}
+							isCaseStudy={'isCaseStudy' in post.data}
+							imageLoading={index === 0 ? 'eager' : 'lazy'}
+						/>
+					</li>
+				))}
 			</ul>
 
 			<Pagination restRoute allPages={allPages} page={page} class="mx-auto" />

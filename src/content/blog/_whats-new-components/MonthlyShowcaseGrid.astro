@@ -47,19 +47,17 @@ const sites = (
 	);
 ---
 
-{
-	sites.length > 0 ? (
-		<ul class="grid gap-5 !p-0 md:grid-flow-row-dense md:grid-cols-2 lg:-mx-16 lg:!mb-16 lg:!mt-8 lg:grid-cols-3 xl:-mx-32 [&_a]:!text-white">
-			{sites.map((site) => (
-				<li class="before:!hidden">
-					<ShowcaseCard {site} />
-				</li>
-			))}
-		</ul>
-	) : (
-		<p class="bg-red-500/10 border border-red-500 p-4">
-			No {Astro.props.starlight ? 'Starlight ' : ''}sites found between{' '}
-			{startDate.toLocaleDateString()} and {endDate.toLocaleDateString()}.
-		</p>
-	)
-}
+{sites.length > 0 ? (
+	<ul class="grid gap-5 !p-0 md:grid-flow-row-dense md:grid-cols-2 lg:-mx-16 lg:!mb-16 lg:!mt-8 lg:grid-cols-3 xl:-mx-32 [&_a]:!text-white">
+		{sites.map((site) => (
+			<li class="before:!hidden">
+				<ShowcaseCard {site} />
+			</li>
+		))}
+	</ul>
+) : (
+	<p class="bg-red-500/10 border border-red-500 p-4">
+		No {Astro.props.starlight ? 'Starlight ' : ''}sites found between{' '}
+		{startDate.toLocaleDateString()} and {endDate.toLocaleDateString()}.
+	</p>
+)}

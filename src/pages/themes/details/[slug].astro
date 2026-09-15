@@ -33,24 +33,22 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 	image={{ src: theme.Theme.image, alt: theme.Theme.title }}
 >
 	<div class="gap-y-0 grid-container">
-		{
-			theme.Theme.images.length > 0 ? (
-				<ImageGallery
-					images={[theme.Theme.image, ...theme.Theme.images]}
-					class="mx-auto border-astro-gray-500 xl:border-x xl:border-b w-full bleed-full"
-					style="max-width: var(--container-width, 1280px)"
-				/>
-			) : (
-				<Image
-					src={theme.Theme.image}
-					height={900}
-					width={1600}
-					alt=""
-					class="mx-auto border-astro-gray-500 xl:border-x xl:border-b w-full object-cover object-top aspect-video"
-					loading="eager"
-				/>
-			)
-		}
+		{theme.Theme.images.length > 0 ? (
+			<ImageGallery
+				images={[theme.Theme.image, ...theme.Theme.images]}
+				class="mx-auto border-astro-gray-500 xl:border-x xl:border-b w-full bleed-full"
+				style="max-width: var(--container-width, 1280px)"
+			/>
+		) : (
+			<Image
+				src={theme.Theme.image}
+				height={900}
+				width={1600}
+				alt=""
+				class="mx-auto border-astro-gray-500 xl:border-x xl:border-b w-full object-cover object-top aspect-video"
+				loading="eager"
+			/>
+		)}
 		<div class="flex md:flex-row flex-col border-astro-gray-500 xl:border-x">
 			<section class="flex flex-col gap-6 md:gap-8 lg:gap-10 md:p-8 lg:px-20 py-6 lg:py-10 w-full">
 				<a
@@ -72,32 +70,28 @@ const relatedThemes: Array<ThemeAndAuthor> = await fetch(
 				<article class="prose" set:html={sanitizeThemeDescription(theme.Theme.body)} />
 			</section>
 
-			<aside
-				class="hidden md:block border-astro-gray-500 md:border-l divide-y divide-astro-gray-500 w-full md:max-w-md"
-			>
+			<aside class="hidden md:block border-astro-gray-500 md:border-l divide-y divide-astro-gray-500 w-full md:max-w-md">
 				<ThemeCTAs theme={theme} class="p-6 lg:p-8 xl:p-10" />
 				<hr class="border-astro-gray-500" />
 				<ThemeStats theme={theme} class="p-6 lg:p-8 xl:p-10" />
 			</aside>
 		</div>
-		{
-			relatedThemes.length > 0 && (
-				<div class="relative border-astro-gray-500 border-t related bleed-full">
-					<div class="gap-y-10 grid-container pt-20 pb-0">
-						<CardGridGroup
-							title="Other themes to consider"
-							cta={{ href: '/themes/', text: 'View more themes' }}
-						>
-							<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
-								{relatedThemes.map((theme) => (
-									<ThemeCard theme={theme} />
-								))}
-							</CardGrid>
-						</CardGridGroup>
-					</div>
+		{relatedThemes.length > 0 && (
+			<div class="relative border-astro-gray-500 border-t related bleed-full">
+				<div class="gap-y-10 grid-container pt-20 pb-0">
+					<CardGridGroup
+						title="Other themes to consider"
+						cta={{ href: '/themes/', text: 'View more themes' }}
+					>
+						<CardGrid class="md:grid-cols-2 lg:grid-cols-3">
+							{relatedThemes.map((theme) => (
+								<ThemeCard theme={theme} />
+							))}
+						</CardGrid>
+					</CardGridGroup>
 				</div>
-			)
-		}
+			</div>
+		)}
 	</div>
 
 	<style>
