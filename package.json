@@ -15,8 +15,8 @@
 		"format:imports": "biome check --formatter-enabled=false --linter-enabled=false --write",
 		"format-unsafe": "biome check --write --unsafe",
 		"typecheck": "astro check",
-		"update:integrations": "node -r dotenv/config ./scripts/update-integrations.mjs",
-		"update:showcase": "node -r dotenv/config ./scripts/update-showcase.mjs",
+		"update:integrations": "node --env-file-if-exists=.env ./scripts/update-integrations.mjs",
+		"update:showcase": "node --env-file-if-exists=.env ./scripts/update-showcase.mjs",
 		"update:stats": "node ./scripts/update-stats.mjs"
 	},
 	"dependencies": {
