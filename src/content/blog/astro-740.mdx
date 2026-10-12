@@ -1,0 +1,291 @@
+---
+title: 'Astro 7.4'
+description: 'Astro 7.4 adds a --timings flag that shows where your build spends its time, separate build and runtime image services, a notFound() handler for custom entrypoints, and experimental parallel prerendering and custom redirect pages.'
+publishDate: '2026-10-15'
+authors:
+  - matthew
+coverImage: '/src/content/blog/_images/astro-740/blog-post-astro-7.4.webp'
+socialImage: '/src/content/blog/_images/astro-740/og-astro-7.4.webp'
+lang: 'en'
+homepageLink:
+  title: 'Astro 7.4'
+  subtitle: 'Available now!'
+related:
+  - astro-730
+  - astro-720
+---
+
+import Mention from '/src/components/Mention.astro';
+import Note from '/src/components/Note.astro';
+
+**Astro 7.4 is here!** The headline feature is a new `--timings` flag for `astro build` that shows exactly where your build spends its time. This release also lets you use different image services for prerendered and on-demand pages, adds a `notFound()` handler for custom entrypoints, and warns you about font settings your provider can't serve. Two new experimental features round it out: parallel prerendering across worker threads and a custom redirect page for static builds.
+
+Explore what's new in this release:
+
+- **[Build timings](#build-timings)**
+- **[Separate build and runtime image services](#separate-build-and-runtime-image-services)**
+- **[notFound() handler for custom entrypoints](#notfound-handler-for-custom-entrypoints)**
+- **[Font configuration warnings](#font-configuration-warnings)**
+- **[Updated minimum Node.js version](#updated-minimum-nodejs-version)**
+- **[Experimental: parallel prerendering](#experimental-parallel-prerendering)**
+- **[Experimental: custom redirect page](#experimental-custom-redirect-page)**
+- **[Community](#community)**
+
+To upgrade an existing project, use the automated `@astrojs/upgrade` CLI tool. Alternatively, upgrade manually by running the upgrade command for your package manager:
+
+```sh
+# Recommended:
+npx @astrojs/upgrade
+
+# Manual:
+npm install astro@latest
+pnpm upgrade astro --latest
+yarn upgrade astro --latest
+```
+
+## Build timings
+
+When a build gets slow, it's not always obvious why. Is it a Vite plugin, syntax highlighting, image processing, or rendering one particularly heavy page?
+
+`astro build` now accepts a `--timings` flag:
+
+```sh
+astro build --timings
+```
+
+When the build finishes, Astro prints a summary of where the time went: build phases, Vite plugins, Markdown processing and syntax highlighting, page rendering, images, and integrations.
+
+Here's what that looks like in practice. We took the [blog starter](https://github.com/withastro/astro/tree/main/examples/blog) and added a comment section to its blog post layout. A `<CommentSection>` component fetches a post's comments, and each `<Comment>` inside it then fetches the commenter's profile:
+
+```astro title="src/components/Comment.astro"
+---
+const { comment } = Astro.props;
+// Look up the commenter's profile for every comment
+const res = await fetch(`https://jsonplaceholder.typicode.com/users?email=${comment.email}`);
+const [user] = await res.json();
+---
+
+<article>
+  <strong>{user?.name ?? comment.name}</strong>
+  <p>{comment.body}</p>
+</article>
+```
+
+Nothing about this looks wrong in the editor, but the profile requests can't start until the comments come back, so every page waits on two network round trips in a row. Running `astro build --timings` makes that easy to see (some sections trimmed):
+
+```txt
+ build timings
+total 2.50s · 9 pages · 398 modules · output "static"
+Wall clock, not CPU time · strips span the whole build, left to right
+
+Build phases
+  resolve config                        55ms   2.2% ▄·····················
+  setup                                206ms   8.2% ▃█▄···················
+  prerender bundle                     142ms   5.7% ··▄▇··················
+  client bundle                         19ms   0.8% ···▂··················
+  static paths                           3ms   0.1% ····▁·················
+  render pages                         2.03s  81.2% ····██████████████████
+  optimize images                        1ms   0.1% ·····················▁
+  astro:build:done                       2ms   0.1% ·····················▁
+
+Page rendering (2.03s across 9 pages)
+  component render                     2.03s  81.0% ····██████████████████
+  page pipeline                          6ms   0.2%
+
+Slowest pages (median 285ms · p95 567ms)
+  /about                               567ms  22.6%
+  /blog/using-mdx                      301ms  12.0%  /blog/[...slug]
+  /blog/markdown-style-guide           293ms  11.7%  /blog/[...slug]
+  /blog/first-post                     292ms  11.7%  /blog/[...slug]
+  /blog/second-post                    285ms  11.4%  /blog/[...slug]
+  /blog/third-post                     282ms  11.3%  /blog/[...slug]
+  /rss.xml                              12ms   0.5%
+  /blog                                  3ms   0.1%
+```
+
+The report tells the story from the top down. Rendering pages takes 81% of the build, and nearly all of that is spent inside components rather than in Astro's own page pipeline. The slowest pages are the ones that use the blog post layout, while `/blog` and `/rss.xml` render in milliseconds. That points straight at something the layout renders.
+
+Fetching the comments and all the profiles at once with `Promise.all()` in `<CommentSection>`, and passing each profile down to `<Comment>`, cut page rendering from 2.03s to 1.13s and halved the time for each blog post.
+
+The report also covers Vite plugins, the slowest files to bundle, Markdown plugins, syntax highlighting, and image transforms, so the same flag helps whether your slow build comes from rendering, bundling, or images. It's a good first step before trying flags like parallel prerendering or incremental builds, so you know which part of the build to target.
+
+## Separate build and runtime image services
+
+Prerendered pages and on-demand pages have different needs when it comes to images. At build time you have plenty of time and a full Node.js environment, so a local optimizer like Sharp works well. On-demand pages run on your server or at the edge, often in a runtime where Sharp can't run, so an image CDN is usually the better fit. Until now you had to pick one image service for both, or rely on your adapter to make the choice for you.
+
+In Astro 7.4, `image.service` also accepts a `build` and a `runtime` service:
+
+```js title="astro.config.mjs" ins={5-8}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  image: {
+    service: {
+      build: { entrypoint: 'astro/assets/services/sharp' },
+      runtime: { entrypoint: 'my-image-cdn-service' },
+    },
+  },
+});
+```
+
+The `build` service handles images on prerendered pages and generates them during the build. The `runtime` service handles on-demand pages and the image endpoint in production. Passing a single service still works the same as before.
+
+To make this possible, we reworked how Astro tracks the images used during a build. Prerenderers now take part in Astro's own image pipeline instead of having to recreate it themselves. As a result, `@astrojs/cloudflare` now processes images on prerendered pages through the same pipeline as every other adapter. Images optimized with the Cloudflare Images binding are cached between builds, and options like `assetQueryParams` and `build.assetsPrefix` apply the same way everywhere.
+
+<Note title="For custom prerenderer authors">
+  Images are now generated from metadata that the default prerenderer's `getStaticPaths()` and `render()` return. If you wrap the default prerenderer with `setPrerenderer()`, pass that metadata through:
+
+```js
+setPrerenderer((defaultPrerenderer) => ({
+  name: 'my-prerenderer',
+  async getStaticPaths() {
+    const { paths, metadata } = await defaultPrerenderer.getStaticPaths();
+    return { paths: paths.filter(({ pathname }) => !pathname.startsWith('/drafts')), metadata };
+  },
+  async render(request, options) {
+    const { response, metadata } = await defaultPrerenderer.render(request, options);
+    return { response, metadata };
+  },
+}));
+```
+
+Returning a plain array from `getStaticPaths()` or a plain `Response` from `render()` still works, but is deprecated, and images on those pages won't be generated. Upgrade `@astrojs/cloudflare` and `@astrojs/markdoc` along with `astro`, since their new versions require `astro@^7.4.0`.
+
+</Note>
+
+## notFound() handler for custom entrypoints
+
+The composable handlers in `astro/fetch` and `astro/hono` let you build your own server or worker entrypoint from Astro's pieces. However, if you used `pages()` without the all-in-one `astro()` handler, a request that didn't match any route returned an empty 404 instead of your custom `404.astro` page, even if it was prerendered.
+
+Astro 7.4 adds a `notFound()` handler. Add it before `pages()` to render your 404 page when no route matches:
+
+```ts title="src/worker.ts" ins={2,8}
+import { Hono } from 'hono';
+import { notFound, pages } from 'astro/hono';
+import { cf } from '@astrojs/cloudflare/hono';
+
+const app = new Hono();
+
+app.use(cf());
+app.use(notFound());
+app.use(pages());
+
+export default app;
+```
+
+The same handler is available from `astro/fetch`. `astro()` already includes this behavior, so you only need `notFound()` when you compose the handlers yourself.
+
+## Font configuration warnings
+
+It's easy to ask for a font weight or subset that a font family doesn't offer, and until now you'd only find out when the text looked wrong. Font providers can now implement an optional `getFontProperties()` callback that reports the weights, styles, subsets, and formats a family actually has, and Astro warns you about any values in your config that the provider can't serve.
+
+All of Astro's built-in font providers support this. If you maintain a custom font provider, implementing `getFontProperties()` is optional for now, but it will be required in Astro 8:
+
+```ts ins={8-13}
+import type { FontProvider } from 'astro';
+
+const provider: FontProvider = {
+  name: 'my-provider',
+  resolveFont: ({ familyName }) => {
+    // ...
+  },
+  getFontProperties: ({ familyName }) => ({
+    weights: ['400', '700'],
+    styles: ['normal', 'italic'],
+    subsets: ['latin'],
+    formats: ['woff2'],
+  }),
+};
+```
+
+The `init()` context for font providers also gains a `fetch()` function that retries transient failures. Providers that wrap a third-party unifont provider can pass the context straight through to it.
+
+## Updated minimum Node.js version
+
+The minimum supported Node.js version for Astro and its official integrations is now 22.22.0. This is the latest Node.js 22 release supported by StackBlitz, and the change follows Astro's [Node.js support policy](https://docs.astro.build/en/upgrade-astro/#support). If you're on an older Node.js 22 release, upgrade Node.js before upgrading Astro.
+
+## Experimental: parallel prerendering
+
+Astro renders static pages concurrently, but until now all of that rendering happened on a single thread. On large sites with CPU-heavy pages, the build was limited to one core no matter how many your machine had.
+
+Astro 7.4 adds the `experimental.parallelPrerender` flag, which renders static pages in Node.js worker threads:
+
+```js title="astro.config.mjs" ins={4-6}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    parallelPrerender: true,
+  },
+});
+```
+
+With `true`, Astro starts one worker per available CPU core, minus one for the main thread. To set the pool size yourself, pass `{ workers: number }` instead. `build.concurrency` still controls how many pages render at once, and now applies inside each worker.
+
+This pairs well with [incremental static builds](/blog/astro-720/#experimental-incremental-static-builds): incremental builds skip pages that haven't changed, and parallel prerendering spreads the pages that do need rendering across your CPU cores.
+
+## Experimental: custom redirect page
+
+A static site has no server to send an HTTP `Location` header, so for every redirect it builds, Astro generates a small HTML page with a `<meta http-equiv="refresh">` tag. That includes your [`redirects`](https://docs.astro.build/en/reference/configuration-reference/#redirects) config, `Astro.redirect()` calls in prerendered pages, and i18n redirects. That page's markup, wording, and delay were fixed, so you couldn't brand or translate it.
+
+The new `experimental.redirectPage` flag lets you provide your own:
+
+```js title="astro.config.mjs" ins={4-6}
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    redirectPage: true,
+  },
+});
+```
+
+Then create `src/pages/3xx.astro`. Astro renders it once for each redirect, passing that redirect's `from`, `to`, `status`, and `delay` as props:
+
+```astro title="src/pages/3xx.astro"
+---
+import type { RedirectPageProps as Props } from 'astro';
+
+const { from, to, status, delay } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta http-equiv="refresh" content={`${delay};url=${to}`} />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>This page has moved. <a href={to}>Continue to {to}</a>.</p>
+  </body>
+</html>
+```
+
+In a static build, the `<meta http-equiv="refresh">` tag is the redirect, so your page must render one that points to `to`. Astro logs a warning during the build if it's missing, and falls back to the built-in page if yours fails to render. Redirects from on-demand pages are unchanged.
+
+See the [experimental redirect page docs](https://docs.astro.build/en/reference/experimental-flags/redirect-page/) for more, and leave feedback on the [RFC](https://github.com/withastro/roadmap/pull/1444).
+
+## Other improvements
+
+- **Retries for remote image dimensions** — When you use `inferSize` or `inferRemoteSize()` with a remote image, Astro fetches the image to read its dimensions. A single network hiccup during that request used to fail the entire build. Astro now retries transient network failures. ([#16963](https://github.com/withastro/astro/pull/16963))
+- **Integrations can control build output directories** — Astro now treats Vite's resolved `outDir` for each environment as the source of truth for where client, server, and prerender output is written, so integrations and Vite plugins can move it. Custom prerenderers can read the final locations from a new `outputDirectories` context in `setPrerenderer()`, and Vite's `.vite` manifests now stay around until every `buildApp` hook has finished so deployment integrations can read them. ([#18313](https://github.com/withastro/astro/pull/18313))
+
+For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
+
+## Community
+
+The Astro core team is:
+
+<Mention name="alex" />, <Mention name="armand" />, <Mention name="chris" />,
+<Mention name="ema" />,
+<Mention name="erika" />, <Mention name="florian" />, <Mention name="fred" />,
+<Mention name="hideoo" />,
+<Mention name="luiz" />, <Mention name="matt" />, <Mention name="matthew" />,
+<Mention name="reuben" />,
+<Mention name="sarah" />, and <Mention name="yan" />.
+
+Special thanks to everyone who contributed to Astro 7.4 with code, docs, reviews, and testing, including:
+
+{/* TODO: generate the contributors list on merge day (see the astro-release skill's "Generate Contributors List" procedure, since the astro@7.3.0 release). */}
+
+We hope you enjoy Astro 7.4. If you run into issues or want to share feedback, please join us on [Discord](https://astro.build/chat), post on [GitHub](https://github.com/withastro/astro/issues), or reach out on [Bluesky](https://bsky.app/profile/astro.build), [Twitter](https://twitter.com/astrodotbuild), and [Mastodon](https://m.webtoo.ls/@astro).
