@@ -814,6 +814,8 @@ const scraper = new ShowcaseScraper({
 		'https://aidailynews.io/',
 		// 2026-08-25 - duplicate of room-tba.uplb.tools (site migrated domains)
 		'https://room-tba.uplbtools.me',
+		// 2026-10-23 - already included as HTTPS
+		'http://www.equipmentcapitalindex.com',
 	],
 });
 await scraper.run();
