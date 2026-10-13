@@ -9,7 +9,7 @@ const ThemeSchema = z.object({
 		slug: z.string(),
 		title: z.string(),
 		image: z.string(),
-		updatedAt: z.coerce.date(),
+		publishDate: z.coerce.date(),
 	}),
 	Author: z.object({ name: z.string() }),
 });
@@ -22,14 +22,23 @@ const ThemeSchema = z.object({
  * snapshots of themes, not an up-to-date mirror of the dev portal catalogue.
  */
 async function updateThemes() {
-	const rawThemeData = await fetch('https://portal.astro.build/api/themes').then((res) =>
-		res.json(),
-	);
-	const themeData = ThemeSchema.array().parse(rawThemeData);
+	// Fetch themes for the current and previous month.
+	const now = new Date();
+	const thisMonth = new Date(now.getFullYear(), now.getMonth());
+	const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1);
+	const months = [lastMonth, thisMonth];
 
-	/** @type {Array<Record<'slug' | 'title' | 'image' | 'author' | 'updatedAt', string>>} */
-	const newThemes = [];
+	/** @type {Array<z.output<typeof ThemeSchema>>} */
+	const themeData = [];
+	for (const month of months) {
+		const rawThemeData = await fetch(
+			`https://portal.astro.build/api/themes/monthly?month=${month.toISOString()}`,
+		).then((res) => res.json());
+		themeData.push(...ThemeSchema.array().parse(rawThemeData));
+		console.log(`- Fetched themes for ${month.toISOString().slice(0, 7).replace('-', '/')}`);
+	}
 
+	// Filter out any themes we already have in the local themes JSON file.
 	const themesToAdd = themeData.filter(
 		(theme) => !currentThemes.some((t) => t.slug === theme.Theme.slug),
 	);
@@ -40,20 +49,30 @@ async function updateThemes() {
 		return;
 	}
 
+	/** @type {Array<Record<'slug' | 'title' | 'image' | 'author' | 'updatedAt', string>>} */
+	const newThemes = [];
+
+	// Process each new theme to download its image and add it to the local themes JSON.
 	for (const theme of themesToAdd) {
 		console.log(`- ${theme.Theme.slug}`);
 
-		// Download and save an optimized version of the theme thumbnail.
-		const imageBuffer = await fetch(theme.Theme.image).then((res) => res.arrayBuffer());
-		const optimizedImageBuffer = await sharp(imageBuffer).resize({ width: 800 }).webp().toBuffer();
-		await writeFile(`./src/content/themes/images/${theme.Theme.slug}.webp`, optimizedImageBuffer);
+		const imagePath = `./src/content/themes/images/${theme.Theme.slug}.webp`;
+		if (!(await stat(imagePath).catch(() => false))) {
+			// Download and save an optimized version of the theme thumbnail.
+			const imageBuffer = await fetch(theme.Theme.image).then((res) => res.arrayBuffer());
+			const optimizedImageBuffer = await sharp(imageBuffer)
+				.resize({ width: 800 })
+				.webp()
+				.toBuffer();
+			await writeFile(imagePath, optimizedImageBuffer);
+		}
 
 		newThemes.push({
 			slug: theme.Theme.slug,
 			title: theme.Theme.title,
 			image: `./images/${theme.Theme.slug}.webp`,
 			author: theme.Author.name,
-			updatedAt: theme.Theme.updatedAt.toISOString(),
+			publishDate: theme.Theme.publishDate.toISOString(),
 		});
 	}
 

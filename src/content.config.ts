@@ -245,7 +245,7 @@ export const collections = {
 				title: z.string(),
 				image: image(),
 				author: z.string(),
-				updatedAt: z.coerce.date(),
+				publishDate: z.coerce.date(),
 			}),
 	}),
 };
