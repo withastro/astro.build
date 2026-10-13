@@ -236,4 +236,16 @@ export const collections = {
 					.optional(),
 			}),
 	}),
+	/** This collection is for use in “What’s New” blog posts only. Theme catalogue pages should use the dev portal API. */
+	themesForBlogPosts: defineCollection({
+		loader: file('./src/content/themes/themes.json'),
+		schema: ({ image }) =>
+			z.object({
+				slug: z.string(),
+				title: z.string(),
+				image: image(),
+				author: z.string(),
+				updatedAt: z.coerce.date(),
+			}),
+	}),
 };
