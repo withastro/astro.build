@@ -267,7 +267,6 @@ See the [experimental redirect page docs](https://docs.astro.build/en/reference/
 
 ## Other improvements
 
-- **Retries for remote image dimensions** — When you use `inferSize` or `inferRemoteSize()` with a remote image, Astro fetches the image to read its dimensions. A single network hiccup during that request used to fail the entire build. Astro now retries transient network failures. ([#16963](https://github.com/withastro/astro/pull/16963))
 - **Integrations can control build output directories** — Astro now treats Vite's resolved `outDir` for each environment as the source of truth for where client, server, and prerender output is written, so integrations and Vite plugins can move it. Custom prerenderers can read the final locations from a new `outputDirectories` context in `setPrerenderer()`, and Vite's `.vite` manifests now stay around until every `buildApp` hook has finished so deployment integrations can read them. ([#18313](https://github.com/withastro/astro/pull/18313))
 
 For a complete list of bug fixes and smaller improvements, see [the full changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md).
