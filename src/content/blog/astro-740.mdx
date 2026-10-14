@@ -55,7 +55,7 @@ astro build --timings
 
 When the build finishes, Astro prints a summary of where the time went: build phases, Vite plugins, Markdown processing and syntax highlighting, page rendering, images, and integrations.
 
-Here's what that looks like in practice. We took the [blog starter](https://github.com/withastro/astro/tree/main/examples/blog) and added a comment section to its blog post layout. A `<CommentSection>` component fetches a post's comments, and each `<Comment>` inside it then fetches the commenter's profile:
+Here's what that looks like in practice. We took the [blog starter](https://github.com/withastro/astro/tree/main/examples/blog) and added a `<CommentSection>` component to its blog post layout. It fetches a post's comments, and each `<Comment>` inside it then fetches the commenter's profile:
 
 ```astro title="src/components/Comment.astro"
 ---
