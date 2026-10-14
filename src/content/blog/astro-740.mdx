@@ -132,7 +132,7 @@ export default defineConfig({
 
 The `build` service handles images on prerendered pages, generates them during the build, and is also used during development. The `runtime` service handles on-demand pages and the image endpoint in production. Passing a single service still works the same as before.
 
-To make this possible, we reworked how Astro tracks the images used during a build. Prerenderers now take part in Astro's own image pipeline instead of having to recreate it themselves. As a result, `@astrojs/cloudflare` now processes images on prerendered pages through the same pipeline as every other adapter. Images optimized with the Cloudflare Images binding are cached between builds, and options like `assetQueryParams` and `build.assetsPrefix` apply the same way everywhere.
+To make this possible, we reworked how Astro tracks the images used during a build. Prerenderers now take part in Astro's own image pipeline instead of having to recreate it themselves. As a result, `@astrojs/cloudflare` now processes images on prerendered pages through the same pipeline as every other adapter.
 
 <Note title="For integration authors">
   `config.image.service` keeps the shape the user configured. When a project sets `build` and `runtime` services, `config.image.service.entrypoint` and `config.image.service.config` are `undefined`, so check for the `runtime` property if your integration reads the image service:
