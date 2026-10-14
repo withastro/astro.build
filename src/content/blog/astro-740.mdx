@@ -191,7 +191,7 @@ The same handler is available from `astro/fetch`. `astro()` already includes thi
 
 It's easy to ask for a font weight or subset that a font family doesn't offer, and until now you'd only find out when the text looked wrong. Font providers can now implement an optional `getFontProperties()` callback that reports the weights, styles, subsets, and formats a family actually has, and Astro warns you about any values in your config that the provider can't serve.
 
-All of Astro's built-in font providers support this. If you maintain a custom font provider, implementing `getFontProperties()` is optional for now, but it will be required in Astro 8:
+All of Astro's built-in font providers support this. If you maintain a custom font provider, we recommend implementing `getFontProperties()` now. It's optional in Astro 7, but will be required in Astro 8:
 
 ```ts ins={8-13}
 import type { FontProvider } from 'astro';
