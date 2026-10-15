@@ -73,34 +73,34 @@ const [user] = await res.json();
 
 Nothing about this looks wrong in the editor, but the profile requests can't start until the comments come back, so every page waits on two network round trips in a row. Running `astro build --timings` makes that easy to see (some sections trimmed):
 
-```txt
- build timings
-total 2.61s · 9 pages · output "static"
+```ansi frame="none"
+�[30;44m build timings �[0m
+�[2mtotal �[22;1m2.61s�[22;2m · 9 pages · output "static"�[0m
 
-Build phases
-  resolve config                        59ms   2.3% ▄·····················
-  setup                                225ms   8.6% ▃█▅···················
-    route discovery                      2ms   0.1% ▁·····················
-    vite config                         14ms   0.5% ▁·····················
-    content sync                       206ms   7.9% ▂█▅···················
-  prerender bundle                     151ms   5.8% ··▃█··················
-  client bundle                         21ms   0.8% ····▂·················
-  manifest injection                     2ms   0.1% ····▁·················
-  generate pages                       2.10s  80.6% ····▇█████████████████
-    prerenderer setup                    6ms   0.2% ····▁·················
-    static paths                         3ms   0.1% ····▁·················
+�[1mBuild phases�[22m
+  resolve config                        59ms   2.3% �[34m▄�[39m�[2m·····················�[22m
+  setup                                225ms   8.6% �[34m▃█▅�[39m�[2m···················�[22m
+    route discovery                      2ms   0.1% �[34m▁�[39m�[2m·····················�[22m
+    vite config                         14ms   0.5% �[34m▁�[39m�[2m·····················�[22m
+    content sync                       206ms   7.9% �[34m▂█▅�[39m�[2m···················�[22m
+  prerender bundle                     151ms   5.8% �[2m··�[22m�[34m▃█�[39m�[2m··················�[22m
+  client bundle                         21ms   0.8% �[2m····�[22m�[34m▂�[39m�[2m·················�[22m
+  manifest injection                     2ms   0.1% �[2m····�[22m�[34m▁�[39m�[2m·················�[22m
+  generate pages                       2.10s  80.6% �[2m····�[22m�[34m▇█████████████████�[39m
+    prerenderer setup                    6ms   0.2% �[2m····�[22m�[34m▁�[39m�[2m·················�[22m
+    static paths                         3ms   0.1% �[2m····�[22m�[34m▁�[39m�[2m·················�[22m
 
-Page rendering (2.09s across 9 pages)
-  component render                     2.08s  79.6% ····▆█████████████████
+�[1mPage rendering�[22m �[2m(2.09s across 9 pages)�[22m
+  component render                     2.08s  79.6% �[2m····�[22m�[34m▆█████████████████�[39m
   page pipeline                         13ms   0.5%
 
-Slowest pages (median 297ms · p95 571ms)
+�[1mSlowest pages�[22m �[2m(median 297ms · p95 571ms)�[22m
   /about                               571ms
-  /blog/first-post                     307ms         /blog/[...slug]
-  /blog/using-mdx                      303ms         /blog/[...slug]
-  /blog/second-post                    299ms         /blog/[...slug]
-  /blog/third-post                     297ms         /blog/[...slug]
-  /blog/markdown-style-guide           296ms         /blog/[...slug]
+  /blog/first-post                     307ms         �[2m/blog/[...slug]�[22m
+  /blog/using-mdx                      303ms         �[2m/blog/[...slug]�[22m
+  /blog/second-post                    299ms         �[2m/blog/[...slug]�[22m
+  /blog/third-post                     297ms         �[2m/blog/[...slug]�[22m
+  /blog/markdown-style-guide           296ms         �[2m/blog/[...slug]�[22m
   /rss.xml                              10ms
   /blog                                  6ms
 ```
