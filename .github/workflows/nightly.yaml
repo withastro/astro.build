@@ -31,6 +31,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Update themes data
+        run: pnpm run update:themes
+
       - name: Format generated files
         run: pnpm lint
 

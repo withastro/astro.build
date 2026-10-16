@@ -1,30 +1,31 @@
 ---
-import { THEMES_API_URL } from '~/helpers/constants.ts';
+import { getCollection } from 'astro:content';
 import ThemeCard from './ThemeCard.astro';
 
 interface Props {
-	date?: string;
-	version?: string;
-	updatedBefore?: string;
+	/** An ISO date string for the month you want to display themes for, e.g. `2024-06-01` will show themes published in June 2024. */
+	date: string;
 }
 
-const { date, version, updatedBefore } = Astro.props;
+const date = new Date(Astro.props.date);
 
-let url: URL;
-if (date) {
-	url = new URL(`/api/themes/monthly?month=${date}`, THEMES_API_URL);
-} else {
-	const params = new URLSearchParams();
-	if (version) params.append('version', version);
-	if (updatedBefore) params.append('updatedBefore', updatedBefore);
-	url = new URL(`/api/themes?${params.toString()}`, THEMES_API_URL);
+/** Get the last millisecond of a calendar month. */
+function endOfMonth(date: Date) {
+	const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+	endDate.setHours(23, 59, 59, 999);
+	return endDate;
 }
 
-const themes = await fetch(url).then((res) => res.json());
+const monthStart = new Date(date.getFullYear(), date.getMonth());
+const monthEnd = endOfMonth(date);
+const themes = await getCollection(
+	'themesForBlogPosts',
+	(entry) => entry.data.publishDate >= monthStart && entry.data.publishDate <= monthEnd,
+);
 ---
 
 <ul class="grid gap-5 !p-0 md:grid-flow-row-dense md:grid-cols-2 lg:-mx-16 lg:!mb-16 lg:!mt-8 lg:grid-cols-3 xl:-mx-32">
-	{themes.map((theme: any) => (
-		<ThemeCard {...theme} />
+	{themes.map((theme) => (
+		<ThemeCard {...theme.data} />
 	))}
 </ul>
