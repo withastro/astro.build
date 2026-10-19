@@ -10,7 +10,8 @@ interface IntegrationOptions {
 
 export async function getFilteredIntegrations(options: IntegrationOptions = {}) {
 	const { categories: selectedCategories = [], toolbar = false, search } = options;
-	const searchRegex = search && new RegExp(search, 'i');
+	// escape regex syntax so search terms like `c++` or `(` match literally instead of throwing
+	const searchRegex = search && new RegExp(search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
 	function integrationsFilter(integration: CollectionEntry<'integrations'>) {
 		// Overlay doesn't support categories or search (for now)
 		if (toolbar) {
