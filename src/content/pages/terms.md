@@ -1,7 +1,8 @@
 ---
+
 seo:
-  title: Terms of Service
-  description: Astro's terms of service
+title: Terms of Service
+description: Astro's terms of service
 updated_date: 2022-01-06
 ---
 
@@ -42,7 +43,6 @@ Aside from our limited right to your content, you retain all of your rights to t
 You can remove the content that you posted by deleting it. Once you delete your content, it will not appear on the Service, but copies of your deleted content may remain in our system or backups for some period of time.
 
 You may not post, link and otherwise make available on or through the Service any of the following:
-
 - Content that is libelous, defamatory, bigoted, fraudulent or deceptive;
 - Content that is illegal or unlawful, that would otherwise create liability;
 - Content that may infringe or violate any patent, trademark, trade secret, copyright, right of privacy, right of publicity or other intellectual or other right of any party;
@@ -51,7 +51,6 @@ You may not post, link and otherwise make available on or through the Service an
 - Viruses, corrupted data or other harmful, disruptive or destructive files or code.
 
 Also, you agree that you will not do any of the following in connection with the Service or other users:
-
 - Use the Service in any manner that could interfere with, disrupt, negatively affect or inhibit other users from fully enjoying the Service or that could damage, disable, overburden or impair the functioning of the Service;
 - Impersonate or post on behalf of any person or entity or otherwise misrepresent your affiliation with a person or entity;
 - Collect any personal information about other users, or intimidate, threaten, stalk or otherwise harass other users of the Service;

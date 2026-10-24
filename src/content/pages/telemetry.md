@@ -1,7 +1,8 @@
 ---
+
 seo:
-  title: Telemetry
-  description: Astro collects anonymous telemetry data about general usage to help inform our roadmap. Participation is optional and you may opt-out at any time.
+title: Telemetry
+description: Astro collects anonymous telemetry data about general usage to help inform our roadmap. Participation is optional and you may opt-out at any time.
 updated_date: 2026-07-13
 ---
 
@@ -14,7 +15,6 @@ Anonymous telemetry data makes up an important piece of our roadmap prioritizati
 ## What is being collected?
 
 We track general usage information about Astro and different configuration options that we support. Specifically, we track the following anonymous data:
-
 - Command invoked (`astro build`, `astro dev`, `astro preview`, etc.)
 - Astro version
 - General machine information (e.g. number of CPUs, macOS/Windows/Linux, CI environment, etc.)
@@ -29,15 +29,15 @@ An example telemetry event might look like this:
 
 ```json
 {
-  "cliCommand": "dev",
-  "config": {
-    "markdownPlugins": [],
-    "adapter": "@astrojs/vercel",
-    "integrations": ["@astrojs/mdx", "@astrojs/rss"],
-    "markdown": {
-      "syntaxHighlight": "shiki"
-    }
-  }
+	"cliCommand": "dev",
+	"config": {
+		"markdownPlugins": [],
+		"adapter": "@astrojs/vercel",
+		"integrations": ["@astrojs/mdx", "@astrojs/rss"],
+		"markdown": {
+			"syntaxHighlight": "shiki"
+		}
+	}
 }
 ```
 

@@ -13,10 +13,8 @@ Tests for all browsers are **strongly recommended** if this PR includes:
 -->
 
 I have tested this PR on at least three of the following browsers:
-
 - [ ] Chrome / Chromium
 - [ ] Firefox
 - [ ] Android Firefox
 - [ ] Safari
 - [ ] iOS Safari
-
