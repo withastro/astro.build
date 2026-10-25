@@ -1,5 +1,4 @@
 ---
-
 title: Senior Software Engineer, Open Source
 published: 2022-11-24
 location: Remote
