@@ -1,5 +1,4 @@
 ---
-
 name: Lucky Media
 location: North America
 url: https://www.luckymedia.dev/astro-development-agency
@@ -11,11 +10,12 @@ description: We migrate marketing teams off slow, locked platforms to Astro. Flo
 
 We use Astro to deliver websites that are as flexible as they are fast, tailored to your needs. Our blend of creativity and technical skills helps us meet your needs and deliver solid results.
 
-> _"They exceeded every expectation. Delivery was faster than projected, communication was incredibly responsive, and they migrated our entire website 1:1, including animations."_ - Leo Selie, Head of Operations, [Flow Digital](https://www.luckymedia.dev/case-studies/automation-agency-escapes-webflow-lock-in-and-improves-performance)
+> *"They exceeded every expectation. Delivery was faster than projected, communication was incredibly responsive, and they migrated our entire website 1:1, including animations."* - Leo Selie, Head of Operations, [Flow Digital](https://www.luckymedia.dev/case-studies/automation-agency-escapes-webflow-lock-in-and-improves-performance)
 
 ### Proven results, real benefits
 
 Our clients have seen remarkable improvements:
+
 - **From broken to functional**: We quickly turned a dysfunctional site into a seamless, efficient platform, reducing task time from weeks to minutes.
 - **Proactive communication**: Our team is always available, with clear and timely updates that keep your projects on track.
 - **Technical expertise**: We tackle complex challenges head-on, from refactoring to modernizing your site.

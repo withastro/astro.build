@@ -5,7 +5,14 @@
 		"indentWidth": 2,
 		"lineWidth": 100,
 		"formatWithErrors": true,
-		"includes": ["**", "!**/*.astro", "!src/content/integrations.json", "!src/data/*.json"]
+		"includes": [
+			"**",
+			"!**/*.astro",
+			"!src/content/integrations.json",
+			"!src/data/*.json",
+			"!.github/**",
+			"!!pnpm-lock.yaml"
+		]
 	},
 	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
@@ -54,6 +61,14 @@
 		"formatter": {
 			"trailingCommas": "none"
 		}
+	},
+	"markdown": {
+		"formatter": {
+			"enabled": false
+		}
+	},
+	"yaml": {
+		"formatter": { "quoteStyle": "single" }
 	},
 	"vcs": {
 		"clientKind": "git",

@@ -1,8 +1,7 @@
 ---
-
 seo:
-title: Privacy Policy
-description: Astro's privacy policy
+  title: Privacy Policy
+  description: Astro's privacy policy
 updated_date: 2023-03-01
 ---
 
@@ -13,6 +12,7 @@ The Astro Privacy Policy describes the privacy practices of Astro website and se
 ## General Information
 
 We collect very limited personally identifiable information described below (the “data”) from [GitHub](https://help.github.com/articles/github-privacy-policy/) and of those who communicate with us directly via e-mail, aggregate information on what pages consumers access or visit, and information volunteered by the consumer (such as survey information and/or site registrations). The information we collect is used to provide our services, and to improve the quality of our services, and is not shared with or sold to other organizations for commercial purposes, except to provide products or services you've requested when we have your permission, or under the following circumstances:
+
 - It is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of [Terms of Service](/terms/), or as otherwise required by law.
 - We transfer information about you if Astro is acquired by or merged with another company. In this event, Astro will notify you before information about you is transferred and becomes subject to a different privacy policy.
 
@@ -41,6 +41,7 @@ Data is kept for the time necessary to provide the products or services requeste
 Data subject (customer) can always request Astro to allow access and correction, supplement or update of data. Subject to a reasonable request of a data subject, Astro will remove data pertaining to a data subject unless applicable laws impose a duty to retain data for certain time or identification, location and deletion of data imposes a disproportionate financial burden upon Astro. Any requests for access, correction or deletion of data should be directed to Astro by sending an email to [privacy@astro.build](mailto:privacy@astro.build).
 
 You may be aware that a European Union law, called the General Data Protection Regulation or "GDPR" gives certain rights to individuals in relation to their personal data. In order to enable you to exercise these rights with ease in relation to how Astro uses your personal data, we provide you with access to the following settings via your Account Settings page:
+
 - Remove Account - allows you to delete your account and associated personal data; and,
 - Notifications - allows you to manage communications you receive from Astro.
 

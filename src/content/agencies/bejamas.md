@@ -1,5 +1,4 @@
 ---
-
 name: Bejamas
 location: North America / Europe
 url: https://bejamas.com/services
