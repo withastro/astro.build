@@ -1,7 +1,7 @@
 // @ts-check
 import fs from 'node:fs/promises';
 import * as ghActions from '@actions/core';
-import { graphql} from '@octokit/graphql';
+import { graphql } from '@octokit/graphql';
 import { chromium } from '@playwright/test';
 import { parseHTML } from 'linkedom';
 import sharp from 'sharp';
