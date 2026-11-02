@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import * as ghActions from '@actions/core';
-import octokit from '@octokit/graphql';
+import { graphql } from '@octokit/graphql';
 import { chromium } from '@playwright/test';
 import { parseHTML } from 'linkedom';
 import sharp from 'sharp';
@@ -27,7 +27,7 @@ class ShowcaseScraper {
 		if (!process.env.GITHUB_TOKEN) {
 			throw new Error('GITHUB_TOKEN env variable must be set to run.');
 		}
-		this.#query = octokit.graphql.defaults({
+		this.#query = graphql.defaults({
 			headers: {
 				authorization: `token ${process.env.GITHUB_TOKEN}`,
 			},
