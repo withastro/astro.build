@@ -816,6 +816,14 @@ const scraper = new ShowcaseScraper({
 		'https://room-tba.uplbtools.me',
 		// 2026-10-23 - already included as HTTPS
 		'http://www.equipmentcapitalindex.com',
+		// 2026-10-15 - sites migrated to WordPress, HubSpot or Webflow
+		'https://yummycake.co/',
+		'https://agileit.com/',
+		'https://stellarcleaningcompany.com/',
+		'https://www.fastlink.lt/lt/',
+		'https://www.thebreakfastclubla.com/',
+		'https://www.rocketscience.gg/',
+		'https://lilagents.com/',
 	],
 });
 await scraper.run();
