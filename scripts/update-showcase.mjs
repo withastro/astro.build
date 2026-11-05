@@ -816,6 +816,13 @@ const scraper = new ShowcaseScraper({
 		'https://room-tba.uplbtools.me',
 		// 2026-10-23 - already included as HTTPS
 		'http://www.equipmentcapitalindex.com',
+		// 2026-10-15 - domains no longer NXDOMAIN but confirmed non-Astro, dead or unrelated
+		'https://aryadifa.com',
+		'https://opn.bio',
+		'https://super-tools.org',
+		'https://www.digitzen.co/',
+		'https://www.dealpicks.de/camping/',
+		'https://www.setup.md/',
 	],
 });
 await scraper.run();
