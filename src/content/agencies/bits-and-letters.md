@@ -4,7 +4,7 @@ location: North America
 url: https://www.bitsandletters.com/services/astro-web-development?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm
 image: ./bits-and-letters.webp
 imageAlt: ''
-contactLink: 'https://btslttrs.com/contact'
+contactLink: 'https://www.bitsandletters.com/contact?utm_source=astro&utm_medium=partnership&utm_campaign=astro-agency-pgm'
 description: >-
   At Bits&Letters, we help founders and marketing teams build or migrate to web/content platforms they fully own and control. Powered by Astro, we help teams move faster and achieve real business results — no vendor/platform lock-in or waiting weeks for a traditional dev agency to get to a ticket.
 ---
