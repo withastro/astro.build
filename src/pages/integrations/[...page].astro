@@ -22,7 +22,7 @@ const currentPage =
 
 // invalid page number!
 if (!currentPage || Number.isNaN(currentPage)) {
-	return Astro.redirect('/404');
+	return new Response(null, { status: 404 });
 }
 
 // search term from the search/filter panel

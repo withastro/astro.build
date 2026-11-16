@@ -18,7 +18,7 @@ const slug = Astro.params.slug as string;
 
 const res = await fetch(`${THEMES_API_URL}/api/themes/details?slug=${slug}`);
 
-if (res.status === 404) return Astro.redirect('/404');
+if (res.status === 404) return new Response(null, { status: 404 });
 
 const theme = await res.json();
 
