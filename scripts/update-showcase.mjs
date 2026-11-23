@@ -816,6 +816,8 @@ const scraper = new ShowcaseScraper({
 		'https://room-tba.uplbtools.me',
 		// 2026-10-23 - already included as HTTPS
 		'http://www.equipmentcapitalindex.com',
+		// 2026-11-23
+		'https://anibadigital.com',
 	],
 });
 await scraper.run();
