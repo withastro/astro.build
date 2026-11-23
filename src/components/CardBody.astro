@@ -1,3 +1,13 @@
-<div class="flex flex-1 flex-col gap-6 p-6 text-left">
+---
+import type { HTMLAttributes, HTMLTag } from 'astro/types';
+
+export type Props<T extends HTMLTag> = HTMLAttributes<T> & {
+	as?: T;
+};
+
+const { as: Component = 'div', class: className, ...attrs } = Astro.props;
+---
+
+<Component class:list={['flex flex-1 flex-col gap-6 p-6 text-left', className]} {...attrs}>
 	<slot />
-</div>
+</Component>
