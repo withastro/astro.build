@@ -1,0 +1,307 @@
+---
+title: "What's new in Astro - November 2026"
+description: "November 2026 - Starlight 0.43, and more!"
+publishDate: "November 30, 2026"
+authors:
+  - sarah
+coverImage: "/src/content/blog/_images/whats-new-shared.webp"
+socialImage: "/src/content/blog/_images/whats-new-november/og.webp"
+lang: "en"
+startDate: "2026-11-01"
+endDate: "2026-12-01"
+related:
+  - whats-new-september-2026
+  - whats-new-october-2026
+  
+---
+import MonthlyShowcaseGrid from './_whats-new-components/MonthlyShowcaseGrid.astro';
+import ShowcaseGridById from './_whats-new-components/ShowcaseGridById.astro';
+import ThemeGrid from './_whats-new-components/ThemeGrid.astro';
+import YouTubeGrid from './_whats-new-components/YouTubeGrid.astro';
+import { YouTube } from 'astro-embed';
+import { Tweet } from 'astro-embed';
+import ShowcaseCard from '~/pages/showcase/_components/ShowcaseCard.astro';
+import { getEntry } from 'astro:content';
+import Mention from "/src/components/Mention.astro";
+import Note from '~/components/Note.astro';
+import Blockquote from "/src/components/Blockquote.astro"
+import BlogContentImage from '/src/components/BlogContentImage.astro';
+
+
+{/* Uncomment to load integrations in console for copy / paste */}
+
+{/*
+import MonthlyTools from './_whats-new-components/MonthlyTools.astro';
+
+<MonthlyTools date={frontmatter.startDate} /> 
+*/}
+
+
+Some exciting news from around the Astro ecosystem this month, including:
+
+- [Latest releases](#latest-releases)
+- [Astro Adopters](#astro-adopters)
+- [Weird Wide Web](#weird-wide-web)
+- [Cosmic Canvas](#cosmic-canvas)
+- [Community updates](#community)
+- [Reading List](#content)
+- [Watch Party](#watch-party)
+- [Tips & Tools](#tips--tools)
+- [Themes & Templates](#themes--templates)
+- [Site Showcase](#showcase)
+- [Starlight in the wild](#starlight-in-the-wild)
+
+
+Let's dive right into it!
+
+## Latest releases
+
+Minor releases introduce new features and improvements. Check out what's new!
+
+- [Starlight 0.43](https://github.com/withastro/starlight/blob/main/packages/starlight/CHANGELOG.md#0430) - Support for any Astro style scoping strategy, more control over Pagefind search indexing options, simpler theme select implementation, updated i18next to v27, and more!
+
+## Astro Adopters
+
+From Kohl's to Twitch to Nanostores, some of the biggest names you know from around the globe are using Astro!
+
+export const featuredSites = [
+    'kohls.com',
+    'dev.twitch.tv',
+    'nanostores.net',
+]; 
+
+{/* Use for grids of 2 per row  */}
+ {/*
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'firefox-admin-docs.mozilla.org')} />
+  <ShowcaseCard site={await getEntry('showcase', 'developers.akamai.com')} />
+</div>
+
+*/}
+{/* Use when there are multiples of 3  */}
+<ShowcaseGridById ids={featuredSites} />
+
+See more companies using Astro in our [site showcase](/showcase/), and explore Astro for corporate or enterprise use with one of our [agency partners](/agencies/)!
+
+## Weird Wide Web
+
+Some sites from the last month that show off what you can do with Astro that are quirky, innovative, inspiring, empowering, or just plain fun!
+
+NOT UPDATED YET
+
+export const monthlySites = [
+ "2026.marefair.org",
+ "iamcanturk.dev",
+ "carterogunsola.com",
+]; 
+
+{/* Use for grids of 2 per row  */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.achimloobes.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'howtostore.food',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'quiz-camisetas.moisesvalero.es')} />
+  <ShowcaseCard site={await getEntry('showcase', 'stitchopia.com',)} />
+</div>
+  */}
+
+{/* Use when there are multiples of 3  */}
+<ShowcaseGridById ids={monthlySites} />
+
+## Cosmic Canvas
+
+Didn't think you could do that with Astro? These stunning sites with spectacular visuals and smooth animations prove you can!
+
+NOT UPDATED YET
+
+export const canvasSites = [
+    "www.malwation.com",
+    "framedworks.nl",
+    "senorit.de",
+];
+
+{/* Use for grids of 2 per row  */}
+{/* 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <ShowcaseCard site={await getEntry('showcase', 'www.marqy.party')} />
+  <ShowcaseCard site={await getEntry('showcase', 'rad.cm',)} />
+  <ShowcaseCard site={await getEntry('showcase', 'internationalmediabuying.com')} />
+  <ShowcaseCard site={await getEntry('showcase', 'orainer.com',)} />
+</div>
+  */}
+
+{/* Use when there are multiples of 3  */}
+<ShowcaseGridById ids={canvasSites} />
+
+## Community
+
+### Astro Team News
+
+
+Never miss an Astro event by subscribing to the [Astro Luma Calendar](https://luma.com/astrodotbuild).
+
+
+{/* ### Around the ecosystem */}
+
+
+### Partner Pulse
+
+Find out what's new with our official partners and sponsors:
+
+
+
+(And, see why we need your help to [support the future of Astro](https://astro.build/blog/supporting-the-future-of-astro/)).
+
+### Shout-outs
+
+Think we don't notice you? Think again! This month, we'd like to give some 🌮 to:
+
+- [`@Fuan200`](https://github.com/Fuan200) and [`@wigsdev`](https://github.com/wigsdev) for joining our active Spanish docs translation team!
+
+
+## Content
+
+Here's what caught our attention this month: 
+
+
+
+Because you can never get tired of Astro, here's even more community content!
+
+### Migration Stories
+
+
+
+### How-to Articles
+
+
+
+{/* ### ... and more! */}
+
+
+## Watch Party
+
+Be sure to follow [Astro's official YouTube channel](https://www.youtube.com/astrodotbuild) for content from the team!
+
+### Astro on demand
+
+Grab your popcorn and make a playlist of your faves! 🍿
+
+<YouTubeGrid maxCols={3}
+  videos={[
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+    { id: "", title: ""},
+  ]}
+/> 
+
+## Tips & Tools
+
+See some of the latest community-built [utilities and integrations](/integrations/) to help you build with Astro. 🛠
+
+
+
+
+
+### SEO/AEO
+
+
+
+### CMS/text editors
+
+
+### Design systems and UI kits
+
+
+
+### Images and Animations
+
+
+### Markdown, Text, and more
+
+
+
+
+### Internationalization and Localization
+
+
+
+### Content loaders
+
+
+
+{/* 
+### Dev toolbar apps 
+*/}
+
+
+### Starlight
+
+
+
+### Astro integrations by and for other tools
+
+
+
+## Themes & Templates
+
+Several Astro themes were added to the [Astro theme catalogue](https://astro.build/themes/) this month. Get a jump start on a fresh new project by starting with a theme!
+
+export const excludedThemes=[
+  
+]
+
+<ThemeGrid date={frontmatter.startDate} excluded={excludedThemes} />
+
+## Showcase
+
+Looking for even more inspiration? See all the community member websites submitted to [the Astro showcase](https://astro.build/showcase/) this month. [Submit your site built with Astro!](https://astro.build/showcase/submit/)
+
+{/* 
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} /> 
+*/}
+
+export const excludedSites = [...featuredSites, ...monthlySites, ...canvasSites]
+
+<MonthlyShowcaseGrid startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} /> 
+
+Want your site to be included? [Submit it to the Astro Showcase Site](https://astro.build/showcase/submit/).
+
+## Starlight in the wild
+
+It's always exciting to stumble across more docs built with Starlight. Here's what our community noticed this month:
+
+<MonthlyShowcaseGrid starlight startDate={frontmatter.startDate} endDate={frontmatter.endDate} exclude={excludedSites} />
+
+Spot someone using Starlight for their docs? We want to know about it! [Submit it to the Astro Showcase Site](https://astro.build/showcase/submit/).
+
+## That’s a wrap! 👋
+
+Thanks for spending another month with us!
+
+<Note>
+Want to be considered for next month's post? Submit or share your sites, themes, articles, videos, integrations, and more:
+
+- ⭐ to the [site showcase](/showcase/submit/)
+- 🎨 to the [theme catalogue](https://portal.astro.build/) - (Please update your existing themes to v7!)
+- 📦 with the [proper keyword in your `package.json`](https://docs.astro.build/en/reference/publish-to-npm/#packagejson-data)
+- 💬 on social media tagging the Astro account
+- ... and of course, in [our Discord `#showcase` channel](https://astro.build/chat)!
+</Note>
